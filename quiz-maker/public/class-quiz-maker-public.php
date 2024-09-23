@@ -677,13 +677,19 @@ class Quiz_Maker_Public
         $settings_static_texts = ($result == "") ? array() : json_decode( stripslashes($result), true);
 
         $wrong_shortcode_text = (isset($settings_static_texts['wrong_shortcode_text']) && $settings_static_texts['wrong_shortcode_text'] != '') ? stripslashes(esc_attr($settings_static_texts['wrong_shortcode_text'])) : 'Wrong shortcode initialized';
+        $enter_password_text = (isset($settings_static_texts['enter_password_text']) && $settings_static_texts['enter_password_text'] != '') ? stripslashes(esc_attr($settings_static_texts['enter_password_text'])) : 'Please enter password';
 
         if ($wrong_shortcode_text === 'Wrong shortcode initialized') {
             $wrong_shortcode_text = __('Wrong shortcode initialized', $plugin_name);
         }
 
+        if ($enter_password_text === 'Please enter password') {
+            $enter_password_text = __('Please enter password', $plugin_name);
+        }
+
         $texts = array(
-            'wrongShortcode' => $wrong_shortcode_text,
+            'wrongShortcode'    => $wrong_shortcode_text,
+            'enterPassword'     => $enter_password_text,
         );
 
         return $texts;
@@ -1548,7 +1554,7 @@ class Quiz_Maker_Public
                 $quiz_password_message_html .= '</div>';
             }
 
-            $password_message = "<input type='password' autocomplete='no' id='ays_quiz_password_val_". $id ."' class='ays_quiz_password' placeholder='". __( "Please enter password", $this->plugin_name) ."'>";
+            $password_message = "<input type='password' autocomplete='no' id='ays_quiz_password_val_". $id ."' class='ays_quiz_password' placeholder='". $this->default_texts['enterPassword'] ."'>";
 
             if ( $quiz_enable_password_visibility ) {
                 $password_message_with_toggle .= "<div class='ays-quiz-password-toggle-visibility-box'>";

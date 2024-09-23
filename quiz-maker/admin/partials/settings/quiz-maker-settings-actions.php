@@ -63,9 +63,11 @@ class Quiz_Maker_Settings_Actions {
 
             // Default texts | Start
             $wrong_shortcode_text               = (isset($_REQUEST['ays_quiz_wrong_shortcode_text']) && $_REQUEST['ays_quiz_wrong_shortcode_text'] != '') ? stripslashes( sanitize_text_field( $_REQUEST['ays_quiz_wrong_shortcode_text'] )) : 'Wrong shortcode initialized';
+            $enter_password_text                = (isset($_REQUEST['ays_quiz_enter_password_text']) && $_REQUEST['ays_quiz_enter_password_text'] != '') ? stripslashes( sanitize_text_field( $_REQUEST['ays_quiz_enter_password_text'] )) : 'Please enter password';
 
             $default_texts = array(
                 'wrong_shortcode_text'                  => $wrong_shortcode_text,
+                'enter_password_text'                   => $enter_password_text,
             );
             // Default texts | End
 

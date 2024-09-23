@@ -74,21 +74,21 @@
     $quiz_reviews_title_length = (isset($options['quiz_reviews_title_length']) && intval($options['quiz_reviews_title_length']) != 0) ? absint(intval($options['quiz_reviews_title_length'])) : 5;
             
     $default_leadboard_column_names = array(
-        "pos" => __( 'Pos.', $this->plugin_name ),
-        "name" => __( 'Name', $this->plugin_name ),
-        "score" => __( 'Score', $this->plugin_name ),
-        "duration" => __( 'Duration', $this->plugin_name ),
-        "points" => __( 'Points', $this->plugin_name ),
+        "pos"           => __( 'Pos.', $this->plugin_name ),
+        "name"          => __( 'Name', $this->plugin_name ),
+        "score"         => __( 'Score', $this->plugin_name ),
+        "duration"      => __( 'Duration', $this->plugin_name ),
+        "points"        => __( 'Points', $this->plugin_name ),
     );
 
     $default_user_page_column_names = array(
-        "quiz_name" => __( 'Quiz name', $this->plugin_name ),
-        "start_date" => __( 'Start date', $this->plugin_name ),
-        "end_date" => __( 'End date', $this->plugin_name ),
-        "duration" => __( 'Duration', $this->plugin_name ),
-        "score" => __( 'Score', $this->plugin_name ),
-        "details" => __( 'Details', $this->plugin_name ),
-        "points" => __( 'Points', $this->plugin_name ),
+        "quiz_name"     => __( 'Quiz name', $this->plugin_name ),
+        "start_date"    => __( 'Start date', $this->plugin_name ),
+        "end_date"      => __( 'End date', $this->plugin_name ),
+        "duration"      => __( 'Duration', $this->plugin_name ),
+        "score"         => __( 'Score', $this->plugin_name ),
+        "details"       => __( 'Details', $this->plugin_name ),
+        "points"        => __( 'Points', $this->plugin_name ),
     );
 
      // Aro Buttons Text
@@ -116,6 +116,7 @@
     $default_texts = json_decode( stripcslashes($default_texts_res), true);
 
     $wrong_shortcode_text               = (isset($default_texts['wrong_shortcode_text']) && $default_texts['wrong_shortcode_text'] != '') ? stripslashes( esc_attr( $default_texts['wrong_shortcode_text'] ) ) : 'Wrong shortcode initialized';
+    $enter_password_text                = (isset($default_texts['enter_password_text']) && $default_texts['enter_password_text'] != '') ? stripslashes( esc_attr( $default_texts['enter_password_text'] ) ) : 'Please enter password';
     // Default texts | End
 
 
@@ -3810,6 +3811,19 @@
                             </div>
                             <div class="col-sm-9">
                                 <input type="text" id="ays_quiz_wrong_shortcode_text" name="ays_quiz_wrong_shortcode_text" class="ays-text-input"  value='<?php echo esc_attr($wrong_shortcode_text); ?>'>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-3">
+                                <label for="ays_quiz_enter_password_text">
+                                    <?php echo __( "Enter password text", $this->plugin_name ); ?>
+                                    <a class="ays_help" data-toggle="tooltip" data-html="true" title="<p style='margin-bottom:3px;'><?php echo __( 'The text will be displayed when the quiz taker is prompted to enter a password.', $this->plugin_name ); ?>">
+                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                    </a>
+                                </label>
+                            </div>
+                            <div class="col-sm-9">
+                                <input type="text" id="ays_quiz_enter_password_text" name="ays_quiz_enter_password_text" class="ays-text-input"  value='<?php echo $enter_password_text; ?>'>
                             </div>
                         </div>
                         <hr />
