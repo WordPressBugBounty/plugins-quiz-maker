@@ -64,10 +64,12 @@ class Quiz_Maker_Settings_Actions {
             // Default texts | Start
             $wrong_shortcode_text               = (isset($_REQUEST['ays_quiz_wrong_shortcode_text']) && $_REQUEST['ays_quiz_wrong_shortcode_text'] != '') ? stripslashes( sanitize_text_field( $_REQUEST['ays_quiz_wrong_shortcode_text'] )) : 'Wrong shortcode initialized';
             $enter_password_text                = (isset($_REQUEST['ays_quiz_enter_password_text']) && $_REQUEST['ays_quiz_enter_password_text'] != '') ? stripslashes( sanitize_text_field( $_REQUEST['ays_quiz_enter_password_text'] )) : 'Please enter password';
+            $wrong_password_text                = (isset($_REQUEST['ays_quiz_wrong_password_text']) && $_REQUEST['ays_quiz_wrong_password_text'] != '') ? stripslashes( sanitize_text_field( $_REQUEST['ays_quiz_wrong_password_text'] )) : 'Password is wrong!';
 
             $default_texts = array(
                 'wrong_shortcode_text'                  => $wrong_shortcode_text,
                 'enter_password_text'                   => $enter_password_text,
+                'wrong_password_text'                   => $wrong_password_text,
             );
             // Default texts | End
 
@@ -287,23 +289,23 @@ class Quiz_Maker_Settings_Actions {
                 'ays_quiz_ai_model'                             => $ays_quiz_ai_model,
 
                 // Quiz Maker Extra Shortcodes Addon
-                'ays_user_history_quiz_columns'                 => $ays_user_history_quiz_columns,
-                'ays_user_history_quiz_columns_order'           => $ays_user_history_quiz_columns_order,
-                'ays_quiz_hide_correct_answer_user_history_quiz'=> $ays_quiz_hide_correct_answer_user_history_quiz,
-                'ays_user_bestscore_message_admin'              => $ays_user_bestscore_message_admin,
-                'ays_user_bestscore_message'                    => $ays_user_bestscore_message,
+                'ays_user_history_quiz_columns'                     => $ays_user_history_quiz_columns,
+                'ays_user_history_quiz_columns_order'               => $ays_user_history_quiz_columns_order,
+                'ays_quiz_hide_correct_answer_user_history_quiz'    => $ays_quiz_hide_correct_answer_user_history_quiz,
+                'ays_user_bestscore_message_admin'                  => $ays_user_bestscore_message_admin,
+                'ays_user_bestscore_message'                        => $ays_user_bestscore_message,
 
                 // Quiz Maker Gamipress Integration
-                'ays_quiz_gamipress_enable_pass_score'          => $ays_quiz_gamipress_enable_pass_score,
+                'ays_quiz_gamipress_enable_pass_score'              => $ays_quiz_gamipress_enable_pass_score,
 
                 // Quiz Maker MyCred Integration
-                'ays_quiz_mycred_enable_pass_score'             => $ays_quiz_mycred_enable_pass_score,
+                'ays_quiz_mycred_enable_pass_score'                 => $ays_quiz_mycred_enable_pass_score,
 
                 // Advanced User Dashboard
-                'ays_user_dashboard_results_by_quiz_columns'    => $ays_user_dashboard_results_by_quiz_columns,
-                'ays_user_dashboard_results_by_quiz_columns_order' => $ays_user_dashboard_results_by_quiz_columns_order,
-                'ays_user_dashboard_results_columns'            => $ays_user_dashboard_results_columns,
-                'ays_user_dashboard_results_columns_order'      => $ays_user_dashboard_results_columns_order,
+                'ays_user_dashboard_results_by_quiz_columns'        => $ays_user_dashboard_results_by_quiz_columns,
+                'ays_user_dashboard_results_by_quiz_columns_order'  => $ays_user_dashboard_results_by_quiz_columns_order,
+                'ays_user_dashboard_results_columns'                => $ays_user_dashboard_results_columns,
+                'ays_user_dashboard_results_columns_order'          => $ays_user_dashboard_results_columns_order,
 
             );
             

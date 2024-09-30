@@ -725,8 +725,15 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                 <input type="checkbox" class="ays-enable-timer1" id="ays_quick_quiz_disable_store_data" name="ays_quick_quiz_disable_store_data" value="on" />
                                             </div>
                                         </div><!-- Disable data storing in database -->
+                                    </div>
+                                </div>
+                                <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
+                                    <div class="ays-quiz-accordion-container">
+                                        <?php echo $quiz_accordion_svg_html; ?>
                                         <p class="ays-subtitle"><?php echo __('User Data',$this->plugin_name); ?></p>
-                                        <hr class="ays-quiz-bolder-hr"/>
+                                    </div>
+                                    <hr class="ays-quiz-bolder-hr"/>
+                                    <div class="ays-quiz-accordion-options-box">
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_show_information_form">
@@ -1142,6 +1149,33 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                 </div>
                                             </div>
                                         </div><!-- Answer font size -->
+                                        <hr/>
+                                        <div class="form-group row">
+                                            <div class="col-sm-4">
+                                                <label for="ays_quick_quiz_answers_margin">
+                                                    <?php echo __('Answer gap',$this->plugin_name); ?>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-8 ays_quiz_display_flex_width">
+                                                <div>
+                                                    <input type="number" class="ays-text-input ays-text-input-short" id='ays_quick_quiz_answers_margin' name='ays_quick_quiz_answers_margin' value="12"/>
+                                                </div>
+                                                <div class="ays_quiz_dropdown_max_width ays-display-flex" style="align-items: end;">
+                                                    <input type="text" value="px" class='ays-quiz-form-hint-for-size' disabled>
+                                                </div>
+                                            </div>
+                                        </div><!-- Answers gap -->
+                                        <hr/>
+                                        <div class="form-group row">
+                                            <div class="col-sm-4">
+                                                <label for="ays_quick_quiz_disable_hover_effect">
+                                                    <?php echo __('Disable answer hover',$this->plugin_name); ?>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <input type="checkbox" id="ays_quick_quiz_disable_hover_effect" name="ays_quick_quiz_disable_hover_effect" value="on" />
+                                            </div>
+                                        </div><!-- Disable answer hover -->
                                     </div>
                                 </div>
                             </div>

@@ -117,6 +117,7 @@
 
     $wrong_shortcode_text               = (isset($default_texts['wrong_shortcode_text']) && $default_texts['wrong_shortcode_text'] != '') ? stripslashes( esc_attr( $default_texts['wrong_shortcode_text'] ) ) : 'Wrong shortcode initialized';
     $enter_password_text                = (isset($default_texts['enter_password_text']) && $default_texts['enter_password_text'] != '') ? stripslashes( esc_attr( $default_texts['enter_password_text'] ) ) : 'Please enter password';
+    $wrong_password_text                = (isset($default_texts['wrong_password_text']) && $default_texts['wrong_password_text'] != '') ? stripslashes( esc_attr( $default_texts['wrong_password_text'] ) ) : 'Password is wrong!';
     // Default texts | End
 
 
@@ -3824,6 +3825,19 @@
                             </div>
                             <div class="col-sm-9">
                                 <input type="text" id="ays_quiz_enter_password_text" name="ays_quiz_enter_password_text" class="ays-text-input"  value='<?php echo $enter_password_text; ?>'>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-3">
+                                <label for="ays_quiz_wrong_password_text">
+                                    <?php echo __( "Wrong password text", $this->plugin_name ); ?>
+                                    <a class="ays_help" data-toggle="tooltip" data-html="true" title="<p style='margin-bottom:3px;'><?php echo __( 'The text will be displayed in case the quiz taker fills in the incorrect password.', $this->plugin_name ); ?>">
+                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                    </a>
+                                </label>
+                            </div>
+                            <div class="col-sm-9">
+                                <input type="text" id="ays_quiz_wrong_password_text" name="ays_quiz_wrong_password_text" class="ays-text-input"  value='<?php echo $wrong_password_text; ?>'>
                             </div>
                         </div>
                         <hr />

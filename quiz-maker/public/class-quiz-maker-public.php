@@ -199,7 +199,7 @@ class Quiz_Maker_Public
                 'defaultStartButtonText'=> __( 'Start', $this->plugin_name ),
                 'loadResource'          => __( "Can't load resource.", $this->plugin_name ),
                 'somethingWentWrong'    => __( "Maybe something went wrong.", $this->plugin_name ),
-                'passwordIsWrong'       => __( 'Password is wrong!', $this->plugin_name ),
+                'passwordIsWrong'       => $this->default_texts['wrongPassword'],
                 'requiredError'         => __( 'This is a required question', $this->plugin_name ),
                 'show'                  => __( 'Show', $this->plugin_name ),
                 'hide'                  => __( 'Hide', $this->plugin_name ),
@@ -678,6 +678,7 @@ class Quiz_Maker_Public
 
         $wrong_shortcode_text = (isset($settings_static_texts['wrong_shortcode_text']) && $settings_static_texts['wrong_shortcode_text'] != '') ? stripslashes(esc_attr($settings_static_texts['wrong_shortcode_text'])) : 'Wrong shortcode initialized';
         $enter_password_text = (isset($settings_static_texts['enter_password_text']) && $settings_static_texts['enter_password_text'] != '') ? stripslashes(esc_attr($settings_static_texts['enter_password_text'])) : 'Please enter password';
+        $wrong_password_text = (isset($settings_static_texts['wrong_password_text']) && $settings_static_texts['wrong_password_text'] != '') ? stripslashes(esc_attr($settings_static_texts['wrong_password_text'])) : 'Password is wrong!';
 
         if ($wrong_shortcode_text === 'Wrong shortcode initialized') {
             $wrong_shortcode_text = __('Wrong shortcode initialized', $plugin_name);
@@ -687,9 +688,14 @@ class Quiz_Maker_Public
             $enter_password_text = __('Please enter password', $plugin_name);
         }
 
+        if ($wrong_password_text === 'Password is wrong!') {
+            $wrong_password_text = __('Password is wrong!', $plugin_name);
+        }
+
         $texts = array(
             'wrongShortcode'    => $wrong_shortcode_text,
             'enterPassword'     => $enter_password_text,
+            'wrongPassword'     => $wrong_password_text,
         );
 
         return $texts;

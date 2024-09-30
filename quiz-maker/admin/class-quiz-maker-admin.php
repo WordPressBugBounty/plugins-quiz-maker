@@ -1128,6 +1128,8 @@ class Quiz_Maker_Admin
         $quick_quiz_image_sizing                            = "cover";
         $quick_quiz_answers_font_size                       = 15;
         $quick_quiz_answers_mobile_font_size                = 15;
+        $quick_quiz_answers_margin                          = 12;
+        $quick_quiz_disable_hover_effect                    = "off";
 
         if($quiz_enable_options == 'on'){
             $quick_quiz_enable_randomize_questions = (isset( $_REQUEST['ays_quick_quiz_enable_randomize_questions'] ) && $_REQUEST['ays_quick_quiz_enable_randomize_questions'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_randomize_questions'] ) ) : "off";
@@ -1268,6 +1270,11 @@ class Quiz_Maker_Admin
             // Answer Font Size | On mobile
             $quick_quiz_answers_mobile_font_size = (isset($_REQUEST['ays_quick_quiz_answers_mobile_font_size']) && $_REQUEST['ays_quick_quiz_answers_mobile_font_size'] != '') ? stripslashes( absint( $_REQUEST['ays_quick_quiz_answers_mobile_font_size'] ) ) : 15;
 
+            // Answer gap
+            $quick_quiz_answers_margin = (isset($_REQUEST['ays_quick_quiz_answers_margin']) && $_REQUEST['ays_quick_quiz_answers_margin'] != '') ? stripslashes( absint( $_REQUEST['ays_quick_quiz_answers_margin'] ) ) : 12;
+
+            
+            $quick_quiz_disable_hover_effect = (isset( $_REQUEST['ays_quick_quiz_disable_hover_effect'] ) && $_REQUEST['ays_quick_quiz_disable_hover_effect'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_disable_hover_effect'] ) ) : "off";
             
         }
         
@@ -1452,7 +1459,7 @@ class Quiz_Maker_Admin
             'hide_correct_answers'                          => 'off',
             'show_information_form'                         => $quick_quiz_show_information_form,
             'quiz_loader_custom_gif'                        => '',
-            'disable_hover_effect'                          => 'off',
+            'disable_hover_effect'                          => $quick_quiz_disable_hover_effect,
             'quiz_loader_custom_gif_width'                  => 100,
             'show_answers_numbering'                        => 'none',
             'quiz_title_transformation'                     => $quick_quiz_title_transformation,
@@ -1488,7 +1495,7 @@ class Quiz_Maker_Admin
             'answers_border_color'                          => '#dddddd',
             'social_links_heading'                          => '',
             'quiz_enable_question_category_description'     => 'off',
-            'answers_margin'                                => '12',
+            'answers_margin'                                => $quick_quiz_answers_margin,
             'quiz_message_before_redirect_timer'            => '',
             'buttons_mobile_font_size'                      => 18,
             'answers_box_shadow'                            => 'off',
