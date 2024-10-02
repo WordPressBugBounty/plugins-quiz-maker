@@ -660,7 +660,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                             </div>
                                         </div> <!-- Enable custom texts for buttons -->
                                     </div>
-                                </div>
+                                </div><!-- Settings Tab -->
                                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                                     <div class="ays-quiz-accordion-container">
                                         <?php echo $quiz_accordion_svg_html; ?>
@@ -726,7 +726,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                             </div>
                                         </div><!-- Disable data storing in database -->
                                     </div>
-                                </div>
+                                </div><!-- Results Settings Tab -->
                                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                                     <div class="ays-quiz-accordion-container">
                                         <?php echo $quiz_accordion_svg_html; ?>
@@ -773,7 +773,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                             </div>
                                         </div><!-- Display form fields with labels -->
                                     </div>
-                                </div>
+                                </div><!-- User Data Tab -->
                                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                                     <div class="ays-quiz-accordion-container">
                                         <?php echo $quiz_accordion_svg_html; ?>
@@ -1177,7 +1177,36 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                             </div>
                                         </div><!-- Disable answer hover -->
                                     </div>
-                                </div>
+                                </div><!-- Styles Tab -->
+                                <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
+                                    <div class="ays-quiz-accordion-container">
+                                        <?php echo $quiz_accordion_svg_html; ?>
+                                        <p class="ays-subtitle"><?php echo __('Buttons Styles',$this->plugin_name); ?></p>
+                                    </div>
+                                    <hr class="ays-quiz-bolder-hr"/>
+                                    <div class="ays-quiz-accordion-options-box">
+                                        <div class="form-group row">
+                                            <div class="col-sm-4">
+                                                <label for="ays_quick_quiz_buttons_size">
+                                                    <?php echo __('Button size',$this->plugin_name); ?>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <select class="ays-text-input ays-text-input-short" id="ays_quick_quiz_buttons_size" name="ays_quick_quiz_buttons_size">
+                                                    <option value="small">
+                                                        <?php echo __('Small',$this->plugin_name); ?>
+                                                    </option>
+                                                    <option value="medium">
+                                                        <?php echo __('Medium',$this->plugin_name); ?>
+                                                    </option>
+                                                    <option value="large" selected>
+                                                        <?php echo __('Large',$this->plugin_name); ?>
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div><!-- Button size -->
+                                    </div>
+                                </div><!-- Buttons Styles -->
                             </div>
                         </div> <!-- Quiz Options -->
                     </div>

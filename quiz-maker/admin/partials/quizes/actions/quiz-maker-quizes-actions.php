@@ -894,7 +894,7 @@ $enable_audio_autoplay = (isset($options['enable_audio_autoplay']) && $options['
 // =========== Buttons Styles Start ===========
 
 // Buttons size
-$buttons_size = (isset($options['buttons_size']) && $options['buttons_size'] != "") ? $options['buttons_size'] : 'medium';
+$buttons_size = (isset($options['buttons_size']) && $options['buttons_size'] != "") ? $options['buttons_size'] : 'large';
 
 // Buttons font size
 $buttons_font_size = (isset($options['buttons_font_size']) && $options['buttons_font_size'] != "") ? $options['buttons_font_size'] : '18';

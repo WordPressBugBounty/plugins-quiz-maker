@@ -1130,6 +1130,7 @@ class Quiz_Maker_Admin
         $quick_quiz_answers_mobile_font_size                = 15;
         $quick_quiz_answers_margin                          = 12;
         $quick_quiz_disable_hover_effect                    = "off";
+        $quick_quiz_buttons_size                            = "large";
 
         if($quiz_enable_options == 'on'){
             $quick_quiz_enable_randomize_questions = (isset( $_REQUEST['ays_quick_quiz_enable_randomize_questions'] ) && $_REQUEST['ays_quick_quiz_enable_randomize_questions'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_randomize_questions'] ) ) : "off";
@@ -1273,8 +1274,11 @@ class Quiz_Maker_Admin
             // Answer gap
             $quick_quiz_answers_margin = (isset($_REQUEST['ays_quick_quiz_answers_margin']) && $_REQUEST['ays_quick_quiz_answers_margin'] != '') ? stripslashes( absint( $_REQUEST['ays_quick_quiz_answers_margin'] ) ) : 12;
 
-            
+            // Disable answer hover
             $quick_quiz_disable_hover_effect = (isset( $_REQUEST['ays_quick_quiz_disable_hover_effect'] ) && $_REQUEST['ays_quick_quiz_disable_hover_effect'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_disable_hover_effect'] ) ) : "off";
+
+            // Buttons size
+            $quick_quiz_buttons_size = (isset($_REQUEST['ays_quick_quiz_buttons_size']) && $_REQUEST['ays_quick_quiz_buttons_size'] != '') ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_buttons_size'] ) ) : 'large';
             
         }
         
@@ -1438,7 +1442,7 @@ class Quiz_Maker_Admin
             'buttons_position'                              => $quick_quiz_buttons_position,
             'show_questions_explanation'                    => 'on_results_page',
             'enable_audio_autoplay'                         => $quick_quiz_enable_audio_autoplay,
-            'buttons_size'                                  => 'large',
+            'buttons_size'                                  => $quick_quiz_buttons_size,
             'buttons_font_size'                             => '18',
             'buttons_width'                                 => '',
             'buttons_left_right_padding'                    => '36',
