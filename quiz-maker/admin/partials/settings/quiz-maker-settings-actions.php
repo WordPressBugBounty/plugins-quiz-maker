@@ -65,11 +65,13 @@ class Quiz_Maker_Settings_Actions {
             $wrong_shortcode_text               = (isset($_REQUEST['ays_quiz_wrong_shortcode_text']) && $_REQUEST['ays_quiz_wrong_shortcode_text'] != '') ? stripslashes( sanitize_text_field( $_REQUEST['ays_quiz_wrong_shortcode_text'] )) : 'Wrong shortcode initialized';
             $enter_password_text                = (isset($_REQUEST['ays_quiz_enter_password_text']) && $_REQUEST['ays_quiz_enter_password_text'] != '') ? stripslashes( sanitize_text_field( $_REQUEST['ays_quiz_enter_password_text'] )) : 'Please enter password';
             $wrong_password_text                = (isset($_REQUEST['ays_quiz_wrong_password_text']) && $_REQUEST['ays_quiz_wrong_password_text'] != '') ? stripslashes( sanitize_text_field( $_REQUEST['ays_quiz_wrong_password_text'] )) : 'Password is wrong!';
+            $empty_results_text                 = (isset($_REQUEST['ays_quiz_empty_results_text']) && $_REQUEST['ays_quiz_empty_results_text'] != '') ? stripslashes( sanitize_text_field( $_REQUEST['ays_quiz_empty_results_text'] )) : 'There are no results yet.';
 
             $default_texts = array(
                 'wrong_shortcode_text'                  => $wrong_shortcode_text,
                 'enter_password_text'                   => $enter_password_text,
                 'wrong_password_text'                   => $wrong_password_text,
+                'empty_results_text'                    => $empty_results_text,
             );
             // Default texts | End
 

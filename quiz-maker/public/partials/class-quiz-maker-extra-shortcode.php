@@ -135,7 +135,8 @@ class Ays_Quiz_Maker_Extra_Shortcodes_Public
                 FROM `{$reports_table}`
                 WHERE `quiz_id`={$id}";
 
-        $result = round($wpdb->get_var($sql));
+        $data = $wpdb->get_var($sql);
+        $result = !empty( $data ) ? round($data) : null;
 
         return $result;
 
@@ -147,8 +148,8 @@ class Ays_Quiz_Maker_Extra_Shortcodes_Public
 
         $content_html = array();
 
-        if($results === null){
-            $content_html = "<p style='text-align: center;font-style:italic;'>" . __( "There are no results yet.", $this->plugin_name ) . "</p>";
+        if($results === null || $results == 0){
+            $content_html = "<p style='text-align: center;font-style:italic;'>" . $this->default_texts['emptyResultsText'] . "</p>";
             return $content_html;
         }
 
@@ -218,7 +219,7 @@ class Ays_Quiz_Maker_Extra_Shortcodes_Public
         $content_html = array();
 
         if($results === null){
-            $content_html = "<p style='text-align: center;font-style:italic;'>" . __( "There are no results yet.", $this->plugin_name ) . "</p>";
+            $content_html = "<p style='text-align: center;font-style:italic;'>" . $this->default_texts['emptyResultsText'] . "</p>";
             return $content_html;
         }
 
@@ -309,7 +310,7 @@ class Ays_Quiz_Maker_Extra_Shortcodes_Public
         $content_html = array();
 
         if($results === null){
-            $content_html = "<p style='text-align: center;font-style:italic;'>" . __( "There are no results yet.", $this->plugin_name ) . "</p>";
+            $content_html = "<p style='text-align: center;font-style:italic;'>" . $this->default_texts['emptyResultsText'] . "</p>";
             return $content_html;
         }
 
@@ -363,7 +364,7 @@ class Ays_Quiz_Maker_Extra_Shortcodes_Public
         $content_html = array();
 
         if($results === null){
-            $content_html = "<p style='text-align: center;font-style:italic;'>" . __( "There are no results yet.", $this->plugin_name ) . "</p>";
+            $content_html = "<p style='text-align: center;font-style:italic;'>" . $this->default_texts['emptyResultsText'] . "</p>";
             return $content_html;
         }
 
@@ -1483,7 +1484,7 @@ class Ays_Quiz_Maker_Extra_Shortcodes_Public
         $content_html = array();
 
         if($results === null){
-            $content_html = "<p style='text-align: center;font-style:italic;'>" . __( "There are no results yet.", $this->plugin_name ) . "</p>";
+            $content_html = "<p style='text-align: center;font-style:italic;'>" . $this->default_texts['emptyResultsText'] . "</p>";
             return $content_html;
         }
 
@@ -1536,15 +1537,15 @@ class Ays_Quiz_Maker_Extra_Shortcodes_Public
 
         $content_html = array();
 
-        if($results === null){
-            $content_html = "<p style='text-align: center;font-style:italic;'>" . __( "There are no results yet.", $this->plugin_name ) . "</p>";
+        if($results === null || $results == 0){
+            $content_html = "<p style='text-align: center;font-style:italic;'>" . $this->default_texts['emptyResultsText'] . "</p>";
             return $content_html;
         }
 
         $read_results_count = (isset( $results['res_count'] ) && $results['res_count'] != '') ? sanitize_text_field( $results['res_count'] ) : 0;
 
         if ( $read_results_count == 0 ) {
-            $content_html = "";
+            $content_html = "<p style='text-align: center;font-style:italic;'>" . $this->default_texts['emptyResultsText'] . "</p>";
             return $content_html;
         }
 
@@ -1575,6 +1576,8 @@ class Ays_Quiz_Maker_Extra_Shortcodes_Public
         $this->unique_id = $unique_id;
         $this->unique_id_in_class = 'count' . "-" . $unique_id;
 
+        $this->default_texts = Quiz_Maker_Public::ays_set_quiz_default_texts( $this->plugin_name, array() );
+
         $read_results_count_html = $this->ays_quiz_quizzes_count_html();
         return str_replace(array("\r\n", "\n", "\r"), "\n", $read_results_count_html);
     }
@@ -1585,7 +1588,7 @@ class Ays_Quiz_Maker_Extra_Shortcodes_Public
         $content_html = array();
 
         if( is_null($results) || $results == 0){
-            $content_html = "<p style='text-align: center;font-style:italic;'>" . __( "There are no results yet.", $this->plugin_name ) . "</p>";
+            $content_html = "<p style='text-align: center;font-style:italic;'>" . $this->default_texts['emptyResultsText'] . "</p>";
             return $content_html;
         }
 
@@ -1633,6 +1636,8 @@ class Ays_Quiz_Maker_Extra_Shortcodes_Public
         $this->unique_id = $unique_id;
         $this->unique_id_in_class = 'count' . "-" . $unique_id;
 
+        $this->default_texts = Quiz_Maker_Public::ays_set_quiz_default_texts( $this->plugin_name, array() );
+
         $read_results_count_html = $this->ays_quiz_quiz_categories_count_html();
         return str_replace(array("\r\n", "\n", "\r"), "\n", $read_results_count_html);
     }
@@ -1643,7 +1648,7 @@ class Ays_Quiz_Maker_Extra_Shortcodes_Public
         $content_html = array();
 
         if( is_null($results) || $results == 0){
-            $content_html = "<p style='text-align: center;font-style:italic;'>" . __( "There are no results yet.", $this->plugin_name ) . "</p>";
+            $content_html = "<p style='text-align: center;font-style:italic;'>" . $this->default_texts['emptyResultsText'] . "</p>";
             return $content_html;
         }
 
@@ -1795,6 +1800,8 @@ class Ays_Quiz_Maker_Extra_Shortcodes_Public
         $this->unique_id = $unique_id;
         $this->unique_id_in_class = 'count' . "-" . $unique_id;
 
+        $this->default_texts = Quiz_Maker_Public::ays_set_quiz_default_texts( $this->plugin_name, array() );
+
         $read_results_count_html = $this->ays_quiz_question_categories_count_html();
         return str_replace(array("\r\n", "\n", "\r"), "\n", $read_results_count_html);
     }
@@ -1805,7 +1812,7 @@ class Ays_Quiz_Maker_Extra_Shortcodes_Public
         $content_html = array();
 
         if( is_null($results) || $results == 0){
-            $content_html = "<p style='text-align: center;font-style:italic;'>" . __( "There are no results yet.", $this->plugin_name ) . "</p>";
+            $content_html = "<p style='text-align: center;font-style:italic;'>" . $this->default_texts['emptyResultsText'] . "</p>";
             return $content_html;
         }
 
@@ -1873,7 +1880,7 @@ class Ays_Quiz_Maker_Extra_Shortcodes_Public
         $content_html = array();
 
         if( is_null($results) || $results == 0){
-            $content_html = "<p style='text-align: center;font-style:italic;'>" . __( "There are no results yet.", $this->plugin_name ) . "</p>";
+            $content_html = "<p style='text-align: center;font-style:italic;'>" . $this->default_texts['emptyResultsText'] . "</p>";
             return $content_html;
         }
 
@@ -1920,6 +1927,8 @@ class Ays_Quiz_Maker_Extra_Shortcodes_Public
         $this->unique_id = $unique_id;
         $this->unique_id_in_class = 'count' . "-" . $unique_id;
 
+        $this->default_texts = Quiz_Maker_Public::ays_set_quiz_default_texts( $this->plugin_name, array() );
+
         $all_questions_count_html = $this->ays_quiz_all_questions_count_html();
         return str_replace(array("\r\n", "\n", "\r"), "\n", $all_questions_count_html);
     }
@@ -1930,7 +1939,7 @@ class Ays_Quiz_Maker_Extra_Shortcodes_Public
         $content_html = array();
 
         if( is_null($results) || $results == 0){
-            $content_html = "<p style='text-align: center;font-style:italic;'>" . __( "There are no results yet.", $this->plugin_name ) . "</p>";
+            $content_html = "<p style='text-align: center;font-style:italic;'>" . $this->default_texts['emptyResultsText'] . "</p>";
             return $content_html;
         }
 

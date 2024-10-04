@@ -118,6 +118,7 @@
     $wrong_shortcode_text               = (isset($default_texts['wrong_shortcode_text']) && $default_texts['wrong_shortcode_text'] != '') ? stripslashes( esc_attr( $default_texts['wrong_shortcode_text'] ) ) : 'Wrong shortcode initialized';
     $enter_password_text                = (isset($default_texts['enter_password_text']) && $default_texts['enter_password_text'] != '') ? stripslashes( esc_attr( $default_texts['enter_password_text'] ) ) : 'Please enter password';
     $wrong_password_text                = (isset($default_texts['wrong_password_text']) && $default_texts['wrong_password_text'] != '') ? stripslashes( esc_attr( $default_texts['wrong_password_text'] ) ) : 'Password is wrong!';
+    $empty_results_text                = (isset($default_texts['empty_results_text']) && $default_texts['empty_results_text'] != '') ? stripslashes( esc_attr( $default_texts['empty_results_text'] ) ) : 'There are no results yet.';
     // Default texts | End
 
 
@@ -3793,7 +3794,7 @@
                     <div id="tab5" class="ays-quiz-tab-content <?php echo ($ays_quiz_tab == 'tab5') ? 'ays-quiz-tab-content-active' : ''; ?>">
                         <p class="ays-subtitle">
                             <?php echo __('Default Texts', "quiz-maker"); ?>
-                            <a class="ays_help" data-toggle="tooltip" data-html="true" title="<p style='margin-bottom:3px;'><?php echo __( 'If you make a change here, these words will not be translatable via translation tools!', "quiz-maker" ); ?>">
+                            <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php echo __( 'If you make a change here, these words will not be translatable via translation tools!', "quiz-maker" ); ?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
                         </p>
@@ -3805,7 +3806,7 @@
                             <div class="col-sm-3">
                                 <label for="ays_quiz_wrong_shortcode_text">
                                     <?php echo __( "Wrong shortcode text", "quiz-maker" ); ?>
-                                    <a class="ays_help" data-toggle="tooltip" data-html="true" title="<p style='margin-bottom:3px;'><?php echo __( 'The text will be displayed if the post/page contains an incorrect shortcode', "quiz-maker" ); ?>">
+                                    <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php echo __( 'The text will be displayed if the post/page contains an incorrect shortcode', "quiz-maker" ); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -3818,7 +3819,7 @@
                             <div class="col-sm-3">
                                 <label for="ays_quiz_enter_password_text">
                                     <?php echo __( "Enter password text", $this->plugin_name ); ?>
-                                    <a class="ays_help" data-toggle="tooltip" data-html="true" title="<p style='margin-bottom:3px;'><?php echo __( 'The text will be displayed when the quiz taker is prompted to enter a password.', $this->plugin_name ); ?>">
+                                    <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php echo __( 'The text will be displayed when the quiz taker is prompted to enter a password.', $this->plugin_name ); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -3831,7 +3832,7 @@
                             <div class="col-sm-3">
                                 <label for="ays_quiz_wrong_password_text">
                                     <?php echo __( "Wrong password text", $this->plugin_name ); ?>
-                                    <a class="ays_help" data-toggle="tooltip" data-html="true" title="<p style='margin-bottom:3px;'><?php echo __( 'The text will be displayed in case the quiz taker fills in the incorrect password.', $this->plugin_name ); ?>">
+                                    <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php echo __( 'The text will be displayed in case the quiz taker fills in the incorrect password.', $this->plugin_name ); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -3840,10 +3841,23 @@
                                 <input type="text" id="ays_quiz_wrong_password_text" name="ays_quiz_wrong_password_text" class="ays-text-input"  value='<?php echo $wrong_password_text; ?>'>
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <div class="col-sm-3">
+                                <label for="ays_quiz_empty_results_text">
+                                    <?php echo __( "Empty results text", $this->plugin_name ); ?>
+                                    <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php echo __( 'The text will be displayed if no matching results are found by the system for the current shortcode.', $this->plugin_name ); ?>">
+                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                    </a>
+                                </label>
+                            </div>
+                            <div class="col-sm-9">
+                                <input type="text" id="ays_quiz_empty_results_text" name="ays_quiz_empty_results_text" class="ays-text-input"  value='<?php echo $empty_results_text; ?>'>
+                            </div>
+                        </div>
                         <hr />
                         <p class="ays-subtitle">
                             <?php echo __('Buttons texts',$this->plugin_name)?>
-                            <a class="ays_help" data-toggle="tooltip" data-html="true" title="<p style='margin-bottom:3px;'><?php echo __( 'If you make a change here, these words will not be translated either․', $this->plugin_name ); ?>">
+                            <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php echo __( 'If you make a change here, these words will not be translated either․', $this->plugin_name ); ?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
                         </p>
@@ -3978,7 +3992,7 @@
                     <div id="tab6" class="ays-quiz-tab-content <?php echo ($ays_quiz_tab == 'tab6') ? 'ays-quiz-tab-content-active' : ''; ?>">
                         <p class="ays-subtitle">
                             <?php echo __('Fields texts',$this->plugin_name)?>
-                            <a class="ays_help" data-toggle="tooltip" data-html="true" title="<p style='margin-bottom:3px;'><?php echo __( 'If you make a change here, these words will not be translated either.', $this->plugin_name ); ?>">
+                            <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php echo __( 'If you make a change here, these words will not be translated either.', $this->plugin_name ); ?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
                         </p>

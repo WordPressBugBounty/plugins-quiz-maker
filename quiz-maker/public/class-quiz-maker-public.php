@@ -679,6 +679,7 @@ class Quiz_Maker_Public
         $wrong_shortcode_text = (isset($settings_static_texts['wrong_shortcode_text']) && $settings_static_texts['wrong_shortcode_text'] != '') ? stripslashes(esc_attr($settings_static_texts['wrong_shortcode_text'])) : 'Wrong shortcode initialized';
         $enter_password_text = (isset($settings_static_texts['enter_password_text']) && $settings_static_texts['enter_password_text'] != '') ? stripslashes(esc_attr($settings_static_texts['enter_password_text'])) : 'Please enter password';
         $wrong_password_text = (isset($settings_static_texts['wrong_password_text']) && $settings_static_texts['wrong_password_text'] != '') ? stripslashes(esc_attr($settings_static_texts['wrong_password_text'])) : 'Password is wrong!';
+        $empty_results_text = (isset($settings_static_texts['empty_results_text']) && $settings_static_texts['empty_results_text'] != '') ? stripslashes(esc_attr($settings_static_texts['empty_results_text'])) : 'There are no results yet.';
 
         if ($wrong_shortcode_text === 'Wrong shortcode initialized') {
             $wrong_shortcode_text = __('Wrong shortcode initialized', $plugin_name);
@@ -692,10 +693,15 @@ class Quiz_Maker_Public
             $wrong_password_text = __('Password is wrong!', $plugin_name);
         }
 
+        if ($empty_results_text === 'There are no results yet.') {
+            $empty_results_text = __('There are no results yet.', $plugin_name);
+        }
+
         $texts = array(
             'wrongShortcode'    => $wrong_shortcode_text,
             'enterPassword'     => $enter_password_text,
             'wrongPassword'     => $wrong_password_text,
+            'emptyResultsText'  => $empty_results_text,
         );
 
         return $texts;
