@@ -309,12 +309,17 @@ class Ays_Quiz_Maker_Extra_Shortcodes_Public
 
         $content_html = array();
 
-        if($results === null){
+        if($results === null || empty($results)){
             $content_html = "<p style='text-align: center;font-style:italic;'>" . $this->default_texts['emptyResultsText'] . "</p>";
             return $content_html;
         }
 
         $failed_users_count_by_score = (isset( $results['res_count'] ) && $results['res_count'] != '') ? sanitize_text_field( $results['res_count'] ) : 0;
+
+        if( empty($failed_users_count_by_score) ){
+            $content_html = "<p style='text-align: center;font-style:italic;'>" . $this->default_texts['emptyResultsText'] . "</p>";
+            return $content_html;
+        }
 
         $content_html[] = "<span class='". $this->html_name_prefix ."failed-users-count-by-score-box' id='". $this->html_name_prefix ."failed-users-count-by-score-box-". $this->unique_id_in_class ."' data-id='". $this->unique_id ."'>";
             $content_html[] = $failed_users_count_by_score;
@@ -363,12 +368,17 @@ class Ays_Quiz_Maker_Extra_Shortcodes_Public
 
         $content_html = array();
 
-        if($results === null){
+        if($results === null || empty($results)){
             $content_html = "<p style='text-align: center;font-style:italic;'>" . $this->default_texts['emptyResultsText'] . "</p>";
             return $content_html;
         }
 
         $failed_users_count_by_score = (isset( $results['res_count'] ) && $results['res_count'] != '') ? sanitize_text_field( $results['res_count'] ) : 0;
+
+        if( empty($failed_users_count_by_score) ){
+            $content_html = "<p style='text-align: center;font-style:italic;'>" . $this->default_texts['emptyResultsText'] . "</p>";
+            return $content_html;
+        }
 
         $content_html[] = "<span class='". $this->html_name_prefix ."passed-users-count-by-score-box' id='". $this->html_name_prefix ."passed-users-count-by-score-box-". $this->unique_id_in_class ."' data-id='". $this->unique_id ."'>";
             $content_html[] = $failed_users_count_by_score;
@@ -1483,12 +1493,17 @@ class Ays_Quiz_Maker_Extra_Shortcodes_Public
 
         $content_html = array();
 
-        if($results === null){
+        if($results === null || empty($results)){
             $content_html = "<p style='text-align: center;font-style:italic;'>" . $this->default_texts['emptyResultsText'] . "</p>";
             return $content_html;
         }
 
         $unread_results_count = (isset( $results['res_count'] ) && $results['res_count'] != '') ? sanitize_text_field( $results['res_count'] ) : 0;
+
+        if( empty($unread_results_count) ){
+            $content_html = "<p style='text-align: center;font-style:italic;'>" . $this->default_texts['emptyResultsText'] . "</p>";
+            return $content_html;
+        }
 
         $content_html[] = "<span class='". $this->html_name_prefix ."unread-results-box' id='". $this->html_name_prefix ."unread-results-box-". $this->unique_id_in_class ."' data-id='". $this->unique_id ."'>";
             $content_html[] = $unread_results_count;
@@ -1537,14 +1552,14 @@ class Ays_Quiz_Maker_Extra_Shortcodes_Public
 
         $content_html = array();
 
-        if($results === null || $results == 0){
+        if($results === null || empty($results)){
             $content_html = "<p style='text-align: center;font-style:italic;'>" . $this->default_texts['emptyResultsText'] . "</p>";
             return $content_html;
         }
 
         $read_results_count = (isset( $results['res_count'] ) && $results['res_count'] != '') ? sanitize_text_field( $results['res_count'] ) : 0;
 
-        if ( $read_results_count == 0 ) {
+        if ( empty($read_results_count) ) {
             $content_html = "<p style='text-align: center;font-style:italic;'>" . $this->default_texts['emptyResultsText'] . "</p>";
             return $content_html;
         }
@@ -1594,8 +1609,8 @@ class Ays_Quiz_Maker_Extra_Shortcodes_Public
 
         $read_results_count = (isset( $results['res_count'] ) && $results['res_count'] != '') ? sanitize_text_field( $results['res_count'] ) : 0;
 
-        if ( $read_results_count == 0 ) {
-            $content_html = "";
+        if ( empty($read_results_count) ) {
+            $content_html = "<p style='text-align: center;font-style:italic;'>" . $this->default_texts['emptyResultsText'] . "</p>";
             return $content_html;
         }
 
@@ -1647,15 +1662,15 @@ class Ays_Quiz_Maker_Extra_Shortcodes_Public
         $results = $this->ays_quiz_get_quiz_categories_count();
         $content_html = array();
 
-        if( is_null($results) || $results == 0){
+        if( is_null($results) || empty($results) ){
             $content_html = "<p style='text-align: center;font-style:italic;'>" . $this->default_texts['emptyResultsText'] . "</p>";
             return $content_html;
         }
 
         $read_results_count = (isset( $results['res_count'] ) && $results['res_count'] != '') ? sanitize_text_field( $results['res_count'] ) : 0;
 
-        if ( $read_results_count == 0 ) {
-            $content_html = "";
+        if ( empty($read_results_count) ) {
+            $content_html = "<p style='text-align: center;font-style:italic;'>" . $this->default_texts['emptyResultsText'] . "</p>";
             return $content_html;
         }
 
@@ -1811,15 +1826,15 @@ class Ays_Quiz_Maker_Extra_Shortcodes_Public
         $results = $this->ays_quiz_get_question_categories_count();
         $content_html = array();
 
-        if( is_null($results) || $results == 0){
+        if( is_null($results) || empty($results) ){
             $content_html = "<p style='text-align: center;font-style:italic;'>" . $this->default_texts['emptyResultsText'] . "</p>";
             return $content_html;
         }
 
         $read_results_count = (isset( $results['res_count'] ) && $results['res_count'] != '') ? sanitize_text_field( $results['res_count'] ) : 0;
 
-        if ( $read_results_count == 0 ) {
-            $content_html = "";
+        if ( empty($read_results_count) ) {
+            $content_html = "<p style='text-align: center;font-style:italic;'>" . $this->default_texts['emptyResultsText'] . "</p>";
             return $content_html;
         }
 
