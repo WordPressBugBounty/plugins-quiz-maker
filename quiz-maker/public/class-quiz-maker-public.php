@@ -2054,15 +2054,15 @@ class Quiz_Maker_Public
         
         
         $buttons = array(
-            "enableArrows" => $enable_arrows,
-            "arrows" => $arrows_visibility,
-            "nextArrow" => $next_arrow_visibility,
-            "prevArrow" => $prev_arrow_visibility,
-            "nextButton" => $next_button_visibility,
-            "prevButton" => $prev_button_visibility,
-            "earlyButton" => $enable_early_finish,
+            "enableArrows"      => $enable_arrows,
+            "arrows"            => $arrows_visibility,
+            "nextArrow"         => $next_arrow_visibility,
+            "prevArrow"         => $prev_arrow_visibility,
+            "nextButton"        => $next_button_visibility,
+            "prevButton"        => $prev_button_visibility,
+            "earlyButton"       => $enable_early_finish,
             "clearAnswerButton" => $enable_clear_answer,
-            "quizArrowType" => $quiz_arrow_type,
+            "quizArrowType"     => $quiz_arrow_type,
         );
         
         /*
