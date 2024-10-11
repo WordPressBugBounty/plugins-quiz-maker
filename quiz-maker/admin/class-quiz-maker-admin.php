@@ -1132,6 +1132,7 @@ class Quiz_Maker_Admin
         $quick_quiz_disable_hover_effect                    = "off";
         $quick_quiz_buttons_size                            = "large";
         $quick_quiz_buttons_font_size                       = 18;
+        $quick_quiz_buttons_mobile_font_size                = 18;
 
         if($quiz_enable_options == 'on'){
             $quick_quiz_enable_randomize_questions = (isset( $_REQUEST['ays_quick_quiz_enable_randomize_questions'] ) && $_REQUEST['ays_quick_quiz_enable_randomize_questions'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_randomize_questions'] ) ) : "off";
@@ -1281,8 +1282,11 @@ class Quiz_Maker_Admin
             // Buttons size
             $quick_quiz_buttons_size = (isset($_REQUEST['ays_quick_quiz_buttons_size']) && $_REQUEST['ays_quick_quiz_buttons_size'] != '') ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_buttons_size'] ) ) : 'large';
 
-            // Button font-size
+            // Button font-size | On desktop
             $quick_quiz_buttons_font_size = (isset($_REQUEST['ays_quick_quiz_buttons_font_size']) && $_REQUEST['ays_quick_quiz_buttons_font_size'] != '') ? absint( stripslashes( $_REQUEST['ays_quick_quiz_buttons_font_size'] ) ) : 18;
+
+            // Button font-size | On mobile
+            $quick_quiz_buttons_mobile_font_size = (isset($_REQUEST['ays_quick_quiz_buttons_mobile_font_size']) && $_REQUEST['ays_quick_quiz_buttons_mobile_font_size'] != '') ? absint( stripslashes( $_REQUEST['ays_quick_quiz_buttons_mobile_font_size'] ) ) : 18;
             
         }
         
@@ -1505,7 +1509,7 @@ class Quiz_Maker_Admin
             'quiz_enable_question_category_description'     => 'off',
             'answers_margin'                                => $quick_quiz_answers_margin,
             'quiz_message_before_redirect_timer'            => '',
-            'buttons_mobile_font_size'                      => 18,
+            'buttons_mobile_font_size'                      => $quick_quiz_buttons_mobile_font_size,
             'answers_box_shadow'                            => 'off',
             'answers_box_shadow_color'                      => '#000',
             'quiz_answer_box_shadow_x_offset'               => 0,
