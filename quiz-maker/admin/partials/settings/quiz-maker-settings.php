@@ -119,6 +119,7 @@
     $enter_password_text                = (isset($default_texts['enter_password_text']) && $default_texts['enter_password_text'] != '') ? stripslashes( esc_attr( $default_texts['enter_password_text'] ) ) : 'Please enter password';
     $wrong_password_text                = (isset($default_texts['wrong_password_text']) && $default_texts['wrong_password_text'] != '') ? stripslashes( esc_attr( $default_texts['wrong_password_text'] ) ) : 'Password is wrong!';
     $empty_results_text                = (isset($default_texts['empty_results_text']) && $default_texts['empty_results_text'] != '') ? stripslashes( esc_attr( $default_texts['empty_results_text'] ) ) : 'There are no results yet.';
+    $not_answered_question_text        = (isset($default_texts['not_answered_question_text']) && $default_texts['not_answered_question_text'] != '') ? stripslashes( esc_attr( $default_texts['not_answered_question_text'] ) ) : 'You have not answered this question';
     // Default texts | End
 
 
@@ -3852,6 +3853,19 @@
                             </div>
                             <div class="col-sm-9">
                                 <input type="text" id="ays_quiz_empty_results_text" name="ays_quiz_empty_results_text" class="ays-text-input"  value='<?php echo $empty_results_text; ?>'>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-3">
+                                <label for="ays_quiz_not_answered_question_text">
+                                    <?php echo __( "Not answered questions text", $this->plugin_name ); ?>
+                                    <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php echo esc_attr( __( "Specify the text displayed in case the user doesn't answer the question while passing the quiz. Note: The text will be displayed on the Result page of the quiz.", $this->plugin_name ) ); ?>">
+                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                    </a>
+                                </label>
+                            </div>
+                            <div class="col-sm-9">
+                                <input type="text" id="ays_quiz_not_answered_question_text" name="ays_quiz_not_answered_question_text" class="ays-text-input"  value='<?php echo $not_answered_question_text; ?>'>
                             </div>
                         </div>
                         <hr />

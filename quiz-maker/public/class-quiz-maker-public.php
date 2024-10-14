@@ -181,28 +181,28 @@ class Quiz_Maker_Public
                 'warningIcon'   => plugin_dir_url(__FILE__) . "images/warning.svg",
             ));
             wp_localize_script($this->plugin_name, 'quizLangObj', array(
-                'notAnsweredText'       => __( 'You have not answered this question', $this->plugin_name ),
-                'areYouSure'            => __( 'Do you want to finish the quiz? Are you sure?', $this->plugin_name ),
-                'selectPlaceholder'     => __( 'Select an answer', $this->plugin_name ),
-                'correctAnswerVariants' => __( 'Variants of the correct answer', $this->plugin_name ),
-                'shareDialog'           => __( 'Share Dialog', $this->plugin_name ),
-                'expiredMessage'        => __( 'The quiz has expired!', $this->plugin_name ),
-                'day'                   => __( 'day', $this->plugin_name ),
-                'days'                  => __( 'days', $this->plugin_name ),
-                'hour'                  => __( 'hour', $this->plugin_name ),
-                'hours'                 => __( 'hours', $this->plugin_name ),
-                'minute'                => __( 'minute', $this->plugin_name ),
-                'minutes'               => __( 'minutes', $this->plugin_name ),
-                'second'                => __( 'second', $this->plugin_name ),
-                'seconds'               => __( 'seconds', $this->plugin_name ),
-                'startButtonText'       => $this->buttons_texts['startButton'],
-                'defaultStartButtonText'=> __( 'Start', $this->plugin_name ),
-                'loadResource'          => __( "Can't load resource.", $this->plugin_name ),
-                'somethingWentWrong'    => __( "Maybe something went wrong.", $this->plugin_name ),
-                'passwordIsWrong'       => $this->default_texts['wrongPassword'],
-                'requiredError'         => __( 'This is a required question', $this->plugin_name ),
-                'show'                  => __( 'Show', $this->plugin_name ),
-                'hide'                  => __( 'Hide', $this->plugin_name ),
+                'notAnsweredText'           => $this->default_texts['notAnsweredQuestionText'],
+                'areYouSure'                => __( 'Do you want to finish the quiz? Are you sure?', $this->plugin_name ),
+                'selectPlaceholder'         => __( 'Select an answer', $this->plugin_name ),
+                'correctAnswerVariants'     => __( 'Variants of the correct answer', $this->plugin_name ),
+                'shareDialog'               => __( 'Share Dialog', $this->plugin_name ),
+                'expiredMessage'            => __( 'The quiz has expired!', $this->plugin_name ),
+                'day'                       => __( 'day', $this->plugin_name ),
+                'days'                      => __( 'days', $this->plugin_name ),
+                'hour'                      => __( 'hour', $this->plugin_name ),
+                'hours'                     => __( 'hours', $this->plugin_name ),
+                'minute'                    => __( 'minute', $this->plugin_name ),
+                'minutes'                   => __( 'minutes', $this->plugin_name ),
+                'second'                    => __( 'second', $this->plugin_name ),
+                'seconds'                   => __( 'seconds', $this->plugin_name ),
+                'startButtonText'           => $this->buttons_texts['startButton'],
+                'defaultStartButtonText'    => __( 'Start', $this->plugin_name ),
+                'loadResource'              => __( "Can't load resource.", $this->plugin_name ),
+                'somethingWentWrong'        => __( "Maybe something went wrong.", $this->plugin_name ),
+                'passwordIsWrong'           => $this->default_texts['wrongPassword'],
+                'requiredError'             => __( 'This is a required question', $this->plugin_name ),
+                'show'                      => __( 'Show', $this->plugin_name ),
+                'hide'                      => __( 'Hide', $this->plugin_name ),
             ) );
         }
     }
@@ -680,6 +680,7 @@ class Quiz_Maker_Public
         $enter_password_text = (isset($settings_static_texts['enter_password_text']) && $settings_static_texts['enter_password_text'] != '') ? stripslashes(esc_attr($settings_static_texts['enter_password_text'])) : 'Please enter password';
         $wrong_password_text = (isset($settings_static_texts['wrong_password_text']) && $settings_static_texts['wrong_password_text'] != '') ? stripslashes(esc_attr($settings_static_texts['wrong_password_text'])) : 'Password is wrong!';
         $empty_results_text = (isset($settings_static_texts['empty_results_text']) && $settings_static_texts['empty_results_text'] != '') ? stripslashes(esc_attr($settings_static_texts['empty_results_text'])) : 'There are no results yet.';
+        $not_answered_question_text = (isset($settings_static_texts['not_answered_question_text']) && $settings_static_texts['not_answered_question_text'] != '') ? stripslashes( esc_attr( $settings_static_texts['not_answered_question_text'] ) ) : 'You have not answered this question';
 
         if ($wrong_shortcode_text === 'Wrong shortcode initialized') {
             $wrong_shortcode_text = __('Wrong shortcode initialized', $plugin_name);
@@ -697,11 +698,16 @@ class Quiz_Maker_Public
             $empty_results_text = __('There are no results yet.', $plugin_name);
         }
 
+        if ($not_answered_question_text === 'You have not answered this question') {
+            $not_answered_question_text = __('You have not answered this question', $plugin_name);
+        }
+
         $texts = array(
-            'wrongShortcode'    => $wrong_shortcode_text,
-            'enterPassword'     => $enter_password_text,
-            'wrongPassword'     => $wrong_password_text,
-            'emptyResultsText'  => $empty_results_text,
+            'wrongShortcode'                => $wrong_shortcode_text,
+            'enterPassword'                 => $enter_password_text,
+            'wrongPassword'                 => $wrong_password_text,
+            'emptyResultsText'              => $empty_results_text,
+            'notAnsweredQuestionText'       => $not_answered_question_text,
         );
 
         return $texts;
