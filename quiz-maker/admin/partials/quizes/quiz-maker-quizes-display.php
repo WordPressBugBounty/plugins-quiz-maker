@@ -1250,6 +1250,23 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                 </div>
                                             </div>
                                         </div><!-- Buttons font size -->
+                                        <hr>
+                                        <div class="form-group row">
+                                            <div class="col-sm-4">
+                                                <label for='ays_quick_quiz_buttons_width'>
+                                                    <?php echo __('Button width', $this->plugin_name); ?>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-8 ays_quiz_display_flex_width">
+                                                <div>
+                                                    <input type="number" class="ays-text-input ays-text-input-short" id='ays_quick_quiz_buttons_width' name='ays_quick_quiz_buttons_width' value="" />
+                                                    <span style="display:block;" class="ays_quiz_small_hint_text"><?php echo __('For an initial width, leave blank.', $this->plugin_name); ?></span>
+                                                </div>
+                                                <div class="ays_quiz_dropdown_max_width ays-display-flex" style="align-items: flex-start;">
+                                                    <input type="text" value="px" class='ays-quiz-form-hint-for-size' disabled>
+                                                </div>
+                                            </div>
+                                        </div><!-- Button width -->
                                     </div>
                                 </div><!-- Buttons Styles -->
                             </div>
