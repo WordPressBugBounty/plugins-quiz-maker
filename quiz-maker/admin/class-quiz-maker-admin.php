@@ -1134,6 +1134,7 @@ class Quiz_Maker_Admin
         $quick_quiz_buttons_font_size                       = 18;
         $quick_quiz_buttons_mobile_font_size                = 18;
         $quick_quiz_buttons_width                           = "";
+        $quick_quiz_buttons_left_right_padding              = 36;
 
         if($quiz_enable_options == 'on'){
             $quick_quiz_enable_randomize_questions = (isset( $_REQUEST['ays_quick_quiz_enable_randomize_questions'] ) && $_REQUEST['ays_quick_quiz_enable_randomize_questions'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_randomize_questions'] ) ) : "off";
@@ -1291,6 +1292,9 @@ class Quiz_Maker_Admin
 
             // Buttons width
             $quick_quiz_buttons_width = (isset($_REQUEST['ays_quick_quiz_buttons_width']) && $_REQUEST['ays_quick_quiz_buttons_width'] != '') ? absint( stripslashes( $_REQUEST['ays_quick_quiz_buttons_width'] ) ) : "";
+
+            // Buttons Left / Right padding
+            $quick_quiz_buttons_left_right_padding = (isset($_REQUEST['ays_quick_quiz_buttons_left_right_padding']) && $_REQUEST['ays_quick_quiz_buttons_left_right_padding'] != '') ? absint( stripslashes( $_REQUEST['ays_quick_quiz_buttons_left_right_padding'] ) ) : 36;
             
         }
         
@@ -1457,7 +1461,7 @@ class Quiz_Maker_Admin
             'buttons_size'                                  => $quick_quiz_buttons_size,
             'buttons_font_size'                             => $quick_quiz_buttons_font_size,
             'buttons_width'                                 => $quick_quiz_buttons_width,
-            'buttons_left_right_padding'                    => '36',
+            'buttons_left_right_padding'                    => $quick_quiz_buttons_left_right_padding,
             'buttons_top_bottom_padding'                    => '14',
             'buttons_border_radius'                         => '8',
             'enable_leave_page'                             => $quick_quiz_enable_leave_page,
