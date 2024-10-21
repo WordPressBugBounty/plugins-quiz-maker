@@ -4346,17 +4346,17 @@ class Quiz_Maker_Public
         );
         
         $ays_quiz = (object)array(
-            "quizID" => $id,
-            "quizOptions" => $quizOptions,
-            "questions" => $arr_questions,
-            "questionsCount" => $questions_count,
-            "quizParts" => $quiz_parts,
-            "quizColors" => array(
-                "Color" => $color,
-                "textColor" => $text_color,
-                "bgColor" => $bg_color,
-                "boxShadowColor" => $box_shadow_color,
-                "borderColor" => $quiz_border_color
+            "quizID"            => $id,
+            "quizOptions"       => $quizOptions,
+            "questions"         => $arr_questions,
+            "questionsCount"    => $questions_count,
+            "quizParts"         => $quiz_parts,
+            "quizColors"        => array(
+                "Color"             => $color,
+                "textColor"         => $text_color,
+                "bgColor"           => $bg_color,
+                "boxShadowColor"    => $box_shadow_color,
+                "borderColor"       => $quiz_border_color
             )
         );
             
@@ -4540,16 +4540,16 @@ class Quiz_Maker_Public
                 case "true_or_false":
                 default:
                     $ans_options = array(
-                        'correction' => $options['correction'],
-                        'rtlDirection' => $options['rtlDirection'],
-                        'questionType' => $question["questionType"],
-                        'answersViewClass' => $options['answersViewClass'],
-                        'show_answers_numbering' => $options['show_answers_numbering'],
-                        'useHTML' => $use_html,
-                        'enable_max_selection_number' => $question['enable_max_selection_number'],
-                        'max_selection_number' => $question['max_selection_number'],
-                        'enable_min_selection_number' => $question['enable_min_selection_number'],
-                        'min_selection_number' => $question['min_selection_number'],
+                        'correction'                    => $options['correction'],
+                        'rtlDirection'                  => $options['rtlDirection'],
+                        'questionType'                  => $question["questionType"],
+                        'answersViewClass'              => $options['answersViewClass'],
+                        'show_answers_numbering'        => $options['show_answers_numbering'],
+                        'useHTML'                       => $use_html,
+                        'enable_max_selection_number'   => $question['enable_max_selection_number'],
+                        'max_selection_number'          => $question['max_selection_number'],
+                        'enable_min_selection_number'   => $question['enable_min_selection_number'],
+                        'min_selection_number'          => $question['min_selection_number'],
                     );
                     $answer_container .= $this->ays_default_answer_html($question['questionID'], $quiz_id, $question['questionAnswers'], $ans_options);
                     break;

@@ -1276,14 +1276,24 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                             </div>
                                             <div class="col-sm-8">
                                                 <div class="row">
-                                                    <div class="col-sm-12">
+                                                    <div class="col-sm-4">
                                                         <div style="margin-bottom: 10px;">
                                                             <label for='ays_quick_quiz_buttons_left_right_padding'>
                                                                 <?php echo __('Left / Right', $this->plugin_name); ?>
                                                             </label>
                                                         </div>
-                                                        <div class="col-sm-5" style="display: inline-block; padding-left: 0;">
+                                                        <div style="display: inline-block; padding-left: 0;">
                                                             <input type="number" class="ays-text-input" id='ays_quick_quiz_buttons_left_right_padding' name='ays_quick_quiz_buttons_left_right_padding' value="36" style="width: 100px; max-width: 100%;" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <div style="margin-bottom: 10px;">
+                                                            <label for='ays_quick_quiz_buttons_top_bottom_padding'>
+                                                                <?php echo __('Top / Bottom', $this->plugin_name); ?>
+                                                            </label>
+                                                        </div>
+                                                        <div style="display: inline-block; padding-left: 0;">
+                                                            <input type="number" class="ays-text-input" id='ays_quick_quiz_buttons_top_bottom_padding' name='ays_quick_quiz_buttons_top_bottom_padding' value="14" style="width: 100px; max-width: 100%;" />
                                                         </div>
                                                     </div>
                                                 </div>
