@@ -1136,6 +1136,7 @@ class Quiz_Maker_Admin
         $quick_quiz_buttons_width                           = "";
         $quick_quiz_buttons_left_right_padding              = 36;
         $quick_quiz_buttons_top_bottom_padding              = 14;
+        $quick_quiz_buttons_border_radius                   = 8;
 
         if($quiz_enable_options == 'on'){
             $quick_quiz_enable_randomize_questions = (isset( $_REQUEST['ays_quick_quiz_enable_randomize_questions'] ) && $_REQUEST['ays_quick_quiz_enable_randomize_questions'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_randomize_questions'] ) ) : "off";
@@ -1299,6 +1300,9 @@ class Quiz_Maker_Admin
 
             // Buttons Left / Right padding
             $quick_quiz_buttons_top_bottom_padding = (isset($_REQUEST['ays_quick_quiz_buttons_top_bottom_padding']) && $_REQUEST['ays_quick_quiz_buttons_top_bottom_padding'] != '') ? absint( stripslashes( $_REQUEST['ays_quick_quiz_buttons_top_bottom_padding'] ) ) : 14;
+
+            // Buttons border radius
+            $quick_quiz_buttons_border_radius = (isset($_REQUEST['ays_quick_quiz_buttons_border_radius']) && $_REQUEST['ays_quick_quiz_buttons_border_radius'] != '') ? absint( stripslashes( $_REQUEST['ays_quick_quiz_buttons_border_radius'] ) ) : 8;
             
         }
         
@@ -1467,7 +1471,7 @@ class Quiz_Maker_Admin
             'buttons_width'                                 => $quick_quiz_buttons_width,
             'buttons_left_right_padding'                    => $quick_quiz_buttons_left_right_padding,
             'buttons_top_bottom_padding'                    => $quick_quiz_buttons_top_bottom_padding,
-            'buttons_border_radius'                         => '8',
+            'buttons_border_radius'                         => $quick_quiz_buttons_border_radius,
             'enable_leave_page'                             => $quick_quiz_enable_leave_page,
             'enable_see_result_confirm_box'                 => $quick_quiz_enable_see_result_confirm_box,
             'enable_tackers_count'                          => 'off',

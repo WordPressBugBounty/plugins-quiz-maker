@@ -4980,19 +4980,19 @@ class Quiz_Maker_Public
                 </div>";
                 
                 $container[] = array(
-                    'quizID' => $quiz_id,
-                    'questionID' => $question['id'],
-                    'questionAnswers' => $answers,
-                    'questionType' => $question["type"],
-                    'enable_max_selection_number' => $enable_max_selection_number,
-                    'max_selection_number' => $max_selection_number,
-                    'enable_min_selection_number' => $enable_min_selection_number,
-                    'min_selection_number' => $min_selection_number,
-                    'enable_case_sensitive_text' => $enable_case_sensitive_text,
-                    'questionParts' => array(
-                        'question_first_part' => $container_first_part,
-                        'question_middle_part' => "",
-                        'question_last_part' => $container_last_part
+                    'quizID'                        => $quiz_id,
+                    'questionID'                    => $question['id'],
+                    'questionAnswers'               => $answers,
+                    'questionType'                  => $question["type"],
+                    'enable_max_selection_number'   => $enable_max_selection_number,
+                    'max_selection_number'          => $max_selection_number,
+                    'enable_min_selection_number'   => $enable_min_selection_number,
+                    'min_selection_number'          => $min_selection_number,
+                    'enable_case_sensitive_text'    => $enable_case_sensitive_text,
+                    'questionParts'                 => array(
+                        'question_first_part'   => $container_first_part,
+                        'question_middle_part'  => "",
+                        'question_last_part'    => $container_last_part
                     )
                 );
             }
