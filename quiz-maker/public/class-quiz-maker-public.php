@@ -6194,13 +6194,13 @@ class Quiz_Maker_Public
                             window.quizOptions_$quiz_id = [];
                         }
                         window.quizOptions_".$quiz_id."['".$question_id."'] = '" . base64_encode(json_encode(array(
-                            'question_type' => 'text',
-                            'question_answer' => htmlspecialchars_decode(stripslashes($answer["answer"]), ENT_QUOTES),
-                            'enable_question_text_max_length' => $enable_question_text_max_length,
-                            'question_text_max_length' => $question_text_max_length,
-                            'question_limit_text_type' => $question_limit_text_type,
-                            'question_enable_text_message' => $question_enable_text_message,
-                            'enable_case_sensitive_text' => $enable_case_sensitive_text,
+                            'question_type'                     => 'text',
+                            'question_answer'                   => htmlspecialchars_decode(stripslashes($answer["answer"]), ENT_QUOTES),
+                            'enable_question_text_max_length'   => $enable_question_text_max_length,
+                            'question_text_max_length'          => $question_text_max_length,
+                            'question_limit_text_type'          => $question_limit_text_type,
+                            'question_enable_text_message'      => $question_enable_text_message,
+                            'enable_case_sensitive_text'        => $enable_case_sensitive_text,
                         ))) . "';
                     </script>";
             }
@@ -6267,13 +6267,13 @@ class Quiz_Maker_Public
                             window.quizOptions_$quiz_id = [];
                         }
                         window.quizOptions_".$quiz_id."['".$question_id."'] = '" . base64_encode(json_encode(array(
-                            'question_type' => 'short_text',
-                            'question_answer' => htmlspecialchars_decode(stripslashes($answer["answer"]), ENT_QUOTES),
-                            'enable_question_text_max_length' => $enable_question_text_max_length,
-                            'question_text_max_length' => $question_text_max_length,
-                            'question_limit_text_type' => $question_limit_text_type,
-                            'question_enable_text_message' => $question_enable_text_message,
-                            'enable_case_sensitive_text' => $enable_case_sensitive_text
+                            'question_type'                     => 'short_text',
+                            'question_answer'                   => htmlspecialchars_decode(stripslashes($answer["answer"]), ENT_QUOTES),
+                            'enable_question_text_max_length'   => $enable_question_text_max_length,
+                            'question_text_max_length'          => $question_text_max_length,
+                            'question_limit_text_type'          => $question_limit_text_type,
+                            'question_enable_text_message'      => $question_enable_text_message,
+                            'enable_case_sensitive_text'        => $enable_case_sensitive_text
                         ))) . "';
                     </script>";
             }

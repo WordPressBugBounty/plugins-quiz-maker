@@ -1138,6 +1138,7 @@ class Quiz_Maker_Admin
         $quick_quiz_buttons_top_bottom_padding              = 14;
         $quick_quiz_buttons_border_radius                   = 8;
         $quick_quiz_note_text_font_size                     = 14;
+        $quick_quiz_note_text_mobile_font_size              = 14;
 
         if($quiz_enable_options == 'on'){
             $quick_quiz_enable_randomize_questions = (isset( $_REQUEST['ays_quick_quiz_enable_randomize_questions'] ) && $_REQUEST['ays_quick_quiz_enable_randomize_questions'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_randomize_questions'] ) ) : "off";
@@ -1315,6 +1316,9 @@ class Quiz_Maker_Admin
 
             // Font size for the note text | On desktop
             $quick_quiz_note_text_font_size = (isset($_REQUEST['ays_quick_quiz_note_text_font_size']) && $_REQUEST['ays_quick_quiz_note_text_font_size'] != '') ? absint( stripslashes( $_REQUEST['ays_quick_quiz_note_text_font_size'] ) ) : 14;
+
+            // Font size for the note text | On mobile
+            $quick_quiz_note_text_mobile_font_size = (isset($_REQUEST['ays_quick_quiz_note_text_mobile_font_size']) && $_REQUEST['ays_quick_quiz_note_text_mobile_font_size'] != '') ? absint( stripslashes( $_REQUEST['ays_quick_quiz_note_text_mobile_font_size'] ) ) : 14;
             
         }
         
@@ -1564,7 +1568,7 @@ class Quiz_Maker_Admin
             'right_answers_font_size'                       => "16",
             'right_answers_mobile_font_size'                => "16",
             'note_text_font_size'                           => $quick_quiz_note_text_font_size,
-            'note_text_mobile_font_size'                    => "14",
+            'note_text_mobile_font_size'                    => $quick_quiz_note_text_mobile_font_size,
             'quiz_questions_numbering_by_category'          => "off",
             'quiz_enable_custom_texts_for_buttons'          => $quick_quiz_enable_custom_texts_for_buttons,
             'quiz_custom_texts_start_button'                => $quick_quiz_custom_texts_start_button,
