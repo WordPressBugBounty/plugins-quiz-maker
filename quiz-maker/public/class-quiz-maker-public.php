@@ -6359,14 +6359,14 @@ class Quiz_Maker_Public
                             window.quizOptions_$quiz_id = [];
                         }
                         window.quizOptions_".$quiz_id."['".$question_id."'] = '" . base64_encode(json_encode(array(
-                            'question_type' => 'text',
-                            'question_answer' => htmlspecialchars(stripslashes($answer["answer"])),
-                            'enable_question_number_max_length' => $enable_question_number_max_length,
-                            'question_number_max_length' => $question_number_max_length,
-                            'enable_question_number_min_length' => $enable_question_number_min_length,
-                            'question_number_min_length' => $question_number_min_length,
-                            'enable_question_number_error_message' => $enable_question_number_error_message,
-                            'question_number_error_message' => $question_number_error_message,
+                            'question_type'                         => 'text',
+                            'question_answer'                       => htmlspecialchars(stripslashes($answer["answer"])),
+                            'enable_question_number_max_length'     => $enable_question_number_max_length,
+                            'question_number_max_length'            => $question_number_max_length,
+                            'enable_question_number_min_length'     => $enable_question_number_min_length,
+                            'question_number_min_length'            => $question_number_min_length,
+                            'enable_question_number_error_message'  => $enable_question_number_error_message,
+                            'question_number_error_message'         => $question_number_error_message,
                         ))) . "';
                     </script>";
             }
@@ -6399,8 +6399,8 @@ class Quiz_Maker_Public
                             window.quizOptions_$quiz_id = [];
                         }
                         window.quizOptions_".$quiz_id."['".$question_id."'] = '" . base64_encode(json_encode(array(
-                            'question_type' => 'date',
-                            'question_answer' => htmlspecialchars(stripslashes($answer["answer"]))
+                            'question_type'     => 'date',
+                            'question_answer'   => htmlspecialchars(stripslashes($answer["answer"]))
                         ))) . "';
                     </script>";
             }
@@ -6589,17 +6589,17 @@ class Quiz_Maker_Public
         $results = $wpdb->insert(
             $results_table,
             array(
-                'quiz_id' => absint(intval($quiz_id)),
-                'user_id' => get_current_user_id(),
-                'user_name' => $user_name,
-                'user_email' => $user_email,
-                'user_phone' => $user_phone,
-                'user_ip' => $user_ip,
-                'start_date' => $start_date,
-                'end_date' => $end_date,
-                'duration' => $duration,
-                'score' => $score,
-                'options' => json_encode($options)
+                'quiz_id'       => absint(intval($quiz_id)),
+                'user_id'       => get_current_user_id(),
+                'user_name'     => $user_name,
+                'user_email'    => $user_email,
+                'user_phone'    => $user_phone,
+                'user_ip'       => $user_ip,
+                'start_date'    => $start_date,
+                'end_date'      => $end_date,
+                'duration'      => $duration,
+                'score'         => $score,
+                'options'       => json_encode($options)
             ),
             array(
                 '%d', // quiz_id

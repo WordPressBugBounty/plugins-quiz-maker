@@ -1139,6 +1139,7 @@ class Quiz_Maker_Admin
         $quick_quiz_buttons_border_radius                   = 8;
         $quick_quiz_note_text_font_size                     = 14;
         $quick_quiz_note_text_mobile_font_size              = 14;
+        $quick_quiz_admin_note_text_transform               = "none";
 
         if($quiz_enable_options == 'on'){
             $quick_quiz_enable_randomize_questions = (isset( $_REQUEST['ays_quick_quiz_enable_randomize_questions'] ) && $_REQUEST['ays_quick_quiz_enable_randomize_questions'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_randomize_questions'] ) ) : "off";
@@ -1319,6 +1320,9 @@ class Quiz_Maker_Admin
 
             // Font size for the note text | On mobile
             $quick_quiz_note_text_mobile_font_size = (isset($_REQUEST['ays_quick_quiz_note_text_mobile_font_size']) && $_REQUEST['ays_quick_quiz_note_text_mobile_font_size'] != '') ? absint( stripslashes( $_REQUEST['ays_quick_quiz_note_text_mobile_font_size'] ) ) : 14;
+
+            // Admin note text transform
+            $quick_quiz_admin_note_text_transform = (isset( $_REQUEST['ays_quick_quiz_admin_note_text_transform'] ) && $_REQUEST['ays_quick_quiz_admin_note_text_transform'] != "") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_admin_note_text_transform'] ) ) : "none";
             
         }
         
@@ -1585,7 +1589,7 @@ class Quiz_Maker_Admin
             'quiz_custom_texts_check_button'                => $quick_quiz_custom_texts_check_button,
             'quiz_custom_texts_login_button'                => $quick_quiz_custom_texts_login_button,
             'quiz_enable_quiz_category_description'         => "off",
-            'quiz_admin_note_text_transform'                => "none",
+            'quiz_admin_note_text_transform'                => $quick_quiz_admin_note_text_transform,
             'quiz_quest_explanation_text_transform'         => "none",
             'quiz_right_answer_text_transform'              => "none",
             'quiz_wrong_answer_text_transform'              => "none",
