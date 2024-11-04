@@ -120,6 +120,7 @@
     $wrong_password_text                = (isset($default_texts['wrong_password_text']) && $default_texts['wrong_password_text'] != '') ? stripslashes( esc_attr( $default_texts['wrong_password_text'] ) ) : 'Password is wrong!';
     $empty_results_text                = (isset($default_texts['empty_results_text']) && $default_texts['empty_results_text'] != '') ? stripslashes( esc_attr( $default_texts['empty_results_text'] ) ) : 'There are no results yet.';
     $not_answered_question_text        = (isset($default_texts['not_answered_question_text']) && $default_texts['not_answered_question_text'] != '') ? stripslashes( esc_attr( $default_texts['not_answered_question_text'] ) ) : 'You have not answered this question';
+    $finish_quiz_text                  = (isset($default_texts['finish_quiz_text']) && $default_texts['finish_quiz_text'] != '') ? stripslashes( esc_attr( $default_texts['finish_quiz_text'] ) ) : 'Do you want to finish the quiz? Are you sure?';
     // Default texts | End
 
 
@@ -243,11 +244,11 @@
 
     // Leaderboard By Quiz Category Settings
     $default_leadboard_column_names = array(
-        "pos" => __( 'Pos.', $this->plugin_name ),
-        "name" => __( 'Name', $this->plugin_name ),
-        "score" => __( 'Score', $this->plugin_name ),
-        "duration" => __( 'Duration', $this->plugin_name ),
-        "points" => __( 'Points', $this->plugin_name ),
+        "pos"       => __( 'Pos.', $this->plugin_name ),
+        "name"      => __( 'Name', $this->plugin_name ),
+        "score"     => __( 'Score', $this->plugin_name ),
+        "duration"  => __( 'Duration', $this->plugin_name ),
+        "points"    => __( 'Points', $this->plugin_name ),
     );
 
     // WP Editor height
@@ -3866,6 +3867,19 @@
                             </div>
                             <div class="col-sm-9">
                                 <input type="text" id="ays_quiz_not_answered_question_text" name="ays_quiz_not_answered_question_text" class="ays-text-input"  value='<?php echo $not_answered_question_text; ?>'>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-3">
+                                <label for="ays_quiz_finish_quiz_text">
+                                    <?php echo __( "Quiz Finish Confirmation text", $this->plugin_name ); ?>
+                                    <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php echo esc_attr( __( "Change the text of the confirmation message displayed when the user clicks on the Finish button before the full completion of the quiz. Note: The text is displayed if the Enable Finish button and the Enable confirm box for the Finish button options are enabled.", $this->plugin_name ) ); ?>">
+                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                    </a>
+                                </label>
+                            </div>
+                            <div class="col-sm-9">
+                                <input type="text" id="ays_quiz_finish_quiz_text" name="ays_quiz_finish_quiz_text" class="ays-text-input"  value='<?php echo $finish_quiz_text; ?>'>
                             </div>
                         </div>
                         <hr />

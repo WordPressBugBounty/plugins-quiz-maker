@@ -182,7 +182,7 @@ class Quiz_Maker_Public
             ));
             wp_localize_script($this->plugin_name, 'quizLangObj', array(
                 'notAnsweredText'           => $this->default_texts['notAnsweredQuestionText'],
-                'areYouSure'                => __( 'Do you want to finish the quiz? Are you sure?', $this->plugin_name ),
+                'areYouSure'                => $this->default_texts['finishQuizText'],
                 'selectPlaceholder'         => __( 'Select an answer', $this->plugin_name ),
                 'correctAnswerVariants'     => __( 'Variants of the correct answer', $this->plugin_name ),
                 'shareDialog'               => __( 'Share Dialog', $this->plugin_name ),
@@ -681,6 +681,7 @@ class Quiz_Maker_Public
         $wrong_password_text = (isset($settings_static_texts['wrong_password_text']) && $settings_static_texts['wrong_password_text'] != '') ? stripslashes(esc_attr($settings_static_texts['wrong_password_text'])) : 'Password is wrong!';
         $empty_results_text = (isset($settings_static_texts['empty_results_text']) && $settings_static_texts['empty_results_text'] != '') ? stripslashes(esc_attr($settings_static_texts['empty_results_text'])) : 'There are no results yet.';
         $not_answered_question_text = (isset($settings_static_texts['not_answered_question_text']) && $settings_static_texts['not_answered_question_text'] != '') ? stripslashes( esc_attr( $settings_static_texts['not_answered_question_text'] ) ) : 'You have not answered this question';
+        $finish_quiz_text = (isset($settings_static_texts['finish_quiz_text']) && $settings_static_texts['finish_quiz_text'] != '') ? stripslashes( esc_attr( $settings_static_texts['finish_quiz_text'] ) ) : 'Do you want to finish the quiz? Are you sure?';
 
         if ($wrong_shortcode_text === 'Wrong shortcode initialized') {
             $wrong_shortcode_text = __('Wrong shortcode initialized', $plugin_name);
@@ -702,12 +703,17 @@ class Quiz_Maker_Public
             $not_answered_question_text = __('You have not answered this question', $plugin_name);
         }
 
+        if ($finish_quiz_text === 'Do you want to finish the quiz? Are you sure?') {
+            $finish_quiz_text = __('Do you want to finish the quiz? Are you sure?', $plugin_name);
+        }
+
         $texts = array(
             'wrongShortcode'                => $wrong_shortcode_text,
             'enterPassword'                 => $enter_password_text,
             'wrongPassword'                 => $wrong_password_text,
             'emptyResultsText'              => $empty_results_text,
             'notAnsweredQuestionText'       => $not_answered_question_text,
+            'finishQuizText'                => $finish_quiz_text,
         );
 
         return $texts;

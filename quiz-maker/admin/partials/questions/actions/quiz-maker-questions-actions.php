@@ -100,9 +100,9 @@ switch ($action) {
         $heading = __('Add new question', $this->plugin_name);
         break;
     case 'edit':
-        $heading = __('Edit question', $this->plugin_name);
-        $question = $this->questions_obj->get_question($id);
-        $answers = $this->questions_obj->get_question_answers($id);
+        $heading    = __('Edit question', $this->plugin_name);
+        $question   = $this->questions_obj->get_question($id);
+        $answers    = $this->questions_obj->get_question_answers($id);
         break;
 }
 
@@ -1384,10 +1384,10 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                     $other_attributes = array('id' => 'ays-button-save-new');
                     submit_button(__('Save and new', $this->plugin_name), 'primary ays-button ays-quiz-loader-banner', 'ays_save_new', false, $other_attributes);
                     $other_attributes = array(
-                        'id' => 'ays-button-apply',
-                        'title' => 'Ctrl + s',
-                        'data-toggle' => 'tooltip',
-                        'data-delay'=> '{"show":"1000"}'
+                        'id'            => 'ays-button-apply',
+                        'title'         => 'Ctrl + s',
+                        'data-toggle'   => 'tooltip',
+                        'data-delay'    => '{"show":"1000"}'
                     );
                     submit_button(__('Save', $this->plugin_name), 'ays-button ays-quiz-loader-banner', 'ays_apply', false, $other_attributes);
                     echo $loader_iamge; 

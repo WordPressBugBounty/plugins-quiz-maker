@@ -23,7 +23,7 @@ $quiz = array(
     'quiz_category_id'  => 1,
     'question_ids'      => '',
     'published'         => 1,
-    'quiz_url'  => '',
+    'quiz_url'          => '',
 );
 $options = array(
     'quiz_theme'                                => 'classic_light',

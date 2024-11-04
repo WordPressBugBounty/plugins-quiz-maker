@@ -67,6 +67,7 @@ class Quiz_Maker_Settings_Actions {
             $wrong_password_text                = (isset($_REQUEST['ays_quiz_wrong_password_text']) && $_REQUEST['ays_quiz_wrong_password_text'] != '') ? stripslashes( sanitize_text_field( $_REQUEST['ays_quiz_wrong_password_text'] )) : 'Password is wrong!';
             $empty_results_text                 = (isset($_REQUEST['ays_quiz_empty_results_text']) && $_REQUEST['ays_quiz_empty_results_text'] != '') ? stripslashes( sanitize_text_field( $_REQUEST['ays_quiz_empty_results_text'] )) : 'There are no results yet.';
             $not_answered_question_text         = (isset($_REQUEST['ays_quiz_not_answered_question_text']) && $_REQUEST['ays_quiz_not_answered_question_text'] != '') ? stripslashes( sanitize_text_field( $_REQUEST['ays_quiz_not_answered_question_text'] ) ) : 'You have not answered this question';
+            $finish_quiz_text                   = (isset($_REQUEST['ays_quiz_finish_quiz_text']) && $_REQUEST['ays_quiz_finish_quiz_text'] != '') ? stripslashes( sanitize_text_field( $_REQUEST['ays_quiz_finish_quiz_text'] ) ) : 'Do you want to finish the quiz? Are you sure?';
 
             $default_texts = array(
                 'wrong_shortcode_text'                  => $wrong_shortcode_text,
@@ -74,6 +75,7 @@ class Quiz_Maker_Settings_Actions {
                 'wrong_password_text'                   => $wrong_password_text,
                 'empty_results_text'                    => $empty_results_text,
                 'not_answered_question_text'            => $not_answered_question_text,
+                'finish_quiz_text'                      => $finish_quiz_text,
             );
             // Default texts | End
 

@@ -152,9 +152,9 @@ $quiz_wp_editor_height = (isset($gen_options['quiz_wp_editor_height']) && $gen_o
                     if ( $prev_question_cat_id != "" && !is_null( $prev_question_cat_id ) ) {
 
                         $other_attributes = array(
-                            'id' => 'ays-question-category-prev-button',
-                            'data-message' => __( 'Are you sure you want to go to the previous question category page?', $this->plugin_name),
-                            'href' => sprintf( '?page=%s&action=%s&question_category=%d', esc_attr( $_REQUEST['page'] ), 'edit', absint( $prev_question_cat_id ) )
+                            'id'            => 'ays-question-category-prev-button',
+                            'data-message'  => __( 'Are you sure you want to go to the previous question category page?', $this->plugin_name),
+                            'href'          => sprintf( '?page=%s&action=%s&question_category=%d', esc_attr( $_REQUEST['page'] ), 'edit', absint( $prev_question_cat_id ) )
                         );
                         submit_button(__('Prev Question Category', $this->plugin_name), 'button button-primary ays_default_btn ays-quiz-category-next-button-class ays-button', 'ays_question_cat_prev_button', false, $other_attributes);
                     }
@@ -162,9 +162,9 @@ $quiz_wp_editor_height = (isset($gen_options['quiz_wp_editor_height']) && $gen_o
                     if ( $nex_question_cat_id != "" && !is_null( $nex_question_cat_id ) ) {
 
                         $other_attributes = array(
-                            'id' => 'ays-question-category-next-button',
-                            'data-message' => __( 'Are you sure you want to go to the next question category page?', $this->plugin_name),
-                            'href' => sprintf( '?page=%s&action=%s&question_category=%d', esc_attr( $_REQUEST['page'] ), 'edit', absint( $nex_question_cat_id ) )
+                            'id'            => 'ays-question-category-next-button',
+                            'data-message'  => __( 'Are you sure you want to go to the next question category page?', $this->plugin_name),
+                            'href'          => sprintf( '?page=%s&action=%s&question_category=%d', esc_attr( $_REQUEST['page'] ), 'edit', absint( $nex_question_cat_id ) )
                         );
                         submit_button(__('Next Question Category', $this->plugin_name), 'button button-primary ays_default_btn ays-quiz-category-next-button-class ays-button', 'ays_question_cat_next_button', false, $other_attributes);
                     }
