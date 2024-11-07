@@ -97,6 +97,15 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
 
 <div class="wrap ays-quiz-list-table ays_quizzes_list_table">
     <button style="width:50px;height:50px;" class="ays-pulse-button ays-quizzes-table-quick-start" id="ays_quick_start" title="Quick quiz" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="left" data-content="<?php echo __('Build your quiz in a few minutes',$this->plugin_name)?>"></button>
+    <div class="ays-quiz-heading-box" style="margin-right: 20px;">
+        <div class="ays-quiz-wordpress-user-manual-box">
+            <a href="https://www.youtube.com/watch?v=gKjzOsn_yDo" target="_blank" style="text-decoration: none;font-size: 13px;">
+                <span><img src='<?php echo AYS_QUIZ_ADMIN_URL; ?>/images/icons/youtube-video-icon.svg' ></span>
+                <span style="margin-left: 3px; text-decoration: underline;"><?php echo __('Getting started', "quiz-maker"); ?></span>
+            </a>
+            <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo __("View Documentation", "quiz-maker"); ?></a>
+        </div>
+    </div>
     <h1 class="wp-heading-inline">
         <?php
             echo __(esc_html(get_admin_page_title()),$this->plugin_name);
@@ -122,7 +131,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
         </p>
     </div>
     <?php endif; ?>
-    <?php if($quiz_max_id <= 3): ?>
+    <?php if($quiz_max_id <= 3 && 1 == 0): ?>
     <div class="ays-quiz-heading-box ays-quiz-unset-float">
         <div class="ays-quiz-wordpress-user-manual-box">
             <a href="https://www.youtube.com/watch?v=gKjzOsn_yDo" target="_blank">

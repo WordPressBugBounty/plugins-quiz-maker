@@ -3500,10 +3500,10 @@ class Quiz_Maker_Admin
                                 $content[] = '</div>';
 
                                 $content[] = '<div id="ays-quiz-countdown-content" class="emoji">';
-                                    $content[] = '<span>🚀</span>';
-                                    $content[] = '<span>⌛</span>';
-                                    $content[] = '<span>🔥</span>';
-                                    $content[] = '<span>💣</span>';
+                                    $content[] = '<span></span>';
+                                    $content[] = '<span></span>';
+                                    $content[] = '<span></span>';
+                                    $content[] = '<span></span>';
                                 $content[] = '</div>';
 
                             $content[] = '</div>';

@@ -18,6 +18,19 @@ body.mobile.modal-open #wpwrap {
     box-shadow: 0px 1px 2px #0000001f;
 }
 
+/* Conflict with Product Recommendation Quiz for eCommerce | start */
+
+#wpwrap #wpbody-content{
+    padding-bottom: 65px;
+}
+
+#wpwrap #wpfooter{
+    padding: 10px 30px !important;
+    bottom: -30px;
+}
+
+/* Conflict with Product Recommendation Quiz for eCommerce | end */
+
 h1.wp-heading-inline{
     margin-bottom: 20px;
     margin-top: 20px;
