@@ -16,7 +16,7 @@ ob_start();
  * Plugin Name:       Quiz Maker
  * Plugin URI:        https://ays-pro.com/wordpress/quiz-maker
  * Description:       Create powerful and engaging quizzes, tests, and exams in minutes. Build an unlimited number of quizzes and questions.
- * Version:           6.6.4.2
+ * Version:           6.6.4.3
  * Author:            Quiz Maker team
  * Author URI:        https://ays-pro.com/
  * License:           GPL-2.0+
@@ -36,8 +36,8 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'AYS_QUIZ_NAME_VERSION', '6.6.4.2' );
-define( 'AYS_QUIZ_VERSION', '6.6.4.2' );
+define( 'AYS_QUIZ_NAME_VERSION', '6.6.4.3' );
+define( 'AYS_QUIZ_VERSION', '6.6.4.3' );
 define( 'AYS_QUIZ_NAME', 'quiz-maker' );
 
 if( ! defined( 'AYS_QUIZ_BASENAME' ) )
@@ -181,7 +181,6 @@ function quiz_maker_general_admin_notice(){
          </div>
 
         <!-- Ask a question box start -->
-        <?php if(1 == 0): ?>
         <div class="ays_ask_question_content">
             <div class="ays_ask_question_content_inner">
                 <a href="https://wordpress.org/support/plugin/quiz-maker/" class="ays_quiz_question_link" target="_blank">
@@ -190,19 +189,6 @@ function quiz_maker_general_admin_notice(){
                 </a>
             </div>
         </div>
-        <?php endif; ?>
-        <?php 
-
-        $ays_quiz_end_date = get_option('ays_quiz_sale_date');
-        $ays_quiz_end_date = '2024-11-09 09:00:00';
-   
-        $current_date = current_time( 'mysql' );
-        $date_diff = strtotime($current_date) -  intval(strtotime($ays_quiz_end_date));
-
-        if($date_diff < 0):
-        ?>
-        <script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="2c39f44b-7257-418e-8bba-9c78a81e8ee9";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
-        <?php endif; ?>
         <!-- Ask a question box end -->
          <?php
             $ays_quiz_rate = intval(get_option('ays_quiz_rate_state'));

@@ -3942,6 +3942,40 @@
             openCloseAccordion( _this );
         });
 
+        // Check if save button closed for unsaved changes confirmation box
+        var subButtons = '#ays_apply_top.button, #ays_apply.button, #ays_submit_top.button, #ays_submit.button, #ays-button-save-new-top.button, #ays-button-save-new.button, #ays-button-apply-top.button, #ays-button-apply.button, #ays-button-save-new-top.button, #ays-button-save-new.button, #ays-button-save.button, #ays-button-save-top.button, #ays-button.button';
+        $(document).on('click', subButtons ,function () {
+            var $this = $(this);
+            if(!$this.hasClass('ays-save-button-clicked')){
+                $this.addClass('ays-save-button-clicked');
+            }
+        });
+
+        setTimeout(function() {
+            var aysUnsavedChanges = false;
+
+            var formInputs = '#ays-quiz-category-form .ays-quiz-tab-content input, #ays-quiz-category-form .ays-quiz-tab-content select, ' +
+             '#ays-quiz-category-form .ays-quiz-tab-content textarea, ' +
+             '#ays-question-form select, #ays-question-form textarea, #ays-question-form input, ' +
+             '#ays-quiz-category-form.ays-quiz-questions-real-category-form select, #ays-quiz-category-form.ays-quiz-questions-real-category-form textarea, #ays-quiz-category-form.ays-quiz-questions-real-category-form input, ' +
+             '#ays-quiz-category-form.ays-quiz-real-category-form select, #ays-quiz-category-form.ays-quiz-real-category-form textarea, #ays-quiz-category-form.ays-quiz-real-category-form input, ' +
+             '#ays-quiz-general-settings-form select, #ays-quiz-general-settings-form textarea, #ays-quiz-general-settings-form input';
+
+            $(document).on('change input', formInputs, function() {
+                aysUnsavedChanges = true;
+            });
+
+            $(window).on('beforeunload', function(event) {
+                var saveButtons = $(document).find('#ays_apply_top.button, #ays_apply.button, #ays_submit_top.button, #ays_submit.button, #ays-button-save-new-top.button, #ays-button-save-new.button, #ays-button-apply-top.button, #ays-button-apply.button, #ays-button-save-new-top.button, #ays-button-save-new.button, #ays-button-save.button, #ays-button-save-top.button, #ays-button.button');
+                var savingButtonsClicked = saveButtons.filter('.ays-save-button-clicked').length > 0;
+
+                if (aysUnsavedChanges && !savingButtonsClicked) {
+                    event.preventDefault();
+                    event.returnValue = true;
+                }
+            });
+        }, 1000);
+
     });
 
     function showConfirmationIfDelete(e) {

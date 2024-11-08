@@ -13,7 +13,10 @@ $quiz_results_plugin_nonce = wp_create_nonce( 'quiz-maker-ajax-results-nonce' );
 <div class="wrap ays-quiz-list-table ays_results_list_table">
     <div class="ays-quiz-heading-box">
         <div class="ays-quiz-wordpress-user-manual-box">
-            <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo __("View Documentation", $this->plugin_name); ?></a>
+            <a href="https://quiz-plugin.com/docs/" target="_blank">
+                <i class="ays_fa ays_fa_file_text" ></i> 
+                <span style="margin-left: 3px;text-decoration: underline;"><?php echo __("View Documentation", "quiz-maker"); ?></span>
+            </a>
         </div>
     </div>
     <h1 class="wp-heading-inline">

@@ -45,6 +45,12 @@ div .ays-quiz-add-new-button-box a.ays-quiz-add-new-button {
     margin: 0px !important;
 }
 
+.ays-quiz-add-new-button-quiz-edit-box {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
 .card img {
     width: 128px;
     margin: auto;
@@ -2875,6 +2881,11 @@ input[name=ays_quiz_theme]{
     content: "\f090 ";
 }
 
+.ays_fa_file_text::before {
+    content: "\f15c";
+    font-weight: 400;
+}
+
 .ays-question-ordering .ays_fa_exchange::after {
     opacity: 1;
 }
@@ -5460,6 +5471,11 @@ div#ays-quiz-winter-dicount-main #ays-quiz-maker-countdown-main-container .emoji
 
 .ays-quiz-heading-box.ays-quiz-unset-margin {
     margin: unset;
+}
+
+.ays-quiz-heading-box .ays-quiz-wordpress-user-manual-box a[href*="https://quiz-plugin.com/docs/"],
+.ays-quiz-heading-box .ays-quiz-wordpress-user-manual-box {
+    text-decoration: none;
 }
 
 .ays-quiz-heading-box .ays-quiz-wordpress-user-manual-box a {

@@ -367,6 +367,12 @@ if (isset($_POST['ays_apply_top']) || isset($_POST['ays_apply'])) {
     $this->quizes_obj->add_or_edit_quizes();
 }
 
+if (isset($_POST['ays_quiz_cancel_top']) || isset($_POST['ays_quiz_cancel'])) {
+    unset($_GET['page']);
+    $url = remove_query_arg( array_keys($_GET) );
+    wp_redirect( $url );
+}
+
 $next_quiz_id = "";
 $prev_quiz_id = "";
 if ( isset( $id ) && !is_null( $id ) ) {
@@ -1386,7 +1392,10 @@ $quiz_wrong_answers_font_weight = (isset($options[ 'quiz_wrong_answers_font_weig
                         <span><img src='<?php echo AYS_QUIZ_ADMIN_URL; ?>/images/icons/youtube-video-icon.svg' ></span>
                         <span style="margin-left: 3px; text-decoration: underline;"><?php echo __('Getting started', "quiz-maker"); ?></span>
                     </a>
-                    <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo __("View Documentation", $this->plugin_name); ?></a>
+                    <a href="https://quiz-plugin.com/docs/" target="_blank">
+                        <i class="ays_fa ays_fa_file_text" ></i> 
+                        <span style="margin-left: 3px;text-decoration: underline;"><?php echo __("View Documentation", "quiz-maker"); ?></span>
+                    </a>
                 </div>
             </div>
             <h1 class="wp-heading-inline">
@@ -1394,7 +1403,7 @@ $quiz_wrong_answers_font_weight = (isset($options[ 'quiz_wrong_answers_font_weig
                     echo $heading;
                 ?>
             </h1>
-            <div class="ays-quiz-add-new-button-box">
+            <div class="ays-quiz-add-new-button-box ays-quiz-add-new-button-quiz-edit-box">
             <?php
                 $other_attributes = array();
 
@@ -1406,6 +1415,7 @@ $quiz_wrong_answers_font_weight = (isset($options[ 'quiz_wrong_answers_font_weig
                 
                 submit_button(__('Save and close', $this->plugin_name), 'primary ays-quiz-loader-banner ays-quiz-submit-button-margin-unset', 'ays_submit_top', false, $other_attributes);
                 submit_button(__('Save', $this->plugin_name), 'ays-quiz-loader-banner', 'ays_apply_top', false, $other_attributes_only_save);
+                submit_button(__('Cancel', "quiz-maker"), 'ays-button ays-quiz-loader-banner', 'ays_quiz_cancel_top', false, array());
                 echo $loader_iamge;
             ?>
             </div>
@@ -9502,10 +9512,11 @@ $quiz_wrong_answers_font_weight = (isset($options[ 'quiz_wrong_answers_font_weig
                 );
                 $buttons_html = '';
                 $buttons_html .= '<div class="ays_save_buttons_content">';
-                    $buttons_html .= '<div class="ays_save_buttons_box">';
+                    $buttons_html .= '<div class="ays_save_buttons_box ays-quiz-add-new-button-quiz-edit-box">';
                     echo $buttons_html;
                         submit_button(__('Save and close', $this->plugin_name), 'primary ays-quiz-loader-banner', 'ays_submit', true, $other_attributes);
                         submit_button(__('Save', $this->plugin_name), 'ays-quiz-loader-banner', 'ays_apply', true, $other_attributes_only_save);
+                        submit_button(__('Cancel', "quiz-maker"), 'ays-quiz-loader-banner', 'ays_quiz_cancel', true, array());
 
                         echo $loader_iamge;
                     $buttons_html = '</div>';

@@ -103,7 +103,10 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                 <span><img src='<?php echo AYS_QUIZ_ADMIN_URL; ?>/images/icons/youtube-video-icon.svg' ></span>
                 <span style="margin-left: 3px; text-decoration: underline;"><?php echo __('Getting started', "quiz-maker"); ?></span>
             </a>
-            <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo __("View Documentation", "quiz-maker"); ?></a>
+            <a href="https://quiz-plugin.com/docs/" target="_blank">
+                <i class="ays_fa ays_fa_file_text" ></i> 
+                <span style="margin-left: 3px;text-decoration: underline;"><?php echo __("View Documentation", "quiz-maker"); ?></span>
+            </a>
         </div>
     </div>
     <h1 class="wp-heading-inline">
