@@ -260,15 +260,15 @@ class Quiz_Maker_Activator
                     'quiz_title_color' => '#000000', 
                     'quiz_description_color' => '#000000', 
                     'question_color' => '#ffffff', 
-                    'question_bg_color' => '#70b1f2', 
-                    'question_answer_color' => '#7a7575', 
-                    'question_answer_bg_color' => '#efefef', 
-                    'question_answer_hover_color' => '#7a7575', 
-                    'question_answer_hover_bg_color' => '#d6d2c9', 
-                    'question_correct_answer_bg_color' => '#4fed24', 
-                    'question_incorrect_answer_bg_color' => '#ed3324', 
-                    'pagination_bg_color' => '#efefef', 
-                    'pagination_color' => '#70b1f2'
+                    'question_bg_color'                     => '#70b1f2', 
+                    'question_answer_color'                 => '#7a7575', 
+                    'question_answer_bg_color'              => '#efefef', 
+                    'question_answer_hover_color'           => '#7a7575', 
+                    'question_answer_hover_bg_color'        => '#d6d2c9', 
+                    'question_correct_answer_bg_color'      => '#4fed24', 
+                    'question_incorrect_answer_bg_color'    => '#ed3324', 
+                    'pagination_bg_color'                   => '#efefef', 
+                    'pagination_color'                      => '#70b1f2'
                 ));
             }
             

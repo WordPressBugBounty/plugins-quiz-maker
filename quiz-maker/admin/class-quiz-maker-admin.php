@@ -1142,6 +1142,7 @@ class Quiz_Maker_Admin
         $quick_quiz_admin_note_text_transform               = "none";
         $quick_quiz_admin_note_text_decoration              = "none";
         $quick_quiz_admin_note_letter_spacing               = 0;
+        $quick_quiz_admin_note_font_weight                  = "normal";
 
         if($quiz_enable_options == 'on'){
             $quick_quiz_enable_randomize_questions = (isset( $_REQUEST['ays_quick_quiz_enable_randomize_questions'] ) && $_REQUEST['ays_quick_quiz_enable_randomize_questions'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_randomize_questions'] ) ) : "off";
@@ -1331,6 +1332,9 @@ class Quiz_Maker_Admin
 
             // Note letter spacing | Admin note
             $quick_quiz_admin_note_letter_spacing = (isset( $_REQUEST['ays_quick_quiz_admin_note_letter_spacing'] ) && $_REQUEST['ays_quick_quiz_admin_note_letter_spacing'] != "") ? absint( stripslashes( $_REQUEST['ays_quick_quiz_admin_note_letter_spacing'] ) ) : 0;
+
+            // Admin Note font weight
+            $quick_quiz_admin_note_font_weight = (isset( $_REQUEST['ays_quick_quiz_admin_note_font_weight'] ) && $_REQUEST['ays_quick_quiz_admin_note_font_weight'] != "") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_admin_note_font_weight'] ) ) : "none";
             
         }
         
@@ -1366,11 +1370,11 @@ class Quiz_Maker_Admin
                     $placeholder = '';
 
                     $wpdb->insert($answers_table, array(
-                        'question_id' => esc_sql( $question_id ),
-                        'answer' => esc_sql( trim( stripslashes($answer) ) ),
-                        'correct' => $correct,
-                        'ordering' => $key,
-                        'placeholder' => $placeholder
+                        'question_id'   => esc_sql( $question_id ),
+                        'answer'        => esc_sql( trim( stripslashes($answer) ) ),
+                        'correct'       => $correct,
+                        'ordering'      => $key,
+                        'placeholder'   => $placeholder
                     ));
                 }
             }
@@ -1610,7 +1614,10 @@ class Quiz_Maker_Admin
             'quiz_quest_explanation_letter_spacing'         => 0,
             'quiz_right_answers_letter_spacing'             => 0,
             'quiz_wrong_answers_letter_spacing'             => 0,
-            'quiz_admin_note_font_weight'                   => "normal",
+            'quiz_admin_note_font_weight'                   => $quick_quiz_admin_note_font_weight,
+            'quiz_quest_explanation_font_weight'            => "normal",
+            'quiz_right_answers_font_weight'                => "normal",
+            'quiz_wrong_answers_font_weight'                => "normal",
         );
 
 
