@@ -675,6 +675,13 @@
                 success: function(response){
                     if(response.status === true){
                         doQuizResult(response, form, myOptions, myQuizOptions);
+                        aysQuizSetCustomEvent();
+                        var quizSubmitEvent = new CustomEvent('finishQuiz', {
+                            detail: {
+                                data: response
+                            }
+                        });
+                        document.dispatchEvent(quizSubmitEvent);
                     }else if( response.status === false && typeof response.flag !== 'undefined' && response.flag === false ){
                         var aysQuizContainer = element.parents('.ays-quiz-container');
                         var lastPageContent = '';

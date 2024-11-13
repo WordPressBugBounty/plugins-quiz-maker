@@ -1143,6 +1143,7 @@ class Quiz_Maker_Admin
         $quick_quiz_admin_note_text_decoration              = "none";
         $quick_quiz_admin_note_letter_spacing               = 0;
         $quick_quiz_admin_note_font_weight                  = "normal";
+        $quick_quiz_quest_explanation_font_size             = 16;
 
         if($quiz_enable_options == 'on'){
             $quick_quiz_enable_randomize_questions = (isset( $_REQUEST['ays_quick_quiz_enable_randomize_questions'] ) && $_REQUEST['ays_quick_quiz_enable_randomize_questions'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_randomize_questions'] ) ) : "off";
@@ -1335,6 +1336,9 @@ class Quiz_Maker_Admin
 
             // Admin Note font weight
             $quick_quiz_admin_note_font_weight = (isset( $_REQUEST['ays_quick_quiz_admin_note_font_weight'] ) && $_REQUEST['ays_quick_quiz_admin_note_font_weight'] != "") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_admin_note_font_weight'] ) ) : "none";
+
+            // Note letter spacing | Admin note
+            $quick_quiz_quest_explanation_font_size = (isset( $_REQUEST['ays_quick_quiz_quest_explanation_font_size'] ) && $_REQUEST['ays_quick_quiz_quest_explanation_font_size'] != "") ? absint( stripslashes( $_REQUEST['ays_quick_quiz_quest_explanation_font_size'] ) ) : 16;
             
         }
         
@@ -1577,7 +1581,7 @@ class Quiz_Maker_Admin
             'quiz_enable_results_toggle'                    => "off",
             'quiz_review_thank_you_message'                 => "",
             'quiz_review_enable_comment_field'              => "on",
-            'quest_explanation_font_size'                   => "16",
+            'quest_explanation_font_size'                   => $quick_quiz_quest_explanation_font_size,
             'quest_explanation_mobile_font_size'            => "16",
             'wrong_answers_font_size'                       => "16",
             'wrong_answers_mobile_font_size'                => "16",

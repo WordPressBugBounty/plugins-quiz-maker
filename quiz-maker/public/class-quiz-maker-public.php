@@ -3747,6 +3747,7 @@ class Quiz_Maker_Public
                 height: auto;
                 letter-spacing: 0;
                 box-shadow: unset;
+                width: auto;
             }
             #ays-quiz-container-" . $id . " input#ays-submit,
             #ays-quiz-container-" . $id . " #ays_finish_quiz_" . $id . " input.action-button,
@@ -5730,8 +5731,10 @@ class Quiz_Maker_Public
                 $message_data['avg_score_by_category'] = $this->ays_get_average_score_by_category($quiz_id);
                 $message_data['result_id'] = $last_result_id;
 
+                $quiz_show_results_based_pass_score_flag = false;
                 if ($final_score >= $pass_score_count) {
                     $score_message = $pass_score_message;
+                    $quiz_show_results_based_pass_score_flag = true;
                 }else{
                     $score_message = $fail_score_message;
                 }
@@ -5788,6 +5791,7 @@ class Quiz_Maker_Public
                         // $integration_options['ays_quiz_score_by'] = $score_by;
                         // $integration_options['quiz_attributes_information'] = $quiz_attributes_information_slag;
                         $integrations_data         = apply_filters( 'ays_qm_front_end_integrations_options', $integration_args, $integration_options );
+                        $data["quiz_message_variables_data"] = $message_data;
                         do_action( "ays_qm_front_end_integrations", $integrations_data, $integration_options, $data );
                     }
                 }
@@ -5802,9 +5806,10 @@ class Quiz_Maker_Public
                         "displayScore"          => $display_score,
                         "text"                  => $result_text,
                         "result_id"             => $last_result_id,
-                        "result_id"             => $last_result_id,
+                        // "result_id"             => $last_result_id,
                         "socialHeading"         => $heading_for_share_buttons,
-                        "socialLinksHeading"    => $heading_for_social_links
+                        "socialLinksHeading"    => $heading_for_social_links,
+                        "pass_score_flag"       => $quiz_show_results_based_pass_score_flag,
                     ));
                     wp_die();                
                 }else{
