@@ -230,18 +230,18 @@ class Quiz_Maker_Activator
             $quiz_categories = $wpdb->get_var("SELECT COUNT(*) FROM " . $quiz_categories_table . " WHERE `title`='Uncategorized'");
             if ($quiz_categories == 0) {
                 $wpdb->insert($quiz_categories_table, array(
-                    'title' => 'Uncategorized', 
-                    'description' => '', 
-                    'published' => 1
+                    'title'         => 'Uncategorized', 
+                    'description'   => '', 
+                    'published'     => 1
                 ));
             }
 
             $question_categories = $wpdb->get_var("SELECT COUNT(*) FROM " . $question_categories_table . " WHERE `title`='Uncategorized'");
             if ($question_categories == 0) {
                 $wpdb->insert($question_categories_table, array(
-                    'title' => 'Uncategorized', 
-                    'description' => '', 
-                    'published' => 1
+                    'title'         => 'Uncategorized', 
+                    'description'   => '', 
+                    'published'     => 1
                 ));
             }
             
@@ -249,17 +249,17 @@ class Quiz_Maker_Activator
 
             if ($themes == 0) {
                 $wpdb->insert($themes_table, array(
-                    'title' => 'Default', 
-                    'border_radius' => '4', 
-                    'show_result_presentage' => 1, 
-                    'show_result_answers' => 1, 
-                    'buttons_color' => '#ffffff', 
-                    'buttons_bg_color' => '#70b1f2', 
-                    'buttons_hover_color' => '#ffffff', 
-                    'buttons_hover_bg_color' => '#4797e7', 
-                    'quiz_title_color' => '#000000', 
-                    'quiz_description_color' => '#000000', 
-                    'question_color' => '#ffffff', 
+                    'title'                                 => 'Default', 
+                    'border_radius'                         => '4', 
+                    'show_result_presentage'                => 1, 
+                    'show_result_answers'                   => 1, 
+                    'buttons_color'                         => '#ffffff', 
+                    'buttons_bg_color'                      => '#70b1f2', 
+                    'buttons_hover_color'                   => '#ffffff', 
+                    'buttons_hover_bg_color'                => '#4797e7', 
+                    'quiz_title_color'                      => '#000000', 
+                    'quiz_description_color'                => '#000000', 
+                    'question_color'                        => '#ffffff', 
                     'question_bg_color'                     => '#70b1f2', 
                     'question_answer_color'                 => '#7a7575', 
                     'question_answer_bg_color'              => '#efefef', 

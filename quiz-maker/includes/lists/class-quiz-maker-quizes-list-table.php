@@ -318,9 +318,9 @@ class Quizes_List_Table extends WP_List_Table{
             $enable_rtl                 = !isset($_POST['ays_enable_rtl_direction']) ? "off" : sanitize_text_field( $_POST['ays_enable_rtl_direction'] );
             $question_bank              = !isset($_POST['ays_enable_question_bank']) ? "off" : sanitize_text_field( $_POST['ays_enable_question_bank'] );
             $question_count             = isset($_POST['ays_questions_count']) && $_POST['ays_questions_count'] != '' ? sanitize_text_field( intval($_POST['ays_questions_count'])) : '';
-            if(!$question_count){
-                $question_bank = 'off';
-            }
+            // if(!$question_count){
+            //     $question_bank = 'off';
+            // }
             $live_progressbar           = !isset($_POST['ays_enable_live_progress_bar']) ? "off" : sanitize_text_field( $_POST['ays_enable_live_progress_bar'] );
             $percent_view               = !isset($_POST['ays_enable_percent_view']) ? "off" : sanitize_text_field( $_POST['ays_enable_percent_view'] );
             $avarage_statistical        = !isset($_POST['ays_enable_average_statistical']) ? "off" : sanitize_text_field( $_POST['ays_enable_average_statistical'] );
