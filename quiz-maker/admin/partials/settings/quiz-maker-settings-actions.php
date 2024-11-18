@@ -68,6 +68,7 @@ class Quiz_Maker_Settings_Actions {
             $empty_results_text                 = (isset($_REQUEST['ays_quiz_empty_results_text']) && $_REQUEST['ays_quiz_empty_results_text'] != '') ? stripslashes( sanitize_text_field( $_REQUEST['ays_quiz_empty_results_text'] )) : 'There are no results yet.';
             $not_answered_question_text         = (isset($_REQUEST['ays_quiz_not_answered_question_text']) && $_REQUEST['ays_quiz_not_answered_question_text'] != '') ? stripslashes( sanitize_text_field( $_REQUEST['ays_quiz_not_answered_question_text'] ) ) : 'You have not answered this question';
             $finish_quiz_text                   = (isset($_REQUEST['ays_quiz_finish_quiz_text']) && $_REQUEST['ays_quiz_finish_quiz_text'] != '') ? stripslashes( sanitize_text_field( $_REQUEST['ays_quiz_finish_quiz_text'] ) ) : 'Do you want to finish the quiz? Are you sure?';
+            $select_question_placeholder_text   = (isset($_REQUEST['ays_quiz_select_question_placeholder_text']) && $_REQUEST['ays_quiz_select_question_placeholder_text'] != '') ? stripslashes( sanitize_text_field( $_REQUEST['ays_quiz_select_question_placeholder_text'] ) ) : 'Select an answer';
 
             $default_texts = array(
                 'wrong_shortcode_text'                  => $wrong_shortcode_text,
@@ -76,6 +77,7 @@ class Quiz_Maker_Settings_Actions {
                 'empty_results_text'                    => $empty_results_text,
                 'not_answered_question_text'            => $not_answered_question_text,
                 'finish_quiz_text'                      => $finish_quiz_text,
+                'select_question_placeholder_text'      => $select_question_placeholder_text,
             );
             // Default texts | End
 

@@ -183,7 +183,7 @@ class Quiz_Maker_Public
             wp_localize_script($this->plugin_name, 'quizLangObj', array(
                 'notAnsweredText'           => $this->default_texts['notAnsweredQuestionText'],
                 'areYouSure'                => $this->default_texts['finishQuizText'],
-                'selectPlaceholder'         => __( 'Select an answer', $this->plugin_name ),
+                'selectPlaceholder'         => $this->default_texts['selectAnswerText'],
                 'correctAnswerVariants'     => __( 'Variants of the correct answer', $this->plugin_name ),
                 'shareDialog'               => __( 'Share Dialog', $this->plugin_name ),
                 'expiredMessage'            => __( 'The quiz has expired!', $this->plugin_name ),
@@ -682,6 +682,7 @@ class Quiz_Maker_Public
         $empty_results_text = (isset($settings_static_texts['empty_results_text']) && $settings_static_texts['empty_results_text'] != '') ? stripslashes(esc_attr($settings_static_texts['empty_results_text'])) : 'There are no results yet.';
         $not_answered_question_text = (isset($settings_static_texts['not_answered_question_text']) && $settings_static_texts['not_answered_question_text'] != '') ? stripslashes( esc_attr( $settings_static_texts['not_answered_question_text'] ) ) : 'You have not answered this question';
         $finish_quiz_text = (isset($settings_static_texts['finish_quiz_text']) && $settings_static_texts['finish_quiz_text'] != '') ? stripslashes( esc_attr( $settings_static_texts['finish_quiz_text'] ) ) : 'Do you want to finish the quiz? Are you sure?';
+        $select_question_placeholder_text  = (isset($settings_static_texts['select_question_placeholder_text']) && $settings_static_texts['select_question_placeholder_text'] != '') ? stripslashes( esc_attr( $settings_static_texts['select_question_placeholder_text'] ) ) : 'Select an answer';
 
         if ($wrong_shortcode_text === 'Wrong shortcode initialized') {
             $wrong_shortcode_text = __('Wrong shortcode initialized', $plugin_name);
@@ -707,6 +708,10 @@ class Quiz_Maker_Public
             $finish_quiz_text = __('Do you want to finish the quiz? Are you sure?', $plugin_name);
         }
 
+        if ($select_question_placeholder_text === 'Select an answer') {
+            $select_question_placeholder_text = __('Select an answer', $plugin_name);
+        }
+
         $texts = array(
             'wrongShortcode'                => $wrong_shortcode_text,
             'enterPassword'                 => $enter_password_text,
@@ -714,6 +719,7 @@ class Quiz_Maker_Public
             'emptyResultsText'              => $empty_results_text,
             'notAnsweredQuestionText'       => $not_answered_question_text,
             'finishQuizText'                => $finish_quiz_text,
+            'selectAnswerText'              => $select_question_placeholder_text,
         );
 
         return $texts;

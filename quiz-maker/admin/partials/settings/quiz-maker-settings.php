@@ -121,6 +121,7 @@
     $empty_results_text                = (isset($default_texts['empty_results_text']) && $default_texts['empty_results_text'] != '') ? stripslashes( esc_attr( $default_texts['empty_results_text'] ) ) : 'There are no results yet.';
     $not_answered_question_text        = (isset($default_texts['not_answered_question_text']) && $default_texts['not_answered_question_text'] != '') ? stripslashes( esc_attr( $default_texts['not_answered_question_text'] ) ) : 'You have not answered this question';
     $finish_quiz_text                  = (isset($default_texts['finish_quiz_text']) && $default_texts['finish_quiz_text'] != '') ? stripslashes( esc_attr( $default_texts['finish_quiz_text'] ) ) : 'Do you want to finish the quiz? Are you sure?';
+    $select_question_placeholder_text  = (isset($default_texts['select_question_placeholder_text']) && $default_texts['select_question_placeholder_text'] != '') ? stripslashes( esc_attr( $default_texts['select_question_placeholder_text'] ) ) : 'Select an answer';
     // Default texts | End
 
 
@@ -3883,6 +3884,19 @@
                             </div>
                             <div class="col-sm-9">
                                 <input type="text" id="ays_quiz_finish_quiz_text" name="ays_quiz_finish_quiz_text" class="ays-text-input"  value='<?php echo $finish_quiz_text; ?>'>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-3">
+                                <label for="ays_quiz_select_question_placeholder_text">
+                                    <?php echo __( "Dropdown Placeholder Text", $this->plugin_name ); ?>
+                                    <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php echo esc_attr( __( "Change the placeholder text written in the dropdown select field for your questions.", $this->plugin_name ) ); ?>">
+                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                    </a>
+                                </label>
+                            </div>
+                            <div class="col-sm-9">
+                                <input type="text" id="ays_quiz_select_question_placeholder_text" name="ays_quiz_select_question_placeholder_text" class="ays-text-input"  value='<?php echo $select_question_placeholder_text; ?>'>
                             </div>
                         </div>
                         <hr />
