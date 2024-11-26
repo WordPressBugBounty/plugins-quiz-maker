@@ -1379,9 +1379,9 @@ $quiz_wrong_answers_font_weight = (isset($options[ 'quiz_wrong_answers_font_weig
 
 ?>
 <style id="ays_live_custom_css"></style>
-<div class="wrap">
+<div class="wrap ays-quiz-dashboard-main-wrap">
     <div class="container-fluid">
-        <form class="ays-quiz-category-form" id="ays-quiz-category-form" method="post">
+        <form class="ays-quiz-category-form ays-quiz-main-form" id="ays-quiz-category-form" method="post">
             <input type="hidden" name="ays_quiz_tab" value="<?php echo esc_attr($ays_quiz_tab); ?>">
             <input type="hidden" name="ays_quiz_ctrate_date" value="<?php echo esc_attr($quiz_create_date); ?>">
             <input type="hidden" name="ays_quiz_author" value="<?php echo esc_attr(json_encode($quiz_author, JSON_UNESCAPED_SLASHES)); ?>">
@@ -1403,22 +1403,6 @@ $quiz_wrong_answers_font_weight = (isset($options[ 'quiz_wrong_answers_font_weig
                     echo $heading;
                 ?>
             </h1>
-            <div class="ays-quiz-add-new-button-box ays-quiz-add-new-button-quiz-edit-box">
-            <?php
-                $other_attributes = array();
-
-                $other_attributes_only_save = array(
-                    'title' => 'Ctrl + s',
-                    'data-toggle' => 'tooltip',
-                    'data-delay'=> '{"show":"1000"}'
-                );
-                
-                submit_button(__('Save and close', $this->plugin_name), 'primary ays-quiz-loader-banner ays-quiz-submit-button-margin-unset', 'ays_submit_top', false, $other_attributes);
-                submit_button(__('Save', $this->plugin_name), 'ays-quiz-loader-banner', 'ays_apply_top', false, $other_attributes_only_save);
-                submit_button(__('Cancel', "quiz-maker"), 'ays-button ays-quiz-loader-banner', 'ays_quiz_cancel_top', false, array());
-                echo $loader_iamge;
-            ?>
-            </div>
             <div>
                 <div class="ays-quiz-subtitle-main-box">
                     <p class="ays-subtitle">
@@ -1455,38 +1439,55 @@ $quiz_wrong_answers_font_weight = (isset($options[ 'quiz_wrong_answers_font_weig
                 </div>
                 <?php endif;?>
             </div>
-            <hr/>                        
-            <div class="ays-top-menu-wrapper">
-                <div class="ays_menu_left" data-scroll="0"><i class="ays_fa ays_fa_angle_left"></i></div>
-                <div class="ays-top-menu">
-                    <div class="nav-tab-wrapper ays-top-tab-wrapper">
-                        <a href="#tab1" data-tab="tab1" class="nav-tab <?php echo ($ays_quiz_tab == 'tab1') ? 'nav-tab-active' : ''; ?>">
-                            <?php echo __("General", $this->plugin_name);?>
-                        </a>
-                        <a href="#tab2" data-tab="tab2" class="nav-tab <?php echo ($ays_quiz_tab == 'tab2') ? 'nav-tab-active' : ''; ?>">
-                            <?php echo __("Styles", $this->plugin_name);?>
-                        </a>
-                        <a href="#tab3" data-tab="tab3" class="nav-tab <?php echo ($ays_quiz_tab == 'tab3') ? 'nav-tab-active' : ''; ?>">
-                            <?php echo __("Settings", $this->plugin_name);?>
-                        </a>
-                        <a href="#tab4" data-tab="tab4" class="nav-tab <?php echo ($ays_quiz_tab == 'tab4') ? 'nav-tab-active' : ''; ?>">
-                            <?php echo __("Results Settings", $this->plugin_name);?>
-                        </a>
-                        <a href="#tab5" data-tab="tab5" class="nav-tab <?php echo ($ays_quiz_tab == 'tab5') ? 'nav-tab-active' : ''; ?>">
-                            <?php echo __("Limitation Users", $this->plugin_name);?>
-                        </a>
-                        <a href="#tab6" data-tab="tab6" class="nav-tab <?php echo ($ays_quiz_tab == 'tab6') ? 'nav-tab-active' : ''; ?>">
-                            <?php echo __("User Data", $this->plugin_name);?>
-                        </a>
-                        <a href="#tab7" data-tab="tab7" class="nav-tab <?php echo ($ays_quiz_tab == 'tab7') ? 'nav-tab-active' : ''; ?>">
-                            <?php echo __("E-Mail, Certificate", $this->plugin_name);?>
-                        </a>
-                        <a href="#tab8" data-tab="tab8" class="nav-tab <?php echo ($ays_quiz_tab == 'tab8') ? 'nav-tab-active' : ''; ?>">
-                            <?php echo __("Integrations", $this->plugin_name);?>
-                        </a>
-                    </div>  
-                </div>              
-                <div class="ays_menu_right" data-scroll="-1"><i class="ays_fa ays_fa_angle_right"></i></div>
+            <hr/>
+            <div class="ays-top-menu-container-wrapper">
+                <div class="ays-top-menu-wrapper">
+                    <div class="ays_menu_left" data-scroll="0"><i class="ays_fa ays_fa_angle_left"></i></div>
+                    <div class="ays-top-menu">
+                        <div class="nav-tab-wrapper ays-top-tab-wrapper">
+                            <a href="#tab1" data-tab="tab1" class="nav-tab <?php echo ($ays_quiz_tab == 'tab1') ? 'nav-tab-active' : ''; ?>">
+                                <?php echo __("General", $this->plugin_name);?>
+                            </a>
+                            <a href="#tab2" data-tab="tab2" class="nav-tab <?php echo ($ays_quiz_tab == 'tab2') ? 'nav-tab-active' : ''; ?>">
+                                <?php echo __("Styles", $this->plugin_name);?>
+                            </a>
+                            <a href="#tab3" data-tab="tab3" class="nav-tab <?php echo ($ays_quiz_tab == 'tab3') ? 'nav-tab-active' : ''; ?>">
+                                <?php echo __("Settings", $this->plugin_name);?>
+                            </a>
+                            <a href="#tab4" data-tab="tab4" class="nav-tab <?php echo ($ays_quiz_tab == 'tab4') ? 'nav-tab-active' : ''; ?>">
+                                <?php echo __("Results Settings", $this->plugin_name);?>
+                            </a>
+                            <a href="#tab5" data-tab="tab5" class="nav-tab <?php echo ($ays_quiz_tab == 'tab5') ? 'nav-tab-active' : ''; ?>">
+                                <?php echo __("Limitation Users", $this->plugin_name);?>
+                            </a>
+                            <a href="#tab6" data-tab="tab6" class="nav-tab <?php echo ($ays_quiz_tab == 'tab6') ? 'nav-tab-active' : ''; ?>">
+                                <?php echo __("User Data", $this->plugin_name);?>
+                            </a>
+                            <a href="#tab7" data-tab="tab7" class="nav-tab <?php echo ($ays_quiz_tab == 'tab7') ? 'nav-tab-active' : ''; ?>">
+                                <?php echo __("E-Mail, Certificate", $this->plugin_name);?>
+                            </a>
+                            <a href="#tab8" data-tab="tab8" class="nav-tab <?php echo ($ays_quiz_tab == 'tab8') ? 'nav-tab-active' : ''; ?>">
+                                <?php echo __("Integrations", $this->plugin_name);?>
+                            </a>
+                        </div>
+                    </div>              
+                    <div class="ays_menu_right" data-scroll="-1"><i class="ays_fa ays_fa_angle_right"></i></div>
+                </div>
+                <div class="ays-quiz-add-new-button-box ays-quiz-add-new-button-quiz-edit-box top-menu-buttons-container">
+                <?php
+                    $other_attributes = array();
+
+                    $other_attributes_only_save = array(
+                        'title' => 'Ctrl + s',
+                        'data-toggle' => 'tooltip',
+                        'data-delay'=> '{"show":"1000"}'
+                    );
+                    echo $loader_iamge;
+                    submit_button(__('Save', $this->plugin_name), 'primary ays-quiz-loader-banner', 'ays_apply_top', false, $other_attributes_only_save);
+                    submit_button(__('Save and close', $this->plugin_name), 'ays-quiz-loader-banner ays-quiz-submit-button-margin-unset', 'ays_submit_top', false, $other_attributes);
+                    submit_button(__('Cancel', "quiz-maker"), 'ays-quiz-loader-banner', 'ays_quiz_cancel_top', false, array());
+                ?>
+                </div>
             </div>
 
             <div id="tab1" class="ays-quiz-tab-content <?php echo ($ays_quiz_tab == 'tab1') ? 'ays-quiz-tab-content-active' : ''; ?>">
@@ -1507,37 +1508,44 @@ $quiz_wrong_answers_font_weight = (isset($options[ 'quiz_wrong_answers_font_weig
                     </div>
                 </div> <!-- Title of the quiz -->
                 <hr/>
-                <div class='ays-field'>
-                    <label>
-                        <?php echo __('Quiz image', $this->plugin_name); ?>
-                        <a href="javascript:void(0)" class="add-quiz-image"><?php echo $image_text; ?></a>
-                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Add image to the starting page of the quiz',$this->plugin_name)?>">
-                            <i class="ays_fa ays_fa_info_circle"></i>
-                        </a>
-                    </label>
-                    <div class="ays-quiz-image-container" style="<?php echo $style; ?>">
-                        <span class="ays-remove-quiz-img"></span>
-                        <img src="<?php echo esc_url($quiz_image); ?>" id="ays-quiz-img"/>
+                <div class="form-group row ays-field">
+                    <div class="col-sm-2">
+                        <label>
+                            <?php echo __('Quiz image', $this->plugin_name); ?>
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Add image to the starting page of the quiz',$this->plugin_name)?>">
+                                <i class="ays_fa ays_fa_info_circle"></i>
+                            </a>
+                        </label>
                     </div>
-                </div> <!-- Quiz Image -->
+                    <div class="col-sm-10">
+                        <a href="javascript:void(0)" class="add-quiz-image" style="margin: 0;"><?php echo $image_text; ?></a>
+                        <div class="ays-quiz-image-container" style="<?php echo $style; ?>">
+                            <span class="ays-remove-quiz-img"></span>
+                            <img src="<?php echo esc_url($quiz_image); ?>" id="ays-quiz-img"/>
+                            <input type="hidden" name="ays_quiz_image" id="ays-quiz-image" value="<?php echo esc_url($quiz_image); ?>"/>
+                        </div>
+                    </div>
+                </div><!-- Quiz Image -->
                 <hr/>
-                <input type="hidden" name="ays_quiz_image" id="ays-quiz-image"
-                       value="<?php echo esc_url($quiz_image); ?>"/>
-                <div class='ays-field ays-quiz-result-message-vars-parent'>
-                    <label for='ays-quiz-description'>
-                        <?php echo __('Description', $this->plugin_name); ?>
-                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Provide more information about the quiz. You can choose whether to show it or not in the front end in the “Settings” tab',$this->plugin_name)?>">
-                            <i class="ays_fa ays_fa_info_circle"></i>
-                        </a>
-                    </label>
-                    <?php
-                    echo $quiz_message_vars_description_html;
-                    $content = $quiz_description;
-                    $editor_id = 'ays-quiz-description';
-                    $settings = array('editor_height' => $quiz_wp_editor_height, 'textarea_name' => 'ays_quiz_description', 'editor_class' => 'ays-textarea', 'media_elements' => false);
-                    wp_editor($content, $editor_id, $settings);
-                    ?>
-                </div>
+                <div class="form-group row ays-field ays-quiz-result-message-vars-parent">
+                    <div class="col-sm-2">
+                        <label for='ays-quiz-description'>
+                            <?php echo __('Description', $this->plugin_name); ?>
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Provide more information about the quiz. You can choose whether to show it or not in the front end in the “Settings” tab',$this->plugin_name)?>">
+                                <i class="ays_fa ays_fa_info_circle"></i>
+                            </a>
+                        </label>
+                    </div>
+                    <div class="col-sm-10">
+                        <?php
+                            echo $quiz_message_vars_description_html;
+                            $content = $quiz_description;
+                            $editor_id = 'ays-quiz-description';
+                            $settings = array('editor_height' => $quiz_wp_editor_height, 'textarea_name' => 'ays_quiz_description', 'editor_class' => 'ays-textarea', 'media_elements' => false);
+                            wp_editor($content, $editor_id, $settings);
+                        ?>
+                    </div>
+                </div><!-- Quiz Description -->
                 <hr/>
                 <div class="form-group row">
                     <div class="col-sm-2">
@@ -1586,7 +1594,7 @@ $quiz_wrong_answers_font_weight = (isset($options[ 'quiz_wrong_answers_font_weig
                     </div>
                     <div class="col-sm-9">
                         <div class="form-group row" style="margin-bottom: 0;">
-                            <div class="col-sm-9">
+                            <div class="col-sm-12" style="display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center;">
                                 <p class="ays_questions_action">
                                     <span class="ays_questions_count">
                                         <?php
@@ -1594,8 +1602,6 @@ $quiz_wrong_answers_font_weight = (isset($options[ 'quiz_wrong_answers_font_weig
                                         ?>
                                     </span>
                                 </p>
-                            </div>
-                            <div class="col-sm-3" style="display: flex; justify-content: space-between; align-items: center;">
                                 <div class="ays-question-ordering" tabindex="0" data-ordered="false">
                                     <i class="ays_fa fas ays_fa_exchange"></i>
                                     <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Reverse the ordering of the questions in the list.',$this->plugin_name)?>">
@@ -4237,7 +4243,7 @@ $quiz_wrong_answers_font_weight = (isset($options[ 'quiz_wrong_answers_font_weig
                             </div>
                             <div class="col-sm-8">
                                 <div class="form-group row">
-                                    <div class="col-sm-12">
+                                    <div class="col-sm-12" style="margin-bottom: .5rem;">
                                         <input type="checkbox" class="ays-enable-timerl" id="ays_enable_randomize_questions" name="ays_enable_randomize_questions" value="on" <?php echo (isset($options['randomize_questions']) && $options['randomize_questions'] == 'on') ? 'checked' : ''; ?>/>
                                    </div>
                                    <div class="col-sm-12">
@@ -4266,7 +4272,7 @@ $quiz_wrong_answers_font_weight = (isset($options[ 'quiz_wrong_answers_font_weig
                             </div>
                             <div class="col-sm-8">
                                 <div class="form-group row">
-                                    <div class="col-sm-12">
+                                    <div class="col-sm-12" style="margin-bottom: .5rem;">
                                         <input type="checkbox" class="ays-enable-timerl" id="ays_enable_randomize_answers" name="ays_enable_randomize_answers" value="on" <?php echo (isset($options['randomize_answers']) && $options['randomize_answers'] == 'on') ? 'checked' : ''; ?>/>
                                     </div>
                                     <div class="col-sm-12">
@@ -9511,14 +9517,13 @@ $quiz_wrong_answers_font_weight = (isset($options[ 'quiz_wrong_answers_font_weig
                     'data-delay'=> '{"show":"1000"}'
                 );
                 $buttons_html = '';
-                $buttons_html .= '<div class="ays_save_buttons_content">';
+                $buttons_html .= '<div class="ays_save_buttons_content ays_save_buttons_bottom_content">';
                     $buttons_html .= '<div class="ays_save_buttons_box ays-quiz-add-new-button-quiz-edit-box">';
                     echo $buttons_html;
-                        submit_button(__('Save and close', $this->plugin_name), 'primary ays-quiz-loader-banner', 'ays_submit', true, $other_attributes);
-                        submit_button(__('Save', $this->plugin_name), 'ays-quiz-loader-banner', 'ays_apply', true, $other_attributes_only_save);
-                        submit_button(__('Cancel', "quiz-maker"), 'ays-quiz-loader-banner', 'ays_quiz_cancel', true, array());
-
                         echo $loader_iamge;
+                        submit_button(__('Save', $this->plugin_name), 'primary ays-quiz-loader-banner', 'ays_apply', true, $other_attributes_only_save);
+                        submit_button(__('Save and close', $this->plugin_name), 'ays-quiz-loader-banner', 'ays_submit', true, $other_attributes);
+                        submit_button(__('Cancel', "quiz-maker"), 'ays-quiz-loader-banner', 'ays_quiz_cancel', true, array());
                     $buttons_html = '</div>';
                     $buttons_html .= '<div class="ays_save_default_button_box">';
                     echo $buttons_html;
@@ -9529,7 +9534,7 @@ $quiz_wrong_answers_font_weight = (isset($options[ 'quiz_wrong_answers_font_weig
                                 'data-message'  => __( 'Are you sure you want to go to the previous quiz page?', $this->plugin_name),
                                 'href'          => sprintf( '?page=%s&action=%s&quiz=%d', esc_attr( $_REQUEST['page'] ), 'edit', absint( $prev_quiz_id ) )
                             );
-                            submit_button(__('Prev Quiz', $this->plugin_name), 'primary ays-quiz-next-button-class', 'ays_quiz_prev_button', true, $other_attributes);
+                            submit_button(__('Prev Quiz', $this->plugin_name), 'ays-quiz-next-button-class', 'ays_quiz_prev_button', true, $other_attributes);
                         }
 
                         if ( $next_quiz_id != "" && !is_null( $next_quiz_id ) ) {
@@ -9539,7 +9544,7 @@ $quiz_wrong_answers_font_weight = (isset($options[ 'quiz_wrong_answers_font_weig
                                 'data-message'  => __( 'Are you sure you want to go to the next quiz page?', $this->plugin_name),
                                 'href'          => sprintf( '?page=%s&action=%s&quiz=%d', esc_attr( $_REQUEST['page'] ), 'edit', absint( $next_quiz_id ) )
                             );
-                            submit_button(__('Next Quiz', $this->plugin_name), 'primary ays-quiz-next-button-class', 'ays_quiz_next_button', true, $other_attributes);
+                            submit_button(__('Next Quiz', $this->plugin_name), 'ays-quiz-next-button-class', 'ays_quiz_next_button', true, $other_attributes);
                         }
                         $buttons_html = '<a class="ays_help" data-toggle="tooltip" title="'.__( "Saves the assigned settings of the current quiz as default. After clicking on this button, each time creating a new quiz, the system will take the settings and styles of the current quiz. If you want to change and renew it, please click on this button on another quiz. This feature is available only in PRO version!!!" ,$this->plugin_name ).'">
                             <i class="ays_fa ays_fa_info_circle"></i>
