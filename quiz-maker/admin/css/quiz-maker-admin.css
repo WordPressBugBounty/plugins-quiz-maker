@@ -821,6 +821,7 @@ a.ays-add-question:hover {
 .ays_add_question_from_table a.ays-add-question {
     line-height: 40px;
     padding: 5px 10px;
+    display: inline-block;
 }
 
 a.ays-edit-question {
@@ -4302,6 +4303,20 @@ div.ays_ask_question_content .ays-ask-question-content-inner-question-mark-text{
     display: inline-block;
 }
 
+div.ays_live_chat_ask_question_content .ays-ask-question-content-inner-question-mark-text {
+    width: 50px;
+    height: 50px;
+    padding: 8px;
+    background-color: white;
+    color: #258BB3;
+    border-radius: 50%;
+    display: inline-block;
+    background-image: url("../images/avatars/ays-pro-live-chat-image.webp");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
 div.ays_ask_question_content_inner {
     position: relative;
 }
@@ -4322,6 +4337,25 @@ a.ays_quiz_question_link {
     font-size: 18px;
     padding: 16px;
     display: inline-block;
+    line-height: 0.5;
+    text-decoration: none !important;
+}
+
+div.ays_live_chat_ask_question_content a.ays_quiz_question_link {
+    color: white;
+    font-weight: bold;
+    box-shadow: unset;
+    outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #258BB3;
+    border-radius: 50%;
+    bottom: 0;
+    right: 0;
+    font-size: 18px;
+    padding: 5px;
     line-height: 0.5;
     text-decoration: none !important;
 }
