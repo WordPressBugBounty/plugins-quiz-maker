@@ -3989,20 +3989,28 @@ $quiz_wrong_answers_font_weight = (isset($options[ 'quiz_wrong_answers_font_weig
                         <hr/>
                     </div>
                 </div>
-                <div class="form-group row">
-                    <div class="col-sm-3">
-                        <label for="ays_custom_css">
-                            <?php echo __('Custom CSS',$this->plugin_name)?>
-                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Field for entering your own CSS code. Example: p{color:red !important}',$this->plugin_name)?>">
-                                <i class="ays_fa ays_fa_info_circle"></i>
-                            </a>
-                        </label>
+                <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
+                    <div class="ays-quiz-accordion-container">
+                        <?php echo $quiz_accordion_svg_html; ?>
+                        <p class="ays-subtitle" style="margin-top:0;"><?php echo __('Advanced settings',$this->plugin_name); ?></p>
                     </div>
-                    <div class="col-sm-9">
-                    <textarea class="ays-textarea" id="ays_custom_css" name="ays_custom_css" cols="30"
-                              rows="10"><?php echo $ays_quiz_custom_css; ?></textarea>
+                    <hr class="ays-quiz-bolder-hr"/>
+                    <div class="ays-quiz-accordion-options-box">
+                        <div class="form-group row">
+                            <div class="col-sm-3">
+                                <label for="ays_custom_css">
+                                    <?php echo __('Custom CSS',$this->plugin_name)?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Field for entering your own CSS code. Example: p{color:red !important}',$this->plugin_name)?>">
+                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                    </a>
+                                </label>
+                            </div>
+                            <div class="col-sm-9">
+                                <textarea class="ays-textarea" id="ays_custom_css" name="ays_custom_css" cols="30" rows="10"><?php echo $ays_quiz_custom_css; ?></textarea>
+                            </div>
+                        </div> <!-- Custom CSS -->
                     </div>
-                </div> <!-- Custom CSS -->
+                </div>
             </div><!-- #tab2 --> 
 
             <div id="tab3" class="ays-quiz-tab-content <?php echo ($ays_quiz_tab == 'tab3') ? 'ays-quiz-tab-content-active' : ''; ?>">
