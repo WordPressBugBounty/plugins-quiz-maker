@@ -3521,7 +3521,7 @@
                 day     = hour * 24;
 
             // var quizCountdownEndTime = quizLangObj.quizBannerDate;
-            var quizCountdownEndTime = "NOV 29, 2024 23:59:59";
+            var quizCountdownEndTime = "DEC 09, 2024 23:59:59";
             var countDown_new = new Date(quizCountdownEndTime).getTime();
 
             if ( isNaN(countDown_new) || isFinite(countDown_new) == false ) {

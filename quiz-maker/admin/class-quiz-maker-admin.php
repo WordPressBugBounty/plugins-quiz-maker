@@ -1147,6 +1147,7 @@ class Quiz_Maker_Admin
         $quick_quiz_quest_explanation_mobile_font_size      = 16;
         $quick_quiz_quest_explanation_text_transform        = "none";
         $quick_quiz_quest_explanation_text_decoration       = "none";
+        $quick_quiz_quest_explanation_letter_spacing        = 0;
 
         if($quiz_enable_options == 'on'){
             $quick_quiz_enable_randomize_questions = (isset( $_REQUEST['ays_quick_quiz_enable_randomize_questions'] ) && $_REQUEST['ays_quick_quiz_enable_randomize_questions'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_randomize_questions'] ) ) : "off";
@@ -1351,6 +1352,9 @@ class Quiz_Maker_Admin
 
             // Text decoration for the question explanation
             $quick_quiz_quest_explanation_text_decoration = (isset( $_REQUEST['ays_quick_quiz_quest_explanation_text_decoration'] ) && $_REQUEST['ays_quick_quiz_quest_explanation_text_decoration'] != "") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_quest_explanation_text_decoration'] ) ) : "none";
+
+            // Letter spacing for the question explanation
+            $quick_quiz_quest_explanation_letter_spacing = (isset( $_REQUEST['ays_quick_quiz_quest_explanation_letter_spacing'] ) && $_REQUEST['ays_quick_quiz_quest_explanation_letter_spacing'] != "") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_quest_explanation_letter_spacing'] ) ) : 0;
             
         }
         
@@ -1627,7 +1631,7 @@ class Quiz_Maker_Admin
             'quiz_wrong_answers_text_decoration'            => "none",
             'quiz_admin_note_letter_spacing'                => $quick_quiz_admin_note_letter_spacing,
             'quiz_bg_img_during_the_quiz'                   => "off",
-            'quiz_quest_explanation_letter_spacing'         => 0,
+            'quiz_quest_explanation_letter_spacing'         => $quick_quiz_quest_explanation_letter_spacing,
             'quiz_right_answers_letter_spacing'             => 0,
             'quiz_wrong_answers_letter_spacing'             => 0,
             'quiz_admin_note_font_weight'                   => $quick_quiz_admin_note_font_weight,
@@ -3724,10 +3728,10 @@ class Quiz_Maker_Admin
                                 $content[] = '</div>';
 
                                 $content[] = '<div id="ays-quiz-countdown-content" class="emoji">';
-                                    $content[] = '<span></span>';
-                                    $content[] = '<span></span>';
-                                    $content[] = '<span></span>';
-                                    $content[] = '<span></span>';
+                                    $content[] = '<span>🚀</span>';
+                                    $content[] = '<span>⌛</span>';
+                                    $content[] = '<span>🔥</span>';
+                                    $content[] = '<span>💣</span>';
                                 $content[] = '</div>';
 
                             $content[] = '</div>';
@@ -3739,14 +3743,14 @@ class Quiz_Maker_Admin
                         $content[] = '<div>';
 
                             $content[] = '<span class="ays-quiz-black-friday-bundle-title">';
-                                $content[] = __( "<span><a href='https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=black-friday-sale-banner' class='ays-quiz-black-friday-bundle-title-link' target='_blank'>Black Friday Sale</a></span>", AYS_QUIZ_NAME );
+                                $content[] = __( "<span><a href='https://ays-pro.com/mega-bundle?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=black-friday-mega-bundle-sale-banner' class='ays-quiz-black-friday-bundle-title-link' target='_blank'>Black Friday Sale</a></span>", AYS_QUIZ_NAME );
                             $content[] = '</span>';
 
                             $content[] = '</br>';
 
                             $content[] = '<span class="ays-quiz-black-friday-bundle-desc">';
-                                $content[] = '<a class="ays-quiz-black-friday-bundle-desc" href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=black-friday-sale-banner" class="ays-quiz-black-friday-bundle-title-link" target="_blank">';
-                                    $content[] = __( "20% OFF", AYS_QUIZ_NAME );
+                                $content[] = '<a class="ays-quiz-black-friday-bundle-desc" href="https://ays-pro.com/mega-bundle?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=black-friday-mega-bundle-sale-banner" class="ays-quiz-black-friday-bundle-title-link" target="_blank">';
+                                    $content[] = __( "50% OFF", AYS_QUIZ_NAME );
                                 $content[] = '</a>';
                             $content[] = '</span>';
                         $content[] = '</div>';
@@ -3766,18 +3770,16 @@ class Quiz_Maker_Admin
 
                     $content[] = '</div>';
 
-                    $content[] = '<div class="ays-quiz-dicount-wrap-box ays-quiz-black-friday-bundle-coupon-text-box">';
-                        $content[] = '<div class="ays-quiz-black-friday-bundle-coupon-row">';
-                            $content[] = 'bfdeal20off';
-                        $content[] = '</div>';
-
-                        $content[] = '<div class="ays-quiz-black-friday-bundle-text-row">';
-                            $content[] = __( '20% Extra Discount Coupon', AYS_QUIZ_NAME );
-                        $content[] = '</div>';
+                    $content[] = '<div class="ays-quiz-dicount-wrap-box ays-quiz-dicount-wrap-text-box">';
+                        $content[] = '<span class="ays-quiz-black-friday-bundle-title">';
+                            $content[] = '<a class="ays-quiz-black-friday-bundle-title-link" href="https://ays-pro.com/mega-bundle?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=black-friday-mega-bundle-sale-banner" target="_blank">';
+                                $content[] = __( 'Mega Bundle', AYS_QUIZ_NAME );
+                            $content[] = '</a>';
+                        $content[] = '</span>';
                     $content[] = '</div>';
 
                     $content[] = '<div class="ays-quiz-dicount-wrap-box ays-quiz-dicount-wrap-button-box">';
-                        $content[] = '<a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=black-friday-sale-banner" class="button button-primary ays-button" id="ays-button-top-buy-now" target="_blank">' . __( 'Get Your Deal', AYS_QUIZ_NAME ) . '</a>';
+                        $content[] = '<a href="https://ays-pro.com/mega-bundle?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=black-friday-mega-bundle-sale-banner" class="button button-primary ays-button" id="ays-button-top-buy-now" target="_blank">' . __( 'Get Your Deal', AYS_QUIZ_NAME ) . '</a>';
                         $content[] = '<span class="ays-quiz-dicount-one-time-text">';
                             $content[] = __( "One-time payment", AYS_QUIZ_NAME );
                         $content[] = '</span>';
