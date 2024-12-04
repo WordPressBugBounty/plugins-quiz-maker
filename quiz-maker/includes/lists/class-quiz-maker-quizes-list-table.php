@@ -936,6 +936,9 @@ class Quizes_List_Table extends WP_List_Table{
 
             // Wrong answer font weight
             $quiz_wrong_answers_font_weight = (isset($_REQUEST['ays_quiz_wrong_answers_font_weight']) && $_REQUEST['ays_quiz_wrong_answers_font_weight'] != '') ? stripslashes( sanitize_text_field( $_REQUEST['ays_quiz_wrong_answers_font_weight'] ) ) : 'normal';
+
+            // Quiz Section collapse flag
+            // $quiz_section_collapse_flag = (isset($_REQUEST['ays_quiz_section_collapse_flag']) && sanitize_text_field( $_REQUEST['ays_quiz_section_collapse_flag'] ) == 'on') ? 'on' : 'off';
             
 
             $options = array(
@@ -1179,6 +1182,7 @@ class Quizes_List_Table extends WP_List_Table{
                 'quiz_quest_explanation_font_weight'                => $quiz_quest_explanation_font_weight,
                 'quiz_right_answers_font_weight'                    => $quiz_right_answers_font_weight,
                 'quiz_wrong_answers_font_weight'                    => $quiz_wrong_answers_font_weight,
+                // 'quiz_section_collapse_flag'                        => $quiz_section_collapse_flag,
             );
 
             $options['required_fields'] = !isset($_POST['ays_required_field']) ? null : array_map( 'sanitize_text_field', $_POST['ays_required_field'] );

@@ -16,7 +16,7 @@ ob_start();
  * Plugin Name:       Quiz Maker
  * Plugin URI:        https://ays-pro.com/wordpress/quiz-maker
  * Description:       Create powerful and engaging quizzes, tests, and exams in minutes. Build an unlimited number of quizzes and questions.
- * Version:           6.6.5.3
+ * Version:           6.6.5.4
  * Author:            Quiz Maker team
  * Author URI:        https://ays-pro.com/
  * License:           GPL-2.0+
@@ -36,8 +36,8 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'AYS_QUIZ_NAME_VERSION', '6.6.5.3' );
-define( 'AYS_QUIZ_VERSION', '6.6.5.3' );
+define( 'AYS_QUIZ_NAME_VERSION', '6.6.5.4' );
+define( 'AYS_QUIZ_VERSION', '6.6.5.4' );
 define( 'AYS_QUIZ_NAME', 'quiz-maker' );
 
 if( ! defined( 'AYS_QUIZ_BASENAME' ) )
@@ -134,6 +134,7 @@ function quiz_maker_activation_redirect_method( $plugin ) {
 function quiz_maker_general_admin_notice(){
     global $wpdb;
     if ( isset( $_GET['page'] ) && strpos( sanitize_text_field( $_GET['page'] ), AYS_QUIZ_NAME ) !== false ) {
+        $is_chat_available = ays_quiz_maker_is_chat_available();
         ?>
          <div class="ays-notice-banner">
             <div class="navigation-bar">
@@ -157,6 +158,9 @@ function quiz_maker_general_admin_notice(){
                         <li class="modile-ddmenu-lg"><a class="ays-btn" href="https://quiz-plugin.com/wordpress-quiz-plugin-free-demo/" target="_blank"><?php echo __( "Demo", AYS_QUIZ_NAME ); ?></a></li>
                         <li class="modile-ddmenu-lg"><a class="ays-btn" href="https://wordpress.org/support/plugin/quiz-maker/" target="_blank"><?php echo __( "Free Support", AYS_QUIZ_NAME ); ?></a></li>
                         <li class="modile-ddmenu-xs take_survay"><a class="ays-btn" href="https://ays-demo.com/quiz-maker-plugin-feedback-survey/" target="_blank"><?php echo __( "Make a Suggestion", AYS_QUIZ_NAME ); ?></a></li>
+                        <?php if($is_chat_available): ?>
+                        <li class="modile-ddmenu-xs"><a class="ays-btn" href="https://ays-pro.com/onlinesupport/" target="_blank"><?php echo __( "Live Chat", AYS_QUIZ_NAME ); ?></a></li>
+                        <?php endif; ?>
                         <li class="modile-ddmenu-lg"><a class="ays-btn" href="https://wordpress.org/support/plugin/quiz-maker/" target="_blank"><?php echo __( "Contact us", AYS_QUIZ_NAME ); ?></a></li>
                         <li class="modile-ddmenu-md">
                             <a class="toggle_ddmenu" href="javascript:void(0);"><i class="ays_fa ays_fa_ellipsis_h"></i></a>
@@ -172,6 +176,9 @@ function quiz_maker_general_admin_notice(){
                                 <li><a class="ays-btn" href="https://quiz-plugin.com/wordpress-quiz-plugin-free-demo/" target="_blank"><?php echo __( "Demo", AYS_QUIZ_NAME ); ?></a></li>
                                 <li><a class="ays-btn" href="https://wordpress.org/support/plugin/quiz-maker/" target="_blank"><?php echo __( "Free Support", AYS_QUIZ_NAME ); ?></a></li>
                                 <li class="take_survay"><a class="ays-btn" href="https://ays-demo.com/quiz-maker-plugin-feedback-survey/" target="_blank"><?php echo __( "Make a Suggestion", AYS_QUIZ_NAME ); ?></a></li>
+                                <?php if($is_chat_available): ?>
+                                <li><a class="ays-btn" href="https://ays-pro.com/onlinesupport/" target="_blank"><?php echo __( "Live Chat", AYS_QUIZ_NAME ); ?></a></li>
+                                <?php endif; ?>
                                 <li><a class="ays-btn" href="https://wordpress.org/support/plugin/quiz-maker/" target="_blank"><?php echo __( "Contact us", AYS_QUIZ_NAME ); ?></a></li>
                             </ul>
                         </li>
@@ -181,7 +188,7 @@ function quiz_maker_general_admin_notice(){
          </div>
 
         <!-- Ask a question box start -->
-        <?php if(ays_quiz_maker_is_chat_available()): ?>
+        <?php if($is_chat_available): ?>
         <div class="ays_live_chat_ask_question_content ays_ask_question_content">
             <div class="ays_ask_question_content_inner">
                 <a href="https://ays-pro.com/onlinesupport/" class="ays_quiz_question_link" target="_blank">

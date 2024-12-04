@@ -3939,7 +3939,10 @@
 
         $(document).find('.ays-quiz-accordion-arrow-box').on('click', function(e) {
             var _this = $(this);
-            openCloseAccordion( _this );
+            var parent = _this.closest(".ays-quiz-accordion-options-main-container");
+            var dataCollapsed = parent.attr('data-collapsed');
+
+            openCloseAccordion( _this, dataCollapsed);
         });
 
         // Check if save button closed for unsaved changes confirmation box
@@ -3976,6 +3979,30 @@
             });
         }, 1000);
 
+        // Collapse All
+        $(document).on('click', '.ays-quiz-collapse-all', function (e) {
+            var parent = $(this).parents('.ays-quiz-tab-content');
+            var sectionCont = parent.find('.ays-quiz-accordion-options-main-container');
+            var sections = sectionCont.find('.ays-quiz-accordion-arrow-box');
+            sections.each(function(){
+                var section = $(this);
+                openCloseAccordion( section, "false" );
+            });
+
+            // $(document).find('#ays_quiz_section_collapse_flag').val('on');
+        });
+
+        // Expand All
+        $(document).on('click', '.ays-quiz-expand-all', function (e) {
+            var parent = $(this).parents('.ays-quiz-tab-content');
+            var sectionCont = parent.find('.ays-quiz-accordion-options-main-container');
+            var sections = sectionCont.find('.ays-quiz-accordion-arrow-box');
+            sections.each(function(){
+                var section = $(this);
+                openCloseAccordion( section, "true" );
+            });
+            // $(document).find('#ays_quiz_section_collapse_flag').val('off');
+        });
     });
 
     function showConfirmationIfDelete(e) {
@@ -4425,11 +4452,11 @@
         // #AMPM#     "AM" or "PM"             PM
     };
 
-    function openCloseAccordion( _this ){
+    function openCloseAccordion( _this, dataCollapsed ){
         var parent = _this.closest(".ays-quiz-accordion-options-main-container");
         var container = parent.find('.ays-quiz-accordion-options-box');
 
-        if( parent.attr('data-collapsed') === 'true' ){
+        if( dataCollapsed === 'true'){
             setTimeout( function() {
                 container.slideDown();
                 parent.find('.ays-quiz-accordion-arrow-box .ays-quiz-accordion-arrow').removeClass('ays-quiz-accordion-arrow-right').addClass('ays-quiz-accordion-arrow-down');

@@ -7446,21 +7446,25 @@ div .wp-picker-container .wp-color-result.button {
     transition: .3s ease;
 }
 
-.ays-quiz-accordion-container .ays-quiz-accordion-arrow-right,
-.ays-quiz-accordion-container .ays-quiz-accordion-arrow-right path {
+.ays-quiz-accordion-options-main-container[data-collapsed="true"] .ays-quiz-accordion-container .ays-quiz-accordion-arrow,
+.ays-quiz-accordion-options-main-container[data-collapsed="true"] .ays-quiz-accordion-container .ays-quiz-accordion-arrow path {
     fill: #c4c4c4;
 }
 
-.ays-quiz-accordion-container .ays-quiz-accordion-arrow-down {
+.ays-quiz-accordion-options-main-container[data-collapsed="false"] .ays-quiz-accordion-container .ays-quiz-accordion-arrow-down {
     transform: rotate(90deg);
+}
+
+.ays-quiz-accordion-options-main-container[data-collapsed="false"] .ays-quiz-accordion-container .ays-quiz-accordion-arrow-down path {
+    fill: #005AE0;
+}
+
+.ays-quiz-accordion-options-main-container[data-collapsed="true"] .ays-quiz-accordion-options-box {
+    /*display: none;*/
 }
 
 /* Quiz options accordion | End */
 
-
-.ays-quiz-accordion-container .ays-quiz-accordion-arrow-down path {
-    fill: #005AE0;
-}
 
 /*Dashboard Redesign | Start*/
 
@@ -7654,10 +7658,19 @@ div .wp-picker-container .wp-color-result.button {
 }
 
 .ays-quiz-dashboard-main-wrap div.ays-top-menu-container-wrapper,
+/*.ays-quiz-dashboard-main-wrap .ays-quiz-top-actions-container-wrapper,*/
 .ays-quiz-dashboard-main-wrap .ays_save_buttons_content,
 .ays-quiz-dashboard-main-wrap .ays-quiz-tab-content {
     width: 95%;
     max-width: 100%;
+}
+
+.ays-quiz-dashboard-main-wrap .ays-quiz-top-actions-container-wrapper {
+    margin: 0 auto;
+}
+
+.ays-quiz-dashboard-main-wrap .ays-quiz-top-actions-container-wrapper > div {
+    padding: 0;
 }
 
 .ays-quiz-dashboard-main-wrap div.ays-top-menu-wrapper {

@@ -1441,15 +1441,15 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                     <option value="lighter"><?php echo __('Lighter',$this->plugin_name); ?></option>
                                                     <option value="bold"><?php echo __('Bold',$this->plugin_name); ?></option>
                                                     <option value="bolder"><?php echo __('Bolder',$this->plugin_name); ?></option>
-                                                    <option value="100"><?php echo __('100',$this->plugin_name); ?></option>
-                                                    <option value="200"><?php echo __('200',$this->plugin_name); ?></option>
-                                                    <option value="300"><?php echo __('300',$this->plugin_name); ?></option>
-                                                    <option value="400"><?php echo __('400',$this->plugin_name); ?></option>
-                                                    <option value="500"><?php echo __('500',$this->plugin_name); ?></option>
-                                                    <option value="600"><?php echo __('600',$this->plugin_name); ?></option>
-                                                    <option value="700"><?php echo __('700',$this->plugin_name); ?></option>
-                                                    <option value="800"><?php echo __('800',$this->plugin_name); ?></option>
-                                                    <option value="900"><?php echo __('900',$this->plugin_name); ?></option>
+                                                    <option value="100"><?php echo '100'; ?></option>
+                                                    <option value="200"><?php echo '200'; ?></option>
+                                                    <option value="300"><?php echo '300'; ?></option>
+                                                    <option value="400"><?php echo '400'; ?></option>
+                                                    <option value="500"><?php echo '500'; ?></option>
+                                                    <option value="600"><?php echo '600'; ?></option>
+                                                    <option value="700"><?php echo '700'; ?></option>
+                                                    <option value="800"><?php echo '800'; ?></option>
+                                                    <option value="900"><?php echo '900'; ?></option>
                                                 </select>
                                             </div>
                                         </div><!-- Admin note font weight -->

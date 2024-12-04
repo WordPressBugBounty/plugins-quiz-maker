@@ -255,6 +255,7 @@ $options = array(
     'quiz_quest_explanation_font_weight'        => "normal",
     'quiz_right_answers_font_weight'            => "normal",
     'quiz_wrong_answers_font_weight'            => "normal",
+    'quiz_section_collapse_flag'                => "off",
 
 );
 
@@ -1377,6 +1378,11 @@ $quiz_right_answers_font_weight = (isset($options[ 'quiz_right_answers_font_weig
 // Wrong answer font weight
 $quiz_wrong_answers_font_weight = (isset($options[ 'quiz_wrong_answers_font_weight' ]) && $options[ 'quiz_wrong_answers_font_weight' ] != '') ? stripslashes ( esc_attr( $options[ 'quiz_wrong_answers_font_weight' ] ) ) : 'normal';
 
+// Quiz Section collapse flag
+// $options['quiz_section_collapse_flag'] = isset($options['quiz_section_collapse_flag']) ? $options['quiz_section_collapse_flag'] : 'off';
+// $quiz_section_collapse_flag_input = (isset($options['quiz_section_collapse_flag']) && $options['quiz_section_collapse_flag'] == 'on') ? 'on' : 'off';
+// $quiz_section_collapse_flag = (isset($options['quiz_section_collapse_flag']) && $options['quiz_section_collapse_flag'] == 'on') ? 'true' : 'false';
+
 ?>
 <style id="ays_live_custom_css"></style>
 <div class="wrap ays-quiz-dashboard-main-wrap">
@@ -1386,6 +1392,7 @@ $quiz_wrong_answers_font_weight = (isset($options[ 'quiz_wrong_answers_font_weig
             <input type="hidden" name="ays_quiz_ctrate_date" value="<?php echo esc_attr($quiz_create_date); ?>">
             <input type="hidden" name="ays_quiz_author" value="<?php echo esc_attr(json_encode($quiz_author, JSON_UNESCAPED_SLASHES)); ?>">
             <input type="hidden" class="quiz_wp_editor_height" value="<?php echo $quiz_wp_editor_height; ?>">
+            <!-- <input type="hidden" id="ays_quiz_section_collapse_flag" name="ays_quiz_section_collapse_flag" value="<?php #echo esc_attr($quiz_section_collapse_flag_input); ?>"> -->
             <div class="ays-quiz-heading-box">
                 <div class="ays-quiz-wordpress-user-manual-box">
                     <a href="https://www.youtube.com/watch?v=gKjzOsn_yDo" target="_blank" style="text-decoration: none;font-size: 13px;">
@@ -1752,6 +1759,15 @@ $quiz_wrong_answers_font_weight = (isset($options[ 'quiz_wrong_answers_font_weig
             </div>
 
             <div id="tab2" class="ays-quiz-tab-content <?php echo ($ays_quiz_tab == 'tab2') ? 'ays-quiz-tab-content-active' : ''; ?>">
+                <div class="ays-quiz-top-actions-container-wrapper form-group row">
+                    <div class="col-sm-12">
+                        <p class="m-0 text-right">
+                            <a class="ays-quiz-collapse-all" href="javascript:void(0);"><?php echo __( "Collapse All", "quiz-maker" ); ?></a>
+                            <span>|</span>
+                            <a class="ays-quiz-expand-all" href="javascript:void(0);"><?php echo __( "Expand All", "quiz-maker" ); ?></a>
+                        </p>
+                    </div>
+                </div>
                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                     <div class="ays-quiz-accordion-container">
                         <?php echo $quiz_accordion_svg_html; ?>
@@ -3379,31 +3395,31 @@ $quiz_wrong_answers_font_weight = (isset($options[ 'quiz_wrong_answers_font_weig
                                                 <?php echo __('Bolder',$this->plugin_name); ?>
                                             </option>
                                             <option value="100" <?php echo ($quiz_admin_note_font_weight == '100') ? 'selected' : ''; ?>>
-                                                <?php echo __('100',$this->plugin_name); ?>
+                                                <?php echo '100'; ?>
                                             </option>
                                             <option value="200" <?php echo ($quiz_admin_note_font_weight == '200') ? 'selected' : ''; ?>>
-                                                <?php echo __('200',$this->plugin_name); ?>
+                                                <?php echo '200'; ?>
                                             </option>
                                             <option value="300" <?php echo ($quiz_admin_note_font_weight == '300') ? 'selected' : ''; ?>>
-                                                <?php echo __('300',$this->plugin_name); ?>
+                                                <?php echo '300'; ?>
                                             </option>
                                             <option value="400" <?php echo ($quiz_admin_note_font_weight == '400') ? 'selected' : ''; ?>>
-                                                <?php echo __('400',$this->plugin_name); ?>
+                                                <?php echo '400'; ?>
                                             </option>
                                             <option value="500" <?php echo ($quiz_admin_note_font_weight == '500') ? 'selected' : ''; ?>>
-                                                <?php echo __('500',$this->plugin_name); ?>
+                                                <?php echo '500'; ?>
                                             </option>
                                             <option value="600" <?php echo ($quiz_admin_note_font_weight == '600') ? 'selected' : ''; ?>>
-                                                <?php echo __('600',$this->plugin_name); ?>
+                                                <?php echo '600'; ?>
                                             </option>
                                             <option value="700" <?php echo ($quiz_admin_note_font_weight == '700') ? 'selected' : ''; ?>>
-                                                <?php echo __('700',$this->plugin_name); ?>
+                                                <?php echo '700'; ?>
                                             </option>
                                             <option value="800" <?php echo ($quiz_admin_note_font_weight == '800') ? 'selected' : ''; ?>>
-                                                <?php echo __('800',$this->plugin_name); ?>
+                                                <?php echo '800'; ?>
                                             </option>
                                             <option value="900" <?php echo ($quiz_admin_note_font_weight == '900') ? 'selected' : ''; ?>>
-                                                <?php echo __('900',$this->plugin_name); ?>
+                                                <?php echo '900'; ?>
                                             </option>
                                         </select>
                                     </div>
@@ -3571,31 +3587,31 @@ $quiz_wrong_answers_font_weight = (isset($options[ 'quiz_wrong_answers_font_weig
                                                 <?php echo __('Bolder',$this->plugin_name); ?>
                                             </option>
                                             <option value="100" <?php echo ($quiz_quest_explanation_font_weight == '100') ? 'selected' : ''; ?>>
-                                                <?php echo __('100',$this->plugin_name); ?>
+                                                <?php echo '100'; ?>
                                             </option>
                                             <option value="200" <?php echo ($quiz_quest_explanation_font_weight == '200') ? 'selected' : ''; ?>>
-                                                <?php echo __('200',$this->plugin_name); ?>
+                                                <?php echo '200'; ?>
                                             </option>
                                             <option value="300" <?php echo ($quiz_quest_explanation_font_weight == '300') ? 'selected' : ''; ?>>
-                                                <?php echo __('300',$this->plugin_name); ?>
+                                                <?php echo '300'; ?>
                                             </option>
                                             <option value="400" <?php echo ($quiz_quest_explanation_font_weight == '400') ? 'selected' : ''; ?>>
-                                                <?php echo __('400',$this->plugin_name); ?>
+                                                <?php echo '400'; ?>
                                             </option>
                                             <option value="500" <?php echo ($quiz_quest_explanation_font_weight == '500') ? 'selected' : ''; ?>>
-                                                <?php echo __('500',$this->plugin_name); ?>
+                                                <?php echo '500'; ?>
                                             </option>
                                             <option value="600" <?php echo ($quiz_quest_explanation_font_weight == '600') ? 'selected' : ''; ?>>
-                                                <?php echo __('600',$this->plugin_name); ?>
+                                                <?php echo '600'; ?>
                                             </option>
                                             <option value="700" <?php echo ($quiz_quest_explanation_font_weight == '700') ? 'selected' : ''; ?>>
-                                                <?php echo __('700',$this->plugin_name); ?>
+                                                <?php echo '700'; ?>
                                             </option>
                                             <option value="800" <?php echo ($quiz_quest_explanation_font_weight == '800') ? 'selected' : ''; ?>>
-                                                <?php echo __('800',$this->plugin_name); ?>
+                                                <?php echo '800'; ?>
                                             </option>
                                             <option value="900" <?php echo ($quiz_quest_explanation_font_weight == '900') ? 'selected' : ''; ?>>
-                                                <?php echo __('900',$this->plugin_name); ?>
+                                                <?php echo '900'; ?>
                                             </option>
                                         </select>
                                     </div>
@@ -3762,31 +3778,31 @@ $quiz_wrong_answers_font_weight = (isset($options[ 'quiz_wrong_answers_font_weig
                                                 <?php echo __('Bolder',$this->plugin_name); ?>
                                             </option>
                                             <option value="100" <?php echo ($quiz_right_answers_font_weight == '100') ? 'selected' : ''; ?>>
-                                                <?php echo __('100',$this->plugin_name); ?>
+                                                <?php echo '100'; ?>
                                             </option>
                                             <option value="200" <?php echo ($quiz_right_answers_font_weight == '200') ? 'selected' : ''; ?>>
-                                                <?php echo __('200',$this->plugin_name); ?>
+                                                <?php echo '200'; ?>
                                             </option>
                                             <option value="300" <?php echo ($quiz_right_answers_font_weight == '300') ? 'selected' : ''; ?>>
-                                                <?php echo __('300',$this->plugin_name); ?>
+                                                <?php echo '300'; ?>
                                             </option>
                                             <option value="400" <?php echo ($quiz_right_answers_font_weight == '400') ? 'selected' : ''; ?>>
-                                                <?php echo __('400',$this->plugin_name); ?>
+                                                <?php echo '400'; ?>
                                             </option>
                                             <option value="500" <?php echo ($quiz_right_answers_font_weight == '500') ? 'selected' : ''; ?>>
-                                                <?php echo __('500',$this->plugin_name); ?>
+                                                <?php echo '500'; ?>
                                             </option>
                                             <option value="600" <?php echo ($quiz_right_answers_font_weight == '600') ? 'selected' : ''; ?>>
-                                                <?php echo __('600',$this->plugin_name); ?>
+                                                <?php echo '600'; ?>
                                             </option>
                                             <option value="700" <?php echo ($quiz_right_answers_font_weight == '700') ? 'selected' : ''; ?>>
-                                                <?php echo __('700',$this->plugin_name); ?>
+                                                <?php echo '700'; ?>
                                             </option>
                                             <option value="800" <?php echo ($quiz_right_answers_font_weight == '800') ? 'selected' : ''; ?>>
-                                                <?php echo __('800',$this->plugin_name); ?>
+                                                <?php echo '800'; ?>
                                             </option>
                                             <option value="900" <?php echo ($quiz_right_answers_font_weight == '900') ? 'selected' : ''; ?>>
-                                                <?php echo __('900',$this->plugin_name); ?>
+                                                <?php echo '900'; ?>
                                             </option>
                                         </select>
                                     </div>
@@ -3953,31 +3969,31 @@ $quiz_wrong_answers_font_weight = (isset($options[ 'quiz_wrong_answers_font_weig
                                                 <?php echo __('Bolder',$this->plugin_name); ?>
                                             </option>
                                             <option value="100" <?php echo ($quiz_wrong_answers_font_weight == '100') ? 'selected' : ''; ?>>
-                                                <?php echo __('100',$this->plugin_name); ?>
+                                                <?php echo '100'; ?>
                                             </option>
                                             <option value="200" <?php echo ($quiz_wrong_answers_font_weight == '200') ? 'selected' : ''; ?>>
-                                                <?php echo __('200',$this->plugin_name); ?>
+                                                <?php echo '200'; ?>
                                             </option>
                                             <option value="300" <?php echo ($quiz_wrong_answers_font_weight == '300') ? 'selected' : ''; ?>>
-                                                <?php echo __('300',$this->plugin_name); ?>
+                                                <?php echo '300'; ?>
                                             </option>
                                             <option value="400" <?php echo ($quiz_wrong_answers_font_weight == '400') ? 'selected' : ''; ?>>
-                                                <?php echo __('400',$this->plugin_name); ?>
+                                                <?php echo '400'; ?>
                                             </option>
                                             <option value="500" <?php echo ($quiz_wrong_answers_font_weight == '500') ? 'selected' : ''; ?>>
-                                                <?php echo __('500',$this->plugin_name); ?>
+                                                <?php echo '500'; ?>
                                             </option>
                                             <option value="600" <?php echo ($quiz_wrong_answers_font_weight == '600') ? 'selected' : ''; ?>>
-                                                <?php echo __('600',$this->plugin_name); ?>
+                                                <?php echo '600'; ?>
                                             </option>
                                             <option value="700" <?php echo ($quiz_wrong_answers_font_weight == '700') ? 'selected' : ''; ?>>
-                                                <?php echo __('700',$this->plugin_name); ?>
+                                                <?php echo '700'; ?>
                                             </option>
                                             <option value="800" <?php echo ($quiz_wrong_answers_font_weight == '800') ? 'selected' : ''; ?>>
-                                                <?php echo __('800',$this->plugin_name); ?>
+                                                <?php echo '800'; ?>
                                             </option>
                                             <option value="900" <?php echo ($quiz_wrong_answers_font_weight == '900') ? 'selected' : ''; ?>>
-                                                <?php echo __('900',$this->plugin_name); ?>
+                                                <?php echo '900'; ?>
                                             </option>
                                         </select>
                                     </div>
@@ -4014,6 +4030,15 @@ $quiz_wrong_answers_font_weight = (isset($options[ 'quiz_wrong_answers_font_weig
             </div><!-- #tab2 --> 
 
             <div id="tab3" class="ays-quiz-tab-content <?php echo ($ays_quiz_tab == 'tab3') ? 'ays-quiz-tab-content-active' : ''; ?>">
+                <div class="ays-quiz-top-actions-container-wrapper form-group row">
+                    <div class="col-sm-12">
+                        <p class="m-0 text-right">
+                            <a class="ays-quiz-collapse-all" href="javascript:void(0);"><?php echo __( "Collapse All", "quiz-maker" ); ?></a>
+                            <span>|</span>
+                            <a class="ays-quiz-expand-all" href="javascript:void(0);"><?php echo __( "Expand All", "quiz-maker" ); ?></a>
+                        </p>
+                    </div>
+                </div>
                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                     <div class="ays-quiz-accordion-container">
                         <?php echo $quiz_accordion_svg_html; ?>
@@ -6063,6 +6088,15 @@ $quiz_wrong_answers_font_weight = (isset($options[ 'quiz_wrong_answers_font_weig
             </div>
             
             <div id="tab4" class="ays-quiz-tab-content <?php echo ($ays_quiz_tab == 'tab4') ? 'ays-quiz-tab-content-active' : ''; ?>">
+                <div class="ays-quiz-top-actions-container-wrapper form-group row">
+                    <div class="col-sm-12">
+                        <p class="m-0 text-right">
+                            <a class="ays-quiz-collapse-all" href="javascript:void(0);"><?php echo __( "Collapse All", "quiz-maker" ); ?></a>
+                            <span>|</span>
+                            <a class="ays-quiz-expand-all" href="javascript:void(0);"><?php echo __( "Expand All", "quiz-maker" ); ?></a>
+                        </p>
+                    </div>
+                </div>
                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                     <div class="ays-quiz-accordion-container">
                         <?php echo $quiz_accordion_svg_html; ?>
@@ -7396,6 +7430,15 @@ $quiz_wrong_answers_font_weight = (isset($options[ 'quiz_wrong_answers_font_weig
             </div>
             
             <div id="tab5" class="ays-quiz-tab-content <?php echo ($ays_quiz_tab == 'tab5') ? 'ays-quiz-tab-content-active' : ''; ?>">
+                <div class="ays-quiz-top-actions-container-wrapper form-group row">
+                    <div class="col-sm-12">
+                        <p class="m-0 text-right">
+                            <a class="ays-quiz-collapse-all" href="javascript:void(0);"><?php echo __( "Collapse All", "quiz-maker" ); ?></a>
+                            <span>|</span>
+                            <a class="ays-quiz-expand-all" href="javascript:void(0);"><?php echo __( "Expand All", "quiz-maker" ); ?></a>
+                        </p>
+                    </div>
+                </div>
                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                     <div class="ays-quiz-accordion-container">
                         <?php echo $quiz_accordion_svg_html; ?>
@@ -8095,6 +8138,15 @@ $quiz_wrong_answers_font_weight = (isset($options[ 'quiz_wrong_answers_font_weig
             </div>
             
             <div id="tab6" class="ays-quiz-tab-content <?php echo ($ays_quiz_tab == 'tab6') ? 'ays-quiz-tab-content-active' : ''; ?>">
+                <div class="ays-quiz-top-actions-container-wrapper form-group row">
+                    <div class="col-sm-12">
+                        <p class="m-0 text-right">
+                            <a class="ays-quiz-collapse-all" href="javascript:void(0);"><?php echo __( "Collapse All", "quiz-maker" ); ?></a>
+                            <span>|</span>
+                            <a class="ays-quiz-expand-all" href="javascript:void(0);"><?php echo __( "Expand All", "quiz-maker" ); ?></a>
+                        </p>
+                    </div>
+                </div>
                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                     <div class="ays-quiz-accordion-container">
                         <?php echo $quiz_accordion_svg_html; ?>
@@ -8300,6 +8352,15 @@ $quiz_wrong_answers_font_weight = (isset($options[ 'quiz_wrong_answers_font_weig
             </div>
             
             <div id="tab7" class="ays-quiz-tab-content <?php echo ($ays_quiz_tab == 'tab7') ? 'ays-quiz-tab-content-active' : ''; ?>">
+                <div class="ays-quiz-top-actions-container-wrapper form-group row">
+                    <div class="col-sm-12">
+                        <p class="m-0 text-right">
+                            <a class="ays-quiz-collapse-all" href="javascript:void(0);"><?php echo __( "Collapse All", "quiz-maker" ); ?></a>
+                            <span>|</span>
+                            <a class="ays-quiz-expand-all" href="javascript:void(0);"><?php echo __( "Expand All", "quiz-maker" ); ?></a>
+                        </p>
+                    </div>
+                </div>
                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                     <div class="ays-quiz-accordion-container">
                         <?php echo $quiz_accordion_svg_html; ?>
@@ -8820,6 +8881,15 @@ $quiz_wrong_answers_font_weight = (isset($options[ 'quiz_wrong_answers_font_weig
             </div>
             
             <div id="tab8" class="ays-integrations-tab ays-quiz-tab-content <?php echo ($ays_quiz_tab == 'tab8') ? 'ays-quiz-tab-content-active' : ''; ?>">
+                <div class="ays-quiz-top-actions-container-wrapper form-group row">
+                    <div class="col-sm-12">
+                        <p class="m-0 text-right">
+                            <a class="ays-quiz-collapse-all" href="javascript:void(0);"><?php echo __( "Collapse All", "quiz-maker" ); ?></a>
+                            <span>|</span>
+                            <a class="ays-quiz-expand-all" href="javascript:void(0);"><?php echo __( "Expand All", "quiz-maker" ); ?></a>
+                        </p>
+                    </div>
+                </div>
                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                     <div class="ays-quiz-accordion-container">
                         <?php echo $quiz_accordion_svg_html; ?>
