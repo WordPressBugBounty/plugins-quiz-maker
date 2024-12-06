@@ -42,11 +42,11 @@ class Quiz_Theme_Rect_Light extends Quiz_Maker_Public{
 
 
     public function __construct($plugin_name,$plugin_version,$theme_name,$settings,$buttons_texts) {
-        $this->version = $plugin_version;
-        $this->plugin_name = $plugin_name;
-        $this->theme_name = $theme_name;
-        $this->settings = $settings;
-        $this->buttons_texts = $buttons_texts;
+        $this->version          = $plugin_version;
+        $this->plugin_name      = $plugin_name;
+        $this->theme_name       = $theme_name;
+        $this->settings         = $settings;
+        $this->buttons_texts    = $buttons_texts;
         
         $this->define_theme_styles();
         $this->define_theme_scripts();
@@ -68,10 +68,10 @@ class Quiz_Theme_Rect_Light extends Quiz_Maker_Public{
 
     public function ays_generate_quiz($quiz){
         
-        $quiz_id = $quiz->quizID;
-        $arr_questions = $quiz->questions;
-        $questions_count = $quiz->questionsCount;
-        $options = $quiz->quizOptions;
+        $quiz_id            = $quiz->quizID;
+        $arr_questions      = $quiz->questions;
+        $questions_count    = $quiz->questionsCount;
+        $options            = $quiz->quizOptions;
 
         // Disable answer hover
         $options['disable_hover_effect'] = isset($options['disable_hover_effect']) ? $options['disable_hover_effect'] : 'off';

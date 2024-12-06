@@ -256,6 +256,7 @@ $options = array(
     'quiz_right_answers_font_weight'            => "normal",
     'quiz_wrong_answers_font_weight'            => "normal",
     'quiz_section_collapse_flag'                => "off",
+    'quiz_content_max_width'                    => 90,
 
 );
 
@@ -1383,6 +1384,9 @@ $quiz_wrong_answers_font_weight = (isset($options[ 'quiz_wrong_answers_font_weig
 // $quiz_section_collapse_flag_input = (isset($options['quiz_section_collapse_flag']) && $options['quiz_section_collapse_flag'] == 'on') ? 'on' : 'off';
 // $quiz_section_collapse_flag = (isset($options['quiz_section_collapse_flag']) && $options['quiz_section_collapse_flag'] == 'on') ? 'true' : 'false';
 
+// Quiz content max-width
+$quiz_content_max_width = ( isset($options['quiz_content_max_width']) && $options['quiz_content_max_width'] != "" && intval($options['quiz_content_max_width']) > 0 ) ? intval(esc_attr($options['quiz_content_max_width'])) : 90;
+
 ?>
 <style id="ays_live_custom_css"></style>
 <div class="wrap ays-quiz-dashboard-main-wrap">
@@ -1915,6 +1919,25 @@ $quiz_wrong_answers_font_weight = (isset($options[ 'quiz_wrong_answers_font_weig
                                         </div>
                                     </div>
                                 </div><!--Quiz max-width for mobile -->
+                                <hr/>
+                                <div class="form-group row">
+                                    <div class="col-sm-5">
+                                        <label for='ays_quiz_content_max_width'>
+                                            <?php echo __('Quiz content max-width', $this->plugin_name); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Set your desired value for the Quiz content max-width in percentage. By default, it is set as 90%.',$this->plugin_name); ?>">
+                                                <i class="ays_fa ays_fa_info_circle"></i>
+                                            </a>
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-7 ays_divider_left ays_quiz_display_flex_width">
+                                        <div>
+                                            <input type="number" class="ays-text-input ays-text-input-short" id='ays_quiz_content_max_width' name='ays_quiz_content_max_width' style="display:inline-block;" value="<?php echo esc_attr($quiz_content_max_width); ?>"/>
+                                        </div>
+                                        <div class="ays_quiz_dropdown_max_width">
+                                            <input type="text" value="%" class='ays-quiz-form-hint-for-size' disabled>
+                                        </div>
+                                    </div>
+                                </div><!--Quiz content max-width -->
                                 <hr/>
                                 <div class="form-group row">
                                     <div class="col-sm-5">

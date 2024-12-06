@@ -2938,8 +2938,8 @@ class Quiz_Maker_Admin
                 if ( sanitize_text_field($_GET['page']) == 'quiz-maker-settings' ) {
                     $this->ays_quiz_chart_bulider_message($ays_quiz_ishmar);
                 } else {
-                    $this->ays_quiz_black_friday_message_2024($ays_quiz_ishmar);
-                    // $this->ays_quiz_new_mega_bundle_message_2024($ays_quiz_ishmar);
+                    // $this->ays_quiz_black_friday_message_2024($ays_quiz_ishmar);
+                    $this->ays_quiz_new_mega_bundle_message($ays_quiz_ishmar);
                 }
                 // $this->ays_quiz_spring_bundle_small_message($ays_quiz_ishmar);
             }

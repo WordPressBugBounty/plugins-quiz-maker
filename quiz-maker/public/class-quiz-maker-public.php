@@ -1073,6 +1073,9 @@ class Quiz_Maker_Public
             $mobile_max_width = '100%';
         }
 
+        // Quiz content max-width
+        $quiz_content_max_width = ( isset($options['quiz_content_max_width']) && $options['quiz_content_max_width'] != "" && intval($options['quiz_content_max_width']) > 0 ) ? intval(esc_attr($options['quiz_content_max_width'])) : 90;
+
         // Quiz title transformation
         $quiz_title_transformation = (isset($options['quiz_title_transformation']) && sanitize_text_field( $options['quiz_title_transformation'] ) != "") ? sanitize_text_field( $options['quiz_title_transformation'] ) : 'uppercase';
 
@@ -3299,6 +3302,10 @@ class Quiz_Maker_Public
         $quiz_styles = "<style>
             div#ays-quiz-container-" . $id . " * {
                 box-sizing: border-box;
+            }
+
+            #ays-quiz-container-" . $id . " [id^='ays_finish_quiz_'] div.step div.ays-abs-fs {
+                width: ". $quiz_content_max_width ."%;
             }
 
             /* Styles for Internet Explorer start */

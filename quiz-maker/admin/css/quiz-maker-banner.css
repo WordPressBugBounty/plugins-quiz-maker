@@ -1,4 +1,4 @@
-/* Quiz and Chart integration main page 2023 | Start */
+ Quiz and Chart integration main page 2023 | Start */
 @-webkit-keyframes bounceInRight_2022 {
     0%, 60%, 75%, 90%, to {
         -webkit-animation-timing-function: cubic-bezier(.215, .61, .355, 1);
@@ -1702,7 +1702,7 @@ div#ays-quiz-dicount-month-main.ays_quiz_dicount_info.ays_quiz_chart_bulider_con
 
 /* New Mega Bundle Banner Quiz | Start */
 
-/*div#ays-quiz-new-mega-bundle-dicount-month-main {
+div#ays-quiz-new-mega-bundle-dicount-month-main {
     border: 0;
     background: #FFF;
     border-radius: 20px;
@@ -2169,7 +2169,7 @@ div#ays-quiz-new-mega-bundle-dicount-month-main button.notice-dismiss:before{
         min-height: 50px;
         min-width: 50px;
     }
-}*/
+}
 /* New Mega Bundle Banner Quiz | End */
 
 
@@ -3190,7 +3190,7 @@ div#ays-quiz-new-mega-bundle-dicount-month-main-2024 button.notice-dismiss:befor
 
 /* 2024 | Black Friday top banner | Start */
 
-div#ays-quiz-black-friday-bundle-dicount-month-main {
+/*div#ays-quiz-black-friday-bundle-dicount-month-main {
     border: 0;
     background: #FFF;
     border-radius: 20px;
@@ -3288,7 +3288,6 @@ div#ays-quiz-black-friday-bundle-dicount-month-main.ays_quiz_dicount_info {
 #ays-quiz-black-friday-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-text-box .ays-quiz-black-friday-bundle-title {
     display: inline-block;
     color: #FDFDFD;
-    /*font-size: 16.8px;*/
     font-style: normal;
     font-weight: 600;
     line-height: normal;
@@ -3701,5 +3700,5 @@ div#ays-quiz-black-friday-bundle-dicount-month-main button.notice-dismiss:before
         min-height: 50px;
         min-width: 50px;
     }
-}
+}*/
 /* 2024 | Black Friday top banner | End */
