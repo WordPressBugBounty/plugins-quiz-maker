@@ -172,7 +172,7 @@ $quiz_wp_editor_height = (isset($gen_options['quiz_wp_editor_height']) && $gen_o
                             'data-message' => __( 'Are you sure you want to go to the previous quiz category page?', $this->plugin_name),
                             'href' => sprintf( '?page=%s&action=%s&quiz_category=%d', esc_attr( $_REQUEST['page'] ), 'edit', absint( $prev_quiz_cat_id ) )
                         );
-                        submit_button(__('Prev Quiz Category', $this->plugin_name), 'button ays-quiz-category-next-button-class', 'ays_quiz_cat_prev_button', false, $other_attributes);
+                        submit_button(__('Prev Category', $this->plugin_name), 'button ays-quiz-category-next-button-class', 'ays_quiz_cat_prev_button', false, $other_attributes);
                     }
 
                     if ( $nex_quiz_cat_id != "" && !is_null( $nex_quiz_cat_id ) ) {
@@ -182,7 +182,7 @@ $quiz_wp_editor_height = (isset($gen_options['quiz_wp_editor_height']) && $gen_o
                             'data-message' => __( 'Are you sure you want to go to the next quiz category page?', $this->plugin_name),
                             'href' => sprintf( '?page=%s&action=%s&quiz_category=%d', esc_attr( $_REQUEST['page'] ), 'edit', absint( $nex_quiz_cat_id ) )
                         );
-                        submit_button(__('Next Quiz Category', $this->plugin_name), 'button ays-quiz-category-next-button-class', 'ays_quiz_cat_next_button', false, $other_attributes);
+                        submit_button(__('Next Category', $this->plugin_name), 'button ays-quiz-category-next-button-class', 'ays_quiz_cat_next_button', false, $other_attributes);
                     }
                 ?>
                 </div>
