@@ -1148,6 +1148,7 @@ class Quiz_Maker_Admin
         $quick_quiz_quest_explanation_text_transform        = "none";
         $quick_quiz_quest_explanation_text_decoration       = "none";
         $quick_quiz_quest_explanation_letter_spacing        = 0;
+        $quick_quiz_quest_explanation_font_weight           = "normal";
 
         if($quiz_enable_options == 'on'){
             $quick_quiz_enable_randomize_questions = (isset( $_REQUEST['ays_quick_quiz_enable_randomize_questions'] ) && $_REQUEST['ays_quick_quiz_enable_randomize_questions'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_randomize_questions'] ) ) : "off";
@@ -1339,7 +1340,7 @@ class Quiz_Maker_Admin
             $quick_quiz_admin_note_letter_spacing = (isset( $_REQUEST['ays_quick_quiz_admin_note_letter_spacing'] ) && $_REQUEST['ays_quick_quiz_admin_note_letter_spacing'] != "") ? absint( stripslashes( $_REQUEST['ays_quick_quiz_admin_note_letter_spacing'] ) ) : 0;
 
             // Admin Note font weight
-            $quick_quiz_admin_note_font_weight = (isset( $_REQUEST['ays_quick_quiz_admin_note_font_weight'] ) && $_REQUEST['ays_quick_quiz_admin_note_font_weight'] != "") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_admin_note_font_weight'] ) ) : "none";
+            $quick_quiz_admin_note_font_weight = (isset( $_REQUEST['ays_quick_quiz_admin_note_font_weight'] ) && $_REQUEST['ays_quick_quiz_admin_note_font_weight'] != "") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_admin_note_font_weight'] ) ) : "normal";
 
             // Font size for the question explanation | On desktop
             $quick_quiz_quest_explanation_font_size = (isset( $_REQUEST['ays_quick_quiz_quest_explanation_font_size'] ) && $_REQUEST['ays_quick_quiz_quest_explanation_font_size'] != "") ? absint( stripslashes( $_REQUEST['ays_quick_quiz_quest_explanation_font_size'] ) ) : 16;
@@ -1355,6 +1356,9 @@ class Quiz_Maker_Admin
 
             // Letter spacing for the question explanation
             $quick_quiz_quest_explanation_letter_spacing = (isset( $_REQUEST['ays_quick_quiz_quest_explanation_letter_spacing'] ) && $_REQUEST['ays_quick_quiz_quest_explanation_letter_spacing'] != "") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_quest_explanation_letter_spacing'] ) ) : 0;
+
+            // Font weight for the question explanation
+            $quick_quiz_quest_explanation_font_weight = (isset( $_REQUEST['ays_quick_quiz_quest_explanation_font_weight'] ) && $_REQUEST['ays_quick_quiz_quest_explanation_font_weight'] != "") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_quest_explanation_font_weight'] ) ) : "normal";
             
         }
         
@@ -1635,7 +1639,7 @@ class Quiz_Maker_Admin
             'quiz_right_answers_letter_spacing'             => 0,
             'quiz_wrong_answers_letter_spacing'             => 0,
             'quiz_admin_note_font_weight'                   => $quick_quiz_admin_note_font_weight,
-            'quiz_quest_explanation_font_weight'            => "normal",
+            'quiz_quest_explanation_font_weight'            => $quick_quiz_quest_explanation_font_weight,
             'quiz_right_answers_font_weight'                => "normal",
             'quiz_wrong_answers_font_weight'                => "normal",
         );

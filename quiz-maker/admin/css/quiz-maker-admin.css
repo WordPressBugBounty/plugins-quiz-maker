@@ -7432,6 +7432,7 @@ div .wp-picker-container .wp-color-result.button {
     justify-content: flex-start;
     align-items: center;
     padding-top: 30px;
+    cursor: pointer;
 }
 
 .ays-quiz-accordion-container p.ays-subtitle {

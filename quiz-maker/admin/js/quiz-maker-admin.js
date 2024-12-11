@@ -3937,7 +3937,7 @@
             aysQuizDeleteCookie('ays_quiz_created_new');
         }
 
-        $(document).find('.ays-quiz-accordion-arrow-box').on('click', function(e) {
+        $(document).find('.ays-quiz-accordion-container').on('click', function(e) {
             var _this = $(this);
             var parent = _this.closest(".ays-quiz-accordion-options-main-container");
             var dataCollapsed = parent.attr('data-collapsed');
