@@ -2942,10 +2942,9 @@ class Quiz_Maker_Admin
                 if ( sanitize_text_field($_GET['page']) == 'quiz-maker-settings' ) {
                     $this->ays_quiz_chart_bulider_message($ays_quiz_ishmar);
                 } else {
-                    // $this->ays_quiz_black_friday_message_2024($ays_quiz_ishmar);
-                    $this->ays_quiz_new_mega_bundle_message($ays_quiz_ishmar);
+                    $this->ays_quiz_christmas_top_message_2024($ays_quiz_ishmar);
+                    // $this->ays_quiz_new_mega_bundle_message($ays_quiz_ishmar);
                 }
-                // $this->ays_quiz_spring_bundle_small_message($ays_quiz_ishmar);
             }
         }
     }
@@ -3795,6 +3794,101 @@ class Quiz_Maker_Admin
             echo $content;
         }
     }
+
+    // Christmas Top Banner 2024
+    public function ays_quiz_christmas_top_message_2024($ishmar){
+        if($ishmar == 0 ){
+            $content = array();
+
+            $content[] = '<div id="ays-quiz-christmas-top-bundle-dicount-month-main" class="notice notice-success is-dismissible ays_quiz_dicount_info">';
+                $content[] = '<div id="ays-quiz-dicount-month" class="ays_quiz_dicount_month">';
+
+                    $content[] = '<div class="ays-quiz-dicount-wrap-box ays-quiz-dicount-wrap-countdown-box">';
+
+                        $content[] = '<div id="ays-quiz-maker-countdown-main-container">';
+                            $content[] = '<div class="ays-quiz-maker-countdown-container">';
+
+                                $content[] = '<div id="ays-quiz-countdown">';
+
+                                    $content[] = '<div>';
+                                        $content[] = __( "Offer ends in:", AYS_QUIZ_NAME );
+                                    $content[] = '</div>';
+
+                                    $content[] = '<ul>';
+                                        $content[] = '<li><span id="ays-quiz-countdown-days"></span>'. __( "Days", AYS_QUIZ_NAME ) .'</li>';
+                                        $content[] = '<li><span id="ays-quiz-countdown-hours"></span>'. __( "Hours", AYS_QUIZ_NAME ) .'</li>';
+                                        $content[] = '<li><span id="ays-quiz-countdown-minutes"></span>'. __( "Minutes", AYS_QUIZ_NAME ) .'</li>';
+                                        $content[] = '<li><span id="ays-quiz-countdown-seconds"></span>'. __( "Seconds", AYS_QUIZ_NAME ) .'</li>';
+                                    $content[] = '</ul>';
+                                $content[] = '</div>';
+
+                                $content[] = '<div id="ays-quiz-countdown-content" class="emoji">';
+                                    $content[] = '<span>🚀</span>';
+                                    $content[] = '<span>⌛</span>';
+                                    $content[] = '<span>🔥</span>';
+                                    $content[] = '<span>💣</span>';
+                                $content[] = '</div>';
+
+                            $content[] = '</div>';
+                        $content[] = '</div>';
+                            
+                    $content[] = '</div>';
+
+                    $content[] = '<div class="ays-quiz-dicount-wrap-box ays-quiz-dicount-wrap-text-box">';
+                        $content[] = '<div>';
+
+                            $content[] = '<span class="ays-quiz-christmas-top-bundle-title">';
+                                $content[] = __( "<span><a href='https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=christmas-sale-banner' class='ays-quiz-christmas-top-bundle-title-link' target='_blank'>Christmas Sale</a></span>", AYS_QUIZ_NAME );
+                            $content[] = '</span>';
+
+                            $content[] = '</br>';
+
+                            $content[] = '<span class="ays-quiz-christmas-top-bundle-desc">';
+                                $content[] = '<a class="ays-quiz-christmas-top-bundle-desc" href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=christmas-sale-banner" class="ays-quiz-christmas-top-bundle-title-link" target="_blank">';
+                                    $content[] = __( "20% Extra OFF", AYS_QUIZ_NAME );
+                                $content[] = '</a>';
+                            $content[] = '</span>';
+                        $content[] = '</div>';
+
+                        $content[] = '<div style="position: absolute;right: 10px;bottom: 1px;" class="ays-quiz-dismiss-buttons-container-for-form">';
+
+                            $content[] = '<form action="" method="POST">';
+                                $content[] = '<div id="ays-quiz-dismiss-buttons-content">';
+                                if( current_user_can( 'manage_options' ) ){
+                                    $content[] = '<button class="btn btn-link ays-button" name="ays_quiz_sale_btn" style="height: 32px; margin-left: 0;padding-left: 0">'. __( "Dismiss ad", AYS_QUIZ_NAME ) .'</button>';
+                                    $content[] = wp_nonce_field( AYS_QUIZ_NAME . '-sale-banner' ,  AYS_QUIZ_NAME . '-sale-banner' );
+                                }
+                                $content[] = '</div>';
+                            $content[] = '</form>';
+                            
+                        $content[] = '</div>';
+
+                    $content[] = '</div>';
+
+                    $content[] = '<div class="ays-quiz-dicount-wrap-box ays-quiz-christmas-top-bundle-coupon-text-box">';
+                        $content[] = '<div class="ays-quiz-christmas-top-bundle-coupon-row">';
+                            $content[] = 'xmas20off';
+                        $content[] = '</div>';
+
+                        $content[] = '<div class="ays-quiz-christmas-top-bundle-text-row">';
+                            $content[] = __( '20% Extra Discount Coupon', AYS_QUIZ_NAME );
+                        $content[] = '</div>';
+                    $content[] = '</div>';
+
+                    $content[] = '<div class="ays-quiz-dicount-wrap-box ays-quiz-dicount-wrap-button-box">';
+                        $content[] = '<a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=christmas-sale-banner" class="button button-primary ays-button" id="ays-button-top-buy-now" target="_blank">' . __( 'Get Your Deal', AYS_QUIZ_NAME ) . '</a>';
+                        $content[] = '<span class="ays-quiz-dicount-one-time-text">';
+                            $content[] = __( "One-time payment", AYS_QUIZ_NAME );
+                        $content[] = '</span>';
+                    $content[] = '</div>';
+                $content[] = '</div>';
+            $content[] = '</div>';
+
+            $content = implode( '', $content );
+            echo $content;
+        }
+    }
+
 
     /*
     ==========================================
