@@ -942,6 +942,9 @@ class Quizes_List_Table extends WP_List_Table{
 
             // Quiz content max-width
             $quiz_content_max_width = ( isset($_REQUEST['ays_quiz_content_max_width']) && sanitize_text_field( $_REQUEST['ays_quiz_content_max_width'] ) != '' && sanitize_text_field( $_REQUEST['ays_quiz_content_max_width'] ) != 0) ? absint( sanitize_text_field( $_REQUEST['ays_quiz_content_max_width'] ) ) : 90;
+
+            // Quiz content mobile max-width
+            $quiz_content_mobile_max_width = ( isset($_REQUEST['ays_quiz_content_mobile_max_width']) && sanitize_text_field( $_REQUEST['ays_quiz_content_mobile_max_width'] ) != '' && sanitize_text_field( $_REQUEST['ays_quiz_content_mobile_max_width'] ) != 0) ? absint( sanitize_text_field( $_REQUEST['ays_quiz_content_mobile_max_width'] ) ) : 90;
             
 
             $options = array(
@@ -1187,6 +1190,7 @@ class Quizes_List_Table extends WP_List_Table{
                 'quiz_wrong_answers_font_weight'                    => $quiz_wrong_answers_font_weight,
                 // 'quiz_section_collapse_flag'                        => $quiz_section_collapse_flag,
                 'quiz_content_max_width'                            => $quiz_content_max_width,
+                'quiz_content_mobile_max_width'                     => $quiz_content_mobile_max_width,
             );
 
             $options['required_fields'] = !isset($_POST['ays_required_field']) ? null : array_map( 'sanitize_text_field', $_POST['ays_required_field'] );

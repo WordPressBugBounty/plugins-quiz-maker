@@ -1387,6 +1387,10 @@ $quiz_wrong_answers_font_weight = (isset($options[ 'quiz_wrong_answers_font_weig
 // Quiz content max-width
 $quiz_content_max_width = ( isset($options['quiz_content_max_width']) && $options['quiz_content_max_width'] != "" && intval($options['quiz_content_max_width']) > 0 ) ? intval(esc_attr($options['quiz_content_max_width'])) : 90;
 
+// Quiz content mobile max-width
+$quiz_content_mobile_max_width = ( isset($options['quiz_content_mobile_max_width']) && $options['quiz_content_mobile_max_width'] != "" && intval($options['quiz_content_mobile_max_width']) > 0 ) ? intval(esc_attr($options['quiz_content_mobile_max_width'])) : 90;
+
+
 ?>
 <style id="ays_live_custom_css"></style>
 <div class="wrap ays-quiz-dashboard-main-wrap">
@@ -1929,12 +1933,51 @@ $quiz_content_max_width = ( isset($options['quiz_content_max_width']) && $option
                                             </a>
                                         </label>
                                     </div>
-                                    <div class="col-sm-7 ays_divider_left ays_quiz_display_flex_width">
+                                    <!-- <div class="col-sm-7 ays_divider_left ays_quiz_display_flex_width">
                                         <div>
                                             <input type="number" class="ays-text-input ays-text-input-short" id='ays_quiz_content_max_width' name='ays_quiz_content_max_width' style="display:inline-block;" value="<?php echo esc_attr($quiz_content_max_width); ?>"/>
                                         </div>
                                         <div class="ays_quiz_dropdown_max_width">
                                             <input type="text" value="%" class='ays-quiz-form-hint-for-size' disabled>
+                                        </div>
+                                    </div> -->
+                                    <div class="col-sm-7 ays_divider_left">
+                                        <div class="row">
+                                            <div class="col-sm-5">
+                                                <label for='ays_answers_font_size'>
+                                                    <?php echo __('On desktop', $this->plugin_name); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the Quiz content max-width for desktop devices.',$this->plugin_name); ?>">
+                                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                                    </a>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-7 ays_quiz_display_flex_width">
+                                                <div>
+                                                    <input type="number" class="ays-text-input" id='ays_quiz_content_max_width' name='ays_quiz_content_max_width' style="display:inline-block;" value="<?php echo esc_attr($quiz_content_max_width); ?>"/>
+                                                </div>
+                                                <div class="ays_quiz_dropdown_max_width">
+                                                    <input type="text" value="%" class='ays-quiz-form-hint-for-size' disabled>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-sm-5">
+                                                <label for='ays_quiz_content_mobile_max_width'>
+                                                    <?php echo __('On mobile', $this->plugin_name); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the Quiz content max-width for mobile devices.',$this->plugin_name); ?>">
+                                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                                    </a>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-7 ays_quiz_display_flex_width">
+                                                <div>
+                                                    <input type="number" class="ays-text-input" id='ays_quiz_content_mobile_max_width' name='ays_quiz_content_mobile_max_width' style="display:inline-block;" value="<?php echo esc_attr($quiz_content_mobile_max_width); ?>"/>
+                                                </div>
+                                                <div class="ays_quiz_dropdown_max_width">
+                                                    <input type="text" value="%" class='ays-quiz-form-hint-for-size' disabled>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div><!--Quiz content max-width -->

@@ -1076,6 +1076,9 @@ class Quiz_Maker_Public
         // Quiz content max-width
         $quiz_content_max_width = ( isset($options['quiz_content_max_width']) && $options['quiz_content_max_width'] != "" && intval($options['quiz_content_max_width']) > 0 ) ? intval(esc_attr($options['quiz_content_max_width'])) : 90;
 
+        // Quiz content mobile max-width
+        $quiz_content_mobile_max_width = ( isset($options['quiz_content_mobile_max_width']) && $options['quiz_content_mobile_max_width'] != "" && intval($options['quiz_content_mobile_max_width']) > 0 ) ? intval(esc_attr($options['quiz_content_mobile_max_width'])) : 90;
+
         // Quiz title transformation
         $quiz_title_transformation = (isset($options['quiz_title_transformation']) && sanitize_text_field( $options['quiz_title_transformation'] ) != "") ? sanitize_text_field( $options['quiz_title_transformation'] ) : 'uppercase';
 
@@ -4104,6 +4107,10 @@ class Quiz_Maker_Public
             @media screen and (max-width: 768px){
                 #ays-quiz-container-" . $id . "{
                     max-width: $mobile_max_width;
+                }
+
+                div#ays-quiz-container-" . $id . " [id^='ays_finish_quiz_'] div.step div.ays-abs-fs {
+                    width: ". $quiz_content_mobile_max_width ."%;
                 }
 
                 #ays-quiz-container-" . $id . " .ays_quiz_question p {
