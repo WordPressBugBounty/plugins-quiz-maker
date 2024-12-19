@@ -1123,7 +1123,7 @@ class Quiz_Maker_Admin
         $quick_quiz_question_mobile_font_size               = 16;
         $quick_quiz_question_text_alignment                 = "center";
         $quick_quiz_image_width                             = "";
-        $quiz_image_width_by_percentage_px                  = "pixels";
+        $quick_quiz_image_width_by_percentage_px            = "pixels";
         $quick_quiz_image_height                            = "";
         $quick_quiz_image_sizing                            = "cover";
         $quick_quiz_answers_font_size                       = 15;
@@ -1149,6 +1149,7 @@ class Quiz_Maker_Admin
         $quick_quiz_quest_explanation_text_decoration       = "none";
         $quick_quiz_quest_explanation_letter_spacing        = 0;
         $quick_quiz_quest_explanation_font_weight           = "normal";
+        $quick_quiz_right_answers_font_size                 = 16;
 
         if($quiz_enable_options == 'on'){
             $quick_quiz_enable_randomize_questions = (isset( $_REQUEST['ays_quick_quiz_enable_randomize_questions'] ) && $_REQUEST['ays_quick_quiz_enable_randomize_questions'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_randomize_questions'] ) ) : "off";
@@ -1211,7 +1212,7 @@ class Quiz_Maker_Admin
             $quick_quiz_custom_texts_send_feedback_button  = (isset($_REQUEST['ays_quick_quiz_custom_texts_send_feedback_button']) && $_REQUEST['ays_quick_quiz_custom_texts_send_feedback_button'] != '') ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_custom_texts_send_feedback_button'] ) ) : $gen_send_feedback_button;
 
             // Load more button
-            $quick_quiz_custom_texts_load_more_button  = (isset($_REQUEST['ays_quick_quiz_custom_texts_load_more_button']) && $_REQUEST['ays_quick_quiz_custom_texts_load_more_button'] != '') ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_custom_texts_load_more_button'] ) ) : $gen_send_feedback_button;
+            $quick_quiz_custom_texts_load_more_button  = (isset($_REQUEST['ays_quick_quiz_custom_texts_load_more_button']) && $_REQUEST['ays_quick_quiz_custom_texts_load_more_button'] != '') ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_custom_texts_load_more_button'] ) ) : $gen_load_more_button;
 
             // Exit button
             $quick_quiz_custom_texts_exit_button = (isset($_REQUEST['ays_quick_quiz_custom_texts_exit_button']) && $_REQUEST['ays_quick_quiz_custom_texts_exit_button'] != '') ? stripslashes( esc_attr( $_REQUEST['ays_quick_quiz_custom_texts_exit_button'] ) ) : $gen_exit_button;
@@ -1359,6 +1360,9 @@ class Quiz_Maker_Admin
 
             // Font weight for the question explanation
             $quick_quiz_quest_explanation_font_weight = (isset( $_REQUEST['ays_quick_quiz_quest_explanation_font_weight'] ) && $_REQUEST['ays_quick_quiz_quest_explanation_font_weight'] != "") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_quest_explanation_font_weight'] ) ) : "normal";
+
+            // Font size for the right answer | PC
+            $quick_quiz_right_answers_font_size = (isset( $_REQUEST['ays_quick_quiz_right_answers_font_size'] ) && $_REQUEST['ays_quick_quiz_right_answers_font_size'] != "") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_right_answers_font_size'] ) ) : 16;
             
         }
         
@@ -1605,7 +1609,7 @@ class Quiz_Maker_Admin
             'quest_explanation_mobile_font_size'            => $quick_quiz_quest_explanation_mobile_font_size,
             'wrong_answers_font_size'                       => "16",
             'wrong_answers_mobile_font_size'                => "16",
-            'right_answers_font_size'                       => "16",
+            'right_answers_font_size'                       => $quick_quiz_right_answers_font_size,
             'right_answers_mobile_font_size'                => "16",
             'note_text_font_size'                           => $quick_quiz_note_text_font_size,
             'note_text_mobile_font_size'                    => $quick_quiz_note_text_mobile_font_size,
@@ -1621,9 +1625,9 @@ class Quiz_Maker_Admin
             'quiz_custom_texts_send_feedback_button'        => $quick_quiz_custom_texts_send_feedback_button,
             'quiz_custom_texts_load_more_button'            => $quick_quiz_custom_texts_load_more_button,
             'quiz_custom_texts_exit_button'                 => $quick_quiz_custom_texts_exit_button,
-            'quiz_display_messages_before_buttons'          => $quick_quiz_display_messages_before_buttons,
             'quiz_custom_texts_check_button'                => $quick_quiz_custom_texts_check_button,
             'quiz_custom_texts_login_button'                => $quick_quiz_custom_texts_login_button,
+            'quiz_display_messages_before_buttons'          => $quick_quiz_display_messages_before_buttons,
             'quiz_enable_quiz_category_description'         => "off",
             'quiz_admin_note_text_transform'                => $quick_quiz_admin_note_text_transform,
             'quiz_quest_explanation_text_transform'         => $quick_quiz_quest_explanation_text_transform,
