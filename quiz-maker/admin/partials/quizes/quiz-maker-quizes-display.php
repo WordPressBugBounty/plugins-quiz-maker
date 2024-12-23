@@ -1641,8 +1641,8 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div><!-- Right answer styles -->
+                                </div><!-- Right answer styles -->
+                            </div>
                         </div> <!-- Quiz Options -->
                     </div>
                     <hr>

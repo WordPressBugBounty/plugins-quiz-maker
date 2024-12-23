@@ -3524,6 +3524,15 @@
                             </p>
                             <p class="vmessage">
                                 <strong>
+                                    <input type="text" onClick="this.setSelectionRange(0, this.value.length)" readonly value="%%current_quiz_author_website_url%%" />
+                                </strong>
+                                <span> - </span>
+                                <span style="font-size:18px;">
+                                    <?php echo __( "It will show the author website of the current quiz.", $this->plugin_name); ?>
+                                </span>
+                            </p>
+                            <p class="vmessage">
+                                <strong>
                                     <input type="text" onClick="this.setSelectionRange(0, this.value.length)" readonly value="%%result_id%%" />
                                 </strong>
                                 <span> - </span>

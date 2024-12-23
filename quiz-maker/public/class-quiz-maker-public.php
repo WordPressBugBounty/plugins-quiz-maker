@@ -620,6 +620,7 @@ class Quiz_Maker_Public
         $current_quiz_author = __( "Unknown", $this->plugin_name );
         $current_quiz_author_email = "";
         $current_quiz_author_nickname = "";
+        $current_quiz_author_website_url = "";
         
         $super_admin_email = get_option('admin_email');
 
@@ -635,31 +636,38 @@ class Quiz_Maker_Public
                 $current_quiz_author            = ( isset( $current_quiz_user_data->data->display_name ) && $current_quiz_user_data->data->display_name != '' ) ? sanitize_text_field( $current_quiz_user_data->data->display_name ) : "";
                 $current_quiz_author_email      = ( isset( $current_quiz_user_data->data->user_email ) && $current_quiz_user_data->data->user_email != '' ) ? sanitize_text_field( $current_quiz_user_data->data->user_email ) : "";
                 $current_quiz_author_nickname   = ( isset( $current_quiz_user_data->data->user_nicename ) && $current_quiz_user_data->data->user_nicename != '' ) ? sanitize_text_field( $current_quiz_user_data->data->user_nicename ) : "";
+
+                $current_quiz_author_website_url = ( isset( $current_quiz_user_data->user_url ) && ! empty( $current_quiz_user_data->user_url ) ) ? sanitize_url($current_quiz_user_data->user_url) : "";
+
+                if( !empty( $current_quiz_author_website_url ) ){
+                    $current_quiz_author_website_url = "<a href='". esc_url( $current_quiz_author_website_url ) ."' target='_blank' class='ays-quiz-user-website-link-a-tag'>". __( "Website", $this->plugin_name ) ."</a>";
+                }
             }
         }
 
         $get_site_title = get_bloginfo('name');
 
         $message_data = array(
-            'quiz_name'                     => $quiz_title,
-            'time'                          => $this->secondsToWords($quiz_timer),
-            'user_first_name'               => $user_first_name,
-            'user_last_name'                => $user_last_name,
-            'questions_count'               => $questions_count,
-            'user_nickname'                 => $user_nickname,
-            'user_display_name'             => $user_display_name,
-            'user_wordpress_email'          => $user_wordpress_email,
-            'user_wordpress_roles'          => $user_wordpress_roles,
-            'quiz_creation_date'            => $quiz_creation_date,
-            'current_quiz_author'           => $current_quiz_author,
-            'current_user_ip'               => $current_user_ip,
-            'current_quiz_author_email'     => $current_quiz_author_email,
-            'current_quiz_author_nickname'  => $current_quiz_author_nickname,
-            'admin_email'                   => $super_admin_email,
-            'home_page_url'                 => $wp_home_page_url,
-            'quiz_id'                       => $id,
-            'user_id'                       => $user_id,
-            'site_title'                    => $get_site_title,
+            'quiz_name'                                 => $quiz_title,
+            'time'                                      => $this->secondsToWords($quiz_timer),
+            'user_first_name'                           => $user_first_name,
+            'user_last_name'                            => $user_last_name,
+            'questions_count'                           => $questions_count,
+            'user_nickname'                             => $user_nickname,
+            'user_display_name'                         => $user_display_name,
+            'user_wordpress_email'                      => $user_wordpress_email,
+            'user_wordpress_roles'                      => $user_wordpress_roles,
+            'quiz_creation_date'                        => $quiz_creation_date,
+            'current_quiz_author'                       => $current_quiz_author,
+            'current_user_ip'                           => $current_user_ip,
+            'current_quiz_author_email'                 => $current_quiz_author_email,
+            'current_quiz_author_nickname'              => $current_quiz_author_nickname,
+            'admin_email'                               => $super_admin_email,
+            'home_page_url'                             => $wp_home_page_url,
+            'quiz_id'                                   => $id,
+            'user_id'                                   => $user_id,
+            'site_title'                                => $get_site_title,
+            'current_quiz_author_website_url'           => $current_quiz_author_website_url,
         );
 
         return $message_data;
@@ -5632,6 +5640,7 @@ class Quiz_Maker_Public
                 $current_quiz_author = __( "Unknown", $this->plugin_name );
                 $current_quiz_author_nickname = "";
                 $current_quiz_author_email = "";
+                $current_quiz_author_website_url = "";
                 
                 $super_admin_email = get_option('admin_email');
 
@@ -5647,6 +5656,12 @@ class Quiz_Maker_Public
                         $current_quiz_author            = ( isset( $current_quiz_user_data->data->display_name ) && $current_quiz_user_data->data->display_name != '' ) ? sanitize_text_field( $current_quiz_user_data->data->display_name ) : "";
                         $current_quiz_author_email      = ( isset( $current_quiz_user_data->data->user_email ) && $current_quiz_user_data->data->user_email != '' ) ? sanitize_text_field( $current_quiz_user_data->data->user_email ) : "";
                         $current_quiz_author_nickname   = ( isset( $current_quiz_user_data->data->user_nicename ) && $current_quiz_user_data->data->user_nicename != '' ) ? sanitize_text_field( $current_quiz_user_data->data->user_nicename ) : "";
+
+                        $current_quiz_author_website_url = ( isset( $current_quiz_user_data->user_url ) && ! empty( $current_quiz_user_data->user_url ) ) ? sanitize_url($current_quiz_user_data->user_url) : "";
+
+                        if( !empty( $current_quiz_author_website_url ) ){
+                            $current_quiz_author_website_url = "<a href='". esc_url( $current_quiz_author_website_url ) ."' target='_blank' class='ays-quiz-user-website-link-a-tag'>". __( "Website", $this->plugin_name ) ."</a>";
+                        }
                     }
                 }
 
@@ -5720,6 +5735,7 @@ class Quiz_Maker_Public
                     'user_id'                                   => $user_id,
                     'current_quiz_question_categories_count'    => $current_quiz_question_categories_count,
                     'site_title'                                => $get_site_title,
+                    'current_quiz_author_website_url'           => $current_quiz_author_website_url,
                 );
 
                 $data = array(
