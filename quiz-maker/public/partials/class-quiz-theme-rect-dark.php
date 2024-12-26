@@ -67,10 +67,10 @@ class Quiz_Theme_Rect_Dark extends Quiz_Maker_Public{
 
     public function ays_generate_quiz($quiz){
         
-        $quiz_id = $quiz->quizID;
-        $arr_questions = $quiz->questions;
+        $quiz_id         = $quiz->quizID;
+        $arr_questions   = $quiz->questions;
         $questions_count = $quiz->questionsCount;
-        $options = $quiz->quizOptions;
+        $options         = $quiz->quizOptions;
 
         // Disable answer hover
         $options['disable_hover_effect'] = isset($options['disable_hover_effect']) ? $options['disable_hover_effect'] : 'off';

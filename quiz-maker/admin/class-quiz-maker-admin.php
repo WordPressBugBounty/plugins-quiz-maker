@@ -1150,6 +1150,7 @@ class Quiz_Maker_Admin
         $quick_quiz_quest_explanation_letter_spacing        = 0;
         $quick_quiz_quest_explanation_font_weight           = "normal";
         $quick_quiz_right_answers_font_size                 = 16;
+        $quick_quiz_right_answers_mobile_font_size          = 16;
 
         if($quiz_enable_options == 'on'){
             $quick_quiz_enable_randomize_questions = (isset( $_REQUEST['ays_quick_quiz_enable_randomize_questions'] ) && $_REQUEST['ays_quick_quiz_enable_randomize_questions'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_randomize_questions'] ) ) : "off";
@@ -1363,6 +1364,9 @@ class Quiz_Maker_Admin
 
             // Font size for the right answer | PC
             $quick_quiz_right_answers_font_size = (isset( $_REQUEST['ays_quick_quiz_right_answers_font_size'] ) && $_REQUEST['ays_quick_quiz_right_answers_font_size'] != "") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_right_answers_font_size'] ) ) : 16;
+
+            // Font size for the right answer | Mobile
+            $quick_quiz_right_answers_mobile_font_size = (isset( $_REQUEST['ays_quick_quiz_right_answers_mobile_font_size'] ) && $_REQUEST['ays_quick_quiz_right_answers_mobile_font_size'] != "") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_right_answers_mobile_font_size'] ) ) : 16;
             
         }
         
@@ -1610,7 +1614,7 @@ class Quiz_Maker_Admin
             'wrong_answers_font_size'                       => "16",
             'wrong_answers_mobile_font_size'                => "16",
             'right_answers_font_size'                       => $quick_quiz_right_answers_font_size,
-            'right_answers_mobile_font_size'                => "16",
+            'right_answers_mobile_font_size'                => $quick_quiz_right_answers_mobile_font_size,
             'note_text_font_size'                           => $quick_quiz_note_text_font_size,
             'note_text_mobile_font_size'                    => $quick_quiz_note_text_mobile_font_size,
             'quiz_questions_numbering_by_category'          => "off",

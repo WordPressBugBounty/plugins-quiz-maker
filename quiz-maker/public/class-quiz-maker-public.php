@@ -5245,15 +5245,15 @@ class Quiz_Maker_Public
             $quiz_title = (isset($quiz['title']) && $quiz['title'] != '') ? stripslashes( $quiz['title'] ) : '';
 
             $limit_users_attr = array(
-                'id' => $quiz_id,
-                'name' => 'ays_quiz_cookie_',
-                'title' => $quiz_title,
+                'id'     => $quiz_id,
+                'name'   => 'ays_quiz_cookie_',
+                'title'  => $quiz_title,
             );
             $check_cookie = $this->ays_quiz_check_cookie( $limit_users_attr );
             $return_false_status_arr = array(
                 "status" => false,
-                "flag" => false,
-                "text" => __( 'You have already passed this quiz.', $this->plugin_name ),
+                "flag"   => false,
+                "text"   => __( 'You have already passed this quiz.', $this->plugin_name ),
             );
 
             if ( $check_cookie ) {

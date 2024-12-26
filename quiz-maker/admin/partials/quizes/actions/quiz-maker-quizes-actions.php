@@ -1945,14 +1945,6 @@ $quiz_content_mobile_max_width = ( isset($options['quiz_content_mobile_max_width
                                             </a>
                                         </label>
                                     </div>
-                                    <!-- <div class="col-sm-7 ays_divider_left ays_quiz_display_flex_width">
-                                        <div>
-                                            <input type="number" class="ays-text-input ays-text-input-short" id='ays_quiz_content_max_width' name='ays_quiz_content_max_width' style="display:inline-block;" value="<?php echo esc_attr($quiz_content_max_width); ?>"/>
-                                        </div>
-                                        <div class="ays_quiz_dropdown_max_width">
-                                            <input type="text" value="%" class='ays-quiz-form-hint-for-size' disabled>
-                                        </div>
-                                    </div> -->
                                     <div class="col-sm-7 ays_divider_left">
                                         <div class="row">
                                             <div class="col-sm-5">

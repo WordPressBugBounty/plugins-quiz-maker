@@ -42,10 +42,10 @@ class Quiz_Theme_Elegant_Light extends Quiz_Maker_Public{
 
 
     public function __construct($plugin_name,$plugin_version,$theme_name,$settings,$buttons_texts) {
-        $this->version = $plugin_version;
-        $this->plugin_name = $plugin_name;
-        $this->theme_name = $theme_name;
-        $this->settings = $settings;
+        $this->version       = $plugin_version;
+        $this->plugin_name   = $plugin_name;
+        $this->theme_name    = $theme_name;
+        $this->settings      = $settings;
         $this->buttons_texts = $buttons_texts;
         
         $this->define_theme_styles();
@@ -68,10 +68,10 @@ class Quiz_Theme_Elegant_Light extends Quiz_Maker_Public{
 
     public function ays_generate_quiz($quiz){
         
-        $quiz_id = $quiz->quizID;
-        $arr_questions = $quiz->questions;
+        $quiz_id         = $quiz->quizID;
+        $arr_questions   = $quiz->questions;
         $questions_count = $quiz->questionsCount;
-        $options = $quiz->quizOptions;
+        $options         = $quiz->quizOptions;
         $questions = "";
         $questions = $this->get_quiz_questions($arr_questions, $quiz_id, $options, false);
 
