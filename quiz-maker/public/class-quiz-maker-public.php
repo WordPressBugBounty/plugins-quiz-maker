@@ -691,6 +691,7 @@ class Quiz_Maker_Public
         $not_answered_question_text = (isset($settings_static_texts['not_answered_question_text']) && $settings_static_texts['not_answered_question_text'] != '') ? stripslashes( esc_attr( $settings_static_texts['not_answered_question_text'] ) ) : 'You have not answered this question';
         $finish_quiz_text = (isset($settings_static_texts['finish_quiz_text']) && $settings_static_texts['finish_quiz_text'] != '') ? stripslashes( esc_attr( $settings_static_texts['finish_quiz_text'] ) ) : 'Do you want to finish the quiz? Are you sure?';
         $select_question_placeholder_text  = (isset($settings_static_texts['select_question_placeholder_text']) && $settings_static_texts['select_question_placeholder_text'] != '') ? stripslashes( esc_attr( $settings_static_texts['select_question_placeholder_text'] ) ) : 'Select an answer';
+        $no_more_reviews_text  = (isset($settings_static_texts['no_more_reviews_text']) && $settings_static_texts['no_more_reviews_text'] != '') ? stripslashes( esc_attr( $settings_static_texts['no_more_reviews_text'] ) ) : 'No more reviews';
 
         if ($wrong_shortcode_text === 'Wrong shortcode initialized') {
             $wrong_shortcode_text = __('Wrong shortcode initialized', $plugin_name);
@@ -720,6 +721,10 @@ class Quiz_Maker_Public
             $select_question_placeholder_text = __('Select an answer', $plugin_name);
         }
 
+        if ($no_more_reviews_text === 'No more reviews') {
+            $no_more_reviews_text = __('No more reviews', $plugin_name);
+        }
+
         $texts = array(
             'wrongShortcode'                => $wrong_shortcode_text,
             'enterPassword'                 => $enter_password_text,
@@ -728,6 +733,7 @@ class Quiz_Maker_Public
             'notAnsweredQuestionText'       => $not_answered_question_text,
             'finishQuizText'                => $finish_quiz_text,
             'selectAnswerText'              => $select_question_placeholder_text,
+            'noMoreReviewsText'             => $no_more_reviews_text,
         );
 
         return $texts;
@@ -6817,9 +6823,13 @@ class Quiz_Maker_Public
         $quiz_rate_html = "";
         $quiz_rate_html .= $this->ays_get_full_reasons_of_rates($start, $limit, $quiz_id, $zuyga);
         if($quiz_rate_html == ""){
+            if(is_null( $this->default_texts )){
+                $this->default_texts = self::ays_set_quiz_default_texts( 'quiz-maker', array() );
+            }
+            
             ob_end_clean();
             $ob_get_clean = ob_get_clean();
-            echo "<p class='ays_no_more'>" . __( "No more reviews", $this->plugin_name ) . "</p>";
+            echo "<p class='ays_no_more'>" . $this->default_texts['noMoreReviewsText'] . "</p>";
             wp_die();
         }else{       
             ob_end_clean();

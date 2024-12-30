@@ -115,13 +115,14 @@
     $default_texts_res = ($actions->ays_get_setting('default_texts') === false) ? json_encode(array()) : $actions->ays_get_setting('default_texts');
     $default_texts = json_decode( stripcslashes($default_texts_res), true);
 
-    $wrong_shortcode_text               = (isset($default_texts['wrong_shortcode_text']) && $default_texts['wrong_shortcode_text'] != '') ? stripslashes( esc_attr( $default_texts['wrong_shortcode_text'] ) ) : 'Wrong shortcode initialized';
-    $enter_password_text                = (isset($default_texts['enter_password_text']) && $default_texts['enter_password_text'] != '') ? stripslashes( esc_attr( $default_texts['enter_password_text'] ) ) : 'Please enter password';
-    $wrong_password_text                = (isset($default_texts['wrong_password_text']) && $default_texts['wrong_password_text'] != '') ? stripslashes( esc_attr( $default_texts['wrong_password_text'] ) ) : 'Password is wrong!';
+    $wrong_shortcode_text              = (isset($default_texts['wrong_shortcode_text']) && $default_texts['wrong_shortcode_text'] != '') ? stripslashes( esc_attr( $default_texts['wrong_shortcode_text'] ) ) : 'Wrong shortcode initialized';
+    $enter_password_text               = (isset($default_texts['enter_password_text']) && $default_texts['enter_password_text'] != '') ? stripslashes( esc_attr( $default_texts['enter_password_text'] ) ) : 'Please enter password';
+    $wrong_password_text               = (isset($default_texts['wrong_password_text']) && $default_texts['wrong_password_text'] != '') ? stripslashes( esc_attr( $default_texts['wrong_password_text'] ) ) : 'Password is wrong!';
     $empty_results_text                = (isset($default_texts['empty_results_text']) && $default_texts['empty_results_text'] != '') ? stripslashes( esc_attr( $default_texts['empty_results_text'] ) ) : 'There are no results yet.';
     $not_answered_question_text        = (isset($default_texts['not_answered_question_text']) && $default_texts['not_answered_question_text'] != '') ? stripslashes( esc_attr( $default_texts['not_answered_question_text'] ) ) : 'You have not answered this question';
     $finish_quiz_text                  = (isset($default_texts['finish_quiz_text']) && $default_texts['finish_quiz_text'] != '') ? stripslashes( esc_attr( $default_texts['finish_quiz_text'] ) ) : 'Do you want to finish the quiz? Are you sure?';
     $select_question_placeholder_text  = (isset($default_texts['select_question_placeholder_text']) && $default_texts['select_question_placeholder_text'] != '') ? stripslashes( esc_attr( $default_texts['select_question_placeholder_text'] ) ) : 'Select an answer';
+    $no_more_reviews_text              = (isset($default_texts['no_more_reviews_text']) && $default_texts['no_more_reviews_text'] != '') ? stripslashes( esc_attr( $default_texts['no_more_reviews_text'] ) ) : 'No more reviews';
     // Default texts | End
 
 
@@ -3906,6 +3907,19 @@
                             </div>
                             <div class="col-sm-9">
                                 <input type="text" id="ays_quiz_select_question_placeholder_text" name="ays_quiz_select_question_placeholder_text" class="ays-text-input"  value='<?php echo $select_question_placeholder_text; ?>'>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-3">
+                                <label for="ays_quiz_no_more_reviews_text">
+                                    <?php echo __( "No more reviews Text", $this->plugin_name ); ?>
+                                    <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php echo esc_attr( __( "Customize the text, displayed when there are no more reviews to show for the quiz assessment.", $this->plugin_name ) ); ?>">
+                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                    </a>
+                                </label>
+                            </div>
+                            <div class="col-sm-9">
+                                <input type="text" id="ays_quiz_no_more_reviews_text" name="ays_quiz_no_more_reviews_text" class="ays-text-input"  value='<?php echo $no_more_reviews_text; ?>'>
                             </div>
                         </div>
                         <hr />
