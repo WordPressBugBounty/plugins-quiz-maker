@@ -1606,7 +1606,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                             </div>
                                         </div><!-- Question explanation font weight -->
                                     </div>
-                                </div><!-- Admin note styles -->
+                                </div><!-- Question explanation styles -->
                                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                                     <div class="ays-quiz-accordion-container">
                                         <?php echo $quiz_accordion_svg_html; ?>
@@ -1658,6 +1658,30 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                 </div>
                                             </div>
                                         </div>
+                                        <hr/>
+                                        <div class="form-group row">
+                                            <div class="col-sm-4">
+                                                <label for="ays_quick_quiz_right_answer_text_transform">
+                                                    <?php echo __('Text transformation',$this->plugin_name); ?>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <select class="ays-text-input ays-text-input-short" id="ays_quick_quiz_right_answer_text_transform" name="ays_quick_quiz_right_answer_text_transform">
+                                                    <option value="none" selected>
+                                                        <?php echo __('None',$this->plugin_name); ?>
+                                                    </option>
+                                                    <option value="capitalize">
+                                                        <?php echo __('Capitalize',$this->plugin_name); ?>
+                                                    </option>
+                                                    <option value="uppercase">
+                                                        <?php echo __('Uppercase',$this->plugin_name); ?>
+                                                    </option>
+                                                    <option value="lowercase">
+                                                        <?php echo __('Lowercase',$this->plugin_name); ?>
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div><!-- Right answer text transform -->
                                     </div>
                                 </div><!-- Right answer styles -->
                             </div>
