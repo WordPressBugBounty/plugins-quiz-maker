@@ -1152,6 +1152,7 @@ class Quiz_Maker_Admin
         $quick_quiz_right_answers_font_size                 = 16;
         $quick_quiz_right_answers_mobile_font_size          = 16;
         $quick_quiz_right_answer_text_transform             = "none";
+        $quick_quiz_right_answers_text_decoration           = "none";
 
         if($quiz_enable_options == 'on'){
             $quick_quiz_enable_randomize_questions = (isset( $_REQUEST['ays_quick_quiz_enable_randomize_questions'] ) && $_REQUEST['ays_quick_quiz_enable_randomize_questions'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_randomize_questions'] ) ) : "off";
@@ -1371,6 +1372,9 @@ class Quiz_Maker_Admin
 
             // Text transformation for the question explanation
             $quick_quiz_right_answer_text_transform = (isset( $_REQUEST['ays_quick_quiz_right_answer_text_transform'] ) && $_REQUEST['ays_quick_quiz_right_answer_text_transform'] != "") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_right_answer_text_transform'] ) ) : "none";
+
+            // Text transformation for the question explanation
+            $quick_quiz_right_answers_text_decoration = (isset( $_REQUEST['ays_quick_quiz_right_answers_text_decoration'] ) && $_REQUEST['ays_quick_quiz_right_answers_text_decoration'] != "") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_right_answers_text_decoration'] ) ) : "none";
             
         }
         
@@ -1643,7 +1647,7 @@ class Quiz_Maker_Admin
             'quiz_wrong_answer_text_transform'              => "none",
             'quiz_admin_note_text_decoration'               => $quick_quiz_admin_note_text_decoration,
             'quiz_quest_explanation_text_decoration'        => $quick_quiz_quest_explanation_text_decoration,
-            'quiz_right_answers_text_decoration'            => "none",
+            'quiz_right_answers_text_decoration'            => $quick_quiz_right_answers_text_decoration,
             'quiz_wrong_answers_text_decoration'            => "none",
             'quiz_admin_note_letter_spacing'                => $quick_quiz_admin_note_letter_spacing,
             'quiz_bg_img_during_the_quiz'                   => "off",
@@ -3812,6 +3816,8 @@ class Quiz_Maker_Admin
         if($ishmar == 0 ){
             $content = array();
 
+            $quiz_cta_button_link = esc_url('https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=christmas-sale-banner' . AYS_QUIZ_VERSION);
+
             $content[] = '<div id="ays-quiz-christmas-top-bundle-dicount-month-main" class="notice notice-success is-dismissible ays_quiz_dicount_info">';
                 $content[] = '<div id="ays-quiz-dicount-month" class="ays_quiz_dicount_month">';
 
@@ -3850,13 +3856,13 @@ class Quiz_Maker_Admin
                         $content[] = '<div>';
 
                             $content[] = '<span class="ays-quiz-christmas-top-bundle-title">';
-                                $content[] = __( "<span><a href='https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=christmas-sale-banner' class='ays-quiz-christmas-top-bundle-title-link' target='_blank'>Christmas Sale</a></span>", AYS_QUIZ_NAME );
+                                $content[] = __( "<span><a href='". $quiz_cta_button_link ."' class='ays-quiz-christmas-top-bundle-title-link' target='_blank'>Christmas Sale</a></span>", AYS_QUIZ_NAME );
                             $content[] = '</span>';
 
                             $content[] = '</br>';
 
                             $content[] = '<span class="ays-quiz-christmas-top-bundle-desc">';
-                                $content[] = '<a class="ays-quiz-christmas-top-bundle-desc" href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=christmas-sale-banner" class="ays-quiz-christmas-top-bundle-title-link" target="_blank">';
+                                $content[] = '<a class="ays-quiz-christmas-top-bundle-desc" href="'. $quiz_cta_button_link .'" class="ays-quiz-christmas-top-bundle-title-link" target="_blank">';
                                     $content[] = __( "20% Extra OFF", AYS_QUIZ_NAME );
                                 $content[] = '</a>';
                             $content[] = '</span>';
@@ -3884,11 +3890,11 @@ class Quiz_Maker_Admin
 
                         $content[] = '<div class="ays-quiz-christmas-top-bundle-text-row">';
                             $content[] = __( '20% Extra Discount Coupon', AYS_QUIZ_NAME );
-                        $content[] = '</div>';
+                        $content[] = '</div>'; 
                     $content[] = '</div>';
 
                     $content[] = '<div class="ays-quiz-dicount-wrap-box ays-quiz-dicount-wrap-button-box">';
-                        $content[] = '<a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=christmas-sale-banner" class="button button-primary ays-button" id="ays-button-top-buy-now" target="_blank">' . __( 'Get Your Deal', AYS_QUIZ_NAME ) . '</a>';
+                        $content[] = '<a href="'. $quiz_cta_button_link .'" class="button button-primary ays-button" id="ays-button-top-buy-now" target="_blank">' . __( 'Get Your Deal', AYS_QUIZ_NAME ) . '</a>';
                         $content[] = '<span class="ays-quiz-dicount-one-time-text">';
                             $content[] = __( "One-time payment", AYS_QUIZ_NAME );
                         $content[] = '</span>';

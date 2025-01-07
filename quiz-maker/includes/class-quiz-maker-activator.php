@@ -301,12 +301,12 @@ class Quiz_Maker_Activator
 
                 $quizes_array = array(
                     array(
-                        'title' => 'Mathematic Quiz',
-                        'description' => 'Math quiz helps us to increase our knowledge',
-                        'quiz_category_id' => 1,
-                        'question_ids' => 2,
-                        'ordering' => 1,
-                        'published' => 1,
+                        'title'                             => 'Mathematic Quiz',
+                        'description'                       => 'Math quiz helps us to increase our knowledge',
+                        'quiz_category_id'                  => 1,
+                        'question_ids'                      => 2,
+                        'ordering'                          => 1,
+                        'published'                         => 1,
                         'options' => json_encode(array(
                             'color'                         => '#5d6cf9',
                             'bg_color'                      => '#fff',

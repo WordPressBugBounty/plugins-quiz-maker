@@ -517,12 +517,12 @@ class Quiz_Maker_Public
         }
 
         $texts = array(
-            'namePlaceholder'       => $quiz_fields_placeholder_name_text,
-            'emailPlaceholder'      => $quiz_fields_placeholder_eamil_text,
-            'phonePlaceholder'      => $quiz_fields_placeholder_phone_text,
-            'nameLabel'             => $quiz_fields_label_name_text,
-            'emailLabel'            => $quiz_fields_label_eamil_text,
-            'phoneLabel'            => $quiz_fields_label_phone_text,
+            'namePlaceholder'   => $quiz_fields_placeholder_name_text,
+            'emailPlaceholder'  => $quiz_fields_placeholder_eamil_text,
+            'phonePlaceholder'  => $quiz_fields_placeholder_phone_text,
+            'nameLabel'         => $quiz_fields_label_name_text,
+            'emailLabel'        => $quiz_fields_label_eamil_text,
+            'phoneLabel'        => $quiz_fields_label_phone_text,
         );
 
         return $texts;
