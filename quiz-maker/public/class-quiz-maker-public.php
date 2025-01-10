@@ -2569,13 +2569,13 @@ class Quiz_Maker_Public
 
         $enable_social_links = (isset($options['enable_social_links']) && $options['enable_social_links'] == "on") ? true : false;
         $social_links = (isset($options['social_links'])) ? $options['social_links'] : array(
-            'linkedin_link' => '',
-            'facebook_link' => '',
-            'twitter_link' => '',
-            'vkontakte_link' => '',
-            'instagram_link' => '',
-            'youtube_link' => '',
-            'behance_link' => '',
+            'linkedin_link'     => '',
+            'facebook_link'     => '',
+            'twitter_link'      => '',
+            'vkontakte_link'    => '',
+            'instagram_link'    => '',
+            'youtube_link'      => '',
+            'behance_link'      => '',
         );
         $ays_social_links_array = array();
 
@@ -2857,12 +2857,12 @@ class Quiz_Maker_Public
         if($show_login_form){
             $ays_login_button_text = $this->buttons_texts['loginButton'];
             $args = array(
-                'echo' => false,
-                'id_username' => 'ays_user_login',
-                'id_password' => 'ays_user_pass',
-                'id_remember' => 'ays_rememberme',
-                'id_submit' => 'ays-submit',
-                'label_log_in' => $ays_login_button_text,
+                'echo'          => false,
+                'id_username'   => 'ays_user_login',
+                'id_password'   => 'ays_user_pass',
+                'id_remember'   => 'ays_rememberme',
+                'id_submit'     => 'ays-submit',
+                'label_log_in'  => $ays_login_button_text,
             );
             $quiz_login_form = "<div class='ays_quiz_login_form'>" . wp_login_form( $args ) . "</div>";
         }

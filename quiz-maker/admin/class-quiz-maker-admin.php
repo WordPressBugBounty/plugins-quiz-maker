@@ -1153,6 +1153,7 @@ class Quiz_Maker_Admin
         $quick_quiz_right_answers_mobile_font_size          = 16;
         $quick_quiz_right_answer_text_transform             = "none";
         $quick_quiz_right_answers_text_decoration           = "none";
+        $quick_quiz_right_answers_letter_spacing            = 0;
 
         if($quiz_enable_options == 'on'){
             $quick_quiz_enable_randomize_questions = (isset( $_REQUEST['ays_quick_quiz_enable_randomize_questions'] ) && $_REQUEST['ays_quick_quiz_enable_randomize_questions'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_randomize_questions'] ) ) : "off";
@@ -1375,6 +1376,9 @@ class Quiz_Maker_Admin
 
             // Text transformation for the question explanation
             $quick_quiz_right_answers_text_decoration = (isset( $_REQUEST['ays_quick_quiz_right_answers_text_decoration'] ) && $_REQUEST['ays_quick_quiz_right_answers_text_decoration'] != "") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_right_answers_text_decoration'] ) ) : "none";
+
+            // Letter spacing for the right answers
+            $quick_quiz_right_answers_letter_spacing = (isset( $_REQUEST['ays_quick_quiz_right_answers_letter_spacing'] ) && $_REQUEST['ays_quick_quiz_right_answers_letter_spacing'] != "") ? absint( stripslashes( $_REQUEST['ays_quick_quiz_right_answers_letter_spacing'] ) ) : 0;
             
         }
         
@@ -1652,7 +1656,7 @@ class Quiz_Maker_Admin
             'quiz_admin_note_letter_spacing'                => $quick_quiz_admin_note_letter_spacing,
             'quiz_bg_img_during_the_quiz'                   => "off",
             'quiz_quest_explanation_letter_spacing'         => $quick_quiz_quest_explanation_letter_spacing,
-            'quiz_right_answers_letter_spacing'             => 0,
+            'quiz_right_answers_letter_spacing'             => $quick_quiz_right_answers_letter_spacing,
             'quiz_wrong_answers_letter_spacing'             => 0,
             'quiz_admin_note_font_weight'                   => $quick_quiz_admin_note_font_weight,
             'quiz_quest_explanation_font_weight'            => $quick_quiz_quest_explanation_font_weight,
