@@ -2962,8 +2962,8 @@ class Quiz_Maker_Admin
                 if ( sanitize_text_field($_GET['page']) == 'quiz-maker-settings' ) {
                     $this->ays_quiz_chart_bulider_message($ays_quiz_ishmar);
                 } else {
-                    $this->ays_quiz_christmas_top_message_2024($ays_quiz_ishmar);
-                    // $this->ays_quiz_new_mega_bundle_message($ays_quiz_ishmar);
+                    // $this->ays_quiz_christmas_top_message_2024($ays_quiz_ishmar);
+                    $this->ays_quiz_new_mega_bundle_message($ays_quiz_ishmar);
                 }
             }
         }
@@ -3484,6 +3484,8 @@ class Quiz_Maker_Admin
         if($ishmar == 0 ){
             $content = array();
 
+            $quiz_cta_button_link = esc_url('https://ays-pro.com/mega-bundle?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=mega-bundle-sale-banner' . AYS_QUIZ_VERSION);
+
             $content[] = '<div id="ays-quiz-new-mega-bundle-dicount-month-main" class="notice notice-success is-dismissible ays_quiz_dicount_info">';
                 $content[] = '<div id="ays-quiz-dicount-month" class="ays_quiz_dicount_month">';
                     // $content[] = '<a href="https://ays-pro.com/mega-bundle" target="_blank" class="ays-quiz-sale-banner-link"><img src="' . AYS_QUIZ_ADMIN_URL . '/images/mega_bundle_logo_box.png"></a>';
@@ -3493,7 +3495,7 @@ class Quiz_Maker_Admin
 
                             $content[] = '<span class="ays-quiz-new-mega-bundle-title">';
                                 // $content[] = __( "<span><a href='https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=sale-banner' target='_blank' style='color:#ffffff; text-decoration: underline;'>Quiz Maker</a></span>", AYS_QUIZ_NAME );
-                                $content[] = __( "<span><a href='https://ays-pro.com/mega-bundle?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=mega-bundle-sale-banner' target='_blank' style='color:#ffffff; text-decoration: underline;'>Mega Bundle</a></span> (Quiz + Survey + Poll)", AYS_QUIZ_NAME );
+                                $content[] = __( "<span><a href='". $quiz_cta_button_link ."' target='_blank' style='color:#ffffff; text-decoration: underline;'>Mega Bundle</a></span> (Quiz + Survey + Poll)", AYS_QUIZ_NAME );
                             $content[] = '</span>';
                             $content[] = '<div style="display: inline-block;">';
                                 $content[] = '<img src="' . AYS_QUIZ_ADMIN_URL . '/images/ays-quiz-banner-50.svg" class="ays-quiz-new-mega-bundle-mobile-image-display-none" style="width: 70px;">';
@@ -3562,7 +3564,7 @@ class Quiz_Maker_Admin
                     $content[] = '</div>';
 
                     $content[] = '<div class="ays-quiz-dicount-wrap-box ays-quiz-dicount-wrap-button-box">';
-                        $content[] = '<a href="https://ays-pro.com/mega-bundle?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=mega-bundle-sale-banner" class="button button-primary ays-button" id="ays-button-top-buy-now" target="_blank">' . __( 'Buy Now', AYS_QUIZ_NAME ) . '</a>';
+                        $content[] = '<a href="'. $quiz_cta_button_link .'" class="button button-primary ays-button" id="ays-button-top-buy-now" target="_blank">' . __( 'Buy Now', AYS_QUIZ_NAME ) . '</a>';
                         $content[] = '<span class="ays-quiz-dicount-one-time-text">';
                             $content[] = __( "One-time payment", AYS_QUIZ_NAME );
                         $content[] = '</span>';

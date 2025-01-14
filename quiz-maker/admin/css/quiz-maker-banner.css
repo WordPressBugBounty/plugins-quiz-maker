@@ -1702,7 +1702,7 @@ div#ays-quiz-dicount-month-main.ays_quiz_dicount_info.ays_quiz_chart_bulider_con
 
 /* New Mega Bundle Banner Quiz | Start */
 
-/* div#ays-quiz-new-mega-bundle-dicount-month-main {
+div#ays-quiz-new-mega-bundle-dicount-month-main {
     border: 0;
     background: #FFF;
     border-radius: 20px;
@@ -2169,7 +2169,7 @@ div#ays-quiz-new-mega-bundle-dicount-month-main button.notice-dismiss:before{
         min-height: 50px;
         min-width: 50px;
     }
-}*/
+}
 /* New Mega Bundle Banner Quiz | End */
 
 
@@ -3704,9 +3704,9 @@ div#ays-quiz-black-friday-bundle-dicount-month-main button.notice-dismiss:before
 /* 2024 | Black Friday top banner | End */
 
 
-/* 2024 | Christmas top banner | Start */
+/* 2024 | Christmas top banner | Start 
 
-div#ays-quiz-christmas-top-bundle-dicount-month-main {
+/*div#ays-quiz-christmas-top-bundle-dicount-month-main {
     border: 0;
     background: #FFF;
     border-radius: 20px;
@@ -4226,5 +4226,5 @@ div#ays-quiz-christmas-top-bundle-dicount-month-main button.notice-dismiss:befor
         flex-wrap: wrap;
         justify-content: space-around;
     }
-}
+}*/
 /* 2024 | Christmas top banner | End */
