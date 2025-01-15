@@ -143,7 +143,7 @@ $quiz_results_plugin_nonce = wp_create_nonce( 'quiz-maker-ajax-results-nonce' );
             $content = "<div class='ays_lb_container'>
             <ul class='ays_lb_ul' style='width: 100%;'>
                 <li class='ays_lb_li'>
-                    <div class='ays_lb_pos'>Pos.</div>
+                    <div class='ays_lb_pos'>".__("Pos.", $this->plugin_name)."</div>
                     <div class='ays_lb_user'>".__("Name", $this->plugin_name)."</div>
                     <div class='ays_lb_score'>".__("Score", $this->plugin_name)."</div>
                 </li>";

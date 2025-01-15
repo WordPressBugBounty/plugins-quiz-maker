@@ -1250,7 +1250,7 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                                 </a>
                             </div>
                             <div class="col-sm-3">
-                                <a href="javascript:void(0)" class="add-question-image m-0" tabindex="-1" style="border: 1px solid #ededed;">Add Image</a>
+                                <a href="javascript:void(0)" class="add-question-image m-0" tabindex="-1" style="border: 1px solid #ededed;"><?php echo __('Add Image', $this->plugin_name); ?></a>
                             </div>
                             <div class="col-sm-6">
                                 <div class="ays-question-bg-image-container">

@@ -1154,6 +1154,7 @@ class Quiz_Maker_Admin
         $quick_quiz_right_answer_text_transform             = "none";
         $quick_quiz_right_answers_text_decoration           = "none";
         $quick_quiz_right_answers_letter_spacing            = 0;
+        $quick_quiz_right_answers_font_weight               = "normal";
 
         if($quiz_enable_options == 'on'){
             $quick_quiz_enable_randomize_questions = (isset( $_REQUEST['ays_quick_quiz_enable_randomize_questions'] ) && $_REQUEST['ays_quick_quiz_enable_randomize_questions'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_randomize_questions'] ) ) : "off";
@@ -1379,6 +1380,9 @@ class Quiz_Maker_Admin
 
             // Letter spacing for the right answers
             $quick_quiz_right_answers_letter_spacing = (isset( $_REQUEST['ays_quick_quiz_right_answers_letter_spacing'] ) && $_REQUEST['ays_quick_quiz_right_answers_letter_spacing'] != "") ? absint( stripslashes( $_REQUEST['ays_quick_quiz_right_answers_letter_spacing'] ) ) : 0;
+
+            // Admin Note font weight
+            $quick_quiz_right_answers_font_weight = (isset( $_REQUEST['ays_quick_quiz_right_answers_font_weight'] ) && $_REQUEST['ays_quick_quiz_right_answers_font_weight'] != "") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_right_answers_font_weight'] ) ) : "normal";
             
         }
         
@@ -1660,7 +1664,7 @@ class Quiz_Maker_Admin
             'quiz_wrong_answers_letter_spacing'             => 0,
             'quiz_admin_note_font_weight'                   => $quick_quiz_admin_note_font_weight,
             'quiz_quest_explanation_font_weight'            => $quick_quiz_quest_explanation_font_weight,
-            'quiz_right_answers_font_weight'                => "normal",
+            'quiz_right_answers_font_weight'                => $quick_quiz_right_answers_font_weight,
             'quiz_wrong_answers_font_weight'                => "normal",
         );
 
@@ -1936,7 +1940,7 @@ class Quiz_Maker_Admin
             if ($ays_quiz_show_result_info_user_ip == 'on') {
                 if ($user_ip != '') {
                     $row .= '<tr class="ays_result_element">
-                                <td>User IP</td>
+                                <td>' . __("User IP", $this->plugin_name) . '</td>
                                 <td colspan="3">' . $from . '</td>
                             </tr>';
                 }
@@ -1947,14 +1951,14 @@ class Quiz_Maker_Admin
             if( $ays_quiz_show_result_info_user_id == 'on' ){
                 if($user_id !== 0){
                     $row .= '<tr class="ays_result_element">
-                            <td>User ID</td>
+                            <td>' . __("User ID", $this->plugin_name) . '</td>
                             <td colspan="3">' . $user_id . '</td>                    
                         </tr>';
                 }
             }
             if ($ays_quiz_show_result_info_user == 'on') {
                 $row .= '<tr class="ays_result_element">
-                        <td>User</td>
+                        <td>' . __("User", $this->plugin_name) . '</td>
                         <td colspan="3">' . $user_name . '</td>
                     </tr>';
             }
