@@ -267,7 +267,16 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                             <div class="col-sm-1">
                                 <input type="checkbox" class="ays-enable-timerl ays_toggle_checkbox" id="ays_quick_quiz_enable_options" name="ays_quick_quiz_enable_options" value="on" />
                             </div>
-                            <div class="col-sm-9 ays_toggle_target ays_divider_left display_none">
+                            <div class="col-sm-9 ays_toggle_target ays-quiz-tab-content ays_divider_left display_none">
+                                <div class="ays-quiz-top-actions-container-wrapper form-group row">
+                                    <div class="col-sm-12">
+                                        <p class="m-0 text-right">
+                                            <a class="ays-quiz-collapse-all" href="javascript:void(0);"><?php echo __( "Collapse All", "quiz-maker" ); ?></a>
+                                            <span>|</span>
+                                            <a class="ays-quiz-expand-all" href="javascript:void(0);"><?php echo __( "Expand All", "quiz-maker" ); ?></a>
+                                        </p>
+                                    </div>
+                                </div>
                                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                                     <div class="ays-quiz-accordion-container">
                                         <?php echo $quiz_accordion_svg_html; ?>
