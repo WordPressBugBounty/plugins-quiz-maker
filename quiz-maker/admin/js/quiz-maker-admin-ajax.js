@@ -43,9 +43,16 @@
         $(document).find('div.ays-quiz-preloader').css('display', 'flex');
         $(document).find('td.empty_quiz_td').parent().remove();
         var wp_nonce = $(document).find('#ays_quiz_ajax_add_question_nonce').val();
+        var quiz_question_title_view = $(document).find('.quiz_question_title_view');
+
         let data = $(this).serializeFormJSON();
         data.action = 'add_question_rows';
         data._ajax_nonce = wp_nonce;
+
+        if(quiz_question_title_view.length > 0){
+            var quiz_question_title_view_val = quiz_question_title_view.val();
+            data.question_title_view = quiz_question_title_view_val;
+        }
 
         data['ays_questions_ids[]'] = window.aysQuestSelected;
         $.ajax({

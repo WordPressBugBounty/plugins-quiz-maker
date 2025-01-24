@@ -263,6 +263,9 @@
     $options['quiz_show_quiz_button_to_admin_only'] = isset($options['quiz_show_quiz_button_to_admin_only']) ? sanitize_text_field( $options['quiz_show_quiz_button_to_admin_only'] ) : 'off';
     $quiz_show_quiz_button_to_admin_only = (isset($options['quiz_show_quiz_button_to_admin_only']) && sanitize_text_field( $options['quiz_show_quiz_button_to_admin_only'] ) == "on") ? true : false;
 
+    // Question title view
+    $quiz_question_title_view = (isset($options['quiz_question_title_view']) && sanitize_text_field( $options['quiz_question_title_view'] ) != "") ? stripslashes( esc_attr($options['quiz_question_title_view']) ) : 'question_title';
+
 
     // Fields placeholders | Start
 
@@ -456,6 +459,7 @@
                                     </select>
                                 </div>
                             </div>
+                            <hr />
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <label for="ays_answer_default_count">
@@ -469,6 +473,7 @@
                                     <input type="number" name="ays_answer_default_count" id="ays_answer_default_count" min="2" class="ays-text-input" value="<?php echo $ays_answer_default_count; ?>">
                                 </div>
                             </div>
+                            <hr />
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <label for="ays_question_default_category">
@@ -494,6 +499,7 @@
                                     </select>
                                 </div>
                             </div>
+                            <hr />
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <label for="ays_quiz_wp_editor_height">
@@ -507,6 +513,7 @@
                                     <input type="number" name="ays_quiz_wp_editor_height" id="ays_quiz_wp_editor_height" class="ays-text-input" value="<?php echo $quiz_wp_editor_height; ?>">
                                 </div>
                             </div>
+                            <hr />
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <label for="ays_quiz_textarea_height">
@@ -520,6 +527,35 @@
                                     <input type="number" name="ays_quiz_textarea_height" id="ays_quiz_textarea_height" class="ays-text-input" value="<?php echo $quiz_textarea_height; ?>">
                                 </div>
                             </div>
+                            <hr />
+                            <div class="form-group row">
+                                <div class="col-sm-4">
+                                    <label for="ays_quiz_question_title_view">
+                                        <?php echo __( "Question Title View", $this->plugin_name ); ?>
+                                        <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php
+                                            echo 
+                                                "<ul style='list-style-type: circle;padding-left: 20px;'>".
+                                                    "<li>". __('By Question Title - Choose this method to display the text you write for the Question Title option.',$this->plugin_name) ."</li>".
+                                                    "<li>". __('By Question Content - Choose this method to show the question content instead of the question title.',$this->plugin_name) ."</li>".
+                                                "</ul>" .
+                                                __('*Note: These options will work only in the table of the Quiz Edit page and when inserting questions to the quiz.',$this->plugin_name);
+                                            ?>">
+                                            <i class="ays_fa ays_fa_info_circle"></i>
+                                        </a>
+                                    </label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <label class="ays_quiz_loader">
+                                        <input type="radio" id="ays_quiz_question_title_view_title" name="ays_quiz_question_title_view" value="question_title" <?php echo ($quiz_question_title_view == 'question_title') ? 'checked' : ''; ?>/>
+                                        <span for="ays_quiz_question_title_view_title"><?php echo __('By Question Title',$this->plugin_name); ?></span>
+                                    </label>
+                                    <label class="ays_quiz_loader">
+                                        <input type="radio" id="ays_quiz_question_title_view_content" name="ays_quiz_question_title_view" value="question_content" <?php echo ($quiz_question_title_view == 'question_content') ? 'checked' : ''; ?>/>
+                                        <span for="ays_quiz_question_title_view_content"><?php echo __('By Question Content',$this->plugin_name); ?></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <hr />
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <label for="ays_quiz_enable_question_allow_html">
@@ -533,6 +569,7 @@
                                     <input type="checkbox" class="ays-checkbox-input" id="ays_quiz_enable_question_allow_html" name="ays_quiz_enable_question_allow_html" value="on" <?php echo $quiz_enable_question_allow_html ? 'checked' : ''; ?> />
                                 </div>
                             </div>
+                            <hr />
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <label for="ays_quiz_enable_question_not_influence_to_score">
@@ -546,6 +583,7 @@
                                     <input type="checkbox" class="ays-checkbox-input" id="ays_quiz_enable_question_not_influence_to_score" name="ays_quiz_enable_question_not_influence_to_score" value="on" <?php echo $quiz_enable_question_not_influence_to_score ? 'checked' : ''; ?> />
                                 </div>
                             </div>
+                            <hr />
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <label for="ays_quiz_enable_question_hide_question_text">
@@ -559,6 +597,7 @@
                                     <input type="checkbox" class="ays-checkbox-input" id="ays_quiz_enable_question_hide_question_text" name="ays_quiz_enable_question_hide_question_text" value="on" <?php echo $quiz_enable_question_hide_question_text ? 'checked' : ''; ?> />
                                 </div>
                             </div>
+                            <hr />
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <label for="ays_quiz_stripslashes_for_answer">
@@ -572,6 +611,7 @@
                                     <input type="checkbox" class="ays-checkbox-input" id="ays_quiz_stripslashes_for_answer" name="ays_quiz_stripslashes_for_answer" value="on" <?php echo $quiz_stripslashes_for_answer ? 'checked' : ''; ?> />
                                 </div>
                             </div>
+                            <hr />
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <label for="ays_quiz_case_sensitive_text">
@@ -585,6 +625,7 @@
                                     <input type="checkbox" class="ays-checkbox-input" id="ays_quiz_case_sensitive_text" name="ays_quiz_case_sensitive_text" value="on" <?php echo $quiz_case_sensitive_text ? 'checked' : ''; ?> />
                                 </div>
                             </div>
+                            <hr />
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <label for="ays_quiz_show_quiz_button_to_admin_only">
@@ -598,6 +639,7 @@
                                     <input type="checkbox" class="ays-checkbox-input" id="ays_quiz_show_quiz_button_to_admin_only" name="ays_quiz_show_quiz_button_to_admin_only" value="on" <?php echo $quiz_show_quiz_button_to_admin_only ? 'checked' : ''; ?> />
                                 </div>
                             </div>
+                            <hr />
                             <div class="form-group row" style="padding:0px;margin:0;">
                                 <div class="col-sm-12 only_pro" style="padding:20px;">
                                     <div class="pro_features" style="">

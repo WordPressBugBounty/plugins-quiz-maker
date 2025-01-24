@@ -183,7 +183,8 @@ class Quizes_List_Table extends WP_List_Table{
         global $wpdb;
         $sql = "SELECT 
                     {$wpdb->prefix}aysquiz_questions.id, 
-                    {$wpdb->prefix}aysquiz_questions.question, 
+                    {$wpdb->prefix}aysquiz_questions.question,
+                    {$wpdb->prefix}aysquiz_questions.question_title,
                     {$wpdb->prefix}aysquiz_questions.type, 
                     {$wpdb->prefix}aysquiz_questions.create_date,
                     {$wpdb->prefix}aysquiz_questions.question_image,

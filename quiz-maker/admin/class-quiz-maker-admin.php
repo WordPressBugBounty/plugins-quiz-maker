@@ -882,6 +882,9 @@ class Quiz_Maker_Admin
 
             $question_ids = (isset($_REQUEST["ays_questions_ids"]) && !empty($_REQUEST["ays_questions_ids"])) ? array_map( 'sanitize_text_field', $_REQUEST['ays_questions_ids'] ) : array();
 
+            // Question title view
+            $question_title_view = (isset($_REQUEST['question_title_view']) && sanitize_text_field( $_REQUEST['question_title_view'] ) != "") ? sanitize_text_field( $_REQUEST['question_title_view'] ) : 'question_title';
+
             $rows = array();
             $ids = array();
             if (!empty($question_ids)) {
@@ -893,7 +896,10 @@ class Quiz_Maker_Admin
                 foreach ($question_ids as $question_id) {
                     $data = $this->get_published_questions_by('id', absint(intval($question_id)));
                     $table_question = (strip_tags(stripslashes($data['question'])));
-                    if(isset($data['question']) && strlen($data['question']) != 0){
+                    if(isset($data['question_title']) && $data['question_title'] != '' && $question_title_view == 'question_title'){
+                        $table_question = htmlspecialchars_decode( $data['question_title'], ENT_COMPAT);
+                        $table_question = stripslashes( $table_question );
+                    }elseif(isset($data['question']) && strlen($data['question']) != 0){
 
                         $is_exists_ruby = Quiz_Maker_Admin::ays_quiz_is_exists_needle_tag( $data['question'] , '<ruby>' );
 

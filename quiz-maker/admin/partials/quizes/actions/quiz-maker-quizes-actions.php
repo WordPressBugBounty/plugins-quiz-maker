@@ -357,7 +357,10 @@ if($right_answer_sound && $wrong_answer_sound){
 }
 
 // WP Editor height
-$quiz_wp_editor_height = (isset($settings_options['quiz_wp_editor_height']) && $settings_options['quiz_wp_editor_height'] != '') ? absint( sanitize_text_field($settings_options['quiz_wp_editor_height']) ) : 100 ;
+$quiz_wp_editor_height = (isset($settings_options['quiz_wp_editor_height']) && $settings_options['quiz_wp_editor_height'] != '') ? absint( sanitize_text_field($settings_options['quiz_wp_editor_height']) ) : 100;
+
+// Question title view
+$quiz_question_title_view = (isset($settings_options['quiz_question_title_view']) && sanitize_text_field( $settings_options['quiz_question_title_view'] ) != "") ? stripslashes( esc_attr($settings_options['quiz_question_title_view']) ) : 'question_title';
 
 if (isset($_POST['ays_submit']) || isset($_POST['ays_submit_top'])) {
     $_POST['id'] = $id;
@@ -1412,6 +1415,7 @@ $quiz_content_mobile_max_width = ( isset($options['quiz_content_mobile_max_width
             <input type="hidden" name="ays_quiz_ctrate_date" value="<?php echo esc_attr($quiz_create_date); ?>">
             <input type="hidden" name="ays_quiz_author" value="<?php echo esc_attr(json_encode($quiz_author, JSON_UNESCAPED_SLASHES)); ?>">
             <input type="hidden" class="quiz_wp_editor_height" value="<?php echo $quiz_wp_editor_height; ?>">
+            <input type="hidden" class="quiz_question_title_view" value="<?php echo esc_attr($quiz_question_title_view); ?>">
             <!-- <input type="hidden" id="ays_quiz_section_collapse_flag" name="ays_quiz_section_collapse_flag" value="<?php #echo esc_attr($quiz_section_collapse_flag_input); ?>"> -->
             <div class="ays-quiz-heading-box">
                 <div class="ays-quiz-wordpress-user-manual-box">
@@ -1674,7 +1678,10 @@ $quiz_content_mobile_max_width = ( isset($options['quiz_content_mobile_max_width
                                 $edit_question_url = "?page=".$this->plugin_name."-questions&action=edit&question=".$data_id;
 
                                 $table_question = "";
-                                if(isset($data['question']) && strlen($data['question']) != 0){
+                                if(isset($data['question_title']) && $data['question_title'] != '' && $quiz_question_title_view == 'question_title'){
+                                    $table_question = htmlspecialchars_decode( $data['question_title'], ENT_COMPAT);
+                                    $table_question = stripslashes( $table_question );
+                                } elseif(isset($data['question']) && strlen($data['question']) != 0){
 
                                     $is_exists_ruby = Quiz_Maker_Admin::ays_quiz_is_exists_needle_tag( $data['question'] , '<ruby>' );
 
@@ -1685,7 +1692,7 @@ $quiz_content_mobile_max_width = ( isset($options['quiz_content_mobile_max_width
                                     }
 
                                 }elseif ((isset($data['question_image']) && $data['question_image'] !='')){
-                                    $table_question = 'Image question';
+                                    $table_question = __( 'Image question', $this->plugin_name );
                                 }
                                 $table_question = $this->ays_restriction_string("word",$table_question, 10);
 
@@ -9833,7 +9840,11 @@ $quiz_content_mobile_max_width = ( isset($options['quiz_content_mobile_max_width
                                     $text .= "<p style='margin:0;text-align:left;'><b>Author:</b> ".$author['name']."</p>";
                                 }
                                 $selected_question = (isset($question_id_array) && in_array($question["id"], $question_id_array)) ? "selected" : "";
-                                if(isset($question['question']) && strlen($question['question']) != 0){
+
+                                if(isset($question['question_title']) && $question['question_title'] != '' && $quiz_question_title_view == 'question_title'){
+                                    $table_question = htmlspecialchars_decode( $question['question_title'], ENT_COMPAT);
+                                    $table_question = stripslashes( $table_question );
+                                }elseif(isset($question['question']) && strlen($question['question']) != 0){
 
                                     $is_exists_ruby = Quiz_Maker_Admin::ays_quiz_is_exists_needle_tag( $question['question'] , '<ruby>' );
 
@@ -9844,7 +9855,7 @@ $quiz_content_mobile_max_width = ( isset($options['quiz_content_mobile_max_width
                                     }
 
                                 }elseif ((isset($question['question_image']) && $question['question_image'] !='')){
-                                    $table_question = 'Image question';
+                                    $table_question = __( 'Image question', $this->plugin_name );
                                 }
 
                                 switch ( $question["type"] ) {

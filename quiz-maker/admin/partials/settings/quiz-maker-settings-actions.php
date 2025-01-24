@@ -239,6 +239,9 @@ class Quiz_Maker_Settings_Actions {
             // Enable case sensitive text for a new question
             $quiz_case_sensitive_text = (isset( $_REQUEST['ays_quiz_case_sensitive_text'] ) && sanitize_text_field( $_REQUEST['ays_quiz_case_sensitive_text'] ) == 'on') ? 'on' : 'off';
 
+            // Question title view
+            $quiz_question_title_view = (isset( $_REQUEST['ays_quiz_question_title_view'] ) && sanitize_text_field( $_REQUEST['ays_quiz_question_title_view'] ) != '') ? stripslashes( sanitize_text_field( $_REQUEST['ays_quiz_question_title_view'] ) ) : 'question_title';
+
             $options = array(
                 "question_default_type"                         => $question_default_type,
                 "ays_answer_default_count"                      => $ays_answer_default_count,
@@ -255,26 +258,27 @@ class Quiz_Maker_Settings_Actions {
                 "quiz_all_results_show_publicly"                => $quiz_all_results_show_publicly,
 
                 // All results
-                "all_results_columns"                           => $all_results_columns,
-                "all_results_columns_order"                     => $all_results_columns_order,
+                "all_results_columns"                               => $all_results_columns,
+                "all_results_columns_order"                         => $all_results_columns_order,
 
                 // Quiz All results
-                "quiz_all_results_columns"                      => $quiz_all_results_columns,
-                "quiz_all_results_columns_order"                => $quiz_all_results_columns_order,
+                "quiz_all_results_columns"                          => $quiz_all_results_columns,
+                "quiz_all_results_columns_order"                    => $quiz_all_results_columns_order,
 
-                "quiz_enable_question_allow_html"               => $quiz_enable_question_allow_html,
-                "quiz_enable_question_not_influence_to_score"   => $quiz_enable_question_not_influence_to_score,
-                "quiz_enable_question_hide_question_text"       => $quiz_enable_question_hide_question_text,
-                "quiz_stripslashes_for_answer"                  => $quiz_stripslashes_for_answer,
-                "quiz_case_sensitive_text"                      => $quiz_case_sensitive_text,
-                "enable_start_button_loader"                    => $enable_start_button_loader,
-                "quiz_wp_editor_height"                         => $quiz_wp_editor_height,
-                "quiz_textarea_height"                          => $quiz_textarea_height,
+                "quiz_enable_question_allow_html"                   => $quiz_enable_question_allow_html,
+                "quiz_enable_question_not_influence_to_score"       => $quiz_enable_question_not_influence_to_score,
+                "quiz_enable_question_hide_question_text"           => $quiz_enable_question_hide_question_text,
+                "quiz_stripslashes_for_answer"                      => $quiz_stripslashes_for_answer,
+                "quiz_case_sensitive_text"                          => $quiz_case_sensitive_text,
+                "enable_start_button_loader"                        => $enable_start_button_loader,
+                "quiz_wp_editor_height"                             => $quiz_wp_editor_height,
+                "quiz_textarea_height"                              => $quiz_textarea_height,
 
-                "quiz_show_quiz_button_to_admin_only"           => $quiz_show_quiz_button_to_admin_only,
-                "question_categories_title_length"              => $question_categories_title_length,
-                "quiz_categories_title_length"                  => $quiz_categories_title_length,
-                "quiz_reviews_title_length"                     => $quiz_reviews_title_length,
+                "quiz_show_quiz_button_to_admin_only"               => $quiz_show_quiz_button_to_admin_only,
+                "quiz_question_title_view"                          => $quiz_question_title_view,
+                "question_categories_title_length"                  => $question_categories_title_length,
+                "quiz_categories_title_length"                      => $quiz_categories_title_length,
+                "quiz_reviews_title_length"                         => $quiz_reviews_title_length,
                 "quiz_exclude_general_css"                          => $quiz_exclude_general_css,
                 "quiz_enable_question_answers"                      => $quiz_enable_question_answers,
                 "quiz_show_correct_answers"                         => $quiz_show_correct_answers,
