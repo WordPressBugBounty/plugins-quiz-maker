@@ -279,21 +279,21 @@ class Quiz_Maker_Activator
                     array(
                         array(
                             array('category_id' => 1, 'question' => '5*40', 'question_image' => '', 'type' => 'radio', 'published' => 1),
-                            array('question_id' => 1, 'answer' => '300', 'correct' => 0, 'ordering' => 1),
-                            array('question_id' => 1, 'answer' => '100', 'correct' => 0, 'ordering' => 2),
-                            array('question_id' => 1, 'answer' => '200', 'correct' => 1, 'ordering' => 3),
+                            array('question_id' => 1, 'answer'   => '300', 'correct' => 0, 'ordering' => 1),
+                            array('question_id' => 1, 'answer'   => '100', 'correct' => 0, 'ordering' => 2),
+                            array('question_id' => 1, 'answer'   => '200', 'correct' => 1, 'ordering' => 3),
                         ),
                         array(
                             array('category_id' => 1, 'question' => '10+20', 'question_image' => '', 'type' => 'radio', 'published' => 1),
-                            array('question_id' => 1, 'answer' => '30', 'correct' => 1, 'ordering' => 1),
-                            array('question_id' => 1, 'answer' => '40', 'correct' => 0, 'ordering' => 2),
-                            array('question_id' => 1, 'answer' => '50', 'correct' => 0, 'ordering' => 3),
+                            array('question_id' => 1, 'answer'   => '30', 'correct' => 1, 'ordering' => 1),
+                            array('question_id' => 1, 'answer'   => '40', 'correct' => 0, 'ordering' => 2),
+                            array('question_id' => 1, 'answer'   => '50', 'correct' => 0, 'ordering' => 3),
                         ),
                         array(
                             array('category_id' => 1, 'question' => '150/3', 'question_image' => '', 'type' => 'radio', 'published' => 1),
-                            array('question_id' => 1, 'answer' => '60', 'correct' => 0, 'ordering' => 1),
-                            array('question_id' => 1, 'answer' => '50', 'correct' => 1, 'ordering' => 2),
-                            array('question_id' => 1, 'answer' => '100', 'correct' => 0, 'ordering' => 3),
+                            array('question_id' => 1, 'answer'   => '60', 'correct' => 0, 'ordering' => 1),
+                            array('question_id' => 1, 'answer'   => '50', 'correct' => 1, 'ordering' => 2),
+                            array('question_id' => 1, 'answer'   => '100', 'correct' => 0, 'ordering' => 3),
                         ),
 
                     ),
@@ -301,12 +301,12 @@ class Quiz_Maker_Activator
 
                 $quizes_array = array(
                     array(
-                        'title'                             => 'Mathematic Quiz',
-                        'description'                       => 'Math quiz helps us to increase our knowledge',
-                        'quiz_category_id'                  => 1,
-                        'question_ids'                      => 2,
-                        'ordering'                          => 1,
-                        'published'                         => 1,
+                        'title'                                 => 'Mathematic Quiz',
+                        'description'                           => 'Math quiz helps us to increase our knowledge',
+                        'quiz_category_id'                      => 1,
+                        'question_ids'                          => 2,
+                        'ordering'                              => 1,
+                        'published'                             => 1,
                         'options' => json_encode(array(
                             'color'                             => '#5d6cf9',
                             'bg_color'                          => '#fff',

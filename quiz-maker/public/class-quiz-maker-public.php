@@ -7622,7 +7622,11 @@ class Quiz_Maker_Public
 
         $ids = sanitize_text_field($ids);
 
-        $sql = "SELECT id FROM {$wpdb->prefix}aysquiz_questions WHERE id IN({$ids}) AND published = 1 ORDER BY find_in_set(id,'".$ids."');";
+        $sql = "SELECT id FROM {$wpdb->prefix}aysquiz_questions WHERE id IN ({$ids}) AND published = 1 ORDER BY find_in_set(id,'".$ids."');";
+
+        if( isset($_SERVER['HTTP_HOST']) && sanitize_text_field($_SERVER['HTTP_HOST']) == "playground.wordpress.net" ){
+            $sql = "SELECT id FROM {$wpdb->prefix}aysquiz_questions WHERE id IN ({$ids}) AND published = 1;";
+        }
 
         $results = $wpdb->get_results( $sql, 'ARRAY_A' );
 

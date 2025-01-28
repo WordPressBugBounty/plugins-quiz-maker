@@ -1784,6 +1784,41 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         </div><!-- Right answer font weight -->
                                     </div>
                                 </div><!-- Right answer styles -->
+                                <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
+                                    <div class="ays-quiz-accordion-container">
+                                        <?php echo $quiz_accordion_svg_html; ?>
+                                        <p class="ays-subtitle" style="margin-top:0;"><?php echo __('Wrong answer styles',$this->plugin_name); ?></p>
+                                    </div>
+                                    <hr class="ays-quiz-bolder-hr"/>
+                                    <div class="ays-quiz-accordion-options-box">
+                                        <div class="form-group row">
+                                            <div class="col-sm-4">
+                                                <label for="ays_quick_quiz_wrong_answers_font_size">
+                                                    <?php echo __('Font size for the wrong answer',$this->plugin_name); ?>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div style="margin-bottom: 10px;">
+                                                            <label for='ays_quick_quiz_wrong_answers_font_size'>
+                                                                <?php echo __('On desktop', $this->plugin_name); ?>
+                                                            </label>
+                                                        </div>
+                                                        <div class="ays_quiz_display_flex_width">
+                                                            <div>
+                                                                <input type="number" class="ays-text-input" id='ays_quick_quiz_wrong_answers_font_size' name='ays_quick_quiz_wrong_answers_font_size' value="16"/>
+                                                            </div>
+                                                            <div class="ays_quiz_dropdown_max_width ays-display-flex" style="align-items: end;">
+                                                                <input type="text" value="px" class='ays-quiz-form-hint-for-size' disabled>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div><!-- Font size for the wrong answer -->
+                                    </div>
+                                </div><!-- Wrong answer styles -->
                             </div>
                         </div> <!-- Quiz Options -->
                     </div>

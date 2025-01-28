@@ -1161,6 +1161,7 @@ class Quiz_Maker_Admin
         $quick_quiz_right_answers_text_decoration           = "none";
         $quick_quiz_right_answers_letter_spacing            = 0;
         $quick_quiz_right_answers_font_weight               = "normal";
+        $quick_quiz_wrong_answers_font_size                 = 16;
 
         if($quiz_enable_options == 'on'){
             $quick_quiz_enable_randomize_questions = (isset( $_REQUEST['ays_quick_quiz_enable_randomize_questions'] ) && $_REQUEST['ays_quick_quiz_enable_randomize_questions'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_randomize_questions'] ) ) : "off";
@@ -1389,6 +1390,9 @@ class Quiz_Maker_Admin
 
             // Admin Note font weight
             $quick_quiz_right_answers_font_weight = (isset( $_REQUEST['ays_quick_quiz_right_answers_font_weight'] ) && $_REQUEST['ays_quick_quiz_right_answers_font_weight'] != "") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_right_answers_font_weight'] ) ) : "normal";
+
+            // Font size for the right answer | PC
+            $quick_quiz_wrong_answers_font_size = (isset( $_REQUEST['ays_quick_quiz_wrong_answers_font_size'] ) && $_REQUEST['ays_quick_quiz_wrong_answers_font_size'] != "") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_wrong_answers_font_size'] ) ) : 16;
             
         }
         
@@ -1633,7 +1637,7 @@ class Quiz_Maker_Admin
             'quiz_review_enable_comment_field'              => "on",
             'quest_explanation_font_size'                   => $quick_quiz_quest_explanation_font_size,
             'quest_explanation_mobile_font_size'            => $quick_quiz_quest_explanation_mobile_font_size,
-            'wrong_answers_font_size'                       => "16",
+            'wrong_answers_font_size'                       => $quick_quiz_wrong_answers_font_size,
             'wrong_answers_mobile_font_size'                => "16",
             'right_answers_font_size'                       => $quick_quiz_right_answers_font_size,
             'right_answers_mobile_font_size'                => $quick_quiz_right_answers_mobile_font_size,
@@ -3462,6 +3466,7 @@ class Quiz_Maker_Admin
                         $content[] = '</strong>';
                         $content[] = '<br>';
                         $content[] = __( "The integration will allow you to create beautiful charts based on your quiz data and share them with your users.", AYS_QUIZ_NAME );
+                        $content[] = '<a href="https://www.youtube.com/watch?v=vqx76dw6NC8" target="_blank" style="margin-left: 5px; color:#98FBA6; text-decoration: underline;">' . __( 'Watch video', AYS_QUIZ_NAME ) . '</a>';
 
                         $content[] = '<br>';
 

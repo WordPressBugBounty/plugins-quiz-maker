@@ -181,19 +181,31 @@ class Quizes_List_Table extends WP_List_Table{
 
     public function get_published_questions(){
         global $wpdb;
+
+        $questions_table = $wpdb->prefix . 'aysquiz_questions';
+        $categories_table = $wpdb->prefix . 'aysquiz_categories';
+
         $sql = "SELECT 
-                    {$wpdb->prefix}aysquiz_questions.id, 
-                    {$wpdb->prefix}aysquiz_questions.question,
-                    {$wpdb->prefix}aysquiz_questions.question_title,
-                    {$wpdb->prefix}aysquiz_questions.type, 
-                    {$wpdb->prefix}aysquiz_questions.create_date,
-                    {$wpdb->prefix}aysquiz_questions.question_image,
-                    {$wpdb->prefix}aysquiz_questions.options,
-                    {$wpdb->prefix}aysquiz_categories.title
-                FROM {$wpdb->prefix}aysquiz_questions
-                INNER JOIN {$wpdb->prefix}aysquiz_categories
-                ON {$wpdb->prefix}aysquiz_questions.category_id={$wpdb->prefix}aysquiz_categories.id
-                WHERE {$wpdb->prefix}aysquiz_questions.published = 1 ORDER BY id DESC;";
+                    q.id, 
+                    q.question,
+                    q.question_title,
+                    q.type, 
+                    q.create_date,
+                    q.question_image,
+                    q.options,
+                    c.title
+                FROM {$questions_table} as q
+                INNER JOIN {$categories_table} as c
+                ON q.category_id = c.id
+                WHERE q.published = 1 ORDER BY id DESC;";
+
+        if( isset($_SERVER['HTTP_HOST']) && sanitize_text_field($_SERVER['HTTP_HOST']) == "playground.wordpress.net" ){
+            $sql = "SELECT q.*, c.title
+                FROM {$questions_table} as q
+                INNER JOIN {$categories_table} as c
+                ON q.category_id=c.id
+                WHERE q.published = 1 ORDER BY id DESC;";
+        }
 
         $results = $wpdb->get_results( $sql, 'ARRAY_A' );
 
