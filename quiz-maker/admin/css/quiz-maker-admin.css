@@ -7425,6 +7425,10 @@ div .wp-picker-container .wp-color-result.button {
     }
 }
 
+.ays-quiz-maker-interval-table-settings-container > .col-sm-12 {
+    padding: 0;
+}
+
 /* Quiz options accordion | Start */
 
 .ays-quiz-accordion-container {

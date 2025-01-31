@@ -1229,6 +1229,12 @@ class Quizes_List_Table extends WP_List_Table{
             }else{
                 $options['timer'] = 100;
             }
+
+            if(has_action('ays_qm_quiz_page_integrations_saves')){
+                $data = $_POST;
+                $options = apply_filters("ays_qm_quiz_page_integrations_saves" , $options, $data);
+            }
+
             if($id == null) {
                 $quiz_result = $wpdb->insert(
                     $quiz_table,
@@ -1751,17 +1757,17 @@ class Quizes_List_Table extends WP_List_Table{
      */
     function get_columns() {
         $columns = array(
-            'cb'                => '<input type="checkbox" />',
-            'title'             => __( 'Title', $this->plugin_name ),
-            'quiz_image'        => __( 'Image', $this->plugin_name ),
-            'quiz_category_id'  => __( 'Category', $this->plugin_name ),
-            'shortcode'         => __( 'Shortcode', $this->plugin_name ),
-            'code_include'      => __( 'Code include', $this->plugin_name ),
-            'items_count'       => __( 'Count', $this->plugin_name ),
-            'create_date'       => __( 'Created', $this->plugin_name ),
-            'completed_count'   => __( 'Completed count', $this->plugin_name ),
-            'published'         => __( 'Status', $this->plugin_name ),
-            'id'                => __( 'ID', $this->plugin_name ),
+            'cb'                    => '<input type="checkbox" />',
+            'title'                 => __( 'Title', $this->plugin_name ),
+            'quiz_image'            => __( 'Image', $this->plugin_name ),
+            'quiz_category_id'      => __( 'Category', $this->plugin_name ),
+            'shortcode'             => __( 'Shortcode', $this->plugin_name ),
+            'code_include'          => __( 'Code include', $this->plugin_name ),
+            'items_count'           => __( 'Count', $this->plugin_name ),
+            'create_date'           => __( 'Created', $this->plugin_name ),
+            'completed_count'       => __( 'Completed count', $this->plugin_name ),
+            'published'             => __( 'Status', $this->plugin_name ),
+            'id'                    => __( 'ID', $this->plugin_name ),
         );
 
         if( isset( $_GET['action'] ) && ( $_GET['action'] == 'add' || $_GET['action'] == 'edit' ) ){

@@ -7183,6 +7183,13 @@ $quiz_content_mobile_max_width = ( isset($options['quiz_content_mobile_max_width
                                 <input type="checkbox" class="ays-enable-timer1" id="ays_disable_store_data" name="ays_disable_store_data" value="on" <?php echo $disable_store_data ? 'checked' : '' ?>/>
                             </div>
                         </div><!-- Disable data storing in database -->
+                        <div class="ays-quiz-maker-interval-table-settings-container">
+                        <?php
+                            if(has_action('quiz_interval_table_settings')){
+                                do_action( 'quiz_interval_table_settings', $options);
+                            }
+                        ?>
+                        </div><!-- quiz_interval_table_settings -->
                         <hr/>
                         <div class="ays-quiz-heading-box ays-quiz-unset-float">
                             <div class="ays-quiz-wordpress-user-manual-box ays-quiz-wordpress-text-align">

@@ -153,24 +153,24 @@ class Quiz_Maker_Public
             wp_enqueue_script( $this->plugin_name . '-datatable-min', plugin_dir_url(__FILE__) . 'js/quiz-maker-datatable.min.js', array('jquery'), $this->version, true);
 
             wp_localize_script( $this->plugin_name . '-datatable-min', 'quizLangDataTableObj', array(
-                "sEmptyTable"           => __( "No data available in table", $this->plugin_name ),
-                "sInfo"                 => __( "Showing _START_ to _END_ of _TOTAL_ entries", $this->plugin_name ),
-                "sInfoEmpty"            => __( "Showing 0 to 0 of 0 entries", $this->plugin_name ),
-                "sInfoFiltered"         => __( "(filtered from _MAX_ total entries)", $this->plugin_name ),
-                // "sInfoPostFix":          => __( "", $this->plugin_name ),
-                // "sInfoThousands":        => __( ",", $this->plugin_name ),
-                "sLengthMenu"           => __( "Show _MENU_ entries", $this->plugin_name ),
-                "sLoadingRecords"       => __( "Loading...", $this->plugin_name ),
-                "sProcessing"           => __( "Processing...", $this->plugin_name ),
-                "sSearch"               => __( "Search:", $this->plugin_name ),
-                // "sUrl":                  => __( "", $this->plugin_name ),
-                "sZeroRecords"          => __( "No matching records found", $this->plugin_name ),
-                "sFirst"                => __( "First", $this->plugin_name ),
-                "sLast"                 => __( "Last", $this->plugin_name ),
-                "sNext"                 => __( "Next", $this->plugin_name ),
-                "sPrevious"             => __( "Previous", $this->plugin_name ),
-                "sSortAscending"        => __( ": activate to sort column ascending", $this->plugin_name ),
-                "sSortDescending"       => __( ": activate to sort column descending", $this->plugin_name ),
+                "sEmptyTable"               => __( "No data available in table", $this->plugin_name ),
+                "sInfo"                     => __( "Showing _START_ to _END_ of _TOTAL_ entries", $this->plugin_name ),
+                "sInfoEmpty"                => __( "Showing 0 to 0 of 0 entries", $this->plugin_name ),
+                "sInfoFiltered"             => __( "(filtered from _MAX_ total entries)", $this->plugin_name ),
+                // "sInfoPostFix":              => __( "", $this->plugin_name ),
+                // "sInfoThousands":            => __( ",", $this->plugin_name ),
+                "sLengthMenu"               => __( "Show _MENU_ entries", $this->plugin_name ),
+                "sLoadingRecords"           => __( "Loading...", $this->plugin_name ),
+                "sProcessing"               => __( "Processing...", $this->plugin_name ),
+                "sSearch"                   => __( "Search:", $this->plugin_name ),
+                // "sUrl":                      => __( "", $this->plugin_name ),
+                "sZeroRecords"              => __( "No matching records found", $this->plugin_name ),
+                "sFirst"                    => __( "First", $this->plugin_name ),
+                "sLast"                     => __( "Last", $this->plugin_name ),
+                "sNext"                     => __( "Next", $this->plugin_name ),
+                "sPrevious"                 => __( "Previous", $this->plugin_name ),
+                "sSortAscending"            => __( ": activate to sort column ascending", $this->plugin_name ),
+                "sSortDescending"           => __( ": activate to sort column descending", $this->plugin_name ),
             ) );
 
             wp_enqueue_script($this->plugin_name .'-functions.js', plugin_dir_url(__FILE__) . 'js/quiz-maker-functions.js', array('jquery'), $this->version, true);
@@ -5834,6 +5834,9 @@ class Quiz_Maker_Public
                         // $integration_options['quiz_attributes_information'] = $quiz_attributes_information_slag;
                         $integrations_data         = apply_filters( 'ays_qm_front_end_integrations_options', $integration_args, $integration_options );
                         $data["quiz_message_variables_data"] = $message_data;
+                        $data["gamipress_interval"] = array();
+                        $data["gamipress_questions_count"] = $questions_count;
+                        $data["gamipress_correct_answered_count"] = $correct_answered_count;
                         do_action( "ays_qm_front_end_integrations", $integrations_data, $integration_options, $data );
                     }
                 }
