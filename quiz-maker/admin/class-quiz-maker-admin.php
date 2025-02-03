@@ -1163,6 +1163,7 @@ class Quiz_Maker_Admin
         $quick_quiz_right_answers_font_weight               = "normal";
         $quick_quiz_wrong_answers_font_size                 = 16;
         $quick_quiz_wrong_answers_mobile_font_size          = 16;
+        $quick_quiz_wrong_answer_text_transform             = "none";
 
         if($quiz_enable_options == 'on'){
             $quick_quiz_enable_randomize_questions = (isset( $_REQUEST['ays_quick_quiz_enable_randomize_questions'] ) && $_REQUEST['ays_quick_quiz_enable_randomize_questions'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_randomize_questions'] ) ) : "off";
@@ -1397,6 +1398,9 @@ class Quiz_Maker_Admin
 
             // Font size for the right answer | Mobile
             $quick_quiz_wrong_answers_mobile_font_size = (isset( $_REQUEST['ays_quick_quiz_wrong_answers_mobile_font_size'] ) && $_REQUEST['ays_quick_quiz_wrong_answers_mobile_font_size'] != "") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_wrong_answers_mobile_font_size'] ) ) : 16;
+
+            // Wrong answer text transform
+            $quick_quiz_wrong_answer_text_transform = (isset( $_REQUEST['ays_quick_quiz_wrong_answer_text_transform'] ) && $_REQUEST['ays_quick_quiz_wrong_answer_text_transform'] != "") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_wrong_answer_text_transform'] ) ) : "none";
             
         }
         
@@ -1666,7 +1670,7 @@ class Quiz_Maker_Admin
             'quiz_admin_note_text_transform'                => $quick_quiz_admin_note_text_transform,
             'quiz_quest_explanation_text_transform'         => $quick_quiz_quest_explanation_text_transform,
             'quiz_right_answer_text_transform'              => $quick_quiz_right_answer_text_transform,
-            'quiz_wrong_answer_text_transform'              => "none",
+            'quiz_wrong_answer_text_transform'              => $quick_quiz_wrong_answer_text_transform,
             'quiz_admin_note_text_decoration'               => $quick_quiz_admin_note_text_decoration,
             'quiz_quest_explanation_text_decoration'        => $quick_quiz_quest_explanation_text_decoration,
             'quiz_right_answers_text_decoration'            => $quick_quiz_right_answers_text_decoration,
