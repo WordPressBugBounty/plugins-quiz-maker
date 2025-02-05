@@ -1550,6 +1550,12 @@ $quiz_content_mobile_max_width = ( isset($options['quiz_content_mobile_max_width
                     </div>
                     <div class="col-sm-10">
                         <a href="javascript:void(0)" class="add-quiz-image" style="margin: 0;"><?php echo $image_text; ?></a>
+                        <p class="ays_quiz_small_hint_text_for_message_variables" style="margin-top: 5px;">
+                            <span><?php echo __( "Please Note" , $this->plugin_name ); ?></span>
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('* Note: The plugin doesn’t make any changes concerning the images. It takes the images in a size, in which you have uploaded them. We are using the default WP Media. If the uploaded image is blurred and has a low quality, make sure to choose the right parameters (Full size) while uploading the images. You can find the Full Size option in the opened Add Media popup (Attachment Display Settings).',$this->plugin_name) ); ?>">
+                                <i class="ays_fa ays_fa_info_circle"></i>
+                            </a>
+                        </p>
                         <div class="ays-quiz-image-container" style="<?php echo $style; ?>">
                             <span class="ays-remove-quiz-img"></span>
                             <img src="<?php echo esc_url($quiz_image); ?>" id="ays-quiz-img"/>
@@ -2156,6 +2162,12 @@ $quiz_content_mobile_max_width = ( isset($options['quiz_content_mobile_max_width
                                     </div>
                                     <div class="col-sm-7 ays_divider_left">                                
                                         <a href="javascript:void(0)" style="<?php echo $quiz_bg_image == '' ? 'display:inline-block' : 'display:none'; ?>" class="add-quiz-bg-image"><?php echo $bg_image_text; ?></a>
+                                        <p class="ays_quiz_small_hint_text_for_message_variables" style="margin-top: 5px;">
+                                            <span><?php echo __( "Please Note" , $this->plugin_name ); ?></span>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('* Note: The plugin doesn’t make any changes concerning the images. It takes the images in a size, in which you have uploaded them. We are using the default WP Media. If the uploaded image is blurred and has a low quality, make sure to choose the right parameters (Full size) while uploading the images. You can find the Full Size option in the opened Add Media popup (Attachment Display Settings).',$this->plugin_name) ); ?>">
+                                                <i class="ays_fa ays_fa_info_circle"></i>
+                                            </a>
+                                        </p>
                                         <input type="hidden" id="ays_quiz_bg_image" name="ays_quiz_bg_image"
                                                value="<?php echo $quiz_bg_image; ?>"/>
                                         <div class="ays-quiz-bg-image-container" style="<?php echo $quiz_bg_image == '' ? 'display:none' : 'display:block'; ?>">
