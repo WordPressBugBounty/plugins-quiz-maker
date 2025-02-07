@@ -1164,6 +1164,7 @@ class Quiz_Maker_Admin
         $quick_quiz_wrong_answers_font_size                 = 16;
         $quick_quiz_wrong_answers_mobile_font_size          = 16;
         $quick_quiz_wrong_answer_text_transform             = "none";
+        $quick_quiz_wrong_answers_text_decoration           = "none";
 
         if($quiz_enable_options == 'on'){
             $quick_quiz_enable_randomize_questions = (isset( $_REQUEST['ays_quick_quiz_enable_randomize_questions'] ) && $_REQUEST['ays_quick_quiz_enable_randomize_questions'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_randomize_questions'] ) ) : "off";
@@ -1401,6 +1402,9 @@ class Quiz_Maker_Admin
 
             // Wrong answer text transform
             $quick_quiz_wrong_answer_text_transform = (isset( $_REQUEST['ays_quick_quiz_wrong_answer_text_transform'] ) && $_REQUEST['ays_quick_quiz_wrong_answer_text_transform'] != "") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_wrong_answer_text_transform'] ) ) : "none";
+
+            // Text transformation for the question explanation
+            $quick_quiz_wrong_answers_text_decoration = (isset( $_REQUEST['ays_quick_quiz_wrong_answers_text_decoration'] ) && $_REQUEST['ays_quick_quiz_wrong_answers_text_decoration'] != "") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_wrong_answers_text_decoration'] ) ) : "none";
             
         }
         
@@ -1674,7 +1678,7 @@ class Quiz_Maker_Admin
             'quiz_admin_note_text_decoration'               => $quick_quiz_admin_note_text_decoration,
             'quiz_quest_explanation_text_decoration'        => $quick_quiz_quest_explanation_text_decoration,
             'quiz_right_answers_text_decoration'            => $quick_quiz_right_answers_text_decoration,
-            'quiz_wrong_answers_text_decoration'            => "none",
+            'quiz_wrong_answers_text_decoration'            => $quick_quiz_wrong_answers_text_decoration,
             'quiz_admin_note_letter_spacing'                => $quick_quiz_admin_note_letter_spacing,
             'quiz_bg_img_during_the_quiz'                   => "off",
             'quiz_quest_explanation_letter_spacing'         => $quick_quiz_quest_explanation_letter_spacing,

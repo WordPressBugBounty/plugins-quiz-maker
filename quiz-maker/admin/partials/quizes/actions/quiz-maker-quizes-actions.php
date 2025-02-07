@@ -4013,7 +4013,7 @@ $quiz_content_mobile_max_width = ( isset($options['quiz_content_mobile_max_width
                                             </option>
                                         </select>
                                     </div>
-                                </div><!-- Wrong answer text decoration -->
+                                </div><!-- Text decoration -->
                                 <hr/>
                                 <div class="form-group row">
                                     <div class="col-sm-5">

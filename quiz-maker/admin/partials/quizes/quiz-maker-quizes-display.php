@@ -1859,6 +1859,30 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                 </select>
                                             </div>
                                         </div><!-- Wrong answer text transform -->
+                                        <hr/>
+                                        <div class="form-group row">
+                                            <div class="col-sm-4">
+                                                <label for="ays_quick_quiz_wrong_answers_text_decoration">
+                                                    <?php echo __('Text decoration',$this->plugin_name); ?>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <select class="ays-text-input ays-text-input-short" id="ays_quick_quiz_wrong_answers_text_decoration" name="ays_quick_quiz_wrong_answers_text_decoration">
+                                                    <option value="none" selected>
+                                                        <?php echo __('None',$this->plugin_name); ?>
+                                                    </option>
+                                                    <option value="overline">
+                                                        <?php echo __('Overline',$this->plugin_name); ?>
+                                                    </option>
+                                                    <option value="line-through">
+                                                        <?php echo __('Line through',$this->plugin_name); ?>
+                                                    </option>
+                                                    <option value="underline">
+                                                        <?php echo __('Underline',$this->plugin_name); ?>
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div><!-- Text decoration -->
                                     </div>
                                 </div><!-- Wrong answer styles -->
                             </div>
