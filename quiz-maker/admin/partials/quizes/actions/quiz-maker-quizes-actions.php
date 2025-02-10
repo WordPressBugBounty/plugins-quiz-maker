@@ -6174,6 +6174,12 @@ $quiz_content_mobile_max_width = ( isset($options['quiz_content_mobile_max_width
                         </div>
                     </div>
                 </div>
+                <?php
+                    if(has_action('ays_qm_addon_integration_accordion_settings_tab')){
+                        $args = apply_filters( 'ays_qm_front_end_integrations_options', array(), $options );
+                        do_action( 'ays_qm_addon_integration_accordion_settings_tab', $args);
+                    }
+                ?>
             </div>
             
             <div id="tab4" class="ays-quiz-tab-content <?php echo ($ays_quiz_tab == 'tab4') ? 'ays-quiz-tab-content-active' : ''; ?>">

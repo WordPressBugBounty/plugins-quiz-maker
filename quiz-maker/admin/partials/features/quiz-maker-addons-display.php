@@ -13,6 +13,32 @@
         <div class="row">
             <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-4">
                 <div class="card">
+                    <img class="card-img-top" src="<?php echo AYS_QUIZ_ADMIN_URL; ?>/images/icons/addon-user-registration-and-login.png" alt="<?php echo esc_attr( __("User Registration and Login Addon", $this->plugin_name) ); ?>">
+                    <div class="card-body">
+                        <h5 class="card-title"><a target="_blank" href="https://ays-pro.com/user-registration-login-addon?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=user-registration-addon" style="color: #000"><?php echo esc_attr( __("User Registration and Login Addon", $this->plugin_name) ); ?></a></h5>
+                        <p class="card-text"><?php echo esc_attr( __("This addon is an excellent way to require users to register or log in before accessing quizzes, improving user engagement and management. Make your quizzes more engaging, secure, and personalized.", $this->plugin_name) ); ?></p>
+                        <div>
+                            <a target="_blank" href="https://www.youtube.com/watch?v=yx5l9fhNhN4" class="btn button ays-quiz-addon-menu-watch-video-button"><?php echo esc_attr( __("Watch video", $this->plugin_name) ); ?></a>
+                            <a target="_blank" href="https://ays-pro.com/user-registration-login-addon?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=user-registration-addon" class="btn btn-primary"><?php echo esc_attr( __("See Pricing", $this->plugin_name) ); ?></a>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- URL Parameters addon -->
+            <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-4">
+                <div class="card">
+                    <img class="card-img-top" src="<?php echo AYS_QUIZ_ADMIN_URL; ?>/images/icons/addon-url-parameters.png" alt="<?php echo esc_attr( __("URL Parameters addon", $this->plugin_name) ); ?>">
+                    <div class="card-body">
+                        <h5 class="card-title"><a target="_blank" href="https://ays-pro.com/url-parameters-addon?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=url-parameters-addon" style="color: #000"><?php echo esc_attr( __("URL Parameters addon", $this->plugin_name) ); ?></a></h5>
+                        <p class="card-text"><?php echo esc_attr( __("The URL Parameters addon lets you view and manage URL parameters. See from where the users pass your quiz with this addon.", $this->plugin_name) ); ?></p>
+                        <div>
+                            <a target="_blank" href="https://www.youtube.com/watch?v=wq-tZtWVwcE" class="btn button ays-quiz-addon-menu-watch-video-button"><?php echo esc_attr( __("Watch video", $this->plugin_name) ); ?></a>
+                            <a target="_blank" href="https://ays-pro.com/url-parameters-addon?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=url-parameters-addon" class="btn btn-primary"><?php echo esc_attr( __("See Pricing", $this->plugin_name) ); ?></a>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- URL Parameters addon -->
+            <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-4">
+                <div class="card">
                     <img class="card-img-top" src="<?php echo AYS_QUIZ_ADMIN_URL; ?>/images/icons/addon-user-dashboard.png" alt="<?php echo esc_attr( __("User Dashboard Addon", $this->plugin_name) ); ?>">
                     <div class="card-body">
                         <h5 class="card-title"><a target="_blank" href="https://bit.ly/49dKgAb" style="color: #000"><?php echo esc_attr( __("User Dashboard Addon", $this->plugin_name) ); ?></a></h5>
