@@ -684,6 +684,12 @@
 
             }
         };
+        var ays_quiz_timer_warning_color_picker = {
+            defaultColor: '#ff0000',
+            change: function (e) {
+
+            }
+        };
 
         $(document).find('#ays_quiz_gradient_direction').on('change', function () {
             toggleBackgrounGradient();
@@ -699,6 +705,7 @@
         $(document).find('#ays-background-gradient-color-1').wpColorPicker(ays_quiz_box_gradient_color1_picker);
         $(document).find('#ays-background-gradient-color-2').wpColorPicker(ays_quiz_box_gradient_color2_picker);
         $(document).find('#ays_quiz_flash_card_color').wpColorPicker(ays_quiz_flash_cards_color_picker);
+        $(document).find('#ays_quiz_timer_warning_text_color').wpColorPicker(ays_quiz_timer_warning_color_picker);
         
         $(document).find('#ays_leadboard_color').wpColorPicker(ays_ind_leaderboard_color_picker);
         $(document).find('#ays_gleadboard_color').wpColorPicker(ays_glob_leaderboard_color_picker);

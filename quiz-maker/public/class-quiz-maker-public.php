@@ -2744,7 +2744,10 @@ class Quiz_Maker_Public
             $show_timer_in_title = "true";
         }else{
             $show_timer_in_title = "false";
-        }        
+        }
+
+        // Timer Warning text color
+        $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color']) && $options['quiz_timer_warning_text_color'] != '') ? stripslashes ( esc_attr( $options[ 'quiz_timer_warning_text_color' ] ) ) : '#ff0000';
         
         /*
          * Quiz one time passing
@@ -3468,7 +3471,7 @@ class Quiz_Maker_Public
             }
 
             #ays-quiz-container-" . $id . " section.ays_quiz_timer_container.ays_quiz_timer_red_warning .ays-quiz-timer {
-                color: red;
+                color: ". $quiz_timer_warning_text_color .";
             }
 
             #ays-quiz-container-" . $id . " .ays_thank_you_fs p {

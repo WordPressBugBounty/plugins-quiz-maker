@@ -257,6 +257,8 @@ $options = array(
     'quiz_wrong_answers_font_weight'            => "normal",
     'quiz_section_collapse_flag'                => "off",
     'quiz_content_max_width'                    => 90,
+    'quiz_content_mobile_max_width'             => 90,
+    'quiz_timer_warning_text_color'             => "#ff0000",
 
 );
 
@@ -1404,6 +1406,9 @@ $quiz_content_max_width = ( isset($options['quiz_content_max_width']) && $option
 
 // Quiz content mobile max-width
 $quiz_content_mobile_max_width = ( isset($options['quiz_content_mobile_max_width']) && $options['quiz_content_mobile_max_width'] != "" && intval($options['quiz_content_mobile_max_width']) > 0 ) ? intval(esc_attr($options['quiz_content_mobile_max_width'])) : 90;
+
+// Timer Warning text color
+$quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color']) && $options['quiz_timer_warning_text_color'] != '') ? stripslashes ( esc_attr( $options[ 'quiz_timer_warning_text_color' ] ) ) : '#ff0000';
 
 
 ?>
@@ -4321,18 +4326,35 @@ $quiz_content_mobile_max_width = ( isset($options['quiz_content_mobile_max_width
                                         </div>
                                     </div>
                                     <hr>
-                                    <div class="form-group row">
+                                    <div class="form-group row ays_toggle_parent">
                                         <div class="col-sm-3">
                                             <label for="ays_quiz_timer_red_warning">
                                                 <?php echo __('Turn on warning',$this->plugin_name); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('When 90% of the set time passes, the timer color changes to red.',$this->plugin_name); ?>">
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Enable this option and the timer color will be changed after the user completes 90% of the quiz',$this->plugin_name); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
                                         </div>
-                                        <div class="col-sm-9">
-                                            <input type="checkbox" name="ays_quiz_timer_red_warning" id="ays_quiz_timer_red_warning"
+                                        <div class="col-sm-1">
+                                            <input type="checkbox" class="ays_toggle_checkbox" name="ays_quiz_timer_red_warning" id="ays_quiz_timer_red_warning"
                                                    <?php echo ($quiz_timer_red_warning) ? 'checked' : ''; ?>/>
+                                        </div>
+
+                                        <div class="col-sm-8 ays_toggle_target ays_divider_left <?php echo ($quiz_timer_red_warning) ? '' : 'display_none'; ?>">
+                                            <div class="form-group row">
+                                                <div class="col-sm-4">
+                                                    <label class="form-check-label" for="ays_quiz_timer_warning_text_color">
+                                                        <?php echo __('Warning text color', $this->plugin_name); ?>
+                                                        <a class="ays_help" data-toggle="tooltip"
+                                                        title="<?php echo esc_attr(__('Specify the text color of the Warning Message. *Note: The color is set Red by default.', $this->plugin_name)); ?>">
+                                                            <i class="ays_fa ays_fa_info_circle"></i>
+                                                        </a>
+                                                    </label>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <input type="text" class="ays-text-input" id='ays_quiz_timer_warning_text_color' data-alpha="true" name='ays_quiz_timer_warning_text_color' value="<?php echo esc_attr($quiz_timer_warning_text_color); ?>"/>
+                                                </div>
+                                            </div> <!-- Warning text color -->
                                         </div>
                                     </div>
                                 </div>
