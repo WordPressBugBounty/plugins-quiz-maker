@@ -4091,7 +4091,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                             </option>
                                         </select>
                                     </div>
-                                </div><!-- Right answer font weight -->
+                                </div><!-- Wrong answer font weight -->
                             </div>
                             <hr/>
                             <div class="col-lg-5 col-sm-12 ays_divider_left" style="position:relative;"></div>

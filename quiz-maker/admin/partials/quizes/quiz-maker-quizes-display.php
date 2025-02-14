@@ -1899,6 +1899,57 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                 </div>
                                             </div>
                                         </div><!-- Letter spacing -->
+                                        <hr/>
+                                        <div class="form-group row">
+                                            <div class="col-sm-4">
+                                                <label for="ays_quick_quiz_wrong_answers_font_weight">
+                                                    <?php echo __('Font weight',$this->plugin_name); ?>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <select class="ays-text-input ays-text-input-short" id="ays_quick_quiz_wrong_answers_font_weight" name="ays_quick_quiz_wrong_answers_font_weight">
+                                                    <option value="normal" selected>
+                                                        <?php echo __('Normal',$this->plugin_name); ?>
+                                                    </option>
+                                                    <option value="lighter">
+                                                        <?php echo __('Lighter',$this->plugin_name); ?>
+                                                    </option>
+                                                    <option value="bold">
+                                                        <?php echo __('Bold',$this->plugin_name); ?>
+                                                    </option>
+                                                    <option value="bolder">
+                                                        <?php echo __('Bolder',$this->plugin_name); ?>
+                                                    </option>
+                                                    <option value="100">
+                                                        <?php echo '100'; ?>
+                                                    </option>
+                                                    <option value="200">
+                                                        <?php echo '200'; ?>
+                                                    </option>
+                                                    <option value="300">
+                                                        <?php echo '300'; ?>
+                                                    </option>
+                                                    <option value="400">
+                                                        <?php echo '400'; ?>
+                                                    </option>
+                                                    <option value="500">
+                                                        <?php echo '500'; ?>
+                                                    </option>
+                                                    <option value="600">
+                                                        <?php echo '600'; ?>
+                                                    </option>
+                                                    <option value="700">
+                                                        <?php echo '700'; ?>
+                                                    </option>
+                                                    <option value="800">
+                                                        <?php echo '800'; ?>
+                                                    </option>
+                                                    <option value="900">
+                                                        <?php echo '900'; ?>
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div><!-- Wrong answer font weight -->
                                     </div>
                                 </div><!-- Wrong answer styles -->
                             </div>
