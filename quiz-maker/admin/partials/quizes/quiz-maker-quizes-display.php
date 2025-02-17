@@ -680,6 +680,22 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                 </div>
                                             </div>
                                         </div> <!-- Enable custom texts for buttons -->
+                                        <hr/>
+                                        <div class="form-group row">
+                                            <div class="col-sm-4">
+                                                <label>
+                                                    <?php echo __('Show question explanation',$this->plugin_name); ?>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <select id="ays_quick_quiz_show_questions_explanation" name="ays_quick_quiz_show_questions_explanation" class="ays-text-input ays-text-input-short">
+                                                    <option value="on_passing"><?php echo __( "During the quiz", $this->plugin_name ); ?></option>
+                                                    <option value="on_results_page" selected><?php echo __( 'On results page', $this->plugin_name); ?></option>
+                                                    <option value="on_both"><?php echo __( 'On Both', $this->plugin_name); ?></option>
+                                                    <option value="disable"><?php echo __( 'Disable', $this->plugin_name); ?></option>
+                                                </select>
+                                            </div>
+                                        </div> <!-- Show question explanation -->
                                     </div>
                                 </div><!-- Settings Tab -->
                                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
