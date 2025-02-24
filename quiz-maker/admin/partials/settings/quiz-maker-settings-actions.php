@@ -534,18 +534,18 @@ class Quiz_Maker_Settings_Actions {
             return;
 
         if ( 'saved' == $status )
-            $updated_message = esc_html( __( 'Changes saved.', $this->plugin_name ) );
+            $updated_message = esc_html( __( 'Changes saved.', 'quiz-maker' ) );
         elseif ( 'updated' == $status )
-            $updated_message = esc_html( __( 'Quiz attribute .', $this->plugin_name ) );
+            $updated_message = esc_html( __( 'Quiz attribute .', 'quiz-maker' ) );
         elseif ( 'deleted' == $status )
-            $updated_message = esc_html( __( 'Quiz attribute deleted.', $this->plugin_name ) );
+            $updated_message = esc_html( __( 'Quiz attribute deleted.', 'quiz-maker' ) );
 
         if ( empty( $updated_message ) )
             return;
 
         ?>
         <div class="notice notice-success is-dismissible">
-            <p> <?php echo $updated_message; ?> </p>
+            <p> <?php echo esc_html($updated_message); ?> </p>
         </div>
         <?php
     }

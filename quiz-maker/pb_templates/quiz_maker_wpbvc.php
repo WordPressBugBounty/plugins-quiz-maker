@@ -20,20 +20,20 @@ if( class_exists( 'WPBakeryShortCode' ) ) {
             // Map the block with vc_map()
             vc_map(
                 array(
-                    'name' => __('Quiz Maker', 'text-domain'),
+                    'name' => __('Quiz Maker', 'quiz-maker'),
                     'base' => 'vc_quizmaker',
-                    'description' => __('The Best Quiz Maker Ever', 'text-domain'),
-                    'category' => __('Quiz Maker by AYS', 'text-domain'),
+                    'description' => __('The Best Quiz Maker Ever', 'quiz-maker'),
+                    'category' => __('Quiz Maker by AYS', 'quiz-maker'),
                     'icon' => AYS_QUIZ_ADMIN_URL . '/images/icons/icon-128x128.png',
                     'params' => array(
                         array(
                             'type' => 'dropdown',
                             'holder' => 'div',
                             'class' => 'quiz_vc_select',
-                            'heading' => __( 'Quiz Maker', 'text-domain' ),
+                            'heading' => __( 'Quiz Maker', 'quiz-maker' ),
                             'param_name' => 'quiz',
                             'value' => $this->get_active_quizzes(),
-                            'description' => __( 'Please select your quiz from dropdown', 'text-domain' ),
+                            'description' => __( 'Please select your quiz from dropdown', 'quiz-maker' ),
                             'admin_label' => true,
                             'group' => 'Quiz Maker'
                         )

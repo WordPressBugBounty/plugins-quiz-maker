@@ -16,17 +16,17 @@
     $ays_users_roles = $wp_roles->role_names;
 
     $question_types = array(
-        "radio"             => __("Radio", $this->plugin_name),
-        "checkbox"          => __("Checkbox( Multiple )", $this->plugin_name),
-        "select"            => __("Dropdown", $this->plugin_name),
-        "text"              => __("Text", $this->plugin_name),
-        "short_text"        => __("Short Text", $this->plugin_name),
-        "number"            => __("Number", $this->plugin_name),
-        "date"              => __("Date", $this->plugin_name),
-        "true_or_false"     => __("True/False", $this->plugin_name),
-        "custom"            => __("Info Banner (PRO)", $this->plugin_name),
-        "fill_in_blank"     => __("Fill in the blanks (PRO)", $this->plugin_name),
-        "matching"          => __("Matching (PRO)", $this->plugin_name),
+        "radio"             => __("Radio", 'quiz-maker'),
+        "checkbox"          => __("Checkbox( Multiple )", 'quiz-maker'),
+        "select"            => __("Dropdown", 'quiz-maker'),
+        "text"              => __("Text", 'quiz-maker'),
+        "short_text"        => __("Short Text", 'quiz-maker'),
+        "number"            => __("Number", 'quiz-maker'),
+        "date"              => __("Date", 'quiz-maker'),
+        "true_or_false"     => __("True/False", 'quiz-maker'),
+        "custom"            => __("Info Banner (PRO)", 'quiz-maker'),
+        "fill_in_blank"     => __("Fill in the blanks (PRO)", 'quiz-maker'),
+        "matching"          => __("Matching (PRO)", 'quiz-maker'),
     );
 
     $question_types_icon_url = array(
@@ -74,21 +74,21 @@
     $quiz_reviews_title_length = (isset($options['quiz_reviews_title_length']) && intval($options['quiz_reviews_title_length']) != 0) ? absint(intval($options['quiz_reviews_title_length'])) : 5;
             
     $default_leadboard_column_names = array(
-        "pos"           => __( 'Pos.', $this->plugin_name ),
-        "name"          => __( 'Name', $this->plugin_name ),
-        "score"         => __( 'Score', $this->plugin_name ),
-        "duration"      => __( 'Duration', $this->plugin_name ),
-        "points"        => __( 'Points', $this->plugin_name ),
+        "pos"           => __( 'Pos.', 'quiz-maker' ),
+        "name"          => __( 'Name', 'quiz-maker' ),
+        "score"         => __( 'Score', 'quiz-maker' ),
+        "duration"      => __( 'Duration', 'quiz-maker' ),
+        "points"        => __( 'Points', 'quiz-maker' ),
     );
 
     $default_user_page_column_names = array(
-        "quiz_name"     => __( 'Quiz name', $this->plugin_name ),
-        "start_date"    => __( 'Start date', $this->plugin_name ),
-        "end_date"      => __( 'End date', $this->plugin_name ),
-        "duration"      => __( 'Duration', $this->plugin_name ),
-        "score"         => __( 'Score', $this->plugin_name ),
-        "details"       => __( 'Details', $this->plugin_name ),
-        "points"        => __( 'Points', $this->plugin_name ),
+        "quiz_name"     => __( 'Quiz name', 'quiz-maker' ),
+        "start_date"    => __( 'Start date', 'quiz-maker' ),
+        "end_date"      => __( 'End date', 'quiz-maker' ),
+        "duration"      => __( 'Duration', 'quiz-maker' ),
+        "score"         => __( 'Score', 'quiz-maker' ),
+        "details"       => __( 'Details', 'quiz-maker' ),
+        "points"        => __( 'Points', 'quiz-maker' ),
     );
 
      // Aro Buttons Text
@@ -142,13 +142,13 @@
     );
 
     $default_all_results_column_names = array(
-        "user_name"  => __( 'User name', $this->plugin_name),
-        "quiz_name"  => __( 'Quiz name', $this->plugin_name ),
-        "start_date" => __( 'Start date',$this->plugin_name ),
-        "end_date"   => __( 'End date',  $this->plugin_name ),
-        "duration"   => __( 'Duration',  $this->plugin_name ),
-        "score"      => __( 'Score',     $this->plugin_name ),
-        "status"     => __( 'Status',    $this->plugin_name ),
+        "user_name"  => __( 'User name', 'quiz-maker'),
+        "quiz_name"  => __( 'Quiz name', 'quiz-maker' ),
+        "start_date" => __( 'Start date','quiz-maker' ),
+        "end_date"   => __( 'End date',  'quiz-maker' ),
+        "duration"   => __( 'Duration',  'quiz-maker' ),
+        "score"      => __( 'Score',     'quiz-maker' ),
+        "status"     => __( 'Status',    'quiz-maker' ),
     );
 
     $options['all_results_columns'] = ! isset( $options['all_results_columns'] ) ? $default_all_results_columns : $options['all_results_columns'];
@@ -221,11 +221,11 @@
     );
 
     $default_quiz_all_results_column_names = array(
-        "user_name"  => __( 'User name', $this->plugin_name ),
-        "start_date" => __( 'Start date',$this->plugin_name ),
-        "end_date"   => __( 'End date',  $this->plugin_name ),
-        "duration"   => __( 'Duration',  $this->plugin_name ),
-        "score"      => __( 'Score',     $this->plugin_name ),
+        "user_name"  => __( 'User name', 'quiz-maker' ),
+        "start_date" => __( 'Start date','quiz-maker' ),
+        "end_date"   => __( 'End date',  'quiz-maker' ),
+        "duration"   => __( 'Duration',  'quiz-maker' ),
+        "score"      => __( 'Score',     'quiz-maker' ),
     );
 
     $options['quiz_all_results_columns'] = ! isset( $options['quiz_all_results_columns'] ) ? $default_quiz_all_results_columns : $options['quiz_all_results_columns'];
@@ -246,11 +246,11 @@
 
     // Leaderboard By Quiz Category Settings
     $default_leadboard_column_names = array(
-        "pos"       => __( 'Pos.', $this->plugin_name ),
-        "name"      => __( 'Name', $this->plugin_name ),
-        "score"     => __( 'Score', $this->plugin_name ),
-        "duration"  => __( 'Duration', $this->plugin_name ),
-        "points"    => __( 'Points', $this->plugin_name ),
+        "pos"       => __( 'Pos.', 'quiz-maker' ),
+        "name"      => __( 'Name', 'quiz-maker' ),
+        "score"     => __( 'Score', 'quiz-maker' ),
+        "duration"  => __( 'Duration', 'quiz-maker' ),
+        "points"    => __( 'Points', 'quiz-maker' ),
     );
 
     // WP Editor height
@@ -307,10 +307,10 @@
     );
 
     $default_all_orders_columns_names = array(
-        "quiz_name"      => __( 'Quiz name', $this->plugin_name ),
-        "payment_date"   => __( 'Payment date',$this->plugin_name ),
-        "amount"         => __( 'Amount',  $this->plugin_name ),
-        "type"           => __( 'Type',  $this->plugin_name )
+        "quiz_name"      => __( 'Quiz name', 'quiz-maker' ),
+        "payment_date"   => __( 'Payment date','quiz-maker' ),
+        "amount"         => __( 'Amount',  'quiz-maker' ),
+        "type"           => __( 'Type',  'quiz-maker' )
     );
 
     $options['quiz_all_orders_columns'] = !isset( $options['quiz_all_orders_columns'] ) || empty($options['quiz_all_orders_columns']) ? $default_all_orders_columns : $options['quiz_all_orders_columns'];
@@ -390,7 +390,7 @@
             </div>
             <h1 class="wp-heading-inline">
             <?php
-                echo __('General Settings',$this->plugin_name);
+                echo __('General Settings','quiz-maker');
             ?>
             </h1>
             <hr/>
@@ -398,45 +398,45 @@
                 <div>
                     <div class="nav-tab-wrapper" style="position:sticky; top:35px;">
                         <a href="#tab1" data-tab="tab1" class="nav-tab <?php echo ($ays_quiz_tab == 'tab1') ? 'nav-tab-active' : ''; ?>">
-                            <?php echo __("General", $this->plugin_name);?>
+                            <?php echo __("General", 'quiz-maker');?>
                         </a>
                         <!-- <a href="#tab2" data-tab="tab2" class="nav-tab <?php echo ($ays_quiz_tab == 'tab2') ? 'nav-tab-active' : ''; ?>">
-                            <?php echo __("Integrations", $this->plugin_name);?>
+                            <?php echo __("Integrations", 'quiz-maker');?>
                         </a> -->
                         <a href="#tab3" data-tab="tab3" class="nav-tab <?php echo ($ays_quiz_tab == 'tab3') ? 'nav-tab-active' : ''; ?>">
-                            <?php echo __("Shortcodes", $this->plugin_name);?>
+                            <?php echo __("Shortcodes", 'quiz-maker');?>
                         </a>
                         <a href="#tab7" data-tab="tab7" class="nav-tab <?php echo ($ays_quiz_tab == 'tab7') ? 'nav-tab-active' : ''; ?>">
-                            <?php echo __("Extra shortcodes", $this->plugin_name);?>
+                            <?php echo __("Extra shortcodes", 'quiz-maker');?>
                         </a>
                         <a href="#tab4" data-tab="tab4" class="nav-tab <?php echo ($ays_quiz_tab == 'tab4') ? 'nav-tab-active' : ''; ?>">
-                            <?php echo __("Message variables", $this->plugin_name);?>
+                            <?php echo __("Message variables", 'quiz-maker');?>
                         </a>
                         <a href="#tab5" data-tab="tab5" class="nav-tab <?php echo ($ays_quiz_tab == 'tab5') ? 'nav-tab-active' : ''; ?>">
-                            <?php echo __("Text Customizations", $this->plugin_name);?>
+                            <?php echo __("Text Customizations", 'quiz-maker');?>
                         </a>
                         <a href="#tab6" data-tab="tab6" class="nav-tab <?php echo ($ays_quiz_tab == 'tab6') ? 'nav-tab-active' : ''; ?>">
-                            <?php echo __("Fields texts", $this->plugin_name);?>
+                            <?php echo __("Fields texts", 'quiz-maker');?>
                         </a>
                         <a href="#tab8" data-tab="tab8" class="nav-tab <?php echo ($ays_quiz_tab == 'tab8') ? 'nav-tab-active' : ''; ?>">
-                            <?php echo __("Detailed Report Options", $this->plugin_name);?>
+                            <?php echo __("Detailed Report Options", 'quiz-maker');?>
                         </a>
                     </div>
                 </div>
                 <div class="ays-quiz-tabs-wrapper">
                     <div id="tab1" class="ays-quiz-tab-content <?php echo ($ays_quiz_tab == 'tab1') ? 'ays-quiz-tab-content-active' : ''; ?>">
-                        <p class="ays-subtitle"><?php echo __('General Settings',$this->plugin_name)?></p>
+                        <p class="ays-subtitle"><?php echo __('General Settings','quiz-maker')?></p>
                         <hr class="ays-quiz-bolder-hr"/>
                         <fieldset>
                             <legend>
                                 <strong style="font-size:30px;"><i class="ays_fa ays_fa_question_circle"></i></strong>
-                                <h5><?php echo __('Default parameters for Quiz',$this->plugin_name)?></h5>
+                                <h5><?php echo __('Default parameters for Quiz','quiz-maker')?></h5>
                             </legend>
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <label for="ays_questions_default_type">
-                                        <?php echo __( "Questions default type", $this->plugin_name ); ?>
-                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('You can choose default question type which will be selected in the Add new question page.',$this->plugin_name)?>">
+                                        <?php echo __( "Questions default type", 'quiz-maker' ); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('You can choose default question type which will be selected in the Add new question page.','quiz-maker')?>">
                                             <i class="ays_fa ays_fa_info_circle"></i>
                                         </a>
                                     </label>
@@ -449,7 +449,7 @@
                                             $selected = $question_default_type == $type ? "selected" : "";
                                             $ays_question_disabled = "";
                                             if ( $type == "custom" || $type == "fill_in_blank" || $type == "matching" ) {
-                                                $ays_question_disabled = "disabled title='". __( "This feature is available only in PRO version", $this->plugin_name ) ."' ";
+                                                $ays_question_disabled = "disabled title='". __( "This feature is available only in PRO version", 'quiz-maker' ) ."' ";
                                             }
                                         ?>
                                         <option value="<?php echo $type; ?>" data-nkar="<?php echo $question_types_icon_url[ $type ]; ?>" <?php echo $selected; ?> <?php echo $ays_question_disabled; ?> ><?php echo $label; ?></option>
@@ -463,8 +463,8 @@
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <label for="ays_answer_default_count">
-                                        <?php echo __( "Answer default count", $this->plugin_name ); ?>
-                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('You can write the default answer count which will be showing in the Add new question page (this will work only with radio, checkbox, and dropdown types).',$this->plugin_name)?>">
+                                        <?php echo __( "Answer default count", 'quiz-maker' ); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('You can write the default answer count which will be showing in the Add new question page (this will work only with radio, checkbox, and dropdown types).','quiz-maker')?>">
                                             <i class="ays_fa ays_fa_info_circle"></i>
                                         </a>
                                     </label>
@@ -477,8 +477,8 @@
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <label for="ays_question_default_category">
-                                        <?php echo __( "Questions default category", $this->plugin_name ); ?>
-                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Choose the category of the questions which will be selected by default each time you create a question by the Add New button.',$this->plugin_name)?>">
+                                        <?php echo __( "Questions default category", 'quiz-maker' ); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Choose the category of the questions which will be selected by default each time you create a question by the Add New button.','quiz-maker')?>">
                                             <i class="ays_fa ays_fa_info_circle"></i>
                                         </a>
                                     </label>
@@ -503,8 +503,8 @@
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <label for="ays_quiz_wp_editor_height">
-                                        <?php echo __( "WP Editor height", $this->plugin_name ); ?>
-                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Give the default value to the height of the WP Editor. It will apply to all WP Editors within the plugin on the dashboard.',$this->plugin_name); ?>">
+                                        <?php echo __( "WP Editor height", 'quiz-maker' ); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Give the default value to the height of the WP Editor. It will apply to all WP Editors within the plugin on the dashboard.','quiz-maker'); ?>">
                                             <i class="ays_fa ays_fa_info_circle"></i>
                                         </a>
                                     </label>
@@ -517,8 +517,8 @@
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <label for="ays_quiz_textarea_height">
-                                        <?php echo __( "Textarea height (public)", $this->plugin_name ); ?>
-                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Set the height of the textarea by entering a numeric value. It applies to Text question type textarea, Feedback textarea and so on.',$this->plugin_name); ?>">
+                                        <?php echo __( "Textarea height (public)", 'quiz-maker' ); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Set the height of the textarea by entering a numeric value. It applies to Text question type textarea, Feedback textarea and so on.','quiz-maker'); ?>">
                                             <i class="ays_fa ays_fa_info_circle"></i>
                                         </a>
                                     </label>
@@ -531,14 +531,14 @@
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <label for="ays_quiz_question_title_view">
-                                        <?php echo __( "Question Title View", $this->plugin_name ); ?>
+                                        <?php echo __( "Question Title View", 'quiz-maker' ); ?>
                                         <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php
                                             echo 
                                                 "<ul style='list-style-type: circle;padding-left: 20px;'>".
-                                                    "<li>". __('By Question Title - Choose this method to display the text you write for the Question Title option.',$this->plugin_name) ."</li>".
-                                                    "<li>". __('By Question Content - Choose this method to show the question content instead of the question title.',$this->plugin_name) ."</li>".
+                                                    "<li>". __('By Question Title - Choose this method to display the text you write for the Question Title option.','quiz-maker') ."</li>".
+                                                    "<li>". __('By Question Content - Choose this method to show the question content instead of the question title.','quiz-maker') ."</li>".
                                                 "</ul>" .
-                                                __('*Note: These options will work only in the table of the Quiz Edit page and when inserting questions to the quiz.',$this->plugin_name);
+                                                __('*Note: These options will work only in the table of the Quiz Edit page and when inserting questions to the quiz.','quiz-maker');
                                             ?>">
                                             <i class="ays_fa ays_fa_info_circle"></i>
                                         </a>
@@ -547,11 +547,11 @@
                                 <div class="col-sm-8">
                                     <label class="ays_quiz_loader">
                                         <input type="radio" id="ays_quiz_question_title_view_title" name="ays_quiz_question_title_view" value="question_title" <?php echo ($quiz_question_title_view == 'question_title') ? 'checked' : ''; ?>/>
-                                        <span for="ays_quiz_question_title_view_title"><?php echo __('By Question Title',$this->plugin_name); ?></span>
+                                        <span for="ays_quiz_question_title_view_title"><?php echo __('By Question Title','quiz-maker'); ?></span>
                                     </label>
                                     <label class="ays_quiz_loader">
                                         <input type="radio" id="ays_quiz_question_title_view_content" name="ays_quiz_question_title_view" value="question_content" <?php echo ($quiz_question_title_view == 'question_content') ? 'checked' : ''; ?>/>
-                                        <span for="ays_quiz_question_title_view_content"><?php echo __('By Question Content',$this->plugin_name); ?></span>
+                                        <span for="ays_quiz_question_title_view_content"><?php echo __('By Question Content','quiz-maker'); ?></span>
                                     </label>
                                 </div>
                             </div>
@@ -559,8 +559,8 @@
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <label for="ays_quiz_enable_question_allow_html">
-                                        <?php echo __( "Enable answers allow HTML for new question", $this->plugin_name ); ?>
-                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Allow implementing HTML coding in answer boxes while adding new question. This works only for Radio and Checkbox (Multiple) questions.',$this->plugin_name); ?>">
+                                        <?php echo __( "Enable answers allow HTML for new question", 'quiz-maker' ); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Allow implementing HTML coding in answer boxes while adding new question. This works only for Radio and Checkbox (Multiple) questions.','quiz-maker'); ?>">
                                             <i class="ays_fa ays_fa_info_circle"></i>
                                         </a>
                                     </label>
@@ -573,8 +573,8 @@
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <label for="ays_quiz_enable_question_not_influence_to_score">
-                                        <?php echo __( "Enable No influence to score for new question", $this->plugin_name ); ?>
-                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Enable this option and the No Influence to score option will be ticked for a new question by default.',$this->plugin_name); ?>">
+                                        <?php echo __( "Enable No influence to score for new question", 'quiz-maker' ); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Enable this option and the No Influence to score option will be ticked for a new question by default.','quiz-maker'); ?>">
                                             <i class="ays_fa ays_fa_info_circle"></i>
                                         </a>
                                     </label>
@@ -587,8 +587,8 @@
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <label for="ays_quiz_enable_question_hide_question_text">
-                                        <?php echo __( "Enable Hide question text for new question", $this->plugin_name ); ?>
-                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Enable this option and the Hide question text on the front-end option will be ticked for a new question by default.',$this->plugin_name); ?>">
+                                        <?php echo __( "Enable Hide question text for new question", 'quiz-maker' ); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Enable this option and the Hide question text on the front-end option will be ticked for a new question by default.','quiz-maker'); ?>">
                                             <i class="ays_fa ays_fa_info_circle"></i>
                                         </a>
                                     </label>
@@ -601,8 +601,8 @@
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <label for="ays_quiz_stripslashes_for_answer">
-                                        <?php echo __( "Strip slashes for answers for a new question", $this->plugin_name ); ?>
-                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Enable this option and the Strip slashes for answers option will be ticked for a new question by default.',$this->plugin_name); ?>">
+                                        <?php echo __( "Strip slashes for answers for a new question", 'quiz-maker' ); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Enable this option and the Strip slashes for answers option will be ticked for a new question by default.','quiz-maker'); ?>">
                                             <i class="ays_fa ays_fa_info_circle"></i>
                                         </a>
                                     </label>
@@ -615,8 +615,8 @@
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <label for="ays_quiz_case_sensitive_text">
-                                        <?php echo __( "Enable case sensitive text for a new question", $this->plugin_name ); ?>
-                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Enable this option and the case sensitive text option will be ticked for a new question by default.',$this->plugin_name); ?>">
+                                        <?php echo __( "Enable case sensitive text for a new question", 'quiz-maker' ); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Enable this option and the case sensitive text option will be ticked for a new question by default.','quiz-maker'); ?>">
                                             <i class="ays_fa ays_fa_info_circle"></i>
                                         </a>
                                     </label>
@@ -629,8 +629,8 @@
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <label for="ays_quiz_show_quiz_button_to_admin_only">
-                                        <?php echo __( "Show quiz button to Admins only", $this->plugin_name ); ?>
-                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Allow only admins to see the Quiz Maker button within the WP Editor while adding/editing a new post/page.',$this->plugin_name); ?>">
+                                        <?php echo __( "Show quiz button to Admins only", 'quiz-maker' ); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Allow only admins to see the Quiz Maker button within the WP Editor while adding/editing a new post/page.','quiz-maker'); ?>">
                                             <i class="ays_fa ays_fa_info_circle"></i>
                                         </a>
                                     </label>
@@ -648,8 +648,8 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_questions_default_keyword">
-                                                <?php echo __( "Keyword default count", $this->plugin_name ); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the default keyword count which will be selected while adding answers to your new question. It will apply to the previous questions and intervals as well.',$this->plugin_name); ?>">
+                                                <?php echo __( "Keyword default count", 'quiz-maker' ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the default keyword count which will be selected while adding answers to your new question. It will apply to the previous questions and intervals as well.','quiz-maker'); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -674,17 +674,17 @@
                         <fieldset>
                             <legend>
                                 <strong style="font-size:30px;"><i class="ays_fa ays_fa_user_ip"></i></strong>
-                                <h5><?php echo __('Users IP addresses',$this->plugin_name)?></h5>
+                                <h5><?php echo __('Users IP addresses','quiz-maker')?></h5>
                             </legend>
                             <blockquote class="ays_warning">
-                                <p style="margin:0;"><?php echo __( "If this option is enabled then the 'Limitation by IP' option will not work!", $this->plugin_name ); ?></p>
+                                <p style="margin:0;"><?php echo __( "If this option is enabled then the 'Limitation by IP' option will not work!", 'quiz-maker' ); ?></p>
                             </blockquote>
                             <hr/>
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <label for="ays_disable_user_ip">
-                                        <?php echo __( "Do not store IP addresses", $this->plugin_name ); ?>
-                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('After enabling this option, IP address of the users will not be stored in database. Note: If this option is enabled, then the `Limits user by IP` option will not work.',$this->plugin_name)?>">
+                                        <?php echo __( "Do not store IP addresses", 'quiz-maker' ); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('After enabling this option, IP address of the users will not be stored in database. Note: If this option is enabled, then the `Limits user by IP` option will not work.','quiz-maker')?>">
                                             <i class="ays_fa ays_fa_info_circle"></i>
                                         </a>
                                     </label>
@@ -698,13 +698,13 @@
                         <fieldset>
                             <legend>
                                 <strong style="font-size:30px;"><i class="ays_fa ays_fa_music"></i></strong>
-                                <h5><?php echo __('Quiz Right/Wrong answers sounds',$this->plugin_name)?></h5>
+                                <h5><?php echo __('Quiz Right/Wrong answers sounds','quiz-maker')?></h5>
                             </legend>
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <label for="ays_questions_default_type">
-                                        <?php echo __( "Sounds for right/wrong answers", $this->plugin_name ); ?>
-                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('This option will work with Enable correct answers option.',$this->plugin_name); ?>">
+                                        <?php echo __( "Sounds for right/wrong answers", 'quiz-maker' ); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('This option will work with Enable correct answers option.','quiz-maker'); ?>">
                                             <i class="ays_fa ays_fa_info_circle"></i>
                                         </a>
                                     </label>
@@ -713,10 +713,10 @@
                                     <div class="form-group row">
                                         <div class="col-sm-12">
                                             <label for="ays_questions_default_type">
-                                                <?php echo __( "Sounds for right answers", $this->plugin_name ); ?>
+                                                <?php echo __( "Sounds for right answers", 'quiz-maker' ); ?>
                                             </label>                                            
                                             <div class="ays-bg-music-container">
-                                                <a class="add-quiz-bg-music" href="javascript:void(0);"><?php echo __("Select sound", $this->plugin_name); ?></a>
+                                                <a class="add-quiz-bg-music" href="javascript:void(0);"><?php echo __("Select sound", 'quiz-maker'); ?></a>
                                                 <audio controls src="<?php echo $right_answer_sound; ?>"></audio>
                                                 <input type="hidden" name="ays_right_answer_sound" class="ays_quiz_bg_music" value="<?php echo $right_answer_sound; ?>">
                                             </div>
@@ -726,10 +726,10 @@
                                     <div class="form-group row">
                                         <div class="col-sm-12">                                            
                                             <label for="ays_questions_default_type">
-                                                <?php echo __( "Sounds for wrong answers", $this->plugin_name ); ?>
+                                                <?php echo __( "Sounds for wrong answers", 'quiz-maker' ); ?>
                                             </label>
                                             <div class="ays-bg-music-container">
-                                                <a class="add-quiz-bg-music" href="javascript:void(0);"><?php echo __("Select sound", $this->plugin_name); ?></a>
+                                                <a class="add-quiz-bg-music" href="javascript:void(0);"><?php echo __("Select sound", 'quiz-maker'); ?></a>
                                                 <audio controls src="<?php echo $wrong_answer_sound; ?>"></audio>
                                                 <input type="hidden" name="ays_wrong_answer_sound" class="ays_quiz_bg_music" value="<?php echo $wrong_answer_sound; ?>">
                                             </div>
@@ -742,13 +742,13 @@
                         <fieldset>
                             <legend>
                                 <strong style="font-size:30px;"><i class="ays_fa ays_fa_text"></i></strong>
-                                <h5><?php echo __('Excerpt words count in list tables',$this->plugin_name)?></h5>
+                                <h5><?php echo __('Excerpt words count in list tables','quiz-maker')?></h5>
                             </legend>
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <label for="ays_question_title_length">
-                                        <?php echo __( "Questions list table", $this->plugin_name ); ?>
-                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Determine the length of the questions to be shown in the Questions List Table by putting your preferred count of words in the following field. (For example: if you put 10, you will see the first 10 words of each question in the Questions page of your dashboard).', $this->plugin_name); ?>">
+                                        <?php echo __( "Questions list table", 'quiz-maker' ); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Determine the length of the questions to be shown in the Questions List Table by putting your preferred count of words in the following field. (For example: if you put 10, you will see the first 10 words of each question in the Questions page of your dashboard).', 'quiz-maker'); ?>">
                                             <i class="ays_fa ays_fa_info_circle"></i>
                                         </a>
                                     </label>
@@ -760,8 +760,8 @@
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <label for="ays_quizzes_title_length">
-                                        <?php echo __( "Quizzes list table", $this->plugin_name ); ?>
-                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Determine the length of the quizzes to be shown in the Quizzes List Table by putting your preferred count of words in the following field. (For example: if you put 10, you will see the first 10 words of each quiz in the Quizzes page of your dashboard).', $this->plugin_name); ?>">
+                                        <?php echo __( "Quizzes list table", 'quiz-maker' ); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Determine the length of the quizzes to be shown in the Quizzes List Table by putting your preferred count of words in the following field. (For example: if you put 10, you will see the first 10 words of each quiz in the Quizzes page of your dashboard).', 'quiz-maker'); ?>">
                                             <i class="ays_fa ays_fa_info_circle"></i>
                                         </a>
                                     </label>
@@ -773,8 +773,8 @@
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <label for="ays_results_title_length">
-                                        <?php echo __( "Results list table", $this->plugin_name ); ?>
-                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Determine the length of the results to be shown in the Results List Table by putting your preferred count of words in the following field. (For example: if you put 10, you will see the first 10 words of each result in the Results page of your dashboard).', $this->plugin_name); ?>">
+                                        <?php echo __( "Results list table", 'quiz-maker' ); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Determine the length of the results to be shown in the Results List Table by putting your preferred count of words in the following field. (For example: if you put 10, you will see the first 10 words of each result in the Results page of your dashboard).', 'quiz-maker'); ?>">
                                             <i class="ays_fa ays_fa_info_circle"></i>
                                         </a>
                                     </label>
@@ -786,8 +786,8 @@
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <label for="ays_question_categories_title_length">
-                                        <?php echo __( "Question categories list table", $this->plugin_name ); ?>
-                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Determine the length of the results to be shown in the Question categories List Table by putting your preferred count of words in the following field. (For example: if you put 10, you will see the first 10 words of each result in the Question categories page of your dashboard).', $this->plugin_name); ?>">
+                                        <?php echo __( "Question categories list table", 'quiz-maker' ); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Determine the length of the results to be shown in the Question categories List Table by putting your preferred count of words in the following field. (For example: if you put 10, you will see the first 10 words of each result in the Question categories page of your dashboard).', 'quiz-maker'); ?>">
                                             <i class="ays_fa ays_fa_info_circle"></i>
                                         </a>
                                     </label>
@@ -799,8 +799,8 @@
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <label for="ays_quiz_categories_title_length">
-                                        <?php echo __( "Quiz categories list table", $this->plugin_name ); ?>
-                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Determine the length of the results to be shown in the Quiz categories List Table by putting your preferred count of words in the following field. (For example: if you put 10, you will see the first 10 words of each result in the Question categories page of your dashboard).', $this->plugin_name); ?>">
+                                        <?php echo __( "Quiz categories list table", 'quiz-maker' ); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Determine the length of the results to be shown in the Quiz categories List Table by putting your preferred count of words in the following field. (For example: if you put 10, you will see the first 10 words of each result in the Question categories page of your dashboard).', 'quiz-maker'); ?>">
                                             <i class="ays_fa ays_fa_info_circle"></i>
                                         </a>
                                     </label>
@@ -812,8 +812,8 @@
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <label for="ays_quiz_reviews_title_length">
-                                        <?php echo __( "Reviews list table", $this->plugin_name ); ?>
-                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Determine the length of the results to be shown in the Reviews List Table by putting your preferred count of words in the following field. (For example: if you put 10, you will see the first 10 words of each result in the Reviews page of your dashboard)  .', $this->plugin_name); ?>">
+                                        <?php echo __( "Reviews list table", 'quiz-maker' ); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Determine the length of the results to be shown in the Reviews List Table by putting your preferred count of words in the following field. (For example: if you put 10, you will see the first 10 words of each result in the Reviews page of your dashboard)  .', 'quiz-maker'); ?>">
                                             <i class="ays_fa ays_fa_info_circle"></i>
                                         </a>
                                     </label>
@@ -827,16 +827,16 @@
                         <fieldset>
                             <legend>
                                 <strong style="font-size:30px;"><i class="ays_fa ays_fa_spinner"></i></strong>
-                                <h5><?php echo __('Start button activation',$this->plugin_name); ?></h5>
+                                <h5><?php echo __('Start button activation','quiz-maker'); ?></h5>
                             </legend>
                             <blockquote>
-                                <?php echo __( 'Tick on the checkbox if you would like to show loader and "Loading ..." text over the start button while the JavaScript of the given webpage loads. As soon as the webpage completes its loading, the start button will become active.', $this->plugin_name ); ?>
+                                <?php echo __( 'Tick on the checkbox if you would like to show loader and "Loading ..." text over the start button while the JavaScript of the given webpage loads. As soon as the webpage completes its loading, the start button will become active.', 'quiz-maker' ); ?>
                             </blockquote>
                             <hr>
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <label for="ays_enable_start_button_loader">
-                                        <?php echo __( "Enable Start button loader", $this->plugin_name ); ?>
+                                        <?php echo __( "Enable Start button loader", 'quiz-maker' ); ?>
                                     </label>
                                 </div>
                                 <div class="col-sm-8">
@@ -848,13 +848,13 @@
                         <fieldset>
                             <legend>
                                 <strong style="font-size:30px;"><i class="ays_fa ays_fa_code"></i></strong>
-                                <h5><?php echo __('Animation Top',$this->plugin_name)?></h5>
+                                <h5><?php echo __('Animation Top','quiz-maker')?></h5>
                             </legend>
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <label for="ays_quiz_enable_animation_top">
-                                        <?php echo __( "Enable animation", $this->plugin_name ); ?>
-                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Enable animation of the scroll offset of the quiz container. It works when the quiz container is visible on the screen partly and the user starts the quiz and moves from one question to another.',$this->plugin_name)?>">
+                                        <?php echo __( "Enable animation", 'quiz-maker' ); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Enable animation of the scroll offset of the quiz container. It works when the quiz container is visible on the screen partly and the user starts the quiz and moves from one question to another.','quiz-maker')?>">
                                             <i class="ays_fa ays_fa_info_circle"></i>
                                         </a>
                                     </label>
@@ -867,8 +867,8 @@
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <label for="ays_quiz_animation_top">
-                                        <?php echo __( "Scroll offset(px)", $this->plugin_name ); ?>
-                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the scroll offset of the quiz container after the animation starts. It works when the quiz container is visible on the screen partly and the user starts the quiz and moves from one question to another.',$this->plugin_name)?>">
+                                        <?php echo __( "Scroll offset(px)", 'quiz-maker' ); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the scroll offset of the quiz container after the animation starts. It works when the quiz container is visible on the screen partly and the user starts the quiz and moves from one question to another.','quiz-maker')?>">
                                             <i class="ays_fa ays_fa_info_circle"></i>
                                         </a>
                                     </label>
@@ -882,13 +882,13 @@
                         <fieldset>
                             <legend>
                                 <strong style="font-size:30px;"><i class="ays_fa ays_fa_file_code"></i></strong>
-                                <h5><?php echo __('General CSS File',$this->plugin_name); ?></h5>
+                                <h5><?php echo __('General CSS File','quiz-maker'); ?></h5>
                             </legend>
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <label for="ays_quiz_exclude_general_css">
-                                        <?php echo __( "Exclude general CSS file from home page", $this->plugin_name ); ?>
-                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('If the option is enabled, then the quiz general CSS file will not be applied to the home page. Please note, that if you have inserted the quiz on the home page, then the option must be disabled so that the CSS File can normally work for that quiz..',$this->plugin_name); ?>">
+                                        <?php echo __( "Exclude general CSS file from home page", 'quiz-maker' ); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('If the option is enabled, then the quiz general CSS file will not be applied to the home page. Please note, that if you have inserted the quiz on the home page, then the option must be disabled so that the CSS File can normally work for that quiz..','quiz-maker'); ?>">
                                             <i class="ays_fa ays_fa_info_circle"></i>
                                         </a>
                                     </label>
@@ -902,13 +902,13 @@
                         <fieldset>
                             <legend>
                                 <img class="ays_integration_logo" src="<?php echo AYS_QUIZ_ADMIN_URL; ?>/images/integrations/ays-quiz-loading-icon.svg" alt="" style="width: 30px;">
-                                <h5><?php echo __('Lazy loading',$this->plugin_name); ?></h5>
+                                <h5><?php echo __('Lazy loading','quiz-maker'); ?></h5>
                             </legend>
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <label for="ays_quiz_enable_lazy_loading">
-                                        <?php echo __( "Enable lazy loading attribute for images", $this->plugin_name ); ?>
-                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('If you enable this option, the loading="lazy" attribute will be added to all the question and answer images, except of the first question and answer images. Note: The feature will not work for the Quiz image option. The default value for this option is set as "On".',$this->plugin_name) ); ?>">
+                                        <?php echo __( "Enable lazy loading attribute for images", 'quiz-maker' ); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('If you enable this option, the loading="lazy" attribute will be added to all the question and answer images, except of the first question and answer images. Note: The feature will not work for the Quiz image option. The default value for this option is set as "On".','quiz-maker') ); ?>">
                                             <i class="ays_fa ays_fa_info_circle"></i>
                                         </a>
                                     </label>
@@ -922,13 +922,13 @@
                         <fieldset>
                             <legend>
                                 <strong style="font-size:30px;"><i class="ays_fa ays_fa_bell"></i></strong>
-                                <h5><?php echo __('Menu notifications',$this->plugin_name); ?></h5>
+                                <h5><?php echo __('Menu notifications','quiz-maker'); ?></h5>
                             </legend>
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <label for="ays_quiz_disable_quiz_menu_notification">
-                                        <?php echo __( "Disable Quiz maker menu item notification", $this->plugin_name ); ?>
-                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Enable this option and the notifications will not be displayed in the Quiz Maker menu.',$this->plugin_name) ); ?>">
+                                        <?php echo __( "Disable Quiz maker menu item notification", 'quiz-maker' ); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Enable this option and the notifications will not be displayed in the Quiz Maker menu.','quiz-maker') ); ?>">
                                             <i class="ays_fa ays_fa_info_circle"></i>
                                         </a>
                                     </label>
@@ -941,8 +941,8 @@
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <label for="ays_quiz_disable_results_menu_notification">
-                                        <?php echo __( "Disable Results menu item notification", $this->plugin_name ); ?>
-                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Enable this option and the notifications will not be displayed in the Results menu.',$this->plugin_name) ); ?>">
+                                        <?php echo __( "Disable Results menu item notification", 'quiz-maker' ); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Enable this option and the notifications will not be displayed in the Results menu.','quiz-maker') ); ?>">
                                             <i class="ays_fa ays_fa_info_circle"></i>
                                         </a>
                                     </label>
@@ -956,7 +956,7 @@
                         <fieldset>
                             <legend>
                                 <strong style="font-size:30px;"><i class="ays_fa ays_fa_trash"></i></strong>
-                                <h5><?php echo __('Erase Quiz data',$this->plugin_name)?></h5>
+                                <h5><?php echo __('Erase Quiz data','quiz-maker')?></h5>
                             </legend>
                             <?php if( isset( $_GET['del_stat'] ) ): ?>
                             <blockquote style="border-color:#46b450;background: rgba(70, 180, 80, 0.2);">
@@ -967,8 +967,8 @@
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <label for="ays_delete_results_by">
-                                        <?php echo __( "Delete results older than 'X' the month", $this->plugin_name ); ?>
-                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify count of months and save changes. Attention! it will remove submissions older than specified months permanently.',$this->plugin_name)?>">
+                                        <?php echo __( "Delete results older than 'X' the month", 'quiz-maker' ); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify count of months and save changes. Attention! it will remove submissions older than specified months permanently.','quiz-maker')?>">
                                             <i class="ays_fa ays_fa_info_circle"></i>
                                         </a>
                                     </label>
@@ -982,10 +982,10 @@
                         <fieldset>
                             <legend>
                                 <strong style="font-size:30px;"><i class="ays_fa ays_fa_list_alt"></i></strong>
-                                <h5><?php echo __('Results settings',$this->plugin_name); ?></h5>
+                                <h5><?php echo __('Results settings','quiz-maker'); ?></h5>
                             </legend>
                             <blockquote>
-                                <?php echo __( 'All started, but not finished data of quizzes will be stored on the Not finished tab of the Results page.', $this->plugin_name ); ?>
+                                <?php echo __( 'All started, but not finished data of quizzes will be stored on the Not finished tab of the Results page.', 'quiz-maker' ); ?>
                             </blockquote>
                             <hr>
                             <div class="form-group row" style="padding:0;margin:0;">
@@ -996,7 +996,7 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_store_all_not_finished_results">
-                                                <?php echo __( "Store all not finished results", $this->plugin_name ); ?>
+                                                <?php echo __( "Store all not finished results", 'quiz-maker' ); ?>
                                             </label>
                                         </div>
                                         <div class="col-sm-8">
@@ -1019,7 +1019,7 @@
                         <fieldset>
                             <legend>
                                 <strong style="font-size:30px;"><i class="ays_fa ays_fa_sign_in"></i></strong>
-                                <h5><?php echo __('Quiz Login Form Settings',$this->plugin_name); ?></h5>
+                                <h5><?php echo __('Quiz Login Form Settings','quiz-maker'); ?></h5>
                             </legend>
                             <div class="form-group row" style="padding:0;margin:0;">
                                 <div class="col-sm-12 only_pro" style="padding:20px;">
@@ -1029,8 +1029,8 @@
                                     <div class="form-group row ays_toggle_parent">
                                         <div class="col-sm-4">
                                             <label>
-                                                <?php echo __( "Enable Login Form Custom Redirection", $this->plugin_name ); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Enable this option to redirect users to your desired Login Form in case of filling an incorrect email address or password.',$this->plugin_name) ); ?>">
+                                                <?php echo __( "Enable Login Form Custom Redirection", 'quiz-maker' ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Enable this option to redirect users to your desired Login Form in case of filling an incorrect email address or password.','quiz-maker') ); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -1042,9 +1042,9 @@
                                             <div class="form-group row">
                                                 <div class="col-sm-4">
                                                     <label class="form-check-label">
-                                                        <?php echo __('Custom login form link', $this->plugin_name); ?>
+                                                        <?php echo __('Custom login form link', 'quiz-maker'); ?>
                                                         <a class="ays_help" data-toggle="tooltip"
-                                                        title="<?php echo __('The URL for redirecting after writing an incorrect email address or password.', $this->plugin_name); ?>">
+                                                        title="<?php echo __('The URL for redirecting after writing an incorrect email address or password.', 'quiz-maker'); ?>">
                                                             <i class="ays_fa ays_fa_info_circle"></i>
                                                         </a>
                                                     </label>
@@ -1054,7 +1054,7 @@
                                                 </div>
                                             </div>
                                             <blockquote>
-                                                <?php echo __( 'Note: If you leave the option empty,  the user will stay on the same page in case of a fail.', $this->plugin_name ); ?>
+                                                <?php echo __( 'Note: If you leave the option empty,  the user will stay on the same page in case of a fail.', 'quiz-maker' ); ?>
                                             </blockquote>
                                         </div>
                                     </div>
@@ -1074,7 +1074,7 @@
                         <fieldset>
                             <legend>
                                 <strong style="font-size:30px;"><i class="ays_fa ays_fa_globe"></i></strong>
-                                <h5><?php echo __('Who will have permission to Quiz menu',$this->plugin_name)?></h5>
+                                <h5><?php echo __('Who will have permission to Quiz menu','quiz-maker')?></h5>
                             </legend>
                             <div class="form-group row" style="padding:0px;margin:0;">
                                 <div class="col-sm-12 only_pro" style="padding:20px;">
@@ -1084,37 +1084,37 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_user_roles">
-                                                <?php echo __( "Select user role for giving access to Quiz menu", $this->plugin_name ); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Give permissions to see only their own quizzes to these user roles.',$this->plugin_name)?>">
+                                                <?php echo __( "Select user role for giving access to Quiz menu", 'quiz-maker' ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Give permissions to see only their own quizzes to these user roles.','quiz-maker')?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
                                         </div>
                                         <div class="col-sm-8 ays-quiz-user-roles">
                                             <select id="ays_user_roles" multiple>
-                                                <option selected><?php echo __( "Administrator" , $this->plugin_name); ?></option>
+                                                <option selected><?php echo __( "Administrator" , 'quiz-maker'); ?></option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label>
-                                                <?php echo __( "Select user role for giving access to change all Quiz data", $this->plugin_name ); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Give permissions to manage all quizzes and results to these user roles. Please add the given user roles to the above field as well.',$this->plugin_name)?>">
+                                                <?php echo __( "Select user role for giving access to change all Quiz data", 'quiz-maker' ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Give permissions to manage all quizzes and results to these user roles. Please add the given user roles to the above field as well.','quiz-maker')?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
                                         </div>
                                         <div class="col-sm-8 ays-quiz-user-roles">
                                             <select id="ays_user_roles_to_change_quiz" multiple>
-                                                <option selected><?php echo __( "Administrator" , $this->plugin_name); ?></option>
+                                                <option selected><?php echo __( "Administrator" , 'quiz-maker'); ?></option>
                                             </select>
                                         </div>
                                     </div>
                                     <blockquote>
-                                        <?php echo __( "Control the access of the plugin from the dashboard and manage the capabilities of those user roles.", $this->plugin_name ); ?>
+                                        <?php echo __( "Control the access of the plugin from the dashboard and manage the capabilities of those user roles.", 'quiz-maker' ); ?>
                                         <br>
-                                        <?php echo __( "If you want to give a full control to the given user role, please add the role in both fields.", $this->plugin_name ); ?>
+                                        <?php echo __( "If you want to give a full control to the given user role, please add the role in both fields.", 'quiz-maker' ); ?>
                                     </blockquote>
                                     <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
@@ -1130,19 +1130,19 @@
                         </fieldset> <!-- Who will have permission to Quiz menu -->
                     </div>
                     <div id="tab3" class="ays-quiz-tab-content <?php echo ($ays_quiz_tab == 'tab3') ? 'ays-quiz-tab-content-active' : ''; ?>">
-                        <p class="ays-subtitle"><?php echo __('Shortcodes',$this->plugin_name)?></p>
+                        <p class="ays-subtitle"><?php echo __('Shortcodes','quiz-maker')?></p>
                         <hr class="ays-quiz-bolder-hr"/>
                         <fieldset>
                             <legend>
                                 <strong style="font-size:30px;">[ ]</strong>
-                                <h5><?php echo __('All Results Settings',$this->plugin_name)?></h5>
+                                <h5><?php echo __('All Results Settings','quiz-maker')?></h5>
                             </legend>
                             <div class="form-group row" style="padding:0px;margin:0;">
                                 <div class="col-sm-12">
                                     <div class="ays-quiz-heading-box ays-quiz-unset-float ays-quiz-unset-margin">
                                         <div class="ays-quiz-wordpress-user-manual-box ays-quiz-wordpress-text-align">
                                             <a href="https://youtu.be/1G94I4mw4hY" target="_blank">
-                                                <?php echo __("How to set All Results Settings Shortcode - video", $this->plugin_name); ?>
+                                                <?php echo __("How to set All Results Settings Shortcode - video", 'quiz-maker'); ?>
                                             </a>
                                         </div>
                                     </div>
@@ -1151,8 +1151,8 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_all_results">
-                                                <?php echo __( "Shortcode", $this->plugin_name ); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('You can copy the shortcode and insert it to any post to show all results.',$this->plugin_name)?>">
+                                                <?php echo __( "Shortcode", 'quiz-maker' ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('You can copy the shortcode and insert it to any post to show all results.','quiz-maker')?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -1165,8 +1165,8 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_all_results_show_publicly">
-                                                <?php echo __( "Show to guests too", $this->plugin_name ); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show the All results table to guests as well. By default, it is displayed only for logged-in users. If this option is disabled, then only the logged-in users will be able to see the table.',$this->plugin_name)?>">
+                                                <?php echo __( "Show to guests too", 'quiz-maker' ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show the All results table to guests as well. By default, it is displayed only for logged-in users. If this option is disabled, then only the logged-in users will be able to see the table.','quiz-maker')?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -1179,8 +1179,8 @@
                                     <div class="form-group row">
                                         <div class="col-sm-12">
                                             <label>
-                                                <?php echo __( "Table columns", $this->plugin_name ); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('You can sort table columns and select which columns must display on the front-end.',$this->plugin_name)?>">
+                                                <?php echo __( "Table columns", 'quiz-maker' ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('You can sort table columns and select which columns must display on the front-end.','quiz-maker')?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -1220,7 +1220,7 @@
                                             <li style="padding-bottom: 5px;">
                                                 <?php
                                                     echo sprintf(
-                                                        __( '%s ID %s', $this->plugin_name ) . ' - ' . esc_attr( __( "Enter the ID of the quiz category. Example: id='23'. Note: In case you don't insert the ID of the Quiz Category, all results of all the quizzes will be displayed on the Front-end.", $this->plugin_name ) ),
+                                                        __( '%s ID %s', 'quiz-maker' ) . ' - ' . esc_attr( __( "Enter the ID of the quiz category. Example: id='23'. Note: In case you don't insert the ID of the Quiz Category, all results of all the quizzes will be displayed on the Front-end.", 'quiz-maker' ) ),
                                                         '<b>',
                                                         '</b>'
                                                     );
@@ -1235,14 +1235,14 @@
                         <fieldset>
                             <legend>
                                 <strong style="font-size:30px;">[ ]</strong>
-                                <h5><?php echo __('Single Quiz Results Settings',$this->plugin_name); ?></h5>
+                                <h5><?php echo __('Single Quiz Results Settings','quiz-maker'); ?></h5>
                             </legend>
                             <div class="form-group row" style="padding:0px;margin:0;">
                                 <div class="col-sm-12">
                                     <div class="ays-quiz-heading-box ays-quiz-unset-float ays-quiz-unset-margin">
                                         <div class="ays-quiz-wordpress-user-manual-box ays-quiz-wordpress-text-align">
                                             <a href="https://youtu.be/2qksH-vVc4w" target="_blank">
-                                                <?php echo __("How to set Single Quiz Results Shortcode - video", $this->plugin_name); ?>
+                                                <?php echo __("How to set Single Quiz Results Shortcode - video", 'quiz-maker'); ?>
                                             </a>
                                         </div>
                                     </div>
@@ -1251,8 +1251,8 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_quiz_all_results">
-                                                <?php echo __( "Shortcode", $this->plugin_name ); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('You can copy the shortcode and insert it to any post to show quiz all results.',$this->plugin_name); ?>">
+                                                <?php echo __( "Shortcode", 'quiz-maker' ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('You can copy the shortcode and insert it to any post to show quiz all results.','quiz-maker'); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -1265,8 +1265,8 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_quiz_all_results_show_publicly">
-                                                <?php echo __( "Show to guests too", $this->plugin_name ); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show the Single quiz results table to guests as well. By default, it is displayed only for logged-in users. If this option is disabled, then only the logged-in users will be able to see the table.',$this->plugin_name)?>">
+                                                <?php echo __( "Show to guests too", 'quiz-maker' ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show the Single quiz results table to guests as well. By default, it is displayed only for logged-in users. If this option is disabled, then only the logged-in users will be able to see the table.','quiz-maker')?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -1279,8 +1279,8 @@
                                     <div class="form-group row">
                                         <div class="col-sm-12">
                                             <label>
-                                                <?php echo __( "Table columns", $this->plugin_name ); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('You can sort table columns and select which columns must display on the front-end.',$this->plugin_name); ?>">
+                                                <?php echo __( "Table columns", 'quiz-maker' ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('You can sort table columns and select which columns must display on the front-end.','quiz-maker'); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -1314,14 +1314,14 @@
                         <fieldset>
                             <legend>
                                 <strong style="font-size:30px;">[ ]</strong>
-                                <h5><?php echo __('Display Quiz Bank(questions)',$this->plugin_name); ?></h5>
+                                <h5><?php echo __('Display Quiz Bank(questions)','quiz-maker'); ?></h5>
                             </legend>
                             <div class="form-group row" style="padding:0px;margin:0;">
                                 <div class="col-sm-12">
                                     <div class="ays-quiz-heading-box ays-quiz-unset-float ays-quiz-unset-margin">
                                         <div class="ays-quiz-wordpress-user-manual-box ays-quiz-wordpress-text-align">
                                             <a href="https://youtu.be/iciHKd_nyms" target="_blank">
-                                                <?php echo __("How to set Display Quiz Bank Questions Shortcode - video", $this->plugin_name); ?>
+                                                <?php echo __("How to set Display Quiz Bank Questions Shortcode - video", 'quiz-maker'); ?>
                                             </a>
                                         </div>
                                     </div>
@@ -1330,8 +1330,8 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_quiz_display_questions">
-                                                <?php echo __( "Shortcode", $this->plugin_name ); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Paste the shortcode into any of your posts to show questions of a given quiz. Designed to show questions to students, earlier on, for preparing for the test.',$this->plugin_name); ?>">
+                                                <?php echo __( "Shortcode", 'quiz-maker' ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Paste the shortcode into any of your posts to show questions of a given quiz. Designed to show questions to students, earlier on, for preparing for the test.','quiz-maker'); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -1346,8 +1346,8 @@
                                     <div class="form-group row ays_toggle_parent">
                                         <div class="col-sm-4">
                                             <label for="ays_quiz_enable_question_answers">
-                                                <?php echo __( "Enable question answers", $this->plugin_name ); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('After enabling this option, the answers of the questions will be displayed in a list on the Front-end.',$this->plugin_name);?>">
+                                                <?php echo __( "Enable question answers", 'quiz-maker' ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('After enabling this option, the answers of the questions will be displayed in a list on the Front-end.','quiz-maker');?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -1359,9 +1359,9 @@
                                             <div class="form-group row">
                                                 <div class="col-sm-4">
                                                     <label class="form-check-label" for="ays_quiz_show_correct_answers">
-                                                        <?php echo __('Show correct answers', $this->plugin_name); ?>
+                                                        <?php echo __('Show correct answers', 'quiz-maker'); ?>
                                                         <a class="ays_help" data-toggle="tooltip"
-                                                        title="<?php echo __('If this option is activated, the correct answers will be in bold on the front-end.', $this->plugin_name); ?>">
+                                                        title="<?php echo __('If this option is activated, the correct answers will be in bold on the front-end.', 'quiz-maker'); ?>">
                                                             <i class="ays_fa ays_fa_info_circle"></i>
                                                         </a>
                                                     </label>
@@ -1380,7 +1380,7 @@
                                     <li>
                                         <?php
                                             echo sprintf(
-                                                __( '%s By %s', $this->plugin_name ) . ' - ' . __( 'Choose the method of filtering. Example: by="category".', $this->plugin_name ),
+                                                __( '%s By %s', 'quiz-maker' ) . ' - ' . __( 'Choose the method of filtering. Example: by="category".', 'quiz-maker' ),
                                                 '<b>',
                                                 '</b>'
                                             );
@@ -1389,7 +1389,7 @@
                                             <li>
                                                 <?php
                                                     echo sprintf(
-                                                        __( '%s quiz %s', $this->plugin_name ) . ' - ' . __( 'If you set the method as Quiz, it will show all questions added in the given quiz.', $this->plugin_name ),
+                                                        __( '%s quiz %s', 'quiz-maker' ) . ' - ' . __( 'If you set the method as Quiz, it will show all questions added in the given quiz.', 'quiz-maker' ),
                                                         '<b>',
                                                         '</b>'
                                                     );
@@ -1398,7 +1398,7 @@
                                             <li>
                                                 <?php
                                                     echo sprintf(
-                                                        __( '%s category %s', $this->plugin_name ) . ' - ' . __( 'If you set the method as Category, it will show all questions assigned to the given category.', $this->plugin_name ),
+                                                        __( '%s category %s', 'quiz-maker' ) . ' - ' . __( 'If you set the method as Category, it will show all questions assigned to the given category.', 'quiz-maker' ),
                                                         '<b>',
                                                         '</b>'
                                                     );
@@ -1409,7 +1409,7 @@
                                     <li>
                                         <?php
                                             echo sprintf(
-                                                __( '%s ID %s', $this->plugin_name ) . ' - ' . __( 'Select the ID. Example: id="23".', $this->plugin_name ),
+                                                __( '%s ID %s', 'quiz-maker' ) . ' - ' . __( 'Select the ID. Example: id="23".', 'quiz-maker' ),
                                                 '<b>',
                                                 '</b>'
                                             );
@@ -1418,7 +1418,7 @@
                                             <li>
                                                 <?php
                                                     echo sprintf(
-                                                        __( '%s quiz %s', $this->plugin_name ) . ' - ' . __( 'If you set the method as Quiz, please enter the ID of the given quiz.', $this->plugin_name ),
+                                                        __( '%s quiz %s', 'quiz-maker' ) . ' - ' . __( 'If you set the method as Quiz, please enter the ID of the given quiz.', 'quiz-maker' ),
                                                         '<b>',
                                                         '</b>'
                                                     );
@@ -1427,7 +1427,7 @@
                                             <li>
                                                 <?php
                                                     echo sprintf(
-                                                        __( '%s category %s', $this->plugin_name ) . ' - ' . __( 'If you set the method as Category, please enter the ID of the given category.', $this->plugin_name ),
+                                                        __( '%s category %s', 'quiz-maker' ) . ' - ' . __( 'If you set the method as Category, please enter the ID of the given category.', 'quiz-maker' ),
                                                         '<b>',
                                                         '</b>'
                                                     );
@@ -1438,7 +1438,7 @@
                                     <li>
                                         <?php
                                             echo sprintf(
-                                                __( '%s Orderby %s', $this->plugin_name ) . ' - ' . __( 'Choose the way of ordering the questions. Example: orderby="ASC".', $this->plugin_name ),
+                                                __( '%s Orderby %s', 'quiz-maker' ) . ' - ' . __( 'Choose the way of ordering the questions. Example: orderby="ASC".', 'quiz-maker' ),
                                                 '<b>',
                                                 '</b>'
                                             );
@@ -1447,7 +1447,7 @@
                                             <li>
                                                 <?php
                                                     echo sprintf(
-                                                        __( '%s ASC %s', $this->plugin_name ) . ' - ' . __( 'The earliest created questions will appear at top of the list. The order will be classified based on question ID (oldest to newest).', $this->plugin_name ),
+                                                        __( '%s ASC %s', 'quiz-maker' ) . ' - ' . __( 'The earliest created questions will appear at top of the list. The order will be classified based on question ID (oldest to newest).', 'quiz-maker' ),
                                                         '<b>',
                                                         '</b>'
                                                     );
@@ -1456,7 +1456,7 @@
                                             <li>
                                                 <?php
                                                     echo sprintf(
-                                                        __( '%s DESC %s', $this->plugin_name ) . ' - ' . __( 'The latest created questions will appear at top of the list. The order will be classified based on question ID (newest to oldest).', $this->plugin_name ),
+                                                        __( '%s DESC %s', 'quiz-maker' ) . ' - ' . __( 'The latest created questions will appear at top of the list. The order will be classified based on question ID (newest to oldest).', 'quiz-maker' ),
                                                         '<b>',
                                                         '</b>'
                                                     );
@@ -1465,7 +1465,7 @@
                                             <li>
                                                 <?php
                                                     echo sprintf(
-                                                        __( '%s default %s', $this->plugin_name ) . ' - ' . __( 'The order will be classified based on the reordering you have done while adding the questions to the quiz. It will work only with the by="quiz" method. The by="category" method will show the same order as orderby="ASC".', $this->plugin_name ),
+                                                        __( '%s default %s', 'quiz-maker' ) . ' - ' . __( 'The order will be classified based on the reordering you have done while adding the questions to the quiz. It will work only with the by="quiz" method. The by="category" method will show the same order as orderby="ASC".', 'quiz-maker' ),
                                                         '<b>',
                                                         '</b>'
                                                     );
@@ -1474,7 +1474,7 @@
                                             <li>
                                                 <?php
                                                     echo sprintf(
-                                                        __( '%s random %s', $this->plugin_name ) . ' - ' . __( 'The questions will be displayed in random order every time the users refresh the page.', $this->plugin_name ),
+                                                        __( '%s random %s', 'quiz-maker' ) . ' - ' . __( 'The questions will be displayed in random order every time the users refresh the page.', 'quiz-maker' ),
                                                         '<b>',
                                                         '</b>'
                                                     );
@@ -1489,14 +1489,14 @@
                         <fieldset>
                             <legend>
                                 <strong style="font-size:30px;">[ ]</strong>
-                                <h5><?php echo __('Quiz categories',$this->plugin_name); ?></h5>
+                                <h5><?php echo __('Quiz categories','quiz-maker'); ?></h5>
                             </legend>
                             <div class="form-group row" style="padding:0px;margin:0;">
                                 <div class="col-sm-12">
                                     <div class="ays-quiz-heading-box ays-quiz-unset-float ays-quiz-unset-margin">
                                         <div class="ays-quiz-wordpress-user-manual-box ays-quiz-wordpress-text-align">
                                             <a href="https://youtu.be/bRTNyC-8Byw" target="_blank">
-                                                <?php echo __("How to set Quiz Categories shortcode - video", $this->plugin_name); ?>
+                                                <?php echo __("How to set Quiz Categories shortcode - video", 'quiz-maker'); ?>
                                             </a>
                                         </div>
                                     </div>
@@ -1505,8 +1505,8 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_quiz_categories">
-                                                <?php echo __( "Shortcode", $this->plugin_name ); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Copy the following shortcode, configure it based on your preferences and paste it into the post/page. Put the ID of your preferred category,  choose the method of displaying (all/random) and specify the count of quizzes.',$this->plugin_name); ?>">
+                                                <?php echo __( "Shortcode", 'quiz-maker' ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Copy the following shortcode, configure it based on your preferences and paste it into the post/page. Put the ID of your preferred category,  choose the method of displaying (all/random) and specify the count of quizzes.','quiz-maker'); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -1523,7 +1523,7 @@
                                     <li style="padding-bottom: 5px;">
                                         <?php
                                             echo sprintf(
-                                                __( '%s ID %s', $this->plugin_name ) . ' - ' . __( 'Enter the ID of the category. Example: id="23".', $this->plugin_name ),
+                                                __( '%s ID %s', 'quiz-maker' ) . ' - ' . __( 'Enter the ID of the category. Example: id="23".', 'quiz-maker' ),
                                                 '<b>',
                                                 '</b>'
                                             );
@@ -1532,7 +1532,7 @@
                                     <li>
                                         <?php
                                             echo sprintf(
-                                                __( '%s Display %s', $this->plugin_name ) . ' - ' . __( 'Choose the method of displaying. Example: display="random" count="5".', $this->plugin_name ),
+                                                __( '%s Display %s', 'quiz-maker' ) . ' - ' . __( 'Choose the method of displaying. Example: display="random" count="5".', 'quiz-maker' ),
                                                 '<b>',
                                                 '</b>'
                                             );
@@ -1541,7 +1541,7 @@
                                             <li>
                                                 <?php
                                                     echo sprintf(
-                                                        __( '%s All %s', $this->plugin_name ) . ' - ' . __( 'If you set the method as All, it will show all quizzes from the given category. In this case, it is not required to fill the %s Count %s attribute. You can either remove it or the system will ignore the value given to it.', $this->plugin_name ),
+                                                        __( '%s All %s', 'quiz-maker' ) . ' - ' . __( 'If you set the method as All, it will show all quizzes from the given category. In this case, it is not required to fill the %s Count %s attribute. You can either remove it or the system will ignore the value given to it.', 'quiz-maker' ),
                                                         '<b>',
                                                         '</b>',
                                                         '<b>',
@@ -1552,7 +1552,7 @@
                                             <li>
                                                 <?php
                                                     echo sprintf(
-                                                        __( '%s Random %s', $this->plugin_name ) . ' - ' . __( 'If you set the method as Random, please give a value to %s Count %s option too, and it will randomly display that given amount of quizzes from the given category.', $this->plugin_name ),
+                                                        __( '%s Random %s', 'quiz-maker' ) . ' - ' . __( 'If you set the method as Random, please give a value to %s Count %s option too, and it will randomly display that given amount of quizzes from the given category.', 'quiz-maker' ),
                                                         '<b>',
                                                         '</b>',
                                                         '<b>',
@@ -1565,7 +1565,7 @@
                                     <li>
                                         <?php
                                             echo sprintf(
-                                                __( '%s Layout %s', $this->plugin_name ) . ' - ' . __( 'Choose the design of the layout. Example:layout=grid.', $this->plugin_name ),
+                                                __( '%s Layout %s', 'quiz-maker' ) . ' - ' . __( 'Choose the design of the layout. Example:layout=grid.', 'quiz-maker' ),
                                                 '<b>',
                                                 '</b>'
                                             );
@@ -1574,7 +1574,7 @@
                                             <li>
                                                 <?php
                                                     echo sprintf(
-                                                        __( '%s List %s', $this->plugin_name ) . ' - ' . __( 'Choose the design of the layout as list․', $this->plugin_name ),
+                                                        __( '%s List %s', 'quiz-maker' ) . ' - ' . __( 'Choose the design of the layout as list․', 'quiz-maker' ),
                                                         '<b>',
                                                         '</b>'
                                                     );
@@ -1583,7 +1583,7 @@
                                             <li>
                                                 <?php
                                                     echo sprintf(
-                                                        __( '%s Grid %s', $this->plugin_name ) . ' - ' . __( 'Choose the design of the layout as grid․', $this->plugin_name ),
+                                                        __( '%s Grid %s', 'quiz-maker' ) . ' - ' . __( 'Choose the design of the layout as grid․', 'quiz-maker' ),
                                                         '<b>',
                                                         '</b>'
                                                     );
@@ -1599,8 +1599,8 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_quiz_cat_title">
-                                                <?php echo __( "Shortcode", $this->plugin_name ); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('You need to insert Your Quiz Category ID in the shortcode. It will show the category title. If there is no quiz category available/unavailable with that particular Quiz Category ID, the shortcode will stay empty.',$this->plugin_name); ?>">
+                                                <?php echo __( "Shortcode", 'quiz-maker' ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('You need to insert Your Quiz Category ID in the shortcode. It will show the category title. If there is no quiz category available/unavailable with that particular Quiz Category ID, the shortcode will stay empty.','quiz-maker'); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -1617,8 +1617,8 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_quiz_cat_description">
-                                                <?php echo __( "Shortcode", $this->plugin_name ); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('You need to insert Your Quiz Category ID in the shortcode. It will show the category description. If there is no quiz category available/unavailable with that particular Quiz Category ID, the shortcode will stay empty.',$this->plugin_name); ?>">
+                                                <?php echo __( "Shortcode", 'quiz-maker' ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('You need to insert Your Quiz Category ID in the shortcode. It will show the category description. If there is no quiz category available/unavailable with that particular Quiz Category ID, the shortcode will stay empty.','quiz-maker'); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -1634,14 +1634,14 @@
                         <fieldset>
                             <legend>
                                 <strong style="font-size:30px;">[ ]</strong>
-                                <h5><?php echo __('Question categories',$this->plugin_name); ?></h5>
+                                <h5><?php echo __('Question categories','quiz-maker'); ?></h5>
                             </legend>
                             <div class="form-group row" style="padding:0px;margin:0;">
                                 <div class="col-sm-12">
                                     <div class="ays-quiz-heading-box ays-quiz-unset-float ays-quiz-unset-margin">
                                         <div class="ays-quiz-wordpress-user-manual-box ays-quiz-wordpress-text-align">
                                             <a href="https://youtu.be/bRTNyC-8Byw" target="_blank">
-                                                <?php echo __("How to set Question Categories shortcode - video", $this->plugin_name); ?>
+                                                <?php echo __("How to set Question Categories shortcode - video", 'quiz-maker'); ?>
                                             </a>
                                         </div>
                                     </div>
@@ -1650,8 +1650,8 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_quiz_question_categories_title">
-                                                <?php echo __( "Shortcode", $this->plugin_name ); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('You need to insert Your Quiz Question Category ID in the shortcode. It will show the category title. If there is no quiz question category available/unavailable with that particular Quiz Question Category ID, the shortcode will stay empty.',$this->plugin_name); ?>">
+                                                <?php echo __( "Shortcode", 'quiz-maker' ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('You need to insert Your Quiz Question Category ID in the shortcode. It will show the category title. If there is no quiz question category available/unavailable with that particular Quiz Question Category ID, the shortcode will stay empty.','quiz-maker'); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -1668,8 +1668,8 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_quiz_question_categories_description">
-                                                <?php echo __( "Shortcode", $this->plugin_name ); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('You need to insert Your Quiz Question Category ID in the shortcode. It will show the category description. If there is no quiz question category available/unavailable with that particular Quiz Question Category ID, the shortcode will stay empty.',$this->plugin_name); ?>">
+                                                <?php echo __( "Shortcode", 'quiz-maker' ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('You need to insert Your Quiz Question Category ID in the shortcode. It will show the category description. If there is no quiz question category available/unavailable with that particular Quiz Question Category ID, the shortcode will stay empty.','quiz-maker'); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -1685,14 +1685,14 @@
                         <fieldset>
                             <legend>
                                 <strong style="font-size:30px;">[ ]</strong>
-                                <h5><?php echo __('Most popular quiz',$this->plugin_name); ?></h5>
+                                <h5><?php echo __('Most popular quiz','quiz-maker'); ?></h5>
                             </legend>
                             <div class="form-group row" style="padding:0px;margin:0;">
                                 <div class="col-sm-12">
                                     <div class="ays-quiz-heading-box ays-quiz-unset-float ays-quiz-unset-margin">
                                         <div class="ays-quiz-wordpress-user-manual-box ays-quiz-wordpress-text-align">
                                             <a href="https://youtu.be/QSJnZSvOqa0" target="_blank">
-                                                <?php echo __("How to set the Most Popular Quiz shortcode - video", $this->plugin_name); ?>
+                                                <?php echo __("How to set the Most Popular Quiz shortcode - video", 'quiz-maker'); ?>
                                             </a>
                                         </div>
                                     </div>
@@ -1701,8 +1701,8 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_quiz_most_popular">
-                                                <?php echo __( "Shortcode", $this->plugin_name ); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Designed to show the most popular quiz that is passed most commonly by users.',$this->plugin_name); ?>">
+                                                <?php echo __( "Shortcode", 'quiz-maker' ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Designed to show the most popular quiz that is passed most commonly by users.','quiz-maker'); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -1718,14 +1718,14 @@
                         <fieldset>
                             <legend style="margin-bottom: 0;">
                                 <strong style="font-size:30px;">[ ]</strong>
-                                <h5><?php echo __('Individual Leaderboard Settings',$this->plugin_name)?></h5>
+                                <h5><?php echo __('Individual Leaderboard Settings','quiz-maker')?></h5>
                             </legend>
                             <div class="form-group row" style="padding:0px;margin:0;">
                                 <div class="col-sm-12">
                                     <div class="ays-quiz-heading-box ays-quiz-unset-float ays-quiz-unset-margin">
                                         <div class="ays-quiz-wordpress-user-manual-box ays-quiz-wordpress-text-align">
                                             <a href="https://www.youtube.com/watch?v=trZEpGWm9GE" target="_blank">
-                                                <?php echo __("How to add leaderboard - video", $this->plugin_name); ?>
+                                                <?php echo __("How to add leaderboard - video", 'quiz-maker'); ?>
                                             </a>
                                         </div>
                                     </div>
@@ -1734,11 +1734,11 @@
                                     <div class="pro_features pro_features_popup pro_features_background_bolder">
                                         <div class="pro-features-popup-conteiner">
                                             <div class="pro-features-popup-title">
-                                                <?php echo __("How to set Leaderboards with WordPress Quiz Plugin", $this->plugin_name); ?>
+                                                <?php echo __("How to set Leaderboards with WordPress Quiz Plugin", 'quiz-maker'); ?>
                                             </div>
                                             <div class="pro-features-popup-content" data-link="https://youtu.be/I4rfyzf5D3E">
                                                 <p>
-                                                    <?php echo sprintf( __("The Quiz Maker plugin gives you the opportunity to add %s advanced Leaderboards %s to your WordPress website. Having Leaderboards on the website helps you %s stimulate competition %s and %s motivate quiz takers %s to improve their skills.", $this->plugin_name),
+                                                    <?php echo sprintf( __("The Quiz Maker plugin gives you the opportunity to add %s advanced Leaderboards %s to your WordPress website. Having Leaderboards on the website helps you %s stimulate competition %s and %s motivate quiz takers %s to improve their skills.", 'quiz-maker'),
                                                         "<strong>",
                                                         "</strong>",
                                                         "<strong>",
@@ -1748,21 +1748,21 @@
                                                     ); ?>
                                                 </p>
                                                 <p>
-                                                    <?php echo __("Follow the steps mentioned in this step-by-step video tutorial to create your own Leaderboard. ", $this->plugin_name); ?>
+                                                    <?php echo __("Follow the steps mentioned in this step-by-step video tutorial to create your own Leaderboard. ", 'quiz-maker'); ?>
                                                 </p>
                                                 <div>
-                                                    <a href="https://quiz-plugin.com/individual-leaderboard" target="_blank"><?php echo __("See Demo", $this->plugin_name); ?></a>
+                                                    <a href="https://quiz-plugin.com/individual-leaderboard" target="_blank"><?php echo __("See Demo", 'quiz-maker'); ?></a>
                                                 </div>
                                             </div>
                                             <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-individual-leaderboard-shortcode">
-                                                <?php echo __("Upgrade PRO NOW", $this->plugin_name); ?>
+                                                <?php echo __("Upgrade PRO NOW", 'quiz-maker'); ?>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_invidLead">
-                                                <?php echo __( "Shortcode", $this->plugin_name ); ?>
+                                                <?php echo __( "Shortcode", 'quiz-maker' ); ?>
                                             </label>
                                         </div>
                                         <div class="col-sm-8">
@@ -1772,7 +1772,7 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_leadboard_count">
-                                                <?php echo __('Users count',$this->plugin_name)?>
+                                                <?php echo __('Users count','quiz-maker')?>
                                             </label>
                                         </div>
                                         <div class="col-sm-8">
@@ -1786,7 +1786,7 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_leadboard_width">
-                                                <?php echo __('Width',$this->plugin_name)?>
+                                                <?php echo __('Width','quiz-maker')?>
                                             </label>
                                         </div>
                                         <div class="col-sm-8">
@@ -1795,48 +1795,48 @@
                                                 id="ays_leadboard_width"
                                                 value="500"
                                             />
-                                            <span style="display:block;" class="ays_quiz_small_hint_text"><?php echo __("For 100% leave blank", $this->plugin_name);?></span>
+                                            <span style="display:block;" class="ays_quiz_small_hint_text"><?php echo __("For 100% leave blank", 'quiz-maker');?></span>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label>
-                                                <?php echo __('Group users by',$this->plugin_name)?>
+                                                <?php echo __('Group users by','quiz-maker')?>
                                             </label>
                                         </div>
                                         <div class="col-sm-8">
                                             <label class="ays_quiz_loader">
                                                 <input type="radio" value="id" checked/>
-                                                <span><?php echo __( "ID", $this->plugin_name); ?></span>
+                                                <span><?php echo __( "ID", 'quiz-maker'); ?></span>
                                             </label>
                                             <label class="ays_quiz_loader">
                                                 <input type="radio" value="email"/>
-                                                <span><?php echo __( "Email", $this->plugin_name); ?></span>
+                                                <span><?php echo __( "Email", 'quiz-maker'); ?></span>
                                             </label>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label>
-                                                <?php echo __('Show user’s result',$this->plugin_name)?>
+                                                <?php echo __('Show user’s result','quiz-maker')?>
                                             </label>
                                         </div>
                                         <div class="col-sm-8">
                                             <label class="ays_quiz_loader">
                                                 <input type="radio" value="avg" checked/>
-                                                <span><?php echo __( "AVG", $this->plugin_name); ?></span>
+                                                <span><?php echo __( "AVG", 'quiz-maker'); ?></span>
                                             </label>
                                             <label class="ays_quiz_loader">
                                                 <input type="radio" value="max"/>
-                                                <span><?php echo __( "MAX", $this->plugin_name); ?></span>
+                                                <span><?php echo __( "MAX", 'quiz-maker'); ?></span>
                                             </label>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label>
-                                                <?php echo __('Show points',$this->plugin_name)?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Decide how to display the score. For instance, if you choose the correct answer count, the score will be shown in this format: 8/10.',$this->plugin_name); ?>">
+                                                <?php echo __('Show points','quiz-maker')?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Decide how to display the score. For instance, if you choose the correct answer count, the score will be shown in this format: 8/10.','quiz-maker'); ?>">
                                                     <!-- <i class="ays_fa ays_fa_info_circle"></i> -->
                                                 </a>
                                             </label>
@@ -1844,19 +1844,19 @@
                                         <div class="col-sm-8">
                                             <label class="ays_quiz_loader">
                                                 <input type="radio" checked />
-                                                <span><?php echo __( "Without maximum point", $this->plugin_name); ?></span>
+                                                <span><?php echo __( "Without maximum point", 'quiz-maker'); ?></span>
                                             </label>
                                             <label class="ays_quiz_loader">
                                                 <input type="radio" />
-                                                <span><?php echo __( "With maximum point", $this->plugin_name); ?></span>
+                                                <span><?php echo __( "With maximum point", 'quiz-maker'); ?></span>
                                             </label>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label>
-                                                <?php echo __( "Enable pagination", $this->plugin_name ); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('When this option is enabled, the data on the leaderboard will be displayed with pages. You can sort the data by leaderboard columns.',$this->plugin_name); ?>">
+                                                <?php echo __( "Enable pagination", 'quiz-maker' ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('When this option is enabled, the data on the leaderboard will be displayed with pages. You can sort the data by leaderboard columns.','quiz-maker'); ?>">
                                                     <!-- <i class="ays_fa ays_fa_info_circle"></i> -->
                                                 </a>
                                             </label>
@@ -1868,8 +1868,8 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label>
-                                                <?php echo __( "Enable User Avatar", $this->plugin_name ); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('By enabling this option, you can display the user avatar on the Front-end. Note: The Name field (Information Form option) must be enabled so that this option can work for you. If the Name table column is disabled, but the User Avatar option is enabled, the avatar will not be displayed on the front end. The user avatar will be displayed next to the name of the user.',$this->plugin_name); ?>">
+                                                <?php echo __( "Enable User Avatar", 'quiz-maker' ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('By enabling this option, you can display the user avatar on the Front-end. Note: The Name field (Information Form option) must be enabled so that this option can work for you. If the Name table column is disabled, but the User Avatar option is enabled, the avatar will not be displayed on the front end. The user avatar will be displayed next to the name of the user.','quiz-maker'); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -1881,7 +1881,7 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_leadboard_color">
-                                                <?php echo __('Color',$this->plugin_name)?>
+                                                <?php echo __('Color','quiz-maker')?>
                                             </label>
                                         </div>
                                         <div class="col-sm-8">
@@ -1891,8 +1891,8 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_leadboard_custom_css">
-                                                <?php echo __('Custom CSS',$this->plugin_name)?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Field for entering your own CSS code',$this->plugin_name)?>">
+                                                <?php echo __('Custom CSS','quiz-maker')?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Field for entering your own CSS code','quiz-maker')?>">
                                                     <i class="ays_fa ays_fa_info_circle_test"></i>
                                                 </a>
                                             </label>
@@ -1905,8 +1905,8 @@
                                     <div class="form-group row">
                                         <div class="col-sm-12">
                                             <label>
-                                                <?php echo __( "Leaderboard Columns", $this->plugin_name ); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('You can sort table columns and select which columns must display on the front-end.',$this->plugin_name)?>">
+                                                <?php echo __( "Leaderboard Columns", 'quiz-maker' ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('You can sort table columns and select which columns must display on the front-end.','quiz-maker')?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -1970,14 +1970,14 @@
                         <fieldset>
                             <legend style="margin-bottom: 0;">
                                 <strong style="font-size:30px;">[ ]</strong>
-                                <h5 class="ays-subtitle"><?php echo __('Global Leaderboard Settings',$this->plugin_name)?></h5>
+                                <h5 class="ays-subtitle"><?php echo __('Global Leaderboard Settings','quiz-maker')?></h5>
                             </legend>
                             <div class="form-group row" style="padding:0px;margin:0;">
                                 <div class="col-sm-12">
                                     <div class="ays-quiz-heading-box ays-quiz-unset-float ays-quiz-unset-margin">
                                         <div class="ays-quiz-wordpress-user-manual-box ays-quiz-wordpress-text-align">
                                             <a href="https://www.youtube.com/watch?v=trZEpGWm9GE" target="_blank">
-                                                <?php echo __("How to add leaderboard - video", $this->plugin_name); ?>
+                                                <?php echo __("How to add leaderboard - video", 'quiz-maker'); ?>
                                             </a>
                                         </div>
                                     </div>
@@ -1986,11 +1986,11 @@
                                     <div class="pro_features pro_features_popup pro_features_background_bolder">
                                         <div class="pro-features-popup-conteiner">
                                             <div class="pro-features-popup-title">
-                                                <?php echo __("How to set Leaderboards with WordPress Quiz Plugin", $this->plugin_name); ?>
+                                                <?php echo __("How to set Leaderboards with WordPress Quiz Plugin", 'quiz-maker'); ?>
                                             </div>
                                             <div class="pro-features-popup-content" data-link="https://youtu.be/I4rfyzf5D3E">
                                                 <p>
-                                                    <?php echo sprintf( __("The Quiz Maker plugin gives you the opportunity to add %s advanced Leaderboards %s to your WordPress website. Having Leaderboards on the website helps you %s stimulate competition %s and %s motivate quiz takers %s to improve their skills.", $this->plugin_name),
+                                                    <?php echo sprintf( __("The Quiz Maker plugin gives you the opportunity to add %s advanced Leaderboards %s to your WordPress website. Having Leaderboards on the website helps you %s stimulate competition %s and %s motivate quiz takers %s to improve their skills.", 'quiz-maker'),
                                                         "<strong>",
                                                         "</strong>",
                                                         "<strong>",
@@ -2000,21 +2000,21 @@
                                                     ); ?>
                                                 </p>
                                                 <p>
-                                                    <?php echo __("Follow the steps mentioned in this step-by-step video tutorial to create your own Leaderboard. ", $this->plugin_name); ?>
+                                                    <?php echo __("Follow the steps mentioned in this step-by-step video tutorial to create your own Leaderboard. ", 'quiz-maker'); ?>
                                                 </p>
                                                 <div>
-                                                    <a href="https://quiz-plugin.com/global-leaderboard-2/" target="_blank"><?php echo __("See Demo", $this->plugin_name); ?></a>
+                                                    <a href="https://quiz-plugin.com/global-leaderboard-2/" target="_blank"><?php echo __("See Demo", 'quiz-maker'); ?></a>
                                                 </div>
                                             </div>
                                             <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-global-leaderboard-shortcode">
-                                                <?php echo __("Upgrade PRO NOW", $this->plugin_name); ?>
+                                                <?php echo __("Upgrade PRO NOW", 'quiz-maker'); ?>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_globLead">
-                                                <?php echo __( "Shortcode", $this->plugin_name ); ?>
+                                                <?php echo __( "Shortcode", 'quiz-maker' ); ?>
                                             </label>
                                         </div>
                                         <div class="col-sm-8">
@@ -2024,7 +2024,7 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_gleadboard_count">
-                                                <?php echo __('Users count',$this->plugin_name)?>
+                                                <?php echo __('Users count','quiz-maker')?>
                                             </label>
                                         </div>
                                         <div class="col-sm-8">
@@ -2038,7 +2038,7 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_gleadboard_width">
-                                                <?php echo __('Width',$this->plugin_name)?>
+                                                <?php echo __('Width','quiz-maker')?>
                                             </label>
                                         </div>
                                         <div class="col-sm-8">
@@ -2047,52 +2047,52 @@
                                                 id="ays_gleadboard_width"
                                                 value="600"
                                             />
-                                            <span style="display:block;" class="ays_quiz_small_hint_text"><?php echo __("For 100% leave blank", $this->plugin_name);?></span>
+                                            <span style="display:block;" class="ays_quiz_small_hint_text"><?php echo __("For 100% leave blank", 'quiz-maker');?></span>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label>
-                                                <?php echo __('Users order by',$this->plugin_name)?>
+                                                <?php echo __('Users order by','quiz-maker')?>
                                             </label>
                                         </div>
                                         <div class="col-sm-8">
                                             <label class="ays_quiz_loader">
                                                 <input type="radio" value="id"/>
-                                                <span><?php echo __( "ID", $this->plugin_name); ?></span>
+                                                <span><?php echo __( "ID", 'quiz-maker'); ?></span>
                                             </label>
                                             <label class="ays_quiz_loader">
                                                 <input type="radio" value="email" checked/>
-                                                <span><?php echo __( "Email", $this->plugin_name); ?></span>
+                                                <span><?php echo __( "Email", 'quiz-maker'); ?></span>
                                             </label>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label>
-                                                <?php echo __('Show user’s result',$this->plugin_name)?>
+                                                <?php echo __('Show user’s result','quiz-maker')?>
                                             </label>
                                         </div>
                                         <div class="col-sm-8">
                                             <label class="ays_quiz_loader">
                                                 <input type="radio" value="avg"/>
-                                                <span><?php echo __( "AVG", $this->plugin_name); ?></span>
+                                                <span><?php echo __( "AVG", 'quiz-maker'); ?></span>
                                             </label>
                                             <label class="ays_quiz_loader">
                                                 <input type="radio" value="max" checked/>
-                                                <span><?php echo __( "MAX", $this->plugin_name); ?></span>
+                                                <span><?php echo __( "MAX", 'quiz-maker'); ?></span>
                                             </label>
                                             <label class="ays_quiz_loader">
                                                 <input type="radio" value="sum"/>
-                                                <span><?php echo __( "SUM", $this->plugin_name); ?></span>
+                                                <span><?php echo __( "SUM", 'quiz-maker'); ?></span>
                                             </label>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label>
-                                                <?php echo __( "Enable pagination", $this->plugin_name ); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('When this option is enabled, the data on the leaderboard will be displayed with pages. You can sort the data by leaderboard columns.',$this->plugin_name); ?>">
+                                                <?php echo __( "Enable pagination", 'quiz-maker' ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('When this option is enabled, the data on the leaderboard will be displayed with pages. You can sort the data by leaderboard columns.','quiz-maker'); ?>">
                                                     <!-- <i class="ays_fa ays_fa_info_circle"></i> -->
                                                 </a>
                                             </label>
@@ -2104,8 +2104,8 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label>
-                                                <?php echo __( "Enable User Avatar", $this->plugin_name ); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('By enabling this option, you can display the user avatar on the Front-end. Note: The Name field (Information Form option) must be enabled so that this option can work for you. If the Name table column is disabled, but the User Avatar option is enabled, the avatar will not be displayed on the front end. The user avatar will be displayed next to the name of the user.',$this->plugin_name); ?>">
+                                                <?php echo __( "Enable User Avatar", 'quiz-maker' ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('By enabling this option, you can display the user avatar on the Front-end. Note: The Name field (Information Form option) must be enabled so that this option can work for you. If the Name table column is disabled, but the User Avatar option is enabled, the avatar will not be displayed on the front end. The user avatar will be displayed next to the name of the user.','quiz-maker'); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -2117,7 +2117,7 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_gleadboard_color">
-                                                <?php echo __('Color',$this->plugin_name)?>
+                                                <?php echo __('Color','quiz-maker')?>
                                             </label>
                                         </div>
                                         <div class="col-sm-8">
@@ -2127,8 +2127,8 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_gleadboard_custom_css">
-                                                <?php echo __('Custom CSS',$this->plugin_name)?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Field for entering your own CSS code',$this->plugin_name)?>">
+                                                <?php echo __('Custom CSS','quiz-maker')?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Field for entering your own CSS code','quiz-maker')?>">
                                                     <i class="ays_fa ays_fa_info_circle_aa"></i>
                                                 </a>
                                             </label>
@@ -2142,8 +2142,8 @@
                                     <div class="form-group row">
                                         <div class="col-sm-12">
                                             <label>
-                                                <?php echo __( "Leaderboard Columns", $this->plugin_name ); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('You can sort table columns and select which columns must display on the front-end.',$this->plugin_name)?>">
+                                                <?php echo __( "Leaderboard Columns", 'quiz-maker' ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('You can sort table columns and select which columns must display on the front-end.','quiz-maker')?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -2207,21 +2207,21 @@
                         <fieldset>
                             <legend>
                                 <strong style="font-size:30px;">[ ]</strong>
-                                <h5 class="ays-subtitle"><?php echo __('Leaderboard By Quiz Category Settings',$this->plugin_name)?></h5>
+                                <h5 class="ays-subtitle"><?php echo __('Leaderboard By Quiz Category Settings','quiz-maker')?></h5>
                             </legend>
                             <blockquote>
-                                <?php echo __( "It is designed for a particular quiz category results.", $this->plugin_name ); ?>
+                                <?php echo __( "It is designed for a particular quiz category results.", 'quiz-maker' ); ?>
                             </blockquote>
                             <hr>
                             <div class="col-sm-12 only_pro ays-quiz-margin-top-20" style="padding:20px;">
                                 <div class="pro_features pro_features_popup pro_features_background_bolder">
                                     <div class="pro-features-popup-conteiner">
                                         <div class="pro-features-popup-title">
-                                            <?php echo __("How to set Leaderboards with WordPress Quiz Plugin", $this->plugin_name); ?>
+                                            <?php echo __("How to set Leaderboards with WordPress Quiz Plugin", 'quiz-maker'); ?>
                                         </div>
                                         <div class="pro-features-popup-content" data-link="https://youtu.be/I4rfyzf5D3E">
                                             <p>
-                                                <?php echo sprintf( __("The Quiz Maker plugin gives you the opportunity to add %s advanced Leaderboards %s to your WordPress website. Having Leaderboards on the website helps you %s stimulate competition %s and %s motivate quiz takers %s to improve their skills.", $this->plugin_name),
+                                                <?php echo sprintf( __("The Quiz Maker plugin gives you the opportunity to add %s advanced Leaderboards %s to your WordPress website. Having Leaderboards on the website helps you %s stimulate competition %s and %s motivate quiz takers %s to improve their skills.", 'quiz-maker'),
                                                     "<strong>",
                                                     "</strong>",
                                                     "<strong>",
@@ -2231,22 +2231,22 @@
                                                 ); ?>
                                             </p>
                                             <p>
-                                                <?php echo __("Follow the steps mentioned in this step-by-step video tutorial to create your own Leaderboard. ", $this->plugin_name); ?>
+                                                <?php echo __("Follow the steps mentioned in this step-by-step video tutorial to create your own Leaderboard. ", 'quiz-maker'); ?>
                                             </p>
                                             <div>
-                                                <a href="https://quiz-plugin.com/leaderboard-by-quiz-category" target="_blank"><?php echo __("See Demo", $this->plugin_name); ?></a>
+                                                <a href="https://quiz-plugin.com/leaderboard-by-quiz-category" target="_blank"><?php echo __("See Demo", 'quiz-maker'); ?></a>
                                             </div>
                                         </div>
                                         <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-quiz-category-leaderboard-shortcode">
-                                            <?php echo __("Upgrade PRO NOW", $this->plugin_name); ?>
+                                            <?php echo __("Upgrade PRO NOW", 'quiz-maker'); ?>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_globLead_cat">
-                                            <?php echo __( "Shortcode", $this->plugin_name ); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('You can copy the shortcode and paste it to any post/page to see the list of the top user’s who passed any quiz.',$this->plugin_name)?>">
+                                            <?php echo __( "Shortcode", 'quiz-maker' ); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('You can copy the shortcode and paste it to any post/page to see the list of the top user’s who passed any quiz.','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -2258,8 +2258,8 @@
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_gleadboard_quiz_cat_count">
-                                            <?php echo __('Users count',$this->plugin_name)?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('How many users’ results will be shown in the leaderboard.',$this->plugin_name)?>">
+                                            <?php echo __('Users count','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('How many users’ results will be shown in the leaderboard.','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -2272,8 +2272,8 @@
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_gleadboard_quiz_cat_width">
-                                            <?php echo __('Width',$this->plugin_name)?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The width of the Leaderboard box. It accepts only numeric values. For 100% leave it blank.',$this->plugin_name)?>">
+                                            <?php echo __('Width','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The width of the Leaderboard box. It accepts only numeric values. For 100% leave it blank.','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -2281,14 +2281,14 @@
                                     <div class="col-sm-8">
                                         <input type="number" class="ays-text-input" id="ays_gleadboard_quiz_cat_width" value="500"
                                         />
-                                        <span style="display:block;" class="ays_quiz_small_hint_text"><?php echo __("For 100% leave blank", $this->plugin_name);?></span>
+                                        <span style="display:block;" class="ays_quiz_small_hint_text"><?php echo __("For 100% leave blank", 'quiz-maker');?></span>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label>
-                                            <?php echo __('Group users by',$this->plugin_name);?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Select the way for grouping the results. If you want to make Leaderboard for logged in users, then choose ID. It will collect results by WP user ID. If you want to make Leaderboard for guests, then you need to choose Email and enable Information Form and Email, Name options from quiz settings. It will group results by emails and display guests Names.',$this->plugin_name); ?>">
+                                            <?php echo __('Group users by','quiz-maker');?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Select the way for grouping the results. If you want to make Leaderboard for logged in users, then choose ID. It will collect results by WP user ID. If you want to make Leaderboard for guests, then you need to choose Email and enable Information Form and Email, Name options from quiz settings. It will group results by emails and display guests Names.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -2296,19 +2296,19 @@
                                     <div class="col-sm-8">
                                         <label class="ays_quiz_loader">
                                             <input type="radio" checked />
-                                            <span><?php echo __( "ID", $this->plugin_name); ?></span>
+                                            <span><?php echo __( "ID", 'quiz-maker'); ?></span>
                                         </label>
                                         <label class="ays_quiz_loader">
                                             <input type="radio" />
-                                            <span><?php echo __( "Email", $this->plugin_name); ?></span>
+                                            <span><?php echo __( "Email", 'quiz-maker'); ?></span>
                                         </label>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label>
-                                            <?php echo __('Show user’s result',$this->plugin_name);?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show the users’ Average, Maximum or Sum results in the leaderboard. SUM does not work with Score(table column)',$this->plugin_name);?>">
+                                            <?php echo __('Show user’s result','quiz-maker');?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show the users’ Average, Maximum or Sum results in the leaderboard. SUM does not work with Score(table column)','quiz-maker');?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -2316,23 +2316,23 @@
                                     <div class="col-sm-8">
                                         <label class="ays_quiz_loader">
                                             <input type="radio" checked />
-                                            <span><?php echo __( "AVG", $this->plugin_name); ?></span>
+                                            <span><?php echo __( "AVG", 'quiz-maker'); ?></span>
                                         </label>
                                         <label class="ays_quiz_loader">
                                             <input type="radio" />
-                                            <span><?php echo __( "MAX", $this->plugin_name); ?></span>
+                                            <span><?php echo __( "MAX", 'quiz-maker'); ?></span>
                                         </label>
                                         <label class="ays_quiz_loader">
                                             <input type="radio" />
-                                            <span><?php echo __( "SUM", $this->plugin_name); ?></span>
+                                            <span><?php echo __( "SUM", 'quiz-maker'); ?></span>
                                         </label>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label>
-                                            <?php echo __( "Enable pagination", $this->plugin_name ); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('When this option is enabled, the data on the leaderboard will be displayed with pages. You can sort the data by leaderboard columns.',$this->plugin_name); ?>">
+                                            <?php echo __( "Enable pagination", 'quiz-maker' ); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('When this option is enabled, the data on the leaderboard will be displayed with pages. You can sort the data by leaderboard columns.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -2344,8 +2344,8 @@
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label>
-                                            <?php echo __( "Enable User Avatar", $this->plugin_name ); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('By enabling this option, you can display the user avatar on the Front-end. Note: The Name field (Information Form option) must be enabled so that this option can work for you. If the Name table column is disabled, but the User Avatar option is enabled, the avatar will not be displayed on the front end. The user avatar will be displayed next to the name of the user.',$this->plugin_name); ?>">
+                                            <?php echo __( "Enable User Avatar", 'quiz-maker' ); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('By enabling this option, you can display the user avatar on the Front-end. Note: The Name field (Information Form option) must be enabled so that this option can work for you. If the Name table column is disabled, but the User Avatar option is enabled, the avatar will not be displayed on the front end. The user avatar will be displayed next to the name of the user.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -2357,8 +2357,8 @@
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_gleadboard_quiz_cat_color">
-                                            <?php echo __('Color',$this->plugin_name);?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Top color of the leaderboard',$this->plugin_name);?>">
+                                            <?php echo __('Color','quiz-maker');?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Top color of the leaderboard','quiz-maker');?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -2370,8 +2370,8 @@
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_gleadboard_quiz_cat_custom_css">
-                                            <?php echo __('Custom CSS',$this->plugin_name);?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Field for entering your own CSS code',$this->plugin_name);?>">
+                                            <?php echo __('Custom CSS','quiz-maker');?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Field for entering your own CSS code','quiz-maker');?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -2385,8 +2385,8 @@
                                 <div class="form-group row">
                                     <div class="col-sm-12">
                                         <label>
-                                            <?php echo __( "Leaderboard Columns", $this->plugin_name ); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('You can sort table columns and select which columns must display on the front-end.',$this->plugin_name);?>">
+                                            <?php echo __( "Leaderboard Columns", 'quiz-maker' ); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('You can sort table columns and select which columns must display on the front-end.','quiz-maker');?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -2448,21 +2448,21 @@
                         <fieldset>
                             <legend>
                                 <strong style="font-size:30px;">[ ]</strong>
-                                <h5><?php echo __('User Page Settings',$this->plugin_name)?></h5>
+                                <h5><?php echo __('User Page Settings','quiz-maker')?></h5>
                             </legend>
                             <div class="form-group row" style="padding:0px;margin:0;">
                                 <div class="col-sm-12 only_pro" style="padding:20px;">
                                     <div class="pro_features pro_features_popup pro_features_background_bolder">
                                         <div class="pro-features-popup-conteiner">
                                             <div class="pro-features-popup-title">
-                                                <?php echo __("How to set User Page Settings Shortcode with WordPress Quiz Plugin", $this->plugin_name); ?>
+                                                <?php echo __("How to set User Page Settings Shortcode with WordPress Quiz Plugin", 'quiz-maker'); ?>
                                             </div>
                                             <div class="pro-features-popup-content" data-link="https://youtu.be/YVp2KpsOAOc">
                                                 <p>
-                                                    <?php echo __("With the help of the WordPress Quiz plugin, you can display the current quiz taker's results history on the Front-end. By this, the users can understand what quizzes they passed and what score they got for each of those quizzes.", $this->plugin_name); ?>
+                                                    <?php echo __("With the help of the WordPress Quiz plugin, you can display the current quiz taker's results history on the Front-end. By this, the users can understand what quizzes they passed and what score they got for each of those quizzes.", 'quiz-maker'); ?>
                                                 </p>
                                                 <p>
-                                                    <?php echo sprintf( __("Moreover, the users will get the chance to %s download/export their results %s (in PDF file format) and %s Certificates %s right from the Front-end.", $this->plugin_name),
+                                                    <?php echo sprintf( __("Moreover, the users will get the chance to %s download/export their results %s (in PDF file format) and %s Certificates %s right from the Front-end.", 'quiz-maker'),
                                                         "<strong>",
                                                         "</strong>",
                                                         "<strong>",
@@ -2470,7 +2470,7 @@
                                                     ); ?>
                                                 </p>
                                                 <p>
-                                                    <?php echo sprintf( __("Besides all these advanced features, you can %s collect data %s from quiz takers with the %s Custom Fields %s feature the plugin offers and increase your website traffic.", $this->plugin_name),
+                                                    <?php echo sprintf( __("Besides all these advanced features, you can %s collect data %s from quiz takers with the %s Custom Fields %s feature the plugin offers and increase your website traffic.", 'quiz-maker'),
                                                         "<strong>",
                                                         "</strong>",
                                                         "<strong>",
@@ -2478,18 +2478,18 @@
                                                     ); ?>
                                                 </p>
                                                 <div>
-                                                    <a href="https://quiz-plugin.com/user-page-2" target="_blank"><?php echo __("See Demo", $this->plugin_name); ?></a>
+                                                    <a href="https://quiz-plugin.com/user-page-2" target="_blank"><?php echo __("See Demo", 'quiz-maker'); ?></a>
                                                 </div>
                                             </div>
                                             <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-user-page-shortcode">
-                                                <?php echo __("Upgrade PRO NOW", $this->plugin_name); ?>
+                                                <?php echo __("Upgrade PRO NOW", 'quiz-maker'); ?>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_user_page">
-                                                <?php echo __( "Shortcode", $this->plugin_name ); ?>
+                                                <?php echo __( "Shortcode", 'quiz-maker' ); ?>
                                             </label>
                                         </div>
                                         <div class="col-sm-8">
@@ -2500,8 +2500,8 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_quiz_hide_correct_answer_user_page">
-                                                <?php echo __( "Hide correct answer", $this->plugin_name ); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Tick the checkbox if you want to hide the correct answers presented in the detailed report.',$this->plugin_name)?>">
+                                                <?php echo __( "Hide correct answer", 'quiz-maker' ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Tick the checkbox if you want to hide the correct answers presented in the detailed report.','quiz-maker')?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -2514,8 +2514,8 @@
                                     <div class="form-group row">
                                         <div class="col-sm-12">
                                             <label>
-                                                <?php echo __( "User Page results table columns", $this->plugin_name ); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('You can sort table columns and select which columns must display on the front-end.',$this->plugin_name)?>">
+                                                <?php echo __( "User Page results table columns", 'quiz-maker' ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('You can sort table columns and select which columns must display on the front-end.','quiz-maker')?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -2561,14 +2561,14 @@
                         <fieldset>
                             <legend>
                                 <strong style="font-size:30px;">[ ]</strong>
-                                <h5><?php echo __('Flash Cards Settings',$this->plugin_name); ?></h5>
+                                <h5><?php echo __('Flash Cards Settings','quiz-maker'); ?></h5>
                             </legend>
                             <div class="form-group row" style="padding:0px;margin:0;">
                                 <div class="col-sm-12">
                                     <div class="ays-quiz-heading-box ays-quiz-unset-float ays-quiz-unset-margin">
                                         <div class="ays-quiz-wordpress-user-manual-box ays-quiz-wordpress-text-align">
                                             <a href="https://www.youtube.com/watch?v=uBpzFjXyKC8" target="_blank">
-                                                <?php echo __("How to create flashcards - video", $this->plugin_name); ?>
+                                                <?php echo __("How to create flashcards - video", 'quiz-maker'); ?>
                                             </a>
                                         </div>
                                     </div>
@@ -2582,8 +2582,8 @@
                                             <div class="form-group row">
                                                 <div class="col-sm-4">
                                                     <label>
-                                                        <?php echo __( "Shortcode", $this->plugin_name ); ?>
-                                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Paste the shortcode into any of your posts/pages to create flashcards in a question-and-answer format. Each flashcard shows a question on one side and a correct answer on the other.',$this->plugin_name); ?>">
+                                                        <?php echo __( "Shortcode", 'quiz-maker' ); ?>
+                                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Paste the shortcode into any of your posts/pages to create flashcards in a question-and-answer format. Each flashcard shows a question on one side and a correct answer on the other.','quiz-maker'); ?>">
                                                             <i class="ays_fa ays_fa_info_circle"></i>
                                                         </a>
                                                     </label>
@@ -2600,15 +2600,15 @@
                                             <div class="form-group row">
                                                 <div class="col-sm-4">
                                                     <label for="ays_quiz_flash_card_width">
-                                                        <?php echo __( "Width", $this->plugin_name ); ?>
-                                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The width of the Flash Card. It accepts only numeric values. For 100% leave it blank.',$this->plugin_name); ?>">
+                                                        <?php echo __( "Width", 'quiz-maker' ); ?>
+                                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The width of the Flash Card. It accepts only numeric values. For 100% leave it blank.','quiz-maker'); ?>">
                                                             <i class="ays_fa ays_fa_info_circle"></i>
                                                         </a>
                                                     </label>
                                                 </div>
                                                 <div class="col-sm-8">
                                                     <input type="text" class="ays-text-input ays-quiz-flash-card-width" value=''>
-                                                    <span style="display:block;" class="ays_quiz_small_hint_text"><?php echo __("For 100% leave blank", $this->plugin_name);?></span>
+                                                    <span style="display:block;" class="ays_quiz_small_hint_text"><?php echo __("For 100% leave blank", 'quiz-maker');?></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -2619,8 +2619,8 @@
                                             <div class="form-group row">
                                                 <div class="col-sm-4">
                                                     <label for="ays_quiz_flash_card_color">
-                                                        <?php echo __( "Background color", $this->plugin_name ); ?>
-                                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The background color of the Flash Card.',$this->plugin_name); ?>">
+                                                        <?php echo __( "Background color", 'quiz-maker' ); ?>
+                                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The background color of the Flash Card.','quiz-maker'); ?>">
                                                             <i class="ays_fa ays_fa_info_circle"></i>
                                                         </a>
                                                     </label>
@@ -2637,8 +2637,8 @@
                                             <div class="form-group row ays_toggle_parent">
                                                 <div class="col-sm-4">
                                                     <label for="ays_enable_fc_introduction">
-                                                        <?php echo __( "Introduction page", $this->plugin_name ); ?>
-                                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Tick the checkbox to add a Start page to your Flashcards. You can customize the Start page and write your preferred texts in WP Editor.',$this->plugin_name); ?>">
+                                                        <?php echo __( "Introduction page", 'quiz-maker' ); ?>
+                                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Tick the checkbox to add a Start page to your Flashcards. You can customize the Start page and write your preferred texts in WP Editor.','quiz-maker'); ?>">
                                                             <i class="ays_fa ays_fa_info_circle"></i>
                                                         </a>
                                                     </label>
@@ -2655,8 +2655,8 @@
                                             <div class="form-group row">
                                                 <div class="col-sm-4">
                                                     <label for="ays_quiz_flash_card_randomize">
-                                                        <?php echo __( "Randomize Flash Cards", $this->plugin_name ); ?>
-                                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Display the flashcard questions in random order.',$this->plugin_name); ?>">
+                                                        <?php echo __( "Randomize Flash Cards", 'quiz-maker' ); ?>
+                                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Display the flashcard questions in random order.','quiz-maker'); ?>">
                                                             <i class="ays_fa ays_fa_info_circle"></i>
                                                         </a>
                                                     </label>
@@ -2673,7 +2673,7 @@
                                             <li>
                                                 <?php
                                                     echo sprintf(
-                                                        __( '%s By %s', $this->plugin_name ) . ' - ' . __( 'Choose the method of filtering. Example: by="quiz"', $this->plugin_name ),
+                                                        __( '%s By %s', 'quiz-maker' ) . ' - ' . __( 'Choose the method of filtering. Example: by="quiz"', 'quiz-maker' ),
                                                         '<b>',
                                                         '</b>'
                                                     );
@@ -2682,7 +2682,7 @@
                                                     <li>
                                                         <?php
                                                             echo sprintf(
-                                                                __( '%s quiz %s', $this->plugin_name ) . ' - ' . __( 'If you set the method as Quiz, it will show all questions added in the given quiz.', $this->plugin_name ),
+                                                                __( '%s quiz %s', 'quiz-maker' ) . ' - ' . __( 'If you set the method as Quiz, it will show all questions added in the given quiz.', 'quiz-maker' ),
                                                                 '<b>',
                                                                 '</b>'
                                                             );
@@ -2691,7 +2691,7 @@
                                                     <li>
                                                         <?php
                                                             echo sprintf(
-                                                                __( '%s category %s', $this->plugin_name ) . ' - ' . __( 'If you set the method as Category, it will show all questions assigned to the given category.', $this->plugin_name ),
+                                                                __( '%s category %s', 'quiz-maker' ) . ' - ' . __( 'If you set the method as Category, it will show all questions assigned to the given category.', 'quiz-maker' ),
                                                                 '<b>',
                                                                 '</b>'
                                                             );
@@ -2702,7 +2702,7 @@
                                             <li>
                                                 <?php
                                                     echo sprintf(
-                                                        __( '%s ID %s', $this->plugin_name ) . ' - ' . __( 'Select a single ID or multiple IDs. List multiple IDs by separating them with commas. Example id="13,23,33"', $this->plugin_name ),
+                                                        __( '%s ID %s', 'quiz-maker' ) . ' - ' . __( 'Select a single ID or multiple IDs. List multiple IDs by separating them with commas. Example id="13,23,33"', 'quiz-maker' ),
                                                         '<b>',
                                                         '</b>'
                                                     );
@@ -2755,18 +2755,18 @@
                         <fieldset>
                             <legend>
                                 <strong style="font-size:30px;">[ ]</strong>
-                                <h5><?php echo __('Recent Quizzes Settings',$this->plugin_name); ?></h5>
+                                <h5><?php echo __('Recent Quizzes Settings','quiz-maker'); ?></h5>
                             </legend>
                             <div class="form-group row" style="padding:0px;margin:0;">
                                 <div class="col-sm-12 only_pro" style="padding:20px;">
                                     <div class="pro_features pro_features_popup pro_features_background_bolder">
                                         <div class="pro-features-popup-conteiner">
                                             <div class="pro-features-popup-title">
-                                                <?php echo __("How to set Recent Quizzes Settings shortcode with WordPress Quiz Plugin", $this->plugin_name); ?>
+                                                <?php echo __("How to set Recent Quizzes Settings shortcode with WordPress Quiz Plugin", 'quiz-maker'); ?>
                                             </div>
                                             <div class="pro-features-popup-content" data-link="https://youtu.be/Eg7wzKTSsEA">
                                                 <p>
-                                                    <?php echo sprintf( __("With the help of the Recent Quizzes Settings shortcode, you can display the %s recently created quizzes %s on the Front-end. The shortcode has two ordering options: %s By random or By recent. %s", $this->plugin_name),
+                                                    <?php echo sprintf( __("With the help of the Recent Quizzes Settings shortcode, you can display the %s recently created quizzes %s on the Front-end. The shortcode has two ordering options: %s By random or By recent. %s", 'quiz-maker'),
                                                         "<strong>",
                                                         "</strong>",
                                                         "<strong>",
@@ -2774,7 +2774,7 @@
                                                     ); ?>
                                                 </p>
                                                 <p>
-                                                    <?php echo sprintf( __("With %s random ordering %s, you can display your chosen amount of quizzes of all the quizzes you have created. With %s recent ordering %s, you can display your chosen amount of quizzes of your recently-created quizzes.", $this->plugin_name),
+                                                    <?php echo sprintf( __("With %s random ordering %s, you can display your chosen amount of quizzes of all the quizzes you have created. With %s recent ordering %s, you can display your chosen amount of quizzes of your recently-created quizzes.", 'quiz-maker'),
                                                         "<strong>",
                                                         "</strong>",
                                                         "<strong>",
@@ -2782,7 +2782,7 @@
                                                     ); ?>
                                                 </p>
                                                 <p>
-                                                    <?php echo sprintf( __("The shortcode will help to %s boost user engagement %s and provide your website visitors with fresh and %s up-to-date content. %s", $this->plugin_name),
+                                                    <?php echo sprintf( __("The shortcode will help to %s boost user engagement %s and provide your website visitors with fresh and %s up-to-date content. %s", 'quiz-maker'),
                                                         "<strong>",
                                                         "</strong>",
                                                         "<strong>",
@@ -2790,24 +2790,24 @@
                                                     ); ?>
                                                 </p>
                                                 <div>
-                                                    <a href="https://quiz-plugin.com/recent-quizzes" target="_blank"><?php echo __("See Demo", $this->plugin_name); ?></a>
+                                                    <a href="https://quiz-plugin.com/recent-quizzes" target="_blank"><?php echo __("See Demo", 'quiz-maker'); ?></a>
                                                 </div>
                                             </div>
                                             <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-recent-quizzes-shortcode">
-                                                <?php echo __("Upgrade PRO NOW", $this->plugin_name); ?>
+                                                <?php echo __("Upgrade PRO NOW", 'quiz-maker'); ?>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label>
-                                                <?php echo __( "Shortcode", $this->plugin_name ); ?>
+                                                <?php echo __( "Shortcode", 'quiz-maker' ); ?>
                                                 <a class="ays_help" data-toggle="tooltip" data-html="true"
                                                     title="<?php
-                                                        echo __('Copy the following shortcode, configure it based on your preferences and paste it into the post.',$this->plugin_name) .
+                                                        echo __('Copy the following shortcode, configure it based on your preferences and paste it into the post.','quiz-maker') .
                                                         "<ul style='list-style-type: circle;padding-left: 20px;'>".
-                                                            "<li>". __('Random - If you set the ordering method as random and gave a value to count option, then it will randomly display that given amount of quizzes from your created quizzes.',$this->plugin_name) ."</li>".
-                                                            "<li>". __('Recent - If you set the ordering method as recent and gave a value to count option, then it will display that given amount of quizzes from your recently created quizzes.',$this->plugin_name) ."</li>".
+                                                            "<li>". __('Random - If you set the ordering method as random and gave a value to count option, then it will randomly display that given amount of quizzes from your created quizzes.','quiz-maker') ."</li>".
+                                                            "<li>". __('Recent - If you set the ordering method as recent and gave a value to count option, then it will display that given amount of quizzes from your recently created quizzes.','quiz-maker') ."</li>".
                                                         "</ul>";
                                                     ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
@@ -2841,18 +2841,18 @@
                         <fieldset>
                             <legend>
                                 <strong style="font-size:30px;">[ ]</strong>
-                                <h5><?php echo __('Display the sum of the quiz points',$this->plugin_name); ?></h5>
+                                <h5><?php echo __('Display the sum of the quiz points','quiz-maker'); ?></h5>
                             </legend>
                             <div class="form-group row" style="padding:0px;margin:0;">
                                 <div class="col-sm-12 only_pro" style="padding:20px;">
                                     <div class="pro_features pro_features_popup pro_features_background_bolder">
                                         <div class="pro-features-popup-conteiner">
                                             <div class="pro-features-popup-title">
-                                                <?php echo __("How to set the Display the sum of the quiz points shortcode with WordPress Quiz Plugin", $this->plugin_name); ?>
+                                                <?php echo __("How to set the Display the sum of the quiz points shortcode with WordPress Quiz Plugin", 'quiz-maker'); ?>
                                             </div>
                                             <div class="pro-features-popup-content" data-link="https://youtu.be/ZbP1V2UXD-o">
                                                 <p>
-                                                    <?php echo sprintf( __("With this shortcode, you can display the %s sum of the points %s for both one quiz and several quizzes. There are two possible ways to sum the points: %s By All and By Best %s", $this->plugin_name),
+                                                    <?php echo sprintf( __("With this shortcode, you can display the %s sum of the points %s for both one quiz and several quizzes. There are two possible ways to sum the points: %s By All and By Best %s", 'quiz-maker'),
                                                         "<strong>",
                                                         "</strong>",
                                                         "<strong>",
@@ -2860,7 +2860,7 @@
                                                     ); ?>
                                                 </p>
                                                 <p>
-                                                    <?php echo sprintf( __("By choosing the All mode, the shortcode will display the %s sum of all the user's points. %s By choosing the Best mode, the shortcode will display the %s sum of all the maximum points of the user. %s", $this->plugin_name),
+                                                    <?php echo sprintf( __("By choosing the All mode, the shortcode will display the %s sum of all the user's points. %s By choosing the Best mode, the shortcode will display the %s sum of all the maximum points of the user. %s", 'quiz-maker'),
                                                         "<strong>",
                                                         "</strong>",
                                                         "<strong>",
@@ -2868,14 +2868,14 @@
                                                     ); ?>
                                                 </p>
                                                 <p>
-                                                    <?php echo __("Use this shortcode to assess the overall performance of the quiz.", $this->plugin_name); ?>
+                                                    <?php echo __("Use this shortcode to assess the overall performance of the quiz.", 'quiz-maker'); ?>
                                                 </p>
                                                 <div>
-                                                    <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo __("See Documentation", $this->plugin_name); ?></a>
+                                                    <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo __("See Documentation", 'quiz-maker'); ?></a>
                                                 </div>
                                             </div>
                                             <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-sum-quiz-points-shortcode">
-                                                <?php echo __("Upgrade PRO NOW", $this->plugin_name); ?>
+                                                <?php echo __("Upgrade PRO NOW", 'quiz-maker'); ?>
                                             </div>
                                         </div>
                                     </div>
@@ -2884,8 +2884,8 @@
                                             <div class="form-group row">
                                                 <div class="col-sm-4">
                                                     <label for="ays_quiz_display_questions">
-                                                        <?php echo __( "Shortcode", $this->plugin_name ); ?>
-                                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Copy the following shortcode and paste into any post.  Insert the IDs of the Quizzes to receive the sum of the quiz points.',$this->plugin_name); ?>">
+                                                        <?php echo __( "Shortcode", 'quiz-maker' ); ?>
+                                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Copy the following shortcode and paste into any post.  Insert the IDs of the Quizzes to receive the sum of the quiz points.','quiz-maker'); ?>">
                                                             <i class="ays_fa ays_fa_info_circle"></i>
                                                         </a>
                                                     </label>
@@ -2902,7 +2902,7 @@
                                             <li>
                                                 <?php
                                                     echo sprintf(
-                                                        __( '%s ID %s', $this->plugin_name ) . ' - ' . __( 'Select the ID of the quiz. You can write more than one ID.', $this->plugin_name ),
+                                                        __( '%s ID %s', 'quiz-maker' ) . ' - ' . __( 'Select the ID of the quiz. You can write more than one ID.', 'quiz-maker' ),
                                                         '<b>',
                                                         '</b>'
                                                     );
@@ -2911,7 +2911,7 @@
                                             <li>
                                                 <?php
                                                     echo sprintf(
-                                                        __( '%s Mode %s', $this->plugin_name ) . ' - ' . __( 'Choose the way to sum the points. Example: mode="all".', $this->plugin_name ),
+                                                        __( '%s Mode %s', 'quiz-maker' ) . ' - ' . __( 'Choose the way to sum the points. Example: mode="all".', 'quiz-maker' ),
                                                         '<b>',
                                                         '</b>'
                                                     );
@@ -2920,7 +2920,7 @@
                                                     <li>
                                                         <?php
                                                             echo sprintf(
-                                                                __( '%s All %s', $this->plugin_name ) . ' - ' . __( "It will display the sum of all the user's points.", $this->plugin_name ),
+                                                                __( '%s All %s', 'quiz-maker' ) . ' - ' . __( "It will display the sum of all the user's points.", 'quiz-maker' ),
                                                                 '<b>',
                                                                 '</b>'
                                                             );
@@ -2929,7 +2929,7 @@
                                                     <li>
                                                         <?php
                                                             echo sprintf(
-                                                                __( '%s Best %s', $this->plugin_name ) . ' - ' . __( ' It will display the sum of all the maximum points of the user.', $this->plugin_name ),
+                                                                __( '%s Best %s', 'quiz-maker' ) . ' - ' . __( ' It will display the sum of all the maximum points of the user.', 'quiz-maker' ),
                                                                 '<b>',
                                                                 '</b>'
                                                             );
@@ -2962,31 +2962,31 @@
                         <fieldset>
                             <legend>
                                 <strong style="font-size:30px;">[ ]</strong>
-                                <h5><?php echo __('Show Quiz Orders',$this->plugin_name); ?></h5>
+                                <h5><?php echo __('Show Quiz Orders','quiz-maker'); ?></h5>
                             </legend>
                             <div class="form-group row" style="padding:0px;margin:0;">
                                 <div class="col-sm-12 only_pro" style="padding:20px;">
                                     <div class="pro_features pro_features_popup pro_features_background_bolder">
                                         <div class="pro-features-popup-conteiner">
                                             <div class="pro-features-popup-title">
-                                                <?php echo __("How to set Show Quiz Orders shortcode with WordPress Quiz Plugin", $this->plugin_name); ?>
+                                                <?php echo __("How to set Show Quiz Orders shortcode with WordPress Quiz Plugin", 'quiz-maker'); ?>
                                             </div>
                                             <div class="pro-features-popup-content" data-link="https://youtu.be/kbgfDnJ5t_o">
                                                 <p>
-                                                    <?php echo sprintf( __("Use this shortcode to display the %s payment history of the current user %s on the Front-end. The shortcode displays the Quiz Name, Payment Date, the Amount for the Quiz, and the Payment Type (PayPal or Stripe) Table Columns in one place.", $this->plugin_name),
+                                                    <?php echo sprintf( __("Use this shortcode to display the %s payment history of the current user %s on the Front-end. The shortcode displays the Quiz Name, Payment Date, the Amount for the Quiz, and the Payment Type (PayPal or Stripe) Table Columns in one place.", 'quiz-maker'),
                                                         "<strong>",
                                                         "</strong>"
                                                     ); ?>
                                                 </p>
                                                 <p>
-                                                    <?php echo __("So, the quiz takers can see what quizzes they passed and made a purchase for and the amount they paid at once. ", $this->plugin_name); ?>
+                                                    <?php echo __("So, the quiz takers can see what quizzes they passed and made a purchase for and the amount they paid at once. ", 'quiz-maker'); ?>
                                                 </p>
                                                 <div>
-                                                    <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo __("See Documentation", $this->plugin_name); ?></a>
+                                                    <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo __("See Documentation", 'quiz-maker'); ?></a>
                                                 </div>
                                             </div>
                                             <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-quiz-orders-shortcode">
-                                                <?php echo __("Upgrade PRO NOW", $this->plugin_name); ?>
+                                                <?php echo __("Upgrade PRO NOW", 'quiz-maker'); ?>
                                             </div>
                                         </div>
                                     </div>
@@ -2996,8 +2996,8 @@
                                             <div class="form-group row">
                                                 <div class="col-sm-4">
                                                     <label for="ays_quiz_all_results">
-                                                        <?php echo __( "Shortcode", $this->plugin_name ); ?>
-                                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('You can copy the shortcode and insert it into any post or page and display the Quiz Name, Payment Date, Amount and Type',$this->plugin_name); ?>">
+                                                        <?php echo __( "Shortcode", 'quiz-maker' ); ?>
+                                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('You can copy the shortcode and insert it into any post or page and display the Quiz Name, Payment Date, Amount and Type','quiz-maker'); ?>">
                                                             <i class="ays_fa ays_fa_info_circle"></i>
                                                         </a>
                                                     </label>
@@ -3010,8 +3010,8 @@
                                             <div class="form-group row">
                                                 <div class="col-sm-12">
                                                     <label>
-                                                        <?php echo __( "Table columns", $this->plugin_name ); ?>
-                                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('You can sort table columns and select which columns must display on the front-end.',$this->plugin_name); ?>">
+                                                        <?php echo __( "Table columns", 'quiz-maker' ); ?>
+                                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('You can sort table columns and select which columns must display on the front-end.','quiz-maker'); ?>">
                                                             <i class="ays_fa ays_fa_info_circle"></i>
                                                         </a>
                                                     </label>
@@ -3070,7 +3070,7 @@
                         <fieldset>
                             <legend>
                                 <strong style="font-size:30px;">[ ]</strong>
-                                <h5><?php echo __('Quiz multilanguage',$this->plugin_name); ?></h5>
+                                <h5><?php echo __('Quiz multilanguage','quiz-maker'); ?></h5>
                             </legend>
                             <div class="form-group row" style="padding:0px;margin:0;">
                                 <div class="col-sm-12 only_pro" style="padding:20px;">
@@ -3082,8 +3082,8 @@
                                             <div class="form-group row">
                                                 <div class="col-sm-4">
                                                     <label for="ays_quiz_all_results">
-                                                        <?php echo __( "Shortcode", $this->plugin_name ); ?>
-                                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Write your desired text in any WordPress language. It will be translated in the front-end. The languages must be included in the ISO 639-1 Code column.',$this->plugin_name); ?>">
+                                                        <?php echo __( "Shortcode", 'quiz-maker' ); ?>
+                                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Write your desired text in any WordPress language. It will be translated in the front-end. The languages must be included in the ISO 639-1 Code column.','quiz-maker'); ?>">
                                                             <i class="ays_fa ays_fa_info_circle"></i>
                                                         </a>
                                                     </label>
@@ -3100,7 +3100,7 @@
                                             <li>
                                                 <?php
                                                     echo sprintf(
-                                                        __( "In this shortcode you can add your desired text and its translation. The translated version of the text will be displayed in the front-end. The languages must be written in the %sLanguage Code%s", $this->plugin_name ),
+                                                        __( "In this shortcode you can add your desired text and its translation. The translated version of the text will be displayed in the front-end. The languages must be written in the %sLanguage Code%s", 'quiz-maker' ),
                                                         '<a href="https://www.loc.gov/standards/iso639-2/php/code_list.php" target="_blank">',
                                                         '</a>'
                                                     );
@@ -3124,7 +3124,7 @@
                         <fieldset>
                             <legend>
                                 <strong style="font-size:30px;">[ ]</strong>
-                                <h5><?php echo __('Quiz intervals chart',$this->plugin_name); ?></h5>
+                                <h5><?php echo __('Quiz intervals chart','quiz-maker'); ?></h5>
                             </legend>
                             <div class="form-group row" style="padding:0px;margin:0;">
                                 <div class="col-sm-12 only_pro" style="padding:20px;">
@@ -3136,8 +3136,8 @@
                                             <div class="form-group row">
                                                 <div class="col-sm-4">
                                                     <label for="ays_quiz_interval_chart">
-                                                        <?php echo __( "Shortcode", $this->plugin_name ); ?>
-                                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("You can copy the shortcode and paste it into your desired page/post to display a chart based on keywords on the Front-end. Don't forget to change YOUR_QUIZ_ID with the corresponding Quiz ID.",$this->plugin_name) ); ?>">
+                                                        <?php echo __( "Shortcode", 'quiz-maker' ); ?>
+                                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("You can copy the shortcode and paste it into your desired page/post to display a chart based on keywords on the Front-end. Don't forget to change YOUR_QUIZ_ID with the corresponding Quiz ID.",'quiz-maker') ); ?>">
                                                             <i class="ays_fa ays_fa_info_circle"></i>
                                                         </a>
                                                     </label>
@@ -3179,19 +3179,19 @@
                     </div>
                     <div id="tab4" class="ays-quiz-tab-content <?php echo ($ays_quiz_tab == 'tab4') ? 'ays-quiz-tab-content-active' : ''; ?>">
                         <p class="ays-subtitle">
-                            <?php echo __('Message variables',$this->plugin_name)?>
-                            <a class="ays_help" data-toggle="tooltip" data-html="true" title="<p style='margin-bottom:3px;'><?php echo __( 'You can copy these variables and paste them in the following options from the quiz settings', $this->plugin_name ); ?>:</p>
-                                <p style='padding-left:10px;margin:0;'>- <?php echo __( 'Result message', $this->plugin_name ); ?></p>
-                                <p style='padding-left:10px;margin:0;'>- <?php echo __( 'Quiz pass message', $this->plugin_name ); ?></p>
-                                <p style='padding-left:10px;margin:0;'>- <?php echo __( 'Quiz fail message', $this->plugin_name ); ?></p>">
+                            <?php echo __('Message variables','quiz-maker')?>
+                            <a class="ays_help" data-toggle="tooltip" data-html="true" title="<p style='margin-bottom:3px;'><?php echo __( 'You can copy these variables and paste them in the following options from the quiz settings', 'quiz-maker' ); ?>:</p>
+                                <p style='padding-left:10px;margin:0;'>- <?php echo __( 'Result message', 'quiz-maker' ); ?></p>
+                                <p style='padding-left:10px;margin:0;'>- <?php echo __( 'Quiz pass message', 'quiz-maker' ); ?></p>
+                                <p style='padding-left:10px;margin:0;'>- <?php echo __( 'Quiz fail message', 'quiz-maker' ); ?></p>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
                         </p>
                         <blockquote>
-                            <p><?php echo __( "You can copy these variables and paste them in the following options from the quiz settings", $this->plugin_name ); ?>:</p>
-                            <p style="text-indent:10px;margin:0;">- <?php echo __( "Result message", $this->plugin_name ); ?></p>
-                            <p style="text-indent:10px;margin:0;">- <?php echo __( "Quiz pass message", $this->plugin_name ); ?></p>
-                            <p style="text-indent:10px;margin:0;">- <?php echo __( "Quiz fail message", $this->plugin_name ); ?></p>
+                            <p><?php echo __( "You can copy these variables and paste them in the following options from the quiz settings", 'quiz-maker' ); ?>:</p>
+                            <p style="text-indent:10px;margin:0;">- <?php echo __( "Result message", 'quiz-maker' ); ?></p>
+                            <p style="text-indent:10px;margin:0;">- <?php echo __( "Quiz pass message", 'quiz-maker' ); ?></p>
+                            <p style="text-indent:10px;margin:0;">- <?php echo __( "Quiz fail message", 'quiz-maker' ); ?></p>
                         </blockquote>
                         <hr class="ays-quiz-bolder-hr">
                         <div class="form-group row">
@@ -3199,7 +3199,7 @@
                                 <div class="ays-quiz-heading-box ays-quiz-unset-float ays-quiz-unset-margin">
                                     <div class="ays-quiz-wordpress-user-manual-box ays-quiz-wordpress-text-align">
                                         <a href="https://www.youtube.com/watch?v=nzQEHzmUBc8" target="_blank">
-                                            <?php echo __("How message variables works - video", $this->plugin_name); ?>
+                                            <?php echo __("How message variables works - video", 'quiz-maker'); ?>
                                         </a>
                                     </div>
                                 </div>
@@ -3208,7 +3208,7 @@
                         <fieldset>
                             <legend>
                                 <strong style="font-size:30px;">[ ]</strong>
-                                <h5><?php echo __('General Message Variables',$this->plugin_name); ?></h5>
+                                <h5><?php echo __('General Message Variables','quiz-maker'); ?></h5>
                             </legend>
                             <p class="vmessage">
                                 <strong>
@@ -3216,7 +3216,7 @@
                                 </strong>
                                 <span> - </span>
                                 <span style="font-size:18px;">
-                                    <?php echo __( "The date of the passing quiz", $this->plugin_name); ?>
+                                    <?php echo __( "The date of the passing quiz", 'quiz-maker'); ?>
                                 </span>
                             </p>
                             <p class="vmessage">
@@ -3225,7 +3225,7 @@
                                 </strong>
                                 <span> - </span>
                                 <span style="font-size:18px;">
-                                    <?php echo esc_attr( __( "The URL of the home page.", $this->plugin_name) ); ?>
+                                    <?php echo esc_attr( __( "The URL of the home page.", 'quiz-maker') ); ?>
                                 </span>
                             </p>
                             <p class="vmessage">
@@ -3234,7 +3234,7 @@
                                 </strong>
                                 <span> - </span>
                                 <span style="font-size:18px;">
-                                    <?php echo esc_attr( __( "Shows the admin's email that was filled in their WordPress profile.", $this->plugin_name) ); ?>
+                                    <?php echo esc_attr( __( "Shows the admin's email that was filled in their WordPress profile.", 'quiz-maker') ); ?>
                                 </span>
                             </p>
                             <p class="vmessage">
@@ -3243,7 +3243,7 @@
                                 </strong>
                                 <span> - </span>
                                 <span style="font-size:18px;">
-                                    <?php echo esc_attr( __( "The title of the website.", $this->plugin_name) ); ?>
+                                    <?php echo esc_attr( __( "The title of the website.", 'quiz-maker') ); ?>
                                 </span>
                             </p>
                         </fieldset> <!-- General Message Variables -->
@@ -3251,7 +3251,7 @@
                         <fieldset>
                             <legend>
                                 <strong style="font-size:30px;">[ ]</strong>
-                                <h5><?php echo __('User Message Variables',$this->plugin_name); ?></h5>
+                                <h5><?php echo __('User Message Variables','quiz-maker'); ?></h5>
                             </legend>
                             <p class="vmessage">
                                 <strong>
@@ -3259,7 +3259,7 @@
                                 </strong>
                                 <span> - </span>
                                 <span style="font-size:18px;">
-                                    <?php echo __( "The name the user entered into information form", $this->plugin_name); ?>
+                                    <?php echo __( "The name the user entered into information form", 'quiz-maker'); ?>
                                 </span>
                             </p>
                             <p class="vmessage">
@@ -3268,7 +3268,7 @@
                                 </strong>
                                 <span> - </span>
                                 <span style="font-size:18px;">
-                                    <?php echo __( "The E-mail the user entered into information form", $this->plugin_name); ?>
+                                    <?php echo __( "The E-mail the user entered into information form", 'quiz-maker'); ?>
                                 </span>
                             </p>
                             <p class="vmessage">
@@ -3277,7 +3277,7 @@
                                 </strong>
                                 <span> - </span>
                                 <span style="font-size:18px;">
-                                    <?php echo __( "The phone the user entered into information form", $this->plugin_name); ?>
+                                    <?php echo __( "The phone the user entered into information form", 'quiz-maker'); ?>
                                 </span>
                             </p>
                             <p class="vmessage">
@@ -3286,7 +3286,7 @@
                                 </strong>
                                 <span> - </span>
                                 <span style="font-size:18px;">
-                                    <?php echo __( "The user's first name that was filled in their WordPress site during registration.", $this->plugin_name); ?>
+                                    <?php echo __( "The user's first name that was filled in their WordPress site during registration.", 'quiz-maker'); ?>
                                 </span>
                             </p>
                             <p class="vmessage">
@@ -3295,7 +3295,7 @@
                                 </strong>
                                 <span> - </span>
                                 <span style="font-size:18px;">
-                                    <?php echo __( "The user's last name that was filled in their WordPress site during registration.", $this->plugin_name); ?>
+                                    <?php echo __( "The user's last name that was filled in their WordPress site during registration.", 'quiz-maker'); ?>
                                 </span>
                             </p>
                             <p class="vmessage">
@@ -3304,7 +3304,7 @@
                                 </strong>
                                 <span> - </span>
                                 <span style="font-size:18px;">
-                                    <?php echo __( "The user's nickname that was filled in their WordPress profile.", $this->plugin_name); ?>
+                                    <?php echo __( "The user's nickname that was filled in their WordPress profile.", 'quiz-maker'); ?>
                                 </span>
                             </p>
                             <p class="vmessage">
@@ -3313,7 +3313,7 @@
                                 </strong>
                                 <span> - </span>
                                 <span style="font-size:18px;">
-                                    <?php echo __( "The user's display name that was filled in their WordPress profile.", $this->plugin_name); ?>
+                                    <?php echo __( "The user's display name that was filled in their WordPress profile.", 'quiz-maker'); ?>
                                 </span>
                             </p>
                             <p class="vmessage">
@@ -3322,7 +3322,7 @@
                                 </strong>
                                 <span> - </span>
                                 <span style="font-size:18px;">
-                                    <?php echo __( "The user's email that was filled in their WordPress profile.", $this->plugin_name); ?>
+                                    <?php echo __( "The user's email that was filled in their WordPress profile.", 'quiz-maker'); ?>
                                 </span>
                             </p>
                             <p class="vmessage">
@@ -3331,7 +3331,7 @@
                                 </strong>
                                 <span> - </span>
                                 <span style="font-size:18px;">
-                                    <?php echo __( "The user's role(s) when logged-in. In case the user is not logged-in, the field will be empty.", $this->plugin_name); ?>
+                                    <?php echo __( "The user's role(s) when logged-in. In case the user is not logged-in, the field will be empty.", 'quiz-maker'); ?>
                                 </span>
                             </p>
                             <p class="vmessage">
@@ -3340,7 +3340,7 @@
                                 </strong>
                                 <span> - </span>
                                 <span style="font-size:18px;">
-                                    <?php echo __( "The user's website that was filled in their WordPress profile.", $this->plugin_name); ?>
+                                    <?php echo __( "The user's website that was filled in their WordPress profile.", 'quiz-maker'); ?>
                                 </span>
                             </p>
                             <p class="vmessage">
@@ -3349,7 +3349,7 @@
                                 </strong>
                                 <span> - </span>
                                 <span style="font-size:18px;">
-                                    <?php echo __( "The time which spent that the user passed the quiz", $this->plugin_name); ?>
+                                    <?php echo __( "The time which spent that the user passed the quiz", 'quiz-maker'); ?>
                                 </span>
                             </p>
                             <p class="vmessage">
@@ -3358,7 +3358,7 @@
                                 </strong>
                                 <span> - </span>
                                 <span style="font-size:18px;">
-                                    <?php echo __( "The number of correct answers of the user", $this->plugin_name); ?>
+                                    <?php echo __( "The number of correct answers of the user", 'quiz-maker'); ?>
                                 </span>
                             </p>
                             <p class="vmessage">
@@ -3367,7 +3367,7 @@
                                 </strong>
                                 <span> - </span>
                                 <span style="font-size:18px;">
-                                    <?php echo __( "The number of wrong answers of the user.", $this->plugin_name) ." ". __( "(skipped questions are included)", $this->plugin_name); ?>
+                                    <?php echo __( "The number of wrong answers of the user.", 'quiz-maker') ." ". __( "(skipped questions are included)", 'quiz-maker'); ?>
                                 </span>
                             </p>
                             <p class="vmessage">
@@ -3376,7 +3376,7 @@
                                 </strong>
                                 <span> - </span>
                                 <span style="font-size:18px;">
-                                    <?php echo __( "The number of only wrong answers of the user.", $this->plugin_name); ?>
+                                    <?php echo __( "The number of only wrong answers of the user.", 'quiz-maker'); ?>
                                 </span>
                             </p>
                             <p class="vmessage">
@@ -3385,7 +3385,7 @@
                                 </strong>
                                 <span> - </span>
                                 <span style="font-size:18px;">
-                                    <?php echo __( "The count of unanswered questions of the user.", $this->plugin_name); ?>
+                                    <?php echo __( "The count of unanswered questions of the user.", 'quiz-maker'); ?>
                                 </span>
                             </p>
                             <p class="vmessage">
@@ -3394,7 +3394,7 @@
                                 </strong>
                                 <span> - </span>
                                 <span style="font-size:18px;">
-                                    <?php echo __( "The count of answered questions of the user.", $this->plugin_name); ?>
+                                    <?php echo __( "The count of answered questions of the user.", 'quiz-maker'); ?>
                                 </span>
                             </p>
                             <p class="vmessage">
@@ -3403,7 +3403,7 @@
                                 </strong>
                                 <span> - </span>
                                 <span style="font-size:18px;">
-                                    <?php echo esc_attr( __( "The ID of the current user.", $this->plugin_name) ); ?>
+                                    <?php echo esc_attr( __( "The ID of the current user.", 'quiz-maker') ); ?>
                                 </span>
                             </p>
                             <p class="vmessage">
@@ -3412,7 +3412,7 @@
                                 </strong>
                                 <span> - </span>
                                 <span style="font-size:18px;">
-                                    <?php echo esc_attr( __( "Shows the current user's IP no matter whether they are a logged-in user or a guest. Please note, that this message variable will return empty, if 'Do not store IP addresses' is ticked from General Settings>General>Users IP addresses.", $this->plugin_name) ); ?>
+                                    <?php echo esc_attr( __( "Shows the current user's IP no matter whether they are a logged-in user or a guest. Please note, that this message variable will return empty, if 'Do not store IP addresses' is ticked from General Settings>General>Users IP addresses.", 'quiz-maker') ); ?>
                                 </span>
                             </p>
                         </fieldset> <!-- User Message Variables -->
@@ -3420,7 +3420,7 @@
                         <fieldset>
                             <legend>
                                 <strong style="font-size:30px;">[ ]</strong>
-                                <h5><?php echo __('Score Message Variables',$this->plugin_name); ?></h5>
+                                <h5><?php echo __('Score Message Variables','quiz-maker'); ?></h5>
                             </legend>
                             <p class="vmessage">
                                 <strong>
@@ -3428,7 +3428,7 @@
                                 </strong>
                                 <span> - </span>
                                 <span style="font-size:18px;">
-                                    <?php echo __( "The score of quiz which got the user", $this->plugin_name); ?>
+                                    <?php echo __( "The score of quiz which got the user", 'quiz-maker'); ?>
                                 </span>
                             </p>
                             <p class="vmessage">
@@ -3437,7 +3437,7 @@
                                 </strong>
                                 <span> - </span>
                                 <span style="font-size:18px;">
-                                    <?php echo __( "The average score of the quiz of all time", $this->plugin_name); ?>
+                                    <?php echo __( "The average score of the quiz of all time", 'quiz-maker'); ?>
                                 </span>
                             </p>
                             <p class="vmessage">
@@ -3446,7 +3446,7 @@
                                 </strong>
                                 <span> - </span>
                                 <span style="font-size:18px;">
-                                    <?php echo __( "The score of those questions which the given user answered(%). Skipped or unanswered questions will not be included in the calculation.", $this->plugin_name); ?>
+                                    <?php echo __( "The score of those questions which the given user answered(%). Skipped or unanswered questions will not be included in the calculation.", 'quiz-maker'); ?>
                                 </span>
                             </p>
                             <p class="vmessage">
@@ -3455,7 +3455,7 @@
                                 </strong>
                                 <span> - </span>
                                 <span style="font-size:18px;">
-                                    <?php echo __( "The score of the quiz by a question categories which got the user", $this->plugin_name); ?>
+                                    <?php echo __( "The score of the quiz by a question categories which got the user", 'quiz-maker'); ?>
                                 </span>
                             </p>
                             <p class="vmessage">
@@ -3464,7 +3464,7 @@
                                 </strong>
                                 <span> - </span>
                                 <span style="font-size:18px;">
-                                    <?php echo __( "The average score by the question category of the given quiz of the given user.", $this->plugin_name); ?>
+                                    <?php echo __( "The average score by the question category of the given quiz of the given user.", 'quiz-maker'); ?>
                                 </span>
                             </p>
                         </fieldset> <!-- Score Message Variables -->
@@ -3472,7 +3472,7 @@
                         <fieldset>
                             <legend>
                                 <strong style="font-size:30px;">[ ]</strong>
-                                <h5><?php echo __('Quiz Message Variables',$this->plugin_name); ?></h5>
+                                <h5><?php echo __('Quiz Message Variables','quiz-maker'); ?></h5>
                             </legend>
                             <p class="vmessage">
                                 <strong>
@@ -3480,7 +3480,7 @@
                                 </strong>
                                 <span> - </span>
                                 <span style="font-size:18px;">
-                                    <?php echo __( "The title of the quiz", $this->plugin_name); ?>
+                                    <?php echo __( "The title of the quiz", 'quiz-maker'); ?>
                                 </span>
                             </p>
                             <p class="vmessage">
@@ -3489,7 +3489,7 @@
                                 </strong>
                                 <span> - </span>
                                 <span style="font-size:18px;">
-                                    <?php echo esc_attr( __( "The ID of the quiz.", $this->plugin_name) ); ?>
+                                    <?php echo esc_attr( __( "The ID of the quiz.", 'quiz-maker') ); ?>
                                 </span>
                             </p>
                             <p class="vmessage">
@@ -3498,7 +3498,7 @@
                                 </strong>
                                 <span> - </span>
                                 <span style="font-size:18px;">
-                                    <?php echo __( "The average rate of the quiz of all time", $this->plugin_name); ?>
+                                    <?php echo __( "The average rate of the quiz of all time", 'quiz-maker'); ?>
                                 </span>
                             </p>
                             <p class="vmessage">
@@ -3507,7 +3507,7 @@
                                 </strong>
                                 <span> - </span>
                                 <span style="font-size:18px;">
-                                    <?php echo __( "The time which must spend the user to the quiz", $this->plugin_name); ?>
+                                    <?php echo __( "The time which must spend the user to the quiz", 'quiz-maker'); ?>
                                 </span>
                             </p>
                             <p class="vmessage">
@@ -3516,7 +3516,7 @@
                                 </strong>
                                 <span> - </span>
                                 <span style="font-size:18px;">
-                                    <?php echo __( "The number of questions that the user must pass.", $this->plugin_name); ?>
+                                    <?php echo __( "The number of questions that the user must pass.", 'quiz-maker'); ?>
                                 </span>
                             </p>
                             
@@ -3526,7 +3526,7 @@
                                 </strong>
                                 <span> - </span>
                                 <span style="font-size:18px;">
-                                    <?php echo __( "The exact date/time of the quiz creation.", $this->plugin_name); ?>
+                                    <?php echo __( "The exact date/time of the quiz creation.", 'quiz-maker'); ?>
                                 </span>
                             </p>
                             <p class="vmessage">
@@ -3535,7 +3535,7 @@
                                 </strong>
                                 <span> - </span>
                                 <span style="font-size:18px;">
-                                    <?php echo __( "It will show the author of the current quiz.", $this->plugin_name); ?>
+                                    <?php echo __( "It will show the author of the current quiz.", 'quiz-maker'); ?>
                                 </span>
                             </p>
                             <p class="vmessage">
@@ -3544,7 +3544,7 @@
                                 </strong>
                                 <span> - </span>
                                 <span style="font-size:18px;">
-                                    <?php echo __( "Prints the webpage link where the current quiz is posted.", $this->plugin_name); ?>
+                                    <?php echo __( "Prints the webpage link where the current quiz is posted.", 'quiz-maker'); ?>
                                 </span>
                             </p>
                             <p class="vmessage">
@@ -3553,7 +3553,7 @@
                                 </strong>
                                 <span> - </span>
                                 <span style="font-size:18px;">
-                                    <?php echo esc_attr( __( "Shows the current quiz author's email that was filled in their WordPress profile.", $this->plugin_name) ); ?>
+                                    <?php echo esc_attr( __( "Shows the current quiz author's email that was filled in their WordPress profile.", 'quiz-maker') ); ?>
                                 </span>
                             </p>
                             <p class="vmessage">
@@ -3562,7 +3562,7 @@
                                 </strong>
                                 <span> - </span>
                                 <span style="font-size:18px;">
-                                    <?php echo __( "It will show the author nickname of the current quiz.", $this->plugin_name); ?>
+                                    <?php echo __( "It will show the author nickname of the current quiz.", 'quiz-maker'); ?>
                                 </span>
                             </p>
                             <p class="vmessage">
@@ -3571,7 +3571,7 @@
                                 </strong>
                                 <span> - </span>
                                 <span style="font-size:18px;">
-                                    <?php echo __( "It will show the author website of the current quiz.", $this->plugin_name); ?>
+                                    <?php echo __( "It will show the author website of the current quiz.", 'quiz-maker'); ?>
                                 </span>
                             </p>
                             <p class="vmessage">
@@ -3580,7 +3580,7 @@
                                 </strong>
                                 <span> - </span>
                                 <span style="font-size:18px;">
-                                    <?php echo esc_attr( __( "The current user result ID.", $this->plugin_name) ); ?>
+                                    <?php echo esc_attr( __( "The current user result ID.", 'quiz-maker') ); ?>
                                 </span>
                             </p>
                             <p class="vmessage">
@@ -3589,7 +3589,7 @@
                                 </strong>
                                 <span> - </span>
                                 <span style="font-size:18px;">
-                                    <?php echo __( "It will display the number of question categories displayed in the front end.", $this->plugin_name); ?>
+                                    <?php echo __( "It will display the number of question categories displayed in the front end.", 'quiz-maker'); ?>
                                 </span>
                             </p>
                         </fieldset> <!-- Quiz Message Variables -->
@@ -3606,7 +3606,7 @@
                                     </strong>
                                     <span> - </span>
                                     <span style="font-size:18px;">
-                                        <?php echo __( "The points of quiz which got the user", $this->plugin_name); ?>
+                                        <?php echo __( "The points of quiz which got the user", 'quiz-maker'); ?>
                                     </span>
                                 </p>
                                 <p class="vmessage">
@@ -3615,7 +3615,7 @@
                                     </strong>
                                     <span> - </span>
                                     <span style="font-size:18px;">
-                                        <?php echo __( "Maximum points which can get the user", $this->plugin_name); ?>
+                                        <?php echo __( "Maximum points which can get the user", 'quiz-maker'); ?>
                                     </span>
                                 </p>
                                 <p class="vmessage">
@@ -3624,7 +3624,7 @@
                                     </strong>
                                     <span> - </span>
                                     <span style="font-size:18px;">
-                                        <?php echo __( "The quiz image which used for quiz start page", $this->plugin_name); ?>
+                                        <?php echo __( "The quiz image which used for quiz start page", 'quiz-maker'); ?>
                                     </span>
                                 </p>
                                 <p class="vmessage">
@@ -3633,7 +3633,7 @@
                                     </strong>
                                     <span> - </span>
                                     <span style="font-size:18px;">
-                                        <?php echo __( "The message which must display on the result page depending from score", $this->plugin_name); ?>
+                                        <?php echo __( "The message which must display on the result page depending from score", 'quiz-maker'); ?>
                                     </span>
                                 </p>
                                 <!-- ///// -->
@@ -3643,7 +3643,7 @@
                                     </strong>
                                     <span> - </span>
                                     <span style="font-size:18px;">
-                                        <?php echo __( "You can use this unique code as an identifier. It is unique for every attempt.", $this->plugin_name); ?>
+                                        <?php echo __( "You can use this unique code as an identifier. It is unique for every attempt.", 'quiz-maker'); ?>
                                     </span>
                                 </p>
                                 <p class="vmessage">
@@ -3652,7 +3652,7 @@
                                     </strong>
                                     <span> - </span>
                                     <span style="font-size:18px;">
-                                        <?php echo __( "You can use this variable to allow users to download their certificate after quiz completion.", $this->plugin_name); ?>
+                                        <?php echo __( "You can use this variable to allow users to download their certificate after quiz completion.", 'quiz-maker'); ?>
                                     </span>
                                 </p>
                                 <p class="vmessage">
@@ -3661,7 +3661,7 @@
                                     </strong>
                                     <span> - </span>
                                     <span style="font-size:18px;">
-                                        <?php echo __( "The count of the selected keyword that the user answers during the quiz. For instance, %%keyword_count_A%%.", $this->plugin_name); ?>
+                                        <?php echo __( "The count of the selected keyword that the user answers during the quiz. For instance, %%keyword_count_A%%.", 'quiz-maker'); ?>
                                     </span>
                                 </p>
                                 <p class="vmessage">
@@ -3670,7 +3670,7 @@
                                     </strong>
                                     <span> - </span>
                                     <span style="font-size:18px;">
-                                        <?php echo __( "The percentage of the selected keyword that the user answers during the quiz. For instance, %%keyword_percentage_A%%.", $this->plugin_name); ?>
+                                        <?php echo __( "The percentage of the selected keyword that the user answers during the quiz. For instance, %%keyword_percentage_A%%.", 'quiz-maker'); ?>
                                     </span>
                                 </p>
                                 <p class="vmessage">
@@ -3679,7 +3679,7 @@
                                     </strong>
                                     <span> - </span>
                                     <span style="font-size:18px;">
-                                        <?php echo __( "Top keywords of answers selected by the user during the quiz. Each keyword will be displayed with the count of selected keywords. For instance, %%top_keywords_count_3%%.", $this->plugin_name); ?>
+                                        <?php echo __( "Top keywords of answers selected by the user during the quiz. Each keyword will be displayed with the count of selected keywords. For instance, %%top_keywords_count_3%%.", 'quiz-maker'); ?>
                                     </span>
                                 </p>
                                 <p class="vmessage">
@@ -3688,7 +3688,7 @@
                                     </strong>
                                     <span> - </span>
                                     <span style="font-size:18px;">
-                                        <?php echo __( "Top keywords of answers selected by the user during the quiz. Each keyword will be displayed with the percentage of selected keywords. For instance, %%top_keywords_percentage_3%%.", $this->plugin_name); ?>
+                                        <?php echo __( "Top keywords of answers selected by the user during the quiz. Each keyword will be displayed with the percentage of selected keywords. For instance, %%top_keywords_percentage_3%%.", 'quiz-maker'); ?>
                                     </span>
                                 </p>
                                 <p class="vmessage">
@@ -3697,7 +3697,7 @@
                                     </strong>
                                     <span> - </span>
                                     <span style="font-size:18px;">
-                                        <?php echo __( "You can use this message variable for showing coupons to your users. This message variable won't work unless you enable the Enable quiz coupons option.", $this->plugin_name); ?>
+                                        <?php echo __( "You can use this message variable for showing coupons to your users. This message variable won't work unless you enable the Enable quiz coupons option.", 'quiz-maker'); ?>
                                     </span>
                                 </p>
                                 <p class="vmessage">
@@ -3706,7 +3706,7 @@
                                     </strong>
                                     <span> - </span>
                                     <span style="font-size:18px;">
-                                        <?php echo __( "It will display the total count of the keyword. For instance, %%user_keyword_point_A%%.", $this->plugin_name); ?>
+                                        <?php echo __( "It will display the total count of the keyword. For instance, %%user_keyword_point_A%%.", 'quiz-maker'); ?>
                                     </span>
                                 </p>
                                 <p class="vmessage">
@@ -3715,7 +3715,7 @@
                                     </strong>
                                     <span> - </span>
                                     <span style="font-size:18px;">
-                                        <?php echo __( "It displays the maximum point of the keywords. For instance, %%max_point_keyword_A%%.", $this->plugin_name); ?>
+                                        <?php echo __( "It displays the maximum point of the keywords. For instance, %%max_point_keyword_A%%.", 'quiz-maker'); ?>
                                     </span>
                                 </p>
                                 <p class="vmessage">
@@ -3724,7 +3724,7 @@
                                     </strong>
                                     <span> - </span>
                                     <span style="font-size:18px;">
-                                        <?php echo __( "It will display the percentage of the chosen keyword from the maximum.For instance, %%user_keyword_percentage_A%%.", $this->plugin_name); ?>
+                                        <?php echo __( "It will display the percentage of the chosen keyword from the maximum.For instance, %%user_keyword_percentage_A%%.", 'quiz-maker'); ?>
                                     </span>
                                 </p>
                                 <p class="vmessage">
@@ -3733,7 +3733,7 @@
                                     </strong>
                                     <span> - </span>
                                     <span style="font-size:18px;">
-                                        <?php echo __( "It will display the average score of the user.", $this->plugin_name); ?>
+                                        <?php echo __( "It will display the average score of the user.", 'quiz-maker'); ?>
                                     </span>
                                 </p>
                                 <p class="vmessage">
@@ -3742,7 +3742,7 @@
                                     </strong>
                                     <span> - </span>
                                     <span style="font-size:18px;">
-                                        <?php echo __( "It will display the average rate of the Question Category (for example: Copywriting: 2.7/5 ...).", $this->plugin_name); ?>
+                                        <?php echo __( "It will display the average rate of the Question Category (for example: Copywriting: 2.7/5 ...).", 'quiz-maker'); ?>
                                     </span>
                                 </p>
                                 <p class="vmessage">
@@ -3751,7 +3751,7 @@
                                     </strong>
                                     <span> - </span>
                                     <span style="font-size:18px;">
-                                        <?php echo __( "The score of quiz which got the user displayed as a bar chart. Note: This message variable will not work in the email fields.", $this->plugin_name); ?>
+                                        <?php echo __( "The score of quiz which got the user displayed as a bar chart. Note: This message variable will not work in the email fields.", 'quiz-maker'); ?>
                                     </span>
                                 </p>
                                 <p class="vmessage">
@@ -3760,7 +3760,7 @@
                                     </strong>
                                     <span> - </span>
                                     <span style="font-size:18px;">
-                                        <?php echo __( "The points of quiz which got the user displayed as a bar chart. Note: This message variable will not work in the email fields.", $this->plugin_name); ?>
+                                        <?php echo __( "The points of quiz which got the user displayed as a bar chart. Note: This message variable will not work in the email fields.", 'quiz-maker'); ?>
                                     </span>
                                 </p>
                                 <p class="vmessage">
@@ -3769,7 +3769,7 @@
                                     </strong>
                                     <span> - </span>
                                     <span style="font-size:18px;">
-                                        <?php echo __( "The time which must spend the user to the quiz displayed as a bar chart. Note: This message variable will only work if Quiz Timer option is set, and will not work in the email fields.", $this->plugin_name); ?>
+                                        <?php echo __( "The time which must spend the user to the quiz displayed as a bar chart. Note: This message variable will only work if Quiz Timer option is set, and will not work in the email fields.", 'quiz-maker'); ?>
                                     </span>
                                 </p>
                                 <p class="vmessage">
@@ -3778,7 +3778,7 @@
                                     </strong>
                                     <span> - </span>
                                     <span style="font-size:18px;">
-                                        <?php echo __( "The score of the quiz by a question categories which got the user displayed as a bar chart. Note: This message variable will not work in the email fields.", $this->plugin_name); ?>
+                                        <?php echo __( "The score of the quiz by a question categories which got the user displayed as a bar chart. Note: This message variable will not work in the email fields.", 'quiz-maker'); ?>
                                     </span>
                                 </p>
                                 <p class="vmessage">
@@ -3787,7 +3787,7 @@
                                     </strong>
                                     <span> - </span>
                                     <span style="font-size:18px;">
-                                        <?php echo __( "The score the user got for the quiz by question tags displayed as a bar chart. Note: This message variable will not work in the email fields.", $this->plugin_name); ?>
+                                        <?php echo __( "The score the user got for the quiz by question tags displayed as a bar chart. Note: This message variable will not work in the email fields.", 'quiz-maker'); ?>
                                     </span>
                                 </p>
                                 <p class="vmessage">
@@ -3796,7 +3796,7 @@
                                     </strong>
                                     <span> - </span>
                                     <span style="font-size:18px;">
-                                        <?php echo __( "Detailed result of answered questions of the user displayed as a column chart. Note: This message variable will not work in the email fields.", $this->plugin_name); ?>
+                                        <?php echo __( "Detailed result of answered questions of the user displayed as a column chart. Note: This message variable will not work in the email fields.", 'quiz-maker'); ?>
                                     </span>
                                 </p>
                                 <p class="vmessage">
@@ -3805,7 +3805,7 @@
                                     </strong>
                                     <span> - </span>
                                     <span style="font-size:18px;">
-                                        <?php echo __( "The count of answered questions of the user displayed as a pie chart. Note: This message variable will not work in the email fields.", $this->plugin_name); ?>
+                                        <?php echo __( "The count of answered questions of the user displayed as a pie chart. Note: This message variable will not work in the email fields.", 'quiz-maker'); ?>
                                     </span>
                                 </p>
                                 <p class="vmessage">
@@ -3814,7 +3814,7 @@
                                     </strong>
                                     <span> - </span>
                                     <span style="font-size:18px;">
-                                        <?php echo __( "It will display the average rate of the Question Category as a bar chart. Note: This message variable will not work in the email fields.", $this->plugin_name); ?>
+                                        <?php echo __( "It will display the average rate of the Question Category as a bar chart. Note: This message variable will not work in the email fields.", 'quiz-maker'); ?>
                                     </span>
                                 </p>
                                 <p class="vmessage">
@@ -3823,7 +3823,7 @@
                                     </strong>
                                     <span> - </span>
                                     <span style="font-size:18px;">
-                                        <?php echo __( "It will display the Question Category title and the description. Moreover, it displays in which percentage you match the particular Question Category Keyword. The message variable is designed to create Myers Personality Test. For instance, %%personality_result_by_question_ids_3,5,16,2%%.", $this->plugin_name); ?>
+                                        <?php echo __( "It will display the Question Category title and the description. Moreover, it displays in which percentage you match the particular Question Category Keyword. The message variable is designed to create Myers Personality Test. For instance, %%personality_result_by_question_ids_3,5,16,2%%.", 'quiz-maker'); ?>
                                     </span>
                                 </p>
                                 <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
@@ -3876,8 +3876,8 @@
                         <div class="form-group row">
                             <div class="col-sm-3">
                                 <label for="ays_quiz_enter_password_text">
-                                    <?php echo __( "Enter password text", $this->plugin_name ); ?>
-                                    <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php echo __( 'The text will be displayed when the quiz taker is prompted to enter a password.', $this->plugin_name ); ?>">
+                                    <?php echo __( "Enter password text", 'quiz-maker' ); ?>
+                                    <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php echo __( 'The text will be displayed when the quiz taker is prompted to enter a password.', 'quiz-maker' ); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -3889,8 +3889,8 @@
                         <div class="form-group row">
                             <div class="col-sm-3">
                                 <label for="ays_quiz_wrong_password_text">
-                                    <?php echo __( "Wrong password text", $this->plugin_name ); ?>
-                                    <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php echo __( 'The text will be displayed in case the quiz taker fills in the incorrect password.', $this->plugin_name ); ?>">
+                                    <?php echo __( "Wrong password text", 'quiz-maker' ); ?>
+                                    <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php echo __( 'The text will be displayed in case the quiz taker fills in the incorrect password.', 'quiz-maker' ); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -3902,8 +3902,8 @@
                         <div class="form-group row">
                             <div class="col-sm-3">
                                 <label for="ays_quiz_empty_results_text">
-                                    <?php echo __( "Empty results text", $this->plugin_name ); ?>
-                                    <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php echo __( 'The text will be displayed if no matching results are found by the system for the current shortcode.', $this->plugin_name ); ?>">
+                                    <?php echo __( "Empty results text", 'quiz-maker' ); ?>
+                                    <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php echo __( 'The text will be displayed if no matching results are found by the system for the current shortcode.', 'quiz-maker' ); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -3915,8 +3915,8 @@
                         <div class="form-group row">
                             <div class="col-sm-3">
                                 <label for="ays_quiz_not_answered_question_text">
-                                    <?php echo __( "Not answered questions text", $this->plugin_name ); ?>
-                                    <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php echo esc_attr( __( "Specify the text displayed in case the user doesn't answer the question while passing the quiz. Note: The text will be displayed on the Result page of the quiz.", $this->plugin_name ) ); ?>">
+                                    <?php echo __( "Not answered questions text", 'quiz-maker' ); ?>
+                                    <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php echo esc_attr( __( "Specify the text displayed in case the user doesn't answer the question while passing the quiz. Note: The text will be displayed on the Result page of the quiz.", 'quiz-maker' ) ); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -3928,8 +3928,8 @@
                         <div class="form-group row">
                             <div class="col-sm-3">
                                 <label for="ays_quiz_finish_quiz_text">
-                                    <?php echo __( "Quiz Finish Confirmation text", $this->plugin_name ); ?>
-                                    <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php echo esc_attr( __( "Change the text of the confirmation message displayed when the user clicks on the Finish button before the full completion of the quiz. Note: The text is displayed if the Enable Finish button and the Enable confirm box for the Finish button options are enabled.", $this->plugin_name ) ); ?>">
+                                    <?php echo __( "Quiz Finish Confirmation text", 'quiz-maker' ); ?>
+                                    <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php echo esc_attr( __( "Change the text of the confirmation message displayed when the user clicks on the Finish button before the full completion of the quiz. Note: The text is displayed if the Enable Finish button and the Enable confirm box for the Finish button options are enabled.", 'quiz-maker' ) ); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -3941,8 +3941,8 @@
                         <div class="form-group row">
                             <div class="col-sm-3">
                                 <label for="ays_quiz_select_question_placeholder_text">
-                                    <?php echo __( "Dropdown Placeholder Text", $this->plugin_name ); ?>
-                                    <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php echo esc_attr( __( "Change the placeholder text written in the dropdown select field for your questions.", $this->plugin_name ) ); ?>">
+                                    <?php echo __( "Dropdown Placeholder Text", 'quiz-maker' ); ?>
+                                    <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php echo esc_attr( __( "Change the placeholder text written in the dropdown select field for your questions.", 'quiz-maker' ) ); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -3954,8 +3954,8 @@
                         <div class="form-group row">
                             <div class="col-sm-3">
                                 <label for="ays_quiz_no_more_reviews_text">
-                                    <?php echo __( "No more reviews Text", $this->plugin_name ); ?>
-                                    <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php echo esc_attr( __( "Customize the text, displayed when there are no more reviews to show for the quiz assessment.", $this->plugin_name ) ); ?>">
+                                    <?php echo __( "No more reviews Text", 'quiz-maker' ); ?>
+                                    <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php echo esc_attr( __( "Customize the text, displayed when there are no more reviews to show for the quiz assessment.", 'quiz-maker' ) ); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -3966,22 +3966,22 @@
                         </div>
                         <hr />
                         <p class="ays-subtitle">
-                            <?php echo __('Buttons texts',$this->plugin_name)?>
-                            <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php echo __( 'If you make a change here, these words will not be translated either․', $this->plugin_name ); ?>">
+                            <?php echo __('Buttons texts','quiz-maker')?>
+                            <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php echo __( 'If you make a change here, these words will not be translated either․', 'quiz-maker' ); ?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
                         </p>
                         <blockquote>
                             <p>
-                                <?php echo __( "You can change the buttons' texts and write the words you prefer for them.", $this->plugin_name ); ?>
-                                <span class="ays-quiz-blockquote-span"><?php echo __( "Please note, that if you change the default texts, these words will not be translated with Translation plugins or the Poedit app.", $this->plugin_name ); ?></span>
+                                <?php echo __( "You can change the buttons' texts and write the words you prefer for them.", 'quiz-maker' ); ?>
+                                <span class="ays-quiz-blockquote-span"><?php echo __( "Please note, that if you change the default texts, these words will not be translated with Translation plugins or the Poedit app.", 'quiz-maker' ); ?></span>
                             </p>
                         </blockquote>
                         <hr class="ays-quiz-bolder-hr">
                         <div class="form-group row">
                             <div class="col-sm-3">
                                 <label for="ays_start_button">
-                                    <?php echo __( "Start button", $this->plugin_name ); ?>
+                                    <?php echo __( "Start button", 'quiz-maker' ); ?>
                                 </label>
                             </div>
                             <div class="col-sm-9">
@@ -3991,7 +3991,7 @@
                         <div class="form-group row">
                             <div class="col-sm-3">
                                 <label for="ays_next_button">
-                                    <?php echo __( "Next button", $this->plugin_name ); ?>
+                                    <?php echo __( "Next button", 'quiz-maker' ); ?>
                                 </label>
                             </div>
                             <div class="col-sm-9">
@@ -4001,7 +4001,7 @@
                         <div class="form-group row">
                             <div class="col-sm-3">
                                 <label for="ays_previous_button">
-                                    <?php echo __( "Previous button", $this->plugin_name ); ?>
+                                    <?php echo __( "Previous button", 'quiz-maker' ); ?>
                                 </label>
                             </div>
                             <div class="col-sm-9">
@@ -4011,7 +4011,7 @@
                         <div class="form-group row">
                             <div class="col-sm-3">
                                 <label for="ays_clear_button">
-                                    <?php echo __( "Clear button", $this->plugin_name ); ?>
+                                    <?php echo __( "Clear button", 'quiz-maker' ); ?>
                                 </label>
                             </div>
                             <div class="col-sm-9">
@@ -4021,7 +4021,7 @@
                         <div class="form-group row">
                             <div class="col-sm-3">
                                 <label for="ays_finish_button">
-                                    <?php echo __( "Finish button", $this->plugin_name ); ?>
+                                    <?php echo __( "Finish button", 'quiz-maker' ); ?>
                                 </label>
                             </div>
                             <div class="col-sm-9">
@@ -4031,7 +4031,7 @@
                         <div class="form-group row">
                             <div class="col-sm-3">
                                 <label for="ays_see_result_button">
-                                    <?php echo __( "See Result button", $this->plugin_name ); ?>
+                                    <?php echo __( "See Result button", 'quiz-maker' ); ?>
                                 </label>
                             </div>
                             <div class="col-sm-9">
@@ -4041,7 +4041,7 @@
                         <div class="form-group row">
                             <div class="col-sm-3">
                                 <label for="ays_restart_quiz_button">
-                                    <?php echo __( "Restart quiz button", $this->plugin_name ); ?>
+                                    <?php echo __( "Restart quiz button", 'quiz-maker' ); ?>
                                 </label>
                             </div>
                             <div class="col-sm-9">
@@ -4051,7 +4051,7 @@
                         <div class="form-group row">
                             <div class="col-sm-3">
                                 <label for="ays_send_feedback_button">
-                                    <?php echo __( "Send feedback button", $this->plugin_name ); ?>
+                                    <?php echo __( "Send feedback button", 'quiz-maker' ); ?>
                                 </label>
                             </div>
                             <div class="col-sm-9">
@@ -4061,7 +4061,7 @@
                         <div class="form-group row">
                             <div class="col-sm-3">
                                 <label for="ays_load_more_button">
-                                    <?php echo __( "Load more button", $this->plugin_name ); ?>
+                                    <?php echo __( "Load more button", 'quiz-maker' ); ?>
                                 </label>
                             </div>
                             <div class="col-sm-9">
@@ -4071,7 +4071,7 @@
                         <div class="form-group row">
                             <div class="col-sm-3">
                                 <label for="ays_exit_button">
-                                    <?php echo __( "Exit button", $this->plugin_name ); ?>
+                                    <?php echo __( "Exit button", 'quiz-maker' ); ?>
                                 </label>
                             </div>
                             <div class="col-sm-9">
@@ -4081,7 +4081,7 @@
                         <div class="form-group row">
                             <div class="col-sm-3">
                                 <label for="ays_check_button">
-                                    <?php echo __( "Check button", $this->plugin_name ); ?>
+                                    <?php echo __( "Check button", 'quiz-maker' ); ?>
                                 </label>
                             </div>
                             <div class="col-sm-9">
@@ -4091,7 +4091,7 @@
                         <div class="form-group row">
                             <div class="col-sm-3">
                                 <label for="ays_login_button">
-                                    <?php echo __( "Log In button", $this->plugin_name ); ?>
+                                    <?php echo __( "Log In button", 'quiz-maker' ); ?>
                                 </label>
                             </div>
                             <div class="col-sm-9">
@@ -4101,31 +4101,31 @@
                     </div>
                     <div id="tab6" class="ays-quiz-tab-content <?php echo ($ays_quiz_tab == 'tab6') ? 'ays-quiz-tab-content-active' : ''; ?>">
                         <p class="ays-subtitle">
-                            <?php echo __('Fields texts',$this->plugin_name)?>
-                            <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php echo __( 'If you make a change here, these words will not be translated either.', $this->plugin_name ); ?>">
+                            <?php echo __('Fields texts','quiz-maker')?>
+                            <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php echo __( 'If you make a change here, these words will not be translated either.', 'quiz-maker' ); ?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
                         </p>
                         <blockquote>
                             <p>
-                                <?php echo __( "With the help of this section, you can change the fields' placeholders and labels of the Information form. Find the available fields in the User data tab of your quizzes.", $this->plugin_name ); ?>
-                                <span class="ays-quiz-blockquote-span"><?php echo __( "Please note, that if you change the default texts, these words will not be translated with Translation plugins or the Poedit app.", $this->plugin_name ); ?></span>
+                                <?php echo __( "With the help of this section, you can change the fields' placeholders and labels of the Information form. Find the available fields in the User data tab of your quizzes.", 'quiz-maker' ); ?>
+                                <span class="ays-quiz-blockquote-span"><?php echo __( "Please note, that if you change the default texts, these words will not be translated with Translation plugins or the Poedit app.", 'quiz-maker' ); ?></span>
                             </p>
                         </blockquote>
                         <hr class="ays-quiz-bolder-hr">
                         <div class="form-group row">
                             <div class="col-sm-2"></div>
                             <div class="col-sm-4">
-                                <span><?php echo __( "Placeholders", $this->plugin_name ); ?></span>
+                                <span><?php echo __( "Placeholders", 'quiz-maker' ); ?></span>
                             </div>
                             <div class="col-sm-4">
-                                <span><?php echo __( "Labels", $this->plugin_name ); ?></span>
+                                <span><?php echo __( "Labels", 'quiz-maker' ); ?></span>
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-2">
                                 <label for="ays_quiz_fields_placeholder_name">
-                                    <?php echo __( "Name", $this->plugin_name ); ?>
+                                    <?php echo __( "Name", 'quiz-maker' ); ?>
                                 </label>
                             </div>
                             <div class="col-sm-4">
@@ -4138,7 +4138,7 @@
                         <div class="form-group row">
                             <div class="col-sm-2">
                                 <label for="ays_quiz_fields_placeholder_eamil">
-                                    <?php echo __( "Email", $this->plugin_name ); ?>
+                                    <?php echo __( "Email", 'quiz-maker' ); ?>
                                 </label>
                             </div>
                             <div class="col-sm-4">
@@ -4151,7 +4151,7 @@
                         <div class="form-group row">
                             <div class="col-sm-2">
                                 <label for="ays_quiz_fields_placeholder_phone">
-                                    <?php echo __( "Phone", $this->plugin_name ); ?>
+                                    <?php echo __( "Phone", 'quiz-maker' ); ?>
                                 </label>
                             </div>
                             <div class="col-sm-4">
@@ -4163,20 +4163,20 @@
                         </div>
                     </div>
                     <div id="tab7" class="ays-quiz-tab-content <?php echo ($ays_quiz_tab == 'tab7') ? 'ays-quiz-tab-content-active' : ''; ?>">
-                        <p class="ays-subtitle"><?php echo __('Shortcodes',$this->plugin_name)?></p>
+                        <p class="ays-subtitle"><?php echo __('Shortcodes','quiz-maker')?></p>
                         <hr class="ays-quiz-bolder-hr">
                         <fieldset>
                             <legend>
                                 <strong style="font-size:30px;">[ ]</strong>
-                                <h5><?php echo __('Extra shortcodes',$this->plugin_name); ?></h5>
+                                <h5><?php echo __('Extra shortcodes','quiz-maker'); ?></h5>
                             </legend>
                             <div class="form-group row" style="padding:0px;margin:0;">
                                 <div class="col-sm-12" style="padding:20px;">
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_quiz_avg_score">
-                                                <?php echo __( "Average score", $this->plugin_name ); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Copy the given shortcode and paste it in posts. Insert the Quiz ID  to see the average score of participants of that quiz.',$this->plugin_name); ?>">
+                                                <?php echo __( "Average score", 'quiz-maker' ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Copy the given shortcode and paste it in posts. Insert the Quiz ID  to see the average score of participants of that quiz.','quiz-maker'); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -4193,8 +4193,8 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_quiz_passed_users_count">
-                                                <?php echo __( "Passed users count", $this->plugin_name ); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Copy the following shortcode and paste it in posts. Insert the Quiz ID to receive the number of participants of the quiz.',$this->plugin_name); ?>">
+                                                <?php echo __( "Passed users count", 'quiz-maker' ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Copy the following shortcode and paste it in posts. Insert the Quiz ID to receive the number of participants of the quiz.','quiz-maker'); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -4211,8 +4211,8 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_quiz_passed_users_count_by_score">
-                                                <?php echo __( "Passed users count by score", $this->plugin_name ); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Copy the following shortcode and paste it into posts. Insert the Quiz ID to receive the number of passed users of the quiz. The pass score has to be determined in the Quiz Settings.',$this->plugin_name); ?>">
+                                                <?php echo __( "Passed users count by score", 'quiz-maker' ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Copy the following shortcode and paste it into posts. Insert the Quiz ID to receive the number of passed users of the quiz. The pass score has to be determined in the Quiz Settings.','quiz-maker'); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -4229,8 +4229,8 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_quiz_failed_users_count_by_score">
-                                                <?php echo __( "Failed users count by score", $this->plugin_name ); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Copy the following shortcode and paste it into posts. Insert the Quiz ID to receive the number of failed users of the quiz. The pass score has to be determined in the Quiz Settings.',$this->plugin_name); ?>">
+                                                <?php echo __( "Failed users count by score", 'quiz-maker' ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Copy the following shortcode and paste it into posts. Insert the Quiz ID to receive the number of failed users of the quiz. The pass score has to be determined in the Quiz Settings.','quiz-maker'); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -4247,8 +4247,8 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_quiz_unread_results_count">
-                                                <?php echo __( "Show quiz unread results count", $this->plugin_name ); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("You need to insert Your Quiz ID in the shortcode. It will show the unread results count of the particular quiz. If there is no quiz available/found with that particular Quiz ID, the shortcode will be empty.",$this->plugin_name) ); ?>">
+                                                <?php echo __( "Show quiz unread results count", 'quiz-maker' ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("You need to insert Your Quiz ID in the shortcode. It will show the unread results count of the particular quiz. If there is no quiz available/found with that particular Quiz ID, the shortcode will be empty.",'quiz-maker') ); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -4265,8 +4265,8 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_quiz_read_results_count">
-                                                <?php echo __( "Show quiz read results count", $this->plugin_name ); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("You need to insert Your Quiz ID in the shortcode. It will show the read results count of the particular quiz. If there is no quiz available/found with that particular Quiz ID, the shortcode will be empty.",$this->plugin_name) ); ?>">
+                                                <?php echo __( "Show quiz read results count", 'quiz-maker' ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("You need to insert Your Quiz ID in the shortcode. It will show the read results count of the particular quiz. If there is no quiz available/found with that particular Quiz ID, the shortcode will be empty.",'quiz-maker') ); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -4283,8 +4283,8 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_quiz_user_passed_quizzes_count">
-                                                <?php echo __( "Passed quizzes count per user", $this->plugin_name ); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("Shows the number of passed quizzes of the current user. For instance, the current user has passed 20 quizzes. If the user is not logged in shortcode will be empty.",$this->plugin_name) ); ?>">
+                                                <?php echo __( "Passed quizzes count per user", 'quiz-maker' ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("Shows the number of passed quizzes of the current user. For instance, the current user has passed 20 quizzes. If the user is not logged in shortcode will be empty.",'quiz-maker') ); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -4301,8 +4301,8 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_quiz_user_all_passed_quizzes_count">
-                                                <?php echo __( "All passed quizzes count per user", $this->plugin_name ); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("Shows the total sum of how many times the particular user has passed all the quizzes. For instance, the current user has passed 20 quizzes 500 times in total. If the user is not logged in shortcode will be empty.",$this->plugin_name) ); ?>">
+                                                <?php echo __( "All passed quizzes count per user", 'quiz-maker' ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("Shows the total sum of how many times the particular user has passed all the quizzes. For instance, the current user has passed 20 quizzes 500 times in total. If the user is not logged in shortcode will be empty.",'quiz-maker') ); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -4319,8 +4319,8 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_quiz_user_first_name">
-                                                <?php echo __( "Show User First Name", $this->plugin_name ); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("Shows the logged-in user's First Name. If the user is not logged-in, the shortcode will be empty.",$this->plugin_name) ); ?>">
+                                                <?php echo __( "Show User First Name", 'quiz-maker' ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("Shows the logged-in user's First Name. If the user is not logged-in, the shortcode will be empty.",'quiz-maker') ); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -4337,8 +4337,8 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_quiz_user_last_name">
-                                                <?php echo __( "Show User Last Name", $this->plugin_name ); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("Shows the logged-in user's Last Name. If the user is not logged-in, the shortcode will be empty.",$this->plugin_name) ); ?>">
+                                                <?php echo __( "Show User Last Name", 'quiz-maker' ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("Shows the logged-in user's Last Name. If the user is not logged-in, the shortcode will be empty.",'quiz-maker') ); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -4355,8 +4355,8 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_quiz_user_nickname">
-                                                <?php echo __( "Show User Nickname", $this->plugin_name ); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("Shows the logged-in user's Nickname. If the user is not logged-in, the shortcode will be empty.",$this->plugin_name) ); ?>">
+                                                <?php echo __( "Show User Nickname", 'quiz-maker' ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("Shows the logged-in user's Nickname. If the user is not logged-in, the shortcode will be empty.",'quiz-maker') ); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -4373,8 +4373,8 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_quiz_user_display_name">
-                                                <?php echo __( "Show User Display name", $this->plugin_name ); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("Shows the logged-in user's Display name. If the user is not logged-in, the shortcode will be empty.",$this->plugin_name) ); ?>">
+                                                <?php echo __( "Show User Display name", 'quiz-maker' ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("Shows the logged-in user's Display name. If the user is not logged-in, the shortcode will be empty.",'quiz-maker') ); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -4391,8 +4391,8 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_quiz_user_email">
-                                                <?php echo __( "Show User Email", $this->plugin_name ); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("Shows the logged-in user's Email. If the user is not logged-in, the shortcode will be empty.",$this->plugin_name) ); ?>">
+                                                <?php echo __( "Show User Email", 'quiz-maker' ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("Shows the logged-in user's Email. If the user is not logged-in, the shortcode will be empty.",'quiz-maker') ); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -4409,8 +4409,8 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_quiz_user_roles">
-                                                <?php echo __( "Show user roles", $this->plugin_name ); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("Shows the logged-in user's role(s). If the user is not logged-in, the shortcode will be empty.",$this->plugin_name) ); ?>">
+                                                <?php echo __( "Show user roles", 'quiz-maker' ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("Shows the logged-in user's role(s). If the user is not logged-in, the shortcode will be empty.",'quiz-maker') ); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -4427,8 +4427,8 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_quiz_user_website">
-                                                <?php echo __( "Show user website", $this->plugin_name ); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("Shows the logged-in user's website. If the user is not logged-in, the shortcode will be empty.",$this->plugin_name) ); ?>">
+                                                <?php echo __( "Show user website", 'quiz-maker' ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("Shows the logged-in user's website. If the user is not logged-in, the shortcode will be empty.",'quiz-maker') ); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -4445,8 +4445,8 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_quiz_user_duration">
-                                                <?php echo __( "Show user quiz duration", $this->plugin_name ); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("Put this shortcode on a page to show the total time the user spent to pass quizzes. It includes all the quizzes in the user history.",$this->plugin_name) ); ?>">
+                                                <?php echo __( "Show user quiz duration", 'quiz-maker' ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("Put this shortcode on a page to show the total time the user spent to pass quizzes. It includes all the quizzes in the user history.",'quiz-maker') ); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -4463,8 +4463,8 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_quiz_creation_date">
-                                                <?php echo __( "Show quiz creation date", $this->plugin_name ); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("You need to insert Your Quiz ID in the shortcode. It will show the creation date of the particular quiz. If there is no quiz available/found with that particular Quiz ID, the shortcode will be empty.",$this->plugin_name) ); ?>">
+                                                <?php echo __( "Show quiz creation date", 'quiz-maker' ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("You need to insert Your Quiz ID in the shortcode. It will show the creation date of the particular quiz. If there is no quiz available/found with that particular Quiz ID, the shortcode will be empty.",'quiz-maker') ); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -4481,8 +4481,8 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_quiz_current_author">
-                                                <?php echo __( "Show current quiz author", $this->plugin_name ); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("You need to insert Your Quiz ID in the shortcode. It will show the current author of the particular quiz. If there is no quiz or questions available/found with that particular Quiz ID, the shortcode will be empty.",$this->plugin_name) ); ?>">
+                                                <?php echo __( "Show current quiz author", 'quiz-maker' ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("You need to insert Your Quiz ID in the shortcode. It will show the current author of the particular quiz. If there is no quiz or questions available/found with that particular Quiz ID, the shortcode will be empty.",'quiz-maker') ); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -4499,8 +4499,8 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_quiz_questions_count">
-                                                <?php echo __( "Show quiz questions count", $this->plugin_name ); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("You need to insert Your Quiz ID in the shortcode. It will show the questions count of the particular quiz. If there is no quiz available/found with that particular Quiz ID, the shortcode will be empty.",$this->plugin_name) ); ?>">
+                                                <?php echo __( "Show quiz questions count", 'quiz-maker' ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("You need to insert Your Quiz ID in the shortcode. It will show the questions count of the particular quiz. If there is no quiz available/found with that particular Quiz ID, the shortcode will be empty.",'quiz-maker') ); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -4517,8 +4517,8 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_quiz_category_title">
-                                                <?php echo __( "Show quiz category title", $this->plugin_name ); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("You need to insert Your Quiz ID in the shortcode. It will show the cateogry title of the particular quiz. If there is no quiz available/found with that particular Quiz ID, the shortcode will be empty.",$this->plugin_name) ); ?>">
+                                                <?php echo __( "Show quiz category title", 'quiz-maker' ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("You need to insert Your Quiz ID in the shortcode. It will show the cateogry title of the particular quiz. If there is no quiz available/found with that particular Quiz ID, the shortcode will be empty.",'quiz-maker') ); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -4535,8 +4535,8 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_quiz_category_description">
-                                                <?php echo __( "Show quiz category description", $this->plugin_name ); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("You need to insert Your Quiz ID in the shortcode. It will show the cateogry description of the particular quiz. If there is no quiz available/found with that particular Quiz ID, the shortcode will be empty.",$this->plugin_name) ); ?>">
+                                                <?php echo __( "Show quiz category description", 'quiz-maker' ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("You need to insert Your Quiz ID in the shortcode. It will show the cateogry description of the particular quiz. If there is no quiz available/found with that particular Quiz ID, the shortcode will be empty.",'quiz-maker') ); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -4553,8 +4553,8 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_quiz_quizzes_count">
-                                                <?php echo __( "Show quizzes count", $this->plugin_name ); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("Put this shortcode on a page to show the total count of quizzes.",$this->plugin_name) ); ?>">
+                                                <?php echo __( "Show quizzes count", 'quiz-maker' ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("Put this shortcode on a page to show the total count of quizzes.",'quiz-maker') ); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -4571,8 +4571,8 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_quiz_categories_count">
-                                                <?php echo __( "Show quiz categories count", $this->plugin_name ); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("Put this shortcode on a page to show the total count of quiz categories.",$this->plugin_name) ); ?>">
+                                                <?php echo __( "Show quiz categories count", 'quiz-maker' ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("Put this shortcode on a page to show the total count of quiz categories.",'quiz-maker') ); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -4589,8 +4589,8 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_quiz_all_results_count">
-                                                <?php echo __( "Show quizzes total results count", $this->plugin_name ); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("Put this shortcode on a page to show the total results count of all quizzes of all users.",$this->plugin_name) ); ?>">
+                                                <?php echo __( "Show quizzes total results count", 'quiz-maker' ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("Put this shortcode on a page to show the total results count of all quizzes of all users.",'quiz-maker') ); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -4607,8 +4607,8 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_quiz_question_categories_count">
-                                                <?php echo __( "Show question categories count", $this->plugin_name ); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("Put this shortcode on a page to show the total count of question categories.",$this->plugin_name) ); ?>">
+                                                <?php echo __( "Show question categories count", 'quiz-maker' ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("Put this shortcode on a page to show the total count of question categories.",'quiz-maker') ); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -4625,8 +4625,8 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_quiz_all_questions_count">
-                                                <?php echo __( "Show questions total count", $this->plugin_name ); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("Put this shortcode on a page to show the total count of questions.",$this->plugin_name) ); ?>">
+                                                <?php echo __( "Show questions total count", 'quiz-maker' ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("Put this shortcode on a page to show the total count of questions.",'quiz-maker') ); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -4643,8 +4643,8 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_quiz_avg_rate">
-                                                <?php echo __( "Show quiz average rate", $this->plugin_name ); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("Replace Your_Quiz_ID with the corresponding Quiz ID to show the Average Rate for the quiz.",$this->plugin_name) ); ?>">
+                                                <?php echo __( "Show quiz average rate", 'quiz-maker' ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("Replace Your_Quiz_ID with the corresponding Quiz ID to show the Average Rate for the quiz.",'quiz-maker') ); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -4659,8 +4659,8 @@
                     </div>
                     <div id="tab8" class="ays-quiz-tab-content <?php echo ($ays_quiz_tab == 'tab8') ? 'ays-quiz-tab-content-active' : ''; ?>">
                         <p class="ays-subtitle">
-                            <?php echo __('User Information',$this->plugin_name)?>
-                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Choose what user information you want to be displayed. Tick on the needed options for making them visible in the detailed result. Note that the information will be available in the exported version. So, even if the option is hided, it will be displayed in the exported PDF and XLSX files.', $this->plugin_name); ?>">
+                            <?php echo __('User Information','quiz-maker')?>
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Choose what user information you want to be displayed. Tick on the needed options for making them visible in the detailed result. Note that the information will be available in the exported version. So, even if the option is hided, it will be displayed in the exported PDF and XLSX files.', 'quiz-maker'); ?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
                         </p>
@@ -4668,7 +4668,7 @@
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label for="ays_quiz_show_result_info_user_ip">
-                                    <?php echo __( "Show User IP", $this->plugin_name ); ?>
+                                    <?php echo __( "Show User IP", 'quiz-maker' ); ?>
                                 </label>
                             </div>
                             <div class="col-sm-8">
@@ -4678,7 +4678,7 @@
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label for="ays_quiz_show_result_info_user_id">
-                                    <?php echo __( "Show User ID", $this->plugin_name ); ?>
+                                    <?php echo __( "Show User ID", 'quiz-maker' ); ?>
                                 </label>
                             </div>
                             <div class="col-sm-8">
@@ -4688,7 +4688,7 @@
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label for="ays_quiz_show_result_info_user">
-                                    <?php echo __( "Show User", $this->plugin_name ); ?>
+                                    <?php echo __( "Show User", 'quiz-maker' ); ?>
                                 </label>
                             </div>
                             <div class="col-sm-8">
@@ -4698,7 +4698,7 @@
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label for="ays_quiz_show_result_info_user_email">
-                                    <?php echo __( "Show User Email", $this->plugin_name ); ?>
+                                    <?php echo __( "Show User Email", 'quiz-maker' ); ?>
                                 </label>
                             </div>
                             <div class="col-sm-8">
@@ -4708,7 +4708,7 @@
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label for="ays_quiz_show_result_info_user_name">
-                                    <?php echo __( "Show User Name", $this->plugin_name ); ?>
+                                    <?php echo __( "Show User Name", 'quiz-maker' ); ?>
                                 </label>
                             </div>
                             <div class="col-sm-8">
@@ -4718,7 +4718,7 @@
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label for="ays_quiz_show_result_info_user_phone">
-                                    <?php echo __( "Show User Phone", $this->plugin_name ); ?>
+                                    <?php echo __( "Show User Phone", 'quiz-maker' ); ?>
                                 </label>
                             </div>
                             <div class="col-sm-8">
@@ -4727,8 +4727,8 @@
                         </div>
                         <hr>
                         <p class="ays-subtitle">
-                            <?php echo __('Quiz Information',$this->plugin_name)?>
-                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Choose what Quiz information you want to be displayed. Tick on the needed options for making them visible in the detailed result. Note that the information will be available in the exported version. So, even if the option is hided, it will be displayed in the exported PDF and XLSX files.', $this->plugin_name); ?>">
+                            <?php echo __('Quiz Information','quiz-maker')?>
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Choose what Quiz information you want to be displayed. Tick on the needed options for making them visible in the detailed result. Note that the information will be available in the exported version. So, even if the option is hided, it will be displayed in the exported PDF and XLSX files.', 'quiz-maker'); ?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
                         </p>
@@ -4736,7 +4736,7 @@
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label for="ays_quiz_show_result_info_start_date">
-                                    <?php echo __( "Show Start date", $this->plugin_name ); ?>
+                                    <?php echo __( "Show Start date", 'quiz-maker' ); ?>
                                 </label>
                             </div>
                             <div class="col-sm-8">
@@ -4746,7 +4746,7 @@
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label for="ays_quiz_show_result_info_duration">
-                                    <?php echo __( "Show Duration", $this->plugin_name ); ?>
+                                    <?php echo __( "Show Duration", 'quiz-maker' ); ?>
                                 </label>
                             </div>
                             <div class="col-sm-8">
@@ -4756,7 +4756,7 @@
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label for="ays_quiz_show_result_info_score">
-                                    <?php echo __( "Show Score", $this->plugin_name ); ?>
+                                    <?php echo __( "Show Score", 'quiz-maker' ); ?>
                                 </label>
                             </div>
                             <div class="col-sm-8">
@@ -4766,7 +4766,7 @@
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label for="ays_quiz_show_result_info_rate">
-                                    <?php echo __( "Show Rate", $this->plugin_name ); ?>
+                                    <?php echo __( "Show Rate", 'quiz-maker' ); ?>
                                 </label>
                             </div>
                             <div class="col-sm-8">
@@ -4787,7 +4787,7 @@
                     'data-delay'=> '{"show":"1000"}'
                 );
                 
-                submit_button(__('Save changes', $this->plugin_name), 'primary ays-quiz-loader-banner', 'ays_submit', true, $other_attributes);
+                submit_button(__('Save changes', 'quiz-maker'), 'primary ays-quiz-loader-banner', 'ays_submit', true, $other_attributes);
                 echo $loader_iamge;
             ?>
             </div>

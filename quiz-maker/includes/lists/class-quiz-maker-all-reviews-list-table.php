@@ -7,8 +7,8 @@ class All_Reviews_List_Table extends WP_List_Table{
         $this->plugin_name = $plugin_name;
         $this->title_length = Quiz_Maker_Admin::get_listtables_title_length('quiz_reviews');
         parent::__construct( array(
-            'singular' => __( 'Review', $this->plugin_name ), //singular name of the listed records
-            'plural'   => __( 'Reviews', $this->plugin_name ), //plural name of the listed records
+            'singular' => __( 'Review', 'quiz-maker' ), //singular name of the listed records
+            'plural'   => __( 'Reviews', 'quiz-maker' ), //plural name of the listed records
             'ajax'     => false //does this table support ajax?
         ) );
         add_action( 'admin_notices', array( $this, 'reviews_notices' ) );
@@ -72,8 +72,8 @@ class All_Reviews_List_Table extends WP_List_Table{
         }
 
         $quiz_comments = array(
-            "with_answer"   => __("With reviews", $this->plugin_name),
-            "without_answer" => __("Without reviews", $this->plugin_name),
+            "with_answer"   => __("With reviews", 'quiz-maker'),
+            "without_answer" => __("Without reviews", 'quiz-maker'),
         );
 
         $comment_key = null;
@@ -86,46 +86,46 @@ class All_Reviews_List_Table extends WP_List_Table{
 
         <div id="quiz-filter-div-<?php echo esc_attr( $which ); ?>" class="alignleft actions bulkactions ays-quiz-review-filter-main-div">
             <select name="filterby-<?php echo esc_attr( $which ); ?>" id="bulk-action-quiz-selector-<?php echo esc_attr( $which ); ?>">
-                <option value=""><?php echo __('Select Quiz',$this->plugin_name)?></option>
+                <option value=""><?php echo esc_html__('Select Quiz','quiz-maker')?></option>
                 <?php
                     foreach($quiz_titles as $key => $q_title){
                         $selected = "";
                         if($quiz_id === intval($q_title->id)){
                             $selected = "selected";
                         }
-                        echo "<option ".$selected." value='".$q_title->id."'>".$q_title->title."</option>";
+                        echo "<option ".esc_attr($selected)." value='".esc_attr($q_title->id)."'>".esc_html($q_title->title)."</option>";
                     }
                 ?>
             </select>
             <select name="filterbyreview-<?php echo esc_attr( $which ); ?>" id="bulk-action-quiz-rate-selector-<?php echo esc_attr( $which ); ?>">
-                <option value=""><?php echo __('Select Rate',$this->plugin_name)?></option>
+                <option value=""><?php echo esc_html__('Select Rate','quiz-maker')?></option>
                 <?php
                     foreach($quiz_reviews as $key => $review) {
                         $selected = "";
                         if( $review_key === absint($review) ) {
                             $selected = "selected";
                         }
-                        echo "<option ".$selected." value='".esc_attr( $key )."'>".$review."</option>";
+                        echo "<option ".esc_attr($selected)." value='".esc_attr( $key )."'>".esc_html($review)."</option>";
                     }
                 ?>
             </select>
 
             <select name="filterbycomment-<?php echo esc_attr( $which ); ?>" id="bulk-action-quiz-rate-selector-<?php echo esc_attr( $which ); ?>">
-                <option value=""><?php echo __('With/without reviews',$this->plugin_name); ?></option>
+                <option value=""><?php echo esc_html__('With/without reviews','quiz-maker'); ?></option>
                 <?php
                     foreach($quiz_comments as $key => $quiz_comment) {
                         $selected = "";
                         if( $comment_key === sanitize_text_field($key) ) {
                             $selected = "selected";
                         }
-                        echo "<option ".$selected." value='".esc_attr( $key )."'>".$quiz_comment."</option>";
+                        echo "<option ".esc_attr($selected)." value='".esc_attr( $key )."'>".esc_html($quiz_comment)."</option>";
                     }
                 ?>
             </select>
-            <input type="button" id="doaction-quiz-<?php echo esc_attr( $which ); ?>" class="ays-quiz-question-tab-all-filter-button-<?php echo esc_attr( $which ); ?> button" value="<?php echo __( "Filter", $this->plugin_name ); ?>">
+            <input type="button" id="doaction-quiz-<?php echo esc_attr( $which ); ?>" class="ays-quiz-question-tab-all-filter-button-<?php echo esc_attr( $which ); ?> button" value="<?php echo esc_html__( "Filter", 'quiz-maker' ); ?>">
         </div>
 
-        <a style="" href="?page=<?php echo esc_attr( sanitize_text_field( $_REQUEST['page'] ) ); ?>" class="button"><?php echo __( "Clear filters", $this->plugin_name ); ?></a>
+        <a style="" href="?page=<?php echo esc_attr( sanitize_text_field( $_REQUEST['page'] ) ); ?>" class="button"><?php echo esc_html__( "Clear filters", 'quiz-maker' ); ?></a>
         <?php
     }
 
@@ -163,7 +163,7 @@ class All_Reviews_List_Table extends WP_List_Table{
         }
 
         $status_links = array(
-            "all" => "<a ".$selected_all." href='?page=".esc_attr( $_REQUEST['page'] )."'>". __( 'All', $this->plugin_name )." (".$all_count.")</a> ".$avg_score,
+            "all" => "<a ".$selected_all." href='?page=".esc_attr( $_REQUEST['page'] )."'>". __( 'All', 'quiz-maker' )." (".$all_count.")</a> ".$avg_score,
         );
         return $status_links;
     }
@@ -356,7 +356,7 @@ class All_Reviews_List_Table extends WP_List_Table{
 
     /** Text displayed when no customer data is available */
     public function no_items() {
-        echo __( 'There are no reviews yet.', $this->plugin_name );
+        echo esc_html__( 'There are no reviews yet.', 'quiz-maker' );
     }
 
 
@@ -412,14 +412,14 @@ class All_Reviews_List_Table extends WP_List_Table{
         $user_id = intval($item['user_id']);
 
         if($user_id == 0){
-            $name = __( "Guest" , $this->plugin_name );
+            $name = __( "Guest" , 'quiz-maker' );
         }else{
             $name = '';
             $user = get_userdata($user_id);
             if ($user !== false) {
                 $name = $user->data->display_name;
             } else {
-                $name = "<span style='color: red;'>" . __( "Deleted user", $this->plugin_name ) . "</span>";
+                $name = "<span style='color: red;'>" . __( "Deleted user", 'quiz-maker' ) . "</span>";
             }
         }
 
@@ -481,15 +481,15 @@ class All_Reviews_List_Table extends WP_List_Table{
     function get_columns() {
         $columns = array(
             'cb'          => '<input type="checkbox" />',
-            'user_id'     => __( 'WP User', $this->plugin_name ),
-            'quiz_id'     => __( 'Quiz', $this->plugin_name ),
-            'user_ip'     => __( 'User IP', $this->plugin_name ),
-            'user_name'   => __( 'Name', $this->plugin_name ),
-            'user_email'  => __( 'Email', $this->plugin_name ),
-            'rate_date'   => __( 'Rate Date', $this->plugin_name ),
-            'score'       => __( 'Rate', $this->plugin_name ),
-            'review'      => __( 'Review', $this->plugin_name ),
-            'id'          => __( 'ID', $this->plugin_name ),
+            'user_id'     => __( 'WP User', 'quiz-maker' ),
+            'quiz_id'     => __( 'Quiz', 'quiz-maker' ),
+            'user_ip'     => __( 'User IP', 'quiz-maker' ),
+            'user_name'   => __( 'Name', 'quiz-maker' ),
+            'user_email'  => __( 'Email', 'quiz-maker' ),
+            'rate_date'   => __( 'Rate Date', 'quiz-maker' ),
+            'score'       => __( 'Rate', 'quiz-maker' ),
+            'review'      => __( 'Review', 'quiz-maker' ),
+            'id'          => __( 'ID', 'quiz-maker' ),
         );
 
         return $columns;
@@ -528,8 +528,8 @@ class All_Reviews_List_Table extends WP_List_Table{
      */
     public function get_bulk_actions() {
         $actions = array(
-            'bulk-delete'        => __('Delete', $this->plugin_name),
-            'bulk-delete-review' => __('Delete only review', $this->plugin_name),
+            'bulk-delete'        => __('Delete', 'quiz-maker'),
+            'bulk-delete-review' => __('Delete only review', 'quiz-maker'),
         );
 
         return $actions;
@@ -626,16 +626,16 @@ class All_Reviews_List_Table extends WP_List_Table{
             return;
 
         if ( 'created' == $status )
-            $updated_message = esc_html( __( 'Quiz created.', $this->plugin_name ) );
+            $updated_message = esc_html( __( 'Quiz created.', 'quiz-maker' ) );
         elseif ( 'deleted' == $status )
-            $updated_message = esc_html( __( 'Review(s) deleted.', $this->plugin_name ) );
+            $updated_message = esc_html( __( 'Review(s) deleted.', 'quiz-maker' ) );
 
         if ( empty( $updated_message ) )
             return;
 
         ?>
         <div class="notice notice-success is-dismissible">
-            <p> <?php echo $updated_message; ?> </p>
+            <p> <?php echo esc_html($updated_message); ?> </p>
         </div>
         <?php
     }

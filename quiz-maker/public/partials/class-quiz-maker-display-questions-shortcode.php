@@ -213,7 +213,7 @@ class Quiz_Maker_Display_Questions
         $results = $this->ays_get_questions_by_quiz_id( $attr );
 
         if( $results === null ){
-            $display_questions_html = "<p style='text-align: center;font-style:italic;'>" . __( "There are no questions attached yet.", $this->plugin_name ) . "</p>";
+            $display_questions_html = "<p style='text-align: center;font-style:italic;'>" . __( "There are no questions attached yet.", 'quiz-maker' ) . "</p>";
             return $display_questions_html;
         }
         

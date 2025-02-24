@@ -87,7 +87,7 @@ class Ays_Quiz_Maker_Most_Popular_Shortcodes_Public
         $content_html = array();
 
         if( is_null( $quiz_ids ) || empty( $quiz_ids ) ){
-            $content_html = "<p style='text-align: center;font-style:italic;'>" . __( "There are no results yet.", $this->plugin_name ) . "</p>";
+            $content_html = "<p style='text-align: center;font-style:italic;'>" . __( "There are no results yet.", 'quiz-maker' ) . "</p>";
             return $content_html;
         }
 

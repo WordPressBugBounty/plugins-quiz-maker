@@ -8,8 +8,8 @@ class Results_List_Table extends WP_List_Table{
         $this->plugin_name = $plugin_name;
         $this->title_length = Quiz_Maker_Admin::get_listtables_title_length('results');
         parent::__construct( array(
-            'singular' => __( 'Result', $this->plugin_name ), //singular name of the listed records
-            'plural'   => __( 'Results', $this->plugin_name ), //plural name of the listed records
+            'singular' => __( 'Result', 'quiz-maker' ), //singular name of the listed records
+            'plural'   => __( 'Results', 'quiz-maker' ), //plural name of the listed records
             'ajax'     => false //does this table support ajax?
         ) );
         add_action( 'admin_notices', array( $this, 'results_notices' ) );
@@ -78,20 +78,20 @@ class Results_List_Table extends WP_List_Table{
         ?>
         <div id="quiz-filter-div-<?php echo esc_attr( $which ); ?>" class="alignleft actions bulkactions">
             <select name="filterby-<?php echo esc_attr( $which ); ?>" id="bulk-action-quiz-selector-<?php echo esc_attr( $which ); ?>">
-                <option value=""><?php echo __('Select Quiz',$this->plugin_name)?></option>
+                <option value=""><?php echo esc_html__('Select Quiz','quiz-maker')?></option>
                 <?php
                     foreach($quiz_titles as $key => $q_title){
                         $selected = "";
                         if($quiz_id === intval($q_title->id)){
                             $selected = "selected";
                         }
-                        echo "<option ".$selected." value='".$q_title->id."'>".$q_title->title."</option>";
+                        echo "<option ".esc_attr($selected)." value='".esc_attr($q_title->id)."'>".esc_html($q_title->title)."</option>";
                     }
                 ?>
             </select>
 
             <select name="filterbyuser-<?php echo esc_attr( $which ); ?>" id="bulk-action-user-selector-<?php echo esc_attr( $which ); ?>">
-                <option value=""><?php echo __('Select User',$this->plugin_name)?></option>
+                <option value=""><?php echo esc_html__('Select User','quiz-maker')?></option>
                 <?php
                     foreach($users as $key => $user){
                         $selected = "";
@@ -99,7 +99,7 @@ class Results_List_Table extends WP_List_Table{
                             $selected = "selected";
                         }
                         if(intval($user->user_id) == 0){
-                            $name = __( 'Guest', $this->plugin_name );
+                            $name = __( 'Guest', 'quiz-maker' );
                         }else{
                             $wpuser = get_userdata( intval($user->user_id) );
                             if($wpuser !== false){
@@ -108,22 +108,22 @@ class Results_List_Table extends WP_List_Table{
                                 continue;
                             }
                         }
-                        echo "<option ".$selected." value='".$user->user_id."'>".$name."</option>";
+                        echo "<option ".esc_attr($selected)." value='".esc_attr($user->user_id)."'>".esc_html($name)."</option>";
                     }
                 ?>
             </select>
             
             <select name="filterbycategory-<?php echo esc_attr( $which ); ?>" id="bulk-action-category-selector-<?php echo esc_attr( $which ); ?>">
-                <option value=""><?php echo __('Select Category',$this->plugin_name)?></option>
+                <option value=""><?php echo esc_html__('Select Category','quiz-maker')?></option>
                 <?php
                     foreach($categories_select as $key => $cat_title){
-                        echo "<option ".$cat_title['selected']." value='".$cat_title['id']."'>".$cat_title['title']."</option>";
+                        echo "<option ".esc_attr($cat_title['selected'])." value='".esc_attr($cat_title['id'])."'>".esc_html($cat_title['title'])."</option>";
                     }
                 ?>
             </select>
-            <input type="button" id="doaction-<?php echo esc_attr( $which ); ?>" class="ays-quiz-question-tab-all-filter-button-<?php echo esc_attr( $which ); ?> button" value="<?php echo __( "Filter", $this->plugin_name ); ?>">
+            <input type="button" id="doaction-<?php echo esc_attr( $which ); ?>" class="ays-quiz-question-tab-all-filter-button-<?php echo esc_attr( $which ); ?> button" value="<?php echo esc_attr( __( "Filter", 'quiz-maker' ) ); ?>">
         </div>
-        <a style="" href="?page=<?php echo esc_attr( $_REQUEST['page'] ) ?>" class="button"><?php echo __( "Clear filters", $this->plugin_name ); ?></a>
+        <a style="" href="?page=<?php echo esc_attr( $_REQUEST['page'] ) ?>" class="button"><?php echo esc_html__( "Clear filters", 'quiz-maker' ); ?></a>
         <?php
     }
     
@@ -161,9 +161,9 @@ class Results_List_Table extends WP_List_Table{
         $unread_url = esc_url( add_query_arg('fstatus', 0, $status_links_url) );
         
         $status_links = array(
-            "all"       => "<a ".$selected_all." href='?page=".esc_attr( $_REQUEST['page'] )."'>". __( 'All', $this->plugin_name )." (".$all_count.")</a>",
-            "readed"    => "<a ".$selected_1." href='". $read_url ."'>". __( 'Read', $this->plugin_name )." (".$published_count.")</a>",
-            "unreaded"  => "<a ".$selected_0." href='". $unread_url ."'>". __( 'Unread', $this->plugin_name )." (".$unpublished_count.")</a>"
+            "all"       => "<a ".$selected_all." href='?page=".esc_attr( $_REQUEST['page'] )."'>". __( 'All', 'quiz-maker' )." (".$all_count.")</a>",
+            "readed"    => "<a ".$selected_1." href='". $read_url ."'>". __( 'Read', 'quiz-maker' )." (".$published_count.")</a>",
+            "unreaded"  => "<a ".$selected_0." href='". $unread_url ."'>". __( 'Unread', 'quiz-maker' )." (".$unpublished_count.")</a>"
         );
         return $status_links;
     }    
@@ -465,7 +465,7 @@ class Results_List_Table extends WP_List_Table{
 
     /** Text displayed when no customer data is available */
     public function no_items() {
-        echo __( 'There are no results yet.', $this->plugin_name );
+        echo esc_html__( 'There are no results yet.', 'quiz-maker' );
     }
 
 
@@ -541,7 +541,7 @@ class Results_List_Table extends WP_List_Table{
 
         $restitle = Quiz_Maker_Admin::ays_restriction_string("word",$result_title, $results_title_length);
         if($result == null){
-            $title = __( 'Quiz has been deleted', $this->plugin_name );
+            $title = __( 'Quiz has been deleted', 'quiz-maker' );
         }else{
             // $title = sprintf( '<a href="javascript:void(0)" data-result="%d" class="%s" '.$result_read.'>%s</a>', absint( $item['id'] ), 'ays-show-results', $restitle);
             $title = sprintf( '<a href="javascript:void(0)" title="%s" data-result="%d" class="%s" '.$result_read.'>%s</a><input type="hidden" value="%d" class="ays_result_read">', $q, absint( $item['id'] ), 'ays-show-results', $restitle,  $item['read']);
@@ -563,14 +563,14 @@ class Results_List_Table extends WP_List_Table{
     function column_user_id( $item ) {
         $user_id = intval($item['user_id']);
         if($user_id == 0){
-            $name = __( "Guest", $this->plugin_name );
+            $name = __( "Guest", 'quiz-maker' );
         }else{
             $name = '';
             $user = get_userdata($user_id);
             if ($user !== false) {
                 $name = $user->data->display_name;
             } else {
-                $name = "<span style='color: red;'>" . __( "Deleted user", $this->plugin_name ) . "</span>";
+                $name = "<span style='color: red;'>" . __( "Deleted user", 'quiz-maker' ) . "</span>";
             }
         }
         return $name;
@@ -599,7 +599,7 @@ class Results_List_Table extends WP_List_Table{
             }
             $reason = htmlentities(stripslashes(wpautop($review)));
             if($reason == ''){
-                $reason = __("No review provided", $this->plugin_name);
+                $reason = __("No review provided", 'quiz-maker');
             }
             $score = (isset( $result['score'] ) && $result['score'] != '') ? $result['score'] : '';
             $title = '';
@@ -612,7 +612,7 @@ class Results_List_Table extends WP_List_Table{
             }
         }else{
             $margin_of_icon = '';
-            $reason = __("No rate provided", $this->plugin_name);
+            $reason = __("No rate provided", 'quiz-maker');
             $score = '';
             $title = "";
         }
@@ -629,7 +629,7 @@ class Results_List_Table extends WP_List_Table{
         if($passed_time !== null){
             $title = $passed_time;
         }else{
-            $title = __('No data', $this->plugin_name);
+            $title = __('No data', 'quiz-maker');
         }
         return $title;
     }
@@ -649,9 +649,9 @@ class Results_List_Table extends WP_List_Table{
         $status = '';
         if( $pass_score != 0 ){
             if( $score >= $pass_score ){
-                $status = "<span style='color:green;font-weight:900;'><i class='ays_fa ays_fa_check' style='color:green;font-size: 18px'></i> " . __( "Passed", $this->plugin_name ) . "</span>";
+                $status = "<span style='color:green;font-weight:900;'><i class='ays_fa ays_fa_check' style='color:green;font-size: 18px'></i> " . __( "Passed", 'quiz-maker' ) . "</span>";
             }else{
-                $status = "<span style='color:brown;font-weight:900;'><i class='ays_fa ays_fa_times' style='font-size: 18px'></i> " . __( "Failed", $this->plugin_name ) . "</span>";
+                $status = "<span style='color:brown;font-weight:900;'><i class='ays_fa ays_fa_times' style='font-size: 18px'></i> " . __( "Failed", 'quiz-maker' ) . "</span>";
             }
         }
 
@@ -665,7 +665,7 @@ class Results_List_Table extends WP_List_Table{
 
         $quiz_id = (isset( $item['quiz_id'] ) && $item['quiz_id'] > 0) ? absint( sanitize_text_field( $item['quiz_id'] ) ) : null;
 
-        $cat_title = __( 'Uncategorized', $this->plugin_name );
+        $cat_title = __( 'Uncategorized', 'quiz-maker' );
         if ( ! is_null( $quiz_id ) ) {
             $sql = "SELECT quiz_category_id FROM ". $quizzes_table ." WHERE `id` = ".$quiz_id;
             $quiz_category_id = $wpdb->get_var($sql);
@@ -699,20 +699,20 @@ class Results_List_Table extends WP_List_Table{
     function get_columns() {
         $columns = array(
             'cb'                => '<input type="checkbox" />',
-            'quiz_id'           => __( 'Quiz', $this->plugin_name ),
-            'quiz_category_id'  => __( 'Category', $this->plugin_name ),
-            'user_id'           => __( 'WP User', $this->plugin_name ),
-            'user_ip'           => __( 'User IP', $this->plugin_name ),
-            'user_name'         => __( 'Name', $this->plugin_name ),
-            'user_email'        => __( 'Email', $this->plugin_name ),
-            'user_phone'        => __( 'Phone', $this->plugin_name ),
-            'quiz_rate'         => __( 'Rate', $this->plugin_name ),
-            'start_date'        => __( 'Start', $this->plugin_name ),
-            'end_date'          => __( 'End', $this->plugin_name ),
-            'duration'          => __( 'Duration', $this->plugin_name ),
-            'score'             => __( 'Score', $this->plugin_name ),
-            'status'            => __( 'Status', $this->plugin_name ),
-            'id'                => __( 'ID', $this->plugin_name ),
+            'quiz_id'           => __( 'Quiz', 'quiz-maker' ),
+            'quiz_category_id'  => __( 'Category', 'quiz-maker' ),
+            'user_id'           => __( 'WP User', 'quiz-maker' ),
+            'user_ip'           => __( 'User IP', 'quiz-maker' ),
+            'user_name'         => __( 'Name', 'quiz-maker' ),
+            'user_email'        => __( 'Email', 'quiz-maker' ),
+            'user_phone'        => __( 'Phone', 'quiz-maker' ),
+            'quiz_rate'         => __( 'Rate', 'quiz-maker' ),
+            'start_date'        => __( 'Start', 'quiz-maker' ),
+            'end_date'          => __( 'End', 'quiz-maker' ),
+            'duration'          => __( 'Duration', 'quiz-maker' ),
+            'score'             => __( 'Score', 'quiz-maker' ),
+            'status'            => __( 'Status', 'quiz-maker' ),
+            'id'                => __( 'ID', 'quiz-maker' ),
         );
 
         return $columns;
@@ -764,9 +764,9 @@ class Results_List_Table extends WP_List_Table{
      */
     public function get_bulk_actions() {
         $actions = array(
-            'bulk-mark-as-read' => __( 'Mark as read', $this->plugin_name),
-            'mark-as-unread'    => __( 'Mark as unread', $this->plugin_name),
-            'bulk-delete'       => __( 'Delete', $this->plugin_name),
+            'bulk-mark-as-read' => __( 'Mark as read', 'quiz-maker'),
+            'mark-as-unread'    => __( 'Mark as unread', 'quiz-maker'),
+            'bulk-delete'       => __( 'Delete', 'quiz-maker'),
         );
 
         return $actions;
@@ -879,18 +879,18 @@ class Results_List_Table extends WP_List_Table{
             return;
 
         if ( 'created' == $status )
-            $updated_message = esc_html( __( 'Quiz created.', $this->plugin_name ) );
+            $updated_message = esc_html( __( 'Quiz created.', 'quiz-maker' ) );
         elseif ( 'updated' == $status )
-            $updated_message = esc_html( __( 'Quiz saved.', $this->plugin_name ) );
+            $updated_message = esc_html( __( 'Quiz saved.', 'quiz-maker' ) );
         elseif ( 'deleted' == $status )
-            $updated_message = esc_html( __( 'Result(s) deleted.', $this->plugin_name ) );
+            $updated_message = esc_html( __( 'Result(s) deleted.', 'quiz-maker' ) );
 
         if ( empty( $updated_message ) )
             return;
 
         ?>
         <div class="notice notice-success is-dismissible">
-            <p> <?php echo $updated_message; ?> </p>
+            <p> <?php echo esc_html($updated_message); ?> </p>
         </div>
         <?php
     }

@@ -11,10 +11,10 @@ $quiz_category = array(
 );
 switch( $action ) {
     case 'add':
-        $heading = __('Add new category', $this->plugin_name);
+        $heading = __('Add new category', 'quiz-maker');
         break;
     case 'edit':
-        $heading = __('Edit category', $this->plugin_name);
+        $heading = __('Edit category', 'quiz-maker');
         $quiz_category = $this->quiz_categories_obj->get_quiz_category( $id );
         break;
 }
@@ -58,23 +58,23 @@ $quiz_wp_editor_height = (isset($gen_options['quiz_wp_editor_height']) && $gen_o
             <div class="ays-quiz-wordpress-user-manual-box">
                 <a href="https://quiz-plugin.com/docs/" target="_blank">
                     <i class="ays_fa ays_fa_file_text" ></i> 
-                    <span style="margin-left: 3px;text-decoration: underline;"><?php echo __("View Documentation", "quiz-maker"); ?></span>
+                    <span style="margin-left: 3px;text-decoration: underline;"><?php echo esc_html__("View Documentation", "quiz-maker"); ?></span>
                 </a>
             </div>
         </div>
-        <h1><?php echo $heading; ?></h1>
+        <h1><?php echo wp_kses_post($heading); ?></h1>
         <div>
             <?php if($id !== null): ?>
             <div class="row">
                 <div class="col-sm-3">
-                    <label> <?php echo __( "Shortcode text for editor", $this->plugin_name ); ?> </label>
+                    <label> <?php echo esc_html__( "Shortcode text for editor", 'quiz-maker' ); ?> </label>
                 </div>
                 <div class="col-sm-9">
                     <p style="font-size:14px; font-style:italic;">
-                        <?php echo __("To insert the Quiz category into a page, post or text widget, copy shortcode", $this->plugin_name); ?>
-                        <strong class="ays-quiz-shortcode-box" onClick="selectElementContents(this)" class="ays_help" data-toggle="tooltip" title="<?php echo __('Click for copy.',$this->plugin_name);?>" style="font-size:16px; font-style:normal;"><?php echo "[ays_quiz_cat id='".$id."' display='all/random' count='5' layout='list/grid']"; ?></strong>
-                        <?php echo " " . __( "and paste it at the desired place in the editor.", $this->plugin_name); ?><br>
-                        <?php echo __( "The count attribute is required for random view type.", $this->plugin_name); ?>
+                        <?php echo esc_html__("To insert the Quiz category into a page, post or text widget, copy shortcode", 'quiz-maker'); ?>
+                        <strong class="ays-quiz-shortcode-box" onClick="selectElementContents(this)" class="ays_help" data-toggle="tooltip" title="<?php echo esc_html__('Click for copy.','quiz-maker');?>" style="font-size:16px; font-style:normal;"><?php echo "[ays_quiz_cat id='".esc_attr($id)."' display='all/random' count='5' layout='list/grid']"; ?></strong>
+                        <?php echo " " . esc_html__( "and paste it at the desired place in the editor.", 'quiz-maker'); ?><br>
+                        <?php echo esc_html__( "The count attribute is required for random view type.", 'quiz-maker'); ?>
                     </p>
                 </div>
             </div>
@@ -83,20 +83,20 @@ $quiz_wp_editor_height = (isset($gen_options['quiz_wp_editor_height']) && $gen_o
         <hr/>
         <form class="ays-quiz-category-form ays-quiz-real-category-form" id="ays-quiz-category-form" method="post">
             <div id="tab1" class="ays-quiz-tab-content ays-quiz-tab-content-active">
-                <p class="ays-subtitle"><?php echo __('Settings',$this->plugin_name); ?></p>
+                <p class="ays-subtitle"><?php echo esc_html__('Settings','quiz-maker'); ?></p>
                 <hr class="ays-quiz-bolder-hr"/>
-                <input type="hidden" class="quiz_wp_editor_height" value="<?php echo $quiz_wp_editor_height; ?>">
+                <input type="hidden" class="quiz_wp_editor_height" value="<?php echo esc_attr($quiz_wp_editor_height); ?>">
                 <div class="form-group row">
                     <div class="col-sm-2">
                         <label for='ays-title'>
-                            <?php echo __('Title', $this->plugin_name); ?>
-                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Title of the category',$this->plugin_name)?>">
+                            <?php echo esc_html__('Title', 'quiz-maker'); ?>
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Title of the category','quiz-maker') ); ?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
                         </label>
                     </div>
                     <div class="col-sm-10">
-                        <input class='ays-text-input' id='ays-title' name='ays_title' required type='text' value='<?php echo $quiz_category_title; ?>'>
+                        <input class='ays-text-input' id='ays-title' name='ays_title' required type='text' value='<?php echo esc_attr($quiz_category_title); ?>'>
                     </div>
                 </div>
 
@@ -104,8 +104,8 @@ $quiz_wp_editor_height = (isset($gen_options['quiz_wp_editor_height']) && $gen_o
                 <div class='ays-field form-group row'>
                     <div class="col-sm-2">
                         <label for='ays-description'>
-                            <?php echo __('Description', $this->plugin_name); ?>
-                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Provide more information about the quiz category',$this->plugin_name)?>">
+                            <?php echo esc_html__('Description', 'quiz-maker'); ?>
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Provide more information about the quiz category','quiz-maker') ); ?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
                         </label>
@@ -124,8 +124,8 @@ $quiz_wp_editor_height = (isset($gen_options['quiz_wp_editor_height']) && $gen_o
                 <div class="form-group row">
                     <div class="col-sm-2">
                         <label>
-                            <?php echo __('Category status', $this->plugin_name); ?>
-                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Choose whether the quiz category is active or not. If you choose Unpublished option, the quiz category won’t be shown anywhere on your website.',$this->plugin_name)?>">
+                            <?php echo esc_html__('Category status', 'quiz-maker'); ?>
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Choose whether the quiz category is active or not. If you choose Unpublished option, the quiz category won’t be shown anywhere on your website.','quiz-maker') ); ?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
                         </label>
@@ -134,11 +134,11 @@ $quiz_wp_editor_height = (isset($gen_options['quiz_wp_editor_height']) && $gen_o
                     <div class="col-sm-3">
                         <div class="form-check form-check-inline">
                             <input type="radio" id="ays-publish" name="ays_publish" value="1" <?php echo ( $quiz_category_published == '' ) ? "checked" : ""; ?> <?php echo ( $quiz_category_published == '1') ? 'checked' : ''; ?> />
-                            <label class="form-check-label" for="ays-publish"> <?php echo __('Published', $this->plugin_name); ?> </label>
+                            <label class="form-check-label" for="ays-publish"> <?php echo esc_html__('Published', 'quiz-maker'); ?> </label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input type="radio" id="ays-unpublish" name="ays_publish" value="0" <?php echo ( $quiz_category_published  == '0' ) ? 'checked' : ''; ?> />
-                            <label class="form-check-label" for="ays-unpublish"> <?php echo __('Unpublished', $this->plugin_name); ?> </label>
+                            <label class="form-check-label" for="ays-unpublish"> <?php echo esc_html__('Unpublished', 'quiz-maker'); ?> </label>
                         </div>
                     </div>
                 </div>
@@ -148,7 +148,7 @@ $quiz_wp_editor_height = (isset($gen_options['quiz_wp_editor_height']) && $gen_o
                 <div class="ays-question-button-first-row" style="padding: 0;">
                 <?php
                     wp_nonce_field('quiz_category_action', 'quiz_category_action');
-                    echo $loader_iamge;
+                    echo wp_kses_post($loader_iamge);
 
                     $other_attributes = array( 
                         'id' => 'ays_apply',
@@ -157,10 +157,10 @@ $quiz_wp_editor_height = (isset($gen_options['quiz_wp_editor_height']) && $gen_o
                         'data-delay'=> '{"show":"1000"}'
                     );
                     
-                    submit_button( __( 'Save', $this->plugin_name), 'primary ays-quiz-loader-banner', 'ays_apply', true, $other_attributes);
+                    submit_button( esc_html__( 'Save', 'quiz-maker'), 'primary ays-quiz-loader-banner', 'ays_apply', true, $other_attributes);
 
                     $other_attributes = array( 'id' => 'ays-button' );
-                    submit_button( __( 'Save and close', $this->plugin_name ), 'ays-quiz-loader-banner', 'ays_submit', true, $other_attributes );
+                    submit_button( esc_html__( 'Save and close', 'quiz-maker' ), 'ays-quiz-loader-banner', 'ays_submit', true, $other_attributes );
                 ?>
                 </div>
                 <div class="ays-question-button-second-row">
@@ -169,20 +169,20 @@ $quiz_wp_editor_height = (isset($gen_options['quiz_wp_editor_height']) && $gen_o
 
                         $other_attributes = array(
                             'id' => 'ays-question-prev-button',
-                            'data-message' => __( 'Are you sure you want to go to the previous quiz category page?', $this->plugin_name),
+                            'data-message' => esc_html__( 'Are you sure you want to go to the previous quiz category page?', 'quiz-maker'),
                             'href' => sprintf( '?page=%s&action=%s&quiz_category=%d', esc_attr( $_REQUEST['page'] ), 'edit', absint( $prev_quiz_cat_id ) )
                         );
-                        submit_button(__('Prev Category', $this->plugin_name), 'button ays-quiz-category-next-button-class', 'ays_quiz_cat_prev_button', false, $other_attributes);
+                        submit_button(esc_html__('Prev Category', 'quiz-maker'), 'button ays-quiz-category-next-button-class', 'ays_quiz_cat_prev_button', false, $other_attributes);
                     }
 
                     if ( $nex_quiz_cat_id != "" && !is_null( $nex_quiz_cat_id ) ) {
 
                         $other_attributes = array(
                             'id' => 'ays-quiz-category-next-button',
-                            'data-message' => __( 'Are you sure you want to go to the next quiz category page?', $this->plugin_name),
+                            'data-message' => esc_html__( 'Are you sure you want to go to the next quiz category page?', 'quiz-maker'),
                             'href' => sprintf( '?page=%s&action=%s&quiz_category=%d', esc_attr( $_REQUEST['page'] ), 'edit', absint( $nex_quiz_cat_id ) )
                         );
-                        submit_button(__('Next Category', $this->plugin_name), 'button ays-quiz-category-next-button-class', 'ays_quiz_cat_next_button', false, $other_attributes);
+                        submit_button(esc_html__('Next Category', 'quiz-maker'), 'button ays-quiz-category-next-button-class', 'ays_quiz_cat_next_button', false, $other_attributes);
                     }
                 ?>
                 </div>

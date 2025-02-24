@@ -70,24 +70,24 @@ class Quiz_Maker_All_Results
         wp_enqueue_script( $this->plugin_name . '-all-results-public', AYS_QUIZ_PUBLIC_URL . '/js/all-results/all-results-public.js', array('jquery'), $this->version, true);
 
         wp_localize_script( $this->plugin_name . '-datatable-min', 'quizLangDataTableObj', array(
-            "sEmptyTable"           => __( "No data available in table", $this->plugin_name ),
-            "sInfo"                 => __( "Showing _START_ to _END_ of _TOTAL_ entries", $this->plugin_name ),
-            "sInfoEmpty"            => __( "Showing 0 to 0 of 0 entries", $this->plugin_name ),
-            "sInfoFiltered"         => __( "(filtered from _MAX_ total entries)", $this->plugin_name ),
-            // "sInfoPostFix":          => __( "", $this->plugin_name ),
-            // "sInfoThousands":        => __( ",", $this->plugin_name ),
-            "sLengthMenu"           => __( "Show _MENU_ entries", $this->plugin_name ),
-            "sLoadingRecords"       => __( "Loading...", $this->plugin_name ),
-            "sProcessing"           => __( "Processing...", $this->plugin_name ),
-            "sSearch"               => __( "Search:", $this->plugin_name ),
-            // "sUrl":                  => __( "", $this->plugin_name ),
-            "sZeroRecords"          => __( "No matching records found", $this->plugin_name ),
-            "sFirst"                => __( "First", $this->plugin_name ),
-            "sLast"                 => __( "Last", $this->plugin_name ),
-            "sNext"                 => __( "Next", $this->plugin_name ),
-            "sPrevious"             => __( "Previous", $this->plugin_name ),
-            "sSortAscending"        => __( ": activate to sort column ascending", $this->plugin_name ),
-            "sSortDescending"       => __( ": activate to sort column descending", $this->plugin_name ),
+            "sEmptyTable"           => __( "No data available in table", 'quiz-maker' ),
+            "sInfo"                 => __( "Showing _START_ to _END_ of _TOTAL_ entries", 'quiz-maker' ),
+            "sInfoEmpty"            => __( "Showing 0 to 0 of 0 entries", 'quiz-maker' ),
+            "sInfoFiltered"         => __( "(filtered from _MAX_ total entries)", 'quiz-maker' ),
+            // "sInfoPostFix":          => __( "", 'quiz-maker' ),
+            // "sInfoThousands":        => __( ",", 'quiz-maker' ),
+            "sLengthMenu"           => __( "Show _MENU_ entries", 'quiz-maker' ),
+            "sLoadingRecords"       => __( "Loading...", 'quiz-maker' ),
+            "sProcessing"           => __( "Processing...", 'quiz-maker' ),
+            "sSearch"               => __( "Search:", 'quiz-maker' ),
+            // "sUrl":                  => __( "", 'quiz-maker' ),
+            "sZeroRecords"          => __( "No matching records found", 'quiz-maker' ),
+            "sFirst"                => __( "First", 'quiz-maker' ),
+            "sLast"                 => __( "Last", 'quiz-maker' ),
+            "sNext"                 => __( "Next", 'quiz-maker' ),
+            "sPrevious"             => __( "Previous", 'quiz-maker' ),
+            "sSortAscending"        => __( ": activate to sort column ascending", 'quiz-maker' ),
+            "sSortDescending"       => __( ": activate to sort column descending", 'quiz-maker' ),
         ) );
     }
 
@@ -207,26 +207,26 @@ class Quiz_Maker_All_Results
         $all_results_columns_order = $all_results_columns_order_arr;
 
         $default_all_results_column_names = array(
-            "user_name"     => __( 'User name', $this->plugin_name ),
-            "quiz_name"     => __( 'Quiz name', $this->plugin_name ),
-            "start_date"    => __( 'Start date', $this->plugin_name ),
-            "end_date"      => __( 'End date', $this->plugin_name ),
-            "duration"      => __( 'Duration', $this->plugin_name ),
-            "score"         => __( 'Score', $this->plugin_name ),
-            "status"        => __( 'Status', $this->plugin_name ),
+            "user_name"     => __( 'User name', 'quiz-maker' ),
+            "quiz_name"     => __( 'Quiz name', 'quiz-maker' ),
+            "start_date"    => __( 'Start date', 'quiz-maker' ),
+            "end_date"      => __( 'End date', 'quiz-maker' ),
+            "duration"      => __( 'Duration', 'quiz-maker' ),
+            "score"         => __( 'Score', 'quiz-maker' ),
+            "status"        => __( 'Status', 'quiz-maker' ),
         );
 
         $ays_default_header_value = array(
-            "user_name"     => "<th style='width:20%;'>" . __( "User Name", $this->plugin_name ) . "</th>",
-            "quiz_name"     => "<th style='width:20%;'>" . __( "Quiz Name", $this->plugin_name ) . "</th>",
-            "start_date"    => "<th style='width:15%;'>" . __( "Start", $this->plugin_name ) . "</th>",
-            "end_date"      => "<th style='width:15%;'>" . __( "End", $this->plugin_name ) . "</th>",
-            "duration"      => "<th style='width:10%;'>" . __( "Duration", $this->plugin_name ) . "</th>",
-            "score"         => "<th style='width:10%;'>" . __( "Score", $this->plugin_name ) . "</th>",
-            "status"        => "<th style='width:10%;'>" . __( "Status", $this->plugin_name ) . "</th>",
+            "user_name"     => "<th style='width:20%;'>" . __( "User Name", 'quiz-maker' ) . "</th>",
+            "quiz_name"     => "<th style='width:20%;'>" . __( "Quiz Name", 'quiz-maker' ) . "</th>",
+            "start_date"    => "<th style='width:15%;'>" . __( "Start", 'quiz-maker' ) . "</th>",
+            "end_date"      => "<th style='width:15%;'>" . __( "End", 'quiz-maker' ) . "</th>",
+            "duration"      => "<th style='width:10%;'>" . __( "Duration", 'quiz-maker' ) . "</th>",
+            "score"         => "<th style='width:10%;'>" . __( "Score", 'quiz-maker' ) . "</th>",
+            "status"        => "<th style='width:10%;'>" . __( "Status", 'quiz-maker' ) . "</th>",
         );
         if($results === null){
-            $all_results_html = "<p style='text-align: center;font-style:italic;'>" . __( "You must log in to see your results.", $this->plugin_name ) . "</p>";
+            $all_results_html = "<p style='text-align: center;font-style:italic;'>" . __( "You must log in to see your results.", 'quiz-maker' ) . "</p>";
             return $all_results_html;
         }
 
@@ -270,11 +270,11 @@ class Quiz_Maker_All_Results
             
             $duration = Quiz_Maker_Public::secondsToWords($duration);
             if ($duration == '') {
-                $duration = '0 ' . __( 'second' , $this->plugin_name );
+                $duration = '0 ' . __( 'second' , 'quiz-maker' );
             }
 
             if ($user_id == 0) {
-                $user_name = (isset($result['user_name']) && $result['user_name'] != '') ? $result['user_name'] : __('Guest', $this->plugin_name);
+                $user_name = (isset($result['user_name']) && $result['user_name'] != '') ? $result['user_name'] : __('Guest', 'quiz-maker');
             }else{
                 $user_name = (isset($result['user_name']) && $result['user_name'] != '') ? $result['user_name'] : '';
                 if($user_name == ''){
@@ -307,12 +307,12 @@ class Quiz_Maker_All_Results
                     if( $user_score >= $pass_score ){
                         $status .= "<div class='ays-quiz-score-column-check-box'>";
                             $status .= $pass_svg;
-                            $status .= "<span class='ays-quiz-score-column-check'> " . __( "Passed", $this->plugin_name ) . "</span>";
+                            $status .= "<span class='ays-quiz-score-column-check'> " . __( "Passed", 'quiz-maker' ) . "</span>";
                         $status .= "</div>";
                     }else{
                         $status .= "<div class='ays-quiz-score-column-check-box'>";
                             $status .= $fail_svg;
-                            $status .= "<span class='ays-quiz-score-column-times'> " . __( "Failed", $this->plugin_name ) . "</span>";
+                            $status .= "<span class='ays-quiz-score-column-times'> " . __( "Failed", 'quiz-maker' ) . "</span>";
                         $status .= "</div>";
                     }
                 }

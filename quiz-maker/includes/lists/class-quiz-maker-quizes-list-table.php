@@ -8,8 +8,8 @@ class Quizes_List_Table extends WP_List_Table{
         $this->plugin_name = $plugin_name;
         $this->title_length = Quiz_Maker_Admin::get_listtables_title_length('quizzes');
         parent::__construct( array(
-            'singular' => __( 'Quiz', $this->plugin_name ), //singular name of the listed records
-            'plural'   => __( 'Quizzes', $this->plugin_name ), //plural name of the listed records
+            'singular' => __( 'Quiz', 'quiz-maker' ), //singular name of the listed records
+            'plural'   => __( 'Quizzes', 'quiz-maker' ), //plural name of the listed records
             'ajax'     => false //does this table support ajax?
         ) );
         add_action( 'admin_notices', array( $this, 'quiz_notices' ) );
@@ -64,17 +64,17 @@ class Quizes_List_Table extends WP_List_Table{
         ?>
         <div id="category-filter-div-quizlist" class="alignleft actions bulkactions">
             <select name="filterby-<?php echo esc_attr( $which ); ?>" id="bulk-action-category-selector-<?php echo esc_attr( $which ); ?>">
-                <option value=""><?php echo __('Select Category',$this->plugin_name)?></option>
+                <option value=""><?php echo esc_html__('Select Category','quiz-maker')?></option>
                 <?php
                     foreach($categories_select as $key => $cat_title){
-                        echo "<option ".$cat_title['selected']." value='".$cat_title['id']."'>".$cat_title['title']."</option>";
+                        echo "<option ".esc_attr($cat_title['selected'])." value='".esc_attr($cat_title['id'])."'>".esc_html($cat_title['title'])."</option>";
                     }
                 ?>
             </select>
             <input type="button" id="doaction-<?php echo esc_attr( $which ); ?>" class="cat-filter-apply-<?php echo esc_attr( $which ); ?> button" value="Filter">
         </div>
         
-        <a style="" href="?page=<?php echo esc_attr( $_REQUEST['page'] ); ?>" class="button"><?php echo __( "Clear filters", $this->plugin_name ); ?></a>
+        <a style="" href="?page=<?php echo esc_attr( $_REQUEST['page'] ); ?>" class="button"><?php echo esc_html__( "Clear filters", 'quiz-maker' ); ?></a>
         <?php
     }
     
@@ -112,9 +112,9 @@ class Quizes_List_Table extends WP_List_Table{
         $unpublish_url = esc_url( add_query_arg('fstatus', 0, $status_links_url) );
 
         $status_links = array(
-            "all" => "<a ".$selected_all." href='?page=".esc_attr( $_REQUEST['page'] )."'>". __( 'All', $this->plugin_name )." (".$all_count.")</a>",
-            "published" => "<a ".$selected_1." href='". $publish_url ."'>". __( 'Published', $this->plugin_name )." (".$published_count.")</a>",
-            "unpublished"   => "<a ".$selected_0." href='". $unpublish_url ."'>". __( 'Unpublished', $this->plugin_name )." (".$unpublished_count.")</a>"
+            "all" => "<a ".$selected_all." href='?page=".esc_attr( $_REQUEST['page'] )."'>". __( 'All', 'quiz-maker' )." (".$all_count.")</a>",
+            "published" => "<a ".$selected_1." href='". $publish_url ."'>". __( 'Published', 'quiz-maker' )." (".$published_count.")</a>",
+            "unpublished"   => "<a ".$selected_0." href='". $unpublish_url ."'>". __( 'Unpublished', 'quiz-maker' )." (".$unpublished_count.")</a>"
         );
         return $status_links;
     }
@@ -562,8 +562,8 @@ class Quizes_List_Table extends WP_List_Table{
 
             // Pass Score
             $pass_score = (isset($_POST['ays_pass_score']) && $_POST['ays_pass_score'] != '') ? absint(intval($_POST['ays_pass_score'])) : '0';
-            $pass_score_message = isset($_POST['ays_pass_score_message']) ? wp_kses_post( $_POST['ays_pass_score_message'] ) : '<h4 style="text-align: center;">'. __("Congratulations!", $this->plugin_name) .'</h4><p style="text-align: center;">'. __("You passed the quiz!", $this->plugin_name) .'</p>';
-            $fail_score_message = isset($_POST['ays_fail_score_message']) ? wp_kses_post( $_POST['ays_fail_score_message'] ) : '<h4 style="text-align: center;">'. __("Oops!", $this->plugin_name) .'</h4><p style="text-align: center;">'. __("You have not passed the quiz! <br> Try again!", $this->plugin_name) .'</p>';
+            $pass_score_message = isset($_POST['ays_pass_score_message']) ? wp_kses_post( $_POST['ays_pass_score_message'] ) : '<h4 style="text-align: center;">'. __("Congratulations!", 'quiz-maker') .'</h4><p style="text-align: center;">'. __("You passed the quiz!", 'quiz-maker') .'</p>';
+            $fail_score_message = isset($_POST['ays_fail_score_message']) ? wp_kses_post( $_POST['ays_fail_score_message'] ) : '<h4 style="text-align: center;">'. __("Oops!", 'quiz-maker') .'</h4><p style="text-align: center;">'. __("You have not passed the quiz! <br> Try again!", 'quiz-maker') .'</p>';
 
             // Question Font Size
             $question_font_size = (isset($_POST['ays_question_font_size']) && $_POST['ays_question_font_size'] != '' && absint(sanitize_text_field($_POST['ays_question_font_size'])) > 0) ? absint(sanitize_text_field($_POST['ays_question_font_size'])) : '16';
@@ -684,7 +684,7 @@ class Quizes_List_Table extends WP_List_Table{
             $questions_hint_button_value = (isset($_POST['ays_questions_hint_button_value']) && sanitize_text_field( $_POST['ays_questions_hint_button_value']) != '') ? stripcslashes( sanitize_text_field( $_POST['ays_questions_hint_button_value'] ) ) : '';
 
             // Quiz takers message
-            $quiz_tackers_message = ( isset($_POST['ays_quiz_tackers_message']) && $_POST['ays_quiz_tackers_message'] != '' ) ? wp_kses_post( $_POST['ays_quiz_tackers_message'] ) : __( "This quiz is expired!", $this->plugin_name );
+            $quiz_tackers_message = ( isset($_POST['ays_quiz_tackers_message']) && $_POST['ays_quiz_tackers_message'] != '' ) ? wp_kses_post( $_POST['ays_quiz_tackers_message'] ) : __( "This quiz is expired!", 'quiz-maker' );
 
             // Enable Linkedin button
             $quiz_enable_linkedin_share_button = (isset($_POST['ays_quiz_enable_linkedin_share_button']) && sanitize_text_field( $_POST['ays_quiz_enable_linkedin_share_button'] ) == 'on') ? 'on' : 'off';
@@ -1541,7 +1541,7 @@ class Quizes_List_Table extends WP_List_Table{
 
     /** Text displayed when no customer data is available */
     public function no_items() {
-        echo __( 'There are no quizzes yet.', $this->plugin_name );
+        echo esc_html__( 'There are no quizzes yet.', 'quiz-maker' );
     }
 
 
@@ -1605,10 +1605,10 @@ class Quizes_List_Table extends WP_List_Table{
         $title = sprintf( '<a href="?page=%s&action=%s&quiz=%d" title="%s">%s</a>', esc_attr( $_REQUEST['page'] ), 'edit', absint( $item['id'] ), $q, $restitle);
 
         $actions = array(
-            'edit' => sprintf( '<a href="?page=%s&action=%s&quiz=%d">'. __('Edit', $this->plugin_name) .'</a>', esc_attr( $_REQUEST['page'] ), 'edit', absint( $item['id'] ) ),
-            'duplicate' => sprintf( '<a href="?page=%s&action=%s&quiz=%d">'. __('Duplicate', $this->plugin_name) .'</a>', esc_attr( $_REQUEST['page'] ), 'duplicate', absint( $item['id'] ) ),
-            'results' => sprintf( '<a href="?page=%s&filterby=%d">'. __('View Results', $this->plugin_name) .'</a>', esc_attr( $_REQUEST['page'] ) . '-results', absint( $item['id'] ) ),
-            'delete' => sprintf( '<a class="ays_confirm_del" data-message="%s" href="?page=%s&action=%s&quiz=%s&_wpnonce=%s">'. __('Delete', $this->plugin_name) .'</a>', $restitle, esc_attr( $_REQUEST['page'] ), 'delete', absint( $item['id'] ), $delete_nonce )
+            'edit' => sprintf( '<a href="?page=%s&action=%s&quiz=%d">'. __('Edit', 'quiz-maker') .'</a>', esc_attr( $_REQUEST['page'] ), 'edit', absint( $item['id'] ) ),
+            'duplicate' => sprintf( '<a href="?page=%s&action=%s&quiz=%d">'. __('Duplicate', 'quiz-maker') .'</a>', esc_attr( $_REQUEST['page'] ), 'duplicate', absint( $item['id'] ) ),
+            'results' => sprintf( '<a href="?page=%s&filterby=%d">'. __('View Results', 'quiz-maker') .'</a>', esc_attr( $_REQUEST['page'] ) . '-results', absint( $item['id'] ) ),
+            'delete' => sprintf( '<a class="ays_confirm_del" data-message="%s" href="?page=%s&action=%s&quiz=%s&_wpnonce=%s">'. __('Delete', 'quiz-maker') .'</a>', $restitle, esc_attr( $_REQUEST['page'] ), 'delete', absint( $item['id'] ), $delete_nonce )
         );
 
         return $title . $this->row_actions( $actions );
@@ -1641,8 +1641,8 @@ class Quizes_List_Table extends WP_List_Table{
     }
 
     function column_code_include( $item ) {
-        $shortcode = htmlentities('\'[ays_quiz id="'.$item["id"].'"]\'');
-        return sprintf('<input type="text" onClick="this.setSelectionRange(0, this.value.length)" readonly value="<?php echo do_shortcode('.$shortcode.'); ?>" style="max-width:100%%;" />', $item["id"]);
+        $shortcode = htmlentities('\'[ays_quiz id="'.absint($item["id"]).'"]\'');
+        return sprintf('<input type="text" onClick="this.setSelectionRange(0, this.value.length)" readonly value="<?php echo do_shortcode('.(esc_attr($shortcode)).'); ?>" style="max-width:100%%;" />', absint($item["id"]));
     }
 
     function column_published( $item ) {
@@ -1652,13 +1652,13 @@ class Quizes_List_Table extends WP_List_Table{
         $status_html = '';
         switch( $status ) {
             case 1:
-                $status_html = '<span class="ays-publish-status"><i class="ays_fa ays_fa_check_square_o" aria-hidden="true"></i>'. __('Published',$this->plugin_name) . '</span>';
+                $status_html = '<span class="ays-publish-status"><i class="ays_fa ays_fa_check_square_o" aria-hidden="true"></i>'. esc_html__('Published','quiz-maker') . '</span>';
                 break;
             case 0:
-                $status_html = '<span class="ays-publish-status"><i class="ays_fa ays_fa_square_o" aria-hidden="true"></i>'. __('Unpublished',$this->plugin_name) . '</span>';
+                $status_html = '<span class="ays-publish-status"><i class="ays_fa ays_fa_square_o" aria-hidden="true"></i>'. esc_html__('Unpublished','quiz-maker') . '</span>';
                 break;
             default:
-                $status_html = '<span class="ays-publish-status"><i class="ays_fa ays_fa_square_o" aria-hidden="true"></i>'. __('Unpublished',$this->plugin_name) . '</span>';
+                $status_html = '<span class="ays-publish-status"><i class="ays_fa ays_fa_square_o" aria-hidden="true"></i>'. esc_html__('Unpublished','quiz-maker') . '</span>';
                 break;
         }
 
@@ -1762,16 +1762,16 @@ class Quizes_List_Table extends WP_List_Table{
     function get_columns() {
         $columns = array(
             'cb'                    => '<input type="checkbox" />',
-            'title'                 => __( 'Title', $this->plugin_name ),
-            'quiz_image'            => __( 'Image', $this->plugin_name ),
-            'quiz_category_id'      => __( 'Category', $this->plugin_name ),
-            'shortcode'             => __( 'Shortcode', $this->plugin_name ),
-            'code_include'          => __( 'Code include', $this->plugin_name ),
-            'items_count'           => __( 'Count', $this->plugin_name ),
-            'create_date'           => __( 'Created', $this->plugin_name ),
-            'completed_count'       => __( 'Completed count', $this->plugin_name ),
-            'published'             => __( 'Status', $this->plugin_name ),
-            'id'                    => __( 'ID', $this->plugin_name ),
+            'title'                 => __( 'Title', 'quiz-maker' ),
+            'quiz_image'            => __( 'Image', 'quiz-maker' ),
+            'quiz_category_id'      => __( 'Category', 'quiz-maker' ),
+            'shortcode'             => __( 'Shortcode', 'quiz-maker' ),
+            'code_include'          => __( 'Code include', 'quiz-maker' ),
+            'items_count'           => __( 'Count', 'quiz-maker' ),
+            'create_date'           => __( 'Created', 'quiz-maker' ),
+            'completed_count'       => __( 'Completed count', 'quiz-maker' ),
+            'published'             => __( 'Status', 'quiz-maker' ),
+            'id'                    => __( 'ID', 'quiz-maker' ),
         );
 
         if( isset( $_GET['action'] ) && ( $_GET['action'] == 'add' || $_GET['action'] == 'edit' ) ){
@@ -1818,9 +1818,9 @@ class Quizes_List_Table extends WP_List_Table{
      */
     public function get_bulk_actions() {
         $actions = array(
-            'bulk-published'    => __('Publish', $this->plugin_name),
-            'bulk-unpublished'  => __('Unpublish', $this->plugin_name),
-            'bulk-delete'       => __('Delete', $this->plugin_name),
+            'bulk-published'    => __('Publish', 'quiz-maker'),
+            'bulk-unpublished'  => __('Unpublish', 'quiz-maker'),
+            'bulk-delete'       => __('Delete', 'quiz-maker'),
         );
 
         return $actions;
@@ -1936,24 +1936,24 @@ class Quizes_List_Table extends WP_List_Table{
             return;
 
         if ( 'created' == $status )
-            $updated_message = esc_html( __( 'Your quiz is successfully created.', $this->plugin_name ) );
+            $updated_message = esc_html( __( 'Your quiz is successfully created.', 'quiz-maker' ) );
         elseif ( 'updated' == $status )
-            $updated_message = esc_html( __( 'Your quiz is successfully saved.', $this->plugin_name ) );
+            $updated_message = esc_html( __( 'Your quiz is successfully saved.', 'quiz-maker' ) );
         elseif ( 'duplicated' == $status )
-            $updated_message = esc_html( __( 'Your quiz is successfully duplicated.', $this->plugin_name ) );
+            $updated_message = esc_html( __( 'Your quiz is successfully duplicated.', 'quiz-maker' ) );
         elseif ( 'deleted' == $status )
-            $updated_message = esc_html( __( 'Your quiz is successfully deleted.', $this->plugin_name ) );
+            $updated_message = esc_html( __( 'Your quiz is successfully deleted.', 'quiz-maker' ) );
         elseif ( 'published' == $status )
-            $updated_message = esc_html( __( 'Quiz(s) published.', $this->plugin_name ) );
+            $updated_message = esc_html( __( 'Quiz(s) published.', 'quiz-maker' ) );
         elseif ( 'unpublished' == $status )
-            $updated_message = esc_html( __( 'Quiz(s) unpublished.', $this->plugin_name ) );
+            $updated_message = esc_html( __( 'Quiz(s) unpublished.', 'quiz-maker' ) );
 
         if ( empty( $updated_message ) )
             return;
 
         ?>
         <div class="notice notice-success is-dismissible">
-            <p> <?php echo $updated_message; ?> </p>
+            <p> <?php echo esc_html($updated_message); ?> </p>
         </div>
         <?php
     }

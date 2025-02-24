@@ -1,23 +1,23 @@
 <br>
 <div class="wrap">
     <h1 class="wp-heading-inline">
-        <?php echo __(esc_html(get_admin_page_title()), $this->plugin_name); ?>
+        <?php echo esc_html(get_admin_page_title()); ?>
     </h1>
     <div class="row" style="margin:0;">
         <div class="col-sm-12">
             <div class="pro_features">
                 <div>
                     <p>
-                        <?php echo __("This feature is available only in", $this->plugin_name); ?>
-                        <a href="https://ays-pro.com/wordpress/quiz-maker/" target="_blank" title="<?php echo __("Developer version!!!", $this->plugin_name); ?>"><?php echo __("Developer version!!!", $this->plugin_name); ?></a>
+                        <?php echo esc_html__("This feature is available only in", 'quiz-maker'); ?>
+                        <a href="https://ays-pro.com/wordpress/quiz-maker/" target="_blank" title="<?php echo esc_attr(__("Developer version!!!", 'quiz-maker') ); ?>"><?php echo esc_html__("Developer version!!!", 'quiz-maker'); ?></a>
                     </p>
                     <p class="ays-quiz-pro-features-text">
-                        <?php echo __("This feature is available only in", $this->plugin_name); ?>
-                        <a href="https://ays-pro.com/wordpress/quiz-maker/" target="_blank" title="<?php echo __("Developer version!!!", $this->plugin_name); ?>"><?php echo __("Developer version!!!", $this->plugin_name); ?></a>
+                        <?php echo esc_html__("This feature is available only in", 'quiz-maker'); ?>
+                        <a href="https://ays-pro.com/wordpress/quiz-maker/" target="_blank" title="<?php echo esc_attr(__("Developer version!!!", 'quiz-maker') ); ?>"><?php echo esc_html__("Developer version!!!", 'quiz-maker'); ?></a>
                     </p>
                 </div>
             </div>
-            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/orders_table.png'?>" alt="Statistics" style="width:100%;" >
+            <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/orders_table.png' ); ?>" alt="<?php echo esc_attr(__("Statistics", 'quiz-maker')); ?>" style="width:100%;" >
         </div>
     </div>
 </div>

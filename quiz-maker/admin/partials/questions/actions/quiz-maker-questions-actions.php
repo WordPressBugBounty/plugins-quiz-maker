@@ -7,7 +7,7 @@ if(isset($_GET['tab'])){
 $action = (isset($_GET['action'])) ? sanitize_text_field( $_GET['action'] ) : '';
 $heading = '';
 $loader_iamge = '';
-$image_text = __('Add Image', $this->plugin_name);
+$image_text = esc_html__('Add Image', 'quiz-maker');
 
 $id = (isset($_GET['question'])) ? absint( intval( $_GET['question'] ) ) : null;
 $user_id = get_current_user_id();
@@ -97,10 +97,10 @@ $question = array(
 $answers = array();
 switch ($action) {
     case 'add':
-        $heading = __('Add new question', $this->plugin_name);
+        $heading = esc_html__('Add new question', 'quiz-maker');
         break;
     case 'edit':
-        $heading    = __('Edit question', $this->plugin_name);
+        $heading    = esc_html__('Edit question', 'quiz-maker');
         $question   = $this->questions_obj->get_question($id);
         $answers    = $this->questions_obj->get_question_answers($id);
         break;
@@ -145,7 +145,7 @@ $question_image = (isset( $question['question_image'] ) && $question['question_i
 $style = null;
 if ($question_image != '') {
     $style = "display: block;";
-    $image_text = __('Edit Image', $this->plugin_name);
+    $image_text = esc_html__('Edit Image', 'quiz-maker');
 }
 $question_create_date = (isset($question['create_date']) && $question['create_date'] != '') ? $question['create_date'] : "0000-00-00 00:00:00";
 
@@ -167,17 +167,17 @@ if(isset($options['author']) && $options['author'] != 'null'){
     $question_author = array('name' => 'Unknown');
 }
 $question_types = array(
-    "radio"             => __("Radio", $this->plugin_name),
-    "checkbox"          => __("Checkbox( Multiple )", $this->plugin_name),
-    "select"            => __("Dropdown", $this->plugin_name),
-    "text"              => __("Text", $this->plugin_name),
-    "short_text"        => __("Short Text", $this->plugin_name),
-    "number"            => __("Number", $this->plugin_name),
-    "date"              => __("Date", $this->plugin_name),
-    "true_or_false"     => __("True/False", $this->plugin_name),
-    "custom"            => __("Info Banner (PRO)", $this->plugin_name),
-    "fill_in_blank"     => __("Fill in the blanks (PRO)", $this->plugin_name),
-    "matching"          => __("Matching (PRO)", $this->plugin_name),
+    "radio"             => esc_html__("Radio", 'quiz-maker'),
+    "checkbox"          => esc_html__("Checkbox( Multiple )", 'quiz-maker'),
+    "select"            => esc_html__("Dropdown", 'quiz-maker'),
+    "text"              => esc_html__("Text", 'quiz-maker'),
+    "short_text"        => esc_html__("Short Text", 'quiz-maker'),
+    "number"            => esc_html__("Number", 'quiz-maker'),
+    "date"              => esc_html__("Date", 'quiz-maker'),
+    "true_or_false"     => esc_html__("True/False", 'quiz-maker'),
+    "custom"            => esc_html__("Info Banner (PRO)", 'quiz-maker'),
+    "fill_in_blank"     => esc_html__("Fill in the blanks (PRO)", 'quiz-maker'),
+    "matching"          => esc_html__("Matching (PRO)", 'quiz-maker'),
 );
 
 $question_types_icon_url = array(
@@ -194,8 +194,8 @@ $question_types_icon_url = array(
     "matching"          => AYS_QUIZ_ADMIN_URL ."/images/QuestionTypes/quiz-maker-matching-type.svg",
 );
 $true_or_false_arr = array(
-    __("True", $this->plugin_name),
-    __("False", $this->plugin_name),
+    esc_html__("True", 'quiz-maker'),
+    esc_html__("False", 'quiz-maker'),
 );
 $text_types = array( "text", "number", "short_text", "date" );
 $not_multiple_text_types = array( "number", "date" );
@@ -344,20 +344,20 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
     <div class="container-fluid">
         <form method="post" class="ays-quiz-main-form" id="ays-question-form">
             <input type="hidden" name="ays_question_tab" value="<?php echo esc_attr($ays_question_tab); ?>">
-            <input type="hidden" name="ays_question_ctrate_date" value="<?php echo $question_create_date; ?>">
-            <input type="hidden" name="ays_question_author" value="<?php echo htmlentities(json_encode($question_author)); ?>">
-            <input type="hidden" class="quiz_wp_editor_height" value="<?php echo $quiz_wp_editor_height; ?>">
+            <input type="hidden" name="ays_question_ctrate_date" value="<?php echo esc_attr( $question_create_date ); ?>">
+            <input type="hidden" name="ays_question_author" value="<?php echo esc_attr(json_encode($question_author)); ?>">
+            <input type="hidden" class="quiz_wp_editor_height" value="<?php echo esc_attr( $quiz_wp_editor_height ); ?>">
             <div class="ays-quiz-heading-box">
                 <div class="ays-quiz-wordpress-user-manual-box">
                     <a href="https://quiz-plugin.com/docs/" target="_blank">
                         <i class="ays_fa ays_fa_file_text" ></i> 
-                        <span style="margin-left: 3px;text-decoration: underline;"><?php echo __("View Documentation", "quiz-maker"); ?></span>
+                        <span style="margin-left: 3px;text-decoration: underline;"><?php echo esc_html__("View Documentation", "quiz-maker"); ?></span>
                     </a>
                 </div>
             </div>
             <h1 class="wp-heading-inline">
             <?php
-                echo $heading;
+                echo wp_kses_post($heading);
             ?>
             </h1>
             <div class="ays-top-menu-container-wrapper">
@@ -366,10 +366,10 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                     <div class="ays-top-menu">
                         <div class="nav-tab-wrapper ays-top-tab-wrapper">
                             <a href="#tab1" data-tab="tab1" class="nav-tab <?php echo ($ays_question_tab == 'tab1') ? 'nav-tab-active' : ''; ?>">
-                                <?php echo __("General", $this->plugin_name);?>
+                                <?php echo esc_html__("General", 'quiz-maker');?>
                             </a>
                             <a href="#tab2" data-tab="tab2" class="nav-tab <?php echo ($ays_question_tab == 'tab2') ? 'nav-tab-active' : ''; ?>">
-                                <?php echo __("Settings", $this->plugin_name);?>
+                                <?php echo esc_html__("Settings", 'quiz-maker');?>
                             </a>
                         </div>
                     </div>
@@ -377,7 +377,7 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                 </div>
                 <div class="ays-quiz-add-new-button-box" style="">
                 <?php
-                    echo $loader_iamge;
+                    echo wp_kses_post($loader_iamge);
                     $other_attributes = array(
                         'id' => 'ays-button-apply-top',
                         'title' => 'Ctrl + s',
@@ -385,46 +385,46 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                         'data-delay'=> '{"show":"1000"}'
                     );
                     
-                    submit_button(__('Save', $this->plugin_name), 'primary ays-button ays-quiz-loader-banner', 'ays_apply_top', false, $other_attributes);
+                    submit_button(esc_html__('Save', 'quiz-maker'), 'primary ays-button ays-quiz-loader-banner', 'ays_apply_top', false, $other_attributes);
 
                     $other_attributes = array('id' => 'ays-button-save-top');
-                    submit_button(__('Save and close', $this->plugin_name), 'ays-button ays-quiz-loader-banner', 'ays_submit_top', false, $other_attributes);
+                    submit_button(esc_html__('Save and close', 'quiz-maker'), 'ays-button ays-quiz-loader-banner', 'ays_submit_top', false, $other_attributes);
                     $other_attributes = array('id' => 'ays-button-save-new-top');
-                    submit_button(__('Save and new', $this->plugin_name), 'ays-button ays-quiz-loader-banner', 'ays_save_new_top', false, $other_attributes);
+                    submit_button(esc_html__('Save and new', 'quiz-maker'), 'ays-button ays-quiz-loader-banner', 'ays_save_new_top', false, $other_attributes);
                 ?>
                 </div>
             </div>
                 
             <div id="tab1" class="ays-quiz-tab-content <?php echo ($ays_question_tab == 'tab1') ? 'ays-quiz-tab-content-active' : ''; ?>">
-                <p class="ays-subtitle"><?php echo __('General Settings',$this->plugin_name)?></p>
+                <p class="ays-subtitle"><?php echo esc_html__('General Settings','quiz-maker')?></p>
                 <hr class="ays-quiz-bolder-hr"/>
                 <div class="form-group row ays-field">
                     <div class="col-sm-3">
                         <label for='ays-question'>
-                            <?php echo __('Question image', $this->plugin_name); ?>
+                            <?php echo esc_html__('Question image', 'quiz-maker'); ?>
                         </label>
                     </div>
                     <div class="col-sm-9">
                         <div>
-                            <a href="javascript:void(0)" class="add-question-image" style="margin: 0;"><?php echo $image_text; ?></a>
+                            <a href="javascript:void(0)" class="add-question-image" style="margin: 0;"><?php echo wp_kses_post($image_text); ?></a>
                         </div>
                         <p class="ays_quiz_small_hint_text_for_message_variables" style="margin-top: 5px;">
-                            <span><?php echo __( "Please Note" , $this->plugin_name ); ?></span>
-                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('* Note: The plugin doesn’t make any changes concerning the images. It takes the images in a size, in which you have uploaded them. We are using the default WP Media. If the uploaded image is blurred and has a low quality, make sure to choose the right parameters (Full size) while uploading the images. You can find the Full Size option in the opened Add Media popup (Attachment Display Settings).',$this->plugin_name) ); ?>">
+                            <span><?php echo esc_html__( "Please Note" , 'quiz-maker' ); ?></span>
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('* Note: The plugin doesn’t make any changes concerning the images. It takes the images in a size, in which you have uploaded them. We are using the default WP Media. If the uploaded image is blurred and has a low quality, make sure to choose the right parameters (Full size) while uploading the images. You can find the Full Size option in the opened Add Media popup (Attachment Display Settings).','quiz-maker') ); ?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
                         </p>
-                        <div class="ays-question-image-container" style="<?php echo $style; ?>">
+                        <div class="ays-question-image-container" style="<?php echo esc_attr($style); ?>">
                             <span class="ays-remove-question-img"></span>
-                            <img src="<?php echo $question_image; ?>" id="ays-question-img"/>
-                            <input type="hidden" name="ays_question_image" id="ays-question-image" value="<?php echo $question_image; ?>"/>
+                            <img src="<?php echo esc_url($question_image); ?>" id="ays-question-img"/>
+                            <input type="hidden" name="ays_question_image" id="ays-question-image" value="<?php echo esc_url($question_image); ?>"/>
                         </div>
                     </div>
                 </div> <!-- Question image -->
                 <hr/>
                 <div class="form-group row ays-field">
                     <div class="col-sm-3">
-                        <label for='ays-question'><?php echo __('Question', $this->plugin_name); ?>
+                        <label for='ays-question'><?php echo esc_html__('Question', 'quiz-maker'); ?>
                         </label>
                     </div>
                     <div class="col-sm-9">
@@ -440,14 +440,14 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                 <div class="form-group row">
                     <div class="col-sm-3">
                         <label for="ays-type">
-                            <?php echo __('Question type', $this->plugin_name); ?>
+                            <?php echo esc_html__('Question type', 'quiz-maker'); ?>
                             <a class="ays_help" data-toggle="tooltip" data-html="true" 
                                 title="<?php 
-                                    echo esc_attr( __('Choose the type of question.',$this->plugin_name) .
+                                    echo esc_attr( __('Choose the type of question.','quiz-maker') .
                                     "<ul style='list-style-type: circle;padding-left: 20px;'>".
-                                        "<li>Radio - ". __('Multiple choice question with one Correct answer.',$this->plugin_name) ."</li>".
-                                        "<li>Checkbox - ". __('Multiple choice question with multiple Correct answers.',$this->plugin_name) ."</li>".
-                                        "<li>Dropdown - ". __('Multiple choice questions with one Correct answer, which will be displayed as Dropdown.',$this->plugin_name) ."</li>".
+                                        "<li>Radio - ". __('Multiple choice question with one Correct answer.','quiz-maker') ."</li>".
+                                        "<li>Checkbox - ". __('Multiple choice question with multiple Correct answers.','quiz-maker') ."</li>".
+                                        "<li>Dropdown - ". __('Multiple choice questions with one Correct answer, which will be displayed as Dropdown.','quiz-maker') ."</li>".
                                         "<li>Text</li>".
                                         "<li>Number</li>".
                                     "</ul>");
@@ -458,7 +458,7 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                         <div class="ays-quiz-heading-box ays-quiz-unset-float">
                             <div class="ays-quiz-wordpress-user-manual-box">
                                 <a href="https://www.youtube.com/watch?v=ok6f59iV_R0" target="_blank">
-                                    <?php echo __("View All Question Types - video", $this->plugin_name); ?>
+                                    <?php echo esc_html__("View All Question Types - video", 'quiz-maker'); ?>
                                 </a>
                             </div>
                         </div>
@@ -471,10 +471,10 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                                 $selected = $question["type"] == $type ? "selected" : "";
                                 $ays_question_disabled = "";
                                 if ( $type == "custom" || $type == "fill_in_blank" || $type == "matching" ) {
-                                    $ays_question_disabled = "disabled title='". __( "This feature is available only in PRO version", $this->plugin_name ) ."' ";
+                                    $ays_question_disabled = "disabled title='". esc_attr(__( "This feature is available only in PRO version", 'quiz-maker' ) ) ."' ";
                                 }
                             ?>
-                            <option value="<?php echo $type; ?>" data-nkar="<?php echo $question_types_icon_url[ $type ]; ?>" <?php echo $selected; ?> <?php echo $ays_question_disabled; ?> ><?php echo $label; ?></option>
+                            <option value="<?php echo esc_attr($type); ?>" data-nkar="<?php echo esc_attr($question_types_icon_url[ $type ]); ?>" <?php echo esc_attr($selected); ?> <?php echo esc_attr($ays_question_disabled); ?> ><?php echo esc_attr($label); ?></option>
                             <?php
                                 endforeach;
                             ?>
@@ -487,11 +487,11 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                        <?php
                             if($is_text_type):
                         ?>
-                       <?php echo __('Answer', $this->plugin_name); ?>
+                       <?php echo esc_html__('Answer', 'quiz-maker'); ?>
                         <?php
                             else:
                         ?>
-                       <?php echo __('Answers', $this->plugin_name); ?>
+                       <?php echo esc_html__('Answers', 'quiz-maker'); ?>
                         <a href="javascript:void(0)" class="ays-add-answer">
                             <i class="ays_fa ays_fa_plus_square" aria-hidden="true"></i>
                         </a>
@@ -501,52 +501,52 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                     </label>
                 </div>
                 <div class="ays-field ays-table-wrap">
-                    <table class="ays-answers-table " id="ays-answers-table" ays_default_count="<?php echo $ays_answer_default_count; ?>">
+                    <table class="ays-answers-table " id="ays-answers-table" ays_default_count="<?php echo esc_attr($ays_answer_default_count); ?>">
                         <thead>
                             <tr class="ui-state-default">
                             <?php if(! $is_text_type): ?>
-                                <th class="th-150 removable ays-quiz-question-answer-ordering-row"><?php echo __('Ordering', $this->plugin_name); ?></th>
-                                <th class="th-150 removable ays-quiz-question-answer-correct-row"><?php echo __('Correct', $this->plugin_name); ?></th>
+                                <th class="th-150 removable ays-quiz-question-answer-ordering-row"><?php echo esc_html__('Ordering', 'quiz-maker'); ?></th>
+                                <th class="th-150 removable ays-quiz-question-answer-correct-row"><?php echo esc_html__('Correct', 'quiz-maker'); ?></th>
                             <?php endif; ?>
-                                <th <?php echo ($is_text_type) ? 'class="th-650"' : 'class="ays-quiz-question-answer-answer-row" style="width:500px;"'; ?>><?php echo __('Answer', $this->plugin_name); ?></th>
-                                <th class="only_pro ays-weight-row ays-quiz-question-answer-weight-point-row" style="width:120px;padding:0;"><?php echo __('Weight/Point', $this->plugin_name); ?><br>
+                                <th <?php echo ($is_text_type) ? 'class="th-650"' : 'class="ays-quiz-question-answer-answer-row" style="width:500px;"'; ?>><?php echo esc_html__('Answer', 'quiz-maker'); ?></th>
+                                <th class="only_pro ays-weight-row ays-quiz-question-answer-weight-point-row" style="width:120px;padding:0;"><?php echo esc_html__('Weight/Point', 'quiz-maker'); ?><br>
                                     <a href="https://ays-pro.com/wordpress/quiz-maker" tabindex="-1" target="_blank" class="ays-quiz-new-upgrade-button-link ays-quiz-new-upgrade-button-without-text-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
-                                                <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                                <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                                <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
+                                                <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'); ?>" class="ays-quiz-new-upgrade-button-hover">
                                             </div>
                                         </div>
                                     </a>
                                 </th>
                             <?php if( $question["type"] == 'checkbox' || $question["type"] == 'radio' || $question["type"] == 'select' || $question["type"] == 'true_or_false' ): ?>
                                 <th class="only_pro th-150 removable ays-quiz-question-answer-keyword-row" style="width:120px;padding:0;">
-                                    <?php echo __('Keyword', $this->plugin_name); ?><br>
+                                    <?php echo esc_html__('Keyword', 'quiz-maker'); ?><br>
                                     <a href="https://ays-pro.com/wordpress/quiz-maker" tabindex="-1" target="_blank" class="ays-quiz-new-upgrade-button-link ays-quiz-new-upgrade-button-without-text-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
-                                                <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                                <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                                <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
+                                                <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'); ?>" class="ays-quiz-new-upgrade-button-hover">
                                             </div>
                                         </div>
                                     </a>
                                 </th>
                             <?php endif; ?>
                             <?php if(! $is_text_type): ?>
-                                <th class="th-150 removable ays-quiz-question-answer-image-row" style="padding:0;"><?php echo __('Image', $this->plugin_name); ?><br>
+                                <th class="th-150 removable ays-quiz-question-answer-image-row" style="padding:0;"><?php echo esc_html__('Image', 'quiz-maker'); ?><br>
                                     <a href="https://ays-pro.com/wordpress/quiz-maker" tabindex="-1" target="_blank" class="ays-quiz-new-upgrade-button-link ays-quiz-new-upgrade-button-without-text-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
-                                                <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                                <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                                <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
+                                                <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'); ?>" class="ays-quiz-new-upgrade-button-hover">
                                             </div>
                                         </div>
                                     </a>
                                 </th>
-                                <th class="th-150 removable ays-quiz-question-answer-delete-row"><?php echo __('Delete', $this->plugin_name); ?></th>
+                                <th class="th-150 removable ays-quiz-question-answer-delete-row"><?php echo esc_html__('Delete', 'quiz-maker'); ?></th>
                             <?php endif; ?>
                             <?php if($is_text_type && $question["type"] != 'date'): ?>
-                                <th class="th-350 reremoveable ays-quiz-question-answer-placeholder-row"><?php echo __('Placeholder', $this->plugin_name); ?></th>
+                                <th class="th-350 reremoveable ays-quiz-question-answer-placeholder-row"><?php echo esc_html__('Placeholder', 'quiz-maker'); ?></th>
                             <?php endif; ?>
                             </tr>
                         </thead>
@@ -606,7 +606,7 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                             <tr class="ays-answer-row ui-state-default">
                                 <td>
                                     <input style="display:none;" class="ays-correct-answer" type="checkbox" name="ays-correct-answer[]" value="1" checked/>
-                                    <input type="date" name="ays-correct-answer-value[]" class="ays-date-input ays-correct-answer-value" placeholder="<?php echo "e. g. " . current_time( 'Y-m-d' ); ?>">
+                                    <input type="date" name="ays-correct-answer-value[]" class="ays-date-input ays-correct-answer-value" placeholder="<?php echo esc_attr("e. g. " . current_time( 'Y-m-d' )); ?>">
                                 </td>
                                 <td title="This property available only in pro version" class="only_pro">
                                     <div class="pro_features"></div>
@@ -627,15 +627,15 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                                     }
                             ?>
 
-                            <tr class="ays-answer-row ui-state-default <?php echo $ays_even_or_not; ?>">
+                            <tr class="ays-answer-row ui-state-default <?php echo esc_attr($ays_even_or_not); ?>">
                                 <td class="ays-quiz-question-answer-ordering-row"><i class="ays_fa ays_fa_arrows" aria-hidden="true"></i></td>
                                 <td class="ays-quiz-question-answer-correct-row">
                                     <span>
-                                        <input type="<?php echo $question_type; ?>" id="ays-correct-answer-<?php echo $ays_i+1; ?>" class="ays-correct-answer" name="ays-correct-answer[]" value="<?php echo $ays_i+1; ?>"/>
-                                        <label for="ays-correct-answer-<?php echo $ays_i+1; ?>"></label>
+                                        <input type="<?php echo esc_attr($question_type); ?>" id="ays-correct-answer-<?php echo esc_attr($ays_i+1); ?>" class="ays-correct-answer" name="ays-correct-answer[]" value="<?php echo esc_attr($ays_i+1); ?>"/>
+                                        <label for="ays-correct-answer-<?php echo esc_attr($ays_i+1); ?>"></label>
                                     </span>
                                 </td>
-                                <td class="ays-quiz-question-answer-answer-row"><input type="text" name="ays-correct-answer-value[]" class="ays-correct-answer-value"/ value="<?php echo $true_or_false_val; ?>"></td>
+                                <td class="ays-quiz-question-answer-answer-row"><input type="text" name="ays-correct-answer-value[]" class="ays-correct-answer-value"/ value="<?php echo esc_attr($true_or_false_val); ?>"></td>
                                 
                                 <td title="This property available only in pro version" class="only_pro ays-quiz-question-answer-weight-point-row">
                                     <div class="pro_features"></div>
@@ -649,7 +649,7 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                                 </td>
                                 <td title="This property available only in pro version" class="ays-quiz-question-answer-image-row">
                                     <label class='ays-label' for='ays-answer'>
-                                        <a style="opacity: 0.4" href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="add-answer-image" tabindex="-1"><?php echo __('Add',$this->plugin_name)?></a>
+                                        <a style="opacity: 0.4" href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="add-answer-image" tabindex="-1"><?php echo esc_html__('Add','quiz-maker')?></a>
                                     </label>
                                 </td>
 
@@ -688,55 +688,55 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                                         break;
                                 }
                                 ?>
-                                <tr class="ays-answer-row ui-state-default <?php echo $class; ?>">
+                                <tr class="ays-answer-row ui-state-default <?php echo esc_attr($class); ?>">
                                     <?php
                                         if($question["type"] == 'number'):
                                     ?>
                                     <td>
                                         <input style="display:none;" class="ays-correct-answer" type="checkbox" name="ays-correct-answer[]" value="1" checked/>
-                                        <input type="<?php echo $question_type; ?>" step="any" name="ays-correct-answer-value[]" class="ays-correct-answer-value" value="<?php echo stripslashes(esc_attr($answer["answer"])); ?>"/>
+                                        <input type="<?php echo esc_attr($question_type); ?>" step="any" name="ays-correct-answer-value[]" class="ays-correct-answer-value" value="<?php echo esc_attr(stripslashes($answer["answer"])); ?>"/>
                                     </td>
                                     <td title="This property available only in pro version" class="only_pro">
                                         <div class="pro_features"></div>
                                         <input class="w-100" type="number" value="2" tabindex="-1"/>
                                     </td>
                                     <td>
-                                        <input type="text" name="ays-answer-placeholder[]" class="ays-correct-answer-value" value="<?php echo stripslashes(esc_attr($answer["placeholder"])); ?>"/>
+                                        <input type="text" name="ays-answer-placeholder[]" class="ays-correct-answer-value" value="<?php echo esc_attr(stripslashes($answer["placeholder"])); ?>"/>
                                     </td>
                                     <?php
                                         elseif($question["type"] == 'short_text'):
                                     ?>
                                     <td>
                                         <input style="display:none;" class="ays-correct-answer" type="checkbox" name="ays-correct-answer[]" value="1" checked/>
-                                        <input type="<?php echo $question_type; ?>" name="ays-correct-answer-value[]" class="ays-correct-answer-value" value="<?php echo stripslashes(esc_attr($answer["answer"])); ?>"/>
+                                        <input type="<?php echo esc_attr($question_type); ?>" name="ays-correct-answer-value[]" class="ays-correct-answer-value" value="<?php echo esc_attr(stripslashes($answer["answer"])); ?>"/>
                                     </td>
                                     <td title="This property available only in pro version" class="only_pro">
                                         <div class="pro_features"></div>
                                         <input class="w-100" type="number" value="2" tabindex="-1"/>
                                     </td>
                                     <td>
-                                        <input type="text" name="ays-answer-placeholder[]" class="ays-correct-answer-value" value="<?php echo stripslashes(esc_attr($answer["placeholder"])); ?>"/>
+                                        <input type="text" name="ays-answer-placeholder[]" class="ays-correct-answer-value" value="<?php echo esc_attr(stripslashes($answer["placeholder"])); ?>"/>
                                     </td>
                                     <?php
                                         elseif($question["type"] == 'text'):
                                     ?>
                                     <td>
                                         <input style="display:none;" class="ays-correct-answer" type="checkbox" name="ays-correct-answer[]" value="1" checked/>
-                                        <textarea type="text" name="ays-correct-answer-value[]" class="ays-correct-answer-value"><?php echo stripslashes(esc_attr($answer["answer"])); ?></textarea>
+                                        <textarea type="text" name="ays-correct-answer-value[]" class="ays-correct-answer-value"><?php echo esc_attr(stripslashes($answer["answer"])); ?></textarea>
                                     </td>
                                     <td title="This property available only in pro version" class="only_pro">
                                         <div class="pro_features"></div>
                                         <input class="w-100" type="number" value="2" tabindex="-1"/>
                                     </td>
                                     <td>
-                                        <input type="text" name="ays-answer-placeholder[]" class="ays-correct-answer-value" value="<?php echo stripslashes(esc_attr($answer["placeholder"])); ?>"/>
+                                        <input type="text" name="ays-answer-placeholder[]" class="ays-correct-answer-value" value="<?php echo esc_attr(stripslashes($answer["placeholder"])); ?>"/>
                                     </td>
                                     <?php
                                     elseif($question["type"] == 'date'):
                                     ?>
                                     <td>
                                         <input style="display:none;" class="ays-correct-answer" type="checkbox" name="ays-correct-answer[]" value="1" checked/>
-                                        <input type="date" name="ays-correct-answer-value[]" class="ays-date-input ays-correct-answer-value" placeholder="<?php echo "e. g. " . current_time( 'Y-m-d' ); ?>" value="<?php echo stripslashes(esc_attr($answer["answer"])); ?>">
+                                        <input type="date" name="ays-correct-answer-value[]" class="ays-date-input ays-correct-answer-value" placeholder="<?php echo esc_attr("e. g. " . current_time( 'Y-m-d' )); ?>" value="<?php echo esc_attr(stripslashes($answer["answer"])); ?>">
                                     </td>
                                     <td title="This property available only in pro version" class="only_pro">
                                         <div class="pro_features"></div>
@@ -748,11 +748,11 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                                     <td class="ays-quiz-question-answer-ordering-row"><i class="ays_fa ays_fa_arrows" aria-hidden="true"></i></td>
                                     <td class="ays-quiz-question-answer-correct-row">
                                         <span>
-                                            <input type="<?php echo $question_type; ?>" id="ays-correct-answer-<?php echo($index + 1); ?>" class="ays-correct-answer" name="ays-correct-answer[]" value="<?php echo($index + 1); ?>" <?php echo ($answer["correct"] == 1) ? "checked" : ""; ?>/>
-                                            <label for="ays-correct-answer-<?php echo($index + 1); ?>"></label>
+                                            <input type="<?php echo esc_attr($question_type); ?>" id="ays-correct-answer-<?php echo esc_attr($index + 1); ?>" class="ays-correct-answer" name="ays-correct-answer[]" value="<?php echo esc_attr($index + 1); ?>" <?php echo ($answer["correct"] == 1) ? "checked" : ""; ?>/>
+                                            <label for="ays-correct-answer-<?php echo esc_attr($index + 1); ?>"></label>
                                         </span>
                                     </td>
-                                    <td class="ays-quiz-question-answer-answer-row"><input type="text" name="ays-correct-answer-value[]" class="ays-correct-answer-value" value="<?php echo stripslashes(esc_attr($answer["answer"])); ?>"/></td>
+                                    <td class="ays-quiz-question-answer-answer-row"><input type="text" name="ays-correct-answer-value[]" class="ays-correct-answer-value" value="<?php echo esc_attr(stripslashes($answer["answer"])); ?>"/></td>
 
                                     <td title="This property available only in pro version" class="only_pro ays-quiz-question-answer-weight-point-row">
                                         <div class="pro_features"></div>
@@ -767,7 +767,7 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                                     </td>
                                     <td title="This property available only in pro version" class="ays-quiz-question-answer-image-row">
                                         <label class='ays-label' for='ays-answer'>
-                                            <a style="opacity: 0.4" href="https://ays-pro.com/wordpress/quiz-maker" tabindex="-1" target="_blank" class="add-answer-image"><?php echo __('Add',$this->plugin_name)?></a>
+                                            <a style="opacity: 0.4" href="https://ays-pro.com/wordpress/quiz-maker" tabindex="-1" target="_blank" class="add-answer-image"><?php echo esc_html__('Add','quiz-maker')?></a>
                                         </label>
                                     </td>
                                     <td>
@@ -788,9 +788,9 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                     <div class="ays-answers-toolbar-bottom <?php echo ($is_text_type) ? 'display_none' : ''; ?>" style="padding:5px;padding-top:10px;">
                         <label class='ays-label ays-add-answer-first-label' for="ays-answers-table">
                         <?php if($is_text_type): ?>
-                        <?php echo __('Answer', $this->plugin_name); ?>
+                        <?php echo esc_html__('Answer', 'quiz-maker'); ?>
                         <?php else: ?>
-                        <?php echo __('Answers', $this->plugin_name); ?>
+                        <?php echo esc_html__('Answers', 'quiz-maker'); ?>
                         <a href="javascript:void(0)" class="ays-add-answer">
                             <i class="ays_fa ays_fa_plus_square" aria-hidden="true"></i>
                         </a>
@@ -798,8 +798,8 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                         </label>
                         <span class="ays_divider_left" style="padding-bottom: 10px;padding-top: 5px;margin: 0 15px;"></span>
                         <label class='ays-label use_html' style="margin:0;<?php echo ($question["type"] == 'select') ? 'display:none;' : ''; ?>">
-                            <?php echo __( "Use HTML for answers", $this->plugin_name ); ?>
-                            <a class="ays_help" style="margin-right:15px;" data-toggle="tooltip" title="<?php echo __('Allowed tags list',$this->plugin_name) . ": <br>, <b>, <em>, <span>, <mark>, <del>, <ins>, <sup>, <sub>, <strong>, <code>, <samp>, <kbd>, <var>, <q>"; ?>">
+                            <?php echo esc_html__( "Use HTML for answers", 'quiz-maker' ); ?>
+                            <a class="ays_help" style="margin-right:15px;" data-toggle="tooltip" title="<?php echo esc_attr( __('Allowed tags list','quiz-maker') . ": <br>, <b>, <em>, <span>, <mark>, <del>, <ins>, <sup>, <sub>, <strong>, <code>, <samp>, <kbd>, <var>, <q>" ); ?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
                             <input type="checkbox" name="ays-use-html" value="on" <?php echo $use_html ? "checked" : ""; ?>>
@@ -807,8 +807,8 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                     </div>
                     <div class="ays-text-answers-desc <?php echo ($text_type) ? '' : 'display_none'; ?>" style="padding:5px;padding-top:15px;">
                         <blockquote>
-                            <p style="margin:0px;"><?php echo __( "For inserting multiple possible correct answers, please use delimeter %%%.", $this->plugin_name ); ?></p>
-                            <p style="margin:0px;"><?php echo __( "Example:", $this->plugin_name ); ?> <strong>US%%%USA%%%United States</strong></p>
+                            <p style="margin:0px;"><?php echo esc_html__( "For inserting multiple possible correct answers, please use delimeter %%%.", 'quiz-maker' ); ?></p>
+                            <p style="margin:0px;"><?php echo esc_html__( "Example:", 'quiz-maker' ); ?> <strong>US%%%USA%%%United States</strong></p>
                         </blockquote>
                     </div>
                 </div>
@@ -816,8 +816,8 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                 <div class="form-group row ays_toggle_parent show_for_text_type <?php echo ($is_only_text_type) ? '' : 'display_none'; ?>">
                     <div class="col-sm-3">
                         <label for="ays_enable_question_text_max_length">
-                            <?php echo __('Maximum length of a text field', $this->plugin_name); ?>
-                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __( 'Restrict the number of characters to be inserted in the text field by the user.' , $this->plugin_name ); ?>">
+                            <?php echo esc_html__('Maximum length of a text field', 'quiz-maker'); ?>
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __( 'Restrict the number of characters to be inserted in the text field by the user.' , 'quiz-maker' ) ); ?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
                         </label>
@@ -829,16 +829,16 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                         <div class="form-group row">
                             <div class="col-sm-3">
                                 <label for="ays_question_limit_text_type">
-                                    <?php echo __('Limit by', $this->plugin_name); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Choose your preferred type of limitation.',$this->plugin_name); ?>">
+                                    <?php echo esc_html__('Limit by', 'quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Choose your preferred type of limitation.','quiz-maker') ); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
                             </div>
                             <div class="col-sm-9">
                                 <select class="ays-text-input ays-text-input-select" id="ays_question_limit_text_type" name="ays_question_limit_text_type">
-                                    <option value='characters' <?php echo ($question_limit_text_type == 'characters') ? 'selected' : '' ?> ><?php echo __( 'Characters' , $this->plugin_name ); ?></option>
-                                    <option value='words' <?php echo ($question_limit_text_type == 'words') ? 'selected' : '' ?> ><?php echo __( 'Words' , $this->plugin_name ); ?></option>
+                                    <option value='characters' <?php echo ($question_limit_text_type == 'characters') ? 'selected' : '' ?> ><?php echo esc_html__( 'Characters' , 'quiz-maker' ); ?></option>
+                                    <option value='words' <?php echo ($question_limit_text_type == 'words') ? 'selected' : '' ?> ><?php echo esc_html__( 'Words' , 'quiz-maker' ); ?></option>
                                 </select>
                             </div>
                         </div>
@@ -846,22 +846,22 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                         <div class="form-group row">
                             <div class="col-sm-3">
                                 <label for="ays_question_text_max_length">
-                                    <?php echo __('Length', $this->plugin_name); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Indicate the length of the characters/words.',$this->plugin_name); ?>">
+                                    <?php echo esc_html__('Length', 'quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Indicate the length of the characters/words.','quiz-maker') ); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
                             </div>
                             <div class="col-sm-9">
-                                <input type="number" id="ays_question_text_max_length" class="ays-text-input" name="ays_question_text_max_length" value="<?php echo $question_text_max_length; ?>">
+                                <input type="number" id="ays_question_text_max_length" class="ays-text-input" name="ays_question_text_max_length" value="<?php echo esc_attr($question_text_max_length); ?>">
                             </div>
                         </div>
                         <hr>
                         <div class="form-group row">
                             <div class="col-sm-3">
                                 <label for="ays_question_enable_text_message">
-                                    <?php echo __('Show word/character counter', $this->plugin_name); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Tick the checkbox and the live box will appear under the text field. It will indicate the current state of word/character usage.',$this->plugin_name); ?>">
+                                    <?php echo esc_html__('Show word/character counter', 'quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Tick the checkbox and the live box will appear under the text field. It will indicate the current state of word/character usage.','quiz-maker') ); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -878,8 +878,8 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                 <div class="form-group row show_for_text_type <?php echo ($is_only_text_type) ? '' : 'display_none'; ?>">
                     <div class="col-sm-3">
                         <label for="ays_enable_case_sensitive_text">
-                            <?php echo __('Enable case sensitive text', $this->plugin_name); ?>
-                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __( 'When this option is enabled, the user’s answer should be written in the particular form. For example, if the right answer is “true”, the “TRUE” will be counted as a wrong one.', $this->plugin_name ) ); ?>">
+                            <?php echo esc_html__('Enable case sensitive text', 'quiz-maker'); ?>
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __( 'When this option is enabled, the user’s answer should be written in the particular form. For example, if the right answer is “true”, the “TRUE” will be counted as a wrong one.', 'quiz-maker' ) ); ?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
                         </label>
@@ -892,8 +892,8 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                 <div class="form-group row ays_toggle_parent show_for_number_type <?php echo ($is_only_number_type) ? '' : 'display_none'; ?>">
                     <div class="col-sm-3">
                         <label for="ays_enable_question_number_max_length">
-                            <?php echo __('Maximum value of a number field', $this->plugin_name); ?>
-                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __( 'Give a maximum legal value to your number field. For example, if you give a 20 value to the field, then the user will be able to answer the question by writing a value less than or equal to 20.' , $this->plugin_name ); ?>">
+                            <?php echo esc_html__('Maximum value of a number field', 'quiz-maker'); ?>
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __( 'Give a maximum legal value to your number field. For example, if you give a 20 value to the field, then the user will be able to answer the question by writing a value less than or equal to 20.' , 'quiz-maker' ) ); ?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
                         </label>
@@ -905,14 +905,14 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                         <div class="form-group row">
                             <div class="col-sm-3">
                                 <label for="ays_question_number_max_length">
-                                    <?php echo __('Max value', $this->plugin_name); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the maximum value allowed.',$this->plugin_name); ?>">
+                                    <?php echo esc_html__('Max value', 'quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Specify the maximum value allowed.','quiz-maker') ); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
                             </div>
                             <div class="col-sm-9">
-                                <input type="number" id="ays_question_number_max_length" class="ays-text-input" name="ays_question_number_max_length" value="<?php echo $question_number_max_length; ?>">
+                                <input type="number" id="ays_question_number_max_length" class="ays-text-input" name="ays_question_number_max_length" value="<?php echo esc_attr($question_number_max_length); ?>">
                             </div>
                         </div>
                     </div>
@@ -921,8 +921,8 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                 <div class="form-group row ays_toggle_parent show_for_number_type <?php echo ($is_only_number_type) ? '' : 'display_none'; ?>">
                     <div class="col-sm-3">
                         <label for="ays_enable_question_number_min_length">
-                            <?php echo __('Minimum value of a number field', $this->plugin_name); ?>
-                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __( 'Give a minimum legal value to your number field. For example, if you give a 20 value to the field, then the user will be able to answer the question by writing a value more than or equal to 20.' , $this->plugin_name ); ?>">
+                            <?php echo esc_html__('Minimum value of a number field', 'quiz-maker'); ?>
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __( 'Give a minimum legal value to your number field. For example, if you give a 20 value to the field, then the user will be able to answer the question by writing a value more than or equal to 20.' , 'quiz-maker' ) ); ?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
                         </label>
@@ -934,14 +934,14 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                         <div class="form-group row">
                             <div class="col-sm-3">
                                 <label for="ays_question_number_min_length">
-                                    <?php echo __('Min value', $this->plugin_name); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the minimum value allowed. ',$this->plugin_name); ?>">
+                                    <?php echo esc_html__('Min value', 'quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Specify the minimum value allowed. ','quiz-maker') ); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
                             </div>
                             <div class="col-sm-9">
-                                <input type="number" id="ays_question_number_min_length" class="ays-text-input" name="ays_question_number_min_length" value="<?php echo $question_number_min_length; ?>">
+                                <input type="number" id="ays_question_number_min_length" class="ays-text-input" name="ays_question_number_min_length" value="<?php echo esc_attr($question_number_min_length); ?>">
                             </div>
                         </div>
                     </div>
@@ -950,8 +950,8 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                 <div class="form-group row ays_toggle_parent show_for_number_type <?php echo ($is_only_number_type) ? '' : 'display_none'; ?>">
                     <div class="col-sm-3">
                         <label for="ays_enable_question_number_error_message">
-                            <?php echo __('Show error message', $this->plugin_name); ?>
-                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __( 'When the option is enabled; on the Number Question Type, if in the answer box is typed something else besides the numbers. The "Error text" message will appear.' , $this->plugin_name ) ); ?>">
+                            <?php echo esc_html__('Show error message', 'quiz-maker'); ?>
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __( 'When the option is enabled; on the Number Question Type, if in the answer box is typed something else besides the numbers. The "Error text" message will appear.' , 'quiz-maker' ) ); ?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
                         </label>
@@ -963,14 +963,14 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                         <div class="form-group row">
                             <div class="col-sm-3">
                                 <label for="ays_question_number_error_message">
-                                    <?php echo __('Message', $this->plugin_name); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Write the message, which you want to be shown on the front.',$this->plugin_name); ?>">
+                                    <?php echo esc_html__('Message', 'quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Write the message, which you want to be shown on the front.','quiz-maker') ); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
                             </div>
                             <div class="col-sm-9">
-                                <input type="text" id="ays_question_number_error_message" class="ays-text-input" name="ays_question_number_error_message" value="<?php echo $question_number_error_message; ?>">
+                                <input type="text" id="ays_question_number_error_message" class="ays-text-input" name="ays_question_number_error_message" value="<?php echo esc_attr($question_number_error_message); ?>">
                             </div>
                         </div>
                     </div>
@@ -979,8 +979,8 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                 <div class="form-group row ays_toggle_parent show_for_checkbox_type <?php echo ($is_only_checkbox_type) ? '' : 'display_none'; ?>" style="margin: 0;">
                     <div class="col-sm-3" style="padding-left: 0;">
                         <label for="ays_enable_max_selection_number">
-                            <?php echo __('Enable maximum selection number', $this->plugin_name); ?>
-                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __( 'Allow users to choose more than one answer but not over the max value you provided. It will work with the Checkbox type.' , $this->plugin_name ); ?>">
+                            <?php echo esc_html__('Enable maximum selection number', 'quiz-maker'); ?>
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __( 'Allow users to choose more than one answer but not over the max value you provided. It will work with the Checkbox type.' , 'quiz-maker' ) ); ?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
                         </label>
@@ -992,14 +992,14 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                         <div class="form-group row">
                             <div class="col-sm-3">
                                 <label for="ays_max_selection_number">
-                                    <?php echo __('Max value', $this->plugin_name); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the maximum value allowed.',$this->plugin_name); ?>">
+                                    <?php echo esc_html__('Max value', 'quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Specify the maximum value allowed.','quiz-maker') ); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
                             </div>
                             <div class="col-sm-9">
-                                <input type="number" id="ays_max_selection_number" class="ays-text-input" name="ays_max_selection_number" value="<?php echo $max_selection_number; ?>">
+                                <input type="number" id="ays_max_selection_number" class="ays-text-input" name="ays_max_selection_number" value="<?php echo esc_attr($max_selection_number); ?>">
                             </div>
                         </div>
                     </div>
@@ -1008,8 +1008,8 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                 <div class="form-group row ays_toggle_parent show_for_checkbox_type <?php echo ($is_only_checkbox_type) ? '' : 'display_none'; ?>" style="margin: 0;">
                     <div class="col-sm-3" style="padding-left: 0;">
                         <label for="ays_enable_min_selection_number">
-                            <?php echo __('Enable minimum selection number', $this->plugin_name); ?>
-                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __( 'Require users to choose answers not under the min value you provided. It will work with the Checkbox type.' , $this->plugin_name ); ?>">
+                            <?php echo esc_html__('Enable minimum selection number', 'quiz-maker'); ?>
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __( 'Require users to choose answers not under the min value you provided. It will work with the Checkbox type.' , 'quiz-maker' ) ); ?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
                         </label>
@@ -1021,14 +1021,14 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                         <div class="form-group row">
                             <div class="col-sm-3">
                                 <label for="ays_min_selection_number">
-                                    <?php echo __('Min value', $this->plugin_name); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the minimum value allowed.',$this->plugin_name); ?>">
+                                    <?php echo esc_html__('Min value', 'quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Specify the minimum value allowed.','quiz-maker') ); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
                             </div>
                             <div class="col-sm-9">
-                                <input type="number" id="ays_min_selection_number" class="ays-text-input" name="ays_min_selection_number" value="<?php echo $min_selection_number; ?>">
+                                <input type="number" id="ays_min_selection_number" class="ays-text-input" name="ays_min_selection_number" value="<?php echo esc_attr( $min_selection_number ); ?>">
                             </div>
                         </div>
                     </div>
@@ -1041,8 +1041,8 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-3">
-                                <label for="ays_question_weight"><?php echo __('Question weight', $this->plugin_name); ?></label>
-                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the weight of the question. It\'s not connected with answers points. It will be multiplied with chosen answer weight (if you choose quiz calculation by points). The default value is 1.',$this->plugin_name)?>">
+                                <label for="ays_question_weight"><?php echo esc_html__('Question weight', 'quiz-maker'); ?></label>
+                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Specify the weight of the question. It\'s not connected with answers points. It will be multiplied with chosen answer weight (if you choose quiz calculation by points). The default value is 1.','quiz-maker') ); ?>">
                                     <i class="ays_fa ays_fa_info_circle"></i>
                                 </a>
                             </div>
@@ -1053,10 +1053,10 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                         <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
                             <div class="ays-quiz-new-upgrade-button-box">
                                 <div>
-                                    <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                    <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                    <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
+                                    <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'); ?>" class="ays-quiz-new-upgrade-button-hover">
                                 </div>
-                                <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
+                                <div class="ays-quiz-new-upgrade-button"><?php echo esc_html__("Upgrade", "quiz-maker"); ?></div>
                             </div>
                         </a>
                     </div>
@@ -1064,8 +1064,8 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                 <div class="form-group row">
                     <div class="col-sm-3">
                         <label for="ays-category">
-                            <?php echo __('Question category', $this->plugin_name); ?>
-                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('You can choose your desired category prepared in advance.',$this->plugin_name)?>">
+                            <?php echo esc_html__('Question category', 'quiz-maker'); ?>
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('You can choose your desired category prepared in advance.','quiz-maker') ); ?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
                         </label>
@@ -1080,7 +1080,7 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                                 if ($cat == 0 && intval($question['category_id']) == 0) {
                                     $checked = 'selected';
                                 }
-                                echo "<option value='" . $question_category['id'] . "' " . $checked . ">" . stripslashes($question_category['title']) . "</option>";
+                                echo "<option value='" . esc_attr($question_category['id']) . "' " . esc_attr($checked) . ">" . esc_attr(stripslashes( $question_category['title'] )) . "</option>";
                                 $cat++;
                             }
                             ?>
@@ -1097,8 +1097,8 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                         <div class="form-group row">
                             <div class="col-sm-3">
                                 <label for="ays_quiz_question_tags">
-                                    <?php echo __('Question tags', $this->plugin_name); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Add tags to your questions. Tags are used for filtering questions to add to your quiz. You can choose as many tags as you want. To create tags, please go to Question categories > Tags > Add New.', $this->plugin_name); ?>">
+                                    <?php echo esc_html__('Question tags', 'quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Add tags to your questions. Tags are used for filtering questions to add to your quiz. You can choose as many tags as you want. To create tags, please go to Question categories > Tags > Add New.', 'quiz-maker') ); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -1112,10 +1112,10 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                         <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
                             <div class="ays-quiz-new-upgrade-button-box">
                                 <div>
-                                    <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                    <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                    <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
+                                    <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg' ); ?>" class="ays-quiz-new-upgrade-button-hover">
                                 </div>
-                                <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
+                                <div class="ays-quiz-new-upgrade-button"><?php echo esc_html__("Upgrade", "quiz-maker"); ?></div>
                             </div>
                         </a>
                     </div>
@@ -1125,34 +1125,34 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                 <div class="form-group row">
                     <div class="col-sm-3">
                         <label for="ays_question_title">
-                            <?php echo __('Question title',$this->plugin_name)?>
-                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Add the title of the question to make it easy for you to find it among the other questions. It will be visible only in the questions list table.',$this->plugin_name)?>">
+                            <?php echo esc_html__('Question title','quiz-maker'); ?>
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Add the title of the question to make it easy for you to find it among the other questions. It will be visible only in the questions list table.','quiz-maker') ); ?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
                         </label>
                     </div>
                     <div class="col-sm-9">
                         <div>
-                            <input type="text" class="ays-text-input" id="ays_question_title" name="ays_question_title" value="<?php echo $question_title; ?>">
+                            <input type="text" class="ays-text-input" id="ays_question_title" name="ays_question_title" value="<?php echo esc_attr($question_title); ?>">
                         </div>
                     </div>
                 </div>
                 <hr>
                 <div class="form-group row">
                     <div class="col-sm-12">
-                        <a href="" id="ays_next_tab" class="ays_next_tab"><?php echo __( 'Advanced settings' , $this->plugin_name ); ?></a>
+                        <a href="" id="ays_next_tab" class="ays_next_tab"><?php echo esc_html__( 'Advanced settings' , 'quiz-maker' ); ?></a>
                     </div>
                 </div>
             </div>
 
             <div id="tab2" class="ays-quiz-tab-content <?php echo ($ays_question_tab == 'tab2') ? 'ays-quiz-tab-content-active' : ''; ?>">
-                <p class="ays-subtitle"><?php echo __('Question Settings',$this->plugin_name)?></p>
+                <p class="ays-subtitle"><?php echo esc_html__('Question Settings','quiz-maker')?></p>
                 <hr class="ays-quiz-bolder-hr"/>
                 <div class="form-group row">
                     <div class="col-sm-3">
                         <label>
-                            <?php echo __('Question status', $this->plugin_name); ?>
-                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Choose whether the question is active or not. If you choose Unpublished option, the question won’t be shown anywhere on your website.',$this->plugin_name)?>">
+                            <?php echo esc_html__('Question status', 'quiz-maker'); ?>
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Choose whether the question is active or not. If you choose Unpublished option, the question won’t be shown anywhere on your website.','quiz-maker') ); ?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
                         </label>
@@ -1161,11 +1161,11 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                     <div class="col-sm-9">
                         <div class="form-check form-check-inline">
                             <input type="radio" id="ays-publish" name="ays_publish" value="1" <?php echo ($question_published == '') ? "checked" : ""; ?>  <?php echo ($question_published== '1') ? 'checked' : ''; ?>/>
-                            <label class="form-check-label" for="ays-publish"> <?php echo __('Published', $this->plugin_name); ?> </label>
+                            <label class="form-check-label" for="ays-publish"> <?php echo esc_html__('Published', 'quiz-maker'); ?> </label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input type="radio" id="ays-unpublish" name="ays_publish" value="0" <?php echo ($question_published == '0') ? 'checked' : ''; ?>/>
-                            <label class="form-check-label" for="ays-unpublish"> <?php echo __('Unpublished', $this->plugin_name); ?> </label>
+                            <label class="form-check-label" for="ays-unpublish"> <?php echo esc_html__('Unpublished', 'quiz-maker'); ?> </label>
                         </div>
                     </div>
                 </div>
@@ -1173,8 +1173,8 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                 <div class="form-group row">
                     <div class="col-sm-3">
                         <label for="ays_quiz_hide_question_text">
-                            <?php echo __('Hide question text on the front-end', $this->plugin_name); ?>
-                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Make the question appear without text. The option is designed to use when the question includes an image as well.',$this->plugin_name); ?>">
+                            <?php echo esc_html__('Hide question text on the front-end', 'quiz-maker'); ?>
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Make the question appear without text. The option is designed to use when the question includes an image as well.','quiz-maker') ); ?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
                         </label>
@@ -1190,8 +1190,8 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                 <div class="form-group row">
                     <div class="col-sm-3">
                         <label for="ays_quiz_disable_answer_stripslashes">
-                            <?php echo __('Disable strip slashes for answers', $this->plugin_name); ?>
-                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("By enabling this option, the backslashes will not be removed from your answers' content. It is recommended to have this option enabled, if you are using the MathJax-Latex plugin.",$this->plugin_name)  ); ?>">
+                            <?php echo esc_html__('Disable strip slashes for answers', 'quiz-maker'); ?>
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("By enabling this option, the backslashes will not be removed from your answers' content. It is recommended to have this option enabled, if you are using the MathJax-Latex plugin.",'quiz-maker')  ); ?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
                         </label>
@@ -1207,8 +1207,8 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                 <div class="form-group row">
                     <div class="col-sm-3">
                         <label for="ays_quiz_enable_question_stripslashes">
-                            <?php echo __('Enable strip slashes for question', $this->plugin_name); ?>
-                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("If this option is enabled the backslashes will be removed from your questions' content. If you are using the MathJax-Latex plugin it is recommended to have this option disabled.",$this->plugin_name)  ); ?>">
+                            <?php echo esc_html__('Enable strip slashes for question', 'quiz-maker'); ?>
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("If this option is enabled the backslashes will be removed from your questions' content. If you are using the MathJax-Latex plugin it is recommended to have this option disabled.",'quiz-maker')  ); ?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
                         </label>
@@ -1224,12 +1224,12 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                 <div class="form-group row">
                     <div class="col-sm-3">
                         <label for="ays_not_influence_to_score">
-                            <?php echo __('No influence to score', $this->plugin_name); ?>
+                            <?php echo esc_html__('No influence to score', 'quiz-maker'); ?>
                             <a class="ays_help" data-toggle="tooltip" title="<?php 
-                               echo __( "If you enable this option, this question will not be counted in the final score.", $this->plugin_name ) . " " .
-                                    __( "So this question will be just a Survey question.", $this->plugin_name ) . " " .
-                                    __( "There will not be correct/incorrect answers.", $this->plugin_name ) . " " .
-                                    __( "This is for just collecting data from users.", $this->plugin_name );
+                               echo esc_html__( "If you enable this option, this question will not be counted in the final score.", 'quiz-maker' ) . " " .
+                                    esc_html__( "So this question will be just a Survey question.", 'quiz-maker' ) . " " .
+                                    esc_html__( "There will not be correct/incorrect answers.", 'quiz-maker' ) . " " .
+                                    esc_html__( "This is for just collecting data from users.", 'quiz-maker' );
                             ?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
@@ -1250,16 +1250,16 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-3">
-                                <label><?php echo __('Question background image', $this->plugin_name); ?></label>
-                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Background image of the container. You can choose different images for different questions.',$this->plugin_name)?>">
+                                <label><?php echo esc_html__('Question background image', 'quiz-maker'); ?></label>
+                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Background image of the container. You can choose different images for different questions.','quiz-maker') ); ?>">
                                     <i class="ays_fa ays_fa_info_circle"></i>
                                 </a>
                             </div>
                             <div class="col-sm-3">
-                                <a href="javascript:void(0)" class="add-question-image m-0" tabindex="-1" style="border: 1px solid #ededed;"><?php echo __('Add Image', $this->plugin_name); ?></a>
+                                <a href="javascript:void(0)" class="add-question-image m-0" tabindex="-1" style="border: 1px solid #ededed;"><?php echo esc_html__('Add Image', 'quiz-maker'); ?></a>
                                 <p class="ays_quiz_small_hint_text_for_message_variables" style="margin-top: 5px;">
-                                    <span><?php echo __( "Please Note" , $this->plugin_name ); ?></span>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('* Note: The plugin doesn’t make any changes concerning the images. It takes the images in a size, in which you have uploaded them. We are using the default WP Media. If the uploaded image is blurred and has a low quality, make sure to choose the right parameters (Full size) while uploading the images. You can find the Full Size option in the opened Add Media popup (Attachment Display Settings).',$this->plugin_name) ); ?>">
+                                    <span><?php echo esc_html__( "Please Note" , 'quiz-maker' ); ?></span>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('* Note: The plugin doesn’t make any changes concerning the images. It takes the images in a size, in which you have uploaded them. We are using the default WP Media. If the uploaded image is blurred and has a low quality, make sure to choose the right parameters (Full size) while uploading the images. You can find the Full Size option in the opened Add Media popup (Attachment Display Settings).','quiz-maker') ); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </p>
@@ -1274,10 +1274,10 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                         <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
                             <div class="ays-quiz-new-upgrade-button-box">
                                 <div>
-                                    <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                    <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                    <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
+                                    <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg' ); ?>" class="ays-quiz-new-upgrade-button-hover">
                                 </div>
-                                <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
+                                <div class="ays-quiz-new-upgrade-button"><?php echo esc_html__("Upgrade", "quiz-maker"); ?></div>
                             </div>
                         </a>
                     </div>
@@ -1290,29 +1290,29 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-3">
-                                <label><?php echo __('User answer explanation', $this->plugin_name); ?></label>
-                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The users can write an explanation for their answers.',$this->plugin_name)?>">
+                                <label><?php echo esc_html__('User answer explanation', 'quiz-maker'); ?></label>
+                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('The users can write an explanation for their answers.','quiz-maker') ); ?>">
                                     <i class="ays_fa ays_fa_info_circle"></i>
                                 </a>
                             </div>
                             <div class="col-sm-9">
                                 <div class="form-check form-check-inline">
                                     <input type="radio" id="ays-user-ex-on" value="on" checked tabindex="-1"/>
-                                    <label class="form-check-label" for="ays-user-ex-on"> <?php echo __('Enabled', $this->plugin_name); ?> </label>
+                                    <label class="form-check-label" for="ays-user-ex-on"> <?php echo esc_html__('Enabled', 'quiz-maker'); ?> </label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input type="radio" id="ays-user-ex-off" value="off" tabindex="-1"/>
-                                    <label class="form-check-label" for="ays-user-ex-off"> <?php echo __('Disabled', $this->plugin_name); ?> </label>
+                                    <label class="form-check-label" for="ays-user-ex-off"> <?php echo esc_html__('Disabled', 'quiz-maker'); ?> </label>
                                 </div>
                             </div>
                         </div>
                         <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
                             <div class="ays-quiz-new-upgrade-button-box">
                                 <div>
-                                    <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                    <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                    <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
+                                    <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg' ); ?>" class="ays-quiz-new-upgrade-button-hover">
                                 </div>
-                                <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
+                                <div class="ays-quiz-new-upgrade-button"><?php echo esc_html__("Upgrade", "quiz-maker"); ?></div>
                             </div>
                         </a>
                     </div>
@@ -1321,8 +1321,8 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                 <div class="form-group row">
                     <div class="col-sm-3">
                         <label for="right_answer_text">
-                            <?php echo __('Question hint',$this->plugin_name)?>
-                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Add extra information that can help users about the question.',$this->plugin_name)?>">
+                            <?php echo esc_html__('Question hint','quiz-maker'); ?>
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Add extra information that can help users about the question.','quiz-maker') ); ?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
                         </label>
@@ -1340,8 +1340,8 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                 <div class="form-group row">
                     <div class="col-sm-3">
                         <label for="wrong_answer_text">
-                            <?php echo __('Question explanation',$this->plugin_name)?> <sup>(<?php echo __('except for checkbox type',$this->plugin_name);?>)</sup>
-                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Provide descriptive or informative text about the question.',$this->plugin_name)?>">
+                            <?php echo esc_html__('Question explanation','quiz-maker'); ?> <sup>(<?php echo esc_html__('except for checkbox type','quiz-maker');?>)</sup>
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Provide descriptive or informative text about the question.','quiz-maker') ); ?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
                         </label>
@@ -1359,8 +1359,8 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                 <div class="form-group row">
                     <div class="col-sm-3">
                         <label for="wrong_answer_text">
-                            <?php echo __('Message for the wrong answer',$this->plugin_name); ?> <sup>(<?php echo __('except for checkbox type',$this->plugin_name); ?>)</sup>
-                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('You can write text which will be shown in case of the wrong answer. It doesn’t work when you chose Quiz calculation option By Weight/points from Quiz Settings.',$this->plugin_name)?>">
+                            <?php echo esc_html__('Message for the wrong answer','quiz-maker'); ?> <sup>(<?php echo esc_html__('except for checkbox type','quiz-maker'); ?>)</sup>
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('You can write text which will be shown in case of the wrong answer. It doesn’t work when you chose Quiz calculation option By Weight/points from Quiz Settings.','quiz-maker') ); ?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
                         </label>
@@ -1378,8 +1378,8 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                 <div class="form-group row">
                     <div class="col-sm-3">
                         <label for="right_answer_text">
-                            <?php echo __('Message for the right answer',$this->plugin_name); ?> <sup>(<?php echo __('except for checkbox type',$this->plugin_name);?>)</sup>
-                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('You can write text which will be shown in case of right answer.  It doesn’t work when you chose Quiz calculation option By Weight/points from Quiz Settings.',$this->plugin_name);?>">
+                            <?php echo esc_html__('Message for the right answer','quiz-maker'); ?> <sup>(<?php echo esc_html__('except for checkbox type','quiz-maker'); ?>)</sup>
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('You can write text which will be shown in case of right answer.  It doesn’t work when you chose Quiz calculation option By Weight/points from Quiz Settings.','quiz-maker') );?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
                         </label>
@@ -1397,8 +1397,8 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                 <div class="form-group row">
                     <div class="col-sm-3">
                         <label for="ays_quiz_question_note_message">
-                            <?php echo __('Note text',$this->plugin_name); ?>
-                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Write down additional information about the question that will appear under the answers.',$this->plugin_name);?>">
+                            <?php echo esc_html__('Note text','quiz-maker'); ?>
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Write down additional information about the question that will appear under the answers.','quiz-maker') ); ?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
                         </label>
@@ -1418,19 +1418,19 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                 <div class="ays-question-button-first-row" style="padding: 0;">
                 <?php
                     wp_nonce_field('question_action', 'question_action');
-                    echo $loader_iamge; 
+                    echo wp_kses_post($loader_iamge); 
                     $other_attributes = array(
                         'id'            => 'ays-button-apply',
                         'title'         => 'Ctrl + s',
                         'data-toggle'   => 'tooltip',
                         'data-delay'    => '{"show":"1000"}'
                     );
-                    submit_button(__('Save', $this->plugin_name), 'primary ays-button ays-quiz-loader-banner', 'ays_apply', false, $other_attributes);
+                    submit_button(esc_html__('Save', 'quiz-maker'), 'primary ays-button ays-quiz-loader-banner', 'ays_apply', false, $other_attributes);
 
                     $other_attributes = array('id' => 'ays-button-save');
-                    submit_button(__('Save and close', $this->plugin_name), 'ays-button ays-quiz-loader-banner', 'ays_submit', false, $other_attributes);
+                    submit_button(esc_html__('Save and close', 'quiz-maker'), 'ays-button ays-quiz-loader-banner', 'ays_submit', false, $other_attributes);
                     $other_attributes = array('id' => 'ays-button-save-new');
-                    submit_button(__('Save and new', $this->plugin_name), 'ays-button ays-quiz-loader-banner', 'ays_save_new', false, $other_attributes);                    
+                    submit_button(esc_html__('Save and new', 'quiz-maker'), 'ays-button ays-quiz-loader-banner', 'ays_save_new', false, $other_attributes);                    
                 ?>
                 </div>
                 <div class="ays-question-button-second-row ays-question-button-second-row-padding-right">
@@ -1439,20 +1439,20 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
 
                         $other_attributes = array(
                             'id' => 'ays-question-prev-button',
-                            'data-message' => __( 'Are you sure you want to go to the previous question page?', $this->plugin_name),
+                            'data-message' => esc_html__( 'Are you sure you want to go to the previous question page?', 'quiz-maker'),
                             'href' => sprintf( '?page=%s&action=%s&question=%d', esc_attr( $_REQUEST['page'] ), 'edit', absint( $prev_question_id ) )
                         );
-                        submit_button(__('Prev Question', $this->plugin_name), 'button', 'ays_question_prev_button', false, $other_attributes);
+                        submit_button(esc_html__('Prev Question', 'quiz-maker'), 'button', 'ays_question_prev_button', false, $other_attributes);
                     }
 
                     if ( $nex_question_id != "" && !is_null( $nex_question_id ) ) {
 
                         $other_attributes = array(
                             'id' => 'ays-question-next-button',
-                            'data-message' => __( 'Are you sure you want to go to the next question page?', $this->plugin_name),
+                            'data-message' => esc_html__( 'Are you sure you want to go to the next question page?', 'quiz-maker'),
                             'href' => sprintf( '?page=%s&action=%s&question=%d', esc_attr( $_REQUEST['page'] ), 'edit', absint( $nex_question_id ) )
                         );
-                        submit_button(__('Next Question', $this->plugin_name), 'button', 'ays_question_next_button', false, $other_attributes);
+                        submit_button(esc_html__('Next Question', 'quiz-maker'), 'button', 'ays_question_next_button', false, $other_attributes);
                     }
                 ?>
                 </div>

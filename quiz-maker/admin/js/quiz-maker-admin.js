@@ -940,6 +940,9 @@
                     }
                     $(this).addClass(classEven);
                     $(this).find('.ays-correct-answer').val(newValue);
+                    if( typeof $(this).find('.ays-correct-answer').attr('checked') != "undefined"  ){
+                        $(this).find('.ays-correct-answer').prop('checked', true);
+                    }
                 });
             }
         });
@@ -1499,6 +1502,12 @@
                 default:
                     $(document).find('input.ays-correct-answer').attr('type', 'radio');
                     break;
+            }
+        });
+
+        $(document).on('change', '.ays-correct-answer', function () {
+            if( $(this).prop('checked') === true ){
+                $(this).attr('checked', 'checked');
             }
         });
         

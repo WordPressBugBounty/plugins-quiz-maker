@@ -7,7 +7,7 @@ if( $action == 'duplicate' && !is_null($id) ){
     $this->quiz_categories_obj->duplicate_quiz_categories($id);
 }
 
-$plus_icon_svg = "<span class=''><img src='". AYS_QUIZ_ADMIN_URL ."/images/icons/plus=icon.svg'></span>";
+$plus_icon_svg = "<span class=''><img src='". AYS_QUIZ_ADMIN_URL ."/images/icons/plus-icon.svg'></span>";
 
 ?>
 <div class="wrap ays-quiz-list-table ays_quiz_categories_list_table">
@@ -15,19 +15,20 @@ $plus_icon_svg = "<span class=''><img src='". AYS_QUIZ_ADMIN_URL ."/images/icons
         <div class="ays-quiz-wordpress-user-manual-box">
             <a href="https://quiz-plugin.com/docs/" target="_blank">
                 <i class="ays_fa ays_fa_file_text" ></i> 
-                <span style="margin-left: 3px;text-decoration: underline;"><?php echo __("View Documentation", "quiz-maker"); ?></span>
+                <span style="margin-left: 3px;text-decoration: underline;"><?php echo esc_html__("View Documentation", "quiz-maker"); ?></span>
             </a>
         </div>
     </div>
     <h1 class="wp-heading-inline">
         <?php
-            echo __(esc_html(get_admin_page_title()),$this->plugin_name);
+            echo esc_html(get_admin_page_title());
         ?>
     </h1>
     <div class="ays-quiz-add-new-button-box">
-        <?php
-            echo sprintf( '<a href="?page=%s&action=%s" class="page-title-action button-primary ays-quiz-add-new-button ays-quiz-add-new-button-new-design"> %s '  . __('Add New', $this->plugin_name) . '</a>', esc_attr( $_REQUEST['page'] ), 'add', $plus_icon_svg);
-        ?>
+        <a href="<?php echo esc_url( admin_url('admin.php') . "?page=". esc_attr( $_REQUEST['page'] ) . "&action=add" ); ?>" class="page-title-action button-primary ays-quiz-add-new-button ays-quiz-add-new-button-new-design">
+            <span class=''><img src='<?php echo esc_url(AYS_QUIZ_ADMIN_URL); ?>/images/icons/plus-icon.svg'></span>
+            <?php echo esc_html__('Add New', 'quiz-maker'); ?>
+        </a>
     </div>
     <div id="poststuff">
         <div id="post-body" class="metabox-holder">
@@ -39,7 +40,7 @@ $plus_icon_svg = "<span class=''><img src='". AYS_QUIZ_ADMIN_URL ."/images/icons
                     <form method="post">
                         <?php
                             $this->quiz_categories_obj->prepare_items();
-                            $this->quiz_categories_obj->search_box('Search', $this->plugin_name);
+                            $this->quiz_categories_obj->search_box('Search', 'quiz-maker');
                             $this->quiz_categories_obj->display();
                         ?>
                     </form>
@@ -50,8 +51,9 @@ $plus_icon_svg = "<span class=''><img src='". AYS_QUIZ_ADMIN_URL ."/images/icons
     </div>
 
     <div class="ays-quiz-add-new-button-box">
-        <?php
-            echo sprintf( '<a href="?page=%s&action=%s" class="page-title-action button-primary ays-quiz-add-new-button ays-quiz-add-new-button-new-design"> %s '  . __('Add New', $this->plugin_name) . '</a>', esc_attr( $_REQUEST['page'] ), 'add', $plus_icon_svg);
-        ?>
+        <a href="<?php echo esc_url( admin_url('admin.php') . "?page=". esc_attr( $_REQUEST['page'] ) . "&action=add" ); ?>" class="page-title-action button-primary ays-quiz-add-new-button ays-quiz-add-new-button-new-design">
+            <span class=''><img src='<?php echo esc_url(AYS_QUIZ_ADMIN_URL); ?>/images/icons/plus-icon.svg'></span>
+            <?php echo esc_html__('Add New', 'quiz-maker'); ?>
+        </a>
     </div>
 </div>

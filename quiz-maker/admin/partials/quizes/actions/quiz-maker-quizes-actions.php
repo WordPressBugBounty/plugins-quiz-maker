@@ -122,8 +122,8 @@ $options = array(
 	'activeInterval'                            => '',
 	'deactiveInterval'                          => '',
 	'active_date_check'                         => 'off',
-	'active_date_pre_start_message'             => __("The quiz will be available soon!", $this->plugin_name),
-    'active_date_message'                       => __("The quiz has expired!", $this->plugin_name),
+	'active_date_pre_start_message'             => __("The quiz will be available soon!", 'quiz-maker'),
+    'active_date_message'                       => __("The quiz has expired!", 'quiz-maker'),
 	'explanation_time'                          => '4',
 	'enable_clear_answer'                       => 'off',
 	'show_category'                             => 'off',
@@ -172,7 +172,7 @@ $options = array(
     'quiz_timer_red_warning'                    => 'off',
     'quiz_schedule_timezone'                    => get_option( 'timezone_string' ),
     'questions_hint_button_value'               => '',
-    'quiz_tackers_message'                      => __( "This quiz is expired!", $this->plugin_name ),
+    'quiz_tackers_message'                      => __( "This quiz is expired!", 'quiz-maker' ),
     'quiz_enable_linkedin_share_button'         => 'on',
     'quiz_enable_facebook_share_button'         => 'on',
     'quiz_enable_twitter_share_button'          => 'on',
@@ -298,10 +298,10 @@ $question_id_array = array();
 $quiz_intervals = 3;
 switch ($action) {
     case 'add':
-        $heading = __('Add new quiz', $this->plugin_name);
+        $heading = __('Add new quiz', 'quiz-maker');
         break;
     case 'edit':
-        $heading = __('Edit quiz', $this->plugin_name);
+        $heading = __('Edit quiz', 'quiz-maker');
         $quiz = $this->quizes_obj->get_quiz_by_id($id);
         if (isset( $quiz['options'] ) && $quiz['options'] != "") {
             $options = json_decode($quiz['options'], true);
@@ -393,281 +393,281 @@ if ( isset( $id ) && !is_null( $id ) ) {
 $wp_general_settings_url = admin_url( 'options-general.php' );
 
 $quiz_message_vars = array(
-    "%%user_name%%"                                 => __("User Name", $this->plugin_name),
-    "%%user_email%%"                                => __("User Email", $this->plugin_name),
-    "%%user_phone%%"                                => __("User Phone", $this->plugin_name),
-    "%%quiz_name%%"                                 => __("Quiz Title", $this->plugin_name),
-    "%%score%%"                                     => __("Score", $this->plugin_name),
-    "%%current_date%%"                              => __("Current Date", $this->plugin_name),
-    "%%results_by_cats%%"                           => __("Results by question categories", $this->plugin_name),
-    "%%avg_score%%"                                 => __("Average score", $this->plugin_name),
-    "%%avg_rate%%"                                  => __("Average Rate", $this->plugin_name),
-    "%%user_pass_time%%"                            => __("User passed time", $this->plugin_name),
-    "%%quiz_time%%"                                 => __("Quiz time", $this->plugin_name),
-    "%%avg_score_by_category%%"                     => __("Average score by the question category", $this->plugin_name),
-    "%%user_corrects_count%%"                       => __("Correct answers count", $this->plugin_name),
-    "%%wrong_answers_count%%"                       => __("Wrong answers count (skipped questions are included)", $this->plugin_name),
-    "%%only_wrong_answers_count%%"                  => __("Only wrong answers count", $this->plugin_name),
-    "%%skipped_questions_count%%"                   => __("Unanswered questions count", $this->plugin_name),
-    "%%score_by_answered_questions%%"               => __("Score by answered questions", $this->plugin_name),
-    "%%user_first_name%%"                           => __("User's First Name", $this->plugin_name),
-    "%%user_last_name%%"                            => __("User's Last Name", $this->plugin_name),
-    "%%user_nickname%%"                             => __("User's Nick Name", $this->plugin_name),
-    "%%user_display_name%%"                         => __("User's Display Name", $this->plugin_name),
-    "%%user_wordpress_email%%"                      => __("User's WordPress profile email", $this->plugin_name),
-    "%%user_wordpress_roles%%"                      => __("User's WordPress Roles", $this->plugin_name),
-    "%%questions_count%%"                           => __("Questions count", $this->plugin_name),
-    "%%quiz_creation_date%%"                        => __("Quiz creation date", $this->plugin_name),
-    "%%current_quiz_author%%"                       => __("Quiz Author", $this->plugin_name),
-    "%%current_quiz_page_link%%"                    => __("Quiz page link", $this->plugin_name),
-    "%%current_user_ip%%"                           => __("User's IP Address", $this->plugin_name),
-    "%%current_quiz_author_email%%"                 => __("Quiz Author Email", $this->plugin_name),
-    "%%current_quiz_author_nickname%%"              => __("Quiz Author Nickname", $this->plugin_name),
-    "%%current_quiz_author_website_url%%"           => __("Quiz Author Website", $this->plugin_name),
-    "%%admin_email%%"                               => __("Admin Email", $this->plugin_name),
-    "%%home_page_url%%"                             => __("Home page URL", $this->plugin_name),
-    "%%quiz_id%%"                                   => __("Quiz ID", $this->plugin_name),
-    "%%user_id%%"                                   => __("User ID", $this->plugin_name),
-    "%%result_id%%"                                 => __("User result ID", $this->plugin_name),
-    "%%current_quiz_question_categories_count%%"    => __("Question cateogries count", $this->plugin_name),
-    "%%site_title%%"                                => __("Site title", $this->plugin_name),
+    "%%user_name%%"                                 => __("User Name", 'quiz-maker'),
+    "%%user_email%%"                                => __("User Email", 'quiz-maker'),
+    "%%user_phone%%"                                => __("User Phone", 'quiz-maker'),
+    "%%quiz_name%%"                                 => __("Quiz Title", 'quiz-maker'),
+    "%%score%%"                                     => __("Score", 'quiz-maker'),
+    "%%current_date%%"                              => __("Current Date", 'quiz-maker'),
+    "%%results_by_cats%%"                           => __("Results by question categories", 'quiz-maker'),
+    "%%avg_score%%"                                 => __("Average score", 'quiz-maker'),
+    "%%avg_rate%%"                                  => __("Average Rate", 'quiz-maker'),
+    "%%user_pass_time%%"                            => __("User passed time", 'quiz-maker'),
+    "%%quiz_time%%"                                 => __("Quiz time", 'quiz-maker'),
+    "%%avg_score_by_category%%"                     => __("Average score by the question category", 'quiz-maker'),
+    "%%user_corrects_count%%"                       => __("Correct answers count", 'quiz-maker'),
+    "%%wrong_answers_count%%"                       => __("Wrong answers count (skipped questions are included)", 'quiz-maker'),
+    "%%only_wrong_answers_count%%"                  => __("Only wrong answers count", 'quiz-maker'),
+    "%%skipped_questions_count%%"                   => __("Unanswered questions count", 'quiz-maker'),
+    "%%score_by_answered_questions%%"               => __("Score by answered questions", 'quiz-maker'),
+    "%%user_first_name%%"                           => __("User's First Name", 'quiz-maker'),
+    "%%user_last_name%%"                            => __("User's Last Name", 'quiz-maker'),
+    "%%user_nickname%%"                             => __("User's Nick Name", 'quiz-maker'),
+    "%%user_display_name%%"                         => __("User's Display Name", 'quiz-maker'),
+    "%%user_wordpress_email%%"                      => __("User's WordPress profile email", 'quiz-maker'),
+    "%%user_wordpress_roles%%"                      => __("User's WordPress Roles", 'quiz-maker'),
+    "%%questions_count%%"                           => __("Questions count", 'quiz-maker'),
+    "%%quiz_creation_date%%"                        => __("Quiz creation date", 'quiz-maker'),
+    "%%current_quiz_author%%"                       => __("Quiz Author", 'quiz-maker'),
+    "%%current_quiz_page_link%%"                    => __("Quiz page link", 'quiz-maker'),
+    "%%current_user_ip%%"                           => __("User's IP Address", 'quiz-maker'),
+    "%%current_quiz_author_email%%"                 => __("Quiz Author Email", 'quiz-maker'),
+    "%%current_quiz_author_nickname%%"              => __("Quiz Author Nickname", 'quiz-maker'),
+    "%%current_quiz_author_website_url%%"           => __("Quiz Author Website", 'quiz-maker'),
+    "%%admin_email%%"                               => __("Admin Email", 'quiz-maker'),
+    "%%home_page_url%%"                             => __("Home page URL", 'quiz-maker'),
+    "%%quiz_id%%"                                   => __("Quiz ID", 'quiz-maker'),
+    "%%user_id%%"                                   => __("User ID", 'quiz-maker'),
+    "%%result_id%%"                                 => __("User result ID", 'quiz-maker'),
+    "%%current_quiz_question_categories_count%%"    => __("Question cateogries count", 'quiz-maker'),
+    "%%site_title%%"                                => __("Site title", 'quiz-maker'),
 );
 
 $quiz_message_vars_timer = array(
-    "%%time%%"                                      => __("Time", $this->plugin_name),
-    "%%quiz_name%%"                                 => __("Quiz Title", $this->plugin_name),
-    "%%user_first_name%%"                           => __("User's First Name", $this->plugin_name),
-    "%%user_last_name%%"                            => __("User's Last Name", $this->plugin_name),
-    "%%questions_count%%"                           => __("Questions count", $this->plugin_name),
-    "%%user_nickname%%"                             => __("User's Nick Name", $this->plugin_name),
-    "%%user_display_name%%"                         => __("User's Display Name", $this->plugin_name),
-    "%%user_wordpress_email%%"                      => __("User's WordPress profile email", $this->plugin_name),
-    "%%user_wordpress_roles%%"                      => __("User's WordPress Roles", $this->plugin_name),
-    "%%quiz_creation_date%%"                        => __("Quiz creation date", $this->plugin_name),
-    "%%current_quiz_author%%"                       => __("Quiz Author", $this->plugin_name),
-    "%%current_user_ip%%"                           => __("User's IP Address", $this->plugin_name),
-    "%%current_quiz_author_email%%"                 => __("Quiz Author Email", $this->plugin_name),
-    "%%current_quiz_author_nickname%%"              => __("Quiz Author Nickname", $this->plugin_name),
-    "%%current_quiz_author_website_url%%"           => __("Quiz Author Website", $this->plugin_name),
-    "%%admin_email%%"                               => __("Admin Email", $this->plugin_name),
-    "%%home_page_url%%"                             => __("Home page URL", $this->plugin_name),
-    "%%quiz_id%%"                                   => __("Quiz ID", $this->plugin_name),
-    "%%user_id%%"                                   => __("User ID", $this->plugin_name),
-    "%%site_title%%"                                => __("Site title", $this->plugin_name),
+    "%%time%%"                                      => __("Time", 'quiz-maker'),
+    "%%quiz_name%%"                                 => __("Quiz Title", 'quiz-maker'),
+    "%%user_first_name%%"                           => __("User's First Name", 'quiz-maker'),
+    "%%user_last_name%%"                            => __("User's Last Name", 'quiz-maker'),
+    "%%questions_count%%"                           => __("Questions count", 'quiz-maker'),
+    "%%user_nickname%%"                             => __("User's Nick Name", 'quiz-maker'),
+    "%%user_display_name%%"                         => __("User's Display Name", 'quiz-maker'),
+    "%%user_wordpress_email%%"                      => __("User's WordPress profile email", 'quiz-maker'),
+    "%%user_wordpress_roles%%"                      => __("User's WordPress Roles", 'quiz-maker'),
+    "%%quiz_creation_date%%"                        => __("Quiz creation date", 'quiz-maker'),
+    "%%current_quiz_author%%"                       => __("Quiz Author", 'quiz-maker'),
+    "%%current_user_ip%%"                           => __("User's IP Address", 'quiz-maker'),
+    "%%current_quiz_author_email%%"                 => __("Quiz Author Email", 'quiz-maker'),
+    "%%current_quiz_author_nickname%%"              => __("Quiz Author Nickname", 'quiz-maker'),
+    "%%current_quiz_author_website_url%%"           => __("Quiz Author Website", 'quiz-maker'),
+    "%%admin_email%%"                               => __("Admin Email", 'quiz-maker'),
+    "%%home_page_url%%"                             => __("Home page URL", 'quiz-maker'),
+    "%%quiz_id%%"                                   => __("Quiz ID", 'quiz-maker'),
+    "%%user_id%%"                                   => __("User ID", 'quiz-maker'),
+    "%%site_title%%"                                => __("Site title", 'quiz-maker'),
 );
 
 $quiz_message_vars_information_form = array(
-    "%%quiz_name%%"                                 => __("Quiz Title", $this->plugin_name),
-    "%%user_first_name%%"                           => __("User's First Name", $this->plugin_name),
-    "%%user_last_name%%"                            => __("User's Last Name", $this->plugin_name),
-    "%%questions_count%%"                           => __("Questions count", $this->plugin_name),
-    "%%user_nickname%%"                             => __("User's Nick Name", $this->plugin_name),
-    "%%user_display_name%%"                         => __("User's Display Name", $this->plugin_name),
-    "%%user_wordpress_email%%"                      => __("User's WordPress profile email", $this->plugin_name),
-    "%%user_wordpress_roles%%"                      => __("User's WordPress Roles", $this->plugin_name),
-    "%%quiz_creation_date%%"                        => __("Quiz creation date", $this->plugin_name),
-    "%%current_quiz_author%%"                       => __("Quiz Author", $this->plugin_name),
-    "%%current_user_ip%%"                           => __("User's IP Address", $this->plugin_name),
-    "%%current_quiz_author_email%%"                 => __("Quiz Author Email", $this->plugin_name),
-    "%%current_quiz_author_nickname%%"              => __("Quiz Author Nickname", $this->plugin_name),
-    "%%current_quiz_author_website_url%%"           => __("Quiz Author Website", $this->plugin_name),
-    "%%admin_email%%"                               => __("Admin Email", $this->plugin_name),
-    "%%home_page_url%%"                             => __("Home page URL", $this->plugin_name),
-    "%%quiz_id%%"                                   => __("Quiz ID", $this->plugin_name),
-    "%%user_id%%"                                   => __("User ID", $this->plugin_name),
-    "%%site_title%%"                                => __("Site title", $this->plugin_name),
+    "%%quiz_name%%"                                 => __("Quiz Title", 'quiz-maker'),
+    "%%user_first_name%%"                           => __("User's First Name", 'quiz-maker'),
+    "%%user_last_name%%"                            => __("User's Last Name", 'quiz-maker'),
+    "%%questions_count%%"                           => __("Questions count", 'quiz-maker'),
+    "%%user_nickname%%"                             => __("User's Nick Name", 'quiz-maker'),
+    "%%user_display_name%%"                         => __("User's Display Name", 'quiz-maker'),
+    "%%user_wordpress_email%%"                      => __("User's WordPress profile email", 'quiz-maker'),
+    "%%user_wordpress_roles%%"                      => __("User's WordPress Roles", 'quiz-maker'),
+    "%%quiz_creation_date%%"                        => __("Quiz creation date", 'quiz-maker'),
+    "%%current_quiz_author%%"                       => __("Quiz Author", 'quiz-maker'),
+    "%%current_user_ip%%"                           => __("User's IP Address", 'quiz-maker'),
+    "%%current_quiz_author_email%%"                 => __("Quiz Author Email", 'quiz-maker'),
+    "%%current_quiz_author_nickname%%"              => __("Quiz Author Nickname", 'quiz-maker'),
+    "%%current_quiz_author_website_url%%"           => __("Quiz Author Website", 'quiz-maker'),
+    "%%admin_email%%"                               => __("Admin Email", 'quiz-maker'),
+    "%%home_page_url%%"                             => __("Home page URL", 'quiz-maker'),
+    "%%quiz_id%%"                                   => __("Quiz ID", 'quiz-maker'),
+    "%%user_id%%"                                   => __("User ID", 'quiz-maker'),
+    "%%site_title%%"                                => __("Site title", 'quiz-maker'),
 );
 
 $quiz_message_vars_description = array(
-    "%%quiz_name%%"                                 => __("Quiz Title", $this->plugin_name),
-    "%%user_first_name%%"                           => __("User's First Name", $this->plugin_name),
-    "%%user_last_name%%"                            => __("User's Last Name", $this->plugin_name),
-    "%%questions_count%%"                           => __("Questions count", $this->plugin_name),
-    "%%user_nickname%%"                             => __("User's Nick Name", $this->plugin_name),
-    "%%user_display_name%%"                         => __("User's Display Name", $this->plugin_name),
-    "%%user_wordpress_email%%"                      => __("User's WordPress profile email", $this->plugin_name),
-    "%%user_wordpress_roles%%"                      => __("User's WordPress Roles", $this->plugin_name),
-    "%%quiz_creation_date%%"                        => __("Quiz creation date", $this->plugin_name),
-    "%%current_quiz_author%%"                       => __("Quiz Author", $this->plugin_name),
-    "%%current_user_ip%%"                           => __("User's IP Address", $this->plugin_name),
-    "%%current_quiz_author_email%%"                 => __("Quiz Author Email", $this->plugin_name),
-    "%%current_quiz_author_nickname%%"              => __("Quiz Author Nickname", $this->plugin_name),
-    "%%current_quiz_author_website_url%%"           => __("Quiz Author Website", $this->plugin_name),
-    "%%admin_email%%"                               => __("Admin Email", $this->plugin_name),
-    "%%home_page_url%%"                             => __("Home page URL", $this->plugin_name),
-    "%%quiz_id%%"                                   => __("Quiz ID", $this->plugin_name),
-    "%%user_id%%"                                   => __("User ID", $this->plugin_name),
-    "%%site_title%%"                                => __("Site title", $this->plugin_name),
+    "%%quiz_name%%"                                 => __("Quiz Title", 'quiz-maker'),
+    "%%user_first_name%%"                           => __("User's First Name", 'quiz-maker'),
+    "%%user_last_name%%"                            => __("User's Last Name", 'quiz-maker'),
+    "%%questions_count%%"                           => __("Questions count", 'quiz-maker'),
+    "%%user_nickname%%"                             => __("User's Nick Name", 'quiz-maker'),
+    "%%user_display_name%%"                         => __("User's Display Name", 'quiz-maker'),
+    "%%user_wordpress_email%%"                      => __("User's WordPress profile email", 'quiz-maker'),
+    "%%user_wordpress_roles%%"                      => __("User's WordPress Roles", 'quiz-maker'),
+    "%%quiz_creation_date%%"                        => __("Quiz creation date", 'quiz-maker'),
+    "%%current_quiz_author%%"                       => __("Quiz Author", 'quiz-maker'),
+    "%%current_user_ip%%"                           => __("User's IP Address", 'quiz-maker'),
+    "%%current_quiz_author_email%%"                 => __("Quiz Author Email", 'quiz-maker'),
+    "%%current_quiz_author_nickname%%"              => __("Quiz Author Nickname", 'quiz-maker'),
+    "%%current_quiz_author_website_url%%"           => __("Quiz Author Website", 'quiz-maker'),
+    "%%admin_email%%"                               => __("Admin Email", 'quiz-maker'),
+    "%%home_page_url%%"                             => __("Home page URL", 'quiz-maker'),
+    "%%quiz_id%%"                                   => __("Quiz ID", 'quiz-maker'),
+    "%%user_id%%"                                   => __("User ID", 'quiz-maker'),
+    "%%site_title%%"                                => __("Site title", 'quiz-maker'),
 );
 
 $quiz_message_vars_limitation_message = array(
-    "%%quiz_name%%"                                 => __("Quiz Title", $this->plugin_name),
-    "%%user_first_name%%"                           => __("User's First Name", $this->plugin_name),
-    "%%user_last_name%%"                            => __("User's Last Name", $this->plugin_name),
-    "%%questions_count%%"                           => __("Questions count", $this->plugin_name),
-    "%%user_nickname%%"                             => __("User's Nick Name", $this->plugin_name),
-    "%%user_display_name%%"                         => __("User's Display Name", $this->plugin_name),
-    "%%user_wordpress_email%%"                      => __("User's WordPress profile email", $this->plugin_name),
-    "%%user_wordpress_roles%%"                      => __("User's WordPress Roles", $this->plugin_name),
-    "%%quiz_creation_date%%"                        => __("Quiz creation date", $this->plugin_name),
-    "%%current_quiz_author%%"                       => __("Quiz Author", $this->plugin_name),
-    "%%current_user_ip%%"                           => __("User's IP Address", $this->plugin_name),
-    "%%current_quiz_author_email%%"                 => __("Quiz Author Email", $this->plugin_name),
-    "%%current_quiz_author_nickname%%"              => __("Quiz Author Nickname", $this->plugin_name),
-    "%%current_quiz_author_website_url%%"           => __("Quiz Author Website", $this->plugin_name),
-    "%%admin_email%%"                               => __("Admin Email", $this->plugin_name),
-    "%%home_page_url%%"                             => __("Home page URL", $this->plugin_name),
-    "%%quiz_id%%"                                   => __("Quiz ID", $this->plugin_name),
-    "%%user_id%%"                                   => __("User ID", $this->plugin_name),
-    "%%site_title%%"                                => __("Site title", $this->plugin_name),
+    "%%quiz_name%%"                                 => __("Quiz Title", 'quiz-maker'),
+    "%%user_first_name%%"                           => __("User's First Name", 'quiz-maker'),
+    "%%user_last_name%%"                            => __("User's Last Name", 'quiz-maker'),
+    "%%questions_count%%"                           => __("Questions count", 'quiz-maker'),
+    "%%user_nickname%%"                             => __("User's Nick Name", 'quiz-maker'),
+    "%%user_display_name%%"                         => __("User's Display Name", 'quiz-maker'),
+    "%%user_wordpress_email%%"                      => __("User's WordPress profile email", 'quiz-maker'),
+    "%%user_wordpress_roles%%"                      => __("User's WordPress Roles", 'quiz-maker'),
+    "%%quiz_creation_date%%"                        => __("Quiz creation date", 'quiz-maker'),
+    "%%current_quiz_author%%"                       => __("Quiz Author", 'quiz-maker'),
+    "%%current_user_ip%%"                           => __("User's IP Address", 'quiz-maker'),
+    "%%current_quiz_author_email%%"                 => __("Quiz Author Email", 'quiz-maker'),
+    "%%current_quiz_author_nickname%%"              => __("Quiz Author Nickname", 'quiz-maker'),
+    "%%current_quiz_author_website_url%%"           => __("Quiz Author Website", 'quiz-maker'),
+    "%%admin_email%%"                               => __("Admin Email", 'quiz-maker'),
+    "%%home_page_url%%"                             => __("Home page URL", 'quiz-maker'),
+    "%%quiz_id%%"                                   => __("Quiz ID", 'quiz-maker'),
+    "%%user_id%%"                                   => __("User ID", 'quiz-maker'),
+    "%%site_title%%"                                => __("Site title", 'quiz-maker'),
 );
 
 $quiz_message_vars_logged_in_users = array(
-    "%%quiz_name%%"                                 => __("Quiz Title", $this->plugin_name),
-    "%%questions_count%%"                           => __("Questions count", $this->plugin_name),
-    "%%quiz_creation_date%%"                        => __("Quiz creation date", $this->plugin_name),
-    "%%current_quiz_author%%"                       => __("Quiz Author", $this->plugin_name),
-    "%%current_user_ip%%"                           => __("User's IP Address", $this->plugin_name),
-    "%%current_quiz_author_email%%"                 => __("Quiz Author Email", $this->plugin_name),
-    "%%current_quiz_author_nickname%%"              => __("Quiz Author Nickname", $this->plugin_name),
-    "%%current_quiz_author_website_url%%"           => __("Quiz Author Website", $this->plugin_name),
-    "%%admin_email%%"                               => __("Admin Email", $this->plugin_name),
-    "%%home_page_url%%"                             => __("Home page URL", $this->plugin_name),
-    "%%quiz_id%%"                                   => __("Quiz ID", $this->plugin_name),
-    "%%user_id%%"                                   => __("User ID", $this->plugin_name),
-    "%%site_title%%"                                => __("Site title", $this->plugin_name),
+    "%%quiz_name%%"                                 => __("Quiz Title", 'quiz-maker'),
+    "%%questions_count%%"                           => __("Questions count", 'quiz-maker'),
+    "%%quiz_creation_date%%"                        => __("Quiz creation date", 'quiz-maker'),
+    "%%current_quiz_author%%"                       => __("Quiz Author", 'quiz-maker'),
+    "%%current_user_ip%%"                           => __("User's IP Address", 'quiz-maker'),
+    "%%current_quiz_author_email%%"                 => __("Quiz Author Email", 'quiz-maker'),
+    "%%current_quiz_author_nickname%%"              => __("Quiz Author Nickname", 'quiz-maker'),
+    "%%current_quiz_author_website_url%%"           => __("Quiz Author Website", 'quiz-maker'),
+    "%%admin_email%%"                               => __("Admin Email", 'quiz-maker'),
+    "%%home_page_url%%"                             => __("Home page URL", 'quiz-maker'),
+    "%%quiz_id%%"                                   => __("Quiz ID", 'quiz-maker'),
+    "%%user_id%%"                                   => __("User ID", 'quiz-maker'),
+    "%%site_title%%"                                => __("Site title", 'quiz-maker'),
 );
 
 $quiz_message_vars_only_selected_user_role = array(
-    "%%quiz_name%%"                                 => __("Quiz Title", $this->plugin_name),
-    "%%user_first_name%%"                           => __("User's First Name", $this->plugin_name),
-    "%%user_last_name%%"                            => __("User's Last Name", $this->plugin_name),
-    "%%questions_count%%"                           => __("Questions count", $this->plugin_name),
-    "%%user_nickname%%"                             => __("User's Nick Name", $this->plugin_name),
-    "%%user_display_name%%"                         => __("User's Display Name", $this->plugin_name),
-    "%%user_wordpress_email%%"                      => __("User's WordPress profile email", $this->plugin_name),
-    "%%user_wordpress_roles%%"                      => __("User's WordPress Roles", $this->plugin_name),
-    "%%quiz_creation_date%%"                        => __("Quiz creation date", $this->plugin_name),
-    "%%current_quiz_author%%"                       => __("Quiz Author", $this->plugin_name),
-    "%%current_user_ip%%"                           => __("User's IP Address", $this->plugin_name),
-    "%%current_quiz_author_email%%"                 => __("Quiz Author Email", $this->plugin_name),
-    "%%current_quiz_author_nickname%%"              => __("Quiz Author Nickname", $this->plugin_name),
-    "%%current_quiz_author_website_url%%"           => __("Quiz Author Website", $this->plugin_name),
-    "%%admin_email%%"                               => __("Admin Email", $this->plugin_name),
-    "%%home_page_url%%"                             => __("Home page URL", $this->plugin_name),
-    "%%quiz_id%%"                                   => __("Quiz ID", $this->plugin_name),
-    "%%user_id%%"                                   => __("User ID", $this->plugin_name),
-    "%%site_title%%"                                => __("Site title", $this->plugin_name),
+    "%%quiz_name%%"                                 => __("Quiz Title", 'quiz-maker'),
+    "%%user_first_name%%"                           => __("User's First Name", 'quiz-maker'),
+    "%%user_last_name%%"                            => __("User's Last Name", 'quiz-maker'),
+    "%%questions_count%%"                           => __("Questions count", 'quiz-maker'),
+    "%%user_nickname%%"                             => __("User's Nick Name", 'quiz-maker'),
+    "%%user_display_name%%"                         => __("User's Display Name", 'quiz-maker'),
+    "%%user_wordpress_email%%"                      => __("User's WordPress profile email", 'quiz-maker'),
+    "%%user_wordpress_roles%%"                      => __("User's WordPress Roles", 'quiz-maker'),
+    "%%quiz_creation_date%%"                        => __("Quiz creation date", 'quiz-maker'),
+    "%%current_quiz_author%%"                       => __("Quiz Author", 'quiz-maker'),
+    "%%current_user_ip%%"                           => __("User's IP Address", 'quiz-maker'),
+    "%%current_quiz_author_email%%"                 => __("Quiz Author Email", 'quiz-maker'),
+    "%%current_quiz_author_nickname%%"              => __("Quiz Author Nickname", 'quiz-maker'),
+    "%%current_quiz_author_website_url%%"           => __("Quiz Author Website", 'quiz-maker'),
+    "%%admin_email%%"                               => __("Admin Email", 'quiz-maker'),
+    "%%home_page_url%%"                             => __("Home page URL", 'quiz-maker'),
+    "%%quiz_id%%"                                   => __("Quiz ID", 'quiz-maker'),
+    "%%user_id%%"                                   => __("User ID", 'quiz-maker'),
+    "%%site_title%%"                                => __("Site title", 'quiz-maker'),
 );
 
 $quiz_message_vars_limitation_count_of_takers = array(
-    "%%quiz_name%%"                                 => __("Quiz Title", $this->plugin_name),
-    "%%user_first_name%%"                           => __("User's First Name", $this->plugin_name),
-    "%%user_last_name%%"                            => __("User's Last Name", $this->plugin_name),
-    "%%questions_count%%"                           => __("Questions count", $this->plugin_name),
-    "%%user_nickname%%"                             => __("User's Nick Name", $this->plugin_name),
-    "%%user_display_name%%"                         => __("User's Display Name", $this->plugin_name),
-    "%%user_wordpress_email%%"                      => __("User's WordPress profile email", $this->plugin_name),
-    "%%user_wordpress_roles%%"                      => __("User's WordPress Roles", $this->plugin_name),
-    "%%quiz_creation_date%%"                        => __("Quiz creation date", $this->plugin_name),
-    "%%current_quiz_author%%"                       => __("Quiz Author", $this->plugin_name),
-    "%%current_user_ip%%"                           => __("User's IP Address", $this->plugin_name),
-    "%%current_quiz_author_email%%"                 => __("Quiz Author Email", $this->plugin_name),
-    "%%current_quiz_author_nickname%%"              => __("Quiz Author Nickname", $this->plugin_name),
-    "%%current_quiz_author_website_url%%"           => __("Quiz Author Website", $this->plugin_name),
-    "%%admin_email%%"                               => __("Admin Email", $this->plugin_name),
-    "%%home_page_url%%"                             => __("Home page URL", $this->plugin_name),
-    "%%quiz_id%%"                                   => __("Quiz ID", $this->plugin_name),
-    "%%user_id%%"                                   => __("User ID", $this->plugin_name),
-    "%%site_title%%"                                => __("Site title", $this->plugin_name),
+    "%%quiz_name%%"                                 => __("Quiz Title", 'quiz-maker'),
+    "%%user_first_name%%"                           => __("User's First Name", 'quiz-maker'),
+    "%%user_last_name%%"                            => __("User's Last Name", 'quiz-maker'),
+    "%%questions_count%%"                           => __("Questions count", 'quiz-maker'),
+    "%%user_nickname%%"                             => __("User's Nick Name", 'quiz-maker'),
+    "%%user_display_name%%"                         => __("User's Display Name", 'quiz-maker'),
+    "%%user_wordpress_email%%"                      => __("User's WordPress profile email", 'quiz-maker'),
+    "%%user_wordpress_roles%%"                      => __("User's WordPress Roles", 'quiz-maker'),
+    "%%quiz_creation_date%%"                        => __("Quiz creation date", 'quiz-maker'),
+    "%%current_quiz_author%%"                       => __("Quiz Author", 'quiz-maker'),
+    "%%current_user_ip%%"                           => __("User's IP Address", 'quiz-maker'),
+    "%%current_quiz_author_email%%"                 => __("Quiz Author Email", 'quiz-maker'),
+    "%%current_quiz_author_nickname%%"              => __("Quiz Author Nickname", 'quiz-maker'),
+    "%%current_quiz_author_website_url%%"           => __("Quiz Author Website", 'quiz-maker'),
+    "%%admin_email%%"                               => __("Admin Email", 'quiz-maker'),
+    "%%home_page_url%%"                             => __("Home page URL", 'quiz-maker'),
+    "%%quiz_id%%"                                   => __("Quiz ID", 'quiz-maker'),
+    "%%user_id%%"                                   => __("User ID", 'quiz-maker'),
+    "%%site_title%%"                                => __("Site title", 'quiz-maker'),
 );
 
 $quiz_message_vars_password_for_passing_quiz = array(
-    "%%quiz_name%%"                                 => __("Quiz Title", $this->plugin_name),
-    "%%user_first_name%%"                           => __("User's First Name", $this->plugin_name),
-    "%%user_last_name%%"                            => __("User's Last Name", $this->plugin_name),
-    "%%questions_count%%"                           => __("Questions count", $this->plugin_name),
-    "%%user_nickname%%"                             => __("User's Nick Name", $this->plugin_name),
-    "%%user_display_name%%"                         => __("User's Display Name", $this->plugin_name),
-    "%%user_wordpress_email%%"                      => __("User's WordPress profile email", $this->plugin_name),
-    "%%user_wordpress_roles%%"                      => __("User's WordPress Roles", $this->plugin_name),
-    "%%quiz_creation_date%%"                        => __("Quiz creation date", $this->plugin_name),
-    "%%current_quiz_author%%"                       => __("Quiz Author", $this->plugin_name),
-    "%%current_user_ip%%"                           => __("User's IP Address", $this->plugin_name),
-    "%%current_quiz_author_email%%"                 => __("Quiz Author Email", $this->plugin_name),
-    "%%current_quiz_author_nickname%%"              => __("Quiz Author Nickname", $this->plugin_name),
-    "%%current_quiz_author_website_url%%"           => __("Quiz Author Website", $this->plugin_name),
-    "%%admin_email%%"                               => __("Admin Email", $this->plugin_name),
-    "%%home_page_url%%"                             => __("Home page URL", $this->plugin_name),
-    "%%quiz_id%%"                                   => __("Quiz ID", $this->plugin_name),
-    "%%user_id%%"                                   => __("User ID", $this->plugin_name),
-    "%%site_title%%"                                => __("Site title", $this->plugin_name),
+    "%%quiz_name%%"                                 => __("Quiz Title", 'quiz-maker'),
+    "%%user_first_name%%"                           => __("User's First Name", 'quiz-maker'),
+    "%%user_last_name%%"                            => __("User's Last Name", 'quiz-maker'),
+    "%%questions_count%%"                           => __("Questions count", 'quiz-maker'),
+    "%%user_nickname%%"                             => __("User's Nick Name", 'quiz-maker'),
+    "%%user_display_name%%"                         => __("User's Display Name", 'quiz-maker'),
+    "%%user_wordpress_email%%"                      => __("User's WordPress profile email", 'quiz-maker'),
+    "%%user_wordpress_roles%%"                      => __("User's WordPress Roles", 'quiz-maker'),
+    "%%quiz_creation_date%%"                        => __("Quiz creation date", 'quiz-maker'),
+    "%%current_quiz_author%%"                       => __("Quiz Author", 'quiz-maker'),
+    "%%current_user_ip%%"                           => __("User's IP Address", 'quiz-maker'),
+    "%%current_quiz_author_email%%"                 => __("Quiz Author Email", 'quiz-maker'),
+    "%%current_quiz_author_nickname%%"              => __("Quiz Author Nickname", 'quiz-maker'),
+    "%%current_quiz_author_website_url%%"           => __("Quiz Author Website", 'quiz-maker'),
+    "%%admin_email%%"                               => __("Admin Email", 'quiz-maker'),
+    "%%home_page_url%%"                             => __("Home page URL", 'quiz-maker'),
+    "%%quiz_id%%"                                   => __("Quiz ID", 'quiz-maker'),
+    "%%user_id%%"                                   => __("User ID", 'quiz-maker'),
+    "%%site_title%%"                                => __("Site title", 'quiz-maker'),
 );
 
 $quiz_message_vars_rating_form_title = array(
-    "%%quiz_name%%"                                 => __("Quiz Title", $this->plugin_name),
-    "%%user_first_name%%"                           => __("User's First Name", $this->plugin_name),
-    "%%user_last_name%%"                            => __("User's Last Name", $this->plugin_name),
-    "%%questions_count%%"                           => __("Questions count", $this->plugin_name),
-    "%%user_nickname%%"                             => __("User's Nick Name", $this->plugin_name),
-    "%%user_display_name%%"                         => __("User's Display Name", $this->plugin_name),
-    "%%user_wordpress_email%%"                      => __("User's WordPress profile email", $this->plugin_name),
-    "%%user_wordpress_roles%%"                      => __("User's WordPress Roles", $this->plugin_name),
-    "%%quiz_creation_date%%"                        => __("Quiz creation date", $this->plugin_name),
-    "%%current_quiz_author%%"                       => __("Quiz Author", $this->plugin_name),
-    "%%current_user_ip%%"                           => __("User's IP Address", $this->plugin_name),
-    "%%current_quiz_author_email%%"                 => __("Quiz Author Email", $this->plugin_name),
-    "%%current_quiz_author_nickname%%"              => __("Quiz Author Nickname", $this->plugin_name),
-    "%%current_quiz_author_website_url%%"           => __("Quiz Author Website", $this->plugin_name),
-    "%%admin_email%%"                               => __("Admin Email", $this->plugin_name),
-    "%%home_page_url%%"                             => __("Home page URL", $this->plugin_name),
-    "%%quiz_id%%"                                   => __("Quiz ID", $this->plugin_name),
-    "%%user_id%%"                                   => __("User ID", $this->plugin_name),
-    "%%site_title%%"                                => __("Site title", $this->plugin_name),
+    "%%quiz_name%%"                                 => __("Quiz Title", 'quiz-maker'),
+    "%%user_first_name%%"                           => __("User's First Name", 'quiz-maker'),
+    "%%user_last_name%%"                            => __("User's Last Name", 'quiz-maker'),
+    "%%questions_count%%"                           => __("Questions count", 'quiz-maker'),
+    "%%user_nickname%%"                             => __("User's Nick Name", 'quiz-maker'),
+    "%%user_display_name%%"                         => __("User's Display Name", 'quiz-maker'),
+    "%%user_wordpress_email%%"                      => __("User's WordPress profile email", 'quiz-maker'),
+    "%%user_wordpress_roles%%"                      => __("User's WordPress Roles", 'quiz-maker'),
+    "%%quiz_creation_date%%"                        => __("Quiz creation date", 'quiz-maker'),
+    "%%current_quiz_author%%"                       => __("Quiz Author", 'quiz-maker'),
+    "%%current_user_ip%%"                           => __("User's IP Address", 'quiz-maker'),
+    "%%current_quiz_author_email%%"                 => __("Quiz Author Email", 'quiz-maker'),
+    "%%current_quiz_author_nickname%%"              => __("Quiz Author Nickname", 'quiz-maker'),
+    "%%current_quiz_author_website_url%%"           => __("Quiz Author Website", 'quiz-maker'),
+    "%%admin_email%%"                               => __("Admin Email", 'quiz-maker'),
+    "%%home_page_url%%"                             => __("Home page URL", 'quiz-maker'),
+    "%%quiz_id%%"                                   => __("Quiz ID", 'quiz-maker'),
+    "%%user_id%%"                                   => __("User ID", 'quiz-maker'),
+    "%%site_title%%"                                => __("Site title", 'quiz-maker'),
 );
 
 $quiz_message_vars_schedule_pre_start_message = array(
-    "%%quiz_name%%"                                 => __("Quiz Title", $this->plugin_name),
-    "%%user_first_name%%"                           => __("User's First Name", $this->plugin_name),
-    "%%user_last_name%%"                            => __("User's Last Name", $this->plugin_name),
-    "%%questions_count%%"                           => __("Questions count", $this->plugin_name),
-    "%%user_nickname%%"                             => __("User's Nick Name", $this->plugin_name),
-    "%%user_display_name%%"                         => __("User's Display Name", $this->plugin_name),
-    "%%user_wordpress_email%%"                      => __("User's WordPress profile email", $this->plugin_name),
-    "%%user_wordpress_roles%%"                      => __("User's WordPress Roles", $this->plugin_name),
-    "%%quiz_creation_date%%"                        => __("Quiz creation date", $this->plugin_name),
-    "%%current_quiz_author%%"                       => __("Quiz Author", $this->plugin_name),
-    "%%current_user_ip%%"                           => __("User's IP Address", $this->plugin_name),
-    "%%current_quiz_author_email%%"                 => __("Quiz Author Email", $this->plugin_name),
-    "%%current_quiz_author_nickname%%"              => __("Quiz Author Nickname", $this->plugin_name),
-    "%%current_quiz_author_website_url%%"           => __("Quiz Author Website", $this->plugin_name),
-    "%%admin_email%%"                               => __("Admin Email", $this->plugin_name),
-    "%%home_page_url%%"                             => __("Home page URL", $this->plugin_name),
-    "%%quiz_id%%"                                   => __("Quiz ID", $this->plugin_name),
-    "%%user_id%%"                                   => __("User ID", $this->plugin_name),
-    "%%site_title%%"                                => __("Site title", $this->plugin_name),
+    "%%quiz_name%%"                                 => __("Quiz Title", 'quiz-maker'),
+    "%%user_first_name%%"                           => __("User's First Name", 'quiz-maker'),
+    "%%user_last_name%%"                            => __("User's Last Name", 'quiz-maker'),
+    "%%questions_count%%"                           => __("Questions count", 'quiz-maker'),
+    "%%user_nickname%%"                             => __("User's Nick Name", 'quiz-maker'),
+    "%%user_display_name%%"                         => __("User's Display Name", 'quiz-maker'),
+    "%%user_wordpress_email%%"                      => __("User's WordPress profile email", 'quiz-maker'),
+    "%%user_wordpress_roles%%"                      => __("User's WordPress Roles", 'quiz-maker'),
+    "%%quiz_creation_date%%"                        => __("Quiz creation date", 'quiz-maker'),
+    "%%current_quiz_author%%"                       => __("Quiz Author", 'quiz-maker'),
+    "%%current_user_ip%%"                           => __("User's IP Address", 'quiz-maker'),
+    "%%current_quiz_author_email%%"                 => __("Quiz Author Email", 'quiz-maker'),
+    "%%current_quiz_author_nickname%%"              => __("Quiz Author Nickname", 'quiz-maker'),
+    "%%current_quiz_author_website_url%%"           => __("Quiz Author Website", 'quiz-maker'),
+    "%%admin_email%%"                               => __("Admin Email", 'quiz-maker'),
+    "%%home_page_url%%"                             => __("Home page URL", 'quiz-maker'),
+    "%%quiz_id%%"                                   => __("Quiz ID", 'quiz-maker'),
+    "%%user_id%%"                                   => __("User ID", 'quiz-maker'),
+    "%%site_title%%"                                => __("Site title", 'quiz-maker'),
 );
 
 $quiz_message_vars_review_thank_you_message = array(
-    "%%quiz_name%%"                                 => __("Quiz Title", $this->plugin_name),
-    "%%user_first_name%%"                           => __("User's First Name", $this->plugin_name),
-    "%%user_last_name%%"                            => __("User's Last Name", $this->plugin_name),
-    "%%questions_count%%"                           => __("Questions count", $this->plugin_name),
-    "%%user_nickname%%"                             => __("User's Nick Name", $this->plugin_name),
-    "%%user_display_name%%"                         => __("User's Display Name", $this->plugin_name),
-    "%%user_wordpress_email%%"                      => __("User's WordPress profile email", $this->plugin_name),
-    "%%user_wordpress_roles%%"                      => __("User's WordPress Roles", $this->plugin_name),
-    "%%quiz_creation_date%%"                        => __("Quiz creation date", $this->plugin_name),
-    "%%current_quiz_author%%"                       => __("Quiz Author", $this->plugin_name),
-    "%%current_user_ip%%"                           => __("User's IP Address", $this->plugin_name),
-    "%%current_quiz_author_email%%"                 => __("Quiz Author Email", $this->plugin_name),
-    "%%current_quiz_author_nickname%%"              => __("Quiz Author Nickname", $this->plugin_name),
-    "%%current_quiz_author_website_url%%"           => __("Quiz Author Website", $this->plugin_name),
-    "%%admin_email%%"                               => __("Admin Email", $this->plugin_name),
-    "%%home_page_url%%"                             => __("Home page URL", $this->plugin_name),
-    "%%quiz_id%%"                                   => __("Quiz ID", $this->plugin_name),
-    "%%user_id%%"                                   => __("User ID", $this->plugin_name),
-    "%%site_title%%"                                => __("Site title", $this->plugin_name),
+    "%%quiz_name%%"                                 => __("Quiz Title", 'quiz-maker'),
+    "%%user_first_name%%"                           => __("User's First Name", 'quiz-maker'),
+    "%%user_last_name%%"                            => __("User's Last Name", 'quiz-maker'),
+    "%%questions_count%%"                           => __("Questions count", 'quiz-maker'),
+    "%%user_nickname%%"                             => __("User's Nick Name", 'quiz-maker'),
+    "%%user_display_name%%"                         => __("User's Display Name", 'quiz-maker'),
+    "%%user_wordpress_email%%"                      => __("User's WordPress profile email", 'quiz-maker'),
+    "%%user_wordpress_roles%%"                      => __("User's WordPress Roles", 'quiz-maker'),
+    "%%quiz_creation_date%%"                        => __("Quiz creation date", 'quiz-maker'),
+    "%%current_quiz_author%%"                       => __("Quiz Author", 'quiz-maker'),
+    "%%current_user_ip%%"                           => __("User's IP Address", 'quiz-maker'),
+    "%%current_quiz_author_email%%"                 => __("Quiz Author Email", 'quiz-maker'),
+    "%%current_quiz_author_nickname%%"              => __("Quiz Author Nickname", 'quiz-maker'),
+    "%%current_quiz_author_website_url%%"           => __("Quiz Author Website", 'quiz-maker'),
+    "%%admin_email%%"                               => __("Admin Email", 'quiz-maker'),
+    "%%home_page_url%%"                             => __("Home page URL", 'quiz-maker'),
+    "%%quiz_id%%"                                   => __("Quiz ID", 'quiz-maker'),
+    "%%user_id%%"                                   => __("User ID", 'quiz-maker'),
+    "%%site_title%%"                                => __("Site title", 'quiz-maker'),
 );
 
 $quiz_message_vars_html                             = $this->ays_quiz_generate_message_vars_html( $quiz_message_vars );
@@ -706,13 +706,13 @@ $quiz_accordion_svg_html = '
 </div>';
 
 $style = null;
-$image_text = __('Add Image', $this->plugin_name);
-$bg_image_text = __('Add Image', $this->plugin_name);
+$image_text = __('Add Image', 'quiz-maker');
+$bg_image_text = __('Add Image', 'quiz-maker');
 
 $quiz_image = (isset( $quiz['quiz_image']  ) && $quiz['quiz_image'] != '') ? esc_url($quiz['quiz_image']) : "";
 if ( $quiz_image != "" ) {
     $style = "display: block;";
-    $image_text = __('Edit Image', $this->plugin_name);
+    $image_text = __('Edit Image', 'quiz-maker');
 }
 
 $get_all_quizzes = $this->ays_quiz_ays_quiz_get_quizzes();
@@ -743,7 +743,7 @@ $quiz_border_color = (isset($options['quiz_border_color']) && $options['quiz_bor
 $quiz_timer_in_title = (isset($options['quiz_timer_in_title']) && $options['quiz_timer_in_title'] == 'on') ? true : false;
 $enable_restart_button = (isset($options['enable_restart_button']) && $options['enable_restart_button'] == 'on') ? true : false;
 
-$rate_form_title = (isset($options['rate_form_title'])) ? $options['rate_form_title'] : __('Please click the stars to rate the quiz', $this->plugin_name);
+$rate_form_title = (isset($options['rate_form_title'])) ? $options['rate_form_title'] : __('Please click the stars to rate the quiz', 'quiz-maker');
 $quiz_loader = (isset($options['quiz_loader']) && $options['quiz_loader'] != '') ? esc_attr( stripslashes($options['quiz_loader'])) : 'default';
 
 $main_quiz_url = (isset($quiz['quiz_url']) && esc_url($quiz['quiz_url']) != '') ? esc_url($quiz['quiz_url']) : '';
@@ -949,8 +949,8 @@ $tackers_count = (isset($options['tackers_count']) && $options['tackers_count'] 
 
 // Pass Score
 $pass_score = (isset($options['pass_score']) && $options['pass_score'] != '') ? absint(intval($options['pass_score'])) : '0';
-$pass_score_message = isset($options['pass_score_message']) ? stripslashes($options['pass_score_message']) : '<h4 style="text-align: center;">'. __("Congratulations!", $this->plugin_name) .'</h4><p style="text-align: center;">'. __("You passed the quiz!", $this->plugin_name) .'</p>';
-$fail_score_message = isset($options['fail_score_message']) ? stripslashes($options['fail_score_message']) : '<h4 style="text-align: center;">'. __("Oops!", $this->plugin_name) .'</h4><p style="text-align: center;">'. __("You have not passed the quiz! <br> Try again!", $this->plugin_name) .'</p>';
+$pass_score_message = isset($options['pass_score_message']) ? stripslashes($options['pass_score_message']) : '<h4 style="text-align: center;">'. __("Congratulations!", 'quiz-maker') .'</h4><p style="text-align: center;">'. __("You passed the quiz!", 'quiz-maker') .'</p>';
+$fail_score_message = isset($options['fail_score_message']) ? stripslashes($options['fail_score_message']) : '<h4 style="text-align: center;">'. __("Oops!", 'quiz-maker') .'</h4><p style="text-align: center;">'. __("You have not passed the quiz! <br> Try again!", 'quiz-maker') .'</p>';
 
 // Question Font Size
 $question_font_size = (isset($options['question_font_size']) && $options['question_font_size'] != '' && absint(esc_attr($options['question_font_size'])) > 0) ? absint(esc_attr($options['question_font_size'])) : '16';
@@ -1069,7 +1069,7 @@ if ( empty( $ays_quiz_schedule_timezone ) ) { // Create a UTC+- zone if no timez
 $questions_hint_button_value = (isset($options['questions_hint_button_value']) && sanitize_text_field( $options['questions_hint_button_value'] ) != '') ? sanitize_text_field( esc_attr( $options['questions_hint_button_value']) ) : '';
 
 // Quiz takers message
-$quiz_tackers_message = ( isset($options['quiz_tackers_message']) && $options['quiz_tackers_message'] != '' ) ? stripslashes( wpautop( $options['quiz_tackers_message'] ) ) : __( "This quiz is expired!", $this->plugin_name );
+$quiz_tackers_message = ( isset($options['quiz_tackers_message']) && $options['quiz_tackers_message'] != '' ) ? stripslashes( wpautop( $options['quiz_tackers_message'] ) ) : __( "This quiz is expired!", 'quiz-maker' );
 
 // Show the Social buttons
 $options['enable_social_buttons'] = isset($options['enable_social_buttons']) ? sanitize_text_field($options['enable_social_buttons']) : 'off';
@@ -1467,9 +1467,9 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                 <div class="row">
                     <div class="col-sm-12">
                         <p style="font-size:14px; font-style:italic;">
-                            <?php echo __("To make your quiz live, copy shortcode", $this->plugin_name); ?>
-                            <strong class="ays-quiz-shortcode-box" onClick="selectElementContents(this)" class="ays_help" data-toggle="tooltip" title="<?php echo __('Click for copy.',$this->plugin_name);?>" style="font-size:16px; font-style:normal;"><?php echo "[ays_quiz id='".$id."']"; ?></strong>
-                            <?php echo " " . __( "and paste it into your desired Page or Post.", $this->plugin_name); ?>
+                            <?php echo __("To make your quiz live, copy shortcode", 'quiz-maker'); ?>
+                            <strong class="ays-quiz-shortcode-box" onClick="selectElementContents(this)" class="ays_help" data-toggle="tooltip" title="<?php echo __('Click for copy.','quiz-maker');?>" style="font-size:16px; font-style:normal;"><?php echo "[ays_quiz id='".$id."']"; ?></strong>
+                            <?php echo " " . __( "and paste it into your desired Page or Post.", 'quiz-maker'); ?>
                         </p>
                     </div>
                 </div>
@@ -1482,28 +1482,28 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                     <div class="ays-top-menu">
                         <div class="nav-tab-wrapper ays-top-tab-wrapper">
                             <a href="#tab1" data-tab="tab1" class="nav-tab <?php echo ($ays_quiz_tab == 'tab1') ? 'nav-tab-active' : ''; ?>">
-                                <?php echo __("General", $this->plugin_name);?>
+                                <?php echo __("General", 'quiz-maker');?>
                             </a>
                             <a href="#tab2" data-tab="tab2" class="nav-tab <?php echo ($ays_quiz_tab == 'tab2') ? 'nav-tab-active' : ''; ?>">
-                                <?php echo __("Styles", $this->plugin_name);?>
+                                <?php echo __("Styles", 'quiz-maker');?>
                             </a>
                             <a href="#tab3" data-tab="tab3" class="nav-tab <?php echo ($ays_quiz_tab == 'tab3') ? 'nav-tab-active' : ''; ?>">
-                                <?php echo __("Settings", $this->plugin_name);?>
+                                <?php echo __("Settings", 'quiz-maker');?>
                             </a>
                             <a href="#tab4" data-tab="tab4" class="nav-tab <?php echo ($ays_quiz_tab == 'tab4') ? 'nav-tab-active' : ''; ?>">
-                                <?php echo __("Results Settings", $this->plugin_name);?>
+                                <?php echo __("Results Settings", 'quiz-maker');?>
                             </a>
                             <a href="#tab5" data-tab="tab5" class="nav-tab <?php echo ($ays_quiz_tab == 'tab5') ? 'nav-tab-active' : ''; ?>">
-                                <?php echo __("Limitation Users", $this->plugin_name);?>
+                                <?php echo __("Limitation Users", 'quiz-maker');?>
                             </a>
                             <a href="#tab6" data-tab="tab6" class="nav-tab <?php echo ($ays_quiz_tab == 'tab6') ? 'nav-tab-active' : ''; ?>">
-                                <?php echo __("User Data", $this->plugin_name);?>
+                                <?php echo __("User Data", 'quiz-maker');?>
                             </a>
                             <a href="#tab7" data-tab="tab7" class="nav-tab <?php echo ($ays_quiz_tab == 'tab7') ? 'nav-tab-active' : ''; ?>">
-                                <?php echo __("E-Mail, Certificate", $this->plugin_name);?>
+                                <?php echo __("E-Mail, Certificate", 'quiz-maker');?>
                             </a>
                             <a href="#tab8" data-tab="tab8" class="nav-tab <?php echo ($ays_quiz_tab == 'tab8') ? 'nav-tab-active' : ''; ?>">
-                                <?php echo __("Integrations", $this->plugin_name);?>
+                                <?php echo __("Integrations", 'quiz-maker');?>
                             </a>
                         </div>
                     </div>              
@@ -1519,21 +1519,21 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         'data-delay'=> '{"show":"1000"}'
                     );
                     echo $loader_iamge;
-                    submit_button(__('Save', $this->plugin_name), 'primary ays-quiz-loader-banner', 'ays_apply_top', false, $other_attributes_only_save);
-                    submit_button(__('Save and close', $this->plugin_name), 'ays-quiz-loader-banner ays-quiz-submit-button-margin-unset', 'ays_submit_top', false, $other_attributes);
+                    submit_button(__('Save', 'quiz-maker'), 'primary ays-quiz-loader-banner', 'ays_apply_top', false, $other_attributes_only_save);
+                    submit_button(__('Save and close', 'quiz-maker'), 'ays-quiz-loader-banner ays-quiz-submit-button-margin-unset', 'ays_submit_top', false, $other_attributes);
                     submit_button(__('Cancel', "quiz-maker"), 'ays-quiz-loader-banner', 'ays_quiz_cancel_top', false, array());
                 ?>
                 </div>
             </div>
 
             <div id="tab1" class="ays-quiz-tab-content <?php echo ($ays_quiz_tab == 'tab1') ? 'ays-quiz-tab-content-active' : ''; ?>">
-                <p class="ays-subtitle"><?php echo __('General Settings',$this->plugin_name)?></p>
+                <p class="ays-subtitle"><?php echo __('General Settings','quiz-maker')?></p>
                 <hr class="ays-quiz-bolder-hr"/>
                 <div class="form-group row">
                     <div class="col-sm-2">
                         <label for='ays-quiz-title'>
-                            <?php echo __('Title', $this->plugin_name); ?>
-                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Title of the quiz',$this->plugin_name)?>">
+                            <?php echo __('Title', 'quiz-maker'); ?>
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Title of the quiz','quiz-maker')?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
                         </label>
@@ -1547,8 +1547,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                 <div class="form-group row ays-field">
                     <div class="col-sm-2">
                         <label>
-                            <?php echo __('Quiz image', $this->plugin_name); ?>
-                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Add image to the starting page of the quiz',$this->plugin_name)?>">
+                            <?php echo __('Quiz image', 'quiz-maker'); ?>
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Add image to the starting page of the quiz','quiz-maker')?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
                         </label>
@@ -1556,8 +1556,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                     <div class="col-sm-10">
                         <a href="javascript:void(0)" class="add-quiz-image" style="margin: 0;"><?php echo $image_text; ?></a>
                         <p class="ays_quiz_small_hint_text_for_message_variables" style="margin-top: 5px;">
-                            <span><?php echo __( "Please Note" , $this->plugin_name ); ?></span>
-                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('* Note: The plugin doesn’t make any changes concerning the images. It takes the images in a size, in which you have uploaded them. We are using the default WP Media. If the uploaded image is blurred and has a low quality, make sure to choose the right parameters (Full size) while uploading the images. You can find the Full Size option in the opened Add Media popup (Attachment Display Settings).',$this->plugin_name) ); ?>">
+                            <span><?php echo __( "Please Note" , 'quiz-maker' ); ?></span>
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('* Note: The plugin doesn’t make any changes concerning the images. It takes the images in a size, in which you have uploaded them. We are using the default WP Media. If the uploaded image is blurred and has a low quality, make sure to choose the right parameters (Full size) while uploading the images. You can find the Full Size option in the opened Add Media popup (Attachment Display Settings).','quiz-maker') ); ?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
                         </p>
@@ -1572,8 +1572,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                 <div class="form-group row ays-field ays-quiz-result-message-vars-parent">
                     <div class="col-sm-2">
                         <label for='ays-quiz-description'>
-                            <?php echo __('Description', $this->plugin_name); ?>
-                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Provide more information about the quiz. You can choose whether to show it or not in the front end in the “Settings” tab',$this->plugin_name)?>">
+                            <?php echo __('Description', 'quiz-maker'); ?>
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Provide more information about the quiz. You can choose whether to show it or not in the front end in the “Settings” tab','quiz-maker')?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
                         </label>
@@ -1592,8 +1592,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                 <div class="form-group row">
                     <div class="col-sm-2">
                         <label for="ays-category">
-                            <?php echo __('Category', $this->plugin_name); ?>
-                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Category of the quiz. For making a category please visit Quiz Categories page from the left navbar.',$this->plugin_name); ?>">
+                            <?php echo __('Category', 'quiz-maker'); ?>
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Category of the quiz. For making a category please visit Quiz Categories page from the left navbar.','quiz-maker'); ?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
                         </label>
@@ -1627,9 +1627,9 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div style='display: flex;align-items: center;margin-right: 15px;'>
                             <a href="javascript:void(0)" class="ays-add-question">
                                 <i class="ays_fa ays_fa_plus_square" aria-hidden="true"></i>
-                                <?php echo __('Insert questions', $this->plugin_name); ?>
+                                <?php echo __('Insert questions', 'quiz-maker'); ?>
                             </a>
-                            <a class="ays_help" style="font-size:15px;" data-placement="bottom" data-toggle="tooltip" data-html="true" title="<?php echo "<p style='margin:0;text-indent:7px;'>".htmlentities(__('For inserting questions to the quiz you need to make questions first from the “Questions page” in the left navbar. After popup’s opening, you can filter and select your prepared questions for this quiz.', $this->plugin_name))."</p><p style='margin:0;text-indent:7px;'>".htmlentities(__('The ordering of the questions will be the same as you chose. Also, you can reorder them after selection. There are no limitations for questions quantity.', $this->plugin_name))."</p>"; ?>">
+                            <a class="ays_help" style="font-size:15px;" data-placement="bottom" data-toggle="tooltip" data-html="true" title="<?php echo "<p style='margin:0;text-indent:7px;'>".htmlentities(__('For inserting questions to the quiz you need to make questions first from the “Questions page” in the left navbar. After popup’s opening, you can filter and select your prepared questions for this quiz.', 'quiz-maker'))."</p><p style='margin:0;text-indent:7px;'>".htmlentities(__('The ordering of the questions will be the same as you chose. Also, you can reorder them after selection. There are no limitations for questions quantity.', 'quiz-maker'))."</p>"; ?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
                         </div>
@@ -1640,22 +1640,22 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <p class="ays_questions_action">
                                     <span class="ays_questions_count">
                                         <?php
-                                        echo '<span class="questions_count_number">' . count($question_id_array) . '</span> '. __('items',$this->plugin_name);
+                                        echo '<span class="questions_count_number">' . count($question_id_array) . '</span> '. __('items','quiz-maker');
                                         ?>
                                     </span>
                                 </p>
                                 <div class="ays-question-ordering" tabindex="0" data-ordered="false">
                                     <i class="ays_fa fas ays_fa_exchange"></i>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Reverse the ordering of the questions in the list.',$this->plugin_name)?>">
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Reverse the ordering of the questions in the list.','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </div>
                                 <div style="display: flex;">
                                     <button class="ays_bulk_del_questions button" style="margin: 0 10px;" type="button" disabled>
-                                        <?php echo __( 'Delete', $this->plugin_name); ?>                            
+                                        <?php echo __( 'Delete', 'quiz-maker'); ?>                            
                                     </button>
                                     <button class="ays_select_all button" type="button">
-                                        <?php echo __( 'Select All', $this->plugin_name); ?>                            
+                                        <?php echo __( 'Select All', 'quiz-maker'); ?>                            
                                     </button>
                                 </div>
                             </div>
@@ -1666,12 +1666,12 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                     <table class="ays-questions-table" id="ays-questions-table">
                         <thead>
                             <tr class="ui-state-default">
-                                <th class="ays-quiz-question-ordering-row th-150"><?php echo __('Ordering', $this->plugin_name); ?></th>
-                                <th class="ays-quiz-question-question-row" style="width:500px;"><?php echo __('Question', $this->plugin_name); ?></th>
-                                <th class="ays-quiz-question-type-row th-150"><?php echo __('Type', $this->plugin_name); ?></th>
-                                <th class="ays-quiz-question-category-row th-150"><?php echo __('Category', $this->plugin_name); ?></th>
-                                <th class="ays-quiz-question-id-row th-150"><?php echo __('ID', $this->plugin_name); ?></th>
-                                <th class="ays-quiz-question-action-row th-150" style="min-width:120px;"><?php echo __('Actions', $this->plugin_name); ?></th>
+                                <th class="ays-quiz-question-ordering-row th-150"><?php echo __('Ordering', 'quiz-maker'); ?></th>
+                                <th class="ays-quiz-question-question-row" style="width:500px;"><?php echo __('Question', 'quiz-maker'); ?></th>
+                                <th class="ays-quiz-question-type-row th-150"><?php echo __('Type', 'quiz-maker'); ?></th>
+                                <th class="ays-quiz-question-category-row th-150"><?php echo __('Category', 'quiz-maker'); ?></th>
+                                <th class="ays-quiz-question-id-row th-150"><?php echo __('ID', 'quiz-maker'); ?></th>
+                                <th class="ays-quiz-question-action-row th-150" style="min-width:120px;"><?php echo __('Actions', 'quiz-maker'); ?></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -1703,7 +1703,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     }
 
                                 }elseif ((isset($data['question_image']) && $data['question_image'] !='')){
-                                    $table_question = __( 'Image question', $this->plugin_name );
+                                    $table_question = __( 'Image question', 'quiz-maker' );
                                 }
                                 $table_question = $this->ays_restriction_string("word",$table_question, 10);
 
@@ -1732,7 +1732,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     data-id="<?php echo $data_id; ?>">
                                     <td class="ays-quiz-question-ordering-row ays-sort"><i class="ays_fa ays_fa_arrows" aria-hidden="true"></i></td>
                                     <td class="ays-quiz-question-question-row">
-                                        <a href="<?php echo $edit_question_url; ?>" target="_blank" class="ays-edit-question" title="<?php echo __('Edit question', $this->plugin_name); ?>">
+                                        <a href="<?php echo $edit_question_url; ?>" target="_blank" class="ays-edit-question" title="<?php echo __('Edit question', 'quiz-maker'); ?>">
                                             <?php echo $table_question ?>
                                         </a>
                                     </td>
@@ -1741,10 +1741,10 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <td class="ays-quiz-question-id-row"><?php echo $data_id; ?></td>
                                     <td class="ays-quiz-question-action-row">
                                         <input type="checkbox" class="ays_del_tr">
-                                        <a href="<?php echo $edit_question_url; ?>" target="_blank" class="ays-edit-question" title="<?php echo __('Edit question', $this->plugin_name); ?>">
+                                        <a href="<?php echo $edit_question_url; ?>" target="_blank" class="ays-edit-question" title="<?php echo __('Edit question', 'quiz-maker'); ?>">
                                             <i class="ays_fa ays_fa_pencil_square" aria-hidden="true"></i>
                                         </a>
-                                        <a href="javascript:void(0)" class="ays-delete-question" title="<?php echo __('Delete', $this->plugin_name); ?>"
+                                        <a href="javascript:void(0)" class="ays-delete-question" title="<?php echo __('Delete', 'quiz-maker'); ?>"
                                            data-id="<?php echo $data_id; ?>">
                                             <i class="ays_fa ays_fa_minus_square" aria-hidden="true"></i>
                                         </a>
@@ -1761,15 +1761,15 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <i class="ays_fa ays_fa_info" aria-hidden="true" style="margin-right:10px"></i>
                                         <span style="font-size: 13px; font-style: italic;">
                                         <?php
-                                            echo __( 'There are no questions yet.', $this->plugin_name );
+                                            echo __( 'There are no questions yet.', 'quiz-maker' );
                                         ?>
                                         </span>
-                                        <a class="create_question_link" href="admin.php?page=<?php echo $this->plugin_name; ?>-questions&action=add" target="_blank"><?php echo __('Create question', $this->plugin_name); ?></a>
+                                        <a class="create_question_link" href="admin.php?page=<?php echo $this->plugin_name; ?>-questions&action=add" target="_blank"><?php echo __('Create question', 'quiz-maker'); ?></a>
                                     </div>
                                     <div class='ays_add_question_from_table'>                                        
                                         <a href="javascript:void(0)" class="ays-add-question">
                                             <i class="ays_fa ays_fa_plus_square" aria-hidden="true"></i>
-                                            <?php echo __('Insert questions', $this->plugin_name); ?>
+                                            <?php echo __('Insert questions', 'quiz-maker'); ?>
                                         </a>
                                     </div>
                                 </td>
@@ -1782,14 +1782,14 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                     <p class="ays_questions_action" style="width:100%;">                
                         <span class="ays_questions_count">
                             <?php
-                            echo '<span class="questions_count_number">' . ((isset($question_id_array) && !empty($question_id_array)) ? count($question_id_array) : 0) . '</span> '. __('items',$this->plugin_name);
+                            echo '<span class="questions_count_number">' . ((isset($question_id_array) && !empty($question_id_array)) ? count($question_id_array) : 0) . '</span> '. __('items','quiz-maker');
                             ?>
                         </span>
                         <button class="ays_bulk_del_questions button" type="button" disabled>
-                            <?php echo __( 'Delete', $this->plugin_name); ?>                            
+                            <?php echo __( 'Delete', 'quiz-maker'); ?>                            
                         </button>
                         <button class="ays_select_all button" type="button">
-                            <?php echo __( 'Select All', $this->plugin_name); ?>                            
+                            <?php echo __( 'Select All', 'quiz-maker'); ?>                            
                         </button>
                     </p>
                 </div>
@@ -1809,15 +1809,15 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                     <div class="ays-quiz-accordion-container">
                         <?php echo $quiz_accordion_svg_html; ?>
-                        <p class="ays-subtitle"><?php echo __('Quiz Styles',$this->plugin_name)?></p>
+                        <p class="ays-subtitle"><?php echo __('Quiz Styles','quiz-maker')?></p>
                     </div>
                     <hr class="ays-quiz-bolder-hr"/>
                     <div class="ays-quiz-accordion-options-box">
                         <div class="form-group row">
                             <div class="col-sm-2">
                                 <label>
-                                    <?php echo __('Theme', $this->plugin_name); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('You can choose your preferred template and customize it with options below Elegant Dark, Elegant Light, Classic Dark, Classic Light, Rect Dark, Rect Light.',$this->plugin_name)?>">
+                                    <?php echo __('Theme', 'quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('You can choose your preferred template and customize it with options below Elegant Dark, Elegant Light, Classic Dark, Classic Light, Rect Dark, Rect Light.','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -1826,37 +1826,37 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row ays_themes_images_main_div">
                                     <div class="ays_theme_image_div col-sm-2 <?php echo ($quiz_theme == 'elegant_dark') ? 'ays_active_theme_image' : '' ?>" style="padding:0;">
                                         <label for="theme_elegant_dark" class="ays-quiz-theme-item">
-                                            <p><?php echo __('Elegant Dark',$this->plugin_name)?></p>
+                                            <p><?php echo __('Elegant Dark','quiz-maker')?></p>
                                             <img src="<?php echo AYS_QUIZ_ADMIN_URL . '/images/themes/elegant_dark.webp' ?>" alt="Elegant Dark">
                                         </label>
                                     </div>
                                     <div class="ays_theme_image_div col-sm-2 <?php echo ($quiz_theme == 'elegant_light') ? 'ays_active_theme_image' : '' ?>" style="padding:0;">
                                         <label for="theme_elegant_light" class="ays-quiz-theme-item">
-                                            <p><?php echo __('Elegant Light',$this->plugin_name)?></p>
+                                            <p><?php echo __('Elegant Light','quiz-maker')?></p>
                                             <img src="<?php echo AYS_QUIZ_ADMIN_URL . '/images/themes/elegant_light.webp' ?>" alt="Elegant Light">
                                         </label>
                                     </div>
                                     <div class="ays_theme_image_div col-sm-2 <?php echo ($quiz_theme == 'classic_dark') ? 'ays_active_theme_image' : '' ?>" style="padding:0;">
                                         <label for="theme_classic_dark" class="ays-quiz-theme-item">
-                                            <p><?php echo __('Classic Dark',$this->plugin_name)?></p>
+                                            <p><?php echo __('Classic Dark','quiz-maker')?></p>
                                             <img src="<?php echo AYS_QUIZ_ADMIN_URL . '/images/themes/classic_dark.webp' ?>" alt="Classic Dark">
                                         </label>
                                     </div>
                                     <div class="ays_theme_image_div col-sm-2 <?php echo ($quiz_theme == 'classic_light') ? 'ays_active_theme_image' : '' ?>" style="padding:0;">
                                         <label for="theme_classic_light" class="ays-quiz-theme-item">
-                                            <p><?php echo __('Classic Light',$this->plugin_name)?></p>
+                                            <p><?php echo __('Classic Light','quiz-maker')?></p>
                                             <img src="<?php echo AYS_QUIZ_ADMIN_URL . '/images/themes/classic_light.webp' ?>" alt="Classic Light">
                                         </label>
                                     </div>
                                     <div class="ays_theme_image_div col-sm-2 <?php echo ($quiz_theme == 'rect_dark') ? 'ays_active_theme_image' : '' ?>" style="padding:0;">
                                         <label for="theme_rect_dark" class="ays-quiz-theme-item">
-                                            <p><?php echo __('Rect Dark',$this->plugin_name)?></p>
+                                            <p><?php echo __('Rect Dark','quiz-maker')?></p>
                                             <img src="<?php echo AYS_QUIZ_ADMIN_URL . '/images/themes/rect_dark.webp' ?>" alt="Rect Dark" >
                                         </label>
                                     </div>
                                     <div class="ays_theme_image_div col-sm-2 <?php echo ($quiz_theme == 'rect_light') ? 'ays_active_theme_image' : '' ?>" style="padding:0;">
                                         <label for="theme_rect_light" class="ays-quiz-theme-item">
-                                            <p><?php echo __('Rect Light',$this->plugin_name)?></p>
+                                            <p><?php echo __('Rect Light','quiz-maker')?></p>
                                             <img src="<?php echo AYS_QUIZ_ADMIN_URL . '/images/themes/rect_light.webp' ?>" alt="Rect Light" >
                                         </label>
                                     </div>
@@ -1870,13 +1870,13 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <div class="form-group row">
                                             <div class="col-sm-2 ays_theme_image_div" style="padding:0;">
                                                 <label class="ays-quiz-theme-item ays-disable-setting">
-                                                    <p><?php echo __('Modern Light',$this->plugin_name)?></p>
+                                                    <p><?php echo __('Modern Light','quiz-maker')?></p>
                                                     <img src="<?php echo AYS_QUIZ_ADMIN_URL . '/images/themes/modern_light.webp' ?>" alt="Modern Light"/>
                                                 </label>
                                             </div>
                                             <div class="col-sm-2 ays_theme_image_div" style="padding:0;">
                                                 <label class="ays-quiz-theme-item ays-disable-setting">
-                                                    <p><?php echo __('Modern Dark',$this->plugin_name)?></p>
+                                                    <p><?php echo __('Modern Dark','quiz-maker')?></p>
                                                     <img src="<?php echo AYS_QUIZ_ADMIN_URL . '/images/themes/modern_dark.webp' ?>" alt="Modern Dark"/>
                                                 </label>
                                             </div>
@@ -1908,8 +1908,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for='ays-quiz-width'>
-                                            <?php echo __('Quiz width', $this->plugin_name); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Quiz container width in pixels. Set it 0 or leave it blank for making a quiz with 100%  width. It accepts only numeric values.',$this->plugin_name)?>">
+                                            <?php echo __('Quiz width', 'quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Quiz container width in pixels. Set it 0 or leave it blank for making a quiz with 100%  width. It accepts only numeric values.','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -1920,12 +1920,12 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                                 <input type="number" class="ays-text-input ays-text-input-short" id='ays-quiz-width'
                                                    name='ays_quiz_width'
                                                    value="<?php echo (isset($options['width'])) ? $options['width'] : ''; ?>"/>
-                                                <span style="display:block;" class="ays_quiz_small_hint_text"><?php echo __("For 100% leave blank", $this->plugin_name);?></span>
+                                                <span style="display:block;" class="ays_quiz_small_hint_text"><?php echo __("For 100% leave blank", 'quiz-maker');?></span>
                                             </div>
                                             <div class="ays_quiz_dropdown_max_width">
                                                 <select id="ays_quiz_width_by_percentage_px" name="ays_quiz_width_by_percentage_px" class="ays-text-input ays-text-input-short" style="display:inline-block; width: 60px;">
-                                                    <option value="pixels" <?php echo $quiz_width_by_percentage_px == "pixels" ? "selected" : ""; ?>><?php echo __( "px", $this->plugin_name ); ?></option>
-                                                    <option value="percentage" <?php echo $quiz_width_by_percentage_px == "percentage" ? "selected" : ""; ?>><?php echo __( "%", $this->plugin_name ); ?></option>
+                                                    <option value="pixels" <?php echo $quiz_width_by_percentage_px == "pixels" ? "selected" : ""; ?>><?php echo __( "px", 'quiz-maker' ); ?></option>
+                                                    <option value="percentage" <?php echo $quiz_width_by_percentage_px == "percentage" ? "selected" : ""; ?>><?php echo __( "%", 'quiz-maker' ); ?></option>
                                                 </select>
                                             </div>
                                         </div>
@@ -1935,8 +1935,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for='ays_mobile_max_width'>
-                                            <?php echo __('Quiz max-width for mobile', $this->plugin_name); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Quiz container max-width for mobile in percentage. This option will work for the screens with less than 640 pixels width.',$this->plugin_name)?>">
+                                            <?php echo __('Quiz max-width for mobile', 'quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Quiz container max-width for mobile in percentage. This option will work for the screens with less than 640 pixels width.','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -1946,7 +1946,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                             <input type="number" class="ays-text-input ays-text-input-short" id='ays_mobile_max_width'
                                                    name='ays_mobile_max_width' style="display:inline-block;"
                                                    value="<?php echo $mobile_max_width; ?>"/>
-                                            <span style="display:block;" class="ays_quiz_small_hint_text"><?php echo __("For 100% leave blank", $this->plugin_name);?></span>
+                                            <span style="display:block;" class="ays_quiz_small_hint_text"><?php echo __("For 100% leave blank", 'quiz-maker');?></span>
                                         </div>
                                         <div class="ays_quiz_dropdown_max_width">
                                             <input type="text" value="%" class='ays-quiz-form-hint-for-size' disabled>
@@ -1957,8 +1957,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for='ays_quiz_content_max_width'>
-                                            <?php echo __('Quiz content max-width', $this->plugin_name); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Set your desired value for the Quiz content max-width in percentage. By default, it is set as 90%.',$this->plugin_name); ?>">
+                                            <?php echo __('Quiz content max-width', 'quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Set your desired value for the Quiz content max-width in percentage. By default, it is set as 90%.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -1967,8 +1967,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <div class="row">
                                             <div class="col-sm-5">
                                                 <label for='ays_answers_font_size'>
-                                                    <?php echo __('On desktop', $this->plugin_name); ?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the Quiz content max-width for desktop devices.',$this->plugin_name); ?>">
+                                                    <?php echo __('On desktop', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the Quiz content max-width for desktop devices.','quiz-maker'); ?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
@@ -1986,8 +1986,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <div class="row">
                                             <div class="col-sm-5">
                                                 <label for='ays_quiz_content_mobile_max_width'>
-                                                    <?php echo __('On mobile', $this->plugin_name); ?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the Quiz content max-width for mobile devices.',$this->plugin_name); ?>">
+                                                    <?php echo __('On mobile', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the Quiz content max-width for mobile devices.','quiz-maker'); ?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
@@ -2007,8 +2007,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for='ays-quiz-height'>
-                                            <?php echo __('Quiz min-height', $this->plugin_name); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Quiz minimal height in pixels',$this->plugin_name)?>">
+                                            <?php echo __('Quiz min-height', 'quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Quiz minimal height in pixels','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -2026,8 +2026,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for='ays-quiz-color'>
-                                            <?php echo __('Quiz Color', $this->plugin_name); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Colors of the quiz main attributes (buttons, hover effect, progress bar, etc.).',$this->plugin_name)?>">
+                                            <?php echo __('Quiz Color', 'quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Colors of the quiz main attributes (buttons, hover effect, progress bar, etc.).','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -2041,8 +2041,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for='ays-quiz-bg-color'>
-                                            <?php echo __('Background color', $this->plugin_name); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Background color of the quiz box. You can also choose the opacity(alfa) level on the right side.',$this->plugin_name)?>">
+                                            <?php echo __('Background color', 'quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Background color of the quiz box. You can also choose the opacity(alfa) level on the right side.','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -2057,8 +2057,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for='ays-quiz-text-color'>
-                                            <?php echo __('Text Color', $this->plugin_name); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the text color inside the quiz and questions. It affects all kinds of texts and icons.',$this->plugin_name)?>">
+                                            <?php echo __('Text Color', 'quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the text color inside the quiz and questions. It affects all kinds of texts and icons.','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -2073,8 +2073,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for='ays-quiz-buttons-text-color'>
-                                            <?php echo __('Buttons text color', $this->plugin_name); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the text color of buttons inside the quiz and questions. It affects only to buttons.',$this->plugin_name)?>">
+                                            <?php echo __('Buttons text color', 'quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the text color of buttons inside the quiz and questions. It affects only to buttons.','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -2089,8 +2089,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_quiz_border_radius">
-                                            <?php echo __('Border radius',$this->plugin_name)?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Quiz container border-radius in pixels. It accepts only numeric values.',$this->plugin_name)?>">
+                                            <?php echo __('Border radius','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Quiz container border-radius in pixels. It accepts only numeric values.','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -2111,8 +2111,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_enable_box_shadow">
-                                            <?php echo __('Box shadow',$this->plugin_name)?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Allow quiz container box shadow',$this->plugin_name)?>">
+                                            <?php echo __('Box shadow','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Allow quiz container box shadow','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -2127,8 +2127,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                             <div class="form-group row">
                                                 <div class="col-sm-12">
                                                     <label for="ays-quiz-box-shadow-color">
-                                                        <?php echo __('Box shadow color',$this->plugin_name)?>
-                                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The color of the shadow of the quiz container',$this->plugin_name ); ?>">
+                                                        <?php echo __('Box shadow color','quiz-maker')?>
+                                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The color of the shadow of the quiz container','quiz-maker' ); ?>">
                                                             <i class="ays_fa ays_fa_info_circle"></i>
                                                         </a>
                                                      </label>
@@ -2139,15 +2139,15 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                             <div class="form-group row">
                                                 <div class="col-sm-12">
                                                     <div class="col-sm-3" style="display: inline-block;">
-                                                        <span class="ays_quiz_small_hint_text"><?php echo __('X', $this->plugin_name); ?></span>
+                                                        <span class="ays_quiz_small_hint_text"><?php echo __('X', 'quiz-maker'); ?></span>
                                                         <input type="number" class="ays-text-input ays-text-input-90-width" id='ays_quiz_box_shadow_x_offset' name='ays_quiz_box_shadow_x_offset' value="<?php echo $quiz_box_shadow_x_offset; ?>" />
                                                     </div>
                                                     <div class="col-sm-3 ays_divider_left" style="display: inline-block;">
-                                                        <span class="ays_quiz_small_hint_text"><?php echo __('Y', $this->plugin_name); ?></span>
+                                                        <span class="ays_quiz_small_hint_text"><?php echo __('Y', 'quiz-maker'); ?></span>
                                                         <input type="number" class="ays-text-input ays-text-input-90-width" id='ays_quiz_box_shadow_y_offset' name='ays_quiz_box_shadow_y_offset' value="<?php echo $quiz_box_shadow_y_offset; ?>" />
                                                     </div>
                                                     <div class="col-sm-3 ays_divider_left" style="display: inline-block;">
-                                                        <span class="ays_quiz_small_hint_text"><?php echo __('Z', $this->plugin_name); ?></span>
+                                                        <span class="ays_quiz_small_hint_text"><?php echo __('Z', 'quiz-maker'); ?></span>
                                                         <input type="number" class="ays-text-input ays-text-input-90-width" id='ays_quiz_box_shadow_z_offset' name='ays_quiz_box_shadow_z_offset' value="<?php echo $quiz_box_shadow_z_offset; ?>" />
                                                     </div>
                                                 </div>
@@ -2159,8 +2159,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label>
-                                            <?php echo __('Background image',$this->plugin_name)?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Background image of the container. You can choose different images for each question from the Settings tab on the Edit question page. The background-size is set “Cover” by default for not scaling the image.',$this->plugin_name)?>">
+                                            <?php echo __('Background image','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Background image of the container. You can choose different images for each question from the Settings tab on the Edit question page. The background-size is set “Cover” by default for not scaling the image.','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -2168,8 +2168,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="col-sm-7 ays_divider_left">                                
                                         <a href="javascript:void(0)" style="<?php echo $quiz_bg_image == '' ? 'display:inline-block' : 'display:none'; ?>" class="add-quiz-bg-image"><?php echo $bg_image_text; ?></a>
                                         <p class="ays_quiz_small_hint_text_for_message_variables" style="margin-top: 5px;">
-                                            <span><?php echo __( "Please Note" , $this->plugin_name ); ?></span>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('* Note: The plugin doesn’t make any changes concerning the images. It takes the images in a size, in which you have uploaded them. We are using the default WP Media. If the uploaded image is blurred and has a low quality, make sure to choose the right parameters (Full size) while uploading the images. You can find the Full Size option in the opened Add Media popup (Attachment Display Settings).',$this->plugin_name) ); ?>">
+                                            <span><?php echo __( "Please Note" , 'quiz-maker' ); ?></span>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('* Note: The plugin doesn’t make any changes concerning the images. It takes the images in a size, in which you have uploaded them. We are using the default WP Media. If the uploaded image is blurred and has a low quality, make sure to choose the right parameters (Full size) while uploading the images. You can find the Full Size option in the opened Add Media popup (Attachment Display Settings).','quiz-maker') ); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </p>
@@ -2186,21 +2186,21 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <div class="form-group row">
                                             <div class="col-sm-12">
                                                 <label for="ays_quiz_bg_image_position">
-                                                    <?php echo __( "Background image position", $this->plugin_name ); ?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The position of background image of the quiz',$this->plugin_name)?>">
+                                                    <?php echo __( "Background image position", 'quiz-maker' ); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The position of background image of the quiz','quiz-maker')?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
                                                 <select id="ays_quiz_bg_image_position" name="ays_quiz_bg_image_position" class="ays-text-input ays-text-input-short" style="display:inline-block;">
-                                                    <option value="left top" <?php echo $quiz_bg_image_position == "left top" ? "selected" : ""; ?>><?php echo __( "Left Top", $this->plugin_name ); ?></option>
-                                                    <option value="left center" <?php echo $quiz_bg_image_position == "left center" ? "selected" : ""; ?>><?php echo __( "Left Center", $this->plugin_name ); ?></option>
-                                                    <option value="left bottom" <?php echo $quiz_bg_image_position == "left bottom" ? "selected" : ""; ?>><?php echo __( "Left Bottom", $this->plugin_name ); ?></option>
-                                                    <option value="center top" <?php echo $quiz_bg_image_position == "center top" ? "selected" : ""; ?>><?php echo __( "Center Top", $this->plugin_name ); ?></option>
-                                                    <option value="center center" <?php echo $quiz_bg_image_position == "center center" ? "selected" : ""; ?>><?php echo __( "Center Center", $this->plugin_name ); ?></option>
-                                                    <option value="center bottom" <?php echo $quiz_bg_image_position == "center bottom" ? "selected" : ""; ?>><?php echo __( "Center Bottom", $this->plugin_name ); ?></option>
-                                                    <option value="right top" <?php echo $quiz_bg_image_position == "right top" ? "selected" : ""; ?>><?php echo __( "Right Top", $this->plugin_name ); ?></option>
-                                                    <option value="right center" <?php echo $quiz_bg_image_position == "right center" ? "selected" : ""; ?>><?php echo __( "Right Center", $this->plugin_name ); ?></option>
-                                                    <option value="right bottom" <?php echo $quiz_bg_image_position == "right bottom" ? "selected" : ""; ?>><?php echo __( "Right Bottom", $this->plugin_name ); ?></option>
+                                                    <option value="left top" <?php echo $quiz_bg_image_position == "left top" ? "selected" : ""; ?>><?php echo __( "Left Top", 'quiz-maker' ); ?></option>
+                                                    <option value="left center" <?php echo $quiz_bg_image_position == "left center" ? "selected" : ""; ?>><?php echo __( "Left Center", 'quiz-maker' ); ?></option>
+                                                    <option value="left bottom" <?php echo $quiz_bg_image_position == "left bottom" ? "selected" : ""; ?>><?php echo __( "Left Bottom", 'quiz-maker' ); ?></option>
+                                                    <option value="center top" <?php echo $quiz_bg_image_position == "center top" ? "selected" : ""; ?>><?php echo __( "Center Top", 'quiz-maker' ); ?></option>
+                                                    <option value="center center" <?php echo $quiz_bg_image_position == "center center" ? "selected" : ""; ?>><?php echo __( "Center Center", 'quiz-maker' ); ?></option>
+                                                    <option value="center bottom" <?php echo $quiz_bg_image_position == "center bottom" ? "selected" : ""; ?>><?php echo __( "Center Bottom", 'quiz-maker' ); ?></option>
+                                                    <option value="right top" <?php echo $quiz_bg_image_position == "right top" ? "selected" : ""; ?>><?php echo __( "Right Top", 'quiz-maker' ); ?></option>
+                                                    <option value="right center" <?php echo $quiz_bg_image_position == "right center" ? "selected" : ""; ?>><?php echo __( "Right Center", 'quiz-maker' ); ?></option>
+                                                    <option value="right bottom" <?php echo $quiz_bg_image_position == "right bottom" ? "selected" : ""; ?>><?php echo __( "Right Bottom", 'quiz-maker' ); ?></option>
                                                 </select>
                                             </div>
                                         </div>
@@ -2208,8 +2208,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <div class="form-group row">
                                             <div class="col-sm-8">
                                                 <label for="ays_quiz_bg_img_in_finish_page">
-                                                    <?php echo __( "Hide background image on result page", $this->plugin_name ); ?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('If this option is enabled background image of quiz will disappear on the result page.',$this->plugin_name)?>">
+                                                    <?php echo __( "Hide background image on result page", 'quiz-maker' ); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('If this option is enabled background image of quiz will disappear on the result page.','quiz-maker')?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
@@ -2226,8 +2226,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <div class="form-group row">
                                             <div class="col-sm-8">
                                                 <label for="ays_quiz_bg_img_on_start_page">
-                                                    <?php echo __( "Hide background image on start page", $this->plugin_name ); ?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('If this option is enabled background image of quiz will disappear on the start page.',$this->plugin_name); ?>">
+                                                    <?php echo __( "Hide background image on start page", 'quiz-maker' ); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('If this option is enabled background image of quiz will disappear on the start page.','quiz-maker'); ?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
@@ -2241,8 +2241,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <div class="form-group row">
                                             <div class="col-sm-8">
                                                 <label for="ays_quiz_bg_img_during_the_quiz">
-                                                    <?php echo __( "Hide background image during the quiz", $this->plugin_name ); ?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('If this option is enabled the quiz background image will not be displayed during the quiz.',$this->plugin_name); ?>">
+                                                    <?php echo __( "Hide background image during the quiz", 'quiz-maker' ); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('If this option is enabled the quiz background image will not be displayed during the quiz.','quiz-maker'); ?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
@@ -2258,8 +2258,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays-enable-background-gradient">
-                                            <?php echo __('Background gradient',$this->plugin_name)?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Color gradient of the quiz background',$this->plugin_name)?>">
+                                            <?php echo __('Background gradient','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Color gradient of the quiz background','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -2273,8 +2273,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <div class="row ays_toggle_target" style="margin: 10px 0 0 0; padding-top: 10px; <?php echo ($enable_background_gradient) ? '' : 'display:none;' ?>">
                                             <div class="col-sm-12 ays_divider_top" style="margin-top: 10px; padding-top: 10px;">
                                                 <label for='ays-background-gradient-color-1'>
-                                                    <?php echo __('Color 1', $this->plugin_name); ?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Color 1 of the quiz background gradient',$this->plugin_name)?>">
+                                                    <?php echo __('Color 1', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Color 1 of the quiz background gradient','quiz-maker')?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
@@ -2282,8 +2282,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                             </div>
                                             <div class="col-sm-12 ays_divider_top" style="margin-top: 10px; padding-top: 10px;">
                                                 <label for='ays-background-gradient-color-2'>
-                                                    <?php echo __('Color 2', $this->plugin_name); ?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Color 2 of the quiz background gradient',$this->plugin_name)?>">
+                                                    <?php echo __('Color 2', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Color 2 of the quiz background gradient','quiz-maker')?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
@@ -2291,16 +2291,16 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                             </div>
                                             <div class="col-sm-12 ays_divider_top" style="margin-top: 10px; padding-top: 10px;">
                                                 <label for="ays_quiz_gradient_direction">
-                                                    <?php echo __('Gradient direction',$this->plugin_name)?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The direction of the color gradient',$this->plugin_name)?>">
+                                                    <?php echo __('Gradient direction','quiz-maker')?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The direction of the color gradient','quiz-maker')?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
                                                 <select id="ays_quiz_gradient_direction" name="ays_quiz_gradient_direction" class="ays-text-input ays-text-input-short">
-                                                    <option <?php echo ($quiz_gradient_direction == 'vertical') ? 'selected' : ''; ?> value="vertical"><?php echo __( 'Vertical', $this->plugin_name); ?></option>
-                                                    <option <?php echo ($quiz_gradient_direction == 'horizontal') ? 'selected' : ''; ?> value="horizontal"><?php echo __( 'Horizontal', $this->plugin_name); ?></option>
-                                                    <option <?php echo ($quiz_gradient_direction == 'diagonal_left_to_right') ? 'selected' : ''; ?> value="diagonal_left_to_right"><?php echo __( 'Diagonal left to right', $this->plugin_name); ?></option>
-                                                    <option <?php echo ($quiz_gradient_direction == 'diagonal_right_to_left') ? 'selected' : ''; ?> value="diagonal_right_to_left"><?php echo __( 'Diagonal right to left', $this->plugin_name); ?></option>
+                                                    <option <?php echo ($quiz_gradient_direction == 'vertical') ? 'selected' : ''; ?> value="vertical"><?php echo __( 'Vertical', 'quiz-maker'); ?></option>
+                                                    <option <?php echo ($quiz_gradient_direction == 'horizontal') ? 'selected' : ''; ?> value="horizontal"><?php echo __( 'Horizontal', 'quiz-maker'); ?></option>
+                                                    <option <?php echo ($quiz_gradient_direction == 'diagonal_left_to_right') ? 'selected' : ''; ?> value="diagonal_left_to_right"><?php echo __( 'Diagonal left to right', 'quiz-maker'); ?></option>
+                                                    <option <?php echo ($quiz_gradient_direction == 'diagonal_right_to_left') ? 'selected' : ''; ?> value="diagonal_right_to_left"><?php echo __( 'Diagonal right to left', 'quiz-maker'); ?></option>
                                                 </select>
                                             </div>
                                         </div>
@@ -2310,8 +2310,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_enable_border">
-                                            <?php echo __('Quiz container border',$this->plugin_name)?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Allow quiz container border',$this->plugin_name)?>">
+                                            <?php echo __('Quiz container border','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Allow quiz container border','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -2327,8 +2327,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                             <div class="ays_quiz_display_flex_width">
                                                 <div>
                                                     <label for="ays_quiz_border_width">
-                                                        <?php echo __('Border width',$this->plugin_name)?>
-                                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The width of quiz container border',$this->plugin_name)?>">
+                                                        <?php echo __('Border width','quiz-maker')?>
+                                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The width of quiz container border','quiz-maker')?>">
                                                             <i class="ays_fa ays_fa_info_circle"></i>
                                                         </a>
                                                      </label>
@@ -2343,8 +2343,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         </div>
                                         <div class="col-sm-12 ays_toggle_target ays_divider_top" style="margin-top: 10px; padding-top: 10px; <?php echo ($enable_border) ? '' : 'display:none;' ?>">
                                             <label for="ays_quiz_border_style">
-                                                <?php echo __('Border style',$this->plugin_name)?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The style of quiz container border',$this->plugin_name)?>">
+                                                <?php echo __('Border style','quiz-maker')?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The style of quiz container border','quiz-maker')?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -2364,8 +2364,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         </div>
                                         <div class="col-sm-12 ays_toggle_target ays_divider_top" style="margin-top: 10px; padding-top: 10px; <?php echo ($enable_border) ? '' : 'display:none;' ?>">
                                             <label for="ays_quiz_border_color">
-                                                <?php echo __('Border color',$this->plugin_name)?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The color of the quiz container border',$this->plugin_name)?>">
+                                                <?php echo __('Border color','quiz-maker')?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The color of the quiz container border','quiz-maker')?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -2383,8 +2383,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for='ays_quiz_image_height'>
-                                            <?php echo __('Quiz image height', $this->plugin_name); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Set quiz image height in pixels. It accepts only number values.',$this->plugin_name); ?>">
+                                            <?php echo __('Quiz image height', 'quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Set quiz image height in pixels. It accepts only number values.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -2402,18 +2402,18 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_progress_bar_style">
-                                            <?php echo __('Progress bar style',$this->plugin_name)?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Design of the progress bar which will appear on the finish page only. It will show the user’s score.',$this->plugin_name)?>">
+                                            <?php echo __('Progress bar style','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Design of the progress bar which will appear on the finish page only. It will show the user’s score.','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
                                     </div>
                                     <div class="col-sm-7 ays_divider_left">
                                         <select id="ays_progress_bar_style" name="ays_progress_bar_style" class="ays-text-input ays-text-input-short">
-                                            <option <?php echo ($progress_bar_style == 'first') ? 'selected' : ''; ?> value="first"><?php echo __( 'Rounded', $this->plugin_name); ?></option>
-                                            <option <?php echo ($progress_bar_style == 'second') ? 'selected' : ''; ?> value="second"><?php echo __( 'Rectangle', $this->plugin_name); ?></option>
-                                            <option <?php echo ($progress_bar_style == 'third') ? 'selected' : ''; ?> value="third"><?php echo __( 'With stripes', $this->plugin_name); ?></option>
-                                            <option <?php echo ($progress_bar_style == 'fourth') ? 'selected' : ''; ?> value="fourth"><?php echo __( 'With stripes and animation', $this->plugin_name); ?></option>
+                                            <option <?php echo ($progress_bar_style == 'first') ? 'selected' : ''; ?> value="first"><?php echo __( 'Rounded', 'quiz-maker'); ?></option>
+                                            <option <?php echo ($progress_bar_style == 'second') ? 'selected' : ''; ?> value="second"><?php echo __( 'Rectangle', 'quiz-maker'); ?></option>
+                                            <option <?php echo ($progress_bar_style == 'third') ? 'selected' : ''; ?> value="third"><?php echo __( 'With stripes', 'quiz-maker'); ?></option>
+                                            <option <?php echo ($progress_bar_style == 'fourth') ? 'selected' : ''; ?> value="fourth"><?php echo __( 'With stripes and animation', 'quiz-maker'); ?></option>
                                         </select>
                                         <div style="margin:20px 0;">
                                             <div class='ays-progress first <?php echo ($progress_bar_style == 'first') ? "display_block" : ""; ?>'>
@@ -2451,18 +2451,18 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_progress_bar_style">
-                                            <?php echo __('Progress live bar style',$this->plugin_name); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Choose your preferred design for the progress live bar which will appear while taking the quiz. It will show the current state of the user in the quiz.',$this->plugin_name);?>">
+                                            <?php echo __('Progress live bar style','quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Choose your preferred design for the progress live bar which will appear while taking the quiz. It will show the current state of the user in the quiz.','quiz-maker');?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
                                     </div>
                                     <div class="col-sm-7 ays_divider_left">
                                         <select id="ays_progress_live_bar_style" name="ays_progress_live_bar_style" class="ays-text-input ays-text-input-short">
-                                            <option <?php echo ($progress_live_bar_style == 'default') ? 'selected' : ''; ?> value="default"><?php echo __( 'Default', $this->plugin_name); ?></option>
-                                            <option <?php echo ($progress_live_bar_style == 'second') ? 'selected' : ''; ?> value="second"><?php echo __( 'Rectangle', $this->plugin_name); ?></option>
-                                            <option <?php echo ($progress_live_bar_style == 'third') ? 'selected' : ''; ?> value="third"><?php echo __( 'With stripes', $this->plugin_name); ?></option>
-                                            <option <?php echo ($progress_live_bar_style == 'fourth') ? 'selected' : ''; ?> value="fourth"><?php echo __( 'With stripes and animation', $this->plugin_name); ?></option>
+                                            <option <?php echo ($progress_live_bar_style == 'default') ? 'selected' : ''; ?> value="default"><?php echo __( 'Default', 'quiz-maker'); ?></option>
+                                            <option <?php echo ($progress_live_bar_style == 'second') ? 'selected' : ''; ?> value="second"><?php echo __( 'Rectangle', 'quiz-maker'); ?></option>
+                                            <option <?php echo ($progress_live_bar_style == 'third') ? 'selected' : ''; ?> value="third"><?php echo __( 'With stripes', 'quiz-maker'); ?></option>
+                                            <option <?php echo ($progress_live_bar_style == 'fourth') ? 'selected' : ''; ?> value="fourth"><?php echo __( 'With stripes and animation', 'quiz-maker'); ?></option>
                                         </select>
                                         <div style="margin:20px 0;">
                                             <div class="ays-progress default <?php echo ($progress_live_bar_style == 'default') ? "display_block" : ""; ?>">
@@ -2498,18 +2498,18 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_buttons_position">
-                                            <?php echo __('Buttons position',$this->plugin_name)?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the position of buttons of the quiz.',$this->plugin_name)?>">
+                                            <?php echo __('Buttons position','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the position of buttons of the quiz.','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
                                     </div>
                                     <div class="col-sm-7 ays_divider_left">
                                         <select id="ays_buttons_position" name="ays_buttons_position" class="ays-text-input ays-text-input-short">
-                                            <option <?php echo ($buttons_position == 'center') ? 'selected' : ''; ?> value="center"><?php echo __( 'Center', $this->plugin_name); ?></option>
-                                            <option <?php echo ($buttons_position == 'flex-start') ? 'selected' : ''; ?> value="flex-start"><?php echo __( 'Left', $this->plugin_name); ?></option>
-                                            <option <?php echo ($buttons_position == 'flex-end') ? 'selected' : ''; ?> value="flex-end"><?php echo __( 'Right', $this->plugin_name); ?></option>
-                                            <option <?php echo ($buttons_position == 'space-between') ? 'selected' : ''; ?> value="space-between"><?php echo __( 'Space Between', $this->plugin_name); ?></option>
+                                            <option <?php echo ($buttons_position == 'center') ? 'selected' : ''; ?> value="center"><?php echo __( 'Center', 'quiz-maker'); ?></option>
+                                            <option <?php echo ($buttons_position == 'flex-start') ? 'selected' : ''; ?> value="flex-start"><?php echo __( 'Left', 'quiz-maker'); ?></option>
+                                            <option <?php echo ($buttons_position == 'flex-end') ? 'selected' : ''; ?> value="flex-end"><?php echo __( 'Right', 'quiz-maker'); ?></option>
+                                            <option <?php echo ($buttons_position == 'space-between') ? 'selected' : ''; ?> value="space-between"><?php echo __( 'Space Between', 'quiz-maker'); ?></option>
                                         </select>
                                     </div>
                                 </div><!-- Buttons position -->
@@ -2517,13 +2517,13 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_quiz_title_transformation">
-                                            <?php echo __('Quiz title transformation', $this->plugin_name ); ?>
+                                            <?php echo __('Quiz title transformation', 'quiz-maker' ); ?>
                                             <a class="ays_help" data-toggle="tooltip" data-html="true" data-placement="top" title="<?php
-                                                echo __("Specify how to capitalize a title text of your quiz.", $this->plugin_name) .
+                                                echo __("Specify how to capitalize a title text of your quiz.", 'quiz-maker') .
                                                     "<ul style='list-style-type: circle;padding-left: 20px;'>".
-                                                        "<li>". __('Uppercase – Transforms all characters to uppercase',$this->plugin_name) ."</li>".
-                                                        "<li>". __('Lowercase – Transforms all characters to lowercase',$this->plugin_name) ."</li>".
-                                                        "<li>". __('Capitalize – Transforms the first character of each word to uppercase',$this->plugin_name) ."</li>".
+                                                        "<li>". __('Uppercase – Transforms all characters to uppercase','quiz-maker') ."</li>".
+                                                        "<li>". __('Lowercase – Transforms all characters to lowercase','quiz-maker') ."</li>".
+                                                        "<li>". __('Capitalize – Transforms the first character of each word to uppercase','quiz-maker') ."</li>".
                                                     "</ul>";
                                                 ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
@@ -2532,10 +2532,10 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     </div>
                                     <div class="col-sm-7 ays_divider_left">
                                         <select name="ays_quiz_title_transformation" id="ays_quiz_title_transformation" class="ays-text-input ays-text-input-short" style="display:block;">
-                                            <option value="uppercase" <?php echo $quiz_title_transformation == 'uppercase' ? 'selected' : ''; ?>><?php echo __( "Uppercase", $this->plugin_name ); ?></option>
-                                            <option value="lowercase" <?php echo $quiz_title_transformation == 'lowercase' ? 'selected' : ''; ?>><?php echo __( "Lowercase", $this->plugin_name ); ?></option>
-                                            <option value="capitalize" <?php echo $quiz_title_transformation == 'capitalize' ? 'selected' : ''; ?>><?php echo __( "Capitalize", $this->plugin_name ); ?></option>
-                                            <option value="none" <?php echo $quiz_title_transformation == 'none' ? 'selected' : ''; ?>><?php echo __( "None", $this->plugin_name ); ?></option>
+                                            <option value="uppercase" <?php echo $quiz_title_transformation == 'uppercase' ? 'selected' : ''; ?>><?php echo __( "Uppercase", 'quiz-maker' ); ?></option>
+                                            <option value="lowercase" <?php echo $quiz_title_transformation == 'lowercase' ? 'selected' : ''; ?>><?php echo __( "Lowercase", 'quiz-maker' ); ?></option>
+                                            <option value="capitalize" <?php echo $quiz_title_transformation == 'capitalize' ? 'selected' : ''; ?>><?php echo __( "Capitalize", 'quiz-maker' ); ?></option>
+                                            <option value="none" <?php echo $quiz_title_transformation == 'none' ? 'selected' : ''; ?>><?php echo __( "None", 'quiz-maker' ); ?></option>
                                         </select>
                                     </div>
                                 </div><!-- Quiz title transformation -->
@@ -2543,8 +2543,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for='ays_quiz_title_font_size'>
-                                            <?php echo __('Quiz title font size', $this->plugin_name); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Set your preferred text size for the Quiz Title. The default size is 21px.',$this->plugin_name); ?>">
+                                            <?php echo __('Quiz title font size', 'quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Set your preferred text size for the Quiz Title. The default size is 21px.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -2553,8 +2553,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <div class="row">
                                             <div class="col-sm-5">
                                                 <label for='ays_answers_font_size'>
-                                                    <?php echo __('On desktop', $this->plugin_name); ?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the font size for desktop devices.',$this->plugin_name); ?>">
+                                                    <?php echo __('On desktop', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the font size for desktop devices.','quiz-maker'); ?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
@@ -2572,8 +2572,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <div class="row">
                                             <div class="col-sm-5">
                                                 <label for='ays_quiz_title_mobile_font_size'>
-                                                    <?php echo __('On mobile', $this->plugin_name); ?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the font size for mobile devices.',$this->plugin_name); ?>">
+                                                    <?php echo __('On mobile', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the font size for mobile devices.','quiz-maker'); ?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
@@ -2593,8 +2593,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_quiz_enable_title_text_shadow">
-                                            <?php echo __('Quiz title text shadow',$this->plugin_name)?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the text shadow of the quiz title.',$this->plugin_name)?>">
+                                            <?php echo __('Quiz title text shadow','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the text shadow of the quiz title.','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -2606,8 +2606,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                             <div class="form-group row">
                                                 <div class="col-sm-12">
                                                     <label for="ays_quiz_title_text_shadow_color">
-                                                        <?php echo __('Text shadow color',$this->plugin_name)?>
-                                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The color of the text shadow of the quiz title.',$this->plugin_name ); ?>">
+                                                        <?php echo __('Text shadow color','quiz-maker')?>
+                                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The color of the text shadow of the quiz title.','quiz-maker' ); ?>">
                                                             <i class="ays_fa ays_fa_info_circle"></i>
                                                         </a>
                                                      </label>
@@ -2618,15 +2618,15 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                             <div class="form-group row">
                                                 <div class="col-sm-12">
                                                     <div class="col-sm-3" style="display: inline-block;">
-                                                        <span class="ays_quiz_small_hint_text"><?php echo __('X', $this->plugin_name); ?></span>
+                                                        <span class="ays_quiz_small_hint_text"><?php echo __('X', 'quiz-maker'); ?></span>
                                                         <input type="number" class="ays-text-input ays-text-input-90-width" id='ays_quiz_title_text_shadow_x_offset' name='ays_quiz_title_text_shadow_x_offset' value="<?php echo $quiz_title_text_shadow_x_offset; ?>" />
                                                     </div>
                                                     <div class="col-sm-3 ays_divider_left" style="display: inline-block;">
-                                                        <span class="ays_quiz_small_hint_text"><?php echo __('Y', $this->plugin_name); ?></span>
+                                                        <span class="ays_quiz_small_hint_text"><?php echo __('Y', 'quiz-maker'); ?></span>
                                                         <input type="number" class="ays-text-input ays-text-input-90-width" id='ays_quiz_title_text_shadow_y_offset' name='ays_quiz_title_text_shadow_y_offset' value="<?php echo $quiz_title_text_shadow_y_offset; ?>" />
                                                     </div>
                                                     <div class="col-sm-3 ays_divider_left" style="display: inline-block;">
-                                                        <span class="ays_quiz_small_hint_text"><?php echo __('Z', $this->plugin_name); ?></span>
+                                                        <span class="ays_quiz_small_hint_text"><?php echo __('Z', 'quiz-maker'); ?></span>
                                                         <input type="number" class="ays-text-input ays-text-input-90-width" id='ays_quiz_title_text_shadow_z_offset' name='ays_quiz_title_text_shadow_z_offset' value="<?php echo $quiz_title_text_shadow_z_offset; ?>" />
                                                     </div>
                                                 </div>
@@ -2638,8 +2638,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_custom_class">
-                                            <?php echo __('Custom class for quiz container',$this->plugin_name); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Custom HTML class for quiz container. You can use your class for adding your custom styles for quiz container.',$this->plugin_name); ?>">
+                                            <?php echo __('Custom class for quiz container','quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Custom HTML class for quiz container. You can use your class for adding your custom styles for quiz container.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -2652,15 +2652,15 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                                     <div class="ays-quiz-accordion-container">
                                         <?php echo $quiz_accordion_svg_html; ?>
-                                        <p class="ays-subtitle"><?php echo __('Question Styles',$this->plugin_name); ?></p>
+                                        <p class="ays-subtitle"><?php echo __('Question Styles','quiz-maker'); ?></p>
                                     </div>
                                     <hr class="ays-quiz-bolder-hr"/>
                                     <div class="ays-quiz-accordion-options-box">
                                         <div class="form-group row">
                                             <div class="col-sm-5">
                                                 <label for='ays_quest_animation'>
-                                                    <?php echo __('Animation effect', $this->plugin_name); ?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Animation effect of transition between questions',$this->plugin_name)?>">
+                                                    <?php echo __('Animation effect', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Animation effect of transition between questions','quiz-maker')?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
@@ -2677,8 +2677,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <div class="form-group row">
                                             <div class="col-sm-5">
                                                 <label for='ays_answers_font_size'>
-                                                    <?php echo __('Question font size', $this->plugin_name); ?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The font size of the questions in pixels in the quiz (only for <p> tag). It accepts only numeric values.',$this->plugin_name)?>">
+                                                    <?php echo __('Question font size', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The font size of the questions in pixels in the quiz (only for <p> tag). It accepts only numeric values.','quiz-maker')?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
@@ -2687,8 +2687,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                                 <div class="row">
                                                     <div class="col-sm-5">
                                                         <label for='ays_question_font_size'>
-                                                            <?php echo __('On desktop', $this->plugin_name); ?>
-                                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the font size for desktop devices.',$this->plugin_name); ?>">
+                                                            <?php echo __('On desktop', 'quiz-maker'); ?>
+                                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the font size for desktop devices.','quiz-maker'); ?>">
                                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                                             </a>
                                                         </label>
@@ -2706,8 +2706,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                                 <div class="row">
                                                     <div class="col-sm-5">
                                                         <label for='ays_question_mobile_font_size'>
-                                                            <?php echo __('On mobile', $this->plugin_name); ?>
-                                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the font size for mobile devices.',$this->plugin_name); ?>">
+                                                            <?php echo __('On mobile', 'quiz-maker'); ?>
+                                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the font size for mobile devices.','quiz-maker'); ?>">
                                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                                             </a>
                                                         </label>
@@ -2727,8 +2727,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <div class="form-group row">
                                             <div class="col-sm-5">
                                                 <label for="ays_limitation_message">
-                                                    <?php echo __( 'Question text alignment', $this->plugin_name ); ?>
-                                                    <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php echo __( 'Align the text of your questions to the left, center, or right.', $this->plugin_name ); ?>">
+                                                    <?php echo __( 'Question text alignment', 'quiz-maker' ); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php echo __( 'Align the text of your questions to the left, center, or right.', 'quiz-maker' ); ?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
@@ -2736,15 +2736,15 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                             <div class="col-sm-7 ays_divider_left">
                                                 <label class="ays_quiz_loader">
                                                     <input type="radio" id="ays_quiz_question_text_alignment_left" name="ays_quiz_question_text_alignment" value="left" <?php echo ($quiz_question_text_alignment == 'left') ? 'checked' : ''; ?>/>
-                                                    <span for="ays_quiz_question_text_alignment_left"><?php echo __( 'Left', $this->plugin_name ); ?></span>
+                                                    <span for="ays_quiz_question_text_alignment_left"><?php echo __( 'Left', 'quiz-maker' ); ?></span>
                                                 </label>
                                                 <label class="ays_quiz_loader">
                                                     <input type="radio" id="ays_quiz_question_text_alignment_center" name="ays_quiz_question_text_alignment" value="center" <?php echo ($quiz_question_text_alignment == 'center') ? 'checked' : ''; ?>/>
-                                                    <span for="ays_quiz_question_text_alignment_center"><?php echo __( 'Center', $this->plugin_name ); ?></span>
+                                                    <span for="ays_quiz_question_text_alignment_center"><?php echo __( 'Center', 'quiz-maker' ); ?></span>
                                                 </label>
                                                 <label class="ays_quiz_loader">
                                                     <input type="radio" id="ays_quiz_question_text_alignment_right" name="ays_quiz_question_text_alignment" value="right" <?php echo ($quiz_question_text_alignment == 'right') ? 'checked' : ''; ?>/>
-                                                    <span for="ays_quiz_question_text_alignment_right"><?php echo __( 'Right', $this->plugin_name ); ?></span>
+                                                    <span for="ays_quiz_question_text_alignment_right"><?php echo __( 'Right', 'quiz-maker' ); ?></span>
                                                 </label>
                                             </div>
                                         </div><!-- Question text alignment -->
@@ -2752,8 +2752,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <div class="form-group row">
                                             <div class="col-sm-5">
                                                 <label>
-                                                    <?php echo __('Question image styles',$this->plugin_name)?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('It affects the images chosen from “Add Image” not from “Add media”  on the Edit question page.',$this->plugin_name)?>">
+                                                    <?php echo __('Question image styles','quiz-maker')?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('It affects the images chosen from “Add Image” not from “Add media”  on the Edit question page.','quiz-maker')?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
@@ -2763,18 +2763,18 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                                     <div class="col-sm-12 ays_quiz_display_flex_width">
                                                         <div>
                                                             <label for="ays_image_width">
-                                                                <?php echo __('Image Width',$this->plugin_name)?>
-                                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Question image width in pixels. Set it 0 or leave it blank for making it 100%. It accepts only numeric values.',$this->plugin_name)?>">
+                                                                <?php echo __('Image Width','quiz-maker')?>
+                                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Question image width in pixels. Set it 0 or leave it blank for making it 100%. It accepts only numeric values.','quiz-maker')?>">
                                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                                 </a>
                                                             </label>
                                                             <input type="number" class="ays-text-input ays-text-input-short" id="ays_image_width" name="ays_image_width" value="<?php echo $image_width; ?>"/>
-                                                            <span class="ays_quiz_small_hint_text"><?php echo __("For 100% leave blank", $this->plugin_name);?></span>
+                                                            <span class="ays_quiz_small_hint_text"><?php echo __("For 100% leave blank", 'quiz-maker');?></span>
                                                         </div>
                                                         <div class="ays_quiz_dropdown_max_width ays-display-flex" style="align-items: center;">
                                                             <select id="ays_quiz_image_width_by_percentage_px" name="ays_quiz_image_width_by_percentage_px" class="ays-text-input ays-text-input-short" style="display:inline-block; width: 60px; margin-top: .5rem;">
-                                                                <option value="pixels" <?php echo $quiz_image_width_by_percentage_px == "pixels" ? "selected" : ""; ?>><?php echo __( "px", $this->plugin_name ); ?></option>
-                                                                <option value="percentage" <?php echo $quiz_image_width_by_percentage_px == "percentage" ? "selected" : ""; ?>><?php echo __( "%", $this->plugin_name ); ?></option>
+                                                                <option value="pixels" <?php echo $quiz_image_width_by_percentage_px == "pixels" ? "selected" : ""; ?>><?php echo __( "px", 'quiz-maker' ); ?></option>
+                                                                <option value="percentage" <?php echo $quiz_image_width_by_percentage_px == "percentage" ? "selected" : ""; ?>><?php echo __( "%", 'quiz-maker' ); ?></option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -2784,8 +2784,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                                     <div class="col-sm-12 ays_quiz_display_flex_width">
                                                         <div>
                                                             <label for="ays_image_height">
-                                                                <?php echo __('Image Height',$this->plugin_name)?>
-                                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Question image height in pixels. It accepts only number values.',$this->plugin_name)?>">
+                                                                <?php echo __('Image Height','quiz-maker')?>
+                                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Question image height in pixels. It accepts only number values.','quiz-maker')?>">
                                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                                 </a>
                                                             </label>
@@ -2800,16 +2800,16 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                                 <div class="form-group row">
                                                     <div class="col-sm-12">
                                                         <label for="ays_image_sizing">
-                                                            <?php echo __('Image sizing', $this->plugin_name ); ?>
-                                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('It helps to configure the scale of the images inside the quiz in case of differences between the sizes.',$this->plugin_name)?>">
+                                                            <?php echo __('Image sizing', 'quiz-maker' ); ?>
+                                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('It helps to configure the scale of the images inside the quiz in case of differences between the sizes.','quiz-maker')?>">
                                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                                             </a>
                                                         </label>
                                                         <select name="ays_image_sizing" id="ays_image_sizing" class="ays-text-input ays-text-input-short" style="display:block;">
-                                                            <option value="cover" <?php echo $image_sizing == 'cover' ? 'selected' : ''; ?>><?php echo __( "Cover", $this->plugin_name ); ?></option>
-                                                            <option value="contain" <?php echo $image_sizing == 'contain' ? 'selected' : ''; ?>><?php echo __( "Contain", $this->plugin_name ); ?></option>
-                                                            <option value="none" <?php echo $image_sizing == 'none' ? 'selected' : ''; ?>><?php echo __( "None", $this->plugin_name ); ?></option>
-                                                            <option value="unset" <?php echo $image_sizing == 'unset' ? 'selected' : ''; ?>><?php echo __( "Unset", $this->plugin_name ); ?></option>
+                                                            <option value="cover" <?php echo $image_sizing == 'cover' ? 'selected' : ''; ?>><?php echo __( "Cover", 'quiz-maker' ); ?></option>
+                                                            <option value="contain" <?php echo $image_sizing == 'contain' ? 'selected' : ''; ?>><?php echo __( "Contain", 'quiz-maker' ); ?></option>
+                                                            <option value="none" <?php echo $image_sizing == 'none' ? 'selected' : ''; ?>><?php echo __( "None", 'quiz-maker' ); ?></option>
+                                                            <option value="unset" <?php echo $image_sizing == 'unset' ? 'selected' : ''; ?>><?php echo __( "Unset", 'quiz-maker' ); ?></option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -2821,15 +2821,15 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                                     <div class="ays-quiz-accordion-container">
                                         <?php echo $quiz_accordion_svg_html; ?>
-                                        <p class="ays-subtitle"><?php echo __('Answers Styles',$this->plugin_name); ?></p>
+                                        <p class="ays-subtitle"><?php echo __('Answers Styles','quiz-maker'); ?></p>
                                     </div>
                                     <div class="ays-quiz-accordion-options-box">
                                         <hr class="ays-quiz-bolder-hr"/>
                                         <div class="form-group row">
                                             <div class="col-sm-5">
                                                 <label for='ays_answers_font_size'>
-                                                    <?php echo __('Answer font size', $this->plugin_name); ?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The font size of the answers in pixels in the quiz. It accepts only numeric values.',$this->plugin_name)?>">
+                                                    <?php echo __('Answer font size', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The font size of the answers in pixels in the quiz. It accepts only numeric values.','quiz-maker')?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
@@ -2838,8 +2838,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                                 <div class="row">
                                                     <div class="col-sm-5">
                                                         <label for='ays_answers_font_size'>
-                                                            <?php echo __('On desktop', $this->plugin_name); ?>
-                                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the font size for desktop devices.',$this->plugin_name); ?>">
+                                                            <?php echo __('On desktop', 'quiz-maker'); ?>
+                                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the font size for desktop devices.','quiz-maker'); ?>">
                                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                                             </a>
                                                         </label>
@@ -2857,8 +2857,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                                 <div class="row">
                                                     <div class="col-sm-5">
                                                         <label for='ays_answers_mobile_font_size'>
-                                                            <?php echo __('On mobile', $this->plugin_name); ?>
-                                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the font size for mobile devices.',$this->plugin_name); ?>">
+                                                            <?php echo __('On mobile', 'quiz-maker'); ?>
+                                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the font size for mobile devices.','quiz-maker'); ?>">
                                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                                             </a>
                                                         </label>
@@ -2878,8 +2878,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <div class="form-group row">
                                             <div class="col-sm-5">
                                                 <label for="ays_answers_border">
-                                                    <?php echo __('Answer border',$this->plugin_name)?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Allow answer border',$this->plugin_name)?>">
+                                                    <?php echo __('Answer border','quiz-maker')?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Allow answer border','quiz-maker')?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
@@ -2892,8 +2892,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                                     <div class="ays_quiz_display_flex_width">
                                                         <div>
                                                             <label for="ays_answers_border_width">
-                                                                <?php echo __('Border width',$this->plugin_name)?>
-                                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The width of answers border',$this->plugin_name)?>">
+                                                                <?php echo __('Border width','quiz-maker')?>
+                                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The width of answers border','quiz-maker')?>">
                                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                                 </a>
                                                              </label>
@@ -2907,8 +2907,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                                 </div>
                                                 <div class="col-sm-12 ays_toggle_target ays_divider_top" style="margin-top: 10px; padding-top: 10px; <?php echo ($answers_border) ? '' : 'display:none;' ?>">
                                                     <label for="ays_answers_border_style">
-                                                        <?php echo __('Border style',$this->plugin_name)?>
-                                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The style of answers border',$this->plugin_name)?>">
+                                                        <?php echo __('Border style','quiz-maker')?>
+                                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The style of answers border','quiz-maker')?>">
                                                             <i class="ays_fa ays_fa_info_circle"></i>
                                                         </a>
                                                     </label>
@@ -2926,8 +2926,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                                 </div>
                                                 <div class="col-sm-12 ays_toggle_target ays_divider_top" style="margin-top: 10px; padding-top: 10px; <?php echo ($answers_border) ? '' : 'display:none;' ?>">
                                                     <label for="ays_answers_border_color">
-                                                        <?php echo __('Border color',$this->plugin_name)?>
-                                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The color of the answers border',$this->plugin_name)?>">
+                                                        <?php echo __('Border color','quiz-maker')?>
+                                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The color of the answers border','quiz-maker')?>">
                                                             <i class="ays_fa ays_fa_info_circle"></i>
                                                         </a>
                                                     </label>
@@ -2940,8 +2940,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <div class="form-group row">
                                             <div class="col-sm-5">
                                                 <label for="ays_answers_margin">
-                                                    <?php echo __('Answer gap',$this->plugin_name)?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Gap between answers.',$this->plugin_name)?>">
+                                                    <?php echo __('Answer gap','quiz-maker')?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Gap between answers.','quiz-maker')?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
@@ -2959,8 +2959,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <div class="form-group row">
                                             <div class="col-sm-5">
                                                 <label for="ays_answers_box_shadow">
-                                                    <?php echo __('Answers box shadow',$this->plugin_name)?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Allow answer container box shadow',$this->plugin_name)?>">
+                                                    <?php echo __('Answers box shadow','quiz-maker')?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Allow answer container box shadow','quiz-maker')?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
@@ -2974,8 +2974,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                                     <div class="form-group row">
                                                         <div class="col-sm-12">
                                                             <label for="ays_answers_box_shadow_color">
-                                                                <?php echo __('Answer box-shadow color',$this->plugin_name)?>
-                                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The shadow color of answers container',$this->plugin_name)?>">
+                                                                <?php echo __('Answer box-shadow color','quiz-maker')?>
+                                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The shadow color of answers container','quiz-maker')?>">
                                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                                 </a>
                                                              </label>
@@ -2986,15 +2986,15 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                                     <div class="form-group row">
                                                         <div class="col-sm-12">
                                                             <div class="col-sm-3" style="display: inline-block;">
-                                                                <span class="ays_quiz_small_hint_text"><?php echo __('X', $this->plugin_name); ?></span>
+                                                                <span class="ays_quiz_small_hint_text"><?php echo __('X', 'quiz-maker'); ?></span>
                                                                 <input type="number" class="ays-text-input ays-text-input-90-width" id='ays_quiz_answer_box_shadow_x_offset' name='ays_quiz_answer_box_shadow_x_offset' value="<?php echo $quiz_answer_box_shadow_x_offset; ?>" />
                                                             </div>
                                                             <div class="col-sm-3 ays_divider_left" style="display: inline-block;">
-                                                                <span class="ays_quiz_small_hint_text"><?php echo __('Y', $this->plugin_name); ?></span>
+                                                                <span class="ays_quiz_small_hint_text"><?php echo __('Y', 'quiz-maker'); ?></span>
                                                                 <input type="number" class="ays-text-input ays-text-input-90-width" id='ays_quiz_answer_box_shadow_y_offset' name='ays_quiz_answer_box_shadow_y_offset' value="<?php echo $quiz_answer_box_shadow_y_offset; ?>" />
                                                             </div>
                                                             <div class="col-sm-3 ays_divider_left" style="display: inline-block;">
-                                                                <span class="ays_quiz_small_hint_text"><?php echo __('Z', $this->plugin_name); ?></span>
+                                                                <span class="ays_quiz_small_hint_text"><?php echo __('Z', 'quiz-maker'); ?></span>
                                                                 <input type="number" class="ays-text-input ays-text-input-90-width" id='ays_quiz_answer_box_shadow_z_offset' name='ays_quiz_answer_box_shadow_z_offset' value="<?php echo $quiz_answer_box_shadow_z_offset; ?>" />
                                                             </div>
                                                         </div>
@@ -3006,7 +3006,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <div class="form-group row">
                                             <div class="col-sm-5">
                                                 <label for="ays_ans_right_wrong_icon">
-                                                    <?php echo __('Right/wrong answer icons',$this->plugin_name); ?>
+                                                    <?php echo __('Right/wrong answer icons','quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-7 ays_divider_left">
@@ -3035,7 +3035,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                                 ?>
                                                 <label class="ays_quiz_rw_icon ays_quiz_loader">
                                                     <input name="ays_ans_right_wrong_icon" type="radio" value="none" <?php echo $ans_right_wrong_icon == 'none' ? 'checked' : ''; ?>>
-                                                    <?php echo __("None", $this->plugin_name); ?>
+                                                    <?php echo __("None", 'quiz-maker'); ?>
                                                     <div></div>
                                                 </label>
                                             </div>
@@ -3044,8 +3044,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <div class="form-group row">
                                             <div class="col-sm-5">
                                                 <label for="ays_disable_hover_effect">
-                                                    <?php echo __('Disable answer hover',$this->plugin_name); ?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Disable the hover effect for the answers.', $this->plugin_name); ?>">
+                                                    <?php echo __('Disable answer hover','quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Disable the hover effect for the answers.', 'quiz-maker'); ?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
@@ -3064,8 +3064,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                                 <div class="form-group row">
                                                     <div class="col-sm-5">
                                                         <label for="ays_ans_img_height">
-                                                            <?php echo __('Answer image height',$this->plugin_name)?>
-                                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Height of answers images.',$this->plugin_name); ?>">
+                                                            <?php echo __('Answer image height','quiz-maker')?>
+                                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Height of answers images.','quiz-maker'); ?>">
                                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                                             </a>
                                                         </label>
@@ -3083,8 +3083,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                                 <div class="form-group row">
                                                     <div class="col-sm-5">
                                                         <label for="ays_show_answers_caption">
-                                                            <?php echo __('Show answer caption',$this->plugin_name); ?>
-                                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show answers caption near the answer image. This option will be work only when answer has image.',$this->plugin_name); ?>">
+                                                            <?php echo __('Show answer caption','quiz-maker'); ?>
+                                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show answers caption near the answer image. This option will be work only when answer has image.','quiz-maker'); ?>">
                                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                                             </a>
                                                         </label>
@@ -3098,16 +3098,16 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                                 <div class="form-group row">
                                                     <div class="col-sm-5">
                                                         <label for="ays_ans_img_caption_style">
-                                                            <?php echo __('Caption style of the image answer',$this->plugin_name); ?>
-                                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Choose the preferred view type of captions in the image answers.',$this->plugin_name); ?>">
+                                                            <?php echo __('Caption style of the image answer','quiz-maker'); ?>
+                                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Choose the preferred view type of captions in the image answers.','quiz-maker'); ?>">
                                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                                             </a>
                                                         </label>
                                                     </div>
                                                     <div class="col-sm-7 ays_divider_left">
                                                         <select class="ays-text-input ays-text-input-short">
-                                                            <option value="outside" selected><?php echo __('Outside', $this->plugin_name); ?></option>
-                                                            <option value="inside"><?php echo __('Inside', $this->plugin_name); ?></option>
+                                                            <option value="outside" selected><?php echo __('Outside', 'quiz-maker'); ?></option>
+                                                            <option value="inside"><?php echo __('Inside', 'quiz-maker'); ?></option>
                                                         </select>
                                                     </div>
                                                 </div> <!-- Answers image caption style -->
@@ -3115,16 +3115,16 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                                 <div class="form-group row">
                                                     <div class="col-sm-5">
                                                         <label for="ays_ans_img_caption_position">
-                                                            <?php echo __('Caption position of the image answer',$this->plugin_name); ?>
-                                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Choose the position of captions in the image answers.',$this->plugin_name); ?>">
+                                                            <?php echo __('Caption position of the image answer','quiz-maker'); ?>
+                                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Choose the position of captions in the image answers.','quiz-maker'); ?>">
                                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                                             </a>
                                                         </label>
                                                     </div>
                                                     <div class="col-sm-7 ays_divider_left">
                                                         <select class="ays-text-input ays-text-input-short">
-                                                            <option value="top" selected><?php echo __('Top', $this->plugin_name); ?></option>
-                                                            <option value="bottom"><?php echo __('Bottom', $this->plugin_name); ?></option>
+                                                            <option value="top" selected><?php echo __('Top', 'quiz-maker'); ?></option>
+                                                            <option value="bottom"><?php echo __('Bottom', 'quiz-maker'); ?></option>
                                                         </select>
                                                     </div>
                                                 </div> <!-- Answers image caption position -->
@@ -3153,7 +3153,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                                 <input type="hidden" name="ays_quiz_id" value="2">
                                                 <div class="ays_buttons_div">
                                                     <input type="button" name="next" class="ays_next action-button ays-quiz-live-button"
-                                                        value="<?php echo __( "Start", $this->plugin_name ); ?>">
+                                                        value="<?php echo __( "Start", 'quiz-maker' ); ?>">
                                                 </div>
                                             </div>
                                         </div>
@@ -3167,7 +3167,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                                 <input type="hidden" name="ays_quiz_id" value="2">
                                                 <div class="ays_buttons_div">
                                                     <input type="button" name="next" class="ays_next action-button ays-quiz-live-button"
-                                                       value="<?php echo __( "Start", $this->plugin_name ); ?>">
+                                                       value="<?php echo __( "Start", 'quiz-maker' ); ?>">
                                                 </div>
                                             </div>
                                         </div>
@@ -3181,7 +3181,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                     <div class="ays-quiz-accordion-container">
                         <?php echo $quiz_accordion_svg_html; ?>
-                        <p class="ays-subtitle"><?php echo __('Buttons Styles',$this->plugin_name); ?></p>
+                        <p class="ays-subtitle"><?php echo __('Buttons Styles','quiz-maker'); ?></p>
                     </div>
                     <hr class="ays-quiz-bolder-hr"/>
                     <div class="ays-quiz-accordion-options-box">
@@ -3190,8 +3190,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_buttons_size">
-                                            <?php echo __('Button size',$this->plugin_name); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The default sizes of buttons.',$this->plugin_name)?>">
+                                            <?php echo __('Button size','quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The default sizes of buttons.','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -3199,13 +3199,13 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="col-sm-7 ays_divider_left">
                                         <select class="ays-text-input ays-text-input-short" id="ays_buttons_size" name="ays_buttons_size">
                                             <option value="small" <?php echo (isset($options['buttons_size']) && $options['buttons_size'] == 'small') ? 'selected' : ''; ?>>
-                                                <?php echo __('Small',$this->plugin_name)?>
+                                                <?php echo __('Small','quiz-maker')?>
                                             </option>
                                             <option value="medium" <?php echo ( (isset($options['buttons_size']) && $options['buttons_size'] == 'medium') || !isset($options['buttons_size']) ) ? 'selected' : ''; ?>>
-                                                <?php echo __('Medium',$this->plugin_name)?>
+                                                <?php echo __('Medium','quiz-maker')?>
                                             </option>
                                             <option value="large" <?php echo (isset($options['buttons_size']) && $options['buttons_size'] == 'large') ? 'selected' : ''; ?>>
-                                                <?php echo __('Large',$this->plugin_name)?>
+                                                <?php echo __('Large','quiz-maker')?>
                                             </option>
                                         </select>
                                     </div>
@@ -3214,8 +3214,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for='ays_buttons_font_size'>
-                                            <?php echo __('Button font-size', $this->plugin_name); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The font size of the buttons in pixels in the quiz. It accepts only numeric values.',$this->plugin_name)?>">
+                                            <?php echo __('Button font-size', 'quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The font size of the buttons in pixels in the quiz. It accepts only numeric values.','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -3224,8 +3224,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <div class="row">
                                             <div class="col-sm-5">
                                                 <label for='ays_buttons_font_size'>
-                                                    <?php echo __('On desktop', $this->plugin_name); ?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the font size for desktop devices.',$this->plugin_name); ?>">
+                                                    <?php echo __('On desktop', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the font size for desktop devices.','quiz-maker'); ?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
@@ -3243,8 +3243,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <div class="row">
                                             <div class="col-sm-5">
                                                 <label for='ays_buttons_mobile_font_size'>
-                                                    <?php echo __('On mobile', $this->plugin_name); ?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the font size for mobile devices.',$this->plugin_name); ?>">
+                                                    <?php echo __('On mobile', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the font size for mobile devices.','quiz-maker'); ?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
@@ -3264,8 +3264,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for='ays_buttons_width'>
-                                            <?php echo __('Button width', $this->plugin_name); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Set the button width in pixels. For an initial width, leave the field blank.', $this->plugin_name); ?>">
+                                            <?php echo __('Button width', 'quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Set the button width in pixels. For an initial width, leave the field blank.', 'quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -3273,7 +3273,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="col-sm-7 ays_divider_left ays_quiz_display_flex_width">
                                         <div>
                                             <input type="number" class="ays-text-input ays-text-input-short" id='ays_buttons_width'name='ays_buttons_width' value="<?php echo $buttons_width; ?>"/>
-                                            <span style="display:block;" class="ays_quiz_small_hint_text"><?php echo __('For an initial width, leave the field blank.', $this->plugin_name); ?></span>
+                                            <span style="display:block;" class="ays_quiz_small_hint_text"><?php echo __('For an initial width, leave the field blank.', 'quiz-maker'); ?></span>
                                         </div>
                                         <div class="ays_quiz_dropdown_max_width ays-display-flex" style="align-items: flex-start;">
                                             <input type="text" value="px" class='ays-quiz-form-hint-for-size' disabled>
@@ -3284,19 +3284,19 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_buttons_padding">
-                                            <?php echo __('Button padding',$this->plugin_name)?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Padding of buttons.',$this->plugin_name)?>">
+                                            <?php echo __('Button padding','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Padding of buttons.','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
                                     </div>
                                     <div class="col-sm-7 ays_divider_left">
                                         <div class="col-sm-5" style="display: inline-block; padding-left: 0;">
-                                            <span class="ays_quiz_small_hint_text"><?php echo __('Left / Right',$this->plugin_name)?></span>
+                                            <span class="ays_quiz_small_hint_text"><?php echo __('Left / Right','quiz-maker')?></span>
                                             <input type="number" class="ays-text-input" id='ays_buttons_left_right_padding' name='ays_buttons_left_right_padding' value="<?php echo $buttons_left_right_padding; ?>" style="width: 100px;" />
                                         </div>
                                         <div class="col-sm-5 ays_divider_left ays-buttons-top-bottom-padding-box" style="display: inline-block;">
-                                            <span class="ays_quiz_small_hint_text"><?php echo __('Top / Bottom',$this->plugin_name)?></span>
+                                            <span class="ays_quiz_small_hint_text"><?php echo __('Top / Bottom','quiz-maker')?></span>
                                             <input type="number" class="ays-text-input" id='ays_buttons_top_bottom_padding' name='ays_buttons_top_bottom_padding' value="<?php echo $buttons_top_bottom_padding; ?>" style="width: 100px;" />
                                         </div>
                                     </div>
@@ -3305,8 +3305,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_buttons_border_radius">
-                                            <?php echo __('Button border-radius',$this->plugin_name)?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Quiz buttons border-radius in pixels. It accepts only numeric values.',$this->plugin_name)?>">
+                                            <?php echo __('Button border-radius','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Quiz buttons border-radius in pixels. It accepts only numeric values.','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -3326,7 +3326,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                             <div class="col-lg-5 col-sm-12 ays_divider_left" style="position:relative;">
                                 <div id="ays_buttons_styles_tab" style="position:sticky;top:50px; margin:auto;">
                                     <div class="ays_buttons_div" style="justify-content: center; overflow: hidden;">
-                                        <input type="button" name="next" class="action-button ays-quiz-live-button" style="padding:0;" value="<?php echo __( "Start", $this->plugin_name ); ?>">
+                                        <input type="button" name="next" class="action-button ays-quiz-live-button" style="padding:0;" value="<?php echo __( "Start", 'quiz-maker' ); ?>">
                                     </div>
                                 </div>
                             </div><!-- Buttons Styles Live -->
@@ -3336,7 +3336,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                     <div class="ays-quiz-accordion-container">
                         <?php echo $quiz_accordion_svg_html; ?>
-                        <p class="ays-subtitle" style="margin-top:0;"><?php echo __('Admin note styles',$this->plugin_name); ?></p>
+                        <p class="ays-subtitle" style="margin-top:0;"><?php echo __('Admin note styles','quiz-maker'); ?></p>
                     </div>
                     <hr class="ays-quiz-bolder-hr"/>
                     <div class="ays-quiz-accordion-options-box">
@@ -3345,8 +3345,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_note_text_font_size">
-                                            <?php echo __('Font size for the note text',$this->plugin_name)?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Choose the Font Size for the Message displayed for the note text( only for <p> tag ).',$this->plugin_name)?>">
+                                            <?php echo __('Font size for the note text','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Choose the Font Size for the Message displayed for the note text( only for <p> tag ).','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -3355,8 +3355,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <div class="row">
                                             <div class="col-sm-5">
                                                 <label for='ays_note_text_font_size'>
-                                                    <?php echo __('On desktop', $this->plugin_name); ?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the font size for desktop devices.',$this->plugin_name); ?>">
+                                                    <?php echo __('On desktop', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the font size for desktop devices.','quiz-maker'); ?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
@@ -3374,8 +3374,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <div class="row">
                                             <div class="col-sm-5">
                                                 <label for='ays_note_text_mobile_font_size'>
-                                                    <?php echo __('On mobile', $this->plugin_name); ?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the font size for mobile devices.',$this->plugin_name); ?>">
+                                                    <?php echo __('On mobile', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the font size for mobile devices.','quiz-maker'); ?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
@@ -3395,8 +3395,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_quiz_admin_note_text_transform">
-                                            <?php echo __('Text transformation',$this->plugin_name); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify how the text appears in all-uppercase or all-lowercase, or with each word capitalized.',$this->plugin_name); ?>">
+                                            <?php echo __('Text transformation','quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify how the text appears in all-uppercase or all-lowercase, or with each word capitalized.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -3404,16 +3404,16 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="col-sm-7 ays_divider_left">
                                         <select class="ays-text-input ays-text-input-short" id="ays_quiz_admin_note_text_transform" name="ays_quiz_admin_note_text_transform">
                                             <option value="none" <?php echo ($quiz_admin_note_text_transform == 'none') ? 'selected' : ''; ?>>
-                                                <?php echo __('None',$this->plugin_name); ?>
+                                                <?php echo __('None','quiz-maker'); ?>
                                             </option>
                                             <option value="capitalize" <?php echo ($quiz_admin_note_text_transform == 'capitalize') ? 'selected' : ''; ?>>
-                                                <?php echo __('Capitalize',$this->plugin_name); ?>
+                                                <?php echo __('Capitalize','quiz-maker'); ?>
                                             </option>
                                             <option value="uppercase" <?php echo ($quiz_admin_note_text_transform == 'uppercase')  ? 'selected' : ''; ?>>
-                                                <?php echo __('Uppercase',$this->plugin_name); ?>
+                                                <?php echo __('Uppercase','quiz-maker'); ?>
                                             </option>
                                             <option value="lowercase" <?php echo ($quiz_admin_note_text_transform == 'lowercase') ? 'selected' : ''; ?>>
-                                                <?php echo __('Lowercase',$this->plugin_name); ?>
+                                                <?php echo __('Lowercase','quiz-maker'); ?>
                                             </option>
                                         </select>
                                     </div>
@@ -3422,8 +3422,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_quiz_admin_note_text_decoration">
-                                            <?php echo __('Text decoration',$this->plugin_name); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Choose the line position for the Note Text on the front end. Note: It is set as None by default.',$this->plugin_name); ?>">
+                                            <?php echo __('Text decoration','quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Choose the line position for the Note Text on the front end. Note: It is set as None by default.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -3431,16 +3431,16 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="col-sm-7 ays_divider_left">
                                         <select class="ays-text-input ays-text-input-short" id="ays_quiz_admin_note_text_decoration" name="ays_quiz_admin_note_text_decoration">
                                             <option value="none" <?php echo ($quiz_admin_note_text_decoration == 'none') ? 'selected' : ''; ?>>
-                                                <?php echo __('None',$this->plugin_name); ?>
+                                                <?php echo __('None','quiz-maker'); ?>
                                             </option>
                                             <option value="overline" <?php echo ($quiz_admin_note_text_decoration == 'overline') ? 'selected' : ''; ?>>
-                                                <?php echo __('Overline',$this->plugin_name); ?>
+                                                <?php echo __('Overline','quiz-maker'); ?>
                                             </option>
                                             <option value="line-through" <?php echo ($quiz_admin_note_text_decoration == 'line-through')  ? 'selected' : ''; ?>>
-                                                <?php echo __('Line through',$this->plugin_name); ?>
+                                                <?php echo __('Line through','quiz-maker'); ?>
                                             </option>
                                             <option value="underline" <?php echo ($quiz_admin_note_text_decoration == 'underline') ? 'selected' : ''; ?>>
-                                                <?php echo __('Underline',$this->plugin_name); ?>
+                                                <?php echo __('Underline','quiz-maker'); ?>
                                             </option>
                                         </select>
                                     </div>
@@ -3449,8 +3449,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_quiz_admin_note_letter_spacing">
-                                            <?php echo __('Letter spacing',$this->plugin_name)?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the space between the letters of the admin note text in pixels. Note: The default value for this option is 0.',$this->plugin_name); ?>">
+                                            <?php echo __('Letter spacing','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the space between the letters of the admin note text in pixels. Note: The default value for this option is 0.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -3468,8 +3468,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_quiz_admin_note_font_weight">
-                                            <?php echo __('Font weight',$this->plugin_name); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the font weight for the Admin Note. Note: By default, it is set as Normal.',$this->plugin_name); ?>">
+                                            <?php echo __('Font weight','quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the font weight for the Admin Note. Note: By default, it is set as Normal.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -3477,16 +3477,16 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="col-sm-7 ays_divider_left">
                                         <select class="ays-text-input ays-text-input-short" id="ays_quiz_admin_note_font_weight" name="ays_quiz_admin_note_font_weight">
                                             <option value="normal" <?php echo ($quiz_admin_note_font_weight == 'normal') ? 'selected' : ''; ?>>
-                                                <?php echo __('Normal',$this->plugin_name); ?>
+                                                <?php echo __('Normal','quiz-maker'); ?>
                                             </option>
                                             <option value="lighter" <?php echo ($quiz_admin_note_font_weight == 'lighter') ? 'selected' : ''; ?>>
-                                                <?php echo __('Lighter',$this->plugin_name); ?>
+                                                <?php echo __('Lighter','quiz-maker'); ?>
                                             </option>
                                             <option value="bold" <?php echo ($quiz_admin_note_font_weight == 'bold')  ? 'selected' : ''; ?>>
-                                                <?php echo __('Bold',$this->plugin_name); ?>
+                                                <?php echo __('Bold','quiz-maker'); ?>
                                             </option>
                                             <option value="bolder" <?php echo ($quiz_admin_note_font_weight == 'bolder') ? 'selected' : ''; ?>>
-                                                <?php echo __('Bolder',$this->plugin_name); ?>
+                                                <?php echo __('Bolder','quiz-maker'); ?>
                                             </option>
                                             <option value="100" <?php echo ($quiz_admin_note_font_weight == '100') ? 'selected' : ''; ?>>
                                                 <?php echo '100'; ?>
@@ -3528,7 +3528,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                     <div class="ays-quiz-accordion-container">
                         <?php echo $quiz_accordion_svg_html; ?>
-                        <p class="ays-subtitle" style="margin-top:0;"><?php echo __('Question explanation styles',$this->plugin_name); ?></p>
+                        <p class="ays-subtitle" style="margin-top:0;"><?php echo __('Question explanation styles','quiz-maker'); ?></p>
                     </div>
                     <hr class="ays-quiz-bolder-hr"/>
                     <div class="ays-quiz-accordion-options-box">
@@ -3537,8 +3537,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_quest_explanation_font_size">
-                                            <?php echo __('Font size for the question explanation',$this->plugin_name)?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Choose the Font Size for the question explanation text( only for <p> tag ).',$this->plugin_name)?>">
+                                            <?php echo __('Font size for the question explanation','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Choose the Font Size for the question explanation text( only for <p> tag ).','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -3547,8 +3547,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <div class="row">
                                             <div class="col-sm-5">
                                                 <label for='ays_question_font_size'>
-                                                    <?php echo __('On desktop', $this->plugin_name); ?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the font size for desktop devices.',$this->plugin_name); ?>">
+                                                    <?php echo __('On desktop', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the font size for desktop devices.','quiz-maker'); ?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
@@ -3566,8 +3566,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <div class="row">
                                             <div class="col-sm-5">
                                                 <label for='ays_quest_explanation_mobile_font_size'>
-                                                    <?php echo __('On mobile', $this->plugin_name); ?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the font size for mobile devices.',$this->plugin_name); ?>">
+                                                    <?php echo __('On mobile', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the font size for mobile devices.','quiz-maker'); ?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
@@ -3587,8 +3587,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_quiz_quest_explanation_text_transform">
-                                            <?php echo __('Text transformation',$this->plugin_name); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify how the text appears in all-uppercase or all-lowercase, or with each word capitalized.',$this->plugin_name); ?>">
+                                            <?php echo __('Text transformation','quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify how the text appears in all-uppercase or all-lowercase, or with each word capitalized.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -3596,16 +3596,16 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="col-sm-7 ays_divider_left">
                                         <select class="ays-text-input ays-text-input-short" id="ays_quiz_quest_explanation_text_transform" name="ays_quiz_quest_explanation_text_transform">
                                             <option value="none" <?php echo ($quiz_quest_explanation_text_transform == 'none') ? 'selected' : ''; ?>>
-                                                <?php echo __('None',$this->plugin_name); ?>
+                                                <?php echo __('None','quiz-maker'); ?>
                                             </option>
                                             <option value="capitalize" <?php echo ($quiz_quest_explanation_text_transform == 'capitalize') ? 'selected' : ''; ?>>
-                                                <?php echo __('Capitalize',$this->plugin_name); ?>
+                                                <?php echo __('Capitalize','quiz-maker'); ?>
                                             </option>
                                             <option value="uppercase" <?php echo ($quiz_quest_explanation_text_transform == 'uppercase')  ? 'selected' : ''; ?>>
-                                                <?php echo __('Uppercase',$this->plugin_name); ?>
+                                                <?php echo __('Uppercase','quiz-maker'); ?>
                                             </option>
                                             <option value="lowercase" <?php echo ($quiz_quest_explanation_text_transform == 'lowercase') ? 'selected' : ''; ?>>
-                                                <?php echo __('Lowercase',$this->plugin_name); ?>
+                                                <?php echo __('Lowercase','quiz-maker'); ?>
                                             </option>
                                         </select>
                                     </div>
@@ -3614,8 +3614,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_quiz_quest_explanation_text_decoration">
-                                            <?php echo __('Text decoration',$this->plugin_name); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Choose the line position for the Question Explanation on the front end. Note: It is set as None by default.',$this->plugin_name); ?>">
+                                            <?php echo __('Text decoration','quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Choose the line position for the Question Explanation on the front end. Note: It is set as None by default.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -3623,16 +3623,16 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="col-sm-7 ays_divider_left">
                                         <select class="ays-text-input ays-text-input-short" id="ays_quiz_quest_explanation_text_decoration" name="ays_quiz_quest_explanation_text_decoration">
                                             <option value="none" <?php echo ($quiz_quest_explanation_text_decoration == 'none') ? 'selected' : ''; ?>>
-                                                <?php echo __('None',$this->plugin_name); ?>
+                                                <?php echo __('None','quiz-maker'); ?>
                                             </option>
                                             <option value="overline" <?php echo ($quiz_quest_explanation_text_decoration == 'overline') ? 'selected' : ''; ?>>
-                                                <?php echo __('Overline',$this->plugin_name); ?>
+                                                <?php echo __('Overline','quiz-maker'); ?>
                                             </option>
                                             <option value="line-through" <?php echo ($quiz_quest_explanation_text_decoration == 'line-through')  ? 'selected' : ''; ?>>
-                                                <?php echo __('Line through',$this->plugin_name); ?>
+                                                <?php echo __('Line through','quiz-maker'); ?>
                                             </option>
                                             <option value="underline" <?php echo ($quiz_quest_explanation_text_decoration == 'underline') ? 'selected' : ''; ?>>
-                                                <?php echo __('Underline',$this->plugin_name); ?>
+                                                <?php echo __('Underline','quiz-maker'); ?>
                                             </option>
                                         </select>
                                     </div>
@@ -3641,8 +3641,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_quiz_quest_explanation_letter_spacing">
-                                            <?php echo __('Letter spacing',$this->plugin_name)?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the space between the letters of the question explanation text in pixels. Note: The default value for this option is 0.',$this->plugin_name); ?>">
+                                            <?php echo __('Letter spacing','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the space between the letters of the question explanation text in pixels. Note: The default value for this option is 0.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -3660,8 +3660,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_quiz_quest_explanation_font_weight">
-                                            <?php echo __('Font weight',$this->plugin_name); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the font weight for the Question Explanation. Note: By default, it is set as Normal.',$this->plugin_name); ?>">
+                                            <?php echo __('Font weight','quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the font weight for the Question Explanation. Note: By default, it is set as Normal.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -3669,16 +3669,16 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="col-sm-7 ays_divider_left">
                                         <select class="ays-text-input ays-text-input-short" id="ays_quiz_quest_explanation_font_weight" name="ays_quiz_quest_explanation_font_weight">
                                             <option value="normal" <?php echo ($quiz_quest_explanation_font_weight == 'normal') ? 'selected' : ''; ?>>
-                                                <?php echo __('Normal',$this->plugin_name); ?>
+                                                <?php echo __('Normal','quiz-maker'); ?>
                                             </option>
                                             <option value="lighter" <?php echo ($quiz_quest_explanation_font_weight == 'lighter') ? 'selected' : ''; ?>>
-                                                <?php echo __('Lighter',$this->plugin_name); ?>
+                                                <?php echo __('Lighter','quiz-maker'); ?>
                                             </option>
                                             <option value="bold" <?php echo ($quiz_quest_explanation_font_weight == 'bold')  ? 'selected' : ''; ?>>
-                                                <?php echo __('Bold',$this->plugin_name); ?>
+                                                <?php echo __('Bold','quiz-maker'); ?>
                                             </option>
                                             <option value="bolder" <?php echo ($quiz_quest_explanation_font_weight == 'bolder') ? 'selected' : ''; ?>>
-                                                <?php echo __('Bolder',$this->plugin_name); ?>
+                                                <?php echo __('Bolder','quiz-maker'); ?>
                                             </option>
                                             <option value="100" <?php echo ($quiz_quest_explanation_font_weight == '100') ? 'selected' : ''; ?>>
                                                 <?php echo '100'; ?>
@@ -3719,7 +3719,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                     <div class="ays-quiz-accordion-container">
                         <?php echo $quiz_accordion_svg_html; ?>
-                        <p class="ays-subtitle" style="margin-top:0;"><?php echo __('Right answer styles',$this->plugin_name); ?></p>
+                        <p class="ays-subtitle" style="margin-top:0;"><?php echo __('Right answer styles','quiz-maker'); ?></p>
                     </div>
                     <hr class="ays-quiz-bolder-hr"/>
                     <div class="ays-quiz-accordion-options-box">
@@ -3728,8 +3728,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_right_answers_font_size">
-                                            <?php echo __('Font size for the right answer',$this->plugin_name)?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Choose the Font Size for the Message displayed for the right answer( only for <p> tag ).',$this->plugin_name)?>">
+                                            <?php echo __('Font size for the right answer','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Choose the Font Size for the Message displayed for the right answer( only for <p> tag ).','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -3738,8 +3738,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <div class="row">
                                             <div class="col-sm-5">
                                                 <label for='ays_right_answers_font_size'>
-                                                    <?php echo __('On desktop', $this->plugin_name); ?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the font size for desktop devices.',$this->plugin_name); ?>">
+                                                    <?php echo __('On desktop', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the font size for desktop devices.','quiz-maker'); ?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
@@ -3757,8 +3757,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <div class="row">
                                             <div class="col-sm-5">
                                                 <label for='ays_right_answers_mobile_font_size'>
-                                                    <?php echo __('On mobile', $this->plugin_name); ?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the font size for mobile devices.',$this->plugin_name); ?>">
+                                                    <?php echo __('On mobile', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the font size for mobile devices.','quiz-maker'); ?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
@@ -3778,8 +3778,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_quiz_right_answer_text_transform">
-                                            <?php echo __('Text transformation',$this->plugin_name); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify how the text appears in all-uppercase or all-lowercase, or with each word capitalized.',$this->plugin_name); ?>">
+                                            <?php echo __('Text transformation','quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify how the text appears in all-uppercase or all-lowercase, or with each word capitalized.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -3787,16 +3787,16 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="col-sm-7 ays_divider_left">
                                         <select class="ays-text-input ays-text-input-short" id="ays_quiz_right_answer_text_transform" name="ays_quiz_right_answer_text_transform">
                                             <option value="none" <?php echo ($quiz_right_answer_text_transform == 'none') ? 'selected' : ''; ?>>
-                                                <?php echo __('None',$this->plugin_name); ?>
+                                                <?php echo __('None','quiz-maker'); ?>
                                             </option>
                                             <option value="capitalize" <?php echo ($quiz_right_answer_text_transform == 'capitalize') ? 'selected' : ''; ?>>
-                                                <?php echo __('Capitalize',$this->plugin_name); ?>
+                                                <?php echo __('Capitalize','quiz-maker'); ?>
                                             </option>
                                             <option value="uppercase" <?php echo ($quiz_right_answer_text_transform == 'uppercase')  ? 'selected' : ''; ?>>
-                                                <?php echo __('Uppercase',$this->plugin_name); ?>
+                                                <?php echo __('Uppercase','quiz-maker'); ?>
                                             </option>
                                             <option value="lowercase" <?php echo ($quiz_right_answer_text_transform == 'lowercase') ? 'selected' : ''; ?>>
-                                                <?php echo __('Lowercase',$this->plugin_name); ?>
+                                                <?php echo __('Lowercase','quiz-maker'); ?>
                                             </option>
                                         </select>
                                     </div>
@@ -3805,8 +3805,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_quiz_right_answers_text_decoration">
-                                            <?php echo __('Text decoration',$this->plugin_name); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Choose the line position for the Right answer on the front end. Note: It is set as None by default.',$this->plugin_name); ?>">
+                                            <?php echo __('Text decoration','quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Choose the line position for the Right answer on the front end. Note: It is set as None by default.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -3814,16 +3814,16 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="col-sm-7 ays_divider_left">
                                         <select class="ays-text-input ays-text-input-short" id="ays_quiz_right_answers_text_decoration" name="ays_quiz_right_answers_text_decoration">
                                             <option value="none" <?php echo ($quiz_right_answers_text_decoration == 'none') ? 'selected' : ''; ?>>
-                                                <?php echo __('None',$this->plugin_name); ?>
+                                                <?php echo __('None','quiz-maker'); ?>
                                             </option>
                                             <option value="overline" <?php echo ($quiz_right_answers_text_decoration == 'overline') ? 'selected' : ''; ?>>
-                                                <?php echo __('Overline',$this->plugin_name); ?>
+                                                <?php echo __('Overline','quiz-maker'); ?>
                                             </option>
                                             <option value="line-through" <?php echo ($quiz_right_answers_text_decoration == 'line-through')  ? 'selected' : ''; ?>>
-                                                <?php echo __('Line through',$this->plugin_name); ?>
+                                                <?php echo __('Line through','quiz-maker'); ?>
                                             </option>
                                             <option value="underline" <?php echo ($quiz_right_answers_text_decoration == 'underline') ? 'selected' : ''; ?>>
-                                                <?php echo __('Underline',$this->plugin_name); ?>
+                                                <?php echo __('Underline','quiz-maker'); ?>
                                             </option>
                                         </select>
                                     </div>
@@ -3832,8 +3832,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_quiz_right_answers_letter_spacing">
-                                            <?php echo __('Letter spacing',$this->plugin_name)?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the space between the letters of the right answer text in pixels. Note: The default value for this option is 0.',$this->plugin_name); ?>">
+                                            <?php echo __('Letter spacing','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the space between the letters of the right answer text in pixels. Note: The default value for this option is 0.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -3851,8 +3851,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_quiz_right_answers_font_weight">
-                                            <?php echo __('Font weight',$this->plugin_name); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the font weight for the Right answer. Note: By default, it is set as Normal.',$this->plugin_name); ?>">
+                                            <?php echo __('Font weight','quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the font weight for the Right answer. Note: By default, it is set as Normal.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -3860,16 +3860,16 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="col-sm-7 ays_divider_left">
                                         <select class="ays-text-input ays-text-input-short" id="ays_quiz_right_answers_font_weight" name="ays_quiz_right_answers_font_weight">
                                             <option value="normal" <?php echo ($quiz_right_answers_font_weight == 'normal') ? 'selected' : ''; ?>>
-                                                <?php echo __('Normal',$this->plugin_name); ?>
+                                                <?php echo __('Normal','quiz-maker'); ?>
                                             </option>
                                             <option value="lighter" <?php echo ($quiz_right_answers_font_weight == 'lighter') ? 'selected' : ''; ?>>
-                                                <?php echo __('Lighter',$this->plugin_name); ?>
+                                                <?php echo __('Lighter','quiz-maker'); ?>
                                             </option>
                                             <option value="bold" <?php echo ($quiz_right_answers_font_weight == 'bold')  ? 'selected' : ''; ?>>
-                                                <?php echo __('Bold',$this->plugin_name); ?>
+                                                <?php echo __('Bold','quiz-maker'); ?>
                                             </option>
                                             <option value="bolder" <?php echo ($quiz_right_answers_font_weight == 'bolder') ? 'selected' : ''; ?>>
-                                                <?php echo __('Bolder',$this->plugin_name); ?>
+                                                <?php echo __('Bolder','quiz-maker'); ?>
                                             </option>
                                             <option value="100" <?php echo ($quiz_right_answers_font_weight == '100') ? 'selected' : ''; ?>>
                                                 <?php echo '100'; ?>
@@ -3910,7 +3910,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                     <div class="ays-quiz-accordion-container">
                         <?php echo $quiz_accordion_svg_html; ?>
-                        <p class="ays-subtitle" style="margin-top:0;"><?php echo __('Wrong answer styles',$this->plugin_name); ?></p>
+                        <p class="ays-subtitle" style="margin-top:0;"><?php echo __('Wrong answer styles','quiz-maker'); ?></p>
                     </div>
                     <hr class="ays-quiz-bolder-hr"/>
                     <div class="ays-quiz-accordion-options-box">
@@ -3919,8 +3919,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_wrong_answers_font_size">
-                                            <?php echo __('Font size for the wrong answer',$this->plugin_name)?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Choose the Font Size for the Message displayed for the wrong answer( only for <p> tag ).',$this->plugin_name)?>">
+                                            <?php echo __('Font size for the wrong answer','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Choose the Font Size for the Message displayed for the wrong answer( only for <p> tag ).','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -3929,8 +3929,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <div class="row">
                                             <div class="col-sm-5">
                                                 <label for='ays_question_font_size'>
-                                                    <?php echo __('On desktop', $this->plugin_name); ?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the font size for desktop devices.',$this->plugin_name); ?>">
+                                                    <?php echo __('On desktop', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the font size for desktop devices.','quiz-maker'); ?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
@@ -3948,8 +3948,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <div class="row">
                                             <div class="col-sm-5">
                                                 <label for='ays_wrong_answers_mobile_font_size'>
-                                                    <?php echo __('On mobile', $this->plugin_name); ?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the font size for mobile devices.',$this->plugin_name); ?>">
+                                                    <?php echo __('On mobile', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the font size for mobile devices.','quiz-maker'); ?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
@@ -3969,8 +3969,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_quiz_wrong_answer_text_transform">
-                                            <?php echo __('Text transformation',$this->plugin_name); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify how the text appears in all-uppercase or all-lowercase, or with each word capitalized.',$this->plugin_name); ?>">
+                                            <?php echo __('Text transformation','quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify how the text appears in all-uppercase or all-lowercase, or with each word capitalized.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -3978,16 +3978,16 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="col-sm-7 ays_divider_left">
                                         <select class="ays-text-input ays-text-input-short" id="ays_quiz_wrong_answer_text_transform" name="ays_quiz_wrong_answer_text_transform">
                                             <option value="none" <?php echo ($quiz_wrong_answer_text_transform == 'none') ? 'selected' : ''; ?>>
-                                                <?php echo __('None',$this->plugin_name); ?>
+                                                <?php echo __('None','quiz-maker'); ?>
                                             </option>
                                             <option value="capitalize" <?php echo ($quiz_wrong_answer_text_transform == 'capitalize') ? 'selected' : ''; ?>>
-                                                <?php echo __('Capitalize',$this->plugin_name); ?>
+                                                <?php echo __('Capitalize','quiz-maker'); ?>
                                             </option>
                                             <option value="uppercase" <?php echo ($quiz_wrong_answer_text_transform == 'uppercase')  ? 'selected' : ''; ?>>
-                                                <?php echo __('Uppercase',$this->plugin_name); ?>
+                                                <?php echo __('Uppercase','quiz-maker'); ?>
                                             </option>
                                             <option value="lowercase" <?php echo ($quiz_wrong_answer_text_transform == 'lowercase') ? 'selected' : ''; ?>>
-                                                <?php echo __('Lowercase',$this->plugin_name); ?>
+                                                <?php echo __('Lowercase','quiz-maker'); ?>
                                             </option>
                                         </select>
                                     </div>
@@ -3996,8 +3996,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_quiz_wrong_answers_text_decoration">
-                                            <?php echo __('Text decoration',$this->plugin_name); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Choose the line position for the Wrong answer on the front end. Note: It is set as None by default.',$this->plugin_name); ?>">
+                                            <?php echo __('Text decoration','quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Choose the line position for the Wrong answer on the front end. Note: It is set as None by default.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -4005,16 +4005,16 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="col-sm-7 ays_divider_left">
                                         <select class="ays-text-input ays-text-input-short" id="ays_quiz_wrong_answers_text_decoration" name="ays_quiz_wrong_answers_text_decoration">
                                             <option value="none" <?php echo ($quiz_wrong_answers_text_decoration == 'none') ? 'selected' : ''; ?>>
-                                                <?php echo __('None',$this->plugin_name); ?>
+                                                <?php echo __('None','quiz-maker'); ?>
                                             </option>
                                             <option value="overline" <?php echo ($quiz_wrong_answers_text_decoration == 'overline') ? 'selected' : ''; ?>>
-                                                <?php echo __('Overline',$this->plugin_name); ?>
+                                                <?php echo __('Overline','quiz-maker'); ?>
                                             </option>
                                             <option value="line-through" <?php echo ($quiz_wrong_answers_text_decoration == 'line-through')  ? 'selected' : ''; ?>>
-                                                <?php echo __('Line through',$this->plugin_name); ?>
+                                                <?php echo __('Line through','quiz-maker'); ?>
                                             </option>
                                             <option value="underline" <?php echo ($quiz_wrong_answers_text_decoration == 'underline') ? 'selected' : ''; ?>>
-                                                <?php echo __('Underline',$this->plugin_name); ?>
+                                                <?php echo __('Underline','quiz-maker'); ?>
                                             </option>
                                         </select>
                                     </div>
@@ -4023,8 +4023,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_quiz_wrong_answers_letter_spacing">
-                                            <?php echo __('Letter spacing',$this->plugin_name)?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the space between the letters of the wrong answer text in pixels. Note: The default value for this option is 0.',$this->plugin_name); ?>">
+                                            <?php echo __('Letter spacing','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the space between the letters of the wrong answer text in pixels. Note: The default value for this option is 0.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -4042,8 +4042,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_quiz_wrong_answers_font_weight">
-                                            <?php echo __('Font weight',$this->plugin_name); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the font weight for the Wrong answer. Note: By default, it is set as Normal.',$this->plugin_name); ?>">
+                                            <?php echo __('Font weight','quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the font weight for the Wrong answer. Note: By default, it is set as Normal.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -4051,16 +4051,16 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="col-sm-7 ays_divider_left">
                                         <select class="ays-text-input ays-text-input-short" id="ays_quiz_wrong_answers_font_weight" name="ays_quiz_wrong_answers_font_weight">
                                             <option value="normal" <?php echo ($quiz_wrong_answers_font_weight == 'normal') ? 'selected' : ''; ?>>
-                                                <?php echo __('Normal',$this->plugin_name); ?>
+                                                <?php echo __('Normal','quiz-maker'); ?>
                                             </option>
                                             <option value="lighter" <?php echo ($quiz_wrong_answers_font_weight == 'lighter') ? 'selected' : ''; ?>>
-                                                <?php echo __('Lighter',$this->plugin_name); ?>
+                                                <?php echo __('Lighter','quiz-maker'); ?>
                                             </option>
                                             <option value="bold" <?php echo ($quiz_wrong_answers_font_weight == 'bold')  ? 'selected' : ''; ?>>
-                                                <?php echo __('Bold',$this->plugin_name); ?>
+                                                <?php echo __('Bold','quiz-maker'); ?>
                                             </option>
                                             <option value="bolder" <?php echo ($quiz_wrong_answers_font_weight == 'bolder') ? 'selected' : ''; ?>>
-                                                <?php echo __('Bolder',$this->plugin_name); ?>
+                                                <?php echo __('Bolder','quiz-maker'); ?>
                                             </option>
                                             <option value="100" <?php echo ($quiz_wrong_answers_font_weight == '100') ? 'selected' : ''; ?>>
                                                 <?php echo '100'; ?>
@@ -4102,15 +4102,15 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                     <div class="ays-quiz-accordion-container">
                         <?php echo $quiz_accordion_svg_html; ?>
-                        <p class="ays-subtitle" style="margin-top:0;"><?php echo __('Advanced settings',$this->plugin_name); ?></p>
+                        <p class="ays-subtitle" style="margin-top:0;"><?php echo __('Advanced settings','quiz-maker'); ?></p>
                     </div>
                     <hr class="ays-quiz-bolder-hr"/>
                     <div class="ays-quiz-accordion-options-box">
                         <div class="form-group row">
                             <div class="col-sm-3">
                                 <label for="ays_custom_css">
-                                    <?php echo __('Custom CSS',$this->plugin_name)?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Field for entering your own CSS code. Example: p{color:red !important}',$this->plugin_name)?>">
+                                    <?php echo __('Custom CSS','quiz-maker')?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Field for entering your own CSS code. Example: p{color:red !important}','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -4136,15 +4136,15 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                     <div class="ays-quiz-accordion-container">
                         <?php echo $quiz_accordion_svg_html; ?>
-                        <p class="ays-subtitle"><?php echo __('Primary',$this->plugin_name)?></p>
+                        <p class="ays-subtitle"><?php echo __('Primary','quiz-maker')?></p>
                     </div>
                     <hr class="ays-quiz-bolder-hr"/>
                     <div class="ays-quiz-accordion-options-box">
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label>
-                                    <?php echo __('Status', $this->plugin_name); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Published OR Unpublished. Choose whether the quiz is active or not. If you choose Unpublished option, the quiz won’t be shown anywhere in your website (You don’t need to remove shortcodes).',$this->plugin_name); ?>">
+                                    <?php echo __('Status', 'quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Published OR Unpublished. Choose whether the quiz is active or not. If you choose Unpublished option, the quiz won’t be shown anywhere in your website (You don’t need to remove shortcodes).','quiz-maker'); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -4154,13 +4154,13 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <input type="radio" id="ays-publish" name="ays_publish"
                                            value="1" <?php echo ($quiz_published == '') ? "checked" : ""; ?>  <?php echo ($quiz_published == '1') ? 'checked' : ''; ?>/>
                                     <label class="form-check-label"
-                                           for="ays-publish"> <?php echo __('Published', $this->plugin_name); ?> </label>
+                                           for="ays-publish"> <?php echo __('Published', 'quiz-maker'); ?> </label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input type="radio" id="ays-unpublish" name="ays_publish"
                                            value="0" <?php echo ($quiz_published == '0') ? 'checked' : ''; ?>/>
                                     <label class="form-check-label"
-                                           for="ays-unpublish"> <?php echo __('Unpublished', $this->plugin_name); ?> </label>
+                                           for="ays-unpublish"> <?php echo __('Unpublished', 'quiz-maker'); ?> </label>
                                 </div>
                             </div>
                         </div>
@@ -4168,8 +4168,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="form-group row ays_toggle_parent">
                             <div class="col-sm-4">
                                 <label for="ays_enable_timer">
-                                    <?php echo __('Enable Timer',$this->plugin_name); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show countdown time in the quiz. It will be automatically submitted if the time is over.',$this->plugin_name); ?>">
+                                    <?php echo __('Enable Timer','quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show countdown time in the quiz. It will be automatically submitted if the time is over.','quiz-maker'); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -4189,11 +4189,11 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                             <div class="col-sm-12">
                                                 <label class="ays_quiz_loader">
                                                     <input type="radio" class="ays-enable-timer1" checked/>
-                                                    <span><?php echo __( "Quiz Timer", $this->plugin_name ); ?></span>
+                                                    <span><?php echo __( "Quiz Timer", 'quiz-maker' ); ?></span>
                                                 </label>
                                                 <label class="ays_quiz_loader">
                                                     <input type="radio" class="ays-enable-timer1" />
-                                                    <span><?php echo __( "Question Timer", $this->plugin_name ); ?></span>
+                                                    <span><?php echo __( "Question Timer", 'quiz-maker' ); ?></span>
                                                 </label>
                                             </div>
                                         </div>
@@ -4213,7 +4213,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                             <div class="ays-quiz-heading-box ays-quiz-unset-float ays-quiz-unset-margin">
                                                 <div class="ays-quiz-wordpress-user-manual-box ays-quiz-wordpress-text-align">
                                                     <a href="https://www.youtube.com/watch?v=748BkDmA92U" target="_blank">
-                                                        <?php echo __("How timer works - video", $this->plugin_name); ?>
+                                                        <?php echo __("How timer works - video", 'quiz-maker'); ?>
                                                     </a>
                                                 </div>
                                             </div>
@@ -4221,21 +4221,21 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-3">
-                                            <label for="ays_quiz_timer"><?php echo __('Timer seconds',$this->plugin_name)?></label>
+                                            <label for="ays_quiz_timer"><?php echo __('Timer seconds','quiz-maker')?></label>
                                         </div>
                                         <div class="col-sm-9">
                                             <input type="number" name="ays_quiz_timer" id="ays_quiz_timer"
                                                    class="ays-text-input"
                                                    value="<?php echo $timer; ?>"/>
-                                            <p class="ays-important-note"><span><?php echo __('Note',$this->plugin_name)?>!!</span> <?php echo __('After timer finished countdowning, quiz will be submitted automatically.',$this->plugin_name)?></p>
+                                            <p class="ays-important-note"><span><?php echo __('Note','quiz-maker')?>!!</span> <?php echo __('After timer finished countdowning, quiz will be submitted automatically.','quiz-maker')?></p>
                                         </div>
                                     </div>
                                     <hr>
                                     <div class="form-group row">
                                         <div class="col-sm-3">
                                             <label for="ays_quiz_message_before_timer">
-                                                <?php echo __('Message before timer',$this->plugin_name); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Write a message to display before the timer. For example, "Hurry up, the time is ticking! 00:30".',$this->plugin_name) ); ?>">
+                                                <?php echo __('Message before timer','quiz-maker'); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Write a message to display before the timer. For example, "Hurry up, the time is ticking! 00:30".','quiz-maker') ); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -4248,9 +4248,9 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="form-group row ays-quiz-result-message-vars-parent">
                                         <div class="col-sm-3">
                                             <label for="timer_text">
-                                                <?php echo __("Message before starting the quiz", $this->plugin_name); ?>
+                                                <?php echo __("Message before starting the quiz", 'quiz-maker'); ?>
                                                 <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php echo esc_attr( sprintf(
-                                                    __( '%sThis message will appear in your quiz, before it starts. You can use:%s %%%%time%%%% %s %%%%quiz_name%%%% %s %%%%user_first_name%%%% %s %%%%user_last_name%%%% %s %%%%questions_count%%%% %s %%%%user_nickname%%%% %s %%%%user_display_name%%%% %s message variables to customize the text. %s', $this->plugin_name ),
+                                                    __( '%sThis message will appear in your quiz, before it starts. You can use:%s %%%%time%%%% %s %%%%quiz_name%%%% %s %%%%user_first_name%%%% %s %%%%user_last_name%%%% %s %%%%questions_count%%%% %s %%%%user_nickname%%%% %s %%%%user_display_name%%%% %s message variables to customize the text. %s', 'quiz-maker' ),
                                                         "<div class='ays-quiz-tooltip-box'>",
                                                         "<ul class='ays-quiz-tooltip-ul'><li>",
                                                         "</li><li>",
@@ -4281,9 +4281,9 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="form-group row ays-quiz-result-message-vars-parent">
                                         <div class="col-sm-3">
                                             <label for="after_timer_text">
-                                                <?php echo __("Message after the timer ends", $this->plugin_name); ?>
+                                                <?php echo __("Message after the timer ends", 'quiz-maker'); ?>
                                                 <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php echo esc_attr( sprintf(
-                                                    __( '%sThis message will appear after the timer ends. You can use:%s %%%%time%%%% %s %%%%quiz_name%%%% %s %%%%user_first_name%%%% %s %%%%user_last_name%%%% %s %%%%questions_count%%%% %s %%%%user_nickname%%%% %s %%%%user_display_name%%%% %s message variables to customize the text. %s', $this->plugin_name ),
+                                                    __( '%sThis message will appear after the timer ends. You can use:%s %%%%time%%%% %s %%%%quiz_name%%%% %s %%%%user_first_name%%%% %s %%%%user_last_name%%%% %s %%%%questions_count%%%% %s %%%%user_nickname%%%% %s %%%%user_display_name%%%% %s message variables to customize the text. %s', 'quiz-maker' ),
                                                         "<div class='ays-quiz-tooltip-box'>",
                                                         "<ul class='ays-quiz-tooltip-ul'><li>",
                                                         "</li><li>",
@@ -4314,8 +4314,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="form-group row">
                                         <div class="col-sm-3">
                                             <label for="ays_quiz_timer_in_title">
-                                                <?php echo __('Show timer on page tab',$this->plugin_name); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Enable to show countdown timer in the browser tab.',$this->plugin_name); ?>">
+                                                <?php echo __('Show timer on page tab','quiz-maker'); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Enable to show countdown timer in the browser tab.','quiz-maker'); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -4329,8 +4329,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="form-group row ays_toggle_parent">
                                         <div class="col-sm-3">
                                             <label for="ays_quiz_timer_red_warning">
-                                                <?php echo __('Turn on warning',$this->plugin_name); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Enable this option and the timer color will be changed after the user completes 90% of the quiz',$this->plugin_name); ?>">
+                                                <?php echo __('Turn on warning','quiz-maker'); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Enable this option and the timer color will be changed after the user completes 90% of the quiz','quiz-maker'); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -4344,9 +4344,9 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                             <div class="form-group row">
                                                 <div class="col-sm-4">
                                                     <label class="form-check-label" for="ays_quiz_timer_warning_text_color">
-                                                        <?php echo __('Warning text color', $this->plugin_name); ?>
+                                                        <?php echo __('Warning text color', 'quiz-maker'); ?>
                                                         <a class="ays_help" data-toggle="tooltip"
-                                                        title="<?php echo esc_attr(__('Specify the text color of the Warning Message. *Note: The color is set Red by default.', $this->plugin_name)); ?>">
+                                                        title="<?php echo esc_attr(__('Specify the text color of the Warning Message. *Note: The color is set Red by default.', 'quiz-maker')); ?>">
                                                             <i class="ays_fa ays_fa_info_circle"></i>
                                                         </a>
                                                     </label>
@@ -4363,7 +4363,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="ays-quiz-heading-box ays-quiz-unset-float ays-quiz-unset-margin">
                                     <div class="ays-quiz-wordpress-user-manual-box ays-quiz-wordpress-text-align">
                                         <a href="https://www.youtube.com/watch?v=748BkDmA92U" target="_blank">
-                                            <?php echo __("How timer works - video", $this->plugin_name); ?>
+                                            <?php echo __("How timer works - video", 'quiz-maker'); ?>
                                         </a>
                                     </div>
                                 </div>
@@ -4373,14 +4373,14 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label for="ays_enable_randomize_questions">
-                                   <?php echo __('Enable randomize questions',$this->plugin_name)?>
-                                   <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The possibility of showing questions in an accidental sequence. It will show questions in random order. If you want to take a specific amount of questions from a pool of questions randomly you need to enable question bank option.',$this->plugin_name)?>">
+                                   <?php echo __('Enable randomize questions','quiz-maker')?>
+                                   <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The possibility of showing questions in an accidental sequence. It will show questions in random order. If you want to take a specific amount of questions from a pool of questions randomly you need to enable question bank option.','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
                                 <p class="ays_quiz_small_hint_text_for_message_variables">
-                                    <span><?php echo __( "Please Note" , $this->plugin_name ); ?></span>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Note: If you notice, that the ordering is not being changed on the Front-end, then, most presumably, there is a cache problem for you. Please exclude the link, where the given quiz is located from the Cache plugin settings. Also, clear all the cache types (DB, plugin, browser). After clearing all the caches, check the case with either the Incognito mode or another browser/device.',$this->plugin_name); ?>">
+                                    <span><?php echo __( "Please Note" , 'quiz-maker' ); ?></span>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Note: If you notice, that the ordering is not being changed on the Front-end, then, most presumably, there is a cache problem for you. Please exclude the link, where the given quiz is located from the Cache plugin settings. Also, clear all the cache types (DB, plugin, browser). After clearing all the caches, check the case with either the Incognito mode or another browser/device.','quiz-maker'); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </p>
@@ -4392,7 +4392,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                    </div>
                                    <div class="col-sm-12">
                                         <p class="ays_quiz_small_hint_text_for_message_variables">
-                                            <span><?php echo __( "Note: If you are using a Cache plugin, make sure to exclude the URL, where the given quiz is located so that the feature can work correctly for you." , $this->plugin_name ); ?></span>
+                                            <span><?php echo __( "Note: If you are using a Cache plugin, make sure to exclude the URL, where the given quiz is located so that the feature can work correctly for you." , 'quiz-maker' ); ?></span>
                                         </p>
                                     </div>
                                </div>
@@ -4402,14 +4402,14 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label for="ays_enable_randomize_answers">
-                                    <?php echo __('Enable randomize answers',$this->plugin_name)?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The possibility of showing the answers of the questions in an accidental sequence. Every time it will show answers in random order.',$this->plugin_name)?>">
+                                    <?php echo __('Enable randomize answers','quiz-maker')?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The possibility of showing the answers of the questions in an accidental sequence. Every time it will show answers in random order.','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
                                 <p class="ays_quiz_small_hint_text_for_message_variables">
-                                    <span><?php echo __( "Please Note" , $this->plugin_name ); ?></span>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Note: If you notice, that the ordering is not being changed on the Front-end, then, most presumably, there is a cache problem for you. Please exclude the link, where the given quiz is located from the Cache plugin settings. Also, clear all the cache types (DB, plugin, browser). After clearing all the caches, check the case with either the Incognito mode or another browser/device.',$this->plugin_name); ?>">
+                                    <span><?php echo __( "Please Note" , 'quiz-maker' ); ?></span>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Note: If you notice, that the ordering is not being changed on the Front-end, then, most presumably, there is a cache problem for you. Please exclude the link, where the given quiz is located from the Cache plugin settings. Also, clear all the cache types (DB, plugin, browser). After clearing all the caches, check the case with either the Incognito mode or another browser/device.','quiz-maker'); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </p>
@@ -4421,7 +4421,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     </div>
                                     <div class="col-sm-12">
                                         <p class="ays_quiz_small_hint_text_for_message_variables">
-                                            <span><?php echo __( "Note: If you are using a Cache plugin, make sure to exclude the URL, where the given quiz is located so that the feature can work correctly for you." , $this->plugin_name ); ?></span>
+                                            <span><?php echo __( "Note: If you are using a Cache plugin, make sure to exclude the URL, where the given quiz is located so that the feature can work correctly for you." , 'quiz-maker' ); ?></span>
                                         </p>
                                     </div>
                                </div>
@@ -4431,8 +4431,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="form-group row ays_toggle_parent" style="margin-bottom: 0;">
                             <div class="col-sm-4">
                                 <label for="ays_enable_question_bank">
-                                    <?php echo __('Enable question bank',$this->plugin_name)?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Enable to take a specific amount of questions from the quiz randomly. For example, you can choose 20 questions from 50 randomly. Every time it will take different questions from the pool.',$this->plugin_name)?>">
+                                    <?php echo __('Enable question bank','quiz-maker')?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Enable to take a specific amount of questions from the quiz randomly. For example, you can choose 20 questions from 50 randomly. Every time it will take different questions from the pool.','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -4449,7 +4449,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <div class="ays-quiz-heading-box ays-quiz-unset-float ays-quiz-unset-margin">
                                             <div class="ays-quiz-wordpress-user-manual-box ays-quiz-wordpress-text-align">
                                                 <a href="https://www.youtube.com/watch?v=nzQEHzmUBc8" target="_blank">
-                                                    <?php echo __("How question bank works - video", $this->plugin_name); ?>
+                                                    <?php echo __("How question bank works - video", 'quiz-maker'); ?>
                                                 </a>
                                             </div>
                                         </div>
@@ -4462,23 +4462,23 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         </div>
                                         <label class="ays_quiz_loader">
                                             <input type="radio" class="ays-enable-timer1" value="general" checked tabindex="-1" />
-                                            <span><?php echo __( "General", $this->plugin_name ); ?></span>
+                                            <span><?php echo __( "General", 'quiz-maker' ); ?></span>
                                         </label>
                                         <label class="ays_quiz_loader">
                                             <input type="radio" class="ays-enable-timer1" value="by_category" tabindex="-1"/>
-                                            <span><?php echo __( "By Category", $this->plugin_name ); ?></span>
+                                            <span><?php echo __( "By Category", 'quiz-maker' ); ?></span>
                                         </label>
                                         <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php echo "<p style='text-indent:10px;margin:0;'>" .
-                                            __('There are two ways of making question bank system.', $this->plugin_name ) . "</p><p style='text-indent:10px;margin:0;'><strong>" .
-                                            __('General', $this->plugin_name ) . ": </strong>" .
-                                            __('It will take the specified amount of questions from all the questions you include in this quiz.', $this->plugin_name ) . "</p><p style='text-indent:10px;margin:0;'><strong>" .
-                                            __('By Category', $this->plugin_name ) . ": </strong>" .
-                                            __('Here you can see all the categories of questions you have included in the general tab. You can provide different numbers for different categories. Also, you can reorder them as you want by drag and dropping. The category order will be kept in the front end, but questions will be printed randomly.', $this->plugin_name ) . "</p>"; ?>">
+                                            __('There are two ways of making question bank system.', 'quiz-maker' ) . "</p><p style='text-indent:10px;margin:0;'><strong>" .
+                                            __('General', 'quiz-maker' ) . ": </strong>" .
+                                            __('It will take the specified amount of questions from all the questions you include in this quiz.', 'quiz-maker' ) . "</p><p style='text-indent:10px;margin:0;'><strong>" .
+                                            __('By Category', 'quiz-maker' ) . ": </strong>" .
+                                            __('Here you can see all the categories of questions you have included in the general tab. You can provide different numbers for different categories. Also, you can reorder them as you want by drag and dropping. The category order will be kept in the front end, but questions will be printed randomly.', 'quiz-maker' ) . "</p>"; ?>">
                                             <i class="ays_fa ays_fa_info_circle"></i>
                                         </a>
                                         <div class="ays_refresh_qbank_categories display_none float-right">
                                             <p>
-                                                <button type="button" class="button ays_refresh_qbank_cats_button"><?php echo __( "Refresh Categories", $this->plugin_name ); ?></button>
+                                                <button type="button" class="button ays_refresh_qbank_cats_button"><?php echo __( "Refresh Categories", 'quiz-maker' ); ?></button>
                                             </p>
                                         </div>
                                         <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
@@ -4496,8 +4496,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_questions_count">
-                                            <?php echo __('Questions count',$this->plugin_name)?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Number of randomly selected questions',$this->plugin_name)?>">
+                                            <?php echo __('Questions count','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Number of randomly selected questions','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -4513,7 +4513,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="ays-quiz-heading-box ays-quiz-unset-float ays-quiz-unset-margin">
                                     <div class="ays-quiz-wordpress-user-manual-box ays-quiz-wordpress-text-align">
                                         <a href="https://www.youtube.com/watch?v=nzQEHzmUBc8" target="_blank">
-                                            <?php echo __("How question bank works - video", $this->plugin_name); ?>
+                                            <?php echo __("How question bank works - video", 'quiz-maker'); ?>
                                         </a>
                                     </div>
                                 </div>
@@ -4524,7 +4524,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                             </div>
                             <div class="col-sm-8">
                                 <p class="ays_quiz_small_hint_text_for_message_variables">
-                                    <span><?php echo __( "Note: If you are using a Cache plugin, make sure to exclude the URL, where the given quiz is located so that the feature can work correctly for you." , $this->plugin_name ); ?></span>
+                                    <span><?php echo __( "Note: If you are using a Cache plugin, make sure to exclude the URL, where the given quiz is located so that the feature can work correctly for you." , 'quiz-maker' ); ?></span>
                                 </p>
                             </div>
                         </div>
@@ -4532,8 +4532,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="form-group row ays_toggle_parent">
                             <div class="col-sm-4">
                                 <label for="ays_enable_questions_ordering_by_cat">
-                                   <?php echo __('Group questions by category',$this->plugin_name)?>
-                                   <a class="ays_help" data-toggle="tooltip" title="<?php echo __('If the option is enabled, then selected questions for the given quiz, will be grouped based on categories. When the Enable randomize questions option is enabled too, then it will randomize both questions among categories and categories among quiz.',$this->plugin_name)?>">
+                                   <?php echo __('Group questions by category','quiz-maker')?>
+                                   <a class="ays_help" data-toggle="tooltip" title="<?php echo __('If the option is enabled, then selected questions for the given quiz, will be grouped based on categories. When the Enable randomize questions option is enabled too, then it will randomize both questions among categories and categories among quiz.','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -4547,9 +4547,9 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label class="form-check-label" for="ays_quiz_questions_numbering_by_category">
-                                            <?php echo __('Enable questions numbering by category', $this->plugin_name); ?>
+                                            <?php echo __('Enable questions numbering by category', 'quiz-maker'); ?>
                                             <a class="ays_help" data-toggle="tooltip"
-                                            title="<?php echo __('Enable this option and the ordering for the question numbering will be by Category. By this, the question numbering will start from 1 for each category. Note: If you choose None for the Questions Numbering option, this feature will not work for you.', $this->plugin_name); ?>">
+                                            title="<?php echo __('Enable this option and the ordering for the question numbering will be by Category. By this, the question numbering will start from 1 for each category. Note: If you choose None for the Questions Numbering option, this feature will not work for you.', 'quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -4564,8 +4564,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="form-group row ays_toggle_parent">
                             <div class="col-sm-4" style="padding-right: 0px;">
                                 <label for="ays_enable_correction">
-                                    <?php echo __('Show correct answers',$this->plugin_name)?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show if the selected answer is right or wrong with green and red marks. To decide when the right/wrong answers will be shown go to “Show messages for right/wrong answers option”.',$this->plugin_name)?>">
+                                    <?php echo __('Show correct answers','quiz-maker')?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show if the selected answer is right or wrong with green and red marks. To decide when the right/wrong answers will be shown go to “Show messages for right/wrong answers option”.','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -4579,9 +4579,9 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label class="form-check-label" for="ays_explanation_time">
-                                            <?php echo __('Display duration of right/wrong answers (in seconds)', $this->plugin_name); ?>
+                                            <?php echo __('Display duration of right/wrong answers (in seconds)', 'quiz-maker'); ?>
                                             <a class="ays_help" data-toggle="tooltip"
-                                            title="<?php echo __('Display duration of right/wrong answers (in seconds) after answering the question.', $this->plugin_name); ?>">
+                                            title="<?php echo __('Display duration of right/wrong answers (in seconds) after answering the question.', 'quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -4596,9 +4596,9 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label class="form-check-label" for="ays_finish_after_wrong_answer">
-                                            <?php echo __('Finish the quiz after one wrong answer', $this->plugin_name); ?>
+                                            <?php echo __('Finish the quiz after one wrong answer', 'quiz-maker'); ?>
                                             <a class="ays_help" data-toggle="tooltip"
-                                            title="<?php echo __('Finish the quiz after one wrong answer.', $this->plugin_name); ?>">
+                                            title="<?php echo __('Finish the quiz after one wrong answer.', 'quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -4613,9 +4613,9 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label class="form-check-label" for="ays_quiz_waiting_time">
-                                            <?php echo __('Waiting time', $this->plugin_name); ?>
+                                            <?php echo __('Waiting time', 'quiz-maker'); ?>
                                             <a class="ays_help" data-toggle="tooltip"
-                                            title="<?php echo __('Enable this option to inform the users the next question will be displayed after some seconds, like this 00:05. This option works with the Radio, Select, True/False question types and when the Next button is disabled for the quiz.', $this->plugin_name) ?>">
+                                            title="<?php echo __('Enable this option to inform the users the next question will be displayed after some seconds, like this 00:05. This option works with the Radio, Select, True/False question types and when the Next button is disabled for the quiz.', 'quiz-maker') ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -4635,9 +4635,9 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label class="form-check-label" for="ays_show_only_wrong_answer">
-                                                    <?php echo __('Show only wrong answers', $this->plugin_name); ?>
+                                                    <?php echo __('Show only wrong answers', 'quiz-maker'); ?>
                                                     <a class="ays_help" data-toggle="tooltip"
-                                                    title="<?php echo __('If the user\'s chosen answer is wrong he/she won\'t see the right answer.', $this->plugin_name); ?>">
+                                                    title="<?php echo __('If the user\'s chosen answer is wrong he/she won\'t see the right answer.', 'quiz-maker'); ?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
@@ -4665,8 +4665,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label for="ays_quiz_display_all_questions">
-                                    <?php echo __('Display all questions on one page',$this->plugin_name); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Tick the checkbox if you want to show all your questions on one page.',$this->plugin_name); ?>">
+                                    <?php echo __('Display all questions on one page','quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Tick the checkbox if you want to show all your questions on one page.','quiz-maker'); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -4684,8 +4684,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label class="ays-disable-setting">
-                                            <?php echo __('Question count per page',$this->plugin_name)?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Allow more than one question per page',$this->plugin_name)?>">
+                                            <?php echo __('Question count per page','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Allow more than one question per page','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -4698,11 +4698,11 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                             <div class="col-sm-12">
                                                 <label class="ays_quiz_loader">
                                                     <input type="radio" class="ays-enable-timer1" checked/>
-                                                    <span><?php echo __( "General", $this->plugin_name ); ?></span>
+                                                    <span><?php echo __( "General", 'quiz-maker' ); ?></span>
                                                 </label>
                                                 <label class="ays_quiz_loader">
                                                     <input type="radio" class="ays-enable-timer1" />
-                                                    <span><?php echo __( "Custom", $this->plugin_name ); ?></span>
+                                                    <span><?php echo __( "Custom", 'quiz-maker' ); ?></span>
                                                 </label>
                                             </div>
                                         </div>
@@ -4710,7 +4710,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <div class="form-group row">
                                             <div class="col-sm-3">
                                                 <label class="ays-disable-setting">
-                                                    <?php echo __('Questions count',$this->plugin_name)?>
+                                                    <?php echo __('Questions count','quiz-maker')?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-9">
@@ -4736,32 +4736,32 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="pro_features pro_features_popup">
                                     <div class="pro-features-popup-conteiner">
                                         <div class="pro-features-popup-title">
-                                            <?php echo __("Navigation Bar", $this->plugin_name); ?>
+                                            <?php echo __("Navigation Bar", 'quiz-maker'); ?>
                                         </div>
                                         <div class="pro-features-popup-content" data-link="https://youtu.be/pf-HSumxP3Y">
                                             <p>
-                                                <?php echo sprintf( __("Add a navigation bar at the top of your Quiz and allow the users to %s move into the questions easily. %s Give them to pass the hard questions and get back to it whenever they will have the answer.", $this->plugin_name),
+                                                <?php echo sprintf( __("Add a navigation bar at the top of your Quiz and allow the users to %s move into the questions easily. %s Give them to pass the hard questions and get back to it whenever they will have the answer.", 'quiz-maker'),
                                                     "<strong>",
                                                     "</strong>"
                                                 ); ?>
                                             </p>
                                             <p>
-                                                <?php echo __("After answering the question, the box will change its color by that making it easier for the user to see his/her progress.", $this->plugin_name); ?>
+                                                <?php echo __("After answering the question, the box will change its color by that making it easier for the user to see his/her progress.", 'quiz-maker'); ?>
                                             </p>
                                             <div>
-                                                <a href="https://quiz-plugin.com/english-exam-with-certificate/" target="_blank"><?php echo __("See Demo", $this->plugin_name); ?></a>
+                                                <a href="https://quiz-plugin.com/english-exam-with-certificate/" target="_blank"><?php echo __("See Demo", 'quiz-maker'); ?></a>
                                             </div>
                                         </div>
                                         <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-navigation-bar">
-                                            <?php echo __("Upgrade Now", $this->plugin_name); ?>
+                                            <?php echo __("Upgrade Now", 'quiz-maker'); ?>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_enable_navigation_bar">
-                                           <?php echo __('Enable navigation bar',$this->plugin_name); ?>
-                                           <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Activate the quiz navigation box in the upper of the questions․ It helps to move back and forth between questions easily. After answering a question, its box becomes black and indicates that you have answered it already.Please note that it does not work with the Questions count per page and Display all questions on one page options.', $this->plugin_name); ?>">
+                                           <?php echo __('Enable navigation bar','quiz-maker'); ?>
+                                           <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Activate the quiz navigation box in the upper of the questions․ It helps to move back and forth between questions easily. After answering a question, its box becomes black and indicates that you have answered it already.Please note that it does not work with the Questions count per page and Display all questions on one page options.', 'quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -4773,8 +4773,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_enable_navigation_bar_marked_questions">
-                                                    <?php echo __('Question marking',$this->plugin_name)?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Enable question bookmarking for the navigation bar.',$this->plugin_name)?>">
+                                                    <?php echo __('Question marking','quiz-maker')?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Enable question bookmarking for the navigation bar.','quiz-maker')?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
@@ -4807,9 +4807,9 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="form-group row ays_toggle_parent">
                             <div class="col-sm-4">
                                 <label for="active_date_check">
-                                    <?php echo __('Schedule the quiz', $this->plugin_name); ?>
+                                    <?php echo __('Schedule the quiz', 'quiz-maker'); ?>
                                     <a class="ays_help" data-toggle="tooltip"
-                                       title="<?php echo __('The period of time when quiz will be active. When the date is out the expiration message will be shown.', $this->plugin_name); ?>">
+                                       title="<?php echo __('The period of time when quiz will be active. When the date is out the expiration message will be shown.', 'quiz-maker'); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -4821,7 +4821,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                             <div class="col-sm-7 ays_toggle_target ays_divider_left active_date <?php echo $active_date_check ? '' : 'display_none' ?>">
                                 <div class="form-group row">
                                     <div class="col-sm-4">
-                                        <label class="form-check-label" for="ays-active"> <?php echo __('Start date:', $this->plugin_name); ?> </label>
+                                        <label class="form-check-label" for="ays-active"> <?php echo __('Start date:', 'quiz-maker'); ?> </label>
                                     </div>
                                     <div class="col-sm-8">
                                         <div class="input-group mb-3">
@@ -4837,7 +4837,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-4">
-                                        <label class="form-check-label" for="ays-deactive"> <?php echo __('End date:', $this->plugin_name); ?> </label>
+                                        <label class="form-check-label" for="ays-deactive"> <?php echo __('End date:', 'quiz-maker'); ?> </label>
                                     </div>
                                     <div class="col-sm-8">
                                         <div class="input-group mb-3">
@@ -4855,10 +4855,10 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-3">
                                         <label for='ays_quiz_show_timer'>
-                                            <?= __('Show timer', $this->plugin_name); ?>
+                                            <?= __('Show timer', 'quiz-maker'); ?>
                                             <a class="ays_help" data-toggle="tooltip"
                                                data-placement="top"
-                                               title="<?= __("Show the countdown or end date time in the quiz.", $this->plugin_name); ?>">
+                                               title="<?= __("Show the countdown or end date time in the quiz.", 'quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -4870,12 +4870,12 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="col-sm-8 ays-quiz-show-timer-mobile-style">
                                         <label class="ays_quiz_loader" for="show_time_countdown">
                                            <input type="radio" id="show_time_countdown" name="ays_show_timer_type" value="countdown" <?php echo $show_timer_type == 'countdown' ? 'checked' : ''; ?> />
-                                           <span><?php echo __('Show countdown', $this->plugin_name); ?></span>
+                                           <span><?php echo __('Show countdown', 'quiz-maker'); ?></span>
                                         </label>
                                         <label class="ays_quiz_loader" for="show_time_enddate">
                                            <input type="radio" id="show_time_enddate" name="ays_show_timer_type"
                                            value="enddate" <?php echo $show_timer_type == 'enddate' ? 'checked' : ''; ?> />
-                                           <span><?php echo __('Show start date', $this->plugin_name); ?></span>
+                                           <span><?php echo __('Show start date', 'quiz-maker'); ?></span>
                                         </label>
                                     </div>
                                 </div> <!--Show timer end-->
@@ -4883,8 +4883,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for='ays_quiz_schedule_timezone'>
-                                            <?php echo __('Timezone', $this->plugin_name); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Choose the right timezone based on the coordinates of your quiz takers.',$this->plugin_name);?>">
+                                            <?php echo __('Timezone', 'quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Choose the right timezone based on the coordinates of your quiz takers.','quiz-maker');?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -4898,13 +4898,13 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <hr>
                                 <div class="form-group row ays-quiz-result-message-vars-parent">
                                     <div class="col-sm-4">
-                                        <label class="form-check-label" for="active_date_pre_start_message"><?php echo __("Pre-start message", $this->plugin_name); ?></label>
+                                        <label class="form-check-label" for="active_date_pre_start_message"><?php echo __("Pre-start message", 'quiz-maker'); ?></label>
                                     </div>
                                     <div class="col-sm-8">
                                         <div class="editor">
                                             <?php
                                             echo $quiz_message_vars_schedule_pre_start_message_html;
-                                            $content   = isset($options['active_date_pre_start_message']) ? stripslashes($options['active_date_pre_start_message']) : __("The quiz will be available soon!", $this->plugin_name);
+                                            $content   = isset($options['active_date_pre_start_message']) ? stripslashes($options['active_date_pre_start_message']) : __("The quiz will be available soon!", 'quiz-maker');
                                             $editor_id = 'active_date_pre_start_message';
                                             $settings  = array(
                                                 'editor_height'  => $quiz_wp_editor_height,
@@ -4919,12 +4919,12 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-4">
-                                        <label class="form-check-label" for="active_date_message"><?php echo __("Expiration message:", $this->plugin_name) ?></label>
+                                        <label class="form-check-label" for="active_date_message"><?php echo __("Expiration message:", 'quiz-maker') ?></label>
                                     </div>
                                     <div class="col-sm-8">
                                         <div class="editor">
                                             <?php
-                                            $content   = isset($options['active_date_message']) ? stripslashes($options['active_date_message']) : __("This quiz has expired!", $this->plugin_name);
+                                            $content   = isset($options['active_date_message']) ? stripslashes($options['active_date_message']) : __("This quiz has expired!", 'quiz-maker');
                                             $editor_id = 'active_date_message';
                                             $settings  = array(
                                                 'editor_height'  => $quiz_wp_editor_height,
@@ -4948,8 +4948,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_make_questions_required">
-                                            <?php echo __('Make the questions required',$this->plugin_name)?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('If the user doesn\'t answer the question he/she can\'t go to the next question.',$this->plugin_name)?>">
+                                            <?php echo __('Make the questions required','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('If the user doesn\'t answer the question he/she can\'t go to the next question.','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -4974,8 +4974,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label>
-                                    <?php echo __('Show question explanation',$this->plugin_name); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify where to display questions explanation. Note that the “Show correct answers” option should be enabled. In order to make this option work, you need to add the corresponding texts from the Edit page of the particular question.',$this->plugin_name); ?>">
+                                    <?php echo __('Show question explanation','quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify where to display questions explanation. Note that the “Show correct answers” option should be enabled. In order to make this option work, you need to add the corresponding texts from the Edit page of the particular question.','quiz-maker'); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -4983,19 +4983,19 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                             <div class="col-sm-8">
                                 <label class="ays_quiz_loader">
                                     <input type="radio" class="ays-enable-timer1" name="ays_show_questions_explanation" value="on_passing" <?php echo ($show_questions_explanation == 'on_passing') ? 'checked' : '' ?>/>
-                                    <span><?php echo __( "During the quiz", $this->plugin_name ); ?></span>
+                                    <span><?php echo __( "During the quiz", 'quiz-maker' ); ?></span>
                                 </label>
                                 <label class="ays_quiz_loader">
                                     <input type="radio" class="ays-enable-timer1" name="ays_show_questions_explanation" value="on_results_page" <?php echo ($show_questions_explanation == 'on_results_page') ? 'checked' : '' ?>/>
-                                    <span><?php echo __( "On results page", $this->plugin_name ); ?></span>
+                                    <span><?php echo __( "On results page", 'quiz-maker' ); ?></span>
                                 </label>
                                 <label class="ays_quiz_loader">
                                     <input type="radio" class="ays-enable-timer1" name="ays_show_questions_explanation" value="on_both" <?php echo ($show_questions_explanation == 'on_both') ? 'checked' : '' ?>/>
-                                    <span><?php echo __( "On Both", $this->plugin_name ); ?></span>
+                                    <span><?php echo __( "On Both", 'quiz-maker' ); ?></span>
                                 </label>
                                 <label class="ays_quiz_loader">
                                     <input type="radio" class="ays-enable-timer1" name="ays_show_questions_explanation" value="disable" <?php echo ($show_questions_explanation == 'disable') ? 'checked' : '' ?>/>
-                                    <span><?php echo __( "Disable", $this->plugin_name ); ?></span>
+                                    <span><?php echo __( "Disable", 'quiz-maker' ); ?></span>
                                 </label>
                             </div>
                         </div> <!-- Show question explanation -->
@@ -5003,21 +5003,21 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label for="ays_show_questions_numbering">
-                                    <?php echo __('Questions numbering',$this->plugin_name); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Assign numbering to each question in ascending sequential order. Choose your preferred type from the list.',$this->plugin_name); ?>">
+                                    <?php echo __('Questions numbering','quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Assign numbering to each question in ascending sequential order. Choose your preferred type from the list.','quiz-maker'); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
                             </div>
                             <div class="col-sm-8">
                                 <select name="ays_show_questions_numbering" class="ays-text-input ays-text-input-short" id="ays_show_questions_numbering">
-                                    <option value="none" <?php echo ($show_questions_numbering == 'none') ? 'selected' : ''; ?> ><?php echo __( "None", $this->plugin_name ); ?></option>
-                                    <option value="1." <?php echo ($show_questions_numbering == '1.') ? 'selected' : ''; ?> ><?php echo __( "1.", $this->plugin_name ); ?></option>
-                                    <option value="1)" <?php echo ($show_questions_numbering == '1)') ? 'selected' : ''; ?> ><?php echo __( "1)", $this->plugin_name ); ?></option>
-                                    <option value="A." <?php echo ($show_questions_numbering == 'A.') ? 'selected' : ''; ?> ><?php echo __( "A.", $this->plugin_name ); ?></option>
-                                    <option value="A)" <?php echo ($show_questions_numbering == 'A)') ? 'selected' : ''; ?> ><?php echo __( "A)", $this->plugin_name ); ?></option>
-                                    <option value="a." <?php echo ($show_questions_numbering == 'a.') ? 'selected' : ''; ?> ><?php echo __( "a.", $this->plugin_name ); ?></option>
-                                    <option value="a)" <?php echo ($show_questions_numbering == 'a)') ? 'selected' : ''; ?> ><?php echo __( "a)", $this->plugin_name ); ?></option>
+                                    <option value="none" <?php echo ($show_questions_numbering == 'none') ? 'selected' : ''; ?> ><?php echo __( "None", 'quiz-maker' ); ?></option>
+                                    <option value="1." <?php echo ($show_questions_numbering == '1.') ? 'selected' : ''; ?> ><?php echo __( "1.", 'quiz-maker' ); ?></option>
+                                    <option value="1)" <?php echo ($show_questions_numbering == '1)') ? 'selected' : ''; ?> ><?php echo __( "1)", 'quiz-maker' ); ?></option>
+                                    <option value="A." <?php echo ($show_questions_numbering == 'A.') ? 'selected' : ''; ?> ><?php echo __( "A.", 'quiz-maker' ); ?></option>
+                                    <option value="A)" <?php echo ($show_questions_numbering == 'A)') ? 'selected' : ''; ?> ><?php echo __( "A)", 'quiz-maker' ); ?></option>
+                                    <option value="a." <?php echo ($show_questions_numbering == 'a.') ? 'selected' : ''; ?> ><?php echo __( "a.", 'quiz-maker' ); ?></option>
+                                    <option value="a)" <?php echo ($show_questions_numbering == 'a)') ? 'selected' : ''; ?> ><?php echo __( "a)", 'quiz-maker' ); ?></option>
                                 </select>
                             </div>
                         </div> <!-- Show questions numbering -->
@@ -5030,8 +5030,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_enable_copy_protection">
-                                            <?php echo __('Enable copy protection',$this->plugin_name)?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Disable copy functionality in quiz page(CTRL+C) and Right-click',$this->plugin_name)?>">
+                                            <?php echo __('Enable copy protection','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Disable copy functionality in quiz page(CTRL+C) and Right-click','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -5055,8 +5055,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="form-group row ays_toggle_parent">
                             <div class="col-sm-4" style="padding-right: 0px;">
                                 <label for="ays_show_question_category">
-                                    <?php echo __('Show question category',$this->plugin_name)?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show question category in each question.',$this->plugin_name)?>">
+                                    <?php echo __('Show question category','quiz-maker')?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show question category in each question.','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -5068,8 +5068,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_quiz_enable_question_category_description">
-                                            <?php echo __('Show question category description',$this->plugin_name); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show question category description for each question.',$this->plugin_name); ?>">
+                                            <?php echo __('Show question category description','quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show question category description for each question.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -5089,8 +5089,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label>
-                                            <?php echo __('Enable text to speech',$this->plugin_name)?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Enable this option to allow listening to the questions being read aloud. Note this option can be used only for questions.',$this->plugin_name)?>">
+                                            <?php echo __('Enable text to speech','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Enable this option to allow listening to the questions being read aloud. Note this option can be used only for questions.','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -5102,15 +5102,15 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label>
-                                                    <?php echo __('Select language (voice)',$this->plugin_name)?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Select the language and voice for the text to speech option. Note: The list may vary depending on your browser.',$this->plugin_name)?>">
+                                                    <?php echo __('Select language (voice)','quiz-maker')?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Select the language and voice for the text to speech option. Note: The list may vary depending on your browser.','quiz-maker')?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
                                                 <select class="ays-text-input ays-text-input-short">
-                                                    <option><?php echo __('Select',$this->plugin_name); ?></option>
+                                                    <option><?php echo __('Select','quiz-maker'); ?></option>
                                                 </select>
                                             </div>
                                         </div>
@@ -5136,13 +5136,13 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_payment_type">
-                                            <?php echo __('Payment Type',$this->plugin_name); ?>
+                                            <?php echo __('Payment Type','quiz-maker'); ?>
                                             <a class="ays_help" data-toggle="tooltip" data-html="true"
                                                 title="<?php
-                                                    echo __('Select the time when the quiz taker will need to pay to pass the quiz:',$this->plugin_name) .
+                                                    echo __('Select the time when the quiz taker will need to pay to pass the quiz:','quiz-maker') .
                                                     "<ul style='list-style-type: circle;padding-left: 20px;'>".
-                                                        "<li>". __('Prepay: The quiz taker will be allowed to pass the quiz only after paying.',$this->plugin_name) ."</li>".
-                                                        "<li>". __('Postpay: The quiz taker will be able to see the results of his/her quiz only after doing a payment. That means that they could pass the quiz but would not be allowed to get results, emails, or certificates until they pay. Besides, if you set the payment type as Postpay the only payment term that will be available is Onetime payment․',$this->plugin_name) ."</li>".
+                                                        "<li>". __('Prepay: The quiz taker will be allowed to pass the quiz only after paying.','quiz-maker') ."</li>".
+                                                        "<li>". __('Postpay: The quiz taker will be able to see the results of his/her quiz only after doing a payment. That means that they could pass the quiz but would not be allowed to get results, emails, or certificates until they pay. Besides, if you set the payment type as Postpay the only payment term that will be available is Onetime payment․','quiz-maker') ."</li>".
                                                     "</ul>";
                                                 ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
@@ -5151,8 +5151,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     </div>
                                     <div class="col-sm-8">
                                         <select name="ays_payment_type" class="ays-text-input ays-text-input-short" id="ays_payment_type" tabindex="-1">
-                                            <option><?php echo __( "Prepay", $this->plugin_name ); ?></option>
-                                            <option><?php echo __( "Postpay", $this->plugin_name ); ?></option>
+                                            <option><?php echo __( "Prepay", 'quiz-maker' ); ?></option>
+                                            <option><?php echo __( "Postpay", 'quiz-maker' ); ?></option>
                                         </select>
                                     </div>
                                 </div>
@@ -5171,8 +5171,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label for="ays_main_quiz_url">
-                                    <?php echo __('Quiz Display Page URL',$this->plugin_name)?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Copy and Paste the link of the page where your quiz is displayed. This option is for easily detecting where your quiz is displayed.',$this->plugin_name); ?>">
+                                    <?php echo __('Quiz Display Page URL','quiz-maker')?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Copy and Paste the link of the page where your quiz is displayed. This option is for easily detecting where your quiz is displayed.','quiz-maker'); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -5185,8 +5185,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label for="ays_enable_full_screen_mode">
-                                    <?php echo __('Enable full-screen mode',$this->plugin_name)?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Allow the quiz takers to enter full-screen mode by pressing the icon located in the top-right corner of the quiz container.',$this->plugin_name)?>">
+                                    <?php echo __('Enable full-screen mode','quiz-maker')?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Allow the quiz takers to enter full-screen mode by pressing the icon located in the top-right corner of the quiz container.','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -5202,8 +5202,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row" style="margin-bottom: 0;">
                                     <div class="col-sm-4">
                                         <label>
-                                            <?php echo __('Hint icon',$this->plugin_name); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Choose either the default symbol or your preferred text for the hint button. In order to make this option work, you need to add the corresponding texts from the Edit page of the particular question.',$this->plugin_name); ?>">
+                                            <?php echo __('Hint icon','quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Choose either the default symbol or your preferred text for the hint button. In order to make this option work, you need to add the corresponding texts from the Edit page of the particular question.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -5212,22 +5212,22 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <label class="ays_quiz_loader">
                                             <input type="radio" class="ays-enable-timer1 ays_toggle_questions_hint_radio" data-flag="false" data-type="default" name="ays_questions_hint_icon_or_text" value="default" <?php echo ($questions_hint_icon_or_text == 'default') ? 'checked' : '' ?>/>
                                             <span>
-                                                <?php echo __( "Default", $this->plugin_name ); ?>
+                                                <?php echo __( "Default", 'quiz-maker' ); ?>
                                                 <i class="ays_fa ays_fa_info_circle ays_question_hint" aria-hidden="true"> </i>
                                             </span>
                                         </label>
                                         <label class="ays_quiz_loader">
                                             <input type="radio" class="ays-enable-timer1 ays_toggle_questions_hint_radio" data-flag="true" data-type="text" name="ays_questions_hint_icon_or_text" value="text" <?php echo ($questions_hint_icon_or_text == 'text') ? 'checked' : '' ?>/>
-                                            <span><?php echo __( "Custom text", $this->plugin_name ); ?></span>
+                                            <span><?php echo __( "Custom text", 'quiz-maker' ); ?></span>
                                         </label>
                                         <label class="ays_quiz_loader">
                                             <input type="radio" class="ays-enable-timer1 ays_toggle_questions_hint_radio" data-flag="true" data-type="button" name="ays_questions_hint_icon_or_text" value="button" <?php echo ($questions_hint_icon_or_text == 'button') ? 'checked' : '' ?>/>
-                                            <span><?php echo __( "Button", $this->plugin_name ); ?></span>
+                                            <span><?php echo __( "Button", 'quiz-maker' ); ?></span>
                                         </label>
                                         <label class="ays_quiz_loader">
                                             <input type="radio" class="ays-enable-timer1 ays_toggle_questions_hint_radio" data-flag="false" data-type="hide" name="ays_questions_hint_icon_or_text" value="hide" <?php echo ($questions_hint_icon_or_text == 'hide') ? 'checked' : '' ?>/>
                                             <span>
-                                                <?php echo __( "Hide", $this->plugin_name ); ?>
+                                                <?php echo __( "Hide", 'quiz-maker' ); ?>
                                             </span>
                                         </label>
                                     </div>
@@ -5239,10 +5239,10 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     </div>
                                     <div class="col-sm-8" style="padding: unset;">
                                         <div data-type="button" class="col-sm-5 ays_padding_unset ays_toggle_target <?php echo ($questions_hint_icon_or_text == 'button') ? '' : 'display_none' ?>">
-                                            <input type="text" class="ays-text-input" placeholder="<?php echo __( "Button text", $this->plugin_name ); ?>" name="ays_questions_hint_button_value" value="<?php echo $questions_hint_button_value; ?>">
+                                            <input type="text" class="ays-text-input" placeholder="<?php echo __( "Button text", 'quiz-maker' ); ?>" name="ays_questions_hint_button_value" value="<?php echo $questions_hint_button_value; ?>">
                                         </div>
                                         <div data-type="text" class="col-sm-5 ays_padding_unset ays_toggle_target <?php echo ($questions_hint_icon_or_text == 'text') ? '' : 'display_none' ?>">
-                                            <input type="text" class="ays-text-input" placeholder="<?php echo __( "Custom text", $this->plugin_name ); ?>" name="ays_questions_hint_value" value="<?php echo $questions_hint_value; ?>">
+                                            <input type="text" class="ays-text-input" placeholder="<?php echo __( "Custom text", 'quiz-maker' ); ?>" name="ays_questions_hint_value" value="<?php echo $questions_hint_value; ?>">
                                         </div>
                                     </div>
                                 </div>
@@ -5254,15 +5254,15 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                     <div class="ays-quiz-accordion-container">
                         <?php echo $quiz_accordion_svg_html; ?>
-                        <p class="ays-subtitle"><?php echo __('Answer Settings',$this->plugin_name)?></p>
+                        <p class="ays-subtitle"><?php echo __('Answer Settings','quiz-maker')?></p>
                     </div>
                     <hr class="ays-quiz-bolder-hr"/>
                     <div class="ays-quiz-accordion-options-box">
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label for="ays_answers_view">
-                                    <?php echo __('Answers view',$this->plugin_name)?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the design of the answers of question.',$this->plugin_name)?>">
+                                    <?php echo __('Answers view','quiz-maker')?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the design of the answers of question.','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -5282,21 +5282,21 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label for="ays_show_answers_numbering">
-                                    <?php echo __('Answers numbering',$this->plugin_name); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Assign numbering to each answer in ascending sequential order. Choose your preferred type from the list.',$this->plugin_name); ?>">
+                                    <?php echo __('Answers numbering','quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Assign numbering to each answer in ascending sequential order. Choose your preferred type from the list.','quiz-maker'); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
                             </div>
                             <div class="col-sm-8">
                                 <select class="ays-text-input ays-text-input-short" name="ays_show_answers_numbering" id="ays_show_answers_numbering">
-                                    <option <?php echo $show_answers_numbering == "none" ? "selected" : ""; ?> value="none"><?php echo __( "None", $this->plugin_name); ?></option>
-                                    <option <?php echo $show_answers_numbering == "1." ? "selected" : ""; ?> value="1."><?php echo __( "1.", $this->plugin_name); ?></option>
-                                    <option <?php echo $show_answers_numbering == "1)" ? "selected" : ""; ?> value="1)"><?php echo __( "1)", $this->plugin_name); ?></option>
-                                    <option <?php echo $show_answers_numbering == "A." ? "selected" : ""; ?> value="A."><?php echo __( "A.", $this->plugin_name); ?></option>
-                                    <option <?php echo $show_answers_numbering == "A)" ? "selected" : ""; ?> value="A)"><?php echo __( "A)", $this->plugin_name); ?></option>
-                                    <option <?php echo $show_answers_numbering == "a." ? "selected" : ""; ?> value="a."><?php echo __( "a.", $this->plugin_name); ?></option>
-                                    <option <?php echo $show_answers_numbering == "a)" ? "selected" : ""; ?> value="a)"><?php echo __( "a)", $this->plugin_name); ?></option>
+                                    <option <?php echo $show_answers_numbering == "none" ? "selected" : ""; ?> value="none"><?php echo __( "None", 'quiz-maker'); ?></option>
+                                    <option <?php echo $show_answers_numbering == "1." ? "selected" : ""; ?> value="1."><?php echo __( "1.", 'quiz-maker'); ?></option>
+                                    <option <?php echo $show_answers_numbering == "1)" ? "selected" : ""; ?> value="1)"><?php echo __( "1)", 'quiz-maker'); ?></option>
+                                    <option <?php echo $show_answers_numbering == "A." ? "selected" : ""; ?> value="A."><?php echo __( "A.", 'quiz-maker'); ?></option>
+                                    <option <?php echo $show_answers_numbering == "A)" ? "selected" : ""; ?> value="A)"><?php echo __( "A)", 'quiz-maker'); ?></option>
+                                    <option <?php echo $show_answers_numbering == "a." ? "selected" : ""; ?> value="a."><?php echo __( "a.", 'quiz-maker'); ?></option>
+                                    <option <?php echo $show_answers_numbering == "a)" ? "selected" : ""; ?> value="a)"><?php echo __( "a)", 'quiz-maker'); ?></option>
                                 </select>
                             </div>
                         </div> <!-- Show answers numbering -->
@@ -5304,8 +5304,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label>
-                                    <?php echo __('Show messages for right/wrong answers',$this->plugin_name); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify where to display right/wrong answers. Note that the “Show correct answers” option should be enabled. In order to make this option work, you need to add the corresponding texts from the Edit page of the particular question.',$this->plugin_name)?>">
+                                    <?php echo __('Show messages for right/wrong answers','quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify where to display right/wrong answers. Note that the “Show correct answers” option should be enabled. In order to make this option work, you need to add the corresponding texts from the Edit page of the particular question.','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -5313,19 +5313,19 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                             <div class="col-sm-8">
                                 <label class="ays_quiz_loader">
                                     <input type="radio" class="ays-enable-timer1" name="ays_answers_rw_texts" value="on_passing" <?php echo ($answers_rw_texts == 'on_passing') ? 'checked' : '' ?>/>
-                                    <span><?php echo __( "During the quiz", $this->plugin_name ); ?></span>
+                                    <span><?php echo __( "During the quiz", 'quiz-maker' ); ?></span>
                                 </label>
                                 <label class="ays_quiz_loader">
                                     <input type="radio" class="ays-enable-timer1" name="ays_answers_rw_texts" value="on_results_page" <?php echo ($answers_rw_texts == 'on_results_page') ? 'checked' : '' ?>/>
-                                    <span><?php echo __( "On results page", $this->plugin_name ); ?></span>
+                                    <span><?php echo __( "On results page", 'quiz-maker' ); ?></span>
                                 </label>
                                 <label class="ays_quiz_loader">
                                     <input type="radio" class="ays-enable-timer1" name="ays_answers_rw_texts" value="on_both" <?php echo ($answers_rw_texts == 'on_both') ? 'checked' : '' ?>/>
-                                    <span><?php echo __( "On Both", $this->plugin_name ); ?></span>
+                                    <span><?php echo __( "On Both", 'quiz-maker' ); ?></span>
                                 </label>
                                 <label class="ays_quiz_loader">
                                     <input type="radio" class="ays-enable-timer1" name="ays_answers_rw_texts" value="disable" <?php echo ($answers_rw_texts == 'disable') ? 'checked' : '' ?>/>
-                                    <span><?php echo __( "Disable", $this->plugin_name ); ?></span>
+                                    <span><?php echo __( "Disable", 'quiz-maker' ); ?></span>
                                 </label>
                             </div>
                         </div> <!-- Show messages for right/wrong answers  -->
@@ -5338,8 +5338,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_quiz_disable_input_focusing">
-                                            <?php echo __('Disable input focusing',$this->plugin_name)?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Enable this option, and the keyboard will not be focused when clicking on the Next button. The option refers to Text, Short_text, Date, Number, and Fill in the blank question types.',$this->plugin_name); ?>">
+                                            <?php echo __('Disable input focusing','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Enable this option, and the keyboard will not be focused when clicking on the Next button. The option refers to Text, Short_text, Date, Number, and Fill in the blank question types.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -5365,15 +5365,15 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                     <div class="ays-quiz-accordion-container">
                         <?php echo $quiz_accordion_svg_html; ?>
-                        <p class="ays-subtitle"><?php echo __('Start Page',$this->plugin_name)?></p>
+                        <p class="ays-subtitle"><?php echo __('Start Page','quiz-maker')?></p>
                     </div>
                     <hr class="ays-quiz-bolder-hr"/>
                     <div class="ays-quiz-accordion-options-box">
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label>
-                                    <?php echo __('Show quiz head information',$this->plugin_name)?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Enable to show the quiz title and description in the start page of the quiz(in the front-end).',$this->plugin_name)?>">
+                                    <?php echo __('Show quiz head information','quiz-maker')?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Enable to show the quiz title and description in the start page of the quiz(in the front-end).','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -5382,12 +5382,12 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-check form-check-inline checkbox_ays">
                                     <input type="checkbox" id="ays_show_quiz_title" name="ays_show_quiz_title"
                                             value="on" <?php echo $show_quiz_title ? 'checked' : ''; ?>/>
-                                    <label class="form-check-label" for="ays_show_quiz_title"><?php echo __('Show title',$this->plugin_name)?></label>
+                                    <label class="form-check-label" for="ays_show_quiz_title"><?php echo __('Show title','quiz-maker')?></label>
                                 </div>
                                 <div class="form-check form-check-inline checkbox_ays">
                                     <input type="checkbox" id="ays_show_quiz_desc" name="ays_show_quiz_desc"
                                             value="on" <?php echo $show_quiz_desc ? 'checked' : ''; ?>/>
-                                    <label class="form-check-label" for="ays_show_quiz_desc"><?php echo __('Show description',$this->plugin_name)?></label>
+                                    <label class="form-check-label" for="ays_show_quiz_desc"><?php echo __('Show description','quiz-maker')?></label>
                                 </div>
                             </div>
                         </div> <!-- Show quiz head information -->
@@ -5395,8 +5395,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="form-group row">
                             <div class="col-sm-4" style="padding-right: 0px;">
                                 <label for="ays_enable_pass_count">
-                                    <?php echo __('Show passed users count',$this->plugin_name)?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show how many users passed the quiz. It will be shown at the bottom of  the start page of the quiz',$this->plugin_name)?>">
+                                    <?php echo __('Show passed users count','quiz-maker')?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show how many users passed the quiz. It will be shown at the bottom of  the start page of the quiz','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -5411,8 +5411,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="form-group row ays_toggle_parent">
                             <div class="col-sm-4" style="padding-right: 0px;">
                                 <label for="ays_show_category">
-                                    <?php echo __('Show quiz category',$this->plugin_name)?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show quiz category in quiz start page',$this->plugin_name)?>">
+                                    <?php echo __('Show quiz category','quiz-maker')?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show quiz category in quiz start page','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -5424,8 +5424,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_quiz_enable_quiz_category_description">
-                                            <?php echo __('Show quiz category description',$this->plugin_name); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show the quiz category description on the Quiz Start page.',$this->plugin_name); ?>">
+                                            <?php echo __('Show quiz category description','quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show the quiz category description on the Quiz Start page.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -5440,8 +5440,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="form-group row">
                             <div class="col-sm-4" style="padding-right: 0px;">
                                 <label for="ays_enable_rate_avg">
-                                    <?php echo __('Show average rate',$this->plugin_name); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show the average rate of the quiz. It will be shown at the bottom of the start page of the quiz.',$this->plugin_name); ?>">
+                                    <?php echo __('Show average rate','quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show the average rate of the quiz. It will be shown at the bottom of the start page of the quiz.','quiz-maker'); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -5456,8 +5456,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="form-group row">
                             <div class="col-sm-4" style="padding-right: 0px;">
                                 <label for="ays_show_author">
-                                    <?php echo __('Show quiz author',$this->plugin_name)?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show quiz author in quiz start page',$this->plugin_name)?>">
+                                    <?php echo __('Show quiz author','quiz-maker')?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show quiz author in quiz start page','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -5472,8 +5472,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="form-group row">
                             <div class="col-sm-4" style="padding-right: 0px;">
                                 <label for="ays_show_create_date">
-                                    <?php echo __('Show creation date',$this->plugin_name)?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show creation date in quiz start page',$this->plugin_name); ?>">
+                                    <?php echo __('Show creation date','quiz-maker')?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show creation date in quiz start page','quiz-maker'); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -5488,8 +5488,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label for="ays_quiz_change_creation_date">
-                                    <?php echo __('Change current quiz creation date',$this->plugin_name); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Change the quiz creation date to your preferred date.',$this->plugin_name); ?>">
+                                    <?php echo __('Change current quiz creation date','quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Change the quiz creation date to your preferred date.','quiz-maker'); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -5514,8 +5514,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_enable_autostart">
-                                            <?php echo __('Enable autostart',$this->plugin_name)?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('If you enable this option, your quiz will start automatically after the page is fully loaded. Note, that this option is designed for 1 quiz in a page. If you put multiple quizzes in a page, only the one located at the top will autostart.',$this->plugin_name)?>">
+                                            <?php echo __('Enable autostart','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('If you enable this option, your quiz will start automatically after the page is fully loaded. Note, that this option is designed for 1 quiz in a page. If you put multiple quizzes in a page, only the one located at the top will autostart.','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -5541,15 +5541,15 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                     <div class="ays-quiz-accordion-container">
                         <?php echo $quiz_accordion_svg_html; ?>
-                        <p class="ays-subtitle"><?php echo __('Button Settings',$this->plugin_name)?></p>
+                        <p class="ays-subtitle"><?php echo __('Button Settings','quiz-maker')?></p>
                     </div>
                     <hr class="ays-quiz-bolder-hr" />
                     <div class="ays-quiz-accordion-options-box">
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label for="ays_enable_next_button">
-                                    <?php echo __('Enable next button',$this->plugin_name); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('User can change the question forward manually. If you want to make the questions required just disable this option.',$this->plugin_name); ?>">
+                                    <?php echo __('Enable next button','quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('User can change the question forward manually. If you want to make the questions required just disable this option.','quiz-maker'); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -5562,8 +5562,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label for="ays_enable_previous_button">
-                                    <?php echo __('Enable previous button',$this->plugin_name)?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('User can change the question backward manually',$this->plugin_name); ?>">
+                                    <?php echo __('Enable previous button','quiz-maker')?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('User can change the question backward manually','quiz-maker'); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -5576,8 +5576,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="form-group row ays_toggle_parent">
                             <div class="col-sm-4">
                                 <label for="ays_enable_early_finish">
-                                    <?php echo __('Enable finish button',$this->plugin_name)?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Allow user to finish the quiz early.',$this->plugin_name)?>">
+                                    <?php echo __('Enable finish button','quiz-maker')?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Allow user to finish the quiz early.','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -5591,8 +5591,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_enable_early_finsh_comfirm_box">
-                                            <?php echo __('Enable confirm box for the Finish button',$this->plugin_name)?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('If the checkbox is ticked and the Finish button is enabled too, then when the user clicks on the Finish button, the confirmation box will be displayed. It will ask `Do you want to finish the quiz? Are you sure? `.',$this->plugin_name)?>">
+                                            <?php echo __('Enable confirm box for the Finish button','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('If the checkbox is ticked and the Finish button is enabled too, then when the user clicks on the Finish button, the confirmation box will be displayed. It will ask `Do you want to finish the quiz? Are you sure? `.','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -5607,8 +5607,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label for="ays_enable_clear_answer">
-                                    <?php echo __('Enable clear answer button',$this->plugin_name)?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Allow user to clear the selected answer. Button will not be displayed if Show correct answers option is enabled.',$this->plugin_name)?>">
+                                    <?php echo __('Enable clear answer button','quiz-maker')?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Allow user to clear the selected answer. Button will not be displayed if Show correct answers option is enabled.','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -5623,8 +5623,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label for="ays_enable_enter_key">
-                                    <?php echo __('Enable to go next by pressing Enter key',$this->plugin_name)?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('This option allows users to go to the next question by pressing Enter key. It is working with the following question types only: Text, Short Text, Number.',$this->plugin_name)?>">
+                                    <?php echo __('Enable to go next by pressing Enter key','quiz-maker')?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('This option allows users to go to the next question by pressing Enter key. It is working with the following question types only: Text, Short Text, Number.','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -5639,14 +5639,14 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="form-group row ays_toggle_parent">
                             <div class="col-sm-4">
                                 <label for="ays_enable_arrows">
-                                    <?php echo __('Use arrows instead of buttons',$this->plugin_name); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Buttons will be replaced to icons.',$this->plugin_name); ?>">
+                                    <?php echo __('Use arrows instead of buttons','quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Buttons will be replaced to icons.','quiz-maker'); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
                                 <p class="ays_quiz_small_hint_text_for_message_variables">
-                                    <span><?php echo __( "Please Note" , $this->plugin_name ); ?></span>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Please note that if the background color and the button text color are the same, the arrows will not be visible.',$this->plugin_name); ?>">
+                                    <span><?php echo __( "Please Note" , 'quiz-maker' ); ?></span>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Please note that if the background color and the button text color are the same, the arrows will not be visible.','quiz-maker'); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </p>
@@ -5681,8 +5681,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label for="ays_quiz_display_messages_before_buttons">
-                                    <?php echo __('Display messages before the buttons',$this->plugin_name); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('If you enable this option, you can display the texts of the following options before the buttons: Message for the right/wrong answers, Question Explanation, and Show correct answers. Note: If the Show correct answers option is disabled, the messages will not be displayed.',$this->plugin_name); ?>">
+                                    <?php echo __('Display messages before the buttons','quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('If you enable this option, you can display the texts of the following options before the buttons: Message for the right/wrong answers, Question Explanation, and Show correct answers. Note: If the Show correct answers option is disabled, the messages will not be displayed.','quiz-maker'); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -5696,8 +5696,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="form-group row ays_toggle_parent">
                             <div class="col-sm-4" style="padding-right: 0px;">
                                 <label for="ays_quiz_enable_custom_texts_for_buttons">
-                                    <?php echo __('Enable custom texts for buttons',$this->plugin_name); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Enable this option and write your desired custom texts for buttons, instead of the default ones. Note: If this option is disabled, the Buttons Texts will be taken from the General Settings page > Buttons Texts tab.',$this->plugin_name)?>">
+                                    <?php echo __('Enable custom texts for buttons','quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Enable this option and write your desired custom texts for buttons, instead of the default ones. Note: If this option is disabled, the Buttons Texts will be taken from the General Settings page > Buttons Texts tab.','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -5709,7 +5709,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_quiz_custom_texts_start_button">
-                                            <?php echo __('Start button',$this->plugin_name); ?>
+                                            <?php echo __('Start button','quiz-maker'); ?>
                                         </label> 
                                     </div>
                                     <div class="col-sm-8">
@@ -5720,7 +5720,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_quiz_custom_texts_next_button">
-                                            <?php echo __('Next button',$this->plugin_name); ?>
+                                            <?php echo __('Next button','quiz-maker'); ?>
                                         </label> 
                                     </div>
                                     <div class="col-sm-8">
@@ -5731,7 +5731,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_quiz_custom_texts_prev_button">
-                                            <?php echo __('Previous button',$this->plugin_name); ?>
+                                            <?php echo __('Previous button','quiz-maker'); ?>
                                         </label> 
                                     </div>
                                     <div class="col-sm-8">
@@ -5742,7 +5742,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_quiz_custom_texts_clear_button">
-                                            <?php echo __('Clear button',$this->plugin_name); ?>
+                                            <?php echo __('Clear button','quiz-maker'); ?>
                                         </label> 
                                     </div>
                                     <div class="col-sm-8">
@@ -5753,7 +5753,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_quiz_custom_texts_finish_button">
-                                            <?php echo __('Finish button',$this->plugin_name); ?>
+                                            <?php echo __('Finish button','quiz-maker'); ?>
                                         </label> 
                                     </div>
                                     <div class="col-sm-8">
@@ -5764,7 +5764,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_quiz_custom_texts_see_results_button">
-                                            <?php echo __('See Result button',$this->plugin_name); ?>
+                                            <?php echo __('See Result button','quiz-maker'); ?>
                                         </label> 
                                     </div>
                                     <div class="col-sm-8">
@@ -5775,7 +5775,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_quiz_custom_texts_restart_quiz_button">
-                                            <?php echo __('Restart quiz button',$this->plugin_name); ?>
+                                            <?php echo __('Restart quiz button','quiz-maker'); ?>
                                         </label> 
                                     </div>
                                     <div class="col-sm-8">
@@ -5786,7 +5786,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_quiz_custom_texts_send_feedback_button">
-                                            <?php echo __('Send feedback button',$this->plugin_name); ?>
+                                            <?php echo __('Send feedback button','quiz-maker'); ?>
                                         </label> 
                                     </div>
                                     <div class="col-sm-8">
@@ -5797,7 +5797,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_quiz_custom_texts_load_more_button">
-                                            <?php echo __('Load more button',$this->plugin_name); ?>
+                                            <?php echo __('Load more button','quiz-maker'); ?>
                                         </label> 
                                     </div>
                                     <div class="col-sm-8">
@@ -5808,7 +5808,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_quiz_custom_texts_exit_button">
-                                            <?php echo __('Exit button',$this->plugin_name); ?>
+                                            <?php echo __('Exit button','quiz-maker'); ?>
                                         </label> 
                                     </div>
                                     <div class="col-sm-8">
@@ -5819,7 +5819,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_quiz_custom_texts_check_button">
-                                            <?php echo __('Check button',$this->plugin_name); ?>
+                                            <?php echo __('Check button','quiz-maker'); ?>
                                         </label> 
                                     </div>
                                     <div class="col-sm-8">
@@ -5830,7 +5830,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_quiz_custom_texts_login_button">
-                                            <?php echo __('Log In button',$this->plugin_name); ?>
+                                            <?php echo __('Log In button','quiz-maker'); ?>
                                         </label> 
                                     </div>
                                     <div class="col-sm-8">
@@ -5848,8 +5848,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_quiz_enable_keyboard_navigation">
-                                            <?php echo __('Enable Keyboard Navigation',$this->plugin_name)?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('After enabling this option, users can navigate through answers by pressing  the Tab key(forward) or the Shift+Tab shortcut(back), tick an answer by pressing the Space key, and move forward to the next question using the Enter key.',$this->plugin_name)?>">
+                                            <?php echo __('Enable Keyboard Navigation','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('After enabling this option, users can navigate through answers by pressing  the Tab key(forward) or the Shift+Tab shortcut(back), tick an answer by pressing the Space key, and move forward to the next question using the Enter key.','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -5875,15 +5875,15 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                     <div class="ays-quiz-accordion-container">
                         <?php echo $quiz_accordion_svg_html; ?>
-                        <p class="ays-subtitle"><?php echo __('Advanced Settings',$this->plugin_name)?></p>
+                        <p class="ays-subtitle"><?php echo __('Advanced Settings','quiz-maker')?></p>
                     </div>
                     <hr class="ays-quiz-bolder-hr">
                     <div class="ays-quiz-accordion-options-box">
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label for="ays_enable_audio_autoplay">
-                                    <?php echo __('Enable audio autoplay',$this->plugin_name)?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('If there is audio in the question, it will automatically turn on.',$this->plugin_name)?>">
+                                    <?php echo __('Enable audio autoplay','quiz-maker')?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('If there is audio in the question, it will automatically turn on.','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -5898,8 +5898,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label for="ays_enable_live_bar_option">
-                                    <?php echo __('Enable live progress bar',$this->plugin_name); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show the current state of the user passing the quiz. It will be shown at the top of the quiz container. Note: If the Display all questions on one page option is enabled, then, the Progress Bar will display the 100% value. If the Question count per page option is enabled and you have a multipage quiz, then, the Progress Bar value will be displayed by stages.',$this->plugin_name); ?>">
+                                    <?php echo __('Enable live progress bar','quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show the current state of the user passing the quiz. It will be shown at the top of the quiz container. Note: If the Display all questions on one page option is enabled, then, the Progress Bar will display the 100% value. If the Question count per page option is enabled and you have a multipage quiz, then, the Progress Bar value will be displayed by stages.','quiz-maker'); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -5914,8 +5914,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_enable_percent_view_option">
-                                            <?php echo __('Enable percent view',$this->plugin_name)?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show the progress bar by percentage.',$this->plugin_name)?>">
+                                            <?php echo __('Enable percent view','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show the progress bar by percentage.','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -5932,8 +5932,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label for="ays_enable_rtl_direction">
-                                    <?php echo __('Use RTL Direction',$this->plugin_name)?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Enable Right to Left direction for the text. This option is intended for the Arabic language.',$this->plugin_name)?>">
+                                    <?php echo __('Use RTL Direction','quiz-maker')?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Enable Right to Left direction for the text. This option is intended for the Arabic language.','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -5948,15 +5948,15 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label for="ays_quiz_create_author">
-                                    <?php echo __('Change the author of the current quiz',$this->plugin_name); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('You can change the author who created the current quiz to your preferred one. You need to write the User ID here. Please note, that in case you write an ID, by which there are no users found, the changes will not be applied and the previous author will remain the same.',$this->plugin_name); ?>">
+                                    <?php echo __('Change the author of the current quiz','quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('You can change the author who created the current quiz to your preferred one. You need to write the User ID here. Please note, that in case you write an ID, by which there are no users found, the changes will not be applied and the previous author will remain the same.','quiz-maker'); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
                             </div>
                             <div class="col-sm-8">
                                 <select class="ays-text-input ays-text-input-short select2-container-200-width" id='ays_quiz_create_author'name='ays_quiz_create_author'>
-                                    <option value=""><?php echo __('Select User',$this->plugin_name)?></option>
+                                    <option value=""><?php echo __('Select User','quiz-maker')?></option>
                                     <?php
                                         echo "<option value='" . $ays_quiz_create_author_data['ID'] . "' selected>" . $ays_quiz_create_author_data['display_name'] . "</option>";
                                     ?>
@@ -5967,8 +5967,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label for="ays_enable_questions_counter">
-                                    <?php echo __('Show questions counter',$this->plugin_name)?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show the number of the current question and the total amount of the question in the quiz. It will be shown on the right top corner of the quiz container. Example: 3/7.',$this->plugin_name)?>">
+                                    <?php echo __('Show questions counter','quiz-maker')?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show the number of the current question and the total amount of the question in the quiz. It will be shown on the right top corner of the quiz container. Example: 3/7.','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -5983,8 +5983,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label for="ays_quiz_enable_question_image_zoom">
-                                    <?php echo __('Question Image Zoom',$this->plugin_name)?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('By enabling this option, the users can zoom the question images and open them in the large size on the Front-end.',$this->plugin_name)?>">
+                                    <?php echo __('Question Image Zoom','quiz-maker')?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('By enabling this option, the users can zoom the question images and open them in the large size on the Front-end.','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -5998,8 +5998,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label for="ays_enable_leave_page">
-                                    <?php echo __('Enable confirmation box for leaving the page',$this->plugin_name)?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show confirmation popup if user tries to refresh or leave the page during the quiz taking process.',$this->plugin_name)?>">
+                                    <?php echo __('Enable confirmation box for leaving the page','quiz-maker')?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show confirmation popup if user tries to refresh or leave the page during the quiz taking process.','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -6014,8 +6014,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label for="ays_enable_see_result_confirm_box">
-                                    <?php echo __('Enable confirmation box for the See Result button',$this->plugin_name); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('When this option is ticked, a confirmation box will appear after the user clicks the See Result button at the end of the quiz.',$this->plugin_name); ?>">
+                                    <?php echo __('Enable confirmation box for the See Result button','quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('When this option is ticked, a confirmation box will appear after the user clicks the See Result button at the end of the quiz.','quiz-maker'); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -6028,8 +6028,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="form-group row ays_toggle_parent">
                             <div class="col-sm-4" style="padding-right: 0px;">
                                 <label for="ays_enable_rw_asnwers_sounds">
-                                    <?php echo __('Enable sounds for right/wrong answers',$this->plugin_name); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('This option will work only when Enable Show correct answers option is enabled and sounds are selected from General options page.',$this->plugin_name)?>">
+                                    <?php echo __('Enable sounds for right/wrong answers','quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('This option will work only when Enable Show correct answers option is enabled and sounds are selected from General options page.','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -6041,9 +6041,9 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                             </div>
                             <div class="col-sm-7 ays_toggle_target ays_divider_left" style="<?php echo $enable_rw_asnwers_sounds ? '' : 'display:none;' ?>">
                                 <?php if($rw_answers_sounds_status): ?>
-                                <blockquote class=""><?php echo __('Sounds are selected. For change sounds go to', $this->plugin_name); ?> <a href="?page=quiz-maker-settings"><?php echo __('General options', $this->plugin_name); ?></a> <?php echo __('page', $this->plugin_name); ?></blockquote>
+                                <blockquote class=""><?php echo __('Sounds are selected. For change sounds go to', 'quiz-maker'); ?> <a href="?page=quiz-maker-settings"><?php echo __('General options', 'quiz-maker'); ?></a> <?php echo __('page', 'quiz-maker'); ?></blockquote>
                                 <?php else: ?>
-                                <blockquote class=""><?php echo __('Sounds are not selected. For selecting sounds go to', $this->plugin_name); ?> <a href="?page=quiz-maker-settings"><?php echo __('General options', $this->plugin_name); ?></a> <?php echo __('page', $this->plugin_name); ?></blockquote>
+                                <blockquote class=""><?php echo __('Sounds are not selected. For selecting sounds go to', 'quiz-maker'); ?> <a href="?page=quiz-maker-settings"><?php echo __('General options', 'quiz-maker'); ?></a> <?php echo __('page', 'quiz-maker'); ?></blockquote>
                                 <?php endif; ?>
                             </div>
                         </div> <!-- Enable sounds for right/wrong answers -->
@@ -6051,8 +6051,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="form-group row ays_toggle_parent">
                             <div class="col-sm-4" style="padding-right: 0px;">
                                 <label for="ays_enable_bg_music">
-                                    <?php echo __('Enable Background music',$this->plugin_name)?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Background music will play while passing the quiz. Upload your own audio file for the quiz.',$this->plugin_name)?>">
+                                    <?php echo __('Enable Background music','quiz-maker')?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Background music will play while passing the quiz. Upload your own audio file for the quiz.','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -6064,7 +6064,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                             </div>
                             <div class="col-sm-7 ays_toggle_target ays_divider_left" style="<?php echo $enable_bg_music ? '' : 'display:none;' ?>">
                                 <div class="ays-bg-music-container">
-                                    <a class="add-quiz-bg-music" href="javascript:void(0);"><?php echo __("Select music", $this->plugin_name); ?></a>
+                                    <a class="add-quiz-bg-music" href="javascript:void(0);"><?php echo __("Select music", 'quiz-maker'); ?></a>
                                     <audio controls src="<?php echo $quiz_bg_music; ?>"></audio>
                                     <input type="hidden" name="ays_quiz_bg_music" class="ays_quiz_bg_music" value="<?php echo $quiz_bg_music; ?>">
                                 </div>
@@ -6079,14 +6079,14 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label>
-                                            <?php echo __('Embed code',$this->plugin_name)?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Copy the iframe and embed it on another/your website. Paste the iframe like HTML on your desired WP Editor. By this, the quiz will be opened on that particular page.',$this->plugin_name); ?>">
+                                            <?php echo __('Embed code','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Copy the iframe and embed it on another/your website. Paste the iframe like HTML on your desired WP Editor. By this, the quiz will be opened on that particular page.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
                                     </div>
                                     <div class="col-sm-2">
-                                        <input type="button" class="button button-primary" value="<?php echo __('Copy Code',$this->plugin_name);?>">
+                                        <input type="button" class="button button-primary" value="<?php echo __('Copy Code','quiz-maker');?>">
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="text" class="ays-text-input" tabindex="-1" value="<?php echo esc_attr($embed_code_html); ?>"/>
@@ -6112,8 +6112,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-4" style="padding-right: 0px;">
                                         <label for="ays_enable_questions_reporting">
-                                            <?php echo __('Enable question reporting',$this->plugin_name)?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Enable this option and the users can report questions from the Front-end, once they encounter any issues, errors, or inaccuracies.',$this->plugin_name)?>">
+                                            <?php echo __('Enable question reporting','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Enable this option and the users can report questions from the Front-end, once they encounter any issues, errors, or inaccuracies.','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -6125,8 +6125,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quiz_enable_questions_reporting_mail">
-                                                    <?php echo __('Send email to author',$this->plugin_name); ?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Enable this option and an email will be sent to the quiz author every time when someone reports a question.',$this->plugin_name); ?>">
+                                                    <?php echo __('Send email to author','quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Enable this option and an email will be sent to the quiz author every time when someone reports a question.','quiz-maker'); ?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
@@ -6157,8 +6157,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_allow_exporting_quizzes">
-                                            <?php echo __('Allow exporting quizzes',$this->plugin_name)?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('After ticking this option the Users field will be activated. You will be able to choose whom you want to give the permission to export the Quiz in the PDF file format. The Export to PDF button will be displayed on the front-end.',$this->plugin_name); ?>">
+                                            <?php echo __('Allow exporting quizzes','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('After ticking this option the Users field will be activated. You will be able to choose whom you want to give the permission to export the Quiz in the PDF file format. The Export to PDF button will be displayed on the front-end.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -6170,8 +6170,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <div class="form-group row">
                                             <div class="col-sm-2">
                                                 <label for="ays_users_roles">
-                                                    <?php echo __('Users',$this->plugin_name)?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('User who will have the permission to export the Quiz.',$this->plugin_name)?>">
+                                                    <?php echo __('Users','quiz-maker')?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('User who will have the permission to export the Quiz.','quiz-maker')?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
@@ -6217,7 +6217,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                     <div class="ays-quiz-accordion-container">
                         <?php echo $quiz_accordion_svg_html; ?>
-                        <p class="ays-subtitle"><?php echo __('Primary',$this->plugin_name); ?></p>
+                        <p class="ays-subtitle"><?php echo __('Primary','quiz-maker'); ?></p>
                     </div>
                     <hr class="ays-quiz-bolder-hr"/>
                     <div class="ays-quiz-accordion-options-box">
@@ -6226,7 +6226,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="ays-quiz-heading-box ays-quiz-unset-float ays-quiz-unset-margin">
                                     <div class="ays-quiz-wordpress-user-manual-box ays-quiz-wordpress-text-align">
                                         <a href="https://www.youtube.com/watch?v=DHolVT3O0Zk" target="_blank">
-                                            <?php echo __("How to create scored quiz - video", $this->plugin_name); ?>
+                                            <?php echo __("How to create scored quiz - video", 'quiz-maker'); ?>
                                         </a>
                                     </div>
                                 </div>
@@ -6235,32 +6235,32 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="pro_features pro_features_popup" style="align-items: flex-end;justify-content: flex-end;">
                                     <div class="pro-features-popup-conteiner">
                                         <div class="pro-features-popup-title">
-                                            <?php echo __("Calculate the score option", $this->plugin_name); ?>
+                                            <?php echo __("Calculate the score option", 'quiz-maker'); ?>
                                         </div>
                                         <div class="pro-features-popup-content" data-link="https://youtu.be/2OYoqJtsjoc">
                                             <p>
-                                                <?php echo sprintf( __("The option gives you the possibility to choose the most appropriate calculation system for your quiz. You can set the calculation method either %s by Correctness or by Weight/Points. %s", $this->plugin_name),
+                                                <?php echo sprintf( __("The option gives you the possibility to choose the most appropriate calculation system for your quiz. You can set the calculation method either %s by Correctness or by Weight/Points. %s", 'quiz-maker'),
                                                     '<strong>',
                                                     '</strong>'
                                                 ); ; ?>
                                             </p>
                                             <p>
-                                                <?php echo __("You just need to configure the calculation system depending on the type of quiz you want to create.", $this->plugin_name); ?>
+                                                <?php echo __("You just need to configure the calculation system depending on the type of quiz you want to create.", 'quiz-maker'); ?>
                                             </p>
                                             <div>
-                                                <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo __("See Documentation", $this->plugin_name); ?></a>
+                                                <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo __("See Documentation", 'quiz-maker'); ?></a>
                                             </div>
                                         </div>
                                         <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-calculate-score">
-                                            <?php echo __("Upgrade PRO NOW", $this->plugin_name); ?>
+                                            <?php echo __("Upgrade PRO NOW", 'quiz-maker'); ?>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_calculate_score">
-                                            <?php echo __('Calculate the score',$this->plugin_name)?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Calculate the score of results by the selected method.',$this->plugin_name)?>">
+                                            <?php echo __('Calculate the score','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Calculate the score of results by the selected method.','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -6268,11 +6268,11 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="col-sm-8">
                                         <label class="ays_quiz_loader">
                                             <input type="radio" class="ays-enable-timer1" value="by_correctness" tabindex="-1" checked/>
-                                            <span><?php echo __( "By correctness", $this->plugin_name ); ?></span>
+                                            <span><?php echo __( "By correctness", 'quiz-maker' ); ?></span>
                                         </label>
                                         <label class="ays_quiz_loader">
                                             <input type="radio" class="ays-enable-timer1" tabindex="-1" value="by_points"/>
-                                            <span><?php echo __( "By weight / points", $this->plugin_name ); ?></span>
+                                            <span><?php echo __( "By weight / points", 'quiz-maker' ); ?></span>
                                         </label>
                                     </div>
                                 </div>
@@ -6298,14 +6298,14 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="form-group row ays-quiz-result-message-vars-parent">
                             <div class="col-sm-4">
                                 <label for="ays_result_text">
-                                    <?php echo __('Result message',$this->plugin_name)?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The message will be displayed after submitting the quiz. You can use Variables (General Settings) to insert user data here. If you want to show results with points or with the number of correct answers, you need to use correspondent variables and enable the “Hide score” option.',$this->plugin_name)?>">
+                                    <?php echo __('Result message','quiz-maker')?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The message will be displayed after submitting the quiz. You can use Variables (General Settings) to insert user data here. If you want to show results with points or with the number of correct answers, you need to use correspondent variables and enable the “Hide score” option.','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
                                 <p class="ays_quiz_small_hint_text_for_message_variables">
-                                    <span><?php echo __( "To see all Message Variables " , $this->plugin_name ); ?></span>
-                                    <a href="?page=quiz-maker-settings&ays_quiz_tab=tab4" target="_blank"><?php echo __( "click here" , $this->plugin_name ); ?></a>
+                                    <span><?php echo __( "To see all Message Variables " , 'quiz-maker' ); ?></span>
+                                    <a href="?page=quiz-maker-settings&ays_quiz_tab=tab4" target="_blank"><?php echo __( "click here" , 'quiz-maker' ); ?></a>
                                 </p>
                             </div>
                             <div class="col-sm-8">
@@ -6322,8 +6322,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label class="form-check-label" for="ays-pass-score">
-                                    <?php echo __("Pass Score (%)", $this->plugin_name) ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Set the minimum score to pass the quiz in percentage. Please note to give a value to it above 0, otherwise, the Quiz pass message and Quiz fail message options will not work.',$this->plugin_name); ?>">
+                                    <?php echo __("Pass Score (%)", 'quiz-maker') ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Set the minimum score to pass the quiz in percentage. Please note to give a value to it above 0, otherwise, the Quiz pass message and Quiz fail message options will not work.','quiz-maker'); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -6338,11 +6338,11 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                             <div class="col-sm-12">
                                                 <label class="ays_quiz_loader">
                                                     <input type="radio" class="ays-enable-timer1" checked/>
-                                                    <span><?php echo __( "Percentage", $this->plugin_name ); ?></span>
+                                                    <span><?php echo __( "Percentage", 'quiz-maker' ); ?></span>
                                                 </label>
                                                 <label class="ays_quiz_loader">
                                                     <input type="radio" class="ays-enable-timer1" />
-                                                    <span><?php echo __( "Points", $this->plugin_name ); ?></span>
+                                                    <span><?php echo __( "Points", 'quiz-maker' ); ?></span>
                                                 </label>
                                             </div>
                                         </div>
@@ -6367,14 +6367,14 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row ays-quiz-result-message-vars-parent">
                                     <div class="col-sm-4">
                                         <label class="form-check-label" for="ays_pass_score_message">
-                                            <?php echo __("Quiz pass message", $this->plugin_name) ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The message in the case of the user passes the quiz',$this->plugin_name)?>">
+                                            <?php echo __("Quiz pass message", 'quiz-maker') ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The message in the case of the user passes the quiz','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
                                         <p class="ays_quiz_small_hint_text_for_message_variables">
-                                            <span><?php echo __( "To see all Message Variables " , $this->plugin_name ); ?></span>
-                                            <a href="?page=quiz-maker-settings&ays_quiz_tab=tab4" target="_blank"><?php echo __( "click here" , $this->plugin_name ); ?></a>
+                                            <span><?php echo __( "To see all Message Variables " , 'quiz-maker' ); ?></span>
+                                            <a href="?page=quiz-maker-settings&ays_quiz_tab=tab4" target="_blank"><?php echo __( "click here" , 'quiz-maker' ); ?></a>
                                         </p>
                                     </div>
                                     <div class="col-sm-8">
@@ -6397,15 +6397,15 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row ays-quiz-result-message-vars-parent">
                                     <div class="col-sm-4">
                                         <label class="form-check-label" for="ays_fail_score_message">
-                                            <?php echo __("Quiz fail message", $this->plugin_name) ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The message in the case of the user fails the quiz',$this->plugin_name)?>">
+                                            <?php echo __("Quiz fail message", 'quiz-maker') ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The message in the case of the user fails the quiz','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
                                         <br>
                                         <p class="ays_quiz_small_hint_text_for_message_variables">
-                                            <span><?php echo __( "To see all Message Variables " , $this->plugin_name ); ?></span>
-                                            <a href="?page=quiz-maker-settings&ays_quiz_tab=tab4" target="_blank"><?php echo __( "click here" , $this->plugin_name ); ?></a>
+                                            <span><?php echo __( "To see all Message Variables " , 'quiz-maker' ); ?></span>
+                                            <a href="?page=quiz-maker-settings&ays_quiz_tab=tab4" target="_blank"><?php echo __( "click here" , 'quiz-maker' ); ?></a>
                                         </p>
                                     </div>
                                     <div class="col-sm-8">
@@ -6430,8 +6430,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label>
-                                    <?php echo __('Display score',$this->plugin_name)?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('How to display score of result',$this->plugin_name)?>">
+                                    <?php echo __('Display score','quiz-maker')?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('How to display score of result','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -6439,11 +6439,11 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                             <div class="col-sm-8">
                                 <label class="ays_quiz_loader">
                                     <input type="radio" class="ays-enable-timer1" name="ays_display_score" value="by_percantage" <?php echo ($display_score == 'by_percantage') ? 'checked' : '' ?>/>
-                                    <span><?php echo __( "By percentage", $this->plugin_name ); ?></span>
+                                    <span><?php echo __( "By percentage", 'quiz-maker' ); ?></span>
                                 </label>
                                 <label class="ays_quiz_loader">
                                     <input type="radio" class="ays-enable-timer1" name="ays_display_score" value="by_correctness" <?php echo ($display_score == 'by_correctness') ? 'checked' : '' ?>/>
-                                    <span><?php echo __( "By correct answers count", $this->plugin_name ); ?></span>
+                                    <span><?php echo __( "By correct answers count", 'quiz-maker' ); ?></span>
                                 </label>
                             </div>
                         </div><!-- Display score -->
@@ -6451,8 +6451,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label for="ays_hide_score">
-                                    <?php echo __('Hide score',$this->plugin_name)?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Disable to show the user score with percentage on the finish page. If you want to show points or correct answers count, you need to tick this option and use Variables (General Settings) in the “Text for showing after quiz completion” option.',$this->plugin_name)?>">
+                                    <?php echo __('Hide score','quiz-maker')?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Disable to show the user score with percentage on the finish page. If you want to show points or correct answers count, you need to tick this option and use Variables (General Settings) in the “Text for showing after quiz completion” option.','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -6467,8 +6467,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="form-group row ays_toggle_parent">
                             <div class="col-sm-4">
                                 <label for="ays_redirect_after_submit">
-                                    <?php echo __('Redirect after submission',$this->plugin_name); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Redirect to custom URL after user submit the form.',$this->plugin_name); ?>">
+                                    <?php echo __('Redirect after submission','quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Redirect to custom URL after user submit the form.','quiz-maker'); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -6482,8 +6482,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_submit_redirect_url">
-                                            <?php echo __('Redirect URL',$this->plugin_name)?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The URL for redirecting after the user submits the form.',$this->plugin_name)?>">
+                                            <?php echo __('Redirect URL','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The URL for redirecting after the user submits the form.','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -6501,7 +6501,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         </div>
                                         <span style="display:block; pointer-events: none;" class="ays_quiz_small_hint_text">
                                             <?php echo 
-                                                sprintf( __("Add '%s' phrase at the end of the url.%s Use %s line in your code, by replacing the 'if_false' with a value that will be returned in case something goes wrong.", $this->plugin_name),
+                                                sprintf( __("Add '%s' phrase at the end of the url.%s Use %s line in your code, by replacing the 'if_false' with a value that will be returned in case something goes wrong.", 'quiz-maker'),
                                                 "<strong class='ays_help'>[uniquecode]</strong>",
                                                 "<br>",
                                                 "<strong class='ays_help'>apply_filters('ays_quiz_get_submission_results', 'if_false')</strong>"
@@ -6523,8 +6523,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_submit_redirect_delay">
-                                            <?php echo __('Redirect delay (sec)', $this->plugin_name)?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The redirection delay in seconds after the user submits the form. Value should be greater than 0.',$this->plugin_name)?>">
+                                            <?php echo __('Redirect delay (sec)', 'quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The redirection delay in seconds after the user submits the form. Value should be greater than 0.','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -6539,8 +6539,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_quiz_message_before_redirect_timer">
-                                            <?php echo __('Message before redirect timer',$this->plugin_name); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Write a message to display before the timer. For example, "You will be redirected in 00:30".',$this->plugin_name) ); ?>">
+                                            <?php echo __('Message before redirect timer','quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Write a message to display before the timer. For example, "You will be redirected in 00:30".','quiz-maker') ); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -6557,15 +6557,15 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                     <div class="ays-quiz-accordion-container">
                         <?php echo $quiz_accordion_svg_html; ?>
-                        <p class="ays-subtitle"><?php echo __('Completion Actions',$this->plugin_name); ?></p>
+                        <p class="ays-subtitle"><?php echo __('Completion Actions','quiz-maker'); ?></p>
                     </div>
                     <hr class="ays-quiz-bolder-hr"/>
                     <div class="ays-quiz-accordion-options-box">
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label>
-                                    <?php echo __('Quiz loader icon',$this->plugin_name)?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Choose the design of the loader on the finish page after submitting. It will inherit the Quiz Text color from the Styles tab.',$this->plugin_name)?>">
+                                    <?php echo __('Quiz loader icon','quiz-maker')?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Choose the design of the loader on the finish page after submitting. It will inherit the Quiz Text color from the Styles tab.','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -6599,7 +6599,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <label class="ays_quiz_loader">
                                     <input name="ays_quiz_loader" class="ays_toggle_loader_radio" data-flag="true" data-type="text" type="radio" value="text" <?php echo ($quiz_loader == 'text') ? 'checked' : ''; ?>>
                                     <div class="ays_quiz_loader_text">
-                                        <?php echo __( "Text" , $this->plugin_name ); ?>
+                                        <?php echo __( "Text" , 'quiz-maker' ); ?>
                                     </div>
                                     <div class="ays_toggle_loader_target <?php echo ($quiz_loader == 'text') ? '' : 'display_none' ?>" data-type="text">
                                         <input type="text" class="ays-text-input" data-type="text" id="ays_quiz_loader_text_value" name="ays_quiz_loader_text_value" value="<?php echo $quiz_loader_text_value; ?>">
@@ -6608,10 +6608,10 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <label class="ays_quiz_loader">
                                     <input name="ays_quiz_loader" class="ays_toggle_loader_radio" data-flag="true" data-type="gif" type="radio" value="custom_gif" <?php echo ($quiz_loader == 'custom_gif') ? 'checked' : ''; ?>>
                                     <div class="ays_quiz_loader_custom_gif">
-                                        <?php echo __( "Gif" , $this->plugin_name ); ?>
+                                        <?php echo __( "Gif" , 'quiz-maker' ); ?>
                                     </div>
                                     <div class="ays_toggle_loader_target ays-image-wrap <?php echo ($quiz_loader == 'custom_gif') ? '' : 'display_none' ?>" data-type="gif">
-                                        <a href="javascript:void(0)" style="<?php echo ($quiz_loader_custom_gif == '') ? 'display:inline-block' : 'display:none'; ?>" class="ays-add-image add_quiz_loader_custom_gif"><?php echo __('Add Gif', $this->plugin_name); ?></a>
+                                        <a href="javascript:void(0)" style="<?php echo ($quiz_loader_custom_gif == '') ? 'display:inline-block' : 'display:none'; ?>" class="ays-add-image add_quiz_loader_custom_gif"><?php echo __('Add Gif', 'quiz-maker'); ?></a>
                                         <input type="hidden" class="ays-image-path" id="ays_quiz_loader_custom_gif" name="ays_quiz_loader_custom_gif" value="<?php echo $quiz_loader_custom_gif; ?>"/>
                                         <div class="ays-image-container" style="<?php echo ($quiz_loader_custom_gif == '') ? 'display:none' : 'display:block'; ?>">
                                             <span class="ays-edit-img ays-edit-quiz-loader-custom-gif">
@@ -6624,8 +6624,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="ays_toggle_loader_target ays_gif_loader_width_container <?php echo ($quiz_loader == 'custom_gif') ? 'display_flex' : 'display_none'; ?>" data-type="gif" style="margin: 10px;">
                                         <div>
                                             <label for='ays_quiz_loader_custom_gif_width'>
-                                                <?php echo __('Width (px)', $this->plugin_name); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Custom Gif width in pixels. It accepts only numeric values.',$this->plugin_name); ?>">
+                                                <?php echo __('Width (px)', 'quiz-maker'); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Custom Gif width in pixels. It accepts only numeric values.','quiz-maker'); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -6641,8 +6641,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label for="ays_enable_restart_button">
-                                    <?php echo __('Enable restart button',$this->plugin_name)?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show the restart button at the end of the quiz for restarting the quiz and pass it again.',$this->plugin_name)?>">
+                                    <?php echo __('Enable restart button','quiz-maker')?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show the restart button at the end of the quiz for restarting the quiz and pass it again.','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -6657,8 +6657,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="form-group row ays_toggle_parent">
                             <div class="col-sm-4">
                                 <label for="ays_questions_result_option">
-                                    <?php echo __('Show question results on the results page',$this->plugin_name); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show all questions with right and wrong answers after quiz',$this->plugin_name); ?>">
+                                    <?php echo __('Show question results on the results page','quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show all questions with right and wrong answers after quiz','quiz-maker'); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -6670,8 +6670,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_hide_correct_answers">
-                                            <?php echo __('Hide correct answers',$this->plugin_name)?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('After enabling this option, the user whose chosen answer to the question is wrong will not see the right one.',$this->plugin_name)?>">
+                                            <?php echo __('Hide correct answers','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('After enabling this option, the user whose chosen answer to the question is wrong will not see the right one.','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -6684,8 +6684,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_quiz_show_wrong_answers_first">
-                                            <?php echo __('Show wrong answers first',$this->plugin_name); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Tick the checkbox if you want to show the wrongly answered questions by the particular user in the first place on the result page.',$this->plugin_name); ?>">
+                                            <?php echo __('Show wrong answers first','quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Tick the checkbox if you want to show the wrongly answered questions by the particular user in the first place on the result page.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -6698,8 +6698,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_quiz_show_only_wrong_answers">
-                                            <?php echo __('Show only wrong answers',$this->plugin_name); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Tick this option if you want to see only the wrong answers on the quiz results page.',$this->plugin_name); ?>">
+                                            <?php echo __('Show only wrong answers','quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Tick this option if you want to see only the wrong answers on the quiz results page.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -6712,8 +6712,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_quiz_enable_results_toggle">
-                                            <?php echo __('Enable the Show/Hide toggle',$this->plugin_name); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('If you enable this option, a toggle will be displayed by which you can show/hide the results of the quiz questions on the Front-end.',$this->plugin_name); ?>">
+                                            <?php echo __('Enable the Show/Hide toggle','quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('If you enable this option, a toggle will be displayed by which you can show/hide the results of the quiz questions on the Front-end.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -6728,8 +6728,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label for="ays_enable_bar_option">
-                                    <?php echo __('Enable progress bar',$this->plugin_name); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show score via progressbar',$this->plugin_name); ?>">
+                                    <?php echo __('Enable progress bar','quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show score via progressbar','quiz-maker'); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -6744,8 +6744,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="form-group row">
                             <div class="col-sm-4" style="padding-right: 0px;">
                                 <label for="ays_enable_quiz_rate">
-                                    <?php echo __('Enable quiz assessment',$this->plugin_name); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Comment and rate the quiz with up to 5 stars at the end of the quiz.',$this->plugin_name); ?>">
+                                    <?php echo __('Enable quiz assessment','quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Comment and rate the quiz with up to 5 stars at the end of the quiz.','quiz-maker'); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -6759,8 +6759,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-4" style="padding-right: 0px;">
                                         <label for="ays_enable_rate_comments">
-                                            <?php echo __('Show the last 5 reviews',$this->plugin_name)?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show the last 5 reviews after rating the quiz.',$this->plugin_name); ?>">
+                                            <?php echo __('Show the last 5 reviews','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show the last 5 reviews after rating the quiz.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -6775,8 +6775,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_quiz_make_responses_anonymous">
-                                            <?php echo __('Make responses anonymous',$this->plugin_name); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Collect anonymous responses no matter the quiz taker is a logged-in user or guest.',$this->plugin_name); ?>">
+                                            <?php echo __('Make responses anonymous','quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Collect anonymous responses no matter the quiz taker is a logged-in user or guest.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -6790,8 +6790,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_quiz_enable_user_cհoosing_anonymous_assessment">
-                                            <?php echo __("Enable users' anonymous assessment",$this->plugin_name); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('By ticking this option, the users can choose to leave a rating anonymously.',$this->plugin_name); ?>">
+                                            <?php echo __("Enable users' anonymous assessment",'quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('By ticking this option, the users can choose to leave a rating anonymously.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -6805,8 +6805,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_quiz_make_all_review_link">
-                                            <?php echo __('Display all reviews button',$this->plugin_name); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Tick the option, and the quiz taker will have the opportunity to see all feedbacks written by others.',$this->plugin_name); ?>">
+                                            <?php echo __('Display all reviews button','quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Tick the option, and the quiz taker will have the opportunity to see all feedbacks written by others.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -6819,8 +6819,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_quiz_review_enable_comment_field">
-                                            <?php echo __('Enable Comment Field',$this->plugin_name); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('By disabling this option, the comment field will be hidden and you can only rate with stars. This option is enabled by default.',$this->plugin_name); ?>">
+                                            <?php echo __('Enable Comment Field','quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('By disabling this option, the comment field will be hidden and you can only rate with stars. This option is enabled by default.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -6833,8 +6833,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_quiz_make_review_required">
-                                            <?php echo __('Make the review field required',$this->plugin_name); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("If this option is enabled, the users can't send a feedback without writing a review.",$this->plugin_name) ); ?>">
+                                            <?php echo __('Make the review field required','quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("If this option is enabled, the users can't send a feedback without writing a review.",'quiz-maker') ); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -6847,8 +6847,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_quiz_review_placeholder_text">
-                                            <?php echo __('Placeholder text',$this->plugin_name); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Write your custom placeholder for the Rating form.',$this->plugin_name) ); ?>">
+                                            <?php echo __('Placeholder text','quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Write your custom placeholder for the Rating form.','quiz-maker') ); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -6861,8 +6861,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row ays-quiz-result-message-vars-parent">
                                     <div class="col-sm-4" style="padding-right: 0px;">
                                         <label for="ays_rate_form_title">
-                                            <?php echo __('Rating form title',$this->plugin_name)?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Text which will notify user that he can submit a feedback',$this->plugin_name)?>">
+                                            <?php echo __('Rating form title','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Text which will notify user that he can submit a feedback','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -6881,8 +6881,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row ays-quiz-result-message-vars-parent">
                                     <div class="col-sm-4" style="padding-right: 0px;">
                                         <label for="ays_quiz_review_thank_you_message">
-                                            <?php echo __('Thank you message',$this->plugin_name)?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('By enabling this option, the text written in the editor is displayed when the user writes a review for the quiz.',$this->plugin_name); ?>">
+                                            <?php echo __('Thank you message','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('By enabling this option, the text written in the editor is displayed when the user writes a review for the quiz.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -6905,15 +6905,15 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                     <div class="ays-quiz-accordion-container">
                         <?php echo $quiz_accordion_svg_html; ?>
-                        <p class="ays-subtitle"><?php echo __('Advanced',$this->plugin_name); ?></p>
+                        <p class="ays-subtitle"><?php echo __('Advanced','quiz-maker'); ?></p>
                     </div>
                     <hr class="ays-quiz-bolder-hr"/>
                     <div class="ays-quiz-accordion-options-box">
                         <div class="form-group row ays_toggle_parent">
                             <div class="col-sm-4">
                                 <label for="ays_enable_exit_button">
-                                    <?php echo __('Enable Exit button',$this->plugin_name); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Exit button will be displayed in the finish page and must redirect the user to a custom URL.',$this->plugin_name); ?>">
+                                    <?php echo __('Enable Exit button','quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Exit button will be displayed in the finish page and must redirect the user to a custom URL.','quiz-maker'); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -6927,8 +6927,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_exit_redirect_url">
-                                            <?php echo __('Redirect URL',$this->plugin_name)?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The custom URL address for EXIT button in finish page.',$this->plugin_name)?>">
+                                            <?php echo __('Redirect URL','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The custom URL address for EXIT button in finish page.','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -6945,8 +6945,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label for="ays_average_statistical_option">
-                                    <?php echo __('Show the statistical average',$this->plugin_name); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show average score according to all results of the quiz',$this->plugin_name); ?>">
+                                    <?php echo __('Show the statistical average','quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show average score according to all results of the quiz','quiz-maker'); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -6961,8 +6961,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="form-group row ays_toggle_parent ays-quiz-result-message-vars-parent">
                             <div class="col-sm-4">
                                 <label for="ays_social_buttons">
-                                    <?php echo __('Show the Social buttons',$this->plugin_name)?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Display social buttons for sharing quiz page URL. LinkedIn, Facebook, X, VKontakte',$this->plugin_name)?>">
+                                    <?php echo __('Show the Social buttons','quiz-maker')?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Display social buttons for sharing quiz page URL. LinkedIn, Facebook, X, VKontakte','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -6974,8 +6974,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label>
-                                            <?php echo __('Heading for share buttons',$this->plugin_name)?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Text that will be displayed over share buttons.',$this->plugin_name); ?>">
+                                            <?php echo __('Heading for share buttons','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Text that will be displayed over share buttons.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -6995,8 +6995,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="col-sm-4">
                                         <label for="ays_quiz_enable_linkedin_share_button">
                                             <i class="ays_fa ays_fa_linkedin_square"></i>
-                                            <?php echo __('Enable LinkedIn button',$this->plugin_name)?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Display LinkedIn social button so that the users can share the page on which your quiz is posted.',$this->plugin_name); ?>">
+                                            <?php echo __('Enable LinkedIn button','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Display LinkedIn social button so that the users can share the page on which your quiz is posted.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -7010,8 +7010,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="col-sm-4">
                                         <label for="ays_quiz_enable_facebook_share_button">
                                             <i class="ays_fa ays_fa_facebook_square"></i>
-                                            <?php echo __('Enable Facebook button',$this->plugin_name)?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Display Facebook social button so that the users can share the page on which your quiz is posted.',$this->plugin_name); ?>">
+                                            <?php echo __('Enable Facebook button','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Display Facebook social button so that the users can share the page on which your quiz is posted.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -7027,8 +7027,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="14" height="16">
                                                 <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/>
                                             </svg>
-                                            <span><?php echo __('Enable X button',$this->plugin_name); ?></span>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Display X social button so that the users can share the page on which your quiz is posted.',$this->plugin_name); ?>">
+                                            <span><?php echo __('Enable X button','quiz-maker'); ?></span>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Display X social button so that the users can share the page on which your quiz is posted.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -7042,8 +7042,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="col-sm-4">
                                         <label for="ays_quiz_enable_vkontakte_share_button">
                                             <i class="ays_fa ays_fa_vk"></i>
-                                            <?php echo __('Enable VKontakte button',$this->plugin_name)?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Display VKontakte social button so that the users can share the page on which your quiz is posted.',$this->plugin_name); ?>">
+                                            <?php echo __('Enable VKontakte button','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Display VKontakte social button so that the users can share the page on which your quiz is posted.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -7058,8 +7058,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="form-group row ays_toggle_parent ays-quiz-result-message-vars-parent">
                             <div class="col-sm-4">
                                 <label for="ays_enable_social_links">
-                                    <?php echo __('Enable Social Media links',$this->plugin_name); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Display social media links at the end of the quiz to allow users to visit your pages in the Social media.',$this->plugin_name)?>">
+                                    <?php echo __('Enable Social Media links','quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Display social media links at the end of the quiz to allow users to visit your pages in the Social media.','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -7073,8 +7073,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label>
-                                            <?php echo __('Heading for social media links',$this->plugin_name)?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Text that will be displayed over social media links.',$this->plugin_name); ?>">
+                                            <?php echo __('Heading for social media links','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Text that will be displayed over social media links.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -7094,8 +7094,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="col-sm-4">
                                         <label for="ays_linkedin_link">
                                             <i class="ays_fa ays_fa_linkedin_square"></i>
-                                            <?php echo __('LinkedIn link',$this->plugin_name)?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('LinkedIn profile or page link for showing after quiz finish.',$this->plugin_name)?>">
+                                            <?php echo __('LinkedIn link','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('LinkedIn profile or page link for showing after quiz finish.','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -7110,8 +7110,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="col-sm-4">
                                         <label for="ays_facebook_link">
                                             <i class="ays_fa ays_fa_facebook_square"></i>
-                                            <?php echo __('Facebook link',$this->plugin_name)?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Facebook profile or page link for showing after quiz finish.',$this->plugin_name)?>">
+                                            <?php echo __('Facebook link','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Facebook profile or page link for showing after quiz finish.','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -7129,8 +7129,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="14" height="16">
                                                 <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/>
                                             </svg>
-                                            <span><?php echo __('X link',$this->plugin_name); ?></span>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('X profile or page link for showing after quiz finish.',$this->plugin_name); ?>">
+                                            <span><?php echo __('X link','quiz-maker'); ?></span>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('X profile or page link for showing after quiz finish.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -7145,8 +7145,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="col-sm-4">
                                         <label for="ays_vkontakte_link">
                                             <i class="ays_fa ays_fa_vk"></i>
-                                            <?php echo __('VKontakte link',$this->plugin_name)?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('VKontakte profile or page link for showing after quiz finish.',$this->plugin_name)?>">
+                                            <?php echo __('VKontakte link','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('VKontakte profile or page link for showing after quiz finish.','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -7161,8 +7161,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="col-sm-4">
                                         <label for="instagram_link">
                                             <i class="ays_fa ays_fa_instagram_square"></i>
-                                            <?php echo __('Instagram link',$this->plugin_name)?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Instagram profile or page link for showing after quiz finish.',$this->plugin_name)?>">
+                                            <?php echo __('Instagram link','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Instagram profile or page link for showing after quiz finish.','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -7177,8 +7177,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="col-sm-4">
                                         <label for="youtube_link">
                                             <i class="ays_fa ays_fa_youtube_play"></i>
-                                            <?php echo __('YouTube link',$this->plugin_name)?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('YouTube profile or page link for showing after quiz finish.',$this->plugin_name);?>">
+                                            <?php echo __('YouTube link','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('YouTube profile or page link for showing after quiz finish.','quiz-maker');?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -7193,8 +7193,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="col-sm-4">
                                         <label for="behance_link">
                                             <i class="ays_fa ays_fa_behance"></i>
-                                            <?php echo __('Behance link',$this->plugin_name)?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Behance profile or page link for showing after quiz finish.',$this->plugin_name);?>">
+                                            <?php echo __('Behance link','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Behance profile or page link for showing after quiz finish.','quiz-maker');?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -7210,13 +7210,13 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label for="ays_disable_store_data">
-                                    <?php echo __('Disable data storing in database',$this->plugin_name)?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Disable data storing in the database, and results will not be displayed on the \'Results\' page (not recommended).',$this->plugin_name)?>">
+                                    <?php echo __('Disable data storing in database','quiz-maker')?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Disable data storing in the database, and results will not be displayed on the \'Results\' page (not recommended).','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
                                 <p class="ays_quiz_small_hint_text_for_not_recommended">
-                                    <span><?php echo __( "Not recommended" , $this->plugin_name ); ?></span>
+                                    <span><?php echo __( "Not recommended" , 'quiz-maker' ); ?></span>
                                 </p>
                             </div>
                             <div class="col-sm-8">
@@ -7234,7 +7234,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="ays-quiz-heading-box ays-quiz-unset-float">
                             <div class="ays-quiz-wordpress-user-manual-box ays-quiz-wordpress-text-align">
                                 <a href="https://www.youtube.com/watch?v=PQSOjFUG1Fg" target="_blank">
-                                    <?php echo __("How intervals feature works - video", $this->plugin_name); ?>
+                                    <?php echo __("How intervals feature works - video", 'quiz-maker'); ?>
                                 </a>
                             </div>
                         </div>
@@ -7243,37 +7243,37 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="pro_features pro_features_popup">
                                     <div class="pro-features-popup-conteiner">
                                         <div class="pro-features-popup-title">
-                                            <?php echo __("Intervals feature", $this->plugin_name); ?>
+                                            <?php echo __("Intervals feature", 'quiz-maker'); ?>
                                         </div>
                                         <div class="pro-features-popup-content" data-link="https://youtu.be/W_H69qg3LFA">
                                             <p>
-                                                <?php echo __("With the help of the Intervals feature you can display different specified results based on the Interval the user appeared in. Then, attach an image to each Interval.", $this->plugin_name); ?>
+                                                <?php echo __("With the help of the Intervals feature you can display different specified results based on the Interval the user appeared in. Then, attach an image to each Interval.", 'quiz-maker'); ?>
                                             </p>
                                             <p>
-                                                <?php echo sprintf( __("You can choose either %s By percentage, By Points, or By Keywords %s as a method of calculation for the Intervals.", $this->plugin_name),
+                                                <?php echo sprintf( __("You can choose either %s By percentage, By Points, or By Keywords %s as a method of calculation for the Intervals.", 'quiz-maker'),
                                                     '<strong>',
                                                     '</strong>'
                                                 ); ; ?>
                                             </p>
                                             <p>
-                                                <?php echo __("One of the best examples of the use case of the Intervals feature is a personality quiz, where you can show different personality types to the users.", $this->plugin_name); ?>
+                                                <?php echo __("One of the best examples of the use case of the Intervals feature is a personality quiz, where you can show different personality types to the users.", 'quiz-maker'); ?>
                                             </p>
                                             <div>
-                                                <a href="https://quiz-plugin.com/personality-quiz-for-wp/" target="_blank"><?php echo __("See Demo", $this->plugin_name); ?></a>
+                                                <a href="https://quiz-plugin.com/personality-quiz-for-wp/" target="_blank"><?php echo __("See Demo", 'quiz-maker'); ?></a>
                                             </div>
                                         </div>
                                         <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-intervals-table">
-                                            <?php echo __("Upgrade PRO NOW", $this->plugin_name); ?>
+                                            <?php echo __("Upgrade PRO NOW", 'quiz-maker'); ?>
                                         </div>
                                     </div>
                                 </div>
                                 <div class='form-group row ays-field-dashboard'>
                                     <div class="col-sm-4">
-                                        <label for="ays-answers-table"><?php echo __('Intervals', $this->plugin_name); ?>
+                                        <label for="ays-answers-table"><?php echo __('Intervals', 'quiz-maker'); ?>
                                             <a href="javascript:void(0)" class="ays-add-interval" tabindex="-1">
                                                 <i class="ays_fa ays_fa_plus_square" aria-hidden="true"></i>
                                             </a>
-                                            <a class="ays_help" style="font-size:15px;" data-toggle="tooltip" title="<?php echo __('Set different messages based on the user\'s score. The message will be displayed on the result page of the quiz.',$this->plugin_name); ?>">
+                                            <a class="ays_help" style="font-size:15px;" data-toggle="tooltip" title="<?php echo __('Set different messages based on the user\'s score. The message will be displayed on the result page of the quiz.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -7281,23 +7281,23 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="col-sm-8">
                                         <label class="ays_quiz_loader">
                                             <input type="radio" class="ays-enable-timer1 ays_table_by ays_intervals_display_by" tabindex="-1" checked>
-                                            <span><?php echo __( "By percentage", $this->plugin_name ); ?></span>
+                                            <span><?php echo __( "By percentage", 'quiz-maker' ); ?></span>
                                         </label>
                                         <label class="ays_quiz_loader">
                                             <input type="radio" class="ays-enable-timer1 ays_table_by ays_intervals_display_by" tabindex="-1">
-                                            <span><?php echo __( "By points", $this->plugin_name ); ?></span>
+                                            <span><?php echo __( "By points", 'quiz-maker' ); ?></span>
                                         </label>
                                         <label class="ays_quiz_loader">
                                             <input type="radio" class="ays-enable-timer1 ays_table_by ays_intervals_display_by" tabindex="-1">
-                                            <span><?php echo __( "By keywords", $this->plugin_name ); ?></span>
+                                            <span><?php echo __( "By keywords", 'quiz-maker' ); ?></span>
                                         </label>
                                         <a class="ays_help" style="font-size:15px;" data-toggle="tooltip" data-html="true"
                                             title="<?php
-                                                echo __('Choose your preferred method of calculation.',$this->plugin_name) .
+                                                echo __('Choose your preferred method of calculation.','quiz-maker') .
                                                 "<ul style='list-style-type: circle;padding-left: 20px;'>".
-                                                    "<li>". __('By percentage - If this option is enabled, you need to assign values to Min and Max fields by percentage and write a correspondent message and attach an image for each interval separately. You need to cover the 0-100 range with as many intervals as you want.',$this->plugin_name) ."</li>".
-                                                    "<li>". __('By points - If this option is enabled, you need to assign values to Min and Max fields by points and write a correspondent message and attach an image for each interval separately. There is no limitation to that.',$this->plugin_name) ."</li>".
-                                                    "<li>". __('By keywords - If this option is enabled, you need to select the keywords, which you have already assigned to your answers and write a correspondent message and attach an image for each interval separately. It will be calculated based on the majority of the selected answers of the user.',$this->plugin_name) ."</li>".
+                                                    "<li>". __('By percentage - If this option is enabled, you need to assign values to Min and Max fields by percentage and write a correspondent message and attach an image for each interval separately. You need to cover the 0-100 range with as many intervals as you want.','quiz-maker') ."</li>".
+                                                    "<li>". __('By points - If this option is enabled, you need to assign values to Min and Max fields by points and write a correspondent message and attach an image for each interval separately. There is no limitation to that.','quiz-maker') ."</li>".
+                                                    "<li>". __('By keywords - If this option is enabled, you need to select the keywords, which you have already assigned to your answers and write a correspondent message and attach an image for each interval separately. It will be calculated based on the majority of the selected answers of the user.','quiz-maker') ."</li>".
                                                 "</ul>";
                                             ?>">
                                             <i class="ays_fa ays_fa_info_circle"></i>
@@ -7309,12 +7309,12 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <table class="ays-intervals-table">
                                         <thead>
                                         <tr class="ui-state-default">
-                                            <th><?php echo __('Ordering', $this->plugin_name); ?></th>
-                                            <th class="ays_interval_min_row"><?php echo __('Min', $this->plugin_name); ?></th>
-                                            <th class="ays_interval_max_row"><?php echo __('Max', $this->plugin_name); ?></th>
-                                            <th><?php echo __('Text', $this->plugin_name); ?></th>
-                                            <th><?php echo __('Image', $this->plugin_name); ?></th>
-                                            <th><?php echo __('Delete', $this->plugin_name); ?></th>
+                                            <th><?php echo __('Ordering', 'quiz-maker'); ?></th>
+                                            <th class="ays_interval_min_row"><?php echo __('Min', 'quiz-maker'); ?></th>
+                                            <th class="ays_interval_max_row"><?php echo __('Max', 'quiz-maker'); ?></th>
+                                            <th><?php echo __('Text', 'quiz-maker'); ?></th>
+                                            <th><?php echo __('Image', 'quiz-maker'); ?></th>
+                                            <th><?php echo __('Delete', 'quiz-maker'); ?></th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -7400,7 +7400,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="ays-quiz-heading-box ays-quiz-unset-float ays-quiz-unset-margin">
                             <div class="ays-quiz-wordpress-user-manual-box ays-quiz-wordpress-text-align">
                                 <a href="https://www.youtube.com/watch?v=lUbLHe9mEZ0" target="_blank">
-                                    <?php echo __("How to create personality quiz - video", $this->plugin_name); ?>
+                                    <?php echo __("How to create personality quiz - video", 'quiz-maker'); ?>
                                 </a>
                             </div>
                         </div>
@@ -7410,7 +7410,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="ays-quiz-heading-box ays-quiz-unset-float ays-quiz-unset-margin">
                             <div class="ays-quiz-wordpress-user-manual-box ays-quiz-wordpress-text-align">
                                 <a href="https://www.youtube.com/watch?v=BeYNME9TZsQ" target="_blank">
-                                    <?php echo __("How to create WooCommerce quiz - video", $this->plugin_name); ?>
+                                    <?php echo __("How to create WooCommerce quiz - video", 'quiz-maker'); ?>
                                 </a>
                             </div>
                         </div>
@@ -7425,14 +7425,14 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="pro_features pro_features_popup">
                                     <div class="pro-features-popup-conteiner">
                                         <div class="pro-features-popup-title">
-                                            <?php echo __("Top Keywords", $this->plugin_name); ?>
+                                            <?php echo __("Top Keywords", 'quiz-maker'); ?>
                                         </div>
                                         <div class="pro-features-popup-content" data-link="https://youtu.be/o-GB91dfsLo">
                                             <p>
-                                                <?php echo __("Are you interested in showing the question results based on chosen keywords? If yes, then, you can use the Top Keywords functionality.", $this->plugin_name); ?>
+                                                <?php echo __("Are you interested in showing the question results based on chosen keywords? If yes, then, you can use the Top Keywords functionality.", 'quiz-maker'); ?>
                                             </p>
                                             <p>
-                                                <?php echo sprintf( __("One of the %s best use cases %s of the feature is the %s Personality Trait quiz. %s", $this->plugin_name),
+                                                <?php echo sprintf( __("One of the %s best use cases %s of the feature is the %s Personality Trait quiz. %s", 'quiz-maker'),
                                                     '<strong>',
                                                     '</strong>',
                                                     '<strong>',
@@ -7440,7 +7440,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                                 ); ?>
                                             </p>
                                             <p>
-                                                <?php echo sprintf( __("You need to configure the %s Keyword texts %s accordingly. Note: The %s Apply points to keywords %s option appears and works only in case you chose the %s By Keywords %s method of calculation.", $this->plugin_name),
+                                                <?php echo sprintf( __("You need to configure the %s Keyword texts %s accordingly. Note: The %s Apply points to keywords %s option appears and works only in case you chose the %s By Keywords %s method of calculation.", 'quiz-maker'),
                                                     '<strong>',
                                                     '</strong>',
                                                     '<strong>',
@@ -7450,14 +7450,14 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                                 ); ?>
                                             </p>
                                             <p>
-                                                <?php echo __("By using this feature, you can display what percentage of which personality traits the particular user has.", $this->plugin_name); ?>
+                                                <?php echo __("By using this feature, you can display what percentage of which personality traits the particular user has.", 'quiz-maker'); ?>
                                             </p>
                                             <div>
-                                                <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo __("See Documentation", $this->plugin_name); ?></a>
+                                                <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo __("See Documentation", 'quiz-maker'); ?></a>
                                             </div>
                                         </div>
                                         <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-top-keywords">
-                                            <?php echo __("Upgrade PRO NOW", $this->plugin_name); ?>
+                                            <?php echo __("Upgrade PRO NOW", 'quiz-maker'); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -7465,8 +7465,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="row">
                                         <div class="col-sm-4">
                                             <label for="ays_enable_top_keywords">
-                                                <?php echo __('Assign message to each keyword',$this->plugin_name); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show the question results based on keywords on the resultes page with specified texts for each keyword.',$this->plugin_name); ?>">
+                                                <?php echo __('Assign message to each keyword','quiz-maker'); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show the question results based on keywords on the resultes page with specified texts for each keyword.','quiz-maker'); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -7500,29 +7500,29 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="pro_features pro_features_popup">
                                     <div class="pro-features-popup-conteiner">
                                         <div class="pro-features-popup-title">
-                                            <?php echo __("Quiz Coupon", $this->plugin_name); ?>
+                                            <?php echo __("Quiz Coupon", 'quiz-maker'); ?>
                                         </div>
                                         <div class="pro-features-popup-content" data-link="https://youtu.be/EfdYE1o2ALk">
                                             <p>
-                                                <?php echo sprintf( __("Quiz Coupons can become a great motivation for your new audience. Give them a reason to try your product. Provide Quiz Coupons on the Results Page and %s increase sells in your website. %s Every time the users will receive unique codes that you will import into the plugin.", $this->plugin_name),
+                                                <?php echo sprintf( __("Quiz Coupons can become a great motivation for your new audience. Give them a reason to try your product. Provide Quiz Coupons on the Results Page and %s increase sells in your website. %s Every time the users will receive unique codes that you will import into the plugin.", 'quiz-maker'),
                                                     '<strong>',
                                                     '</strong>'
                                                 ); ?>
                                             </p>
                                             <div>
-                                                <a href="https://quiz-plugin.com/coupon-quiz/" target="_blank"><?php echo __("See Demo", $this->plugin_name); ?></a>
+                                                <a href="https://quiz-plugin.com/coupon-quiz/" target="_blank"><?php echo __("See Demo", 'quiz-maker'); ?></a>
                                             </div>
                                         </div>
                                         <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-quiz-coupon">
-                                            <?php echo __("Upgrade and Create", $this->plugin_name); ?>
+                                            <?php echo __("Upgrade and Create", 'quiz-maker'); ?>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_quiz_enable_coupon">
-                                            <?php echo __('Enable quiz coupons',$this->plugin_name); ?>
-                                            <a class="ays_help" data-html="true" data-toggle="tooltip" title="<?php echo __("Enable coupon receiving after finishing the quiz. For showing the coupons, you have to use the %%quiz_coupon%% message variable from General Settings>Message variables.",$this->plugin_name); ?>">
+                                            <?php echo __('Enable quiz coupons','quiz-maker'); ?>
+                                            <a class="ays_help" data-html="true" data-toggle="tooltip" title="<?php echo __("Enable coupon receiving after finishing the quiz. For showing the coupons, you have to use the %%quiz_coupon%% message variable from General Settings>Message variables.",'quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -7566,15 +7566,15 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                     <div class="ays-quiz-accordion-container">
                         <?php echo $quiz_accordion_svg_html; ?>
-                        <p class="ays-subtitle"><?php echo __('Limitation of Users',$this->plugin_name)?></p>
+                        <p class="ays-subtitle"><?php echo __('Limitation of Users','quiz-maker')?></p>
                     </div>
                     <hr class="ays-quiz-bolder-hr"/>
                     <div class="ays-quiz-accordion-options-box">
                         <div class="form-group row">
                             <div class="col-sm-3">
                                 <label for="ays_limit_users">
-                                    <?php echo __('Limit Users',$this->plugin_name)?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('This option allows to block the users who have already passed the quiz.',$this->plugin_name)?>">
+                                    <?php echo __('Limit Users','quiz-maker')?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('This option allows to block the users who have already passed the quiz.','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -7589,8 +7589,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="form-group row">
                                         <div class="col-sm-3">
                                             <label for="ays_limitation_message">
-                                                <?php echo __('Limit users by',$this->plugin_name)?>
-                                                <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php echo __('Limit users pass the quiz by IP or by User ID.',$this->plugin_name)?><br><?php echo __('If you choose \'User ID\', the \'Limit users\' option will not work for the not logged in users. It works only with \'Only for logged in users\' option.',$this->plugin_name)?>">
+                                                <?php echo __('Limit users by','quiz-maker')?>
+                                                <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php echo __('Limit users pass the quiz by IP or by User ID.','quiz-maker')?><br><?php echo __('If you choose \'User ID\', the \'Limit users\' option will not work for the not logged in users. It works only with \'Only for logged in users\' option.','quiz-maker')?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -7598,19 +7598,19 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <div class="col-sm-9">
                                             <label class="ays_quiz_loader">
                                                 <input type="radio" id="ays_limit_users_by_ip" name="ays_limit_users_by" value="ip" <?php echo ($limit_users_by == 'ip') ? 'checked' : ''; ?>/>
-                                                <span for="ays_limit_users_by_ip"><?php echo __('IP',$this->plugin_name)?></span>
+                                                <span for="ays_limit_users_by_ip"><?php echo __('IP','quiz-maker')?></span>
                                             </label>
                                             <label class="ays_quiz_loader">
                                                 <input type="radio" id="ays_limit_users_by_user_id" name="ays_limit_users_by" value="user_id" <?php echo ($limit_users_by == 'user_id') ? 'checked' : ''; ?>/>
-                                                <span for="ays_limit_users_by_user_id"><?php echo __('User ID',$this->plugin_name)?></span>
+                                                <span for="ays_limit_users_by_user_id"><?php echo __('User ID','quiz-maker')?></span>
                                             </label>
                                             <label class="ays_quiz_loader">
                                                 <input type="radio" id="ays_limit_users_by_cookie" name="ays_limit_users_by" value="cookie" <?php echo ($limit_users_by == 'cookie') ? 'checked' : ''; ?>/>
-                                                <span for="ays_limit_users_by_cookie"><?php echo __('Cookie',$this->plugin_name)?></span>
+                                                <span for="ays_limit_users_by_cookie"><?php echo __('Cookie','quiz-maker')?></span>
                                             </label>
                                             <label class="ays_quiz_loader">
                                                 <input type="radio" id="ays_limit_users_by_ip_cookie" name="ays_limit_users_by" value="ip_cookie" <?php echo ($limit_users_by == 'ip_cookie') ? 'checked' : ''; ?>/>
-                                                <span for="ays_limit_users_by_ip_cookie"><?php echo __('IP and Cookie',$this->plugin_name)?></span>
+                                                <span for="ays_limit_users_by_ip_cookie"><?php echo __('IP and Cookie','quiz-maker')?></span>
                                             </label>
                                         </div>
                                     </div>
@@ -7621,30 +7621,30 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <div class="pro_features pro_features_popup">
                                             <div class="pro-features-popup-conteiner">
                                                 <div class="pro-features-popup-title">
-                                                    <?php echo __("Maximum number of attempts", $this->plugin_name); ?>
+                                                    <?php echo __("Maximum number of attempts", 'quiz-maker'); ?>
                                                 </div>
                                                 <div class="pro-features-popup-content" data-link="https://youtu.be/3MboTs_CO3k">
                                                     <p>
-                                                        <?php echo sprintf( __("With the help of this option you can no longer struggle with getting multiple results from the same person, which will draw a false conclusion. Restrict the attempt of the same user by just activating the %s Maximum number of attempts option. %s", $this->plugin_name),
+                                                        <?php echo sprintf( __("With the help of this option you can no longer struggle with getting multiple results from the same person, which will draw a false conclusion. Restrict the attempt of the same user by just activating the %s Maximum number of attempts option. %s", 'quiz-maker'),
                                                             "<strong>",
                                                             "</strong>"
                                                         ); ?>
                                                     </p>
                                                     <p>
-                                                        <?php echo __("This can be a useful tool for running a fair and safe examination.", $this->plugin_name); ?>
+                                                        <?php echo __("This can be a useful tool for running a fair and safe examination.", 'quiz-maker'); ?>
                                                     </p>
                                                     <p>
-                                                        <?php echo __("You will be able to detect uses by IP addresses, WP User IDs, Browser Cookies and by both IP addresses and Cookies. Just write the attempts count and the users will not be able to pass the quiz for more than the count that you have set.", $this->plugin_name); ?>
+                                                        <?php echo __("You will be able to detect uses by IP addresses, WP User IDs, Browser Cookies and by both IP addresses and Cookies. Just write the attempts count and the users will not be able to pass the quiz for more than the count that you have set.", 'quiz-maker'); ?>
                                                     </p>
                                                     <p>
-                                                        <?php echo __("Write warning messages, redirect them to your desired URL and all this just in one feature.", $this->plugin_name); ?>
+                                                        <?php echo __("Write warning messages, redirect them to your desired URL and all this just in one feature.", 'quiz-maker'); ?>
                                                     </p>
                                                     <div>
-                                                        <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo __("Learn More", $this->plugin_name); ?></a>
+                                                        <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo __("Learn More", 'quiz-maker'); ?></a>
                                                     </div>
                                                 </div>
                                                 <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-attempts-count">
-                                                    <?php echo __("Try It Now", $this->plugin_name); ?>
+                                                    <?php echo __("Try It Now", 'quiz-maker'); ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -7652,8 +7652,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <div class="form-group row">
                                             <div class="col-sm-3">
                                                 <label for="ays_quiz_max_pass_count">
-                                                    <?php echo __('Attempts count:',$this->plugin_name)?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the count of the attempts per user for passing the quiz.',$this->plugin_name)?>">
+                                                    <?php echo __('Attempts count:','quiz-maker')?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the count of the attempts per user for passing the quiz.','quiz-maker')?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
@@ -7667,8 +7667,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <div class="form-group row">
                                             <div class="col-sm-3">
                                                 <label for="ays_quiz_pass_score">
-                                                    <?php echo __('Pass score for attempt restriction',$this->plugin_name)?> (%)
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Select the passing score(in percentage), and the attempt of the user will be detected only under that given condition. For example: If we give 40% value to it and assign 5 to the Attempts count option, the user can pass the quiz with getting more than 40% score in 5 times, but will have a chance to pass the quiz with getting under the 40% score as to how much as he/she wants.',$this->plugin_name)?>">
+                                                    <?php echo __('Pass score for attempt restriction','quiz-maker')?> (%)
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Select the passing score(in percentage), and the attempt of the user will be detected only under that given condition. For example: If we give 40% value to it and assign 5 to the Attempts count option, the user can pass the quiz with getting more than 40% score in 5 times, but will have a chance to pass the quiz with getting under the 40% score as to how much as he/she wants.','quiz-maker')?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
@@ -7682,8 +7682,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <div class="form-group row">
                                             <div class="col-sm-3">
                                                 <label for="ays_limit_count_by_user_role">
-                                                    <?php echo __( 'Attempts count for each user role', $this->plugin_name ); ?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Limit the count of the attempts for each user role for passing the quiz. To have this option work you need to enable Only for selected user role option.', $this->plugin_name)?>">
+                                                    <?php echo __( 'Attempts count for each user role', 'quiz-maker' ); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Limit the count of the attempts for each user role for passing the quiz. To have this option work you need to enable Only for selected user role option.', 'quiz-maker')?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
@@ -7717,8 +7717,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="form-group row ays-quiz-result-message-vars-parent">
                                         <div class="col-sm-3">
                                             <label for="ays_limitation_message">
-                                                <?php echo __('Message',$this->plugin_name)?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Message for those who have passed the quiz',$this->plugin_name)?>">
+                                                <?php echo __('Message','quiz-maker')?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Message for those who have passed the quiz','quiz-maker')?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -7738,8 +7738,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="form-group row">
                                         <div class="col-sm-3">
                                             <label for="ays_redirect_url">
-                                                <?php echo __('Redirect URL',$this->plugin_name)?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('For leave current page and go to the link provided',$this->plugin_name)?>">
+                                                <?php echo __('Redirect URL','quiz-maker')?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('For leave current page and go to the link provided','quiz-maker')?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -7755,8 +7755,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="form-group row">
                                         <div class="col-sm-3">
                                             <label for="ays_redirection_delay">
-                                                <?php echo __('Redirect delay',$this->plugin_name)?>(s)
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Leave current page and go to the link provided after X second',$this->plugin_name)?>">
+                                                <?php echo __('Redirect delay','quiz-maker')?>(s)
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Leave current page and go to the link provided after X second','quiz-maker')?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -7773,11 +7773,11 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                             <div class="pro_features pro_features_popup">
                                                 <div class="pro-features-popup-conteiner">
                                                     <div class="pro-features-popup-title">
-                                                        <?php echo __("Turn on extra security check", $this->plugin_name); ?>
+                                                        <?php echo __("Turn on extra security check", 'quiz-maker'); ?>
                                                     </div>
                                                     <div class="pro-features-popup-content" data-link="https://youtu.be/Ie0x_jP-ng8">
                                                         <p>
-                                                            <?php echo sprintf( __("The %s Turn on extra security check %s option will help you to create a quiz that %s is not possible to cheat. %s", $this->plugin_name),
+                                                            <?php echo sprintf( __("The %s Turn on extra security check %s option will help you to create a quiz that %s is not possible to cheat. %s", 'quiz-maker'),
                                                                 "<strong>",
                                                                 "</strong>",
                                                                 "<strong>",
@@ -7785,20 +7785,20 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                                             ); ?>
                                                         </p>
                                                         <p>
-                                                            <?php echo __("The option works when the admin has enabled a limitation for the quiz and set the attempts count for it.", $this->plugin_name); ?>
+                                                            <?php echo __("The option works when the admin has enabled a limitation for the quiz and set the attempts count for it.", 'quiz-maker'); ?>
                                                         </p>
                                                         <p>
-                                                            <?php echo __("You will be able to detect uses by IP addresses, WP User IDs, Browser Cookies and by both IP addresses and Cookies. Just write the attempts count and the users will not be able to pass the quiz for more than the count that you have set.", $this->plugin_name); ?>
+                                                            <?php echo __("You will be able to detect uses by IP addresses, WP User IDs, Browser Cookies and by both IP addresses and Cookies. Just write the attempts count and the users will not be able to pass the quiz for more than the count that you have set.", 'quiz-maker'); ?>
                                                         </p>
                                                         <p>
-                                                            <?php echo __("If this option is enabled, and the user tries to open the quiz in more than one tab simultaneously, the quiz will not be opened.", $this->plugin_name); ?>
+                                                            <?php echo __("If this option is enabled, and the user tries to open the quiz in more than one tab simultaneously, the quiz will not be opened.", 'quiz-maker'); ?>
                                                         </p>
                                                         <div>
-                                                            <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo __("See Documentation", $this->plugin_name); ?></a>
+                                                            <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo __("See Documentation", 'quiz-maker'); ?></a>
                                                         </div>
                                                     </div>
                                                     <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-extra-security">
-                                                        <?php echo __("Upgrade PRO NOW", $this->plugin_name); ?>
+                                                        <?php echo __("Upgrade PRO NOW", 'quiz-maker'); ?>
                                                     </div>
                                                 </div>
                                             </div>
@@ -7806,8 +7806,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                             <div class="form-group row">
                                                 <div class="col-sm-3">
                                                     <label for="ays_turn_on_extra_security_check">
-                                                        <?php echo __( 'Turn on extra security check', $this->plugin_name ); ?>
-                                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('When the attempt limit of the quiz has reached, and a user tries to open your quiz in more than one tab concurrently, the results of their additional attempt will not be stored.', $this->plugin_name)?>">
+                                                        <?php echo __( 'Turn on extra security check', 'quiz-maker' ); ?>
+                                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('When the attempt limit of the quiz has reached, and a user tries to open your quiz in more than one tab concurrently, the results of their additional attempt will not be stored.', 'quiz-maker')?>">
                                                             <i class="ays_fa ays_fa_info_circle"></i>
                                                         </a>
                                                     </label>
@@ -7821,8 +7821,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                             <div class="form-group row">
                                                 <div class="col-sm-3">
                                                     <label for="ays_hide_limit_attempts_notice">
-                                                        <?php echo __( 'Hide attempts limitation notice', $this->plugin_name ); ?>
-                                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Hide the remaining attempts count warning when the limitation is activated.', $this->plugin_name)?>">
+                                                        <?php echo __( 'Hide attempts limitation notice', 'quiz-maker' ); ?>
+                                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Hide the remaining attempts count warning when the limitation is activated.', 'quiz-maker')?>">
                                                             <i class="ays_fa ays_fa_info_circle"></i>
                                                         </a>
                                                     </label>
@@ -7857,8 +7857,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="form-group row ays-quiz-result-message-vars-parent">
                             <div class="col-sm-3">
                                 <label for="ays_enable_logged_users">
-                                    <?php echo __('Only for logged in users',$this->plugin_name)?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('After enabling this option, only logged in users will be able to pass the quiz.',$this->plugin_name)?>">
+                                    <?php echo __('Only for logged in users','quiz-maker')?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('After enabling this option, only logged in users will be able to pass the quiz.','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -7873,8 +7873,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-3">
                                         <label for="ays_logged_in_message">
-                                            <?php echo __('Message',$this->plugin_name)?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Message for those who haven’t logged in',$this->plugin_name)?>">
+                                            <?php echo __('Message','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Message for those who haven’t logged in','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -7893,8 +7893,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-3">
                                         <label for="ays_show_login_form">
-                                            <?php echo __('Show Login form',$this->plugin_name)?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show the Login form bottom of the message for not logged in users.',$this->plugin_name)?>">
+                                            <?php echo __('Show Login form','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show the Login form bottom of the message for not logged in users.','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -7909,8 +7909,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="form-group row ays-quiz-result-message-vars-parent">
                             <div class="col-sm-3">
                                 <label for="ays_enable_restriction_pass">
-                                    <?php echo __('Only for selected user role',$this->plugin_name)?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Quiz is available only for the users who have role mentioned in the list.',$this->plugin_name)?>">
+                                    <?php echo __('Only for selected user role','quiz-maker')?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Quiz is available only for the users who have role mentioned in the list.','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -7925,8 +7925,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-3">
                                         <label for="ays_users_roles">
-                                            <?php echo __('User role',$this->plugin_name)?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Role of the user on the website. Option accepts multiple values.',$this->plugin_name)?>">
+                                            <?php echo __('User role','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Role of the user on the website. Option accepts multiple values.','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -7961,8 +7961,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-3">
                                         <label for="restriction_pass_message">
-                                            <?php echo __('Message',$this->plugin_name)?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Message for the users who aren’t included in the above-mentioned list.',$this->plugin_name)?>">
+                                            <?php echo __('Message','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Message for the users who aren’t included in the above-mentioned list.','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -7985,29 +7985,29 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="pro_features pro_features_popup">
                                     <div class="pro-features-popup-conteiner">
                                         <div class="pro-features-popup-title">
-                                            <?php echo __("Access only selected users", $this->plugin_name); ?>
+                                            <?php echo __("Access only selected users", 'quiz-maker'); ?>
                                         </div>
                                         <div class="pro-features-popup-content" data-link="https://youtu.be/mWAByB5La3Q">
                                             <p>
-                                                <?php echo sprintf( __("Do you want to decide for yourself who can take your quiz? Access only selected users feature of the Quiz Maker plugin allows you to decide who can take your quiz swiftly. Just enable that feature and type in only the users' names %s who will have an access to your quiz. %s The ones whose names you don’t type, can’t take your quiz. So type in the message and inform them about it.", $this->plugin_name),
+                                                <?php echo sprintf( __("Do you want to decide for yourself who can take your quiz? Access only selected users feature of the Quiz Maker plugin allows you to decide who can take your quiz swiftly. Just enable that feature and type in only the users' names %s who will have an access to your quiz. %s The ones whose names you don’t type, can’t take your quiz. So type in the message and inform them about it.", 'quiz-maker'),
                                                     "<strong>",
                                                     "</strong>"
                                                 ); ?>
                                             </p>
                                             <div>
-                                                <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo __("See Documentation", $this->plugin_name); ?></a>
+                                                <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo __("See Documentation", 'quiz-maker'); ?></a>
                                             </div>
                                         </div>
                                         <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-only-selected-users">
-                                            <?php echo __("Upgrade to Pro Now", $this->plugin_name); ?>
+                                            <?php echo __("Upgrade to Pro Now", 'quiz-maker'); ?>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group row ays_toggle_parent">
                                     <div class="col-sm-3">
                                         <label for="ays_enable_restriction_pass_users">
-                                            <?php echo __('Access only selected users',$this->plugin_name)?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Quiz is available only for the users mentioned in the list.',$this->plugin_name)?>">
+                                            <?php echo __('Access only selected users','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Quiz is available only for the users mentioned in the list.','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -8019,8 +8019,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <div class="form-group row">
                                             <div class="col-sm-2">
                                                 <label for="ays_users_roles">
-                                                    <?php echo __('Users',$this->plugin_name)?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Users on the website.',$this->plugin_name)?>">
+                                                    <?php echo __('Users','quiz-maker')?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Users on the website.','quiz-maker')?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
@@ -8035,8 +8035,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <div class="form-group row">
                                             <div class="col-sm-2">
                                                 <label for="restriction_pass_users_message">
-                                                    <?php echo __('Message',$this->plugin_name)?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Message for the users who aren’t included in the above-mentioned list.',$this->plugin_name)?>">
+                                                    <?php echo __('Message','quiz-maker')?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Message for the users who aren’t included in the above-mentioned list.','quiz-maker')?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
@@ -8089,8 +8089,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="form-group row ays_toggle_parent ays-quiz-result-message-vars-parent">
                             <div class="col-sm-3">
                                 <label for="ays_enable_tackers_count">
-                                    <?php echo __('Limitation count of takers', $this->plugin_name)?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('You can choose how many users can pass the quiz.',$this->plugin_name)?>">
+                                    <?php echo __('Limitation count of takers', 'quiz-maker')?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('You can choose how many users can pass the quiz.','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -8103,8 +8103,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-2">
                                         <label for="ays_tackers_count">
-                                            <?php echo __('Count',$this->plugin_name)?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The number of users who can pass the quiz.',$this->plugin_name)?>">
+                                            <?php echo __('Count','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The number of users who can pass the quiz.','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -8118,8 +8118,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-2">
                                         <label for="ays_quiz_tackers_message">
-                                            <?php echo __('Message',$this->plugin_name); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show the message when the quiz is already taken by the required count of takers.',$this->plugin_name); ?>">
+                                            <?php echo __('Message','quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show the message when the quiz is already taken by the required count of takers.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -8139,8 +8139,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="form-group row ays_toggle_parent">
                             <div class="col-sm-3">
                                 <label for="ays_enable_password">
-                                    <?php echo __('Password for passing quiz', $this->plugin_name)?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('You can choose a password for users to pass the quiz.',$this->plugin_name)?>">
+                                    <?php echo __('Password for passing quiz', 'quiz-maker')?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('You can choose a password for users to pass the quiz.','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -8158,26 +8158,26 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                             <div class="col-sm-6">
                                                 <label class="ays_quiz_loader" for="ays_psw_quiz">
                                                     <input type="radio" class="ays_generate_password_quiz_class" id="ays_psw_quiz" name='ays_psw_quiz' value='general' checked>
-                                                    <?php echo __('General', $this->plugin_name) ?>
+                                                    <?php echo __('General', 'quiz-maker') ?>
                                                 </label>
                                                 <label class="ays_quiz_loader" for="ays_generate_password_quiz">
                                                     <input type="radio" class="ays_generate_password_quiz_class">
-                                                    <?php echo __('Generated Passwords', $this->plugin_name) ?>
+                                                    <?php echo __('Generated Passwords', 'quiz-maker') ?>
                                                 </label>
                                             </div>
 
                                             <div class="col-sm-6 ays_psw_quiz_import_type_box">
                                                 <label class="ays_quiz_loader">
                                                     <input type="radio" checked>
-                                                    <?php echo __('Default', $this->plugin_name) ?>
+                                                    <?php echo __('Default', 'quiz-maker') ?>
                                                 </label>
                                                 <label class="ays_quiz_loader">
                                                     <input type="radio">
-                                                    <?php echo __('File upload', $this->plugin_name) ?>
+                                                    <?php echo __('File upload', 'quiz-maker') ?>
                                                 </label>
                                                 <label class="ays_quiz_loader">
                                                     <input type="radio">
-                                                    <?php echo __('Clipboard', $this->plugin_name) ?>
+                                                    <?php echo __('Clipboard', 'quiz-maker') ?>
                                                 </label>
                                             </div>
                                         </div>
@@ -8196,8 +8196,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-2">
                                         <label for="ays_password_quiz">
-                                            <?php echo __('Password',$this->plugin_name)?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Password for users who can pass the quiz.',$this->plugin_name)?>">
+                                            <?php echo __('Password','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Password for users who can pass the quiz.','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -8210,23 +8210,23 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-2">
                                         <label for="ays_password_quiz">
-                                            <?php echo __('Password input width',$this->plugin_name)?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the password text box width in px. If you leave the box empty the width will automatically be 100%.',$this->plugin_name); ?>">
+                                            <?php echo __('Password input width','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the password text box width in px. If you leave the box empty the width will automatically be 100%.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
                                     </div>
                                     <div class="col-sm-10">
                                         <input type="text" name="ays_quiz_password_width" id="ays_quiz_password_width" class="ays-enable-timer ays-text-input" value="<?php echo $quiz_password_width; ?>">
-                                        <span style="display:block;" class="ays_quiz_small_hint_text"><?php echo __("For 100% leave blank", $this->plugin_name);?></span>
+                                        <span style="display:block;" class="ays_quiz_small_hint_text"><?php echo __("For 100% leave blank", 'quiz-maker');?></span>
                                     </div>
                                 </div>
                                 <hr>
                                 <div class="form-group row">
                                     <div class="col-sm-2">
                                         <label for="ays_quiz_enable_password_visibility">
-                                            <?php echo __('Enable toggle password visibility',$this->plugin_name); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Tick the option, and it will let you enable and disable password visibility in a password input field.',$this->plugin_name); ?>">
+                                            <?php echo __('Enable toggle password visibility','quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Tick the option, and it will let you enable and disable password visibility in a password input field.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -8239,8 +8239,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row ays-quiz-result-message-vars-parent">
                                     <div class="col-sm-2">
                                         <label for="ays_quiz_password_message">
-                                            <?php echo __('Message',$this->plugin_name); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Users will see this message before entering the password for passing the quiz.',$this->plugin_name); ?>">
+                                            <?php echo __('Message','quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Users will see this message before entering the password for passing the quiz.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -8274,15 +8274,15 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                     <div class="ays-quiz-accordion-container">
                         <?php echo $quiz_accordion_svg_html; ?>
-                        <p class="ays-subtitle"><?php echo __('User Information',$this->plugin_name)?></p>
+                        <p class="ays-subtitle"><?php echo __('User Information','quiz-maker')?></p>
                     </div>
                     <hr class="ays-quiz-bolder-hr"/>
                     <div class="ays-quiz-accordion-options-box">
                         <div class="form-group row ays-quiz-result-message-vars-parent">
                             <div class="col-sm-4">
                                 <label for="ays_form_title">
-                                    <?php echo __('Information Form title',$this->plugin_name)?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Description of the Information Form which will be shown at the top of the Form Fields.',$this->plugin_name)?>">
+                                    <?php echo __('Information Form title','quiz-maker')?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Description of the Information Form which will be shown at the top of the Form Fields.','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -8301,8 +8301,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="form-group row">
                             <div class="col-sm-2">
                                 <label for="ays_information_form">
-                                    <?php echo __('Information form',$this->plugin_name)?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Data form for the user personal information. You can choose when the Information Form will be shown for completion.',$this->plugin_name)?>">
+                                    <?php echo __('Information form','quiz-maker')?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Data form for the user personal information. You can choose when the Information Form will be shown for completion.','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -8311,58 +8311,58 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="information_form_settings">
                                     <select name="ays_information_form" id="ays_information_form">
                                         <option value="after" <?php echo (isset($options['information_form']) && $options['information_form'] == 'after') ? 'selected' : ''; ?>>
-                                            <?php echo __('After Quiz',$this->plugin_name)?>
+                                            <?php echo __('After Quiz','quiz-maker')?>
                                         </option>
                                         <option value="before" <?php echo (isset($options['information_form']) && $options['information_form'] == 'before') ? 'selected' : ''; ?>>
-                                            <?php echo __('Before Quiz',$this->plugin_name)?>
+                                            <?php echo __('Before Quiz','quiz-maker')?>
                                         </option>
                                         <option value="disable" <?php echo (isset($options['information_form']) && $options['information_form'] == 'disable') ? 'selected' : ''; ?>>
-                                            <?php echo __('Disable',$this->plugin_name)?>
+                                            <?php echo __('Disable','quiz-maker')?>
                                         </option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-sm-8" style="border-left: 1px solid #ccc">
                                 <div class="information_form_options" <?php echo (!isset($options['information_form']) || $options['information_form'] == "disable") ? 'style="display:none"' : ''; ?>>
-                                    <p class="ays_required_field_title"><?php echo __('Form Fields',$this->plugin_name)?></p>
+                                    <p class="ays_required_field_title"><?php echo __('Form Fields','quiz-maker')?></p>
                                     <hr>
                                     <div class="form-check form-check-inline">
                                         <input type="checkbox" class="form-check-input" id="ays_form_name" name="ays_form_name"
                                                value="on" <?php echo (isset($options['form_name']) && $options['form_name'] !== '') ? 'checked' : ''; ?>/>
-                                        <label class="form-check-label" for="ays_form_name"><?php echo __('Name',$this->plugin_name)?></label>
+                                        <label class="form-check-label" for="ays_form_name"><?php echo __('Name','quiz-maker')?></label>
                                     </div>
                                     <div class="form-check form-check-inline">
                                         <input type="checkbox" class="form-check-input" id="ays_form_email"
                                                name="ays_form_email"
                                                value="on" <?php echo (isset($options['form_email']) && $options['form_email'] !== '') ? 'checked' : ''; ?>/>
-                                        <label class="form-check-label" for="ays_form_email"><?php echo __('Email',$this->plugin_name)?></label>
+                                        <label class="form-check-label" for="ays_form_email"><?php echo __('Email','quiz-maker')?></label>
                                     </div>
                                     <div class="form-check form-check-inline">
                                         <input type="checkbox" class="form-check-input" id="ays_form_phone"
                                                name="ays_form_phone"
                                                value="on" <?php echo (isset($options['form_phone']) && $options['form_phone'] !== '') ? 'checked' : ''; ?>/>
-                                        <label class="form-check-label" for="ays_form_phone"><?php echo __('Phone',$this->plugin_name)?></label>
+                                        <label class="form-check-label" for="ays_form_phone"><?php echo __('Phone','quiz-maker')?></label>
                                     </div>
                                     <hr>
-                                    <p class="ays_required_field_title"><?php echo __('Required Fields',$this->plugin_name)?></p>
+                                    <p class="ays_required_field_title"><?php echo __('Required Fields','quiz-maker')?></p>
                                     <hr>
                                     <div class="form-check form-check-inline">
                                         <input type="checkbox" class="form-check-input" id="ays_form_name_required"
                                                name="ays_required_field[]"
                                                value="ays_user_name" <?php echo (in_array('ays_user_name', $required_fields)) ? 'checked' : ''; ?>/>
-                                        <label class="form-check-label" for="ays_form_name_required"><?php echo __('Name',$this->plugin_name)?></label>
+                                        <label class="form-check-label" for="ays_form_name_required"><?php echo __('Name','quiz-maker')?></label>
                                     </div>
                                     <div class="form-check form-check-inline">
                                         <input type="checkbox" class="form-check-input" id="ays_form_email_required"
                                                name="ays_required_field[]"
                                                value="ays_user_email" <?php echo (in_array('ays_user_email', $required_fields)) ? 'checked' : ''; ?>/>
-                                        <label class="form-check-label" for="ays_form_email_required"><?php echo __('Email',$this->plugin_name)?></label>
+                                        <label class="form-check-label" for="ays_form_email_required"><?php echo __('Email','quiz-maker')?></label>
                                     </div>
                                     <div class="form-check form-check-inline">
                                         <input type="checkbox" class="form-check-input" id="ays_form_phone_required"
                                                name="ays_required_field[]"
                                                value="ays_user_phone" <?php echo (in_array('ays_user_phone', $required_fields)) ? 'checked' : ''; ?>/>
-                                        <label class="form-check-label" for="ays_form_phone_required"><?php echo __('Phone',$this->plugin_name)?></label>
+                                        <label class="form-check-label" for="ays_form_phone_required"><?php echo __('Phone','quiz-maker')?></label>
                                     </div>
                                 </div>
                             </div>
@@ -8372,11 +8372,11 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                             <div class="pro_features pro_features_popup">
                                 <div class="pro-features-popup-conteiner">
                                     <div class="pro-features-popup-title">
-                                        <?php echo __("Custom Field", $this->plugin_name); ?>
+                                        <?php echo __("Custom Field", 'quiz-maker'); ?>
                                     </div>
                                     <div class="pro-features-popup-content" data-link="https://youtu.be/SEv7ZY7idtE">
                                         <p>
-                                            <?php echo sprintf( __("Custom Fields will allow you to create various fields with %s 8 available field types, %s including text, number, telephone. With just two simple steps, you can get any information you wish from the Quiz takers and add  %s GDPR %s checkbox as well. Get personal data, such as gender, country, age etc.", $this->plugin_name),
+                                            <?php echo sprintf( __("Custom Fields will allow you to create various fields with %s 8 available field types, %s including text, number, telephone. With just two simple steps, you can get any information you wish from the Quiz takers and add  %s GDPR %s checkbox as well. Get personal data, such as gender, country, age etc.", 'quiz-maker'),
                                                 "<strong>",
                                                 "</strong>",
                                                 "<strong>",
@@ -8384,26 +8384,26 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                             ); ?>
                                         </p>
                                         <div>
-                                            <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo __("See Documentation", $this->plugin_name); ?></a>
+                                            <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo __("See Documentation", 'quiz-maker'); ?></a>
                                         </div>
                                     </div>
                                     <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-custom-field-option">
-                                        <?php echo __("Upgrade PRO NOW", $this->plugin_name); ?>
+                                        <?php echo __("Upgrade PRO NOW", 'quiz-maker'); ?>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-4">
                                 <label>
-                                    <?php echo __('Add custom fields',$this->plugin_name); ?>
-                                    <a class="ays_help" tabindex="-1" data-toggle="tooltip" title="<?php echo __('You can add form custom fields from “Custom fields” page in Quiz Maker menu.  (text, textarea, checkbox, select, URL etc.)',$this->plugin_name)?>">
+                                    <?php echo __('Add custom fields','quiz-maker'); ?>
+                                    <a class="ays_help" tabindex="-1" data-toggle="tooltip" title="<?php echo __('You can add form custom fields from “Custom fields” page in Quiz Maker menu.  (text, textarea, checkbox, select, URL etc.)','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
                             </div>
                             <div class="col-sm-8 ays_divider_left">
                                 <blockquote>
-                                    <?php echo __("For creating custom fields click", $this->plugin_name); ?>
-                                    <a href="?page=<?php echo $this->plugin_name; ?>-quiz-attributes" target="_blank" ><?php echo __("here", $this->plugin_name); ?></a>
+                                    <?php echo __("For creating custom fields click", 'quiz-maker'); ?>
+                                    <a href="?page=<?php echo $this->plugin_name; ?>-quiz-attributes" target="_blank" ><?php echo __("here", 'quiz-maker'); ?></a>
                                 </blockquote>
                             </div>
                             <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-custom-field-option" target="_blank" class="ays-quiz-new-upgrade-button-link">
@@ -8427,8 +8427,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label for="ays_show_information_form">
-                                    <?php echo __('Show Information Form to logged-in users',$this->plugin_name); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Enable the option if you want to show the Information Form to logged-in users as well. If the option is disabled, then logged-in users will not see the Information Form before or after the quiz, but the system will collect the Name and Email info from their WP accounts and store in the Name and Email fields in the database.',$this->plugin_name)?>">
+                                    <?php echo __('Show Information Form to logged-in users','quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Enable the option if you want to show the Information Form to logged-in users as well. If the option is disabled, then logged-in users will not see the Information Form before or after the quiz, but the system will collect the Name and Email info from their WP accounts and store in the Name and Email fields in the database.','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -8443,8 +8443,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label for="ays_autofill_user_data">
-                                    <?php echo __('Autofill logged-in user data',$this->plugin_name); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('After enabling this option, logged in  user’s name and email will be autofilled in Information Form.',$this->plugin_name); ?>">
+                                    <?php echo __('Autofill logged-in user data','quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('After enabling this option, logged in  user’s name and email will be autofilled in Information Form.','quiz-maker'); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -8459,8 +8459,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label for="ays_display_fields_labels">
-                                    <?php echo __('Display form fields with labels',$this->plugin_name); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Show labels of form fields on the top of each field. Texts of labels will be taken from the "Fields placeholder" section on the General setting page.',$this->plugin_name); ?>">
+                                    <?php echo __('Display form fields with labels','quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Show labels of form fields on the top of each field. Texts of labels will be taken from the "Fields placeholder" section on the General setting page.','quiz-maker'); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -8488,7 +8488,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                     <div class="ays-quiz-accordion-container">
                         <?php echo $quiz_accordion_svg_html; ?>
-                        <p class="ays-subtitle"><?php echo __('E-mail and Certificate settings',$this->plugin_name)?></p>
+                        <p class="ays-subtitle"><?php echo __('E-mail and Certificate settings','quiz-maker')?></p>
                     </div>
                     <hr class="ays-quiz-bolder-hr"/>
                     <div class="ays-quiz-accordion-options-box">
@@ -8497,7 +8497,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="ays-quiz-heading-box ays-quiz-unset-float ays-quiz-unset-margin">
                                     <div class="ays-quiz-wordpress-user-manual-box ays-quiz-wordpress-text-align">
                                         <a href="https://www.youtube.com/watch?v=LoQw1wxkj6k" target="_blank">
-                                            <?php echo __("How to create certifiication test - video", $this->plugin_name); ?>
+                                            <?php echo __("How to create certifiication test - video", 'quiz-maker'); ?>
                                         </a>
                                     </div>
                                 </div>
@@ -8506,33 +8506,33 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="pro_features pro_features_popup">
                                     <div class="pro-features-popup-conteiner">
                                         <div class="pro-features-popup-title">
-                                            <?php echo __("Send email to user", $this->plugin_name); ?>
+                                            <?php echo __("Send email to user", 'quiz-maker'); ?>
                                         </div>
                                         <div class="pro-features-popup-content" data-link="https://youtu.be/tHKiu-AOvYw">
                                             <p>
-                                                <?php echo sprintf( __("Get in touch with the Quiz takers directly. %s Generate more leads %s and use their email address to send the quiz results and build relationships with your website visitors. Generate a Certificate for each user and send it to their email, so they can easily install and keep it.", $this->plugin_name),
+                                                <?php echo sprintf( __("Get in touch with the Quiz takers directly. %s Generate more leads %s and use their email address to send the quiz results and build relationships with your website visitors. Generate a Certificate for each user and send it to their email, so they can easily install and keep it.", 'quiz-maker'),
                                                     "<strong>",
                                                     "</strong>"
                                                 ); ?>
                                             </p>
                                             <p>
-                                                <?php echo sprintf( __("To be sure that the users will share their email addresses with you, here we have a little hack for you! Activate the %s Hide Score option (Results Settings > Hide Score) %s and display the score only in the email message. Now, you are ready to generate leads, so start thinking about your email campaigns.", $this->plugin_name),
+                                                <?php echo sprintf( __("To be sure that the users will share their email addresses with you, here we have a little hack for you! Activate the %s Hide Score option (Results Settings > Hide Score) %s and display the score only in the email message. Now, you are ready to generate leads, so start thinking about your email campaigns.", 'quiz-maker'),
                                                     "<strong>",
                                                     "</strong>"
                                                 ); ?>
                                             </p>
                                             <div>
-                                                <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo __("See Documentation", $this->plugin_name); ?></a>
+                                                <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo __("See Documentation", 'quiz-maker'); ?></a>
                                             </div>
                                         </div>
                                         <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-send-mail-to-user">
-                                            <?php echo __("Use this Feature", $this->plugin_name); ?>
+                                            <?php echo __("Use this Feature", 'quiz-maker'); ?>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-2">
-                                        <label class="ays-disable-setting"><?php echo __('Send Mail To User',$this->plugin_name)?></label>
+                                        <label class="ays-disable-setting"><?php echo __('Send Mail To User','quiz-maker')?></label>
 
                                     </div>
                                     <div class="col-sm-2">
@@ -8545,8 +8545,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <div class="form-group row">
                                             <div class="col-sm-3">
                                                 <label for="ays_enable_send_mail_to_user_by_pass_score">
-                                                    <?php echo __('Pass score (%)', $this->plugin_name); ?>
-                                                    <a  class="ays_help" data-toggle="tooltip" title="<?php echo __('If the option is enabled, then the user will receive the email only if he/she has passed the minimum score required. It will take the value of the general pass score of the quiz. Please specify it in the Result Settings tab.',$this->plugin_name); ?>">
+                                                    <?php echo __('Pass score (%)', 'quiz-maker'); ?>
+                                                    <a  class="ays_help" data-toggle="tooltip" title="<?php echo __('If the option is enabled, then the user will receive the email only if he/she has passed the minimum score required. It will take the value of the general pass score of the quiz. Please specify it in the Result Settings tab.','quiz-maker'); ?>">
                                                         <i class=""></i>
                                                     </a>
                                                 </label>
@@ -8557,13 +8557,13 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         </div>
                                         <div class="form-group row">
                                             <div class="col-sm-12">
-                                                <blockquote><?php echo __( 'Tick the checkbox, and the user will receive the email only if he/she has passed the minimum score required.', $this->plugin_name ); ?></blockquote>
+                                                <blockquote><?php echo __( 'Tick the checkbox, and the user will receive the email only if he/she has passed the minimum score required.', 'quiz-maker' ); ?></blockquote>
                                             </div>
                                         </div>
                                         <hr/>
                                         <div class="form-group row">
                                             <div class="col-sm-3">
-                                                <label class="ays-disable-setting"><?php echo __('Mail message',$this->plugin_name)?></label>
+                                                <label class="ays-disable-setting"><?php echo __('Mail message','quiz-maker')?></label>
                                             </div>
                                             <div class="col-sm-9">
                                             <textarea type="text" id="ays_mail_message" class="ays-textarea ays-disable-setting"
@@ -8574,7 +8574,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <div class="form-group row">
                                             <div class="col-sm-3">
                                                 <label for="ays_send_results_user">
-                                                    <?php echo __('Send Results to User',$this->plugin_name)?>
+                                                    <?php echo __('Send Results to User','quiz-maker')?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-9">
@@ -8585,7 +8585,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <div class="form-group row">
                                             <div class="col-sm-3">
                                                 <label for="ays_send_interval_msg">
-                                                    <?php echo __('Send Interval message to User',$this->plugin_name)?>
+                                                    <?php echo __('Send Interval message to User','quiz-maker')?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-9">
@@ -8636,14 +8636,14 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="pro_features pro_features_popup">
                                     <div class="pro-features-popup-conteiner">
                                         <div class="pro-features-popup-title">
-                                            <?php echo __("Send Certificate to user", $this->plugin_name); ?>
+                                            <?php echo __("Send Certificate to user", 'quiz-maker'); ?>
                                         </div>
                                         <div class="pro-features-popup-content" data-link="https://youtu.be/Av9HVaP3CdY">
                                             <p>
-                                                <?php echo __("If you want to create an online exam and send a certificate to the users after the quiz completion, then, you can make use of the Send Certificate to user option.", $this->plugin_name); ?>
+                                                <?php echo __("If you want to create an online exam and send a certificate to the users after the quiz completion, then, you can make use of the Send Certificate to user option.", 'quiz-maker'); ?>
                                             </p>
                                             <p>
-                                                <?php echo sprintf( __("By enabling this option, you can send fully customized Certificates to your users by inserting your preferred message variables into the %s Certificate title %s and the %s Certificate body %s options.", $this->plugin_name),
+                                                <?php echo sprintf( __("By enabling this option, you can send fully customized Certificates to your users by inserting your preferred message variables into the %s Certificate title %s and the %s Certificate body %s options.", 'quiz-maker'),
                                                     "<strong>",
                                                     "</strong>",
                                                     "<strong>",
@@ -8651,27 +8651,27 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                                 ); ?>
                                             </p>
                                             <p>
-                                                <?php echo __("Also, set a passing score, so that the users who got the minimum required score can receive the Certificate.", $this->plugin_name); ?>
+                                                <?php echo __("Also, set a passing score, so that the users who got the minimum required score can receive the Certificate.", 'quiz-maker'); ?>
                                             </p>
                                             <div>
-                                                <a href="https://quiz-plugin.com/english-exam-with-certificate/" target="_blank"><?php echo __("PRO Demo", $this->plugin_name); ?></a>
+                                                <a href="https://quiz-plugin.com/english-exam-with-certificate/" target="_blank"><?php echo __("PRO Demo", 'quiz-maker'); ?></a>
                                             </div>
                                         </div>
                                         <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-send-certificate-to-user">
-                                            <?php echo __("Upgrade PRO NOW", $this->plugin_name); ?>
+                                            <?php echo __("Upgrade PRO NOW", 'quiz-maker'); ?>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-2">
-                                        <label class="ays-disable-setting"><?php echo __('Send Certificate To User',$this->plugin_name)?></label>
+                                        <label class="ays-disable-setting"><?php echo __('Send Certificate To User','quiz-maker')?></label>
                                         <hr>
-                                        <label for="ays_enable_certificate_without_send"><?php echo __('Generate certificate without sending to user',$this->plugin_name)?></label>
+                                        <label for="ays_enable_certificate_without_send"><?php echo __('Generate certificate without sending to user','quiz-maker')?></label>
                                         <hr>
                                         <div class="ays_generate_cert_preview_wrap">
                                         <div class="ays_generate_cert_preview_button_wrap">
-                                            <button class="button-primary" type="button"><?php echo __( 'Generate Certificate preview', $this->plugin_name ); ?></button>
-                                            <a class="ays_help" data-html="true" data-toggle="tooltip" title="<?php echo __("This is a just preview of the certificate and some message variables will not work on preview mode. Please be understanding.", $this->plugin_name ); ?>">
+                                            <button class="button-primary" type="button"><?php echo __( 'Generate Certificate preview', 'quiz-maker' ); ?></button>
+                                            <a class="ays_help" data-html="true" data-toggle="tooltip" title="<?php echo __("This is a just preview of the certificate and some message variables will not work on preview mode. Please be understanding.", 'quiz-maker' ); ?>">
                                                 <i class=""></i>
                                             </a>
                                         </div>
@@ -8695,18 +8695,18 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                             <div class="col-sm-12">
                                                 <label class="ays_quiz_loader">
                                                     <input type="radio" class="ays-enable-timer1"/>
-                                                    <span><?php echo __( "Percentage", $this->plugin_name ); ?></span>
+                                                    <span><?php echo __( "Percentage", 'quiz-maker' ); ?></span>
                                                 </label>
                                                 <label class="ays_quiz_loader">
                                                     <input type="radio" class="ays-enable-timer1" />
-                                                    <span><?php echo __( "Points", $this->plugin_name ); ?></span>
+                                                    <span><?php echo __( "Points", 'quiz-maker' ); ?></span>
                                                 </label>
                                             </div>
                                         </div>
                                         <hr>
                                         <div class="form-group row">
                                             <div class="col-sm-3">
-                                                <label class="ays-disable-setting"><?php echo __('Certificate pass score',$this->plugin_name)?></label>
+                                                <label class="ays-disable-setting"><?php echo __('Certificate pass score','quiz-maker')?></label>
                                             </div>
                                             <div class="col-sm-9">
                                                 <input type="number" id="ays_certificate_pass" class="ays-text-input ays-disable-setting" disabled>
@@ -8715,7 +8715,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <hr/>                         
                                         <div class="form-group row">
                                             <div class="col-sm-3">
-                                                <label class="ays-disable-setting"><?php echo __('Certificate title',$this->plugin_name)?></label>
+                                                <label class="ays-disable-setting"><?php echo __('Certificate title','quiz-maker')?></label>
                                             </div>
                                             <div class="col-sm-9">
                                                 <textarea disabled class="ays-textarea ays-disable-setting">Certificate of Completion</textarea>
@@ -8724,7 +8724,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <hr/>
                                         <div class="form-group row">
                                             <div class="col-sm-3">
-                                                <label class="ays-disable-setting"><?php echo __('Certificate body',$this->plugin_name)?></label>
+                                                <label class="ays-disable-setting"><?php echo __('Certificate body','quiz-maker')?></label>
                                             </div>
                                             <div class="col-sm-9">  
                                                 <textarea disabled class="ays-textarea ays-disable-setting" style="height:320px;"><?php echo $certificate_body_html;?>
@@ -8775,23 +8775,23 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="pro_features pro_features_popup">
                                     <div class="pro-features-popup-conteiner">
                                         <div class="pro-features-popup-title">
-                                            <?php echo __("Send email to admin", $this->plugin_name); ?>
+                                            <?php echo __("Send email to admin", 'quiz-maker'); ?>
                                         </div>
                                         <div class="pro-features-popup-content" data-link="https://youtu.be/YUGTj9zJVeE">
                                             <p>
-                                                <?php echo sprintf( __("The Quiz Maker plugin gives the opportunity not only to send the email to the users after the quiz completion but also to %s the admin. %s", $this->plugin_name),
+                                                <?php echo sprintf( __("The Quiz Maker plugin gives the opportunity not only to send the email to the users after the quiz completion but also to %s the admin. %s", 'quiz-maker'),
                                                     "<strong>",
                                                     "</strong>"
                                                 ); ?>
                                             </p>
                                             <p>
-                                                <?php echo sprintf( __("By enabling this option, you can send a %s Certificate and results report %s to the admin. You can set a passing score so that the admin can receive the email only if the user has passed the minimum required score.", $this->plugin_name),
+                                                <?php echo sprintf( __("By enabling this option, you can send a %s Certificate and results report %s to the admin. You can set a passing score so that the admin can receive the email only if the user has passed the minimum required score.", 'quiz-maker'),
                                                     "<strong>",
                                                     "</strong>"
                                                 ); ?>
                                             </p>
                                             <p>
-                                                <?php echo sprintf( __("Also, you can %s fully customize %s the Email Message option, by inserting your desired %s message variables %s in the WP Editor from the %s General Settings %s page.", $this->plugin_name),
+                                                <?php echo sprintf( __("Also, you can %s fully customize %s the Email Message option, by inserting your desired %s message variables %s in the WP Editor from the %s General Settings %s page.", 'quiz-maker'),
                                                     "<strong>",
                                                     "</strong>",
                                                     "<strong>",
@@ -8801,17 +8801,17 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                                 ); ?>
                                             </p>
                                             <div>
-                                                <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo __("See Documentation", $this->plugin_name); ?></a>
+                                                <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo __("See Documentation", 'quiz-maker'); ?></a>
                                             </div>
                                         </div>
                                         <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-send-mail-to-admin">
-                                            <?php echo __("Upgrade PRO NOW", $this->plugin_name); ?>
+                                            <?php echo __("Upgrade PRO NOW", 'quiz-maker'); ?>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-3">
-                                        <label class="ays-disable-setting"><?php echo __('Send Mail To Admin',$this->plugin_name)?></label>
+                                        <label class="ays-disable-setting"><?php echo __('Send Mail To Admin','quiz-maker')?></label>
                                     </div>
                                     <div class="col-sm-1">
                                         <input type="checkbox" class="ays-enable-timerl" id="ays_enable_mail_admin" value="on"/>
@@ -8820,8 +8820,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <div class="form-group row">
                                             <div class="col-sm-3">
                                                 <label for="ays_enable_send_mail_to_admin_by_pass_score">
-                                                    <?php echo __('Pass score (%)', $this->plugin_name); ?>
-                                                    <a  class="ays_help" data-toggle="tooltip" title="<?php echo __('If the option is enabled, then the admin will receive the email only if the user has passed the minimum score required. It will take the value of the general pass score of the quiz. Please specify it in the Result Settings tab.',$this->plugin_name); ?>">
+                                                    <?php echo __('Pass score (%)', 'quiz-maker'); ?>
+                                                    <a  class="ays_help" data-toggle="tooltip" title="<?php echo __('If the option is enabled, then the admin will receive the email only if the user has passed the minimum score required. It will take the value of the general pass score of the quiz. Please specify it in the Result Settings tab.','quiz-maker'); ?>">
                                                         <i class=""></i>
                                                     </a>
                                                 </label>
@@ -8832,7 +8832,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         </div>
                                         <div class="form-group row">
                                             <div class="col-sm-12">
-                                                <blockquote><?php echo __( 'Tick the checkbox, and admin will receive the email only if the user has passed the minimum score required.', $this->plugin_name ); ?></blockquote>
+                                                <blockquote><?php echo __( 'Tick the checkbox, and admin will receive the email only if the user has passed the minimum score required.', 'quiz-maker' ); ?></blockquote>
                                             </div>
                                         </div>
                                         <hr>
@@ -8840,8 +8840,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <div class="form-group row">
                                             <div class="col-sm-3">
                                                 <label for="ays_send_mail_to_site_admin">
-                                                    <?php echo __('Admin', $this->plugin_name)?>
-                                                    <a  class="ays_help" data-toggle="tooltip" title="<?php echo __('Disable this feature, if you want to make it possible not to send emails to the registered Mail of the site Admin, but only to additional emails.',$this->plugin_name)?>">
+                                                    <?php echo __('Admin', 'quiz-maker')?>
+                                                    <a  class="ays_help" data-toggle="tooltip" title="<?php echo __('Disable this feature, if you want to make it possible not to send emails to the registered Mail of the site Admin, but only to additional emails.','quiz-maker')?>">
                                                     </a>
                                                 </label>
                                             </div>
@@ -8857,7 +8857,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <div class="form-group row">
                                             <div class="col-sm-3">
                                                 <label for="ays_additional_emails">
-                                                    <?php echo __('Additional Emails',$this->plugin_name)?>
+                                                    <?php echo __('Additional Emails','quiz-maker')?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-9">
@@ -8869,8 +8869,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <div class="form-group row">
                                             <div class="col-sm-5">
                                                 <label for="ays_send_results_admin">
-                                                    <?php echo __('Send Report table to Admin',$this->plugin_name)?>
-                                                    <a  class="ays_help" data-toggle="tooltip" title="<?php echo __('You can send results to the admin after the quiz is completed',$this->plugin_name)?>">
+                                                    <?php echo __('Send Report table to Admin','quiz-maker')?>
+                                                    <a  class="ays_help" data-toggle="tooltip" title="<?php echo __('You can send results to the admin after the quiz is completed','quiz-maker')?>">
                                                     </a>
                                                 </label>
                                             </div>
@@ -8883,8 +8883,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <div class="form-group row">
                                             <div class="col-sm-5">
                                                 <label for="ays_send_interval_msg_to_admin">
-                                                    <?php echo __('Send Interval message to Admin',$this->plugin_name)?>
-                                                    <a  class="ays_help" data-toggle="tooltip" title="<?php echo __('If this option is enabled then the admin will get the Email with Interval message.',$this->plugin_name)?>">
+                                                    <?php echo __('Send Interval message to Admin','quiz-maker')?>
+                                                    <a  class="ays_help" data-toggle="tooltip" title="<?php echo __('If this option is enabled then the admin will get the Email with Interval message.','quiz-maker')?>">
                                                     </a>
                                                 </label>
                                             </div>
@@ -8897,8 +8897,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <div class="form-group row">
                                             <div class="col-sm-5">
                                                 <label for="ays_send_certificate_to_admin">
-                                                    <?php echo __('Send Certificate to Admin too',$this->plugin_name)?>
-                                                    <a  class="ays_help" data-toggle="tooltip" title="<?php echo htmlentities(__('If this option is enabled then the admin will get the Email with an attached PDF file that gets the user. If the "Send Certificate To User" option is disabled admin does not get a certificate too.',$this->plugin_name)); ?>">
+                                                    <?php echo __('Send Certificate to Admin too','quiz-maker')?>
+                                                    <a  class="ays_help" data-toggle="tooltip" title="<?php echo htmlentities(__('If this option is enabled then the admin will get the Email with an attached PDF file that gets the user. If the "Send Certificate To User" option is disabled admin does not get a certificate too.','quiz-maker')); ?>">
                                                     </a>
                                                 </label>
                                             </div>
@@ -8911,8 +8911,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <div class="form-group row">
                                             <div class="col-sm-3">
                                                 <label for="ays_mail_message_admin">
-                                                    <?php echo __('Mail message',$this->plugin_name)?>
-                                                    <a  class="ays_help" data-toggle="tooltip" title="<?php echo __('Provide the message text for sending to the Admin by email. You can use Variables from General Settings page to insert data. (name, score, date etc.)',$this->plugin_name)?>">
+                                                    <?php echo __('Mail message','quiz-maker')?>
+                                                    <a  class="ays_help" data-toggle="tooltip" title="<?php echo __('Provide the message text for sending to the Admin by email. You can use Variables from General Settings page to insert data. (name, score, date etc.)','quiz-maker')?>">
                                                     </a>
                                                 </label>
                                             </div>
@@ -8926,14 +8926,14 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label>
-                                            <?php echo __('Email Configuration',$this->plugin_name)?>
+                                            <?php echo __('Email Configuration','quiz-maker')?>
                                         </label>
                                     </div>
                                     <div class="col-sm-8 ays_divider_left">
                                         <div class="form-group row">
                                             <div class="col-sm-3">
                                                 <label for="ays_email_configuration_from_email">
-                                                    <?php echo __('From Email',$this->plugin_name)?>
+                                                    <?php echo __('From Email','quiz-maker')?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-9">
@@ -8944,7 +8944,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <div class="form-group row">
                                             <div class="col-sm-3">
                                                 <label for="ays_email_configuration_from_name">
-                                                    <?php echo __('From Name',$this->plugin_name)?>
+                                                    <?php echo __('From Name','quiz-maker')?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-9">
@@ -8955,7 +8955,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <div class="form-group row">
                                             <div class="col-sm-3">
                                                 <label for="ays_email_configuration_from_subject">
-                                                    <?php echo __('From Subject',$this->plugin_name)?>
+                                                    <?php echo __('From Subject','quiz-maker')?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-9">
@@ -9017,21 +9017,21 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                     <div class="ays-quiz-accordion-container">
                         <?php echo $quiz_accordion_svg_html; ?>
-                        <p class="ays-subtitle"><?php echo __('Integrations settings',$this->plugin_name)?></p>
+                        <p class="ays-subtitle"><?php echo __('Integrations settings','quiz-maker')?></p>
                     </div>
                     <hr class="ays-quiz-bolder-hr"/>
                     <div class="ays-quiz-accordion-options-box">
                         <fieldset>
                             <legend>
                                 <img class="ays_integration_logo" src="<?php echo AYS_QUIZ_ADMIN_URL; ?>/images/integrations/mailchimp_logo.png" alt="">
-                                <h5><?php echo __('MailChimp Settings',$this->plugin_name)?></h5>
+                                <h5><?php echo __('MailChimp Settings','quiz-maker')?></h5>
                             </legend>
                             <div class="form-group row">
                                 <div class="col-sm-12">
                                     <div class="ays-quiz-heading-box ays-quiz-unset-float ays-quiz-unset-margin">
                                         <div class="ays-quiz-wordpress-user-manual-box ays-quiz-wordpress-text-align">
                                             <a href="https://www.youtube.com/watch?v=joPQrsF0a60" target="_blank">
-                                                <?php echo __("How to integrate MailChimp - video", $this->plugin_name); ?>
+                                                <?php echo __("How to integrate MailChimp - video", 'quiz-maker'); ?>
                                             </a>
                                         </div>
                                     </div>
@@ -9043,7 +9043,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_enable_mailchimp">
-                                                <?php echo __('Enable MailChimp',$this->plugin_name)?>
+                                                <?php echo __('Enable MailChimp','quiz-maker')?>
                                             </label>
                                         </div>
                                         <div class="col-sm-1">
@@ -9054,7 +9054,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_mailchimp_list">
-                                                <?php echo __('MailChimp list',$this->plugin_name)?>
+                                                <?php echo __('MailChimp list','quiz-maker')?>
                                             </label>
                                         </div>
                                         <div class="col-sm-8">
@@ -9067,12 +9067,12 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_enable_double_opt_in">
-                                                <?php echo __('Enable double opt-in',$this->plugin_name)?>
+                                                <?php echo __('Enable double opt-in','quiz-maker')?>
                                             </label>
                                         </div>
                                         <div class="col-sm-8">
                                             <input type="checkbox" class="ays-enable-timer1"/>
-                                            <span class="ays_option_description"><?php echo __( 'Send contacts an opt-in confirmation email when their email address added to the list.', $this->plugin_name ); ?></span>
+                                            <span class="ays_option_description"><?php echo __( 'Send contacts an opt-in confirmation email when their email address added to the list.', 'quiz-maker' ); ?></span>
                                         </div>
                                     </div>
                                     <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
@@ -9091,14 +9091,14 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <fieldset>
                             <legend>
                                 <img class="ays_integration_logo" src="<?php echo AYS_QUIZ_ADMIN_URL; ?>/images/integrations/paypal_logo.png" alt="">
-                                <h5><?php echo __('PayPal Settings',$this->plugin_name)?></h5>
+                                <h5><?php echo __('PayPal Settings','quiz-maker')?></h5>
                             </legend>                    
                             <div class="form-group row">
                                 <div class="col-sm-12">
                                     <div class="ays-quiz-heading-box ays-quiz-unset-float ays-quiz-unset-margin">
                                         <div class="ays-quiz-wordpress-user-manual-box ays-quiz-wordpress-text-align">
                                             <a href="https://www.youtube.com/watch?v=IwT-2d9OE1g" target="_blank">
-                                                <?php echo __("How to integrate PayPal - video", $this->plugin_name); ?>
+                                                <?php echo __("How to integrate PayPal - video", 'quiz-maker'); ?>
                                             </a>
                                         </div>
                                     </div>
@@ -9110,7 +9110,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_enable_paypal">
-                                                <?php echo __('Enable PayPal',$this->plugin_name)?>
+                                                <?php echo __('Enable PayPal','quiz-maker')?>
                                             </label>
                                         </div>
                                         <div class="col-sm-1">
@@ -9121,7 +9121,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_paypal_amount">
-                                                <?php echo __('Amount',$this->plugin_name)?>
+                                                <?php echo __('Amount','quiz-maker')?>
                                             </label>
                                         </div>
                                         <div class="col-sm-8">
@@ -9132,22 +9132,22 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_paypal_currency">
-                                                <?php echo __('Currency',$this->plugin_name)?>
+                                                <?php echo __('Currency','quiz-maker')?>
                                             </label>
                                         </div>
                                         <div class="col-sm-8">
                                             <select id="ays_paypal_currency" class="ays-text-input ays-text-input-short">
-                                                <option>USD - <?php echo __( 'United States Dollar', $this->plugin_name ); ?></option>
-                                                <option>EUR - <?php echo __( 'Euro', $this->plugin_name ); ?></option>
-                                                <option>GBP - <?php echo __( 'British Pound Sterling', $this->plugin_name ); ?></option>
-                                                <option>AUD - <?php echo __( 'Australian dollar', $this->plugin_name ); ?></option>
-                                                <option>CHF - <?php echo __( 'Swiss Franc', $this->plugin_name ); ?></option>
-                                                <option>JPY - <?php echo __( 'Japanese Yen', $this->plugin_name ); ?></option>
-                                                <option>INR - <?php echo __( 'Indian Rupee', $this->plugin_name ); ?></option>
-                                                <option>CNY - <?php echo __( 'Chinese Yuan', $this->plugin_name ); ?></option>
-                                                <option>CAD - <?php echo __( 'Canadian Dollar', $this->plugin_name ); ?></option>
-                                                <option>AED - <?php echo __( 'United Arab Emirates Dirham', $this->plugin_name ); ?></option>
-                                                <option>RUB - <?php echo __( 'Russian Ruble', $this->plugin_name ); ?></option>
+                                                <option>USD - <?php echo __( 'United States Dollar', 'quiz-maker' ); ?></option>
+                                                <option>EUR - <?php echo __( 'Euro', 'quiz-maker' ); ?></option>
+                                                <option>GBP - <?php echo __( 'British Pound Sterling', 'quiz-maker' ); ?></option>
+                                                <option>AUD - <?php echo __( 'Australian dollar', 'quiz-maker' ); ?></option>
+                                                <option>CHF - <?php echo __( 'Swiss Franc', 'quiz-maker' ); ?></option>
+                                                <option>JPY - <?php echo __( 'Japanese Yen', 'quiz-maker' ); ?></option>
+                                                <option>INR - <?php echo __( 'Indian Rupee', 'quiz-maker' ); ?></option>
+                                                <option>CNY - <?php echo __( 'Chinese Yuan', 'quiz-maker' ); ?></option>
+                                                <option>CAD - <?php echo __( 'Canadian Dollar', 'quiz-maker' ); ?></option>
+                                                <option>AED - <?php echo __( 'United Arab Emirates Dirham', 'quiz-maker' ); ?></option>
+                                                <option>RUB - <?php echo __( 'Russian Ruble', 'quiz-maker' ); ?></option>
                                             </select>
                                         </div>
                                     </div>
@@ -9155,7 +9155,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_stripe_currency">
-                                                <?php echo __('Payment details',$this->plugin_name); ?>
+                                                <?php echo __('Payment details','quiz-maker'); ?>
                                             </label>
                                         </div>
                                         <div class="col-sm-8">
@@ -9178,7 +9178,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <fieldset>
                             <legend>
                                 <img class="ays_integration_logo" src="<?php echo AYS_QUIZ_ADMIN_URL; ?>/images/integrations/stripe_logo.png" alt="">
-                                <h5><?php echo __('Stripe Settings',$this->plugin_name)?></h5>
+                                <h5><?php echo __('Stripe Settings','quiz-maker')?></h5>
                             </legend>
                             <div class="col-sm-12 only_pro" style="padding:20px;">
                                 <div class="pro_features" style="justify-content:flex-end;">
@@ -9187,7 +9187,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_enable_stripe">
-                                            <?php echo __('Enable Stripe',$this->plugin_name); ?>
+                                            <?php echo __('Enable Stripe','quiz-maker'); ?>
                                         </label>
                                     </div>
                                     <div class="col-sm-1">
@@ -9198,7 +9198,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_stripe_amount">
-                                            <?php echo __('Amount',$this->plugin_name)?>
+                                            <?php echo __('Amount','quiz-maker')?>
                                         </label>
                                     </div>
                                     <div class="col-sm-8">
@@ -9209,22 +9209,22 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_stripe_currency">
-                                            <?php echo __('Currency',$this->plugin_name)?>
+                                            <?php echo __('Currency','quiz-maker')?>
                                         </label>
                                     </div>
                                     <div class="col-sm-8">
                                         <select class="ays-text-input ays-text-input-short">
-                                            <option>USD - <?php echo __( 'United States Dollar', $this->plugin_name ); ?></option>
-                                            <option>EUR - <?php echo __( 'Euro', $this->plugin_name ); ?></option>
-                                            <option>GBP - <?php echo __( 'British Pound Sterling', $this->plugin_name ); ?></option>
-                                            <option>AUD - <?php echo __( 'Australian dollar', $this->plugin_name ); ?></option>
-                                            <option>CHF - <?php echo __( 'Swiss Franc', $this->plugin_name ); ?></option>
-                                            <option>JPY - <?php echo __( 'Japanese Yen', $this->plugin_name ); ?></option>
-                                            <option>INR - <?php echo __( 'Indian Rupee', $this->plugin_name ); ?></option>
-                                            <option>CNY - <?php echo __( 'Chinese Yuan', $this->plugin_name ); ?></option>
-                                            <option>CAD - <?php echo __( 'Canadian Dollar', $this->plugin_name ); ?></option>
-                                            <option>AED - <?php echo __( 'United Arab Emirates Dirham', $this->plugin_name ); ?></option>
-                                            <option>RUB - <?php echo __( 'Russian Ruble', $this->plugin_name ); ?></option>
+                                            <option>USD - <?php echo __( 'United States Dollar', 'quiz-maker' ); ?></option>
+                                            <option>EUR - <?php echo __( 'Euro', 'quiz-maker' ); ?></option>
+                                            <option>GBP - <?php echo __( 'British Pound Sterling', 'quiz-maker' ); ?></option>
+                                            <option>AUD - <?php echo __( 'Australian dollar', 'quiz-maker' ); ?></option>
+                                            <option>CHF - <?php echo __( 'Swiss Franc', 'quiz-maker' ); ?></option>
+                                            <option>JPY - <?php echo __( 'Japanese Yen', 'quiz-maker' ); ?></option>
+                                            <option>INR - <?php echo __( 'Indian Rupee', 'quiz-maker' ); ?></option>
+                                            <option>CNY - <?php echo __( 'Chinese Yuan', 'quiz-maker' ); ?></option>
+                                            <option>CAD - <?php echo __( 'Canadian Dollar', 'quiz-maker' ); ?></option>
+                                            <option>AED - <?php echo __( 'United Arab Emirates Dirham', 'quiz-maker' ); ?></option>
+                                            <option>RUB - <?php echo __( 'Russian Ruble', 'quiz-maker' ); ?></option>
                                         </select>
                                     </div>
                                 </div>
@@ -9232,7 +9232,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_stripe_currency">
-                                            <?php echo __('Payment details',$this->plugin_name); ?>
+                                            <?php echo __('Payment details','quiz-maker'); ?>
                                         </label>
                                     </div>
                                     <div class="col-sm-8">
@@ -9254,7 +9254,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <fieldset>
                             <legend>
                                 <img class="ays_integration_logo" src="<?php echo AYS_QUIZ_ADMIN_URL; ?>/images/integrations/recaptcha_logo.png" alt="">
-                                <h5><?php echo __('reCAPTCHA Settings',$this->plugin_name)?></h5>
+                                <h5><?php echo __('reCAPTCHA Settings','quiz-maker')?></h5>
                             </legend>
                             <div class="col-sm-12 only_pro" style="padding:20px;">
                                 <div class="pro_features" style="justify-content:flex-end;">
@@ -9262,7 +9262,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-4">
-                                        <label for="ays_quiz_enable_recaptcha"><?php echo __('Enable reCAPTCHA', $this->plugin_name) ?></label>
+                                        <label for="ays_quiz_enable_recaptcha"><?php echo __('Enable reCAPTCHA', 'quiz-maker') ?></label>
                                     </div>
                                     <div class="col-sm-1">
                                         <input type="checkbox" class="ays-enable-timer1"/>
@@ -9283,7 +9283,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <fieldset>
                             <legend>                        
                                 <img class="ays_integration_logo" src="<?php echo AYS_QUIZ_ADMIN_URL; ?>/images/integrations/campaignmonitor_logo.png" alt="">
-                                <h5><?php echo __('Campaign Monitor Settings', $this->plugin_name) ?></h5>
+                                <h5><?php echo __('Campaign Monitor Settings', 'quiz-maker') ?></h5>
                             </legend>
                             <div class="form-group row">
                                 <div class="col-sm-12 only_pro" style="padding:20px;">
@@ -9293,7 +9293,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_enable_monitor">
-                                                <?php echo __('Enable Campaign Monitor', $this->plugin_name) ?>
+                                                <?php echo __('Enable Campaign Monitor', 'quiz-maker') ?>
                                             </label>
                                         </div>
                                         <div class="col-sm-1">
@@ -9304,12 +9304,12 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_monitor_list">
-                                                <?php echo __('Campaign Monitor list', $this->plugin_name) ?>
+                                                <?php echo __('Campaign Monitor list', 'quiz-maker') ?>
                                             </label>
                                         </div>
                                         <div class="col-sm-8">
                                             <select id="ays_monitor_list" class="ays-text-input ays-text-input-short">
-                                                <option value="" disabled selected><?= __("Select List", $this->plugin_name) ?></option>
+                                                <option value="" disabled selected><?= __("Select List", 'quiz-maker') ?></option>
                                             </select>
                                         </div>
                                     </div>
@@ -9329,7 +9329,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <fieldset>
                             <legend>
                                 <img class="ays_integration_logo" src="<?php echo AYS_QUIZ_ADMIN_URL; ?>/images/integrations/zapier_logo.png" alt="">
-                                <h5><?php echo __('Zapier Integration Settings', $this->plugin_name) ?></h5>
+                                <h5><?php echo __('Zapier Integration Settings', 'quiz-maker') ?></h5>
                             </legend>
                             <div class="form-group row">
                                 <div class="col-sm-12 only_pro" style="padding:20px;">
@@ -9339,7 +9339,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_enable_zapier">
-                                                <?php echo __('Enable Zapier Integration', $this->plugin_name) ?>
+                                                <?php echo __('Enable Zapier Integration', 'quiz-maker') ?>
                                             </label>
                                         </div>
                                         <div class="col-sm-1">
@@ -9347,10 +9347,10 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         </div>
                                         <div class="col-sm-3">
                                             <button type="button" id="testZapier" class="btn btn-outline-secondary">
-                                                <?= __("Send test data", $this->plugin_name) ?>
+                                                <?= __("Send test data", 'quiz-maker') ?>
                                             </button>
                                             <a class="ays_help" data-toggle="tooltip" style="font-size: 16px;"
-                                               title="<?= __('We will send you a test data, and you can catch it in your ZAP for configure it.', $this->plugin_name) ?>">
+                                               title="<?= __('We will send you a test data, and you can catch it in your ZAP for configure it.', 'quiz-maker') ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </div>
@@ -9376,7 +9376,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <fieldset>
                             <legend>
                                 <img class="ays_integration_logo" src="<?php echo AYS_QUIZ_ADMIN_URL; ?>/images/integrations/activecampaign_logo.png" alt="">
-                                <h5><?php echo __('ActiveCampaign Settings', $this->plugin_name) ?></h5>
+                                <h5><?php echo __('ActiveCampaign Settings', 'quiz-maker') ?></h5>
                             </legend>
                             <div class="form-group row">
                                 <div class="col-sm-12 only_pro" style="padding:20px;">
@@ -9386,7 +9386,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_enable_active_camp">
-                                                <?php echo __('Enable ActiveCampaign', $this->plugin_name) ?>
+                                                <?php echo __('Enable ActiveCampaign', 'quiz-maker') ?>
                                             </label>
                                         </div>
                                         <div class="col-sm-1">
@@ -9397,13 +9397,13 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_active_camp_list">
-                                                <?php echo __('ActiveCampaign list', $this->plugin_name) ?>
+                                                <?php echo __('ActiveCampaign list', 'quiz-maker') ?>
                                             </label>
                                         </div>
                                         <div class="col-sm-8">
                                             <select id="ays_active_camp_list" class="ays-text-input ays-text-input-short">
-                                                <option value="" disabled selected><?= __("Select List", $this->plugin_name) ?></option>
-                                                <option value=""><?= __("Just create contact", $this->plugin_name) ?></option>
+                                                <option value="" disabled selected><?= __("Select List", 'quiz-maker') ?></option>
+                                                <option value=""><?= __("Just create contact", 'quiz-maker') ?></option>
                                             </select>
                                         </div>
                                     </div>
@@ -9411,13 +9411,13 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_active_camp_automation">
-                                                <?php echo __('ActiveCampaign automation', $this->plugin_name) ?>
+                                                <?php echo __('ActiveCampaign automation', 'quiz-maker') ?>
                                             </label>
                                         </div>
                                         <div class="col-sm-8">
                                             <select id="ays_active_camp_automation" class="ays-text-input ays-text-input-short">
-                                                <option value="" disabled selected><?= __("Select List", $this->plugin_name) ?></option>
-                                                <option value=""><?= __("Just create contact", $this->plugin_name) ?></option>
+                                                <option value="" disabled selected><?= __("Select List", 'quiz-maker') ?></option>
+                                                <option value=""><?= __("Just create contact", 'quiz-maker') ?></option>
                                             </select>
                                         </div>
                                     </div>
@@ -9437,7 +9437,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <fieldset>
                             <legend>
                                 <img class="ays_integration_logo" src="<?php echo AYS_QUIZ_ADMIN_URL; ?>/images/integrations/slack_logo.png" alt="">
-                                <h5><?php echo __('Slack Settings', $this->plugin_name) ?></h5>
+                                <h5><?php echo __('Slack Settings', 'quiz-maker') ?></h5>
                             </legend>
                             <div class="form-group row">
                                 <div class="col-sm-12 only_pro" style="padding:20px;">
@@ -9447,7 +9447,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_enable_slack">
-                                                <?php echo __('Enable Slack integration', $this->plugin_name) ?>
+                                                <?php echo __('Enable Slack integration', 'quiz-maker') ?>
                                             </label>
                                         </div>
                                         <div class="col-sm-1">
@@ -9458,12 +9458,12 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_slack_conversation">
-                                                <?php echo __('Slack conversation', $this->plugin_name) ?>
+                                                <?php echo __('Slack conversation', 'quiz-maker') ?>
                                             </label>
                                         </div>
                                         <div class="col-sm-8">
                                             <select id="ays_slack_conversation" class="ays-text-input ays-text-input-short">
-                                                <option value="" disabled selected><?= __("Select Channel", $this->plugin_name) ?></option>
+                                                <option value="" disabled selected><?= __("Select Channel", 'quiz-maker') ?></option>
                                             </select>
                                         </div>
                                     </div>
@@ -9483,7 +9483,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <fieldset>
                             <legend>
                                 <img class="ays_integration_logo" src="<?php echo AYS_QUIZ_ADMIN_URL; ?>/images/integrations/sheets_logo.png" alt="">
-                                <h5><?php echo __('Google Sheet Settings', $this->plugin_name) ?></h5>
+                                <h5><?php echo __('Google Sheet Settings', 'quiz-maker') ?></h5>
                             </legend>
                             <hr/>
                             <div class="form-group row">
@@ -9494,7 +9494,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_enable_google">
-                                                <?php echo __('Enable Google integration', $this->plugin_name) ?>
+                                                <?php echo __('Enable Google integration', 'quiz-maker') ?>
                                             </label>
                                         </div>
                                         <div class="col-sm-1">
@@ -9517,7 +9517,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <fieldset>
                             <legend>                        
                                 <img class="ays_integration_logo" src="<?php echo AYS_QUIZ_ADMIN_URL; ?>/images/integrations/mad-mimi-logo.png" alt="">
-                                <h5><?php echo __('Mad Mimi Settings', $this->plugin_name) ?></h5>
+                                <h5><?php echo __('Mad Mimi Settings', 'quiz-maker') ?></h5>
                             </legend>
                             <div class="form-group row">
                                 <div class="col-sm-12 only_pro" style="padding:20px;">
@@ -9526,7 +9526,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-4">
-                                            <label><?php echo __('Enable Mad Mimi', $this->plugin_name); ?></label>
+                                            <label><?php echo __('Enable Mad Mimi', 'quiz-maker'); ?></label>
                                         </div>
                                         <div class="col-sm-1">
                                             <input type="checkbox" class="ays-enable-timer1"/>
@@ -9535,11 +9535,11 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <hr>
                                     <div class="form-group row">
                                         <div class="col-sm-4">
-                                            <label><?php echo __('Select List', $this->plugin_name); ?></label>
+                                            <label><?php echo __('Select List', 'quiz-maker'); ?></label>
                                         </div>
                                         <div class="col-sm-8">
                                             <select class="ays-text-input ays-text-input-short">
-                                                <option value="" disabled selected><?= __("Select List", $this->plugin_name) ?></option>
+                                                <option value="" disabled selected><?= __("Select List", 'quiz-maker') ?></option>
                                             </select>
                                         </div>
                                     </div>
@@ -9559,7 +9559,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <fieldset>
                             <legend>                        
                                 <img class="ays_integration_logo" src="<?php echo AYS_QUIZ_ADMIN_URL; ?>/images/integrations/convertkit_logo.png" alt="">
-                                <h5><?php echo __('ConvertKit Settings', $this->plugin_name) ?></h5>
+                                <h5><?php echo __('ConvertKit Settings', 'quiz-maker') ?></h5>
                             </legend>
                             <div class="form-group row">
                                 <div class="col-sm-12 only_pro" style="padding:20px;">
@@ -9568,7 +9568,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-4">
-                                            <label ><?php echo __('Enable ConvertKit', $this->plugin_name); ?></label>
+                                            <label ><?php echo __('Enable ConvertKit', 'quiz-maker'); ?></label>
                                         </div>
                                         <div class="col-sm-1">
                                             <input type="checkbox" class="ays-enable-timer1"/>
@@ -9577,11 +9577,11 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <hr>
                                     <div class="form-group row">
                                         <div class="col-sm-4">
-                                            <label><?php echo __('ConvertKit List', $this->plugin_name); ?></label>
+                                            <label><?php echo __('ConvertKit List', 'quiz-maker'); ?></label>
                                         </div>
                                         <div class="col-sm-8">
                                             <select class="ays-text-input ays-text-input-short">
-                                                <option value="" disabled selected><?= __("Select List", $this->plugin_name) ?></option>
+                                                <option value="" disabled selected><?= __("Select List", 'quiz-maker') ?></option>
                                             </select>
                                         </div>
                                     </div>
@@ -9601,7 +9601,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <fieldset>
                             <legend>                        
                                 <img class="ays_integration_logo" src="<?php echo AYS_QUIZ_ADMIN_URL; ?>/images/integrations/get_response.png" alt="">
-                                <h5><?php echo __('GetResponse Settings', $this->plugin_name) ?></h5>
+                                <h5><?php echo __('GetResponse Settings', 'quiz-maker') ?></h5>
                             </legend>
                             <div class="form-group row">
                                 <div class="col-sm-12 only_pro" style="padding:20px;">
@@ -9609,7 +9609,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-4">
-                                            <label><?php echo __('Enable GetResponse', $this->plugin_name); ?></label>
+                                            <label><?php echo __('Enable GetResponse', 'quiz-maker'); ?></label>
                                         </div>
                                         <div class="col-sm-1">
                                             <input type="checkbox" class="ays-enable-timer1"/>
@@ -9618,11 +9618,11 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <hr>
                                     <div class="form-group row">
                                         <div class="col-sm-4">
-                                            <label><?php echo __('GetResponse List', $this->plugin_name); ?></label>
+                                            <label><?php echo __('GetResponse List', 'quiz-maker'); ?></label>
                                         </div>
                                         <div class="col-sm-8">
                                             <select class="ays-text-input ays-text-input-short">
-                                                <option value="" disabled selected><?= __("Select List", $this->plugin_name) ?></option>
+                                                <option value="" disabled selected><?= __("Select List", 'quiz-maker') ?></option>
                                             </select>
                                         </div>
                                     </div>
@@ -9652,13 +9652,13 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                 <div class="col-sm-12 ays-quiz-general-bundle-box">
                     <div class="ays-quiz-general-bundle-row">
                         <div class="ays-quiz-general-bundle-text">
-                            <?php echo __( "Grab your", $this->plugin_name ); ?>
-                            <span><?php echo __( "20% Christmas GIFT", $this->plugin_name ); ?></span>
-                            <?php echo __( "discount for Quiz Maker plugin! ", $this->plugin_name ); ?>
+                            <?php echo __( "Grab your", 'quiz-maker' ); ?>
+                            <span><?php echo __( "20% Christmas GIFT", 'quiz-maker' ); ?></span>
+                            <?php echo __( "discount for Quiz Maker plugin! ", 'quiz-maker' ); ?>
                         </div>
-                        <p><?php echo __( "Warm up your website for the winter colds with the best quiz plugin on WP.", $this->plugin_name ); ?></p>
+                        <p><?php echo __( "Warm up your website for the winter colds with the best quiz plugin on WP.", 'quiz-maker' ); ?></p>
                         <div class="ays-quiz-general-bundle-sale-text ays-quiz-general-bundle-color">
-                            <div><a href="https://ays-pro.com/wordpress/quiz-maker" class="ays-quiz-general-bundle-link-color" target="_blank"><?php echo __( "Discount 20% OFF", $this->plugin_name ); ?></a></div>
+                            <div><a href="https://ays-pro.com/wordpress/quiz-maker" class="ays-quiz-general-bundle-link-color" target="_blank"><?php echo __( "Discount 20% OFF", 'quiz-maker' ); ?></a></div>
                         </div>
                     </div>
                     <div class="ays-quiz-general-bundle-row">
@@ -9673,16 +9673,16 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
 
                 $pro_content = array();
 
-                $pro_content[] = '<div class="only_pro only_pro_save_as_default" title="'.__("This property available only in pro version",$this->plugin_name) .'">';
+                $pro_content[] = '<div class="only_pro only_pro_save_as_default" title="'.__("This property available only in pro version",'quiz-maker') .'">';
                     $pro_content[] = '<div class="pro_features pro_features_popup">';
                         $pro_content[] = '<div class="pro-features-popup-conteiner">';
                             $pro_content[] = '<div class="pro-features-popup-title">';
-                            $pro_content[] = __("Save as Default feature of Quiz", $this->plugin_name);
+                            $pro_content[] = __("Save as Default feature of Quiz", 'quiz-maker');
                             $pro_content[] = '</div>';
 
                             $pro_content[] = '<div class="pro-features-popup-content" data-link="https://youtu.be/yuYdJnooygU">';
                                 $pro_content[] = '<p>';
-                                    $pro_content[] = sprintf( __("Do you want to create more than one quiz with the same options or style? The save as Default feature comes to help you, as it %s allows you to change default values while creating a new quiz. %s Just give new values to the option of a single quiz and click on the %s Save as default %s button. Your changes will be saved and you will avoid repeating the same steps for the other quizzes. Please note, that the changes refer to only the newly created quizzes and %s don't refer to the already created ones. %s", $this->plugin_name),
+                                    $pro_content[] = sprintf( __("Do you want to create more than one quiz with the same options or style? The save as Default feature comes to help you, as it %s allows you to change default values while creating a new quiz. %s Just give new values to the option of a single quiz and click on the %s Save as default %s button. Your changes will be saved and you will avoid repeating the same steps for the other quizzes. Please note, that the changes refer to only the newly created quizzes and %s don't refer to the already created ones. %s", 'quiz-maker'),
                                         "<strong>",
                                         "</strong>",
                                         "<strong>",
@@ -9692,18 +9692,18 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     );
                                 $pro_content[] = '</p>';
                                 $pro_content[] = '<div>';
-                                    $pro_content[] = '<a href="https://quiz-plugin.com/docs/" target="_blank"> '. __("See Documentation", $this->plugin_name). '</a>';
+                                    $pro_content[] = '<a href="https://quiz-plugin.com/docs/" target="_blank"> '. __("See Documentation", 'quiz-maker'). '</a>';
                                 $pro_content[] = '</div>';
                             $pro_content[] = '</div>';
 
                             $pro_content[] = '<div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker">';
-                                $pro_content[] = __("Upgrade to Pro Now", $this->plugin_name);
+                                $pro_content[] = __("Upgrade to Pro Now", 'quiz-maker');
                             $pro_content[] = '</div>';
                         $pro_content[] = '</div>';
                     $pro_content[] = '</div>';
                     $pro_content[] = '<div>';
-                        $pro_content[] = '<a href="https://ays-pro.com/wordpress/quiz-maker" class="" target="_blank" title="'.__("This property available only in pro version",$this->plugin_name) .'">';
-                            $pro_content[] = '<button type="button" class="button button-primary ays_default_btn disabled-button">'.__( "Save as default" , $this->plugin_name );
+                        $pro_content[] = '<a href="https://ays-pro.com/wordpress/quiz-maker" class="" target="_blank" title="'.__("This property available only in pro version",'quiz-maker') .'">';
+                            $pro_content[] = '<button type="button" class="button button-primary ays_default_btn disabled-button">'.__( "Save as default" , 'quiz-maker' );
                             $pro_content[] = '</button>';
                         $pro_content[] = '</a>';
                     $pro_content[] = '</div>';
@@ -9723,8 +9723,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                     $buttons_html .= '<div class="ays_save_buttons_box ays-quiz-add-new-button-quiz-edit-box">';
                     echo $buttons_html;
                         echo $loader_iamge;
-                        submit_button(__('Save', $this->plugin_name), 'primary ays-quiz-loader-banner', 'ays_apply', true, $other_attributes_only_save);
-                        submit_button(__('Save and close', $this->plugin_name), 'ays-quiz-loader-banner', 'ays_submit', true, $other_attributes);
+                        submit_button(__('Save', 'quiz-maker'), 'primary ays-quiz-loader-banner', 'ays_apply', true, $other_attributes_only_save);
+                        submit_button(__('Save and close', 'quiz-maker'), 'ays-quiz-loader-banner', 'ays_submit', true, $other_attributes);
                         submit_button(__('Cancel', "quiz-maker"), 'ays-quiz-loader-banner', 'ays_quiz_cancel', true, array());
                     $buttons_html = '</div>';
                     $buttons_html .= '<div class="ays_save_default_button_box">';
@@ -9733,32 +9733,32 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
 
                             $other_attributes = array(
                                 'id'            => 'ays-quiz-prev-button',
-                                'data-message'  => __( 'Are you sure you want to go to the previous quiz page?', $this->plugin_name),
+                                'data-message'  => __( 'Are you sure you want to go to the previous quiz page?', 'quiz-maker'),
                                 'href'          => sprintf( '?page=%s&action=%s&quiz=%d', esc_attr( $_REQUEST['page'] ), 'edit', absint( $prev_quiz_id ) )
                             );
-                            submit_button(__('Prev Quiz', $this->plugin_name), 'ays-quiz-next-button-class', 'ays_quiz_prev_button', true, $other_attributes);
+                            submit_button(__('Prev Quiz', 'quiz-maker'), 'ays-quiz-next-button-class', 'ays_quiz_prev_button', true, $other_attributes);
                         }
 
                         if ( $next_quiz_id != "" && !is_null( $next_quiz_id ) ) {
 
                             $other_attributes = array(
                                 'id'            => 'ays-quiz-next-button',
-                                'data-message'  => __( 'Are you sure you want to go to the next quiz page?', $this->plugin_name),
+                                'data-message'  => __( 'Are you sure you want to go to the next quiz page?', 'quiz-maker'),
                                 'href'          => sprintf( '?page=%s&action=%s&quiz=%d', esc_attr( $_REQUEST['page'] ), 'edit', absint( $next_quiz_id ) )
                             );
-                            submit_button(__('Next Quiz', $this->plugin_name), 'ays-quiz-next-button-class', 'ays_quiz_next_button', true, $other_attributes);
+                            submit_button(__('Next Quiz', 'quiz-maker'), 'ays-quiz-next-button-class', 'ays_quiz_next_button', true, $other_attributes);
                         }
-                        $buttons_html = '<a class="ays_help" data-toggle="tooltip" title="'.__( "Saves the assigned settings of the current quiz as default. After clicking on this button, each time creating a new quiz, the system will take the settings and styles of the current quiz. If you want to change and renew it, please click on this button on another quiz. This feature is available only in PRO version!!!" ,$this->plugin_name ).'">
-                            <i class="ays_fa ays_fa_info_circle"></i>
-                        </a>';
-                        echo $buttons_html;
+                        // $buttons_html = '<a class="ays_help" data-toggle="tooltip" title="'.__( "Saves the assigned settings of the current quiz as default. After clicking on this button, each time creating a new quiz, the system will take the settings and styles of the current quiz. If you want to change and renew it, please click on this button on another quiz. This feature is available only in PRO version!!!" ,'quiz-maker' ).'">
+                        //     <i class="ays_fa ays_fa_info_circle"></i>
+                        // </a>';
+                        // echo $buttons_html;
                         $buttons_html = '';
                         // $buttons_html .= '<div>';
-                            // $buttons_html .= '<a href="https://ays-pro.com/wordpress/quiz-maker" class="" target="_blank" title="'.__("This property available only in pro version",$this->plugin_name) .'">';
-                            //     $buttons_html .= '<button type="button" class="button button-primary ays_default_btn disabled-button">'.__( "Save as default" , $this->plugin_name );
+                            // $buttons_html .= '<a href="https://ays-pro.com/wordpress/quiz-maker" class="" target="_blank" title="'.__("This property available only in pro version",'quiz-maker') .'">';
+                            //     $buttons_html .= '<button type="button" class="button button-primary ays_default_btn disabled-button">'.__( "Save as default" , 'quiz-maker' );
                             //     $buttons_html .= '</button>';
                             // $buttons_html .= '</a>';
-                            $buttons_html .= $pro_content;
+                            // $buttons_html .= $pro_content;
                         // $buttons_html .= '</div>';
                     $buttons_html .= '</div>';
                 $buttons_html .= "</div>";
@@ -9775,24 +9775,24 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                     </div>
                     <div class="ays-modal-header">
                         <span class="ays-close">&times;</span>
-                        <h2><?php echo __('Select questions', $this->plugin_name); ?></h2>
+                        <h2><?php echo __('Select questions', 'quiz-maker'); ?></h2>
                     </div>
                     <div class="ays-modal-body">
                         <?php
                         // wp_nonce_field('add_question_rows_top', 'add_question_rows_top_second');
                         $other_attributes = array();
-                        submit_button(__('Insert questions', $this->plugin_name), 'primary', 'add_question_rows_top', true, $other_attributes);
+                        submit_button(__('Insert questions', 'quiz-maker'), 'primary', 'add_question_rows_top', true, $other_attributes);
                         ?>
                         <span style="font-size: 13px; font-style: italic;">
-                            <?php echo __('For select questions click on question row and then click "Insert questions" button', $this->plugin_name); ?>
+                            <?php echo __('For select questions click on question row and then click "Insert questions" button', 'quiz-maker'); ?>
                         </span>
                         <div class="ays-quiz-add-question-filter-box">
                             <div class="ays-quiz-add-question-filter" id="ays-quiz-add-question-filter">
                                 <img src="<?php echo AYS_QUIZ_ADMIN_URL . '/images/icons/filter.svg' ?>" style="width: 20px;">
-                                <span><?php echo __('Filters', $this->plugin_name); ?></span>
+                                <span><?php echo __('Filters', 'quiz-maker'); ?></span>
                             </div>
                             <div style="font-size: 16px; padding-right:20px; margin:0; text-align:right;">
-                                <a class="" href="admin.php?page=<?php echo $this->plugin_name; ?>-questions&action=add" target="_blank"><?php echo __('Create question', $this->plugin_name); ?></a>
+                                <a class="" href="admin.php?page=<?php echo $this->plugin_name; ?>-questions&action=add" target="_blank"><?php echo __('Create question', 'quiz-maker'); ?></a>
                             </div>
                         </div>
                         <div class="form-group row display_none ays-quiz-add-question-filter-option-box">
@@ -9804,8 +9804,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="col-sm-12" id="quest_cat_container">
                                         <label style="width:100%;" for="add_quest_category_filter">
                                             <p style="font-size: 13px; margin:0; font-style: italic;">
-                                                <?php echo __( "Filter by category", $this->plugin_name); ?>
-                                                <button type="button" class="ays_filter_cat_clear button button-small wp-picker-default"><?php echo __( "Clear", $this->plugin_name ); ?></button>
+                                                <?php echo __( "Filter by category", 'quiz-maker'); ?>
+                                                <button type="button" class="ays_filter_cat_clear button button-small wp-picker-default"><?php echo __( "Clear", 'quiz-maker' ); ?></button>
                                             </p>
                                         </label>
                                         <select id="add_quest_category_filter" multiple="multiple" class='cat_filter custom-select custom-select-sm form-control form-control-sm'>
@@ -9824,8 +9824,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="col-sm-12" id="quest_tag_container">
                                         <label style="width:100%;" for="add_quest_tag_filter">
                                             <p style="font-size: 13px; margin:0; font-style: italic;">
-                                                <?php echo __( "Filter by tag", $this->plugin_name); ?>
-                                                <button type="button" class="ays_filter_tag_clear button button-small wp-picker-default"><?php echo __( "Clear", $this->plugin_name ); ?></button>
+                                                <?php echo __( "Filter by tag", 'quiz-maker'); ?>
+                                                <button type="button" class="ays_filter_tag_clear button button-small wp-picker-default"><?php echo __( "Clear", 'quiz-maker' ); ?></button>
                                             </p>
                                         </label>
                                         <select id="add_quest_tag_filter" multiple="multiple" class='tag_filter custom-select custom-select-sm form-control form-control-sm'>
@@ -9855,10 +9855,10 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                             <thead>
                             <tr>
                                 <th class="th-150">#</th>
-                                <th style="500px"><?php echo __('Question', $this->plugin_name); ?></th>
-                                <th class="th-150"><?php echo __('Type', $this->plugin_name); ?></th>
-                                <th class="th-150"><?php echo __('Created', $this->plugin_name); ?></th>
-                                <th style="150px"><?php echo __('Category', $this->plugin_name); ?></th>
+                                <th style="500px"><?php echo __('Question', 'quiz-maker'); ?></th>
+                                <th class="th-150"><?php echo __('Type', 'quiz-maker'); ?></th>
+                                <th class="th-150"><?php echo __('Created', 'quiz-maker'); ?></th>
+                                <th style="150px"><?php echo __('Category', 'quiz-maker'); ?></th>
                                 <th style="50px">ID</th>
                             </tr>
                             </thead>
@@ -9902,7 +9902,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     }
 
                                 }elseif ((isset($question['question_image']) && $question['question_image'] !='')){
-                                    $table_question = __( 'Image question', $this->plugin_name );
+                                    $table_question = __( 'Image question', 'quiz-maker' );
                                 }
 
                                 switch ( $question["type"] ) {
@@ -9945,7 +9945,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <?php
                         // wp_nonce_field('add_question_rows', 'add_question_rows');
                         $other_attributes = array('id' => 'ays-button');
-                        submit_button(__('Insert questions', $this->plugin_name), 'primary', 'add_question_rows', true, $other_attributes);
+                        submit_button(__('Insert questions', 'quiz-maker'), 'primary', 'add_question_rows', true, $other_attributes);
 
                         $quiz_ajax_add_question_nonce = wp_create_nonce( 'quiz-maker-ajax-add-question-nonce' );
 
@@ -10027,13 +10027,13 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         </div>
                     </div>
                     <div id="ays-quiz-all-pages-popup-content">
-                        <div class="ays-quiz-all-pages-popup-content-title"><?php echo __("New Integration", $this->plugin_name); ?></div>
-                        <div class="ays-quiz-all-pages-popup-content-description"><?php echo __("Visualize your data with a Chart Builder", $this->plugin_name); ?></div>
+                        <div class="ays-quiz-all-pages-popup-content-title"><?php echo __("New Integration", 'quiz-maker'); ?></div>
+                        <div class="ays-quiz-all-pages-popup-content-description"><?php echo __("Visualize your data with a Chart Builder", 'quiz-maker'); ?></div>
                     </div>
                     <div class="ays-quiz-all-pages-popup-footer">
                         <div id="ays-quiz-all-pages-popup-button" class="ays-quiz-all-pages-popup-st">
                             <div class="ays-quiz-all-pages-popup-btn">
-                                <a href="http://bit.ly/3HsHaML" id="ays-pages-submit-popup" class="ays-quiz-all-pages-popup-fields ays-quiz-all-pages-popup-fields-submit" target="_blank"><?php echo __("Try For Free", $this->plugin_name); ?></a>
+                                <a href="http://bit.ly/3HsHaML" id="ays-pages-submit-popup" class="ays-quiz-all-pages-popup-fields ays-quiz-all-pages-popup-fields-submit" target="_blank"><?php echo __("Try For Free", 'quiz-maker'); ?></a>
                             </div>
                         </div>
                     </div>

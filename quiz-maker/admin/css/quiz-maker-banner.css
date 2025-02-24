@@ -1803,6 +1803,10 @@ div#ays-quiz-new-mega-bundle-dicount-month-main.ays_quiz_dicount_info {
     line-height: normal;
 }
 
+#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-text-box .ays-quiz-new-mega-bundle-title-icon-row {
+    display: inline-block;
+}
+
 #ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-text-box .ays-quiz-new-mega-bundle-desc {
     display: inline-block;
     color: #FFF;

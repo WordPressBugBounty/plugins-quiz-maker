@@ -118,7 +118,7 @@ class Quiz_Maker_Quiz_Category
         $category_title = (isset($category['title']) && $category['title'] != '') ? stripslashes($category['title']) : "";
 
         $content .= "<h2 class='ays-quiz-category-title' style='text-align:center;'>
-            <span style='font-size:3rem;'>". __( "Category", $this->plugin_name) .":</span>
+            <span style='font-size:3rem;'>". __( "Category", 'quiz-maker') .":</span>
             <em>". $category_title ."</em>
         </h2>";
 

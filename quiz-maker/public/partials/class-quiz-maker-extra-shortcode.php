@@ -578,7 +578,7 @@ class Ays_Quiz_Maker_Extra_Shortcodes_Public
                 $user_wordpress_website_url = ( isset( $current_user_data->user_url ) && ! empty( $current_user_data->user_url ) ) ? sanitize_url($current_user_data->user_url) : "";
 
                 if( !empty( $user_wordpress_website_url ) ){
-                    $user_wordpress_website = "<a href='". esc_url( $user_wordpress_website_url ) ."' target='_blank' class='ays-quiz-user-website-link-a-tag'>". __( "Website", $this->plugin_name ) ."</a>";
+                    $user_wordpress_website = "<a href='". esc_url( $user_wordpress_website_url ) ."' target='_blank' class='ays-quiz-user-website-link-a-tag'>". __( "Website", 'quiz-maker' ) ."</a>";
                 }
 
             }
@@ -1035,7 +1035,7 @@ class Ays_Quiz_Maker_Extra_Shortcodes_Public
         }
 
         if(isset($author['name']) && $author['name'] == "Unknown"){
-            $author['name'] = __( "Unknown", $this->plugin_name );
+            $author['name'] = __( "Unknown", 'quiz-maker' );
         }
 
         $quiz_author = (isset($author['name']) && $author['name'] != '') ? sanitize_text_field( $author['name'] ) : "";

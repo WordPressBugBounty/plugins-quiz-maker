@@ -168,9 +168,9 @@ class Quiz_Maker_Admin
             wp_enqueue_script($this->plugin_name . '-admin', plugin_dir_url(__FILE__) . 'js/admin.js', array('jquery'), $this->version, true);
             wp_localize_script($this->plugin_name . '-admin',  'quiz_maker_admin_ajax', array(
                 'ajax_url'              => admin_url('admin-ajax.php'),
-                'errorMsg'              => __( "Error", $this->plugin_name ),
-                'loadResource'          => __( "Can't load resource.", $this->plugin_name ),
-                'somethingWentWrong'    => __( "Maybe something went wrong.", $this->plugin_name ),
+                'errorMsg'              => __( "Error", 'quiz-maker' ),
+                'loadResource'          => __( "Can't load resource.", 'quiz-maker' ),
+                'somethingWentWrong'    => __( "Maybe something went wrong.", 'quiz-maker' ),
             ));
         }
 
@@ -198,12 +198,12 @@ class Quiz_Maker_Admin
 
         wp_enqueue_script( $this->plugin_name . '-color-picker-alpha', plugin_dir_url(__FILE__) . 'js/wp-color-picker-alpha.min.js', array( 'wp-color-picker' ), $this->version, true );
         $color_picker_strings = array(
-            'clear'            => __( 'Clear', $this->plugin_name ),
-            'clearAriaLabel'   => __( 'Clear color', $this->plugin_name ),
-            'defaultString'    => __( 'Default', $this->plugin_name ),
-            'defaultAriaLabel' => __( 'Select default color', $this->plugin_name ),
-            'pick'             => __( 'Select Color', $this->plugin_name ),
-            'defaultLabel'     => __( 'Color value', $this->plugin_name ),
+            'clear'            => __( 'Clear', 'quiz-maker' ),
+            'clearAriaLabel'   => __( 'Clear color', 'quiz-maker' ),
+            'defaultString'    => __( 'Default', 'quiz-maker' ),
+            'defaultAriaLabel' => __( 'Select default color', 'quiz-maker' ),
+            'pick'             => __( 'Select Color', 'quiz-maker' ),
+            'defaultLabel'     => __( 'Color value', 'quiz-maker' ),
         );
         wp_localize_script( $this->plugin_name . '-color-picker-alpha', 'wpColorPickerL10n', $color_picker_strings );
 
@@ -225,58 +225,58 @@ class Quiz_Maker_Admin
         );
         wp_localize_script($this->plugin_name . '-ajax', 'quiz_maker_ajax', array(
             'ajax_url'                      => admin_url('admin-ajax.php'),
-            "emptyEmailError"               => __( 'Email field is empty', $this->plugin_name),
-            "invalidEmailError"             => __( 'Invalid Email address', $this->plugin_name),
-            'selectUser'                    => __( 'Select user', $this->plugin_name),
-            'pleaseEnterMore'               => __( "Please enter 1 or more characters", $this->plugin_name ),
-            'searching'                     => __( "Searching...", $this->plugin_name ),
-            'activated'                     => __( "Activated", $this->plugin_name ),
-            'errorMsg'                      => __( "Error", $this->plugin_name ),
-            'loadResource'                  => __( "Can't load resource.", $this->plugin_name ),
-            'somethingWentWrong'            => __( "Maybe something went wrong.", $this->plugin_name ),
-            'youCanUuseThisShortcode'       => __( 'Copy the generated shortcode and paste it into any post or page to display Quiz.', $this->plugin_name),
-            'youQuizIsCreated'              => __( 'Your Quiz is Created!', $this->plugin_name),
-            'greateJob'                     => __( 'Great job', $this->plugin_name),
-            'formMoreDetailed'              => __( 'For more detailed configuration visit', $this->plugin_name),
-            'editQuizPage'                  => __( 'edit quiz page', $this->plugin_name),
-            'greate'                        => __( 'Great!', $this->plugin_name),
+            "emptyEmailError"               => __( 'Email field is empty', 'quiz-maker'),
+            "invalidEmailError"             => __( 'Invalid Email address', 'quiz-maker'),
+            'selectUser'                    => __( 'Select user', 'quiz-maker'),
+            'pleaseEnterMore'               => __( "Please enter 1 or more characters", 'quiz-maker' ),
+            'searching'                     => __( "Searching...", 'quiz-maker' ),
+            'activated'                     => __( "Activated", 'quiz-maker' ),
+            'errorMsg'                      => __( "Error", 'quiz-maker' ),
+            'loadResource'                  => __( "Can't load resource.", 'quiz-maker' ),
+            'somethingWentWrong'            => __( "Maybe something went wrong.", 'quiz-maker' ),
+            'youCanUuseThisShortcode'       => __( 'Copy the generated shortcode and paste it into any post or page to display Quiz.', 'quiz-maker'),
+            'youQuizIsCreated'              => __( 'Your Quiz is Created!', 'quiz-maker'),
+            'greateJob'                     => __( 'Great job', 'quiz-maker'),
+            'formMoreDetailed'              => __( 'For more detailed configuration visit', 'quiz-maker'),
+            'editQuizPage'                  => __( 'edit quiz page', 'quiz-maker'),
+            'greate'                        => __( 'Great!', 'quiz-maker'),
         ));
         wp_localize_script( $this->plugin_name, 'quizLangObj', array(
             'quizBannerDate'                => $quiz_banner_date,
             'AYS_QUIZ_ADMIN_URL'            => AYS_QUIZ_ADMIN_URL,
 
-            'questionTitle'                 => __( 'Question Default Title', $this->plugin_name),
-            'radio'                         => __( 'Radio', $this->plugin_name),
-            'checkbox'                      => __( 'Checkbox', $this->plugin_name),
-            'dropdawn'                      => __( 'Dropdown', $this->plugin_name),
-            'emptyAnswer'                   => __( 'Empty Answer', $this->plugin_name),
-            'addGif'                        => __( 'Add Gif', $this->plugin_name),
-            'textType'                      => __( 'Text', $this->plugin_name),
-            'answerText'                    => __( 'Answer text', $this->plugin_name),
-            'copied'                        => __( 'Copied!', $this->plugin_name),
-            'clickForCopy'                  => __( 'Click for copy.', $this->plugin_name),
-            'shortTextType'                 => __( 'Short Text', $this->plugin_name),
-            'true'                          => __( 'True', $this->plugin_name),
-            'false'                         => __( 'False', $this->plugin_name),
-            'number'                        => __( 'Number', $this->plugin_name),
-            'trueOrFalse'                   => __( 'True/False', $this->plugin_name),
-            'date'                          => __( 'Date', $this->plugin_name),
+            'questionTitle'                 => __( 'Question Default Title', 'quiz-maker'),
+            'radio'                         => __( 'Radio', 'quiz-maker'),
+            'checkbox'                      => __( 'Checkbox', 'quiz-maker'),
+            'dropdawn'                      => __( 'Dropdown', 'quiz-maker'),
+            'emptyAnswer'                   => __( 'Empty Answer', 'quiz-maker'),
+            'addGif'                        => __( 'Add Gif', 'quiz-maker'),
+            'textType'                      => __( 'Text', 'quiz-maker'),
+            'answerText'                    => __( 'Answer text', 'quiz-maker'),
+            'copied'                        => __( 'Copied!', 'quiz-maker'),
+            'clickForCopy'                  => __( 'Click for copy.', 'quiz-maker'),
+            'shortTextType'                 => __( 'Short Text', 'quiz-maker'),
+            'true'                          => __( 'True', 'quiz-maker'),
+            'false'                         => __( 'False', 'quiz-maker'),
+            'number'                        => __( 'Number', 'quiz-maker'),
+            'trueOrFalse'                   => __( 'True/False', 'quiz-maker'),
+            'date'                          => __( 'Date', 'quiz-maker'),
             'currentTime'                   => current_time( 'Y-m-d' ),
-            'nextQustionPage'               => __( 'Are you sure you want to go to the next question page?', $this->plugin_name),
-            'areYouSureButton'              => __( 'Are you sure you want to redirect to another quiz? Note that the changes made in this quiz will not be saved.', $this->plugin_name),
-            'deleteQuestion'                => __( 'Are you sure you want to delete question ?', $this->plugin_name),
-            'deleteElementFromListTable'    => __( 'Are you sure you want to delete?', $this->plugin_name),
-            'youCanUuseThisShortcode'       => __( 'Copy the generated shortcode and paste it into any post or page to display Quiz.', $this->plugin_name),
-            'youQuizIsCreated'              => __( 'Your Quiz is Created!', $this->plugin_name),
-            'greateJob'                     => __( 'Great job', $this->plugin_name),
-            'formMoreDetailed'              => __( 'For more detailed configuration visit', $this->plugin_name),
-            'editQuizPage'                  => __( 'edit quiz page', $this->plugin_name),
-            'greate'                        => __( 'Done', $this->plugin_name),
-            'thumbsUpGreat'                 => __( 'Thumbs up, great!', $this->plugin_name),
+            'nextQustionPage'               => __( 'Are you sure you want to go to the next question page?', 'quiz-maker'),
+            'areYouSureButton'              => __( 'Are you sure you want to redirect to another quiz? Note that the changes made in this quiz will not be saved.', 'quiz-maker'),
+            'deleteQuestion'                => __( 'Are you sure you want to delete question ?', 'quiz-maker'),
+            'deleteElementFromListTable'    => __( 'Are you sure you want to delete?', 'quiz-maker'),
+            'youCanUuseThisShortcode'       => __( 'Copy the generated shortcode and paste it into any post or page to display Quiz.', 'quiz-maker'),
+            'youQuizIsCreated'              => __( 'Your Quiz is Created!', 'quiz-maker'),
+            'greateJob'                     => __( 'Great job', 'quiz-maker'),
+            'formMoreDetailed'              => __( 'For more detailed configuration visit', 'quiz-maker'),
+            'editQuizPage'                  => __( 'edit quiz page', 'quiz-maker'),
+            'greate'                        => __( 'Done', 'quiz-maker'),
+            'thumbsUpGreat'                 => __( 'Thumbs up, great!', 'quiz-maker'),
 
-            "all"                           => __( "All", $this->plugin_name ),
-            "selectCategory"                => __( "Select Category", $this->plugin_name ),
-            "selectTags"                    => __( "Select Tags", $this->plugin_name ),
+            "all"                           => __( "All", 'quiz-maker' ),
+            "selectCategory"                => __( "Select Category", 'quiz-maker' ),
+            "selectTags"                    => __( "Select Tags", 'quiz-maker' ),
         ) );
 
         $question_categories = $this->get_question_categories();
@@ -377,7 +377,7 @@ class Quiz_Maker_Admin
             'manage_options', 
             $this->plugin_name, 
             array($this, 'display_plugin_quiz_page'), 
-            AYS_QUIZ_ADMIN_URL . '/images/icons/icon-quiz maker-128x128.svg', 
+            AYS_QUIZ_ADMIN_URL . '/images/icons/icon-quiz-maker-128x128.svg', 
             '6.20'
         );
     }
@@ -385,8 +385,8 @@ class Quiz_Maker_Admin
     public function add_plugin_quizzes_submenu(){
         $hook_quiz_maker = add_submenu_page(
             $this->plugin_name,
-            __('Quizzes', $this->plugin_name),
-            __('Quizzes', $this->plugin_name),
+            __('Quizzes', 'quiz-maker'),
+            __('Quizzes', 'quiz-maker'),
             'manage_options',
             $this->plugin_name,
             array($this, 'display_plugin_quiz_page')
@@ -399,8 +399,8 @@ class Quiz_Maker_Admin
     public function add_plugin_questions_submenu(){
         $hook_questions = add_submenu_page(
             $this->plugin_name,
-            __('Questions', $this->plugin_name),
-            __('Questions', $this->plugin_name),
+            __('Questions', 'quiz-maker'),
+            __('Questions', 'quiz-maker'),
             'manage_options',
             $this->plugin_name . '-questions',
             array($this, 'display_plugin_questions_page')
@@ -413,8 +413,8 @@ class Quiz_Maker_Admin
     public function add_plugin_quiz_categories_submenu(){
         $hook_quiz_categories = add_submenu_page(
             $this->plugin_name,
-            __('Quiz Categories', $this->plugin_name),
-            __('Quiz Categories', $this->plugin_name),
+            __('Quiz Categories', 'quiz-maker'),
+            __('Quiz Categories', 'quiz-maker'),
             'manage_options',
             $this->plugin_name . '-quiz-categories',
             array($this, 'display_plugin_quiz_categories_page')
@@ -427,8 +427,8 @@ class Quiz_Maker_Admin
     public function add_plugin_questions_categories_submenu(){
         $hook_questions_categories = add_submenu_page(
             $this->plugin_name,
-            __('Question Categories', $this->plugin_name),
-            __('Question Categories', $this->plugin_name),
+            __('Question Categories', 'quiz-maker'),
+            __('Question Categories', 'quiz-maker'),
             'manage_options',
             $this->plugin_name . '-question-categories',
             array($this, 'display_plugin_question_categories_page')
@@ -441,8 +441,8 @@ class Quiz_Maker_Admin
     public function add_plugin_custom_fields_submenu(){
         $hook_quiz_categories = add_submenu_page(
             $this->plugin_name,
-            __('Custom Fields', $this->plugin_name),
-            __('Custom Fields', $this->plugin_name),
+            __('Custom Fields', 'quiz-maker'),
+            __('Custom Fields', 'quiz-maker'),
             'manage_options',
             $this->plugin_name . '-quiz-attributes',
             array($this, 'display_plugin_quiz_attributes_page')
@@ -453,8 +453,8 @@ class Quiz_Maker_Admin
     public function add_plugin_orders_submenu(){
         $hook_quiz_orders = add_submenu_page(
             $this->plugin_name,
-            __('Orders', $this->plugin_name),
-            __('Orders', $this->plugin_name),
+            __('Orders', 'quiz-maker'),
+            __('Orders', 'quiz-maker'),
             'manage_options',
             $this->plugin_name . '-quiz-orders',
             array($this, 'display_plugin_orders_page')
@@ -473,21 +473,21 @@ class Quiz_Maker_Admin
         $quiz_disable_results_menu_notification = (isset($options['quiz_disable_results_menu_notification']) && esc_attr( $options['quiz_disable_results_menu_notification'] ) == "on") ? true : false;
 
         if( $quiz_disable_results_menu_notification ){
-            $results_text = __('Results', $this->plugin_name);
-            $menu_item = __('Results', $this->plugin_name);
+            $results_text = __('Results', 'quiz-maker');
+            $menu_item = __('Results', 'quiz-maker');
         } else {
             $sql = "SELECT COUNT(*) FROM {$wpdb->prefix}aysquiz_reports WHERE `read` = 0";
             $unread_results_count = $wpdb->get_var($sql);
-            $results_text = __('Results', $this->plugin_name);
+            $results_text = __('Results', 'quiz-maker');
             $menu_item = ($unread_results_count == 0) ? $results_text : $results_text . '<span class="ays_menu_badge ays_results_bage">' . $unread_results_count . '</span>';
         }
         
         $hook_results = add_submenu_page(
-            $this->plugin_name,
+            'quiz-maker',
             $results_text,
             $menu_item,
             'manage_options',
-            $this->plugin_name . '-results',
+            'quiz-maker' . '-results',
             array($this, 'display_plugin_results_page')
         );
 
@@ -496,7 +496,7 @@ class Quiz_Maker_Admin
 
         $hook_all_reviews = add_submenu_page(
             'all_reviews_slug',
-            __('Reviews', $this->plugin_name),
+            __('Reviews', 'quiz-maker'),
             null,
             'manage_options',
             $this->plugin_name . '-all-reviews',
@@ -512,8 +512,8 @@ class Quiz_Maker_Admin
     public function add_plugin_dashboard_submenu(){
         $hook_quizes = add_submenu_page(
             $this->plugin_name,
-            __('How to use', $this->plugin_name),
-            __('How to use', $this->plugin_name),
+            __('How to use', 'quiz-maker'),
+            __('How to use', 'quiz-maker'),
             'manage_options',
             $this->plugin_name . '-dashboard',
             array($this, 'display_plugin_setup_page')
@@ -523,8 +523,8 @@ class Quiz_Maker_Admin
 
     public function add_plugin_general_settings_submenu(){
         $hook_settings = add_submenu_page( $this->plugin_name,
-            __('General Settings', $this->plugin_name),
-            __('General Settings', $this->plugin_name),
+            __('General Settings', 'quiz-maker'),
+            __('General Settings', 'quiz-maker'),
             'manage_options',
             $this->plugin_name . '-settings',
             array($this, 'display_plugin_settings_page') 
@@ -535,8 +535,8 @@ class Quiz_Maker_Admin
 
     public function add_plugin_featured_plugins_submenu(){
         $hook_our_products = add_submenu_page( $this->plugin_name,
-            __('Our products', $this->plugin_name),
-            __('Our products', $this->plugin_name),
+            __('Our products', 'quiz-maker'),
+            __('Our products', 'quiz-maker'),
             'manage_options',
             $this->plugin_name . '-featured-plugins',
             array($this, 'display_plugin_featured_plugins_page') 
@@ -547,11 +547,11 @@ class Quiz_Maker_Admin
 
     public function add_plugin_addons_submenu(){
 
-        $menu_item =  __('Addons', $this->plugin_name) . '<span class="ays_menu_badge ays_results_bage">' .  __('New', $this->plugin_name) . '</span>';
+        $menu_item =  __('Addons', 'quiz-maker') . '<span class="ays_menu_badge ays_results_bage">' .  __('New', 'quiz-maker') . '</span>';
 
         $hook_addons = add_submenu_page( 
             $this->plugin_name,
-            __('Addons', $this->plugin_name),
+            __('Addons', 'quiz-maker'),
             $menu_item,
             'manage_options',
             $this->plugin_name . '-addons',
@@ -563,8 +563,8 @@ class Quiz_Maker_Admin
     public function add_plugin_quiz_features_submenu(){
         $hook_pro_features = add_submenu_page(
             $this->plugin_name,
-            __('PRO Features', $this->plugin_name),
-            __('PRO Features', $this->plugin_name),
+            __('PRO Features', 'quiz-maker'),
+            __('PRO Features', 'quiz-maker'),
             'manage_options',
             $this->plugin_name . '-quiz-features',
             array($this, 'display_plugin_quiz_features_page')
@@ -576,8 +576,8 @@ class Quiz_Maker_Admin
     public function add_plugin_subscribe_email(){
         $hook_grab_your_gift = add_submenu_page(
             $this->plugin_name,
-            __('Grab your GIFT', $this->plugin_name),
-            __('Grab your GIFT', $this->plugin_name),
+            __('Grab your GIFT', 'quiz-maker'),
+            __('Grab your GIFT', 'quiz-maker'),
             'manage_options',
             $this->plugin_name . '-quiz-subscribe-email',
             array($this, 'display_plugin_subscribe_email')
@@ -588,8 +588,8 @@ class Quiz_Maker_Admin
 
     public function add_plugin_integrations_submenu(){
         $hook_integrations = add_submenu_page( $this->plugin_name,
-            __('Integrations', $this->plugin_name),
-            __('Integrations', $this->plugin_name),
+            __('Integrations', 'quiz-maker'),
+            __('Integrations', 'quiz-maker'),
             'manage_options',
             $this->plugin_name . '-integrations',
             array($this, 'display_plugin_integrations_page') 
@@ -621,9 +621,9 @@ class Quiz_Maker_Admin
         $quiz_ajax_deactivate_plugin_nonce = wp_create_nonce( 'quiz-maker-ajax-deactivate-plugin-nonce' );
 
         $settings_link = array(
-            '<a href="' . admin_url('admin.php?page=' . $this->plugin_name) . '">' . __('Settings', $this->plugin_name) . '</a>',
-            '<a href="https://quiz-plugin.com/wordpress-quiz-plugin-free-demo/" target="_blank">' . __('Demo', $this->plugin_name) . '</a>',
-            '<a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=plugins-buy-now-button" id="ays-quiz-plugins-buy-now-button" target="_blank">' . __('Upgrade', $this->plugin_name) . '</a>
+            '<a href="' . admin_url('admin.php?page=' . $this->plugin_name) . '">' . __('Settings', 'quiz-maker') . '</a>',
+            '<a href="https://quiz-plugin.com/wordpress-quiz-plugin-free-demo/" target="_blank">' . __('Demo', 'quiz-maker') . '</a>',
+            '<a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=plugins-buy-now-button" id="ays-quiz-plugins-buy-now-button" target="_blank">' . __('Upgrade', 'quiz-maker') . '</a>
             <input type="hidden" id="ays_quiz_ajax_deactivate_plugin_nonce" name="ays_quiz_ajax_deactivate_plugin_nonce" value="' . $quiz_ajax_deactivate_plugin_nonce .'">',
             );
         return array_merge($settings_link, $links);
@@ -633,7 +633,7 @@ class Quiz_Maker_Admin
     public function add_quiz_row_meta( $links, $file ) {
         if ( AYS_QUIZ_BASENAME == $file ) {
             $row_meta = array(
-                'ays-quiz-support'    => '<a href="' . esc_url( 'https://wordpress.org/support/plugin/quiz-maker/' ) . '" target="_blank">' . esc_html__( 'Free Support', $this->plugin_name ) . '</a>'
+                'ays-quiz-support'    => '<a href="' . esc_url( 'https://wordpress.org/support/plugin/quiz-maker/' ) . '" target="_blank">' . esc_html__( 'Free Support', 'quiz-maker' ) . '</a>'
                 );
 
             return array_merge( $links, $row_meta );
@@ -758,7 +758,7 @@ class Quiz_Maker_Admin
     public function screen_option_quizes(){
         $option = 'per_page';
         $args = array(
-            'label' => __('Quizzes', $this->plugin_name),
+            'label' => __('Quizzes', 'quiz-maker'),
             'default' => 20,
             'option' => 'quizes_per_page'
         );
@@ -774,7 +774,7 @@ class Quiz_Maker_Admin
     public function screen_option_quiz_categories(){
         $option = 'per_page';
         $args = array(
-            'label' => __('Quiz Categories', $this->plugin_name),
+            'label' => __('Quiz Categories', 'quiz-maker'),
             'default' => 20,
             'option' => 'quiz_categories_per_page'
         );
@@ -790,7 +790,7 @@ class Quiz_Maker_Admin
     public function screen_option_questions(){
         $option = 'per_page';
         $args = array(
-            'label' => __('Questions', $this->plugin_name),
+            'label' => __('Questions', 'quiz-maker'),
             'default' => 20,
             'option' => 'questions_per_page'
         );
@@ -806,7 +806,7 @@ class Quiz_Maker_Admin
     public function screen_option_questions_categories(){
         $option = 'per_page';
         $args = array(
-            'label' => __('Question Categories', $this->plugin_name),
+            'label' => __('Question Categories', 'quiz-maker'),
             'default' => 20,
             'option' => 'question_categories_per_page'
         );
@@ -822,7 +822,7 @@ class Quiz_Maker_Admin
     public function screen_option_results(){
         $option = 'per_page';
         $args = array(
-            'label' => __('Results', $this->plugin_name),
+            'label' => __('Results', 'quiz-maker'),
             'default' => 50,
             'option' => 'quiz_results_per_page'
         );
@@ -834,7 +834,7 @@ class Quiz_Maker_Admin
      public function screen_option_all_quiz_reviews(){
         $option = 'per_page';
         $args = array(
-            'label' => __('All Reviews', $this->plugin_name),
+            'label' => __('All Reviews', 'quiz-maker'),
             'default' => 50,
             'option' => 'quiz_all_reviews_per_page'
         );
@@ -930,7 +930,7 @@ class Quiz_Maker_Admin
                     $rows[] = '<tr class="ays-question-row ui-state-default" data-id="' . $data['id'] . '">
                         <td class="ays-sort"><i class="ays_fa ays_fa_arrows" aria-hidden="true"></i></td>
                         <td>                        
-                            <a href="'. $edit_question_url .'" target="_blank" class="ays-edit-question" title="'. __('Edit question', $this->plugin_name) .'">
+                            <a href="'. $edit_question_url .'" target="_blank" class="ays-edit-question" title="'. __('Edit question', 'quiz-maker') .'">
                                 ' . $table_question . '
                             </a> 
                         </td>
@@ -939,7 +939,7 @@ class Quiz_Maker_Admin
                         <td>' . stripslashes($data['id']) . '</td>
                         <td>
                             <input type="checkbox" class="ays_del_tr">
-                            <a href="'. $edit_question_url .'" target="_blank" class="ays-edit-question" title="'. __('Edit question', $this->plugin_name) .'">
+                            <a href="'. $edit_question_url .'" target="_blank" class="ays-edit-question" title="'. __('Edit question', 'quiz-maker') .'">
                                 <i class="ays_fa ays_fa_pencil_square" aria-hidden="true"></i>
                             </a>
                             <a href="javascript:void(0)" class="ays-delete-question" data-id="' . $data['id'] . '">
@@ -1810,9 +1810,9 @@ class Quiz_Maker_Admin
             $user = get_user_by('id', $user_id);
 
             if( !$user ){
-                $user_display_name = __( "Deleted user", $this->plugin_name );
+                $user_display_name = __( "Deleted user", 'quiz-maker' );
             } else {
-                $user_display_name = isset( $user->data->display_name ) && $user->data->display_name != "" ? $user->data->display_name : __( "Deleted user", $this->plugin_name );
+                $user_display_name = isset( $user->data->display_name ) && $user->data->display_name != "" ? $user->data->display_name : __( "Deleted user", 'quiz-maker' );
             }
             
             $user_ip = $results['user_ip'];
@@ -1846,23 +1846,23 @@ class Quiz_Maker_Admin
 
             $pro_content = array();
 
-            $pro_content[] = '<div class="only_pro only_pro_save_as_default" style="margin: 0 10px;" title="'.__("This property available only in pro version",$this->plugin_name) .'">';
+            $pro_content[] = '<div class="only_pro only_pro_save_as_default" style="margin: 0 10px;" title="'.__("This property available only in pro version",'quiz-maker') .'">';
                 $pro_content[] = '<div class="pro_features pro_features_popup">';
                     $pro_content[] = '<div class="pro-features-popup-conteiner">';
                         $pro_content[] = '<div class="pro-features-popup-title">';
-                        $pro_content[] = __("Export Individual Result", $this->plugin_name);
+                        $pro_content[] = __("Export Individual Result", 'quiz-maker');
                         $pro_content[] = '</div>';
 
                         $pro_content[] = '<div class="pro-features-popup-content" data-link="https://www.youtube.com/watch?v=vrKgo74ZMzI">';
                             $pro_content[] = '<p>';
-                                $pro_content[] = sprintf( __("With the excellent plugin Quiz Maker, you can %s export a Detailed report of the Individual Result %s with just a few clicks.", $this->plugin_name),
+                                $pro_content[] = sprintf( __("With the excellent plugin Quiz Maker, you can %s export a Detailed report of the Individual Result %s with just a few clicks.", 'quiz-maker'),
                                     "<strong>",
                                     "</strong>"
                                 );
                             $pro_content[] = '</p>';
 
                             $pro_content[] = '<p>';
-                                $pro_content[] = sprintf( __("You can export detailed reports whether as a %s PDF file %s or as an %s XLSX file. %s", $this->plugin_name),
+                                $pro_content[] = sprintf( __("You can export detailed reports whether as a %s PDF file %s or as an %s XLSX file. %s", 'quiz-maker'),
                                     "<strong>",
                                     "</strong>",
                                     "<strong>",
@@ -1871,27 +1871,27 @@ class Quiz_Maker_Admin
                             $pro_content[] = '</p>';
 
                             $pro_content[] = '<p>';
-                                $pro_content[] = __("So choose the variant that suits you and easily export the detailed report.", $this->plugin_name);
+                                $pro_content[] = __("So choose the variant that suits you and easily export the detailed report.", 'quiz-maker');
                             $pro_content[] = '</p>';
 
                             $pro_content[] = '<div>';
-                                $pro_content[] = '<a href="https://quiz-plugin.com/docs/" target="_blank"> '. __("See Documentation", $this->plugin_name). '</a>';
+                                $pro_content[] = '<a href="https://quiz-plugin.com/docs/" target="_blank"> '. __("See Documentation", 'quiz-maker'). '</a>';
                             $pro_content[] = '</div>';
                         $pro_content[] = '</div>';
 
                         $pro_content[] = '<div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-xlsx-export">';
-                            $pro_content[] = __("Upgrade PRO NOW", $this->plugin_name);
+                            $pro_content[] = __("Upgrade PRO NOW", 'quiz-maker');
                         $pro_content[] = '</div>';
                     $pro_content[] = '</div>';
                 $pro_content[] = '</div>';
                 $pro_content[] = '<div>';
 
                     $pro_content[] = '<a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-pdf-export" target="_blank" class="ays-pro-a" style="margin: 0 10px;">';
-                        $pro_content[] = '<span type="button" class="disabled-button" title="This property available only in pro version">'.__("PDF", $this->plugin_name).'</span>';
+                        $pro_content[] = '<span type="button" class="disabled-button" title="This property available only in pro version">'.__("PDF", 'quiz-maker').'</span>';
                     $pro_content[] = '</a>';
 
                     $pro_content[] = '<a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-xlsx-export" target="_blank" class="ays-pro-a">';
-                        $pro_content[] = '<span type="button" class="disabled-button" title="This property available only in pro version">'.__("XLSX", $this->plugin_name).'</span>';
+                        $pro_content[] = '<span type="button" class="disabled-button" title="This property available only in pro version">'.__("XLSX", 'quiz-maker').'</span>';
                     $pro_content[] = '</a>';
                 $pro_content[] = '</div>';
             $pro_content[] = '</div>';
@@ -1901,39 +1901,39 @@ class Quiz_Maker_Admin
 
             $admin_note_content = array();
 
-            $admin_note_content[] = '<div class="only_pro only_pro_save_as_default" style="margin: 0 10px;" title="'.__("This property available only in pro version",$this->plugin_name) .'">';
+            $admin_note_content[] = '<div class="only_pro only_pro_save_as_default" style="margin: 0 10px;" title="'.__("This property available only in pro version",'quiz-maker') .'">';
                 $admin_note_content[] = '<div class="pro_features pro_features_popup">';
                     $admin_note_content[] = '<div class="pro-features-popup-conteiner">';
                         $admin_note_content[] = '<div class="pro-features-popup-title">';
-                        $admin_note_content[] = __("Admin Note", $this->plugin_name);
+                        $admin_note_content[] = __("Admin Note", 'quiz-maker');
                         $admin_note_content[] = '</div>';
 
                         $admin_note_content[] = '<div class="pro-features-popup-content" data-link="https://youtu.be/MdbEsayrPUc">';
                             $admin_note_content[] = '<p>';
-                                $admin_note_content[] = sprintf( __("The Admin Note feature of the WordPress quiz plugin is a great tool for %s customizing each detailed report. %s", $this->plugin_name),
+                                $admin_note_content[] = sprintf( __("The Admin Note feature of the WordPress quiz plugin is a great tool for %s customizing each detailed report. %s", 'quiz-maker'),
                                     "<strong>",
                                     "</strong>"
                                 );
                             $admin_note_content[] = '</p>';
 
                             $admin_note_content[] = '<p>';
-                                $admin_note_content[] = sprintf( __("This feature allows you %s to add additional information %s about each user on the detailed report page.", $this->plugin_name),
+                                $admin_note_content[] = sprintf( __("This feature allows you %s to add additional information %s about each user on the detailed report page.", 'quiz-maker'),
                                     "<strong>",
                                     "</strong>"
                                 );
                             $admin_note_content[] = '</p>';
 
                             $admin_note_content[] = '<p>';
-                                $admin_note_content[] = __("Just type your text in the Admin Note field and save it on detailed reports easily.", $this->plugin_name);
+                                $admin_note_content[] = __("Just type your text in the Admin Note field and save it on detailed reports easily.", 'quiz-maker');
                             $admin_note_content[] = '</p>';
 
                             $admin_note_content[] = '<div>';
-                                $admin_note_content[] = '<a href="https://quiz-plugin.com/docs/" target="_blank"> '. __("See Documentation", $this->plugin_name). '</a>';
+                                $admin_note_content[] = '<a href="https://quiz-plugin.com/docs/" target="_blank"> '. __("See Documentation", 'quiz-maker'). '</a>';
                             $admin_note_content[] = '</div>';
                         $admin_note_content[] = '</div>';
 
                         $admin_note_content[] = '<div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-admin-note">';
-                            $admin_note_content[] = __("Upgrade PRO NOW", $this->plugin_name);
+                            $admin_note_content[] = __("Upgrade PRO NOW", 'quiz-maker');
                         $admin_note_content[] = '</div>';
                     $admin_note_content[] = '</div>';
                 $admin_note_content[] = '</div>';
@@ -1942,7 +1942,7 @@ class Quiz_Maker_Admin
                     $admin_note_content[] = '<div class="ays-quiz-click-for-admin-note">';
                         $admin_note_content[] = '<a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-admin-note" target="_blank" class="ays-pro-a">';
                             $admin_note_content[] = '<button class="button button-primary disabled-button" style="color:#ffffff !important; font-weight:normal;" title="This property available only in pro version">';
-                                $admin_note_content[] = __( 'Click For Admin Note', $this->plugin_name );
+                                $admin_note_content[] = __( 'Click For Admin Note', 'quiz-maker' );
                             $admin_note_content[] = '</button>';
                         $admin_note_content[] = '</a>';
                     $admin_note_content[] = '</div>';
@@ -1964,9 +1964,9 @@ class Quiz_Maker_Admin
                     </tr>';
             
             $row .= '<tr class="ays_result_element">
-                        <td colspan="3"><h1>' . __('User Information',$this->plugin_name) . '</h1></td>
+                        <td colspan="3"><h1>' . __('User Information','quiz-maker') . '</h1></td>
                         <td style="text-align: right; display:flex; justify-content: flex-end;">
-                            <span style="min-width: 70px;">'.__("Export to", $this->plugin_name).'</span>
+                            <span style="min-width: 70px;">'.__("Export to", 'quiz-maker').'</span>
                             '. $pro_content .'   
                         </td>
                     </tr>';       
@@ -1974,44 +1974,44 @@ class Quiz_Maker_Admin
             if ($ays_quiz_show_result_info_user_ip == 'on') {
                 if ($user_ip != '') {
                     $row .= '<tr class="ays_result_element">
-                                <td>' . __("User IP", $this->plugin_name) . '</td>
+                                <td>' . __("User IP", 'quiz-maker') . '</td>
                                 <td colspan="3">' . $from . '</td>
                             </tr>';
                 }
             }
             
-            $user_name = $user_id === 0 ? __( "Guest", $this->plugin_name ) : $user_display_name;
+            $user_name = $user_id === 0 ? __( "Guest", 'quiz-maker' ) : $user_display_name;
 
             if( $ays_quiz_show_result_info_user_id == 'on' ){
                 if($user_id !== 0){
                     $row .= '<tr class="ays_result_element">
-                            <td>' . __("User ID", $this->plugin_name) . '</td>
+                            <td>' . __("User ID", 'quiz-maker') . '</td>
                             <td colspan="3">' . $user_id . '</td>                    
                         </tr>';
                 }
             }
             if ($ays_quiz_show_result_info_user == 'on') {
                 $row .= '<tr class="ays_result_element">
-                        <td>' . __("User", $this->plugin_name) . '</td>
+                        <td>' . __("User", 'quiz-maker') . '</td>
                         <td colspan="3">' . $user_name . '</td>
                     </tr>';
             }
             
             if(isset($results['user_email']) && $results['user_email'] !== '' && $ays_quiz_show_result_info_user_email == 'on'){
                 $row .= "<tr class=\"ays_result_element\">
-                        <td>".__('Email',$this->plugin_name)."</td>
+                        <td>".__('Email','quiz-maker')."</td>
                         <td colspan='3'>".stripslashes($results['user_email'])."</td>
                      </tr>";
             }
             if(isset($results['user_name']) && $results['user_name'] !== '' && $ays_quiz_show_result_info_user_name == 'on'){
                 $row .= "<tr class=\"ays_result_element\">
-                        <td>".__('Name',$this->plugin_name)."</td>
+                        <td>".__('Name','quiz-maker')."</td>
                         <td colspan='3'>".stripslashes($results['user_name'])."</td>
                      </tr>";
             }
             if(isset($results['user_phone']) && $results['user_phone'] !== '' && $ays_quiz_show_result_info_user_phone == 'on'){
                 $row .= "<tr class=\"ays_result_element\">
-                        <td>".__('Phone',$this->plugin_name)."</td>
+                        <td>".__('Phone','quiz-maker')."</td>
                         <td colspan='3'>".stripslashes($results['user_phone'])."</td>
                      </tr>";
             }
@@ -2029,24 +2029,24 @@ class Quiz_Maker_Admin
             $row .= apply_filters( 'ays_qm_track_users_contents', '', $id );
             
             $row .= '<tr class="ays_result_element">
-                        <td colspan="4"><h1>' . __('Quiz Information',$this->plugin_name) . '</h1></td>
+                        <td colspan="4"><h1>' . __('Quiz Information','quiz-maker') . '</h1></td>
                     </tr>';
             if(isset($rate['score'])){
                 $rate_html = '<tr style="vertical-align: top;" class="ays_result_element">
-                    <td>'.__('Rate',$this->plugin_name).'</td>
-                    <td>'. __("Rate Score", $this->plugin_name).":<br>" . $rate['score'] . '</td>
-                    <td colspan="2" style="max-width: 200px;">'. __("Review", $this->plugin_name).":<br>" . nl2br($rate['review']) . '</td>
+                    <td>'.__('Rate','quiz-maker').'</td>
+                    <td>'. __("Rate Score", 'quiz-maker').":<br>" . $rate['score'] . '</td>
+                    <td colspan="2" style="max-width: 200px;">'. __("Review", 'quiz-maker').":<br>" . nl2br($rate['review']) . '</td>
                 </tr>';
             }else{
                 $rate_html = '<tr class="ays_result_element">
-                    <td>'.__('Rate',$this->plugin_name).'</td>
+                    <td>'.__('Rate','quiz-maker').'</td>
                     <td colspan="3">' . nl2br($rate['review']) . '</td>
                 </tr>';
             }
 
             if ($ays_quiz_show_result_info_start_date == 'on') {
                 $row .= '<tr class="ays_result_element">
-                            <td>'.__('Start date',$this->plugin_name).'</td>
+                            <td>'.__('Start date','quiz-maker').'</td>
                             <td colspan="3">' . $start_date . '</td>
                         </tr>';                        
             }
@@ -2054,7 +2054,7 @@ class Quiz_Maker_Admin
             if( $ays_quiz_show_result_info_duration == 'on' ) {
                 $row .= '                      
                     <tr class="ays_result_element">
-                        <td>'.__('Duration',$this->plugin_name).'</td>
+                        <td>'.__('Duration','quiz-maker').'</td>
                         <td colspan="3">' . $duration . '</td>
                     </tr>';
             }
@@ -2062,7 +2062,7 @@ class Quiz_Maker_Admin
             if( $ays_quiz_show_result_info_score == 'on' ){
                 $row .= '
                     <tr class="ays_result_element">
-                        <td>'.__('Score',$this->plugin_name).'</td>
+                        <td>'.__('Score','quiz-maker').'</td>
                         <td colspan="3">' . $score . '%</td>
                     </tr>';
             }
@@ -2076,13 +2076,13 @@ class Quiz_Maker_Admin
                     
             if(! empty($options->correctness)){
                 $row .= '<tr class="ays_result_element">
-                            <td colspan="3"><h1>' . __('Questions',$this->plugin_name) . '</h1></td>
+                            <td colspan="3"><h1>' . __('Questions','quiz-maker') . '</h1></td>
                             <td>
                                 <div class="ays_result_toogle_block">
-                                    <span class="ays-show-quest-toggle quest-toggle-all">'. __("All", $this->plugin_name) .'</span>
+                                    <span class="ays-show-quest-toggle quest-toggle-all">'. __("All", 'quiz-maker') .'</span>
                                     <input type="checkbox" class="ays_toggle ays_toggle_slide" id="ays_show_questions_toggle" checked>
                                     <label for="ays_show_questions_toggle" class="ays_switch_toggle">Toggle</label>
-                                    <span class="ays-show-quest-toggle quest-toggle-failed">'. __("Failed", $this->plugin_name) .'</span>
+                                    <span class="ays-show-quest-toggle quest-toggle-failed">'. __("Failed", 'quiz-maker') .'</span>
                                 </div>
                             </td>
                         </tr>';                
@@ -2138,7 +2138,7 @@ class Quiz_Maker_Admin
                         if($calc_method == 'by_correctness'){
                             if ($option == true) {
                                 $row .= '<tr class="'.$tr_class.' '.$correct_row.'">
-                                            <td>'.__('Question',$this->plugin_name).' ' . $index . ' :<br/>';
+                                            <td>'.__('Question','quiz-maker').' ' . $index . ' :<br/>';
                                 if( $question_image != '' ){
                                     $row .= '<img class="ays-quiz-question-image-in-report" src="' . $question_image . '"><br/>';
                                 }
@@ -2153,7 +2153,7 @@ class Quiz_Maker_Admin
                                             break;
                                         }
                                     }
-                                    $row .='<td>'.__('Correct answer',$this->plugin_name).':<br/>';
+                                    $row .='<td>'.__('Correct answer','quiz-maker').':<br/>';
                                     $row .= '<p class="success">' . esc_attr(stripslashes($c_answer)) . '</p>';
                                     $row .='</td>';
                                 }else{
@@ -2164,7 +2164,7 @@ class Quiz_Maker_Admin
                                     if($use_html){
                                         $correct_answer_content = stripslashes( $correct_answers );
                                     }
-                                    $row .='<td>'.__('Correct answer',$this->plugin_name).':<br/><p class="success">' . $correct_answer_content . '</p></td>';
+                                    $row .='<td>'.__('Correct answer','quiz-maker').':<br/><p class="success">' . $correct_answer_content . '</p></td>';
                                 }
                                 
                                 if($text_type == 'date'){
@@ -2176,20 +2176,20 @@ class Quiz_Maker_Admin
                                 if($use_html){
                                     $user_answer_content = stripslashes( $user_answered );
                                 }
-                                $row .='<td '.$not_influance_check_td.'>'.__('User answered',$this->plugin_name).':<br/><p class="success">' . $user_answer_content . '</p></td>';
+                                $row .='<td '.$not_influance_check_td.'>'.__('User answered','quiz-maker').':<br/><p class="success">' . $user_answer_content . '</p></td>';
                                 if ($not_influance_check) {
                                     $row .='<td>
                                                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
                                                     <circle class="path circle" fill="none" stroke="#73AF55" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1"/>
                                                     <polyline class="path check" fill="none" stroke="#73AF55" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 "/>
                                                 </svg>
-                                                <p class="success">'.__('Succeed',$this->plugin_name).'!</p>
+                                                <p class="success">'.__('Succeed','quiz-maker').'!</p>
                                             </td>';
                                 }
                                 $row .= '</tr>';
                             } else {
                                 $row .= '<tr class="'.$tr_class.'">
-                                            <td>'.__('Question',$this->plugin_name).' ' . $index . ' :<br/>';
+                                            <td>'.__('Question','quiz-maker').' ' . $index . ' :<br/>';
                                 if( $question_image != '' ){
                                     $row .= '<img class="ays-quiz-question-image-in-report" src="' . $question_image . '"><br/>';
                                 }
@@ -2197,7 +2197,7 @@ class Quiz_Maker_Admin
                                     '</td>';
                                 if($is_text_type && ! in_array($text_type, $not_multiple_text_types)){
                                     $c_answers = explode('%%%', $correct_answers);
-                                    $row .= '<td>'.__('Correct answer',$this->plugin_name).':<br/>';
+                                    $row .= '<td>'.__('Correct answer','quiz-maker').':<br/>';
                                     $row .= '<p class="success">' . esc_attr(stripslashes($c_answers[0])) . '</p>';
                                     $row .= '</td>';
                                 }else{
@@ -2208,7 +2208,7 @@ class Quiz_Maker_Admin
                                     if($use_html){
                                         $correct_answer_content = stripslashes( $correct_answers );
                                     }
-                                    $row .= '<td>'.__('Correct answer',$this->plugin_name).':<br/><p class="success">' . $correct_answer_content . '</p></td>';
+                                    $row .= '<td>'.__('Correct answer','quiz-maker').':<br/><p class="success">' . $correct_answer_content . '</p></td>';
                                 }
                                                 
                                 if($text_type == 'date'){
@@ -2220,7 +2220,7 @@ class Quiz_Maker_Admin
                                 if($use_html){
                                     $user_answer_content = stripslashes( $user_answered );
                                 }
-                                $row .= '<td '.$not_influance_check_td.'>'.__('User answered',$this->plugin_name).':<br/><p class="error">' . $user_answer_content . '</p></td>';
+                                $row .= '<td '.$not_influance_check_td.'>'.__('User answered','quiz-maker').':<br/><p class="error">' . $user_answer_content . '</p></td>';
                                 if ($not_influance_check) {
                                     $row .='<td>
                                         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
@@ -2228,28 +2228,28 @@ class Quiz_Maker_Admin
                                             <line class="path line" fill="none" stroke="#D06079" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="34.4" y1="37.9" x2="95.8" y2="92.3"/>
                                             <line class="path line" fill="none" stroke="#D06079" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="95.8" y1="38" x2="34.4" y2="92.2"/>
                                         </svg>
-                                        <p class="error">'.__('Failed',$this->plugin_name).'!</p>
+                                        <p class="error">'.__('Failed','quiz-maker').'!</p>
                                     </td>';
                                 }
                                 $row .= '</tr>';
                             }
                         }elseif($calc_method == 'by_points'){
                             $row .= '<tr class="'.$tr_class.'">
-                                        <td>'.__('Question',$this->plugin_name).' ' . $index . ' :<br/>';
+                                        <td>'.__('Question','quiz-maker').' ' . $index . ' :<br/>';
                             if( $question_image != '' ){
                                 $row .= '<img class="ays-quiz-question-image-in-report" src="' . $question_image . '"><br/>';
                             }
                             $row .= (stripslashes($question["question"])) . 
                                     '</td>';
-                            $row .= '<td>'.__('User answered',$this->plugin_name).':<br/><p class="'.$ans_point_class.'">' . esc_attr(stripslashes($user_answered)) . '</p></td>
-                                    <td>'.__('Answer point',$this->plugin_name).':<br/><p class="'.$ans_point_class.'">' . esc_attr($ans_point) . '</p></td>
+                            $row .= '<td>'.__('User answered','quiz-maker').':<br/><p class="'.$ans_point_class.'">' . esc_attr(stripslashes($user_answered)) . '</p></td>
+                                    <td>'.__('Answer point','quiz-maker').':<br/><p class="'.$ans_point_class.'">' . esc_attr($ans_point) . '</p></td>
                                 </tr>';
                             
                         }
                         $index++;
                         //if(isset($user_exp[$question_id])){
                         //    $row .= '<tr class="ays_result_element">
-                        //        <td>'.__('User explanation for this question',$this->plugin_name).'</td>
+                        //        <td>'.__('User explanation for this question','quiz-maker').'</td>
                         //        <td colspan="3">'.$user_exp[$question_id].'</td>
                         //    </tr>';
                         //}
@@ -2274,7 +2274,7 @@ class Quiz_Maker_Admin
     protected function ays_quiz_rate( $id ) {
         global $wpdb;
         if($id === '' || $id === null){
-            $reason = __("No rate provided", $this->plugin_name);
+            $reason = __("No rate provided", 'quiz-maker');
             $output = array(
                 "review" => $reason,
             );
@@ -2285,7 +2285,7 @@ class Quiz_Maker_Admin
                 $review = $rate['review'];
                 $reason = stripslashes($review);
                 if($reason == ''){
-                    $reason = __("No review provided", $this->plugin_name);
+                    $reason = __("No review provided", 'quiz-maker');
                 }
                 $score = $rate['score'];
                 $output = array(
@@ -2293,7 +2293,7 @@ class Quiz_Maker_Admin
                     "review" => $reason,
                 );
             }else{
-                $reason = __("No rate provided", $this->plugin_name);
+                $reason = __("No rate provided", 'quiz-maker');
                 $output = array(
                     "review" => $reason,
                 );
@@ -2323,7 +2323,7 @@ class Quiz_Maker_Admin
         
         if($choices == ''){
             return array(
-                'message' => __( "The user has not answered this question.", $this->plugin_name ),
+                'message' => __( "The user has not answered this question.", 'quiz-maker' ),
                 'status' => false
             );
         }
@@ -2345,7 +2345,7 @@ class Quiz_Maker_Admin
         
         if($user_choice->$key == ""){
             $choices = array(
-                'message' => __( "The user has not answered this question.", $this->plugin_name ),
+                'message' => __( "The user has not answered this question.", 'quiz-maker' ),
                 'status' => false
             );
         }else{
@@ -2480,14 +2480,14 @@ class Quiz_Maker_Admin
         ?>
         <html xmlns="http://www.w3.org/1999/xhtml">
         <head>
-            <title><?php echo __('Quiz Maker', $this->plugin_name); ?></title>
+            <title><?php esc_html_e('Quiz Maker', 'quiz-maker'); ?></title>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
             <script language="javascript" type="text/javascript"
-                    src="<?php echo site_url(); ?>/wp-includes/js/tinymce/tiny_mce_popup.js"></script>
+                    src="<?php echo esc_url( site_url() ); ?>/wp-includes/js/tinymce/tiny_mce_popup.js"></script>
             <script language="javascript" type="text/javascript"
-                    src="<?php echo site_url(); ?>/wp-includes/js/tinymce/utils/mctabs.js"></script>
+                    src="<?php echo esc_url( site_url() ); ?>/wp-includes/js/tinymce/utils/mctabs.js"></script>
             <script language="javascript" type="text/javascript"
-                    src="<?php echo site_url(); ?>/wp-includes/js/tinymce/utils/form_utils.js"></script>
+                    src="<?php echo esc_url( site_url() ); ?>/wp-includes/js/tinymce/utils/form_utils.js"></script>
 
             <?php
             wp_print_scripts('jquery');
@@ -2506,12 +2506,12 @@ class Quiz_Maker_Admin
                                <select id="ays_quiz" style="padding: 2px; height: 25px; font-size: 16px;width:100%;">
                            <option>--Select Quiz--</option>
                                    <?php
-                                   echo "<pre>";
-                                   print_r($shortcode_data);
-                                   echo "</pre>";
+                                   // echo "<pre>";
+                                   // print_r($shortcode_data);
+                                   // echo "</pre>";
                                    ?>
                                    <?php foreach ($shortcode_data as $index => $data)
-                                       echo '<option id="' . $data[0] . '" value="' . $data[0] . '"  class="ays_quiz_options">' . $data[1] . '</option>';
+                                       echo '<option id="' . esc_attr($data[0]) . '" value="' . esc_attr($data[0]) . '"  class="ays_quiz_options">' . esc_attr($data[1]) . '</option>';
                                    ?>
                                </select>
                            </span>
@@ -2683,25 +2683,25 @@ class Quiz_Maker_Admin
         $sql = '';
         switch($current){
             case "":
-                $page = __("Quiz", $this->plugin_name);
+                $page = __("Quiz", 'quiz-maker');
                 if($id !== null){
                     $sql = "SELECT * FROM ".$wpdb->prefix."aysquiz_quizes WHERE id=".$id;
                 }
                 break;
             case "questions":
-                $page = __("Question", $this->plugin_name);;
+                $page = __("Question", 'quiz-maker');;
                 if($id !== null){
                     $sql = "SELECT * FROM ".$wpdb->prefix."aysquiz_questions WHERE id=".$id;
                 }
                 break;
             case "quiz-categories":
-                $page = __("Category", $this->plugin_name);;
+                $page = __("Category", 'quiz-maker');;
                 if($id !== null){
                     $sql = "SELECT * FROM ".$wpdb->prefix."aysquiz_quizcategories WHERE id=".$id;
                 }
                 break;
             case "question-categories":
-                $page = __("Category", $this->plugin_name);;
+                $page = __("Category", 'quiz-maker');;
                 if($id !== null){
                     $sql = "SELECT * FROM ".$wpdb->prefix."aysquiz_categories WHERE id=".$id;
                 }
@@ -2718,7 +2718,7 @@ class Quiz_Maker_Admin
         $change_title = null;
         switch($action){
             case "add":
-                $change_title = __("Add New", $this->plugin_name) ." ‹ ".$page;
+                $change_title = __("Add New", 'quiz-maker') ." ‹ ".$page;
                 break;
             case "edit":
                 if($results !== null){
@@ -2733,7 +2733,7 @@ class Quiz_Maker_Admin
                         $title = stripslashes($results['title']);
                     }
                     $title = strip_tags($title);
-                    $change_title = $this->ays_restriction_string("word", $title, 5) ." ‹ ". __("Edit", $this->plugin_name) . " ".$page;
+                    $change_title = $this->ays_restriction_string("word", $title, 5) ." ‹ ". __("Edit", 'quiz-maker') . " ".$page;
                 }
                 break;
             default:
@@ -2824,44 +2824,44 @@ class Quiz_Maker_Admin
         $quizzes_count = Quizes_List_Table::record_count();
         $results_count = Results_List_Table::unread_records_count();
         
-        $questions_label = intval($questions_count) == 1 ? "question" : "questions";
-        $quizzes_label = intval($quizzes_count) == 1 ? "quiz" : "quizzes";
-        $results_label = intval($results_count) == 1 ? "new result" : "new results";
+        $questions_label = intval($questions_count) == 1 ? __("question", 'quiz-maker') : __("questions", 'quiz-maker');
+        $quizzes_label = intval($quizzes_count) == 1 ? __("quiz", 'quiz-maker') : __("quizzes", 'quiz-maker');
+        $results_label = intval($results_count) == 1 ? __("new result", 'quiz-maker') : __("new results", 'quiz-maker');
         
         // Display whatever it is you want to show.
         ?>
         <ul class="ays_quiz_maker_dashboard_widget">
             <li class="ays_dashboard_widget_item">
-                <a href="<?php echo "admin.php?page=".$this->plugin_name; ?>">
-                    <img src="<?php echo AYS_QUIZ_ADMIN_URL."/images/icons/icon-128x128.png"; ?>" alt="Quizzes">
-                    <span><?php echo $quizzes_count; ?></span>
-                    <span><?php echo __($quizzes_label, $this->plugin_name); ?></span>
+                <a href="<?php echo esc_url("admin.php?page=".$this->plugin_name); ?>">
+                    <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL . "/images/icons/icon-128x128.png"); ?>" alt="Quizzes">
+                    <span><?php echo esc_html($quizzes_count); ?></span>
+                    <span><?php echo esc_html($quizzes_label); ?></span>
                 </a>
             </li>
             <li class="ays_dashboard_widget_item">
-                <a href="<?php echo "admin.php?page=".$this->plugin_name."-questions" ?>">
-                    <img src="<?php echo AYS_QUIZ_ADMIN_URL."/images/icons/question2.png"; ?>" alt="Questions">
-                    <span><?php echo $questions_count; ?></span>
-                    <span><?php echo __($questions_label, $this->plugin_name); ?></span>
+                <a href="<?php echo esc_url("admin.php?page=".$this->plugin_name."-questions"); ?>">
+                    <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL."/images/icons/question2.png"); ?>" alt="Questions">
+                    <span><?php echo esc_html($questions_count); ?></span>
+                    <span><?php echo esc_html($questions_label); ?></span>
                 </a>
             </li>
             <li class="ays_dashboard_widget_item">
-                <a href="<?php echo "admin.php?page=".$this->plugin_name."-results" ?>">
-                    <img src="<?php echo AYS_QUIZ_ADMIN_URL."/images/icons/users2.png"; ?>" alt="Results">
-                    <span><?php echo $results_count; ?></span>
-                    <span><?php echo __($results_label, $this->plugin_name); ?></span>
+                <a href="<?php echo esc_url("admin.php?page=".$this->plugin_name."-results"); ?>">
+                    <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL."/images/icons/users2.png"); ?>" alt="Results">
+                    <span><?php echo esc_html($results_count); ?></span>
+                    <span><?php echo esc_html($results_label); ?></span>
                 </a>
             </li>
         </ul>
         <div style="padding:10px;font-size:14px;border-top:1px solid #ccc;">
-            <?php echo "Works version ".AYS_QUIZ_VERSION." of "; ?>
-            <a href="<?php echo "admin.php?page=".$this->plugin_name ?>">Quiz Maker</a>
+            <?php echo sprintf( esc_html__("Works version %s of ", 'quiz-maker'), esc_html(AYS_QUIZ_VERSION) ); ?>
+            <a href="<?php echo esc_url("admin.php?page=".$this->plugin_name); ?>">Quiz Maker</a>
         </div>
     <?php
     }
     
     public static function ays_query_string($remove_items){
-        $query_string = $_SERVER['QUERY_STRING'];
+        $query_string = isset($_SERVER['QUERY_STRING']) && $_SERVER['QUERY_STRING'] != "" ? sanitize_text_field($_SERVER['QUERY_STRING']) : "";
         $query_items = explode( "&", $query_string );
         foreach($query_items as $key => $value){
             $item = explode("=", $value);
@@ -2890,7 +2890,7 @@ class Quiz_Maker_Admin
                 ?>
                 <p style="font-size:13px;text-align:center;font-style:italic;">
                     <span style="margin-left:0px;margin-right:10px;" class="ays_heart_beat"><i class="ays_fa ays_fa_heart_o animated"></i></span>
-                    <span><?php echo __( "If you love our plugin, please do big favor and rate us on", $this->plugin_name); ?></span> 
+                    <span><?php echo esc_html__( "If you love our plugin, please do big favor and rate us on", 'quiz-maker'); ?></span> 
                     <a target="_blank" href='https://wordpress.org/support/plugin/quiz-maker/reviews/?rate=5#new-post'>WordPress.org</a>
                     <span class="ays_heart_beat"><i class="ays_fa ays_fa_heart_o animated"></i></span>
                 </p>
@@ -3040,7 +3040,7 @@ class Quiz_Maker_Admin
                     $content[] = '<div class="ays-quiz-dicount-wrap-box">';
 
                         $content[] = '<strong style="font-weight: bold;">';
-                            $content[] = __( "Limited Time <span style='color:#E85011;'>50%</span> SALE on <br><span><a href='https://ays-pro.com/mega-bundle' target='_blank' style='color:#E85011; text-decoration: underline;'>Mega Bundle</a></span> (Quiz + Survey + Poll)!", AYS_QUIZ_NAME );
+                            $content[] = __( "Limited Time <span style='color:#E85011;'>50%</span> SALE on <br><span><a href='https://ays-pro.com/mega-bundle' target='_blank' style='color:#E85011; text-decoration: underline;'>Mega Bundle</a></span> (Quiz + Survey + Poll)!", 'quiz-maker' );
                         $content[] = '</strong>';
 
                         $content[] = '<br>';
@@ -3087,7 +3087,7 @@ class Quiz_Maker_Admin
                             
                     $content[] = '</div>';
 
-                    $content[] = '<a href="https://ays-pro.com/mega-bundle" class="button button-primary ays-button" id="ays-button-top-buy-now" target="_blank" style="height: 32px; display: flex; align-items: center; font-weight: 500; " >' . __( 'Buy Now !', AYS_QUIZ_NAME ) . '</a>';
+                    $content[] = '<a href="https://ays-pro.com/mega-bundle" class="button button-primary ays-button" id="ays-button-top-buy-now" target="_blank" style="height: 32px; display: flex; align-items: center; font-weight: 500; " >' . __( 'Buy Now !', 'quiz-maker' ) . '</a>';
                 $content[] = '</div>';
             $content[] = '</div>';
 
@@ -3107,7 +3107,7 @@ class Quiz_Maker_Admin
                     $content[] = '<div class="ays-quiz-dicount-wrap-box">';
 
                         $content[] = '<strong style="font-weight: bold;">';
-                            $content[] = __( "Limited Time <span class='ays-quiz-dicount-wrap-color'>20%</span> SALE on <br><span><a href='https://ays-pro.com/wordpress/quiz-maker' target='_blank' class='ays-quiz-dicount-wrap-color ays-quiz-dicount-wrap-text-decoration' style='display:block;'>Quiz Maker Premium Versions</a></span>", AYS_QUIZ_NAME );
+                            $content[] = __( "Limited Time <span class='ays-quiz-dicount-wrap-color'>20%</span> SALE on <br><span><a href='https://ays-pro.com/wordpress/quiz-maker' target='_blank' class='ays-quiz-dicount-wrap-color ays-quiz-dicount-wrap-text-decoration' style='display:block;'>Quiz Maker Premium Versions</a></span>", 'quiz-maker' );
                         $content[] = '</strong>';
 
                         // $content[] = '<br>';
@@ -3153,11 +3153,11 @@ class Quiz_Maker_Admin
                     $content[] = '</div>';
 
                     $content[] = '<div class="ays-quiz-dicount-wrap-box ays-buy-now-button-box">';
-                        $content[] = '<a href="https://ays-pro.com/wordpress/quiz-maker" class="button button-primary ays-buy-now-button" id="ays-button-top-buy-now" target="_blank" style="" >' . __( 'Buy Now !', AYS_QUIZ_NAME ) . '</a>';
+                        $content[] = '<a href="https://ays-pro.com/wordpress/quiz-maker" class="button button-primary ays-buy-now-button" id="ays-button-top-buy-now" target="_blank" style="" >' . __( 'Buy Now !', 'quiz-maker' ) . '</a>';
                     $content[] = '</div>';
 
                     // $content[] = '<div class="ays-quiz-dicount-wrap-box ays-quiz-dicount-wrap-opacity-box">';
-                    //     $content[] = '<a href="https://ays-pro.com/great-bundle" class="ays-buy-now-opacity-button" target="_blank">' . __( 'link', AYS_QUIZ_NAME ) . '</a>';
+                    //     $content[] = '<a href="https://ays-pro.com/great-bundle" class="ays-buy-now-opacity-button" target="_blank">' . __( 'link', 'quiz-maker' ) . '</a>';
                     // $content[] = '</div>';
 
                 $content[] = '</div>';
@@ -3191,7 +3191,7 @@ class Quiz_Maker_Admin
                     $content[] = '<div class="ays-quiz-dicount-wrap-box">';
 
                         $content[] = '<strong>';
-                            $content[] = __( "The BIGGEST <span class='ays-quiz-dicount-wrap-color' style='color:#000;'>50%</span> SALE on <br><span><a href='https://ays-pro.com/mega-bundle' target='_blank' class='ays-quiz-dicount-wrap-color ays-quiz-dicount-wrap-text-decoration' style='display:block;color:#000'>Christmas Bundle</a></span> (Quiz+Survey+Poll)!", AYS_QUIZ_NAME );
+                            $content[] = __( "The BIGGEST <span class='ays-quiz-dicount-wrap-color' style='color:#000;'>50%</span> SALE on <br><span><a href='https://ays-pro.com/mega-bundle' target='_blank' class='ays-quiz-dicount-wrap-color ays-quiz-dicount-wrap-text-decoration' style='display:block;color:#000'>Christmas Bundle</a></span> (Quiz+Survey+Poll)!", 'quiz-maker' );
                         $content[] = '</strong>';
 
                         $content[] = '<br>';
@@ -3235,7 +3235,7 @@ class Quiz_Maker_Admin
                     $content[] = '</div>';
 
                     
-                    $content[] = '<a href="https://ays-pro.com/mega-bundle" class="button button-primary ays-button" id="ays-quiz-button-top-buy-now" target="_blank">' . __( 'Buy Now !', AYS_QUIZ_NAME ) . '</a>';
+                    $content[] = '<a href="https://ays-pro.com/mega-bundle" class="button button-primary ays-button" id="ays-quiz-button-top-buy-now" target="_blank">' . __( 'Buy Now !', 'quiz-maker' ) . '</a>';
                 $content[] = '</div>';
             $content[] = '</div>';
         // $content[] = '</div>';
@@ -3255,7 +3255,7 @@ class Quiz_Maker_Admin
                     $content[] = '<div class="ays-quiz-dicount-wrap-box">';
                         $content[] = '<p style="margin-right:25%;">';
                             $content[] = '<strong>';
-                                $content[] = __( "Spring is here! <span class='ays-quiz-dicount-wrap-color'>40%</span> SALE on <br><span><a href='https://ays-pro.com/spring-bundle' target='_blank' class='ays-quiz-dicount-wrap-color ays-quiz-dicount-wrap-text-decoration' style='display:block;'>Spring Bundle</a></span> (Quiz+Copy+Popup) !", AYS_QUIZ_NAME );
+                                $content[] = __( "Spring is here! <span class='ays-quiz-dicount-wrap-color'>40%</span> SALE on <br><span><a href='https://ays-pro.com/spring-bundle' target='_blank' class='ays-quiz-dicount-wrap-color ays-quiz-dicount-wrap-text-decoration' style='display:block;'>Spring Bundle</a></span> (Quiz+Copy+Popup) !", 'quiz-maker' );
                             $content[] = '</strong>';
                             $content[] = '<br>';
                             $content[] = '<strong>';
@@ -3296,7 +3296,7 @@ class Quiz_Maker_Admin
                             
                     $content[] = '</div>';
 
-                    $content[] = '<a href="https://ays-pro.com/spring-bundle" class="button button-primary ays-button" id="ays-button-top-buy-now" target="_blank">' . __( 'Buy Now !', AYS_QUIZ_NAME ) . '</a>';
+                    $content[] = '<a href="https://ays-pro.com/spring-bundle" class="button button-primary ays-button" id="ays-button-top-buy-now" target="_blank">' . __( 'Buy Now !', 'quiz-maker' ) . '</a>';
                 $content[] = '</div>';
             $content[] = '</div>';
 
@@ -3316,7 +3316,7 @@ class Quiz_Maker_Admin
                     $content[] = '<div class="ays-quiz-dicount-wrap-box">';
                         $content[] = '<p>';
                             $content[] = '<strong>';
-                                $content[] = __( "Spring is here! <span class='ays-quiz-dicount-wrap-color'>50%</span> SALE on <span><a href='https://ays-pro.com/spring-bundle' target='_blank' class='ays-quiz-dicount-wrap-color ays-quiz-dicount-wrap-text-decoration'>Spring Bundle</a></span><span style='display: block;'>Quiz + Popup + Copy</span>", AYS_QUIZ_NAME );
+                                $content[] = __( "Spring is here! <span class='ays-quiz-dicount-wrap-color'>50%</span> SALE on <span><a href='https://ays-pro.com/spring-bundle' target='_blank' class='ays-quiz-dicount-wrap-color ays-quiz-dicount-wrap-text-decoration'>Spring Bundle</a></span><span style='display: block;'>Quiz + Popup + Copy</span>", 'quiz-maker' );
                             $content[] = '</strong>';
                         $content[] = '</p>';
                     $content[] = '</div>';
@@ -3334,7 +3334,7 @@ class Quiz_Maker_Admin
                             
                     $content[] = '</div>';
 
-                    $content[] = '<a href="https://ays-pro.com/spring-bundle" class="button button-primary ays-button" id="ays-button-top-buy-now" target="_blank">' . __( 'Buy Now !', AYS_QUIZ_NAME ) . '</a>';
+                    $content[] = '<a href="https://ays-pro.com/spring-bundle" class="button button-primary ays-button" id="ays-button-top-buy-now" target="_blank">' . __( 'Buy Now !', 'quiz-maker' ) . '</a>';
                 $content[] = '</div>';
             $content[] = '</div>';
 
@@ -3354,7 +3354,7 @@ class Quiz_Maker_Admin
 
                         $content[] = '<p>';
                             $content[] = __( "Limited Time <span class='ays-quiz-dicount-wrap-color-helloween' style='color:#b2ff00;'>30%</span> <span> SALE on</span><br><span style='' class='ays-quiz-helloween-bundle'><a href='https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=helloween-sale-banner' target='_blank' class='ays-quiz-dicount-wrap-color-helloween ays-quiz-dicount-wrap-text-decoration-helloween' style='display:block; color:#b2ff00;margin-right:6px;'>Quiz Maker</a>
-                            </span>", AYS_QUIZ_NAME );
+                            </span>", 'quiz-maker' );
                         $content[] = '</p>';
                         $content[] = '<p>';
                                 $content[] = "Hurry up! 
@@ -3392,7 +3392,7 @@ class Quiz_Maker_Admin
                                 
                         $content[] = '</div>';
                         $content[] = '<div class="ays-quiz-dicount-wrap-box ays-buy-now-button-box-helloween">';
-                            $content[] = '<a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=helloween-sale-banner" class="button button-primary ays-buy-now-button-helloween" id="ays-button-top-buy-now-helloween" target="_blank" style="" >' . __( 'Buy Now !', AYS_QUIZ_NAME ) . '</a>';
+                            $content[] = '<a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=helloween-sale-banner" class="button button-primary ays-buy-now-button-helloween" id="ays-button-top-buy-now-helloween" target="_blank" style="" >' . __( 'Buy Now !', 'quiz-maker' ) . '</a>';
                         $content[] = '</div>';
                     $content[] = '</div>';
 
@@ -3428,8 +3428,8 @@ class Quiz_Maker_Admin
                 $content[] = '<div id="ays-quiz-dicount-christmas-month" class="ays_quiz_dicount_month">';
                     $content[] = '<div class="ays-quiz-dicount-christmas-box">';
                         $content[] = '<div class="ays-quiz-dicount-christmas-wrap-box ays-quiz-dicount-christmas-wrap-box-80">';
-                            $content[] = '<div class="ays-quiz-dicount-christmas-title-row">' . __( 'Limited Time', AYS_QUIZ_NAME ) .' '. '<a href="https://ays-pro.com/mega-bundle" class="ays-quiz-dicount-christmas-button-sale" target="_blank">' . __( '50%', AYS_QUIZ_NAME ) . '</a>' . ' SALE on</div>';
-                            $content[] = '<div class="ays-quiz-dicount-christmas-title-row">'. '<a href="https://ays-pro.com/mega-bundle" class="ays-quiz-dicount-christmas-button-sale ays-quiz-dicount-christmas-button-block" target="_blank">' . __( 'Mega Bundle', AYS_QUIZ_NAME ) . '</a>' . __( '(Quiz + Survey + Poll)!', AYS_QUIZ_NAME ) . '</div>';
+                            $content[] = '<div class="ays-quiz-dicount-christmas-title-row">' . __( 'Limited Time', 'quiz-maker' ) .' '. '<a href="https://ays-pro.com/mega-bundle" class="ays-quiz-dicount-christmas-button-sale" target="_blank">' . __( '50%', 'quiz-maker' ) . '</a>' . ' SALE on</div>';
+                            $content[] = '<div class="ays-quiz-dicount-christmas-title-row">'. '<a href="https://ays-pro.com/mega-bundle" class="ays-quiz-dicount-christmas-button-sale ays-quiz-dicount-christmas-button-block" target="_blank">' . __( 'Mega Bundle', 'quiz-maker' ) . '</a>' . __( '(Quiz + Survey + Poll)!', 'quiz-maker' ) . '</div>';
                         $content[] = '</div>';
 
                         $content[] = '<div class="ays-quiz-dicount-christmas-wrap-box" style="width: 25%;">';
@@ -3437,10 +3437,10 @@ class Quiz_Maker_Admin
                                 $content[] = '<div class="ays-quiz-countdown-container">';
                                     $content[] = '<div id="ays-quiz-countdown" style="display: block;">';
                                         $content[] = '<ul>';
-                                            $content[] = '<li><span id="ays-quiz-countdown-days"></span>' . __( 'Days', AYS_QUIZ_NAME ) . '</li>';
-                                            $content[] = '<li><span id="ays-quiz-countdown-hours"></span>' . __( 'Hours', AYS_QUIZ_NAME ) . '</li>';
-                                            $content[] = '<li><span id="ays-quiz-countdown-minutes"></span>' . __( 'Minutes', AYS_QUIZ_NAME ) . '</li>';
-                                            $content[] = '<li><span id="ays-quiz-countdown-seconds"></span>' . __( 'Seconds', AYS_QUIZ_NAME ) . '</li>';
+                                            $content[] = '<li><span id="ays-quiz-countdown-days"></span>' . __( 'Days', 'quiz-maker' ) . '</li>';
+                                            $content[] = '<li><span id="ays-quiz-countdown-hours"></span>' . __( 'Hours', 'quiz-maker' ) . '</li>';
+                                            $content[] = '<li><span id="ays-quiz-countdown-minutes"></span>' . __( 'Minutes', 'quiz-maker' ) . '</li>';
+                                            $content[] = '<li><span id="ays-quiz-countdown-seconds"></span>' . __( 'Seconds', 'quiz-maker' ) . '</li>';
                                         $content[] = '</ul>';
                                     $content[] = '</div>';
                                     $content[] = '<div id="ays-quiz-countdown-content" class="emoji" style="display: none;">';
@@ -3454,7 +3454,7 @@ class Quiz_Maker_Admin
                         $content[] = '</div>';
 
                         $content[] = '<div class="ays-quiz-dicount-christmas-wrap-box" style="width: 25%;">';
-                            $content[] = '<a href="https://ays-pro.com/mega-bundle" class="ays-quiz-dicount-christmas-button-buy-now" target="_blank">' . __( 'BUY NOW!', AYS_QUIZ_NAME ) . '</a>';
+                            $content[] = '<a href="https://ays-pro.com/mega-bundle" class="ays-quiz-dicount-christmas-button-buy-now" target="_blank">' . __( 'BUY NOW!', 'quiz-maker' ) . '</a>';
                         $content[] = '</div>';
                     $content[] = '</div>';
                 $content[] = '</div>';
@@ -3462,7 +3462,7 @@ class Quiz_Maker_Admin
                 $content[] = '<div style="position: absolute;right: 0;bottom: 1px;"  class="ays-quiz-dismiss-buttons-container-for-form-christmas">';
                     $content[] = '<form action="" method="POST">';
                         $content[] = '<div id="ays-quiz-dismiss-buttons-content-christmas">';
-                            $content[] = '<button class="btn btn-link ays-button-christmas" name="ays_quiz_sale_btn" style="">' . __( 'Dismiss ad', AYS_QUIZ_NAME ) . '</button>';
+                            $content[] = '<button class="btn btn-link ays-button-christmas" name="ays_quiz_sale_btn" style="">' . __( 'Dismiss ad', 'quiz-maker' ) . '</button>';
                         $content[] = '</div>';
                     $content[] = '</form>';
                 $content[] = '</div>';
@@ -3486,11 +3486,11 @@ class Quiz_Maker_Admin
                     $content[] = '<div class="ays-quiz-dicount-wrap-box">';
 
                         $content[] = '<strong style="font-weight: bold;">';
-                            $content[] = __( "New Integration with <span><a href='https://wordpress.org/plugins/chart-builder/' target='_blank' style='color:#98FBA6; text-decoration: underline;'>Chart Builder</a></span> plugin", AYS_QUIZ_NAME );
+                            $content[] = __( "New Integration with <span><a href='https://wordpress.org/plugins/chart-builder/' target='_blank' style='color:#98FBA6; text-decoration: underline;'>Chart Builder</a></span> plugin", 'quiz-maker' );
                         $content[] = '</strong>';
                         $content[] = '<br>';
-                        $content[] = __( "The integration will allow you to create beautiful charts based on your quiz data and share them with your users.", AYS_QUIZ_NAME );
-                        $content[] = '<a href="https://www.youtube.com/watch?v=vqx76dw6NC8" target="_blank" style="margin-left: 5px; color:#98FBA6; text-decoration: underline;">' . __( 'Watch video', AYS_QUIZ_NAME ) . '</a>';
+                        $content[] = __( "The integration will allow you to create beautiful charts based on your quiz data and share them with your users.", 'quiz-maker' );
+                        $content[] = '<a href="https://www.youtube.com/watch?v=vqx76dw6NC8" target="_blank" style="margin-left: 5px; color:#98FBA6; text-decoration: underline;">' . __( 'Watch video', 'quiz-maker' ) . '</a>';
 
                         $content[] = '<br>';
 
@@ -3509,7 +3509,7 @@ class Quiz_Maker_Admin
 
                     $content[] = '</div>';
 
-                    $content[] = '<a href="https://wordpress.org/plugins/chart-builder/" class="button button-primary ays-button" id="ays-button-top-buy-now" target="_blank" >' . __( 'Install Now !', AYS_QUIZ_NAME ) . '</a>';
+                    $content[] = '<a href="https://wordpress.org/plugins/chart-builder/" class="button button-primary ays-button" id="ays-button-top-buy-now" target="_blank" >' . __( 'Install Now !', 'quiz-maker' ) . '</a>';
                 $content[] = '</div>';
             $content[] = '</div>';
 
@@ -3533,10 +3533,10 @@ class Quiz_Maker_Admin
                         $content[] = '<div>';
 
                             $content[] = '<span class="ays-quiz-new-mega-bundle-title">';
-                                // $content[] = __( "<span><a href='https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=sale-banner' target='_blank' style='color:#ffffff; text-decoration: underline;'>Quiz Maker</a></span>", AYS_QUIZ_NAME );
-                                $content[] = __( "<span><a href='". $quiz_cta_button_link ."' target='_blank' style='color:#ffffff; text-decoration: underline;'>Mega Bundle</a></span> (Quiz + Survey + Poll)", AYS_QUIZ_NAME );
+                                // $content[] = __( "<span><a href='https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=sale-banner' target='_blank' style='color:#ffffff; text-decoration: underline;'>Quiz Maker</a></span>", 'quiz-maker' );
+                                $content[] = __( "<span><a href='". $quiz_cta_button_link ."' target='_blank' style='color:#ffffff; text-decoration: underline;'>Mega Bundle</a></span> (Quiz + Survey + Poll)", 'quiz-maker' );
                             $content[] = '</span>';
-                            $content[] = '<div style="display: inline-block;">';
+                            $content[] = '<div class="ays-quiz-new-mega-bundle-title-icon-row" style="display: inline-block;">';
                                 $content[] = '<img src="' . AYS_QUIZ_ADMIN_URL . '/images/ays-quiz-banner-50.svg" class="ays-quiz-new-mega-bundle-mobile-image-display-none" style="width: 70px;">';
                             $content[] = '</div>';
                             $content[] = '</br>';
@@ -3546,7 +3546,7 @@ class Quiz_Maker_Admin
 
                             $content[] = '<span class="ays-quiz-new-mega-bundle-desc">';
                                 $content[] = '<img class="ays-quiz-new-mega-bundle-guaranteeicon" src="' . AYS_QUIZ_ADMIN_URL . '/images/quiz-maker-guaranteeicon.svg" style="width: 30px;">';
-                                $content[] = __( "30 Day Money Back Guarantee", AYS_QUIZ_NAME );
+                                $content[] = __( "30 Day Money Back Guarantee", 'quiz-maker' );
                             $content[] = '</span>';
                         $content[] = '</div>';
 
@@ -3561,7 +3561,7 @@ class Quiz_Maker_Admin
                             $content[] = '<form action="" method="POST">';
                                 $content[] = '<div id="ays-quiz-dismiss-buttons-content">';
                                 if( current_user_can( 'manage_options' ) ){
-                                    $content[] = '<button class="btn btn-link ays-button" name="ays_quiz_sale_btn" style="height: 32px; margin-left: 0;padding-left: 0">'. __( "Dismiss ad", AYS_QUIZ_NAME ) .'</button>';
+                                    $content[] = '<button class="btn btn-link ays-button" name="ays_quiz_sale_btn" style="height: 32px; margin-left: 0;padding-left: 0">'. __( "Dismiss ad", 'quiz-maker' ) .'</button>';
                                     $content[] = wp_nonce_field( AYS_QUIZ_NAME . '-sale-banner' ,  AYS_QUIZ_NAME . '-sale-banner' );
                                 }
                                 $content[] = '</div>';
@@ -3579,14 +3579,14 @@ class Quiz_Maker_Admin
                                 $content[] = '<div id="ays-quiz-countdown">';
 
                                     $content[] = '<div>';
-                                        $content[] = __( "Offer ends in:", AYS_QUIZ_NAME );
+                                        $content[] = __( "Offer ends in:", 'quiz-maker' );
                                     $content[] = '</div>';
 
                                     $content[] = '<ul>';
-                                        $content[] = '<li><span id="ays-quiz-countdown-days"></span>'. __( "Days", AYS_QUIZ_NAME ) .'</li>';
-                                        $content[] = '<li><span id="ays-quiz-countdown-hours"></span>'. __( "Hours", AYS_QUIZ_NAME ) .'</li>';
-                                        $content[] = '<li><span id="ays-quiz-countdown-minutes"></span>'. __( "Minutes", AYS_QUIZ_NAME ) .'</li>';
-                                        $content[] = '<li><span id="ays-quiz-countdown-seconds"></span>'. __( "Seconds", AYS_QUIZ_NAME ) .'</li>';
+                                        $content[] = '<li><span id="ays-quiz-countdown-days"></span>'. __( "Days", 'quiz-maker' ) .'</li>';
+                                        $content[] = '<li><span id="ays-quiz-countdown-hours"></span>'. __( "Hours", 'quiz-maker' ) .'</li>';
+                                        $content[] = '<li><span id="ays-quiz-countdown-minutes"></span>'. __( "Minutes", 'quiz-maker' ) .'</li>';
+                                        $content[] = '<li><span id="ays-quiz-countdown-seconds"></span>'. __( "Seconds", 'quiz-maker' ) .'</li>';
                                     $content[] = '</ul>';
                                 $content[] = '</div>';
 
@@ -3603,16 +3603,16 @@ class Quiz_Maker_Admin
                     $content[] = '</div>';
 
                     $content[] = '<div class="ays-quiz-dicount-wrap-box ays-quiz-dicount-wrap-button-box">';
-                        $content[] = '<a href="'. $quiz_cta_button_link .'" class="button button-primary ays-button" id="ays-button-top-buy-now" target="_blank">' . __( 'Buy Now', AYS_QUIZ_NAME ) . '</a>';
+                        $content[] = '<a href="'. $quiz_cta_button_link .'" class="button button-primary ays-button" id="ays-button-top-buy-now" target="_blank">' . __( 'Buy Now', 'quiz-maker' ) . '</a>';
                         $content[] = '<span class="ays-quiz-dicount-one-time-text">';
-                            $content[] = __( "One-time payment", AYS_QUIZ_NAME );
+                            $content[] = __( "One-time payment", 'quiz-maker' );
                         $content[] = '</span>';
                     $content[] = '</div>';
                 $content[] = '</div>';
             $content[] = '</div>';
 
             $content = implode( '', $content );
-            echo $content;
+            echo wp_kses_post($content);
         }
     }
 
@@ -3780,14 +3780,14 @@ class Quiz_Maker_Admin
                                 $content[] = '<div id="ays-quiz-countdown">';
 
                                     $content[] = '<div>';
-                                        $content[] = __( "Offer ends in:", AYS_QUIZ_NAME );
+                                        $content[] = __( "Offer ends in:", 'quiz-maker' );
                                     $content[] = '</div>';
 
                                     $content[] = '<ul>';
-                                        $content[] = '<li><span id="ays-quiz-countdown-days"></span>'. __( "Days", AYS_QUIZ_NAME ) .'</li>';
-                                        $content[] = '<li><span id="ays-quiz-countdown-hours"></span>'. __( "Hours", AYS_QUIZ_NAME ) .'</li>';
-                                        $content[] = '<li><span id="ays-quiz-countdown-minutes"></span>'. __( "Minutes", AYS_QUIZ_NAME ) .'</li>';
-                                        $content[] = '<li><span id="ays-quiz-countdown-seconds"></span>'. __( "Seconds", AYS_QUIZ_NAME ) .'</li>';
+                                        $content[] = '<li><span id="ays-quiz-countdown-days"></span>'. __( "Days", 'quiz-maker' ) .'</li>';
+                                        $content[] = '<li><span id="ays-quiz-countdown-hours"></span>'. __( "Hours", 'quiz-maker' ) .'</li>';
+                                        $content[] = '<li><span id="ays-quiz-countdown-minutes"></span>'. __( "Minutes", 'quiz-maker' ) .'</li>';
+                                        $content[] = '<li><span id="ays-quiz-countdown-seconds"></span>'. __( "Seconds", 'quiz-maker' ) .'</li>';
                                     $content[] = '</ul>';
                                 $content[] = '</div>';
 
@@ -3807,14 +3807,14 @@ class Quiz_Maker_Admin
                         $content[] = '<div>';
 
                             $content[] = '<span class="ays-quiz-black-friday-bundle-title">';
-                                $content[] = __( "<span><a href='https://ays-pro.com/mega-bundle?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=black-friday-mega-bundle-sale-banner' class='ays-quiz-black-friday-bundle-title-link' target='_blank'>Black Friday Sale</a></span>", AYS_QUIZ_NAME );
+                                $content[] = __( "<span><a href='https://ays-pro.com/mega-bundle?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=black-friday-mega-bundle-sale-banner' class='ays-quiz-black-friday-bundle-title-link' target='_blank'>Black Friday Sale</a></span>", 'quiz-maker' );
                             $content[] = '</span>';
 
                             $content[] = '</br>';
 
                             $content[] = '<span class="ays-quiz-black-friday-bundle-desc">';
                                 $content[] = '<a class="ays-quiz-black-friday-bundle-desc" href="https://ays-pro.com/mega-bundle?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=black-friday-mega-bundle-sale-banner" class="ays-quiz-black-friday-bundle-title-link" target="_blank">';
-                                    $content[] = __( "50% OFF", AYS_QUIZ_NAME );
+                                    $content[] = __( "50% OFF", 'quiz-maker' );
                                 $content[] = '</a>';
                             $content[] = '</span>';
                         $content[] = '</div>';
@@ -3824,7 +3824,7 @@ class Quiz_Maker_Admin
                             $content[] = '<form action="" method="POST">';
                                 $content[] = '<div id="ays-quiz-dismiss-buttons-content">';
                                 if( current_user_can( 'manage_options' ) ){
-                                    $content[] = '<button class="btn btn-link ays-button" name="ays_quiz_sale_btn" style="height: 32px; margin-left: 0;padding-left: 0">'. __( "Dismiss ad", AYS_QUIZ_NAME ) .'</button>';
+                                    $content[] = '<button class="btn btn-link ays-button" name="ays_quiz_sale_btn" style="height: 32px; margin-left: 0;padding-left: 0">'. __( "Dismiss ad", 'quiz-maker' ) .'</button>';
                                     $content[] = wp_nonce_field( AYS_QUIZ_NAME . '-sale-banner' ,  AYS_QUIZ_NAME . '-sale-banner' );
                                 }
                                 $content[] = '</div>';
@@ -3837,15 +3837,15 @@ class Quiz_Maker_Admin
                     $content[] = '<div class="ays-quiz-dicount-wrap-box ays-quiz-dicount-wrap-text-box">';
                         $content[] = '<span class="ays-quiz-black-friday-bundle-title">';
                             $content[] = '<a class="ays-quiz-black-friday-bundle-title-link" href="https://ays-pro.com/mega-bundle?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=black-friday-mega-bundle-sale-banner" target="_blank">';
-                                $content[] = __( 'Mega Bundle', AYS_QUIZ_NAME );
+                                $content[] = __( 'Mega Bundle', 'quiz-maker' );
                             $content[] = '</a>';
                         $content[] = '</span>';
                     $content[] = '</div>';
 
                     $content[] = '<div class="ays-quiz-dicount-wrap-box ays-quiz-dicount-wrap-button-box">';
-                        $content[] = '<a href="https://ays-pro.com/mega-bundle?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=black-friday-mega-bundle-sale-banner" class="button button-primary ays-button" id="ays-button-top-buy-now" target="_blank">' . __( 'Get Your Deal', AYS_QUIZ_NAME ) . '</a>';
+                        $content[] = '<a href="https://ays-pro.com/mega-bundle?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=black-friday-mega-bundle-sale-banner" class="button button-primary ays-button" id="ays-button-top-buy-now" target="_blank">' . __( 'Get Your Deal', 'quiz-maker' ) . '</a>';
                         $content[] = '<span class="ays-quiz-dicount-one-time-text">';
-                            $content[] = __( "One-time payment", AYS_QUIZ_NAME );
+                            $content[] = __( "One-time payment", 'quiz-maker' );
                         $content[] = '</span>';
                     $content[] = '</div>';
                 $content[] = '</div>';
@@ -3874,14 +3874,14 @@ class Quiz_Maker_Admin
                                 $content[] = '<div id="ays-quiz-countdown">';
 
                                     $content[] = '<div>';
-                                        $content[] = __( "Offer ends in:", AYS_QUIZ_NAME );
+                                        $content[] = __( "Offer ends in:", 'quiz-maker' );
                                     $content[] = '</div>';
 
                                     $content[] = '<ul>';
-                                        $content[] = '<li><span id="ays-quiz-countdown-days"></span>'. __( "Days", AYS_QUIZ_NAME ) .'</li>';
-                                        $content[] = '<li><span id="ays-quiz-countdown-hours"></span>'. __( "Hours", AYS_QUIZ_NAME ) .'</li>';
-                                        $content[] = '<li><span id="ays-quiz-countdown-minutes"></span>'. __( "Minutes", AYS_QUIZ_NAME ) .'</li>';
-                                        $content[] = '<li><span id="ays-quiz-countdown-seconds"></span>'. __( "Seconds", AYS_QUIZ_NAME ) .'</li>';
+                                        $content[] = '<li><span id="ays-quiz-countdown-days"></span>'. __( "Days", 'quiz-maker' ) .'</li>';
+                                        $content[] = '<li><span id="ays-quiz-countdown-hours"></span>'. __( "Hours", 'quiz-maker' ) .'</li>';
+                                        $content[] = '<li><span id="ays-quiz-countdown-minutes"></span>'. __( "Minutes", 'quiz-maker' ) .'</li>';
+                                        $content[] = '<li><span id="ays-quiz-countdown-seconds"></span>'. __( "Seconds", 'quiz-maker' ) .'</li>';
                                     $content[] = '</ul>';
                                 $content[] = '</div>';
 
@@ -3901,14 +3901,14 @@ class Quiz_Maker_Admin
                         $content[] = '<div>';
 
                             $content[] = '<span class="ays-quiz-christmas-top-bundle-title">';
-                                $content[] = __( "<span><a href='". $quiz_cta_button_link ."' class='ays-quiz-christmas-top-bundle-title-link' target='_blank'>Christmas Sale</a></span>", AYS_QUIZ_NAME );
+                                $content[] = __( "<span><a href='". $quiz_cta_button_link ."' class='ays-quiz-christmas-top-bundle-title-link' target='_blank'>Christmas Sale</a></span>", 'quiz-maker' );
                             $content[] = '</span>';
 
                             $content[] = '</br>';
 
                             $content[] = '<span class="ays-quiz-christmas-top-bundle-desc">';
                                 $content[] = '<a class="ays-quiz-christmas-top-bundle-desc" href="'. $quiz_cta_button_link .'" class="ays-quiz-christmas-top-bundle-title-link" target="_blank">';
-                                    $content[] = __( "20% Extra OFF", AYS_QUIZ_NAME );
+                                    $content[] = __( "20% Extra OFF", 'quiz-maker' );
                                 $content[] = '</a>';
                             $content[] = '</span>';
                         $content[] = '</div>';
@@ -3918,7 +3918,7 @@ class Quiz_Maker_Admin
                             $content[] = '<form action="" method="POST">';
                                 $content[] = '<div id="ays-quiz-dismiss-buttons-content">';
                                 if( current_user_can( 'manage_options' ) ){
-                                    $content[] = '<button class="btn btn-link ays-button" name="ays_quiz_sale_btn" style="height: 32px; margin-left: 0;padding-left: 0">'. __( "Dismiss ad", AYS_QUIZ_NAME ) .'</button>';
+                                    $content[] = '<button class="btn btn-link ays-button" name="ays_quiz_sale_btn" style="height: 32px; margin-left: 0;padding-left: 0">'. __( "Dismiss ad", 'quiz-maker' ) .'</button>';
                                     $content[] = wp_nonce_field( AYS_QUIZ_NAME . '-sale-banner' ,  AYS_QUIZ_NAME . '-sale-banner' );
                                 }
                                 $content[] = '</div>';
@@ -3934,14 +3934,14 @@ class Quiz_Maker_Admin
                         $content[] = '</div>';
 
                         $content[] = '<div class="ays-quiz-christmas-top-bundle-text-row">';
-                            $content[] = __( '20% Extra Discount Coupon', AYS_QUIZ_NAME );
+                            $content[] = __( '20% Extra Discount Coupon', 'quiz-maker' );
                         $content[] = '</div>'; 
                     $content[] = '</div>';
 
                     $content[] = '<div class="ays-quiz-dicount-wrap-box ays-quiz-dicount-wrap-button-box">';
-                        $content[] = '<a href="'. $quiz_cta_button_link .'" class="button button-primary ays-button" id="ays-button-top-buy-now" target="_blank">' . __( 'Get Your Deal', AYS_QUIZ_NAME ) . '</a>';
+                        $content[] = '<a href="'. $quiz_cta_button_link .'" class="button button-primary ays-button" id="ays-button-top-buy-now" target="_blank">' . __( 'Get Your Deal', 'quiz-maker' ) . '</a>';
                         $content[] = '<span class="ays-quiz-dicount-one-time-text">';
-                            $content[] = __( "One-time payment", AYS_QUIZ_NAME );
+                            $content[] = __( "One-time payment", 'quiz-maker' );
                         $content[] = '</span>';
                     $content[] = '</div>';
                 $content[] = '</div>';
@@ -4037,14 +4037,14 @@ class Quiz_Maker_Admin
         ==========================================
         */
         
-        $general_tab_title   = __( 'General Information', $this->plugin_name);
+        $general_tab_title   = __( 'General Information', 'quiz-maker');
 
         $content = array();
 
         $content[] = '<div class="ays-quiz-help-tab-conatiner">';
 
             $content[] = '<div class="ays-quiz-help-tab-title">';
-                $content[] = __( "Quiz Maker Information", AYS_QUIZ_NAME );
+                $content[] = __( "Quiz Maker Information", 'quiz-maker' );
             $content[] = '</div>';
 
 
@@ -4054,7 +4054,7 @@ class Quiz_Maker_Admin
                     $content[] = '<span>';
 
                         $content[] = sprintf(
-                            __( 'Create engaging quizzes, tests, and exams within a few minutes with the help of the WordPress Quiz Maker plugin. The Quiz Maker has a user-friendly interface and responsive design.%s With this plugin, you are free to add as many questions as needed with the following question types: %sRadio, Checkbox, Dropdown, Text, Short Text, Number, Date.%s In order, to activate Integrations, send Certificates via Email, or create Intervals for your quiz results you will need to download and install the Pro Versions of the WordPress Quiz plugin.', AYS_QUIZ_NAME ),
+                            __( 'Create engaging quizzes, tests, and exams within a few minutes with the help of the WordPress Quiz Maker plugin. The Quiz Maker has a user-friendly interface and responsive design.%s With this plugin, you are free to add as many questions as needed with the following question types: %sRadio, Checkbox, Dropdown, Text, Short Text, Number, Date.%s In order, to activate Integrations, send Certificates via Email, or create Intervals for your quiz results you will need to download and install the Pro Versions of the WordPress Quiz plugin.', 'quiz-maker' ),
                             '<br>',
                             '<em>',
                             '</em><br><br>'
@@ -4080,21 +4080,21 @@ class Quiz_Maker_Admin
         ==========================================
         */
 
-        $premium_tab_title   = __( 'Premium version', $this->plugin_name);
+        $premium_tab_title   = __( 'Premium version', 'quiz-maker');
 
         $content = array();
 
         $content[] = '<div class="ays-quiz-help-tab-conatiner">';
 
             $content[] = '<div class="ays-quiz-help-tab-title">';
-                $content[] = __( "Premium versions' overview", AYS_QUIZ_NAME );
+                $content[] = __( "Premium versions' overview", 'quiz-maker' );
             $content[] = '</div>';
 
                 $content[] = '<div class="ays-quiz-dicount-wrap-box">';
                     $content[] = '<span>';
 
                         $content[] = sprintf(
-                            __( 'By activating the pro version, you will get all the features to strive your WordPress website’s quizzes to an advanced level.%sWith the WordPress Quiz plugin, it is easy to generate the quiz types like %sTrivia quiz, Assessment quiz, Personality test,  Multiple-choice quiz, Knowledge quiz, IQ test, Yes-or-no quiz, True-or-false quiz, This-or-that quiz(with images), Diagnostic quiz, Scored quiz, Buzzfeed quiz, Viral Quiz%s and etc.%sMotivate your visitors with Certificates and Advanced Leaderboards, prevent cheating during online exams with Timer-Based quizzes, earn money with Paid Quizzes.', $this->plugin_name ),
+                            __( 'By activating the pro version, you will get all the features to strive your WordPress website’s quizzes to an advanced level.%sWith the WordPress Quiz plugin, it is easy to generate the quiz types like %sTrivia quiz, Assessment quiz, Personality test,  Multiple-choice quiz, Knowledge quiz, IQ test, Yes-or-no quiz, True-or-false quiz, This-or-that quiz(with images), Diagnostic quiz, Scored quiz, Buzzfeed quiz, Viral Quiz%s and etc.%sMotivate your visitors with Certificates and Advanced Leaderboards, prevent cheating during online exams with Timer-Based quizzes, earn money with Paid Quizzes.', 'quiz-maker' ),
                             '<br>',
                             '<em>',
                             '</em>',
@@ -4121,11 +4121,11 @@ class Quiz_Maker_Admin
         */
 
         $sidebar_content = '
-        <p><strong>' . __( 'For more information:', AYS_QUIZ_NAME ) . '</strong></p>' .
-        '<p><a href="https://www.youtube.com/watch?v=oKPOdbZahK0" target="_blank">' . __( 'YouTube video tutorials' , AYS_QUIZ_NAME ) . '</a></p>' .
-        '<p><a href="https://quiz-plugin.com/docs/" target="_blank">' . __( 'Documentation', AYS_QUIZ_NAME ) . '</a></p>' .
-        '<p><a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank">' . __( 'Quiz Maker plugin premium version', AYS_QUIZ_NAME ) . '</a></p>' .
-        '<p><a href="https://quiz-plugin.com/wordpress-quiz-plugin-free-demo" target="_blank">' . __( 'Quiz Maker plugin free demo', AYS_QUIZ_NAME ) . '</a></p>';
+        <p><strong>' . __( 'For more information:', 'quiz-maker' ) . '</strong></p>' .
+        '<p><a href="https://www.youtube.com/watch?v=oKPOdbZahK0" target="_blank">' . __( 'YouTube video tutorials' , 'quiz-maker' ) . '</a></p>' .
+        '<p><a href="https://quiz-plugin.com/docs/" target="_blank">' . __( 'Documentation', 'quiz-maker' ) . '</a></p>' .
+        '<p><a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank">' . __( 'Quiz Maker plugin premium version', 'quiz-maker' ) . '</a></p>' .
+        '<p><a href="https://quiz-plugin.com/wordpress-quiz-plugin-free-demo" target="_blank">' . __( 'Quiz Maker plugin free demo', 'quiz-maker' ) . '</a></p>';
 
         /*
         ==========================================
@@ -4291,8 +4291,8 @@ class Quiz_Maker_Admin
                     $content[] = '<i class="ays_fa ays_fa_link"></i>';
                 $content[] = '</div>';
                 $content[] = '<div>';
-                    $content[] = '<span>'. __("Message Variables" , $this->plugin_name) .'</span>';
-                    $content[] = '<a class="ays_help" data-toggle="tooltip" data-html="true" title="'. __("Insert your preferred message variable into the editor by clicking." , $this->plugin_name) .'">';
+                    $content[] = '<span>'. __("Message Variables" , 'quiz-maker') .'</span>';
+                    $content[] = '<a class="ays_help" data-toggle="tooltip" data-html="true" title="'. __("Insert your preferred message variable into the editor by clicking." , 'quiz-maker') .'">';
                         $content[] = '<i class="ays_fa ays_fa_info_circle"></i>';
                     $content[] = '</a>';
                 $content[] = '</div>';
@@ -4817,7 +4817,7 @@ class Quiz_Maker_Admin
                             </a>';
                         }
             $content .='
-                        <a target="_blank" href="'. esc_url( $plugin_data['details']['buy_now'] ) .'" class="ays-quiz-card__btn-primary">'. __('Buy Now', $this->plugin_name) .'</a>
+                        <a target="_blank" href="'. esc_url( $plugin_data['details']['buy_now'] ) .'" class="ays-quiz-card__btn-primary">'. __('Buy Now', 'quiz-maker') .'</a>
                     </div>
                 </div>';
         }
@@ -4947,9 +4947,9 @@ class Quiz_Maker_Admin
             if(isset($integrations_content['title'])){
                 $content .= '<legend>';
                 if(isset($integrations_content['icon'])){
-                    $content .= '<img class="ays_integration_logo" src="'. $integrations_content['icon'] .'" alt="" style="margin-right: 10px;">';
+                    $content .= '<img class="ays_integration_logo" src="'. esc_url($integrations_content['icon']) .'" alt="" style="margin-right: 10px;">';
                 }
-                $content .= '<h5>'. $integrations_content['title'] .'</h5></legend>';
+                $content .= '<h5>'. esc_html($integrations_content['title']) .'</h5></legend>';
             }
             if(isset($integrations_content['content'])){
                 $content .= $integrations_content['content'];
@@ -4961,6 +4961,50 @@ class Quiz_Maker_Admin
         }
 
         echo implode('<hr/>', $integrations);
+    }
+
+    public static function ays_quiz_svg_sanitize_allowed_properties(){
+
+        $allowed_properties = array(
+            'div' => array(
+                'id'                    => true,
+                'class'                 => true,
+                'style'                 => true,
+            ),
+            'svg' => array(
+                'class'                 => true,
+                'version'               => true,
+                'overflow'              => true,
+                'preserveAspectRatio'   => true,
+                'preserveaspectratio'   => true,
+                'fill'                  => true,
+                'viewBox'               => true,
+                'viewbox'               => true,
+                'height'                => true,
+                'width'                 => true,
+                'xmlns'                 => true,
+                'xmlns:xlink'           => true,
+                'id'                    => true,
+                'title'                 => true,
+            ),
+            'g' => array(
+                'id'                    => true,
+                'class'                 => true,
+                'stroke-width'          => true,
+                'stroke-linecap'        => true,
+                'stroke-linejoin'       => true,
+            ),
+            'path' => array(
+                'id'                    => true,
+                'class'                 => true,
+                'd'                     => true,
+                'fill'                  => true,
+                'vector-effect'         => true,
+                'xmlns:default'         => true,
+            ),
+        );
+
+        return $allowed_properties;
     }
     
 }

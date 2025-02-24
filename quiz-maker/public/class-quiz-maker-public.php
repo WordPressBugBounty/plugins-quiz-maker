@@ -153,24 +153,24 @@ class Quiz_Maker_Public
             wp_enqueue_script( $this->plugin_name . '-datatable-min', plugin_dir_url(__FILE__) . 'js/quiz-maker-datatable.min.js', array('jquery'), $this->version, true);
 
             wp_localize_script( $this->plugin_name . '-datatable-min', 'quizLangDataTableObj', array(
-                "sEmptyTable"               => __( "No data available in table", $this->plugin_name ),
-                "sInfo"                     => __( "Showing _START_ to _END_ of _TOTAL_ entries", $this->plugin_name ),
-                "sInfoEmpty"                => __( "Showing 0 to 0 of 0 entries", $this->plugin_name ),
-                "sInfoFiltered"             => __( "(filtered from _MAX_ total entries)", $this->plugin_name ),
-                // "sInfoPostFix":              => __( "", $this->plugin_name ),
-                // "sInfoThousands":            => __( ",", $this->plugin_name ),
-                "sLengthMenu"               => __( "Show _MENU_ entries", $this->plugin_name ),
-                "sLoadingRecords"           => __( "Loading...", $this->plugin_name ),
-                "sProcessing"               => __( "Processing...", $this->plugin_name ),
-                "sSearch"                   => __( "Search:", $this->plugin_name ),
-                // "sUrl":                      => __( "", $this->plugin_name ),
-                "sZeroRecords"              => __( "No matching records found", $this->plugin_name ),
-                "sFirst"                    => __( "First", $this->plugin_name ),
-                "sLast"                     => __( "Last", $this->plugin_name ),
-                "sNext"                     => __( "Next", $this->plugin_name ),
-                "sPrevious"                 => __( "Previous", $this->plugin_name ),
-                "sSortAscending"            => __( ": activate to sort column ascending", $this->plugin_name ),
-                "sSortDescending"           => __( ": activate to sort column descending", $this->plugin_name ),
+                "sEmptyTable"               => __( "No data available in table", 'quiz-maker' ),
+                "sInfo"                     => __( "Showing _START_ to _END_ of _TOTAL_ entries", 'quiz-maker' ),
+                "sInfoEmpty"                => __( "Showing 0 to 0 of 0 entries", 'quiz-maker' ),
+                "sInfoFiltered"             => __( "(filtered from _MAX_ total entries)", 'quiz-maker' ),
+                // "sInfoPostFix":              => __( "", 'quiz-maker' ),
+                // "sInfoThousands":            => __( ",", 'quiz-maker' ),
+                "sLengthMenu"               => __( "Show _MENU_ entries", 'quiz-maker' ),
+                "sLoadingRecords"           => __( "Loading...", 'quiz-maker' ),
+                "sProcessing"               => __( "Processing...", 'quiz-maker' ),
+                "sSearch"                   => __( "Search:", 'quiz-maker' ),
+                // "sUrl":                      => __( "", 'quiz-maker' ),
+                "sZeroRecords"              => __( "No matching records found", 'quiz-maker' ),
+                "sFirst"                    => __( "First", 'quiz-maker' ),
+                "sLast"                     => __( "Last", 'quiz-maker' ),
+                "sNext"                     => __( "Next", 'quiz-maker' ),
+                "sPrevious"                 => __( "Previous", 'quiz-maker' ),
+                "sSortAscending"            => __( ": activate to sort column ascending", 'quiz-maker' ),
+                "sSortDescending"           => __( ": activate to sort column descending", 'quiz-maker' ),
             ) );
 
             wp_enqueue_script($this->plugin_name .'-functions.js', plugin_dir_url(__FILE__) . 'js/quiz-maker-functions.js', array('jquery'), $this->version, true);
@@ -184,25 +184,25 @@ class Quiz_Maker_Public
                 'notAnsweredText'           => $this->default_texts['notAnsweredQuestionText'],
                 'areYouSure'                => $this->default_texts['finishQuizText'],
                 'selectPlaceholder'         => $this->default_texts['selectAnswerText'],
-                'correctAnswerVariants'     => __( 'Variants of the correct answer', $this->plugin_name ),
-                'shareDialog'               => __( 'Share Dialog', $this->plugin_name ),
-                'expiredMessage'            => __( 'The quiz has expired!', $this->plugin_name ),
-                'day'                       => __( 'day', $this->plugin_name ),
-                'days'                      => __( 'days', $this->plugin_name ),
-                'hour'                      => __( 'hour', $this->plugin_name ),
-                'hours'                     => __( 'hours', $this->plugin_name ),
-                'minute'                    => __( 'minute', $this->plugin_name ),
-                'minutes'                   => __( 'minutes', $this->plugin_name ),
-                'second'                    => __( 'second', $this->plugin_name ),
-                'seconds'                   => __( 'seconds', $this->plugin_name ),
+                'correctAnswerVariants'     => __( 'Variants of the correct answer', 'quiz-maker' ),
+                'shareDialog'               => __( 'Share Dialog', 'quiz-maker' ),
+                'expiredMessage'            => __( 'The quiz has expired!', 'quiz-maker' ),
+                'day'                       => __( 'day', 'quiz-maker' ),
+                'days'                      => __( 'days', 'quiz-maker' ),
+                'hour'                      => __( 'hour', 'quiz-maker' ),
+                'hours'                     => __( 'hours', 'quiz-maker' ),
+                'minute'                    => __( 'minute', 'quiz-maker' ),
+                'minutes'                   => __( 'minutes', 'quiz-maker' ),
+                'second'                    => __( 'second', 'quiz-maker' ),
+                'seconds'                   => __( 'seconds', 'quiz-maker' ),
                 'startButtonText'           => $this->buttons_texts['startButton'],
-                'defaultStartButtonText'    => __( 'Start', $this->plugin_name ),
-                'loadResource'              => __( "Can't load resource.", $this->plugin_name ),
-                'somethingWentWrong'        => __( "Maybe something went wrong.", $this->plugin_name ),
+                'defaultStartButtonText'    => __( 'Start', 'quiz-maker' ),
+                'loadResource'              => __( "Can't load resource.", 'quiz-maker' ),
+                'somethingWentWrong'        => __( "Maybe something went wrong.", 'quiz-maker' ),
                 'passwordIsWrong'           => $this->default_texts['wrongPassword'],
-                'requiredError'             => __( 'This is a required question', $this->plugin_name ),
-                'show'                      => __( 'Show', $this->plugin_name ),
-                'hide'                      => __( 'Hide', $this->plugin_name ),
+                'requiredError'             => __( 'This is a required question', 'quiz-maker' ),
+                'show'                      => __( 'Show', 'quiz-maker' ),
+                'hide'                      => __( 'Hide', 'quiz-maker' ),
             ) );
         }
     }
@@ -481,37 +481,37 @@ class Quiz_Maker_Public
         $quiz_fields_label_phone = (isset($settings_placeholders_texts['quiz_fields_label_phone']) && $settings_placeholders_texts['quiz_fields_label_phone'] != '') ? stripslashes( esc_attr( $settings_placeholders_texts['quiz_fields_label_phone'] ) ) : 'Phone Number';
 
         if ($quiz_fields_placeholder_name === 'Name') {
-            $quiz_fields_placeholder_name_text = __('Name', $this->plugin_name);
+            $quiz_fields_placeholder_name_text = __('Name', 'quiz-maker');
         }else{
             $quiz_fields_placeholder_name_text = $quiz_fields_placeholder_name;
         }
 
         if ($quiz_fields_placeholder_eamil === 'Email') {
-            $quiz_fields_placeholder_eamil_text = __('Email', $this->plugin_name);
+            $quiz_fields_placeholder_eamil_text = __('Email', 'quiz-maker');
         }else{
             $quiz_fields_placeholder_eamil_text = $quiz_fields_placeholder_eamil;
         }
 
         if ($quiz_fields_placeholder_phone === 'Phone Number') {
-            $quiz_fields_placeholder_phone_text = __('Phone Number', $this->plugin_name);
+            $quiz_fields_placeholder_phone_text = __('Phone Number', 'quiz-maker');
         }else{
             $quiz_fields_placeholder_phone_text = $quiz_fields_placeholder_phone;
         }
 
         if ($quiz_fields_label_name === 'Name') {
-            $quiz_fields_label_name_text = __('Name', $this->plugin_name);
+            $quiz_fields_label_name_text = __('Name', 'quiz-maker');
         }else{
             $quiz_fields_label_name_text = $quiz_fields_label_name;
         }
 
         if ($quiz_fields_label_eamil === 'Email') {
-            $quiz_fields_label_eamil_text = __('Email', $this->plugin_name);
+            $quiz_fields_label_eamil_text = __('Email', 'quiz-maker');
         }else{
             $quiz_fields_label_eamil_text = $quiz_fields_label_eamil;
         }
 
         if ($quiz_fields_label_phone === 'Phone Number') {
-            $quiz_fields_label_phone_text = __('Phone Number', $this->plugin_name);
+            $quiz_fields_label_phone_text = __('Phone Number', 'quiz-maker');
         }else{
             $quiz_fields_label_phone_text = $quiz_fields_label_phone;
         }
@@ -617,7 +617,7 @@ class Quiz_Maker_Public
             }
         }
 
-        $current_quiz_author = __( "Unknown", $this->plugin_name );
+        $current_quiz_author = __( "Unknown", 'quiz-maker' );
         $current_quiz_author_email = "";
         $current_quiz_author_nickname = "";
         $current_quiz_author_website_url = "";
@@ -640,7 +640,7 @@ class Quiz_Maker_Public
                 $current_quiz_author_website_url = ( isset( $current_quiz_user_data->user_url ) && ! empty( $current_quiz_user_data->user_url ) ) ? sanitize_url($current_quiz_user_data->user_url) : "";
 
                 if( !empty( $current_quiz_author_website_url ) ){
-                    $current_quiz_author_website_url = "<a href='". esc_url( $current_quiz_author_website_url ) ."' target='_blank' class='ays-quiz-user-website-link-a-tag'>". __( "Website", $this->plugin_name ) ."</a>";
+                    $current_quiz_author_website_url = "<a href='". esc_url( $current_quiz_author_website_url ) ."' target='_blank' class='ays-quiz-user-website-link-a-tag'>". __( "Website", 'quiz-maker' ) ."</a>";
                 }
             }
         }
@@ -694,35 +694,35 @@ class Quiz_Maker_Public
         $no_more_reviews_text  = (isset($settings_static_texts['no_more_reviews_text']) && $settings_static_texts['no_more_reviews_text'] != '') ? stripslashes( esc_attr( $settings_static_texts['no_more_reviews_text'] ) ) : 'No more reviews';
 
         if ($wrong_shortcode_text === 'Wrong shortcode initialized') {
-            $wrong_shortcode_text = __('Wrong shortcode initialized', $plugin_name);
+            $wrong_shortcode_text = __('Wrong shortcode initialized', 'quiz-maker');
         }
 
         if ($enter_password_text === 'Please enter password') {
-            $enter_password_text = __('Please enter password', $plugin_name);
+            $enter_password_text = __('Please enter password', 'quiz-maker');
         }
 
         if ($wrong_password_text === 'Password is wrong!') {
-            $wrong_password_text = __('Password is wrong!', $plugin_name);
+            $wrong_password_text = __('Password is wrong!', 'quiz-maker');
         }
 
         if ($empty_results_text === 'There are no results yet.') {
-            $empty_results_text = __('There are no results yet.', $plugin_name);
+            $empty_results_text = __('There are no results yet.', 'quiz-maker');
         }
 
         if ($not_answered_question_text === 'You have not answered this question') {
-            $not_answered_question_text = __('You have not answered this question', $plugin_name);
+            $not_answered_question_text = __('You have not answered this question', 'quiz-maker');
         }
 
         if ($finish_quiz_text === 'Do you want to finish the quiz? Are you sure?') {
-            $finish_quiz_text = __('Do you want to finish the quiz? Are you sure?', $plugin_name);
+            $finish_quiz_text = __('Do you want to finish the quiz? Are you sure?', 'quiz-maker');
         }
 
         if ($select_question_placeholder_text === 'Select an answer') {
-            $select_question_placeholder_text = __('Select an answer', $plugin_name);
+            $select_question_placeholder_text = __('Select an answer', 'quiz-maker');
         }
 
         if ($no_more_reviews_text === 'No more reviews') {
-            $no_more_reviews_text = __('No more reviews', $plugin_name);
+            $no_more_reviews_text = __('No more reviews', 'quiz-maker');
         }
 
         $texts = array(
@@ -1556,7 +1556,7 @@ class Quiz_Maker_Public
         
         
         if($questions_count == 0){
-            $empty_questions_notification = '<p id="ays_no_questions_message" style="color:red">' . __('You need to add questions', $this->plugin_name) . '</p>';
+            $empty_questions_notification = '<p id="ays_no_questions_message" style="color:red">' . __('You need to add questions', 'quiz-maker') . '</p>';
             $empty_questions_button = "disabled";
         }else{
             $empty_questions_notification = "";
@@ -1655,7 +1655,7 @@ class Quiz_Maker_Public
 
         if ( $enable_start_button_loader ) {
             if ($questions_count != 0) {
-                $quiz_start_butto_html = "<input type='button' $empty_questions_button class='ays_next start_button action-button ays_quiz_enable_loader' disabled='disabled' value='". __('Loading ...', $this->plugin_name) ."' ". $enable_leave_page ." />".$empty_questions_notification;
+                $quiz_start_butto_html = "<input type='button' $empty_questions_button class='ays_next start_button action-button ays_quiz_enable_loader' disabled='disabled' value='". __('Loading ...', 'quiz-maker') ."' ". $enable_leave_page ." />".$empty_questions_notification;
 
                 $quiz_start_button = '
                 <div class="ays-quiz-start-button-preloader">
@@ -1712,7 +1712,7 @@ class Quiz_Maker_Public
             $enable_rate_avg = true;
             $quiz_rate_reports = "<div class='ays_quiz_rete_avg'>
                 <div class='for_quiz_rate_avg ui star rating' data-rating='".round($quiz_rates_avg)."' data-max-rating='5'></div>
-                <qm_votes>$quiz_rates_count " . __( "votes", $this->plugin_name ) . ", $quiz_rates_avg " . __( "avg", $this->plugin_name ) . "</qm_votes>
+                <qm_votes>$quiz_rates_count " . __( "votes", 'quiz-maker' ) . ", $quiz_rates_avg " . __( "avg", 'quiz-maker' ) . "</qm_votes>
             </div>";
             $quiz_modified_border_radius = "border-radius:" . $quiz_border_radius . "px " . $quiz_border_radius . "px " . $quiz_border_radius . "px 0px;";
         }else{
@@ -1776,7 +1776,7 @@ class Quiz_Maker_Public
         if($show_create_date){
             $quiz_create_date = (isset($options['create_date']) && $options['create_date'] != '') ? $options['create_date'] : "0000-00-00 00:00:00";
             if(Quiz_Maker_Admin::validateDate($quiz_create_date)){
-                $show_cd_and_author .= "<span>".__("Created on",$this->plugin_name)." </span><strong><time>".date_i18n("F d, Y", strtotime($quiz_create_date))."</time></strong>";
+                $show_cd_and_author .= "<span>".__("Created on",'quiz-maker')." </span><strong><time>".date_i18n("F d, Y", strtotime($quiz_create_date))."</time></strong>";
             }else{
                 $show_cd_and_author .= "";
             }
@@ -1798,9 +1798,9 @@ class Quiz_Maker_Public
             $image = get_avatar($user_id, 32);
             if($author['name'] !== "Unknown"){
                 if($show_create_date){
-                    $text = __("By", $this->plugin_name);
+                    $text = __("By", 'quiz-maker');
                 }else{
-                    $text = __("Created by", $this->plugin_name);
+                    $text = __("Created by", 'quiz-maker');
                 }
                 $show_cd_and_author .= "<span>   ".$text." </span>".$image."<strong>".$author['name']."</strong>";
             }else{
@@ -2353,7 +2353,7 @@ class Quiz_Maker_Public
             } else { 
                 $result = round($wpdb->get_var($sql));
             }
-            $show_average = "<p class='ays_average'>" . __('The average score is', $this->plugin_name) . " " . $result . "%</p>";
+            $show_average = "<p class='ays_average'>" . __('The average score is', 'quiz-maker') . " " . $result . "%</p>";
         }
         
         
@@ -2364,7 +2364,7 @@ class Quiz_Maker_Public
          */
                 
         if(array_key_exists('hide_score',$options) && $options['hide_score'] != 'on'){
-            $show_score_html = "<p class='ays_score ays_score_display_none animated'>" . __( 'Your score is', $this->plugin_name ) . "</p>";
+            $show_score_html = "<p class='ays_score ays_score_display_none animated'>" . __( 'Your score is', 'quiz-maker' ) . "</p>";
         }
         
         
@@ -2385,7 +2385,7 @@ class Quiz_Maker_Public
         $all_review_link_html = '';
         if ( $quiz_make_all_review_link ) {
             if ( $this->ays_get_count_of_reviews(0, 5, $id) > 0 ) {
-                $all_review_link_html = "<div class='ays-quiz-rate-link-box'><span class='ays-quiz-rate-link'>". __( "See review", $this->plugin_name ) ."</span></div>";
+                $all_review_link_html = "<div class='ays-quiz-rate-link-box'><span class='ays-quiz-rate-link'>". __( "See review", 'quiz-maker' ) ."</span></div>";
             }
         }
 
@@ -2440,7 +2440,7 @@ class Quiz_Maker_Public
             $enable_user_cհoosing_anonymous_assessment_html = "";
             if( $quiz_enable_user_cհoosing_anonymous_assessment ){
                 $enable_user_cհoosing_anonymous_assessment_html = "<div class='ays-quiz-user-cհoosing-anonymous-assessment'>
-                <label for='ays-quiz-user-cհoosing-anonymous-assessment-{$id}'>". __("Anonymous feedback", $this->plugin_name) ."</label>
+                <label for='ays-quiz-user-cհoosing-anonymous-assessment-{$id}'>". __("Anonymous feedback", 'quiz-maker') ."</label>
                 <input type='checkbox' name='ays_quiz_user_cհoosing_anonymous_assessment' id='ays-quiz-user-cհoosing-anonymous-assessment-{$id}' class='ays-quiz-user-cհoosing-anonymous-assessment'value='on'/></div>";
             }
 
@@ -2826,14 +2826,14 @@ class Quiz_Maker_Public
                                 $options['redirect_url'] . 
                             "</qm_rurl>                                
                             <div class='ays-quiz-timer' data-show-in-title='".$show_timer_in_title."' data-timer='" . $options['redirection_delay'] . "'>". 
-                                __( "Redirecting after", $this->plugin_name ). " " . 
+                                __( "Redirecting after", 'quiz-maker' ). " " . 
                                 $this->secondsToWords($options['redirection_delay']) . 
                                 "<EXTERNAL_FRAGMENT></EXTERNAL_FRAGMENT>                                
                             </div>";
                     }
                 }
 
-                $limitation_message = (isset($options['limitation_message']) && $options['limitation_message'] != '') ? $this->ays_autoembed($options['limitation_message']) : __( 'You have already passed this quiz.', $this->plugin_name );
+                $limitation_message = (isset($options['limitation_message']) && $options['limitation_message'] != '') ? $this->ays_autoembed($options['limitation_message']) : __( 'You have already passed this quiz.', 'quiz-maker' );
                 $limitation_message = $this->replace_message_variables($limitation_message, $message_variables_data);
                 
                 $limit_users_html = $timer_row . "<div style='color:" . $text_color . "' class='ays_block_content'>" .  $limitation_message . "</div><style>form{min-height:0 !important;}</style>";
@@ -2878,7 +2878,7 @@ class Quiz_Maker_Public
                 $logged_users_message = $this->ays_autoembed($options['enable_logged_users_message']);
                 $logged_users_message = $this->replace_message_variables($logged_users_message, $message_variables_data);
             }else{
-                $logged_users_message =  __('You must log in to pass this quiz.', $this->plugin_name);
+                $logged_users_message =  __('You must log in to pass this quiz.', 'quiz-maker');
             }
             if($logged_users_message !== null){
                 $user_massage = '<div class="logged_in_message">' . $logged_users_message . '</div>';
@@ -2892,7 +2892,7 @@ class Quiz_Maker_Public
             if (isset($options['enable_restriction_pass']) && $options['enable_restriction_pass'] == 'on' && !empty( $user_role )) {
                 $user = wp_get_current_user();
                 $user_roles   = $wp_roles->role_names;
-                $message = (isset($options['restriction_pass_message']) && $options['restriction_pass_message'] != '') ? $options['restriction_pass_message'] : __('Permission Denied', $this->plugin_name);
+                $message = (isset($options['restriction_pass_message']) && $options['restriction_pass_message'] != '') ? $options['restriction_pass_message'] : __('Permission Denied', 'quiz-maker');
                 $user_massage = '<div class="logged_in_message">' . $this->ays_autoembed($message) . '</div>';
                 $user_massage = $this->replace_message_variables($user_massage, $message_variables_data);
                 
@@ -2932,7 +2932,7 @@ class Quiz_Maker_Public
         // Limitation tackers of quiz
         $enable_tackers_count = false;
         $tackers_count = 0;
-        $tackers_message = "<div style='padding:50px;'><p>" . __( "This quiz is expired!", $this->plugin_name ) . "</p></div>";
+        $tackers_message = "<div style='padding:50px;'><p>" . __( "This quiz is expired!", 'quiz-maker' ) . "</p></div>";
         $options['enable_tackers_count'] = !isset($options['enable_tackers_count']) ? 'off' : $options['enable_tackers_count'];
         if(isset($options['enable_tackers_count']) && $options['enable_tackers_count'] == 'on'){
             $enable_tackers_count = true;
@@ -2942,13 +2942,13 @@ class Quiz_Maker_Public
         }
 
         // Quiz takers message
-        $quiz_tackers_message = ( isset($options['quiz_tackers_message']) && $options['quiz_tackers_message'] != '' ) ? stripslashes( wpautop( $options['quiz_tackers_message'] ) ) : __( "This quiz is expired!", $this->plugin_name );
+        $quiz_tackers_message = ( isset($options['quiz_tackers_message']) && $options['quiz_tackers_message'] != '' ) ? stripslashes( wpautop( $options['quiz_tackers_message'] ) ) : __( "This quiz is expired!", 'quiz-maker' );
         $quiz_tackers_message = $this->replace_message_variables($quiz_tackers_message, $message_variables_data);
 
-        if ( $quiz_tackers_message != __( "This quiz is expired!", $this->plugin_name ) ) {
+        if ( $quiz_tackers_message != __( "This quiz is expired!", 'quiz-maker' ) ) {
             $tackers_message = "<div class='ays-quiz-limitation-count-of-takers'>". $quiz_tackers_message ."</div>";
         } else {
-            $tackers_message = "<div class='ays-quiz-limitation-count-of-takers'><p>" . __( "This quiz is expired!", $this->plugin_name ) . "</p></div>";
+            $tackers_message = "<div class='ays-quiz-limitation-count-of-takers'><p>" . __( "This quiz is expired!", 'quiz-maker' ) . "</p></div>";
         }
         
         
@@ -3028,7 +3028,7 @@ class Quiz_Maker_Public
             }
         }
 
-        $expired_quiz_message = "<p class='ays-fs-subtitle'>" . __('The quiz has expired.', $this->plugin_name) . "</p>";
+        $expired_quiz_message = "<p class='ays-fs-subtitle'>" . __('The quiz has expired.', 'quiz-maker') . "</p>";
 
         if (isset($options['active_date_check']) && $options['active_date_check'] == "on") {
             $active_date_check = true;
@@ -3052,7 +3052,7 @@ class Quiz_Maker_Public
                     if ($show_timer_type == 'countdown') {
                         $show_timer .= '<p class="show_timer_countdown" data-timer_countdown="'.$startDate_atr.'"></p>';
                     }else if ($show_timer_type == 'enddate') {
-                        $show_timer .= '<p class="show_timer_countdown">' . __('This Quiz will start on', $this->plugin_name);
+                        $show_timer .= '<p class="show_timer_countdown">' . __('This Quiz will start on', 'quiz-maker');
                         $show_timer .= ' ' . date_i18n('H:i:s F jS, Y', intval($startDate));
                         $show_timer .= '</p>';
                     }
@@ -3077,7 +3077,7 @@ class Quiz_Maker_Public
                     $expired_quiz_message = "<div class='step active-step'>
                         <div class='ays-abs-fs'>
                             ".$show_timer."
-                            <p class='ays-fs-subtitle'>" . __('The quiz will be available soon.', $this->plugin_name) . "</p>
+                            <p class='ays-fs-subtitle'>" . __('The quiz will be available soon.', 'quiz-maker') . "</p>
                         </div>
                     </div>";
                 }
@@ -3092,7 +3092,7 @@ class Quiz_Maker_Public
                 }else{
                     $expired_quiz_message = "<div class='step active-step'>
                         <div class='ays-abs-fs'>
-                            <p class='ays-fs-subtitle'>" . __('The quiz has expired.', $this->plugin_name) . "</p>
+                            <p class='ays-fs-subtitle'>" . __('The quiz has expired.', 'quiz-maker') . "</p>
                         </div>
                     </div>";
                 }
@@ -4649,7 +4649,7 @@ class Quiz_Maker_Public
                     $question_category_description = ( isset( $question_category_data['description'] ) && $question_category_data['description'] != "" ) ? $question_category_data['description'] : "";
                     
                     $question_category = "<p style='margin:0!important;text-align:left;'>
-                        <em style='font-style:italic;font-size:0.8em;'>". __("Category", $this->plugin_name) .":</em>
+                        <em style='font-style:italic;font-size:0.8em;'>". __("Category", 'quiz-maker') .":</em>
                         <strong style='font-size:0.8em;'>{$question_category}</strong>
                     </p>";
 
@@ -4804,7 +4804,7 @@ class Quiz_Maker_Public
                 }
                 if(isset($question['user_explanation']) && $question['user_explanation'] == 'on'){
                     $user_explanation = "<div class='ays_user_explanation'>
-                        <textarea placeholder='".__('You can enter your answer explanation',$this->plugin_name)."' class='ays_user_explanation_text' name='user-answer-explanation[{$id}]'></textarea>
+                        <textarea placeholder='".__('You can enter your answer explanation','quiz-maker')."' class='ays_user_explanation_text' name='user-answer-explanation[{$id}]'></textarea>
                     </div>";
                 }
 
@@ -5203,7 +5203,7 @@ class Quiz_Maker_Public
             if(isset($options->pass_score_message) && $options->pass_score_message != ''){
                 $pass_score_message = $this->ays_autoembed($options->pass_score_message);
             }else{
-                // $pass_score_message = '<h4 style="text-align: center;">'. __("Congratulations!", $this->plugin_name) .'</h4><p style="text-align: center;">'. __("You passed the quiz!", $this->plugin_name) .'</p>';
+                // $pass_score_message = '<h4 style="text-align: center;">'. __("Congratulations!", 'quiz-maker') .'</h4><p style="text-align: center;">'. __("You passed the quiz!", 'quiz-maker') .'</p>';
             }
 
             // Fail Score Text
@@ -5211,7 +5211,7 @@ class Quiz_Maker_Public
             if(isset($options->fail_score_message) && $options->fail_score_message != ''){
                 $fail_score_message = $this->ays_autoembed($options->fail_score_message);
             }else{
-                // $fail_score_message = '<h4 style="text-align: center;">'. __("Oops!", $this->plugin_name) .'</h4><p style="text-align: center;">'. __("You have not passed the quiz! <br> Try again!", $this->plugin_name) .'</p>';
+                // $fail_score_message = '<h4 style="text-align: center;">'. __("Oops!", 'quiz-maker') .'</h4><p style="text-align: center;">'. __("You have not passed the quiz! <br> Try again!", 'quiz-maker') .'</p>';
             }
 
             if(! $show_information_form){
@@ -5262,7 +5262,7 @@ class Quiz_Maker_Public
             $return_false_status_arr = array(
                 "status" => false,
                 "flag"   => false,
-                "text"   => __( 'You have already passed this quiz.', $this->plugin_name ),
+                "text"   => __( 'You have already passed this quiz.', 'quiz-maker' ),
             );
 
             if ( $check_cookie ) {
@@ -5640,13 +5640,13 @@ class Quiz_Maker_Public
                         $user_wordpress_website_url = ( isset( $current_user_data->user_url ) && ! empty( $current_user_data->user_url ) ) ? sanitize_url($current_user_data->user_url) : "";
 
                         if( !empty( $user_wordpress_website_url ) ){
-                            $user_wordpress_website = "<a href='". esc_url( $user_wordpress_website_url ) ."' target='_blank' class='ays-quiz-user-website-link-a-tag'>". __( "Website", $this->plugin_name ) ."</a>";
+                            $user_wordpress_website = "<a href='". esc_url( $user_wordpress_website_url ) ."' target='_blank' class='ays-quiz-user-website-link-a-tag'>". __( "Website", 'quiz-maker' ) ."</a>";
                         }
 
                     }
                 }
 
-                $current_quiz_author = __( "Unknown", $this->plugin_name );
+                $current_quiz_author = __( "Unknown", 'quiz-maker' );
                 $current_quiz_author_nickname = "";
                 $current_quiz_author_email = "";
                 $current_quiz_author_website_url = "";
@@ -5669,7 +5669,7 @@ class Quiz_Maker_Public
                         $current_quiz_author_website_url = ( isset( $current_quiz_user_data->user_url ) && ! empty( $current_quiz_user_data->user_url ) ) ? sanitize_url($current_quiz_user_data->user_url) : "";
 
                         if( !empty( $current_quiz_author_website_url ) ){
-                            $current_quiz_author_website_url = "<a href='". esc_url( $current_quiz_author_website_url ) ."' target='_blank' class='ays-quiz-user-website-link-a-tag'>". __( "Website", $this->plugin_name ) ."</a>";
+                            $current_quiz_author_website_url = "<a href='". esc_url( $current_quiz_author_website_url ) ."' target='_blank' class='ays-quiz-user-website-link-a-tag'>". __( "Website", 'quiz-maker' ) ."</a>";
                         }
                     }
                 }
@@ -5698,7 +5698,7 @@ class Quiz_Maker_Public
 
                 $quiz_curent_page_link = isset( $_REQUEST['ays_quiz_curent_page_link'] ) && $_REQUEST['ays_quiz_curent_page_link'] != '' ? sanitize_url( $_REQUEST['ays_quiz_curent_page_link'] ) : "";
 
-                $quiz_current_page_link_html = "<a href='". esc_sql( $quiz_curent_page_link ) ."' target='_blank' class='ays-quiz-curent-page-link-a-tag'>". __( "Quiz link", $this->plugin_name ) ."</a>";
+                $quiz_current_page_link_html = "<a href='". esc_sql( $quiz_curent_page_link ) ."' target='_blank' class='ays-quiz-curent-page-link-a-tag'>". __( "Quiz link", 'quiz-maker' ) ."</a>";
 
                 // WP home page url
                 $home_main_url = home_url();
@@ -6232,7 +6232,7 @@ class Quiz_Maker_Public
             if ($question_enable_text_message && $question_text_max_length != 0 && $question_text_max_length != '') {
                 $ays_quiz_question_text_message_html .= '<div class="ays_quiz_question_text_conteiner">';
                     $ays_quiz_question_text_message_html .= '<div class="ays_quiz_question_text_message">';
-                        $ays_quiz_question_text_message_html .= '<span class="ays_quiz_question_text_message_span">'. $question_text_max_length . '</span> ' . $question_limit_text_type . ' ' . __( 'left' , $this->plugin_name );
+                        $ays_quiz_question_text_message_html .= '<span class="ays_quiz_question_text_message_span">'. $question_text_max_length . '</span> ' . $question_limit_text_type . ' ' . __( 'left' , 'quiz-maker' );
                     $ays_quiz_question_text_message_html .= '</div>';
                 $ays_quiz_question_text_message_html .= '</div>';
             }
@@ -6305,7 +6305,7 @@ class Quiz_Maker_Public
             if ($question_enable_text_message && $question_text_max_length != 0 && $question_text_max_length != '') {
                 $ays_quiz_question_text_message_html .= '<div class="ays_quiz_question_text_conteiner">';
                     $ays_quiz_question_text_message_html .= '<div class="ays_quiz_question_text_message">';
-                        $ays_quiz_question_text_message_html .= '<span class="ays_quiz_question_text_message_span">'. $question_text_max_length . '</span> ' . $question_limit_text_type . ' ' . __( 'left' , $this->plugin_name );
+                        $ays_quiz_question_text_message_html .= '<span class="ays_quiz_question_text_message_span">'. $question_text_max_length . '</span> ' . $question_limit_text_type . ' ' . __( 'left' , 'quiz-maker' );
                     $ays_quiz_question_text_message_html .= '</div>';
                 $ays_quiz_question_text_message_html .= '</div>';
             }
@@ -6477,7 +6477,7 @@ class Quiz_Maker_Public
         $answer_container_script_html = "";
         $answer_container = "<div class='ays-field ays-select-field'>            
             <select class='ays-select'>                
-                <option value=''>".__('Select an answer', $this->plugin_name)."</option>";
+                <option value=''>".__('Select an answer', 'quiz-maker')."</option>";
             foreach ($answers as $key => $answer) {
                 if ( ! empty($numbering_type_arr) ) {
                     $numbering_type = (isset($numbering_type_arr[$key]) && $numbering_type_arr[$key] != '') ? $numbering_type_arr[$key] :'';
@@ -6598,25 +6598,25 @@ class Quiz_Maker_Public
         /*** get the days ***/
         $days = (int)($seconds / 86400);
         if ($days > 0) {
-            $ret .= sprintf( __('%s days', AYS_QUIZ_NAME ), $days ) . " ";
+            $ret .= sprintf( __('%s days', 'quiz-maker' ), $days ) . " ";
         }
 
         /*** get the hours ***/
         $hours = (int)(($seconds - ($days * 86400)) / 3600);
         if ($hours > 0) {
-            $ret .= sprintf( __('%s hours', AYS_QUIZ_NAME ), $hours ) . " ";
+            $ret .= sprintf( __('%s hours', 'quiz-maker' ), $hours ) . " ";
         }
 
         /*** get the minutes ***/
         $minutes = (int)(($seconds - $days * 86400 - $hours * 3600) / 60);
         if ($minutes > 0) {
-            $ret .= sprintf( __('%s minutes', AYS_QUIZ_NAME ), $minutes ) . " ";
+            $ret .= sprintf( __('%s minutes', 'quiz-maker' ), $minutes ) . " ";
         }
 
         /*** get the seconds ***/
         $seconds = (int)($seconds - ($days * 86400) - ($hours * 3600) - ($minutes * 60));
         if ($seconds > 0) {
-            $ret .= sprintf( __('%s seconds', AYS_QUIZ_NAME ), $seconds );
+            $ret .= sprintf( __('%s seconds', 'quiz-maker' ), $seconds );
         }
 
         return $ret;
@@ -6696,20 +6696,27 @@ class Quiz_Maker_Public
         return $result;
     }
     
-    protected function ays_set_rate_id_of_result($id , $last_result_id){
+    protected function ays_set_rate_id_of_result($id, $last_result_id){
         global $wpdb;
         $results_table = $wpdb->prefix . 'aysquiz_reports';
         $sql = "SELECT * FROM $results_table WHERE id = ".intval($last_result_id);
         $res = $wpdb->get_row($sql, ARRAY_A);
-        $options = json_decode($res['options'], true);
-        $options['rate_id'] = $id;
-        $results = $wpdb->update(
-            $results_table,
-            array( 'options' => json_encode($options) ),
-            array( 'id' => intval($last_result_id) ),
-            array( '%s' ),
-            array( '%d' )
-        );
+        
+        $results = false;
+        if( !empty($res) && !empty($res['options']) ){
+            $options = json_decode($res['options'], true);
+            $options['rate_id'] = $id;
+            $results = $wpdb->update(
+                $results_table,
+                array( 'options' => json_encode($options) ),
+                array( 'id' => intval($last_result_id) ),
+                array( '%s' ),
+                array( '%d' )
+            );
+        } elseif ( isset($id) && isset($last_result_id) && $last_result_id == 0 ){
+            $results = true;
+        }
+
         if($results !== false){
             return true;
         }
@@ -6784,7 +6791,7 @@ class Quiz_Maker_Public
                             <div class='panel-heading'>
                                 <i class='ays_fa ays_fa_user'></i> <strong>$user_name</strong><br/>
                                 <i class='ays_fa ays_fa_clock_o'></i> $commented<br/>
-                                ".__("Rated", $this->plugin_name)." <i class='ays_fa ays_fa_star'></i> $score
+                                ".__("Rated", 'quiz-maker')." <i class='ays_fa ays_fa_star'></i> $score
                             </div>
                             <div class='panel-body'><div>". stripslashes(nl2br($reason)) ."</div></div>
                         </div>
@@ -6835,7 +6842,7 @@ class Quiz_Maker_Public
             
             ob_end_clean();
             $ob_get_clean = ob_get_clean();
-            echo "<p class='ays_no_more'>" . $this->default_texts['noMoreReviewsText'] . "</p>";
+            echo "<p class='ays_no_more'>" . esc_html($this->default_texts['noMoreReviewsText']) . "</p>";
             wp_die();
         }else{       
             ob_end_clean();
@@ -6880,7 +6887,7 @@ class Quiz_Maker_Public
             $user = wp_get_current_user();
             $user_name = $user->data->display_name;
         }else{
-            $user_name = __( 'Anonymous' , AYS_QUIZ_NAME );
+            $user_name = __( 'Anonymous' , 'quiz-maker' );
         }
         $user_email = isset($_REQUEST['ays_user_email']) ? esc_sql( sanitize_email( $_REQUEST['ays_user_email'] ) ) : '';
         $user_phone = isset($_REQUEST['ays_user_phone']) ? esc_sql( sanitize_text_field( $_REQUEST['ays_user_phone'] ) ) : '';
@@ -6905,7 +6912,7 @@ class Quiz_Maker_Public
         if ( $quiz_make_responses_anonymous ) {
             $user_id     = 0;
             $user_ip     = '';
-            $user_name   = __( 'Anonymous' , AYS_QUIZ_NAME );
+            $user_name   = __( 'Anonymous' , 'quiz-maker' );
             $user_email  = '';
             $user_phone  = '';
         }
@@ -6913,7 +6920,7 @@ class Quiz_Maker_Public
         if ( $quiz_enable_user_cհoosing_anonymous_assessment && $quiz_enable_user_cհoosing_anonymous_assessment_checkbox_flag ) {
             $user_id     = 0;
             $user_ip     = '';
-            $user_name   = __( 'Anonymous' , AYS_QUIZ_NAME );
+            $user_name   = __( 'Anonymous' , 'quiz-maker' );
             $user_email  = '';
             $user_phone  = '';
         }

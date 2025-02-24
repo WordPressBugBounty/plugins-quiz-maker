@@ -43,10 +43,16 @@ $quiz_accordion_svg_html = '
     </svg>
 </div>';
 
+$svg_sanitize_properties = self::ays_quiz_svg_sanitize_allowed_properties();
+
+if(empty($svg_sanitize_properties)){
+    $svg_sanitize_properties = 'post';
+}
+
 $question_categories = $this->quizes_obj->get_question_categories();
 $quiz_categories = $this->quizes_obj->get_quiz_categories();
 
-$plus_icon_svg = "<span class=''><img src='". AYS_QUIZ_ADMIN_URL ."/images/icons/plus=icon.svg'></span>";
+$plus_icon_svg = "<span class=''><img src='". AYS_QUIZ_ADMIN_URL ."/images/icons/plus-icon.svg'></span>";
 $youtube_icon_svg = "<span class=''><img src='". AYS_QUIZ_ADMIN_URL ."/images/icons/youtube-video-icon.svg'></span>";
 
 $quick_quiz_plugin_nonce = wp_create_nonce( 'quiz-maker-ajax-quick-quiz-nonce' );
@@ -96,23 +102,23 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
 ?>
 
 <div class="wrap ays-quiz-list-table ays_quizzes_list_table">
-    <button style="width:50px;height:50px;" class="ays-pulse-button ays-quizzes-table-quick-start" id="ays_quick_start" title="Quick quiz" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="left" data-content="<?php echo __('Build your quiz in a few minutes',$this->plugin_name)?>"></button>
+    <button style="width:50px;height:50px;" class="ays-pulse-button ays-quizzes-table-quick-start" id="ays_quick_start" title="Quick quiz" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="left" data-content="<?php echo esc_attr( __('Build your quiz in a few minutes','quiz-maker') ); ?>"></button>
     <div class="ays-quiz-heading-box" style="margin-right: 20px;">
         <div class="ays-quiz-wordpress-user-manual-box">
             <a href="https://www.youtube.com/watch?v=gKjzOsn_yDo" target="_blank" style="text-decoration: none;font-size: 13px;">
-                <span><img src='<?php echo AYS_QUIZ_ADMIN_URL; ?>/images/icons/youtube-video-icon.svg' ></span>
-                <span style="margin-left: 3px; text-decoration: underline;"><?php echo __('Getting started', "quiz-maker"); ?></span>
+                <span><img src='<?php echo esc_url( AYS_QUIZ_ADMIN_URL ); ?>/images/icons/youtube-video-icon.svg' ></span>
+                <span style="margin-left: 3px; text-decoration: underline;"><?php echo esc_html__('Getting started', "quiz-maker"); ?></span>
             </a>
             <a href="https://quiz-plugin.com/docs/" target="_blank">
                 <i class="ays_fa ays_fa_file_text" ></i> 
-                <span style="margin-left: 3px;text-decoration: underline;"><?php echo __("View Documentation", "quiz-maker"); ?></span>
+                <span style="margin-left: 3px;text-decoration: underline;"><?php echo esc_html__("View Documentation", "quiz-maker"); ?></span>
             </a>
         </div>
     </div>
     <h1 class="wp-heading-inline">
         <?php
-            echo __(esc_html(get_admin_page_title()),$this->plugin_name);
-            // echo sprintf( '<a href="?page=%s&action=%s" class="page-title-action button-primary ays-quiz-add-new-button ays-quiz-add-new-button-new-design"> %s '  . __('Add New', $this->plugin_name) . '</a>', esc_attr( $_REQUEST['page'] ), 'add', $plus_icon_svg);
+            echo esc_html(get_admin_page_title());
+            // echo sprintf( '<a href="?page=%s&action=%s" class="page-title-action button-primary ays-quiz-add-new-button ays-quiz-add-new-button-new-design"> %s '  . __('Add New', 'quiz-maker') . '</a>', esc_attr( $_REQUEST['page'] ), 'add', $plus_icon_svg);
         ?>
     </h1>
 
@@ -120,14 +126,14 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
     <div class="notice notice-success is-dismissible">
         <p style="font-size:14px;">
             <strong>
-                <?php echo __( "If you haven't created questions yet, you need to do it first.", $this->plugin_name ); ?> 
+                <?php echo esc_html__( "If you haven't created questions yet, you need to do it first.", 'quiz-maker' ); ?> 
             </strong>
             <br>
             <strong>
                 <em>
-                    <?php echo __( "For creating a question go", $this->plugin_name ); ?> 
-                    <a href="<?php echo admin_url('admin.php') . "?page=".$this->plugin_name . "-questions"; ?>" target="_blank">
-                        <?php echo __( "here", $this->plugin_name ); ?>.
+                    <?php echo esc_html__( "For creating a question go", 'quiz-maker' ); ?> 
+                    <a href="<?php echo esc_url( admin_url('admin.php') . "?page=".$this->plugin_name . "-questions" ); ?>" target="_blank">
+                        <?php echo esc_html__( "here", 'quiz-maker' ); ?>.
                     </a>
                 </em>
             </strong>
@@ -138,14 +144,14 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
     <div class="ays-quiz-heading-box ays-quiz-unset-float">
         <div class="ays-quiz-wordpress-user-manual-box">
             <a href="https://www.youtube.com/watch?v=gKjzOsn_yDo" target="_blank">
-                <?php echo __("Gettings started with Quiz Maker plugin - video", $this->plugin_name); ?>
+                <?php echo esc_html__("Gettings started with Quiz Maker plugin - video", 'quiz-maker'); ?>
             </a>
         </div>
     </div>
     <?php endif; ?>
     <div class="ays-quiz-add-new-button-box">
         <?php
-            echo sprintf( '<a href="?page=%s&action=%s" class="page-title-action button-primary ays-quiz-add-new-button ays-quiz-add-new-button-new-design"> %s '  . __('Add New', $this->plugin_name) . '</a>', esc_attr( $_REQUEST['page'] ), 'add', $plus_icon_svg);
+            echo sprintf( '<a href="?page=%s&action=%s" class="page-title-action button-primary ays-quiz-add-new-button ays-quiz-add-new-button-new-design"> %s '  . esc_html__('Add New', 'quiz-maker') . '</a>', esc_attr( $_REQUEST['page'] ), 'add', wp_kses_post($plus_icon_svg) );
         ?>
     </div>
     <div id="poststuff">
@@ -158,8 +164,8 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                     <form method="post">
                         <?php
                         $this->quizes_obj->prepare_items();
-                        $search = __( "Search", $this->plugin_name );
-                        $this->quizes_obj->search_box($search, $this->plugin_name);
+                        $search = esc_html__( "Search", 'quiz-maker' );
+                        $this->quizes_obj->search_box($search, 'quiz-maker');
                         $this->quizes_obj->display();
                         ?>
                     </form>
@@ -170,29 +176,29 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
     </div>
     <div class="ays-quiz-add-new-button-box">
         <?php
-            echo sprintf( '<a href="?page=%s&action=%s" class="page-title-action button-primary ays-quiz-add-new-button ays-quiz-add-new-button-new-design"> %s '  . __('Add New', $this->plugin_name) . '</a>', esc_attr( $_REQUEST['page'] ), 'add', $plus_icon_svg);
+            echo sprintf( '<a href="?page=%s&action=%s" class="page-title-action button-primary ays-quiz-add-new-button ays-quiz-add-new-button-new-design"> %s '  . esc_html__('Add New', 'quiz-maker') . '</a>', esc_attr( $_REQUEST['page'] ), 'add', wp_kses_post( $plus_icon_svg ) );
         ?>
     </div>
     <?php if($quiz_max_id <= 3): ?>
     <div class="ays-quiz-create-survey-video-box" style="margin: 0px auto 30px;">
         <div class="ays-quiz-create-survey-title">
-            <h4><?php echo __( "Create quiz with Quiz Maker plugin in One Minute", $this->plugin_name ); ?></h4>
+            <h4><?php echo esc_html__( "Create quiz with Quiz Maker plugin in One Minute", 'quiz-maker' ); ?></h4>
         </div>
         <div class="ays-quiz-create-survey-youtube-video">
             <iframe width="560" height="315" class="ays-quiz-responsive-with-for-iframe" src="https://www.youtube.com/embed/AUHZrVcBrMU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
         </div>
         <div class="ays_quiz_small_hint_text_for_message_variables" style="text-align: center;">
-            <?php echo __( 'Please note that this video will disappear once you created 4 quizzes.', 'quiz-maker' ); ?>
+            <?php echo esc_html__( 'Please note that this video will disappear once you created 4 quizzes.', 'quiz-maker' ); ?>
         </div>
         <div class="ays-quiz-create-survey-youtube-video-button-box">
-            <?php echo sprintf( '<a href="?page=%s&action=%s" class="ays-quiz-add-new-button-video ays-quiz-add-new-button-new-design"> %s ' . __('Add New', $this->plugin_name) . '</a>', esc_attr( $_REQUEST['page'] ), 'add', $plus_icon_svg);?>
+            <?php echo sprintf( '<a href="?page=%s&action=%s" class="ays-quiz-add-new-button-video ays-quiz-add-new-button-new-design"> %s ' . esc_html__('Add New', 'quiz-maker') . '</a>', esc_attr( $_REQUEST['page'] ), 'add', wp_kses_post( $plus_icon_svg ));?>
         </div>
     </div>
     <?php else: ?>
     <div class="ays-quiz-create-survey-video-box ays-quiz-create-survey-video-box-only-link" style="margin: auto;">
         <div class="ays-quiz-create-survey-title">
-            <?php echo $youtube_icon_svg; ?>
-            <a href="https://www.youtube.com/watch?v=AUHZrVcBrMU" target="_blank" title="YouTube video player"><?php echo __("How to create a quiz in one minute?", $this->plugin_name); ?></a>
+            <?php echo wp_kses_post($youtube_icon_svg); ?>
+            <a href="https://www.youtube.com/watch?v=AUHZrVcBrMU" target="_blank" title="YouTube video player"><?php echo esc_html__("How to create a quiz in one minute?", 'quiz-maker'); ?></a>
         </div>
     </div>
     <?php endif; ?>
@@ -200,18 +206,18 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
         <!-- Modal content -->
         <div class="ays-modal-content fadeInDown" id="ays-quick-modal-content">
             <div class="ays-quiz-preloader">
-                <img src="<?php echo AYS_QUIZ_ADMIN_URL; ?>/images/loaders/tail-spin.svg">
+                <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL); ?>/images/loaders/tail-spin.svg">
             </div>
             <div class="ays-modal-header">
                 <span class="ays-close">&times;</span>
-                <h4><?php echo __('Build your quiz in few seconds', $this->plugin_name); ?></h4>
+                <h4><?php echo esc_html__('Build your quiz in few seconds', 'quiz-maker'); ?></h4>
             </div>
             <div class="ays-modal-body">
                 <form method="post" id="ays_quick_popup">
                     <div class="ays_modal_element">
                         <div class="form-group row">
                             <div class="col-sm-2">
-                                <label class='ays-label ays_quiz_title' for='ays-quiz-title'><?php echo __('Quiz Title', $this->plugin_name); ?></label>
+                                <label class='ays-label ays_quiz_title' for='ays-quiz-title'><?php echo esc_html__('Quiz Title', 'quiz-maker'); ?></label>
                             </div>
                             <div class="col-sm-10">
                                 <input type="text" class="ays-text-input" id='ays-quiz-title' name='ays_quiz_title' value=""/>
@@ -220,7 +226,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                         <hr>
                         <div class="form-group row">
                             <div class="col-sm-2">
-                                <label class='ays-label ays_quick_quiz_description' for='ays-quick-quiz-description'><?php echo __('Quiz Description', $this->plugin_name); ?></label>
+                                <label class='ays-label ays_quick_quiz_description' for='ays-quick-quiz-description'><?php echo esc_html__('Quiz Description', 'quiz-maker'); ?></label>
                             </div>
                             <div class="col-sm-10">
                                 <textarea class="ays-text-input ays-textarea-height-100" id='ays-quick-quiz-description' name='ays_quick_quiz_description'></textarea>
@@ -229,13 +235,13 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                         <hr>
                         <div class="form-group row">
                             <div class="col-sm-2">
-                                <label class='ays-label ays_quiz_title' for='ays-quiz-category'><?php echo __('Quiz Category', $this->plugin_name); ?></label>
+                                <label class='ays-label ays_quiz_title' for='ays-quiz-category'><?php echo esc_html__('Quiz Category', 'quiz-maker'); ?></label>
                             </div>
                             <div class="col-sm-10">
                                 <select id="ays-quiz-category" class="ays-text-input ays-text-input-short" name="ays_quiz_category">
                                     <?php
                                         foreach ($quiz_categories as $key => $quiz_category) {
-                                            echo "<option value='" . $quiz_category['id'] . "'>" . esc_attr( $quiz_category['title'] ) . "</option>";
+                                            echo "<option value='" . esc_attr($quiz_category['id']) . "'>" . esc_attr( $quiz_category['title'] ) . "</option>";
                                         }
                                     ?>
                                 </select>
@@ -244,16 +250,16 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                         <hr>
                         <div class="form-group row">
                             <div class="col-sm-2">
-                                <label class='ays-label ays_quiz_title' for='ays-quiz-category'><?php echo __('Status', $this->plugin_name); ?></label>
+                                <label class='ays-label ays_quiz_title' for='ays-quiz-category'><?php echo esc_html__('Status', 'quiz-maker'); ?></label>
                             </div>
                             <div class="col-sm-10" style="display: flex;">
                                 <div class="form-check form-check-inline">
                                     <input type="radio" id="ays-quick-quiz-publish" name="ays_quick_quiz_publish" value="1" checked />
-                                    <label class="form-check-label" for="ays-quick-quiz-publish"> <?php echo __('Published', $this->plugin_name); ?> </label>
+                                    <label class="form-check-label" for="ays-quick-quiz-publish"> <?php echo esc_html__('Published', 'quiz-maker'); ?> </label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input type="radio" id="ays-quick-quiz-unpublish" name="ays_quick_quiz_publish" value="0"/>
-                                    <label class="form-check-label" for="ays-quick-quiz-unpublish"> <?php echo __('Unpublished', $this->plugin_name); ?> </label>
+                                    <label class="form-check-label" for="ays-quick-quiz-unpublish"> <?php echo esc_html__('Unpublished', 'quiz-maker'); ?> </label>
                                 </div>
                             </div>
                         </div>
@@ -261,7 +267,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                         <div class="form-group row ays_toggle_parent">
                             <div class="col-sm-2">
                                 <label for="ays_quick_quiz_enable_options">
-                                    <?php echo __('Quiz Options',$this->plugin_name); ?>
+                                    <?php echo esc_html__('Quiz Options','quiz-maker'); ?>
                                 </label>
                             </div>
                             <div class="col-sm-1">
@@ -271,23 +277,23 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                 <div class="ays-quiz-top-actions-container-wrapper form-group row">
                                     <div class="col-sm-12">
                                         <p class="m-0 text-right">
-                                            <a class="ays-quiz-collapse-all" href="javascript:void(0);"><?php echo __( "Collapse All", "quiz-maker" ); ?></a>
+                                            <a class="ays-quiz-collapse-all" href="javascript:void(0);"><?php echo esc_html__( "Collapse All", "quiz-maker" ); ?></a>
                                             <span>|</span>
-                                            <a class="ays-quiz-expand-all" href="javascript:void(0);"><?php echo __( "Expand All", "quiz-maker" ); ?></a>
+                                            <a class="ays-quiz-expand-all" href="javascript:void(0);"><?php echo esc_html__( "Expand All", "quiz-maker" ); ?></a>
                                         </p>
                                     </div>
                                 </div>
                                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                                     <div class="ays-quiz-accordion-container">
-                                        <?php echo $quiz_accordion_svg_html; ?>
-                                        <p class="ays-subtitle" style="margin-top: 0;"><?php echo __('Settings',$this->plugin_name); ?></p>
+                                        <?php echo wp_kses($quiz_accordion_svg_html, $svg_sanitize_properties); ?>
+                                        <p class="ays-subtitle" style="margin-top: 0;"><?php echo esc_html__('Settings','quiz-maker'); ?></p>
                                     </div>
                                     <hr class="ays-quiz-bolder-hr"/>
                                     <div class="ays-quiz-accordion-options-box">
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_enable_randomize_questions">
-                                                   <?php echo __('Enable randomize questions',$this->plugin_name)?>
+                                                   <?php echo esc_html__('Enable randomize questions','quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
@@ -298,7 +304,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_enable_randomize_answers">
-                                                   <?php echo __('Enable randomize answers',$this->plugin_name)?>
+                                                   <?php echo esc_html__('Enable randomize answers','quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
@@ -309,7 +315,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_display_all_questions">
-                                                    <?php echo __('Display all questions on one page',$this->plugin_name); ?>
+                                                    <?php echo esc_html__('Display all questions on one page','quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
@@ -320,7 +326,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_enable_correction">
-                                                    <?php echo __('Show correct answers',$this->plugin_name); ?>
+                                                    <?php echo esc_html__('Show correct answers','quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
@@ -331,7 +337,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_show_question_category">
-                                                    <?php echo __('Show question category',$this->plugin_name); ?>
+                                                    <?php echo esc_html__('Show question category','quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
@@ -342,7 +348,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_enable_pass_count">
-                                                    <?php echo __('Show passed users count',$this->plugin_name); ?>
+                                                    <?php echo esc_html__('Show passed users count','quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
@@ -353,7 +359,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_show_category">
-                                                    <?php echo __('Show quiz category',$this->plugin_name); ?>
+                                                    <?php echo esc_html__('Show quiz category','quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
@@ -364,7 +370,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_enable_rate_avg">
-                                                    <?php echo __('Show average rate',$this->plugin_name); ?>
+                                                    <?php echo esc_html__('Show average rate','quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
@@ -375,7 +381,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_show_author">
-                                                    <?php echo __('Show quiz author',$this->plugin_name); ?>
+                                                    <?php echo esc_html__('Show quiz author','quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
@@ -386,7 +392,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_show_create_date">
-                                                    <?php echo __('Show creation date',$this->plugin_name); ?>
+                                                    <?php echo esc_html__('Show creation date','quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
@@ -397,7 +403,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_enable_next_button">
-                                                    <?php echo __('Enable next button',$this->plugin_name); ?>
+                                                    <?php echo esc_html__('Enable next button','quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
@@ -408,7 +414,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_enable_previous_button">
-                                                    <?php echo __('Enable previous button',$this->plugin_name); ?>
+                                                    <?php echo esc_html__('Enable previous button','quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
@@ -419,7 +425,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_enable_early_finish">
-                                                    <?php echo __('Enable finish button',$this->plugin_name); ?>
+                                                    <?php echo esc_html__('Enable finish button','quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-1">
@@ -430,7 +436,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_enable_clear_answer">
-                                                    <?php echo __('Enable clear answer button',$this->plugin_name)?>
+                                                    <?php echo esc_html__('Enable clear answer button','quiz-maker')?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
@@ -441,7 +447,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_enable_enter_key">
-                                                    <?php echo __('Enable to go next by pressing Enter key',$this->plugin_name); ?>
+                                                    <?php echo esc_html__('Enable to go next by pressing Enter key','quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
@@ -452,7 +458,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_display_messages_before_buttons">
-                                                    <?php echo __('Display messages before the buttons',$this->plugin_name); ?>
+                                                    <?php echo esc_html__('Display messages before the buttons','quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
@@ -463,7 +469,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_enable_audio_autoplay">
-                                                    <?php echo __('Enable audio autoplay',$this->plugin_name)?>
+                                                    <?php echo esc_html__('Enable audio autoplay','quiz-maker')?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
@@ -474,7 +480,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_enable_rtl_direction">
-                                                    <?php echo __('Use RTL Direction',$this->plugin_name); ?>
+                                                    <?php echo esc_html__('Use RTL Direction','quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
@@ -485,7 +491,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_enable_questions_counter">
-                                                    <?php echo __('Show questions counter',$this->plugin_name); ?>
+                                                    <?php echo esc_html__('Show questions counter','quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
@@ -496,7 +502,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_enable_question_image_zoom">
-                                                    <?php echo __('Question Image Zoom',$this->plugin_name); ?>
+                                                    <?php echo esc_html__('Question Image Zoom','quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
@@ -507,7 +513,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_enable_leave_page">
-                                                    <?php echo __('Enable confirmation box for leaving the page',$this->plugin_name); ?>
+                                                    <?php echo esc_html__('Enable confirmation box for leaving the page','quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
@@ -518,7 +524,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_enable_see_result_confirm_box">
-                                                    <?php echo __('Enable confirmation box for the See Result button',$this->plugin_name); ?>
+                                                    <?php echo esc_html__('Enable confirmation box for the See Result button','quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
@@ -529,7 +535,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row ays_toggle_parent">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_enable_rw_asnwers_sounds">
-                                                    <?php echo __('Enable sounds for right/wrong answers',$this->plugin_name); ?>
+                                                    <?php echo esc_html__('Enable sounds for right/wrong answers','quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
@@ -540,7 +546,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row ays_toggle_parent">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_enable_custom_texts_for_buttons">
-                                                    <?php echo __('Enable custom texts for buttons',$this->plugin_name); ?>
+                                                    <?php echo esc_html__('Enable custom texts for buttons','quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-1">
@@ -550,7 +556,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                 <div class="form-group row">
                                                     <div class="col-sm-4">
                                                         <label for="ays_quick_quiz_custom_texts_start_button">
-                                                            <?php echo __('Start button',$this->plugin_name); ?>
+                                                            <?php echo esc_html__('Start button','quiz-maker'); ?>
                                                         </label> 
                                                     </div>
                                                     <div class="col-sm-8">
@@ -561,7 +567,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                 <div class="form-group row">
                                                     <div class="col-sm-4">
                                                         <label for="ays_quick_quiz_custom_texts_next_button">
-                                                            <?php echo __('Next button',$this->plugin_name); ?>
+                                                            <?php echo esc_html__('Next button','quiz-maker'); ?>
                                                         </label> 
                                                     </div>
                                                     <div class="col-sm-8">
@@ -572,7 +578,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                 <div class="form-group row">
                                                     <div class="col-sm-4">
                                                         <label for="ays_quick_quiz_custom_texts_prev_button">
-                                                            <?php echo __('Previous button',$this->plugin_name); ?>
+                                                            <?php echo esc_html__('Previous button','quiz-maker'); ?>
                                                         </label> 
                                                     </div>
                                                     <div class="col-sm-8">
@@ -583,7 +589,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                 <div class="form-group row">
                                                     <div class="col-sm-4">
                                                         <label for="ays_quick_quiz_custom_texts_clear_button">
-                                                            <?php echo __('Clear button',$this->plugin_name); ?>
+                                                            <?php echo esc_html__('Clear button','quiz-maker'); ?>
                                                         </label> 
                                                     </div>
                                                     <div class="col-sm-8">
@@ -594,7 +600,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                 <div class="form-group row">
                                                     <div class="col-sm-4">
                                                         <label for="ays_quick_quiz_custom_texts_finish_button">
-                                                            <?php echo __('Finish button',$this->plugin_name); ?>
+                                                            <?php echo esc_html__('Finish button','quiz-maker'); ?>
                                                         </label> 
                                                     </div>
                                                     <div class="col-sm-8">
@@ -605,7 +611,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                 <div class="form-group row">
                                                     <div class="col-sm-4">
                                                         <label for="ays_quick_quiz_custom_texts_see_results_button">
-                                                            <?php echo __('See Result button',$this->plugin_name); ?>
+                                                            <?php echo esc_html__('See Result button','quiz-maker'); ?>
                                                         </label> 
                                                     </div>
                                                     <div class="col-sm-8">
@@ -616,7 +622,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                 <div class="form-group row">
                                                     <div class="col-sm-4">
                                                         <label for="ays_quick_quiz_custom_texts_restart_quiz_button">
-                                                            <?php echo __('Restart quiz button',$this->plugin_name); ?>
+                                                            <?php echo esc_html__('Restart quiz button','quiz-maker'); ?>
                                                         </label> 
                                                     </div>
                                                     <div class="col-sm-8">
@@ -627,7 +633,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                 <div class="form-group row">
                                                     <div class="col-sm-4">
                                                         <label for="ays_quick_quiz_custom_texts_send_feedback_button">
-                                                            <?php echo __('Send feedback button',$this->plugin_name); ?>
+                                                            <?php echo esc_html__('Send feedback button','quiz-maker'); ?>
                                                         </label> 
                                                     </div>
                                                     <div class="col-sm-8">
@@ -638,7 +644,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                 <div class="form-group row">
                                                     <div class="col-sm-4">
                                                         <label for="ays_quick_quiz_custom_texts_load_more_button">
-                                                            <?php echo __('Load more button',$this->plugin_name); ?>
+                                                            <?php echo esc_html__('Load more button','quiz-maker'); ?>
                                                         </label> 
                                                     </div>
                                                     <div class="col-sm-8">
@@ -649,7 +655,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                 <div class="form-group row">
                                                     <div class="col-sm-4">
                                                         <label for="ays_quick_quiz_custom_texts_exit_button">
-                                                            <?php echo __('Exit button',$this->plugin_name); ?>
+                                                            <?php echo esc_html__('Exit button','quiz-maker'); ?>
                                                         </label> 
                                                     </div>
                                                     <div class="col-sm-8">
@@ -660,7 +666,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                 <div class="form-group row">
                                                     <div class="col-sm-4">
                                                         <label for="ays_quick_quiz_custom_texts_check_button">
-                                                            <?php echo __('Check button',$this->plugin_name); ?>
+                                                            <?php echo esc_html__('Check button','quiz-maker'); ?>
                                                         </label> 
                                                     </div>
                                                     <div class="col-sm-8">
@@ -671,7 +677,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                 <div class="form-group row">
                                                     <div class="col-sm-4">
                                                         <label for="ays_quick_quiz_custom_texts_login_button">
-                                                            <?php echo __('Log In button',$this->plugin_name); ?>
+                                                            <?php echo esc_html__('Log In button','quiz-maker'); ?>
                                                         </label> 
                                                     </div>
                                                     <div class="col-sm-8">
@@ -684,15 +690,15 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label>
-                                                    <?php echo __('Show question explanation',$this->plugin_name); ?>
+                                                    <?php echo esc_html__('Show question explanation','quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
                                                 <select id="ays_quick_quiz_show_questions_explanation" name="ays_quick_quiz_show_questions_explanation" class="ays-text-input ays-text-input-short">
-                                                    <option value="on_passing"><?php echo __( "During the quiz", $this->plugin_name ); ?></option>
-                                                    <option value="on_results_page" selected><?php echo __( 'On results page', $this->plugin_name); ?></option>
-                                                    <option value="on_both"><?php echo __( 'On Both', $this->plugin_name); ?></option>
-                                                    <option value="disable"><?php echo __( 'Disable', $this->plugin_name); ?></option>
+                                                    <option value="on_passing"><?php echo esc_html__( "During the quiz", 'quiz-maker' ); ?></option>
+                                                    <option value="on_results_page" selected><?php echo esc_html__( 'On results page', 'quiz-maker'); ?></option>
+                                                    <option value="on_both"><?php echo esc_html__( 'On Both', 'quiz-maker'); ?></option>
+                                                    <option value="disable"><?php echo esc_html__( 'Disable', 'quiz-maker'); ?></option>
                                                 </select>
                                             </div>
                                         </div> <!-- Show question explanation -->
@@ -700,15 +706,15 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                 </div><!-- Settings Tab -->
                                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                                     <div class="ays-quiz-accordion-container">
-                                        <?php echo $quiz_accordion_svg_html; ?>
-                                        <p class="ays-subtitle"><?php echo __('Results Settings',$this->plugin_name); ?></p>
+                                        <?php echo wp_kses($quiz_accordion_svg_html, $svg_sanitize_properties); ?>
+                                        <p class="ays-subtitle"><?php echo esc_html__('Results Settings','quiz-maker'); ?></p>
                                     </div>
                                     <hr class="ays-quiz-bolder-hr"/>
                                     <div class="ays-quiz-accordion-options-box">
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_hide_score">
-                                                    <?php echo __('Hide score',$this->plugin_name); ?>
+                                                    <?php echo esc_html__('Hide score','quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
@@ -719,7 +725,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_enable_restart_button">
-                                                    <?php echo __('Enable restart button',$this->plugin_name); ?>
+                                                    <?php echo esc_html__('Enable restart button','quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
@@ -730,7 +736,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_enable_progress_bar">
-                                                    <?php echo __('Enable progress bar',$this->plugin_name); ?>
+                                                    <?php echo esc_html__('Enable progress bar','quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
@@ -741,7 +747,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_enable_average_statistical">
-                                                    <?php echo __('Show the statistical average',$this->plugin_name); ?>
+                                                    <?php echo esc_html__('Show the statistical average','quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
@@ -752,10 +758,10 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_disable_store_data">
-                                                    <?php echo __('Disable data storing in database',$this->plugin_name); ?>
+                                                    <?php echo esc_html__('Disable data storing in database','quiz-maker'); ?>
                                                 </label>
                                                 <p class="ays_quiz_small_hint_text_for_not_recommended">
-                                                    <span><?php echo __( "Not recommended" , $this->plugin_name ); ?></span>
+                                                    <span><?php echo esc_html__( "Not recommended" , 'quiz-maker' ); ?></span>
                                                 </p>
                                             </div>
                                             <div class="col-sm-8">
@@ -766,15 +772,15 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                 </div><!-- Results Settings Tab -->
                                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                                     <div class="ays-quiz-accordion-container">
-                                        <?php echo $quiz_accordion_svg_html; ?>
-                                        <p class="ays-subtitle"><?php echo __('User Data',$this->plugin_name); ?></p>
+                                        <?php echo wp_kses($quiz_accordion_svg_html, $svg_sanitize_properties); ?>
+                                        <p class="ays-subtitle"><?php echo esc_html__('User Data','quiz-maker'); ?></p>
                                     </div>
                                     <hr class="ays-quiz-bolder-hr"/>
                                     <div class="ays-quiz-accordion-options-box">
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_show_information_form">
-                                                    <?php echo __('Show Information Form to logged-in users', $this->plugin_name); ?>
+                                                    <?php echo esc_html__('Show Information Form to logged-in users', 'quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
@@ -787,7 +793,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_autofill_user_data">
-                                                    <?php echo __('Autofill logged-in user data',$this->plugin_name); ?>
+                                                    <?php echo esc_html__('Autofill logged-in user data','quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
@@ -800,7 +806,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_display_fields_labels">
-                                                    <?php echo __('Display form fields with labels',"quiz-maker"); ?>
+                                                    <?php echo esc_html__('Display form fields with labels',"quiz-maker"); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
@@ -813,22 +819,22 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                 </div><!-- User Data Tab -->
                                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                                     <div class="ays-quiz-accordion-container">
-                                        <?php echo $quiz_accordion_svg_html; ?>
-                                        <p class="ays-subtitle"><?php echo __('Styles',$this->plugin_name); ?></p>
+                                        <?php echo wp_kses($quiz_accordion_svg_html, $svg_sanitize_properties); ?>
+                                        <p class="ays-subtitle"><?php echo esc_html__('Styles','quiz-maker'); ?></p>
                                     </div>
                                     <hr class="ays-quiz-bolder-hr"/>
                                     <div class="ays-quiz-accordion-options-box">
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_width">
-                                                    <?php echo __('Quiz width',"quiz-maker"); ?>
+                                                    <?php echo esc_html__('Quiz width',"quiz-maker"); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
                                                 <div class="ays_quiz_display_flex_width">
                                                     <div>
                                                         <input type="number" class="ays-text-input ays-text-input-short" id='ays_quick_quiz_width' name='ays_quick_quiz_width' value="800"/>
-                                                        <span style="display:block;" class="ays_quiz_small_hint_text"><?php echo __("For 100% leave blank", "quiz-maker");?></span>
+                                                        <span style="display:block;" class="ays_quiz_small_hint_text"><?php echo esc_html__("For 100% leave blank", "quiz-maker");?></span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -837,7 +843,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for='ays_quick_quiz_height'>
-                                                    <?php echo __('Quiz min-height', "quiz-maker"); ?>
+                                                    <?php echo esc_html__('Quiz min-height', "quiz-maker"); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8 ays_quiz_display_flex_width">
@@ -853,7 +859,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_border_radius">
-                                                    <?php echo __('Border radius',$this->plugin_name); ?>
+                                                    <?php echo esc_html__('Border radius','quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8 ays_quiz_display_flex_width">
@@ -869,7 +875,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for='ays_quick_quiz_image_height'>
-                                                    <?php echo __('Quiz image height', $this->plugin_name); ?>
+                                                    <?php echo esc_html__('Quiz image height', 'quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8 ays_quiz_display_flex_width">
@@ -885,15 +891,15 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_progress_bar_style">
-                                                    <?php echo __('Progress bar style',$this->plugin_name); ?>
+                                                    <?php echo esc_html__('Progress bar style','quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
                                                 <select id="ays_quick_quiz_progress_bar_style" name="ays_quick_quiz_progress_bar_style" class="ays-text-input ays-text-input-short">
-                                                    <option value="first"><?php echo __( 'Rounded', $this->plugin_name); ?></option>
-                                                    <option value="second"><?php echo __( 'Rectangle', $this->plugin_name); ?></option>
-                                                    <option selected value="third"><?php echo __( 'With stripes', $this->plugin_name); ?></option>
-                                                    <option value="fourth"><?php echo __( 'With stripes and animation', $this->plugin_name); ?></option>
+                                                    <option value="first"><?php echo esc_html__( 'Rounded', 'quiz-maker'); ?></option>
+                                                    <option value="second"><?php echo esc_html__( 'Rectangle', 'quiz-maker'); ?></option>
+                                                    <option selected value="third"><?php echo esc_html__( 'With stripes', 'quiz-maker'); ?></option>
+                                                    <option value="fourth"><?php echo esc_html__( 'With stripes and animation', 'quiz-maker'); ?></option>
                                                 </select>
                                             </div>
                                         </div><!-- Progress bar style -->
@@ -901,15 +907,15 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_progress_live_bar_style">
-                                                    <?php echo __('Progress live bar style',$this->plugin_name); ?>
+                                                    <?php echo esc_html__('Progress live bar style','quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
                                                 <select id="ays_quick_quiz_progress_live_bar_style" name="ays_quick_quiz_progress_live_bar_style" class="ays-text-input ays-text-input-short">
-                                                    <option selected value="default"><?php echo __( 'Default', $this->plugin_name); ?></option>
-                                                    <option value="second"><?php echo __( 'Rectangle', $this->plugin_name); ?></option>
-                                                    <option value="third"><?php echo __( 'With stripes', $this->plugin_name); ?></option>
-                                                    <option value="fourth"><?php echo __( 'With stripes and animation', $this->plugin_name); ?></option>
+                                                    <option selected value="default"><?php echo esc_html__( 'Default', 'quiz-maker'); ?></option>
+                                                    <option value="second"><?php echo esc_html__( 'Rectangle', 'quiz-maker'); ?></option>
+                                                    <option value="third"><?php echo esc_html__( 'With stripes', 'quiz-maker'); ?></option>
+                                                    <option value="fourth"><?php echo esc_html__( 'With stripes and animation', 'quiz-maker'); ?></option>
                                                 </select>
                                             </div>
                                         </div><!-- Progress live bar style -->
@@ -917,15 +923,15 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_buttons_position">
-                                                    <?php echo __('Buttons position',$this->plugin_name); ?>
+                                                    <?php echo esc_html__('Buttons position','quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
                                                 <select id="ays_quick_quiz_buttons_position" name="ays_quick_quiz_buttons_position" class="ays-text-input ays-text-input-short">
-                                                    <option selected value="center"><?php echo __( 'Center', $this->plugin_name); ?></option>
-                                                    <option value="flex-start"><?php echo __( 'Left', $this->plugin_name); ?></option>
-                                                    <option value="flex-end"><?php echo __( 'Right', $this->plugin_name); ?></option>
-                                                    <option value="space-between"><?php echo __( 'Space Between', $this->plugin_name); ?></option>
+                                                    <option selected value="center"><?php echo esc_html__( 'Center', 'quiz-maker'); ?></option>
+                                                    <option value="flex-start"><?php echo esc_html__( 'Left', 'quiz-maker'); ?></option>
+                                                    <option value="flex-end"><?php echo esc_html__( 'Right', 'quiz-maker'); ?></option>
+                                                    <option value="space-between"><?php echo esc_html__( 'Space Between', 'quiz-maker'); ?></option>
                                                 </select>
                                             </div>
                                         </div><!-- Buttons position -->
@@ -933,15 +939,15 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_title_transformation">
-                                                    <?php echo __('Quiz title transformation', $this->plugin_name ); ?>
+                                                    <?php echo esc_html__('Quiz title transformation', 'quiz-maker' ); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
                                                 <select name="ays_quick_quiz_title_transformation" id="ays_quick_quiz_title_transformation" class="ays-text-input ays-text-input-short" style="display:block;">
-                                                    <option value="uppercase" selected><?php echo __( "Uppercase", $this->plugin_name ); ?></option>
-                                                    <option value="lowercase"><?php echo __( "Lowercase", $this->plugin_name ); ?></option>
-                                                    <option value="capitalize"><?php echo __( "Capitalize", $this->plugin_name ); ?></option>
-                                                    <option value="none"><?php echo __( "None", $this->plugin_name ); ?></option>
+                                                    <option value="uppercase" selected><?php echo esc_html__( "Uppercase", 'quiz-maker' ); ?></option>
+                                                    <option value="lowercase"><?php echo esc_html__( "Lowercase", 'quiz-maker' ); ?></option>
+                                                    <option value="capitalize"><?php echo esc_html__( "Capitalize", 'quiz-maker' ); ?></option>
+                                                    <option value="none"><?php echo esc_html__( "None", 'quiz-maker' ); ?></option>
                                                 </select>
                                             </div>
                                         </div><!-- Quiz title transformation -->
@@ -949,7 +955,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for='ays_quick_quiz_title_font_size'>
-                                                    <?php echo __('Quiz title font size', $this->plugin_name); ?>
+                                                    <?php echo esc_html__('Quiz title font size', 'quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
@@ -957,7 +963,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                     <div class="col-sm-12">
                                                         <div style="margin-bottom: 10px;">
                                                             <label for='ays_quick_quiz_title_font_size'>
-                                                                <?php echo __('On desktop', $this->plugin_name); ?>
+                                                                <?php echo esc_html__('On desktop', 'quiz-maker'); ?>
                                                             </label>
                                                         </div>
                                                         <div class="ays_quiz_display_flex_width">
@@ -975,7 +981,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                     <div class="col-sm-12">
                                                         <div style="margin-bottom: 10px;">
                                                             <label for='ays_quick_quiz_title_mobile_font_size'>
-                                                                <?php echo __('On mobile', $this->plugin_name); ?>
+                                                                <?php echo esc_html__('On mobile', 'quiz-maker'); ?>
                                                             </label>
                                                         </div>
                                                         <div class="ays_quiz_display_flex_width">
@@ -994,7 +1000,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_custom_class">
-                                                    <?php echo __('Custom class for quiz container',$this->plugin_name); ?>
+                                                    <?php echo esc_html__('Custom class for quiz container','quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
@@ -1005,14 +1011,14 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for='ays_quick_quiz_quest_animation'>
-                                                    <?php echo __('Animation effect', $this->plugin_name); ?>
+                                                    <?php echo esc_html__('Animation effect', 'quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
                                                 <select class="ays-text-input ays-text-input-short" name="ays_quick_quiz_quest_animation" id="ays_quick_quiz_quest_animation">
-                                                    <option value="none"><?php echo __('None', $this->plugin_name); ?></option>
-                                                    <option value="fade"><?php echo __('Fade', $this->plugin_name); ?></option>
-                                                    <option value="shake" selected><?php echo __('Shake', $this->plugin_name); ?></option>
+                                                    <option value="none"><?php echo esc_html__('None', 'quiz-maker'); ?></option>
+                                                    <option value="fade"><?php echo esc_html__('Fade', 'quiz-maker'); ?></option>
+                                                    <option value="shake" selected><?php echo esc_html__('Shake', 'quiz-maker'); ?></option>
                                                 </select>
                                             </div>
                                         </div><!-- Animation effect -->
@@ -1020,7 +1026,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for='ays_quick_quiz_question_font_size'>
-                                                    <?php echo __('Question font size', $this->plugin_name); ?>
+                                                    <?php echo esc_html__('Question font size', 'quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
@@ -1028,7 +1034,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                     <div class="col-sm-12">
                                                         <div style="margin-bottom: 10px;">
                                                             <label for='ays_quick_quiz_question_font_size'>
-                                                                <?php echo __('On desktop', $this->plugin_name); ?>
+                                                                <?php echo esc_html__('On desktop', 'quiz-maker'); ?>
                                                             </label>
                                                         </div>
                                                         <div class="ays_quiz_display_flex_width">
@@ -1046,7 +1052,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                     <div class="col-sm-12">
                                                         <div style="margin-bottom: 10px;">
                                                             <label for='ays_quick_quiz_question_mobile_font_size'>
-                                                                <?php echo __('On mobile', $this->plugin_name); ?>
+                                                                <?php echo esc_html__('On mobile', 'quiz-maker'); ?>
                                                             </label>
                                                         </div>
                                                         <div class="ays_quiz_display_flex_width">
@@ -1065,14 +1071,14 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_question_text_alignment">
-                                                    <?php echo __( 'Question text alignment', $this->plugin_name ); ?>
+                                                    <?php echo esc_html__( 'Question text alignment', 'quiz-maker' ); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
                                                 <select name="ays_quick_quiz_question_text_alignment" id="ays_quick_quiz_question_text_alignment" class="ays-text-input ays-text-input-short" style="display:block;">
-                                                    <option value="left"><?php echo __( "Left", $this->plugin_name ); ?></option>
-                                                    <option value="center" selected><?php echo __( "Center", $this->plugin_name ); ?></option>
-                                                    <option value="right"><?php echo __( "Right", $this->plugin_name ); ?></option>
+                                                    <option value="left"><?php echo esc_html__( "Left", 'quiz-maker' ); ?></option>
+                                                    <option value="center" selected><?php echo esc_html__( "Center", 'quiz-maker' ); ?></option>
+                                                    <option value="right"><?php echo esc_html__( "Right", 'quiz-maker' ); ?></option>
                                                 </select>
                                             </div>
                                         </div><!-- Question text alignment -->
@@ -1080,7 +1086,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for='ays_quick_quiz_image_width'>
-                                                    <?php echo __('Question image styles', $this->plugin_name); ?>
+                                                    <?php echo esc_html__('Question image styles', 'quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
@@ -1088,18 +1094,18 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                     <div class="col-sm-12">
                                                         <div style="margin-bottom: 10px;">
                                                             <label for='ays_quick_quiz_image_width'>
-                                                                <?php echo __('Image Width', $this->plugin_name); ?>
+                                                                <?php echo esc_html__('Image Width', 'quiz-maker'); ?>
                                                             </label>
                                                         </div>
                                                         <div class="ays_quiz_display_flex_width">
                                                             <div>
                                                                 <input type="number" class="ays-text-input" id='ays_quick_quiz_image_width' name='ays_quick_quiz_image_width' value=""/>
-                                                                <span class="ays_quiz_small_hint_text"><?php echo __("For 100% leave blank", $this->plugin_name);?></span>
+                                                                <span class="ays_quiz_small_hint_text"><?php echo esc_html__("For 100% leave blank", 'quiz-maker');?></span>
                                                             </div>
                                                             <div class="ays_quiz_dropdown_max_width ays-display-flex" style="align-items: flex-start;">
                                                                 <select id="ays_quick_quiz_image_width_by_percentage_px" name="ays_quick_quiz_image_width_by_percentage_px" class="ays-text-input ays-text-input-short" style="display:inline-block; width: 60px;">
-                                                                    <option value="pixels" selected><?php echo __( "px", $this->plugin_name ); ?></option>
-                                                                    <option value="percentage"><?php echo __( "%", $this->plugin_name ); ?></option>
+                                                                    <option value="pixels" selected><?php echo esc_html__( "px", 'quiz-maker' ); ?></option>
+                                                                    <option value="percentage"><?php echo esc_html__( "%", 'quiz-maker' ); ?></option>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -1110,7 +1116,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                     <div class="col-sm-12">
                                                         <div style="margin-bottom: 10px;">
                                                             <label for="ays_quick_quiz_image_height">
-                                                                <?php echo __('Image Height',$this->plugin_name); ?>
+                                                                <?php echo esc_html__('Image Height','quiz-maker'); ?>
                                                             </label>
                                                         </div>
                                                         <div class="ays_quiz_display_flex_width">
@@ -1128,14 +1134,14 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                     <div class="col-sm-12">
                                                         <div style="margin-bottom: 10px;">
                                                             <label for="ays_quick_quiz_image_sizing">
-                                                                <?php echo __('Image sizing', $this->plugin_name ); ?>
+                                                                <?php echo esc_html__('Image sizing', 'quiz-maker' ); ?>
                                                             </label>
                                                         </div>
                                                         <select name="ays_quick_quiz_image_sizing" id="ays_quick_quiz_image_sizing" class="ays-text-input ays-text-input-short" style="display:block;">
-                                                            <option value="cover" selected><?php echo __( "Cover", $this->plugin_name ); ?></option>
-                                                            <option value="contain"><?php echo __( "Contain", $this->plugin_name ); ?></option>
-                                                            <option value="none"><?php echo __( "None", $this->plugin_name ); ?></option>
-                                                            <option value="unset"><?php echo __( "Unset", $this->plugin_name ); ?></option>
+                                                            <option value="cover" selected><?php echo esc_html__( "Cover", 'quiz-maker' ); ?></option>
+                                                            <option value="contain"><?php echo esc_html__( "Contain", 'quiz-maker' ); ?></option>
+                                                            <option value="none"><?php echo esc_html__( "None", 'quiz-maker' ); ?></option>
+                                                            <option value="unset"><?php echo esc_html__( "Unset", 'quiz-maker' ); ?></option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -1145,7 +1151,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for='ays_quick_quiz_answers_font_size'>
-                                                    <?php echo __('Answer font size', $this->plugin_name); ?>
+                                                    <?php echo esc_html__('Answer font size', 'quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
@@ -1153,7 +1159,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                     <div class="col-sm-12">
                                                         <div style="margin-bottom: 10px;">
                                                             <label for='ays_quick_quiz_answers_font_size'>
-                                                                <?php echo __('On desktop', $this->plugin_name); ?>
+                                                                <?php echo esc_html__('On desktop', 'quiz-maker'); ?>
                                                             </label>
                                                         </div>
                                                         <div class="ays_quiz_display_flex_width">
@@ -1171,7 +1177,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                     <div class="col-sm-12">
                                                         <div style="margin-bottom: 10px;">
                                                             <label for='ays_quick_quiz_answers_mobile_font_size'>
-                                                                <?php echo __('On mobile', $this->plugin_name); ?>
+                                                                <?php echo esc_html__('On mobile', 'quiz-maker'); ?>
                                                             </label>
                                                         </div>
                                                         <div class="ays_quiz_display_flex_width">
@@ -1190,7 +1196,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_answers_margin">
-                                                    <?php echo __('Answer gap',$this->plugin_name); ?>
+                                                    <?php echo esc_html__('Answer gap','quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8 ays_quiz_display_flex_width">
@@ -1206,7 +1212,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_disable_hover_effect">
-                                                    <?php echo __('Disable answer hover',$this->plugin_name); ?>
+                                                    <?php echo esc_html__('Disable answer hover','quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
@@ -1217,27 +1223,27 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                 </div><!-- Styles Tab -->
                                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                                     <div class="ays-quiz-accordion-container">
-                                        <?php echo $quiz_accordion_svg_html; ?>
-                                        <p class="ays-subtitle"><?php echo __('Buttons Styles',$this->plugin_name); ?></p>
+                                        <?php echo wp_kses($quiz_accordion_svg_html, $svg_sanitize_properties); ?>
+                                        <p class="ays-subtitle"><?php echo esc_html__('Buttons Styles','quiz-maker'); ?></p>
                                     </div>
                                     <hr class="ays-quiz-bolder-hr"/>
                                     <div class="ays-quiz-accordion-options-box">
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_buttons_size">
-                                                    <?php echo __('Button size',$this->plugin_name); ?>
+                                                    <?php echo esc_html__('Button size','quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
                                                 <select class="ays-text-input ays-text-input-short" id="ays_quick_quiz_buttons_size" name="ays_quick_quiz_buttons_size">
                                                     <option value="small">
-                                                        <?php echo __('Small',$this->plugin_name); ?>
+                                                        <?php echo esc_html__('Small','quiz-maker'); ?>
                                                     </option>
                                                     <option value="medium">
-                                                        <?php echo __('Medium',$this->plugin_name); ?>
+                                                        <?php echo esc_html__('Medium','quiz-maker'); ?>
                                                     </option>
                                                     <option value="large" selected>
-                                                        <?php echo __('Large',$this->plugin_name); ?>
+                                                        <?php echo esc_html__('Large','quiz-maker'); ?>
                                                     </option>
                                                 </select>
                                             </div>
@@ -1246,7 +1252,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for='ays_quick_quiz_buttons_font_size'>
-                                                    <?php echo __('Button font-size', $this->plugin_name); ?>
+                                                    <?php echo esc_html__('Button font-size', 'quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
@@ -1254,7 +1260,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                     <div class="col-sm-12">
                                                         <div style="margin-bottom: 10px;">
                                                             <label for='ays_quick_quiz_buttons_font_size'>
-                                                                <?php echo __('On desktop', $this->plugin_name); ?>
+                                                                <?php echo esc_html__('On desktop', 'quiz-maker'); ?>
                                                             </label>
                                                         </div>
                                                         <div class="ays_quiz_display_flex_width">
@@ -1272,7 +1278,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                     <div class="col-sm-12">
                                                         <div style="margin-bottom: 10px;">
                                                             <label for='ays_quick_quiz_buttons_mobile_font_size'>
-                                                                <?php echo __('On mobile', $this->plugin_name); ?>
+                                                                <?php echo esc_html__('On mobile', 'quiz-maker'); ?>
                                                             </label>
                                                         </div>
                                                         <div class="ays_quiz_display_flex_width">
@@ -1291,13 +1297,13 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for='ays_quick_quiz_buttons_width'>
-                                                    <?php echo __('Button width', $this->plugin_name); ?>
+                                                    <?php echo esc_html__('Button width', 'quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8 ays_quiz_display_flex_width">
                                                 <div>
                                                     <input type="number" class="ays-text-input ays-text-input-short" id='ays_quick_quiz_buttons_width' name='ays_quick_quiz_buttons_width' value="" />
-                                                    <span style="display:block;" class="ays_quiz_small_hint_text"><?php echo __('For an initial width, leave blank.', $this->plugin_name); ?></span>
+                                                    <span style="display:block;" class="ays_quiz_small_hint_text"><?php echo esc_html__('For an initial width, leave blank.', 'quiz-maker'); ?></span>
                                                 </div>
                                                 <div class="ays_quiz_dropdown_max_width ays-display-flex" style="align-items: flex-start;">
                                                     <input type="text" value="px" class='ays-quiz-form-hint-for-size' disabled>
@@ -1308,7 +1314,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_buttons_padding">
-                                                    <?php echo __('Button padding',$this->plugin_name); ?>
+                                                    <?php echo esc_html__('Button padding','quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
@@ -1316,7 +1322,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                     <div class="col-sm-4">
                                                         <div style="margin-bottom: 10px;">
                                                             <label for='ays_quick_quiz_buttons_left_right_padding'>
-                                                                <?php echo __('Left / Right', $this->plugin_name); ?>
+                                                                <?php echo esc_html__('Left / Right', 'quiz-maker'); ?>
                                                             </label>
                                                         </div>
                                                         <div style="display: inline-block; padding-left: 0;">
@@ -1326,7 +1332,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                     <div class="col-sm-4">
                                                         <div style="margin-bottom: 10px;">
                                                             <label for='ays_quick_quiz_buttons_top_bottom_padding'>
-                                                                <?php echo __('Top / Bottom', $this->plugin_name); ?>
+                                                                <?php echo esc_html__('Top / Bottom', 'quiz-maker'); ?>
                                                             </label>
                                                         </div>
                                                         <div style="display: inline-block; padding-left: 0;">
@@ -1340,7 +1346,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_buttons_border_radius">
-                                                    <?php echo __('Button border-radius',$this->plugin_name); ?>
+                                                    <?php echo esc_html__('Button border-radius','quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8 ays_quiz_display_flex_width">
@@ -1356,15 +1362,15 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                 </div><!-- Buttons Styles -->
                                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                                     <div class="ays-quiz-accordion-container">
-                                        <?php echo $quiz_accordion_svg_html; ?>
-                                        <p class="ays-subtitle"><?php echo __('Admin Note styles',$this->plugin_name); ?></p>
+                                        <?php echo wp_kses($quiz_accordion_svg_html, $svg_sanitize_properties); ?>
+                                        <p class="ays-subtitle"><?php echo esc_html__('Admin Note styles','quiz-maker'); ?></p>
                                     </div>
                                     <hr class="ays-quiz-bolder-hr"/>
                                     <div class="ays-quiz-accordion-options-box">
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for='ays_quick_quiz_note_text_font_size'>
-                                                    <?php echo __('Font size for the note text', $this->plugin_name); ?>
+                                                    <?php echo esc_html__('Font size for the note text', 'quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
@@ -1372,7 +1378,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                     <div class="col-sm-12">
                                                         <div style="margin-bottom: 10px;">
                                                             <label for='ays_quick_quiz_note_text_font_size'>
-                                                                <?php echo __('On desktop', $this->plugin_name); ?>
+                                                                <?php echo esc_html__('On desktop', 'quiz-maker'); ?>
                                                             </label>
                                                         </div>
                                                         <div class="ays_quiz_display_flex_width">
@@ -1390,7 +1396,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                     <div class="col-sm-12">
                                                         <div style="margin-bottom: 10px;">
                                                             <label for='ays_quick_quiz_note_text_mobile_font_size'>
-                                                                <?php echo __('On mobile', $this->plugin_name); ?>
+                                                                <?php echo esc_html__('On mobile', 'quiz-maker'); ?>
                                                             </label>
                                                         </div>
                                                         <div class="ays_quiz_display_flex_width">
@@ -1409,15 +1415,15 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_admin_note_text_transform">
-                                                    <?php echo __('Text transformation',$this->plugin_name); ?>
+                                                    <?php echo esc_html__('Text transformation','quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
                                                 <select name="ays_quick_quiz_admin_note_text_transform" id="ays_quick_quiz_admin_note_text_transform" class="ays-text-input ays-text-input-short" style="display:block;">
-                                                    <option value="uppercase"><?php echo __( "Uppercase", $this->plugin_name ); ?></option>
-                                                    <option value="lowercase"><?php echo __( "Lowercase", $this->plugin_name ); ?></option>
-                                                    <option value="capitalize"><?php echo __( "Capitalize", $this->plugin_name ); ?></option>
-                                                    <option value="none" selected><?php echo __( "None", $this->plugin_name ); ?></option>
+                                                    <option value="uppercase"><?php echo esc_html__( "Uppercase", 'quiz-maker' ); ?></option>
+                                                    <option value="lowercase"><?php echo esc_html__( "Lowercase", 'quiz-maker' ); ?></option>
+                                                    <option value="capitalize"><?php echo esc_html__( "Capitalize", 'quiz-maker' ); ?></option>
+                                                    <option value="none" selected><?php echo esc_html__( "None", 'quiz-maker' ); ?></option>
                                                 </select>
                                             </div>
                                         </div><!-- Admin note text transform -->
@@ -1425,15 +1431,15 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_admin_note_text_decoration">
-                                                    <?php echo __('Text decoration',$this->plugin_name); ?>
+                                                    <?php echo esc_html__('Text decoration','quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
                                                 <select class="ays-text-input ays-text-input-short" id="ays_quick_quiz_admin_note_text_decoration" name="ays_quick_quiz_admin_note_text_decoration">
-                                                    <option value="none" selected><?php echo __('None',$this->plugin_name); ?></option>
-                                                    <option value="overline"><?php echo __('Overline',$this->plugin_name); ?></option>
-                                                    <option value="line-through"><?php echo __('Line through',$this->plugin_name); ?></option>
-                                                    <option value="underline"><?php echo __('Underline',$this->plugin_name); ?></option>
+                                                    <option value="none" selected><?php echo esc_html__('None','quiz-maker'); ?></option>
+                                                    <option value="overline"><?php echo esc_html__('Overline','quiz-maker'); ?></option>
+                                                    <option value="line-through"><?php echo esc_html__('Line through','quiz-maker'); ?></option>
+                                                    <option value="underline"><?php echo esc_html__('Underline','quiz-maker'); ?></option>
                                                 </select>
                                             </div>
                                         </div><!-- Admin note text decoration -->
@@ -1441,7 +1447,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_admin_note_letter_spacing">
-                                                    <?php echo __('Letter spacing',$this->plugin_name); ?>
+                                                    <?php echo esc_html__('Letter spacing','quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8 ays_quiz_display_flex_width">
@@ -1457,15 +1463,15 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_admin_note_font_weight">
-                                                    <?php echo __('Font weight',$this->plugin_name); ?>
+                                                    <?php echo esc_html__('Font weight','quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
                                                 <select class="ays-text-input ays-text-input-short" id="ays_quick_quiz_admin_note_font_weight" name="ays_quick_quiz_admin_note_font_weight">
-                                                    <option value="normal" selected><?php echo __('Normal',$this->plugin_name); ?></option>
-                                                    <option value="lighter"><?php echo __('Lighter',$this->plugin_name); ?></option>
-                                                    <option value="bold"><?php echo __('Bold',$this->plugin_name); ?></option>
-                                                    <option value="bolder"><?php echo __('Bolder',$this->plugin_name); ?></option>
+                                                    <option value="normal" selected><?php echo esc_html__('Normal','quiz-maker'); ?></option>
+                                                    <option value="lighter"><?php echo esc_html__('Lighter','quiz-maker'); ?></option>
+                                                    <option value="bold"><?php echo esc_html__('Bold','quiz-maker'); ?></option>
+                                                    <option value="bolder"><?php echo esc_html__('Bolder','quiz-maker'); ?></option>
                                                     <option value="100"><?php echo '100'; ?></option>
                                                     <option value="200"><?php echo '200'; ?></option>
                                                     <option value="300"><?php echo '300'; ?></option>
@@ -1482,15 +1488,15 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                 </div><!-- Admin note styles -->
                                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                                     <div class="ays-quiz-accordion-container">
-                                        <?php echo $quiz_accordion_svg_html; ?>
-                                        <p class="ays-subtitle"><?php echo __('Question explanation styles',$this->plugin_name); ?></p>
+                                        <?php echo wp_kses($quiz_accordion_svg_html, $svg_sanitize_properties); ?>
+                                        <p class="ays-subtitle"><?php echo esc_html__('Question explanation styles','quiz-maker'); ?></p>
                                     </div>
                                     <hr class="ays-quiz-bolder-hr"/>
                                     <div class="ays-quiz-accordion-options-box">
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for='ays_quick_quiz_quest_explanation_font_size'>
-                                                    <?php echo __('Font size for the question explanation', $this->plugin_name); ?>
+                                                    <?php echo esc_html__('Font size for the question explanation', 'quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
@@ -1498,7 +1504,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                     <div class="col-sm-12">
                                                         <div style="margin-bottom: 10px;">
                                                             <label for='ays_quick_quiz_quest_explanation_font_size'>
-                                                                <?php echo __('On desktop', $this->plugin_name); ?>
+                                                                <?php echo esc_html__('On desktop', 'quiz-maker'); ?>
                                                             </label>
                                                         </div>
                                                         <div class="ays_quiz_display_flex_width">
@@ -1516,7 +1522,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                     <div class="col-sm-12">
                                                         <div style="margin-bottom: 10px;">
                                                             <label for='ays_quick_quiz_quest_explanation_mobile_font_size'>
-                                                                <?php echo __('On mobile', $this->plugin_name); ?>
+                                                                <?php echo esc_html__('On mobile', 'quiz-maker'); ?>
                                                             </label>
                                                         </div>
                                                         <div class="ays_quiz_display_flex_width">
@@ -1535,15 +1541,15 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_quest_explanation_text_transform">
-                                                    <?php echo __('Text transformation',$this->plugin_name); ?>
+                                                    <?php echo esc_html__('Text transformation','quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
                                                 <select class="ays-text-input ays-text-input-short" id="ays_quick_quiz_quest_explanation_text_transform" name="ays_quick_quiz_quest_explanation_text_transform">
-                                                    <option value="none" selected><?php echo __('None',$this->plugin_name); ?></option>
-                                                    <option value="capitalize"><?php echo __('Capitalize',$this->plugin_name); ?></option>
-                                                    <option value="uppercase"><?php echo __('Uppercase',$this->plugin_name); ?></option>
-                                                    <option value="lowercase"><?php echo __('Lowercase',$this->plugin_name); ?></option>
+                                                    <option value="none" selected><?php echo esc_html__('None','quiz-maker'); ?></option>
+                                                    <option value="capitalize"><?php echo esc_html__('Capitalize','quiz-maker'); ?></option>
+                                                    <option value="uppercase"><?php echo esc_html__('Uppercase','quiz-maker'); ?></option>
+                                                    <option value="lowercase"><?php echo esc_html__('Lowercase','quiz-maker'); ?></option>
                                                 </select>
                                             </div>
                                         </div><!-- Question explanation text transform -->
@@ -1551,15 +1557,15 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_quest_explanation_text_decoration">
-                                                    <?php echo __('Text decoration',$this->plugin_name); ?>
+                                                    <?php echo esc_html__('Text decoration','quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
                                                 <select class="ays-text-input ays-text-input-short" id="ays_quick_quiz_quest_explanation_text_decoration" name="ays_quick_quiz_quest_explanation_text_decoration">
-                                                    <option value="none" selected><?php echo __('None',$this->plugin_name); ?></option>
-                                                    <option value="overline"><?php echo __('Overline',$this->plugin_name); ?></option>
-                                                    <option value="line-through"><?php echo __('Line through',$this->plugin_name); ?></option>
-                                                    <option value="underline"><?php echo __('Underline',$this->plugin_name); ?></option>
+                                                    <option value="none" selected><?php echo esc_html__('None','quiz-maker'); ?></option>
+                                                    <option value="overline"><?php echo esc_html__('Overline','quiz-maker'); ?></option>
+                                                    <option value="line-through"><?php echo esc_html__('Line through','quiz-maker'); ?></option>
+                                                    <option value="underline"><?php echo esc_html__('Underline','quiz-maker'); ?></option>
                                                 </select>
                                             </div>
                                         </div><!-- Question explanation text decoration -->
@@ -1567,7 +1573,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_quest_explanation_letter_spacing">
-                                                    <?php echo __('Letter spacing',$this->plugin_name); ?>
+                                                    <?php echo esc_html__('Letter spacing','quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8 ays_quiz_display_flex_width">
@@ -1583,22 +1589,22 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_quest_explanation_font_weight">
-                                                    <?php echo __('Font weight',$this->plugin_name); ?>
+                                                    <?php echo esc_html__('Font weight','quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
                                                 <select class="ays-text-input ays-text-input-short" id="ays_quick_quiz_quest_explanation_font_weight" name="ays_quick_quiz_quest_explanation_font_weight">
                                                     <option value="normal" selected>
-                                                        <?php echo __('Normal',$this->plugin_name); ?>
+                                                        <?php echo esc_html__('Normal','quiz-maker'); ?>
                                                     </option>
                                                     <option value="lighter">
-                                                        <?php echo __('Lighter',$this->plugin_name); ?>
+                                                        <?php echo esc_html__('Lighter','quiz-maker'); ?>
                                                     </option>
                                                     <option value="bold">
-                                                        <?php echo __('Bold',$this->plugin_name); ?>
+                                                        <?php echo esc_html__('Bold','quiz-maker'); ?>
                                                     </option>
                                                     <option value="bolder">
-                                                        <?php echo __('Bolder',$this->plugin_name); ?>
+                                                        <?php echo esc_html__('Bolder','quiz-maker'); ?>
                                                     </option>
                                                     <option value="100">
                                                         <?php echo '100'; ?>
@@ -1634,15 +1640,15 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                 </div><!-- Question explanation styles -->
                                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                                     <div class="ays-quiz-accordion-container">
-                                        <?php echo $quiz_accordion_svg_html; ?>
-                                        <p class="ays-subtitle" style="margin-top:0;"><?php echo __('Right answer styles',$this->plugin_name); ?></p>
+                                        <?php echo wp_kses($quiz_accordion_svg_html, $svg_sanitize_properties); ?>
+                                        <p class="ays-subtitle" style="margin-top:0;"><?php echo esc_html__('Right answer styles','quiz-maker'); ?></p>
                                     </div>
                                     <hr class="ays-quiz-bolder-hr"/>
                                     <div class="ays-quiz-accordion-options-box">
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_right_answers_font_size">
-                                                    <?php echo __('Font size for the right answer',$this->plugin_name); ?>
+                                                    <?php echo esc_html__('Font size for the right answer','quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
@@ -1650,7 +1656,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                     <div class="col-sm-12">
                                                         <div style="margin-bottom: 10px;">
                                                             <label for='ays_quick_quiz_right_answers_font_size'>
-                                                                <?php echo __('On desktop', $this->plugin_name); ?>
+                                                                <?php echo esc_html__('On desktop', 'quiz-maker'); ?>
                                                             </label>
                                                         </div>
                                                         <div class="ays_quiz_display_flex_width">
@@ -1668,7 +1674,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                     <div class="col-sm-12">
                                                         <div style="margin-bottom: 10px;">
                                                             <label for='ays_quick_quiz_right_answers_mobile_font_size'>
-                                                                <?php echo __('On mobile', $this->plugin_name); ?>
+                                                                <?php echo esc_html__('On mobile', 'quiz-maker'); ?>
                                                             </label>
                                                         </div>
                                                         <div class="ays_quiz_display_flex_width">
@@ -1687,22 +1693,22 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_right_answer_text_transform">
-                                                    <?php echo __('Text transformation',$this->plugin_name); ?>
+                                                    <?php echo esc_html__('Text transformation','quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
                                                 <select class="ays-text-input ays-text-input-short" id="ays_quick_quiz_right_answer_text_transform" name="ays_quick_quiz_right_answer_text_transform">
                                                     <option value="none" selected>
-                                                        <?php echo __('None',$this->plugin_name); ?>
+                                                        <?php echo esc_html__('None','quiz-maker'); ?>
                                                     </option>
                                                     <option value="capitalize">
-                                                        <?php echo __('Capitalize',$this->plugin_name); ?>
+                                                        <?php echo esc_html__('Capitalize','quiz-maker'); ?>
                                                     </option>
                                                     <option value="uppercase">
-                                                        <?php echo __('Uppercase',$this->plugin_name); ?>
+                                                        <?php echo esc_html__('Uppercase','quiz-maker'); ?>
                                                     </option>
                                                     <option value="lowercase">
-                                                        <?php echo __('Lowercase',$this->plugin_name); ?>
+                                                        <?php echo esc_html__('Lowercase','quiz-maker'); ?>
                                                     </option>
                                                 </select>
                                             </div>
@@ -1711,22 +1717,22 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_right_answers_text_decoration">
-                                                    <?php echo __('Text decoration',$this->plugin_name); ?>
+                                                    <?php echo esc_html__('Text decoration','quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
                                                 <select class="ays-text-input ays-text-input-short" id="ays_quick_quiz_right_answers_text_decoration" name="ays_quick_quiz_right_answers_text_decoration">
                                                     <option value="none" selected>
-                                                        <?php echo __('None',$this->plugin_name); ?>
+                                                        <?php echo esc_html__('None','quiz-maker'); ?>
                                                     </option>
                                                     <option value="overline">
-                                                        <?php echo __('Overline',$this->plugin_name); ?>
+                                                        <?php echo esc_html__('Overline','quiz-maker'); ?>
                                                     </option>
                                                     <option value="line-through">
-                                                        <?php echo __('Line through',$this->plugin_name); ?>
+                                                        <?php echo esc_html__('Line through','quiz-maker'); ?>
                                                     </option>
                                                     <option value="underline">
-                                                        <?php echo __('Underline',$this->plugin_name); ?>
+                                                        <?php echo esc_html__('Underline','quiz-maker'); ?>
                                                     </option>
                                                 </select>
                                             </div>
@@ -1735,7 +1741,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_right_answers_letter_spacing">
-                                                    <?php echo __('Letter spacing',$this->plugin_name)?>
+                                                    <?php echo esc_html__('Letter spacing','quiz-maker')?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8 ays_quiz_display_flex_width">
@@ -1751,22 +1757,22 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_right_answers_font_weight">
-                                                    <?php echo __('Font weight',$this->plugin_name); ?>
+                                                    <?php echo esc_html__('Font weight','quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
                                                 <select class="ays-text-input ays-text-input-short" id="ays_quick_quiz_right_answers_font_weight" name="ays_quick_quiz_right_answers_font_weight">
                                                     <option value="normal" selected>
-                                                        <?php echo __('Normal',$this->plugin_name); ?>
+                                                        <?php echo esc_html__('Normal','quiz-maker'); ?>
                                                     </option>
                                                     <option value="lighter">
-                                                        <?php echo __('Lighter',$this->plugin_name); ?>
+                                                        <?php echo esc_html__('Lighter','quiz-maker'); ?>
                                                     </option>
                                                     <option value="bold">
-                                                        <?php echo __('Bold',$this->plugin_name); ?>
+                                                        <?php echo esc_html__('Bold','quiz-maker'); ?>
                                                     </option>
                                                     <option value="bolder">
-                                                        <?php echo __('Bolder',$this->plugin_name); ?>
+                                                        <?php echo esc_html__('Bolder','quiz-maker'); ?>
                                                     </option>
                                                     <option value="100">
                                                         <?php echo '100'; ?>
@@ -1802,15 +1808,15 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                 </div><!-- Right answer styles -->
                                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                                     <div class="ays-quiz-accordion-container">
-                                        <?php echo $quiz_accordion_svg_html; ?>
-                                        <p class="ays-subtitle" style="margin-top:0;"><?php echo __('Wrong answer styles',$this->plugin_name); ?></p>
+                                        <?php echo wp_kses($quiz_accordion_svg_html, $svg_sanitize_properties); ?>
+                                        <p class="ays-subtitle" style="margin-top:0;"><?php echo esc_html__('Wrong answer styles','quiz-maker'); ?></p>
                                     </div>
                                     <hr class="ays-quiz-bolder-hr"/>
                                     <div class="ays-quiz-accordion-options-box">
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_wrong_answers_font_size">
-                                                    <?php echo __('Font size for the wrong answer',$this->plugin_name); ?>
+                                                    <?php echo esc_html__('Font size for the wrong answer','quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
@@ -1818,7 +1824,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                     <div class="col-sm-12">
                                                         <div style="margin-bottom: 10px;">
                                                             <label for='ays_quick_quiz_wrong_answers_font_size'>
-                                                                <?php echo __('On desktop', $this->plugin_name); ?>
+                                                                <?php echo esc_html__('On desktop', 'quiz-maker'); ?>
                                                             </label>
                                                         </div>
                                                         <div class="ays_quiz_display_flex_width">
@@ -1836,7 +1842,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                     <div class="col-sm-12">
                                                         <div style="margin-bottom: 10px;">
                                                             <label for='ays_quick_quiz_wrong_answers_mobile_font_size'>
-                                                                <?php echo __('On mobile', $this->plugin_name); ?>
+                                                                <?php echo esc_html__('On mobile', 'quiz-maker'); ?>
                                                             </label>
                                                         </div>
                                                         <div class="ays_quiz_display_flex_width">
@@ -1855,22 +1861,22 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_wrong_answer_text_transform">
-                                                    <?php echo __('Text transformation',$this->plugin_name); ?>
+                                                    <?php echo esc_html__('Text transformation','quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
                                                 <select class="ays-text-input ays-text-input-short" id="ays_quick_quiz_wrong_answer_text_transform" name="ays_quick_quiz_wrong_answer_text_transform">
                                                     <option value="none" selected>
-                                                        <?php echo __('None',$this->plugin_name); ?>
+                                                        <?php echo esc_html__('None','quiz-maker'); ?>
                                                     </option>
                                                     <option value="capitalize">
-                                                        <?php echo __('Capitalize',$this->plugin_name); ?>
+                                                        <?php echo esc_html__('Capitalize','quiz-maker'); ?>
                                                     </option>
                                                     <option value="uppercase">
-                                                        <?php echo __('Uppercase',$this->plugin_name); ?>
+                                                        <?php echo esc_html__('Uppercase','quiz-maker'); ?>
                                                     </option>
                                                     <option value="lowercase">
-                                                        <?php echo __('Lowercase',$this->plugin_name); ?>
+                                                        <?php echo esc_html__('Lowercase','quiz-maker'); ?>
                                                     </option>
                                                 </select>
                                             </div>
@@ -1879,22 +1885,22 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_wrong_answers_text_decoration">
-                                                    <?php echo __('Text decoration',$this->plugin_name); ?>
+                                                    <?php echo esc_html__('Text decoration','quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
                                                 <select class="ays-text-input ays-text-input-short" id="ays_quick_quiz_wrong_answers_text_decoration" name="ays_quick_quiz_wrong_answers_text_decoration">
                                                     <option value="none" selected>
-                                                        <?php echo __('None',$this->plugin_name); ?>
+                                                        <?php echo esc_html__('None','quiz-maker'); ?>
                                                     </option>
                                                     <option value="overline">
-                                                        <?php echo __('Overline',$this->plugin_name); ?>
+                                                        <?php echo esc_html__('Overline','quiz-maker'); ?>
                                                     </option>
                                                     <option value="line-through">
-                                                        <?php echo __('Line through',$this->plugin_name); ?>
+                                                        <?php echo esc_html__('Line through','quiz-maker'); ?>
                                                     </option>
                                                     <option value="underline">
-                                                        <?php echo __('Underline',$this->plugin_name); ?>
+                                                        <?php echo esc_html__('Underline','quiz-maker'); ?>
                                                     </option>
                                                 </select>
                                             </div>
@@ -1903,7 +1909,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_wrong_answers_letter_spacing">
-                                                    <?php echo __('Letter spacing',$this->plugin_name); ?>
+                                                    <?php echo esc_html__('Letter spacing','quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8 ays_quiz_display_flex_width">
@@ -1919,22 +1925,22 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_wrong_answers_font_weight">
-                                                    <?php echo __('Font weight',$this->plugin_name); ?>
+                                                    <?php echo esc_html__('Font weight','quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
                                                 <select class="ays-text-input ays-text-input-short" id="ays_quick_quiz_wrong_answers_font_weight" name="ays_quick_quiz_wrong_answers_font_weight">
                                                     <option value="normal" selected>
-                                                        <?php echo __('Normal',$this->plugin_name); ?>
+                                                        <?php echo esc_html__('Normal','quiz-maker'); ?>
                                                     </option>
                                                     <option value="lighter">
-                                                        <?php echo __('Lighter',$this->plugin_name); ?>
+                                                        <?php echo esc_html__('Lighter','quiz-maker'); ?>
                                                     </option>
                                                     <option value="bold">
-                                                        <?php echo __('Bold',$this->plugin_name); ?>
+                                                        <?php echo esc_html__('Bold','quiz-maker'); ?>
                                                     </option>
                                                     <option value="bolder">
-                                                        <?php echo __('Bolder',$this->plugin_name); ?>
+                                                        <?php echo esc_html__('Bolder','quiz-maker'); ?>
                                                     </option>
                                                     <option value="100">
                                                         <?php echo '100'; ?>
@@ -1974,14 +1980,14 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                     <hr>
                     <div class="ays-quick-questions-container">
                         <div>
-                            <p class="ays_questions_title"><?php echo __('Questions',$this->plugin_name)?></p>
+                            <p class="ays_questions_title"><?php echo esc_html__('Questions','quiz-maker')?></p>
                             <!-- <a href="javascript:void(0)" class="ays_add_question">
                                 <i class="ays_fa ays_fa_plus_square" aria-hidden="true"></i>
                             </a> -->
                             <div>
                                 <a href="javascript:void(0)" class="ays_add_question ays-quick-quiz-add-question">
                                     <i class="ays_fa ays_fa_plus_square" aria-hidden="true"></i>
-                                    <?php echo __('Add question', 'quiz-maker'); ?>
+                                    <?php echo esc_html__('Add question', 'quiz-maker'); ?>
                                 </a>
                             </div>
                         </div>
@@ -1989,18 +1995,18 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                         <div tabindex="0" class="ays_modal_element ays_modal_question active_question_border" id="ays_question_id_1">
                             <div class="form-group row">
                                 <div class="col-sm-9">
-                                    <input type="text" value="<?php echo __( 'Question Default Title' , $this->plugin_name); ?>" class="ays_question_input">
+                                    <input type="text" value="<?php echo esc_html__( 'Question Default Title' , 'quiz-maker'); ?>" class="ays_question_input">
                                 </div>
                                 <div class="col-sm-3" style="text-align: right;">
                                     <select class="ays_quick_question_type" name="ays_quick_question_type[]" style="width: 120px;">
-                                        <option value="radio"><?php echo __("Radio", $this->plugin_name); ?></option>
-                                        <option value="checkbox"><?php echo __("Checkbox", $this->plugin_name); ?></option>
-                                        <option value="select"><?php echo __("Dropdown", $this->plugin_name); ?></option>
-                                        <option value="text"><?php echo __("Text", $this->plugin_name); ?></option>
-                                        <option value="short_text"><?php echo __("Short Text", $this->plugin_name); ?></option>
-                                        <option value="number"><?php echo __("Number", $this->plugin_name); ?></option>
-                                        <option value="true_or_false"><?php echo __("True/False", $this->plugin_name); ?></option>
-                                        <option value="date"><?php echo __("Date", $this->plugin_name); ?></option>
+                                        <option value="radio"><?php echo esc_html__("Radio", 'quiz-maker'); ?></option>
+                                        <option value="checkbox"><?php echo esc_html__("Checkbox", 'quiz-maker'); ?></option>
+                                        <option value="select"><?php echo esc_html__("Dropdown", 'quiz-maker'); ?></option>
+                                        <option value="text"><?php echo esc_html__("Text", 'quiz-maker'); ?></option>
+                                        <option value="short_text"><?php echo esc_html__("Short Text", 'quiz-maker'); ?></option>
+                                        <option value="number"><?php echo esc_html__("Number", 'quiz-maker'); ?></option>
+                                        <option value="true_or_false"><?php echo esc_html__("True/False", 'quiz-maker'); ?></option>
+                                        <option value="date"><?php echo esc_html__("Date", 'quiz-maker'); ?></option>
                                     </select>
                                 </div>
                             </div>
@@ -2015,7 +2021,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                 if ($cat == 0 && intval($question['category_id']) == 0) {
                                                     $checked = 'selected';
                                                 }
-                                                echo "<option value='" . $question_category['id'] . "' " . $checked . ">" . stripslashes($question_category['title']) . "</option>";
+                                                echo "<option value='" . esc_attr($question_category['id']) . "' " . esc_attr($checked) . ">" . esc_attr( stripslashes($question_category['title']) ) . "</option>";
                                                 $cat++;
                                             }
                                         ?>
@@ -2029,7 +2035,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                             <input class="ays_answer_unique_id" type="radio" name="ays_answer_radio[1]" checked>
                                         </td>
                                         <td class="ays_answer_td">
-                                            <p class="ays_answer"><?php echo __('Answer',$this->plugin_name)?></p>
+                                            <p class="ays_answer"><?php echo esc_html__('Answer','quiz-maker')?></p>
                                         </td>
                                         <td class="show_remove_answer">
                                             <i class="ays_fa ays_fa_times" aria-hidden="true"></i>
@@ -2040,7 +2046,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                             <input class="ays_answer_unique_id" type="radio" name="ays_answer_radio[1]">
                                         </td>
                                         <td class="ays_answer_td">
-                                            <p class="ays_answer"><?php echo __('Answer',$this->plugin_name)?></p>
+                                            <p class="ays_answer"><?php echo esc_html__('Answer','quiz-maker')?></p>
                                         </td>
                                         <td class="show_remove_answer">
                                             <i class="ays_fa ays_fa_times" aria-hidden="true"></i>
@@ -2051,7 +2057,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                             <input class="ays_answer_unique_id" type="radio" name="ays_answer_radio[1]">
                                         </td>
                                         <td class="ays_answer_td">
-                                            <p class="ays_answer"><?php echo __('Answer',$this->plugin_name)?></p>
+                                            <p class="ays_answer"><?php echo esc_html__('Answer','quiz-maker')?></p>
                                         </td>
                                         <td class="show_remove_answer">
                                             <i class="ays_fa ays_fa_times" aria-hidden="true"></i>
@@ -2069,7 +2075,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                     <tr>
                                         <td>
                                             <input style="display:none;" class="ays-correct-answer" type="checkbox" name="ays-correct-answer[]" value="1" checked/>
-                                            <textarea type="text" name="ays-correct-answer-value[]" class="ays-correct-answer-value ays-text-question-type-value" placeholder="<?php echo __( 'Answer text', $this->plugin_name ); ?>"></textarea>
+                                            <textarea type="text" name="ays-correct-answer-value[]" class="ays-correct-answer-value ays-text-question-type-value" placeholder="<?php echo esc_html__( 'Answer text', 'quiz-maker' ); ?>"></textarea>
                                         </td>
                                     </tr>
                                 </table>
@@ -2091,10 +2097,10 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                         </a> -->
                         <a href="javascript:void(0)" class="ays_add_question ays-quick-quiz-add-question">
                             <i class="ays_fa ays_fa_plus_square" aria-hidden="true"></i>
-                            <?php echo __('Add question', 'quiz-maker'); ?>
+                            <?php echo esc_html__('Add question', 'quiz-maker'); ?>
                         </a>
                     </div>
-                    <input type="button" class="btn btn-primary ays_submit_button" id="ays_quick_submit_button" value="<?php echo __('Submit',$this->plugin_name)?>"/>
+                    <input type="button" class="btn btn-primary ays_submit_button" id="ays_quick_submit_button" value="<?php echo esc_html__('Submit','quiz-maker')?>"/>
                     <input type="hidden" id="ays_quick_question_max_id" value="1"/>
                     <input type="hidden" id="ays_quiz_ajax_quick_quiz_nonce" name="ays_quiz_ajax_quick_quiz_nonce" value="<?php echo $quick_quiz_plugin_nonce; ?>">
                 </form>

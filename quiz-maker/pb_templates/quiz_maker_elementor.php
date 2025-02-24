@@ -60,8 +60,8 @@ class Widget_Quiz_Maker_Elementor extends Widget_Base {
     }
     protected function render( $instance = array() ) {
         $settings = $this->get_settings_for_display();
-        echo ( isset( $settings['quiz_title'] ) && ! empty( $settings['quiz_title'] ) ) ? "<h2 style='text-align: {$settings['quiz_title_alignment']}'>{$settings['quiz_title']}</h2>" : "";
-        echo do_shortcode("[ays_quiz id={$settings['quiz_selector']}]");
+        echo ( isset( $settings['quiz_title'] ) && ! empty( $settings['quiz_title'] ) ) ? "<h2 style='text-align: ". esc_attr($settings['quiz_title_alignment']) ."'>". esc_html( $settings['quiz_title'] ) ."</h2>" : "";
+        echo do_shortcode("[ays_quiz id=". esc_attr($settings['quiz_selector']) ."]");
     }
 
     public function get_active_quizzes(){
