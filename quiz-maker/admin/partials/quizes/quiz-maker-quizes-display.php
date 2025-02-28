@@ -721,6 +721,24 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                 </select>
                                             </div>
                                         </div> <!-- Show questions numbering -->
+                                        <hr/>
+                                        <div class="form-group row">
+                                            <div class="col-sm-4">
+                                                <label for="ays_quick_quiz_answers_view">
+                                                    <?php echo esc_html__('Answers view','quiz-maker'); ?>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <select class="ays-text-input ays-text-input-short ays-enable-timerl" id="ays_quick_quiz_answers_view" name="ays_quick_quiz_answers_view">
+                                                    <option value="list" selected>
+                                                        <?php echo esc_html__('List','quiz-maker'); ?>
+                                                    </option>
+                                                    <option value="grid">
+                                                        <?php echo esc_html__('Grid','quiz-maker'); ?>
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div> <!-- Answers view  -->
                                     </div>
                                 </div><!-- Settings Tab -->
                                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">

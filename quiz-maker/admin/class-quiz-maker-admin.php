@@ -1087,6 +1087,7 @@ class Quiz_Maker_Admin
         $quick_quiz_enable_custom_texts_for_buttons         = 'off';
         $quick_quiz_show_questions_explanation              = 'on_results_page';
         $quick_quiz_show_questions_numbering                = 'none';
+        $quick_quiz_answers_view                            = 'list';
 
         $quick_quiz_custom_texts_start_button               = $gen_start_button;
         $quick_quiz_custom_texts_next_button                = $gen_next_button;
@@ -1421,6 +1422,9 @@ class Quiz_Maker_Admin
 
             // Questions numbering
             $quick_quiz_show_questions_numbering = (isset( $_REQUEST['ays_quick_quiz_show_questions_numbering'] ) && $_REQUEST['ays_quick_quiz_show_questions_numbering'] != "") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_show_questions_numbering'] ) ) : "none";
+
+            // Answers view
+            $quick_quiz_answers_view = (isset( $_REQUEST['ays_quick_quiz_answers_view'] ) && $_REQUEST['ays_quick_quiz_answers_view'] != "") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_answers_view'] ) ) : "list";
             
         }
         
@@ -1480,6 +1484,7 @@ class Quiz_Maker_Admin
             'form_email'                                    => '',
             'form_phone'                                    => '',
             'enable_logged_users'                           => 'off',
+            'answers_view'                                  => $quick_quiz_answers_view,
             'image_width'                                   => $quick_quiz_image_width,
             'image_height'                                  => $quick_quiz_image_height,
             'quiz_image_width_by_percentage_px'             => $quick_quiz_image_width_by_percentage_px,
@@ -1536,21 +1541,21 @@ class Quiz_Maker_Admin
             'answers_rw_texts'                              => 'on_passing',
             'disable_store_data'                            => $quick_quiz_disable_store_data,
             'enable_background_gradient'                    => 'off',
-            'background_gradient_color_1'                   => '#000',
-            'background_gradient_color_2'                   => '#fff',
-            'quiz_gradient_direction'                       => 'vertical',
-            'redirect_after_submit'                         => 'off',
-            'submit_redirect_url'                           => '',
-            'submit_redirect_delay'                         => '',
-            'progress_bar_style'                            => $quick_quiz_progress_bar_style,
-            'progress_live_bar_style'                       => $quick_quiz_progress_live_bar_style,
-            'enable_exit_button'                            => 'off',
-            'exit_redirect_url'                             => '',
-            'image_sizing'                                  => $quick_quiz_image_sizing,
-            'quiz_bg_image_position'                        => 'center center',
-            'custom_class'                                  => $quick_quiz_custom_class,
-            'enable_social_buttons'                         => 'off',
-            'enable_social_links'                           => 'off',
+            'background_gradient_color_1'                       => '#000',
+            'background_gradient_color_2'                       => '#fff',
+            'quiz_gradient_direction'                           => 'vertical',
+            'redirect_after_submit'                             => 'off',
+            'submit_redirect_url'                               => '',
+            'submit_redirect_delay'                             => '',
+            'progress_bar_style'                                => $quick_quiz_progress_bar_style,
+            'progress_live_bar_style'                           => $quick_quiz_progress_live_bar_style,
+            'enable_exit_button'                                => 'off',
+            'exit_redirect_url'                                 => '',
+            'image_sizing'                                      => $quick_quiz_image_sizing,
+            'quiz_bg_image_position'                            => 'center center',
+            'custom_class'                                      => $quick_quiz_custom_class,
+            'enable_social_buttons'                             => 'off',
+            'enable_social_links'                               => 'off',
             'social_links' => array(
                 'linkedin_link'     => '',
                 'facebook_link'     => '',
@@ -1560,28 +1565,28 @@ class Quiz_Maker_Admin
                 'youtube_link'      => '',
                 'behance_link'      => '',
             ),
-            'show_quiz_title'                               => 'on',
-            'show_quiz_desc'                                => 'on',
-            'show_login_form'                               => 'off',
-            'mobile_max_width'                              => '',
-            'limit_users_by'                                => 'ip',
-            'activeInterval'                                => '',
-            'deactiveInterval'                              => '',
-            'active_date_check'                             => 'off',
-            'active_date_pre_start_message'                 => __("The quiz will be available soon!", 'quiz-maker'),
-            'active_date_message'                           => __("The quiz has expired!", 'quiz-maker'),
-            'explanation_time'                              => '4',
-            'enable_clear_answer'                           => $quick_quiz_enable_clear_answer,
-            'show_category'                                 => $quick_quiz_show_category,
-            'show_question_category'                        => $quick_quiz_show_question_category,
-            'display_score'                                 => 'by_percantage',
-            'enable_rw_asnwers_sounds'                      => $quick_quiz_enable_rw_asnwers_sounds,
-            'ans_right_wrong_icon'                          => 'none',
-            'quiz_bg_img_in_finish_page'                    => 'off',
-            'finish_after_wrong_answer'                     => 'off',
-            'enable_enter_key'                              => $quick_quiz_enable_enter_key,
-            'buttons_text_color'                            => '#ffffff',
-            'buttons_position'                              => $quick_quiz_buttons_position,
+            'show_quiz_title'                                   => 'on',
+            'show_quiz_desc'                                    => 'on',
+            'show_login_form'                                   => 'off',
+            'mobile_max_width'                                  => '',
+            'limit_users_by'                                    => 'ip',
+            'activeInterval'                                    => '',
+            'deactiveInterval'                                  => '',
+            'active_date_check'                                 => 'off',
+            'active_date_pre_start_message'                     => __("The quiz will be available soon!", 'quiz-maker'),
+            'active_date_message'                               => __("The quiz has expired!", 'quiz-maker'),
+            'explanation_time'                                  => '4',
+            'enable_clear_answer'                               => $quick_quiz_enable_clear_answer,
+            'show_category'                                     => $quick_quiz_show_category,
+            'show_question_category'                            => $quick_quiz_show_question_category,
+            'display_score'                                     => 'by_percantage',
+            'enable_rw_asnwers_sounds'                          => $quick_quiz_enable_rw_asnwers_sounds,
+            'ans_right_wrong_icon'                              => 'none',
+            'quiz_bg_img_in_finish_page'                        => 'off',
+            'finish_after_wrong_answer'                         => 'off',
+            'enable_enter_key'                                  => $quick_quiz_enable_enter_key,
+            'buttons_text_color'                                => '#ffffff',
+            'buttons_position'                                  => $quick_quiz_buttons_position,
             'show_questions_explanation'                        => $quick_quiz_show_questions_explanation,
             'enable_audio_autoplay'                             => $quick_quiz_enable_audio_autoplay,
             'buttons_size'                                      => $quick_quiz_buttons_size,
