@@ -739,6 +739,22 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                 </select>
                                             </div>
                                         </div> <!-- Answers view  -->
+                                        <hr/>
+                                        <div class="form-group row">
+                                            <div class="col-sm-4">
+                                                <label>
+                                                    <?php echo esc_html__('Show messages for right/wrong answers','quiz-maker'); ?>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <select id="ays_quick_quiz_answers_rw_texts" name="ays_quick_quiz_answers_rw_texts" class="ays-text-input ays-text-input-short">
+                                                    <option value="on_passing" selected><?php echo esc_html__( "During the quiz", 'quiz-maker' ); ?></option>
+                                                    <option value="on_results_page"><?php echo esc_html__( 'On results page', 'quiz-maker'); ?></option>
+                                                    <option value="on_both"><?php echo esc_html__( 'On Both', 'quiz-maker'); ?></option>
+                                                    <option value="disable"><?php echo esc_html__( 'Disable', 'quiz-maker'); ?></option>
+                                                </select>
+                                            </div>
+                                        </div> <!-- Show messages for right/wrong answers  -->
                                     </div>
                                 </div><!-- Settings Tab -->
                                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">

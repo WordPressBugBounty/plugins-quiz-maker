@@ -93,6 +93,12 @@ class Quiz_Maker_Settings_Actions {
             // Quiz Maker ChatGPT Addon AI model
             $ays_quiz_ai_model = (isset($_REQUEST['ays_quiz_ai_model']) && $_REQUEST['ays_quiz_ai_model'] != '') ? ( sanitize_text_field( $_REQUEST['ays_quiz_ai_model'] ) ) : '' ;
 
+            // Quiz Maker DeepSeek Addon API Key
+            $ays_quiz_deepseek_client_secret = (isset($_REQUEST['ays_quiz_deepseek_client_secret']) && $_REQUEST['ays_quiz_deepseek_client_secret'] != '') ? ( sanitize_text_field( $_REQUEST['ays_quiz_deepseek_client_secret'] ) ) : '' ;
+
+            // Quiz Maker DeepSeek Addon deepseek model
+            $ays_quiz_deepseek_model = (isset($_REQUEST['ays_quiz_deepseek_model']) && $_REQUEST['ays_quiz_deepseek_model'] != '') ? ( sanitize_text_field( $_REQUEST['ays_quiz_deepseek_model'] ) ) : '' ;
+
 
             // Extra shortcodes / User History Quiz shortcode / Columns
             $ays_user_history_quiz_columns = (isset( $_REQUEST['ays_user_history_quiz_columns'] ) && !empty($_REQUEST['ays_user_history_quiz_columns'])) ? array_map( 'sanitize_text_field', $_REQUEST['ays_user_history_quiz_columns'] ) : array();
@@ -301,6 +307,8 @@ class Quiz_Maker_Settings_Actions {
                 // Quiz Addons Data
                 'ays_quiz_ai_client_secret'                         => $ays_quiz_ai_client_secret,
                 'ays_quiz_ai_model'                                 => $ays_quiz_ai_model,
+                'ays_quiz_deepseek_client_secret'                   => $ays_quiz_deepseek_client_secret,
+                'ays_quiz_deepseek_model'                           => $ays_quiz_deepseek_model,
 
                 // Quiz Maker Extra Shortcodes Addon
                 'ays_user_history_quiz_columns'                     => $ays_user_history_quiz_columns,
