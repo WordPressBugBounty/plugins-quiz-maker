@@ -689,6 +689,17 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <hr/>
                                         <div class="form-group row">
                                             <div class="col-sm-4">
+                                                <label for="ays_quick_quiz_show_quiz_title">
+                                                    <?php echo esc_html__('Show quiz title','quiz-maker'); ?>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <input type="checkbox" id="ays_quick_quiz_show_quiz_title" name="ays_quick_quiz_show_quiz_title" class="" value="on" checked />
+                                            </div>
+                                        </div> <!-- Show quiz head information / Show quiz title -->
+                                        <hr/>
+                                        <div class="form-group row">
+                                            <div class="col-sm-4">
                                                 <label>
                                                     <?php echo esc_html__('Show question explanation','quiz-maker'); ?>
                                                 </label>

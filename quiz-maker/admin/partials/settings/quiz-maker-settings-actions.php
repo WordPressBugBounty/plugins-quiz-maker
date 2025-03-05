@@ -127,6 +127,7 @@ class Quiz_Maker_Settings_Actions {
             // Advanced User Dashboard | columns | Results by quiz section
             $ays_user_dashboard_results_columns = (isset( $_REQUEST['ays_user_dashboard_results_columns'] ) && !empty($_REQUEST['ays_user_dashboard_results_columns'])) ? array_map( 'sanitize_text_field', $_REQUEST['ays_user_dashboard_results_columns'] ) : array();
             $ays_user_dashboard_results_columns_order = (isset( $_REQUEST['ays_user_dashboard_results_columns_order'] ) && !empty($_REQUEST['ays_user_dashboard_results_columns_order'])) ? array_map( 'sanitize_text_field', $_REQUEST['ays_user_dashboard_results_columns_order'] ) : array();
+            $ays_user_dashboard_show_quiz_type = ( isset($_REQUEST['ays_user_dashboard_show_quiz_type']) && !empty($_REQUEST['ays_user_dashboard_show_quiz_type']) ) ? sanitize_text_field($_REQUEST['ays_user_dashboard_show_quiz_type']) : 'user';
 
 
             // Addon Data End
@@ -328,6 +329,7 @@ class Quiz_Maker_Settings_Actions {
                 'ays_user_dashboard_results_by_quiz_columns_order'  => $ays_user_dashboard_results_by_quiz_columns_order,
                 'ays_user_dashboard_results_columns'                => $ays_user_dashboard_results_columns,
                 'ays_user_dashboard_results_columns_order'          => $ays_user_dashboard_results_columns_order,
+                'ays_user_dashboard_show_quiz_type'                 => $ays_user_dashboard_show_quiz_type,
 
             );
             
