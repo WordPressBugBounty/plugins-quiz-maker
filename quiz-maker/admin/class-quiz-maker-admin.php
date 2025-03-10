@@ -1086,6 +1086,7 @@ class Quiz_Maker_Admin
         $quick_quiz_enable_rw_asnwers_sounds                = 'off';
         $quick_quiz_enable_custom_texts_for_buttons         = 'off';
         $quick_quiz_show_quiz_title                         = 'on';
+        $quick_quiz_show_quiz_desc                          = 'on';
         $quick_quiz_show_questions_explanation              = 'on_results_page';
         $quick_quiz_show_questions_numbering                = 'none';
         $quick_quiz_answers_view                            = 'list';
@@ -1433,6 +1434,9 @@ class Quiz_Maker_Admin
 
             // Show quiz head information / Show title
             $quick_quiz_show_quiz_title = (isset( $_REQUEST['ays_quick_quiz_show_quiz_title'] ) && $_REQUEST['ays_quick_quiz_show_quiz_title'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_show_quiz_title'] ) ) : "off";
+
+            // Show quiz head information / Show Description
+            $quick_quiz_show_quiz_desc = (isset( $_REQUEST['ays_quick_quiz_show_quiz_desc'] ) && $_REQUEST['ays_quick_quiz_show_quiz_desc'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_show_quiz_desc'] ) ) : "off";
             
         }
         
@@ -1574,7 +1578,7 @@ class Quiz_Maker_Admin
                 'behance_link'      => '',
             ),
             'show_quiz_title'                                   => $quick_quiz_show_quiz_title,
-            'show_quiz_desc'                                    => 'on',
+            'show_quiz_desc'                                    => $quick_quiz_show_quiz_desc,
             'show_login_form'                                   => 'off',
             'mobile_max_width'                                  => '',
             'limit_users_by'                                    => 'ip',

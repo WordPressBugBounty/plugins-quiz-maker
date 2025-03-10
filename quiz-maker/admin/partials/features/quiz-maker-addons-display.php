@@ -13,6 +13,32 @@
         <div class="row">
             <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-4">
                 <div class="card">
+                    <img class="card-img-top" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL); ?>/images/icons/addon-generator-quiz.png" alt="<?php echo esc_attr( __("User Registration and Login Addon", 'quiz-maker') ); ?>">
+                    <div class="card-body">
+                        <h5 class="card-title"><a target="_blank" href="https://ays-pro.com/generate-quiz-addon?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=generate-quiz-addon" style="color: #000"><?php echo esc_attr( __("Generate Quiz Addon", 'quiz-maker') ); ?></a></h5>
+                        <p class="card-text"><?php echo esc_attr( __("Generate Quiz Addon allows users to create quizzes directly from the front end by selecting questions from specific categories or existing quizzes. This add-on simplifies the quiz-making process, making it accessible to anyone without needing backend access.", 'quiz-maker') ); ?></p>
+                        <div>
+                            <a target="_blank" href="https://www.youtube.com/watch?v=HBA1qzoqcQM" class="btn button ays-quiz-addon-menu-watch-video-button"><?php echo esc_attr( __("Watch video", 'quiz-maker') ); ?></a>
+                            <a target="_blank" href="https://ays-pro.com/generate-quiz-addon?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=generate-quiz-addon" class="btn btn-primary"><?php echo esc_attr( __("See Pricing", 'quiz-maker') ); ?></a>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- Generate Quiz Addon -->
+            <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-4">
+                <div class="card">
+                    <img class="card-img-top" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL); ?>/images/icons/addon-deepseek.png" alt="<?php echo esc_attr( __("User Registration and Login Addon", 'quiz-maker') ); ?>">
+                    <div class="card-body">
+                        <h5 class="card-title"><a target="_blank" href="https://ays-pro.com/deepseek-addon?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=deepseek-addon" style="color: #000"><?php echo esc_attr( __("DeepSeek Addon", 'quiz-maker') ); ?></a></h5>
+                        <p class="card-text"><?php echo esc_attr( __("This is a powerful add-on that enhances the Quiz Maker plugin with AI-driven question generation. It allows quiz creators to generate high-quality questions automatically, ensuring a smoother and more efficient quiz-making process.", 'quiz-maker') ); ?></p>
+                        <div>
+                            <a target="_blank" href="https://www.youtube.com/watch?v=X89FYEZiLt4" class="btn button ays-quiz-addon-menu-watch-video-button"><?php echo esc_attr( __("Watch video", 'quiz-maker') ); ?></a>
+                            <a target="_blank" href="https://ays-pro.com/deepseek-addon?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=deepseek-addon" class="btn btn-primary"><?php echo esc_attr( __("See Pricing", 'quiz-maker') ); ?></a>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- DeepSeek Addon -->
+            <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-4">
+                <div class="card">
                     <img class="card-img-top" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL); ?>/images/icons/addon-user-registration-and-login.png" alt="<?php echo esc_attr( __("User Registration and Login Addon", 'quiz-maker') ); ?>">
                     <div class="card-body">
                         <h5 class="card-title"><a target="_blank" href="https://ays-pro.com/user-registration-login-addon?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=user-registration-addon" style="color: #000"><?php echo esc_attr( __("User Registration and Login Addon", 'quiz-maker') ); ?></a></h5>
@@ -23,7 +49,7 @@
                         </div>
                     </div>
                 </div>
-            </div> <!-- URL Parameters addon -->
+            </div> <!-- User Registration and Login Addon -->
             <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-4">
                 <div class="card">
                     <img class="card-img-top" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL); ?>/images/icons/addon-url-parameters.png" alt="<?php echo esc_attr( __("URL Parameters addon", 'quiz-maker') ); ?>">
