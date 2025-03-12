@@ -835,7 +835,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                 <label for="ays_quick_quiz_disable_store_data">
                                                     <?php echo esc_html__('Disable data storing in database','quiz-maker'); ?>
                                                 </label>
-                                                <p class="ays_quiz_small_hint_text_for_not_recommended">
+                                                <p class="ays_quiz_small_hint_text_for_not_recommended" style="margin: 0;">
                                                     <span><?php echo esc_html__( "Not recommended" , 'quiz-maker' ); ?></span>
                                                 </p>
                                             </div>
@@ -843,6 +843,20 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                 <input type="checkbox" class="ays-enable-timer1" id="ays_quick_quiz_disable_store_data" name="ays_quick_quiz_disable_store_data" value="on" />
                                             </div>
                                         </div><!-- Disable data storing in database -->
+                                        <hr/>
+                                        <div class="form-group row">
+                                            <div class="col-sm-4">
+                                                <label for="ays_quick_quiz_display_score">
+                                                    <?php echo esc_html__('Display score','quiz-maker'); ?>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <select name="ays_quick_quiz_display_score" class="ays-text-input ays-text-input-short" id="ays_quick_quiz_display_score">
+                                                    <option value="by_percantage" selected><?php echo esc_html__( "By percentage", 'quiz-maker' ); ?></option>
+                                                    <option value="by_correctness"><?php echo esc_html__( "By correct answers count", 'quiz-maker' ); ?></option>
+                                                </select>
+                                            </div>
+                                        </div> <!-- Display score -->
                                     </div>
                                 </div><!-- Results Settings Tab -->
                                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">

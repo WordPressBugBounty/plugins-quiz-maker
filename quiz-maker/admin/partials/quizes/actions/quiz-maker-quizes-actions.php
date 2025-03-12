@@ -4855,10 +4855,10 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-3">
                                         <label for='ays_quiz_show_timer'>
-                                            <?= __('Show timer', 'quiz-maker'); ?>
+                                            <?php echo esc_html__('Show timer', 'quiz-maker'); ?>
                                             <a class="ays_help" data-toggle="tooltip"
                                                data-placement="top"
-                                               title="<?= __("Show the countdown or end date time in the quiz.", 'quiz-maker'); ?>">
+                                               title="<?php echo esc_attr( __("Show the countdown or end date time in the quiz.", 'quiz-maker') ); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -8479,16 +8479,16 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                 <div class="ays-quiz-top-actions-container-wrapper form-group row">
                     <div class="col-sm-12">
                         <p class="m-0 text-right">
-                            <a class="ays-quiz-collapse-all" href="javascript:void(0);"><?php echo __( "Collapse All", "quiz-maker" ); ?></a>
+                            <a class="ays-quiz-collapse-all" href="javascript:void(0);"><?php echo esc_html__( "Collapse All", "quiz-maker" ); ?></a>
                             <span>|</span>
-                            <a class="ays-quiz-expand-all" href="javascript:void(0);"><?php echo __( "Expand All", "quiz-maker" ); ?></a>
+                            <a class="ays-quiz-expand-all" href="javascript:void(0);"><?php echo esc_html__( "Expand All", "quiz-maker" ); ?></a>
                         </p>
                     </div>
                 </div>
                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                     <div class="ays-quiz-accordion-container">
                         <?php echo $quiz_accordion_svg_html; ?>
-                        <p class="ays-subtitle"><?php echo __('E-mail and Certificate settings','quiz-maker')?></p>
+                        <p class="ays-subtitle"><?php echo esc_html__('E-mail and Certificate settings','quiz-maker')?></p>
                     </div>
                     <hr class="ays-quiz-bolder-hr"/>
                     <div class="ays-quiz-accordion-options-box">
@@ -8497,7 +8497,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="ays-quiz-heading-box ays-quiz-unset-float ays-quiz-unset-margin">
                                     <div class="ays-quiz-wordpress-user-manual-box ays-quiz-wordpress-text-align">
                                         <a href="https://www.youtube.com/watch?v=LoQw1wxkj6k" target="_blank">
-                                            <?php echo __("How to create certifiication test - video", 'quiz-maker'); ?>
+                                            <?php echo esc_html__("How to create certifiication test - video", 'quiz-maker'); ?>
                                         </a>
                                     </div>
                                 </div>
@@ -8506,34 +8506,33 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="pro_features pro_features_popup">
                                     <div class="pro-features-popup-conteiner">
                                         <div class="pro-features-popup-title">
-                                            <?php echo __("Send email to user", 'quiz-maker'); ?>
+                                            <?php echo esc_html__("Send email to user", 'quiz-maker'); ?>
                                         </div>
                                         <div class="pro-features-popup-content" data-link="https://youtu.be/tHKiu-AOvYw">
                                             <p>
-                                                <?php echo sprintf( __("Get in touch with the Quiz takers directly. %s Generate more leads %s and use their email address to send the quiz results and build relationships with your website visitors. Generate a Certificate for each user and send it to their email, so they can easily install and keep it.", 'quiz-maker'),
+                                                <?php echo sprintf( esc_attr( __("Get in touch with the Quiz takers directly. %s Generate more leads %s and use their email address to send the quiz results and build relationships with your website visitors. Generate a Certificate for each user and send it to their email, so they can easily install and keep it.", 'quiz-maker') ),
                                                     "<strong>",
                                                     "</strong>"
                                                 ); ?>
                                             </p>
                                             <p>
-                                                <?php echo sprintf( __("To be sure that the users will share their email addresses with you, here we have a little hack for you! Activate the %s Hide Score option (Results Settings > Hide Score) %s and display the score only in the email message. Now, you are ready to generate leads, so start thinking about your email campaigns.", 'quiz-maker'),
+                                                <?php echo sprintf( esc_attr( __("To be sure that the users will share their email addresses with you, here we have a little hack for you! Activate the %s Hide Score option (Results Settings > Hide Score) %s and display the score only in the email message. Now, you are ready to generate leads, so start thinking about your email campaigns.", 'quiz-maker') ),
                                                     "<strong>",
                                                     "</strong>"
                                                 ); ?>
                                             </p>
                                             <div>
-                                                <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo __("See Documentation", 'quiz-maker'); ?></a>
+                                                <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo esc_html__("See Documentation", 'quiz-maker'); ?></a>
                                             </div>
                                         </div>
                                         <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-send-mail-to-user">
-                                            <?php echo __("Use this Feature", 'quiz-maker'); ?>
+                                            <?php echo esc_html__("Use this Feature", 'quiz-maker'); ?>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-2">
-                                        <label class="ays-disable-setting"><?php echo __('Send Mail To User','quiz-maker')?></label>
-
+                                        <label class="ays-disable-setting"><?php echo esc_html__('Send Mail To User','quiz-maker')?></label>
                                     </div>
                                     <div class="col-sm-2">
                                         <input type="checkbox" class="ays-enable-timerl ays-disable-setting"
@@ -8545,8 +8544,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <div class="form-group row">
                                             <div class="col-sm-3">
                                                 <label for="ays_enable_send_mail_to_user_by_pass_score">
-                                                    <?php echo __('Pass score (%)', 'quiz-maker'); ?>
-                                                    <a  class="ays_help" data-toggle="tooltip" title="<?php echo __('If the option is enabled, then the user will receive the email only if he/she has passed the minimum score required. It will take the value of the general pass score of the quiz. Please specify it in the Result Settings tab.','quiz-maker'); ?>">
+                                                    <?php echo esc_html__('Pass score (%)', 'quiz-maker'); ?>
+                                                    <a  class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('If the option is enabled, then the user will receive the email only if he/she has passed the minimum score required. It will take the value of the general pass score of the quiz. Please specify it in the Result Settings tab.','quiz-maker') ); ?>">
                                                         <i class=""></i>
                                                     </a>
                                                 </label>
@@ -8557,13 +8556,13 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         </div>
                                         <div class="form-group row">
                                             <div class="col-sm-12">
-                                                <blockquote><?php echo __( 'Tick the checkbox, and the user will receive the email only if he/she has passed the minimum score required.', 'quiz-maker' ); ?></blockquote>
+                                                <blockquote><?php echo esc_html__( 'Tick the checkbox, and the user will receive the email only if he/she has passed the minimum score required.', 'quiz-maker' ); ?></blockquote>
                                             </div>
                                         </div>
                                         <hr/>
                                         <div class="form-group row">
                                             <div class="col-sm-3">
-                                                <label class="ays-disable-setting"><?php echo __('Mail message','quiz-maker')?></label>
+                                                <label class="ays-disable-setting"><?php echo esc_html__('Mail message','quiz-maker')?></label>
                                             </div>
                                             <div class="col-sm-9">
                                             <textarea type="text" id="ays_mail_message" class="ays-textarea ays-disable-setting"
@@ -8574,7 +8573,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <div class="form-group row">
                                             <div class="col-sm-3">
                                                 <label for="ays_send_results_user">
-                                                    <?php echo __('Send Results to User','quiz-maker')?>
+                                                    <?php echo esc_html__('Send Results to User','quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-9">
@@ -8585,7 +8584,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <div class="form-group row">
                                             <div class="col-sm-3">
                                                 <label for="ays_send_interval_msg">
-                                                    <?php echo __('Send Interval message to User','quiz-maker')?>
+                                                    <?php echo esc_html__('Send Interval message to User','quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-9">
@@ -8597,33 +8596,33 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-send-mail-to-user" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                            <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
+                                            <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg' ); ?>" class="ays-quiz-new-upgrade-button-hover">
                                         </div>
-                                        <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
+                                        <div class="ays-quiz-new-upgrade-button"><?php echo esc_html__("Upgrade", "quiz-maker"); ?></div>
                                     </div>
                                 </a>
                                 <div class="ays-quiz-new-watch-video-button-box">
                                     <div>
-                                        <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24.svg'?>">
-                                        <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg'?>" class="ays-quiz-new-watch-video-button-hover">
+                                        <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24.svg' ); ?>">
+                                        <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg' ); ?>" class="ays-quiz-new-watch-video-button-hover">
                                     </div>
-                                    <div class="ays-quiz-new-watch-video-button"><?php echo __("Watch Video", "quiz-maker"); ?></div>
+                                    <div class="ays-quiz-new-watch-video-button"><?php echo esc_html__("Watch Video", "quiz-maker"); ?></div>
                                 </div>
                                 <div class="ays-quiz-center-big-main-button-box ays-quiz-new-big-button-flex">
                                     <div class="ays-quiz-center-big-watch-video-button-box ays-quiz-big-upgrade-margin-right-10">
                                         <div class="ays-quiz-center-new-watch-video-demo-button">
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24.svg'?>" class="ays-quiz-new-button-img-hide">
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg'?>" class="ays-quiz-new-watch-video-button-hover">
-                                            <?php echo __("Watch Video", "quiz-maker"); ?>
+                                            <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24.svg'); ?>" class="ays-quiz-new-button-img-hide">
+                                            <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg'); ?>" class="ays-quiz-new-watch-video-button-hover">
+                                            <?php echo esc_html__("Watch Video", "quiz-maker"); ?>
                                         </div>
                                     </div>
                                     <div class="ays-quiz-center-big-upgrade-button-box">
                                         <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-send-mail-to-user" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                             <div class="ays-quiz-center-new-big-upgrade-button">
-                                                <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>" class="ays-quiz-new-button-img-hide">
-                                                <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">  
-                                                <?php echo __("Upgrade", "quiz-maker"); ?>
+                                                <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>" class="ays-quiz-new-button-img-hide">
+                                                <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'); ?>" class="ays-quiz-new-upgrade-button-hover">  
+                                                <?php echo esc_html__("Upgrade", "quiz-maker"); ?>
                                             </div>
                                         </a>
                                     </div>
@@ -8636,14 +8635,14 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="pro_features pro_features_popup">
                                     <div class="pro-features-popup-conteiner">
                                         <div class="pro-features-popup-title">
-                                            <?php echo __("Send Certificate to user", 'quiz-maker'); ?>
+                                            <?php echo esc_html__("Send Certificate to user", 'quiz-maker'); ?>
                                         </div>
                                         <div class="pro-features-popup-content" data-link="https://youtu.be/Av9HVaP3CdY">
                                             <p>
-                                                <?php echo __("If you want to create an online exam and send a certificate to the users after the quiz completion, then, you can make use of the Send Certificate to user option.", 'quiz-maker'); ?>
+                                                <?php echo esc_html__("If you want to create an online exam and send a certificate to the users after the quiz completion, then, you can make use of the Send Certificate to user option.", 'quiz-maker'); ?>
                                             </p>
                                             <p>
-                                                <?php echo sprintf( __("By enabling this option, you can send fully customized Certificates to your users by inserting your preferred message variables into the %s Certificate title %s and the %s Certificate body %s options.", 'quiz-maker'),
+                                                <?php echo sprintf( esc_html__("By enabling this option, you can send fully customized Certificates to your users by inserting your preferred message variables into the %s Certificate title %s and the %s Certificate body %s options.", 'quiz-maker'),
                                                     "<strong>",
                                                     "</strong>",
                                                     "<strong>",
@@ -8651,27 +8650,27 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                                 ); ?>
                                             </p>
                                             <p>
-                                                <?php echo __("Also, set a passing score, so that the users who got the minimum required score can receive the Certificate.", 'quiz-maker'); ?>
+                                                <?php echo esc_html__("Also, set a passing score, so that the users who got the minimum required score can receive the Certificate.", 'quiz-maker'); ?>
                                             </p>
                                             <div>
-                                                <a href="https://quiz-plugin.com/english-exam-with-certificate/" target="_blank"><?php echo __("PRO Demo", 'quiz-maker'); ?></a>
+                                                <a href="https://quiz-plugin.com/english-exam-with-certificate/" target="_blank"><?php echo esc_html__("PRO Demo", 'quiz-maker'); ?></a>
                                             </div>
                                         </div>
                                         <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-send-certificate-to-user">
-                                            <?php echo __("Upgrade PRO NOW", 'quiz-maker'); ?>
+                                            <?php echo esc_html__("Upgrade PRO NOW", 'quiz-maker'); ?>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-2">
-                                        <label class="ays-disable-setting"><?php echo __('Send Certificate To User','quiz-maker')?></label>
+                                        <label class="ays-disable-setting"><?php echo esc_html__('Send Certificate To User','quiz-maker')?></label>
                                         <hr>
-                                        <label for="ays_enable_certificate_without_send"><?php echo __('Generate certificate without sending to user','quiz-maker')?></label>
+                                        <label for="ays_enable_certificate_without_send"><?php echo esc_html__('Generate certificate without sending to user','quiz-maker')?></label>
                                         <hr>
                                         <div class="ays_generate_cert_preview_wrap">
                                         <div class="ays_generate_cert_preview_button_wrap">
-                                            <button class="button-primary" type="button"><?php echo __( 'Generate Certificate preview', 'quiz-maker' ); ?></button>
-                                            <a class="ays_help" data-html="true" data-toggle="tooltip" title="<?php echo __("This is a just preview of the certificate and some message variables will not work on preview mode. Please be understanding.", 'quiz-maker' ); ?>">
+                                            <button class="button-primary" type="button"><?php echo esc_html__( 'Generate Certificate preview', 'quiz-maker' ); ?></button>
+                                            <a class="ays_help" data-html="true" data-toggle="tooltip" title="<?php echo esc_attr( __("This is a just preview of the certificate and some message variables will not work on preview mode. Please be understanding.", 'quiz-maker' ) ); ?>">
                                                 <i class=""></i>
                                             </a>
                                         </div>
@@ -8695,18 +8694,18 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                             <div class="col-sm-12">
                                                 <label class="ays_quiz_loader">
                                                     <input type="radio" class="ays-enable-timer1"/>
-                                                    <span><?php echo __( "Percentage", 'quiz-maker' ); ?></span>
+                                                    <span><?php echo esc_html__( "Percentage", 'quiz-maker' ); ?></span>
                                                 </label>
                                                 <label class="ays_quiz_loader">
                                                     <input type="radio" class="ays-enable-timer1" />
-                                                    <span><?php echo __( "Points", 'quiz-maker' ); ?></span>
+                                                    <span><?php echo esc_html__( "Points", 'quiz-maker' ); ?></span>
                                                 </label>
                                             </div>
                                         </div>
                                         <hr>
                                         <div class="form-group row">
                                             <div class="col-sm-3">
-                                                <label class="ays-disable-setting"><?php echo __('Certificate pass score','quiz-maker')?></label>
+                                                <label class="ays-disable-setting"><?php echo esc_html__('Certificate pass score','quiz-maker'); ?></label>
                                             </div>
                                             <div class="col-sm-9">
                                                 <input type="number" id="ays_certificate_pass" class="ays-text-input ays-disable-setting" disabled>
@@ -8715,19 +8714,19 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <hr/>                         
                                         <div class="form-group row">
                                             <div class="col-sm-3">
-                                                <label class="ays-disable-setting"><?php echo __('Certificate title','quiz-maker')?></label>
+                                                <label class="ays-disable-setting"><?php echo esc_html__('Certificate title','quiz-maker'); ?></label>
                                             </div>
                                             <div class="col-sm-9">
-                                                <textarea disabled class="ays-textarea ays-disable-setting">Certificate of Completion</textarea>
+                                                <textarea disabled class="ays-textarea ays-disable-setting"><?php echo esc_html__('Certificate of Completion','quiz-maker'); ?></textarea>
                                             </div>
                                         </div>
                                         <hr/>
                                         <div class="form-group row">
                                             <div class="col-sm-3">
-                                                <label class="ays-disable-setting"><?php echo __('Certificate body','quiz-maker')?></label>
+                                                <label class="ays-disable-setting"><?php echo esc_html__('Certificate body','quiz-maker')?></label>
                                             </div>
                                             <div class="col-sm-9">  
-                                                <textarea disabled class="ays-textarea ays-disable-setting" style="height:320px;"><?php echo $certificate_body_html;?>
+                                                <textarea disabled class="ays-textarea ays-disable-setting" style="height:320px;"><?php echo esc_textarea($certificate_body_html);?>
                                                 </textarea>
                                             </div>
                                         </div>
@@ -9008,30 +9007,30 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                 <div class="ays-quiz-top-actions-container-wrapper form-group row">
                     <div class="col-sm-12">
                         <p class="m-0 text-right">
-                            <a class="ays-quiz-collapse-all" href="javascript:void(0);"><?php echo __( "Collapse All", "quiz-maker" ); ?></a>
+                            <a class="ays-quiz-collapse-all" href="javascript:void(0);"><?php echo esc_html__( "Collapse All", "quiz-maker" ); ?></a>
                             <span>|</span>
-                            <a class="ays-quiz-expand-all" href="javascript:void(0);"><?php echo __( "Expand All", "quiz-maker" ); ?></a>
+                            <a class="ays-quiz-expand-all" href="javascript:void(0);"><?php echo esc_html__( "Expand All", "quiz-maker" ); ?></a>
                         </p>
                     </div>
                 </div>
                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                     <div class="ays-quiz-accordion-container">
                         <?php echo $quiz_accordion_svg_html; ?>
-                        <p class="ays-subtitle"><?php echo __('Integrations settings','quiz-maker')?></p>
+                        <p class="ays-subtitle"><?php echo esc_html__('Integrations settings','quiz-maker'); ?></p>
                     </div>
                     <hr class="ays-quiz-bolder-hr"/>
                     <div class="ays-quiz-accordion-options-box">
                         <fieldset>
                             <legend>
-                                <img class="ays_integration_logo" src="<?php echo AYS_QUIZ_ADMIN_URL; ?>/images/integrations/mailchimp_logo.png" alt="">
-                                <h5><?php echo __('MailChimp Settings','quiz-maker')?></h5>
+                                <img class="ays_integration_logo" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL); ?>/images/integrations/mailchimp_logo.png" alt="">
+                                <h5><?php echo esc_html__('MailChimp Settings','quiz-maker')?></h5>
                             </legend>
                             <div class="form-group row">
                                 <div class="col-sm-12">
                                     <div class="ays-quiz-heading-box ays-quiz-unset-float ays-quiz-unset-margin">
                                         <div class="ays-quiz-wordpress-user-manual-box ays-quiz-wordpress-text-align">
                                             <a href="https://www.youtube.com/watch?v=joPQrsF0a60" target="_blank">
-                                                <?php echo __("How to integrate MailChimp - video", 'quiz-maker'); ?>
+                                                <?php echo esc_html__("How to integrate MailChimp - video", 'quiz-maker'); ?>
                                             </a>
                                         </div>
                                     </div>
@@ -9043,7 +9042,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_enable_mailchimp">
-                                                <?php echo __('Enable MailChimp','quiz-maker')?>
+                                                <?php echo esc_html__('Enable MailChimp','quiz-maker')?>
                                             </label>
                                         </div>
                                         <div class="col-sm-1">
@@ -9054,7 +9053,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_mailchimp_list">
-                                                <?php echo __('MailChimp list','quiz-maker')?>
+                                                <?php echo esc_html__('MailChimp list','quiz-maker')?>
                                             </label>
                                         </div>
                                         <div class="col-sm-8">
@@ -9067,21 +9066,21 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_enable_double_opt_in">
-                                                <?php echo __('Enable double opt-in','quiz-maker')?>
+                                                <?php echo esc_html__('Enable double opt-in','quiz-maker')?>
                                             </label>
                                         </div>
                                         <div class="col-sm-8">
                                             <input type="checkbox" class="ays-enable-timer1"/>
-                                            <span class="ays_option_description"><?php echo __( 'Send contacts an opt-in confirmation email when their email address added to the list.', 'quiz-maker' ); ?></span>
+                                            <span class="ays_option_description"><?php echo esc_html__( 'Send contacts an opt-in confirmation email when their email address added to the list.', 'quiz-maker' ); ?></span>
                                         </div>
                                     </div>
                                     <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
-                                                <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                                <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                                <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
+                                                <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'); ?>" class="ays-quiz-new-upgrade-button-hover">
                                             </div>
-                                            <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
+                                            <div class="ays-quiz-new-upgrade-button"><?php echo esc_html__("Upgrade", "quiz-maker"); ?></div>
                                         </div>
                                     </a>
                                 </div>
@@ -9090,15 +9089,15 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <hr/>
                         <fieldset>
                             <legend>
-                                <img class="ays_integration_logo" src="<?php echo AYS_QUIZ_ADMIN_URL; ?>/images/integrations/paypal_logo.png" alt="">
-                                <h5><?php echo __('PayPal Settings','quiz-maker')?></h5>
+                                <img class="ays_integration_logo" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL); ?>/images/integrations/paypal_logo.png" alt="">
+                                <h5><?php echo esc_html__('PayPal Settings','quiz-maker')?></h5>
                             </legend>                    
                             <div class="form-group row">
                                 <div class="col-sm-12">
                                     <div class="ays-quiz-heading-box ays-quiz-unset-float ays-quiz-unset-margin">
                                         <div class="ays-quiz-wordpress-user-manual-box ays-quiz-wordpress-text-align">
                                             <a href="https://www.youtube.com/watch?v=IwT-2d9OE1g" target="_blank">
-                                                <?php echo __("How to integrate PayPal - video", 'quiz-maker'); ?>
+                                                <?php echo esc_html__("How to integrate PayPal - video", 'quiz-maker'); ?>
                                             </a>
                                         </div>
                                     </div>
@@ -9110,7 +9109,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_enable_paypal">
-                                                <?php echo __('Enable PayPal','quiz-maker')?>
+                                                <?php echo esc_html__('Enable PayPal','quiz-maker')?>
                                             </label>
                                         </div>
                                         <div class="col-sm-1">
@@ -9121,7 +9120,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_paypal_amount">
-                                                <?php echo __('Amount','quiz-maker')?>
+                                                <?php echo esc_html__('Amount','quiz-maker')?>
                                             </label>
                                         </div>
                                         <div class="col-sm-8">
@@ -9132,22 +9131,22 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_paypal_currency">
-                                                <?php echo __('Currency','quiz-maker')?>
+                                                <?php echo esc_html__('Currency','quiz-maker')?>
                                             </label>
                                         </div>
                                         <div class="col-sm-8">
                                             <select id="ays_paypal_currency" class="ays-text-input ays-text-input-short">
-                                                <option>USD - <?php echo __( 'United States Dollar', 'quiz-maker' ); ?></option>
-                                                <option>EUR - <?php echo __( 'Euro', 'quiz-maker' ); ?></option>
-                                                <option>GBP - <?php echo __( 'British Pound Sterling', 'quiz-maker' ); ?></option>
-                                                <option>AUD - <?php echo __( 'Australian dollar', 'quiz-maker' ); ?></option>
-                                                <option>CHF - <?php echo __( 'Swiss Franc', 'quiz-maker' ); ?></option>
-                                                <option>JPY - <?php echo __( 'Japanese Yen', 'quiz-maker' ); ?></option>
-                                                <option>INR - <?php echo __( 'Indian Rupee', 'quiz-maker' ); ?></option>
-                                                <option>CNY - <?php echo __( 'Chinese Yuan', 'quiz-maker' ); ?></option>
-                                                <option>CAD - <?php echo __( 'Canadian Dollar', 'quiz-maker' ); ?></option>
-                                                <option>AED - <?php echo __( 'United Arab Emirates Dirham', 'quiz-maker' ); ?></option>
-                                                <option>RUB - <?php echo __( 'Russian Ruble', 'quiz-maker' ); ?></option>
+                                                <option>USD - <?php echo esc_html__( 'United States Dollar', 'quiz-maker' ); ?></option>
+                                                <option>EUR - <?php echo esc_html__( 'Euro', 'quiz-maker' ); ?></option>
+                                                <option>GBP - <?php echo esc_html__( 'British Pound Sterling', 'quiz-maker' ); ?></option>
+                                                <option>AUD - <?php echo esc_html__( 'Australian dollar', 'quiz-maker' ); ?></option>
+                                                <option>CHF - <?php echo esc_html__( 'Swiss Franc', 'quiz-maker' ); ?></option>
+                                                <option>JPY - <?php echo esc_html__( 'Japanese Yen', 'quiz-maker' ); ?></option>
+                                                <option>INR - <?php echo esc_html__( 'Indian Rupee', 'quiz-maker' ); ?></option>
+                                                <option>CNY - <?php echo esc_html__( 'Chinese Yuan', 'quiz-maker' ); ?></option>
+                                                <option>CAD - <?php echo esc_html__( 'Canadian Dollar', 'quiz-maker' ); ?></option>
+                                                <option>AED - <?php echo esc_html__( 'United Arab Emirates Dirham', 'quiz-maker' ); ?></option>
+                                                <option>RUB - <?php echo esc_html__( 'Russian Ruble', 'quiz-maker' ); ?></option>
                                             </select>
                                         </div>
                                     </div>
@@ -9155,7 +9154,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_stripe_currency">
-                                                <?php echo __('Payment details','quiz-maker'); ?>
+                                                <?php echo esc_html__('Payment details','quiz-maker'); ?>
                                             </label>
                                         </div>
                                         <div class="col-sm-8">
@@ -9165,10 +9164,10 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
-                                                <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                                <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                                <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
+                                                <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'); ?>" class="ays-quiz-new-upgrade-button-hover">
                                             </div>
-                                            <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade to Developer/Agency", "quiz-maker"); ?></div>
+                                            <div class="ays-quiz-new-upgrade-button"><?php echo esc_html__("Upgrade to Developer/Agency", "quiz-maker"); ?></div>
                                         </div>
                                     </a>
                                 </div>
@@ -9177,8 +9176,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <hr/>
                         <fieldset>
                             <legend>
-                                <img class="ays_integration_logo" src="<?php echo AYS_QUIZ_ADMIN_URL; ?>/images/integrations/stripe_logo.png" alt="">
-                                <h5><?php echo __('Stripe Settings','quiz-maker')?></h5>
+                                <img class="ays_integration_logo" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL); ?>/images/integrations/stripe_logo.png" alt="">
+                                <h5><?php echo esc_html__('Stripe Settings','quiz-maker')?></h5>
                             </legend>
                             <div class="col-sm-12 only_pro" style="padding:20px;">
                                 <div class="pro_features" style="justify-content:flex-end;">
@@ -9187,7 +9186,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_enable_stripe">
-                                            <?php echo __('Enable Stripe','quiz-maker'); ?>
+                                            <?php echo esc_html__('Enable Stripe','quiz-maker'); ?>
                                         </label>
                                     </div>
                                     <div class="col-sm-1">
@@ -9198,7 +9197,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_stripe_amount">
-                                            <?php echo __('Amount','quiz-maker')?>
+                                            <?php echo esc_html__('Amount','quiz-maker')?>
                                         </label>
                                     </div>
                                     <div class="col-sm-8">
@@ -9209,22 +9208,22 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_stripe_currency">
-                                            <?php echo __('Currency','quiz-maker')?>
+                                            <?php echo esc_html__('Currency','quiz-maker')?>
                                         </label>
                                     </div>
                                     <div class="col-sm-8">
                                         <select class="ays-text-input ays-text-input-short">
-                                            <option>USD - <?php echo __( 'United States Dollar', 'quiz-maker' ); ?></option>
-                                            <option>EUR - <?php echo __( 'Euro', 'quiz-maker' ); ?></option>
-                                            <option>GBP - <?php echo __( 'British Pound Sterling', 'quiz-maker' ); ?></option>
-                                            <option>AUD - <?php echo __( 'Australian dollar', 'quiz-maker' ); ?></option>
-                                            <option>CHF - <?php echo __( 'Swiss Franc', 'quiz-maker' ); ?></option>
-                                            <option>JPY - <?php echo __( 'Japanese Yen', 'quiz-maker' ); ?></option>
-                                            <option>INR - <?php echo __( 'Indian Rupee', 'quiz-maker' ); ?></option>
-                                            <option>CNY - <?php echo __( 'Chinese Yuan', 'quiz-maker' ); ?></option>
-                                            <option>CAD - <?php echo __( 'Canadian Dollar', 'quiz-maker' ); ?></option>
-                                            <option>AED - <?php echo __( 'United Arab Emirates Dirham', 'quiz-maker' ); ?></option>
-                                            <option>RUB - <?php echo __( 'Russian Ruble', 'quiz-maker' ); ?></option>
+                                            <option>USD - <?php echo esc_html__( 'United States Dollar', 'quiz-maker' ); ?></option>
+                                            <option>EUR - <?php echo esc_html__( 'Euro', 'quiz-maker' ); ?></option>
+                                            <option>GBP - <?php echo esc_html__( 'British Pound Sterling', 'quiz-maker' ); ?></option>
+                                            <option>AUD - <?php echo esc_html__( 'Australian dollar', 'quiz-maker' ); ?></option>
+                                            <option>CHF - <?php echo esc_html__( 'Swiss Franc', 'quiz-maker' ); ?></option>
+                                            <option>JPY - <?php echo esc_html__( 'Japanese Yen', 'quiz-maker' ); ?></option>
+                                            <option>INR - <?php echo esc_html__( 'Indian Rupee', 'quiz-maker' ); ?></option>
+                                            <option>CNY - <?php echo esc_html__( 'Chinese Yuan', 'quiz-maker' ); ?></option>
+                                            <option>CAD - <?php echo esc_html__( 'Canadian Dollar', 'quiz-maker' ); ?></option>
+                                            <option>AED - <?php echo esc_html__( 'United Arab Emirates Dirham', 'quiz-maker' ); ?></option>
+                                            <option>RUB - <?php echo esc_html__( 'Russian Ruble', 'quiz-maker' ); ?></option>
                                         </select>
                                     </div>
                                 </div>
@@ -9232,7 +9231,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_stripe_currency">
-                                            <?php echo __('Payment details','quiz-maker'); ?>
+                                            <?php echo esc_html__('Payment details','quiz-maker'); ?>
                                         </label>
                                     </div>
                                     <div class="col-sm-8">
@@ -9242,10 +9241,10 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                            <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
+                                            <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'); ?>" class="ays-quiz-new-upgrade-button-hover">
                                         </div>
-                                        <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade to Developer/Agency", "quiz-maker"); ?></div>
+                                        <div class="ays-quiz-new-upgrade-button"><?php echo esc_html__("Upgrade to Developer/Agency", "quiz-maker"); ?></div>
                                     </div>
                                 </a>
                             </div>
@@ -9253,8 +9252,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <hr/>
                         <fieldset>
                             <legend>
-                                <img class="ays_integration_logo" src="<?php echo AYS_QUIZ_ADMIN_URL; ?>/images/integrations/recaptcha_logo.png" alt="">
-                                <h5><?php echo __('reCAPTCHA Settings','quiz-maker')?></h5>
+                                <img class="ays_integration_logo" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL); ?>/images/integrations/recaptcha_logo.png" alt="">
+                                <h5><?php echo esc_html__('reCAPTCHA Settings','quiz-maker')?></h5>
                             </legend>
                             <div class="col-sm-12 only_pro" style="padding:20px;">
                                 <div class="pro_features" style="justify-content:flex-end;">
@@ -9262,7 +9261,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-4">
-                                        <label for="ays_quiz_enable_recaptcha"><?php echo __('Enable reCAPTCHA', 'quiz-maker') ?></label>
+                                        <label for="ays_quiz_enable_recaptcha"><?php echo esc_html__('Enable reCAPTCHA', 'quiz-maker') ?></label>
                                     </div>
                                     <div class="col-sm-1">
                                         <input type="checkbox" class="ays-enable-timer1"/>
@@ -9271,10 +9270,10 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                 <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                            <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
+                                            <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'); ?>" class="ays-quiz-new-upgrade-button-hover">
                                         </div>
-                                        <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade to Developer/Agency", "quiz-maker"); ?></div>
+                                        <div class="ays-quiz-new-upgrade-button"><?php echo esc_html__("Upgrade to Developer/Agency", "quiz-maker"); ?></div>
                                     </div>
                                 </a>
                             </div>
@@ -9282,8 +9281,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <hr/>
                         <fieldset>
                             <legend>                        
-                                <img class="ays_integration_logo" src="<?php echo AYS_QUIZ_ADMIN_URL; ?>/images/integrations/campaignmonitor_logo.png" alt="">
-                                <h5><?php echo __('Campaign Monitor Settings', 'quiz-maker') ?></h5>
+                                <img class="ays_integration_logo" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL); ?>/images/integrations/campaignmonitor_logo.png" alt="">
+                                <h5><?php echo esc_html__('Campaign Monitor Settings', 'quiz-maker') ?></h5>
                             </legend>
                             <div class="form-group row">
                                 <div class="col-sm-12 only_pro" style="padding:20px;">
@@ -9293,7 +9292,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_enable_monitor">
-                                                <?php echo __('Enable Campaign Monitor', 'quiz-maker') ?>
+                                                <?php echo esc_html__('Enable Campaign Monitor', 'quiz-maker') ?>
                                             </label>
                                         </div>
                                         <div class="col-sm-1">
@@ -9304,22 +9303,22 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_monitor_list">
-                                                <?php echo __('Campaign Monitor list', 'quiz-maker') ?>
+                                                <?php echo esc_html__('Campaign Monitor list', 'quiz-maker') ?>
                                             </label>
                                         </div>
                                         <div class="col-sm-8">
                                             <select id="ays_monitor_list" class="ays-text-input ays-text-input-short">
-                                                <option value="" disabled selected><?= __("Select List", 'quiz-maker') ?></option>
+                                                <option value="" disabled selected><?php echo esc_html(__("Select List", 'quiz-maker')); ?></option>
                                             </select>
                                         </div>
                                     </div>
                                     <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
-                                                <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                                <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                                <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
+                                                <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'); ?>" class="ays-quiz-new-upgrade-button-hover">
                                             </div>
-                                            <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
+                                            <div class="ays-quiz-new-upgrade-button"><?php echo esc_html__("Upgrade", "quiz-maker"); ?></div>
                                         </div>
                                     </a>
                                 </div>
@@ -9328,8 +9327,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <hr/>                
                         <fieldset>
                             <legend>
-                                <img class="ays_integration_logo" src="<?php echo AYS_QUIZ_ADMIN_URL; ?>/images/integrations/zapier_logo.png" alt="">
-                                <h5><?php echo __('Zapier Integration Settings', 'quiz-maker') ?></h5>
+                                <img class="ays_integration_logo" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL); ?>/images/integrations/zapier_logo.png" alt="">
+                                <h5><?php echo esc_html__('Zapier Integration Settings', 'quiz-maker') ?></h5>
                             </legend>
                             <div class="form-group row">
                                 <div class="col-sm-12 only_pro" style="padding:20px;">
@@ -9339,7 +9338,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_enable_zapier">
-                                                <?php echo __('Enable Zapier Integration', 'quiz-maker') ?>
+                                                <?php echo esc_html__('Enable Zapier Integration', 'quiz-maker') ?>
                                             </label>
                                         </div>
                                         <div class="col-sm-1">
@@ -9347,10 +9346,10 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         </div>
                                         <div class="col-sm-3">
                                             <button type="button" id="testZapier" class="btn btn-outline-secondary">
-                                                <?= __("Send test data", 'quiz-maker') ?>
+                                                <?php echo esc_html__("Send test data", 'quiz-maker') ?>
                                             </button>
                                             <a class="ays_help" data-toggle="tooltip" style="font-size: 16px;"
-                                               title="<?= __('We will send you a test data, and you can catch it in your ZAP for configure it.', 'quiz-maker') ?>">
+                                               title="<?php echo esc_attr( __('We will send you a test data, and you can catch it in your ZAP for configure it.', 'quiz-maker') ); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </div>
@@ -9363,10 +9362,10 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
-                                                <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                                <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                                <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
+                                                <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'); ?>" class="ays-quiz-new-upgrade-button-hover">
                                             </div>
-                                            <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
+                                            <div class="ays-quiz-new-upgrade-button"><?php echo esc_html__("Upgrade", "quiz-maker"); ?></div>
                                         </div>
                                     </a>
                                 </div>
@@ -9375,8 +9374,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <hr/>                
                         <fieldset>
                             <legend>
-                                <img class="ays_integration_logo" src="<?php echo AYS_QUIZ_ADMIN_URL; ?>/images/integrations/activecampaign_logo.png" alt="">
-                                <h5><?php echo __('ActiveCampaign Settings', 'quiz-maker') ?></h5>
+                                <img class="ays_integration_logo" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL); ?>/images/integrations/activecampaign_logo.png" alt="">
+                                <h5><?php echo esc_html__('ActiveCampaign Settings', 'quiz-maker') ?></h5>
                             </legend>
                             <div class="form-group row">
                                 <div class="col-sm-12 only_pro" style="padding:20px;">
@@ -9386,7 +9385,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_enable_active_camp">
-                                                <?php echo __('Enable ActiveCampaign', 'quiz-maker') ?>
+                                                <?php echo esc_html__('Enable ActiveCampaign', 'quiz-maker') ?>
                                             </label>
                                         </div>
                                         <div class="col-sm-1">
@@ -9397,13 +9396,13 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_active_camp_list">
-                                                <?php echo __('ActiveCampaign list', 'quiz-maker') ?>
+                                                <?php echo esc_html__('ActiveCampaign list', 'quiz-maker') ?>
                                             </label>
                                         </div>
                                         <div class="col-sm-8">
                                             <select id="ays_active_camp_list" class="ays-text-input ays-text-input-short">
-                                                <option value="" disabled selected><?= __("Select List", 'quiz-maker') ?></option>
-                                                <option value=""><?= __("Just create contact", 'quiz-maker') ?></option>
+                                                <option value="" disabled selected><?php echo esc_html__("Select List", 'quiz-maker'); ?></option>
+                                                <option value=""><?php echo esc_html__("Just create contact", 'quiz-maker'); ?></option>
                                             </select>
                                         </div>
                                     </div>
@@ -9411,23 +9410,23 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_active_camp_automation">
-                                                <?php echo __('ActiveCampaign automation', 'quiz-maker') ?>
+                                                <?php echo esc_html__('ActiveCampaign automation', 'quiz-maker'); ?>
                                             </label>
                                         </div>
                                         <div class="col-sm-8">
                                             <select id="ays_active_camp_automation" class="ays-text-input ays-text-input-short">
-                                                <option value="" disabled selected><?= __("Select List", 'quiz-maker') ?></option>
-                                                <option value=""><?= __("Just create contact", 'quiz-maker') ?></option>
+                                                <option value="" disabled selected><?php echo esc_html__("Select List", 'quiz-maker'); ?></option>
+                                                <option value=""><?php echo esc_html__("Just create contact", 'quiz-maker'); ?></option>
                                             </select>
                                         </div>
                                     </div>
                                     <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
-                                                <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                                <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                                <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
+                                                <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'); ?>" class="ays-quiz-new-upgrade-button-hover">
                                             </div>
-                                            <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
+                                            <div class="ays-quiz-new-upgrade-button"><?php echo esc_html__("Upgrade", "quiz-maker"); ?></div>
                                         </div>
                                     </a>
                                 </div>
@@ -9436,8 +9435,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <hr/>
                         <fieldset>
                             <legend>
-                                <img class="ays_integration_logo" src="<?php echo AYS_QUIZ_ADMIN_URL; ?>/images/integrations/slack_logo.png" alt="">
-                                <h5><?php echo __('Slack Settings', 'quiz-maker') ?></h5>
+                                <img class="ays_integration_logo" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL); ?>/images/integrations/slack_logo.png" alt="">
+                                <h5><?php echo esc_html__('Slack Settings', 'quiz-maker'); ?></h5>
                             </legend>
                             <div class="form-group row">
                                 <div class="col-sm-12 only_pro" style="padding:20px;">
@@ -9447,7 +9446,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_enable_slack">
-                                                <?php echo __('Enable Slack integration', 'quiz-maker') ?>
+                                                <?php echo esc_html__('Enable Slack integration', 'quiz-maker'); ?>
                                             </label>
                                         </div>
                                         <div class="col-sm-1">
@@ -9458,22 +9457,22 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_slack_conversation">
-                                                <?php echo __('Slack conversation', 'quiz-maker') ?>
+                                                <?php echo esc_html__('Slack conversation', 'quiz-maker'); ?>
                                             </label>
                                         </div>
                                         <div class="col-sm-8">
                                             <select id="ays_slack_conversation" class="ays-text-input ays-text-input-short">
-                                                <option value="" disabled selected><?= __("Select Channel", 'quiz-maker') ?></option>
+                                                <option value="" disabled selected><?php echo esc_html__("Select Channel", 'quiz-maker'); ?></option>
                                             </select>
                                         </div>
                                     </div>
                                     <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
-                                                <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                                <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                                <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
+                                                <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'); ?>" class="ays-quiz-new-upgrade-button-hover">
                                             </div>
-                                            <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
+                                            <div class="ays-quiz-new-upgrade-button"><?php echo esc_html__("Upgrade", "quiz-maker"); ?></div>
                                         </div>
                                     </a>
                                 </div>
@@ -9482,8 +9481,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <hr/>
                         <fieldset>
                             <legend>
-                                <img class="ays_integration_logo" src="<?php echo AYS_QUIZ_ADMIN_URL; ?>/images/integrations/sheets_logo.png" alt="">
-                                <h5><?php echo __('Google Sheet Settings', 'quiz-maker') ?></h5>
+                                <img class="ays_integration_logo" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL); ?>/images/integrations/sheets_logo.png" alt="">
+                                <h5><?php echo esc_html__('Google Sheet Settings', 'quiz-maker'); ?></h5>
                             </legend>
                             <hr/>
                             <div class="form-group row">
@@ -9494,7 +9493,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_enable_google">
-                                                <?php echo __('Enable Google integration', 'quiz-maker') ?>
+                                                <?php echo esc_html__('Enable Google integration', 'quiz-maker'); ?>
                                             </label>
                                         </div>
                                         <div class="col-sm-1">
@@ -9504,10 +9503,10 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
-                                                <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                                <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                                <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
+                                                <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'); ?>" class="ays-quiz-new-upgrade-button-hover">
                                             </div>
-                                            <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
+                                            <div class="ays-quiz-new-upgrade-button"><?php echo esc_html__("Upgrade", "quiz-maker"); ?></div>
                                         </div>
                                     </a>
                                 </div>
@@ -9516,8 +9515,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <hr/>
                         <fieldset>
                             <legend>                        
-                                <img class="ays_integration_logo" src="<?php echo AYS_QUIZ_ADMIN_URL; ?>/images/integrations/mad-mimi-logo.png" alt="">
-                                <h5><?php echo __('Mad Mimi Settings', 'quiz-maker') ?></h5>
+                                <img class="ays_integration_logo" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL); ?>/images/integrations/mad-mimi-logo.png" alt="">
+                                <h5><?php echo esc_html__('Mad Mimi Settings', 'quiz-maker'); ?></h5>
                             </legend>
                             <div class="form-group row">
                                 <div class="col-sm-12 only_pro" style="padding:20px;">
@@ -9526,7 +9525,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-4">
-                                            <label><?php echo __('Enable Mad Mimi', 'quiz-maker'); ?></label>
+                                            <label><?php echo esc_html__('Enable Mad Mimi', 'quiz-maker'); ?></label>
                                         </div>
                                         <div class="col-sm-1">
                                             <input type="checkbox" class="ays-enable-timer1"/>
@@ -9535,21 +9534,21 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <hr>
                                     <div class="form-group row">
                                         <div class="col-sm-4">
-                                            <label><?php echo __('Select List', 'quiz-maker'); ?></label>
+                                            <label><?php echo esc_html__('Select List', 'quiz-maker'); ?></label>
                                         </div>
                                         <div class="col-sm-8">
                                             <select class="ays-text-input ays-text-input-short">
-                                                <option value="" disabled selected><?= __("Select List", 'quiz-maker') ?></option>
+                                                <option value="" disabled selected><?php echo esc_html__("Select List", 'quiz-maker'); ?></option>
                                             </select>
                                         </div>
                                     </div>
                                     <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
-                                                <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                                <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                                <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
+                                                <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'); ?>" class="ays-quiz-new-upgrade-button-hover">
                                             </div>
-                                            <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
+                                            <div class="ays-quiz-new-upgrade-button"><?php echo esc_html__("Upgrade", "quiz-maker"); ?></div>
                                         </div>
                                     </a>
                                 </div>
@@ -9558,8 +9557,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <hr/>
                         <fieldset>
                             <legend>                        
-                                <img class="ays_integration_logo" src="<?php echo AYS_QUIZ_ADMIN_URL; ?>/images/integrations/convertkit_logo.png" alt="">
-                                <h5><?php echo __('ConvertKit Settings', 'quiz-maker') ?></h5>
+                                <img class="ays_integration_logo" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL); ?>/images/integrations/convertkit_logo.png" alt="">
+                                <h5><?php echo esc_html__('ConvertKit Settings', 'quiz-maker'); ?></h5>
                             </legend>
                             <div class="form-group row">
                                 <div class="col-sm-12 only_pro" style="padding:20px;">
@@ -9568,7 +9567,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-4">
-                                            <label ><?php echo __('Enable ConvertKit', 'quiz-maker'); ?></label>
+                                            <label ><?php echo esc_html__('Enable ConvertKit', 'quiz-maker'); ?></label>
                                         </div>
                                         <div class="col-sm-1">
                                             <input type="checkbox" class="ays-enable-timer1"/>
@@ -9577,21 +9576,21 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <hr>
                                     <div class="form-group row">
                                         <div class="col-sm-4">
-                                            <label><?php echo __('ConvertKit List', 'quiz-maker'); ?></label>
+                                            <label><?php echo esc_html__('ConvertKit List', 'quiz-maker'); ?></label>
                                         </div>
                                         <div class="col-sm-8">
                                             <select class="ays-text-input ays-text-input-short">
-                                                <option value="" disabled selected><?= __("Select List", 'quiz-maker') ?></option>
+                                                <option value="" disabled selected><?php echo esc_html__("Select List", 'quiz-maker'); ?></option>
                                             </select>
                                         </div>
                                     </div>
                                     <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
-                                                <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                                <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                                <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg');?>">
+                                                <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'); ?>" class="ays-quiz-new-upgrade-button-hover">
                                             </div>
-                                            <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
+                                            <div class="ays-quiz-new-upgrade-button"><?php echo esc_html__("Upgrade", "quiz-maker"); ?></div>
                                         </div>
                                     </a>
                                 </div>
@@ -9600,8 +9599,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                         <hr/>
                         <fieldset>
                             <legend>                        
-                                <img class="ays_integration_logo" src="<?php echo AYS_QUIZ_ADMIN_URL; ?>/images/integrations/get_response.png" alt="">
-                                <h5><?php echo __('GetResponse Settings', 'quiz-maker') ?></h5>
+                                <img class="ays_integration_logo" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL); ?>/images/integrations/get_response.png" alt="">
+                                <h5><?php echo esc_html__('GetResponse Settings', 'quiz-maker'); ?></h5>
                             </legend>
                             <div class="form-group row">
                                 <div class="col-sm-12 only_pro" style="padding:20px;">
@@ -9609,7 +9608,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-4">
-                                            <label><?php echo __('Enable GetResponse', 'quiz-maker'); ?></label>
+                                            <label><?php echo esc_html__('Enable GetResponse', 'quiz-maker'); ?></label>
                                         </div>
                                         <div class="col-sm-1">
                                             <input type="checkbox" class="ays-enable-timer1"/>
@@ -9618,21 +9617,21 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <hr>
                                     <div class="form-group row">
                                         <div class="col-sm-4">
-                                            <label><?php echo __('GetResponse List', 'quiz-maker'); ?></label>
+                                            <label><?php echo esc_html__('GetResponse List', 'quiz-maker'); ?></label>
                                         </div>
                                         <div class="col-sm-8">
                                             <select class="ays-text-input ays-text-input-short">
-                                                <option value="" disabled selected><?= __("Select List", 'quiz-maker') ?></option>
+                                                <option value="" disabled selected><?php echo esc_html__("Select List", 'quiz-maker'); ?></option>
                                             </select>
                                         </div>
                                     </div>
                                     <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
-                                                <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                                <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                                <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
+                                                <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg' ); ?>" class="ays-quiz-new-upgrade-button-hover">
                                             </div>
-                                            <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
+                                            <div class="ays-quiz-new-upgrade-button"><?php echo esc_html__("Upgrade", "quiz-maker"); ?></div>
                                         </div>
                                     </a>
                                 </div>
@@ -9652,13 +9651,13 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                 <div class="col-sm-12 ays-quiz-general-bundle-box">
                     <div class="ays-quiz-general-bundle-row">
                         <div class="ays-quiz-general-bundle-text">
-                            <?php echo __( "Grab your", 'quiz-maker' ); ?>
-                            <span><?php echo __( "20% Christmas GIFT", 'quiz-maker' ); ?></span>
-                            <?php echo __( "discount for Quiz Maker plugin! ", 'quiz-maker' ); ?>
+                            <?php echo esc_html__( "Grab your", 'quiz-maker' ); ?>
+                            <span><?php echo esc_html__( "20% Christmas GIFT", 'quiz-maker' ); ?></span>
+                            <?php echo esc_html__( "discount for Quiz Maker plugin! ", 'quiz-maker' ); ?>
                         </div>
-                        <p><?php echo __( "Warm up your website for the winter colds with the best quiz plugin on WP.", 'quiz-maker' ); ?></p>
+                        <p><?php echo esc_html__( "Warm up your website for the winter colds with the best quiz plugin on WP.", 'quiz-maker' ); ?></p>
                         <div class="ays-quiz-general-bundle-sale-text ays-quiz-general-bundle-color">
-                            <div><a href="https://ays-pro.com/wordpress/quiz-maker" class="ays-quiz-general-bundle-link-color" target="_blank"><?php echo __( "Discount 20% OFF", 'quiz-maker' ); ?></a></div>
+                            <div><a href="https://ays-pro.com/wordpress/quiz-maker" class="ays-quiz-general-bundle-link-color" target="_blank"><?php echo esc_html__( "Discount 20% OFF", 'quiz-maker' ); ?></a></div>
                         </div>
                     </div>
                     <div class="ays-quiz-general-bundle-row">
@@ -9723,9 +9722,9 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                     $buttons_html .= '<div class="ays_save_buttons_box ays-quiz-add-new-button-quiz-edit-box">';
                     echo $buttons_html;
                         echo $loader_iamge;
-                        submit_button(__('Save', 'quiz-maker'), 'primary ays-quiz-loader-banner', 'ays_apply', true, $other_attributes_only_save);
-                        submit_button(__('Save and close', 'quiz-maker'), 'ays-quiz-loader-banner', 'ays_submit', true, $other_attributes);
-                        submit_button(__('Cancel', "quiz-maker"), 'ays-quiz-loader-banner', 'ays_quiz_cancel', true, array());
+                        submit_button(esc_html__('Save', 'quiz-maker'), 'primary ays-quiz-loader-banner', 'ays_apply', true, $other_attributes_only_save);
+                        submit_button(esc_html__('Save and close', 'quiz-maker'), 'ays-quiz-loader-banner', 'ays_submit', true, $other_attributes);
+                        submit_button(esc_html__('Cancel', "quiz-maker"), 'ays-quiz-loader-banner', 'ays_quiz_cancel', true, array());
                     $buttons_html = '</div>';
                     $buttons_html .= '<div class="ays_save_default_button_box">';
                     echo $buttons_html;
@@ -9733,20 +9732,20 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
 
                             $other_attributes = array(
                                 'id'            => 'ays-quiz-prev-button',
-                                'data-message'  => __( 'Are you sure you want to go to the previous quiz page?', 'quiz-maker'),
+                                'data-message'  => esc_html__( 'Are you sure you want to go to the previous quiz page?', 'quiz-maker'),
                                 'href'          => sprintf( '?page=%s&action=%s&quiz=%d', esc_attr( $_REQUEST['page'] ), 'edit', absint( $prev_quiz_id ) )
                             );
-                            submit_button(__('Prev Quiz', 'quiz-maker'), 'ays-quiz-next-button-class', 'ays_quiz_prev_button', true, $other_attributes);
+                            submit_button(esc_html__('Prev Quiz', 'quiz-maker'), 'ays-quiz-next-button-class', 'ays_quiz_prev_button', true, $other_attributes);
                         }
 
                         if ( $next_quiz_id != "" && !is_null( $next_quiz_id ) ) {
 
                             $other_attributes = array(
                                 'id'            => 'ays-quiz-next-button',
-                                'data-message'  => __( 'Are you sure you want to go to the next quiz page?', 'quiz-maker'),
+                                'data-message'  => esc_html__( 'Are you sure you want to go to the next quiz page?', 'quiz-maker'),
                                 'href'          => sprintf( '?page=%s&action=%s&quiz=%d', esc_attr( $_REQUEST['page'] ), 'edit', absint( $next_quiz_id ) )
                             );
-                            submit_button(__('Next Quiz', 'quiz-maker'), 'ays-quiz-next-button-class', 'ays_quiz_next_button', true, $other_attributes);
+                            submit_button(esc_html__('Next Quiz', 'quiz-maker'), 'ays-quiz-next-button-class', 'ays_quiz_next_button', true, $other_attributes);
                         }
                         // $buttons_html = '<a class="ays_help" data-toggle="tooltip" title="'.__( "Saves the assigned settings of the current quiz as default. After clicking on this button, each time creating a new quiz, the system will take the settings and styles of the current quiz. If you want to change and renew it, please click on this button on another quiz. This feature is available only in PRO version!!!" ,'quiz-maker' ).'">
                         //     <i class="ays_fa ays_fa_info_circle"></i>
@@ -9775,24 +9774,24 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                     </div>
                     <div class="ays-modal-header">
                         <span class="ays-close">&times;</span>
-                        <h2><?php echo __('Select questions', 'quiz-maker'); ?></h2>
+                        <h2><?php echo esc_html__('Select questions', 'quiz-maker'); ?></h2>
                     </div>
                     <div class="ays-modal-body">
                         <?php
                         // wp_nonce_field('add_question_rows_top', 'add_question_rows_top_second');
                         $other_attributes = array();
-                        submit_button(__('Insert questions', 'quiz-maker'), 'primary', 'add_question_rows_top', true, $other_attributes);
+                        submit_button(esc_html__('Insert questions', 'quiz-maker'), 'primary', 'add_question_rows_top', true, $other_attributes);
                         ?>
                         <span style="font-size: 13px; font-style: italic;">
-                            <?php echo __('For select questions click on question row and then click "Insert questions" button', 'quiz-maker'); ?>
+                            <?php echo esc_html__('For select questions click on question row and then click "Insert questions" button', 'quiz-maker'); ?>
                         </span>
                         <div class="ays-quiz-add-question-filter-box">
                             <div class="ays-quiz-add-question-filter" id="ays-quiz-add-question-filter">
                                 <img src="<?php echo AYS_QUIZ_ADMIN_URL . '/images/icons/filter.svg' ?>" style="width: 20px;">
-                                <span><?php echo __('Filters', 'quiz-maker'); ?></span>
+                                <span><?php echo esc_html__('Filters', 'quiz-maker'); ?></span>
                             </div>
                             <div style="font-size: 16px; padding-right:20px; margin:0; text-align:right;">
-                                <a class="" href="admin.php?page=<?php echo $this->plugin_name; ?>-questions&action=add" target="_blank"><?php echo __('Create question', 'quiz-maker'); ?></a>
+                                <a class="" href="admin.php?page=<?php echo $this->plugin_name; ?>-questions&action=add" target="_blank"><?php echo esc_html__('Create question', 'quiz-maker'); ?></a>
                             </div>
                         </div>
                         <div class="form-group row display_none ays-quiz-add-question-filter-option-box">
@@ -9804,8 +9803,8 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     <div class="col-sm-12" id="quest_cat_container">
                                         <label style="width:100%;" for="add_quest_category_filter">
                                             <p style="font-size: 13px; margin:0; font-style: italic;">
-                                                <?php echo __( "Filter by category", 'quiz-maker'); ?>
-                                                <button type="button" class="ays_filter_cat_clear button button-small wp-picker-default"><?php echo __( "Clear", 'quiz-maker' ); ?></button>
+                                                <?php echo esc_html__( "Filter by category", 'quiz-maker'); ?>
+                                                <button type="button" class="ays_filter_cat_clear button button-small wp-picker-default"><?php echo esc_html__( "Clear", 'quiz-maker' ); ?></button>
                                             </p>
                                         </label>
                                         <select id="add_quest_category_filter" multiple="multiple" class='cat_filter custom-select custom-select-sm form-control form-control-sm'>
@@ -9825,7 +9824,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         <label style="width:100%;" for="add_quest_tag_filter">
                                             <p style="font-size: 13px; margin:0; font-style: italic;">
                                                 <?php echo __( "Filter by tag", 'quiz-maker'); ?>
-                                                <button type="button" class="ays_filter_tag_clear button button-small wp-picker-default"><?php echo __( "Clear", 'quiz-maker' ); ?></button>
+                                                <button type="button" class="ays_filter_tag_clear button button-small wp-picker-default"><?php echo esc_html__( "Clear", 'quiz-maker' ); ?></button>
                                             </p>
                                         </label>
                                         <select id="add_quest_tag_filter" multiple="multiple" class='tag_filter custom-select custom-select-sm form-control form-control-sm'>
@@ -9845,7 +9844,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                             <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
                                             <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
                                         </div>
-                                        <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
+                                        <div class="ays-quiz-new-upgrade-button"><?php echo esc_html__("Upgrade", "quiz-maker"); ?></div>
                                     </div>
                                 </a>
                             </div>
@@ -9855,10 +9854,10 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                             <thead>
                             <tr>
                                 <th class="th-150">#</th>
-                                <th style="500px"><?php echo __('Question', 'quiz-maker'); ?></th>
-                                <th class="th-150"><?php echo __('Type', 'quiz-maker'); ?></th>
-                                <th class="th-150"><?php echo __('Created', 'quiz-maker'); ?></th>
-                                <th style="150px"><?php echo __('Category', 'quiz-maker'); ?></th>
+                                <th style="500px"><?php echo esc_html__('Question', 'quiz-maker'); ?></th>
+                                <th class="th-150"><?php echo esc_html__('Type', 'quiz-maker'); ?></th>
+                                <th class="th-150"><?php echo esc_html__('Created', 'quiz-maker'); ?></th>
+                                <th style="150px"><?php echo esc_html__('Category', 'quiz-maker'); ?></th>
                                 <th style="50px">ID</th>
                             </tr>
                             </thead>
@@ -9919,7 +9918,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
 
                                 $table_question = $this->ays_restriction_string("word", $table_question, 8);
                                 ?>
-                                <tr class="ays_quest_row <?php echo $selected_question; ?>" data-id='<?php echo $question["id"]; ?>'>
+                                <tr class="ays_quest_row <?php echo esc_attr($selected_question); ?>" data-id='<?php echo esc_attr($question["id"]); ?>'>
                                     <td>
                                         <span>
                                         <?php if (isset($question_id_array) && in_array($question["id"], $question_id_array)) : ?>
@@ -9930,10 +9929,10 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                         </span>
                                     </td>
                                     <td class="ays-modal-td-question"><?php echo $table_question; ?></td>
-                                    <td><?php echo $question_type; ?></td>
+                                    <td><?php echo esc_html( $question_type ); ?></td>
                                     <td><?php echo $text; ?></td>
                                     <td class="ays-modal-td-category"><?php echo stripslashes($question["title"]); ?></td>
-                                    <td><?php echo $question["id"]; ?></td>
+                                    <td><?php echo esc_html($question["id"]); ?></td>
                                 </tr>
                                 <?php
                             }

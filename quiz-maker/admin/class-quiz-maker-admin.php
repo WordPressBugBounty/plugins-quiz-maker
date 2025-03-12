@@ -1111,6 +1111,7 @@ class Quiz_Maker_Admin
         $quick_quiz_enable_progress_bar                     = 'on';
         $quick_quiz_enable_average_statistical              = 'on';
         $quick_quiz_disable_store_data                      = 'off';
+        $quick_quiz_display_score                           = 'by_percantage';
 
         // User Data
         $quick_quiz_show_information_form                   = 'on';
@@ -1437,6 +1438,9 @@ class Quiz_Maker_Admin
 
             // Show quiz head information / Show Description
             $quick_quiz_show_quiz_desc = (isset( $_REQUEST['ays_quick_quiz_show_quiz_desc'] ) && $_REQUEST['ays_quick_quiz_show_quiz_desc'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_show_quiz_desc'] ) ) : "off";
+
+            // Display score
+            $quick_quiz_display_score = (isset( $_REQUEST['ays_quick_quiz_display_score'] ) && $_REQUEST['ays_quick_quiz_display_score'] != "") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_display_score'] ) ) : "by_percantage";
             
         }
         
@@ -1591,7 +1595,7 @@ class Quiz_Maker_Admin
             'enable_clear_answer'                               => $quick_quiz_enable_clear_answer,
             'show_category'                                     => $quick_quiz_show_category,
             'show_question_category'                            => $quick_quiz_show_question_category,
-            'display_score'                                     => 'by_percantage',
+            'display_score'                                     => $quick_quiz_display_score,
             'enable_rw_asnwers_sounds'                          => $quick_quiz_enable_rw_asnwers_sounds,
             'ans_right_wrong_icon'                              => 'none',
             'quiz_bg_img_in_finish_page'                        => 'off',
