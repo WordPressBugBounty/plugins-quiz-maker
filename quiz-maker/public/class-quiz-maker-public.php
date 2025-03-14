@@ -5326,6 +5326,14 @@ class Quiz_Maker_Public
                     }
                 }
                 foreach ($questions_answers as $key => $questions_answer) {
+
+                    $questions_answer_for_db = $questions_answer;
+                    if (is_array($questions_answer_for_db)) {
+                        $questions_answer_for_db = array_map('intval', $questions_answer_for_db);
+                    } else {
+                        $questions_answer_for_db = sanitize_text_field(stripslashes($questions_answer_for_db) );
+                    }
+
                     $continue = false;
                     $question_id = explode('-', $key)[2];
                     if($this->is_question_not_influence($question_id)){
@@ -5336,10 +5344,11 @@ class Quiz_Maker_Public
                     $has_multiple = $this->has_multiple_correct_answers($question_id);
                     $answer_max_weights[] = $this->get_answers_max_weight($question_id, $has_multiple);
                     
-                    $user_answered["question_id_" . $question_id] = $questions_answer;
+                    $user_answered["question_id_" . $question_id] = $questions_answer_for_db;
                     if ($has_multiple) {                        
                         if (is_array($questions_answer)) {
                             foreach ($questions_answer as $answer_id) {
+                                $answer_id = intval($answer_id);
                                 $multiple_correctness[] = $this->check_answer_correctness($question_id, $answer_id, $calculate_score);
                             }
                             
@@ -5371,6 +5380,7 @@ class Quiz_Maker_Public
                             }
                         } else {
                             if($calculate_score == 'by_points'){
+                                $questions_answer = intval($questions_answer);
                                 if(!$continue){
                                     $correctness[$question_id] = $this->check_answer_correctness($question_id, $questions_answer, $calculate_score);
                                 }
@@ -5378,6 +5388,7 @@ class Quiz_Maker_Public
                                 continue;
                             }
                             if($strong_count_checkbox === false){
+                                $questions_answer = intval($questions_answer);
                                 if($this->check_answer_correctness($question_id, $questions_answer, $calculate_score)){
                                     if(!$continue){
                                         $correctness[$question_id] = 1 / intval($this->count_multiple_correct_answers($question_id));
@@ -5403,6 +5414,7 @@ class Quiz_Maker_Public
                         }
                         $correctness_results["question_id_" . $question_id] = $this->check_text_answer_correctness($question_id, $questions_answer, $calculate_score, $quests_data_options);
                     } else {
+                        $questions_answer = intval($questions_answer);
                         if(!$continue){
                             $correctness[$question_id] = $this->check_answer_correctness($question_id, $questions_answer, $calculate_score);
                         }

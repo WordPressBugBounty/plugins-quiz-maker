@@ -1488,38 +1488,38 @@ class Quiz_Maker_Admin
 
 
         $default_options = array(
-            'quiz_theme'                                    => 'classic_light',
-            'color'                                         => '#5d6cf9',
-            'bg_color'                                      => '#fff',
-            'text_color'                                    => '#000000',
-            'height'                                        => $quick_quiz_height,
-            'width'                                         => $quick_quiz_width,
-            'timer'                                         => 100,
-            'information_form'                              => 'disable',
-            'form_name'                                     => '',
-            'form_email'                                    => '',
-            'form_phone'                                    => '',
-            'enable_logged_users'                           => 'off',
-            'answers_view'                                  => $quick_quiz_answers_view,
-            'image_width'                                   => $quick_quiz_image_width,
-            'image_height'                                  => $quick_quiz_image_height,
-            'quiz_image_width_by_percentage_px'             => $quick_quiz_image_width_by_percentage_px,
-            'quiz_image_height'                             => $quick_quiz_image_height,
-            'enable_correction'                             => $quick_quiz_enable_correction,
-            'enable_questions_counter'                      => $quick_quiz_enable_questions_counter,
-            'limit_users'                                   => 'off',
-            'limitation_message'                            => '',
-            'redirect_url'                                  => '',
-            'redirection_delay'                             => '',
-            'enable_progress_bar'                           => $quick_quiz_enable_progress_bar,
-            'randomize_questions'                           => $quick_quiz_enable_randomize_questions,
-            'randomize_answers'                             => $quick_quiz_enable_randomize_answers,
-            'enable_questions_result'                       => 'on',
-            'enable_average_statistical'                    => $quick_quiz_enable_average_statistical,
-            'enable_next_button'                            => $quick_quiz_enable_next_button,
-            'enable_previous_button'                        => $quick_quiz_enable_previous_button,
-            'custom_css'                                    => '',
-            'enable_restriction_pass'                       => 'off',
+            'quiz_theme'                                        => 'classic_light',
+            'color'                                             => '#5d6cf9',
+            'bg_color'                                          => '#fff',
+            'text_color'                                        => '#000000',
+            'height'                                            => $quick_quiz_height,
+            'width'                                             => $quick_quiz_width,
+            'timer'                                             => 100,
+            'information_form'                                  => 'disable',
+            'form_name'                                         => '',
+            'form_email'                                        => '',
+            'form_phone'                                        => '',
+            'enable_logged_users'                               => 'off',
+            'answers_view'                                      => $quick_quiz_answers_view,
+            'image_width'                                       => $quick_quiz_image_width,
+            'image_height'                                      => $quick_quiz_image_height,
+            'quiz_image_width_by_percentage_px'                 => $quick_quiz_image_width_by_percentage_px,
+            'quiz_image_height'                                 => $quick_quiz_image_height,
+            'enable_correction'                                 => $quick_quiz_enable_correction,
+            'enable_questions_counter'                          => $quick_quiz_enable_questions_counter,
+            'limit_users'                                       => 'off',
+            'limitation_message'                                => '',
+            'redirect_url'                                      => '',
+            'redirection_delay'                                 => '',
+            'enable_progress_bar'                               => $quick_quiz_enable_progress_bar,
+            'randomize_questions'                               => $quick_quiz_enable_randomize_questions,
+            'randomize_answers'                                 => $quick_quiz_enable_randomize_answers,
+            'enable_questions_result'                           => 'on',
+            'enable_average_statistical'                        => $quick_quiz_enable_average_statistical,
+            'enable_next_button'                                => $quick_quiz_enable_next_button,
+            'enable_previous_button'                            => $quick_quiz_enable_previous_button,
+            'custom_css'                                        => '',
+            'enable_restriction_pass'                           => 'off',
             'restriction_pass_message'                          => '',
             'user_role'                                         => '',
             'result_text'                                       => '',
@@ -1827,7 +1827,7 @@ class Quiz_Maker_Admin
         if (isset($_REQUEST['action']) && sanitize_text_field( $_REQUEST['action'] ) == 'ays_show_results') {
             $id = absint(intval($_REQUEST['result']));
             $results = $wpdb->get_row("SELECT * FROM {$results_table} WHERE id={$id}", "ARRAY_A");            
-            $score = $results['score'];
+            $score = intval($results['score']);
             // $user_id = intval($results['user_id']);
             $user_id = isset($results['user_id']) ? intval($results['user_id']) : null;
             $quiz_id = isset($results['quiz_id']) ? intval($results['quiz_id']) : null;
@@ -1844,10 +1844,10 @@ class Quiz_Maker_Admin
             $options = json_decode($results['options']);
             $user_attributes = isset( $options->attributes_information ) ? $options->attributes_information : null;
             $start_date = $results['start_date'];
-            $duration = isset( $options->passed_time ) ? $options->passed_time : '';
-            $rate_id = isset($options->rate_id) ? $options->rate_id : null;
+            $duration = isset( $options->passed_time ) ? intval($options->passed_time) : '';
+            $rate_id = isset($options->rate_id) ? intval($options->rate_id) : null;
             $rate = $this->ays_quiz_rate($rate_id);
-            $calc_method = isset($options->calc_method) ? $options->calc_method : 'by_correctness';
+            $calc_method = isset($options->calc_method) ? sanitize_text_field($options->calc_method) : 'by_correctness';
             
             $from = self::get_user_country_by_ip( $user_ip );
 
@@ -2000,7 +2000,7 @@ class Quiz_Maker_Admin
                 if ($user_ip != '') {
                     $row .= '<tr class="ays_result_element">
                                 <td>' . __("User IP", 'quiz-maker') . '</td>
-                                <td colspan="3">' . $from . '</td>
+                                <td colspan="3">' . esc_html($from) . '</td>
                             </tr>';
                 }
             }
@@ -2011,14 +2011,14 @@ class Quiz_Maker_Admin
                 if($user_id !== 0){
                     $row .= '<tr class="ays_result_element">
                             <td>' . __("User ID", 'quiz-maker') . '</td>
-                            <td colspan="3">' . $user_id . '</td>                    
+                            <td colspan="3">' . esc_html($user_id) . '</td>                    
                         </tr>';
                 }
             }
             if ($ays_quiz_show_result_info_user == 'on') {
                 $row .= '<tr class="ays_result_element">
                         <td>' . __("User", 'quiz-maker') . '</td>
-                        <td colspan="3">' . $user_name . '</td>
+                        <td colspan="3">' . esc_html($user_name) . '</td>
                     </tr>';
             }
             
@@ -2031,22 +2031,22 @@ class Quiz_Maker_Admin
             if(isset($results['user_name']) && $results['user_name'] !== '' && $ays_quiz_show_result_info_user_name == 'on'){
                 $row .= "<tr class=\"ays_result_element\">
                         <td>".__('Name','quiz-maker')."</td>
-                        <td colspan='3'>".stripslashes($results['user_name'])."</td>
+                        <td colspan='3'>".esc_html(stripslashes($results['user_name']))."</td>
                      </tr>";
             }
             if(isset($results['user_phone']) && $results['user_phone'] !== '' && $ays_quiz_show_result_info_user_phone == 'on'){
                 $row .= "<tr class=\"ays_result_element\">
                         <td>".__('Phone','quiz-maker')."</td>
-                        <td colspan='3'>".stripslashes($results['user_phone'])."</td>
+                        <td colspan='3'>".esc_html(stripslashes($results['user_phone']))."</td>
                      </tr>";
             }
             if ($user_attributes !== null) {
 
                 foreach ($user_attributes as $name => $value) {
-                    $attr_value = stripslashes($value) == '' ? '-' : stripslashes($value);
+                    $attr_value = stripslashes($value) == '' ? '-' : esc_html(stripslashes($value));
                     $row .= '<tr class="ays_result_element">
-                            <td>' . stripslashes($name) . '</td>
-                            <td colspan="3">' . $attr_value . '</td>
+                            <td>' . esc_html(stripslashes($name)) . '</td>
+                            <td colspan="3">' . esc_html($attr_value) . '</td>
                         </tr>';
                 }
             }
@@ -2059,20 +2059,20 @@ class Quiz_Maker_Admin
             if(isset($rate['score'])){
                 $rate_html = '<tr style="vertical-align: top;" class="ays_result_element">
                     <td>'.__('Rate','quiz-maker').'</td>
-                    <td>'. __("Rate Score", 'quiz-maker').":<br>" . $rate['score'] . '</td>
-                    <td colspan="2" style="max-width: 200px;">'. __("Review", 'quiz-maker').":<br>" . nl2br($rate['review']) . '</td>
+                    <td>'. __("Rate Score", 'quiz-maker').":<br>" . absint($rate['score']) . '</td>
+                    <td colspan="2" style="max-width: 200px;">'. __("Review", 'quiz-maker').":<br>" . sanitize_text_field( nl2br($rate['review']) ) . '</td>
                 </tr>';
             }else{
                 $rate_html = '<tr class="ays_result_element">
                     <td>'.__('Rate','quiz-maker').'</td>
-                    <td colspan="3">' . nl2br($rate['review']) . '</td>
+                    <td colspan="3">' . sanitize_text_field( nl2br($rate['review']) ) . '</td>
                 </tr>';
             }
 
             if ($ays_quiz_show_result_info_start_date == 'on') {
                 $row .= '<tr class="ays_result_element">
                             <td>'.__('Start date','quiz-maker').'</td>
-                            <td colspan="3">' . $start_date . '</td>
+                            <td colspan="3">' . esc_html($start_date) . '</td>
                         </tr>';                        
             }
 
@@ -2080,7 +2080,7 @@ class Quiz_Maker_Admin
                 $row .= '                      
                     <tr class="ays_result_element">
                         <td>'.__('Duration','quiz-maker').'</td>
-                        <td colspan="3">' . $duration . '</td>
+                        <td colspan="3">' . esc_html($duration) . '</td>
                     </tr>';
             }
 
@@ -2088,7 +2088,7 @@ class Quiz_Maker_Admin
                 $row .= '
                     <tr class="ays_result_element">
                         <td>'.__('Score','quiz-maker').'</td>
-                        <td colspan="3">' . $score . '%</td>
+                        <td colspan="3">' . esc_html($score) . '%</td>
                     </tr>';
             }
 
@@ -2158,7 +2158,7 @@ class Quiz_Maker_Admin
 
                         $correct_row = $option == true ? 'tr_success' : '';
 
-                        $question_image = isset( $question["question_image"] ) && $question["question_image"] != '' ? $question["question_image"] : '';
+                        $question_image = isset( $question["question_image"] ) && $question["question_image"] != '' ? esc_url($question["question_image"]) : '';
                         $question_title = isset( $question["question"] ) && $question["question"] != '' ? $question["question"] : '';
                         if($calc_method == 'by_correctness'){
                             if ($option == true) {
@@ -2304,6 +2304,7 @@ class Quiz_Maker_Admin
                 "review" => $reason,
             );
         }else{
+            $id = intval($id);
             $rate = $wpdb->get_row("SELECT * FROM {$wpdb->prefix}aysquiz_rates WHERE id={$id}", "ARRAY_A");
             $output = array();
             if($rate !== null){
@@ -2344,7 +2345,15 @@ class Quiz_Maker_Admin
     public function get_user_answered($user_choice, $key){
         global $wpdb;
         $answers_table = $wpdb->prefix . "aysquiz_answers";
-        $choices = $user_choice->$key;
+
+        $choices = '';
+        if( !empty($user_choice->$key) ){
+            if (is_array($user_choice->$key)) {
+                $choices = array_map('intval', $user_choice->$key);
+            } else {
+                $choices = intval($user_choice->$key);
+            }
+        }
         
         if($choices == ''){
             return array(
@@ -2355,13 +2364,20 @@ class Quiz_Maker_Admin
         $text = array();
         if (is_array($choices)) {
             foreach ($choices as $choice) {
-                $result = $wpdb->get_row("SELECT answer FROM {$answers_table} WHERE id={$choice}", 'ARRAY_A');
-                $text[] = $result['answer'];
+                $choice = (isset($choice) && intval($choice) > 0) ? intval($choice) : null;
+                if(empty($choice)){
+                    continue;
+                }
+                $result = $wpdb->get_row($wpdb->prepare("SELECT answer FROM {$answers_table} WHERE id=%d ;", $choice ), 'ARRAY_A');
+                $text[] = (isset($result['answer']) && $result['answer'] != "") ? $result['answer'] : '';
             }
             $text = implode(', ', $text);
         } else {
-            $result = $wpdb->get_row("SELECT answer FROM {$answers_table} WHERE id={$choices}", 'ARRAY_A');
-            $text = $result['answer'];
+            $choice = (isset($choices) && intval($choices) > 0) ? intval($choices) : null;
+            if(!empty($choice) && $choices > 0){
+                $result = $wpdb->get_row($wpdb->prepare("SELECT answer FROM {$answers_table} WHERE id=%d ;", $choice ), 'ARRAY_A');
+                $text = (isset($result['answer']) && $result['answer'] != "") ? $result['answer'] : '';
+            }
         }
         return $text;
     }

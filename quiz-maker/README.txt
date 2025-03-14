@@ -4,7 +4,7 @@ Donate link: https://ays-pro.com/wordpress/quiz-maker
 Tags:  exam, quiz, quizzes, education, quiz maker
 Requires at least: 4.0
 Tested up to: 6.7.2
-Stable tag: 6.6.8.7
+Stable tag: 6.6.8.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -418,7 +418,11 @@ For example, to add a squared symbol, you need to write down the following sign 
 
 == Changelog ==
 
+= 6.6.8.8 =
+* Improved: Code correction on the front-end and admin dashboard
+
 = 6.6.8.7 =
+* Added: Display score option for the Quick Quiz Popup
 * Improved: Code correction on the admin dashboard
 
 = 6.6.8.6 =
