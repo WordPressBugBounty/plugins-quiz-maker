@@ -259,6 +259,7 @@ $options = array(
     'quiz_content_max_width'                    => 90,
     'quiz_content_mobile_max_width'             => 90,
     'quiz_timer_warning_text_color'             => "#ff0000",
+    'quiz_enable_default_hide_results_toggle'   => "off",
 
 );
 
@@ -1409,6 +1410,10 @@ $quiz_content_mobile_max_width = ( isset($options['quiz_content_mobile_max_width
 
 // Timer Warning text color
 $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color']) && $options['quiz_timer_warning_text_color'] != '') ? stripslashes ( esc_attr( $options[ 'quiz_timer_warning_text_color' ] ) ) : '#ff0000';
+
+// Enable default Hide toggle
+$options['quiz_enable_default_hide_results_toggle'] = isset($options['quiz_enable_default_hide_results_toggle']) ? sanitize_text_field($options['quiz_enable_default_hide_results_toggle']) : 'off';
+$quiz_enable_default_hide_results_toggle = (isset($options['quiz_enable_default_hide_results_toggle']) && $options['quiz_enable_default_hide_results_toggle'] == 'on') ? true : false;
 
 
 ?>
@@ -6709,7 +6714,7 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                     </div>
                                 </div>
                                 <hr>
-                                <div class="form-group row">
+                                <div class="form-group row ays_toggle_parent">
                                     <div class="col-sm-4">
                                         <label for="ays_quiz_enable_results_toggle">
                                             <?php echo __('Enable the Show/Hide toggle','quiz-maker'); ?>
@@ -6718,8 +6723,23 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
                                             </a>
                                         </label>
                                     </div>
-                                    <div class="col-sm-8">
-                                        <input type="checkbox" class="ays-enable-timer1" id="ays_quiz_enable_results_toggle" name="ays_quiz_enable_results_toggle" value="on" <?php echo ($quiz_enable_results_toggle) ? 'checked' : ''; ?> />
+                                    <div class="col-sm-1">
+                                        <input type="checkbox" class="ays-enable-timer1 ays_toggle_checkbox" id="ays_quiz_enable_results_toggle" name="ays_quiz_enable_results_toggle" value="on" <?php echo ($quiz_enable_results_toggle) ? 'checked' : ''; ?> />
+                                    </div>
+                                    <div class="col-sm-7 ays_toggle_target ays_divider_left <?php echo $quiz_enable_results_toggle ? '' : 'display_none'; ?>">
+                                        <div class="form-group row">
+                                            <div class="col-sm-4">
+                                                <label for="ays_quiz_enable_default_hide_results_toggle">
+                                                    <?php echo esc_html__('Enable Default Hide', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('If this option is activated, in the front end the answers will be by default hidden. The users will need to choose the show toggle to display it.', 'quiz-maker') ); ?>">
+                                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                                    </a>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <input type="checkbox" class="ays-enable-timer1" id="ays_quiz_enable_default_hide_results_toggle" name="ays_quiz_enable_default_hide_results_toggle" value="on" <?php echo ($quiz_enable_default_hide_results_toggle) ? 'checked' : ''; ?> />
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

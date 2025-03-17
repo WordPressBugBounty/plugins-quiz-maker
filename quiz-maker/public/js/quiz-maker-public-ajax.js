@@ -1044,11 +1044,20 @@
             myOptions.quiz_enable_results_toggle = ! myOptions.quiz_enable_results_toggle ? 'off' : myOptions.quiz_enable_results_toggle;
             var quiz_enable_results_toggle = (myOptions.quiz_enable_results_toggle && myOptions.quiz_enable_results_toggle == 'on') ? true : false;
 
+            // Enable the Show/Hide toggle
+            myOptions.quiz_enable_default_hide_results_toggle = ! myOptions.quiz_enable_default_hide_results_toggle ? 'off' : myOptions.quiz_enable_default_hide_results_toggle;
+            var quiz_enable_default_hide_results_toggle = (myOptions.quiz_enable_default_hide_results_toggle && myOptions.quiz_enable_default_hide_results_toggle == 'on') ? true : false;
+
+            var hide_result_toggle_checked = "checked";
+            if( quiz_enable_default_hide_results_toggle ){
+                hide_result_toggle_checked = "";
+            }
+
             var resultToggleHTML = "";
 
             resultToggleHTML += '<div class="ays-quiz-results-toggle-block">';
                 resultToggleHTML += '<span class="ays-show-res-toggle ays-res-toggle-show">'+ quizLangObj.show +'</span>';
-                resultToggleHTML += '<input type="checkbox" class="ays_toggle ays_toggle_slide ays-quiz-res-toggle-checkbox" id="ays-quiz-show-results-toggle-'+ quizId +'" checked>';
+                resultToggleHTML += '<input type="checkbox" class="ays_toggle ays_toggle_slide ays-quiz-res-toggle-checkbox" id="ays-quiz-show-results-toggle-'+ quizId +'" '+ hide_result_toggle_checked +'>';
                 resultToggleHTML += '<label for="ays-quiz-show-results-toggle-'+ quizId +'" class="ays_switch_toggle">Toggle</label>';
                 resultToggleHTML += '<span class="ays-show-res-toggle ays-res-toggle-hide quest-toggle-failed">'+ quizLangObj.hide +'</span>';
             resultToggleHTML += '</div>';
@@ -1649,6 +1658,18 @@
                 }
             }
         }
+
+        var show_quiz_results_toggle_flag = true;
+        if ( quiz_enable_results_toggle ) {
+            if( quiz_enable_default_hide_results_toggle ){
+                show_quiz_results_toggle_flag = false;
+            }
+        }
+
+        if ( show_quiz_results_toggle_flag === false ) {
+            form.find('.ays_quiz_results .ays_question_result').addClass('ays_display_none');
+        }
+        
         form.find('.ays_quiz_results').slideDown(1000);
         form.find('.ays_quiz_rete').fadeIn(250);
         form.find('.for_quiz_rate').rating({

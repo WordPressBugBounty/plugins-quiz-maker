@@ -1573,13 +1573,13 @@ class Quiz_Maker_Admin
             'enable_social_buttons'                             => 'off',
             'enable_social_links'                               => 'off',
             'social_links' => array(
-                'linkedin_link'     => '',
-                'facebook_link'     => '',
-                'twitter_link'      => '',
-                'vkontakte_link'    => '',
-                'instagram_link'    => '',
-                'youtube_link'      => '',
-                'behance_link'      => '',
+                'linkedin_link'         => '',
+                'facebook_link'         => '',
+                'twitter_link'          => '',
+                'vkontakte_link'        => '',
+                'instagram_link'        => '',
+                'youtube_link'          => '',
+                'behance_link'          => '',
             ),
             'show_quiz_title'                                   => $quick_quiz_show_quiz_title,
             'show_quiz_desc'                                    => $quick_quiz_show_quiz_desc,
@@ -1730,13 +1730,13 @@ class Quiz_Maker_Admin
 
         $questions_ids = rtrim($questions_ids, ",");
         $wpdb->insert($quizes_table, array(
-            'title'             => $quiz_title,//esc_sql( $quiz_title ),
-            'description'       => $quiz_description,//esc_sql( $quiz_description ),
-            'question_ids'      => $questions_ids,
-            'published'         => $quick_quiz_publish,
-            'options'           => json_encode($default_options),
-            'quiz_category_id'  => $quiz_cat_id,
-            'ordering'          => $ordering,
+            'title'                 => $quiz_title,//esc_sql( $quiz_title ),
+            'description'           => $quiz_description,//esc_sql( $quiz_description ),
+            'question_ids'          => $questions_ids,
+            'published'             => $quick_quiz_publish,
+            'options'               => json_encode($default_options),
+            'quiz_category_id'      => $quiz_cat_id,
+            'ordering'              => $ordering,
         ));
         $quiz_id = $wpdb->insert_id;
         ob_end_clean();

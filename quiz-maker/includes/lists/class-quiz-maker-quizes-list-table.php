@@ -961,6 +961,9 @@ class Quizes_List_Table extends WP_List_Table{
 
             // Timer Warning text color
             $quiz_timer_warning_text_color = (isset($_REQUEST['ays_quiz_timer_warning_text_color']) && $_REQUEST['ays_quiz_timer_warning_text_color'] != '') ? stripslashes( sanitize_text_field( $_REQUEST['ays_quiz_timer_warning_text_color'] ) ) : '#ff0000';
+
+            // Enable default hide toggle
+            $quiz_enable_default_hide_results_toggle = (isset($_REQUEST['ays_quiz_enable_default_hide_results_toggle']) && sanitize_text_field($_REQUEST['ays_quiz_enable_default_hide_results_toggle']) == 'on') ? 'on' : 'off';
             
 
             $options = array(
@@ -1208,6 +1211,7 @@ class Quizes_List_Table extends WP_List_Table{
                 'quiz_content_max_width'                            => $quiz_content_max_width,
                 'quiz_content_mobile_max_width'                     => $quiz_content_mobile_max_width,
                 'quiz_timer_warning_text_color'                     => $quiz_timer_warning_text_color,
+                'quiz_enable_default_hide_results_toggle'           => $quiz_enable_default_hide_results_toggle,
             );
 
             $options['required_fields'] = !isset($_POST['ays_required_field']) ? null : array_map( 'sanitize_text_field', $_POST['ays_required_field'] );
