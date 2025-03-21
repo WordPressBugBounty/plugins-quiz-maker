@@ -1112,6 +1112,7 @@ class Quiz_Maker_Admin
         $quick_quiz_enable_average_statistical              = 'on';
         $quick_quiz_disable_store_data                      = 'off';
         $quick_quiz_display_score                           = 'by_percantage';
+        $quick_quiz_enable_questions_result                 = 'on';
 
         // User Data
         $quick_quiz_show_information_form                   = 'on';
@@ -1441,6 +1442,9 @@ class Quiz_Maker_Admin
 
             // Display score
             $quick_quiz_display_score = (isset( $_REQUEST['ays_quick_quiz_display_score'] ) && $_REQUEST['ays_quick_quiz_display_score'] != "") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_display_score'] ) ) : "by_percantage";
+
+            $quick_quiz_enable_questions_result = (isset( $_REQUEST['ays_quick_quiz_enable_questions_result'] ) && $_REQUEST['ays_quick_quiz_enable_questions_result'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_questions_result'] ) ) : "off";
+            
             
         }
         
@@ -1514,7 +1518,7 @@ class Quiz_Maker_Admin
             'enable_progress_bar'                               => $quick_quiz_enable_progress_bar,
             'randomize_questions'                               => $quick_quiz_enable_randomize_questions,
             'randomize_answers'                                 => $quick_quiz_enable_randomize_answers,
-            'enable_questions_result'                           => 'on',
+            'enable_questions_result'                           => $quick_quiz_enable_questions_result,
             'enable_average_statistical'                        => $quick_quiz_enable_average_statistical,
             'enable_next_button'                                => $quick_quiz_enable_next_button,
             'enable_previous_button'                            => $quick_quiz_enable_previous_button,

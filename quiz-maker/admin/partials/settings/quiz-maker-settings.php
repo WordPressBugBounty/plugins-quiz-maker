@@ -132,23 +132,23 @@
 
     //default all results column
     $default_all_results_columns = array(
-        'user_name'    => 'user_name',
-        'quiz_name'    => 'quiz_name',
-        'start_date'   => 'start_date',
-        'end_date'     => 'end_date',
-        'duration'     => 'duration',
-        'score'        => 'score',
-        'status'       => '',
+        'user_name'     => 'user_name',
+        'quiz_name'     => 'quiz_name',
+        'start_date'    => 'start_date',
+        'end_date'      => 'end_date',
+        'duration'      => 'duration',
+        'score'         => 'score',
+        'status'        => '',
     );
 
     $default_all_results_column_names = array(
-        "user_name"  => __( 'User name', 'quiz-maker'),
-        "quiz_name"  => __( 'Quiz name', 'quiz-maker' ),
-        "start_date" => __( 'Start date','quiz-maker' ),
-        "end_date"   => __( 'End date',  'quiz-maker' ),
-        "duration"   => __( 'Duration',  'quiz-maker' ),
-        "score"      => __( 'Score',     'quiz-maker' ),
-        "status"     => __( 'Status',    'quiz-maker' ),
+        "user_name"     => __( 'User name', 'quiz-maker'),
+        "quiz_name"     => __( 'Quiz name', 'quiz-maker' ),
+        "start_date"    => __( 'Start date','quiz-maker' ),
+        "end_date"      => __( 'End date',  'quiz-maker' ),
+        "duration"      => __( 'Duration',  'quiz-maker' ),
+        "score"         => __( 'Score',     'quiz-maker' ),
+        "status"        => __( 'Status',    'quiz-maker' ),
     );
 
     $options['all_results_columns'] = ! isset( $options['all_results_columns'] ) ? $default_all_results_columns : $options['all_results_columns'];
@@ -213,19 +213,19 @@
 
     //default quiz all results column
     $default_quiz_all_results_columns = array(
-        'user_name'    => 'user_name',
-        'start_date'   => 'start_date',
-        'end_date'     => 'end_date',
-        'duration'     => 'duration',
-        'score'        => 'score',
+        'user_name'     => 'user_name',
+        'start_date'    => 'start_date',
+        'end_date'      => 'end_date',
+        'duration'      => 'duration',
+        'score'         => 'score',
     );
 
     $default_quiz_all_results_column_names = array(
-        "user_name"  => __( 'User name', 'quiz-maker' ),
-        "start_date" => __( 'Start date','quiz-maker' ),
-        "end_date"   => __( 'End date',  'quiz-maker' ),
-        "duration"   => __( 'Duration',  'quiz-maker' ),
-        "score"      => __( 'Score',     'quiz-maker' ),
+        "user_name"     => __( 'User name', 'quiz-maker' ),
+        "start_date"    => __( 'Start date','quiz-maker' ),
+        "end_date"      => __( 'End date',  'quiz-maker' ),
+        "duration"      => __( 'Duration',  'quiz-maker' ),
+        "score"         => __( 'Score',     'quiz-maker' ),
     );
 
     $options['quiz_all_results_columns'] = ! isset( $options['quiz_all_results_columns'] ) ? $default_quiz_all_results_columns : $options['quiz_all_results_columns'];

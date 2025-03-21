@@ -844,6 +844,17 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                             </div>
                                         </div><!-- Disable data storing in database -->
                                         <hr/>
+                                        <div class="form-group row ays_toggle_parent">
+                                            <div class="col-sm-4">
+                                                <label for="ays_quick_quiz_enable_questions_result">
+                                                    <?php echo esc_html__('Show question results on the results page','quiz-maker'); ?>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <input type="checkbox" class="ays-enable-timer1" id="ays_quick_quiz_enable_questions_result" name="ays_quick_quiz_enable_questions_result" value="on" checked />
+                                            </div>
+                                        </div><!-- Show question results on the results page -->
+                                        <hr/>
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_display_score">
