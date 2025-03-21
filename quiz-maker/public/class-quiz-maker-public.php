@@ -4350,14 +4350,14 @@ class Quiz_Maker_Public
          */
         
         $quiz_parts = array(
-            "container_first_part"      => $quiz_container_first_part,
-            "main_content_first_part"   => $main_content_first_part,
-            "main_content_middle_part"  => $quiz_container_middle_part,
-            "main_content_last_part"    => $main_content_last_part,
-            "quiz_styles"               => $quiz_styles,
-            "quiz_additional_styles"    => "",
-            "container_last_part"       => $quiz_container_last_part,
-            "cat_selective_start_page"  => $cat_selective_start_page,
+            "container_first_part"                  => $quiz_container_first_part,
+            "main_content_first_part"               => $main_content_first_part,
+            "main_content_middle_part"              => $quiz_container_middle_part,
+            "main_content_last_part"                => $main_content_last_part,
+            "quiz_styles"                           => $quiz_styles,
+            "quiz_additional_styles"                => "",
+            "container_last_part"                   => $quiz_container_last_part,
+            "cat_selective_start_page"              => $cat_selective_start_page,
         );
         
         $quizOptions = array(

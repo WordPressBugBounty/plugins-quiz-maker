@@ -13,8 +13,8 @@ $id = (isset($_GET['quiz'])) ? absint( intval( $_GET['quiz'] ) ) : null;
 $user_id = get_current_user_id();
 $user = get_userdata($user_id);
 $author = array(
-    'id' => $user->ID,
-    'name' => $user->data->display_name
+    'id'                => $user->ID,
+    'name'              => $user->data->display_name
 );
 $quiz = array(
     'title'             => '',
@@ -260,6 +260,7 @@ $options = array(
     'quiz_content_mobile_max_width'             => 90,
     'quiz_timer_warning_text_color'             => "#ff0000",
     'quiz_enable_default_hide_results_toggle'   => "off",
+    'quiz_show_restart_button_on_quiz_fail'     => "off",
 
 );
 
@@ -1414,6 +1415,10 @@ $quiz_timer_warning_text_color = (isset($options['quiz_timer_warning_text_color'
 // Enable default Hide toggle
 $options['quiz_enable_default_hide_results_toggle'] = isset($options['quiz_enable_default_hide_results_toggle']) ? sanitize_text_field($options['quiz_enable_default_hide_results_toggle']) : 'off';
 $quiz_enable_default_hide_results_toggle = (isset($options['quiz_enable_default_hide_results_toggle']) && $options['quiz_enable_default_hide_results_toggle'] == 'on') ? true : false;
+
+// Show Restart button on quiz fail
+$options['quiz_show_restart_button_on_quiz_fail'] = isset($options['quiz_show_restart_button_on_quiz_fail']) ? sanitize_text_field($options['quiz_show_restart_button_on_quiz_fail']) : 'off';
+$quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_button_on_quiz_fail']) && $options['quiz_show_restart_button_on_quiz_fail'] == 'on') ? true : false;
 
 
 ?>
@@ -6643,7 +6648,7 @@ $quiz_enable_default_hide_results_toggle = (isset($options['quiz_enable_default_
                             </div>
                         </div><!-- Quiz loader icon -->
                         <hr/>
-                        <div class="form-group row">
+                        <div class="form-group row ays_toggle_parent">
                             <div class="col-sm-4">
                                 <label for="ays_enable_restart_button">
                                     <?php echo __('Enable restart button','quiz-maker')?>
@@ -6652,11 +6657,26 @@ $quiz_enable_default_hide_results_toggle = (isset($options['quiz_enable_default_
                                     </a>
                                 </label>
                             </div>
-                            <div class="col-sm-8">
-                                <input type="checkbox" class="ays-enable-timer1" id="ays_enable_restart_button"
+                            <div class="col-sm-1">
+                                <input type="checkbox" class="ays-enable-timer1 ays_toggle_checkbox" id="ays_enable_restart_button"
                                        name="ays_enable_restart_button"
                                        value="on" <?php echo ($enable_restart_button) ? 'checked' : '' ?>/>
                             </div>
+                            <div class="col-sm-7 ays_toggle_target ays_divider_left <?php echo $enable_restart_button ? '' : 'display_none'; ?>">
+                                <div class="form-group row">
+                                    <div class="col-sm-4">
+                                        <label for="ays_quiz_show_restart_button_on_quiz_fail">
+                                            <?php echo __('Show button on quiz fail', 'quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr(__('If this option is activated the "Restart" button will be displayed only when the user failed the quiz.', 'quiz-maker')); ?>">
+                                                <i class="ays_fa ays_fa_info_circle"></i>
+                                            </a>
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input type="checkbox" class="ays-enable-timer1" id="ays_quiz_show_restart_button_on_quiz_fail" name="ays_quiz_show_restart_button_on_quiz_fail" value="on" <?php echo ($quiz_show_restart_button_on_quiz_fail) ? 'checked' : '' ?>/>
+                                    </div>
+                                </div>
+                            </div><!-- Show button on quiz fail -->
                         </div><!-- Enable restart button -->
                         <hr/>
                         <div class="form-group row ays_toggle_parent">

@@ -1005,6 +1005,14 @@
         myOptions.quiz_enable_user_cհoosing_anonymous_assessment = ( myOptions.quiz_enable_user_cհoosing_anonymous_assessment ) ? myOptions.quiz_enable_user_cհoosing_anonymous_assessment : 'off';
         var quiz_enable_user_cհoosing_anonymous_assessment = (myOptions.quiz_enable_user_cհoosing_anonymous_assessment && myOptions.quiz_enable_user_cհoosing_anonymous_assessment == "on") ? true : false;
 
+        // Enable restart button
+        myOptions.enable_restart_button = ! myOptions.enable_restart_button ? 'off' : myOptions.enable_restart_button;
+        var enable_restart_button = (myOptions.enable_restart_button && myOptions.enable_restart_button == 'on') ? true : false;
+
+        // Show Restart button on quiz fail
+        myOptions.quiz_show_restart_button_on_quiz_fail = ! myOptions.quiz_show_restart_button_on_quiz_fail ? 'off' : myOptions.quiz_show_restart_button_on_quiz_fail;
+        var quiz_show_restart_button_on_quiz_fail = (myOptions.quiz_show_restart_button_on_quiz_fail && myOptions.quiz_show_restart_button_on_quiz_fail == 'on') ? true : false;
+
         // DataTable function exists in jQuery
         if (typeof $.fn.DataTable !== 'undefined') {
             form.find('#ays-quiz-all-result-score-page, .ays-individual-quiz-all-result-score-page').DataTable({ 
@@ -1656,6 +1664,12 @@
                 for (var ii = 0; ii < allQuestionHTML.length; ii++) {
                     formResults.append( allQuestionHTML[ii] );
                 }
+            }
+        }
+
+        if( enable_restart_button ){
+            if(quiz_show_restart_button_on_quiz_fail && response.pass_score_flag){
+                form.find('.ays_quiz_results_page .ays_restart_button_p').addClass('ays_display_none');
             }
         }
 
