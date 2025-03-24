@@ -1113,6 +1113,7 @@ class Quiz_Maker_Admin
         $quick_quiz_disable_store_data                      = 'off';
         $quick_quiz_display_score                           = 'by_percantage';
         $quick_quiz_enable_questions_result                 = 'on';
+        $quick_quiz_hide_correct_answers                    = 'off';
 
         // User Data
         $quick_quiz_show_information_form                   = 'on';
@@ -1443,7 +1444,11 @@ class Quiz_Maker_Admin
             // Display score
             $quick_quiz_display_score = (isset( $_REQUEST['ays_quick_quiz_display_score'] ) && $_REQUEST['ays_quick_quiz_display_score'] != "") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_display_score'] ) ) : "by_percantage";
 
+            // Show question results on the results page
             $quick_quiz_enable_questions_result = (isset( $_REQUEST['ays_quick_quiz_enable_questions_result'] ) && $_REQUEST['ays_quick_quiz_enable_questions_result'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_questions_result'] ) ) : "off";
+
+            // Hide correct answers
+            $quick_quiz_hide_correct_answers = (isset( $_REQUEST['ays_quick_quiz_hide_correct_answers'] ) && $_REQUEST['ays_quick_quiz_hide_correct_answers'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_hide_correct_answers'] ) ) : "off";
             
             
         }
@@ -1627,7 +1632,7 @@ class Quiz_Maker_Admin
             'show_schedule_timer'                               => 'off',
             'show_timer_type'                                   => 'countdown',
             'quiz_loader_text_value'                            => '',
-            'hide_correct_answers'                              => 'off',
+            'hide_correct_answers'                              => $quick_quiz_hide_correct_answers,
             'show_information_form'                             => $quick_quiz_show_information_form,
             'quiz_loader_custom_gif'                            => '',
             'disable_hover_effect'                              => $quick_quiz_disable_hover_effect,

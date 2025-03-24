@@ -1810,24 +1810,24 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                 <div class="ays-quiz-top-actions-container-wrapper form-group row">
                     <div class="col-sm-12">
                         <p class="m-0 text-right">
-                            <a class="ays-quiz-collapse-all" href="javascript:void(0);"><?php echo __( "Collapse All", "quiz-maker" ); ?></a>
+                            <a class="ays-quiz-collapse-all" href="javascript:void(0);"><?php echo esc_html__( "Collapse All", "quiz-maker" ); ?></a>
                             <span>|</span>
-                            <a class="ays-quiz-expand-all" href="javascript:void(0);"><?php echo __( "Expand All", "quiz-maker" ); ?></a>
+                            <a class="ays-quiz-expand-all" href="javascript:void(0);"><?php echo esc_html__( "Expand All", "quiz-maker" ); ?></a>
                         </p>
                     </div>
                 </div>
                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                     <div class="ays-quiz-accordion-container">
                         <?php echo $quiz_accordion_svg_html; ?>
-                        <p class="ays-subtitle"><?php echo __('Quiz Styles','quiz-maker')?></p>
+                        <p class="ays-subtitle"><?php echo esc_html__('Quiz Styles','quiz-maker')?></p>
                     </div>
                     <hr class="ays-quiz-bolder-hr"/>
                     <div class="ays-quiz-accordion-options-box">
                         <div class="form-group row">
                             <div class="col-sm-2">
                                 <label>
-                                    <?php echo __('Theme', 'quiz-maker'); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('You can choose your preferred template and customize it with options below Elegant Dark, Elegant Light, Classic Dark, Classic Light, Rect Dark, Rect Light.','quiz-maker')?>">
+                                    <?php echo esc_html__('Theme', 'quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('You can choose your preferred template and customize it with options below Elegant Dark, Elegant Light, Classic Dark, Classic Light, Rect Dark, Rect Light.','quiz-maker') ); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -1836,38 +1836,38 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                 <div class="form-group row ays_themes_images_main_div">
                                     <div class="ays_theme_image_div col-sm-2 <?php echo ($quiz_theme == 'elegant_dark') ? 'ays_active_theme_image' : '' ?>" style="padding:0;">
                                         <label for="theme_elegant_dark" class="ays-quiz-theme-item">
-                                            <p><?php echo __('Elegant Dark','quiz-maker')?></p>
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL . '/images/themes/elegant_dark.webp' ?>" alt="Elegant Dark">
+                                            <p><?php echo esc_html__('Elegant Dark','quiz-maker')?></p>
+                                            <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL . '/images/themes/elegant_dark.webp' ); ?>" alt="Elegant Dark">
                                         </label>
                                     </div>
                                     <div class="ays_theme_image_div col-sm-2 <?php echo ($quiz_theme == 'elegant_light') ? 'ays_active_theme_image' : '' ?>" style="padding:0;">
                                         <label for="theme_elegant_light" class="ays-quiz-theme-item">
-                                            <p><?php echo __('Elegant Light','quiz-maker')?></p>
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL . '/images/themes/elegant_light.webp' ?>" alt="Elegant Light">
+                                            <p><?php echo esc_html__('Elegant Light','quiz-maker')?></p>
+                                            <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL . '/images/themes/elegant_light.webp' ); ?>" alt="Elegant Light">
                                         </label>
                                     </div>
                                     <div class="ays_theme_image_div col-sm-2 <?php echo ($quiz_theme == 'classic_dark') ? 'ays_active_theme_image' : '' ?>" style="padding:0;">
                                         <label for="theme_classic_dark" class="ays-quiz-theme-item">
-                                            <p><?php echo __('Classic Dark','quiz-maker')?></p>
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL . '/images/themes/classic_dark.webp' ?>" alt="Classic Dark">
+                                            <p><?php echo esc_html__('Classic Dark','quiz-maker')?></p>
+                                            <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL . '/images/themes/classic_dark.webp' ); ?>" alt="Classic Dark">
                                         </label>
                                     </div>
                                     <div class="ays_theme_image_div col-sm-2 <?php echo ($quiz_theme == 'classic_light') ? 'ays_active_theme_image' : '' ?>" style="padding:0;">
                                         <label for="theme_classic_light" class="ays-quiz-theme-item">
-                                            <p><?php echo __('Classic Light','quiz-maker')?></p>
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL . '/images/themes/classic_light.webp' ?>" alt="Classic Light">
+                                            <p><?php echo esc_html__('Classic Light','quiz-maker')?></p>
+                                            <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL . '/images/themes/classic_light.webp' ); ?>" alt="Classic Light">
                                         </label>
                                     </div>
                                     <div class="ays_theme_image_div col-sm-2 <?php echo ($quiz_theme == 'rect_dark') ? 'ays_active_theme_image' : '' ?>" style="padding:0;">
                                         <label for="theme_rect_dark" class="ays-quiz-theme-item">
-                                            <p><?php echo __('Rect Dark','quiz-maker')?></p>
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL . '/images/themes/rect_dark.webp' ?>" alt="Rect Dark" >
+                                            <p><?php echo esc_html__('Rect Dark','quiz-maker')?></p>
+                                            <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL . '/images/themes/rect_dark.webp' ); ?>" alt="Rect Dark" >
                                         </label>
                                     </div>
                                     <div class="ays_theme_image_div col-sm-2 <?php echo ($quiz_theme == 'rect_light') ? 'ays_active_theme_image' : '' ?>" style="padding:0;">
                                         <label for="theme_rect_light" class="ays-quiz-theme-item">
-                                            <p><?php echo __('Rect Light','quiz-maker')?></p>
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL . '/images/themes/rect_light.webp' ?>" alt="Rect Light" >
+                                            <p><?php echo esc_html__('Rect Light','quiz-maker')?></p>
+                                            <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL . '/images/themes/rect_light.webp' ); ?>" alt="Rect Light" >
                                         </label>
                                     </div>
                                 </div>
@@ -1880,24 +1880,24 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                         <div class="form-group row">
                                             <div class="col-sm-2 ays_theme_image_div" style="padding:0;">
                                                 <label class="ays-quiz-theme-item ays-disable-setting">
-                                                    <p><?php echo __('Modern Light','quiz-maker')?></p>
-                                                    <img src="<?php echo AYS_QUIZ_ADMIN_URL . '/images/themes/modern_light.webp' ?>" alt="Modern Light"/>
+                                                    <p><?php echo esc_html__('Modern Light','quiz-maker')?></p>
+                                                    <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL . '/images/themes/modern_light.webp' ); ?>" alt="Modern Light"/>
                                                 </label>
                                             </div>
                                             <div class="col-sm-2 ays_theme_image_div" style="padding:0;">
                                                 <label class="ays-quiz-theme-item ays-disable-setting">
-                                                    <p><?php echo __('Modern Dark','quiz-maker')?></p>
-                                                    <img src="<?php echo AYS_QUIZ_ADMIN_URL . '/images/themes/modern_dark.webp' ?>" alt="Modern Dark"/>
+                                                    <p><?php echo esc_html__('Modern Dark','quiz-maker')?></p>
+                                                    <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL . '/images/themes/modern_dark.webp'); ?>" alt="Modern Dark"/>
                                                 </label>
                                             </div>
                                         </div>
                                         <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                             <div class="ays-quiz-new-upgrade-button-box">
                                                 <div>
-                                                    <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                                    <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                                    <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' );?>">
+                                                    <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg' ); ?>" class="ays-quiz-new-upgrade-button-hover">
                                                 </div>
-                                                <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
+                                                <div class="ays-quiz-new-upgrade-button"><?php echo esc_html__("Upgrade", "quiz-maker"); ?></div>
                                             </div>
                                         </a>
                                     </div>
@@ -1918,8 +1918,8 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for='ays-quiz-width'>
-                                            <?php echo __('Quiz width', 'quiz-maker'); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Quiz container width in pixels. Set it 0 or leave it blank for making a quiz with 100%  width. It accepts only numeric values.','quiz-maker')?>">
+                                            <?php echo esc_html__('Quiz width', 'quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Quiz container width in pixels. Set it 0 or leave it blank for making a quiz with 100%  width. It accepts only numeric values.','quiz-maker') ); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -1927,15 +1927,13 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                     <div class="col-sm-6 ays_divider_left">
                                         <div class="ays_quiz_display_flex_width">
                                             <div>
-                                                <input type="number" class="ays-text-input ays-text-input-short" id='ays-quiz-width'
-                                                   name='ays_quiz_width'
-                                                   value="<?php echo (isset($options['width'])) ? $options['width'] : ''; ?>"/>
-                                                <span style="display:block;" class="ays_quiz_small_hint_text"><?php echo __("For 100% leave blank", 'quiz-maker');?></span>
+                                                <input type="number" class="ays-text-input ays-text-input-short" id='ays-quiz-width' name='ays_quiz_width' value="<?php echo (isset($options['width'])) ? intval($options['width']) : ''; ?>"/>
+                                                <span style="display:block;" class="ays_quiz_small_hint_text"><?php echo esc_html__("For 100% leave blank", 'quiz-maker');?></span>
                                             </div>
                                             <div class="ays_quiz_dropdown_max_width">
                                                 <select id="ays_quiz_width_by_percentage_px" name="ays_quiz_width_by_percentage_px" class="ays-text-input ays-text-input-short" style="display:inline-block; width: 60px;">
-                                                    <option value="pixels" <?php echo $quiz_width_by_percentage_px == "pixels" ? "selected" : ""; ?>><?php echo __( "px", 'quiz-maker' ); ?></option>
-                                                    <option value="percentage" <?php echo $quiz_width_by_percentage_px == "percentage" ? "selected" : ""; ?>><?php echo __( "%", 'quiz-maker' ); ?></option>
+                                                    <option value="pixels" <?php echo $quiz_width_by_percentage_px == "pixels" ? "selected" : ""; ?>><?php echo esc_html__( "px", 'quiz-maker' ); ?></option>
+                                                    <option value="percentage" <?php echo $quiz_width_by_percentage_px == "percentage" ? "selected" : ""; ?>><?php echo esc_html__( "%", 'quiz-maker' ); ?></option>
                                                 </select>
                                             </div>
                                         </div>
@@ -1945,8 +1943,8 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for='ays_mobile_max_width'>
-                                            <?php echo __('Quiz max-width for mobile', 'quiz-maker'); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Quiz container max-width for mobile in percentage. This option will work for the screens with less than 640 pixels width.','quiz-maker')?>">
+                                            <?php echo esc_html__('Quiz max-width for mobile', 'quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Quiz container max-width for mobile in percentage. This option will work for the screens with less than 640 pixels width.','quiz-maker') ); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -1955,8 +1953,8 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                         <div>
                                             <input type="number" class="ays-text-input ays-text-input-short" id='ays_mobile_max_width'
                                                    name='ays_mobile_max_width' style="display:inline-block;"
-                                                   value="<?php echo $mobile_max_width; ?>"/>
-                                            <span style="display:block;" class="ays_quiz_small_hint_text"><?php echo __("For 100% leave blank", 'quiz-maker');?></span>
+                                                   value="<?php echo esc_attr($mobile_max_width); ?>"/>
+                                            <span style="display:block;" class="ays_quiz_small_hint_text"><?php echo esc_html__("For 100% leave blank", 'quiz-maker');?></span>
                                         </div>
                                         <div class="ays_quiz_dropdown_max_width">
                                             <input type="text" value="%" class='ays-quiz-form-hint-for-size' disabled>
@@ -1967,8 +1965,8 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for='ays_quiz_content_max_width'>
-                                            <?php echo __('Quiz content max-width', 'quiz-maker'); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Set your desired value for the Quiz content max-width in percentage. By default, it is set as 90%.','quiz-maker'); ?>">
+                                            <?php echo esc_html__('Quiz content max-width', 'quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Set your desired value for the Quiz content max-width in percentage. By default, it is set as 90%.','quiz-maker') ); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -1977,8 +1975,8 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                         <div class="row">
                                             <div class="col-sm-5">
                                                 <label for='ays_answers_font_size'>
-                                                    <?php echo __('On desktop', 'quiz-maker'); ?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the Quiz content max-width for desktop devices.','quiz-maker'); ?>">
+                                                    <?php echo esc_html__('On desktop', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Define the Quiz content max-width for desktop devices.','quiz-maker') ); ?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
@@ -1996,8 +1994,8 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                         <div class="row">
                                             <div class="col-sm-5">
                                                 <label for='ays_quiz_content_mobile_max_width'>
-                                                    <?php echo __('On mobile', 'quiz-maker'); ?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the Quiz content max-width for mobile devices.','quiz-maker'); ?>">
+                                                    <?php echo esc_html__('On mobile', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Define the Quiz content max-width for mobile devices.','quiz-maker') ); ?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
@@ -2017,15 +2015,15 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for='ays-quiz-height'>
-                                            <?php echo __('Quiz min-height', 'quiz-maker'); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Quiz minimal height in pixels','quiz-maker')?>">
+                                            <?php echo esc_html__('Quiz min-height', 'quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Quiz minimal height in pixels','quiz-maker') ); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
                                     </div>
                                     <div class="col-sm-7 ays_divider_left ays_quiz_display_flex_width">
                                         <div>
-                                            <input type="number" class="ays-text-input ays-text-input-short" id='ays-quiz-height' name='ays_quiz_height' value="<?php echo (isset($options['height'])) ? $options['height'] : ''; ?>"/>
+                                            <input type="number" class="ays-text-input ays-text-input-short" id='ays-quiz-height' name='ays_quiz_height' value="<?php echo (isset($options['height'])) ? intval($options['height']) : ''; ?>"/>
                                         </div>
                                         <div class="ays_quiz_dropdown_max_width">
                                             <input type="text" value="px" class='ays-quiz-form-hint-for-size' disabled>
@@ -2036,8 +2034,8 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for='ays-quiz-color'>
-                                            <?php echo __('Quiz Color', 'quiz-maker'); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Colors of the quiz main attributes (buttons, hover effect, progress bar, etc.).','quiz-maker')?>">
+                                            <?php echo esc_html__('Quiz Color', 'quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_html__('Colors of the quiz main attributes (buttons, hover effect, progress bar, etc.).','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -2052,7 +2050,7 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                     <div class="col-sm-5">
                                         <label for='ays-quiz-bg-color'>
                                             <?php echo __('Background color', 'quiz-maker'); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Background color of the quiz box. You can also choose the opacity(alfa) level on the right side.','quiz-maker')?>">
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Background color of the quiz box. You can also choose the opacity(alfa) level on the right side.','quiz-maker') ); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>

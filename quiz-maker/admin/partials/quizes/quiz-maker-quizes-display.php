@@ -850,8 +850,20 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                     <?php echo esc_html__('Show question results on the results page','quiz-maker'); ?>
                                                 </label>
                                             </div>
-                                            <div class="col-sm-8">
-                                                <input type="checkbox" class="ays-enable-timer1" id="ays_quick_quiz_enable_questions_result" name="ays_quick_quiz_enable_questions_result" value="on" checked />
+                                            <div class="col-sm-1">
+                                                <input type="checkbox" class="ays-enable-timer1 ays_toggle_checkbox" id="ays_quick_quiz_enable_questions_result" name="ays_quick_quiz_enable_questions_result" value="on" checked />
+                                            </div>
+                                            <div class="col-sm-7 ays_toggle_target ays_divider_left">
+                                                <div class="form-group row">
+                                                    <div class="col-sm-4">
+                                                        <label for="ays_quick_quiz_hide_correct_answers">
+                                                            <?php echo esc_html__('Hide correct answers','quiz-maker'); ?>
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-sm-8">
+                                                        <input type="checkbox" class="ays-enable-timer1" id="ays_quick_quiz_hide_correct_answers" name="ays_quick_quiz_hide_correct_answers" value="on"/>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div><!-- Show question results on the results page -->
                                         <hr/>
