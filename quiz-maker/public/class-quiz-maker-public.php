@@ -439,18 +439,18 @@ class Quiz_Maker_Public
         }
 
         $texts = array(
-            'startButton'        => $ays_start_button_text,
-            'nextButton'         => $ays_next_button_text,
-            'previousButton'     => $ays_previous_button_text,
-            'clearButton'        => $ays_clear_button_text,
-            'finishButton'       => $ays_finish_button_text,
-            'seeResultButton'    => $ays_see_result_button_text,
-            'restartQuizButton'  => $ays_restart_quiz_button_text,
-            'sendFeedbackButton' => $ays_send_feedback_button_text,
-            'loadMoreButton'     => $ays_load_more_button_text,
-            'exitButton'         => $ays_exit_button_text,
-            'checkButton'        => $ays_check_button_text,
-            'loginButton'        => $ays_login_button_text,
+            'startButton'           => $ays_start_button_text,
+            'nextButton'            => $ays_next_button_text,
+            'previousButton'        => $ays_previous_button_text,
+            'clearButton'           => $ays_clear_button_text,
+            'finishButton'          => $ays_finish_button_text,
+            'seeResultButton'       => $ays_see_result_button_text,
+            'restartQuizButton'     => $ays_restart_quiz_button_text,
+            'sendFeedbackButton'    => $ays_send_feedback_button_text,
+            'loadMoreButton'        => $ays_load_more_button_text,
+            'exitButton'            => $ays_exit_button_text,
+            'checkButton'           => $ays_check_button_text,
+            'loginButton'           => $ays_login_button_text,
         );
         return $texts;
     }
@@ -517,12 +517,12 @@ class Quiz_Maker_Public
         }
 
         $texts = array(
-            'namePlaceholder'   => $quiz_fields_placeholder_name_text,
-            'emailPlaceholder'  => $quiz_fields_placeholder_eamil_text,
-            'phonePlaceholder'  => $quiz_fields_placeholder_phone_text,
-            'nameLabel'         => $quiz_fields_label_name_text,
-            'emailLabel'        => $quiz_fields_label_eamil_text,
-            'phoneLabel'        => $quiz_fields_label_phone_text,
+            'namePlaceholder'       => $quiz_fields_placeholder_name_text,
+            'emailPlaceholder'      => $quiz_fields_placeholder_eamil_text,
+            'phonePlaceholder'      => $quiz_fields_placeholder_phone_text,
+            'nameLabel'             => $quiz_fields_label_name_text,
+            'emailLabel'            => $quiz_fields_label_eamil_text,
+            'phoneLabel'            => $quiz_fields_label_phone_text,
         );
 
         return $texts;

@@ -13,17 +13,17 @@ $id = (isset($_GET['quiz'])) ? absint( intval( $_GET['quiz'] ) ) : null;
 $user_id = get_current_user_id();
 $user = get_userdata($user_id);
 $author = array(
-    'id'                => $user->ID,
-    'name'              => $user->data->display_name
+    'id'                                        => $user->ID,
+    'name'                                      => $user->data->display_name
 );
 $quiz = array(
-    'title'             => '',
-    'description'       => '',
-    'quiz_image'        => '',
-    'quiz_category_id'  => 1,
-    'question_ids'      => '',
-    'published'         => 1,
-    'quiz_url'          => '',
+    'title'                                     => '',
+    'description'                               => '',
+    'quiz_image'                                => '',
+    'quiz_category_id'                          => 1,
+    'question_ids'                              => '',
+    'published'                                 => 1,
+    'quiz_url'                                  => '',
 );
 $options = array(
     'quiz_theme'                                => 'classic_light',
@@ -4338,7 +4338,7 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                         <div class="col-sm-3">
                                             <label for="ays_quiz_timer_red_warning">
                                                 <?php echo __('Turn on warning','quiz-maker'); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Enable this option and the timer color will be changed after the user completes 90% of the quiz','quiz-maker'); ?>">
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Enable this option and the timer color will be changed after the user completes 90% of the quiz.','quiz-maker'); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>

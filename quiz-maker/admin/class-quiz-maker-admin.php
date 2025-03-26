@@ -1114,6 +1114,7 @@ class Quiz_Maker_Admin
         $quick_quiz_display_score                           = 'by_percantage';
         $quick_quiz_enable_questions_result                 = 'on';
         $quick_quiz_hide_correct_answers                    = 'off';
+        $quick_quiz_show_wrong_answers_first                = 'off';
 
         // User Data
         $quick_quiz_show_information_form                   = 'on';
@@ -1449,6 +1450,9 @@ class Quiz_Maker_Admin
 
             // Hide correct answers
             $quick_quiz_hide_correct_answers = (isset( $_REQUEST['ays_quick_quiz_hide_correct_answers'] ) && $_REQUEST['ays_quick_quiz_hide_correct_answers'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_hide_correct_answers'] ) ) : "off";
+
+            // Show wrong answers first
+            $quick_quiz_show_wrong_answers_first = (isset( $_REQUEST['ays_quick_quiz_show_wrong_answers_first'] ) && $_REQUEST['ays_quick_quiz_show_wrong_answers_first'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_show_wrong_answers_first'] ) ) : "off";
             
             
         }
@@ -1644,7 +1648,7 @@ class Quiz_Maker_Admin
             'quiz_box_shadow_z_offset'                          => 15,
             'quiz_question_text_alignment'                      => $quick_quiz_question_text_alignment,
             'quiz_arrow_type'                                   => 'default',
-            'quiz_show_wrong_answers_first'                     => 'off',
+            'quiz_show_wrong_answers_first'                     => $quick_quiz_show_wrong_answers_first,
             'quiz_display_all_questions'                        => $quick_quiz_display_all_questions,
             'enable_rtl_direction'                              => $quick_quiz_enable_rtl_direction,
             'quiz_enable_question_image_zoom'                   => $quick_quiz_enable_question_image_zoom,
