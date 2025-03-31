@@ -78,6 +78,7 @@ class Quiz_Maker {
 		$this->set_locale();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
+		$this->define_custom_post_type_hooks();
 
 
 	}
@@ -170,6 +171,11 @@ class Quiz_Maker {
          * The class is responsible for showing quiz results in wordpress default WP_LIST_TABLE style
          */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/settings/quiz-maker-settings-actions.php';
+
+		/**
+		 * The class responsible for defining all functions for getting all custom post type functions
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-quiz-maker-custom-post-type.php';
 		
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
@@ -346,6 +352,15 @@ class Quiz_Maker {
 		// $this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 		
 		// $this->loader->add_action( 'wp_head', $plugin_public, 'aaaa' );
+	}
+
+	/**
+	 * Run the loader to execute all of the hooks with WordPress.
+	 *
+	 * @since    1.0.0
+	 */
+	private function define_custom_post_type_hooks(){
+		$plugin_custom_post_type = new Quiz_Maker_Custom_Post_Type( $this->get_plugin_name(), $this->get_version() );
 	}
 
 	/**

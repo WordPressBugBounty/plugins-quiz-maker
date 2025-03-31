@@ -1276,6 +1276,14 @@ class Quizes_List_Table extends WP_List_Table{
 
                 $inserted_id = $wpdb->insert_id;
                 $message = 'created';
+
+                $post_type_args = array(
+                    'quiz_id'       => $inserted_id,
+                    'author_id'     => !empty($quiz_create_author) ? $quiz_create_author : get_current_user_id(),
+                    'quiz_title'    => $title,
+                );
+                
+                $custom_post_id = Quiz_Maker_Custom_Post_Type::ays_quiz_add_custom_post($post_type_args);
             }else{
                 $quiz_result = $wpdb->update(
                     $quiz_table,
@@ -1309,6 +1317,17 @@ class Quizes_List_Table extends WP_List_Table{
 
             if($message == 'created'){
                 setcookie('ays_quiz_created_new', $inserted_id, time() + 3600, '/');
+                if(!empty($custom_post_id)){
+                    $custom_post_url = array(
+                        'post_type' => 'ays-quiz-maker',
+                        'p' => $custom_post_id,
+                        'preview' => 'true',
+                    );
+                    $custom_post_url_ready = http_build_query($custom_post_url);
+                    $ready_url = get_home_url();
+                    $ready_url .= '/?' . $custom_post_url_ready;
+                    setcookie('ays_quiz_created_new_'.$inserted_id.'_post_id', $ready_url, time() + 3600, '/');
+                }
             }
 
             if( has_action( 'ays_qm_quiz_page_integrations_after_saves' ) ){
@@ -1321,7 +1340,7 @@ class Quizes_List_Table extends WP_List_Table{
                     if($id == null){
                         $url = esc_url_raw( add_query_arg( array(
                             "action"        => "edit",
-                            "quiz"          => $wpdb->insert_id,
+                            "quiz"          => $inserted_id,
                             "ays_quiz_tab"  => $ays_quiz_tab,
                             "status"        => $message
                         ) ) );
@@ -1539,8 +1558,20 @@ class Quizes_List_Table extends WP_List_Table{
                 '%s'  // options
             )
         );
+
+        $inserted_id = $wpdb->insert_id;
+
         if( $result >= 0 ){
             $message = "duplicated";
+
+            $post_type_args = array(
+                'quiz_id'       => $inserted_id,
+                'author_id'     => !empty($user->ID) ? $user->ID : $user_id,
+                'quiz_title'    => "Copy - ".$quiz['title'],
+            );
+            
+            $custom_post_id = Quiz_Maker_Custom_Post_Type::ays_quiz_add_custom_post($post_type_args);
+
             $url = esc_url_raw( remove_query_arg(array('action', 'question')  ) ) . '&status=' . $message;
             wp_redirect( $url );
         }
@@ -1605,6 +1636,7 @@ class Quizes_List_Table extends WP_List_Table{
         $delete_nonce = wp_create_nonce( $this->plugin_name . '-delete-quiz' );
 
         $quiz_title = esc_attr(stripcslashes($item['title']));
+        $custom_post_id = isset($item['custom_post_id']) && $item['custom_post_id'] != 0 && $item['custom_post_id'] != '' ? esc_attr(intval($item['custom_post_id'])) : 0;
 
         $q = esc_attr($quiz_title);
         $quizzes_title_length = intval( $this->title_length );
@@ -1612,12 +1644,17 @@ class Quizes_List_Table extends WP_List_Table{
         $restitle = Quiz_Maker_Admin::ays_restriction_string("word", $quiz_title, $quizzes_title_length);
         $title = sprintf( '<a href="?page=%s&action=%s&quiz=%d" title="%s">%s</a>', esc_attr( $_REQUEST['page'] ), 'edit', absint( $item['id'] ), $q, $restitle);
 
-        $actions = array(
-            'edit' => sprintf( '<a href="?page=%s&action=%s&quiz=%d">'. __('Edit', 'quiz-maker') .'</a>', esc_attr( $_REQUEST['page'] ), 'edit', absint( $item['id'] ) ),
-            'duplicate' => sprintf( '<a href="?page=%s&action=%s&quiz=%d">'. __('Duplicate', 'quiz-maker') .'</a>', esc_attr( $_REQUEST['page'] ), 'duplicate', absint( $item['id'] ) ),
-            'results' => sprintf( '<a href="?page=%s&filterby=%d">'. __('View Results', 'quiz-maker') .'</a>', esc_attr( $_REQUEST['page'] ) . '-results', absint( $item['id'] ) ),
-            'delete' => sprintf( '<a class="ays_confirm_del" data-message="%s" href="?page=%s&action=%s&quiz=%s&_wpnonce=%s">'. __('Delete', 'quiz-maker') .'</a>', $restitle, esc_attr( $_REQUEST['page'] ), 'delete', absint( $item['id'] ), $delete_nonce )
-        );
+        $actions['edit'] = sprintf( '<a href="?page=%s&action=%s&quiz=%d">'. __('Edit', 'quiz-maker') .'</a>', esc_attr( $_REQUEST['page'] ), 'edit', absint( $item['id'] ) );
+
+        $actions['duplicate'] = sprintf( '<a href="?page=%s&action=%s&quiz=%d">'. __('Duplicate', 'quiz-maker') .'</a>', esc_attr( $_REQUEST['page'] ), 'duplicate', absint( $item['id'] ) );
+
+        $actions['results'] = sprintf( '<a href="?page=%s&filterby=%d">'. __('View Results', 'quiz-maker') .'</a>', esc_attr( $_REQUEST['page'] ) . '-results', absint( $item['id'] ) );
+
+        if($custom_post_id > 0){
+            $actions['custom_posts'] = sprintf( '<a href="%s" target="_blank">'. __('Preview', "quiz-maker") .'</a>', esc_url( add_query_arg( 'preview', 'true', get_permalink($custom_post_id) ) ));
+        }
+
+        $actions['delete'] = sprintf( '<a class="ays_confirm_del" data-message="%s" href="?page=%s&action=%s&quiz=%s&_wpnonce=%s">'. __('Delete', 'quiz-maker') .'</a>', $restitle, esc_attr( $_REQUEST['page'] ), 'delete', absint( $item['id'] ), $delete_nonce );
 
         return $title . $this->row_actions( $actions );
     }

@@ -277,6 +277,7 @@ class Quiz_Maker_Admin
             "all"                           => __( "All", 'quiz-maker' ),
             "selectCategory"                => __( "Select Category", 'quiz-maker' ),
             "selectTags"                    => __( "Select Tags", 'quiz-maker' ),
+            "preivewQuiz"                   => __( "Preview Quiz", 'quiz-maker' ),
         ) );
 
         $question_categories = $this->get_question_categories();

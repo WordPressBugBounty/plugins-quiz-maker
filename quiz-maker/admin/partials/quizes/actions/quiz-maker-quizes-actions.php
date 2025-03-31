@@ -9766,7 +9766,7 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                     $buttons_html = '</div>';
                     $buttons_html .= '<div class="ays_save_default_button_box">';
                     echo $buttons_html;
-                        if ( $prev_quiz_id != "" && !is_null( $prev_quiz_id ) ) {
+                        if ( $prev_quiz_id != "" && !is_null( $prev_quiz_id ) && 1 == 0 ) {
 
                             $other_attributes = array(
                                 'id'            => 'ays-quiz-prev-button',
@@ -9776,7 +9776,7 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                             submit_button(esc_html__('Prev Quiz', 'quiz-maker'), 'ays-quiz-next-button-class', 'ays_quiz_prev_button', true, $other_attributes);
                         }
 
-                        if ( $next_quiz_id != "" && !is_null( $next_quiz_id ) ) {
+                        if ( $next_quiz_id != "" && !is_null( $next_quiz_id ) && 1 == 0 ) {
 
                             $other_attributes = array(
                                 'id'            => 'ays-quiz-next-button',
