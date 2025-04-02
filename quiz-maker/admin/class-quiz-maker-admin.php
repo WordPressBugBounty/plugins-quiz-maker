@@ -1116,6 +1116,7 @@ class Quiz_Maker_Admin
         $quick_quiz_enable_questions_result                 = 'on';
         $quick_quiz_hide_correct_answers                    = 'off';
         $quick_quiz_show_wrong_answers_first                = 'off';
+        $quick_quiz_show_only_wrong_answers                 = 'off';
 
         // User Data
         $quick_quiz_show_information_form                   = 'on';
@@ -1454,6 +1455,9 @@ class Quiz_Maker_Admin
 
             // Show wrong answers first
             $quick_quiz_show_wrong_answers_first = (isset( $_REQUEST['ays_quick_quiz_show_wrong_answers_first'] ) && $_REQUEST['ays_quick_quiz_show_wrong_answers_first'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_show_wrong_answers_first'] ) ) : "off";
+
+            // Show wrong answers first
+            $quick_quiz_show_only_wrong_answers = (isset( $_REQUEST['ays_quick_quiz_show_only_wrong_answers'] ) && $_REQUEST['ays_quick_quiz_show_only_wrong_answers'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_show_only_wrong_answers'] ) ) : "off";
             
             
         }
@@ -1739,6 +1743,7 @@ class Quiz_Maker_Admin
             'quiz_quest_explanation_font_weight'                => $quick_quiz_quest_explanation_font_weight,
             'quiz_right_answers_font_weight'                    => $quick_quiz_right_answers_font_weight,
             'quiz_wrong_answers_font_weight'                    => $quick_quiz_wrong_answers_font_weight,
+            'quiz_show_only_wrong_answers'                      => $quick_quiz_show_only_wrong_answers,
         );
 
 

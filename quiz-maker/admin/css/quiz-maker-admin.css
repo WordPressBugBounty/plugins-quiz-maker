@@ -5515,6 +5515,19 @@ div#ays-quiz-winter-dicount-main #ays-quiz-maker-countdown-main-container .emoji
     margin: unset;
 }
 
+.ays-quiz-heading-box.ays-quiz-heading-box-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrap div.ays-quiz-heading-box.ays-quiz-heading-box-center .ays-quiz-wordpress-user-manual-box a {
+    text-decoration: none;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+}
+
 .ays-quiz-heading-box .ays-quiz-wordpress-user-manual-box a[href*="https://quiz-plugin.com/docs/"],
 .ays-quiz-heading-box .ays-quiz-wordpress-user-manual-box {
     text-decoration: none;
@@ -7892,3 +7905,5 @@ body[class~="toplevel_page_quiz-maker"] .swal2-popup .swal2-actions {
 }
 
 /* Preview Popup new design | End */
+
+ays-quiz-heading-box ays-quiz-heading-box-center

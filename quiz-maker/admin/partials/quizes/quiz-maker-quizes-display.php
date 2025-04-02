@@ -875,6 +875,17 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                         <input type="checkbox" class="ays-enable-timer1" id="ays_quick_quiz_show_wrong_answers_first" name="ays_quick_quiz_show_wrong_answers_first" value="on" />
                                                     </div>
                                                 </div>
+                                                <hr>
+                                                <div class="form-group row">
+                                                    <div class="col-sm-4">
+                                                        <label for="ays_quick_quiz_show_only_wrong_answers">
+                                                            <?php echo esc_html__('Show only wrong answers','quiz-maker'); ?>
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-sm-8">
+                                                        <input type="checkbox" class="ays-enable-timer1" id="ays_quick_quiz_show_only_wrong_answers" name="ays_quick_quiz_show_only_wrong_answers" value="on" />
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div><!-- Show question results on the results page -->
                                         <hr/>

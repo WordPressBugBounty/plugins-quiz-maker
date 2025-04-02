@@ -740,6 +740,14 @@
             </table>
         </div>
     </div>
+    <div class="ays-quiz-heading-box ays-quiz-unset-float ays-quiz-heading-box-center">
+        <div class="ays-quiz-wordpress-user-manual-box">
+            <a href="https://www.youtube.com/watch?v=y-uCWOVmdEE" target="_blank" style="text-decoration: none;font-size: 20px;">
+                <span><img src='<?php echo AYS_QUIZ_ADMIN_URL; ?>/images/icons/youtube-video-icon.svg' width="24"></span>
+                <span style="margin-left: 3px; text-decoration: underline; font-size: 18px;"><?php echo esc_html__('Watch plans comparison video', "quiz-maker"); ?></span>
+            </a>
+        </div>
+    </div>
     <div class="ays-quiz-sm-content-row-sg">
         <div class="ays-quiz-sm-guarantee-container-sg ays-quiz-sm-center-box-sg">
             <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL ); ?>/images/money_back_logo.webp" alt="Best money-back guarantee logo">
