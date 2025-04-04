@@ -240,6 +240,8 @@ class Quiz_Maker_Admin
             'formMoreDetailed'              => __( 'For more detailed configuration visit', 'quiz-maker'),
             'editQuizPage'                  => __( 'edit quiz page', 'quiz-maker'),
             'greate'                        => __( 'Great!', 'quiz-maker'),
+            'thumbsUpGreat'                 => __( 'Thumbs up, great!', 'quiz-maker'),
+            "preivewQuiz"                   => __( "Preview Quiz", 'quiz-maker' ),
         ));
         wp_localize_script( $this->plugin_name, 'quizLangObj', array(
             'quizBannerDate'                => $quiz_banner_date,
@@ -1758,11 +1760,33 @@ class Quiz_Maker_Admin
             'ordering'              => $ordering,
         ));
         $quiz_id = $wpdb->insert_id;
+
+        $post_type_args = array(
+            'quiz_id'       => $quiz_id,
+            'author_id'     => !empty($user->ID) ? $user->ID : get_current_user_id(),
+            'quiz_title'    => $quiz_title,
+        );
+        
+        $custom_post_id = Quiz_Maker_Custom_Post_Type::ays_quiz_add_custom_post($post_type_args);
+
+        $preview_url = "#";
+        if(!empty($custom_post_id)){
+            $custom_post_url = array(
+                'post_type' => 'ays-quiz-maker',
+                'p'         => $custom_post_id,
+                'preview'   => 'true',
+            );
+            $custom_post_url_ready = http_build_query($custom_post_url);
+            $preview_url = get_home_url();
+            $preview_url .= '/?' . $custom_post_url_ready;
+        }
+
         ob_end_clean();
         $ob_get_clean = ob_get_clean();
         echo json_encode(array(
-            'status' => true,
-            'quiz_id' => $quiz_id
+            'status'        => true,
+            'quiz_id'       => $quiz_id,
+            'preview_url'   => $preview_url,
         ));
         wp_die();
     }

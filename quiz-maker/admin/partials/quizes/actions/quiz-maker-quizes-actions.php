@@ -707,6 +707,21 @@ $quiz_accordion_svg_html = '
     </svg>
 </div>';
 
+$quiz_open_quizzes_list_icon_svg_html = '
+<div class="ays-quiz-accordion-arrow-box">
+    <svg width="22" height="23" viewBox="0 0 22 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <mask id="mask0_2411_1023" style="mask-type: alpha;" maskUnits="userSpaceOnUse" x="0" y="0" width="22" height="23">
+            <rect y="0.5" width="22" height="22" fill="#D9D9D9" />
+        </mask>
+        <g mask="url(#mask0_2411_1023)">
+            <path
+                d="M8.25 17.9167V16.0834H19.25V17.9167H8.25ZM8.25 12.4167V10.5834H19.25V12.4167H8.25ZM8.25 6.91669V5.08335H19.25V6.91669H8.25ZM4.58333 18.8334C4.07917 18.8334 3.64757 18.6538 3.28854 18.2948C2.92951 17.9358 2.75 17.5042 2.75 17C2.75 16.4959 2.92951 16.0643 3.28854 15.7052C3.64757 15.3462 4.07917 15.1667 4.58333 15.1667C5.0875 15.1667 5.5191 15.3462 5.87813 15.7052C6.23715 16.0643 6.41667 16.4959 6.41667 17C6.41667 17.5042 6.23715 17.9358 5.87813 18.2948C5.5191 18.6538 5.0875 18.8334 4.58333 18.8334ZM4.58333 13.3334C4.07917 13.3334 3.64757 13.1538 3.28854 12.7948C2.92951 12.4358 2.75 12.0042 2.75 11.5C2.75 10.9959 2.92951 10.5643 3.28854 10.2052C3.64757 9.8462 4.07917 9.66669 4.58333 9.66669C5.0875 9.66669 5.5191 9.8462 5.87813 10.2052C6.23715 10.5643 6.41667 10.9959 6.41667 11.5C6.41667 12.0042 6.23715 12.4358 5.87813 12.7948C5.5191 13.1538 5.0875 13.3334 4.58333 13.3334ZM4.58333 7.83335C4.07917 7.83335 3.64757 7.65384 3.28854 7.29481C2.92951 6.93578 2.75 6.50419 2.75 6.00002C2.75 5.49585 2.92951 5.06426 3.28854 4.70523C3.64757 4.3462 4.07917 4.16669 4.58333 4.16669C5.0875 4.16669 5.5191 4.3462 5.87813 4.70523C6.23715 5.06426 6.41667 5.49585 6.41667 6.00002C6.41667 6.50419 6.23715 6.93578 5.87813 7.29481C5.5191 7.65384 5.0875 7.83335 4.58333 7.83335Z"
+                fill="#1C1B1F"
+            />
+        </g>
+    </svg>
+</div>';
+
 $style = null;
 $image_text = __('Add Image', 'quiz-maker');
 $bg_image_text = __('Add Image', 'quiz-maker');
@@ -1450,27 +1465,37 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                 ?>
             </h1>
             <div>
-                <div class="ays-quiz-subtitle-main-box">
+                <div class="ays-quiz-subtitle-main-box ays-quiz-edit-page-subtitle-container">
                     <p class="ays-subtitle">
-                        <?php if(isset($id) && count($get_all_quizzes) > 1):?>
-                        <i class="ays_fa ays_fa_arrow_down ays-quiz-open-quizzes-list" style="font-size: 15px;"></i>   
-                        <?php endif; ?>
                         <strong class="ays_quiz_title_in_top"><?php echo esc_html($quiz_title); ?></strong>
                     </p>
                     <?php if(isset($id) && count($get_all_quizzes) > 1):?>
-                    <div class="ays-quiz-quizzes-data">
-                        <?php $var_counter = 0; foreach($get_all_quizzes as $var => $var_name): if( intval($var_name['id']) == $id ){continue;} $var_counter++; ?>
-                            <?php ?>
-                            <label class="ays-quiz-message-vars-each-data-label">
-                                <input type="radio" class="ays-quiz-quizzes-each-data-checker" hidden id="ays_quiz_message_var_count_<?php echo esc_attr($var_counter); ?>" name="ays_quiz_message_var_count">
-                                <div class="ays-quiz-quizzes-each-data">
-                                    <input type="hidden" class="ays-quiz-quizzes-each-var" value="<?php echo $var; ?>">
-                                    <a href="?page=quiz-maker&action=edit&quiz=<?php echo esc_attr($var_name['id']); ?>" target="_blank" class="ays-quiz-go-to-quizzes"><span><?php echo stripslashes(esc_attr($var_name['title'])); ?></span></a>
-                                </div>
-                            </label>              
-                        <?php endforeach ?>
-                    </div>                        
-                <?php endif; ?>
+                    <div class="ays-quiz-open-quizzes-list">
+                        <svg width="22" height="23" viewBox="0 0 22 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <mask id="mask0_2411_1023" style="mask-type: alpha;" maskUnits="userSpaceOnUse" x="0" y="0" width="22" height="23">
+                                <rect y="0.5" width="22" height="22" fill="#D9D9D9" />
+                            </mask>
+                            <g mask="url(#mask0_2411_1023)">
+                                <path
+                                    d="M8.25 17.9167V16.0834H19.25V17.9167H8.25ZM8.25 12.4167V10.5834H19.25V12.4167H8.25ZM8.25 6.91669V5.08335H19.25V6.91669H8.25ZM4.58333 18.8334C4.07917 18.8334 3.64757 18.6538 3.28854 18.2948C2.92951 17.9358 2.75 17.5042 2.75 17C2.75 16.4959 2.92951 16.0643 3.28854 15.7052C3.64757 15.3462 4.07917 15.1667 4.58333 15.1667C5.0875 15.1667 5.5191 15.3462 5.87813 15.7052C6.23715 16.0643 6.41667 16.4959 6.41667 17C6.41667 17.5042 6.23715 17.9358 5.87813 18.2948C5.5191 18.6538 5.0875 18.8334 4.58333 18.8334ZM4.58333 13.3334C4.07917 13.3334 3.64757 13.1538 3.28854 12.7948C2.92951 12.4358 2.75 12.0042 2.75 11.5C2.75 10.9959 2.92951 10.5643 3.28854 10.2052C3.64757 9.8462 4.07917 9.66669 4.58333 9.66669C5.0875 9.66669 5.5191 9.8462 5.87813 10.2052C6.23715 10.5643 6.41667 10.9959 6.41667 11.5C6.41667 12.0042 6.23715 12.4358 5.87813 12.7948C5.5191 13.1538 5.0875 13.3334 4.58333 13.3334ZM4.58333 7.83335C4.07917 7.83335 3.64757 7.65384 3.28854 7.29481C2.92951 6.93578 2.75 6.50419 2.75 6.00002C2.75 5.49585 2.92951 5.06426 3.28854 4.70523C3.64757 4.3462 4.07917 4.16669 4.58333 4.16669C5.0875 4.16669 5.5191 4.3462 5.87813 4.70523C6.23715 5.06426 6.41667 5.49585 6.41667 6.00002C6.41667 6.50419 6.23715 6.93578 5.87813 7.29481C5.5191 7.65384 5.0875 7.83335 4.58333 7.83335Z"
+                                    fill="#1C1B1F"
+                                />
+                            </g>
+                        </svg>
+                        <div class="ays-quiz-quizzes-data">
+                            <?php $var_counter = 0; foreach($get_all_quizzes as $var => $var_name): if( intval($var_name['id']) == $id ){continue;} $var_counter++; ?>
+                                <?php ?>
+                                <label class="ays-quiz-message-vars-each-data-label">
+                                    <input type="radio" class="ays-quiz-quizzes-each-data-checker" hidden id="ays_quiz_message_var_count_<?php echo esc_attr($var_counter); ?>" name="ays_quiz_message_var_count">
+                                    <div class="ays-quiz-quizzes-each-data">
+                                        <input type="hidden" class="ays-quiz-quizzes-each-var" value="<?php echo $var; ?>">
+                                        <a href="?page=quiz-maker&action=edit&quiz=<?php echo esc_attr($var_name['id']); ?>" target="_blank" class="ays-quiz-go-to-quizzes"><span><?php echo stripslashes(esc_attr($var_name['title'])); ?></span></a>
+                                    </div>
+                                </label>              
+                            <?php endforeach ?>
+                        </div>                        
+                    </div>
+                    <?php endif; ?>
                 </div>
 
                 <?php if($id !== null): ?>

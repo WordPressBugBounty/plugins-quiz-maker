@@ -326,8 +326,21 @@
 
         $(document).find('#ays-quiz-title').on('input', function(e){
             var quizTitleVal = $(this).val();
+            var quizListBox = $(document).find('.ays-quiz-quizzes-data');
             var quizTitle = aysQuizstripHTML( quizTitleVal );
             $(document).find('.ays_quiz_title_in_top').html( quizTitle );
+
+            var userContentDisplayWidth = $(document).find('#wpcontent').outerWidth();
+            var elmeentWidth = $(document).find('.ays-quiz-subtitle-main-box.ays-quiz-edit-page-subtitle-container .ays-subtitle').outerWidth();
+            if( userContentDisplayWidth - 400 <= elmeentWidth ){
+                if(!quizListBox.hasClass('ays-quiz-quizzes-data-change-position')){
+                    quizListBox.addClass('ays-quiz-quizzes-data-change-position');
+                }
+            } else {
+                if(quizListBox.hasClass('ays-quiz-quizzes-data-change-position')){
+                    quizListBox.removeClass('ays-quiz-quizzes-data-change-position');
+                }
+            }
         });
 
         $(document).find('.ays-quiz-live-title').html($(document).find('#ays-quiz-title').val());
@@ -3651,6 +3664,20 @@
         });
 
         $(document).find('.ays-quiz-open-quizzes-list').on('click', function(e){
+            var quizListBox = $(document).find('.ays-quiz-quizzes-data');
+
+            var userContentDisplayWidth = $(document).find('#wpcontent').outerWidth();
+            var elmeentWidth = $(document).find('.ays-quiz-subtitle-main-box.ays-quiz-edit-page-subtitle-container .ays-subtitle').outerWidth();
+            if( userContentDisplayWidth - 400 <= elmeentWidth ){
+                if(!quizListBox.hasClass('ays-quiz-quizzes-data-change-position')){
+                    quizListBox.addClass('ays-quiz-quizzes-data-change-position');
+                }
+            } else {
+                if(quizListBox.hasClass('ays-quiz-quizzes-data-change-position')){
+                    quizListBox.removeClass('ays-quiz-quizzes-data-change-position');
+                }
+            }
+
             $(this).parents(".ays-quiz-subtitle-main-box").find(".ays-quiz-quizzes-data").toggle('fast');
         });
         
