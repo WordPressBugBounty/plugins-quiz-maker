@@ -886,6 +886,17 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                         <input type="checkbox" class="ays-enable-timer1" id="ays_quick_quiz_show_only_wrong_answers" name="ays_quick_quiz_show_only_wrong_answers" value="on" />
                                                     </div>
                                                 </div>
+                                                <hr>
+                                                <div class="form-group row ays_toggle_parent">
+                                                    <div class="col-sm-4">
+                                                        <label for="ays_quick_quiz_enable_results_toggle">
+                                                            <?php echo esc_html__('Enable the Show/Hide toggle','quiz-maker'); ?>
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-sm-8">
+                                                        <input type="checkbox" class="ays-enable-timer1 ays_toggle_checkbox" id="ays_quick_quiz_enable_results_toggle" name="ays_quick_quiz_enable_results_toggle" value="on" />
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div><!-- Show question results on the results page -->
                                         <hr/>

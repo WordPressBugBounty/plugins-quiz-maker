@@ -1119,6 +1119,7 @@ class Quiz_Maker_Admin
         $quick_quiz_hide_correct_answers                    = 'off';
         $quick_quiz_show_wrong_answers_first                = 'off';
         $quick_quiz_show_only_wrong_answers                 = 'off';
+        $quick_quiz_enable_results_toggle                   = 'off';
 
         // User Data
         $quick_quiz_show_information_form                   = 'on';
@@ -1460,6 +1461,9 @@ class Quiz_Maker_Admin
 
             // Show wrong answers first
             $quick_quiz_show_only_wrong_answers = (isset( $_REQUEST['ays_quick_quiz_show_only_wrong_answers'] ) && $_REQUEST['ays_quick_quiz_show_only_wrong_answers'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_show_only_wrong_answers'] ) ) : "off";
+
+            // Show wrong answers first
+            $quick_quiz_enable_results_toggle = (isset( $_REQUEST['ays_quick_quiz_enable_results_toggle'] ) && $_REQUEST['ays_quick_quiz_enable_results_toggle'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_results_toggle'] ) ) : "off";
             
             
         }
@@ -1701,7 +1705,7 @@ class Quiz_Maker_Admin
             'quiz_title_mobile_font_size'                       => $quick_quiz_title_mobile_font_size,
             'quiz_password_width'                               => "",
             'quiz_review_placeholder_text'                      => "",
-            'quiz_enable_results_toggle'                        => "off",
+            'quiz_enable_results_toggle'                        => $quick_quiz_enable_results_toggle,
             'quiz_review_thank_you_message'                     => "",
             'quiz_review_enable_comment_field'                  => "on",
             'quest_explanation_font_size'                       => $quick_quiz_quest_explanation_font_size,
@@ -3084,8 +3088,10 @@ class Quiz_Maker_Admin
                 if ( sanitize_text_field($_GET['page']) == 'quiz-maker-settings' ) {
                     $this->ays_quiz_chart_bulider_message($ays_quiz_ishmar);
                 } else {
-                    // $this->ays_quiz_christmas_top_message_2024($ays_quiz_ishmar);
-                    $this->ays_quiz_new_mega_bundle_message($ays_quiz_ishmar);
+                    if( $this->get_max_id('quizes') > 1 ){
+                        // $this->ays_quiz_new_mega_bundle_message($ays_quiz_ishmar);
+                        $this->ays_quiz_new_mega_bundle_message_2025($ays_quiz_ishmar);
+                    }
                 }
             }
         }
@@ -4033,6 +4039,90 @@ class Quiz_Maker_Admin
 
             $content = implode( '', $content );
             echo $content;
+        }
+    }
+
+    // New Mega Bundle
+    public function ays_quiz_new_mega_bundle_message_2025($ishmar){
+        if($ishmar == 0 ){
+            $content = array();
+
+            $quiz_cta_button_link = esc_url('https://ays-pro.com/mega-bundle?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=mega-bundle-2025-sale-banner-' . AYS_QUIZ_VERSION);
+
+            $content[] = '<div id="ays-quiz-new-mega-bundle-2025-dicount-month-main" class="notice notice-success is-dismissible ays_quiz_dicount_info">';
+                $content[] = '<div id="ays-quiz-dicount-month" class="ays_quiz_dicount_month">';
+
+                    $content[] = '<div class="ays-quiz-dicount-wrap-box ays-quiz-dicount-wrap-text-box">';
+                        $content[] = '<div>';
+
+                            $content[] = '<span class="ays-quiz-new-mega-bundle-2025-title">';
+                                $content[] = __( "<span><a href='". $quiz_cta_button_link ."' target='_blank' style='color:#ffffff; text-decoration: underline;'>Mega Bundle</a></span> (Quiz + Survey + Poll)", 'quiz-maker' );
+                            $content[] = '</span>';
+
+                            $content[] = '</br>';
+
+                            $content[] = '<span class="ays-quiz-new-mega-bundle-2025-desc">';
+                                $content[] = __( "30 Day Money Back Guarantee", 'quiz-maker' );
+                            $content[] = '</span>';
+                        $content[] = '</div>';
+
+                        $content[] = '<div>';
+                                $content[] = '<img class="ays-quiz-new-mega-bundle-guaranteeicon" src="' . AYS_QUIZ_ADMIN_URL . '/images/ays-quiz-mega-bundle-2025-discount.svg" style="width: 80px;">';
+                        $content[] = '</div>';
+
+                        $content[] = '<div style="position: absolute;right: 10px;bottom: 1px;" class="ays-quiz-dismiss-buttons-container-for-form">';
+
+                            $content[] = '<form action="" method="POST">';
+                                $content[] = '<div id="ays-quiz-dismiss-buttons-content">';
+                                if( current_user_can( 'manage_options' ) ){
+                                    $content[] = '<button class="btn btn-link ays-button" name="ays_quiz_sale_btn" style="height: 32px; margin-left: 0;padding-left: 0">'. __( "Dismiss ad", 'quiz-maker' ) .'</button>';
+                                    $content[] = wp_nonce_field( AYS_QUIZ_NAME . '-sale-banner' ,  AYS_QUIZ_NAME . '-sale-banner' );
+                                }
+                                $content[] = '</div>';
+                            $content[] = '</form>';
+                            
+                        $content[] = '</div>';
+
+                    $content[] = '</div>';
+
+                    $content[] = '<div class="ays-quiz-dicount-wrap-box ays-quiz-dicount-wrap-countdown-box">';
+
+                        $content[] = '<div id="ays-quiz-maker-countdown-main-container">';
+                            $content[] = '<div class="ays-quiz-maker-countdown-container">';
+
+                                $content[] = '<div id="ays-quiz-countdown">';
+
+                                    $content[] = '<ul>';
+                                        $content[] = '<li><span id="ays-quiz-countdown-days"></span>'. __( "Days", 'quiz-maker' ) .'</li>';
+                                        $content[] = '<li><span id="ays-quiz-countdown-hours"></span>'. __( "Hours", 'quiz-maker' ) .'</li>';
+                                        $content[] = '<li><span id="ays-quiz-countdown-minutes"></span>'. __( "Minutes", 'quiz-maker' ) .'</li>';
+                                        $content[] = '<li><span id="ays-quiz-countdown-seconds"></span>'. __( "Seconds", 'quiz-maker' ) .'</li>';
+                                    $content[] = '</ul>';
+                                $content[] = '</div>';
+
+                                $content[] = '<div id="ays-quiz-countdown-content" class="emoji">';
+                                    $content[] = '<span></span>';
+                                    $content[] = '<span></span>';
+                                    $content[] = '<span></span>';
+                                    $content[] = '<span></span>';
+                                $content[] = '</div>';
+
+                            $content[] = '</div>';
+                        $content[] = '</div>';
+                            
+                    $content[] = '</div>';
+
+                    $content[] = '<div class="ays-quiz-dicount-wrap-box ays-quiz-dicount-wrap-button-box">';
+                        $content[] = '<a href="'. $quiz_cta_button_link .'" class="button button-primary ays-button" id="ays-button-top-buy-now" target="_blank">' . __( 'Buy Now', 'quiz-maker' ) . '</a>';
+                        $content[] = '<span class="ays-quiz-dicount-one-time-text">';
+                            $content[] = __( "One-time payment", 'quiz-maker' );
+                        $content[] = '</span>';
+                    $content[] = '</div>';
+                $content[] = '</div>';
+            $content[] = '</div>';
+
+            $content = implode( '', $content );
+            echo wp_kses_post($content);
         }
     }
 
