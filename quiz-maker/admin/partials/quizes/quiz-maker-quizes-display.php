@@ -893,8 +893,20 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                             <?php echo esc_html__('Enable the Show/Hide toggle','quiz-maker'); ?>
                                                         </label>
                                                     </div>
-                                                    <div class="col-sm-8">
+                                                    <div class="col-sm-1">
                                                         <input type="checkbox" class="ays-enable-timer1 ays_toggle_checkbox" id="ays_quick_quiz_enable_results_toggle" name="ays_quick_quiz_enable_results_toggle" value="on" />
+                                                    </div>
+                                                    <div class="col-sm-7 ays_toggle_target ays_divider_left display_none">
+                                                        <div class="form-group row">
+                                                            <div class="col-sm-4">
+                                                                <label for="ays_quick_quiz_enable_default_hide_results_toggle">
+                                                                    <?php echo esc_html__('Enable Default Hide', 'quiz-maker'); ?>
+                                                                </label>
+                                                            </div>
+                                                            <div class="col-sm-8">
+                                                                <input type="checkbox" class="ays-enable-timer1" id="ays_quick_quiz_enable_default_hide_results_toggle" name="ays_quick_quiz_enable_default_hide_results_toggle" value="on" />
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>

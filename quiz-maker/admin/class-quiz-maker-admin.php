@@ -1120,6 +1120,7 @@ class Quiz_Maker_Admin
         $quick_quiz_show_wrong_answers_first                = 'off';
         $quick_quiz_show_only_wrong_answers                 = 'off';
         $quick_quiz_enable_results_toggle                   = 'off';
+        $quick_quiz_enable_default_hide_results_toggle      = 'off';
 
         // User Data
         $quick_quiz_show_information_form                   = 'on';
@@ -1464,6 +1465,9 @@ class Quiz_Maker_Admin
 
             // Show wrong answers first
             $quick_quiz_enable_results_toggle = (isset( $_REQUEST['ays_quick_quiz_enable_results_toggle'] ) && $_REQUEST['ays_quick_quiz_enable_results_toggle'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_results_toggle'] ) ) : "off";
+
+            // Show wrong answers first
+            $quick_quiz_enable_default_hide_results_toggle = (isset( $_REQUEST['ays_quick_quiz_enable_default_hide_results_toggle'] ) && $_REQUEST['ays_quick_quiz_enable_default_hide_results_toggle'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_default_hide_results_toggle'] ) ) : "off";
             
             
         }
@@ -1750,6 +1754,11 @@ class Quiz_Maker_Admin
             'quiz_right_answers_font_weight'                    => $quick_quiz_right_answers_font_weight,
             'quiz_wrong_answers_font_weight'                    => $quick_quiz_wrong_answers_font_weight,
             'quiz_show_only_wrong_answers'                      => $quick_quiz_show_only_wrong_answers,
+            'quiz_content_max_width'                            => 90,
+            'quiz_content_mobile_max_width'                     => 90,
+            'quiz_timer_warning_text_color'                     => "#ff0000",
+            'quiz_enable_default_hide_results_toggle'           => $quick_quiz_enable_default_hide_results_toggle,
+            'quiz_show_restart_button_on_quiz_fail'             => "off",
         );
 
 
