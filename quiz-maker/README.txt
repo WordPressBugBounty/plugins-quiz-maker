@@ -4,7 +4,7 @@ Donate link: https://ays-pro.com/wordpress/quiz-maker
 Tags:  exam, quiz, quizzes, education, quiz maker
 Requires at least: 4.0
 Tested up to: 6.7
-Stable tag: 6.6.9.8
+Stable tag: 6.6.9.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -251,6 +251,8 @@ PayPal integration (paid quiz), Stripe integration (paid quiz), Mailchimp integr
 It's your chance to add unlimited quizzes, exams, and tests with the best quiz plugin for WordPress.
 Don't forget, in case of any problems, questions or suggestions feel free to contact us via [FREE SUPPORT FORUM](https://wordpress.org/support/plugin/quiz-maker).
 
+New Fox LMS plugin: Use the potential of your online learning platform with the best [WordPress LMS plugin](https://wordpress.org/plugins/fox-lms/). You can easily manage courses, quizzes, and progress tracking to keep learners engaged and motivated.
+
 **Other plugins from Ays Pro Team**
 
 * [Survey Maker](https://wordpress.org/plugins/survey-maker/) for collecting data and analyze it. 
@@ -417,6 +419,10 @@ Do you wonder how to create a Math Quiz with hard mathematical equations in Word
 For example, to add a squared symbol, you need to write down the following sign ^2. (do not forget to insert $ character to mark the beginning and ending).
 
 == Changelog ==
+
+= 6.6.9.9 =
+* Fixed: CSS conflict with the HTML5 Video Player plugin
+* Fixed: Background Image saving problem on the Quiz edit page
 
 = 6.6.9.8 =
 * Added: Enable Default Hide suboption for the Quick Quiz Popup

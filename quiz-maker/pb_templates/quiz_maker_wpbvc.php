@@ -27,15 +27,15 @@ if( class_exists( 'WPBakeryShortCode' ) ) {
                     'icon' => AYS_QUIZ_ADMIN_URL . '/images/icons/icon-128x128.png',
                     'params' => array(
                         array(
-                            'type' => 'dropdown',
-                            'holder' => 'div',
-                            'class' => 'quiz_vc_select',
-                            'heading' => __( 'Quiz Maker', 'quiz-maker' ),
-                            'param_name' => 'quiz',
-                            'value' => $this->get_active_quizzes(),
-                            'description' => __( 'Please select your quiz from dropdown', 'quiz-maker' ),
-                            'admin_label' => true,
-                            'group' => 'Quiz Maker'
+                            'type'          => 'dropdown',
+                            'holder'        => 'div',
+                            'class'         => 'quiz_vc_select',
+                            'heading'       => __( 'Quiz Maker', 'quiz-maker' ),
+                            'param_name'    => 'quiz',
+                            'value'         => $this->get_active_quizzes(),
+                            'description'   => __( 'Please select your quiz from dropdown', 'quiz-maker' ),
+                            'admin_label'   => true,
+                            'group'         => 'Quiz Maker'
                         )
                     )
                 )

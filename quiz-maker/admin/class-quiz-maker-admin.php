@@ -302,6 +302,11 @@ class Quiz_Maker_Admin
                 wp_dequeue_script('mwai');
                 wp_dequeue_script('mwai-vendor');
             }
+
+            if (is_plugin_active('html5-video-player/html5-video-player.php')) {
+                wp_dequeue_style('h5vp-admin');
+                wp_dequeue_style('fs_common');
+            }
         }
     }
 

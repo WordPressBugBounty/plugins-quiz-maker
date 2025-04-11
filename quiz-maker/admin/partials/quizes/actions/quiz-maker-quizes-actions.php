@@ -2189,7 +2189,7 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                     </div>
                                 </div><!-- Box shadow -->
                                 <hr/>
-                                <div class="form-group row">
+                                <div class="form-group row ays-quiz-bg-image-main-container">
                                     <div class="col-sm-5">
                                         <label>
                                             <?php echo __('Background image','quiz-maker')?>

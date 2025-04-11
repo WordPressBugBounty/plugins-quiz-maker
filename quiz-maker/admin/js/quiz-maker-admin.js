@@ -4221,15 +4221,17 @@
             var imgurl = attachment.sizes[display.size].url;
 
             if(element.hasClass('add-quiz-bg-image')){
-                element.parent().find('.ays-quiz-bg-image-container').fadeIn();
-                element.parent().find('img#ays-quiz-bg-img').attr('src', imgurl);
-                element.next().val(imgurl);
+                var parent = element.parents('.ays-quiz-bg-image-main-container');
+                parent.find('.ays-quiz-bg-image-container').fadeIn();
+                parent.find('img#ays-quiz-bg-img').attr('src', imgurl);
+                parent.find('#ays_quiz_bg_image').val(imgurl);
                 $(document).find('.ays-quiz-live-container').css({'background-image': 'url("'+imgurl+'")'});
                 element.hide();
             }else if(element.hasClass('ays-edit-quiz-bg-img')){
-                element.parent().find('.ays-quiz-bg-image-container').fadeIn();
-                element.parent().find('img#ays-quiz-bg-img').attr('src', imgurl);
-                $(document).find('#ays_quiz_bg_image').val(imgurl);
+                var parent = element.parents('.ays-quiz-bg-image-main-container');
+                parent.find('.ays-quiz-bg-image-container').fadeIn();
+                parent.find('img#ays-quiz-bg-img').attr('src', imgurl);
+                parent.find('#ays_quiz_bg_image').val(imgurl);
                 $(document).find('.ays-quiz-live-container').css({'background-image': 'url("'+imgurl+'")'});
             }else{
                 element.text('Edit Image');

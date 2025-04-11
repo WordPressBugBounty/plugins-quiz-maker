@@ -26,20 +26,20 @@ class Widget_Quiz_Maker_Elementor extends Widget_Base {
         $this->add_control(
             'quiz_title',
             array(
-                'label' => __( 'Quiz Title', 'quiz-maker' ),
-                'type' => Controls_Manager::TEXT,
-                'default' => '',
-                'title' => __( 'Enter the quiz title', 'quiz-maker' ),
-                'placeholder' => __( 'Enter the quiz title', 'quiz-maker' ),
+                'label'         => __( 'Quiz Title', 'quiz-maker' ),
+                'type'          => Controls_Manager::TEXT,
+                'default'       => '',
+                'title'         => __( 'Enter the quiz title', 'quiz-maker' ),
+                'placeholder'   => __( 'Enter the quiz title', 'quiz-maker' ),
             )
         );
         $this->add_control(
             'quiz_title_alignment',
             array(
-                'label' => __( 'Title Alignment', 'quiz-maker' ),
-                'type' => Controls_Manager::SELECT,
-                'default' => 'left',
-                'options' => array(
+                'label'     => __( 'Title Alignment', 'quiz-maker' ),
+                'type'      => Controls_Manager::SELECT,
+                'default'   => 'left',
+                'options'   => array(
                     'left'      => 'Left',
                     'right'     => 'Right',
                     'center'    => 'Center'
@@ -49,10 +49,10 @@ class Widget_Quiz_Maker_Elementor extends Widget_Base {
         $this->add_control(
             'quiz_selector',
             array(
-                'label' => __( 'Select Quiz', 'quiz-maker' ),
-                'type' => Controls_Manager::SELECT,
-                'default' => $this->get_default_quiz(),
-                'options' => $this->get_active_quizzes()
+                'label'     => __( 'Select Quiz', 'quiz-maker' ),
+                'type'      => Controls_Manager::SELECT,
+                'default'   => $this->get_default_quiz(),
+                'options'   => $this->get_active_quizzes()
             )
         );
 

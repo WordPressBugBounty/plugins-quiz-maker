@@ -439,13 +439,13 @@ class Quizes_List_Table extends WP_List_Table{
             // Social Media links
             $enable_social_links = (isset($_POST['ays_enable_social_links']) && sanitize_text_field( $_POST['ays_enable_social_links'] ) == "on") ? 'on' : 'off';
             $ays_social_links = (isset($_POST['ays_social_links'])) ? array_map( 'sanitize_text_field', $_POST['ays_social_links'] ) : array(
-                'linkedin_link' => '',
-                'facebook_link' => '',
-                'twitter_link' => '',
-                'vkontakte_link' => '',
-                'instagram_link' => '',
-                'youtube_link' => '',
-                'behance_link' => '',
+                'linkedin_link'     => '',
+                'facebook_link'     => '',
+                'twitter_link'      => '',
+                'vkontakte_link'    => '',
+                'instagram_link'    => '',
+                'youtube_link'      => '',
+                'behance_link'      => '',
             );
             
             $linkedin_link = isset($ays_social_links['ays_linkedin_link']) && sanitize_text_field( $ays_social_links['ays_linkedin_link'] ) != '' ? sanitize_text_field( $ays_social_links['ays_linkedin_link'] ) : '';
@@ -1320,8 +1320,8 @@ class Quizes_List_Table extends WP_List_Table{
                 if(!empty($custom_post_id)){
                     $custom_post_url = array(
                         'post_type' => 'ays-quiz-maker',
-                        'p' => $custom_post_id,
-                        'preview' => 'true',
+                        'p'         => $custom_post_id,
+                        'preview'   => 'true',
                     );
                     $custom_post_url_ready = http_build_query($custom_post_url);
                     $ready_url = get_home_url();

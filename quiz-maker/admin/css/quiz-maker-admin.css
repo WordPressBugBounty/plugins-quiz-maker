@@ -4360,6 +4360,17 @@ div.ays_live_chat_ask_question_content a.ays_quiz_question_link {
     text-decoration: none !important;
 }
 
+div.ays_live_chat_ask_question_content a.ays_quiz_question_link:after {
+    content: '';
+    position: absolute;
+    top: -3px;
+    right: -4px;
+    width: 9px;
+    height: 9px;
+    background: rgb(78, 206, 61);
+    border-radius: 50%;
+}
+
 /* Ask a question box end */
 
 /* Community */
