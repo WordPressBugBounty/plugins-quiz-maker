@@ -3877,19 +3877,21 @@
         });
 
         // Quiz and Chart integration main page 2023 | Start
-        var mainPopup = document.getElementById("ays-quiz-all-pages-popup-close");
+        // var mainPopup = document.getElementById("ays-quiz-all-pages-popup-close");
+        var mainPopup = document.getElementById("ays-quiz-fox-lms-all-pages-popup-close");
         if (mainPopup) {
             mainPopup.addEventListener('click', function () {
-                document.getElementById("ays-quiz-all-pages-popup").style.display = "none";
+                // document.getElementById("ays-quiz-all-pages-popup").style.display = "none";
+                document.getElementById("ays-quiz-fox-lms-all-pages-popup").style.display = "none";
 
-                var if_cookie_exists = aysQuizGetCookie("ays_pages_popup_dismiss_for_three_click");
+                var if_cookie_exists = aysQuizGetCookie("ays_fox_lms_pages_popup_dismiss_for_three_click");
 
                 if ( typeof if_cookie_exists == "undefined" || if_cookie_exists == "" ) {
-                    aysQuizCreateCookie("ays_pages_popup_dismiss_for_three_click", 1, 365 );
+                    aysQuizCreateCookie("ays_fox_lms_pages_popup_dismiss_for_three_click", 1, 7 );
                 } else {
                     var cookie_value = (if_cookie_exists && typeof parseInt(if_cookie_exists) == 'number' && !isNaN( parseInt(if_cookie_exists) )) ? (parseInt(if_cookie_exists) + 1) : 1;
 
-                    aysQuizCreateCookie("ays_pages_popup_dismiss_for_three_click", cookie_value, 365 );
+                    aysQuizCreateCookie("ays_fox_lms_pages_popup_dismiss_for_three_click", cookie_value, 7 );
                 }
             });
         }

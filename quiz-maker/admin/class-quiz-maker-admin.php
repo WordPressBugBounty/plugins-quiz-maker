@@ -307,6 +307,11 @@ class Quiz_Maker_Admin
                 wp_dequeue_style('h5vp-admin');
                 wp_dequeue_style('fs_common');
             }
+
+            if (is_plugin_active('panorama/panorama.php')) {
+                wp_dequeue_style('bppiv_admin_custom_css');
+                wp_dequeue_style('bppiv-custom-style');
+            }
         }
     }
 

@@ -10055,8 +10055,11 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
 
         <?php 
 
-        $if_dismiss_cookie_exists = (isset( $_COOKIE['ays_pages_popup_dismiss_for_three_click'] ) && $_COOKIE['ays_pages_popup_dismiss_for_three_click'] >= 3) ? true : false;
+        // $if_dismiss_cookie_exists = (isset( $_COOKIE['ays_pages_popup_dismiss_for_three_click'] ) && $_COOKIE['ays_pages_popup_dismiss_for_three_click'] >= 3) ? true : false;
+        $if_dismiss_cookie_exists = (isset( $_COOKIE['ays_fox_lms_pages_popup_dismiss_for_three_click'] ) && $_COOKIE['ays_fox_lms_pages_popup_dismiss_for_three_click'] >= 3) ? true : false;
+        
         $if_chart_plugin_exists = ( in_array('chart-builder/chart-builder.php', apply_filters('active_plugins', get_option('active_plugins'))) ) ? true : false;
+        $if_fox_lms_plugin_exists = ( in_array('fox-lms/fox-lms.php', apply_filters('active_plugins', get_option('active_plugins'))) ) ? true : false;
 
         $if_chart_plugin_installed_flag = get_option('ays_quiz_and_chart_plugin_flag');
 
@@ -10069,6 +10072,20 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
         }
         
         $if_chart_plugin_installed_flag = get_option('ays_quiz_and_chart_plugin_flag');
+
+
+        $if_fox_lms_plugin_installed_flag = get_option('ays_quiz_and_fox_lms_plugin_flag');
+
+        if ( !$if_fox_lms_plugin_installed_flag ) {
+            update_option('ays_quiz_and_fox_lms_plugin_flag', 0);
+        }
+
+        if ( $if_fox_lms_plugin_exists ) {
+            update_option('ays_quiz_and_fox_lms_plugin_flag', 1);
+        }
+        
+        $if_fox_lms_plugin_installed_flag = get_option('ays_quiz_and_fox_lms_plugin_flag');
+
 
         $quiz_max_id = $this->get_max_id('quizes');
 
@@ -10103,6 +10120,44 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
             </div>
         </div>
         <!-- Quiz and Chart integration main page 2023 | End -->
+        <?php endif; ?>
+        <?php if( !$if_dismiss_cookie_exists && !$if_fox_lms_plugin_exists && !$if_fox_lms_plugin_installed_flag ): ?>
+        <!-- Quiz and Fox LMS integration main page 2025 | Start -->
+        <div id="ays-quiz-fox-lms-all-pages-popup" class="bounceInRight_2022">
+            <div id="ays-quiz-fox-lms-all-pages-popup-main">
+                <div class="ays-quiz-fox-lms-all-pages-popup-layer">
+                    <div id="ays-quiz-fox-lms-all-pages-popup-close-main">
+                        <div id="ays-quiz-fox-lms-all-pages-popup-close"><div>&times;</div></div>
+                    </div>
+                    <div id="ays-quiz-fox-lms-all-pages-popup-heading-title">
+                        <div class="ays-quiz-fox-lms-all-pages-popup-heading-center">
+                            <a href="https://bit.ly/43MyeyB" target="_blank">
+                                <?php echo esc_html__("WordPress LMS Plugin", 'quiz-maker'); ?>
+                            </a>
+                        </div>
+                    </div>
+                    <div id="ays-quiz-fox-lms-all-pages-popup-heading">
+                        <div class="ays-quiz-fox-lms-all-pages-popup-heading-center">
+                            <a href="https://bit.ly/43MyeyB" target="_blank">
+                                <img src="<?php echo AYS_QUIZ_ADMIN_URL; ?>/images/banner/ays-quiz-and-lms-popup-logo.svg">
+                                <img class="ays-quiz-fox-lms-all-pages-icon" src="<?php echo AYS_QUIZ_ADMIN_URL; ?>/images/banner/ays-quiz-and-lms-popup-icon.svg">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ays-quiz-fox-lms-all-pages-popup-footer">
+                        <div id="ays-quiz-fox-lms-all-pages-popup-button" class="ays-quiz-fox-lms-all-pages-popup-st">
+                            <div class="ays-quiz-fox-lms-all-pages-popup-btn">
+                                <a href="https://bit.ly/43MyeyB" id="ays-pages-submit-popup" class="ays-quiz-fox-lms-all-pages-popup-fields ays-quiz-fox-lms-all-pages-popup-fields-submit" target="_blank"><?php echo esc_html__("Download FREE version", 'quiz-maker'); ?></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="ays-quiz-fox-lms-all-pages-popup-content">
+                        <div class="ays-quiz-fox-lms-all-pages-popup-content-description"><?php echo esc_html__("Get Learning Management System and online course solution in WordPress now.", 'quiz-maker'); ?></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Quiz and Fox LMS integration main page 2025 | End -->
         <?php endif; ?>
     </div>
 </div>

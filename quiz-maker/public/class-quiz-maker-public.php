@@ -5760,16 +5760,18 @@ class Quiz_Maker_Public
                 );
 
                 $data = array(
-                    'user_ip'      => $user_ip,
-                    'user_name'    => $ays_user_name,
-                    'user_email'   => $ays_user_email,
-                    'user_phone'   => $ays_user_phone,
-                    'start_date'   => esc_sql( $start_date ),
-                    'end_date'     => esc_sql( $end_date ),
-                    'answered'     => $correctness_and_answers,
-                    'score'        => $final_score,
-                    'calc_method'  => $calculate_score,
-                    'quiz_id'      => $quiz_id
+                    'user_ip'               => $user_ip,
+                    'user_name'             => $ays_user_name,
+                    'user_email'            => $ays_user_email,
+                    'user_phone'            => $ays_user_phone,
+                    'start_date'            => esc_sql( $start_date ),
+                    'end_date'              => esc_sql( $end_date ),
+                    'answered'              => $correctness_and_answers,
+                    'score'                 => $final_score,
+                    'user_corrects_count'   => $corrects_count,
+                    'questions_count'       => $questions_count,
+                    'calc_method'           => $calculate_score,
+                    'quiz_id'               => $quiz_id
                 );
 
                 if( $is_training === true ){
@@ -6652,6 +6654,8 @@ class Quiz_Maker_Public
         $calc_method = $data['calc_method'];
         $options['passed_time'] = $this->get_time_difference($start_date, $end_date);
         $options['calc_method'] = $calc_method;
+        $user_corrects_count = !empty($data['user_corrects_count']) ? intval($data['user_corrects_count']) : 0;
+        $questions_count = !empty($data['questions_count']) ? intval($data['questions_count']) : 0;
         
         $quiz_attributes_information = array();
         $quiz_attributes = $this->get_quiz_attributes_by_id($quiz_id);
@@ -6660,17 +6664,19 @@ class Quiz_Maker_Public
         $results = $wpdb->insert(
             $results_table,
             array(
-                'quiz_id'       => absint(intval($quiz_id)),
-                'user_id'       => get_current_user_id(),
-                'user_name'     => $user_name,
-                'user_email'    => $user_email,
-                'user_phone'    => $user_phone,
-                'user_ip'       => $user_ip,
-                'start_date'    => $start_date,
-                'end_date'      => $end_date,
-                'duration'      => $duration,
-                'score'         => $score,
-                'options'       => json_encode($options)
+                'quiz_id'           => absint(intval($quiz_id)),
+                'user_id'           => get_current_user_id(),
+                'user_name'         => $user_name,
+                'user_email'        => $user_email,
+                'user_phone'        => $user_phone,
+                'user_ip'           => $user_ip,
+                'start_date'        => $start_date,
+                'end_date'          => $end_date,
+                'duration'          => $duration,
+                'score'             => $score,
+                'corrects_count'    => $user_corrects_count,
+                'questions_count'   => $questions_count,
+                'options'           => json_encode($options)
             ),
             array(
                 '%d', // quiz_id
@@ -6683,6 +6689,8 @@ class Quiz_Maker_Public
                 '%s', // end_date
                 '%s', // duration
                 '%d', // score
+                '%s', // user_corrects_count
+                '%s', // questions_count
                 '%s', // options
             )
         );

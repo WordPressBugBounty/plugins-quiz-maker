@@ -1,6 +1,6 @@
 <?php
 global $ays_quiz_db_version;
-$ays_quiz_db_version = '3.8.7';
+$ays_quiz_db_version = '3.8.8';
 /**
  * Fired during plugin activation
  *
@@ -129,6 +129,8 @@ class Quiz_Maker_Activator
                 `end_date` DATETIME NOT NULL,
                 `duration` VARCHAR(256) DEFAULT NULL,
                 `score` VARCHAR(256) NOT NULL,
+                `corrects_count` VARCHAR(256) NOT NULL,
+                `questions_count` VARCHAR(256) NOT NULL,
                 `options` TEXT NOT NULL,
                 `read` tinyint(3) NOT NULL DEFAULT 0,
                 PRIMARY KEY (`id`)
