@@ -7561,9 +7561,26 @@ div .wp-picker-container .wp-color-result.button {
     padding: 0 10px;
     background-color: white;
     color:#005AE0;
-    line-height: normal !important;
+    /*line-height: normal !important;*/
+    line-height: 2.15384615;
     transition: all 0.3s;
 }
+
+.ays-quiz-dashboard-main-wrap .wp-media-buttons img {
+    box-sizing: content-box;
+}
+
+@media screen and (max-width: 782px) {
+    .ays-quiz-dashboard-main-wrap .wp-core-ui .button,
+    .ays-quiz-dashboard-main-wrap .wp-core-ui .button.button-large,
+    .ays-quiz-dashboard-main-wrap .wp-core-ui .button.button-small,
+    .ays-quiz-dashboard-main-wrap input#publish,
+    .ays-quiz-dashboard-main-wrap input#save-post,
+    .ays-quiz-dashboard-main-wrap a.preview {
+        line-height: 2.71428571;
+    }
+}
+
 
 .ays-quiz-dashboard-main-wrap button.button.add_media,
 .ays-quiz-dashboard-main-wrap button.button.add_media:active {

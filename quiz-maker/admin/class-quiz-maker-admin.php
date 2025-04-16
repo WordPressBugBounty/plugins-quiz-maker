@@ -50,6 +50,8 @@ class Quiz_Maker_Admin
     private $results_obj;
     private $settings_obj;
     private $all_reviews_obj;
+
+    private $capability;
     
     /**
      * Initialize the class and set its properties.
@@ -383,11 +385,13 @@ class Quiz_Maker_Admin
             $unread_results_count = $wpdb->get_var($sql);        
             $menu_item = ($unread_results_count == 0) ? 'Quiz Maker' : 'Quiz Maker' . '<span class="ays_menu_badge ays_results_bage">' . $unread_results_count . '</span>';
         }
+
+        $this->capability = $this->quiz_maker_capabilities();
         
         add_menu_page(
             'Quiz Maker', 
-            $menu_item, 
-            'manage_options', 
+            $menu_item,
+            $this->capability,
             $this->plugin_name, 
             array($this, 'display_plugin_quiz_page'), 
             AYS_QUIZ_ADMIN_URL . '/images/icons/icon-quiz-maker-128x128.svg', 
@@ -400,7 +404,7 @@ class Quiz_Maker_Admin
             $this->plugin_name,
             __('Quizzes', 'quiz-maker'),
             __('Quizzes', 'quiz-maker'),
-            'manage_options',
+            $this->capability,
             $this->plugin_name,
             array($this, 'display_plugin_quiz_page')
         );
@@ -414,7 +418,7 @@ class Quiz_Maker_Admin
             $this->plugin_name,
             __('Questions', 'quiz-maker'),
             __('Questions', 'quiz-maker'),
-            'manage_options',
+            $this->capability,
             $this->plugin_name . '-questions',
             array($this, 'display_plugin_questions_page')
         );
@@ -428,7 +432,7 @@ class Quiz_Maker_Admin
             $this->plugin_name,
             __('Quiz Categories', 'quiz-maker'),
             __('Quiz Categories', 'quiz-maker'),
-            'manage_options',
+            $this->capability,
             $this->plugin_name . '-quiz-categories',
             array($this, 'display_plugin_quiz_categories_page')
         );
@@ -442,7 +446,7 @@ class Quiz_Maker_Admin
             $this->plugin_name,
             __('Question Categories', 'quiz-maker'),
             __('Question Categories', 'quiz-maker'),
-            'manage_options',
+            $this->capability,
             $this->plugin_name . '-question-categories',
             array($this, 'display_plugin_question_categories_page')
         );
@@ -456,7 +460,7 @@ class Quiz_Maker_Admin
             $this->plugin_name,
             __('Custom Fields', 'quiz-maker'),
             __('Custom Fields', 'quiz-maker'),
-            'manage_options',
+            $this->capability,
             $this->plugin_name . '-quiz-attributes',
             array($this, 'display_plugin_quiz_attributes_page')
         );
@@ -499,7 +503,7 @@ class Quiz_Maker_Admin
             'quiz-maker',
             $results_text,
             $menu_item,
-            'manage_options',
+            $this->capability,
             'quiz-maker' . '-results',
             array($this, 'display_plugin_results_page')
         );
@@ -511,7 +515,7 @@ class Quiz_Maker_Admin
             'all_reviews_slug',
             __('Reviews', 'quiz-maker'),
             null,
-            'manage_options',
+            $this->capability,
             $this->plugin_name . '-all-reviews',
             array($this, 'display_plugin_all_reviews_page')
         );
@@ -527,7 +531,7 @@ class Quiz_Maker_Admin
             $this->plugin_name,
             __('How to use', 'quiz-maker'),
             __('How to use', 'quiz-maker'),
-            'manage_options',
+            $this->capability,
             $this->plugin_name . '-dashboard',
             array($this, 'display_plugin_setup_page')
         );
@@ -868,8 +872,10 @@ class Quiz_Maker_Admin
         // Run a security check.
         check_ajax_referer( 'quiz-maker-ajax-add-question-nonce', sanitize_key( $_REQUEST['_ajax_nonce'] ) );
 
+        $user_can_capability = $this->quiz_maker_capabilities();
+
         // Check for permissions.
-        if ( ! current_user_can( 'manage_options' ) ) {
+        if ( ! current_user_can( $user_can_capability ) ) {
             ob_end_clean();
             $ob_get_clean = ob_get_clean();
             echo json_encode(array(
@@ -1001,8 +1007,10 @@ class Quiz_Maker_Admin
         // Run a security check.
         check_ajax_referer( 'quiz-maker-ajax-quick-quiz-nonce', sanitize_key( $_REQUEST['_ajax_nonce'] ) );
 
+        $user_can_capability = $this->quiz_maker_capabilities();
+
         // Check for permissions.
-        if ( ! current_user_can( 'manage_options' ) ) {
+        if ( ! current_user_can( $user_can_capability ) ) {
             ob_end_clean();
             $ob_get_clean = ob_get_clean();
             echo json_encode(array(
@@ -1879,8 +1887,10 @@ class Quiz_Maker_Admin
         // Run a security check.
         check_ajax_referer( 'quiz-maker-ajax-results-nonce', sanitize_key( $_REQUEST['_ajax_nonce'] ) );
 
+        $user_can_capability = $this->quiz_maker_capabilities();
+
         // Check for permissions.
-        if ( ! current_user_can( 'manage_options' ) ) {
+        if ( ! current_user_can( $user_can_capability ) ) {
             ob_end_clean();
             $ob_get_clean = ob_get_clean();
             echo json_encode(array(
@@ -5198,6 +5208,33 @@ class Quiz_Maker_Admin
         );
 
         return $allowed_properties;
+    }
+
+    protected function quiz_maker_capabilities(){
+
+        $ays_user_roles = array('fox_instructor');
+        
+        $capability = 'manage_options';
+        if(is_user_logged_in()){
+            if ( is_plugin_active( 'fox-lms/fox-lms.php' )) {
+                if( current_user_can( 'foxlms_edit_courses' ) && !current_user_can( 'manage_options' ) ){
+                    $current_user = wp_get_current_user();
+                    $current_user_roles = $current_user->roles;
+                    $ishmar = 0;
+                    foreach($current_user_roles as $r){
+                        if(in_array($r, $ays_user_roles)){
+                            $ishmar++;
+                        }
+                    }
+
+                    if($ishmar > 0){
+                        $capability = 'foxlms_edit_courses';
+                    }
+                }
+            }
+        }
+
+        return $capability;
     }
     
 }
