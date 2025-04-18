@@ -7817,7 +7817,7 @@ div .wp-picker-container .wp-color-result.button {
     height: 16px;
 }
 
-@media screen and (max-width: 1550px){
+@media screen and (max-width: 1600px){
     div.ays-quiz-dashboard-main-wrap:not(.ays-quiz-dashboard-main-nowrap) div.ays-top-menu-wrapper {
         width: 100%;
     }
@@ -7826,6 +7826,13 @@ div .wp-picker-container .wp-color-result.button {
 @media screen and (max-width: 1270px) {
     .ays-quiz-dashboard-main-wrap .top-menu-buttons-container{
         justify-content: flex-start;
+    }
+}
+
+@media screen and (max-width: 1600px) and (min-width: 769px) {
+    .toplevel_page_quiz-maker div.ays-quiz-dashboard-main-wrap div.ays-top-menu-container-wrapper {
+        flex-direction: column-reverse;
+        align-items: flex-end;
     }
 }
 

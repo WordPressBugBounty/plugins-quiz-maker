@@ -3115,7 +3115,8 @@ class Quiz_Maker_Admin
         if($ays_quiz_ishmar == 0 ){
             if (isset($_GET['page']) && strpos($_GET['page'], AYS_QUIZ_NAME) !== false) {
                 if ( sanitize_text_field($_GET['page']) == 'quiz-maker-settings' ) {
-                    $this->ays_quiz_chart_bulider_message($ays_quiz_ishmar);
+                    // $this->ays_quiz_chart_bulider_message($ays_quiz_ishmar);
+                    $this->ays_quiz_fox_lms_integration_message($ays_quiz_ishmar);
                 } else {
                     if( $this->get_max_id('quizes') > 1 ){
                         // $this->ays_quiz_new_mega_bundle_message($ays_quiz_ishmar);
@@ -3629,6 +3630,50 @@ class Quiz_Maker_Admin
                     $content[] = '</div>';
 
                     $content[] = '<a href="https://wordpress.org/plugins/chart-builder/" class="button button-primary ays-button" id="ays-button-top-buy-now" target="_blank" >' . __( 'Install Now !', 'quiz-maker' ) . '</a>';
+                $content[] = '</div>';
+            $content[] = '</div>';
+
+            $content = implode( '', $content );
+            echo $content;
+        }
+    }
+
+    // Fox LMS integration
+    public function ays_quiz_fox_lms_integration_message($ishmar){
+        if($ishmar == 0 ){
+            $content = array();
+
+            $content[] = '<div id="ays-quiz-dicount-month-main" class="notice notice-success is-dismissible ays_quiz_dicount_info ays_quiz_fox_lms_container">';
+                $content[] = '<div id="ays-quiz-dicount-month" class="ays_quiz_dicount_month ays_quiz_fox_lms_box">';
+                    $content[] = '<a href="https://wordpress.org/plugins/fox-lms/" target="_blank" class="ays-quiz-sale-banner-link"></a>';
+
+                    $content[] = '<div class="ays-quiz-dicount-wrap-box">';
+
+                        $content[] = '<strong style="font-weight: bold;">';
+                            $content[] = __( "New Integration with <span><a href='https://wordpress.org/plugins/fox-lms/' target='_blank' style='color:#FF5104; text-decoration: underline;'>FoxLMS</a></span> plugin", 'quiz-maker' );
+                        $content[] = '</strong>';
+                        $content[] = '<br>';
+                        $content[] = __( "The integration will allow you to add your quizzes into your courses.", 'quiz-maker' );
+                        $content[] = '<a href="https://www.youtube.com/watch?v=a1MTsZEHY84" target="_blank" style="margin-left: 5px; color:#ffffff; text-decoration: underline;">' . __( 'Watch video', 'quiz-maker' ) . '</a>';
+
+                        $content[] = '<br>';
+
+                        $content[] = '<div style="position: absolute;right: 10px;bottom: 1px;" class="ays-quiz-dismiss-buttons-container-for-form">';
+
+                            $content[] = '<form action="" method="POST">';
+                                $content[] = '<div id="ays-quiz-dismiss-buttons-content">';
+                                if( current_user_can( 'manage_options' ) ){
+                                    $content[] = '<button class="btn btn-link ays-button" name="ays_quiz_sale_btn" style="height: 32px; margin-left: 0;padding-left: 0;">Dismiss ad</button>';
+                                    $content[] = wp_nonce_field( $this->plugin_name . '-sale-banner' ,  $this->plugin_name . '-sale-banner' );
+                                }
+                                $content[] = '</div>';
+                            $content[] = '</form>';
+                            
+                        $content[] = '</div>';
+
+                    $content[] = '</div>';
+
+                    $content[] = '<a href="https://wordpress.org/plugins/fox-lms/" class="button button-primary ays-button" id="ays-button-top-buy-now" target="_blank" >' . __( 'Install Now !', 'quiz-maker' ) . '</a>';
                 $content[] = '</div>';
             $content[] = '</div>';
 

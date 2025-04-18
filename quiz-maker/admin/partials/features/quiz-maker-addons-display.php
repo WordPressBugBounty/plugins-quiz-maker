@@ -106,7 +106,7 @@
             </div> <!-- Popup Quiz Addon -->
             <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-4">
                 <div class="card">
-                    <img class="card-img-top" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL); ?>/images/icons/advanced-display-quizzes-logo.png" alt="<?php echo esc_attr( __("Advanced Display Quizzes Addon", 'quiz-maker') ); ?>" style="width: 120px;">
+                    <img class="card-img-top" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL); ?>/images/icons/advanced-display-quizzes-logo.png" alt="<?php echo esc_attr( __("Advanced Display Quizzes Addon", 'quiz-maker') ); ?>" style="">
                     <div class="card-body">
                         <h5 class="card-title"><a target="_blank" href="https://bit.ly/49hly1z" style="color: #000"><?php echo esc_attr( __("Advanced Display Quizzes Addon", 'quiz-maker') ); ?></a></h5>
                         <p class="card-text"><?php echo esc_attr( __("Let the users see the list of your quizzes and take the one they like. Get the Advanced Display Quizzes Addon for Quiz Maker for a better experience!", 'quiz-maker') ); ?></p>
@@ -119,7 +119,7 @@
             </div> <!-- Advanced Display Quizzes Addon -->
             <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-4">
                 <div class="card">
-                    <img class="card-img-top" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL); ?>/images/icons/addon-category-selective-quiz.png" alt="<?php echo esc_attr( __("Category Selective Quiz Addon", 'quiz-maker') ); ?>" style="width: 120px;">
+                    <img class="card-img-top" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL); ?>/images/icons/addon-category-selective-quiz.png" alt="<?php echo esc_attr( __("Category Selective Quiz Addon", 'quiz-maker') ); ?>" style="">
                     <div class="card-body">
                         <h5 class="card-title"><a target="_blank" href="https://bit.ly/3IUwlEe" style="color: #000"><?php echo esc_attr( __("Category Selective Quiz Addon", 'quiz-maker') ); ?></a></h5>
                         <p class="card-text"><?php echo esc_attr( __("Learn about the Selective addon for the Quiz Maker plugin. The addon is for choosing the number of questions the user wants to answer.", 'quiz-maker') ); ?></p>
@@ -132,7 +132,7 @@
             </div> <!-- Category Selective Quiz Addon -->
             <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-4">
                 <div class="card">
-                    <img class="card-img-top" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL); ?>/images/icons/addon-trainings.png" alt="<?php echo esc_attr( __("Training Quiz Addon", 'quiz-maker') ); ?>" style="width: 120px;">
+                    <img class="card-img-top" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL); ?>/images/icons/addon-trainings.png" alt="<?php echo esc_attr( __("Training Quiz Addon", 'quiz-maker') ); ?>" style="">
                     <div class="card-body">
                         <h5 class="card-title"><a target="_blank" href="https://bit.ly/3TV0w4M" style="color: #000"><?php echo esc_attr( __("Training Quiz Addon", 'quiz-maker') ); ?></a></h5>
                         <p class="card-text"><?php echo esc_attr( __("Using the Training Quiz addon, right after submitting the quiz, the users will be able to pass a quiz including the questions, which they have answered incorrectly. Provide your users with abilities to learn and practice the material using the Training Quiz addon.", 'quiz-maker') ); ?></p>
@@ -145,7 +145,7 @@
             </div> <!-- Training Quiz Addon -->
             <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-4">
                 <div class="card">
-                    <img class="card-img-top" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL); ?>/images/icons/addon-ChatGPT-Question-Generator.png" alt="<?php echo esc_attr( __("ChatGPT Integration Addon", 'quiz-maker') ); ?>" style="width: 120px;">
+                    <img class="card-img-top" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL); ?>/images/icons/addon-ChatGPT-Question-Generator.png" alt="<?php echo esc_attr( __("ChatGPT Integration Addon", 'quiz-maker') ); ?>" style="">
                     <div class="card-body">
                         <h5 class="card-title"><a target="_blank" href=" https://bit.ly/3TQLLzJ" style="color: #000"><?php echo esc_attr( __("ChatGPT Integration Addon", 'quiz-maker') ); ?></a></h5>
                         <p class="card-text"><?php echo esc_attr( __("ChatGPT Question Builder has something for everyone. Get the addon and create questions for any kind of topics in seconds. Keep up with the new trends of the AI world.", 'quiz-maker') ); ?></p>
@@ -158,7 +158,7 @@
             </div> <!-- ChatGPT Integration Addon -->
             <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-4">
                 <div class="card">
-                    <img class="card-img-top" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL); ?>/images/icons/addon-frontend-statistics.png" alt="<?php echo esc_attr( __("Frontend statistics Addon", 'quiz-maker') ); ?>" style="width: 130px;">
+                    <img class="card-img-top" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL); ?>/images/icons/addon-frontend-statistics.png" alt="<?php echo esc_attr( __("Frontend statistics Addon", 'quiz-maker') ); ?>" style="width: 130px">
                     <div class="card-body">
                         <h5 class="card-title"><a target="_blank" href="https://bit.ly/3TRs4b2" style="color: #000"><?php echo esc_attr( __("Frontend statistics Addon", 'quiz-maker') ); ?></a></h5>
                         <p class="card-text"><?php echo esc_attr( __("Make your life easier with Frontend statistics Addon. Get summarized information about your questions statistics of Quiz Maker plugin.", 'quiz-maker') ); ?></p>
