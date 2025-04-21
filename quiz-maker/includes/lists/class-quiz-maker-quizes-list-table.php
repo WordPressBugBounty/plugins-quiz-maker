@@ -270,6 +270,15 @@ class Quizes_List_Table extends WP_List_Table{
             $ordering                   = ( $max_id != NULL ) ? ( $max_id + 1 ) : 1;
             $image                      = (isset($_POST['ays_quiz_image']) && $_POST['ays_quiz_image'] != "") ? sanitize_url( $_POST['ays_quiz_image'] ) : "";
 
+            if( $id === null ){
+                $current_quiz = array();
+            }else{
+                $current_quiz = $this->get_quiz_by_id($id);
+            }
+            $current_quiz_options = isset( $current_quiz['options'] ) && $current_quiz['options'] != '' ? json_decode( $current_quiz['options'], true ) : array();
+            $current_quiz_url = isset( $current_quiz['quiz_url'] ) && $current_quiz['quiz_url'] != '' ? sanitize_url($current_quiz['quiz_url']) : "";
+
+
             // if( $image != "" ){
             //     if ( !(filter_var($image, FILTER_VALIDATE_URL) && wp_http_validate_url($image)) ) {
             //         // Invalid URL, handle accordingly
@@ -1257,6 +1266,7 @@ class Quizes_List_Table extends WP_List_Table{
                         'quiz_category_id'  => $quiz_category_id,
                         'question_ids'      => $question_ids,
                         'published'         => $published,
+                        'author_id'         => $quiz_create_author,
                         'ordering'          => $ordering,
                         'quiz_url'          => $main_quiz_url,
                         'options'           => json_encode($options)
@@ -1268,6 +1278,7 @@ class Quizes_List_Table extends WP_List_Table{
                         '%d', // quiz_category_id
                         '%s', // question_ids
                         '%d', // published
+                        '%d', // author_id
                         '%d', // ordering
                         '%s', // quiz_url
                         '%s'  // options
@@ -1294,6 +1305,7 @@ class Quizes_List_Table extends WP_List_Table{
                         'quiz_category_id'  => $quiz_category_id,
                         'question_ids'      => $question_ids,
                         'published'         => $published,
+                        'author_id'         => $quiz_create_author,
                         'quiz_url'          => $main_quiz_url,
                         'options'           => json_encode($options)
                     ),
@@ -1305,6 +1317,7 @@ class Quizes_List_Table extends WP_List_Table{
                         '%d', // quiz_category_id
                         '%s', // question_ids
                         '%d', // published
+                        '%d', // author_id
                         '%s', // quiz_url
                         '%s'  // options
                     ),
@@ -1313,6 +1326,16 @@ class Quizes_List_Table extends WP_List_Table{
 
                 $inserted_id = $id;
                 $message = 'updated';
+
+                if( !empty($current_quiz) && empty($current_quiz['custom_post_id']) ){
+                    $post_type_args = array(
+                        'quiz_id'       => $inserted_id,
+                        'author_id'     => !empty($quiz_create_author) ? $quiz_create_author : get_current_user_id(),
+                        'quiz_title'    => $title,
+                    );
+                    
+                    $custom_post_id = Quiz_Maker_Custom_Post_Type::ays_quiz_add_custom_post($post_type_args);
+                }
             }
 
             if($message == 'created'){
@@ -1542,6 +1565,7 @@ class Quizes_List_Table extends WP_List_Table{
                 'quiz_category_id'  => intval($quiz['quiz_category_id']),
                 'question_ids'      => $quiz['question_ids'],
                 'published'         => intval($quiz['published']),
+                'author_id'         => $user_id,
                 'ordering'          => $ordering,
                 'quiz_url'          => $main_quiz_url,
                 'options'           => json_encode($options)
@@ -1553,6 +1577,7 @@ class Quizes_List_Table extends WP_List_Table{
                 '%d', // quiz_category_id
                 '%s', // question_ids
                 '%d', // published
+                '%d', // author_id
                 '%d', // ordering
                 '%s', // quiz_url
                 '%s'  // options

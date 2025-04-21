@@ -7558,6 +7558,13 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                             </div>
                         </div><!-- Top Keywords -->
                         <hr>
+                        <div class="ays-quiz-heading-box ays-quiz-unset-float" style="margin-bottom: 20px;">
+                            <div class="ays-quiz-wordpress-user-manual-box ays-quiz-wordpress-text-align">
+                                <a href="https://www.youtube.com/watch?v=LJ5X2-AMdm0" target="_blank">
+                                    <?php echo __("How to Add Coupons - video", 'quiz-maker'); ?>
+                                </a>
+                            </div>
+                        </div>
                         <div class="form-group row">
                             <div class="col-sm-12 only_pro" style="padding:15px;">
                                 <div class="pro_features pro_features_popup">
@@ -8256,6 +8263,13 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                     </div>
                                 </div>
                                 <hr>
+                                <div class="ays-quiz-heading-box ays-quiz-unset-float" style="margin-bottom: 10px;">
+                                    <div class="ays-quiz-wordpress-user-manual-box ays-quiz-wordpress-text-align">
+                                        <a href="https://www.youtube.com/watch?v=BMmQbafdzR8" target="_blank">
+                                            <?php echo __("How to create Password-Protected Quiz - video", 'quiz-maker'); ?>
+                                        </a>
+                                    </div>
+                                </div>
                                 <div class="form-group row">
                                     <div class="col-sm-2">
                                         <label for="ays_password_quiz">

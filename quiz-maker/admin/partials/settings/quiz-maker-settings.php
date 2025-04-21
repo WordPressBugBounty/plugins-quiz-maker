@@ -4187,7 +4187,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <hr>
                             <div class="form-group row" style="padding:0px;margin:0;">
                                 <div class="col-sm-12" style="padding:20px;">
                                     <div class="form-group row">
@@ -4205,7 +4204,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <hr>
                             <div class="form-group row" style="padding:0px;margin:0;">
                                 <div class="col-sm-12" style="padding:20px;">
                                     <div class="form-group row">
@@ -4223,7 +4221,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <hr>
                             <div class="form-group row" style="padding:0px;margin:0;">
                                 <div class="col-sm-12" style="padding:20px;">
                                     <div class="form-group row">
@@ -4241,7 +4238,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <hr>
                             <div class="form-group row" style="padding:0px;margin:0;">
                                 <div class="col-sm-12" style="padding:20px;">
                                     <div class="form-group row">
@@ -4259,7 +4255,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <hr>
                             <div class="form-group row" style="padding:0px;margin:0;">
                                 <div class="col-sm-12" style="padding:20px;">
                                     <div class="form-group row">
@@ -4277,7 +4272,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <hr>
                             <div class="form-group row" style="padding:0px;margin:0;">
                                 <div class="col-sm-12" style="padding:20px;">
                                     <div class="form-group row">
@@ -4295,7 +4289,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <hr>
                             <div class="form-group row" style="padding:0px;margin:0;">
                                 <div class="col-sm-12" style="padding:20px;">
                                     <div class="form-group row">
@@ -4313,7 +4306,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <hr>
                             <div class="form-group row" style="padding:0px;margin:0;">
                                 <div class="col-sm-12" style="padding:20px;">
                                     <div class="form-group row">
@@ -4331,7 +4323,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <hr>
                             <div class="form-group row" style="padding:0px;margin:0;">
                                 <div class="col-sm-12" style="padding:20px;">
                                     <div class="form-group row">
@@ -4349,7 +4340,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <hr>
                             <div class="form-group row" style="padding:0px;margin:0;">
                                 <div class="col-sm-12" style="padding:20px;">
                                     <div class="form-group row">
@@ -4367,7 +4357,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <hr>
                             <div class="form-group row" style="padding:0px;margin:0;">
                                 <div class="col-sm-12" style="padding:20px;">
                                     <div class="form-group row">
@@ -4385,7 +4374,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <hr>
                             <div class="form-group row" style="padding:0px;margin:0;">
                                 <div class="col-sm-12" style="padding:20px;">
                                     <div class="form-group row">
@@ -4403,7 +4391,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <hr>
                             <div class="form-group row" style="padding:0px;margin:0;">
                                 <div class="col-sm-12" style="padding:20px;">
                                     <div class="form-group row">
@@ -4421,7 +4408,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <hr>
                             <div class="form-group row" style="padding:0px;margin:0;">
                                 <div class="col-sm-12" style="padding:20px;">
                                     <div class="form-group row">
@@ -4439,7 +4425,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <hr>
                             <div class="form-group row" style="padding:0px;margin:0;">
                                 <div class="col-sm-12" style="padding:20px;">
                                     <div class="form-group row">
@@ -4457,7 +4442,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <hr>
                             <div class="form-group row" style="padding:0px;margin:0;">
                                 <div class="col-sm-12" style="padding:20px;">
                                     <div class="form-group row">
@@ -4475,7 +4459,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <hr>
                             <div class="form-group row" style="padding:0px;margin:0;">
                                 <div class="col-sm-12" style="padding:20px;">
                                     <div class="form-group row">
@@ -4493,7 +4476,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <hr>
                             <div class="form-group row" style="padding:0px;margin:0;">
                                 <div class="col-sm-12" style="padding:20px;">
                                     <div class="form-group row">
@@ -4511,7 +4493,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <hr>
                             <div class="form-group row" style="padding:0px;margin:0;">
                                 <div class="col-sm-12" style="padding:20px;">
                                     <div class="form-group row">
@@ -4529,7 +4510,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <hr>
                             <div class="form-group row" style="padding:0px;margin:0;">
                                 <div class="col-sm-12" style="padding:20px;">
                                     <div class="form-group row">
@@ -4547,7 +4527,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <hr>
                             <div class="form-group row" style="padding:0px;margin:0;">
                                 <div class="col-sm-12" style="padding:20px;">
                                     <div class="form-group row">
@@ -4565,7 +4544,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <hr>
                             <div class="form-group row" style="padding:0px;margin:0;">
                                 <div class="col-sm-12" style="padding:20px;">
                                     <div class="form-group row">
@@ -4583,7 +4561,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <hr>
                             <div class="form-group row" style="padding:0px;margin:0;">
                                 <div class="col-sm-12" style="padding:20px;">
                                     <div class="form-group row">
@@ -4601,7 +4578,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <hr>
                             <div class="form-group row" style="padding:0px;margin:0;">
                                 <div class="col-sm-12" style="padding:20px;">
                                     <div class="form-group row">
@@ -4619,7 +4595,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <hr>
                             <div class="form-group row" style="padding:0px;margin:0;">
                                 <div class="col-sm-12" style="padding:20px;">
                                     <div class="form-group row">
@@ -4637,7 +4612,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <hr>
                             <div class="form-group row" style="padding:0px;margin:0;">
                                 <div class="col-sm-12" style="padding:20px;">
                                     <div class="form-group row">

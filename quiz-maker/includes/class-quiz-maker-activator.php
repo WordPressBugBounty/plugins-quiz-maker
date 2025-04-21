@@ -1,6 +1,6 @@
 <?php
 global $ays_quiz_db_version;
-$ays_quiz_db_version = '3.8.8';
+$ays_quiz_db_version = '3.8.9';
 /**
  * Fired during plugin activation
  *
@@ -51,6 +51,7 @@ class Quiz_Maker_Activator
         if ($installed_ver != $ays_quiz_db_version) {
             $sql = "CREATE TABLE `".$quiz_categories_table."` (
                 `id` INT(16) UNSIGNED NOT NULL AUTO_INCREMENT,
+                `author_id` INT(16) UNSIGNED NOT NULL DEFAULT '0',
                 `title` VARCHAR(256) NOT NULL,
                 `description` TEXT NOT NULL,
                 `published` TINYINT(1) UNSIGNED NOT NULL,
@@ -60,6 +61,7 @@ class Quiz_Maker_Activator
 
             $sql = "CREATE TABLE `".$quizes_table."` (
                 `id` INT(16) UNSIGNED NOT NULL AUTO_INCREMENT,
+                `author_id` INT(16) UNSIGNED NOT NULL DEFAULT '0',
                 `title` VARCHAR(256) NOT NULL,
                 `description` TEXT NOT NULL,
                 `quiz_image` TEXT DEFAULT NULL,
@@ -68,6 +70,7 @@ class Quiz_Maker_Activator
                 `ordering` INT(16) NOT NULL,
                 `quiz_url` TEXT DEFAULT NULL,
                 `published` TINYINT UNSIGNED NOT NULL,
+                `create_date` DATETIME DEFAULT NULL,
                 `custom_post_id` INT(16) UNSIGNED DEFAULT NULL,
                 `options` TEXT NULL DEFAULT NULL,
                 `intervals` TEXT NULL DEFAULT NULL,
@@ -77,6 +80,7 @@ class Quiz_Maker_Activator
 
             $sql = "CREATE TABLE `".$questions_table."` (
                 `id` INT(16) UNSIGNED NOT NULL AUTO_INCREMENT,
+                `author_id` INT(16) UNSIGNED NOT NULL DEFAULT '0',
                 `category_id` INT(16) UNSIGNED NOT NULL ,
                 `question` TEXT NOT NULL,
                 `question_title` TEXT NOT NULL,
@@ -97,6 +101,7 @@ class Quiz_Maker_Activator
 
             $sql = "CREATE TABLE `".$question_categories_table."` (
                 `id` INT(16) UNSIGNED NOT NULL AUTO_INCREMENT,
+                `author_id` INT(16) UNSIGNED NOT NULL DEFAULT '0',
                 `title` VARCHAR(256) NOT NULL,
                 `description` TEXT NOT NULL,
                 `published` TINYINT UNSIGNED NOT NULL,
@@ -302,6 +307,9 @@ class Quiz_Maker_Activator
                     ),
                 );
 
+                $current_user_id    = get_current_user_id();
+                $current_time_mysql = current_time( 'mysql' );
+
                 $quizes_array = array(
                     array(
                         'title'                                     => 'Mathematic Quiz',
@@ -310,6 +318,8 @@ class Quiz_Maker_Activator
                         'question_ids'                              => 2,
                         'ordering'                                  => 1,
                         'published'                                 => 1,
+                        'author_id'                                 => get_current_user_id(),
+                        'create_date'                               => $current_time_mysql,
                         'options' => json_encode(array(
                             'color'                                 => '#5d6cf9',
                             'bg_color'                              => '#fff',
@@ -371,7 +381,7 @@ class Quiz_Maker_Activator
                             'answers_border_color'                  => '#dddddd',
                             'quiz_title_font_size'                  => 28,
                             'quiz_title_mobile_font_size'           => 20,
-                            'create_date'                           => current_time( 'mysql' ),
+                            'create_date'                           => $current_time_mysql,
                             'author' => array(
                                 'name' => "Unknown"
                             ),
@@ -413,7 +423,18 @@ class Quiz_Maker_Activator
                     $questions_ids = rtrim($questions_ids, ",");
                     ;
                     $quiz['question_ids'] = $questions_ids;
-                    $wpdb->insert($quizes_table, $quiz);
+                    $quiz_result = $wpdb->insert($quizes_table, $quiz);
+
+                    $inserted_id = $wpdb->insert_id;
+
+                    $post_type_args = array(
+                        'quiz_id'       => $inserted_id,
+                        'author_id'     => !empty($current_user_id) ? $current_user_id : get_current_user_id(),
+                        'quiz_title'    => 'Mathematic Quiz',
+                    );
+                    
+                    $custom_post_id = Quiz_Maker_Custom_Post_Type::ays_quiz_add_custom_post($post_type_args);
+
                     unset($questions_ids_array);
                 }
             }

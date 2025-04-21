@@ -208,6 +208,7 @@ class Quiz_Categories_List_Table extends WP_List_Table{
         if( isset($_POST["quiz_category_action"]) && wp_verify_nonce( sanitize_text_field( $_POST["quiz_category_action"] ), 'quiz_category_action' ) ){
             
             $id = absint( sanitize_text_field( $_POST['id'] ) );
+            $author_id = get_current_user_id();
             $title = stripslashes( sanitize_text_field( $_POST['ays_title'] ) );
             $description =  wp_kses_post( $_POST['ays_description'] );
             $publish = absint( sanitize_text_field( $_POST['ays_publish'] ) );
@@ -218,12 +219,14 @@ class Quiz_Categories_List_Table extends WP_List_Table{
                     array(
                         'title'         => $title,
                         'description'   => $description,
-                        'published'     => $publish
+                        'published'     => $publish,
+                        'author_id'     => $author_id,
                     ),
                     array(
-                        '%s', //title
-                        '%s', //description
-                        '%d'  //published
+                        '%s', // title
+                        '%s', // description
+                        '%d', // published
+                        '%d', // author_id
                     )
                 );
                 $message = 'created';
@@ -233,13 +236,15 @@ class Quiz_Categories_List_Table extends WP_List_Table{
                     array(
                         'title'         => $title,
                         'description'   => $description,
-                        'published'     => $publish
+                        'published'     => $publish,
+                        'author_id'     => $author_id,
                     ),
                     array( 'id' => $id ),
                     array( 
                         '%s', //title
                         '%s', //description
-                        '%d'  //published
+                        '%d', //published
+                        '%d', //author_id
                     ),
                     array( '%d' )
                 );
@@ -325,6 +330,8 @@ class Quiz_Categories_List_Table extends WP_List_Table{
 
         $quiz_category_table = $wpdb->prefix . 'aysquiz_quizcategories';
         $quiz_category_data = $this->get_quiz_categories_by_id($id);
+
+        $author_id = get_current_user_id();
         
         $title = (isset($quiz_category_data['title']) && $quiz_category_data['title'] != "") ? stripslashes( sanitize_text_field( $quiz_category_data['title'] ) ) : __("Copy", 'quiz-maker');
         $description =  (isset($quiz_category_data['description']) && $quiz_category_data['description'] != "") ? wp_kses_post( $quiz_category_data['description'] ) : "";
@@ -335,12 +342,14 @@ class Quiz_Categories_List_Table extends WP_List_Table{
             array(
                 'title'         =>  "Copy - " . $title,
                 'description'   => $description,
-                'published'     => $publish
+                'published'     => $publish,
+                'author_id'     => $author_id,
             ),
             array(
-                '%s', //title
-                '%s', //description
-                '%d'  //published
+                '%s', // title
+                '%s', // description
+                '%d', // published
+                '%d'  // author_id
             )
         );
         if( $result >= 0 ){

@@ -202,6 +202,8 @@ class Question_Categories_List_Table extends WP_List_Table{
 
         $question_category_table = $wpdb->prefix . 'aysquiz_categories';
         $question_category_data = $this->get_question_category($id);
+
+        $author_id = get_current_user_id();
         
         $title = (isset($question_category_data['title']) && $question_category_data['title'] != "") ? stripslashes( sanitize_text_field( $question_category_data['title'] ) ) : __("Copy", 'quiz-maker');
         $description =  (isset($question_category_data['description']) && $question_category_data['description'] != "") ? wp_kses_post( $question_category_data['description'] ) : "";
@@ -212,12 +214,14 @@ class Question_Categories_List_Table extends WP_List_Table{
             array(
                 'title'         =>  "Copy - " . $title,
                 'description'   => $description,
-                'published'     => $publish
+                'published'     => $publish,
+                'author_id'     => $author_id,
             ),
             array(
-                '%s', //title
-                '%s', //description
-                '%d'  //published
+                '%s', // title
+                '%s', // description
+                '%d', // published
+                '%d', // author_id
             )
         );
         if( $result >= 0 ){
@@ -237,6 +241,7 @@ class Question_Categories_List_Table extends WP_List_Table{
         if( isset($_POST["question_category_action"]) && wp_verify_nonce( sanitize_text_field( $_POST["question_category_action"] ), 'question_category_action' ) ){
             
             $id = absint( sanitize_text_field( $_POST['id'] ) );
+            $author_id = get_current_user_id();
             $title = stripslashes( sanitize_text_field( $_POST['ays_title'] ) );
             $description = wp_kses_post( $_POST['ays_description'] );
             $publish = absint( sanitize_text_field( $_POST['ays_publish'] ) );
@@ -247,12 +252,14 @@ class Question_Categories_List_Table extends WP_List_Table{
                     array(
                         'title'         => $title,
                         'description'   => $description,
-                        'published'     => $publish
+                        'published'     => $publish,
+                        'author_id'     => $author_id,
                     ),
                     array( 
-                        '%s', //title
-                        '%s', //description
-                        '%d'  //published
+                        '%s', // title
+                        '%s', // description
+                        '%d', // published
+                        '%d', // author_id
                     )
                 );
                 $message = 'created';
@@ -262,13 +269,15 @@ class Question_Categories_List_Table extends WP_List_Table{
                     array(
                         'title'         => $title,
                         'description'   => $description,
-                        'published'     => $publish
+                        'published'     => $publish,
+                        'author_id'     => $author_id,
                     ),
                     array( 'id' => $id ),
                     array( 
-                        '%s', //title
-                        '%s', //description
-                        '%d'  //published
+                        '%s', // title
+                        '%s', // description
+                        '%d', // published
+                        '%d', // author_id
                     ),
                     array( '%d' )
                 );

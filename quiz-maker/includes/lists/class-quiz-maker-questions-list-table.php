@@ -335,6 +335,7 @@ class Questions_List_Table extends WP_List_Table{
         if( isset($_POST["question_action"]) && wp_verify_nonce( sanitize_text_field( $_POST["question_action"] ), 'question_action' ) ){
             
             $id = absint( intval( $_POST['id'] ) );
+            $author_id = get_current_user_id();
 
             $question = '';
             if ( isset( $_POST['ays_question'] ) ) {
@@ -475,6 +476,7 @@ class Questions_List_Table extends WP_List_Table{
                     $questions_table,
                     array(
                         'category_id'               => $category_id,
+                        'author_id'                 => $author_id,
                         'question'                  => $question,
                         'question_title'            => $question_title,
                         'question_image'            => $question_image,
@@ -490,6 +492,7 @@ class Questions_List_Table extends WP_List_Table{
                     ),
                     array(
                         '%d', // category_id
+                        '%d', // author_id
                         '%s', // question
                         '%s', // question_title
                         '%s', // question_image
@@ -558,6 +561,7 @@ class Questions_List_Table extends WP_List_Table{
                     $questions_table,
                     array(
                         'category_id'               => $category_id,
+                        'author_id'                 => $author_id,
                         'question'                  => $question,
                         'question_title'            => $question_title,
                         'question_image'            => $question_image,
@@ -575,6 +579,7 @@ class Questions_List_Table extends WP_List_Table{
                     array( 'id' => $id ),
                     array(
                         '%d', // category_id
+                        '%d', // author_id
                         '%s', // question
                         '%s', // question_title
                         '%s', // question_image
@@ -910,6 +915,7 @@ class Questions_List_Table extends WP_List_Table{
             $questions_table,
             array(
                 'category_id'               => $questionDup['category_id'],
+                'author_id'                 => $user_id,
                 'question'                  => "Copy - " . $questionDup['question'],
                 'question_title'            => $question_title,
                 'question_image'            => $questionDup['question_image'],
@@ -925,6 +931,7 @@ class Questions_List_Table extends WP_List_Table{
             ),
             array(
                 '%d', // category_id
+                '%d', // author_id
                 '%s', // question
                 '%s', // question_title
                 '%s', // question_image
