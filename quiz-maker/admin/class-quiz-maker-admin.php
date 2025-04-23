@@ -226,24 +226,24 @@ class Quiz_Maker_Admin
             true
         );
         wp_localize_script($this->plugin_name . '-ajax', 'quiz_maker_ajax', array(
-            'ajax_url'                      => admin_url('admin-ajax.php'),
-            "emptyEmailError"               => __( 'Email field is empty', 'quiz-maker'),
-            "invalidEmailError"             => __( 'Invalid Email address', 'quiz-maker'),
-            'selectUser'                    => __( 'Select user', 'quiz-maker'),
-            'pleaseEnterMore'               => __( "Please enter 1 or more characters", 'quiz-maker' ),
-            'searching'                     => __( "Searching...", 'quiz-maker' ),
-            'activated'                     => __( "Activated", 'quiz-maker' ),
-            'errorMsg'                      => __( "Error", 'quiz-maker' ),
-            'loadResource'                  => __( "Can't load resource.", 'quiz-maker' ),
-            'somethingWentWrong'            => __( "Maybe something went wrong.", 'quiz-maker' ),
-            'youCanUuseThisShortcode'       => __( 'Copy the generated shortcode and paste it into any post or page to display Quiz.', 'quiz-maker'),
-            'youQuizIsCreated'              => __( 'Your Quiz is Created!', 'quiz-maker'),
-            'greateJob'                     => __( 'Great job', 'quiz-maker'),
-            'formMoreDetailed'              => __( 'For more detailed configuration visit', 'quiz-maker'),
-            'editQuizPage'                  => __( 'edit quiz page', 'quiz-maker'),
-            'greate'                        => __( 'Great!', 'quiz-maker'),
-            'thumbsUpGreat'                 => __( 'Thumbs up, great!', 'quiz-maker'),
-            "preivewQuiz"                   => __( "Preview Quiz", 'quiz-maker' ),
+            'ajax_url'                          => admin_url('admin-ajax.php'),
+            "emptyEmailError"                   => __( 'Email field is empty', 'quiz-maker'),
+            "invalidEmailError"                 => __( 'Invalid Email address', 'quiz-maker'),
+            'selectUser'                        => __( 'Select user', 'quiz-maker'),
+            'pleaseEnterMore'                   => __( "Please enter 1 or more characters", 'quiz-maker' ),
+            'searching'                         => __( "Searching...", 'quiz-maker' ),
+            'activated'                         => __( "Activated", 'quiz-maker' ),
+            'errorMsg'                          => __( "Error", 'quiz-maker' ),
+            'loadResource'                      => __( "Can't load resource.", 'quiz-maker' ),
+            'somethingWentWrong'                => __( "Maybe something went wrong.", 'quiz-maker' ),
+            'youCanUuseThisShortcode'           => __( 'Copy the generated shortcode and paste it into any post or page to display Quiz.', 'quiz-maker'),
+            'youQuizIsCreated'                  => __( 'Your Quiz is Created!', 'quiz-maker'),
+            'greateJob'                         => __( 'Great job', 'quiz-maker'),
+            'formMoreDetailed'                  => __( 'For more detailed configuration visit', 'quiz-maker'),
+            'editQuizPage'                      => __( 'edit quiz page', 'quiz-maker'),
+            'greate'                            => __( 'Great!', 'quiz-maker'),
+            'thumbsUpGreat'                     => __( 'Thumbs up, great!', 'quiz-maker'),
+            "preivewQuiz"                       => __( "Preview Quiz", 'quiz-maker' ),
         ));
         wp_localize_script( $this->plugin_name, 'quizLangObj', array(
             'quizBannerDate'                => $quiz_banner_date,
@@ -1112,6 +1112,7 @@ class Quiz_Maker_Admin
         $quick_quiz_show_questions_numbering                = 'none';
         $quick_quiz_answers_view                            = 'list';
         $quick_quiz_answers_rw_texts                        = 'on_passing';
+        $quick_quiz_enable_questions_ordering_by_cat        = 'off';
 
         $quick_quiz_custom_texts_start_button               = $gen_start_button;
         $quick_quiz_custom_texts_next_button                = $gen_next_button;
@@ -1486,6 +1487,9 @@ class Quiz_Maker_Admin
 
             // Show wrong answers first
             $quick_quiz_enable_default_hide_results_toggle = (isset( $_REQUEST['ays_quick_quiz_enable_default_hide_results_toggle'] ) && $_REQUEST['ays_quick_quiz_enable_default_hide_results_toggle'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_default_hide_results_toggle'] ) ) : "off";
+
+            // Group questions by category
+            $quick_quiz_enable_questions_ordering_by_cat = (isset( $_REQUEST['ays_quick_quiz_enable_questions_ordering_by_cat'] ) && $_REQUEST['ays_quick_quiz_enable_questions_ordering_by_cat'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_questions_ordering_by_cat'] ) ) : "off";
             
             
         }
@@ -1665,7 +1669,7 @@ class Quiz_Maker_Admin
             'quiz_width_by_percentage_px'                       => 'pixels',
             'questions_hint_icon_or_text'                       => 'default',
             'enable_early_finsh_comfirm_box'                    => 'on',
-            'enable_questions_ordering_by_cat'                  => 'off',
+            'enable_questions_ordering_by_cat'                  => $quick_quiz_enable_questions_ordering_by_cat,
             'show_schedule_timer'                               => 'off',
             'show_timer_type'                                   => 'countdown',
             'quiz_loader_text_value'                            => '',

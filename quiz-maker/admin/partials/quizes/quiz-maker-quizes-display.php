@@ -312,6 +312,17 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                             </div>
                                         </div> <!-- Enable randomize answers -->
                                         <hr/>
+                                        <div class="form-group row ays_toggle_parent">
+                                            <div class="col-sm-4">
+                                                <label for="ays_quick_quiz_enable_questions_ordering_by_cat">
+                                                   <?php echo esc_html__('Group questions by category','quiz-maker'); ?>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <input type="checkbox" class="ays-enable-timerl ays_toggle_checkbox" id="ays_quick_quiz_enable_questions_ordering_by_cat" name="ays_quick_quiz_enable_questions_ordering_by_cat" value="on"/>
+                                            </div>
+                                        </div> <!-- Group questions by category -->
+                                        <hr/>
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_display_all_questions">
