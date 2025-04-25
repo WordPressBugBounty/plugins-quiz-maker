@@ -1113,6 +1113,7 @@ class Quiz_Maker_Admin
         $quick_quiz_answers_view                            = 'list';
         $quick_quiz_answers_rw_texts                        = 'on_passing';
         $quick_quiz_enable_questions_ordering_by_cat        = 'off';
+        $quick_quiz_questions_numbering_by_category         = 'off';
 
         $quick_quiz_custom_texts_start_button               = $gen_start_button;
         $quick_quiz_custom_texts_next_button                = $gen_next_button;
@@ -1490,6 +1491,9 @@ class Quiz_Maker_Admin
 
             // Group questions by category
             $quick_quiz_enable_questions_ordering_by_cat = (isset( $_REQUEST['ays_quick_quiz_enable_questions_ordering_by_cat'] ) && $_REQUEST['ays_quick_quiz_enable_questions_ordering_by_cat'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_questions_ordering_by_cat'] ) ) : "off";
+
+            // Enable questions numbering by category
+            $quick_quiz_questions_numbering_by_category = (isset( $_REQUEST['ays_quick_quiz_questions_numbering_by_category'] ) && $_REQUEST['ays_quick_quiz_questions_numbering_by_category'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_questions_numbering_by_category'] ) ) : "off";
             
             
         }
@@ -1742,7 +1746,7 @@ class Quiz_Maker_Admin
             'right_answers_mobile_font_size'                    => $quick_quiz_right_answers_mobile_font_size,
             'note_text_font_size'                               => $quick_quiz_note_text_font_size,
             'note_text_mobile_font_size'                        => $quick_quiz_note_text_mobile_font_size,
-            'quiz_questions_numbering_by_category'              => "off",
+            'quiz_questions_numbering_by_category'              => $quick_quiz_questions_numbering_by_category,
             'quiz_enable_custom_texts_for_buttons'              => $quick_quiz_enable_custom_texts_for_buttons,
             'quiz_custom_texts_start_button'                    => $quick_quiz_custom_texts_start_button,
             'quiz_custom_texts_next_button'                     => $quick_quiz_custom_texts_next_button,
@@ -4805,11 +4809,11 @@ class Quiz_Maker_Admin
         $images_url = AYS_QUIZ_ADMIN_URL . '/images/icons/';
 
         $plugin_slug = array(
+            'fox-lms',
             'poll-maker',
             'survey-maker',
             'ays-popup-box',
-            'gallery-photo-gallery',
-            'gallery-photo-gallery',
+            // 'gallery-photo-gallery',
             'secure-copy-content-protection',
             'personal-dictionary',
         );
@@ -4832,6 +4836,15 @@ class Quiz_Maker_Admin
         }
 
         $plugins_array = array(
+            'fox-lms/fox-lms.php'        => array(
+                'icon'        => $images_url . 'icon-fox-lms-128x128.png',
+                'name'        => __( 'Fox LMS', 'quiz-maker' ),
+                'desc'        => __( 'Build and manage online courses directly on your WordPress site.', 'quiz-maker' ),
+                'desc_hidden' => __( 'With the FoxLMS plugin, you can create, sell, and organize courses, lessons, and quizzes, transforming your website into a dynamic e-learning platform.', 'quiz-maker' ),
+                'wporg'       => 'https://wordpress.org/plugins/fox-lms/',
+                'buy_now'     => 'https://foxlms.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=fox-lms-our-products-page',
+                'url'         => $plugin_url_arr['fox-lms'],
+            ),
            'poll-maker/poll-maker-ays.php'        => array(
                 'icon'        => $images_url . 'icon-poll-128x128.png',
                 'name'        => __( 'Poll Maker', 'quiz-maker' ),
@@ -4859,15 +4872,15 @@ class Quiz_Maker_Admin
                 'buy_now'     => 'https://ays-pro.com/wordpress/popup-box/',
                 'url'         => $plugin_url_arr['ays-popup-box'],
             ),
-            'gallery-photo-gallery/gallery-photo-gallery.php'        => array(
-                'icon'        => $images_url . 'icon-gallery-128x128.jpg',
-                'name'        => __( 'Gallery Photo Gallery', 'quiz-maker' ),
-                'desc'        => __( 'Create unlimited galleries and include unlimited images in those galleries.', 'quiz-maker' ),
-                'desc_hidden' => __( 'Represent images in an attractive way. Attract people with your own single and multiple free galleries from your photo library.', 'quiz-maker' ),
-                'wporg'       => 'https://wordpress.org/plugins/gallery-photo-gallery/',
-                'buy_now'     => 'https://ays-pro.com/wordpress/photo-gallery/',
-                'url'         => $plugin_url_arr['gallery-photo-gallery'],
-            ),
+            // 'gallery-photo-gallery/gallery-photo-gallery.php'        => array(
+            //     'icon'        => $images_url . 'icon-gallery-128x128.jpg',
+            //     'name'        => __( 'Gallery Photo Gallery', 'quiz-maker' ),
+            //     'desc'        => __( 'Create unlimited galleries and include unlimited images in those galleries.', 'quiz-maker' ),
+            //     'desc_hidden' => __( 'Represent images in an attractive way. Attract people with your own single and multiple free galleries from your photo library.', 'quiz-maker' ),
+            //     'wporg'       => 'https://wordpress.org/plugins/gallery-photo-gallery/',
+            //     'buy_now'     => 'https://ays-pro.com/wordpress/photo-gallery/',
+            //     'url'         => $plugin_url_arr['gallery-photo-gallery'],
+            // ),
             'secure-copy-content-protection/secure-copy-content-protection.php'        => array(
                 'icon'        => $images_url . 'icon-sccp-128x128.png',
                 'name'        => __( 'Secure Copy Content Protection', 'quiz-maker' ),

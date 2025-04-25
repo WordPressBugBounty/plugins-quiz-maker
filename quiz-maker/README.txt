@@ -4,7 +4,7 @@ Donate link: https://ays-pro.com/wordpress/quiz-maker
 Tags:  exam, quiz, quizzes, education, quiz maker
 Requires at least: 4.0
 Tested up to: 6.8
-Stable tag: 6.7.0.4
+Stable tag: 6.7.0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -419,6 +419,12 @@ Do you wonder how to create a Math Quiz with hard mathematical equations in Word
 For example, to add a squared symbol, you need to write down the following sign ^2. (do not forget to insert $ character to mark the beginning and ending).
 
 == Changelog ==
+
+= 6.7.0.5 =
+* Added: [Fox LMS](https://wordpress.org/plugins/fox-lms) Plugin to the Our Products page
+* Added: Enable questions numbering by category suboption for the Quick Quiz Popup
+* Improved: Some Changes on the Admin Dashboard
+* Fixed: PHP problem on the front-end
 
 = 6.7.0.4 =
 * Added: Group questions by category option for the Quick Quiz Popup

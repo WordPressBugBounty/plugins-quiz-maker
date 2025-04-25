@@ -4633,7 +4633,16 @@ class Quiz_Maker_Public
             
             if (!empty($question)) {
                 $answers = $this->get_answers_with_question_id($question["id"]);
-                $question_options = (isset($question['options']) && sanitize_text_field( $question['options'] ) != '') ? json_decode( $question['options'], true ) : array();
+                // $question_options = (isset($question['options']) && sanitize_text_field( $question['options'] ) != '') ? json_decode( $question['options'], true ) : array();
+
+                $question_options = array();
+                if (isset($question['options']) && is_string($question['options']) && sanitize_text_field($question['options']) != '') {
+                    $decoded_options = json_decode($question['options'], true);
+                    if (is_array($decoded_options)) {
+                        $question_options = $decoded_options;
+                    }
+                }
+
                 $question_image = '';
                 $question_image_style = '';
                 $question_category = '';

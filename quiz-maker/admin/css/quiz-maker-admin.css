@@ -1799,6 +1799,12 @@ div.ays-notice-banner .navigation-bar li a:after {
     /*margin-left: 10px;*/
 }
 
+@media screen and (min-width: 1080px) and (max-width: 1280px){
+    .ays-notice-banner .modile-ddmenu-lg.modile-ddmenu-lg-custom {
+        display: none;
+    }
+}
+
 @media screen and (min-width: 1080px){
     .ays-notice-banner .modile-ddmenu-lg {
         display: block;
