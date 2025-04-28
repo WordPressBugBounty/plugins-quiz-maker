@@ -1114,6 +1114,7 @@ class Quiz_Maker_Admin
         $quick_quiz_answers_rw_texts                        = 'on_passing';
         $quick_quiz_enable_questions_ordering_by_cat        = 'off';
         $quick_quiz_questions_numbering_by_category         = 'off';
+        $quick_quiz_enable_question_category_description    = 'off';
 
         $quick_quiz_custom_texts_start_button               = $gen_start_button;
         $quick_quiz_custom_texts_next_button                = $gen_next_button;
@@ -1494,6 +1495,9 @@ class Quiz_Maker_Admin
 
             // Enable questions numbering by category
             $quick_quiz_questions_numbering_by_category = (isset( $_REQUEST['ays_quick_quiz_questions_numbering_by_category'] ) && $_REQUEST['ays_quick_quiz_questions_numbering_by_category'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_questions_numbering_by_category'] ) ) : "off";
+
+            // Show question category description
+            $quick_quiz_enable_question_category_description = (isset( $_REQUEST['ays_quick_quiz_enable_question_category_description'] ) && $_REQUEST['ays_quick_quiz_enable_question_category_description'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_question_category_description'] ) ) : "off";
             
             
         }
@@ -1715,7 +1719,7 @@ class Quiz_Maker_Admin
             'answers_border_style'                              => 'solid',
             'answers_border_color'                              => '#dddddd',
             'social_links_heading'                              => '',
-            'quiz_enable_question_category_description'         => 'off',
+            'quiz_enable_question_category_description'         => $quick_quiz_enable_question_category_description,
             'answers_margin'                                    => $quick_quiz_answers_margin,
             'quiz_message_before_redirect_timer'                => '',
             'buttons_mobile_font_size'                          => $quick_quiz_buttons_mobile_font_size,

@@ -357,14 +357,26 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                             </div>
                                         </div> <!-- Show correct answers -->
                                         <hr/>
-                                        <div class="form-group row">
+                                        <div class="form-group row ays_toggle_parent">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_show_question_category">
                                                     <?php echo esc_html__('Show question category','quiz-maker'); ?>
                                                 </label>
                                             </div>
-                                            <div class="col-sm-8">
+                                            <div class="col-sm-1">
                                                 <input type="checkbox" class="ays-enable-timer1 ays_toggle_checkbox" id="ays_quick_quiz_show_question_category" name="ays_quick_quiz_show_question_category" value="on" />
+                                            </div>
+                                            <div class="col-sm-7 ays_toggle_target ays_divider_left display_none">
+                                                <div class="form-group row">
+                                                    <div class="col-sm-4">
+                                                        <label for="ays_quick_quiz_enable_question_category_description">
+                                                            <?php echo __('Show question category description','quiz-maker'); ?>
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-sm-8">
+                                                        <input type="checkbox" name="ays_quick_quiz_enable_question_category_description" id="ays_quick_quiz_enable_question_category_description" />
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div> <!-- Show question category -->
                                         <hr/>
