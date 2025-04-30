@@ -14,24 +14,24 @@ $gen_options = ($this->settings_obj->ays_get_setting('options') === false) ? arr
 $question_default_type = isset($gen_options['question_default_type']) && $gen_options['question_default_type'] != '' ? $gen_options['question_default_type'] : null;
 
 $options = array(
-    'bg_image' => "",
-    'use_html' => 'off',
+    'bg_image'                      => "",
+    'use_html'                      => 'off',
 );
 $question = array(
-    'category_id'               => '1',
-    'author_id'                 => $user_id,
-    'question'                  => '',
-    'question_image'            => '',
-    'type'                      => $question_default_type,
-    'published'                 => '',
-    'user_explanation'          => 'off',
-    'wrong_answer_text'         => '',
-    'right_answer_text'         => '',
-    'explanation'               => '',
-    'create_date'               => current_time( 'mysql' ),
-    'not_influence_to_score'    => 'off',
-    'weight'                    => floatval(1),
-    'options'                   => json_encode($options),
+    'category_id'                   => '1',
+    'author_id'                     => $user_id,
+    'question'                      => '',
+    'question_image'                => '',
+    'type'                          => $question_default_type,
+    'published'                     => '',
+    'user_explanation'              => 'off',
+    'wrong_answer_text'             => '',
+    'right_answer_text'             => '',
+    'explanation'                   => '',
+    'create_date'                   => current_time( 'mysql' ),
+    'not_influence_to_score'        => 'off',
+    'weight'                        => floatval(1),
+    'options'                       => json_encode($options),
 );
 
 $quiz_accordion_svg_html = '
@@ -391,14 +391,26 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                             </div>
                                         </div> <!-- Show passed users count -->
                                         <hr/>
-                                        <div class="form-group row">
+                                        <div class="form-group row ays_toggle_parent">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_show_category">
                                                     <?php echo esc_html__('Show quiz category','quiz-maker'); ?>
                                                 </label>
                                             </div>
-                                            <div class="col-sm-8">
-                                                <input type="checkbox" id="ays_quick_quiz_show_category" name="ays_quick_quiz_show_category" value="on" />
+                                            <div class="col-sm-1">
+                                                <input type="checkbox" class="ays-enable-timer1 ays_toggle_checkbox" id="ays_quick_quiz_show_category" name="ays_quick_quiz_show_category" value="on" />
+                                            </div>
+                                            <div class="col-sm-7 ays_toggle_target ays_divider_left display_none">
+                                                <div class="form-group row">
+                                                    <div class="col-sm-4">
+                                                        <label for="ays_quick_quiz_enable_quiz_category_description">
+                                                            <?php echo esc_html__('Show quiz category description','quiz-maker'); ?>
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-sm-8">
+                                                        <input type="checkbox" name="ays_quick_quiz_enable_quiz_category_description" id="ays_quick_quiz_enable_quiz_category_description" />
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div> <!-- Show quiz category -->
                                         <hr/>

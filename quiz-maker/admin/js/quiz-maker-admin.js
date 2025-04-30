@@ -343,7 +343,7 @@
             }
         });
 
-        $(document).find('.ays-quiz-live-title').html($(document).find('#ays-quiz-title').val());
+        $(document).find('.ays-quiz-live-title').html( aysEscapeHtml($(document).find('#ays-quiz-title').val()) );
 
         $(document).find('a[href="#tab2"]').on('click', function(){
             aysQuizDescriptionLivePreview();

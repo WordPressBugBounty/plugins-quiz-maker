@@ -1115,6 +1115,7 @@ class Quiz_Maker_Admin
         $quick_quiz_enable_questions_ordering_by_cat        = 'off';
         $quick_quiz_questions_numbering_by_category         = 'off';
         $quick_quiz_enable_question_category_description    = 'off';
+        $quick_quiz_enable_quiz_category_description        = 'off';
 
         $quick_quiz_custom_texts_start_button               = $gen_start_button;
         $quick_quiz_custom_texts_next_button                = $gen_next_button;
@@ -1498,6 +1499,9 @@ class Quiz_Maker_Admin
 
             // Show question category description
             $quick_quiz_enable_question_category_description = (isset( $_REQUEST['ays_quick_quiz_enable_question_category_description'] ) && $_REQUEST['ays_quick_quiz_enable_question_category_description'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_question_category_description'] ) ) : "off";
+
+            // Show quiz category description
+            $quick_quiz_enable_quiz_category_description = (isset( $_REQUEST['ays_quick_quiz_enable_quiz_category_description'] ) && $_REQUEST['ays_quick_quiz_enable_quiz_category_description'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_quiz_category_description'] ) ) : "off";
             
             
         }
@@ -1765,7 +1769,7 @@ class Quiz_Maker_Admin
             'quiz_custom_texts_check_button'                    => $quick_quiz_custom_texts_check_button,
             'quiz_custom_texts_login_button'                    => $quick_quiz_custom_texts_login_button,
             'quiz_display_messages_before_buttons'              => $quick_quiz_display_messages_before_buttons,
-            'quiz_enable_quiz_category_description'             => "off",
+            'quiz_enable_quiz_category_description'             => $quick_quiz_enable_quiz_category_description,
             'quiz_admin_note_text_transform'                    => $quick_quiz_admin_note_text_transform,
             'quiz_quest_explanation_text_transform'             => $quick_quiz_quest_explanation_text_transform,
             'quiz_right_answer_text_transform'                  => $quick_quiz_right_answer_text_transform,
