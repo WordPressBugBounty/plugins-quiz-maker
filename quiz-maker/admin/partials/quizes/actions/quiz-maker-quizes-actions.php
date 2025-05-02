@@ -1768,7 +1768,7 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                     <td class="ays-quiz-question-ordering-row ays-sort"><i class="ays_fa ays_fa_arrows" aria-hidden="true"></i></td>
                                     <td class="ays-quiz-question-question-row">
                                         <a href="<?php echo esc_url($edit_question_url); ?>" target="_blank" class="ays-edit-question" title="<?php echo esc_attr( __('Edit question', 'quiz-maker') ); ?>">
-                                            <?php echo $table_question ?>
+                                            <?php echo esc_html($table_question); ?>
                                         </a>
                                     </td>
                                     <td class="ays-quiz-question-type-row"><?php echo esc_html($ays_question_type); ?></td>
@@ -10005,7 +10005,7 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                         <?php endif; ?>
                                         </span>
                                     </td>
-                                    <td class="ays-modal-td-question"><?php echo $table_question; ?></td>
+                                    <td class="ays-modal-td-question"><?php echo esc_html($table_question); ?></td>
                                     <td><?php echo esc_html( $question_type ); ?></td>
                                     <td><?php echo $text; ?></td>
                                     <td class="ays-modal-td-category"><?php echo stripslashes($question["title"]); ?></td>

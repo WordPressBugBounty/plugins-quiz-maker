@@ -950,7 +950,7 @@ class Quiz_Maker_Admin
                         <td class="ays-sort"><i class="ays_fa ays_fa_arrows" aria-hidden="true"></i></td>
                         <td>                        
                             <a href="'. $edit_question_url .'" target="_blank" class="ays-edit-question" title="'. __('Edit question', 'quiz-maker') .'">
-                                ' . $table_question . '
+                                ' . esc_html($table_question) . '
                             </a> 
                         </td>
                         <td>' . $ays_question_type . '</td>
@@ -958,10 +958,10 @@ class Quiz_Maker_Admin
                         <td>' . stripslashes($data['id']) . '</td>
                         <td>
                             <input type="checkbox" class="ays_del_tr">
-                            <a href="'. $edit_question_url .'" target="_blank" class="ays-edit-question" title="'. __('Edit question', 'quiz-maker') .'">
+                            <a href="'. esc_url($edit_question_url) .'" target="_blank" class="ays-edit-question" title="'. __('Edit question', 'quiz-maker') .'">
                                 <i class="ays_fa ays_fa_pencil_square" aria-hidden="true"></i>
                             </a>
-                            <a href="javascript:void(0)" class="ays-delete-question" data-id="' . $data['id'] . '">
+                            <a href="javascript:void(0)" class="ays-delete-question" data-id="' . esc_attr($data['id']) . '">
                                 <i class="ays_fa ays_fa_minus_square" aria-hidden="true"></i>
                             </a>
                         </td>
@@ -1143,6 +1143,7 @@ class Quiz_Maker_Admin
         $quick_quiz_show_only_wrong_answers                 = 'off';
         $quick_quiz_enable_results_toggle                   = 'off';
         $quick_quiz_enable_default_hide_results_toggle      = 'off';
+        $quick_quiz_enable_early_finsh_comfirm_box          = 'on';
 
         // User Data
         $quick_quiz_show_information_form                   = 'on';
@@ -1502,6 +1503,9 @@ class Quiz_Maker_Admin
 
             // Show quiz category description
             $quick_quiz_enable_quiz_category_description = (isset( $_REQUEST['ays_quick_quiz_enable_quiz_category_description'] ) && $_REQUEST['ays_quick_quiz_enable_quiz_category_description'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_quiz_category_description'] ) ) : "off";
+
+            // Show wrong answers first
+            $quick_quiz_enable_early_finsh_comfirm_box = (isset( $_REQUEST['ays_quick_quiz_enable_early_finsh_comfirm_box'] ) && $_REQUEST['ays_quick_quiz_enable_early_finsh_comfirm_box'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_early_finsh_comfirm_box'] ) ) : "off";
             
             
         }
@@ -1680,7 +1684,7 @@ class Quiz_Maker_Admin
             'question_font_size'                                => $quick_quiz_question_font_size,
             'quiz_width_by_percentage_px'                       => 'pixels',
             'questions_hint_icon_or_text'                       => 'default',
-            'enable_early_finsh_comfirm_box'                    => 'on',
+            'enable_early_finsh_comfirm_box'                    => $quick_quiz_enable_early_finsh_comfirm_box,
             'enable_questions_ordering_by_cat'                  => $quick_quiz_enable_questions_ordering_by_cat,
             'show_schedule_timer'                               => 'off',
             'show_timer_type'                                   => 'countdown',
