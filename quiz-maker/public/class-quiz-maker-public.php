@@ -2092,15 +2092,15 @@ class Quiz_Maker_Public
         
         
         $buttons = array(
-            "enableArrows"      => $enable_arrows,
-            "arrows"            => $arrows_visibility,
-            "nextArrow"         => $next_arrow_visibility,
-            "prevArrow"         => $prev_arrow_visibility,
-            "nextButton"        => $next_button_visibility,
-            "prevButton"        => $prev_button_visibility,
-            "earlyButton"       => $enable_early_finish,
-            "clearAnswerButton" => $enable_clear_answer,
-            "quizArrowType"     => $quiz_arrow_type,
+            "enableArrows"          => $enable_arrows,
+            "arrows"                => $arrows_visibility,
+            "nextArrow"             => $next_arrow_visibility,
+            "prevArrow"             => $prev_arrow_visibility,
+            "nextButton"            => $next_button_visibility,
+            "prevButton"            => $prev_button_visibility,
+            "earlyButton"           => $enable_early_finish,
+            "clearAnswerButton"     => $enable_clear_answer,
+            "quizArrowType"         => $quiz_arrow_type,
         );
         
         /*
@@ -4212,7 +4212,7 @@ class Quiz_Maker_Public
                 break;
         }
         
-        $custom_class = isset($options['custom_class']) && $options['custom_class'] != "" ? $options['custom_class'] : "";
+        $custom_class = isset($options['custom_class']) && $options['custom_class'] != "" ? esc_attr( stripslashes($options['custom_class']) ) : "";
 		$quiz_gradient = '';
 		if($enable_background_gradient){
 			$quiz_gradient = " data-bg-gradient='linear-gradient($quiz_gradient_direction, $background_gradient_color_1, $background_gradient_color_2)' ";
@@ -4258,7 +4258,7 @@ class Quiz_Maker_Public
         }
 
         $quiz_container_first_part = "
-            <div class='ays-quiz-container ".$quiz_theme." ".$quiz_bg_img_class." ".$custom_class."' data-quest-effect='".$quest_animation."' ".$quiz_gradient." data-hide-bg-image='".$quiz_bg_img_in_finish_page."' id='ays-quiz-container-" . $id . "'>
+            <div class='ays-quiz-container ".$quiz_theme." ".$quiz_bg_img_class." ". esc_attr($custom_class) ."' data-quest-effect='".$quest_animation."' ".$quiz_gradient." data-hide-bg-image='".$quiz_bg_img_in_finish_page."' id='ays-quiz-container-" . $id . "'>
                 {$live_progress_bar}
                 {$ays_quiz_music_html}
                 <div class='ays-questions-container'>

@@ -443,7 +443,7 @@ class Quizes_List_Table extends WP_List_Table{
             $quiz_bg_image_position = (isset($_POST['ays_quiz_bg_image_position']) && sanitize_text_field( $_POST['ays_quiz_bg_image_position'] ) != "") ? sanitize_text_field( $_POST['ays_quiz_bg_image_position'] ) : 'center center';
 
             // Custom class for quiz container
-            $custom_class = (isset($_POST['ays_custom_class']) && sanitize_text_field( $_POST['ays_custom_class'] ) != "") ? sanitize_text_field( $_POST['ays_custom_class'] ) : '';
+            $custom_class = (isset($_POST['ays_custom_class']) && sanitize_text_field( $_POST['ays_custom_class'] ) != "") ? stripslashes( sanitize_text_field( $_POST['ays_custom_class'] ) ) : '';
 
             // Social Media links
             $enable_social_links = (isset($_POST['ays_enable_social_links']) && sanitize_text_field( $_POST['ays_enable_social_links'] ) == "on") ? 'on' : 'off';
@@ -1260,16 +1260,16 @@ class Quizes_List_Table extends WP_List_Table{
                 $quiz_result = $wpdb->insert(
                     $quiz_table,
                     array(
-                        'title'             => $title,
-                        'description'       => $description,
-                        'quiz_image'        => $image,
-                        'quiz_category_id'  => $quiz_category_id,
-                        'question_ids'      => $question_ids,
-                        'published'         => $published,
-                        'author_id'         => $quiz_create_author,
-                        'ordering'          => $ordering,
-                        'quiz_url'          => $main_quiz_url,
-                        'options'           => json_encode($options)
+                        'title'                 => $title,
+                        'description'           => $description,
+                        'quiz_image'            => $image,
+                        'quiz_category_id'      => $quiz_category_id,
+                        'question_ids'          => $question_ids,
+                        'published'             => $published,
+                        'author_id'             => $quiz_create_author,
+                        'ordering'              => $ordering,
+                        'quiz_url'              => $main_quiz_url,
+                        'options'               => json_encode($options)
                     ),
                     array(
                         '%s', // title
@@ -1299,15 +1299,15 @@ class Quizes_List_Table extends WP_List_Table{
                 $quiz_result = $wpdb->update(
                     $quiz_table,
                     array(
-                        'title'             => $title,
-                        'description'       => $description,
-                        'quiz_image'        => $image,
-                        'quiz_category_id'  => $quiz_category_id,
-                        'question_ids'      => $question_ids,
-                        'published'         => $published,
-                        'author_id'         => $quiz_create_author,
-                        'quiz_url'          => $main_quiz_url,
-                        'options'           => json_encode($options)
+                        'title'                 => $title,
+                        'description'           => $description,
+                        'quiz_image'            => $image,
+                        'quiz_category_id'      => $quiz_category_id,
+                        'question_ids'          => $question_ids,
+                        'published'             => $published,
+                        'author_id'             => $quiz_create_author,
+                        'quiz_url'              => $main_quiz_url,
+                        'options'               => json_encode($options)
                     ),
                     array( 'id' => $id ),
                     array(

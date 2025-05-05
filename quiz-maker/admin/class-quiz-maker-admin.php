@@ -1116,6 +1116,7 @@ class Quiz_Maker_Admin
         $quick_quiz_questions_numbering_by_category         = 'off';
         $quick_quiz_enable_question_category_description    = 'off';
         $quick_quiz_enable_quiz_category_description        = 'off';
+        $quick_quiz_enable_live_progress_bar                = 'off';
 
         $quick_quiz_custom_texts_start_button               = $gen_start_button;
         $quick_quiz_custom_texts_next_button                = $gen_next_button;
@@ -1506,6 +1507,9 @@ class Quiz_Maker_Admin
 
             // Show wrong answers first
             $quick_quiz_enable_early_finsh_comfirm_box = (isset( $_REQUEST['ays_quick_quiz_enable_early_finsh_comfirm_box'] ) && $_REQUEST['ays_quick_quiz_enable_early_finsh_comfirm_box'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_early_finsh_comfirm_box'] ) ) : "off";
+
+            // Enable live progress bar
+            $quick_quiz_enable_live_progress_bar = (isset( $_REQUEST['ays_quick_quiz_enable_live_progress_bar'] ) && $_REQUEST['ays_quick_quiz_enable_live_progress_bar'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_live_progress_bar'] ) ) : "off";
             
             
         }
@@ -1797,6 +1801,7 @@ class Quiz_Maker_Admin
             'quiz_timer_warning_text_color'                     => "#ff0000",
             'quiz_enable_default_hide_results_toggle'           => $quick_quiz_enable_default_hide_results_toggle,
             'quiz_show_restart_button_on_quiz_fail'             => "off",
+            'enable_live_progress_bar'                          => $quick_quiz_enable_live_progress_bar,
         );
 
 

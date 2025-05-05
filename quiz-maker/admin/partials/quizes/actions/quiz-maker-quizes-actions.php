@@ -816,7 +816,7 @@ $image_sizing = (isset($options['image_sizing']) && $options['image_sizing'] != 
 $quiz_bg_image_position = (isset($options['quiz_bg_image_position']) && $options['quiz_bg_image_position'] != "") ? $options['quiz_bg_image_position'] : 'center center';
 
 // Custom class for quiz container
-$custom_class = (isset($options['custom_class']) && $options['custom_class'] != "") ? esc_attr($options['custom_class']) : '';
+$custom_class = (isset($options['custom_class']) && $options['custom_class'] != "") ? esc_attr( stripslashes($options['custom_class']) ) : '';
 
 // Social Media links
 $enable_social_links = (isset($options['enable_social_links']) && $options['enable_social_links'] == "on") ? true : false;
@@ -2678,7 +2678,7 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                         </label>
                                     </div>
                                     <div class="col-sm-7 ays_divider_left">
-                                        <input type="text" class="ays-text-input" name="ays_custom_class" id="ays_custom_class" placeholder="myClass myAnotherClass..." value="<?php echo $custom_class; ?>">
+                                        <input type="text" class="ays-text-input" name="ays_custom_class" id="ays_custom_class" placeholder="myClass myAnotherClass..." value="<?php echo esc_attr($custom_class); ?>">
                                     </div>
                                 </div><!-- Custom class for quiz container -->
                                 <hr/>

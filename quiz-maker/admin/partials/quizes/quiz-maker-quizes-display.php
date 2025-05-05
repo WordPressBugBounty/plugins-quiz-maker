@@ -538,6 +538,17 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <hr/>
                                         <div class="form-group row">
                                             <div class="col-sm-4">
+                                                <label for="ays_quick_quiz_enable_live_progress_bar">
+                                                    <?php echo esc_html__('Enable live progress bar','quiz-maker'); ?>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-1">
+                                                <input type="checkbox" class="ays-enable-timer1" id="ays_quick_quiz_enable_live_progress_bar" name="ays_quick_quiz_enable_live_progress_bar" value="on"/>
+                                            </div>
+                                        </div> <!-- Enable live progress bar -->
+                                        <hr/>
+                                        <div class="form-group row">
+                                            <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_enable_rtl_direction">
                                                     <?php echo esc_html__('Use RTL Direction','quiz-maker'); ?>
                                                 </label>
