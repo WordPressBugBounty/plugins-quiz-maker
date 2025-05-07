@@ -1117,6 +1117,7 @@ class Quiz_Maker_Admin
         $quick_quiz_enable_question_category_description    = 'off';
         $quick_quiz_enable_quiz_category_description        = 'off';
         $quick_quiz_enable_live_progress_bar                = 'off';
+        $quick_quiz_enable_percent_view_option              = 'off';
 
         $quick_quiz_custom_texts_start_button               = $gen_start_button;
         $quick_quiz_custom_texts_next_button                = $gen_next_button;
@@ -1510,6 +1511,9 @@ class Quiz_Maker_Admin
 
             // Enable live progress bar
             $quick_quiz_enable_live_progress_bar = (isset( $_REQUEST['ays_quick_quiz_enable_live_progress_bar'] ) && $_REQUEST['ays_quick_quiz_enable_live_progress_bar'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_live_progress_bar'] ) ) : "off";
+
+            // Enable percent view
+            $quick_quiz_enable_percent_view_option = (isset( $_REQUEST['ays_quick_quiz_enable_percent_view_option'] ) && $_REQUEST['ays_quick_quiz_enable_percent_view_option'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_percent_view_option'] ) ) : "off";
             
             
         }
@@ -1802,6 +1806,7 @@ class Quiz_Maker_Admin
             'quiz_enable_default_hide_results_toggle'           => $quick_quiz_enable_default_hide_results_toggle,
             'quiz_show_restart_button_on_quiz_fail'             => "off",
             'enable_live_progress_bar'                          => $quick_quiz_enable_live_progress_bar,
+            'enable_percent_view'                               => $quick_quiz_enable_percent_view_option,
         );
 
 

@@ -457,13 +457,13 @@ class Quizes_List_Table extends WP_List_Table{
                 'behance_link'      => '',
             );
             
-            $linkedin_link = isset($ays_social_links['ays_linkedin_link']) && sanitize_text_field( $ays_social_links['ays_linkedin_link'] ) != '' ? sanitize_text_field( $ays_social_links['ays_linkedin_link'] ) : '';
-            $facebook_link = isset($ays_social_links['ays_facebook_link']) && sanitize_text_field( $ays_social_links['ays_facebook_link'] ) != '' ? sanitize_text_field( $ays_social_links['ays_facebook_link'] ) : '';
-            $twitter_link = isset($ays_social_links['ays_twitter_link']) && sanitize_text_field( $ays_social_links['ays_twitter_link'] ) != '' ? sanitize_text_field( $ays_social_links['ays_twitter_link'] ) : '';
-            $vkontakte_link = isset($ays_social_links['ays_vkontakte_link']) && sanitize_text_field( $ays_social_links['ays_vkontakte_link'] ) != '' ? sanitize_text_field( $ays_social_links['ays_vkontakte_link'] ) : '';
-            $instagram_link = isset($ays_social_links['ays_instagram_link']) && sanitize_text_field( $ays_social_links['ays_instagram_link'] ) != '' ? sanitize_text_field( $ays_social_links['ays_instagram_link'] ) : '';
-            $youtube_link = isset($ays_social_links['ays_youtube_link']) && sanitize_text_field( $ays_social_links['ays_youtube_link'] ) != '' ? sanitize_text_field( $ays_social_links['ays_youtube_link'] ) : '';
-            $behance_link = isset($ays_social_links['ays_behance_link']) && sanitize_text_field( $ays_social_links['ays_behance_link'] ) != '' ? sanitize_text_field( $ays_social_links['ays_behance_link'] ) : '';
+            $linkedin_link = isset($ays_social_links['ays_linkedin_link']) && sanitize_text_field( $ays_social_links['ays_linkedin_link'] ) != '' ? sanitize_url( $ays_social_links['ays_linkedin_link'] ) : '';
+            $facebook_link = isset($ays_social_links['ays_facebook_link']) && sanitize_text_field( $ays_social_links['ays_facebook_link'] ) != '' ? sanitize_url( $ays_social_links['ays_facebook_link'] ) : '';
+            $twitter_link = isset($ays_social_links['ays_twitter_link']) && sanitize_text_field( $ays_social_links['ays_twitter_link'] ) != '' ? sanitize_url( $ays_social_links['ays_twitter_link'] ) : '';
+            $vkontakte_link = isset($ays_social_links['ays_vkontakte_link']) && sanitize_text_field( $ays_social_links['ays_vkontakte_link'] ) != '' ? sanitize_url( $ays_social_links['ays_vkontakte_link'] ) : '';
+            $instagram_link = isset($ays_social_links['ays_instagram_link']) && sanitize_text_field( $ays_social_links['ays_instagram_link'] ) != '' ? sanitize_url( $ays_social_links['ays_instagram_link'] ) : '';
+            $youtube_link = isset($ays_social_links['ays_youtube_link']) && sanitize_text_field( $ays_social_links['ays_youtube_link'] ) != '' ? sanitize_url( $ays_social_links['ays_youtube_link'] ) : '';
+            $behance_link = isset($ays_social_links['ays_behance_link']) && sanitize_text_field( $ays_social_links['ays_behance_link'] ) != '' ? sanitize_url( $ays_social_links['ays_behance_link'] ) : '';
             
             $social_links = array(
                 'linkedin_link'     => $linkedin_link,

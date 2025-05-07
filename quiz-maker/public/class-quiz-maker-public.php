@@ -2579,13 +2579,13 @@ class Quiz_Maker_Public
         );
         $ays_social_links_array = array();
 
-        $linkedin_link = isset($social_links['linkedin_link']) && $social_links['linkedin_link'] != '' ? $social_links['linkedin_link'] : '';
-        $facebook_link = isset($social_links['facebook_link']) && $social_links['facebook_link'] != '' ? $social_links['facebook_link'] : '';
-        $twitter_link = isset($social_links['twitter_link']) && $social_links['twitter_link'] != '' ? $social_links['twitter_link'] : '';
-        $vkontakte_link = isset($social_links['vkontakte_link']) && $social_links['vkontakte_link'] != '' ? $social_links['vkontakte_link'] : '';
-        $instagram_link = isset($social_links['instagram_link']) && $social_links['instagram_link'] != '' ? $social_links['instagram_link'] : '';
-        $youtube_link = isset($social_links['youtube_link']) && $social_links['youtube_link'] != '' ? $social_links['youtube_link'] : '';
-        $behance_link = isset($social_links['behance_link']) && $social_links['behance_link'] != '' ? $social_links['behance_link'] : '';
+        $linkedin_link = isset($social_links['linkedin_link']) && $social_links['linkedin_link'] != '' ? esc_url($social_links['linkedin_link']) : '';
+        $facebook_link = isset($social_links['facebook_link']) && $social_links['facebook_link'] != '' ? esc_url($social_links['facebook_link']) : '';
+        $twitter_link = isset($social_links['twitter_link']) && $social_links['twitter_link'] != '' ? esc_url($social_links['twitter_link']) : '';
+        $vkontakte_link = isset($social_links['vkontakte_link']) && $social_links['vkontakte_link'] != '' ? esc_url($social_links['vkontakte_link']) : '';
+        $instagram_link = isset($social_links['instagram_link']) && $social_links['instagram_link'] != '' ? esc_url($social_links['instagram_link']) : '';
+        $youtube_link = isset($social_links['youtube_link']) && $social_links['youtube_link'] != '' ? esc_url($social_links['youtube_link']) : '';
+        $behance_link = isset($social_links['behance_link']) && $social_links['behance_link'] != '' ? esc_url($social_links['behance_link']) : '';
 
         if($linkedin_link != ''){
             $ays_social_links_array['Linkedin'] = $linkedin_link;
@@ -2629,10 +2629,10 @@ class Quiz_Maker_Public
                 }
 
                 $ays_social_links .= "<!-- Branded " . $media . " button -->
-                    <a class='ays-share-btn ays-share-btn-branded ays-share-btn-rounded ays-share-btn-" . strtolower($media) . "'
-                        href='" . $link . "'
+                    <a class='ays-share-btn ays-share-btn-branded ays-share-btn-rounded ays-share-btn-" . esc_attr(strtolower($media)) . "'
+                        href='" . esc_url($link) . "'
                         target='_blank'
-                        title='" . $custom_media . " link'>
+                        title='" . esc_attr($custom_media) . " link'>
                         <span class='ays-quiz-share-btn-icon'>". $icon_html ."</span>
                     </a>";
             }
