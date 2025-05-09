@@ -469,9 +469,14 @@ class Quiz_Maker_Activator
         }
     }
 
-    public static function ays_quiz_update_db_check()
-    {
+    public static function ays_quiz_update_db_check() {
         global $ays_quiz_db_version;
+
+        $is_plugin_downloaded = get_site_option('ays_quiz_db_version', false) === false;
+        if ($is_plugin_downloaded) {
+            update_option('ays_quiz_first_time_activation_page', true);
+        }
+
         if (get_site_option('ays_quiz_db_version') != $ays_quiz_db_version) {
             self::activate();
         }

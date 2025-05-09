@@ -161,6 +161,11 @@ class Quiz_Maker_Admin
         $version2 = '5.5';
         $versionCompare = $this->versionCompare($version1, $operator, $version2);
 
+        $check_terms_agreement = get_option('ays_quiz_agree_terms');
+        if($check_terms_agreement === 'true' && strpos($hook_suffix, $this->plugin_name) !== false){
+            wp_enqueue_script( $this->plugin_name . '-hotjar', plugin_dir_url(__FILE__) . 'js/extras/quiz-maker-hotjar.js', array(), $this->version, false);
+        }
+
         if ($versionCompare) {
             wp_enqueue_script( $this->plugin_name.'-wp-load-scripts', plugin_dir_url(__FILE__) . 'js/ays-wp-load-scripts.js', array(), $this->version, true);
         }
@@ -3148,10 +3153,10 @@ class Quiz_Maker_Admin
                     // $this->ays_quiz_chart_bulider_message($ays_quiz_ishmar);
                     $this->ays_quiz_fox_lms_integration_message($ays_quiz_ishmar);
                 } else {
-                    if( $this->get_max_id('quizes') > 1 ){
+                    // if( $this->get_max_id('quizes') > 1 ){
                         // $this->ays_quiz_new_mega_bundle_message($ays_quiz_ishmar);
                         $this->ays_quiz_new_mega_bundle_message_2025($ays_quiz_ishmar);
-                    }
+                    // }
                 }
             }
         }

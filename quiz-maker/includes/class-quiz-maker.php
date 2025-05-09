@@ -116,6 +116,11 @@ class Quiz_Maker {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-quiz-maker-i18n.php';
 
 		/**
+         * The class responsible for showing Quiz Maker Welcome page.
+         */
+        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-quiz-maker-ays-welcome.php';
+
+		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-quiz-maker-admin.php';
@@ -234,7 +239,7 @@ class Quiz_Maker {
         $this->loader->add_action( 'admin_menu', $plugin_admin, 'add_plugin_general_settings_submenu', 130 );
         $this->loader->add_action( 'admin_menu', $plugin_admin, 'add_plugin_featured_plugins_submenu', 135 );
         // $this->loader->add_action( 'admin_menu', $plugin_admin, 'add_plugin_subscribe_email', 140 );
-        $this->loader->add_action( 'admin_menu', $plugin_admin, 'add_plugin_addons_submenu', 140 );
+        // $this->loader->add_action( 'admin_menu', $plugin_admin, 'add_plugin_addons_submenu', 140 );
         $this->loader->add_action( 'admin_menu', $plugin_admin, 'add_plugin_quiz_features_submenu', 145 );
 
         $this->loader->add_action('wp_ajax_gen_ays_quiz_shortcode', $plugin_admin, 'gen_ays_quiz_shortcode_callback');
