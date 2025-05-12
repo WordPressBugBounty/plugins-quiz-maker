@@ -28,8 +28,7 @@ $plus_icon_svg = "<span class=''><img src='". AYS_QUIZ_ADMIN_URL ."/images/icons
             echo esc_html(get_admin_page_title());
         ?>
     </h1>
-
-
+    <?php do_action('ays_quiz_sale_banner'); ?>
     <div class="question-action-butons">
         <!--<div class="ays-quiz-export-import-box">
             <div class="ays-quiz-export-import-video-tutorial">

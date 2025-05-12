@@ -26,6 +26,7 @@ if(isset($_GET['ays_quiz_tab'])){
                 echo esc_html__('Integrations','quiz-maker');
             ?>
             </h1>
+            <?php do_action('ays_quiz_sale_banner'); ?>
             <hr/>
             <div class="form-group ays-settings-wrapper">
                 <div class="ays-quiz-tabs-wrapper" style="border: unset;">

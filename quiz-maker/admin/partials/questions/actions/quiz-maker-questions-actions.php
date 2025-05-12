@@ -342,6 +342,12 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
 
 <div class="wrap ays-quiz-dashboard-main-wrap ays-quiz-dashboard-main-nowrap">
     <div class="container-fluid">
+        <h1 class="wp-heading-inline">
+        <?php
+            echo wp_kses_post($heading);
+        ?>
+        </h1>
+        <?php do_action('ays_quiz_sale_banner'); ?>
         <form method="post" class="ays-quiz-main-form" id="ays-question-form">
             <input type="hidden" name="ays_question_tab" value="<?php echo esc_attr($ays_question_tab); ?>">
             <input type="hidden" name="ays_question_ctrate_date" value="<?php echo esc_attr( $question_create_date ); ?>">
@@ -355,11 +361,6 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                     </a>
                 </div>
             </div>
-            <h1 class="wp-heading-inline">
-            <?php
-                echo wp_kses_post($heading);
-            ?>
-            </h1>
             <div class="ays-top-menu-container-wrapper">
                 <div class="ays-top-menu-wrapper">
                     <div class="ays_menu_left" data-scroll="0"><i class="ays_fa ays_fa_angle_left"></i></div>

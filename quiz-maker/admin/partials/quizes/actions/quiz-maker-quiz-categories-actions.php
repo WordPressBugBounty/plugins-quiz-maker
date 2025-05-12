@@ -63,6 +63,7 @@ $quiz_wp_editor_height = (isset($gen_options['quiz_wp_editor_height']) && $gen_o
             </div>
         </div>
         <h1><?php echo wp_kses_post($heading); ?></h1>
+        <?php do_action('ays_quiz_sale_banner'); ?>
         <div>
             <?php if($id !== null): ?>
             <div class="row">

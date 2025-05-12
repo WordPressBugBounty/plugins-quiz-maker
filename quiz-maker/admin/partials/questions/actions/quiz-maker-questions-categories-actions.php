@@ -69,6 +69,7 @@ $quiz_wp_editor_height = (isset($gen_options['quiz_wp_editor_height']) && $gen_o
             </div>
         </div>
         <h1><?php echo wp_kses_post($heading); ?></h1>
+        <?php do_action('ays_quiz_sale_banner'); ?>
         <hr/>
         <form class="ays-quiz-category-form ays-quiz-questions-real-category-form" id="ays-quiz-category-form" method="post">
             <div id="tab1" class="ays-quiz-tab-content ays-quiz-tab-content-active">

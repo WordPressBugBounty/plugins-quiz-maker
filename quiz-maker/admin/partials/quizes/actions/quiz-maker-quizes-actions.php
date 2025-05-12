@@ -1440,6 +1440,12 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
 <style id="ays_live_custom_css"></style>
 <div class="wrap ays-quiz-dashboard-main-wrap">
     <div class="container-fluid">
+        <h1 class="wp-heading-inline">
+            <?php
+                echo $heading;
+            ?>
+        </h1>
+        <?php do_action('ays_quiz_sale_banner'); ?>
         <form class="ays-quiz-category-form ays-quiz-main-form" id="ays-quiz-category-form" method="post">
             <input type="hidden" name="ays_quiz_tab" value="<?php echo esc_attr($ays_quiz_tab); ?>">
             <input type="hidden" name="ays_quiz_ctrate_date" value="<?php echo esc_attr($quiz_create_date); ?>">
@@ -1459,11 +1465,6 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                     </a>
                 </div>
             </div>
-            <h1 class="wp-heading-inline">
-                <?php
-                    echo $heading;
-                ?>
-            </h1>
             <div>
                 <div class="ays-quiz-subtitle-main-box ays-quiz-edit-page-subtitle-container">
                     <p class="ays-subtitle">

@@ -24,6 +24,7 @@ $plus_icon_svg = "<span class=''><img src='". AYS_QUIZ_ADMIN_URL ."/images/icons
             echo esc_html(get_admin_page_title());
         ?>
     </h1>
+    <?php do_action('ays_quiz_sale_banner'); ?>
     <div class="ays-quiz-add-new-button-box">
         <a href="<?php echo esc_url( admin_url('admin.php') . "?page=". esc_attr( $_REQUEST['page'] ) . "&action=add" ); ?>" class="page-title-action button-primary ays-quiz-add-new-button ays-quiz-add-new-button-new-design">
             <span class=''><img src='<?php echo esc_url(AYS_QUIZ_ADMIN_URL); ?>/images/icons/plus-icon.svg'></span>

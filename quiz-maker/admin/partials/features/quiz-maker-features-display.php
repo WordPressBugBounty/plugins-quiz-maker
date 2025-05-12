@@ -22,6 +22,7 @@
     <h1 class="wp-heading-inline">
         <?php echo esc_html__(esc_html(get_admin_page_title()), 'quiz-maker'); ?>
     </h1>
+    <?php do_action('ays_quiz_sale_banner'); ?>
     <div class="ays-quiz-features-wrap">
         <div class="comparison">
             <table>

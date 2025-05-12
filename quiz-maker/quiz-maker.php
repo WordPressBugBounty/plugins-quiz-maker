@@ -16,7 +16,7 @@ ob_start();
  * Plugin Name:       Quiz Maker
  * Plugin URI:        https://ays-pro.com/wordpress/quiz-maker
  * Description:       Create powerful and engaging quizzes, tests, and exams in minutes. Build an unlimited number of quizzes and questions.
- * Version:           6.7.0.11
+ * Version:           6.7.0.12
  * Author:            Quiz Maker team
  * Author URI:        https://ays-pro.com/
  * License:           GPL-2.0+
@@ -36,8 +36,8 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'AYS_QUIZ_NAME_VERSION', '6.7.0.11' );
-define( 'AYS_QUIZ_VERSION', '6.7.0.11' );
+define( 'AYS_QUIZ_NAME_VERSION', '6.7.0.12' );
+define( 'AYS_QUIZ_VERSION', '6.7.0.12' );
 define( 'AYS_QUIZ_NAME', 'quiz-maker' );
 
 if( ! defined( 'AYS_QUIZ_BASENAME' ) )
@@ -153,12 +153,20 @@ function quiz_maker_general_admin_notice(){
                             </a>
                             <span class="ays-quiz-logo-container-one-time-text"><?php echo esc_html__( "One-time payment", 'quiz-maker' ); ?></span>
                         </div>
+
+                        <div class="ays-quiz-coupon-container">
+                            <div class="ays-quiz-coupon-box ays-quiz-copy-element-box-parent">
+                                <!-- <img src="<?php echo esc_attr(AYS_QUIZ_ADMIN_URL . '/images/icons/receipt-solid.svg'); ?>" class="ays-quiz-svg-light-hover"> -->
+                                <span onClick="selectAndCopyElementContents(this)" class="ays-quiz-copy-element-box" data-toggle="tooltip" title="<?php echo esc_html__( "Click for copy", 'quiz-maker' ); ?>"><?php echo esc_html__( "spring2025", 'quiz-maker' ); ?></span>
+                            </div>
+                            <span class="ays-quiz-logo-container-one-time-text"><?php echo esc_html__( "Extra 20% Coupon", 'quiz-maker' ); ?></span>
+                        </div>
                     </div>
                     <ul id="menu">
                         <li class="modile-ddmenu-lg"><a class="ays-btn" href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=quiz-maker-top-banner-pricing-link" target="_blank"><?php echo esc_html__( "Pricing", 'quiz-maker' ); ?></a></li>
                         <li class="modile-ddmenu-lg"><a class="ays-btn" href="https://quiz-plugin.com/wordpress-quiz-plugin-free-demo/" target="_blank"><?php echo esc_html__( "Demo", 'quiz-maker' ); ?></a></li>
                         <li class="modile-ddmenu-lg modile-ddmenu-lg-custom"><a class="ays-btn" href="https://wordpress.org/support/plugin/quiz-maker/" target="_blank"><?php echo esc_html__( "Free Support", 'quiz-maker' ); ?></a></li>
-                        <li class="modile-ddmenu-xs take_survay"><a class="ays-btn" href="https://ays-demo.com/quiz-maker-plugin-feedback-survey/" target="_blank"><?php echo esc_html__( "Make a Suggestion", 'quiz-maker' ); ?></a></li>
+                        <li class="modile-ddmenu-lg take_survay modile-ddmenu-lg-custom"><a class="ays-btn" href="https://ays-demo.com/quiz-maker-plugin-feedback-survey/" target="_blank"><?php echo esc_html__( "Make a Suggestion", 'quiz-maker' ); ?></a></li>
                         <?php if($is_chat_available): ?>
                         <li class="modile-ddmenu-xs"><a class="ays-btn" href="https://ays-pro.com/onlinesupport/" target="_blank"><?php echo esc_html__( "Live Chat", 'quiz-maker' ); ?></a></li>
                         <?php endif; ?>
@@ -167,6 +175,7 @@ function quiz_maker_general_admin_notice(){
                             <a class="toggle_ddmenu" href="javascript:void(0);"><i class="ays_fa ays_fa_ellipsis_h"></i></a>
                             <ul class="ddmenu" data-expanded="false">
                                 <li><a class="ays-btn" href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=quiz-maker-top-banner-pricing-link" target="_blank"><?php echo esc_html__( "Pricing", 'quiz-maker' ); ?></a></li>
+                                <li class="take_survay"><a class="ays-btn" href="https://ays-demo.com/quiz-maker-plugin-feedback-survey/" target="_blank"><?php echo esc_html__( "Make a Suggestion", 'quiz-maker' ); ?></a></li>
                                 <li><a class="ays-btn" href="https://quiz-plugin.com/wordpress-quiz-plugin-free-demo/" target="_blank"><?php echo esc_html__( "Demo", 'quiz-maker' ); ?></a></li>
                                 <li><a class="ays-btn" href="https://wordpress.org/support/plugin/quiz-maker/" target="_blank"><?php echo esc_html__( "Free Support", 'quiz-maker' ); ?></a></li>
                                 <li><a class="ays-btn" href="https://ays-pro.com/contact" target="_blank"><?php echo esc_html__( "Contact us", 'quiz-maker' ); ?></a></li>

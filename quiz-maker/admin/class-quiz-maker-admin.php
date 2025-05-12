@@ -320,6 +320,11 @@ class Quiz_Maker_Admin
                 wp_dequeue_style('bppiv-custom-style');
             }
         }
+
+        if (is_plugin_active('search-replace-for-block-editor/search-replace-for-block-editor.php')) {
+            wp_deregister_script('search-replace-for-block-editor');
+            wp_dequeue_script('search-replace-for-block-editor');
+        }
     }
 
 
@@ -3154,8 +3159,8 @@ class Quiz_Maker_Admin
                     $this->ays_quiz_fox_lms_integration_message($ays_quiz_ishmar);
                 } else {
                     // if( $this->get_max_id('quizes') > 1 ){
-                        // $this->ays_quiz_new_mega_bundle_message($ays_quiz_ishmar);
-                        $this->ays_quiz_new_mega_bundle_message_2025($ays_quiz_ishmar);
+                        $this->ays_quiz_new_mega_bundle_message($ays_quiz_ishmar);
+                        // $this->ays_quiz_new_mega_bundle_message_2025($ays_quiz_ishmar);
                     // }
                 }
             }
@@ -3722,7 +3727,7 @@ class Quiz_Maker_Admin
         if($ishmar == 0 ){
             $content = array();
 
-            $quiz_cta_button_link = esc_url('https://ays-pro.com/mega-bundle?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=mega-bundle-sale-banner' . AYS_QUIZ_VERSION);
+            $quiz_cta_button_link = esc_url('https://ays-pro.com/mega-bundle?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=mega-bundle-sale-banner-' . AYS_QUIZ_VERSION);
 
             $content[] = '<div id="ays-quiz-new-mega-bundle-dicount-month-main" class="notice notice-success is-dismissible ays_quiz_dicount_info">';
                 $content[] = '<div id="ays-quiz-dicount-month" class="ays_quiz_dicount_month">';
@@ -3777,9 +3782,9 @@ class Quiz_Maker_Admin
 
                                 $content[] = '<div id="ays-quiz-countdown">';
 
-                                    $content[] = '<div>';
-                                        $content[] = __( "Offer ends in:", 'quiz-maker' );
-                                    $content[] = '</div>';
+                                    // $content[] = '<div>';
+                                    //     $content[] = __( "Offer ends in:", 'quiz-maker' );
+                                    // $content[] = '</div>';
 
                                     $content[] = '<ul>';
                                         $content[] = '<li><span id="ays-quiz-countdown-days"></span>'. __( "Days", 'quiz-maker' ) .'</li>';

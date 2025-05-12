@@ -1904,7 +1904,7 @@ div#ays-quiz-dicount-month-main.ays_quiz_dicount_info.ays_quiz_chart_bulider_con
 
 
 /* New Mega Bundle Banner Quiz | Start */
-/* 
+
 div#ays-quiz-new-mega-bundle-dicount-month-main {
     border: 0;
     background: #FFF;
@@ -1949,6 +1949,7 @@ div#ays-quiz-new-mega-bundle-dicount-month-main.ays_quiz_dicount_info {
     background-position: center right;
     background-repeat: no-repeat;
     background-size: cover;
+    background-color: #5551FF;
 }
 
 #ays-quiz-new-mega-bundle-dicount-month-main .ays_quiz_dicount_month {
@@ -2377,7 +2378,7 @@ div#ays-quiz-new-mega-bundle-dicount-month-main button.notice-dismiss:before{
         min-width: 50px;
     }
 } 
-*/
+
 /* New Mega Bundle Banner Quiz | End */
 
 
@@ -4438,7 +4439,7 @@ div#ays-quiz-christmas-top-bundle-dicount-month-main button.notice-dismiss:befor
 /* 2024 | Christmas top banner | End */
 
 /* New Mega Bundle 2025 Banner Quiz | Start */
-
+/*
 div#ays-quiz-new-mega-bundle-2025-dicount-month-main {
     border: 0;
     background: #FFF;
@@ -4480,10 +4481,7 @@ div#ays-quiz-new-mega-bundle-2025-dicount-month-main .btn-link {
 }
 
 div#ays-quiz-new-mega-bundle-2025-dicount-month-main.ays_quiz_dicount_info {
-    /*background-image: url("../images/new-mega-bundle-logo-background.svg"); 
-    background-position: center right;
-    background-repeat: no-repeat;
-    background-size: cover;*/
+
 }
 
 #ays-quiz-new-mega-bundle-2025-dicount-month-main .ays_quiz_dicount_month {
@@ -4665,8 +4663,6 @@ div#ays-quiz-new-mega-bundle-2025-dicount-month-main.ays_quiz_dicount_info {
     min-height: 62px;
     min-width: 62px;
     border-radius: 4.273px;
-    /*border: 0.534px solid #F4F4F4;*/
-    /*background: #9896ED;*/
     background: transparent;
     border: unset;
 }
@@ -4684,16 +4680,6 @@ div#ays-quiz-new-mega-bundle-2025-dicount-month-main.ays_quiz_dicount_info {
 #ays-quiz-new-mega-bundle-2025-dicount-month-main .ays-quiz-dicount-wrap-box li {
     position: relative;
 }
-
-/*#ays-quiz-new-mega-bundle-2025-dicount-month-main .ays-quiz-dicount-wrap-box li span:after {
-    content: ":";
-    color: #fff;
-    position: absolute;
-    top: 10px;
-    right: -5px;
-    font-size: 40px;
-
-}*/
 
 #ays-quiz-new-mega-bundle-2025-dicount-month-main .ays-quiz-dicount-wrap-box li span#ays-quiz-countdown-seconds:after {
     content: unset;
@@ -4930,6 +4916,7 @@ div#ays-quiz-new-mega-bundle-2025-dicount-month-main button.notice-dismiss:hover
         min-width: 50px;
     }
 }
+ */
 /* New Mega Bundle 2025 Banner Quiz | End */
 
 /*Fox LMS Integration banner | start*/

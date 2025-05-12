@@ -24,6 +24,7 @@ $quiz_results_plugin_nonce = wp_create_nonce( 'quiz-maker-ajax-results-nonce' );
         echo esc_html(get_admin_page_title());
         ?>
     </h1>
+    <?php do_action('ays_quiz_sale_banner'); ?>
     <div class="ays-quiz-export-import-box">
         <div class="only_pro">
             <div class="pro_features pro_features_popup">

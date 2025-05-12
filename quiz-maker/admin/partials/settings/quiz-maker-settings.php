@@ -378,6 +378,12 @@
 ?>
 <div class="wrap" style="position:relative;">
     <div class="container-fluid">
+        <h1 class="wp-heading-inline">
+        <?php
+            echo __('General Settings','quiz-maker');
+        ?>
+        </h1>
+        <?php do_action('ays_quiz_sale_banner'); ?>
         <form method="post" class="ays-quiz-general-settings-form" id="ays-quiz-general-settings-form">
             <input type="hidden" name="ays_quiz_tab" value="<?php echo esc_attr($ays_quiz_tab); ?>">
             <div class="ays-quiz-heading-box">
@@ -388,11 +394,6 @@
                     </a>
                 </div>
             </div>
-            <h1 class="wp-heading-inline">
-            <?php
-                echo __('General Settings','quiz-maker');
-            ?>
-            </h1>
             <hr/>
             <div class="form-group ays-settings-wrapper">
                 <div>

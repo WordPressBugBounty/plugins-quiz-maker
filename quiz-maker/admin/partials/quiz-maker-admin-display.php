@@ -22,6 +22,7 @@ $new_questions_page_url = sprintf('?page=%s&action=%s', 'quiz-maker-questions', 
     <div class="ays-quiz-maker-wrapper" style="position:relative;">
         <h1 id="ays-quiz-maker-header-title"><?php echo esc_html(get_admin_page_title()); ?> <i class="ays_fa ays_fa_heart_o animated"></i></h1>
     </div>
+    <?php do_action('ays_quiz_sale_banner'); ?>
     <div class="ays-quiz-faq-main">
         <h2>
             <?php 

@@ -121,6 +121,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
             // echo sprintf( '<a href="?page=%s&action=%s" class="page-title-action button-primary ays-quiz-add-new-button ays-quiz-add-new-button-new-design"> %s '  . __('Add New', 'quiz-maker') . '</a>', esc_attr( $_REQUEST['page'] ), 'add', $plus_icon_svg);
         ?>
     </h1>
+    <?php do_action('ays_quiz_sale_banner'); ?>
 
     <?php if($max_id <= 3): ?>
     <div class="notice notice-success is-dismissible">

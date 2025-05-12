@@ -1830,7 +1830,12 @@ div.ays-notice-banner .navigation-bar li a:after {
     div.ays-notice-banner{
         width: 100%;
     }
+
+    div.ays-notice-banner li ul.ddmenu {
+        right: 0;
+    }
 }
+
 @media screen and (max-width: 530px){    
     .ays-notice-banner .modile-ddmenu-sm {
         display: block;
@@ -1850,6 +1855,15 @@ div.ays-notice-banner .navigation-bar li a:after {
     #ays-question-form #ays-button-save-new-top
     {
         /*margin-top: 15px !important;*/
+    }
+
+    div.ays-notice-banner li ul.ddmenu {
+        right: 0;
+    }
+
+    div.ays-notice-banner .navigation-bar #navigation-container > ul {
+        justify-content: flex-start;
+        min-width: unset;
     }
 }
 
@@ -6896,7 +6910,7 @@ a.ays-quick-quiz-add-question:hover {
 .ays-quiz-upgrade-container a {
     display: flex;
     align-items: center;
-    border: 1px solid #0B328E;
+    border: 2px solid #0B328E;
     text-decoration: none;
     font-size: 13px;
     font-weight: 700;
@@ -7963,3 +7977,61 @@ body[class~="toplevel_page_quiz-maker"] .swal2-popup .swal2-actions {
 }
 
 /* Preview Popup new design | End */
+
+/* Quiz Top Banner Coupon Button | Start */
+
+.ays-quiz-coupon-container .ays-quiz-coupon-box {
+    display: flex;
+    align-items: center;
+    border: 2px dashed #000;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+    /*color: #0B328E;*/
+    padding: 5px 15px;
+    border-radius: 20px;
+    color: #000;
+    background-color: #f9dc6c;
+    cursor: pointer;
+}
+
+.ays-quiz-logo-container-upgrade span.ays-quiz-logo-container-one-time-text{
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.ays-quiz-coupon-container {
+    margin-left: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.ays-quiz-coupon-container .ays-quiz-coupon-box span {
+    margin-left: 5px;
+}
+
+.ays-quiz-coupon-container .ays-quiz-coupon-box img {
+    width: 10px;
+}
+
+.ays-coupon-container .ays-quiz-coupon-box img {
+    width: 8px;
+}
+
+.ays-quiz-coupon-container .ays-quiz-coupon-box:hover {
+    color: #000;
+    background-color: #f1c51b;
+}
+
+.ays-quiz-coupon-container .ays-quiz-coupon-box:focus {
+    box-shadow: unset;
+}
+
+.ays-quiz-coupon-container .ays-quiz-coupon-box:hover .ays-quiz-svg-light-hover{
+    display: flex;
+}
+/* Quiz Top Banner Coupon Button | End */

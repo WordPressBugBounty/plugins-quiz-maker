@@ -31,6 +31,7 @@ $plus_icon_svg = "<span class=''><img src='". AYS_QUIZ_ADMIN_URL ."/images/icons
         echo esc_html(get_admin_page_title());
         ?>
     </h1>
+    <?php do_action('ays_quiz_sale_banner'); ?>
     <div class="nav-tab-wrapper">
         <a href="#poststuff" class="nav-tab nav-tab-active">
             <?php echo esc_html__("Categories", 'quiz-maker');?>

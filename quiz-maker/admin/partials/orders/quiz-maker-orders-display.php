@@ -3,6 +3,7 @@
     <h1 class="wp-heading-inline">
         <?php echo esc_html(get_admin_page_title()); ?>
     </h1>
+    <?php do_action('ays_quiz_sale_banner'); ?>
     <div class="row" style="margin:0;">
         <div class="col-sm-12">
             <div class="pro_features">

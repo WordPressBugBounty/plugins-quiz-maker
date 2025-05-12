@@ -3,6 +3,7 @@
     <h1 class="wp-heading-inline">
         <?php echo esc_html(get_admin_page_title()); ?>
     </h1>
+    <?php do_action('ays_quiz_sale_banner'); ?>
     <div class="ays-quiz-how-to-user-custom-fields-box" style="margin: 30px auto;">
         <div class="ays-quiz-how-to-user-custom-fields-title">
             <h4><?php echo esc_html__( "Learn How to Use Custom Fields in Quiz Maker", 'quiz-maker' ); ?></h4>

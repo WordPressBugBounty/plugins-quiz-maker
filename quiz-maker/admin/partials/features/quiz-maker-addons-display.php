@@ -9,6 +9,7 @@
             </div>
         </div>
         <h1 class="text-center"><?php echo esc_html(get_admin_page_title()); ?></h1>
+        <?php do_action('ays_quiz_sale_banner'); ?>
         <p class="text-center"><?php echo esc_html__('Please feel free to use our awesome addons!', 'quiz-maker'); ?></p>
         <div class="row">
             <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-4">

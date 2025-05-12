@@ -296,7 +296,8 @@ class Quiz_Maker {
 		$this->loader->add_filter( 'plugin_row_meta', $plugin_admin, 'add_quiz_row_meta' , 10 , 2 );
 
 		// Sale Banner
-        $this->loader->add_action( 'admin_notices', $plugin_admin, 'ays_quiz_sale_baner', 1 );
+        // $this->loader->add_action( 'admin_notices', $plugin_admin, 'ays_quiz_sale_baner', 1 );
+        $this->loader->add_action( 'ays_quiz_sale_banner', $plugin_admin, 'ays_quiz_sale_baner', 1 );
         
         $this->loader->add_action( 'wp_ajax_ays_quiz_dismiss_button', $plugin_admin, 'ays_quiz_dismiss_button' );
         $this->loader->add_action( 'wp_ajax_nopriv_ays_quiz_dismiss_button', $plugin_admin, 'ays_quiz_dismiss_button' );
