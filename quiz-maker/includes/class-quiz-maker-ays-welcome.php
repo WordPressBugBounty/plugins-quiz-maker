@@ -76,18 +76,19 @@ class Quiz_Maker_Ays_Welcome {
         $terms_activation = get_option('ays_quiz_show_agree_terms');
         $first_activation = get_option('ays_quiz_first_time_activation_page', false);
 
-
         if($current_page === self::SLUG && $terms_activation && $terms_activation == 'hide'){
             wp_safe_redirect( admin_url( 'admin.php?page=quiz-maker' ) );
         }
 
         if(isset($_POST['ays_quiz_agree_terms']) && $_POST['ays_quiz_agree_terms'] === 'agree'){
+            $this->ays_quiz_request( 'agree' );
             update_option('ays_quiz_agree_terms', 'true');
             update_option('ays_quiz_show_agree_terms', 'hide');
             wp_safe_redirect( admin_url( 'admin.php?page=quiz-maker' ) );
         }
 
         if(isset($_POST['ays_quiz_cancel_terms']) && $_POST['ays_quiz_cancel_terms'] === 'cancel'){
+            $this->ays_quiz_request( 'cancel' );
             update_option('ays_quiz_agree_terms', 'false');
             update_option('ays_quiz_show_agree_terms', 'hide');
             wp_safe_redirect( admin_url( 'admin.php?page=quiz-maker' ) );
@@ -169,6 +170,39 @@ class Quiz_Maker_Ays_Welcome {
                 </div>
             </form>
         <?php
+    }
+
+    public function ays_quiz_request($cta){
+        $curl = curl_init();
+
+        $api_url = "https://poll-plugin.com/quiz-maker/";
+
+        $data = array(
+            'type'  => 'quiz-maker',
+            'cta'   => $cta,
+        );
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => $api_url,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 300,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_SSL_VERIFYPEER => false,
+            // CURLOPT_SSL_VERIFYHOST => false,
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_POSTFIELDS => json_encode($data),
+            CURLOPT_HTTPHEADER => array(
+                "Content-Type: application/json",
+                "cache-control: no-cache"
+            ),
+        ));
+
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+
+        curl_close($curl);
     }
 }
 new Quiz_Maker_Ays_Welcome();

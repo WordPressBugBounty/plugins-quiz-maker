@@ -76,6 +76,10 @@
     transform: translate3d(3000px, 0, 0);
 }
 
+.notice:not([class*="ays-quiz"]):not([class*="ays_quiz"]) {
+    display: none !important;
+}
+
 /*Quiz and Chart integration main page 2023 | Start */
 
 #ays-quiz-all-pages-popup {

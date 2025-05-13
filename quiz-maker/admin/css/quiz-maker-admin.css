@@ -1357,6 +1357,7 @@ td.ays-sort{
     border-collapse: collapse;
     border-spacing: 0;
     table-layout: auto;
+    text-align: inherit;
 }
 
 .comparison td,

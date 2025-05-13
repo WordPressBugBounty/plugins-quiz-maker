@@ -124,7 +124,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
     <?php do_action('ays_quiz_sale_banner'); ?>
 
     <?php if($max_id <= 3): ?>
-    <div class="notice notice-success is-dismissible">
+    <div class="ays-quiz-admin-notice notice notice-success is-dismissible">
         <p style="font-size:14px;">
             <strong>
                 <?php echo esc_html__( "If you haven't created questions yet, you need to do it first.", 'quiz-maker' ); ?> 
