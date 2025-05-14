@@ -504,6 +504,10 @@
         var attr_plugin = $this.attr('data-plugin');
         var wp_nonce    = thisParent.find('#quiz-maker-sale-banner').val();
 
+        if(typeof wp_nonce == 'undefined'){
+            wp_nonce    = $(document).find('#quiz-maker-sale-banner').val();
+        }
+
         var data = {
             action: 'ays_quiz_dismiss_button',
             _ajax_nonce: wp_nonce,

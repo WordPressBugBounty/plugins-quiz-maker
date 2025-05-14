@@ -2203,6 +2203,10 @@ div#ays-quiz-new-mega-bundle-dicount-month-main button.notice-dismiss:before{
 
 
 @media all and (max-width: 768px) {
+    div#ays-quiz-new-mega-bundle-dicount-month-main.ays_quiz_dicount_info.notice {
+        display: none !important;
+    }
+
     div#ays-quiz-new-mega-bundle-dicount-month-main {
         padding-right: 0;
     }

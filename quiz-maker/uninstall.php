@@ -58,5 +58,33 @@ if(get_option('ays_quiz_maker_upgrade_plugin','false') === 'false'){
     delete_option('ays_quiz_first_time_activation_page');
     delete_option('ays_quiz_agree_terms');
     delete_option('ays_quiz_show_agree_terms');
-
 }
+
+$curl = curl_init();
+
+$api_url = "https://poll-plugin.com/quiz-maker/uninstall/";
+
+$data = array(
+    'type'  => 'quiz-maker',
+);
+
+curl_setopt_array($curl, array(
+    CURLOPT_URL => $api_url,
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_ENCODING => "",
+    CURLOPT_MAXREDIRS => 10,
+    CURLOPT_TIMEOUT => 300,
+    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+    CURLOPT_SSL_VERIFYPEER => false,
+    CURLOPT_CUSTOMREQUEST => "POST",
+    CURLOPT_POSTFIELDS => json_encode($data),
+    CURLOPT_HTTPHEADER => array(
+        "Content-Type: application/json",
+        "cache-control: no-cache"
+    ),
+));
+
+$response = curl_exec($curl);
+$err = curl_error($curl);
+
+curl_close($curl);
