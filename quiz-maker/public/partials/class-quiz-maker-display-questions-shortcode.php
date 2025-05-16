@@ -237,7 +237,7 @@ class Quiz_Maker_Display_Questions
                         }
 
                         $display_questions_html[] = "<div class='ays-quiz-display-answer'>";
-                            $display_questions_html[] = $answer;
+                            $display_questions_html[] = wp_kses($answer, Quiz_Maker_Public::ays_quiz_allowed_html());;
                         $display_questions_html[] = "</div>";
                     }
 

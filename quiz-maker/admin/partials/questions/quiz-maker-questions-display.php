@@ -83,13 +83,13 @@ $plus_icon_svg = "<span class=''><img src='". AYS_QUIZ_ADMIN_URL ."/images/icons
                             <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo esc_html__("See Documentation", 'quiz-maker'); ?></a>
                         </div>
                     </div>
-                    <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=question-export-import">
+                    <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=question-export-import-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>">
                         <?php echo esc_html__("Upgrade PRO NOW", 'quiz-maker'); ?>
                     </div>
                 </div>
             </div>
             <div> 
-                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=question-export-import" target="_blank" title="<?php echo esc_attr( __('This property available only in pro version','quiz-maker') ); ?>" class="button disabled-button"><?php echo esc_html__('Export to', 'quiz-maker'); ?></a>
+                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=question-export-import-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>" target="_blank" title="<?php echo esc_attr( __('This property available only in pro version','quiz-maker') ); ?>" class="button disabled-button"><?php echo esc_html__('Export to', 'quiz-maker'); ?></a>
             </div>
         </div>
         <div class="ays-quiz-pro-features-box" style="position: relative; margin-right: 10px;" title="<?php echo esc_attr( __('This property available only in pro version','quiz-maker') ); ?>">
@@ -106,13 +106,13 @@ $plus_icon_svg = "<span class=''><img src='". AYS_QUIZ_ADMIN_URL ."/images/icons
                             <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo esc_html__("See Documentation", 'quiz-maker'); ?></a>
                         </div>
                     </div>
-                    <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=question-export-import">
+                    <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=question-export-import-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>">
                         <?php echo esc_html__("Upgrade PRO NOW", 'quiz-maker'); ?>
                     </div>
                 </div>
             </div>
             <div>
-                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=question-export-import" target="_blank" title="<?php echo esc_attr( __('This property available only in pro version','quiz-maker') ); ?>" class="button disabled-button" aria-expanded="false"><?php echo esc_html__('Import', 'quiz-maker'); ?></a>
+                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=question-export-import-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>" target="_blank" title="<?php echo esc_attr( __('This property available only in pro version','quiz-maker') ); ?>" class="button disabled-button" aria-expanded="false"><?php echo esc_html__('Import', 'quiz-maker'); ?></a>
             </div>
         </div>
     </div>

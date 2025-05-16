@@ -59,7 +59,7 @@
                             <!-- <div class="price-now"><span style="color: red; font-size: 12px;">Black Friday</span> -->
                             </div>
                             <div class="ays-quiz-pracing-table-td-flex">
-                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pricing-table-business" class="price-buy"><?php echo esc_html__('Buy now','quiz-maker')?><span class="hide-mobile"></span></a>
+                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pricing-table-business-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>" class="price-buy"><?php echo esc_html__('Buy now','quiz-maker')?><span class="hide-mobile"></span></a>
                                 <span><?php echo esc_html__('(One-time payment)', 'quiz-maker'); ?><span>
                             </div>
                         </th>
@@ -71,7 +71,7 @@
                             <!-- <div class="price-now"><span style="color: red; font-size: 12px;">Black Friday</span>
                             </div> -->
                             <div class="ays-quiz-pracing-table-td-flex">
-                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pricing-table-developer" class="price-buy"><?php echo esc_html__('Buy now','quiz-maker')?><span class="hide-mobile"></span></a>
+                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pricing-table-developer-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>" class="price-buy"><?php echo esc_html__('Buy now','quiz-maker')?><span class="hide-mobile"></span></a>
                                 <span><?php echo esc_html__('(One-time payment)', 'quiz-maker'); ?><span>
                             </div>
                         </th>
@@ -83,7 +83,7 @@
                             <!-- <div class="price-now"><span style="color: red; font-size: 12px;">Black Friday</span>
                             </div> -->
                             <div class="ays-quiz-pracing-table-td-flex">
-                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pricing-table-agency" class="price-buy"><?php echo esc_html__('Buy now','quiz-maker')?><span class="hide-mobile"></span></a>
+                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pricing-table-agency-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>" class="price-buy"><?php echo esc_html__('Buy now','quiz-maker')?><span class="hide-mobile"></span></a>
                                 <span><?php echo esc_html__('(One-time payment)', 'quiz-maker'); ?><span>
                             </div>
                         </th>
@@ -720,19 +720,19 @@
                     <td></td>
                     <td>
                         <div class="ays-quiz-pracing-table-td-flex">
-                            <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pricing-table-business" class="price-buy"><?php echo esc_html__('Buy now','quiz-maker')?><span class="hide-mobile"></span></a>
+                            <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pricing-table-business-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>" class="price-buy"><?php echo esc_html__('Buy now','quiz-maker')?><span class="hide-mobile"></span></a>
                             <span><?php echo esc_html__('(One-time payment)', 'quiz-maker'); ?><span>
                         </div>
                     </td>
                     <td>
                         <div class="ays-quiz-pracing-table-td-flex">
-                            <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pricing-table-developer" class="price-buy"><?php echo esc_html__('Buy now','quiz-maker')?><span class="hide-mobile"></span></a>
+                            <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pricing-table-developer-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>" class="price-buy"><?php echo esc_html__('Buy now','quiz-maker')?><span class="hide-mobile"></span></a>
                             <span><?php echo esc_html__('(One-time payment)', 'quiz-maker'); ?><span>
                         </div>
                     </td>
                     <td>
                         <div class="ays-quiz-pracing-table-td-flex">
-                            <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pricing-table-agency" class="price-buy"><?php echo esc_html__('Buy now','quiz-maker')?><span class="hide-mobile"></span></a>
+                            <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pricing-table-agency-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>" class="price-buy"><?php echo esc_html__('Buy now','quiz-maker')?><span class="hide-mobile"></span></a>
                             <span><?php echo esc_html__('(One-time payment)', 'quiz-maker'); ?><span>
                         </div>
                     </td>

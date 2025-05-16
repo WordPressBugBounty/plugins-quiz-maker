@@ -816,6 +816,11 @@ class Quiz_Maker_Public
 
         $message_variables_data = $this->ays_set_quiz_message_variables_data( $id, $quiz );
 
+        /*
+         * Gets the current theme obj
+         */
+        $current_user_theme_obj = wp_get_theme();
+
         
     /*******************************************************************************************************/
                 
@@ -3655,7 +3660,7 @@ class Quiz_Maker_Public
                 " . $ays_quiz_bg_style_value . ";
             }";
         }
-
+        
         if ($quiz_bg_img_during_the_quiz) {
             if($enable_background_gradient) {
                 $ays_quiz_bg_during_quiz_style_value = "background-image: linear-gradient(". $quiz_gradient_direction .", ". $background_gradient_color_1 .", ". $background_gradient_color_2 .");";
@@ -3829,6 +3834,21 @@ class Quiz_Maker_Public
                     float: right;
                     clear: both;
                 }";
+            }
+
+            if(!empty($current_user_theme_obj) && !empty($current_user_theme_obj->name)){
+                if ( 'Educational' == $current_user_theme_obj->name || 'Educational' == $current_user_theme_obj->parent_theme ) {
+                    $quiz_styles .= "
+                    #ays-quiz-container-" . $id . " input#ays-submit,
+                    #ays-quiz-container-" . $id . " #ays_finish_quiz_" . $id . " .action-button,
+                    div#ays-quiz-container-" . $id . " #ays_finish_quiz_" . $id . " .action-button.ays_restart_button,
+                    #ays-quiz-container-" . $id . " + .ays-quiz-category-selective-main-container .ays-quiz-category-selective-restart-bttn,
+                    #ays-quiz-container-" . $id . " .ays-quiz-category-selective-submit-bttn {
+                        font-size: " . $buttons_font_size . " !important;
+                        padding: " . $buttons_top_bottom_padding . " " . $buttons_left_right_padding . " !important;
+                        border-radius: " . $buttons_border_radius . " !important;
+                    }";
+                }
             }
 
             $quiz_styles .= "
@@ -7710,5 +7730,175 @@ class Quiz_Maker_Public
         }
 
         return null;
+    }
+
+    public static function ays_quiz_allowed_html() {
+        $additionalAllowedTags = wp_kses_allowed_html('post');
+        return array_merge(
+            $additionalAllowedTags,
+            array(
+                'div' => array(
+                    'class' => true,
+                    'id' => true,
+                    'style' => true,
+                    'data-*' => true,
+                    'aria-selected' => true,
+                ),
+                'svg' => array(
+                    'class' => true,
+                    'width' => true,
+                    'height' => true,
+                    'viewBox' => true,
+                    'viewbox' => true,
+                    'xmlns' => true,
+                    'fill' => true,
+                ),
+                'path' => array(
+                    'class' => true,
+                    'd' => true,
+                    'fill' => true,
+                    'fill-rule' => true,
+                    'clip-rule' => true,
+                    'stroke-width' => true,
+                    'stroke-linecap' => true,
+                ),
+                'circle' => array(
+                    'style' => true,
+                    'id' => true,
+                    'class' => true,
+                    'r' => true,
+                    'cx' => true,
+                    'cy' => true,
+                ),
+                'rect' => array(
+                    'class' => true,
+                    'x' => true,
+                    'y' => true,
+                    'width' => true,
+                    'height' => true,
+                    'rx' => true,
+                    'fill' => true,
+                    'stroke' => true,
+                    'style' => true,
+                    'transform' => true,
+                ),
+                'defs' => array(
+                    'class' => true,
+                    'width' => true,
+                    'height' => true,
+                    'fill' => true,
+                    'style' => true,
+                ),
+                'pattern' => array(
+                    'class' => true,
+                    'id' => true,
+                    'width' => true,
+                    'height' => true,
+                    'patternContentUnits' => true,
+                    'patterncontentunits' => true,
+                    'style' => true,
+                ),
+                'use' => array(
+                    'class' => true,
+                    'id' => true,
+                    'xlink' => true,
+                    'xlink:href' => true,
+                    'transform' => true,
+                    'style' => true,
+                ),
+                'image' => array(
+                    'class' => true,
+                    'id' => true,
+                    'xlink' => true,
+                    'xlink:href' => true,
+                    'width' => true,
+                    'height' => true,
+                    'style' => true,
+                ),
+                'video' => array(
+                    'class' => true,
+                    'id' => true,
+                    'controls' => true,
+                    'style' => true,
+                ),
+                'source' => array(
+                    'class' => true,
+                    'id' => true,
+                    'src' => true,
+                    'style' => true,
+                ),
+                'form' => array(
+                    'name' => true,
+                    'id' => true,
+                    'action' => true,
+                    'method' => true,
+                    'data-*' => true,
+                    'style' => true,
+                ),
+                'input' => array(
+                    'id' => true,
+                    'name' => true,
+                    'class' => true,
+                    'type' => true,
+                    'value' => true,
+                    'size' => true,
+                    'required' => true,
+                    'readonly' => true,
+                    'data-*' => true,
+                    'style' => true,
+                    'onClick' => true,
+                    'onclick' => true,
+                ),
+                'select' => array(
+                    'id' => true,
+                    'name' => true,
+                    'class' => true,
+                    'type' => true,
+                    'value' => true,
+                    'size' => true,
+                    'required' => true,
+                    'readonly' => true,
+                    'data-*' => true,
+                    'style' => true,
+                ),
+                'option' => array(
+                    'id' => true,
+                    'class' => true,
+                    'type' => true,
+                    'value' => true,
+                    'size' => true,
+                    'required' => true,
+                    'readonly' => true,
+                    'data-*' => true,
+                    'style' => true,
+                ),
+                'progress' => array(
+                    'id' => true,
+                    'class' => true,
+                    'max' => true,
+                    'value' => true,
+                    'data-*' => true,
+                    'style' => true,
+                ),
+                'img' => array(
+                    'id' => true,
+                    'class' => true,
+                    'loading' => true,
+                    'decoding' => true,
+                    'src' => true,
+                    'sizes' => true,
+                    'srcset' => true,
+                    'width' => true,
+                    'height' => true,
+                ),
+                'a' => array(
+                    'aria-selected' => true,
+                    'data-*' => true,
+                    'style' => true,
+                    'target' => true,
+                ),
+            ),
+            $additionalAllowedTags
+        );
     }
 }

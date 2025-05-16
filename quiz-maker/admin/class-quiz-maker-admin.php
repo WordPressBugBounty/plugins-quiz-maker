@@ -650,7 +650,7 @@ class Quiz_Maker_Admin
         $settings_link = array(
             '<a href="' . admin_url('admin.php?page=' . $this->plugin_name) . '">' . __('Settings', 'quiz-maker') . '</a>',
             '<a href="https://quiz-plugin.com/wordpress-quiz-plugin-free-demo/" target="_blank">' . __('Demo', 'quiz-maker') . '</a>',
-            '<a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=plugins-buy-now-button" id="ays-quiz-plugins-buy-now-button" target="_blank">' . __('Upgrade', 'quiz-maker') . '</a>
+            '<a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=plugins-buy-now-button-' . esc_attr( AYS_QUIZ_VERSION ) . '" id="ays-quiz-plugins-buy-now-button" target="_blank">' . __('Upgrade', 'quiz-maker') . '</a>
             <input type="hidden" id="ays_quiz_ajax_deactivate_plugin_nonce" name="ays_quiz_ajax_deactivate_plugin_nonce" value="' . $quiz_ajax_deactivate_plugin_nonce .'">',
             );
         return array_merge($settings_link, $links);
