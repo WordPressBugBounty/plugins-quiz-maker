@@ -2019,19 +2019,18 @@ class Quiz_Maker_Admin
                                 $pro_content[] = '<a href="https://quiz-plugin.com/docs/" target="_blank"> '. __("See Documentation", 'quiz-maker'). '</a>';
                             $pro_content[] = '</div>';
                         $pro_content[] = '</div>';
-
-                        $pro_content[] = '<div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-xlsx-export">';
-                            $pro_content[] = __("Upgrade PRO NOW", 'quiz-maker');
+                        $pro_content[] = '<div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-xlsx-export-'. esc_attr( AYS_QUIZ_VERSION ) .'">';
+                            $pro_content[] = __("Pricing", 'quiz-maker');
                         $pro_content[] = '</div>';
                     $pro_content[] = '</div>';
                 $pro_content[] = '</div>';
                 $pro_content[] = '<div>';
 
-                    $pro_content[] = '<a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-pdf-export" target="_blank" class="ays-pro-a" style="margin: 0 10px;">';
+                    $pro_content[] = '<a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-pdf-export-'. esc_attr( AYS_QUIZ_VERSION ) .'" target="_blank" class="ays-pro-a" style="margin: 0 10px;">';
                         $pro_content[] = '<span type="button" class="disabled-button" title="This property available only in pro version">'.__("PDF", 'quiz-maker').'</span>';
                     $pro_content[] = '</a>';
 
-                    $pro_content[] = '<a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-xlsx-export" target="_blank" class="ays-pro-a">';
+                    $pro_content[] = '<a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-xlsx-export-'. esc_attr( AYS_QUIZ_VERSION ) .'" target="_blank" class="ays-pro-a">';
                         $pro_content[] = '<span type="button" class="disabled-button" title="This property available only in pro version">'.__("XLSX", 'quiz-maker').'</span>';
                     $pro_content[] = '</a>';
                 $pro_content[] = '</div>';
@@ -2073,15 +2072,15 @@ class Quiz_Maker_Admin
                             $admin_note_content[] = '</div>';
                         $admin_note_content[] = '</div>';
 
-                        $admin_note_content[] = '<div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-admin-note">';
-                            $admin_note_content[] = __("Upgrade PRO NOW", 'quiz-maker');
+                        $admin_note_content[] = '<div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-admin-note-'. esc_attr( AYS_QUIZ_VERSION ) .'">';
+                            $admin_note_content[] = __("Pricing", 'quiz-maker');
                         $admin_note_content[] = '</div>';
                     $admin_note_content[] = '</div>';
                 $admin_note_content[] = '</div>';
                 $admin_note_content[] = '<div>';
 
                     $admin_note_content[] = '<div class="ays-quiz-click-for-admin-note">';
-                        $admin_note_content[] = '<a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-admin-note" target="_blank" class="ays-pro-a">';
+                        $admin_note_content[] = '<a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-admin-note-'. esc_attr( AYS_QUIZ_VERSION ) .'" target="_blank" class="ays-pro-a">';
                             $admin_note_content[] = '<button class="button button-primary disabled-button" style="color:#ffffff !important; font-weight:normal;" title="This property available only in pro version">';
                                 $admin_note_content[] = __( 'Click For Admin Note', 'quiz-maker' );
                             $admin_note_content[] = '</button>';

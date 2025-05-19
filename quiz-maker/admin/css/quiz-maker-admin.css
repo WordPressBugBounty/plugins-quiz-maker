@@ -5,6 +5,11 @@
 #wpwrap{
     background: #F3F4F5 !important;
 }
+
+div#wpcontent {
+    height: auto;
+}
+
 body.mobile.modal-open #wpwrap {
     position: initial !important;
 }

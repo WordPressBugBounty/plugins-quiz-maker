@@ -378,15 +378,11 @@
 ?>
 <div class="wrap" style="position:relative;">
     <div class="container-fluid">
-        <h1 class="wp-heading-inline">
-        <?php
-            echo __('General Settings','quiz-maker');
-        ?>
-        </h1>
-        <?php do_action('ays_quiz_sale_banner'); ?>
-        <form method="post" class="ays-quiz-general-settings-form" id="ays-quiz-general-settings-form">
-            <input type="hidden" name="ays_quiz_tab" value="<?php echo esc_attr($ays_quiz_tab); ?>">
-            <div class="ays-quiz-heading-box">
+        <h1 class="wp-heading-inline" style="display: block;">
+            <?php
+                echo __('General Settings','quiz-maker');
+            ?>
+            <div class="ays-quiz-heading-box" style="margin-top: 0;">
                 <div class="ays-quiz-wordpress-user-manual-box">
                     <a href="https://quiz-plugin.com/docs/" target="_blank">
                         <i class="ays_fa ays_fa_file_text" ></i> 
@@ -394,6 +390,10 @@
                     </a>
                 </div>
             </div>
+        </h1>
+        <?php do_action('ays_quiz_sale_banner'); ?>
+        <form method="post" class="ays-quiz-general-settings-form" id="ays-quiz-general-settings-form">
+            <input type="hidden" name="ays_quiz_tab" value="<?php echo esc_attr($ays_quiz_tab); ?>">
             <hr/>
             <div class="form-group ays-settings-wrapper">
                 <div>
@@ -1755,8 +1755,8 @@
                                                     <a href="https://quiz-plugin.com/individual-leaderboard" target="_blank"><?php echo __("See Demo", 'quiz-maker'); ?></a>
                                                 </div>
                                             </div>
-                                            <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-individual-leaderboard-shortcode">
-                                                <?php echo __("Upgrade PRO NOW", 'quiz-maker'); ?>
+                                            <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-individual-leaderboard-shortcode-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>">
+                                                <?php echo __("Pricing", 'quiz-maker'); ?>
                                             </div>
                                         </div>
                                     </div>
@@ -2007,8 +2007,8 @@
                                                     <a href="https://quiz-plugin.com/global-leaderboard-2/" target="_blank"><?php echo __("See Demo", 'quiz-maker'); ?></a>
                                                 </div>
                                             </div>
-                                            <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-global-leaderboard-shortcode">
-                                                <?php echo __("Upgrade PRO NOW", 'quiz-maker'); ?>
+                                            <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-global-leaderboard-shortcode-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>">
+                                                <?php echo __("Pricing", 'quiz-maker'); ?>
                                             </div>
                                         </div>
                                     </div>
@@ -2238,8 +2238,8 @@
                                                 <a href="https://quiz-plugin.com/leaderboard-by-quiz-category" target="_blank"><?php echo __("See Demo", 'quiz-maker'); ?></a>
                                             </div>
                                         </div>
-                                        <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-quiz-category-leaderboard-shortcode">
-                                            <?php echo __("Upgrade PRO NOW", 'quiz-maker'); ?>
+                                        <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-quiz-category-leaderboard-shortcode-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>">
+                                            <?php echo __("Pricing", 'quiz-maker'); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -2482,8 +2482,8 @@
                                                     <a href="https://quiz-plugin.com/user-page-2" target="_blank"><?php echo __("See Demo", 'quiz-maker'); ?></a>
                                                 </div>
                                             </div>
-                                            <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-user-page-shortcode">
-                                                <?php echo __("Upgrade PRO NOW", 'quiz-maker'); ?>
+                                            <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-user-page-shortcode-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>">
+                                                <?php echo __("Pricing", 'quiz-maker'); ?>
                                             </div>
                                         </div>
                                     </div>
@@ -2794,8 +2794,8 @@
                                                     <a href="https://quiz-plugin.com/recent-quizzes" target="_blank"><?php echo __("See Demo", 'quiz-maker'); ?></a>
                                                 </div>
                                             </div>
-                                            <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-recent-quizzes-shortcode">
-                                                <?php echo __("Upgrade PRO NOW", 'quiz-maker'); ?>
+                                            <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-recent-quizzes-shortcode-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>">
+                                                <?php echo __("Pricing", 'quiz-maker'); ?>
                                             </div>
                                         </div>
                                     </div>
@@ -2875,8 +2875,8 @@
                                                     <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo __("See Documentation", 'quiz-maker'); ?></a>
                                                 </div>
                                             </div>
-                                            <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-sum-quiz-points-shortcode">
-                                                <?php echo __("Upgrade PRO NOW", 'quiz-maker'); ?>
+                                            <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-sum-quiz-points-shortcode-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>">
+                                                <?php echo __("Pricing", 'quiz-maker'); ?>
                                             </div>
                                         </div>
                                     </div>
@@ -2986,8 +2986,8 @@
                                                     <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo __("See Documentation", 'quiz-maker'); ?></a>
                                                 </div>
                                             </div>
-                                            <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-quiz-orders-shortcode">
-                                                <?php echo __("Upgrade PRO NOW", 'quiz-maker'); ?>
+                                            <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-quiz-orders-shortcode-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>">
+                                                <?php echo __("Pricing", 'quiz-maker'); ?>
                                             </div>
                                         </div>
                                     </div>
@@ -4791,6 +4791,10 @@
 
                                 <div class="pro-features-popup-modal-right-box-button">
                                     <a href="#" class="pro-features-popup-modal-right-box-link" target="_blank"></a>
+                                </div>
+
+                                <div class="pro-features-popup-modal-right-box-footer-text">
+                                    <span class="ays_quiz_small_hint_text_for_message_variables"><?php echo esc_html__( "One-time payment", 'quiz-maker' ); ?></span>
                                 </div>
                            </div>
                         </div>

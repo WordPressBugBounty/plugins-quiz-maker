@@ -33,7 +33,7 @@
                         </div>
                     </div>
                     <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=custom-field-list-table-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>">
-                        <?php echo esc_html__("Upgrade PRO NOW", 'quiz-maker'); ?>
+                        <?php echo esc_html__("Pricing", 'quiz-maker'); ?>
                     </div>
                 </div>
             </div>
@@ -98,6 +98,10 @@
 
                             <div class="pro-features-popup-modal-right-box-button">
                                 <a href="#" class="pro-features-popup-modal-right-box-link" target="_blank"></a>
+                            </div>
+
+                            <div class="pro-features-popup-modal-right-box-footer-text">
+                                <span class="ays_quiz_small_hint_text_for_message_variables"><?php echo esc_html__( "One-time payment", 'quiz-maker' ); ?></span>
                             </div>
                        </div>
                     </div>

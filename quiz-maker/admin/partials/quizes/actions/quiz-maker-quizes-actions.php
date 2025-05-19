@@ -4797,8 +4797,8 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                                 <a href="https://quiz-plugin.com/english-exam-with-certificate/" target="_blank"><?php echo __("See Demo", 'quiz-maker'); ?></a>
                                             </div>
                                         </div>
-                                        <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-navigation-bar">
-                                            <?php echo __("Upgrade Now", 'quiz-maker'); ?>
+                                        <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-navigation-bar-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>">
+                                            <?php echo __("Pricing", 'quiz-maker'); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -6297,7 +6297,7 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                             </div>
                                         </div>
                                         <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-calculate-score-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>">
-                                            <?php echo __("Upgrade PRO NOW", 'quiz-maker'); ?>
+                                            <?php echo __("Pricing", 'quiz-maker'); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -7338,7 +7338,7 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                             </div>
                                         </div>
                                         <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-intervals-table-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>">
-                                            <?php echo __("Upgrade PRO NOW", 'quiz-maker'); ?>
+                                            <?php echo __("Pricing", 'quiz-maker'); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -7531,8 +7531,8 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                                 <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo __("See Documentation", 'quiz-maker'); ?></a>
                                             </div>
                                         </div>
-                                        <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-top-keywords">
-                                            <?php echo __("Upgrade PRO NOW", 'quiz-maker'); ?>
+                                        <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-top-keywords-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>">
+                                            <?php echo __("Pricing", 'quiz-maker'); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -7551,7 +7551,7 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                         </div>
                                     </div>
                                 </div> <!-- Show all questions result in finish page -->
-                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-top-keywords" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-top-keywords-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
                                             <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
@@ -7595,8 +7595,8 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                                 <a href="https://quiz-plugin.com/coupon-quiz/" target="_blank"><?php echo __("See Demo", 'quiz-maker'); ?></a>
                                             </div>
                                         </div>
-                                        <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-quiz-coupon">
-                                            <?php echo __("Upgrade and Create", 'quiz-maker'); ?>
+                                        <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-quiz-coupon-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>">
+                                            <?php echo __("Pricing", 'quiz-maker'); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -7725,8 +7725,8 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                                         <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo __("Learn More", 'quiz-maker'); ?></a>
                                                     </div>
                                                 </div>
-                                                <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-attempts-count">
-                                                    <?php echo __("Try It Now", 'quiz-maker'); ?>
+                                                <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-attempts-count-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>">
+                                                    <?php echo __("Pricing", 'quiz-maker'); ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -7879,8 +7879,8 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                                             <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo __("See Documentation", 'quiz-maker'); ?></a>
                                                         </div>
                                                     </div>
-                                                    <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-extra-security">
-                                                        <?php echo __("Upgrade PRO NOW", 'quiz-maker'); ?>
+                                                    <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-extra-security-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>">
+                                                        <?php echo __("Pricing", 'quiz-maker'); ?>
                                                     </div>
                                                 </div>
                                             </div>
@@ -8080,8 +8080,8 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                                 <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo __("See Documentation", 'quiz-maker'); ?></a>
                                             </div>
                                         </div>
-                                        <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-only-selected-users">
-                                            <?php echo __("Upgrade to Pro Now", 'quiz-maker'); ?>
+                                        <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-only-selected-users-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>">
+                                            <?php echo __("Pricing", 'quiz-maker'); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -8477,7 +8477,7 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                         </div>
                                     </div>
                                     <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-custom-field-option-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>">
-                                        <?php echo __("Upgrade PRO NOW", 'quiz-maker'); ?>
+                                        <?php echo __("Pricing", 'quiz-maker'); ?>
                                     </div>
                                 </div>
                             </div>
@@ -8615,7 +8615,7 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                             </div>
                                         </div>
                                         <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-send-mail-to-user-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>">
-                                            <?php echo esc_html__("Use this Feature", 'quiz-maker'); ?>
+                                            <?php echo esc_html__("Pricing", 'quiz-maker'); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -8746,7 +8746,7 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                             </div>
                                         </div>
                                         <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-send-certificate-to-user-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>">
-                                            <?php echo esc_html__("Upgrade PRO NOW", 'quiz-maker'); ?>
+                                            <?php echo esc_html__("Pricing", 'quiz-maker'); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -8893,7 +8893,7 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                             </div>
                                         </div>
                                         <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-send-mail-to-admin-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>">
-                                            <?php echo __("Upgrade PRO NOW", 'quiz-maker'); ?>
+                                            <?php echo __("Pricing", 'quiz-maker'); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -9785,7 +9785,7 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                             $pro_content[] = '</div>';
 
                             $pro_content[] = '<div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker">';
-                                $pro_content[] = __("Upgrade to Pro Now", 'quiz-maker');
+                                $pro_content[] = __("Pricing", 'quiz-maker');
                             $pro_content[] = '</div>';
                         $pro_content[] = '</div>';
                     $pro_content[] = '</div>';
@@ -10067,6 +10067,10 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
 
                                 <div class="pro-features-popup-modal-right-box-button">
                                     <a href="#" class="pro-features-popup-modal-right-box-link" target="_blank"></a>
+                                </div>
+
+                                <div class="pro-features-popup-modal-right-box-footer-text">
+                                    <span class="ays_quiz_small_hint_text_for_message_variables"><?php echo esc_html__( "One-time payment", 'quiz-maker' ); ?></span>
                                 </div>
                            </div>
                         </div>
