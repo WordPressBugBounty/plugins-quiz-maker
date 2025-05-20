@@ -52,7 +52,7 @@
                             <div class="price-now"><span><?php echo esc_html__('Free','quiz-maker')?></span></div>
                         </th>
                         <th class="price-info">
-                            <div class="price-now"><span style="text-decoration: line-through; color: red;">$75</span>
+                            <div class="price-now"><span class="sale-price" style="text-decoration: line-through; color: red;">$75</span>
                             </div>
                             <div class="price-now"><span>$59</span>
                             </div>
@@ -64,7 +64,7 @@
                             </div>
                         </th>
                         <th class="price-info">
-                            <div class="price-now"><span span style="text-decoration: line-through; color: red;">$250</span>
+                            <div class="price-now"><span class="sale-price" style="text-decoration: line-through; color: red;">$250</span>
                             </div>
                             <div class="price-now"><span>$195</span>
                             </div>
@@ -76,7 +76,7 @@
                             </div>
                         </th>
                         <th class="price-info">
-                            <div class="price-now"><span span style="text-decoration: line-through; color: red;">$450</span>
+                            <div class="price-now"><span class="sale-price" style="text-decoration: line-through; color: red;">$450</span>
                             </div>
                             <div class="price-now"><span>$355</span>
                             </div>

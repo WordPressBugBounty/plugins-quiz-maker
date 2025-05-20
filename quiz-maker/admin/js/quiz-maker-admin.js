@@ -3540,8 +3540,6 @@
 
         var checkCountdownIsExists = $(document).find('#ays-quiz-maker-countdown-main-container');
         // var checkCountdownIsExists = $(document).find('#ays-quiz-countdown-main-container');
-        // var checkCountdownIsExists = $(document).find('#ays-quiz-countdown-main-container');
-        // var checkCountdownIsExists = $(document).find('#ays-quiz-countdown-main-container');
         // var checkCountdownIsExists = new Array();
         if ( checkCountdownIsExists.length > 0 ) {
             var second  = 1000,
@@ -3611,10 +3609,12 @@
 
                     // clearInterval(y);
                 } else {
-                    countDownDays.innerText    = countDownDays_innerText;
-                    countDownHours.innerText   = countDownHours_innerText;
-                    countDownMinutes.innerText = countDownMinutes_innerText;
-                    countDownSeconds.innerText = countDownSeconds_innerText;
+                    // countDownSeconds.innerText = '';
+
+                    countDownDays.innerHTML    = countDownDays_innerText;
+                    countDownHours.innerHTML   = countDownHours_innerText;
+                    countDownMinutes.innerHTML = countDownMinutes_innerText;
+                    countDownSeconds.innerHTML = countDownSeconds_innerText;
                 }
 
                 // countDownDays.innerText     = Math.floor(distance_new / (day)).toLocaleString(undefined,{minimumIntegerDigits: 2})+" : ",

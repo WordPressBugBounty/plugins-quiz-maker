@@ -1433,6 +1433,12 @@ td.ays-sort{
     color: #545454;
 }
 
+.comparison .price-now .sale-price {
+    text-decoration: line-through;
+    color: red;
+    font-size: 28px;
+}
+
 .comparison .price-now p {
     font-size: 14px;
     text-align: center;
@@ -1865,11 +1871,20 @@ div.ays-notice-banner .navigation-bar li a:after {
 
     div.ays-notice-banner li ul.ddmenu {
         right: 0;
+        margin: 0;
     }
 
     div.ays-notice-banner .navigation-bar #navigation-container > ul {
-        justify-content: flex-start;
+        justify-content: flex-end;
+        align-items: center;
         min-width: unset;
+        margin-right: 0;
+        width: 40px;
+    }
+
+    div.ays-quiz-upgrade-container,
+    div.ays-quiz-coupon-container {
+        margin-left: 10px;
     }
 }
 
@@ -5970,6 +5985,11 @@ div#ays-quiz-winter-dicount-main #ays-quiz-maker-countdown-main-container .emoji
     {
         margin-top: 15px !important;
     }
+
+    div.ays-quiz-coupon-container .ays-quiz-coupon-box,
+    div.ays-quiz-upgrade-container a {
+        padding: 5px;
+    }
 }
 
 /* min-width */
@@ -7413,6 +7433,7 @@ div .wp-picker-container .wp-color-result.button {
 
     div.comparison {
         padding: 0;
+        overflow-x: auto;
     }
 
     div.ays-quiz-show-timer-mobile-style {

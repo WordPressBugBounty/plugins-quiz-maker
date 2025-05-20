@@ -319,6 +319,12 @@ class Quiz_Maker_Admin
                 wp_dequeue_style('bppiv_admin_custom_css');
                 wp_dequeue_style('bppiv-custom-style');
             }
+
+            if (is_plugin_active('wp-social/wp-social.php')) {
+                wp_dequeue_style('wp_social_select2_css');
+                wp_deregister_script('wp_social_select2_js');
+                wp_dequeue_script('wp_social_select2_js');
+            }
         }
 
         if (is_plugin_active('search-replace-for-block-editor/search-replace-for-block-editor.php')) {
@@ -2597,36 +2603,44 @@ class Quiz_Maker_Admin
     }
 
     function ays_quiz_register_tinymce_plugin($plugin_array){
-        $this->settings_obj = new Quiz_Maker_Settings_Actions($this->plugin_name);
+        if( isset( $_GET['page'] ) && 0 !== strpos(sanitize_key($_GET['page']), $this->plugin_name)){
+            $this->settings_obj = new Quiz_Maker_Settings_Actions($this->plugin_name);
 
-        // General Settings | options
-        $gen_options = ($this->settings_obj->ays_get_setting('options') === false) ? array() : json_decode( stripcslashes($this->settings_obj->ays_get_setting('options') ), true);
+            // General Settings | options
+            $gen_options = ($this->settings_obj->ays_get_setting('options') === false) ? array() : json_decode( stripcslashes($this->settings_obj->ays_get_setting('options') ), true);
 
-        // Show quiz button to Admins only
-        $gen_options['quiz_show_quiz_button_to_admin_only'] = isset($gen_options['quiz_show_quiz_button_to_admin_only']) ? sanitize_text_field( $gen_options['quiz_show_quiz_button_to_admin_only'] ) : 'off';
-        $quiz_show_quiz_button_to_admin_only = (isset($gen_options['quiz_show_quiz_button_to_admin_only']) && sanitize_text_field( $gen_options['quiz_show_quiz_button_to_admin_only'] ) == "on") ? true : false;
+            // Show quiz button to Admins only
+            $gen_options['quiz_show_quiz_button_to_admin_only'] = isset($gen_options['quiz_show_quiz_button_to_admin_only']) ? sanitize_text_field( $gen_options['quiz_show_quiz_button_to_admin_only'] ) : 'off';
+            $quiz_show_quiz_button_to_admin_only = (isset($gen_options['quiz_show_quiz_button_to_admin_only']) && sanitize_text_field( $gen_options['quiz_show_quiz_button_to_admin_only'] ) == "on") ? true : false;
 
-        if ( $quiz_show_quiz_button_to_admin_only ) {
+            if ( $quiz_show_quiz_button_to_admin_only ) {
 
-            if( current_user_can( 'manage_options' ) ){
+                if( current_user_can( 'manage_options' ) ){
+                    $plugin_array['ays_quiz_button_mce'] = AYS_QUIZ_BASE_URL . 'ays_quiz_shortcode.js';
+                }
+
+            } else {
                 $plugin_array['ays_quiz_button_mce'] = AYS_QUIZ_BASE_URL . 'ays_quiz_shortcode.js';
             }
-
-        } else {
-            $plugin_array['ays_quiz_button_mce'] = AYS_QUIZ_BASE_URL . 'ays_quiz_shortcode.js';
         }
 
         return $plugin_array;
     }
 
     function ays_quiz_add_tinymce_button($buttons){
-        $buttons[] = "ays_quiz_button_mce";
+        if( isset( $_GET['page'] ) && 0 !== strpos(sanitize_key($_GET['page']), $this->plugin_name)){
+            $buttons[] = "ays_quiz_button_mce";
+        }
         return $buttons;
     }
 
     function gen_ays_quiz_shortcode_callback(){
 
         if(!is_user_logged_in()){
+            die();
+        }
+
+        if( isset( $_GET['page'] ) && 0 !== strpos(sanitize_key($_GET['page']), $this->plugin_name)){
             die();
         }
 
@@ -3726,6 +3740,18 @@ class Quiz_Maker_Admin
         if($ishmar == 0 ){
             $content = array();
 
+            $date = time() + (int) ( get_option( 'gmt_offset' ) * HOUR_IN_SECONDS);
+            $now_date = date('M d, Y H:i:s', $date);
+
+            $quiz_banner_date = strtotime($this->ays_quiz_update_banner_time());
+
+            $diff = $quiz_banner_date - $date;
+
+            $style_attr = '';
+            if( $diff < 0 ){
+                $style_attr = 'style="display:none;"';
+            }
+
             $quiz_cta_button_link = esc_url('https://ays-pro.com/mega-bundle?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=mega-bundle-sale-banner-' . AYS_QUIZ_VERSION);
 
             $content[] = '<div id="ays-quiz-new-mega-bundle-dicount-month-main" class="ays-quiz-admin-notice notice notice-success is-dismissible ays_quiz_dicount_info">';
@@ -3779,7 +3805,7 @@ class Quiz_Maker_Admin
                         $content[] = '<div id="ays-quiz-maker-countdown-main-container">';
                             $content[] = '<div class="ays-quiz-maker-countdown-container">';
 
-                                $content[] = '<div id="ays-quiz-countdown">';
+                                $content[] = '<div ' . $style_attr . ' id="ays-quiz-countdown">';
 
                                     // $content[] = '<div>';
                                     //     $content[] = __( "Offer ends in:", 'quiz-maker' );
@@ -3794,10 +3820,10 @@ class Quiz_Maker_Admin
                                 $content[] = '</div>';
 
                                 $content[] = '<div id="ays-quiz-countdown-content" class="emoji">';
-                                    $content[] = '<span></span>';
-                                    $content[] = '<span></span>';
-                                    $content[] = '<span></span>';
-                                    $content[] = '<span></span>';
+                                //     $content[] = '<span></span>';
+                                //     $content[] = '<span></span>';
+                                //     $content[] = '<span></span>';
+                                //     $content[] = '<span></span>';
                                 $content[] = '</div>';
 
                             $content[] = '</div>';
@@ -3815,7 +3841,8 @@ class Quiz_Maker_Admin
             $content[] = '</div>';
 
             $content = implode( '', $content );
-            echo wp_kses_post($content);
+            echo ($content);
+            // echo wp_kses_post($content); // Div style attribute not working in this case
         }
     }
 

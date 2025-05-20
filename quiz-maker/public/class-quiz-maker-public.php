@@ -1645,8 +1645,9 @@ class Quiz_Maker_Public
         $quiz_start_button = "<input type='button' $empty_questions_button $start_button_disabled class='ays_next start_button action-button' value='". $this->buttons_texts['startButton'] ."' ". $enable_leave_page ." />" . $empty_questions_notification;
 
 
-        $is_elementor_exists = $this->ays_quiz_is_elementor();
-        $is_editor_exists    = $this->ays_quiz_is_editor();
+        $is_elementor_exists        = $this->ays_quiz_is_elementor();
+        $is_editor_exists           = $this->ays_quiz_is_editor();
+        $is_beaver_builder_exists   = $this->ays_quiz_is_beaver_builder();
         
         if ( $enable_start_button_loader ) {
             if ( $is_elementor_exists ) {
@@ -1654,6 +1655,10 @@ class Quiz_Maker_Public
             }
 
             if ( $is_editor_exists ) {
+                $enable_start_button_loader = false;
+            }
+
+            if ( $is_beaver_builder_exists ) {
                 $enable_start_button_loader = false;
             }
         }
@@ -1671,7 +1676,7 @@ class Quiz_Maker_Public
         }
 
         $quiz_block_preview_message = "";
-        if( $is_elementor_exists || $is_editor_exists ){
+        if( $is_elementor_exists || $is_editor_exists || $is_beaver_builder_exists ){
             $quiz_block_preview_message = '
                 <span class="ays_quiz_small_hint_text" style="color: #ccc;font-size: 15px;">'. esc_attr( __( "You're in the preview mode. Note: All elements work correctly on the front end." , "quiz-maker") ) .'</span>';
         }
@@ -7385,6 +7390,16 @@ class Quiz_Maker_Public
             if( isset( $_GET['post_id'] ) & absint( $_GET['post_id'] ) > 0 ){
                 $is_editor = true;
             }
+        }
+
+        return $is_editor;
+    }
+
+    public function ays_quiz_is_beaver_builder(){
+        $is_editor = false;
+        
+        if( isset( $_GET['fl_builder'] ) || isset( $_GET['fl_builder_ui'] ) || isset( $_GET['fl_builder_ui_iframe'] ) ){
+            $is_editor = true;
         }
 
         return $is_editor;
