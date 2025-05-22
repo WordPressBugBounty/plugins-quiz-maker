@@ -120,6 +120,11 @@ class Quiz_Maker {
          */
         require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-quiz-maker-ays-welcome.php';
 
+        /**
+         * The class responsible for showing Quiz Maker Feedback popup.
+         */
+        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-quiz-maker-feedback.php';
+
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
