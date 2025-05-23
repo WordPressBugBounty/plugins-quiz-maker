@@ -182,27 +182,13 @@ class Quiz_Maker_Ays_Welcome {
             'cta'   => $cta,
         );
 
-        curl_setopt_array($curl, array(
-            CURLOPT_URL => $api_url,
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING => "",
-            CURLOPT_MAXREDIRS => 10,
-            CURLOPT_TIMEOUT => 300,
-            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_SSL_VERIFYPEER => false,
-            // CURLOPT_SSL_VERIFYHOST => false,
-            CURLOPT_CUSTOMREQUEST => "POST",
-            CURLOPT_POSTFIELDS => json_encode($data),
-            CURLOPT_HTTPHEADER => array(
-                "Content-Type: application/json",
-                "cache-control: no-cache"
-            ),
-        ));
-
-        $response = curl_exec($curl);
-        $err = curl_error($curl);
-
-        curl_close($curl);
+        wp_remote_post( $api_url, array(
+            'timeout' => 30,
+            'body' => wp_json_encode(array(
+                'type'  => 'quiz-maker',
+                'cta'   => $cta,
+            )),
+        ) );
     }
 }
 new Quiz_Maker_Ays_Welcome();

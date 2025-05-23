@@ -54,7 +54,7 @@ $quiz_wp_editor_height = (isset($gen_options['quiz_wp_editor_height']) && $gen_o
 ?>
 <div class="wrap ays-quiz-dashboard-main-wrap">
     <div class="container-fluid">
-        <div class="ays-quiz-heading-box">
+        <div class="ays-quiz-heading-box ays-quiz-heading-box-margin-top">
             <div class="ays-quiz-wordpress-user-manual-box">
                 <a href="https://quiz-plugin.com/docs/" target="_blank">
                     <i class="ays_fa ays_fa_file_text" ></i> 
@@ -62,7 +62,7 @@ $quiz_wp_editor_height = (isset($gen_options['quiz_wp_editor_height']) && $gen_o
                 </a>
             </div>
         </div>
-        <h1><?php echo wp_kses_post($heading); ?></h1>
+        <h1 class="wp-heading-inline"><?php echo wp_kses_post($heading); ?></h1>
         <?php do_action('ays_quiz_sale_banner'); ?>
         <div>
             <?php if($id !== null): ?>

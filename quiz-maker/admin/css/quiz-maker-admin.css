@@ -37,6 +37,14 @@ body.mobile.modal-open #wpwrap {
 
 /* Conflict with Product Recommendation Quiz for eCommerce | end */
 
+/* Conflict with WP Adminify – Custom WordPress Dashboard | start */
+
+.wp-adminify .adminify--footer {
+    display: none !important;
+}
+
+/* Conflict with WP Adminify – Custom WordPress Dashboard | end */
+
 h1.wp-heading-inline{
     margin-bottom: 20px;
     margin-top: 20px;
@@ -4024,6 +4032,7 @@ li.ays_lb_li:first-child {
 .color-alpha,
 .wp-picker-container .color-alpha {
     height: 100% !important;
+    margin-left: 0;
 }
 
 
@@ -5208,6 +5217,11 @@ ul li a[href*="tab-panel-quiz-maker"] {
     font-size: 13.5px;
 }
 
+.contextual-help-tabs ul li a[href*="tab-panel-quiz-maker"]:focus,
+.contextual-help-tabs ul li a[href*="tab-panel-quiz-maker"]:active {
+    box-shadow: unset;
+}
+
 /*Help Tab | End*/
 
 ul.ays-quiz-tooltip-ul {
@@ -5557,6 +5571,10 @@ div#ays-quiz-winter-dicount-main #ays-quiz-maker-countdown-main-container .emoji
 .ays-quiz-heading-box {
     float: right;
     margin-top: 10px;
+}
+
+.ays-quiz-heading-box.ays-quiz-heading-box-margin-top {
+    margin-top: 30px;
 }
 
 .ays-quiz-heading-box.ays-quiz-unset-float {
@@ -7697,6 +7715,11 @@ div .wp-picker-container .wp-color-result.button {
     border-bottom: 1px solid #c7c3c3;
     color: black;
     margin-bottom: 0px;
+}
+
+#wpwrap .nav-tab-wrapper .nav-tab,
+#wpwrap .ays-quiz-dashboard-main-wrap.ays-quiz-dashboard-main-wrap .ays-top-menu-wrapper .nav-tab {
+    color: black !important;
 }
 
 .ays-quiz-dashboard-main-wrap .ays-top-menu-wrapper .nav-tab:hover{

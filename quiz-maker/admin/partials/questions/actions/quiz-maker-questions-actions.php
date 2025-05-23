@@ -342,6 +342,14 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
 
 <div class="wrap ays-quiz-dashboard-main-wrap ays-quiz-dashboard-main-nowrap">
     <div class="container-fluid">
+        <div class="ays-quiz-heading-box ays-quiz-heading-box-margin-top">
+            <div class="ays-quiz-wordpress-user-manual-box">
+                <a href="https://quiz-plugin.com/docs/" target="_blank">
+                    <i class="ays_fa ays_fa_file_text" ></i> 
+                    <span style="margin-left: 3px;text-decoration: underline;"><?php echo esc_html__("View Documentation", "quiz-maker"); ?></span>
+                </a>
+            </div>
+        </div>
         <h1 class="wp-heading-inline">
         <?php
             echo wp_kses_post($heading);
@@ -353,14 +361,6 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
             <input type="hidden" name="ays_question_ctrate_date" value="<?php echo esc_attr( $question_create_date ); ?>">
             <input type="hidden" name="ays_question_author" value="<?php echo esc_attr(json_encode($question_author)); ?>">
             <input type="hidden" class="quiz_wp_editor_height" value="<?php echo esc_attr( $quiz_wp_editor_height ); ?>">
-            <div class="ays-quiz-heading-box">
-                <div class="ays-quiz-wordpress-user-manual-box">
-                    <a href="https://quiz-plugin.com/docs/" target="_blank">
-                        <i class="ays_fa ays_fa_file_text" ></i> 
-                        <span style="margin-left: 3px;text-decoration: underline;"><?php echo esc_html__("View Documentation", "quiz-maker"); ?></span>
-                    </a>
-                </div>
-            </div>
             <div class="ays-top-menu-container-wrapper">
                 <div class="ays-top-menu-wrapper">
                     <div class="ays_menu_left" data-scroll="0"><i class="ays_fa ays_fa_angle_left"></i></div>

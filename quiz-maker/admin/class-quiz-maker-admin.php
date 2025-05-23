@@ -325,11 +325,30 @@ class Quiz_Maker_Admin
                 wp_deregister_script('wp_social_select2_js');
                 wp_dequeue_script('wp_social_select2_js');
             }
+
+            if (is_plugin_active('happyforms/happyforms.php')) {
+                wp_dequeue_style('happyforms-admin');
+            }
         }
 
         if (is_plugin_active('search-replace-for-block-editor/search-replace-for-block-editor.php')) {
             wp_deregister_script('search-replace-for-block-editor');
             wp_dequeue_script('search-replace-for-block-editor');
+        }
+    }
+
+    /**
+     * Remove HookFilter for the quiz admin area.
+     *
+     * @since    1.0.0
+     */
+    public function remove_hook_and_filter_from_dashboard() {
+        if (!empty($_GET['page']) && false !== strpos(sanitize_text_field($_GET['page']), $this->plugin_name) ) {
+            if (is_plugin_active('stepform/stepFORM.php') || is_plugin_active('stepform/stepform.php')) {
+                if (class_exists('stepFORM_MCE')) {
+                    remove_filter('mce_buttons_2', array('stepFORM_MCE', 'mce_buttons_2'));
+                }
+            }
         }
     }
 
@@ -1993,7 +2012,7 @@ class Quiz_Maker_Admin
 
             $pro_content = array();
 
-            $pro_content[] = '<div class="only_pro only_pro_save_as_default" style="margin: 0 10px;" title="'.__("This property available only in pro version",'quiz-maker') .'">';
+            $pro_content[] = '<div class="only_pro only_pro_save_as_default" style="margin: 0 10px;" title="'. __("This feature available only in pro version", 'quiz-maker') .'">';
                 $pro_content[] = '<div class="pro_features pro_features_popup">';
                     $pro_content[] = '<div class="pro-features-popup-conteiner">';
                         $pro_content[] = '<div class="pro-features-popup-title">';
@@ -2033,11 +2052,11 @@ class Quiz_Maker_Admin
                 $pro_content[] = '<div>';
 
                     $pro_content[] = '<a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-pdf-export-'. esc_attr( AYS_QUIZ_VERSION ) .'" target="_blank" class="ays-pro-a" style="margin: 0 10px;">';
-                        $pro_content[] = '<span type="button" class="disabled-button" title="This property available only in pro version">'.__("PDF", 'quiz-maker').'</span>';
+                        $pro_content[] = '<span type="button" class="disabled-button" title="'. __("This feature available only in pro version", 'quiz-maker') .'">'.__("PDF", 'quiz-maker').'</span>';
                     $pro_content[] = '</a>';
 
                     $pro_content[] = '<a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-xlsx-export-'. esc_attr( AYS_QUIZ_VERSION ) .'" target="_blank" class="ays-pro-a">';
-                        $pro_content[] = '<span type="button" class="disabled-button" title="This property available only in pro version">'.__("XLSX", 'quiz-maker').'</span>';
+                        $pro_content[] = '<span type="button" class="disabled-button" title="'. __("This feature available only in pro version", 'quiz-maker') .'">'.__("XLSX", 'quiz-maker').'</span>';
                     $pro_content[] = '</a>';
                 $pro_content[] = '</div>';
             $pro_content[] = '</div>';
@@ -2047,7 +2066,7 @@ class Quiz_Maker_Admin
 
             $admin_note_content = array();
 
-            $admin_note_content[] = '<div class="only_pro only_pro_save_as_default" style="margin: 0 10px;" title="'.__("This property available only in pro version",'quiz-maker') .'">';
+            $admin_note_content[] = '<div class="only_pro only_pro_save_as_default" style="margin: 0 10px;" title="'. __("This feature available only in pro version", 'quiz-maker') .'">';
                 $admin_note_content[] = '<div class="pro_features pro_features_popup">';
                     $admin_note_content[] = '<div class="pro-features-popup-conteiner">';
                         $admin_note_content[] = '<div class="pro-features-popup-title">';
@@ -2087,7 +2106,7 @@ class Quiz_Maker_Admin
 
                     $admin_note_content[] = '<div class="ays-quiz-click-for-admin-note">';
                         $admin_note_content[] = '<a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-admin-note-'. esc_attr( AYS_QUIZ_VERSION ) .'" target="_blank" class="ays-pro-a">';
-                            $admin_note_content[] = '<button class="button button-primary disabled-button" style="color:#ffffff !important; font-weight:normal;" title="This property available only in pro version">';
+                            $admin_note_content[] = '<button class="button button-primary disabled-button" style="color:#ffffff !important; font-weight:normal;" title="'. __("This feature available only in pro version", 'quiz-maker') .'">';
                                 $admin_note_content[] = __( 'Click For Admin Note', 'quiz-maker' );
                             $admin_note_content[] = '</button>';
                         $admin_note_content[] = '</a>';
@@ -3763,7 +3782,7 @@ class Quiz_Maker_Admin
 
                             $content[] = '<span class="ays-quiz-new-mega-bundle-title">';
                                 // $content[] = __( "<span><a href='https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=sale-banner' target='_blank' style='color:#ffffff; text-decoration: underline;'>Quiz Maker</a></span>", 'quiz-maker' );
-                                $content[] = __( "<span><a href='". $quiz_cta_button_link ."' target='_blank' style='color:#ffffff; text-decoration: underline;'>Mega Bundle</a></span> (Quiz + Survey + Poll)", 'quiz-maker' );
+                                $content[] = __( "<span><a href='". $quiz_cta_button_link ."' target='_blank' style='color:#ffffff !important; text-decoration: underline;'>Mega Bundle</a></span> (Quiz + Survey + Poll)", 'quiz-maker' );
                             $content[] = '</span>';
                             $content[] = '<div class="ays-quiz-new-mega-bundle-title-icon-row" style="display: inline-block;">';
                                 $content[] = '<img src="' . AYS_QUIZ_ADMIN_URL . '/images/ays-quiz-banner-50.svg" class="ays-quiz-new-mega-bundle-mobile-image-display-none" style="width: 70px;">';
@@ -4436,7 +4455,7 @@ class Quiz_Maker_Admin
 
         $sidebar_content = '
         <p><strong>' . __( 'For more information:', 'quiz-maker' ) . '</strong></p>' .
-        '<p><a href="https://www.youtube.com/watch?v=oKPOdbZahK0" target="_blank">' . __( 'YouTube video tutorials' , 'quiz-maker' ) . '</a></p>' .
+        '<p><a href="https://www.youtube.com/@AysProPlugins" target="_blank">' . __( 'YouTube video tutorials' , 'quiz-maker' ) . '</a></p>' .
         '<p><a href="https://quiz-plugin.com/docs/" target="_blank">' . __( 'Documentation', 'quiz-maker' ) . '</a></p>' .
         '<p><a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank">' . __( 'Quiz Maker plugin premium version', 'quiz-maker' ) . '</a></p>' .
         '<p><a href="https://quiz-plugin.com/wordpress-quiz-plugin-free-demo" target="_blank">' . __( 'Quiz Maker plugin free demo', 'quiz-maker' ) . '</a></p>';

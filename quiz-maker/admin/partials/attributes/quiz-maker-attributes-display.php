@@ -1,5 +1,13 @@
 <br>
 <div class="wrap ays-quiz-custom-fields-list-table">
+    <div class="ays-quiz-heading-box ays-quiz-heading-box-margin-top">
+        <div class="ays-quiz-wordpress-user-manual-box">
+            <a href="https://quiz-plugin.com/docs/" target="_blank">
+                <i class="ays_fa ays_fa_file_text" ></i> 
+                <span style="margin-left: 3px;text-decoration: underline;"><?php echo esc_html__("View Documentation", "quiz-maker"); ?></span>
+            </a>
+        </div>
+    </div>
     <h1 class="wp-heading-inline">
         <?php echo esc_html(get_admin_page_title()); ?>
     </h1>

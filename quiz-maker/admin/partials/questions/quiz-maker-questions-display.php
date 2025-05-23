@@ -15,7 +15,7 @@ $plus_icon_svg = "<span class=''><img src='". AYS_QUIZ_ADMIN_URL ."/images/icons
 ?>
 
 <div class="wrap ays-quiz-list-table ays_questions_list_table">
-    <div class="ays-quiz-heading-box">
+    <div class="ays-quiz-heading-box ays-quiz-heading-box-margin-top">
         <div class="ays-quiz-wordpress-user-manual-box">
             <a href="https://quiz-plugin.com/docs/" target="_blank">
                 <i class="ays_fa ays_fa_file_text" ></i> 

@@ -11,22 +11,22 @@ if(isset($_GET['ays_quiz_tab'])){
 ?>
 <div class="wrap" style="position:relative;">
     <div class="container-fluid">
+        <div class="ays-quiz-heading-box ays-quiz-heading-box-margin-top">
+            <div class="ays-quiz-wordpress-user-manual-box">
+                <a href="https://quiz-plugin.com/docs/" target="_blank">
+                    <i class="ays_fa ays_fa_file_text" ></i> 
+                    <span style="margin-left: 3px;text-decoration: underline;"><?php echo esc_html__("View Documentation", "quiz-maker"); ?></span>
+                </a>
+            </div>
+        </div>
+        <h1 class="wp-heading-inline">
+        <?php
+            echo esc_html__('Integrations','quiz-maker');
+        ?>
+        </h1>
+        <?php do_action('ays_quiz_sale_banner'); ?>
         <form method="post" class="ays-quiz-general-settings-form ays-quiz-general-settings-integration-page" id="ays-quiz-general-settings-form">
             <input type="hidden" name="ays_quiz_tab" value="<?php echo esc_attr($ays_quiz_tab); ?>">
-            <div class="ays-quiz-heading-box">
-                <div class="ays-quiz-wordpress-user-manual-box">
-                    <a href="https://quiz-plugin.com/docs/" target="_blank">
-                        <i class="ays_fa ays_fa_file_text" ></i> 
-                        <span style="margin-left: 3px;text-decoration: underline;"><?php echo esc_html__("View Documentation", "quiz-maker"); ?></span>
-                    </a>
-                </div>
-            </div>
-            <h1 class="wp-heading-inline">
-            <?php
-                echo esc_html__('Integrations','quiz-maker');
-            ?>
-            </h1>
-            <?php do_action('ays_quiz_sale_banner'); ?>
             <hr/>
             <div class="form-group ays-settings-wrapper">
                 <div class="ays-quiz-tabs-wrapper" style="border: unset;">

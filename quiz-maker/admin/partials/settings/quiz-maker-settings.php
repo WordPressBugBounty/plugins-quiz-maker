@@ -382,7 +382,7 @@
             <?php
                 echo __('General Settings','quiz-maker');
             ?>
-            <div class="ays-quiz-heading-box" style="margin-top: 0;">
+            <div class="ays-quiz-heading-box ays-quiz-heading-box-margin-top" style="margin-top: 0;">
                 <div class="ays-quiz-wordpress-user-manual-box">
                     <a href="https://quiz-plugin.com/docs/" target="_blank">
                         <i class="ays_fa ays_fa_file_text" ></i> 

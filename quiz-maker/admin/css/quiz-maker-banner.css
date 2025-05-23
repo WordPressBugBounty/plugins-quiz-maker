@@ -1954,6 +1954,7 @@ div#ays-quiz-new-mega-bundle-dicount-month-main.ays_quiz_dicount_info {
     background-repeat: no-repeat;
     background-size: cover;
     background-color: #5551FF;
+    padding: 1px 38px 1px 12px;
 }
 
 #ays-quiz-new-mega-bundle-dicount-month-main .ays_quiz_dicount_month {
@@ -2138,6 +2139,7 @@ div#ays-quiz-new-mega-bundle-dicount-month-main.ays_quiz_dicount_info {
     border-radius: 4.273px;
     border: 0.534px solid #F4F4F4;
     background: #9896ED;
+    color: #fff;
 }
 
 #ays-quiz-maker-countdown-main-container .emoji {

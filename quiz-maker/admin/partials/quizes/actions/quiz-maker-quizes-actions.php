@@ -1441,6 +1441,18 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
 <style id="ays_live_custom_css"></style>
 <div class="wrap ays-quiz-dashboard-main-wrap">
     <div class="container-fluid">
+        <div class="ays-quiz-heading-box ays-quiz-heading-box-margin-top">
+            <div class="ays-quiz-wordpress-user-manual-box">
+                <a href="https://www.youtube.com/watch?v=gKjzOsn_yDo" target="_blank" style="text-decoration: none;font-size: 13px;">
+                    <span><img src='<?php echo AYS_QUIZ_ADMIN_URL; ?>/images/icons/youtube-video-icon.svg' ></span>
+                    <span style="margin-left: 3px; text-decoration: underline;"><?php echo esc_html__('Getting started', "quiz-maker"); ?></span>
+                </a>
+                <a href="https://quiz-plugin.com/docs/" target="_blank">
+                    <i class="ays_fa ays_fa_file_text" ></i> 
+                    <span style="margin-left: 3px;text-decoration: underline;"><?php echo esc_html__("View Documentation", "quiz-maker"); ?></span>
+                </a>
+            </div>
+        </div>
         <h1 class="wp-heading-inline">
             <?php
                 echo $heading;
@@ -1454,18 +1466,6 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
             <input type="hidden" class="quiz_wp_editor_height" value="<?php echo esc_attr($quiz_wp_editor_height); ?>">
             <input type="hidden" class="quiz_question_title_view" value="<?php echo esc_attr($quiz_question_title_view); ?>">
             <!-- <input type="hidden" id="ays_quiz_section_collapse_flag" name="ays_quiz_section_collapse_flag" value="<?php #echo esc_attr($quiz_section_collapse_flag_input); ?>"> -->
-            <div class="ays-quiz-heading-box">
-                <div class="ays-quiz-wordpress-user-manual-box">
-                    <a href="https://www.youtube.com/watch?v=gKjzOsn_yDo" target="_blank" style="text-decoration: none;font-size: 13px;">
-                        <span><img src='<?php echo AYS_QUIZ_ADMIN_URL; ?>/images/icons/youtube-video-icon.svg' ></span>
-                        <span style="margin-left: 3px; text-decoration: underline;"><?php echo esc_html__('Getting started', "quiz-maker"); ?></span>
-                    </a>
-                    <a href="https://quiz-plugin.com/docs/" target="_blank">
-                        <i class="ays_fa ays_fa_file_text" ></i> 
-                        <span style="margin-left: 3px;text-decoration: underline;"><?php echo esc_html__("View Documentation", "quiz-maker"); ?></span>
-                    </a>
-                </div>
-            </div>
             <div>
                 <div class="ays-quiz-subtitle-main-box ays-quiz-edit-page-subtitle-container">
                     <p class="ays-subtitle">
