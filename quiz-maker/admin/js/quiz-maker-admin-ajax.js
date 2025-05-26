@@ -45,86 +45,91 @@
         var wp_nonce = $(document).find('#ays_quiz_ajax_add_question_nonce').val();
         var quiz_question_title_view = $(document).find('.quiz_question_title_view');
 
-        let data = $(this).serializeFormJSON();
-        data.action = 'add_question_rows';
-        data._ajax_nonce = wp_nonce;
+        if(window.aysQuestNewSelected.length > 0){
+            let data = $(this).serializeFormJSON();
+            data.action = 'add_question_rows';
+            data._ajax_nonce = wp_nonce;
 
-        if(quiz_question_title_view.length > 0){
-            var quiz_question_title_view_val = quiz_question_title_view.val();
-            data.question_title_view = quiz_question_title_view_val;
-        }
-
-        data['ays_questions_ids[]'] = window.aysQuestSelected;
-        $.ajax({
-            url: quiz_maker_ajax.ajax_url,
-            method: 'post',
-            dataType: 'json',
-            data: data,
-            success: function(response){
-                if( response.status === true ) {
-                    $(document).find("table#ays-questions-table").find('.dataTables_empty').parents('tr').remove();
-                    $(document).find('div.ays-quiz-preloader').css('display', 'none');
-                    let table = $('table#ays-questions-table tbody'),
-                        id_container = $(document).find('input#ays_already_added_questions'),
-                        existing_ids = ( id_container.val().split(',')[0] === "" ) ? [] : id_container.val().split(','),
-                        new_ids = [];
-                    for(let i = 0; i < response.ids.length; i++) {
-                        if( $.inArray( response.ids[i], existing_ids ) === -1 ) {
-                            new_ids.push(response.ids[i]);
-                            table.append(response.rows[i]);
-                            let table_rows = $('table#ays-questions-table tbody tr'),
-                                table_rows_length = table_rows.length;
-                            if( table_rows_length % 2 === 0 ) {
-                                table_rows.eq( ( table_rows_length - 1 ) ).addClass('even');
-                            }
-                        }else{
-                            let position = $.inArray( response.ids[i], existing_ids );
-                        }
-                    }
-                    
-                    let table_rows = $('table#ays-questions-table tbody tr');
-                    // new_ids = new_ids.reverse();
-                    for(var i = 0; i < new_ids.length; i++){
-                        existing_ids.push(new_ids[i]);
-                    }                    
-                    table_rows.each(function(){
-                        let id = $(this).data('id');
-                        if($.inArray( id.toString(), existing_ids ) === -1){
-                            $(this).remove();
-                        }
-                    });
-                    id_container.val( existing_ids );
-                }
-                $(document).find('#ays-questions-modal').aysModal('hide');
-                let questions_count = response.ids.length;
-
-                let table_rows = $('table#ays-questions-table tbody tr');
-                
-                var questions_count_val = questions_count;
-                if ( table_rows.length > 0 && table_rows.length > questions_count ) {
-                    questions_count_val = table_rows.length;
-                }
-
-                $(document).find('.questions_count_number').html(questions_count_val);
-
-                let pagination = $('.ays-question-pagination');
-                if (pagination.length > 0) {
-                    let trCount = $(document).find('#ays-questions-table tbody tr').length;
-                    let pagesCount = 1;
-                    let pageCount = Math.ceil(trCount/5);
-                    createPagination(pagination, pageCount, pagesCount);
-
-                    let page = 1; // set page 1
-                    $('ul.ays-question-nav-pages').removeAttr('style');//moves pagination to first
-                    let pages = $('ul.ays-question-nav-pages li');
-                    pages.each(function () {
-                        $(this).removeClass('active'); //remove active pages
-                    });
-                    pages.eq(0).addClass('active'); // assigning to first page element active
-                    show_hide_rows(page); // show count of rows
-                }
+            if(quiz_question_title_view.length > 0){
+                var quiz_question_title_view_val = quiz_question_title_view.val();
+                data.question_title_view = quiz_question_title_view_val;
             }
-        });
+            data['ays_questions_ids[]'] = window.aysQuestSelected;
+            $.ajax({
+                url: quiz_maker_ajax.ajax_url,
+                method: 'post',
+                dataType: 'json',
+                data: data,
+                success: function(response){
+                    if( response.status === true ) {
+                        $(document).find("table#ays-questions-table").find('.dataTables_empty').parents('tr').remove();
+                        $(document).find('div.ays-quiz-preloader').css('display', 'none');
+                        let table = $('table#ays-questions-table tbody'),
+                            id_container = $(document).find('input#ays_already_added_questions'),
+                            existing_ids = ( id_container.val().split(',')[0] === "" ) ? [] : id_container.val().split(','),
+                            new_ids = [];
+                        for(let i = 0; i < response.ids.length; i++) {
+                            if( $.inArray( response.ids[i], existing_ids ) === -1 ) {
+                                new_ids.push(response.ids[i]);
+                                table.append(response.rows[i]);
+                                let table_rows = $('table#ays-questions-table tbody tr'),
+                                    table_rows_length = table_rows.length;
+                                if( table_rows_length % 2 === 0 ) {
+                                    table_rows.eq( ( table_rows_length - 1 ) ).addClass('even');
+                                }
+                            }else{
+                                let position = $.inArray( response.ids[i], existing_ids );
+                            }
+                        }
+                        
+                        let table_rows = $('table#ays-questions-table tbody tr');
+                        // new_ids = new_ids.reverse();
+                        for(var i = 0; i < new_ids.length; i++){
+                            existing_ids.push(new_ids[i]);
+                        }                    
+                        table_rows.each(function(){
+                            let id = $(this).data('id');
+                            if($.inArray( id.toString(), existing_ids ) === -1){
+                                $(this).remove();
+                            }
+                        });
+                        id_container.val( existing_ids );
+                    }
+                    $(document).find('#ays-questions-modal').aysModal('hide');
+                    let questions_count = response.ids.length;
+
+                    let table_rows = $('table#ays-questions-table tbody tr');
+                    
+                    var questions_count_val = questions_count;
+                    if ( table_rows.length > 0 && table_rows.length > questions_count ) {
+                        questions_count_val = table_rows.length;
+                    }
+
+                    $(document).find('.questions_count_number').html(questions_count_val);
+
+                    let pagination = $('.ays-question-pagination');
+                    if (pagination.length > 0) {
+                        let trCount = $(document).find('#ays-questions-table tbody tr').length;
+                        let pagesCount = 1;
+                        let pageCount = Math.ceil(trCount/5);
+                        createPagination(pagination, pageCount, pagesCount);
+
+                        let page = 1; // set page 1
+                        $('ul.ays-question-nav-pages').removeAttr('style');//moves pagination to first
+                        let pages = $('ul.ays-question-nav-pages li');
+                        pages.each(function () {
+                            $(this).removeClass('active'); //remove active pages
+                        });
+                        pages.eq(0).addClass('active'); // assigning to first page element active
+                        show_hide_rows(page); // show count of rows
+                    }
+                    window.aysQuestNewSelected = [];
+                }
+            });
+        }else{
+            alert(quiz_maker_ajax.mustSelectNewQuestion);
+            $(document).find('div.ays-quiz-preloader').css('display', 'none');
+        }
         e.preventDefault();
     } );
     

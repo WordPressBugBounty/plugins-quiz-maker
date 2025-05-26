@@ -2081,24 +2081,64 @@
             }
         });
         
-        $(document).on('click', '#ays-question-table-add tbody tr.ays_quest_row', function(){
-            let id = $(this).data('id');
-            let index = $.inArray(id, window.aysQuestSelected);
-            let trIndex = 1;
-            let tableQuestions = $(document).find('table.ays-questions-table');
+        var lastChecked = null;
+        $(document).on('click', '#ays-question-table-add tbody tr.ays_quest_row', function(e){
+            var _this = $(this);
+            var currentCheckbox = $(this).find(':checkbox');
+            var id = _this.data('id');
+            
+            if (e.shiftKey && lastChecked != -1) {
+                var eachRow =_this.parents('#ays-question-table-add').find('.ays_quest_row');
+                var start = eachRow.index( this );
+                var end = eachRow.index(lastChecked);
+                var selectedQuestions = eachRow.slice(Math.min(start,end), Math.max(start,end)+ 1);
+                if (_this.hasClass('selected')){ // do unselect
+                    selectedQuestions.each(function(e){
+                        var $this = $(this);
+                        if($this.hasClass('selected')){
+                            aysQuizSelectDeselectAddQuesiton($this);
+                        }
+                    });
+                } else { // do select
+                    selectedQuestions.each(function(e){
+                        var $this = $(this);
+                        if(!$this.hasClass('selected')){
+                            aysQuizSelectDeselectAddQuesiton($this);
+                        }
+                    });
+                }
+            }else {
+                aysQuizSelectDeselectAddQuesiton(_this);
+            }
+
+            lastChecked = _this;                    
+        });
+
+        function aysQuizSelectDeselectAddQuesiton(_this) {
+            var id = _this.data('id');
+            var index = $.inArray(id, window.aysQuestSelected);
+            var index2 = $.inArray(id, window.aysQuestNewSelected);
+
             if ( index === -1 ) {
                 window.aysQuestSelected.push( id );
             } else {
                 window.aysQuestSelected.splice( index, 1 );
             }
-            if($(this).hasClass('selected')){
-                $(this).find('.ays-select-single').removeClass('ays_fa_check_square_o').addClass('ays_fa_square_o');
-            }else{
-                $(this).find('.ays-select-single').removeClass('ays_fa_square_o').addClass('ays_fa_check_square_o'); 
+            if ( index2 === -1 && index === -1 ) {
+                window.aysQuestNewSelected.push( id );
+            }else if ( index !== -1 && index2 === -1 ) {
+
+            } else {
+                window.aysQuestNewSelected.splice( index2, 1 );
             }
-            $(this).toggleClass('selected');
             
-        });
+            if(_this.hasClass('selected')){
+                _this.find('.ays-select-single').removeClass('ays_fa_check_square_o').addClass('ays_fa_square_o');
+            }else{
+                _this.find('.ays-select-single').removeClass('ays_fa_square_o').addClass('ays_fa_check_square_o'); 
+            }
+            _this.toggleClass('selected');
+        }
         
         $(document).on('click', '.ays-add-question', function () {
             $(document).find('#ays-questions-modal').aysModal();

@@ -249,6 +249,7 @@ class Quiz_Maker_Admin
             'greate'                            => __( 'Great!', 'quiz-maker'),
             'thumbsUpGreat'                     => __( 'Thumbs up, great!', 'quiz-maker'),
             "preivewQuiz"                       => __( "Preview Quiz", 'quiz-maker' ),
+            "mustSelectNewQuestion"             => __( "You must select new questions to add to the quiz.", 'quiz-maker' ),
         ));
         wp_localize_script( $this->plugin_name, 'quizLangObj', array(
             'quizBannerDate'                    => $quiz_banner_date,
@@ -329,6 +330,9 @@ class Quiz_Maker_Admin
             if (is_plugin_active('happyforms/happyforms.php')) {
                 wp_dequeue_style('happyforms-admin');
             }
+
+            // Theme | Pixel Ebook Store
+            wp_dequeue_style('pixel-ebook-store-free-demo-content-style');
         }
 
         if (is_plugin_active('search-replace-for-block-editor/search-replace-for-block-editor.php')) {

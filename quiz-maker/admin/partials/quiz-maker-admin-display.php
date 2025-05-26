@@ -520,7 +520,7 @@ $new_questions_page_url = sprintf('?page=%s&action=%s', 'quiz-maker-questions', 
             <br>
             <?php 
                 echo sprintf( esc_attr( __( "If none of these guides help you, ask your question by contacting our %s support specialists %s and get a reply within a day.", 'quiz-maker' ) ),
-                    '<a href="https://ays-pro.com/contact" target="_blank">',
+                    '<a href="https://wordpress.org/support/plugin/quiz-maker/" target="_blank">',
                     '</a>'
                 ); 
             ?>
