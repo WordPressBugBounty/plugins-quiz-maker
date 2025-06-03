@@ -92,6 +92,7 @@
                     $(document).find('.modal-backdrop').remove();
                     $(document.body).append('<div class="ays-modal-backdrop '+ current_popup_id +'"></div>');
                     $(document.body).addClass('modal-open');
+                    break;
                 case 'show': 
                 default:
                     $this.show();

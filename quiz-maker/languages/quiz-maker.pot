@@ -88,32 +88,32 @@ msgid "Searching..."
 msgstr ""
 
 #: ../admin/class-quiz-maker-admin.php:240
-#: ../admin/class-quiz-maker-admin.php:5050
+#: ../admin/class-quiz-maker-admin.php:5088
 msgid "Activated"
 msgstr ""
 
 #: ../admin/class-quiz-maker-admin.php:244
-#: ../admin/class-quiz-maker-admin.php:278
+#: ../admin/class-quiz-maker-admin.php:279
 msgid "Copy the generated shortcode and paste it into any post or page to display Quiz."
 msgstr ""
 
 #: ../admin/class-quiz-maker-admin.php:245
-#: ../admin/class-quiz-maker-admin.php:279
+#: ../admin/class-quiz-maker-admin.php:280
 msgid "Your Quiz is Created!"
 msgstr ""
 
 #: ../admin/class-quiz-maker-admin.php:246
-#: ../admin/class-quiz-maker-admin.php:280
+#: ../admin/class-quiz-maker-admin.php:281
 msgid "Great job"
 msgstr ""
 
 #: ../admin/class-quiz-maker-admin.php:247
-#: ../admin/class-quiz-maker-admin.php:281
+#: ../admin/class-quiz-maker-admin.php:282
 msgid "For more detailed configuration visit"
 msgstr ""
 
 #: ../admin/class-quiz-maker-admin.php:248
-#: ../admin/class-quiz-maker-admin.php:282
+#: ../admin/class-quiz-maker-admin.php:283
 msgid "edit quiz page"
 msgstr ""
 
@@ -122,21 +122,25 @@ msgid "Great!"
 msgstr ""
 
 #: ../admin/class-quiz-maker-admin.php:250
-#: ../admin/class-quiz-maker-admin.php:284
+#: ../admin/class-quiz-maker-admin.php:285
 msgid "Thumbs up, great!"
 msgstr ""
 
 #: ../admin/class-quiz-maker-admin.php:251
-#: ../admin/class-quiz-maker-admin.php:289
+#: ../admin/class-quiz-maker-admin.php:290
 msgid "Preview Quiz"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:257
+#: ../admin/class-quiz-maker-admin.php:252
+msgid "You must select new questions to add to the quiz."
+msgstr ""
+
+#: ../admin/class-quiz-maker-admin.php:258
 #: ../admin/partials/quizes/quiz-maker-quizes-display.php:2238
 msgid "Question Default Title"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:258
+#: ../admin/class-quiz-maker-admin.php:259
 #: ../admin/partials/questions/actions/quiz-maker-questions-actions.php:170
 #: ../admin/partials/quizes/quiz-maker-quizes-display.php:2242
 #: ../admin/partials/settings/quiz-maker-settings.php:19
@@ -144,12 +148,12 @@ msgstr ""
 msgid "Radio"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:259
+#: ../admin/class-quiz-maker-admin.php:260
 #: ../admin/partials/quizes/quiz-maker-quizes-display.php:2243
 msgid "Checkbox"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:260
+#: ../admin/class-quiz-maker-admin.php:261
 #: ../admin/partials/questions/actions/quiz-maker-questions-actions.php:172
 #: ../admin/partials/quizes/quiz-maker-quizes-display.php:2244
 #: ../admin/partials/settings/quiz-maker-settings.php:21
@@ -157,16 +161,16 @@ msgstr ""
 msgid "Dropdown"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:261
+#: ../admin/class-quiz-maker-admin.php:262
 msgid "Empty Answer"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:262
+#: ../admin/class-quiz-maker-admin.php:263
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:6659
 msgid "Add Gif"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:263
+#: ../admin/class-quiz-maker-admin.php:264
 #: ../admin/partials/questions/actions/quiz-maker-questions-actions.php:173
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:6647
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:7390
@@ -176,22 +180,22 @@ msgstr ""
 msgid "Text"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:264
+#: ../admin/class-quiz-maker-admin.php:265
 #: ../admin/partials/quizes/quiz-maker-quizes-display.php:2318
 msgid "Answer text"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:265
+#: ../admin/class-quiz-maker-admin.php:266
 msgid "Copied!"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:266
+#: ../admin/class-quiz-maker-admin.php:267
 #: ../admin/partials/quizes/actions/quiz-maker-quiz-categories-actions.php:76
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:1508
 msgid "Click for copy."
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:267
+#: ../admin/class-quiz-maker-admin.php:268
 #: ../admin/partials/questions/actions/quiz-maker-questions-actions.php:174
 #: ../admin/partials/quizes/quiz-maker-quizes-display.php:2246
 #: ../admin/partials/settings/quiz-maker-settings.php:23
@@ -199,17 +203,17 @@ msgstr ""
 msgid "Short Text"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:268
+#: ../admin/class-quiz-maker-admin.php:269
 #: ../admin/partials/questions/actions/quiz-maker-questions-actions.php:197
 msgid "True"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:269
+#: ../admin/class-quiz-maker-admin.php:270
 #: ../admin/partials/questions/actions/quiz-maker-questions-actions.php:198
 msgid "False"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:270
+#: ../admin/class-quiz-maker-admin.php:271
 #: ../admin/partials/questions/actions/quiz-maker-questions-actions.php:175
 #: ../admin/partials/quizes/quiz-maker-quizes-display.php:2247
 #: ../admin/partials/settings/quiz-maker-settings.php:24
@@ -217,7 +221,7 @@ msgstr ""
 msgid "Number"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:271
+#: ../admin/class-quiz-maker-admin.php:272
 #: ../admin/partials/questions/actions/quiz-maker-questions-actions.php:177
 #: ../admin/partials/quizes/quiz-maker-quizes-display.php:2248
 #: ../admin/partials/settings/quiz-maker-settings.php:26
@@ -225,7 +229,7 @@ msgstr ""
 msgid "True/False"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:272
+#: ../admin/class-quiz-maker-admin.php:273
 #: ../admin/partials/questions/actions/quiz-maker-questions-actions.php:176
 #: ../admin/partials/quizes/quiz-maker-quizes-display.php:2249
 #: ../admin/partials/settings/quiz-maker-settings.php:25
@@ -233,29 +237,29 @@ msgstr ""
 msgid "Date"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:274
+#: ../admin/class-quiz-maker-admin.php:275
 #: ../admin/partials/questions/actions/quiz-maker-questions-actions.php:1453
 msgid "Are you sure you want to go to the next question page?"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:275
+#: ../admin/class-quiz-maker-admin.php:276
 msgid "Are you sure you want to redirect to another quiz? Note that the changes made in this quiz will not be saved."
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:276
+#: ../admin/class-quiz-maker-admin.php:277
 msgid "Are you sure you want to delete question ?"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:277
+#: ../admin/class-quiz-maker-admin.php:278
 msgid "Are you sure you want to delete?"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:283
+#: ../admin/class-quiz-maker-admin.php:284
 msgid "Done"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:286
-#: ../admin/class-quiz-maker-admin.php:2228
+#: ../admin/class-quiz-maker-admin.php:287
+#: ../admin/class-quiz-maker-admin.php:2266
 #: ../includes/lists/class-quiz-maker-all-reviews-list-table.php:166
 #: ../includes/lists/class-quiz-maker-question-categories-list-table.php:107
 #: ../includes/lists/class-quiz-maker-questions-list-table.php:155
@@ -265,83 +269,83 @@ msgstr ""
 msgid "All"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:287
+#: ../admin/class-quiz-maker-admin.php:288
 #: ../includes/lists/class-quiz-maker-questions-list-table.php:87
 #: ../includes/lists/class-quiz-maker-quizes-list-table.php:67
 #: ../includes/lists/class-quiz-maker-results-list-table.php:117
 msgid "Select Category"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:288
+#: ../admin/class-quiz-maker-admin.php:289
 msgid "Select Tags"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:421
-#: ../admin/class-quiz-maker-admin.php:422
-#: ../admin/class-quiz-maker-admin.php:794
+#: ../admin/class-quiz-maker-admin.php:459
+#: ../admin/class-quiz-maker-admin.php:460
+#: ../admin/class-quiz-maker-admin.php:832
 #: ../includes/lists/class-quiz-maker-quizes-list-table.php:12
 msgid "Quizzes"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:435
-#: ../admin/class-quiz-maker-admin.php:436
-#: ../admin/class-quiz-maker-admin.php:826
-#: ../admin/class-quiz-maker-admin.php:2225
+#: ../admin/class-quiz-maker-admin.php:473
+#: ../admin/class-quiz-maker-admin.php:474
+#: ../admin/class-quiz-maker-admin.php:864
+#: ../admin/class-quiz-maker-admin.php:2263
 #: ../admin/partials/questions/quiz-maker-questions-display.php:129
 #: ../admin/partials/quizes/quiz-maker-quizes-display.php:2223
 #: ../includes/lists/class-quiz-maker-questions-list-table.php:12
 msgid "Questions"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:449
-#: ../admin/class-quiz-maker-admin.php:450
-#: ../admin/class-quiz-maker-admin.php:810
+#: ../admin/class-quiz-maker-admin.php:487
+#: ../admin/class-quiz-maker-admin.php:488
+#: ../admin/class-quiz-maker-admin.php:848
 #: ../includes/lists/class-quiz-maker-quiz-categories-list-table.php:12
 msgid "Quiz Categories"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:463
-#: ../admin/class-quiz-maker-admin.php:464
-#: ../admin/class-quiz-maker-admin.php:842
+#: ../admin/class-quiz-maker-admin.php:501
+#: ../admin/class-quiz-maker-admin.php:502
+#: ../admin/class-quiz-maker-admin.php:880
 #: ../includes/lists/class-quiz-maker-question-categories-list-table.php:12
 msgid "Question Categories"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:477
-#: ../admin/class-quiz-maker-admin.php:478
-#: ../admin/class-quiz-maker-admin.php:5201
+#: ../admin/class-quiz-maker-admin.php:515
+#: ../admin/class-quiz-maker-admin.php:516
+#: ../admin/class-quiz-maker-admin.php:5239
 msgid "Custom Fields"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:489
-#: ../admin/class-quiz-maker-admin.php:490
+#: ../admin/class-quiz-maker-admin.php:527
+#: ../admin/class-quiz-maker-admin.php:528
 msgid "Orders"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:509
-#: ../admin/class-quiz-maker-admin.php:510
-#: ../admin/class-quiz-maker-admin.php:514
-#: ../admin/class-quiz-maker-admin.php:858
+#: ../admin/class-quiz-maker-admin.php:547
+#: ../admin/class-quiz-maker-admin.php:548
+#: ../admin/class-quiz-maker-admin.php:552
+#: ../admin/class-quiz-maker-admin.php:896
 #: ../admin/partials/results/quiz-maker-all-reviews-display.php:64
 #: ../admin/partials/results/quiz-maker-results-display.php:71
 #: ../includes/lists/class-quiz-maker-results-list-table.php:12
 msgid "Results"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:532
+#: ../admin/class-quiz-maker-admin.php:570
 #: ../admin/partials/results/quiz-maker-all-reviews-display.php:67
 #: ../admin/partials/results/quiz-maker-results-display.php:74
 #: ../includes/lists/class-quiz-maker-all-reviews-list-table.php:11
 msgid "Reviews"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:548
-#: ../admin/class-quiz-maker-admin.php:549
+#: ../admin/class-quiz-maker-admin.php:586
+#: ../admin/class-quiz-maker-admin.php:587
 msgid "How to use"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:559
-#: ../admin/class-quiz-maker-admin.php:560
+#: ../admin/class-quiz-maker-admin.php:597
+#: ../admin/class-quiz-maker-admin.php:598
 #: ../admin/partials/questions/actions/quiz-maker-questions-actions.php:400
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:1567
 #: ../admin/partials/settings/quiz-maker-settings.php:383
@@ -349,39 +353,40 @@ msgstr ""
 msgid "General Settings"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:571
-#: ../admin/class-quiz-maker-admin.php:572
+#: ../admin/class-quiz-maker-admin.php:609
+#: ../admin/class-quiz-maker-admin.php:610
 msgid "Our products"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:583
-#: ../admin/class-quiz-maker-admin.php:587
+#: ../admin/class-quiz-maker-admin.php:621
+#: ../admin/class-quiz-maker-admin.php:625
 msgid "Addons"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:583
+#: ../admin/class-quiz-maker-admin.php:621
 msgid "New"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:599
-#: ../admin/class-quiz-maker-admin.php:600
+#: ../admin/class-quiz-maker-admin.php:637
+#: ../admin/class-quiz-maker-admin.php:638
 msgid "PRO Features"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:612
-#: ../admin/class-quiz-maker-admin.php:613
+#: ../admin/class-quiz-maker-admin.php:650
+#: ../admin/class-quiz-maker-admin.php:651 ../quiz-maker.php:170
+#: ../quiz-maker.php:180 ../quiz-maker.php:193
 msgid "Grab your GIFT"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:624
-#: ../admin/class-quiz-maker-admin.php:625
-#: ../admin/partials/integrations/quiz-maker-integrations.php:26
+#: ../admin/class-quiz-maker-admin.php:662
+#: ../admin/class-quiz-maker-admin.php:663
+#: ../admin/partials/integrations/quiz-maker-integrations.php:24
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:1543
 #: ../admin/partials/settings/quiz-maker-settings.php:405
 msgid "Integrations"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:657
+#: ../admin/class-quiz-maker-admin.php:695
 #: ../admin/partials/questions/actions/quiz-maker-questions-actions.php:373
 #: ../admin/partials/questions/actions/quiz-maker-questions-categories-actions.php:76
 #: ../admin/partials/quizes/actions/quiz-maker-quiz-categories-actions.php:87
@@ -390,15 +395,15 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:658 ../quiz-maker.php:167
-#: ../quiz-maker.php:179 ../quiz-maker.php:188
+#: ../admin/class-quiz-maker-admin.php:696 ../quiz-maker.php:167
+#: ../quiz-maker.php:181 ../quiz-maker.php:190
 msgid "Demo"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:659
-#: ../admin/class-quiz-maker-admin.php:5218
-#: ../admin/partials/attributes/quiz-maker-attributes-display.php:47
-#: ../admin/partials/attributes/quiz-maker-attributes-display.php:70
+#: ../admin/class-quiz-maker-admin.php:697
+#: ../admin/class-quiz-maker-admin.php:5256
+#: ../admin/partials/attributes/quiz-maker-attributes-display.php:55
+#: ../admin/partials/attributes/quiz-maker-attributes-display.php:78
 #: ../admin/partials/integrations/quiz-maker-integrations.php:91
 #: ../admin/partials/integrations/quiz-maker-integrations.php:375
 #: ../admin/partials/integrations/quiz-maker-integrations.php:414
@@ -484,36 +489,36 @@ msgstr ""
 msgid "Upgrade"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:669 ../quiz-maker.php:168
-#: ../quiz-maker.php:180 ../quiz-maker.php:189
+#: ../admin/class-quiz-maker-admin.php:707 ../quiz-maker.php:168
+#: ../quiz-maker.php:182 ../quiz-maker.php:191
 msgid "Free Support"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:870
+#: ../admin/class-quiz-maker-admin.php:908
 msgid "All Reviews"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:968
-#: ../admin/class-quiz-maker-admin.php:977
+#: ../admin/class-quiz-maker-admin.php:1006
+#: ../admin/class-quiz-maker-admin.php:1015
 #: ../admin/partials/questions/actions/quiz-maker-questions-actions.php:103
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:1782
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:1791
 msgid "Edit question"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:1682
+#: ../admin/class-quiz-maker-admin.php:1720
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:125
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:4952
 msgid "The quiz will be available soon!"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:1683
+#: ../admin/class-quiz-maker-admin.php:1721
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:126
 #: ../public/class-quiz-maker-public.php:189
 msgid "The quiz has expired!"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:1735
+#: ../admin/class-quiz-maker-admin.php:1773
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:175
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:1090
 #: ../includes/lists/class-quiz-maker-quizes-list-table.php:696
@@ -524,46 +529,42 @@ msgstr ""
 msgid "This quiz is expired!"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:1960
-#: ../admin/class-quiz-maker-admin.php:1962
+#: ../admin/class-quiz-maker-admin.php:1998
+#: ../admin/class-quiz-maker-admin.php:2000
 #: ../includes/lists/class-quiz-maker-all-reviews-list-table.php:422
 #: ../includes/lists/class-quiz-maker-results-list-table.php:573
 msgid "Deleted user"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:1996
-#: ../admin/class-quiz-maker-admin.php:2050
-#: ../admin/partials/questions/quiz-maker-questions-display.php:69
-#: ../admin/partials/questions/quiz-maker-questions-display.php:92
-#: ../admin/partials/questions/quiz-maker-questions-display.php:95
-#: ../admin/partials/questions/quiz-maker-questions-display.php:115
-#: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:9764
-#: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:9793
-#: ../admin/partials/results/quiz-maker-results-display.php:65
-msgid "This property available only in pro version"
+#: ../admin/class-quiz-maker-admin.php:2034
+#: ../admin/class-quiz-maker-admin.php:2074
+#: ../admin/class-quiz-maker-admin.php:2078
+#: ../admin/class-quiz-maker-admin.php:2088
+#: ../admin/class-quiz-maker-admin.php:2128
+msgid "This feature available only in pro version"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2000
+#: ../admin/class-quiz-maker-admin.php:2038
 msgid "Export Individual Result"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2005
+#: ../admin/class-quiz-maker-admin.php:2043
 #, php-format
 msgid "With the excellent plugin Quiz Maker, you can %s export a Detailed report of the Individual Result %s with just a few clicks."
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2012
+#: ../admin/class-quiz-maker-admin.php:2050
 #, php-format
 msgid "You can export detailed reports whether as a %s PDF file %s or as an %s XLSX file. %s"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2021
+#: ../admin/class-quiz-maker-admin.php:2059
 msgid "So choose the variant that suits you and easily export the detailed report."
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2025
-#: ../admin/class-quiz-maker-admin.php:2077
-#: ../admin/partials/attributes/quiz-maker-attributes-display.php:32
+#: ../admin/class-quiz-maker-admin.php:2063
+#: ../admin/class-quiz-maker-admin.php:2115
+#: ../admin/partials/attributes/quiz-maker-attributes-display.php:40
 #: ../admin/partials/questions/quiz-maker-questions-display.php:83
 #: ../admin/partials/questions/quiz-maker-questions-display.php:106
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:6296
@@ -581,9 +582,9 @@ msgstr ""
 msgid "See Documentation"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2029
-#: ../admin/class-quiz-maker-admin.php:2082
-#: ../admin/partials/attributes/quiz-maker-attributes-display.php:36
+#: ../admin/class-quiz-maker-admin.php:2067
+#: ../admin/class-quiz-maker-admin.php:2120
+#: ../admin/partials/attributes/quiz-maker-attributes-display.php:44
 #: ../admin/partials/questions/quiz-maker-questions-display.php:87
 #: ../admin/partials/questions/quiz-maker-questions-display.php:110
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:4801
@@ -608,60 +609,60 @@ msgstr ""
 #: ../admin/partials/settings/quiz-maker-settings.php:2798
 #: ../admin/partials/settings/quiz-maker-settings.php:2879
 #: ../admin/partials/settings/quiz-maker-settings.php:2990
-#: ../quiz-maker.php:166 ../quiz-maker.php:177 ../quiz-maker.php:187
+#: ../quiz-maker.php:166 ../quiz-maker.php:178 ../quiz-maker.php:189
 msgid "Pricing"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2036
+#: ../admin/class-quiz-maker-admin.php:2074
 msgid "PDF"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2040
+#: ../admin/class-quiz-maker-admin.php:2078
 #: ../admin/partials/results/quiz-maker-all-reviews-display.php:157
 msgid "XLSX"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2054
+#: ../admin/class-quiz-maker-admin.php:2092
 msgid "Admin Note"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2059
+#: ../admin/class-quiz-maker-admin.php:2097
 #, php-format
 msgid "The Admin Note feature of the WordPress quiz plugin is a great tool for %s customizing each detailed report. %s"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2066
+#: ../admin/class-quiz-maker-admin.php:2104
 #, php-format
 msgid "This feature allows you %s to add additional information %s about each user on the detailed report page."
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2073
+#: ../admin/class-quiz-maker-admin.php:2111
 msgid "Just type your text in the Admin Note field and save it on detailed reports easily."
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2091
+#: ../admin/class-quiz-maker-admin.php:2129
 msgid "Click For Admin Note"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2113
+#: ../admin/class-quiz-maker-admin.php:2151
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:8366
 #: ../admin/partials/settings/quiz-maker-settings.php:4637
 msgid "User Information"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2115
+#: ../admin/class-quiz-maker-admin.php:2153
 #: ../admin/partials/questions/quiz-maker-questions-display.php:92
 #: ../admin/partials/results/quiz-maker-all-reviews-display.php:156
 msgid "Export to"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2123
+#: ../admin/class-quiz-maker-admin.php:2161
 #: ../includes/lists/class-quiz-maker-all-reviews-list-table.php:486
 #: ../includes/lists/class-quiz-maker-results-list-table.php:705
 msgid "User IP"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2129
+#: ../admin/class-quiz-maker-admin.php:2167
 #: ../includes/lists/class-quiz-maker-all-reviews-list-table.php:415
 #: ../includes/lists/class-quiz-maker-results-list-table.php:102
 #: ../includes/lists/class-quiz-maker-results-list-table.php:566
@@ -670,7 +671,7 @@ msgstr ""
 msgid "Guest"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2134
+#: ../admin/class-quiz-maker-admin.php:2172
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:433
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:458
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:480
@@ -687,11 +688,11 @@ msgstr ""
 msgid "User ID"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2141
+#: ../admin/class-quiz-maker-admin.php:2179
 msgid "User"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2148
+#: ../admin/class-quiz-maker-admin.php:2186
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:8427
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:8448
 #: ../admin/partials/settings/quiz-maker-settings.php:1815
@@ -705,7 +706,7 @@ msgstr ""
 msgid "Email"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2154
+#: ../admin/class-quiz-maker-admin.php:2192
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:8421
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:8442
 #: ../admin/partials/results/quiz-maker-results-display.php:148
@@ -719,7 +720,7 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2160
+#: ../admin/class-quiz-maker-admin.php:2198
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:8433
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:8454
 #: ../admin/partials/settings/quiz-maker-settings.php:4155
@@ -727,29 +728,29 @@ msgstr ""
 msgid "Phone"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2178
+#: ../admin/class-quiz-maker-admin.php:2216
 #: ../admin/partials/settings/quiz-maker-settings.php:4705
 msgid "Quiz Information"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2182
-#: ../admin/class-quiz-maker-admin.php:2188
+#: ../admin/class-quiz-maker-admin.php:2220
+#: ../admin/class-quiz-maker-admin.php:2226
 #: ../includes/lists/class-quiz-maker-all-reviews-list-table.php:490
 #: ../includes/lists/class-quiz-maker-results-list-table.php:709
 msgid "Rate"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2183
+#: ../admin/class-quiz-maker-admin.php:2221
 msgid "Rate Score"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2184
+#: ../admin/class-quiz-maker-admin.php:2222
 #: ../includes/lists/class-quiz-maker-all-reviews-list-table.php:10
 #: ../includes/lists/class-quiz-maker-all-reviews-list-table.php:491
 msgid "Review"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2195
+#: ../admin/class-quiz-maker-admin.php:2233
 #: ../admin/partials/settings/quiz-maker-settings.php:86
 #: ../admin/partials/settings/quiz-maker-settings.php:147
 #: ../admin/partials/settings/quiz-maker-settings.php:225
@@ -757,7 +758,7 @@ msgstr ""
 msgid "Start date"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2203
+#: ../admin/class-quiz-maker-admin.php:2241
 #: ../admin/partials/settings/quiz-maker-settings.php:80
 #: ../admin/partials/settings/quiz-maker-settings.php:88
 #: ../admin/partials/settings/quiz-maker-settings.php:149
@@ -770,7 +771,7 @@ msgstr ""
 msgid "Duration"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2211
+#: ../admin/class-quiz-maker-admin.php:2249
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:403
 #: ../admin/partials/results/quiz-maker-results-display.php:149
 #: ../admin/partials/settings/quiz-maker-settings.php:79
@@ -785,17 +786,17 @@ msgstr ""
 msgid "Score"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2231
-#: ../admin/class-quiz-maker-admin.php:2377
+#: ../admin/class-quiz-maker-admin.php:2269
+#: ../admin/class-quiz-maker-admin.php:2415
 #: ../includes/lists/class-quiz-maker-results-list-table.php:654
 #: ../public/partials/class-quiz-maker-all-results-shortcode.php:315
 msgid "Failed"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2287
-#: ../admin/class-quiz-maker-admin.php:2338
-#: ../admin/class-quiz-maker-admin.php:2384
-#: ../admin/class-quiz-maker-admin.php:2862
+#: ../admin/class-quiz-maker-admin.php:2325
+#: ../admin/class-quiz-maker-admin.php:2376
+#: ../admin/class-quiz-maker-admin.php:2422
+#: ../admin/class-quiz-maker-admin.php:2900
 #: ../admin/partials/questions/actions/quiz-maker-questions-actions.php:428
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:1717
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:9946
@@ -804,44 +805,45 @@ msgstr ""
 msgid "Question"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2302
-#: ../admin/class-quiz-maker-admin.php:2313
-#: ../admin/class-quiz-maker-admin.php:2346
-#: ../admin/class-quiz-maker-admin.php:2357
+#: ../admin/class-quiz-maker-admin.php:2340
+#: ../admin/class-quiz-maker-admin.php:2351
+#: ../admin/class-quiz-maker-admin.php:2384
+#: ../admin/class-quiz-maker-admin.php:2395
 msgid "Correct answer"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2325
-#: ../admin/class-quiz-maker-admin.php:2369
-#: ../admin/class-quiz-maker-admin.php:2390
+#: ../admin/class-quiz-maker-admin.php:2363
+#: ../admin/class-quiz-maker-admin.php:2407
+#: ../admin/class-quiz-maker-admin.php:2428
 msgid "User answered"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2332
+#: ../admin/class-quiz-maker-admin.php:2370
 msgid "Succeed"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2391
+#: ../admin/class-quiz-maker-admin.php:2429
 msgid "Answer point"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2423
-#: ../admin/class-quiz-maker-admin.php:2443
+#: ../admin/class-quiz-maker-admin.php:2461
+#: ../admin/class-quiz-maker-admin.php:2481
 #: ../includes/lists/class-quiz-maker-results-list-table.php:615
 msgid "No rate provided"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2435
+#: ../admin/class-quiz-maker-admin.php:2473
 #: ../includes/lists/class-quiz-maker-results-list-table.php:602
 msgid "No review provided"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2481
-#: ../admin/class-quiz-maker-admin.php:2510
+#: ../admin/class-quiz-maker-admin.php:2519
+#: ../admin/class-quiz-maker-admin.php:2548
 msgid "The user has not answered this question."
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2653
+#: ../admin/class-quiz-maker-admin.php:2691
+#: ../includes/class-quiz-maker-feedback.php:118
 #: ../pb_templates/quiz_maker_elementor.php:9
 #: ../pb_templates/quiz_maker_elementor.php:22
 #: ../pb_templates/quiz_maker_wpbvc.php:23
@@ -850,27 +852,27 @@ msgstr ""
 msgid "Quiz Maker"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2856
+#: ../admin/class-quiz-maker-admin.php:2894
 #: ../includes/lists/class-quiz-maker-all-reviews-list-table.php:485
 #: ../includes/lists/class-quiz-maker-quizes-list-table.php:11
 #: ../includes/lists/class-quiz-maker-results-list-table.php:702
 msgid "Quiz"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2868
-#: ../admin/class-quiz-maker-admin.php:2874
+#: ../admin/class-quiz-maker-admin.php:2906
+#: ../admin/class-quiz-maker-admin.php:2912
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:1632
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:1719
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:9949
 #: ../includes/lists/class-quiz-maker-questions-list-table.php:1387
 #: ../includes/lists/class-quiz-maker-quizes-list-table.php:1837
 #: ../includes/lists/class-quiz-maker-results-list-table.php:703
-#: ../public/class-quiz-maker-public.php:4686
+#: ../public/class-quiz-maker-public.php:4693
 #: ../public/partials/class-quiz-maker-category-shortcode.php:121
 msgid "Category"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2891
+#: ../admin/class-quiz-maker-admin.php:2929
 #: ../admin/partials/questions/quiz-maker-question-categories-display.php:47
 #: ../admin/partials/questions/quiz-maker-question-categories-display.php:70
 #: ../admin/partials/questions/quiz-maker-questions-display.php:139
@@ -883,7 +885,7 @@ msgstr ""
 msgid "Add New"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2906
+#: ../admin/class-quiz-maker-admin.php:2944
 #: ../includes/lists/class-quiz-maker-question-categories-list-table.php:552
 #: ../includes/lists/class-quiz-maker-questions-list-table.php:1224
 #: ../includes/lists/class-quiz-maker-quiz-categories-list-table.php:609
@@ -891,151 +893,151 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2997
+#: ../admin/class-quiz-maker-admin.php:3035
 msgid "question"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2997
+#: ../admin/class-quiz-maker-admin.php:3035
 msgid "questions"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2998
+#: ../admin/class-quiz-maker-admin.php:3036
 msgid "quiz"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2998
+#: ../admin/class-quiz-maker-admin.php:3036
 msgid "quizzes"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2999
+#: ../admin/class-quiz-maker-admin.php:3037
 msgid "new result"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2999
+#: ../admin/class-quiz-maker-admin.php:3037
 msgid "new results"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:3027
+#: ../admin/class-quiz-maker-admin.php:3065
 #, php-format
 msgid "Works version %s of "
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:3063
+#: ../admin/class-quiz-maker-admin.php:3101
 msgid "If you love our plugin, please do big favor and rate us on"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:3216
+#: ../admin/class-quiz-maker-admin.php:3254
 msgid "Limited Time <span style='color:#E85011;'>50%</span> SALE on <br><span><a href='https://ays-pro.com/mega-bundle' target='_blank' style='color:#E85011; text-decoration: underline;'>Mega Bundle</a></span> (Quiz + Survey + Poll)!"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:3263
-#: ../admin/class-quiz-maker-admin.php:3329
-#: ../admin/class-quiz-maker-admin.php:3411
-#: ../admin/class-quiz-maker-admin.php:3472
+#: ../admin/class-quiz-maker-admin.php:3301
+#: ../admin/class-quiz-maker-admin.php:3367
+#: ../admin/class-quiz-maker-admin.php:3449
 #: ../admin/class-quiz-maker-admin.php:3510
-#: ../admin/class-quiz-maker-admin.php:3568
-#: ../admin/class-quiz-maker-admin.php:3986
+#: ../admin/class-quiz-maker-admin.php:3548
+#: ../admin/class-quiz-maker-admin.php:3606
+#: ../admin/class-quiz-maker-admin.php:4024
 msgid "Buy Now !"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:3283
+#: ../admin/class-quiz-maker-admin.php:3321
 msgid "Limited Time <span class='ays-quiz-dicount-wrap-color'>20%</span> SALE on <br><span><a href='https://ays-pro.com/wordpress/quiz-maker' target='_blank' class='ays-quiz-dicount-wrap-color ays-quiz-dicount-wrap-text-decoration' style='display:block;'>Quiz Maker Premium Versions</a></span>"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:3367
+#: ../admin/class-quiz-maker-admin.php:3405
 msgid "The BIGGEST <span class='ays-quiz-dicount-wrap-color' style='color:#000;'>50%</span> SALE on <br><span><a href='https://ays-pro.com/mega-bundle' target='_blank' class='ays-quiz-dicount-wrap-color ays-quiz-dicount-wrap-text-decoration' style='display:block;color:#000'>Christmas Bundle</a></span> (Quiz+Survey+Poll)!"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:3431
+#: ../admin/class-quiz-maker-admin.php:3469
 msgid "Spring is here! <span class='ays-quiz-dicount-wrap-color'>40%</span> SALE on <br><span><a href='https://ays-pro.com/spring-bundle' target='_blank' class='ays-quiz-dicount-wrap-color ays-quiz-dicount-wrap-text-decoration' style='display:block;'>Spring Bundle</a></span> (Quiz+Copy+Popup) !"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:3492
+#: ../admin/class-quiz-maker-admin.php:3530
 msgid "Spring is here! <span class='ays-quiz-dicount-wrap-color'>50%</span> SALE on <span><a href='https://ays-pro.com/spring-bundle' target='_blank' class='ays-quiz-dicount-wrap-color ays-quiz-dicount-wrap-text-decoration'>Spring Bundle</a></span><span style='display: block;'>Quiz + Popup + Copy</span>"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:3529
+#: ../admin/class-quiz-maker-admin.php:3567
 msgid ""
 "Limited Time <span class='ays-quiz-dicount-wrap-color-helloween' style='color:#b2ff00;'>30%</span> <span> SALE on</span><br><span style='' class='ays-quiz-helloween-bundle'><a href='https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=helloween-sale-banner' target='_blank' class='ays-quiz-dicount-wrap-color-helloween ays-quiz-dicount-wrap-text-decoration-helloween' style='display:block; color:#b2ff00;margin-right:6px;'>Quiz Maker</a>\n"
 "                            </span>"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:3604
-#: ../admin/class-quiz-maker-admin.php:3858
+#: ../admin/class-quiz-maker-admin.php:3642
+#: ../admin/class-quiz-maker-admin.php:3896
 msgid "Limited Time"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:3604
+#: ../admin/class-quiz-maker-admin.php:3642
 msgid "50%"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:3605
-#: ../admin/class-quiz-maker-admin.php:4070
+#: ../admin/class-quiz-maker-admin.php:3643
+#: ../admin/class-quiz-maker-admin.php:4108
 msgid "Mega Bundle"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:3605
+#: ../admin/class-quiz-maker-admin.php:3643
 msgid "(Quiz + Survey + Poll)!"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:3613
-#: ../admin/class-quiz-maker-admin.php:3815
-#: ../admin/class-quiz-maker-admin.php:3871
-#: ../admin/class-quiz-maker-admin.php:4017
-#: ../admin/class-quiz-maker-admin.php:4111
-#: ../admin/class-quiz-maker-admin.php:4236
+#: ../admin/class-quiz-maker-admin.php:3651
+#: ../admin/class-quiz-maker-admin.php:3853
+#: ../admin/class-quiz-maker-admin.php:3909
+#: ../admin/class-quiz-maker-admin.php:4055
+#: ../admin/class-quiz-maker-admin.php:4149
+#: ../admin/class-quiz-maker-admin.php:4274
 msgid "Days"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:3614
-#: ../admin/class-quiz-maker-admin.php:3816
-#: ../admin/class-quiz-maker-admin.php:3872
-#: ../admin/class-quiz-maker-admin.php:4018
-#: ../admin/class-quiz-maker-admin.php:4112
-#: ../admin/class-quiz-maker-admin.php:4237
+#: ../admin/class-quiz-maker-admin.php:3652
+#: ../admin/class-quiz-maker-admin.php:3854
+#: ../admin/class-quiz-maker-admin.php:3910
+#: ../admin/class-quiz-maker-admin.php:4056
+#: ../admin/class-quiz-maker-admin.php:4150
+#: ../admin/class-quiz-maker-admin.php:4275
 msgid "Hours"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:3615
-#: ../admin/class-quiz-maker-admin.php:3817
-#: ../admin/class-quiz-maker-admin.php:3873
-#: ../admin/class-quiz-maker-admin.php:4019
-#: ../admin/class-quiz-maker-admin.php:4113
-#: ../admin/class-quiz-maker-admin.php:4238
+#: ../admin/class-quiz-maker-admin.php:3653
+#: ../admin/class-quiz-maker-admin.php:3855
+#: ../admin/class-quiz-maker-admin.php:3911
+#: ../admin/class-quiz-maker-admin.php:4057
+#: ../admin/class-quiz-maker-admin.php:4151
+#: ../admin/class-quiz-maker-admin.php:4276
 msgid "Minutes"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:3616
-#: ../admin/class-quiz-maker-admin.php:3818
-#: ../admin/class-quiz-maker-admin.php:3874
-#: ../admin/class-quiz-maker-admin.php:4020
-#: ../admin/class-quiz-maker-admin.php:4114
-#: ../admin/class-quiz-maker-admin.php:4239
+#: ../admin/class-quiz-maker-admin.php:3654
+#: ../admin/class-quiz-maker-admin.php:3856
+#: ../admin/class-quiz-maker-admin.php:3912
+#: ../admin/class-quiz-maker-admin.php:4058
+#: ../admin/class-quiz-maker-admin.php:4152
+#: ../admin/class-quiz-maker-admin.php:4277
 msgid "Seconds"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:3630
+#: ../admin/class-quiz-maker-admin.php:3668
 msgid "BUY NOW!"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:3638
-#: ../admin/class-quiz-maker-admin.php:3793
-#: ../admin/class-quiz-maker-admin.php:4057
-#: ../admin/class-quiz-maker-admin.php:4151
-#: ../admin/class-quiz-maker-admin.php:4218
+#: ../admin/class-quiz-maker-admin.php:3676
+#: ../admin/class-quiz-maker-admin.php:3831
+#: ../admin/class-quiz-maker-admin.php:4095
+#: ../admin/class-quiz-maker-admin.php:4189
+#: ../admin/class-quiz-maker-admin.php:4256
 msgid "Dismiss ad"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:3662
+#: ../admin/class-quiz-maker-admin.php:3700
 msgid "New Integration with <span><a href='https://wordpress.org/plugins/chart-builder/' target='_blank' style='color:#98FBA6; text-decoration: underline;'>Chart Builder</a></span> plugin"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:3665
+#: ../admin/class-quiz-maker-admin.php:3703
 msgid "The integration will allow you to create beautiful charts based on your quiz data and share them with your users."
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:3666
-#: ../admin/class-quiz-maker-admin.php:3710
+#: ../admin/class-quiz-maker-admin.php:3704
+#: ../admin/class-quiz-maker-admin.php:3748
 #: ../admin/partials/features/quiz-maker-addons-display.php:22
 #: ../admin/partials/features/quiz-maker-addons-display.php:35
 #: ../admin/partials/features/quiz-maker-addons-display.php:48
@@ -1054,42 +1056,42 @@ msgstr ""
 msgid "Watch video"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:3685
-#: ../admin/class-quiz-maker-admin.php:3729
+#: ../admin/class-quiz-maker-admin.php:3723
+#: ../admin/class-quiz-maker-admin.php:3767
 msgid "Install Now !"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:3706
+#: ../admin/class-quiz-maker-admin.php:3744
 msgid "New Integration with <span><a href='https://wordpress.org/plugins/fox-lms/' target='_blank' style='color:#FF5104; text-decoration: underline;'>FoxLMS</a></span> plugin"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:3709
+#: ../admin/class-quiz-maker-admin.php:3747
 msgid "The integration will allow you to add your quizzes into your courses."
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:3766
-#: ../admin/class-quiz-maker-admin.php:4134
-#: ../admin/class-quiz-maker-admin.php:4199
+#: ../admin/class-quiz-maker-admin.php:3804
+#: ../admin/class-quiz-maker-admin.php:4172
+#: ../admin/class-quiz-maker-admin.php:4237
 msgid "<span><a href='"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:3778
-#: ../admin/class-quiz-maker-admin.php:4205
+#: ../admin/class-quiz-maker-admin.php:3816
+#: ../admin/class-quiz-maker-admin.php:4243
 msgid "30 Day Money Back Guarantee"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:3835
-#: ../admin/class-quiz-maker-admin.php:4256
-#: ../admin/class-quiz-maker-admin.php:5143
+#: ../admin/class-quiz-maker-admin.php:3873
+#: ../admin/class-quiz-maker-admin.php:4294
+#: ../admin/class-quiz-maker-admin.php:5181
 msgid "Buy Now"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:3837
-#: ../admin/class-quiz-maker-admin.php:3987
-#: ../admin/class-quiz-maker-admin.php:4078
-#: ../admin/class-quiz-maker-admin.php:4174
-#: ../admin/class-quiz-maker-admin.php:4258
-#: ../admin/partials/attributes/quiz-maker-attributes-display.php:104
+#: ../admin/class-quiz-maker-admin.php:3875
+#: ../admin/class-quiz-maker-admin.php:4025
+#: ../admin/class-quiz-maker-admin.php:4116
+#: ../admin/class-quiz-maker-admin.php:4212
+#: ../admin/class-quiz-maker-admin.php:4296
+#: ../admin/partials/attributes/quiz-maker-attributes-display.php:112
 #: ../admin/partials/questions/quiz-maker-questions-display.php:226
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:10073
 #: ../admin/partials/results/quiz-maker-all-reviews-display.php:190
@@ -1099,286 +1101,304 @@ msgstr ""
 msgid "One-time payment"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:3858
+#: ../admin/class-quiz-maker-admin.php:3896
 msgid "Sale"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:3859
+#: ../admin/class-quiz-maker-admin.php:3897
 msgid "Mega bundle"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:3888
-#: ../admin/class-quiz-maker-admin.php:4076
-#: ../admin/class-quiz-maker-admin.php:4172
+#: ../admin/class-quiz-maker-admin.php:3926
+#: ../admin/class-quiz-maker-admin.php:4114
+#: ../admin/class-quiz-maker-admin.php:4210
 msgid "Get Your Deal"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:3962
-#: ../admin/class-quiz-maker-admin.php:4013
-#: ../admin/class-quiz-maker-admin.php:4107
+#: ../admin/class-quiz-maker-admin.php:4000
+#: ../admin/class-quiz-maker-admin.php:4051
+#: ../admin/class-quiz-maker-admin.php:4145
 msgid "Offer ends in:"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4040
+#: ../admin/class-quiz-maker-admin.php:4078
 msgid "<span><a href='https://ays-pro.com/mega-bundle?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=black-friday-mega-bundle-sale-banner' class='ays-quiz-black-friday-bundle-title-link' target='_blank'>Black Friday Sale</a></span>"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4047
+#: ../admin/class-quiz-maker-admin.php:4085
 msgid "50% OFF"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4141
+#: ../admin/class-quiz-maker-admin.php:4179
 msgid "20% Extra OFF"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4167
+#: ../admin/class-quiz-maker-admin.php:4205
 msgid "20% Extra Discount Coupon"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4354
+#: ../admin/class-quiz-maker-admin.php:4392
 msgid "General Information"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4361
+#: ../admin/class-quiz-maker-admin.php:4399
 msgid "Quiz Maker Information"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4371
+#: ../admin/class-quiz-maker-admin.php:4409
 #, php-format
 msgid "Create engaging quizzes, tests, and exams within a few minutes with the help of the WordPress Quiz Maker plugin. The Quiz Maker has a user-friendly interface and responsive design.%s With this plugin, you are free to add as many questions as needed with the following question types: %sRadio, Checkbox, Dropdown, Text, Short Text, Number, Date.%s In order, to activate Integrations, send Certificates via Email, or create Intervals for your quiz results you will need to download and install the Pro Versions of the WordPress Quiz plugin."
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4397
+#: ../admin/class-quiz-maker-admin.php:4435
 msgid "Premium version"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4404
+#: ../admin/class-quiz-maker-admin.php:4442
 msgid "Premium versions' overview"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4411
+#: ../admin/class-quiz-maker-admin.php:4449
 #, php-format
 msgid "By activating the pro version, you will get all the features to strive your WordPress website’s quizzes to an advanced level.%sWith the WordPress Quiz plugin, it is easy to generate the quiz types like %sTrivia quiz, Assessment quiz, Personality test,  Multiple-choice quiz, Knowledge quiz, IQ test, Yes-or-no quiz, True-or-false quiz, This-or-that quiz(with images), Diagnostic quiz, Scored quiz, Buzzfeed quiz, Viral Quiz%s and etc.%sMotivate your visitors with Certificates and Advanced Leaderboards, prevent cheating during online exams with Timer-Based quizzes, earn money with Paid Quizzes."
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4438
+#: ../admin/class-quiz-maker-admin.php:4476
 msgid "For more information:"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4439
+#: ../admin/class-quiz-maker-admin.php:4477
 msgid "YouTube video tutorials"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4440
+#: ../admin/class-quiz-maker-admin.php:4478
 msgid "Documentation"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4441
+#: ../admin/class-quiz-maker-admin.php:4479
 msgid "Quiz Maker plugin premium version"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4442
+#: ../admin/class-quiz-maker-admin.php:4480
 msgid "Quiz Maker plugin free demo"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4608
+#: ../admin/class-quiz-maker-admin.php:4646
 msgid "Message Variables"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4609
+#: ../admin/class-quiz-maker-admin.php:4647
 msgid "Insert your preferred message variable into the editor by clicking."
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4712
+#: ../admin/class-quiz-maker-admin.php:4750
 msgid "Plugin activation is disabled for you on this site."
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4728
+#: ../admin/class-quiz-maker-admin.php:4766
 msgid "Plugin activated."
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4730
+#: ../admin/class-quiz-maker-admin.php:4768
 msgid "Addon activated."
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4736
+#: ../admin/class-quiz-maker-admin.php:4774
 msgid "Could not activate the plugin. Please activate it on the Plugins page."
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4739
+#: ../admin/class-quiz-maker-admin.php:4777
 msgid "Could not activate the addon. Please activate it on the Plugins page."
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4753
+#: ../admin/class-quiz-maker-admin.php:4791
 msgid "There was an error while performing your request."
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4762
+#: ../admin/class-quiz-maker-admin.php:4800
 msgid "Could not install the plugin. Please download and install it manually."
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4834
+#: ../admin/class-quiz-maker-admin.php:4872
 msgid "Plugin installed."
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4846
+#: ../admin/class-quiz-maker-admin.php:4884
 msgid "Plugin installed and activated."
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4846
+#: ../admin/class-quiz-maker-admin.php:4884
 msgid "Addon installed and activated."
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4899
+#: ../admin/class-quiz-maker-admin.php:4937
 msgid "Fox LMS"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4900
+#: ../admin/class-quiz-maker-admin.php:4938
 msgid "Build and manage online courses directly on your WordPress site."
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4901
+#: ../admin/class-quiz-maker-admin.php:4939
 msgid "With the FoxLMS plugin, you can create, sell, and organize courses, lessons, and quizzes, transforming your website into a dynamic e-learning platform."
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4908
+#: ../admin/class-quiz-maker-admin.php:4946
 msgid "Poll Maker"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4909
+#: ../admin/class-quiz-maker-admin.php:4947
 msgid "Create amazing online polls for your WordPress website super easily."
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4910
+#: ../admin/class-quiz-maker-admin.php:4948
 msgid "Build up various types of polls in a minute and get instant feedback on any topic or product."
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4917
+#: ../admin/class-quiz-maker-admin.php:4955
 msgid "Survey Maker"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4918
+#: ../admin/class-quiz-maker-admin.php:4956
 msgid "Make amazing online surveys and get real-time feedback quickly and easily."
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4919
+#: ../admin/class-quiz-maker-admin.php:4957
 msgid "Learn what your website visitors want, need, and expect with the help of Survey Maker. Build surveys without limiting your needs."
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4926
+#: ../admin/class-quiz-maker-admin.php:4964
 msgid "Popup Box"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4927
+#: ../admin/class-quiz-maker-admin.php:4965
 msgid "Popup everything you want! Create informative and promotional popups all in one plugin."
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4928
+#: ../admin/class-quiz-maker-admin.php:4966
 msgid "Attract your visitors and convert them into email subscribers and paying customers."
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4944
+#: ../admin/class-quiz-maker-admin.php:4982
 msgid "Secure Copy Content Protection"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4945
+#: ../admin/class-quiz-maker-admin.php:4983
 msgid "Disable the right click, copy paste, content selection and copy shortcut keys on your website."
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4946
+#: ../admin/class-quiz-maker-admin.php:4984
 msgid "Protect web content from being plagiarized. Prevent plagiarism from your website with this easy to use plugin."
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4953
+#: ../admin/class-quiz-maker-admin.php:4991
 msgid "Personal Dictionary"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4954
+#: ../admin/class-quiz-maker-admin.php:4992
 msgid "Allow your students to create personal dictionary, study and memorize the words."
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4955
+#: ../admin/class-quiz-maker-admin.php:4993
 msgid "Allow your users to create their own digital dictionaries and learn new words and terms as fastest as possible."
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:5047
+#: ../admin/class-quiz-maker-admin.php:5085
 msgid "Active"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:5055
+#: ../admin/class-quiz-maker-admin.php:5093
 msgid "Inactive"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:5058
+#: ../admin/class-quiz-maker-admin.php:5096
 msgid "Activate"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:5069
+#: ../admin/class-quiz-maker-admin.php:5107
 msgid "Not Installed"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:5072
+#: ../admin/class-quiz-maker-admin.php:5110
 msgid "Install Plugin"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:5138
+#: ../admin/class-quiz-maker-admin.php:5176
 msgid "WordPress.org"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:5170
+#: ../admin/class-quiz-maker-admin.php:5208
 #, php-format
 msgid "You've got %s quiz results!"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:5200
+#: ../admin/class-quiz-maker-admin.php:5238
 #: ../admin/partials/results/quiz-maker-all-reviews-display.php:26
 #: ../admin/partials/results/quiz-maker-results-display.php:33
 msgid "Export Results"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:5202
+#: ../admin/class-quiz-maker-admin.php:5240
 #: ../admin/partials/features/quiz-maker-features-display.php:404
 #: ../admin/partials/features/quiz-maker-features-display.php:407
 msgid "Leaderboards"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:5203
+#: ../admin/class-quiz-maker-admin.php:5241
 msgid "Send Email & Certificate"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:5204
+#: ../admin/class-quiz-maker-admin.php:5242
 msgid "10+ Integrations"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:5205
+#: ../admin/class-quiz-maker-admin.php:5243
 msgid "Premium Support"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:5206
+#: ../admin/class-quiz-maker-admin.php:5244
 msgid "Personalize Result"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:5207
+#: ../admin/class-quiz-maker-admin.php:5245
 msgid "Lifetime Usage"
 msgstr ""
 
-#: ../admin/partials/attributes/quiz-maker-attributes-display.php:9
+#: ../admin/partials/attributes/quiz-maker-attributes-display.php:7
+#: ../admin/partials/features/quiz-maker-addons-display.php:7
+#: ../admin/partials/features/quiz-maker-features-display.php:18
+#: ../admin/partials/integrations/quiz-maker-integrations.php:18
+#: ../admin/partials/questions/actions/quiz-maker-questions-actions.php:349
+#: ../admin/partials/questions/actions/quiz-maker-questions-categories-actions.php:67
+#: ../admin/partials/questions/quiz-maker-question-categories-display.php:25
+#: ../admin/partials/questions/quiz-maker-questions-display.php:22
+#: ../admin/partials/quizes/actions/quiz-maker-quiz-categories-actions.php:61
+#: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:1452
+#: ../admin/partials/quizes/quiz-maker-quiz-categories-display.php:18
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:114
+#: ../admin/partials/results/quiz-maker-all-reviews-display.php:11
+#: ../admin/partials/results/quiz-maker-results-display.php:18
+#: ../admin/partials/settings/quiz-maker-settings.php:389
+msgid "View Documentation"
+msgstr ""
+
+#: ../admin/partials/attributes/quiz-maker-attributes-display.php:17
 msgid "Learn How to Use Custom Fields in Quiz Maker"
 msgstr ""
 
-#: ../admin/partials/attributes/quiz-maker-attributes-display.php:20
+#: ../admin/partials/attributes/quiz-maker-attributes-display.php:28
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:8464
 msgid "Custom Field"
 msgstr ""
 
-#: ../admin/partials/attributes/quiz-maker-attributes-display.php:24
+#: ../admin/partials/attributes/quiz-maker-attributes-display.php:32
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:8468
 #, php-format
 msgid "Custom Fields will allow you to create various fields with %s 8 available field types, %s including text, number, telephone. With just two simple steps, you can get any information you wish from the Quiz takers and add  %s GDPR %s checkbox as well. Get personal data, such as gender, country, age etc."
 msgstr ""
 
-#: ../admin/partials/attributes/quiz-maker-attributes-display.php:55
-#: ../admin/partials/attributes/quiz-maker-attributes-display.php:62
+#: ../admin/partials/attributes/quiz-maker-attributes-display.php:63
+#: ../admin/partials/attributes/quiz-maker-attributes-display.php:70
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:4847
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:6338
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:7452
@@ -1407,23 +1427,6 @@ msgstr ""
 #: ../admin/partials/settings/quiz-maker-settings.php:2957
 #: ../admin/partials/settings/quiz-maker-settings.php:3065
 msgid "Watch Video"
-msgstr ""
-
-#: ../admin/partials/features/quiz-maker-addons-display.php:7
-#: ../admin/partials/features/quiz-maker-features-display.php:18
-#: ../admin/partials/integrations/quiz-maker-integrations.php:20
-#: ../admin/partials/questions/actions/quiz-maker-questions-actions.php:360
-#: ../admin/partials/questions/actions/quiz-maker-questions-categories-actions.php:67
-#: ../admin/partials/questions/quiz-maker-question-categories-display.php:25
-#: ../admin/partials/questions/quiz-maker-questions-display.php:22
-#: ../admin/partials/quizes/actions/quiz-maker-quiz-categories-actions.php:61
-#: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:1465
-#: ../admin/partials/quizes/quiz-maker-quiz-categories-display.php:18
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:114
-#: ../admin/partials/results/quiz-maker-all-reviews-display.php:11
-#: ../admin/partials/results/quiz-maker-results-display.php:18
-#: ../admin/partials/settings/quiz-maker-settings.php:389
-msgid "View Documentation"
 msgstr ""
 
 #: ../admin/partials/features/quiz-maker-addons-display.php:13
@@ -2870,6 +2873,16 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
+#: ../admin/partials/questions/quiz-maker-questions-display.php:69
+#: ../admin/partials/questions/quiz-maker-questions-display.php:92
+#: ../admin/partials/questions/quiz-maker-questions-display.php:95
+#: ../admin/partials/questions/quiz-maker-questions-display.php:115
+#: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:9764
+#: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:9793
+#: ../admin/partials/results/quiz-maker-results-display.php:65
+msgid "This property available only in pro version"
+msgstr ""
+
 #: ../admin/partials/questions/quiz-maker-questions-display.php:73
 #: ../admin/partials/questions/quiz-maker-questions-display.php:99
 msgid "Export/import questions"
@@ -3556,7 +3569,7 @@ msgstr ""
 msgid "You have not passed the quiz! <br> Try again!"
 msgstr ""
 
-#: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:1461
+#: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:1448
 #: ../admin/partials/quizes/quiz-maker-quizes-display.php:110
 msgid "Getting started"
 msgstr ""
@@ -9351,55 +9364,67 @@ msgstr ""
 msgid "Agree & continue"
 msgstr ""
 
-#: ../includes/class-quiz-maker-feedback.php:96
+#: ../includes/class-quiz-maker-feedback.php:77
 msgid "I no longer need the plugin"
 msgstr ""
 
-#: ../includes/class-quiz-maker-feedback.php:100
-msgid "I found a better plugin"
+#: ../includes/class-quiz-maker-feedback.php:81
+msgid "I found a better alternative"
 msgstr ""
 
-#: ../includes/class-quiz-maker-feedback.php:101
+#: ../includes/class-quiz-maker-feedback.php:82
 msgid "Please share which plugin"
 msgstr ""
 
-#: ../includes/class-quiz-maker-feedback.php:104
-msgid "I couldn't get the plugin to work"
+#: ../includes/class-quiz-maker-feedback.php:85
+msgid "The plugin didn’t work as expected"
 msgstr ""
 
-#: ../includes/class-quiz-maker-feedback.php:108
-msgid "It's a temporary deactivation"
+#: ../includes/class-quiz-maker-feedback.php:89
+msgid "Missing essential features"
 msgstr ""
 
-#: ../includes/class-quiz-maker-feedback.php:112
-msgid "I have Quiz Maker Pro"
+#: ../includes/class-quiz-maker-feedback.php:90
+msgid "Please share which features"
 msgstr ""
 
-#: ../includes/class-quiz-maker-feedback.php:114
-msgid "Wait! Don't deactivate Quiz Maker. You have to activate both Quiz Maker and Quiz Maker Pro in order for the plugin to work."
+#: ../includes/class-quiz-maker-feedback.php:93
+msgid "I only needed it temporarily"
 msgstr ""
 
-#: ../includes/class-quiz-maker-feedback.php:117
+#: ../includes/class-quiz-maker-feedback.php:97
+msgid "Conflicts with other plugins or themes"
+msgstr ""
+
+#: ../includes/class-quiz-maker-feedback.php:98
+msgid "Please share which plugin or theme"
+msgstr ""
+
+#: ../includes/class-quiz-maker-feedback.php:101
+msgid "I’m using the premium version now"
+msgstr ""
+
+#: ../includes/class-quiz-maker-feedback.php:106
 msgid "Other"
 msgstr ""
 
-#: ../includes/class-quiz-maker-feedback.php:118
+#: ../includes/class-quiz-maker-feedback.php:107
 msgid "Please share the reason"
 msgstr ""
 
-#: ../includes/class-quiz-maker-feedback.php:128
+#: ../includes/class-quiz-maker-feedback.php:119
 msgid "Quick Feedback"
 msgstr ""
 
-#: ../includes/class-quiz-maker-feedback.php:139
+#: ../includes/class-quiz-maker-feedback.php:127
 msgid "If you have a moment, please share why you are deactivating Quiz Maker:"
 msgstr ""
 
-#: ../includes/class-quiz-maker-feedback.php:158
+#: ../includes/class-quiz-maker-feedback.php:146
 msgid "Skip &amp; Deactivate"
 msgstr ""
 
-#: ../includes/class-quiz-maker-feedback.php:159
+#: ../includes/class-quiz-maker-feedback.php:147
 msgid "Submit &amp; Deactivate"
 msgstr ""
 
@@ -9845,44 +9870,44 @@ msgid "Share Dialog"
 msgstr ""
 
 #: ../public/class-quiz-maker-public.php:190
-#: ../public/class-quiz-maker-public.php:7075
+#: ../public/class-quiz-maker-public.php:7082
 msgid "day"
 msgstr ""
 
 #: ../public/class-quiz-maker-public.php:191
-#: ../public/class-quiz-maker-public.php:7076
+#: ../public/class-quiz-maker-public.php:7083
 msgid "days"
 msgstr ""
 
 #: ../public/class-quiz-maker-public.php:192
-#: ../public/class-quiz-maker-public.php:7077
+#: ../public/class-quiz-maker-public.php:7084
 msgid "hour"
 msgstr ""
 
 #: ../public/class-quiz-maker-public.php:193
-#: ../public/class-quiz-maker-public.php:7078
+#: ../public/class-quiz-maker-public.php:7085
 msgid "hours"
 msgstr ""
 
 #: ../public/class-quiz-maker-public.php:194
-#: ../public/class-quiz-maker-public.php:7079
+#: ../public/class-quiz-maker-public.php:7086
 msgid "minute"
 msgstr ""
 
 #: ../public/class-quiz-maker-public.php:195
-#: ../public/class-quiz-maker-public.php:7080
+#: ../public/class-quiz-maker-public.php:7087
 msgid "minutes"
 msgstr ""
 
 #: ../public/class-quiz-maker-public.php:196
-#: ../public/class-quiz-maker-public.php:7081
+#: ../public/class-quiz-maker-public.php:7088
 #: ../public/partials/class-quiz-maker-all-results-shortcode.php:273
 #: ../public/partials/class-quiz-maker-quiz-all-results-shortcode.php:202
 msgid "second"
 msgstr ""
 
 #: ../public/class-quiz-maker-public.php:197
-#: ../public/class-quiz-maker-public.php:7082
+#: ../public/class-quiz-maker-public.php:7089
 msgid "seconds"
 msgstr ""
 
@@ -9945,14 +9970,14 @@ msgid "Phone Number"
 msgstr ""
 
 #: ../public/class-quiz-maker-public.php:620
-#: ../public/class-quiz-maker-public.php:5695
+#: ../public/class-quiz-maker-public.php:5702
 #: ../public/partials/class-quiz-maker-extra-shortcode.php:1038
 msgid "Unknown"
 msgstr ""
 
 #: ../public/class-quiz-maker-public.php:643
-#: ../public/class-quiz-maker-public.php:5689
-#: ../public/class-quiz-maker-public.php:5718
+#: ../public/class-quiz-maker-public.php:5696
+#: ../public/class-quiz-maker-public.php:5725
 #: ../public/partials/class-quiz-maker-extra-shortcode.php:581
 msgid "Website"
 msgstr ""
@@ -9978,7 +10003,7 @@ msgid "Do you want to finish the quiz? Are you sure?"
 msgstr ""
 
 #: ../public/class-quiz-maker-public.php:721
-#: ../public/class-quiz-maker-public.php:6528
+#: ../public/class-quiz-maker-public.php:6535
 msgid "Select an answer"
 msgstr ""
 
@@ -10039,7 +10064,7 @@ msgid "Redirecting after"
 msgstr ""
 
 #: ../public/class-quiz-maker-public.php:2846
-#: ../public/class-quiz-maker-public.php:5299
+#: ../public/class-quiz-maker-public.php:5306
 msgid "You have already passed this quiz."
 msgstr ""
 
@@ -10064,62 +10089,62 @@ msgstr ""
 msgid "The quiz will be available soon."
 msgstr ""
 
-#: ../public/class-quiz-maker-public.php:4841
+#: ../public/class-quiz-maker-public.php:4848
 msgid "You can enter your answer explanation"
 msgstr ""
 
-#: ../public/class-quiz-maker-public.php:5747
+#: ../public/class-quiz-maker-public.php:5754
 msgid "Quiz link"
 msgstr ""
 
-#: ../public/class-quiz-maker-public.php:6283
-#: ../public/class-quiz-maker-public.php:6356
+#: ../public/class-quiz-maker-public.php:6290
+#: ../public/class-quiz-maker-public.php:6363
 msgid "left"
 msgstr ""
 
-#: ../public/class-quiz-maker-public.php:6649
+#: ../public/class-quiz-maker-public.php:6656
 #, php-format
 msgid "%s days"
 msgstr ""
 
-#: ../public/class-quiz-maker-public.php:6655
+#: ../public/class-quiz-maker-public.php:6662
 #, php-format
 msgid "%s hours"
 msgstr ""
 
-#: ../public/class-quiz-maker-public.php:6661
+#: ../public/class-quiz-maker-public.php:6668
 #, php-format
 msgid "%s minutes"
 msgstr ""
 
-#: ../public/class-quiz-maker-public.php:6667
+#: ../public/class-quiz-maker-public.php:6674
 #, php-format
 msgid "%s seconds"
 msgstr ""
 
-#: ../public/class-quiz-maker-public.php:6848
+#: ../public/class-quiz-maker-public.php:6855
 msgid "Rated"
 msgstr ""
 
-#: ../public/class-quiz-maker-public.php:6944
-#: ../public/class-quiz-maker-public.php:6969
-#: ../public/class-quiz-maker-public.php:6977
+#: ../public/class-quiz-maker-public.php:6951
+#: ../public/class-quiz-maker-public.php:6976
+#: ../public/class-quiz-maker-public.php:6984
 msgid "Anonymous"
 msgstr ""
 
-#: ../public/class-quiz-maker-public.php:7071
+#: ../public/class-quiz-maker-public.php:7078
 msgid "year"
 msgstr ""
 
-#: ../public/class-quiz-maker-public.php:7072
+#: ../public/class-quiz-maker-public.php:7079
 msgid "years"
 msgstr ""
 
-#: ../public/class-quiz-maker-public.php:7073
+#: ../public/class-quiz-maker-public.php:7080
 msgid "month"
 msgstr ""
 
-#: ../public/class-quiz-maker-public.php:7074
+#: ../public/class-quiz-maker-public.php:7081
 msgid "months"
 msgstr ""
 
@@ -10148,28 +10173,28 @@ msgstr ""
 msgid "Extra 20% Coupon"
 msgstr ""
 
-#: ../quiz-maker.php:169 ../quiz-maker.php:178 ../quiz-maker.php:190
+#: ../quiz-maker.php:169 ../quiz-maker.php:179 ../quiz-maker.php:192
 msgid "Make a Suggestion"
 msgstr ""
 
-#: ../quiz-maker.php:171 ../quiz-maker.php:192 ../quiz-maker.php:208
+#: ../quiz-maker.php:172 ../quiz-maker.php:195 ../quiz-maker.php:211
 msgid "Live Chat"
 msgstr ""
 
-#: ../quiz-maker.php:173 ../quiz-maker.php:181 ../quiz-maker.php:194
+#: ../quiz-maker.php:174 ../quiz-maker.php:183 ../quiz-maker.php:197
 msgid "Contact us"
 msgstr ""
 
-#: ../quiz-maker.php:217
+#: ../quiz-maker.php:220
 msgid "Ask a question"
 msgstr ""
 
-#: ../quiz-maker.php:262
+#: ../quiz-maker.php:265
 #, php-format
 msgid "Wow!!! Excellent job!! Your quizzes was passed by more than %s people!!"
 msgstr ""
 
-#: ../quiz-maker.php:266
+#: ../quiz-maker.php:269
 msgid "Rate Us"
 msgstr ""
 

@@ -231,7 +231,7 @@ class Quiz_Maker_Public
         $this->enqueue_scripts();
         
         $quiz_content = $this->show_quiz($id);
-        return str_replace(array("\r\n", "\n", "\r"), '', $quiz_content);
+        return str_replace(array("\r\n", "\n", "\r"), "\n", $quiz_content);
     }
     
     public function ays_set_quiz_texts($id){
@@ -3408,7 +3408,7 @@ class Quiz_Maker_Public
             }
 
             /* Styles for text inside quiz container */
-            #ays-quiz-container-" . $id . " .ays-start-page *:not(input),
+            #ays-quiz-container-" . $id . " .ays-start-page *:not(input):not([class^='enlighter']),
             #ays-quiz-container-" . $id . " .ays_question_hint,
             #ays-quiz-container-" . $id . " label[for^=\"ays-answer-\"],
             #ays-quiz-container-" . $id . " #ays_finish_quiz_" . $id . " p,
@@ -3470,6 +3470,13 @@ class Quiz_Maker_Public
                 max-width: 100%;
                 white-space: break-spaces;
             }
+
+            /* Mango theme (Version: 1.4.202301041836) | tid=32449 | Start */
+            #ays-quiz-container-" . $id . " .ays_quiz_question img {
+                float: unset;
+                margin: 0;
+            }
+            /* Mango theme (Version: 1.4.202301041836) | End */
 
             #ays-quiz-container-" . $id . " .ays-quiz-timer p {
                 font-size: 16px;

@@ -331,8 +331,23 @@ class Quiz_Maker_Admin
                 wp_dequeue_style('happyforms-admin');
             }
 
+            if (is_plugin_active('ultimate-viral-quiz/index.php')) {
+                wp_dequeue_style('select2');
+                wp_dequeue_style('dataTables');
+                
+                wp_dequeue_script('sweetalert');
+                wp_dequeue_script('select2');
+                wp_dequeue_script('dataTables');
+            }
+
+            if (is_plugin_active('forms-by-made-it/madeit-form.php')) {
+                wp_dequeue_style('madeit-form-admin-style');
+            }
+
             // Theme | Pixel Ebook Store
             wp_dequeue_style('pixel-ebook-store-free-demo-content-style');
+            // Theme | Interactive Education
+            wp_dequeue_style('interactive-education-free-demo-content-style');
         }
 
         if (is_plugin_active('search-replace-for-block-editor/search-replace-for-block-editor.php')) {
