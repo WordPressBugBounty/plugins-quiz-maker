@@ -3424,7 +3424,12 @@ class Quiz_Maker_Public
             #ays-quiz-container-" . $id . " .ays-quiz-password-message-box,
             #ays-quiz-container-" . $id . " .ays-quiz-question-note-message-box,
             #ays-quiz-container-" . $id . " .ays_quiz_question,
+            #ays-quiz-container-" . $id . " .ays-quiz-question-category-box,
             #ays-quiz-container-" . $id . " .ays_quiz_question *:not([class^='enlighter']) {
+                color: " . $text_color . ";
+            }
+
+            #ays-quiz-container-" . $id . " .ays-quiz-question-category-box em {
                 color: " . $text_color . ";
             }
 
@@ -3454,7 +3459,7 @@ class Quiz_Maker_Public
     
             #ays-quiz-container-" . $id . " .ays_quiz_question p {
                 font-size: ".$question_font_size."px;
-                
+                text-align: inherit;
             }
 
             #ays-quiz-container-" . $id . " .ays-fs-subtitle p {
@@ -3798,6 +3803,9 @@ class Quiz_Maker_Public
                 letter-spacing: 0;
                 box-shadow: unset;
                 width: auto;
+                border: unset;
+                min-height: unset;
+                line-height: normal;
             }
             #ays-quiz-container-" . $id . " input#ays-submit,
             #ays-quiz-container-" . $id . " #ays_finish_quiz_" . $id . " input.action-button,
@@ -4689,7 +4697,7 @@ class Quiz_Maker_Public
                     $question_category = ( isset( $question_category_data['title'] ) && $question_category_data['title'] != "" ) ? $question_category_data['title'] : "";
                     $question_category_description = ( isset( $question_category_data['description'] ) && $question_category_data['description'] != "" ) ? $question_category_data['description'] : "";
                     
-                    $question_category = "<p style='margin:0!important;text-align:left;'>
+                    $question_category = "<p class='ays-quiz-question-category-box' style='margin:0!important;text-align:left;'>
                         <em style='font-style:italic;font-size:0.8em;'>". __("Category", 'quiz-maker') .":</em>
                         <strong style='font-size:0.8em;'>{$question_category}</strong>
                     </p>";

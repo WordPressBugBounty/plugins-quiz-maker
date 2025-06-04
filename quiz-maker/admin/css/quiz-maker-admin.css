@@ -109,6 +109,11 @@ div .ays-quiz-add-new-button-box a.ays-quiz-add-new-button {
 
 .row {
     gap: unset !important;
+    padding: 0;
+}
+
+div.row {
+   padding: 0; 
 }
 
 .row input[type=text]:not(#current-page-selector), 

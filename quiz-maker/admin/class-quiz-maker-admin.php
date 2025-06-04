@@ -344,10 +344,16 @@ class Quiz_Maker_Admin
                 wp_dequeue_style('madeit-form-admin-style');
             }
 
+            if (is_plugin_active('real-media-library-lite/index.php')) {
+                wp_dequeue_style('real-media-library-lite-rml');
+            }
+
             // Theme | Pixel Ebook Store
             wp_dequeue_style('pixel-ebook-store-free-demo-content-style');
             // Theme | Interactive Education
             wp_dequeue_style('interactive-education-free-demo-content-style');
+            // Theme | Phlox 2.17.6
+            wp_dequeue_style('auxin-admin-style');
         }
 
         if (is_plugin_active('search-replace-for-block-editor/search-replace-for-block-editor.php')) {
