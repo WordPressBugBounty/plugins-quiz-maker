@@ -7748,6 +7748,11 @@ div .wp-picker-container .wp-color-result.button {
     color: black !important;
 }
 
+#wpwrap .nav-tab-wrapper {
+    display: block;
+    background: unset;
+}
+
 .ays-quiz-dashboard-main-wrap .ays-top-menu-wrapper .nav-tab:hover{
     border-bottom:1px solid #005AE0 !important;
     text-decoration: none;

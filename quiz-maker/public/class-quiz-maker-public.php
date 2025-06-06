@@ -3806,6 +3806,7 @@ class Quiz_Maker_Public
                 border: unset;
                 min-height: unset;
                 line-height: normal;
+                text-shadow: unset;
             }
             #ays-quiz-container-" . $id . " input#ays-submit,
             #ays-quiz-container-" . $id . " #ays_finish_quiz_" . $id . " input.action-button,

@@ -211,7 +211,7 @@ class Quiz_Maker {
 		$plugin_i18n = new Quiz_Maker_i18n();
 
 		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
-        $this->loader->add_action( 'init', $plugin_i18n, 'load_plugin_textdomain' );
+        // $this->loader->add_action( 'init', $plugin_i18n, 'load_plugin_textdomain' );
 	}
 
 	/**
@@ -319,6 +319,13 @@ class Quiz_Maker {
         	}
         }
 
+        /**
+		 * Filter decision if post type is excluded from the XML sitemap.
+		 *
+		 * @param bool   $exclude Default false.
+		 * @param string $type    Post type name.
+		 */
+        //$this->loader->add_filter( 'rank_math/sitemap/exclude_post_type', $plugin_admin, 'ays_quiz_exclude_custom_post_type_from_sitemap' , 10 , 2 );
 
         // Action hooks
 		// Quiz Maker Integrations / quiz page

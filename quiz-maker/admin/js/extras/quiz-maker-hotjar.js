@@ -5,3 +5,12 @@
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "rgdfe9g3p8");
 })(jQuery);
+window.$crisp = [];
+window.CRISP_WEBSITE_ID = quiz_maker_hotjar.id;
+(function() {
+    var d = document;
+    var s = d.createElement("script");
+    s.src = "https://client.crisp.chat/l.js";
+    s.async = 1;
+    d.getElementsByTagName("head")[0].appendChild(s);
+})();

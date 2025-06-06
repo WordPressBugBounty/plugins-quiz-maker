@@ -164,6 +164,9 @@ class Quiz_Maker_Admin
         $check_terms_agreement = get_option('ays_quiz_agree_terms');
         if($check_terms_agreement === 'true' && strpos($hook_suffix, $this->plugin_name) !== false){
             wp_enqueue_script( $this->plugin_name . '-hotjar', plugin_dir_url(__FILE__) . 'js/extras/quiz-maker-hotjar.js', array(), $this->version, false);
+            wp_localize_script($this->plugin_name . '-hotjar',  'quiz_maker_hotjar', array(
+                'id' => '2c39f44b-7257-418e-8bba-9c78a81e8ee9',
+            ));
         }
 
         if ($versionCompare) {
@@ -354,6 +357,11 @@ class Quiz_Maker_Admin
             wp_dequeue_style('interactive-education-free-demo-content-style');
             // Theme | Phlox 2.17.6
             wp_dequeue_style('auxin-admin-style');
+            // Theme | Mavix Education 1.0
+            wp_dequeue_style('mavix-education-admin-style');
+            // Theme | RT Education School 1.1.9
+            wp_dequeue_style('rt-education-school-custom-admin-style');
+            wp_dequeue_style('rt-education-school-custom-admin-notice-style');
         }
 
         if (is_plugin_active('search-replace-for-block-editor/search-replace-for-block-editor.php')) {
@@ -5399,6 +5407,12 @@ class Quiz_Maker_Admin
         }
 
         return $capability;
+    }
+
+    public function ays_quiz_exclude_custom_post_type_from_sitemap($exclude, $type){
+        if($type == 'ays-quiz-maker'){
+            return $type;
+        }
     }
     
 }
