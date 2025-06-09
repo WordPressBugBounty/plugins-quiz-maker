@@ -880,15 +880,27 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                             </div>
                                         </div><!-- Hide score -->
                                         <hr/>
-                                        <div class="form-group row">
+                                        <div class="form-group row ays_toggle_parent">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_enable_restart_button">
                                                     <?php echo esc_html__('Enable restart button','quiz-maker'); ?>
                                                 </label>
                                             </div>
-                                            <div class="col-sm-8">
-                                                <input type="checkbox" class="ays-enable-timer1" id="ays_quick_quiz_enable_restart_button" name="ays_quick_quiz_enable_restart_button" value="on" checked />
+                                            <div class="col-sm-1">
+                                                <input type="checkbox" class="ays-enable-timer1 ays_toggle_checkbox" id="ays_quick_quiz_enable_restart_button" name="ays_quick_quiz_enable_restart_button" value="on" checked />
                                             </div>
+                                            <div class="col-sm-7 ays_toggle_target ays_divider_left">
+                                                <div class="form-group row">
+                                                    <div class="col-sm-4">
+                                                        <label for="ays_quick_quiz_show_restart_button_on_quiz_fail">
+                                                            <?php echo esc_html__('Show button on quiz fail', 'quiz-maker'); ?>
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-sm-8">
+                                                        <input type="checkbox" class="ays-enable-timer1" id="ays_quick_quiz_show_restart_button_on_quiz_fail" name="ays_quick_quiz_show_restart_button_on_quiz_fail" value="on"/>
+                                                    </div>
+                                                </div>
+                                            </div><!-- Show button on quiz fail -->
                                         </div><!-- Enable restart button -->
                                         <hr/>
                                         <div class="form-group row">

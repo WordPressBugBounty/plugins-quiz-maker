@@ -1214,6 +1214,7 @@ class Quiz_Maker_Admin
         $quick_quiz_enable_results_toggle                   = 'off';
         $quick_quiz_enable_default_hide_results_toggle      = 'off';
         $quick_quiz_enable_early_finsh_comfirm_box          = 'on';
+        $quick_quiz_show_restart_button_on_quiz_fail        = 'off';
 
         // User Data
         $quick_quiz_show_information_form                   = 'on';
@@ -1582,6 +1583,9 @@ class Quiz_Maker_Admin
 
             // Enable percent view
             $quick_quiz_enable_percent_view_option = (isset( $_REQUEST['ays_quick_quiz_enable_percent_view_option'] ) && $_REQUEST['ays_quick_quiz_enable_percent_view_option'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_percent_view_option'] ) ) : "off";
+
+            // Show button on quiz fail
+            $quick_quiz_show_restart_button_on_quiz_fail = (isset( $_REQUEST['ays_quick_quiz_show_restart_button_on_quiz_fail'] ) && $_REQUEST['ays_quick_quiz_show_restart_button_on_quiz_fail'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_show_restart_button_on_quiz_fail'] ) ) : "off";
             
             
         }
@@ -1872,7 +1876,7 @@ class Quiz_Maker_Admin
             'quiz_content_mobile_max_width'                     => 90,
             'quiz_timer_warning_text_color'                     => "#ff0000",
             'quiz_enable_default_hide_results_toggle'           => $quick_quiz_enable_default_hide_results_toggle,
-            'quiz_show_restart_button_on_quiz_fail'             => "off",
+            'quiz_show_restart_button_on_quiz_fail'             => $quick_quiz_show_restart_button_on_quiz_fail,
             'enable_live_progress_bar'                          => $quick_quiz_enable_live_progress_bar,
             'enable_percent_view'                               => $quick_quiz_enable_percent_view_option,
         );

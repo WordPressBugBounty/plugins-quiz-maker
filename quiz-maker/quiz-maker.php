@@ -16,7 +16,7 @@ ob_start();
  * Plugin Name:       Quiz Maker
  * Plugin URI:        https://ays-pro.com/wordpress/quiz-maker
  * Description:       Create powerful and engaging quizzes, tests, and exams in minutes. Build an unlimited number of quizzes and questions.
- * Version:           6.7.0.23
+ * Version:           6.7.0.24
  * Author:            Quiz Maker team
  * Author URI:        https://ays-pro.com/
  * License:           GPL-2.0+
@@ -36,8 +36,8 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'AYS_QUIZ_NAME_VERSION', '6.7.0.23' );
-define( 'AYS_QUIZ_VERSION', '6.7.0.23' );
+define( 'AYS_QUIZ_NAME_VERSION', '6.7.0.24' );
+define( 'AYS_QUIZ_VERSION', '6.7.0.24' );
 define( 'AYS_QUIZ_NAME', 'quiz-maker' );
 
 if( ! defined( 'AYS_QUIZ_BASENAME' ) )
@@ -157,7 +157,7 @@ function quiz_maker_general_admin_notice(){
                         <div class="ays-quiz-coupon-container">
                             <div class="ays-quiz-coupon-box ays-quiz-copy-element-box-parent">
                                 <!-- <img src="<?php echo esc_attr(AYS_QUIZ_ADMIN_URL . '/images/icons/receipt-solid.svg'); ?>" class="ays-quiz-svg-light-hover"> -->
-                                <span onClick="selectAndCopyElementContents(this)" class="ays-quiz-copy-element-box" data-toggle="tooltip" title="<?php echo esc_html__( "Click for copy", 'quiz-maker' ); ?>"><?php echo esc_html__( "spring2025", 'quiz-maker' ); ?></span>
+                                <span onClick="selectAndCopyElementContents(this)" class="ays-quiz-copy-element-box" data-toggle="tooltip" title="<?php echo esc_html__( "Click for copy", 'quiz-maker' ); ?>"><?php echo esc_html( "summer2025", 'quiz-maker' ); ?></span>
                             </div>
                             <span class="ays-quiz-logo-container-one-time-text"><?php echo esc_html__( "Extra 20% Coupon", 'quiz-maker' ); ?></span>
                         </div>
