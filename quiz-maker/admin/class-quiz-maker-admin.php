@@ -1215,6 +1215,7 @@ class Quiz_Maker_Admin
         $quick_quiz_enable_default_hide_results_toggle      = 'off';
         $quick_quiz_enable_early_finsh_comfirm_box          = 'on';
         $quick_quiz_show_restart_button_on_quiz_fail        = 'off';
+        $quick_quiz_enable_quiz_rate                        = 'off';
 
         // User Data
         $quick_quiz_show_information_form                   = 'on';
@@ -1586,6 +1587,9 @@ class Quiz_Maker_Admin
 
             // Show button on quiz fail
             $quick_quiz_show_restart_button_on_quiz_fail = (isset( $_REQUEST['ays_quick_quiz_show_restart_button_on_quiz_fail'] ) && $_REQUEST['ays_quick_quiz_show_restart_button_on_quiz_fail'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_show_restart_button_on_quiz_fail'] ) ) : "off";
+
+            // Enable quiz assessment
+            $quick_quiz_enable_quiz_rate = (isset( $_REQUEST['ays_quick_quiz_enable_quiz_rate'] ) && $_REQUEST['ays_quick_quiz_enable_quiz_rate'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_quiz_rate'] ) ) : "off";
             
             
         }
@@ -1672,7 +1676,7 @@ class Quiz_Maker_Admin
             'enable_result'                                     => 'off',
             'enable_timer'                                      => 'off',
             'enable_pass_count'                                 => $quick_quiz_enable_pass_count,
-            'enable_quiz_rate'                                  => 'off',
+            'enable_quiz_rate'                                  => $quick_quiz_enable_quiz_rate,
             'enable_rate_avg'                                   => $quick_quiz_enable_rate_avg,
             'enable_rate_comments'                              => 'off',
             'hide_score'                                        => $quick_quiz_hide_score,

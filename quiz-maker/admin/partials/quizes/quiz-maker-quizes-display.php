@@ -915,6 +915,19 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         </div><!-- Enable progress bar -->
                                         <hr/>
                                         <div class="form-group row">
+                                            <div class="col-sm-4" style="padding-right: 0px;">
+                                                <label for="ays_quick_quiz_enable_quiz_rate">
+                                                    <?php echo esc_html__('Enable quiz assessment','quiz-maker'); ?>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-1">
+                                                <input type="checkbox" id="ays_quick_quiz_enable_quiz_rate" name="ays_quick_quiz_enable_quiz_rate" value="on" />
+                                            </div>
+                                            <div class="col-sm-7 ays_divider_left display_none">
+                                            </div>
+                                        </div><!-- Enable quiz assessment -->
+                                        <hr/>
+                                        <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_enable_average_statistical">
                                                     <?php echo esc_html__('Show the statistical average','quiz-maker'); ?>

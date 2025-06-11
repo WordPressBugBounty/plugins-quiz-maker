@@ -10151,7 +10151,7 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
         </div>
         <!-- Quiz and Chart integration main page 2023 | End -->
         <?php endif; ?>
-        <?php if( !$if_dismiss_cookie_exists && !$if_fox_lms_plugin_exists && !$if_fox_lms_plugin_installed_flag ): ?>
+        <?php if( !$if_dismiss_cookie_exists && !$if_fox_lms_plugin_exists && !$if_fox_lms_plugin_installed_flag && 1 == 0 ): ?>
         <!-- Quiz and Fox LMS integration main page 2025 | Start -->
         <div id="ays-quiz-fox-lms-all-pages-popup" class="bounceInRight_2022">
             <div id="ays-quiz-fox-lms-all-pages-popup-main">
