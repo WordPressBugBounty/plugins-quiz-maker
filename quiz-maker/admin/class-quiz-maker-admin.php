@@ -1216,6 +1216,7 @@ class Quiz_Maker_Admin
         $quick_quiz_enable_early_finsh_comfirm_box          = 'on';
         $quick_quiz_show_restart_button_on_quiz_fail        = 'off';
         $quick_quiz_enable_quiz_rate                        = 'off';
+        $quick_quiz_enable_rate_comments                    = 'off';
 
         // User Data
         $quick_quiz_show_information_form                   = 'on';
@@ -1590,6 +1591,9 @@ class Quiz_Maker_Admin
 
             // Enable quiz assessment
             $quick_quiz_enable_quiz_rate = (isset( $_REQUEST['ays_quick_quiz_enable_quiz_rate'] ) && $_REQUEST['ays_quick_quiz_enable_quiz_rate'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_quiz_rate'] ) ) : "off";
+
+            // Show the last 5 reviews
+            $quick_quiz_enable_rate_comments = (isset( $_REQUEST['ays_quick_quiz_enable_rate_comments'] ) && $_REQUEST['ays_quick_quiz_enable_rate_comments'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_rate_comments'] ) ) : "off";
             
             
         }
@@ -1678,7 +1682,7 @@ class Quiz_Maker_Admin
             'enable_pass_count'                                 => $quick_quiz_enable_pass_count,
             'enable_quiz_rate'                                  => $quick_quiz_enable_quiz_rate,
             'enable_rate_avg'                                   => $quick_quiz_enable_rate_avg,
-            'enable_rate_comments'                              => 'off',
+            'enable_rate_comments'                              => $quick_quiz_enable_rate_comments,
             'hide_score'                                        => $quick_quiz_hide_score,
             'rate_form_title'                                   => '',
             'enable_box_shadow'                                 => 'on',

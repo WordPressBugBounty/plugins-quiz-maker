@@ -4,7 +4,7 @@ Donate link: https://ays-pro.com/wordpress/quiz-maker
 Tags:  exam, quiz, quizzes, education, quiz maker
 Requires at least: 4.0
 Tested up to: 6.8
-Stable tag: 6.7.0.25
+Stable tag: 6.7.0.26
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -419,6 +419,12 @@ Do you wonder how to create a Math Quiz with hard mathematical equations in Word
 For example, to add a squared symbol, you need to write down the following sign ^2. (do not forget to insert $ character to mark the beginning and ending).
 
 == Changelog ==
+
+= 6.7.0.26 ( Jun 13, 2025 ) =
+* Added: Show the last 5 reviews suboption for the Quick Quiz Popup
+* Updated: POT and PO files
+* Updated: Spanish language translation
+* Updated: Italian language translation
 
 = 6.7.0.25 ( Jun 11, 2025 ) =
 * Added: Enable quiz assessment option for the Quick Quiz Popup

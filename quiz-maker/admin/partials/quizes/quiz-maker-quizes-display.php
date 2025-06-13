@@ -914,16 +914,26 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                             </div>
                                         </div><!-- Enable progress bar -->
                                         <hr/>
-                                        <div class="form-group row">
-                                            <div class="col-sm-4" style="padding-right: 0px;">
+                                        <div class="form-group row ays_toggle_parent">
+                                            <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_enable_quiz_rate">
                                                     <?php echo esc_html__('Enable quiz assessment','quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-1">
-                                                <input type="checkbox" id="ays_quick_quiz_enable_quiz_rate" name="ays_quick_quiz_enable_quiz_rate" value="on" />
+                                                <input type="checkbox" class="ays-enable-timer1 ays_toggle_checkbox" id="ays_quick_quiz_enable_quiz_rate" name="ays_quick_quiz_enable_quiz_rate" value="on" />
                                             </div>
-                                            <div class="col-sm-7 ays_divider_left display_none">
+                                            <div class="col-sm-7 ays_toggle_target ays_divider_left display_none">
+                                                <div class="form-group row">
+                                                    <div class="col-sm-4">
+                                                        <label for="ays_quick_quiz_enable_rate_comments">
+                                                            <?php echo esc_html__('Show the last 5 reviews', 'quiz-maker'); ?>
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-sm-8">
+                                                        <input type="checkbox" id="ays_quick_quiz_enable_rate_comments" name="ays_quick_quiz_enable_rate_comments" value="on" />
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div><!-- Enable quiz assessment -->
                                         <hr/>
