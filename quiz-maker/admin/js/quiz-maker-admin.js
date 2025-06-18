@@ -2002,7 +2002,31 @@
             paging: 5,
             responsive: true,
             "bDestroy": true,
-            "lengthMenu": [[5, 10, 25, 50, 100, -1], [5, 10, 25, 50, 100, "All"]],
+            "lengthMenu": [[5, 10, 25, 50, 100, -1], [5, 10, 25, 50, 100, quizLangDataTableObj.all]],
+            "language": {
+                "sEmptyTable":     quizLangDataTableObj.sEmptyTable,
+                "sInfo":           quizLangDataTableObj.sInfo,
+                "sInfoEmpty":      quizLangDataTableObj.sInfoEmpty,
+                "sInfoFiltered":   quizLangDataTableObj.sInfoFiltered,
+                "sInfoPostFix":    "",
+                "sInfoThousands":  ",",
+                // "sLengthMenu":     quizLangDataTableObj.sLengthMenu,
+                "sLoadingRecords": quizLangDataTableObj.sLoadingRecords,
+                "sProcessing":     quizLangDataTableObj.sProcessing,
+                "sSearch":         quizLangDataTableObj.sSearch,
+                "sUrl":            "",
+                "sZeroRecords":    quizLangDataTableObj.sZeroRecords,
+                "oPaginate": {
+                    "sFirst":    quizLangDataTableObj.sFirst,
+                    "sLast":     quizLangDataTableObj.sLast,
+                    "sNext":     quizLangDataTableObj.sNext,
+                    "sPrevious": quizLangDataTableObj.sPrevious,
+                },
+                "oAria": {
+                    "sSortAscending":  quizLangDataTableObj.sSortAscending,
+                    "sSortDescending": quizLangDataTableObj.sSortDescending
+                }
+            },
             "infoCallback": function(){
                 let qaTableSelectAll =  $(document).find('#ays-question-table-add tbody tr.ays_quest_row');
                 let qaTableSelected =  0;

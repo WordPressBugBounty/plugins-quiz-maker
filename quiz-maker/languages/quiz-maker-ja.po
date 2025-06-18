@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Quiz Maker\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2025-06-13 08:21+0000\n"
+"PO-Revision-Date: 2025-06-18 07:24+0000\n"
 "Language-Team: Japanese\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,7 +23,7 @@ msgstr "ユーザーのすべてのポイントの合計が表示される。"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:1973
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2822
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1373
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1383
 msgid "%"
 msgstr "%"
 
@@ -208,6 +208,11 @@ msgstr ""
 "%s %%%%user_nickname%%%% %s %%%%user_display_name%%%% %s "
 "メッセージ変数を使用してテキストをカスタマイズできます。 %s"
 
+#: ../admin/class-quiz-maker-admin.php:300
+#, php-format
+msgid "(filtered from %s total entries)"
+msgstr ""
+
 #: ../public/class-quiz-maker-public.php:159
 #: ../public/partials/class-quiz-maker-all-results-shortcode.php:76
 #: ../public/partials/class-quiz-maker-quiz-all-results-shortcode.php:77
@@ -223,7 +228,7 @@ msgstr "（_MAX_件のエントリーからフィルタリング済み）"
 msgid "(One-time payment)"
 msgstr "（一括払い"
 
-#: ../admin/class-quiz-maker-admin.php:3665
+#: ../admin/class-quiz-maker-admin.php:3694
 msgid "(Quiz + Survey + Poll)!"
 msgstr "「クイズとアンケートと投票！」!"
 
@@ -266,7 +271,7 @@ msgstr "1)"
 msgid "1."
 msgstr "1."
 
-#: ../admin/class-quiz-maker-admin.php:5264
+#: ../admin/class-quiz-maker-admin.php:5293
 msgid "10+ Integrations"
 msgstr "10以上の統合機能"
 
@@ -279,16 +284,16 @@ msgstr "12ヶ月"
 msgid "20% Christmas GIFT"
 msgstr "20%クリスマスギフト"
 
-#: ../admin/class-quiz-maker-admin.php:4227
+#: ../admin/class-quiz-maker-admin.php:4256
 msgid "20% Extra Discount Coupon"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4201
+#: ../admin/class-quiz-maker-admin.php:4230
 msgid "20% Extra OFF"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:3838
-#: ../admin/class-quiz-maker-admin.php:4265
+#: ../admin/class-quiz-maker-admin.php:3867
+#: ../admin/class-quiz-maker-admin.php:4294
 msgid "30 Day Money Back Guarantee"
 msgstr "30日間返金保証"
 
@@ -300,33 +305,35 @@ msgstr "30日間の返金保証！！！"
 msgid "5 site"
 msgstr "5サイト"
 
-#: ../admin/class-quiz-maker-admin.php:3664
+#: ../admin/class-quiz-maker-admin.php:3693
 msgid "50%"
 msgstr "50%"
 
-#: ../admin/class-quiz-maker-admin.php:4107
+#: ../admin/class-quiz-maker-admin.php:4136
 msgid "50% OFF"
 msgstr "50% OFF"
 
+#: ../admin/class-quiz-maker-admin.php:313
 #: ../public/class-quiz-maker-public.php:172
 #: ../public/partials/class-quiz-maker-all-results-shortcode.php:89
 #: ../public/partials/class-quiz-maker-quiz-all-results-shortcode.php:90
 msgid ": activate to sort column ascending"
 msgstr "昇順でソートするにはこちらをクリック"
 
+#: ../admin/class-quiz-maker-admin.php:314
 #: ../public/class-quiz-maker-public.php:173
 #: ../public/partials/class-quiz-maker-all-results-shortcode.php:90
 #: ../public/partials/class-quiz-maker-quiz-all-results-shortcode.php:91
 msgid ": activate to sort column descending"
 msgstr "降順でソートするにはこちらをクリック"
 
-#: ../admin/class-quiz-maker-admin.php:3826
-#: ../admin/class-quiz-maker-admin.php:4194
-#: ../admin/class-quiz-maker-admin.php:4259
+#: ../admin/class-quiz-maker-admin.php:3855
+#: ../admin/class-quiz-maker-admin.php:4223
+#: ../admin/class-quiz-maker-admin.php:4288
 msgid "<span><a href='"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4100
+#: ../admin/class-quiz-maker-admin.php:4129
 msgid ""
 "<span><a href='https://ays-pro.com/mega-bundle?"
 "utm_source=dashboard&utm_medium=quiz-free&utm_campaign=black-friday-mega-"
@@ -371,7 +378,7 @@ msgstr "選択したユーザーのみにアクセスする"
 msgid "Actions"
 msgstr "アクション"
 
-#: ../admin/class-quiz-maker-admin.php:5118
+#: ../admin/class-quiz-maker-admin.php:5147
 msgid "Activate"
 msgstr ""
 
@@ -386,11 +393,11 @@ msgstr ""
 "問題の上部にあるクイズナビゲーションボックスを有効にする。これにより、問題間を簡単に移動することができる。問題に回答すると、ボックスが黒くなり、すでに回答済みであることが示される。ページあたりの問題数と1ページにすべての問題を表示するオプションでは機能しないことに注意すること。"
 
 #: ../admin/class-quiz-maker-admin.php:243
-#: ../admin/class-quiz-maker-admin.php:5110
+#: ../admin/class-quiz-maker-admin.php:5139
 msgid "Activated"
 msgstr "有効化"
 
-#: ../admin/class-quiz-maker-admin.php:5107
+#: ../admin/class-quiz-maker-admin.php:5136
 msgid "Active"
 msgstr ""
 
@@ -466,7 +473,7 @@ msgstr "クイズのスタートページに画像を追加する"
 msgid "Add images & videos"
 msgstr "画像と動画を追加する"
 
-#: ../admin/class-quiz-maker-admin.php:2951
+#: ../admin/class-quiz-maker-admin.php:2980
 #: ../admin/partials/questions/quiz-maker-question-categories-display.php:47
 #: ../admin/partials/questions/quiz-maker-question-categories-display.php:70
 #: ../admin/partials/questions/quiz-maker-questions-display.php:139
@@ -499,8 +506,8 @@ msgid ""
 msgstr ""
 "Quiz Maker プラグインで作成したポップアップクイズをウェブサイトに追加する。このシンプルなツールで訪問者の関心を引き、顧客を獲得しよう。"
 
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2255
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2365
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2265
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2375
 msgid "Add question"
 msgstr "質問を追加する"
 
@@ -523,16 +530,16 @@ msgstr "他の質問の中から見つけやすくするために、質問のタ
 msgid "Additional Emails"
 msgstr "追加のメールアドレス"
 
-#: ../admin/class-quiz-maker-admin.php:4790
+#: ../admin/class-quiz-maker-admin.php:4819
 msgid "Addon activated."
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4906
+#: ../admin/class-quiz-maker-admin.php:4935
 msgid "Addon installed and activated."
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:635
-#: ../admin/class-quiz-maker-admin.php:639
+#: ../admin/class-quiz-maker-admin.php:660
+#: ../admin/class-quiz-maker-admin.php:664
 msgid "Addons"
 msgstr "アドオン"
 
@@ -555,11 +562,11 @@ msgstr "管理者"
 msgid "Admin Email"
 msgstr "管理者メールアドレス"
 
-#: ../admin/class-quiz-maker-admin.php:2114
+#: ../admin/class-quiz-maker-admin.php:2143
 msgid "Admin Note"
 msgstr "管理者注"
 
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1631
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1641
 msgid "Admin Note styles"
 msgstr "管理注釈スタイル"
 
@@ -678,7 +685,8 @@ msgid "Align the text of your questions to the left, center, or right."
 msgstr "問題のテキストを左寄せ、中央揃え、右寄せにする。"
 
 #: ../admin/class-quiz-maker-admin.php:290
-#: ../admin/class-quiz-maker-admin.php:2288
+#: ../admin/class-quiz-maker-admin.php:316
+#: ../admin/class-quiz-maker-admin.php:2317
 #: ../includes/lists/class-quiz-maker-all-reviews-list-table.php:166
 #: ../includes/lists/class-quiz-maker-question-categories-list-table.php:107
 #: ../includes/lists/class-quiz-maker-questions-list-table.php:155
@@ -696,7 +704,7 @@ msgstr "ユーザーごとの合格クイズ数"
 msgid "All Results Settings"
 msgstr "すべての結果の設定"
 
-#: ../admin/class-quiz-maker-admin.php:922
+#: ../admin/class-quiz-maker-admin.php:947
 msgid "All Reviews"
 msgstr "すべてのレビュー"
 
@@ -765,13 +773,13 @@ msgid ""
 "provided. It will work with the Checkbox type."
 msgstr "ユーザーが複数の回答を選択できるようにするが、指定した最大値を超えることはできない。チェックボックスタイプで使用できる。"
 
-#: ../admin/class-quiz-maker-admin.php:5014
+#: ../admin/class-quiz-maker-admin.php:5043
 msgid ""
 "Allow your students to create personal dictionary, study and memorize the "
 "words."
 msgstr "学生が個人用辞書を作成し、単語を学習し、暗記できるようにする。"
 
-#: ../admin/class-quiz-maker-admin.php:5015
+#: ../admin/class-quiz-maker-admin.php:5044
 msgid ""
 "Allow your users to create their own digital dictionaries and learn new "
 "words and terms as fastest as possible."
@@ -823,7 +831,7 @@ msgid "and paste it into your desired Page or Post."
 msgstr "希望するページまたは投稿に貼り付ける。"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2707
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1279
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1289
 msgid "Animation effect"
 msgstr "アニメーション効果"
 
@@ -848,9 +856,9 @@ msgstr "匿名フィードバック"
 #: ../admin/partials/questions/actions/quiz-maker-questions-actions.php:491
 #: ../admin/partials/questions/actions/quiz-maker-questions-actions.php:512
 #: ../admin/partials/questions/actions/quiz-maker-questions-actions.php:792
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2303
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2314
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2325
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2313
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2324
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2335
 msgid "Answer"
 msgstr "回答"
 
@@ -867,12 +875,12 @@ msgid "Answer default count"
 msgstr "回答のデフォルトカウント"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2876
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1419
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1429
 msgid "Answer font size"
 msgstr "回答のフォントサイズ"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2988
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1464
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1474
 msgid "Answer gap"
 msgstr "回答のギャップ"
 
@@ -880,7 +888,7 @@ msgstr "回答のギャップ"
 msgid "Answer image height"
 msgstr "回答画像の高さ"
 
-#: ../admin/class-quiz-maker-admin.php:2451
+#: ../admin/class-quiz-maker-admin.php:2480
 msgid "Answer point"
 msgstr "回答ポイント"
 
@@ -889,7 +897,7 @@ msgid "Answer Settings"
 msgstr "回答の設定"
 
 #: ../admin/class-quiz-maker-admin.php:268
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2343
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2353
 msgid "Answer text"
 msgstr "回答のテキスト"
 
@@ -1029,7 +1037,7 @@ msgstr "各ユーザーロールの試行回数をカウントする"
 msgid "Attempts count:"
 msgstr "試行回数："
 
-#: ../admin/class-quiz-maker-admin.php:4988
+#: ../admin/class-quiz-maker-admin.php:5017
 msgid ""
 "Attract your visitors and convert them into email subscribers and paying "
 "customers."
@@ -1045,7 +1053,7 @@ msgid "Authorize"
 msgstr "認証"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:8535
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1061
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1071
 msgid "Autofill logged-in user data"
 msgstr "ログインユーザーのデータを自動入力する"
 
@@ -1145,10 +1153,10 @@ msgstr "最高の無料サポート"
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3723
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3914
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:4105
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1738
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1869
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2037
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2205
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1748
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1879
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2047
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2215
 msgid "Bold"
 msgstr "太字"
 
@@ -1156,10 +1164,10 @@ msgstr "太字"
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3726
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3917
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:4108
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1739
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1872
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2040
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2208
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1749
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1882
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2050
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2218
 msgid "Bolder"
 msgstr "太字"
 
@@ -1169,7 +1177,7 @@ msgid "Border color"
 msgstr "ボーダーの色"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2137
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1127
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1137
 msgid "Border radius"
 msgstr "ボーダーラジアス"
 
@@ -1205,11 +1213,11 @@ msgstr "Brevoとの統合"
 msgid "British Pound Sterling"
 msgstr "英ポンド"
 
-#: ../admin/class-quiz-maker-admin.php:4960
+#: ../admin/class-quiz-maker-admin.php:4989
 msgid "Build and manage online courses directly on your WordPress site."
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4970
+#: ../admin/class-quiz-maker-admin.php:4999
 msgid ""
 "Build up various types of polls in a minute and get instant feedback on any "
 "topic or product."
@@ -1232,17 +1240,17 @@ msgid "Button"
 msgstr "ボタン"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3353
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1614
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1624
 msgid "Button border-radius"
 msgstr "ボタン border-radius"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3262
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1520
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1530
 msgid "Button font-size"
 msgstr "ボタンのフォントサイズ"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3332
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1582
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1592
 msgid "Button padding"
 msgstr "ボタンのパディング"
 
@@ -1251,7 +1259,7 @@ msgid "Button Settings"
 msgstr "ボタン設定"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3238
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1499
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1509
 msgid "Button size"
 msgstr "ボタンのサイズ"
 
@@ -1260,17 +1268,17 @@ msgid "Button text"
 msgstr "ボタンテキスト"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3312
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1565
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1575
 msgid "Button width"
 msgstr "ボタンの幅"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2546
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1191
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1201
 msgid "Buttons position"
 msgstr "ボタンの位置"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3229
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1492
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1502
 msgid "Buttons Styles"
 msgstr "ボタンスタイル"
 
@@ -1286,9 +1294,9 @@ msgstr "ボタンテキスト"
 msgid "Buttons will be replaced to icons."
 msgstr "ボタンがアイコンに置き換えられる。"
 
-#: ../admin/class-quiz-maker-admin.php:3895
-#: ../admin/class-quiz-maker-admin.php:4316
-#: ../admin/class-quiz-maker-admin.php:5203
+#: ../admin/class-quiz-maker-admin.php:3924
+#: ../admin/class-quiz-maker-admin.php:4345
+#: ../admin/class-quiz-maker-admin.php:5232
 msgid "Buy Now"
 msgstr "今すぐ購入"
 
@@ -1301,17 +1309,17 @@ msgstr "今すぐ購入"
 msgid "Buy now"
 msgstr "今すぐ購入"
 
-#: ../admin/class-quiz-maker-admin.php:3323
-#: ../admin/class-quiz-maker-admin.php:3389
-#: ../admin/class-quiz-maker-admin.php:3471
-#: ../admin/class-quiz-maker-admin.php:3532
-#: ../admin/class-quiz-maker-admin.php:3570
-#: ../admin/class-quiz-maker-admin.php:3628
-#: ../admin/class-quiz-maker-admin.php:4046
+#: ../admin/class-quiz-maker-admin.php:3352
+#: ../admin/class-quiz-maker-admin.php:3418
+#: ../admin/class-quiz-maker-admin.php:3500
+#: ../admin/class-quiz-maker-admin.php:3561
+#: ../admin/class-quiz-maker-admin.php:3599
+#: ../admin/class-quiz-maker-admin.php:3657
+#: ../admin/class-quiz-maker-admin.php:4075
 msgid "Buy Now !"
 msgstr "今すぐ購入しよう！"
 
-#: ../admin/class-quiz-maker-admin.php:3690
+#: ../admin/class-quiz-maker-admin.php:3719
 msgid "BUY NOW!"
 msgstr "今すぐ購入!"
 
@@ -1319,7 +1327,7 @@ msgstr "今すぐ購入!"
 msgid "By"
 msgstr "作成者"
 
-#: ../admin/class-quiz-maker-admin.php:4471
+#: ../admin/class-quiz-maker-admin.php:4500
 #, php-format
 msgid ""
 "By activating the pro version, you will get all the features to strive your "
@@ -1351,7 +1359,7 @@ msgstr ""
 "Bestモードを選択すると、ショートコードは%sユーザーの全ポイントの最大合計 %s を表示する。 "
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:6491
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1032
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1042
 msgid "By correct answers count"
 msgstr "正解数で"
 
@@ -1436,7 +1444,7 @@ msgstr ""
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:6487
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:7359
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1031
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1041
 msgid "By percentage"
 msgstr "パーセンテージで"
 
@@ -1565,11 +1573,11 @@ msgstr "キャンセル"
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3647
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3838
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:4029
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1214
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1690
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1815
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1970
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2138
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1224
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1700
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1825
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1980
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2148
 msgid "Capitalize"
 msgstr "大文字化"
 
@@ -1594,8 +1602,8 @@ msgstr "見込み客と連絡先を獲得"
 msgid "Categories"
 msgstr "カテゴリー"
 
-#: ../admin/class-quiz-maker-admin.php:2928
-#: ../admin/class-quiz-maker-admin.php:2934
+#: ../admin/class-quiz-maker-admin.php:2957
+#: ../admin/class-quiz-maker-admin.php:2963
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:1632
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:1719
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:9949
@@ -1625,8 +1633,8 @@ msgstr "カテゴリーのステータス"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2554
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2788
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1196
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1345
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1206
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1355
 msgid "Center"
 msgstr "中央"
 
@@ -1729,7 +1737,7 @@ msgid "Check button"
 msgstr "チェックボタン"
 
 #: ../admin/class-quiz-maker-admin.php:263
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2268
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2278
 msgid "Checkbox"
 msgstr "チェックボックス"
 
@@ -1951,7 +1959,7 @@ msgstr "クリアカラー"
 msgid "Clear filters"
 msgstr "フィルタをクリアする"
 
-#: ../admin/class-quiz-maker-admin.php:2151
+#: ../admin/class-quiz-maker-admin.php:2180
 msgid "Click For Admin Note"
 msgstr "管理者注をクリックする"
 
@@ -2057,7 +2065,7 @@ msgstr "完了時の動作"
 msgid "Conditional Results"
 msgstr "条件付きの結果"
 
-#: ../includes/class-quiz-maker-feedback.php:97
+#: ../includes/class-quiz-maker-feedback.php:104
 msgid "Conflicts with other plugins or themes"
 msgstr ""
 
@@ -2078,12 +2086,17 @@ msgstr "接続"
 msgid "Contact"
 msgstr "お問い合わせ"
 
+#: ../includes/class-quiz-maker-feedback.php:107
+#, php-format
+msgid "Contact our %s support team %s to find and fix the issue."
+msgstr ""
+
 #: ../quiz-maker.php:174 ../quiz-maker.php:183 ../quiz-maker.php:197
 msgid "Contact us"
 msgstr "お問い合わせ"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2855
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1407
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1417
 msgid "Contain"
 msgstr "含む"
 
@@ -2205,10 +2218,10 @@ msgstr ""
 msgid "Correct"
 msgstr "正解"
 
-#: ../admin/class-quiz-maker-admin.php:2362
-#: ../admin/class-quiz-maker-admin.php:2373
-#: ../admin/class-quiz-maker-admin.php:2406
-#: ../admin/class-quiz-maker-admin.php:2417
+#: ../admin/class-quiz-maker-admin.php:2391
+#: ../admin/class-quiz-maker-admin.php:2402
+#: ../admin/class-quiz-maker-admin.php:2435
+#: ../admin/class-quiz-maker-admin.php:2446
 msgid "Correct answer"
 msgstr "正解"
 
@@ -2216,15 +2229,15 @@ msgstr "正解"
 msgid "Correct answers count"
 msgstr "正解数"
 
-#: ../admin/class-quiz-maker-admin.php:4799
+#: ../admin/class-quiz-maker-admin.php:4828
 msgid "Could not activate the addon. Please activate it on the Plugins page."
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4796
+#: ../admin/class-quiz-maker-admin.php:4825
 msgid "Could not activate the plugin. Please activate it on the Plugins page."
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4822
+#: ../admin/class-quiz-maker-admin.php:4851
 msgid "Could not install the plugin. Please download and install it manually."
 msgstr ""
 
@@ -2234,7 +2247,7 @@ msgid "Count"
 msgstr "カウント"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2854
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1406
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1416
 msgid "Cover"
 msgstr "カバー"
 
@@ -2243,11 +2256,11 @@ msgstr "カバー"
 msgid "Create a new category %s here %s"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4969
+#: ../admin/class-quiz-maker-admin.php:4998
 msgid "Create amazing online polls for your WordPress website super easily."
 msgstr "WordPressウェブサイト用の素晴らしいオンライン投票を簡単に作成する。"
 
-#: ../admin/class-quiz-maker-admin.php:4431
+#: ../admin/class-quiz-maker-admin.php:4460
 #, php-format
 msgid ""
 "Create engaging quizzes, tests, and exams within a few minutes with the help "
@@ -2305,7 +2318,7 @@ msgid "Custom"
 msgstr "カスタム"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2686
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1268
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1278
 msgid "Custom class for quiz container"
 msgstr "クイズコンテナのカスタムクラス"
 
@@ -2321,9 +2334,9 @@ msgstr "カスタムCSS"
 msgid "Custom Field"
 msgstr "カスタムフィールド"
 
-#: ../admin/class-quiz-maker-admin.php:529
-#: ../admin/class-quiz-maker-admin.php:530
-#: ../admin/class-quiz-maker-admin.php:5261
+#: ../admin/class-quiz-maker-admin.php:554
+#: ../admin/class-quiz-maker-admin.php:555
+#: ../admin/class-quiz-maker-admin.php:5290
 msgid "Custom Fields"
 msgstr "カスタムフィールド"
 
@@ -2380,7 +2393,7 @@ msgstr "ユーザーの個人情報用のデータフォーム。情報フォー
 
 #: ../admin/class-quiz-maker-admin.php:276
 #: ../admin/partials/questions/actions/quiz-maker-questions-actions.php:176
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2274
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2284
 #: ../admin/partials/settings/quiz-maker-settings.php:25
 #: ../includes/lists/class-quiz-maker-questions-list-table.php:67
 msgid "Date"
@@ -2395,12 +2408,12 @@ msgstr "日"
 msgid "day"
 msgstr "日"
 
-#: ../admin/class-quiz-maker-admin.php:3673
-#: ../admin/class-quiz-maker-admin.php:3875
-#: ../admin/class-quiz-maker-admin.php:3931
-#: ../admin/class-quiz-maker-admin.php:4077
-#: ../admin/class-quiz-maker-admin.php:4171
-#: ../admin/class-quiz-maker-admin.php:4296
+#: ../admin/class-quiz-maker-admin.php:3702
+#: ../admin/class-quiz-maker-admin.php:3904
+#: ../admin/class-quiz-maker-admin.php:3960
+#: ../admin/class-quiz-maker-admin.php:4106
+#: ../admin/class-quiz-maker-admin.php:4200
+#: ../admin/class-quiz-maker-admin.php:4325
 msgid "Days"
 msgstr "日"
 
@@ -2423,7 +2436,7 @@ msgstr ""
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2507
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:5260
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:8254
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1180
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1190
 msgid "Default"
 msgstr "デフォルト"
 
@@ -2529,14 +2542,14 @@ msgstr "レビューのみ削除"
 msgid "Delete results older than 'X' the month"
 msgstr "「X」か月より古い結果を削除する"
 
-#: ../admin/class-quiz-maker-admin.php:2020
-#: ../admin/class-quiz-maker-admin.php:2022
+#: ../admin/class-quiz-maker-admin.php:2049
+#: ../admin/class-quiz-maker-admin.php:2051
 #: ../includes/lists/class-quiz-maker-all-reviews-list-table.php:422
 #: ../includes/lists/class-quiz-maker-results-list-table.php:573
 msgid "Deleted user"
 msgstr "ユーザーを削除した"
 
-#: ../admin/class-quiz-maker-admin.php:710 ../quiz-maker.php:167
+#: ../admin/class-quiz-maker-admin.php:735 ../quiz-maker.php:167
 #: ../quiz-maker.php:181 ../quiz-maker.php:190
 msgid "Demo"
 msgstr "デモ"
@@ -2668,7 +2681,7 @@ msgid "Disable"
 msgstr "無効にする"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3092
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1480
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1490
 msgid "Disable answer hover"
 msgstr "回答のホバーを無効にする"
 
@@ -2677,7 +2690,7 @@ msgid "Disable copy functionality in quiz page(CTRL+C) and Right-click"
 msgstr "小テストページでのコピー機能（CTRL+C）を無効にし、右クリック"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:7288
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:944
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:954
 msgid "Disable data storing in database"
 msgstr "データベースへのデータの保存を無効にする"
 
@@ -2707,7 +2720,7 @@ msgstr "回答のバックスラッシュを削除しない"
 msgid "Disable the hover effect for the answers."
 msgstr "回答のホバー効果を無効にする。"
 
-#: ../admin/class-quiz-maker-admin.php:5005
+#: ../admin/class-quiz-maker-admin.php:5034
 msgid ""
 "Disable the right click, copy paste, content selection and copy shortcut "
 "keys on your website."
@@ -2740,11 +2753,11 @@ msgstr "割引 20% OFF"
 msgid "discount for Quiz Maker plugin! "
 msgstr "Quiz Makerプラグインの割引！"
 
-#: ../admin/class-quiz-maker-admin.php:3698
-#: ../admin/class-quiz-maker-admin.php:3853
-#: ../admin/class-quiz-maker-admin.php:4117
-#: ../admin/class-quiz-maker-admin.php:4211
-#: ../admin/class-quiz-maker-admin.php:4278
+#: ../admin/class-quiz-maker-admin.php:3727
+#: ../admin/class-quiz-maker-admin.php:3882
+#: ../admin/class-quiz-maker-admin.php:4146
+#: ../admin/class-quiz-maker-admin.php:4240
+#: ../admin/class-quiz-maker-admin.php:4307
 msgid "Dismiss ad"
 msgstr "広告を閉じる"
 
@@ -2774,7 +2787,7 @@ msgid ""
 msgstr "Facebook のソーシャルボタンを表示し、ユーザーがクイズが掲載されているページを共有できるようにする。"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:8551
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1074
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1084
 msgid "Display form fields with labels"
 msgstr "フォームフィールドにラベルを表示する"
 
@@ -2794,7 +2807,7 @@ msgid "Display Quiz Bank(questions)"
 msgstr "クイズバンク（問題）の表示"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:6478
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1026
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1036
 msgid "Display score"
 msgstr "スコアの表示"
 
@@ -2893,7 +2906,7 @@ msgstr ""
 "MathJaxの使用方法についてステップバイステップのチュートリアルを見ることができる。数式内で、半角の「<」記号や「&」記号、その他のHTML特殊文字を使用する際には注意が必要である。%s"
 " 例えば、2乗記号を追加するには、次の記号を記述する必要がある。^2（開始と終了をマークする「$」文字を挿入することを忘れないこと）ã€"
 
-#: ../admin/class-quiz-maker-admin.php:4500
+#: ../admin/class-quiz-maker-admin.php:4529
 msgid "Documentation"
 msgstr "ドキュメント"
 
@@ -2907,7 +2920,7 @@ msgstr ""
 
 #: ../admin/class-quiz-maker-admin.php:264
 #: ../admin/partials/questions/actions/quiz-maker-questions-actions.php:172
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2269
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2279
 #: ../admin/partials/settings/quiz-maker-settings.php:21
 #: ../includes/lists/class-quiz-maker-questions-list-table.php:63
 msgid "Dropdown"
@@ -2924,7 +2937,7 @@ msgstr "ドロップダウン プレースホルダテキスト"
 msgid "Duplicate"
 msgstr "重複"
 
-#: ../admin/class-quiz-maker-admin.php:2263
+#: ../admin/class-quiz-maker-admin.php:2292
 #: ../admin/partials/settings/quiz-maker-settings.php:80
 #: ../admin/partials/settings/quiz-maker-settings.php:88
 #: ../admin/partials/settings/quiz-maker-settings.php:149
@@ -2964,7 +2977,7 @@ msgstr ""
 msgid "Easy Digital Downloads"
 msgstr "Easy Digital Downloads"
 
-#: ../admin/class-quiz-maker-admin.php:2966
+#: ../admin/class-quiz-maker-admin.php:2995
 #: ../includes/lists/class-quiz-maker-question-categories-list-table.php:552
 #: ../includes/lists/class-quiz-maker-questions-list-table.php:1224
 #: ../includes/lists/class-quiz-maker-quiz-categories-list-table.php:609
@@ -2982,8 +2995,8 @@ msgstr "カテゴリーを編集する"
 msgid "Edit Image"
 msgstr "画像を編集する"
 
-#: ../admin/class-quiz-maker-admin.php:1020
-#: ../admin/class-quiz-maker-admin.php:1029
+#: ../admin/class-quiz-maker-admin.php:1045
+#: ../admin/class-quiz-maker-admin.php:1054
 #: ../admin/partials/questions/actions/quiz-maker-questions-actions.php:103
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:1782
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:1791
@@ -3007,7 +3020,7 @@ msgstr "エレガントダーク"
 msgid "Elegant Light"
 msgstr "エレガントライト"
 
-#: ../admin/class-quiz-maker-admin.php:2208
+#: ../admin/class-quiz-maker-admin.php:2237
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:8427
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:8448
 #: ../admin/partials/settings/quiz-maker-settings.php:1815
@@ -3144,7 +3157,7 @@ msgid "Enable custom texts for buttons"
 msgstr "ボタンのカスタムテキストを有効にする"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:6788
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1011
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1021
 msgid "Enable Default Hide"
 msgstr ""
 
@@ -3351,7 +3364,7 @@ msgstr ""
 "ログインユーザーにも情報フォームを表示したい場合は、このオプションを有効にする。このオプションが無効になっている場合、ログインユーザーは小テストの前後で情報フォームを見ることはできないが、システムはユーザーのWPアカウントから名前とメールアドレスの情報を収集し、データベースの名前とメールアドレスのフィールドに保存する。"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:6775
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1001
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1011
 msgid "Enable the Show/Hide toggle"
 msgstr "表示/非表示の切り替えを有効にする"
 
@@ -3635,11 +3648,11 @@ msgstr "質問のエクスポートとインポート"
 msgid "Export Filter"
 msgstr "エクスポートフィルター"
 
-#: ../admin/class-quiz-maker-admin.php:2060
+#: ../admin/class-quiz-maker-admin.php:2089
 msgid "Export Individual Result"
 msgstr "個々の結果をエクスポート"
 
-#: ../admin/class-quiz-maker-admin.php:5260
+#: ../admin/class-quiz-maker-admin.php:5289
 #: ../admin/partials/results/quiz-maker-all-reviews-display.php:26
 #: ../admin/partials/results/quiz-maker-results-display.php:33
 msgid "Export Results"
@@ -3650,7 +3663,7 @@ msgstr "結果のエクスポート"
 msgid "Export results"
 msgstr "結果のエクスポート"
 
-#: ../admin/class-quiz-maker-admin.php:2175
+#: ../admin/class-quiz-maker-admin.php:2204
 #: ../admin/partials/questions/quiz-maker-questions-display.php:92
 #: ../admin/partials/results/quiz-maker-all-reviews-display.php:156
 msgid "Export to"
@@ -3683,12 +3696,12 @@ msgstr "Facebookリンク"
 msgid "Facebook profile or page link for showing after quiz finish."
 msgstr "クイズ終了後に表示されるFacebookプロフィールまたはページリンク。"
 
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1285
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1295
 msgid "Fade"
 msgstr "フェード"
 
-#: ../admin/class-quiz-maker-admin.php:2291
-#: ../admin/class-quiz-maker-admin.php:2437
+#: ../admin/class-quiz-maker-admin.php:2320
+#: ../admin/class-quiz-maker-admin.php:2466
 #: ../includes/lists/class-quiz-maker-results-list-table.php:654
 #: ../public/partials/class-quiz-maker-all-results-shortcode.php:315
 msgid "Failed"
@@ -3776,6 +3789,7 @@ msgstr "1回不正解でクイズを終了する"
 msgid "Finish the quiz after one wrong answer."
 msgstr "1回不正解でクイズを終了する。"
 
+#: ../admin/class-quiz-maker-admin.php:309
 #: ../public/class-quiz-maker-public.php:168
 #: ../public/partials/class-quiz-maker-all-results-shortcode.php:85
 #: ../public/partials/class-quiz-maker-quiz-all-results-shortcode.php:86
@@ -3800,22 +3814,22 @@ msgid ""
 msgstr "このステップバイステップのビデオチュートリアルで説明されている手順に従って、独自のリーダーボードを作成する。"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3393
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1638
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1648
 msgid "Font size for the note text"
 msgstr "注釈テキストのフォントサイズ"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3585
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1764
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1774
 msgid "Font size for the question explanation"
 msgstr "質問説明のフォントサイズ"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3776
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1916
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1926
 msgid "Font size for the right answer"
 msgstr "正解のフォントサイズ"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3967
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2084
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2094
 msgid "Font size for the wrong answer"
 msgstr "誤答のフォントサイズ"
 
@@ -3823,10 +3837,10 @@ msgstr "誤答のフォントサイズ"
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3708
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3899
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:4090
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1731
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1857
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2025
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2193
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1741
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1867
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2035
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2203
 msgid "Font weight"
 msgstr "フォントの太さ"
 
@@ -3834,8 +3848,8 @@ msgstr "フォントの太さ"
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:1994
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2817
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:8310
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1102
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1368
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1112
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1378
 #: ../admin/partials/settings/quiz-maker-settings.php:1799
 #: ../admin/partials/settings/quiz-maker-settings.php:2051
 #: ../admin/partials/settings/quiz-maker-settings.php:2285
@@ -3844,7 +3858,7 @@ msgstr "フォントの太さ"
 msgid "For 100% leave blank"
 msgstr "100% の場合は空白のままにする"
 
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1571
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1581
 msgid "For an initial width, leave blank."
 msgstr "初期の幅は空白のままにする。"
 
@@ -3893,7 +3907,7 @@ msgstr ""
 msgid "For more detailed configuration visit"
 msgstr "より詳細な設定については、"
 
-#: ../admin/class-quiz-maker-admin.php:4498
+#: ../admin/class-quiz-maker-admin.php:4527
 msgid "For more information:"
 msgstr "さらに詳しい情報："
 
@@ -3913,7 +3927,11 @@ msgstr "問題を選択するには、問題の行をクリックし、「問題
 msgid "Form Fields"
 msgstr "フォームフィールド"
 
-#: ../admin/class-quiz-maker-admin.php:4959
+#: ../includes/class-quiz-maker-feedback.php:85
+msgid "Formidable Forms"
+msgstr ""
+
+#: ../admin/class-quiz-maker-admin.php:4988
 msgid "Fox LMS"
 msgstr ""
 
@@ -3921,7 +3939,7 @@ msgstr ""
 msgid "Free"
 msgstr "無料"
 
-#: ../admin/class-quiz-maker-admin.php:721 ../quiz-maker.php:168
+#: ../admin/class-quiz-maker-admin.php:746 ../quiz-maker.php:168
 #: ../quiz-maker.php:182 ../quiz-maker.php:191
 msgid "Free Support"
 msgstr "無料サポート"
@@ -3981,7 +3999,7 @@ msgstr "一般"
 msgid "General CSS File"
 msgstr "一般CSSファイル"
 
-#: ../admin/class-quiz-maker-admin.php:4414
+#: ../admin/class-quiz-maker-admin.php:4443
 msgid "General Information"
 msgstr "一般情報"
 
@@ -3994,8 +4012,8 @@ msgstr "一般的なメッセージ変数"
 msgid "General options"
 msgstr "「一般」オプション"
 
-#: ../admin/class-quiz-maker-admin.php:611
-#: ../admin/class-quiz-maker-admin.php:612
+#: ../admin/class-quiz-maker-admin.php:636
+#: ../admin/class-quiz-maker-admin.php:637
 #: ../admin/partials/questions/actions/quiz-maker-questions-actions.php:400
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:1567
 #: ../admin/partials/settings/quiz-maker-settings.php:383
@@ -4050,9 +4068,9 @@ msgid ""
 "Get Learning Management System and online course solution in WordPress now."
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:3948
-#: ../admin/class-quiz-maker-admin.php:4136
-#: ../admin/class-quiz-maker-admin.php:4232
+#: ../admin/class-quiz-maker-admin.php:3977
+#: ../admin/class-quiz-maker-admin.php:4165
+#: ../admin/class-quiz-maker-admin.php:4261
 msgid "Get Your Deal"
 msgstr "お得なバンドルを入手"
 
@@ -4154,8 +4172,8 @@ msgstr "Googleスプレッドシートの統合"
 msgid "Grab your"
 msgstr "クイズメーカープラグインの"
 
-#: ../admin/class-quiz-maker-admin.php:664
-#: ../admin/class-quiz-maker-admin.php:665 ../quiz-maker.php:170
+#: ../admin/class-quiz-maker-admin.php:689
+#: ../admin/class-quiz-maker-admin.php:690 ../quiz-maker.php:170
 #: ../quiz-maker.php:180 ../quiz-maker.php:193
 msgid "Grab your GIFT"
 msgstr "ギフトを受け取る"
@@ -4187,7 +4205,7 @@ msgstr "カテゴリーごとに質問をグループ化"
 msgid "Group users by"
 msgstr "ユーザーをグループ化する"
 
-#: ../admin/class-quiz-maker-admin.php:2189
+#: ../admin/class-quiz-maker-admin.php:2218
 #: ../includes/lists/class-quiz-maker-all-reviews-list-table.php:415
 #: ../includes/lists/class-quiz-maker-results-list-table.php:102
 #: ../includes/lists/class-quiz-maker-results-list-table.php:566
@@ -4195,6 +4213,10 @@ msgstr "ユーザーをグループ化する"
 #: ../public/partials/class-quiz-maker-quiz-all-results-shortcode.php:206
 msgid "Guest"
 msgstr "ゲスト"
+
+#: ../includes/class-quiz-maker-feedback.php:86
+msgid "HD Quiz"
+msgstr ""
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:7052
 msgid "Heading for share buttons"
@@ -4257,7 +4279,7 @@ msgid "Hide correct answer"
 msgstr "正解を隠す"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:6733
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:968
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:978
 msgid "Hide correct answers"
 msgstr "正解を隠す"
 
@@ -4303,12 +4325,12 @@ msgstr "水平"
 msgid "hour"
 msgstr "時間"
 
-#: ../admin/class-quiz-maker-admin.php:3674
-#: ../admin/class-quiz-maker-admin.php:3876
-#: ../admin/class-quiz-maker-admin.php:3932
-#: ../admin/class-quiz-maker-admin.php:4078
-#: ../admin/class-quiz-maker-admin.php:4172
-#: ../admin/class-quiz-maker-admin.php:4297
+#: ../admin/class-quiz-maker-admin.php:3703
+#: ../admin/class-quiz-maker-admin.php:3905
+#: ../admin/class-quiz-maker-admin.php:3961
+#: ../admin/class-quiz-maker-admin.php:4107
+#: ../admin/class-quiz-maker-admin.php:4201
+#: ../admin/class-quiz-maker-admin.php:4326
 msgid "Hours"
 msgstr "時間"
 
@@ -4532,8 +4554,8 @@ msgstr "人気クイズのショートコードの設定方法 - 動画"
 msgid "How to set User Page Settings Shortcode with WordPress Quiz Plugin"
 msgstr "ユーザーページの設定方法 WordPressクイズプラグインのショートコード"
 
-#: ../admin/class-quiz-maker-admin.php:600
-#: ../admin/class-quiz-maker-admin.php:601
+#: ../admin/class-quiz-maker-admin.php:625
+#: ../admin/class-quiz-maker-admin.php:626
 msgid "How to use"
 msgstr "使用方法"
 
@@ -4545,7 +4567,7 @@ msgstr ""
 msgid "I no longer need the plugin"
 msgstr ""
 
-#: ../includes/class-quiz-maker-feedback.php:93
+#: ../includes/class-quiz-maker-feedback.php:100
 msgid "I only needed it temporarily"
 msgstr ""
 
@@ -4758,7 +4780,7 @@ msgid ""
 msgstr ""
 "このオプションを有効にすると、ページが完全に読み込まれた後にクイズが自動的に開始する。このオプションは、1つのページに1つのクイズ用に設計されていることに注意すること。ページに複数のクイズを配置した場合、一番上に配置されたクイズのみが自動的に開始する。"
 
-#: ../includes/class-quiz-maker-feedback.php:127
+#: ../includes/class-quiz-maker-feedback.php:139
 msgid "If you have a moment, please share why you are deactivating Quiz Maker:"
 msgstr ""
 
@@ -4766,7 +4788,7 @@ msgstr ""
 msgid "If you haven't created questions yet, you need to do it first."
 msgstr "まだ問題を作成していない場合は、まず問題を作成する必要がある。"
 
-#: ../admin/class-quiz-maker-admin.php:3123
+#: ../admin/class-quiz-maker-admin.php:3152
 msgid "If you love our plugin, please do big favor and rate us on"
 msgstr "弊社のプラグインを気に入っていただけた場合は、ぜひ評価をお願いします。"
 
@@ -4847,7 +4869,7 @@ msgid "Image"
 msgstr "画像"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2832
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1384
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1394
 msgid "Image Height"
 msgstr "画像の高さ"
 
@@ -4857,12 +4879,12 @@ msgid "Image question"
 msgstr ""
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2848
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1402
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1412
 msgid "Image sizing"
 msgstr "画像のサイズ"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2811
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1362
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1372
 msgid "Image Width"
 msgstr "画像の幅"
 
@@ -4879,7 +4901,7 @@ msgid ""
 msgstr ""
 "このショートコードには、任意のテキストとその翻訳を追加できる。翻訳されたテキストがフロントエンドに表示される。言語は「%s言語コード%s」で指定する。 "
 
-#: ../admin/class-quiz-maker-admin.php:5115
+#: ../admin/class-quiz-maker-admin.php:5144
 msgid "Inactive"
 msgstr ""
 
@@ -4916,7 +4938,7 @@ msgstr "情報フォームのタイトル"
 msgid "Insert questions"
 msgstr "問題の挿入"
 
-#: ../admin/class-quiz-maker-admin.php:4669
+#: ../admin/class-quiz-maker-admin.php:4698
 msgid "Insert your preferred message variable into the editor by clicking."
 msgstr "クリックして、お好みのメッセージ変数をエディタに挿入する。"
 
@@ -4932,12 +4954,12 @@ msgstr "Instagram リンク"
 msgid "Instagram profile or page link for showing after quiz finish."
 msgstr "Instagram のプロフィールまたはページへのリンク。クイズ終了後に表示される。"
 
-#: ../admin/class-quiz-maker-admin.php:3745
-#: ../admin/class-quiz-maker-admin.php:3789
+#: ../admin/class-quiz-maker-admin.php:3774
+#: ../admin/class-quiz-maker-admin.php:3818
 msgid "Install Now !"
 msgstr "今すぐインストールしよう！"
 
-#: ../admin/class-quiz-maker-admin.php:5132
+#: ../admin/class-quiz-maker-admin.php:5161
 msgid "Install Plugin"
 msgstr ""
 
@@ -4945,8 +4967,8 @@ msgstr ""
 msgid "Instructions"
 msgstr "手順"
 
-#: ../admin/class-quiz-maker-admin.php:676
-#: ../admin/class-quiz-maker-admin.php:677
+#: ../admin/class-quiz-maker-admin.php:701
+#: ../admin/class-quiz-maker-admin.php:702
 #: ../admin/partials/integrations/quiz-maker-integrations.php:24
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:1543
 #: ../admin/partials/settings/quiz-maker-settings.php:405
@@ -5077,7 +5099,7 @@ msgstr "この小テストに含めるすべての問題から、指定した数
 msgid "items"
 msgstr "項目"
 
-#: ../includes/class-quiz-maker-feedback.php:101
+#: ../includes/class-quiz-maker-feedback.php:113
 msgid "I’m using the premium version now"
 msgstr ""
 
@@ -5095,7 +5117,7 @@ msgstr "プレミアムサポートに参加"
 msgid "Just create contact"
 msgstr "コンタクトを作成するだけ"
 
-#: ../admin/class-quiz-maker-admin.php:2133
+#: ../admin/class-quiz-maker-admin.php:2162
 msgid ""
 "Just type your text in the Admin Note field and save it on detailed reports "
 "easily."
@@ -5114,10 +5136,11 @@ msgid "Labels"
 msgstr "ラベル"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3253
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1511
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1521
 msgid "Large"
 msgstr "大"
 
+#: ../admin/class-quiz-maker-admin.php:310
 #: ../public/class-quiz-maker-public.php:169
 #: ../public/partials/class-quiz-maker-all-results-shortcode.php:86
 #: ../public/partials/class-quiz-maker-quiz-all-results-shortcode.php:87
@@ -5144,7 +5167,7 @@ msgstr "クイズカテゴリー別リーダーボードの設定"
 msgid "Leaderboard Columns"
 msgstr "リーダーボードのカラム"
 
-#: ../admin/class-quiz-maker-admin.php:5262
+#: ../admin/class-quiz-maker-admin.php:5291
 #: ../admin/partials/features/quiz-maker-features-display.php:404
 #: ../admin/partials/features/quiz-maker-features-display.php:407
 msgid "Leaderboards"
@@ -5164,7 +5187,7 @@ msgstr "クイズメーカーのカスタムフィールドの使用方法"
 msgid "Learn More"
 msgstr "詳細はこちら"
 
-#: ../admin/class-quiz-maker-admin.php:4979
+#: ../admin/class-quiz-maker-admin.php:5008
 msgid ""
 "Learn what your website visitors want, need, and expect with the help of "
 "Survey Maker. Build surveys without limiting your needs."
@@ -5177,8 +5200,8 @@ msgstr "現在のページを離れ、X秒後に指定されたリンクに移�
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2555
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2784
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1197
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1344
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1207
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1354
 msgid "Left"
 msgstr "左"
 
@@ -5188,7 +5211,7 @@ msgid "left"
 msgstr "左"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3340
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1590
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1600
 msgid "Left / Right"
 msgstr "左/右"
 
@@ -5220,10 +5243,10 @@ msgstr ""
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3689
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3880
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:4071
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1715
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1841
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2009
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2177
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1725
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1851
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2019
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2187
 msgid "Letter spacing"
 msgstr "文字間隔"
 
@@ -5243,7 +5266,7 @@ msgstr "無期限"
 msgid "Lifetime payment"
 msgstr "生涯支払い"
 
-#: ../admin/class-quiz-maker-admin.php:5267
+#: ../admin/class-quiz-maker-admin.php:5296
 msgid "Lifetime Usage"
 msgstr "生涯利用"
 
@@ -5255,10 +5278,10 @@ msgstr "ライト"
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3720
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3911
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:4102
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1737
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1866
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2034
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2202
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1747
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1876
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2044
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2212
 msgid "Lighter"
 msgstr "薄い"
 
@@ -5297,12 +5320,12 @@ msgstr "ユーザーの制限"
 msgid "Limitation Users"
 msgstr "制限 ユーザー"
 
-#: ../admin/class-quiz-maker-admin.php:3664
-#: ../admin/class-quiz-maker-admin.php:3918
+#: ../admin/class-quiz-maker-admin.php:3693
+#: ../admin/class-quiz-maker-admin.php:3947
 msgid "Limited Time"
 msgstr "期間限定"
 
-#: ../admin/class-quiz-maker-admin.php:3343
+#: ../admin/class-quiz-maker-admin.php:3372
 msgid ""
 "Limited Time <span class='ays-quiz-dicount-wrap-color'>20%</span> SALE on "
 "<br><span><a href='https://ays-pro.com/wordpress/quiz-maker' target='_blank' "
@@ -5314,7 +5337,7 @@ msgstr ""
 "quiz-dicount-wrap-color ays-quiz-dicount-wrap-text-decoration' "
 "style='display:block;'>クイズメーカー プレミアム版</a></span>"
 
-#: ../admin/class-quiz-maker-admin.php:3589
+#: ../admin/class-quiz-maker-admin.php:3618
 msgid ""
 "Limited Time <span class='ays-quiz-dicount-wrap-color-helloween' "
 "style='color:#b2ff00;'>30%</span> <span> SALE on</span><br><span style='' "
@@ -5335,7 +5358,7 @@ msgstr ""
 "#b2ff00;margin-right:6px;'>Quiz Maker</a>\n"
 "                            </span>"
 
-#: ../admin/class-quiz-maker-admin.php:3276
+#: ../admin/class-quiz-maker-admin.php:3305
 msgid ""
 "Limited Time <span style='color:#E85011;'>50%</span> SALE on <br><span><a "
 "href='https://ays-pro.com/mega-bundle' target='_blank' style='color:#E85011; "
@@ -5349,10 +5372,10 @@ msgstr ""
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3677
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3868
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:4059
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1706
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1832
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1997
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2165
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1716
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1842
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2007
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2175
 msgid "Line through"
 msgstr "線引き"
 
@@ -5387,6 +5410,7 @@ msgstr "さらに読み込むボタン"
 msgid "Loading ..."
 msgstr "読み込み中..."
 
+#: ../admin/class-quiz-maker-admin.php:304
 #: ../public/class-quiz-maker-public.php:163
 #: ../public/partials/class-quiz-maker-all-results-shortcode.php:80
 #: ../public/partials/class-quiz-maker-quiz-all-results-shortcode.php:81
@@ -5410,11 +5434,11 @@ msgstr "ログインボタン"
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3653
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3844
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:4035
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1213
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1689
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1817
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1976
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2144
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1223
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1699
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1827
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1986
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2154
 msgid "Lowercase"
 msgstr "小文字"
 
@@ -5474,7 +5498,7 @@ msgstr "Mailpoetとの統合"
 msgid "Make a Suggestion"
 msgstr "提案する"
 
-#: ../admin/class-quiz-maker-admin.php:4978
+#: ../admin/class-quiz-maker-admin.php:5007
 msgid ""
 "Make amazing online surveys and get real-time feedback quickly and easily."
 msgstr "素晴らしいオンラインアンケートを作成し、リアルタイムのフィードバックを素早く簡単に取得する。"
@@ -5559,16 +5583,16 @@ msgid "Maybe something went wrong."
 msgstr "何か問題が発生した可能性がある。"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3250
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1508
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1518
 msgid "Medium"
 msgstr "中"
 
-#: ../admin/class-quiz-maker-admin.php:3665
-#: ../admin/class-quiz-maker-admin.php:4130
+#: ../admin/class-quiz-maker-admin.php:3694
+#: ../admin/class-quiz-maker-admin.php:4159
 msgid "Mega Bundle"
 msgstr "メガバンドル"
 
-#: ../admin/class-quiz-maker-admin.php:3919
+#: ../admin/class-quiz-maker-admin.php:3948
 msgid "Mega bundle"
 msgstr "メガバンドル"
 
@@ -5623,7 +5647,7 @@ msgstr "小テストに合格した人へのメッセージ"
 msgid "Message for those who haven’t logged in"
 msgstr "ログインしていないユーザーへのメッセージ"
 
-#: ../admin/class-quiz-maker-admin.php:4668
+#: ../admin/class-quiz-maker-admin.php:4697
 msgid "Message Variables"
 msgstr "メッセージ変数"
 
@@ -5650,12 +5674,12 @@ msgstr "数値フィールドの最小値"
 msgid "minute"
 msgstr "分"
 
-#: ../admin/class-quiz-maker-admin.php:3675
-#: ../admin/class-quiz-maker-admin.php:3877
-#: ../admin/class-quiz-maker-admin.php:3933
-#: ../admin/class-quiz-maker-admin.php:4079
-#: ../admin/class-quiz-maker-admin.php:4173
-#: ../admin/class-quiz-maker-admin.php:4298
+#: ../admin/class-quiz-maker-admin.php:3704
+#: ../admin/class-quiz-maker-admin.php:3906
+#: ../admin/class-quiz-maker-admin.php:3962
+#: ../admin/class-quiz-maker-admin.php:4108
+#: ../admin/class-quiz-maker-admin.php:4202
+#: ../admin/class-quiz-maker-admin.php:4327
 msgid "Minutes"
 msgstr "分"
 
@@ -5664,7 +5688,7 @@ msgstr "分"
 msgid "minutes"
 msgstr "分"
 
-#: ../includes/class-quiz-maker-feedback.php:89
+#: ../includes/class-quiz-maker-feedback.php:96
 msgid "Missing essential features"
 msgstr ""
 
@@ -5735,7 +5759,7 @@ msgstr "MyCredとの統合"
 msgid "MyCred integration Addon"
 msgstr "MyCred統合アドオン"
 
-#: ../admin/class-quiz-maker-admin.php:2214
+#: ../admin/class-quiz-maker-admin.php:2243
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:8421
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:8442
 #: ../admin/partials/results/quiz-maker-results-display.php:148
@@ -5762,7 +5786,7 @@ msgstr "ナビゲーションバー"
 msgid "Need Authorization"
 msgstr "認証が必要"
 
-#: ../admin/class-quiz-maker-admin.php:635
+#: ../admin/class-quiz-maker-admin.php:660
 msgid "New"
 msgstr "新機能"
 
@@ -5770,7 +5794,7 @@ msgstr "新機能"
 msgid "New Integration"
 msgstr "新しい統合"
 
-#: ../admin/class-quiz-maker-admin.php:3722
+#: ../admin/class-quiz-maker-admin.php:3751
 msgid ""
 "New Integration with <span><a href='https://wordpress.org/plugins/chart-"
 "builder/' target='_blank' style='color:#98FBA6; text-decoration: underline;'>"
@@ -5780,21 +5804,22 @@ msgstr ""
 "target='_blank' style='color:#98FBA6; text-decoration: underline;'>"
 "チャートビルダー</a></span>プラグイン"
 
-#: ../admin/class-quiz-maker-admin.php:3766
+#: ../admin/class-quiz-maker-admin.php:3795
 msgid ""
 "New Integration with <span><a href='https://wordpress.org/plugins/fox-lms/' "
 "target='_blank' style='color:#FF5104; text-decoration: underline;'>FoxLMS</a>"
 "</span> plugin"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:3059
+#: ../admin/class-quiz-maker-admin.php:3088
 msgid "new result"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:3059
+#: ../admin/class-quiz-maker-admin.php:3088
 msgid "new results"
 msgstr ""
 
+#: ../admin/class-quiz-maker-admin.php:311
 #: ../public/class-quiz-maker-public.php:170
 #: ../public/class-quiz-maker-public.php:297
 #: ../public/class-quiz-maker-public.php:375
@@ -5826,6 +5851,7 @@ msgstr "次のクイズ"
 msgid "No data"
 msgstr "データなし"
 
+#: ../admin/class-quiz-maker-admin.php:297
 #: ../public/class-quiz-maker-public.php:156
 #: ../public/partials/class-quiz-maker-all-results-shortcode.php:73
 #: ../public/partials/class-quiz-maker-quiz-all-results-shortcode.php:74
@@ -5836,6 +5862,7 @@ msgstr "テーブルにデータなし"
 msgid "No influence to score"
 msgstr "スコアに影響しない"
 
+#: ../admin/class-quiz-maker-admin.php:308
 #: ../public/class-quiz-maker-public.php:167
 #: ../public/partials/class-quiz-maker-all-results-shortcode.php:84
 #: ../public/partials/class-quiz-maker-quiz-all-results-shortcode.php:85
@@ -5850,13 +5877,13 @@ msgstr "これ以上のレビューはない"
 msgid "No more reviews Text"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2483
-#: ../admin/class-quiz-maker-admin.php:2503
+#: ../admin/class-quiz-maker-admin.php:2512
+#: ../admin/class-quiz-maker-admin.php:2532
 #: ../includes/lists/class-quiz-maker-results-list-table.php:615
 msgid "No rate provided"
 msgstr "レートなし"
 
-#: ../admin/class-quiz-maker-admin.php:2495
+#: ../admin/class-quiz-maker-admin.php:2524
 #: ../includes/lists/class-quiz-maker-results-list-table.php:602
 msgid "No review provided"
 msgstr "レビューなし"
@@ -5875,17 +5902,17 @@ msgstr "レビューなし"
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:5059
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:5338
 #: ../admin/partials/quizes/quiz-maker-quizes-display.php:819
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1215
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1284
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1408
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1691
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1704
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1814
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1830
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1967
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1991
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2135
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2159
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1225
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1294
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1418
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1701
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1714
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1824
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1840
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1977
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2001
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2145
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2169
 msgid "None"
 msgstr "なし"
 
@@ -5893,10 +5920,10 @@ msgstr "なし"
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3717
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3908
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:4099
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1736
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1863
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2031
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2199
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1746
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1873
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2041
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2209
 msgid "Normal"
 msgstr "標準"
 
@@ -5904,12 +5931,12 @@ msgstr "標準"
 msgid "Not answered questions text"
 msgstr "未回答の質問テキスト"
 
-#: ../admin/class-quiz-maker-admin.php:5129
+#: ../admin/class-quiz-maker-admin.php:5158
 msgid "Not Installed"
 msgstr ""
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:7294
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:947
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:957
 msgid "Not recommended"
 msgstr "推奨しない"
 
@@ -5951,7 +5978,7 @@ msgstr ""
 
 #: ../admin/class-quiz-maker-admin.php:274
 #: ../admin/partials/questions/actions/quiz-maker-questions-actions.php:175
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2272
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2282
 #: ../admin/partials/settings/quiz-maker-settings.php:24
 #: ../includes/lists/class-quiz-maker-questions-list-table.php:66
 msgid "Number"
@@ -5961,9 +5988,9 @@ msgstr "数値"
 msgid "Number of randomly selected questions"
 msgstr "ランダムに選択する質問の数"
 
-#: ../admin/class-quiz-maker-admin.php:4022
-#: ../admin/class-quiz-maker-admin.php:4073
-#: ../admin/class-quiz-maker-admin.php:4167
+#: ../admin/class-quiz-maker-admin.php:4051
+#: ../admin/class-quiz-maker-admin.php:4102
+#: ../admin/class-quiz-maker-admin.php:4196
 msgid "Offer ends in:"
 msgstr "オファーは終了する:"
 
@@ -5983,14 +6010,14 @@ msgstr "両方で"
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3595
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3786
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3977
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1231
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1302
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1427
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1528
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1646
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1772
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1924
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2092
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1241
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1312
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1437
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1538
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1656
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1782
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1934
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2102
 msgid "On desktop"
 msgstr "デスクトップ用"
 
@@ -6003,14 +6030,14 @@ msgstr "デスクトップ用"
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3614
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3805
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3996
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1249
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1320
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1445
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1546
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1664
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1790
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1942
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2110
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1259
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1330
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1455
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1556
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1674
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1800
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1952
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2120
 msgid "On mobile"
 msgstr "モバイル用"
 
@@ -6035,11 +6062,11 @@ msgid ""
 "users."
 msgstr "区間機能の使用例として、パーソナリティ診断が挙げられる。この機能では、ユーザーに異なる性格タイプを表示することができる。"
 
-#: ../admin/class-quiz-maker-admin.php:3897
-#: ../admin/class-quiz-maker-admin.php:4047
-#: ../admin/class-quiz-maker-admin.php:4138
-#: ../admin/class-quiz-maker-admin.php:4234
-#: ../admin/class-quiz-maker-admin.php:4318
+#: ../admin/class-quiz-maker-admin.php:3926
+#: ../admin/class-quiz-maker-admin.php:4076
+#: ../admin/class-quiz-maker-admin.php:4167
+#: ../admin/class-quiz-maker-admin.php:4263
+#: ../admin/class-quiz-maker-admin.php:4347
 #: ../admin/partials/attributes/quiz-maker-attributes-display.php:112
 #: ../admin/partials/questions/quiz-maker-questions-display.php:226
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:10073
@@ -6078,12 +6105,13 @@ msgstr "おっと!"
 msgid "Ordering"
 msgstr "順序"
 
-#: ../admin/class-quiz-maker-admin.php:541
-#: ../admin/class-quiz-maker-admin.php:542
+#: ../admin/class-quiz-maker-admin.php:566
+#: ../admin/class-quiz-maker-admin.php:567
 msgid "Orders"
 msgstr "注文"
 
-#: ../includes/class-quiz-maker-feedback.php:106
+#: ../includes/class-quiz-maker-feedback.php:82
+#: ../includes/class-quiz-maker-feedback.php:118
 msgid "Other"
 msgstr ""
 
@@ -6093,8 +6121,8 @@ msgid ""
 "based on user behavior."
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:623
-#: ../admin/class-quiz-maker-admin.php:624
+#: ../admin/class-quiz-maker-admin.php:648
+#: ../admin/class-quiz-maker-admin.php:649
 msgid "Our products"
 msgstr "当社の製品"
 
@@ -6112,10 +6140,10 @@ msgstr "外側"
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3674
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3865
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:4056
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1705
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1831
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1994
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2162
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1715
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1841
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2004
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2172
 msgid "Overline"
 msgstr "上線"
 
@@ -6233,7 +6261,7 @@ msgstr "PayPalとの統合"
 msgid "PayPal Settings"
 msgstr "PayPal設定"
 
-#: ../admin/class-quiz-maker-admin.php:2096
+#: ../admin/class-quiz-maker-admin.php:2125
 msgid "PDF"
 msgstr "PDF"
 
@@ -6250,7 +6278,7 @@ msgstr "アクセスが拒否された"
 msgid "Personal"
 msgstr "個人"
 
-#: ../admin/class-quiz-maker-admin.php:5013
+#: ../admin/class-quiz-maker-admin.php:5042
 msgid "Personal Dictionary"
 msgstr "個人用辞書"
 
@@ -6259,7 +6287,7 @@ msgstr "個人用辞書"
 msgid "Personality quiz"
 msgstr "性格診断クイズ"
 
-#: ../admin/class-quiz-maker-admin.php:5266
+#: ../admin/class-quiz-maker-admin.php:5295
 msgid "Personalize Result"
 msgstr "結果をパーソナライズ"
 
@@ -6268,7 +6296,7 @@ msgstr "結果をパーソナライズ"
 msgid "Personalized results"
 msgstr "パーソナライズされた結果"
 
-#: ../admin/class-quiz-maker-admin.php:2220
+#: ../admin/class-quiz-maker-admin.php:2249
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:8433
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:8454
 #: ../admin/partials/settings/quiz-maker-settings.php:4155
@@ -6344,35 +6372,27 @@ msgstr "デフォルトのテキストを変更すると、これらの単語は
 msgid "Please select your quiz from dropdown"
 msgstr "ドロップダウンメニューからクイズを選択してください"
 
-#: ../includes/class-quiz-maker-feedback.php:107
+#: ../includes/class-quiz-maker-feedback.php:119
 msgid "Please share the reason"
 msgstr ""
 
-#: ../includes/class-quiz-maker-feedback.php:90
+#: ../includes/class-quiz-maker-feedback.php:97
 msgid "Please share which features"
 msgstr ""
 
-#: ../includes/class-quiz-maker-feedback.php:82
-msgid "Please share which plugin"
-msgstr ""
-
-#: ../includes/class-quiz-maker-feedback.php:98
-msgid "Please share which plugin or theme"
-msgstr ""
-
-#: ../admin/class-quiz-maker-admin.php:4788
+#: ../admin/class-quiz-maker-admin.php:4817
 msgid "Plugin activated."
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4772
+#: ../admin/class-quiz-maker-admin.php:4801
 msgid "Plugin activation is disabled for you on this site."
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4906
+#: ../admin/class-quiz-maker-admin.php:4935
 msgid "Plugin installed and activated."
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4894
+#: ../admin/class-quiz-maker-admin.php:4923
 msgid "Plugin installed."
 msgstr ""
 
@@ -6389,15 +6409,15 @@ msgstr "ポイント"
 msgid "Points system"
 msgstr "ポイントシステム"
 
-#: ../admin/class-quiz-maker-admin.php:4968
+#: ../admin/class-quiz-maker-admin.php:4997
 msgid "Poll Maker"
 msgstr "投票メーカー"
 
-#: ../admin/class-quiz-maker-admin.php:4986
+#: ../admin/class-quiz-maker-admin.php:5015
 msgid "Popup Box"
 msgstr "ポップアップボックス"
 
-#: ../admin/class-quiz-maker-admin.php:4987
+#: ../admin/class-quiz-maker-admin.php:5016
 msgid ""
 "Popup everything you want! Create informative and promotional popups all in "
 "one plugin."
@@ -6437,7 +6457,7 @@ msgstr ""
 msgid "Pre-start message"
 msgstr "開始前のメッセージ"
 
-#: ../admin/class-quiz-maker-admin.php:5265
+#: ../admin/class-quiz-maker-admin.php:5294
 msgid "Premium Support"
 msgstr "プレミアムサポート"
 
@@ -6445,11 +6465,11 @@ msgstr "プレミアムサポート"
 msgid "Premium support"
 msgstr "する"
 
-#: ../admin/class-quiz-maker-admin.php:4457
+#: ../admin/class-quiz-maker-admin.php:4486
 msgid "Premium version"
 msgstr "プレミアム版"
 
-#: ../admin/class-quiz-maker-admin.php:4464
+#: ../admin/class-quiz-maker-admin.php:4493
 msgid "Premium versions' overview"
 msgstr "プレミアム版の概要"
 
@@ -6489,6 +6509,7 @@ msgstr ""
 msgid "Preview Quiz"
 msgstr ""
 
+#: ../admin/class-quiz-maker-admin.php:312
 #: ../public/class-quiz-maker-public.php:171
 #: ../public/partials/class-quiz-maker-all-results-shortcode.php:88
 #: ../public/partials/class-quiz-maker-quiz-all-results-shortcode.php:89
@@ -6501,8 +6522,8 @@ msgstr "前へ"
 msgid "Previous button"
 msgstr "戻るボタン"
 
-#: ../admin/class-quiz-maker-admin.php:2089
-#: ../admin/class-quiz-maker-admin.php:2142
+#: ../admin/class-quiz-maker-admin.php:2118
+#: ../admin/class-quiz-maker-admin.php:2171
 #: ../admin/partials/attributes/quiz-maker-attributes-display.php:44
 #: ../admin/partials/questions/quiz-maker-questions-display.php:87
 #: ../admin/partials/questions/quiz-maker-questions-display.php:110
@@ -6545,11 +6566,12 @@ msgstr "現在のクイズが投稿されているウェブページのリンク
 msgid "PRO Demo"
 msgstr "PRO デモ"
 
-#: ../admin/class-quiz-maker-admin.php:651
-#: ../admin/class-quiz-maker-admin.php:652
+#: ../admin/class-quiz-maker-admin.php:676
+#: ../admin/class-quiz-maker-admin.php:677
 msgid "PRO Features"
 msgstr "PRO機能"
 
+#: ../admin/class-quiz-maker-admin.php:305
 #: ../public/class-quiz-maker-public.php:164
 #: ../public/partials/class-quiz-maker-all-results-shortcode.php:81
 #: ../public/partials/class-quiz-maker-quiz-all-results-shortcode.php:82
@@ -6557,16 +6579,16 @@ msgid "Processing..."
 msgstr "処理中..."
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2450
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1159
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1169
 msgid "Progress bar style"
 msgstr "進捗バーのスタイル"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2499
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1175
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1185
 msgid "Progress live bar style"
 msgstr "進捗ライブバーのスタイル"
 
-#: ../admin/class-quiz-maker-admin.php:5006
+#: ../admin/class-quiz-maker-admin.php:5035
 msgid ""
 "Protect web content from being plagiarized. Prevent plagiarism from your "
 "website with this easy to use plugin."
@@ -6665,14 +6687,18 @@ msgstr ""
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:1972
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2821
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1372
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1382
 msgid "px"
 msgstr "px"
 
-#: ../admin/class-quiz-maker-admin.php:2347
-#: ../admin/class-quiz-maker-admin.php:2398
-#: ../admin/class-quiz-maker-admin.php:2444
-#: ../admin/class-quiz-maker-admin.php:2922
+#: ../includes/class-quiz-maker-feedback.php:84
+msgid "QSM"
+msgstr ""
+
+#: ../admin/class-quiz-maker-admin.php:2376
+#: ../admin/class-quiz-maker-admin.php:2427
+#: ../admin/class-quiz-maker-admin.php:2473
+#: ../admin/class-quiz-maker-admin.php:2951
 #: ../admin/partials/questions/actions/quiz-maker-questions-actions.php:428
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:1717
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:9946
@@ -6681,7 +6707,7 @@ msgstr "px"
 msgid "Question"
 msgstr "質問"
 
-#: ../admin/class-quiz-maker-admin.php:3057
+#: ../admin/class-quiz-maker-admin.php:3086
 msgid "question"
 msgstr ""
 
@@ -6689,9 +6715,9 @@ msgstr ""
 msgid "Question background image"
 msgstr "質問背景画像"
 
-#: ../admin/class-quiz-maker-admin.php:515
-#: ../admin/class-quiz-maker-admin.php:516
-#: ../admin/class-quiz-maker-admin.php:894
+#: ../admin/class-quiz-maker-admin.php:540
+#: ../admin/class-quiz-maker-admin.php:541
+#: ../admin/class-quiz-maker-admin.php:919
 #: ../includes/lists/class-quiz-maker-question-categories-list-table.php:12
 msgid "Question Categories"
 msgstr "質問カテゴリー"
@@ -6749,7 +6775,7 @@ msgid "Question created."
 msgstr "質問作成"
 
 #: ../admin/class-quiz-maker-admin.php:261
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2263
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2273
 msgid "Question Default Title"
 msgstr "質問 デフォルトのタイトル"
 
@@ -6766,12 +6792,12 @@ msgid "Question explanation"
 msgstr "問題の説明"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3576
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1757
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1767
 msgid "Question explanation styles"
 msgstr "質問説明のスタイル"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2725
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1294
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1304
 msgid "Question font size"
 msgstr "問題のフォントサイズ"
 
@@ -6788,7 +6814,7 @@ msgid "Question image height in pixels. It accepts only number values."
 msgstr "質問画像の高さをピクセルで指定する。 数値のみ入力可能。"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2800
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1354
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1364
 msgid "Question image styles"
 msgstr "問題画像のスタイル"
 
@@ -6836,7 +6862,7 @@ msgid "Question tags"
 msgstr "質問タグ"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2775
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1339
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1349
 msgid "Question text alignment"
 msgstr "問題テキストの配置"
 
@@ -6870,17 +6896,17 @@ msgstr "質問公開"
 msgid "Question(s) unpublished."
 msgstr "質問非公開"
 
-#: ../admin/class-quiz-maker-admin.php:487
-#: ../admin/class-quiz-maker-admin.php:488
-#: ../admin/class-quiz-maker-admin.php:878
-#: ../admin/class-quiz-maker-admin.php:2285
+#: ../admin/class-quiz-maker-admin.php:512
+#: ../admin/class-quiz-maker-admin.php:513
+#: ../admin/class-quiz-maker-admin.php:903
+#: ../admin/class-quiz-maker-admin.php:2314
 #: ../admin/partials/questions/quiz-maker-questions-display.php:129
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2248
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2258
 #: ../includes/lists/class-quiz-maker-questions-list-table.php:12
 msgid "Questions"
 msgstr "質問"
 
-#: ../admin/class-quiz-maker-admin.php:3057
+#: ../admin/class-quiz-maker-admin.php:3086
 msgid "questions"
 msgstr ""
 
@@ -6922,18 +6948,18 @@ msgstr "質問リストテーブル"
 msgid "Questions numbering"
 msgstr "問題の番号付け"
 
-#: ../includes/class-quiz-maker-feedback.php:119
+#: ../includes/class-quiz-maker-feedback.php:131
 msgid "Quick Feedback"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2916
+#: ../admin/class-quiz-maker-admin.php:2945
 #: ../includes/lists/class-quiz-maker-all-reviews-list-table.php:485
 #: ../includes/lists/class-quiz-maker-quizes-list-table.php:11
 #: ../includes/lists/class-quiz-maker-results-list-table.php:702
 msgid "Quiz"
 msgstr "クイズ"
 
-#: ../admin/class-quiz-maker-admin.php:3058
+#: ../admin/class-quiz-maker-admin.php:3087
 msgid "quiz"
 msgstr ""
 
@@ -7009,9 +7035,13 @@ msgstr ""
 msgid "Quiz buttons border-radius in pixels. It accepts only numeric values."
 msgstr "クイズボタンの border-radius をピクセル単位で指定する。数値のみ受け付ける。"
 
-#: ../admin/class-quiz-maker-admin.php:501
-#: ../admin/class-quiz-maker-admin.php:502
-#: ../admin/class-quiz-maker-admin.php:862
+#: ../includes/class-quiz-maker-feedback.php:88
+msgid "Quiz Cat"
+msgstr ""
+
+#: ../admin/class-quiz-maker-admin.php:526
+#: ../admin/class-quiz-maker-admin.php:527
+#: ../admin/class-quiz-maker-admin.php:887
 #: ../includes/lists/class-quiz-maker-quiz-categories-list-table.php:12
 msgid "Quiz Categories"
 msgstr "クイズカテゴリー"
@@ -7159,11 +7189,11 @@ msgid "Quiz image"
 msgstr "クイズの画像"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2431
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1143
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1153
 msgid "Quiz image height"
 msgstr "クイズ画像の高さ"
 
-#: ../admin/class-quiz-maker-admin.php:2238
+#: ../admin/class-quiz-maker-admin.php:2267
 #: ../admin/partials/settings/quiz-maker-settings.php:4705
 msgid "Quiz Information"
 msgstr "クイズ情報"
@@ -7193,8 +7223,8 @@ msgstr "クイズローダーアイコン"
 msgid "Quiz Login Form Settings"
 msgstr "クイズログインフォームの設定"
 
-#: ../admin/class-quiz-maker-admin.php:2713
-#: ../includes/class-quiz-maker-feedback.php:118
+#: ../admin/class-quiz-maker-admin.php:2742
+#: ../includes/class-quiz-maker-feedback.php:130
 #: ../pb_templates/quiz_maker_elementor.php:9
 #: ../pb_templates/quiz_maker_elementor.php:22
 #: ../pb_templates/quiz_maker_wpbvc.php:23
@@ -7207,7 +7237,7 @@ msgstr "クイズメーカー"
 msgid "Quiz Maker by AYS"
 msgstr "クイズメーカー by AYS"
 
-#: ../admin/class-quiz-maker-admin.php:4421
+#: ../admin/class-quiz-maker-admin.php:4450
 msgid "Quiz Maker Information"
 msgstr "クイズメーカー情報"
 
@@ -7215,11 +7245,11 @@ msgstr "クイズメーカー情報"
 msgid "Quiz Maker Logo"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4502
+#: ../admin/class-quiz-maker-admin.php:4531
 msgid "Quiz Maker plugin free demo"
 msgstr "クイズメーカープラグイン無料デモ"
 
-#: ../admin/class-quiz-maker-admin.php:4501
+#: ../admin/class-quiz-maker-admin.php:4530
 msgid "Quiz Maker plugin premium version"
 msgstr "クイズメーカープラグインプレミアム版"
 
@@ -7232,7 +7262,7 @@ msgid "Quiz Message Variables"
 msgstr "クイズメッセージ変数"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2055
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1111
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1121
 msgid "Quiz min-height"
 msgstr "クイズの最小高さ"
 
@@ -7307,7 +7337,7 @@ msgid "Quiz Title"
 msgstr "クイズタイトル"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2591
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1223
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1233
 msgid "Quiz title font size"
 msgstr "クイズタイトルのフォントサイズ"
 
@@ -7316,12 +7346,12 @@ msgid "Quiz title text shadow"
 msgstr "クイズタイトルテキストの影"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2565
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1207
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1217
 msgid "Quiz title transformation"
 msgstr "クイズタイトルの変換"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:1958
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1095
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1105
 msgid "Quiz width"
 msgstr "クイズの幅"
 
@@ -7333,14 +7363,14 @@ msgstr "クイズが公開された。"
 msgid "Quiz(s) unpublished."
 msgstr "クイズが非公開にされた。"
 
-#: ../admin/class-quiz-maker-admin.php:473
-#: ../admin/class-quiz-maker-admin.php:474
-#: ../admin/class-quiz-maker-admin.php:846
+#: ../admin/class-quiz-maker-admin.php:498
+#: ../admin/class-quiz-maker-admin.php:499
+#: ../admin/class-quiz-maker-admin.php:871
 #: ../includes/lists/class-quiz-maker-quizes-list-table.php:12
 msgid "Quizzes"
 msgstr "クイズ"
 
-#: ../admin/class-quiz-maker-admin.php:3058
+#: ../admin/class-quiz-maker-admin.php:3087
 msgid "quizzes"
 msgstr ""
 
@@ -7354,7 +7384,7 @@ msgstr "小テストリストテーブル"
 
 #: ../admin/class-quiz-maker-admin.php:262
 #: ../admin/partials/questions/actions/quiz-maker-questions-actions.php:170
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2267
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2277
 #: ../admin/partials/settings/quiz-maker-settings.php:19
 #: ../includes/lists/class-quiz-maker-questions-list-table.php:61
 msgid "Radio"
@@ -7376,8 +7406,8 @@ msgstr "フラッシュカードをランダム化する"
 msgid "Randomize questions & answers"
 msgstr "ランダムな質問と回答"
 
-#: ../admin/class-quiz-maker-admin.php:2242
-#: ../admin/class-quiz-maker-admin.php:2248
+#: ../admin/class-quiz-maker-admin.php:2271
+#: ../admin/class-quiz-maker-admin.php:2277
 #: ../includes/lists/class-quiz-maker-all-reviews-list-table.php:490
 #: ../includes/lists/class-quiz-maker-results-list-table.php:709
 msgid "Rate"
@@ -7387,7 +7417,7 @@ msgstr "レート"
 msgid "Rate Date"
 msgstr "評価 日付"
 
-#: ../admin/class-quiz-maker-admin.php:2243
+#: ../admin/class-quiz-maker-admin.php:2272
 msgid "Rate Score"
 msgstr "レート スコア"
 
@@ -7452,8 +7482,8 @@ msgstr "レクトライト"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2459
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2508
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1165
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1181
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1175
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1191
 msgid "Rectangle"
 msgstr "長方形"
 
@@ -7543,10 +7573,10 @@ msgstr "結果メッセージ"
 msgid "Result(s) deleted."
 msgstr "結果が削除された。"
 
-#: ../admin/class-quiz-maker-admin.php:561
-#: ../admin/class-quiz-maker-admin.php:562
-#: ../admin/class-quiz-maker-admin.php:566
-#: ../admin/class-quiz-maker-admin.php:910
+#: ../admin/class-quiz-maker-admin.php:586
+#: ../admin/class-quiz-maker-admin.php:587
+#: ../admin/class-quiz-maker-admin.php:591
+#: ../admin/class-quiz-maker-admin.php:935
 #: ../admin/partials/results/quiz-maker-all-reviews-display.php:64
 #: ../admin/partials/results/quiz-maker-results-display.php:71
 #: ../includes/lists/class-quiz-maker-results-list-table.php:12
@@ -7583,7 +7613,7 @@ msgstr "チャート付きの結果"
 msgid "Reverse the ordering of the questions in the list."
 msgstr "リスト内の質問の順序を逆にする。"
 
-#: ../admin/class-quiz-maker-admin.php:2244
+#: ../admin/class-quiz-maker-admin.php:2273
 #: ../includes/lists/class-quiz-maker-all-reviews-list-table.php:10
 #: ../includes/lists/class-quiz-maker-all-reviews-list-table.php:491
 msgid "Review"
@@ -7593,7 +7623,7 @@ msgstr "レビュー"
 msgid "Review(s) deleted."
 msgstr "レビュー削除"
 
-#: ../admin/class-quiz-maker-admin.php:584
+#: ../admin/class-quiz-maker-admin.php:609
 #: ../admin/partials/results/quiz-maker-all-reviews-display.php:67
 #: ../admin/partials/results/quiz-maker-results-display.php:74
 #: ../includes/lists/class-quiz-maker-all-reviews-list-table.php:11
@@ -7610,13 +7640,13 @@ msgstr "レビューリストテーブル"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2556
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2792
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1198
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1346
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1208
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1356
 msgid "Right"
 msgstr "右"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3767
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1909
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1919
 msgid "Right answer styles"
 msgstr "正解のスタイル"
 
@@ -7641,7 +7671,7 @@ msgid "Role of the user on the website. Option accepts multiple values."
 msgstr "ウェブサイト上のユーザーのロール。オプションは複数の値を受け入れる。"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2458
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1164
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1174
 msgid "Rounded"
 msgstr "丸みを帯びた"
 
@@ -7650,7 +7680,7 @@ msgstr "丸みを帯びた"
 msgid "Russian Ruble"
 msgstr "ロシア・ルーブル"
 
-#: ../admin/class-quiz-maker-admin.php:3918
+#: ../admin/class-quiz-maker-admin.php:3947
 msgid "Sale"
 msgstr "セール"
 
@@ -7694,7 +7724,7 @@ msgstr "変更を保存する"
 msgid "Schedule the quiz"
 msgstr "小テストのスケジュール"
 
-#: ../admin/class-quiz-maker-admin.php:2271
+#: ../admin/class-quiz-maker-admin.php:2300
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:403
 #: ../admin/partials/results/quiz-maker-results-display.php:149
 #: ../admin/partials/settings/quiz-maker-settings.php:79
@@ -7725,6 +7755,7 @@ msgstr "スクロールオフセット（px"
 msgid "Search"
 msgstr "検索"
 
+#: ../admin/class-quiz-maker-admin.php:306
 #: ../public/class-quiz-maker-public.php:165
 #: ../public/partials/class-quiz-maker-all-results-shortcode.php:82
 #: ../public/partials/class-quiz-maker-quiz-all-results-shortcode.php:83
@@ -7742,12 +7773,12 @@ msgstr "検索中..."
 msgid "second"
 msgstr "秒"
 
-#: ../admin/class-quiz-maker-admin.php:3676
-#: ../admin/class-quiz-maker-admin.php:3878
-#: ../admin/class-quiz-maker-admin.php:3934
-#: ../admin/class-quiz-maker-admin.php:4080
-#: ../admin/class-quiz-maker-admin.php:4174
-#: ../admin/class-quiz-maker-admin.php:4299
+#: ../admin/class-quiz-maker-admin.php:3705
+#: ../admin/class-quiz-maker-admin.php:3907
+#: ../admin/class-quiz-maker-admin.php:3963
+#: ../admin/class-quiz-maker-admin.php:4109
+#: ../admin/class-quiz-maker-admin.php:4203
+#: ../admin/class-quiz-maker-admin.php:4328
 msgid "Seconds"
 msgstr "秒"
 
@@ -7760,7 +7791,7 @@ msgstr "秒"
 msgid "Secret Key"
 msgstr "シークレットキー"
 
-#: ../admin/class-quiz-maker-admin.php:5004
+#: ../admin/class-quiz-maker-admin.php:5033
 msgid "Secure Copy Content Protection"
 msgstr "セキュアコピー コンテンツ保護"
 
@@ -7783,8 +7814,8 @@ msgstr "すべての動画を見る"
 msgid "See Demo"
 msgstr "デモを見る"
 
-#: ../admin/class-quiz-maker-admin.php:2085
-#: ../admin/class-quiz-maker-admin.php:2137
+#: ../admin/class-quiz-maker-admin.php:2114
+#: ../admin/class-quiz-maker-admin.php:2166
 #: ../admin/partials/attributes/quiz-maker-attributes-display.php:40
 #: ../admin/partials/questions/quiz-maker-questions-display.php:83
 #: ../admin/partials/questions/quiz-maker-questions-display.php:106
@@ -7857,6 +7888,7 @@ msgid "Select an answer"
 msgstr "回答を選択する"
 
 #: ../admin/class-quiz-maker-admin.php:291
+#: ../admin/class-quiz-maker-admin.php:317
 #: ../includes/lists/class-quiz-maker-questions-list-table.php:87
 #: ../includes/lists/class-quiz-maker-quizes-list-table.php:67
 #: ../includes/lists/class-quiz-maker-results-list-table.php:117
@@ -7917,6 +7949,7 @@ msgid "Select sound"
 msgstr "音声を選択"
 
 #: ../admin/class-quiz-maker-admin.php:292
+#: ../admin/class-quiz-maker-admin.php:318
 msgid "Select Tags"
 msgstr "タグを選択"
 
@@ -7993,7 +8026,7 @@ msgid ""
 "the list."
 msgstr "メールアドレスがリストに追加された際に、オプトイン確認メールを送信する。"
 
-#: ../admin/class-quiz-maker-admin.php:5263
+#: ../admin/class-quiz-maker-admin.php:5292
 msgid "Send Email & Certificate"
 msgstr "メールと修了証の送信"
 
@@ -8104,7 +8137,7 @@ msgid ""
 "Set your preferred text size for the Quiz Title. The default size is 21px."
 msgstr "クイズタイトルのテキストサイズを指定する。 デフォルトのサイズは21pxである。"
 
-#: ../admin/class-quiz-maker-admin.php:709
+#: ../admin/class-quiz-maker-admin.php:734
 #: ../admin/partials/questions/actions/quiz-maker-questions-actions.php:373
 #: ../admin/partials/questions/actions/quiz-maker-questions-categories-actions.php:76
 #: ../admin/partials/quizes/actions/quiz-maker-quiz-categories-actions.php:87
@@ -8113,7 +8146,7 @@ msgstr "クイズタイトルのテキストサイズを指定する。 デフ�
 msgid "Settings"
 msgstr "設定"
 
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1286
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1296
 msgid "Shake"
 msgstr "振動"
 
@@ -8123,7 +8156,7 @@ msgstr "共有ダイアログ"
 
 #: ../admin/class-quiz-maker-admin.php:271
 #: ../admin/partials/questions/actions/quiz-maker-questions-actions.php:174
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2271
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2281
 #: ../admin/partials/settings/quiz-maker-settings.php:23
 #: ../includes/lists/class-quiz-maker-questions-list-table.php:65
 msgid "Short Text"
@@ -8166,6 +8199,11 @@ msgstr "ショートコード"
 #: ../public/class-quiz-maker-public.php:204
 msgid "Show"
 msgstr "表示"
+
+#: ../admin/class-quiz-maker-admin.php:303
+#, php-format
+msgid "Show %s entries"
+msgstr ""
 
 #: ../public/class-quiz-maker-public.php:162
 #: ../public/partials/class-quiz-maker-all-results-shortcode.php:79
@@ -8263,7 +8301,7 @@ msgstr ""
 "選択された回答が正解か不正解かを緑と赤のマークで表示する。正解/不正解の回答を表示するタイミングを決定するには、「正解/不正解の回答メッセージを表示するオプション」に移動する。"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:8519
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1048
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1058
 msgid "Show Information Form to logged-in users"
 msgstr "ログインユーザーに情報フォームを表示する"
 
@@ -8284,7 +8322,7 @@ msgstr "正誤の回答メッセージを表示する"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:4683
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:6761
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:990
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1000
 msgid "Show only wrong answers"
 msgstr "誤った回答のみを表示する"
 
@@ -8325,7 +8363,7 @@ msgid "Show question explanation"
 msgstr "問題の説明を表示する"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:6720
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:958
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:968
 msgid "Show question results on the results page"
 msgstr "結果ページに問題の結果を表示する"
 
@@ -8469,6 +8507,7 @@ msgstr ""
 "「1ページに表示する問題数」オプションが有効になっており、複数ページの小テストを作成している場合、進捗バーには段階的に値が表示される。"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:6837
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:930
 msgid "Show the last 5 reviews"
 msgstr "直近の5件のレビューを"
 
@@ -8526,7 +8565,7 @@ msgid "Show the Social buttons"
 msgstr "ソーシャルボタンを表示する"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:7023
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:933
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:943
 msgid "Show the statistical average"
 msgstr "統計平均値を表示する"
 
@@ -8617,10 +8656,16 @@ msgid "Show word/character counter"
 msgstr "単語/文字カウンターを表示する"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:6747
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:979
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:989
 msgid "Show wrong answers first"
 msgstr "誤った答えを最初に表示する"
 
+#: ../admin/class-quiz-maker-admin.php:298
+#, php-format
+msgid "Showing %s to %s of %s entries"
+msgstr ""
+
+#: ../admin/class-quiz-maker-admin.php:299
 #: ../public/class-quiz-maker-public.php:158
 #: ../public/partials/class-quiz-maker-all-results-shortcode.php:75
 #: ../public/partials/class-quiz-maker-quiz-all-results-shortcode.php:76
@@ -8730,7 +8775,7 @@ msgstr "小テストの結果の設定"
 msgid "Site title"
 msgstr "サイトタイトル"
 
-#: ../includes/class-quiz-maker-feedback.php:146
+#: ../includes/class-quiz-maker-feedback.php:172
 msgid "Skip &amp; Deactivate"
 msgstr ""
 
@@ -8756,11 +8801,11 @@ msgid "Slack Settings"
 msgstr "Slackの設定"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3247
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1505
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1515
 msgid "Small"
 msgstr "小"
 
-#: ../admin/class-quiz-maker-admin.php:2081
+#: ../admin/class-quiz-maker-admin.php:2110
 msgid ""
 "So choose the variant that suits you and easily export the detailed report."
 msgstr "自分に合った方法を選択して、詳細なレポートを簡単にエクスポートしよう。"
@@ -8800,7 +8845,7 @@ msgid "Sounds for wrong answers"
 msgstr "誤答の音声"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2557
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1199
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1209
 msgid "Space Between"
 msgstr "スペースの間隔"
 
@@ -8939,7 +8984,7 @@ msgid ""
 msgstr ""
 "正誤の回答を表示する場所を指定する。「正解を表示する」オプションを有効にする必要があることに注意。このオプションを有効にするには、特定の質問の編集ページから対応するテキストを追加する必要がある。"
 
-#: ../admin/class-quiz-maker-admin.php:3491
+#: ../admin/class-quiz-maker-admin.php:3520
 msgid ""
 "Spring is here! <span class='ays-quiz-dicount-wrap-color'>40%</span> SALE on "
 "<br><span><a href='https://ays-pro.com/spring-bundle' target='_blank' "
@@ -8951,7 +8996,7 @@ msgstr ""
 "dicount-wrap-color ays-quiz-dicount-wrap-text-decoration' style='display:"
 "block;'>Spring Bundle</a></span> (Quiz+Copy+Popup) !"
 
-#: ../admin/class-quiz-maker-admin.php:3552
+#: ../admin/class-quiz-maker-admin.php:3581
 msgid ""
 "Spring is here! <span class='ays-quiz-dicount-wrap-color'>50%</span> SALE on "
 "<span><a href='https://ays-pro.com/spring-bundle' target='_blank' class='ays-"
@@ -8987,7 +9032,7 @@ msgstr "開始ボタン"
 msgid "Start button activation"
 msgstr "開始ボタンの有効化"
 
-#: ../admin/class-quiz-maker-admin.php:2255
+#: ../admin/class-quiz-maker-admin.php:2284
 #: ../admin/partials/settings/quiz-maker-settings.php:86
 #: ../admin/partials/settings/quiz-maker-settings.php:147
 #: ../admin/partials/settings/quiz-maker-settings.php:225
@@ -9060,15 +9105,15 @@ msgid "Stripe Settings"
 msgstr "Stripe設定"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:1525
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1088
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1098
 msgid "Styles"
 msgstr "スタイル"
 
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2368
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2378
 msgid "Submit"
 msgstr "送信"
 
-#: ../includes/class-quiz-maker-feedback.php:147
+#: ../includes/class-quiz-maker-feedback.php:173
 msgid "Submit &amp; Deactivate"
 msgstr ""
 
@@ -9084,7 +9129,7 @@ msgstr "定期購読"
 msgid "Subscription duration"
 msgstr "購読期間"
 
-#: ../admin/class-quiz-maker-admin.php:2392
+#: ../admin/class-quiz-maker-admin.php:2421
 msgid "Succeed"
 msgstr "成功"
 
@@ -9100,7 +9145,7 @@ msgstr "合計"
 msgid "Support for"
 msgstr "サポート対象"
 
-#: ../admin/class-quiz-maker-admin.php:4977
+#: ../admin/class-quiz-maker-admin.php:5006
 msgid "Survey Maker"
 msgstr "アンケートメーカー"
 
@@ -9123,7 +9168,7 @@ msgstr "タグ"
 #: ../admin/partials/questions/actions/quiz-maker-questions-actions.php:173
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:6647
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:7390
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2270
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2280
 #: ../admin/partials/settings/quiz-maker-settings.php:22
 #: ../includes/lists/class-quiz-maker-questions-list-table.php:64
 msgid "Text"
@@ -9141,10 +9186,10 @@ msgstr "テキストのカスタマイズ"
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3662
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3853
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:4044
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1699
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1825
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1985
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2153
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1709
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1835
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1995
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2163
 msgid "Text decoration"
 msgstr "テキスト装飾"
 
@@ -9164,10 +9209,10 @@ msgstr "ソーシャルメディアリンクの上に表示されるテキスト
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3635
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3826
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:4017
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1683
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1809
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1961
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2129
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1693
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1819
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1971
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2139
 msgid "Text transformation"
 msgstr "テキスト変換"
 
@@ -9194,7 +9239,7 @@ msgid ""
 "that %s is not possible to cheat. %s"
 msgstr "%s 追加のセキュリティチェックを有効にする %s オプションは、%s を不正行為できない%s小テストを作成するのに役立つ。 "
 
-#: ../admin/class-quiz-maker-admin.php:2119
+#: ../admin/class-quiz-maker-admin.php:2148
 #, php-format
 msgid ""
 "The Admin Note feature of the WordPress quiz plugin is a great tool for %s "
@@ -9227,7 +9272,7 @@ msgstr "フラッシュカードの背景色。"
 msgid "The Best Quiz Maker Ever"
 msgstr "史上最高のクイズメーカー"
 
-#: ../admin/class-quiz-maker-admin.php:3427
+#: ../admin/class-quiz-maker-admin.php:3456
 msgid ""
 "The BIGGEST <span class='ays-quiz-dicount-wrap-color' style='color:#000;'>"
 "50%</span> SALE on <br><span><a href='https://ays-pro.com/mega-bundle' "
@@ -9364,11 +9409,11 @@ msgstr "現在のユーザーのID。"
 msgid "The ID of the quiz."
 msgstr "クイズのID"
 
-#: ../admin/class-quiz-maker-admin.php:3769
+#: ../admin/class-quiz-maker-admin.php:3798
 msgid "The integration will allow you to add your quizzes into your courses."
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:3725
+#: ../admin/class-quiz-maker-admin.php:3754
 msgid ""
 "The integration will allow you to create beautiful charts based on your quiz "
 "data and share them with your users."
@@ -9474,7 +9519,7 @@ msgstr "小テストが有効な期間。有効期限を過ぎると、期限切
 msgid "The phone the user entered into information form"
 msgstr "ユーザーが情報フォームに入力した電話番号"
 
-#: ../includes/class-quiz-maker-feedback.php:85
+#: ../includes/class-quiz-maker-feedback.php:92
 msgid "The plugin didn’t work as expected"
 msgstr ""
 
@@ -9513,7 +9558,7 @@ msgid ""
 "the page."
 msgstr "ユーザーがページをリフレッシュするたびに、問題がランダムな順番で表示される。"
 
-#: ../admin/class-quiz-maker-admin.php:1743
+#: ../admin/class-quiz-maker-admin.php:1772
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:126
 #: ../public/class-quiz-maker-public.php:189
 msgid "The quiz has expired!"
@@ -9549,7 +9594,7 @@ msgstr ""
 "Makerプラグインを使用すると、WordPressウェブサイトに%s高度なリーダーボード%sを追加できる。ウェブサイトにリーダーボードを設置することで、%s"
 " 競争を刺激 %sし、クイズ受験者のスキル向上の%s動機付け%sとなる。"
 
-#: ../admin/class-quiz-maker-admin.php:1742
+#: ../admin/class-quiz-maker-admin.php:1771
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:125
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:4952
 msgid "The quiz will be available soon!"
@@ -9684,8 +9729,8 @@ msgid ""
 "where the users pass your quiz with this addon."
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2541
 #: ../admin/class-quiz-maker-admin.php:2570
+#: ../admin/class-quiz-maker-admin.php:2599
 msgid "The user has not answered this question."
 msgstr "ユーザーがこの質問に回答していない。"
 
@@ -9805,7 +9850,7 @@ msgstr "まだレビューがありません。"
 msgid "There are two ways of making question bank system."
 msgstr "問題バンクシステムには2つの作成方法がある。"
 
-#: ../admin/class-quiz-maker-admin.php:4813
+#: ../admin/class-quiz-maker-admin.php:4842
 msgid "There was an error while performing your request."
 msgstr ""
 
@@ -9824,18 +9869,18 @@ msgstr ""
 msgid "This can be a useful tool for running a fair and safe examination."
 msgstr "これは、公正かつ安全な試験を実施する上で便利なツールとなる。"
 
-#: ../admin/class-quiz-maker-admin.php:2126
+#: ../admin/class-quiz-maker-admin.php:2155
 #, php-format
 msgid ""
 "This feature allows you %s to add additional information %s about each user "
 "on the detailed report page."
 msgstr "この機能により、詳細レポートページで各ユーザーに関する %s追加情報を追加する %sことができる。"
 
-#: ../admin/class-quiz-maker-admin.php:2056
-#: ../admin/class-quiz-maker-admin.php:2096
-#: ../admin/class-quiz-maker-admin.php:2100
-#: ../admin/class-quiz-maker-admin.php:2110
-#: ../admin/class-quiz-maker-admin.php:2150
+#: ../admin/class-quiz-maker-admin.php:2085
+#: ../admin/class-quiz-maker-admin.php:2125
+#: ../admin/class-quiz-maker-admin.php:2129
+#: ../admin/class-quiz-maker-admin.php:2139
+#: ../admin/class-quiz-maker-admin.php:2179
 msgid "This feature available only in pro version"
 msgstr ""
 
@@ -9911,7 +9956,7 @@ msgstr "このプロパティはプロ版でのみ利用可能"
 msgid "This quiz has expired!"
 msgstr "この小テストは期限切れです！"
 
-#: ../admin/class-quiz-maker-admin.php:1795
+#: ../admin/class-quiz-maker-admin.php:1824
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:175
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:1090
 #: ../includes/lists/class-quiz-maker-quizes-list-table.php:696
@@ -10123,7 +10168,7 @@ msgid "Top"
 msgstr "上"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3344
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1600
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1610
 msgid "Top / Bottom"
 msgstr "上/下"
 
@@ -10175,7 +10220,7 @@ msgstr "真"
 
 #: ../admin/class-quiz-maker-admin.php:275
 #: ../admin/partials/questions/actions/quiz-maker-questions-actions.php:177
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2273
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2283
 #: ../admin/partials/settings/quiz-maker-settings.php:26
 #: ../includes/lists/class-quiz-maker-questions-list-table.php:68
 msgid "True/False"
@@ -10214,10 +10259,10 @@ msgstr "未分類"
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3680
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3871
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:4062
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1707
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1833
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2000
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2168
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1717
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1843
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2010
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2178
 msgid "Underline"
 msgstr "下線"
 
@@ -10279,12 +10324,12 @@ msgid "Unread"
 msgstr "未読"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2857
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1409
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1419
 msgid "Unset"
 msgstr "設定しない"
 
-#: ../admin/class-quiz-maker-admin.php:711
-#: ../admin/class-quiz-maker-admin.php:5278
+#: ../admin/class-quiz-maker-admin.php:736
+#: ../admin/class-quiz-maker-admin.php:5307
 #: ../admin/partials/attributes/quiz-maker-attributes-display.php:55
 #: ../admin/partials/attributes/quiz-maker-attributes-display.php:78
 #: ../admin/partials/integrations/quiz-maker-integrations.php:91
@@ -10395,11 +10440,11 @@ msgstr "開発者/代理店にアップグレードする"
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3650
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3841
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:4032
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1212
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1688
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1816
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1973
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2141
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1222
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1698
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1826
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1983
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2151
 msgid "Uppercase"
 msgstr "大文字"
 
@@ -10451,7 +10496,7 @@ msgstr ""
 "このショートコードを使用して、フロントエンドで%s現在のユーザーの支払い履歴%sを表示する。ショートコードは、クイズ名、支払い日、クイズの金額、支払いタイプ（PayPalまたはStripe）を1つのテーブルカラムに表示する。"
 " "
 
-#: ../admin/class-quiz-maker-admin.php:2201
+#: ../admin/class-quiz-maker-admin.php:2230
 msgid "User"
 msgstr ""
 
@@ -10459,9 +10504,9 @@ msgstr ""
 msgid "User answer explanation"
 msgstr "ユーザー回答の説明"
 
-#: ../admin/class-quiz-maker-admin.php:2385
-#: ../admin/class-quiz-maker-admin.php:2429
-#: ../admin/class-quiz-maker-admin.php:2450
+#: ../admin/class-quiz-maker-admin.php:2414
+#: ../admin/class-quiz-maker-admin.php:2458
+#: ../admin/class-quiz-maker-admin.php:2479
 msgid "User answered"
 msgstr "ユーザーが回答"
 
@@ -10486,7 +10531,7 @@ msgid "User Dashboard Addon"
 msgstr "ユーザーダッシュボードアドオン"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:1537
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1041
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1051
 msgid "User Data"
 msgstr "ユーザーデータ"
 
@@ -10499,7 +10544,7 @@ msgstr "ユーザーEメールアドレス"
 msgid "User frontend dashboard"
 msgstr "ユーザーフロントエンドダッシュボード"
 
-#: ../admin/class-quiz-maker-admin.php:2194
+#: ../admin/class-quiz-maker-admin.php:2223
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:433
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:458
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:480
@@ -10516,13 +10561,13 @@ msgstr "ユーザーフロントエンドダッシュボード"
 msgid "User ID"
 msgstr "ユーザーID"
 
-#: ../admin/class-quiz-maker-admin.php:2173
+#: ../admin/class-quiz-maker-admin.php:2202
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:8366
 #: ../admin/partials/settings/quiz-maker-settings.php:4637
 msgid "User Information"
 msgstr "ユーザー情報"
 
-#: ../admin/class-quiz-maker-admin.php:2183
+#: ../admin/class-quiz-maker-admin.php:2212
 #: ../includes/lists/class-quiz-maker-all-reviews-list-table.php:486
 #: ../includes/lists/class-quiz-maker-results-list-table.php:705
 msgid "User IP"
@@ -10829,8 +10874,8 @@ msgstr ""
 msgid "Watch Video"
 msgstr "ビデオを見る"
 
-#: ../admin/class-quiz-maker-admin.php:3726
-#: ../admin/class-quiz-maker-admin.php:3770
+#: ../admin/class-quiz-maker-admin.php:3755
+#: ../admin/class-quiz-maker-admin.php:3799
 #: ../admin/partials/features/quiz-maker-addons-display.php:22
 #: ../admin/partials/features/quiz-maker-addons-display.php:35
 #: ../admin/partials/features/quiz-maker-addons-display.php:48
@@ -10848,6 +10893,10 @@ msgstr "ビデオを見る"
 #: ../admin/partials/features/quiz-maker-addons-display.php:208
 msgid "Watch video"
 msgstr "動画を見る"
+
+#: ../includes/class-quiz-maker-feedback.php:87
+msgid "Watu Quiz"
+msgstr ""
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:9441
 msgid ""
@@ -10982,26 +11031,26 @@ msgstr "レビューあり"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2460
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2509
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1166
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1182
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1176
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1192
 msgid "With stripes"
 msgstr "ストライプ付き"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2461
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2510
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1167
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1183
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1177
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1193
 msgid "With stripes and animation"
 msgstr "ストライプ付きおよびアニメーション"
 
-#: ../admin/class-quiz-maker-admin.php:2065
+#: ../admin/class-quiz-maker-admin.php:2094
 #, php-format
 msgid ""
 "With the excellent plugin Quiz Maker, you can %s export a Detailed report of "
 "the Individual Result %s with just a few clicks."
 msgstr "優れたプラグインQuiz Makerを使用すると、数回のクリックで %s個々の結果の詳細なレポートをエクスポートできる。 %s"
 
-#: ../admin/class-quiz-maker-admin.php:4961
+#: ../admin/class-quiz-maker-admin.php:4990
 msgid ""
 "With the FoxLMS plugin, you can create, sell, and organize courses, lessons, "
 "and quizzes, transforming your website into a dynamic e-learning platform."
@@ -11108,7 +11157,7 @@ msgstr "WooCommerceとの統合"
 msgid "WordPress LMS Plugin"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:5198
+#: ../admin/class-quiz-maker-admin.php:5227
 msgid "WordPress.org"
 msgstr ""
 
@@ -11116,7 +11165,7 @@ msgstr ""
 msgid "Words"
 msgstr "単語"
 
-#: ../admin/class-quiz-maker-admin.php:3087
+#: ../admin/class-quiz-maker-admin.php:3116
 #, php-format
 msgid "Works version %s of "
 msgstr ""
@@ -11175,7 +11224,7 @@ msgstr ""
 "任意のWordPress言語で希望するテキストを入力する。 フロントエンドで翻訳される。 言語はISO 639-1コードの列に含まれている必要がある。"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3958
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2077
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2087
 msgid "Wrong answer styles"
 msgstr "誤答のスタイル"
 
@@ -11209,7 +11258,7 @@ msgstr "Xリンク"
 msgid "X profile or page link for showing after quiz finish."
 msgstr "クイズ終了後に表示されるXプロフィールまたはページリンク。"
 
-#: ../admin/class-quiz-maker-admin.php:2100
+#: ../admin/class-quiz-maker-admin.php:2129
 #: ../admin/partials/results/quiz-maker-all-reviews-display.php:157
 msgid "XLSX"
 msgstr "XLSX"
@@ -11338,7 +11387,7 @@ msgstr "これらの変数をコピーして、クイズ設定の以下のオプ
 msgid "You can enter your answer explanation"
 msgstr "回答を入力して、説明を参照できる。"
 
-#: ../admin/class-quiz-maker-admin.php:2072
+#: ../admin/class-quiz-maker-admin.php:2101
 #, php-format
 msgid ""
 "You can export detailed reports whether as a %s PDF file %s or as an %s XLSX "
@@ -11598,7 +11647,7 @@ msgid ""
 "end."
 msgstr "プレビューモードになっている。 注：すべての要素はフロントエンドで正しく動作する。"
 
-#: ../admin/class-quiz-maker-admin.php:5230
+#: ../admin/class-quiz-maker-admin.php:5259
 #, php-format
 msgid "You've got %s quiz results!"
 msgstr "%sのクイズ結果がある！"
@@ -11646,7 +11695,7 @@ msgstr "YouTube リンク"
 msgid "YouTube profile or page link for showing after quiz finish."
 msgstr "YouTube のプロフィールまたはページへのリンク。クイズ終了後に表示される。"
 
-#: ../admin/class-quiz-maker-admin.php:4499
+#: ../admin/class-quiz-maker-admin.php:4528
 msgid "YouTube video tutorials"
 msgstr "YouTubeビデオチュートリアル"
 

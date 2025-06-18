@@ -293,6 +293,31 @@ class Quiz_Maker_Admin
             "preivewQuiz"                   => __( "Preview Quiz", 'quiz-maker' ),
         ) );
 
+        wp_localize_script( $this->plugin_name, 'quizLangDataTableObj', array(
+            "sEmptyTable"           => __( "No data available in table", 'quiz-maker' ),
+            "sInfo"                 => sprintf( __( "Showing %s to %s of %s entries", 'quiz-maker' ), '_START_', '_END_', '_TOTAL_' ),
+            "sInfoEmpty"            => __( "Showing 0 to 0 of 0 entries", 'quiz-maker' ),
+            "sInfoFiltered"         => sprintf( __( "(filtered from %s total entries)", 'quiz-maker' ), '_MAX_' ),
+            // "sInfoPostFix":          => __( "", $this->plugin_name ),
+            // "sInfoThousands":        => __( ",", $this->plugin_name ),
+            "sLengthMenu"           => sprintf( __( "Show %s entries", 'quiz-maker' ), '_MENU_' ),
+            "sLoadingRecords"       => __( "Loading...",'quiz-maker' ),
+            "sProcessing"           => __( "Processing...", 'quiz-maker' ),
+            "sSearch"               => __( "Search:", 'quiz-maker' ),
+            // "sUrl":                  => __( "", $this->plugin_name ),
+            "sZeroRecords"          => __( "No matching records found", 'quiz-maker' ),
+            "sFirst"                => __( "First", 'quiz-maker' ),
+            "sLast"                 => __( "Last", 'quiz-maker' ),
+            "sNext"                 => __( "Next", 'quiz-maker' ),
+            "sPrevious"             => __( "Previous", 'quiz-maker' ),
+            "sSortAscending"        => __( ": activate to sort column ascending", 'quiz-maker' ),
+            "sSortDescending"       => __( ": activate to sort column descending",'quiz-maker' ),
+
+            "all"                   => __( "All", 'quiz-maker' ),
+            "selectCategory"        => __( "Select Category", 'quiz-maker' ),
+            "selectTags"            => __( "Select Tags", 'quiz-maker' ),
+        ) );
+
         $question_categories = $this->get_question_categories();
         wp_localize_script( $this->plugin_name, 'aysQuizCatObj', array(
             'category' => $question_categories,

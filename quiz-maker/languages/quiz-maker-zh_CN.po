@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Quiz Maker - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2025-06-13 08:18+0000\n"
+"PO-Revision-Date: 2025-06-18 07:18+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,7 +20,7 @@ msgstr " 它将显示用户所有最高分的总和。"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:1973
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2822
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1373
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1383
 msgid "%"
 msgstr "%"
 
@@ -211,6 +211,11 @@ msgstr ""
 "%%%%user_first_name%%%% %s %%%%user_last_name%%%% %s %%%%questions_count%%%% "
 "%s %%%%user_nickname%%%% %s %%%%user_display_name%%%% %s 消息变量来自定义文本。%s"
 
+#: ../admin/class-quiz-maker-admin.php:300
+#, php-format
+msgid "(filtered from %s total entries)"
+msgstr ""
+
 #: ../public/class-quiz-maker-public.php:159
 #: ../public/partials/class-quiz-maker-all-results-shortcode.php:76
 #: ../public/partials/class-quiz-maker-quiz-all-results-shortcode.php:77
@@ -226,7 +231,7 @@ msgstr "(从总共 _MAX_ 条目中筛选)"
 msgid "(One-time payment)"
 msgstr "(一次性付款）"
 
-#: ../admin/class-quiz-maker-admin.php:3665
+#: ../admin/class-quiz-maker-admin.php:3694
 msgid "(Quiz + Survey + Poll)!"
 msgstr "(测验 + 调查 + 投票)！"
 
@@ -269,7 +274,7 @@ msgstr "1)"
 msgid "1."
 msgstr "1."
 
-#: ../admin/class-quiz-maker-admin.php:5264
+#: ../admin/class-quiz-maker-admin.php:5293
 msgid "10+ Integrations"
 msgstr "10+ 集成"
 
@@ -282,16 +287,16 @@ msgstr "12个月"
 msgid "20% Christmas GIFT"
 msgstr "20%的圣诞礼物"
 
-#: ../admin/class-quiz-maker-admin.php:4227
+#: ../admin/class-quiz-maker-admin.php:4256
 msgid "20% Extra Discount Coupon"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4201
+#: ../admin/class-quiz-maker-admin.php:4230
 msgid "20% Extra OFF"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:3838
-#: ../admin/class-quiz-maker-admin.php:4265
+#: ../admin/class-quiz-maker-admin.php:3867
+#: ../admin/class-quiz-maker-admin.php:4294
 msgid "30 Day Money Back Guarantee"
 msgstr "30 天内退款保证"
 
@@ -303,33 +308,35 @@ msgstr "30 天内退款保证！！！"
 msgid "5 site"
 msgstr "5个站点"
 
-#: ../admin/class-quiz-maker-admin.php:3664
+#: ../admin/class-quiz-maker-admin.php:3693
 msgid "50%"
 msgstr "50%"
 
-#: ../admin/class-quiz-maker-admin.php:4107
+#: ../admin/class-quiz-maker-admin.php:4136
 msgid "50% OFF"
 msgstr ""
 
+#: ../admin/class-quiz-maker-admin.php:313
 #: ../public/class-quiz-maker-public.php:172
 #: ../public/partials/class-quiz-maker-all-results-shortcode.php:89
 #: ../public/partials/class-quiz-maker-quiz-all-results-shortcode.php:90
 msgid ": activate to sort column ascending"
 msgstr ": 启用以升序排列列"
 
+#: ../admin/class-quiz-maker-admin.php:314
 #: ../public/class-quiz-maker-public.php:173
 #: ../public/partials/class-quiz-maker-all-results-shortcode.php:90
 #: ../public/partials/class-quiz-maker-quiz-all-results-shortcode.php:91
 msgid ": activate to sort column descending"
 msgstr ": 启用以降序排列列"
 
-#: ../admin/class-quiz-maker-admin.php:3826
-#: ../admin/class-quiz-maker-admin.php:4194
-#: ../admin/class-quiz-maker-admin.php:4259
+#: ../admin/class-quiz-maker-admin.php:3855
+#: ../admin/class-quiz-maker-admin.php:4223
+#: ../admin/class-quiz-maker-admin.php:4288
 msgid "<span><a href='"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4100
+#: ../admin/class-quiz-maker-admin.php:4129
 msgid ""
 "<span><a href='https://ays-pro.com/mega-bundle?"
 "utm_source=dashboard&utm_medium=quiz-free&utm_campaign=black-friday-mega-"
@@ -370,7 +377,7 @@ msgstr "仅允许特定用户访问"
 msgid "Actions"
 msgstr "动作"
 
-#: ../admin/class-quiz-maker-admin.php:5118
+#: ../admin/class-quiz-maker-admin.php:5147
 msgid "Activate"
 msgstr ""
 
@@ -385,11 +392,11 @@ msgstr ""
 "在问题上方激活测验导航框。它有助于在问题之间轻松移动。回答问题后，其框变为黑色，表示您已经回答过。请注意，它与“每页问题数量”和“在一页上显示所有问题”选项不兼容。"
 
 #: ../admin/class-quiz-maker-admin.php:243
-#: ../admin/class-quiz-maker-admin.php:5110
+#: ../admin/class-quiz-maker-admin.php:5139
 msgid "Activated"
 msgstr "已启用"
 
-#: ../admin/class-quiz-maker-admin.php:5107
+#: ../admin/class-quiz-maker-admin.php:5136
 msgid "Active"
 msgstr ""
 
@@ -464,7 +471,7 @@ msgstr "为测验开始页面添加图片"
 msgid "Add images & videos"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2951
+#: ../admin/class-quiz-maker-admin.php:2980
 #: ../admin/partials/questions/quiz-maker-question-categories-display.php:47
 #: ../admin/partials/questions/quiz-maker-question-categories-display.php:70
 #: ../admin/partials/questions/quiz-maker-questions-display.php:139
@@ -496,8 +503,8 @@ msgid ""
 "leads and engage your visitors with this simple tool."
 msgstr ""
 
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2255
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2365
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2265
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2375
 msgid "Add question"
 msgstr "添加问题"
 
@@ -518,16 +525,16 @@ msgstr "添加问题的标题，以便您在其他问题中更容易找到它。
 msgid "Additional Emails"
 msgstr "其他电子邮件"
 
-#: ../admin/class-quiz-maker-admin.php:4790
+#: ../admin/class-quiz-maker-admin.php:4819
 msgid "Addon activated."
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4906
+#: ../admin/class-quiz-maker-admin.php:4935
 msgid "Addon installed and activated."
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:635
-#: ../admin/class-quiz-maker-admin.php:639
+#: ../admin/class-quiz-maker-admin.php:660
+#: ../admin/class-quiz-maker-admin.php:664
 msgid "Addons"
 msgstr ""
 
@@ -550,11 +557,11 @@ msgstr "管理员"
 msgid "Admin Email"
 msgstr "管理员邮箱"
 
-#: ../admin/class-quiz-maker-admin.php:2114
+#: ../admin/class-quiz-maker-admin.php:2143
 msgid "Admin Note"
 msgstr "管理笔记"
 
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1631
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1641
 msgid "Admin Note styles"
 msgstr ""
 
@@ -668,7 +675,8 @@ msgid "Align the text of your questions to the left, center, or right."
 msgstr "将问题文本对齐到左侧、中心或右侧。"
 
 #: ../admin/class-quiz-maker-admin.php:290
-#: ../admin/class-quiz-maker-admin.php:2288
+#: ../admin/class-quiz-maker-admin.php:316
+#: ../admin/class-quiz-maker-admin.php:2317
 #: ../includes/lists/class-quiz-maker-all-reviews-list-table.php:166
 #: ../includes/lists/class-quiz-maker-question-categories-list-table.php:107
 #: ../includes/lists/class-quiz-maker-questions-list-table.php:155
@@ -686,7 +694,7 @@ msgstr "每个用户的所有通过测验的计数"
 msgid "All Results Settings"
 msgstr "所有结果设置"
 
-#: ../admin/class-quiz-maker-admin.php:922
+#: ../admin/class-quiz-maker-admin.php:947
 msgid "All Reviews"
 msgstr "所有评论"
 
@@ -754,13 +762,13 @@ msgid ""
 "provided. It will work with the Checkbox type."
 msgstr "允许用户选择多个答案，但不能超过您提供的最大值。它适用于复选框类型。"
 
-#: ../admin/class-quiz-maker-admin.php:5014
+#: ../admin/class-quiz-maker-admin.php:5043
 msgid ""
 "Allow your students to create personal dictionary, study and memorize the "
 "words."
 msgstr "允许学生创建个人词典，学习并记忆单词。"
 
-#: ../admin/class-quiz-maker-admin.php:5015
+#: ../admin/class-quiz-maker-admin.php:5044
 msgid ""
 "Allow your users to create their own digital dictionaries and learn new "
 "words and terms as fastest as possible."
@@ -809,7 +817,7 @@ msgid "and paste it into your desired Page or Post."
 msgstr "并将其粘贴到您所需的页面或文章中。"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2707
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1279
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1289
 msgid "Animation effect"
 msgstr "动画效果"
 
@@ -834,9 +842,9 @@ msgstr "匿名反馈"
 #: ../admin/partials/questions/actions/quiz-maker-questions-actions.php:491
 #: ../admin/partials/questions/actions/quiz-maker-questions-actions.php:512
 #: ../admin/partials/questions/actions/quiz-maker-questions-actions.php:792
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2303
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2314
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2325
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2313
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2324
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2335
 msgid "Answer"
 msgstr "答案"
 
@@ -853,12 +861,12 @@ msgid "Answer default count"
 msgstr "默认答案数量"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2876
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1419
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1429
 msgid "Answer font size"
 msgstr "答案字体大小"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2988
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1464
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1474
 msgid "Answer gap"
 msgstr "答案间隔"
 
@@ -866,7 +874,7 @@ msgstr "答案间隔"
 msgid "Answer image height"
 msgstr "答案图片高度"
 
-#: ../admin/class-quiz-maker-admin.php:2451
+#: ../admin/class-quiz-maker-admin.php:2480
 msgid "Answer point"
 msgstr "答案得分"
 
@@ -875,7 +883,7 @@ msgid "Answer Settings"
 msgstr "回答设置"
 
 #: ../admin/class-quiz-maker-admin.php:268
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2343
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2353
 msgid "Answer text"
 msgstr "答案文本"
 
@@ -1015,7 +1023,7 @@ msgstr "每个用户角色的尝试次数"
 msgid "Attempts count:"
 msgstr "尝试次数："
 
-#: ../admin/class-quiz-maker-admin.php:4988
+#: ../admin/class-quiz-maker-admin.php:5017
 msgid ""
 "Attract your visitors and convert them into email subscribers and paying "
 "customers."
@@ -1031,7 +1039,7 @@ msgid "Authorize"
 msgstr "授权"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:8535
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1061
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1071
 msgid "Autofill logged-in user data"
 msgstr "自动填写登录用户数据"
 
@@ -1130,10 +1138,10 @@ msgstr "最佳免费支持"
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3723
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3914
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:4105
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1738
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1869
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2037
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2205
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1748
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1879
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2047
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2215
 msgid "Bold"
 msgstr ""
 
@@ -1141,10 +1149,10 @@ msgstr ""
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3726
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3917
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:4108
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1739
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1872
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2040
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2208
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1749
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1882
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2050
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2218
 msgid "Bolder"
 msgstr ""
 
@@ -1154,7 +1162,7 @@ msgid "Border color"
 msgstr "边框颜色"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2137
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1127
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1137
 msgid "Border radius"
 msgstr "边框半径"
 
@@ -1190,11 +1198,11 @@ msgstr ""
 msgid "British Pound Sterling"
 msgstr "英镑"
 
-#: ../admin/class-quiz-maker-admin.php:4960
+#: ../admin/class-quiz-maker-admin.php:4989
 msgid "Build and manage online courses directly on your WordPress site."
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4970
+#: ../admin/class-quiz-maker-admin.php:4999
 msgid ""
 "Build up various types of polls in a minute and get instant feedback on any "
 "topic or product."
@@ -1217,17 +1225,17 @@ msgid "Button"
 msgstr "按钮"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3353
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1614
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1624
 msgid "Button border-radius"
 msgstr "按钮圆角半径"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3262
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1520
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1530
 msgid "Button font-size"
 msgstr "按钮字体大小"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3332
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1582
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1592
 msgid "Button padding"
 msgstr "按钮填充"
 
@@ -1236,7 +1244,7 @@ msgid "Button Settings"
 msgstr "按钮设置"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3238
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1499
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1509
 msgid "Button size"
 msgstr "按钮大小"
 
@@ -1245,17 +1253,17 @@ msgid "Button text"
 msgstr "按钮文本"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3312
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1565
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1575
 msgid "Button width"
 msgstr "按钮宽度"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2546
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1191
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1201
 msgid "Buttons position"
 msgstr "按钮位置"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3229
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1492
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1502
 msgid "Buttons Styles"
 msgstr "按钮样式"
 
@@ -1271,9 +1279,9 @@ msgstr "按钮文本"
 msgid "Buttons will be replaced to icons."
 msgstr "按钮将被替换为图标。"
 
-#: ../admin/class-quiz-maker-admin.php:3895
-#: ../admin/class-quiz-maker-admin.php:4316
-#: ../admin/class-quiz-maker-admin.php:5203
+#: ../admin/class-quiz-maker-admin.php:3924
+#: ../admin/class-quiz-maker-admin.php:4345
+#: ../admin/class-quiz-maker-admin.php:5232
 msgid "Buy Now"
 msgstr "立即购买"
 
@@ -1286,17 +1294,17 @@ msgstr "立即购买"
 msgid "Buy now"
 msgstr "立即购买"
 
-#: ../admin/class-quiz-maker-admin.php:3323
-#: ../admin/class-quiz-maker-admin.php:3389
-#: ../admin/class-quiz-maker-admin.php:3471
-#: ../admin/class-quiz-maker-admin.php:3532
-#: ../admin/class-quiz-maker-admin.php:3570
-#: ../admin/class-quiz-maker-admin.php:3628
-#: ../admin/class-quiz-maker-admin.php:4046
+#: ../admin/class-quiz-maker-admin.php:3352
+#: ../admin/class-quiz-maker-admin.php:3418
+#: ../admin/class-quiz-maker-admin.php:3500
+#: ../admin/class-quiz-maker-admin.php:3561
+#: ../admin/class-quiz-maker-admin.php:3599
+#: ../admin/class-quiz-maker-admin.php:3657
+#: ../admin/class-quiz-maker-admin.php:4075
 msgid "Buy Now !"
 msgstr "立即购买！"
 
-#: ../admin/class-quiz-maker-admin.php:3690
+#: ../admin/class-quiz-maker-admin.php:3719
 msgid "BUY NOW!"
 msgstr "立即购买！"
 
@@ -1304,7 +1312,7 @@ msgstr "立即购买！"
 msgid "By"
 msgstr "作者"
 
-#: ../admin/class-quiz-maker-admin.php:4471
+#: ../admin/class-quiz-maker-admin.php:4500
 #, php-format
 msgid ""
 "By activating the pro version, you will get all the features to strive your "
@@ -1333,7 +1341,7 @@ msgid ""
 msgstr "选择\"全部\"模式，短代码将显示用户所有积分的 %s 总和 %s。%s 选择\"最佳\"模式，短代码将显示用户所有最高分的总和。%s"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:6491
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1032
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1042
 msgid "By correct answers count"
 msgstr "按正确答案计数"
 
@@ -1409,7 +1417,7 @@ msgstr ""
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:6487
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:7359
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1031
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1041
 msgid "By percentage"
 msgstr "按百分比"
 
@@ -1536,11 +1544,11 @@ msgstr ""
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3647
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3838
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:4029
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1214
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1690
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1815
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1970
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2138
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1224
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1700
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1825
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1980
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2148
 msgid "Capitalize"
 msgstr "大写"
 
@@ -1565,8 +1573,8 @@ msgstr ""
 msgid "Categories"
 msgstr "分类"
 
-#: ../admin/class-quiz-maker-admin.php:2928
-#: ../admin/class-quiz-maker-admin.php:2934
+#: ../admin/class-quiz-maker-admin.php:2957
+#: ../admin/class-quiz-maker-admin.php:2963
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:1632
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:1719
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:9949
@@ -1596,8 +1604,8 @@ msgstr "类别状态"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2554
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2788
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1196
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1345
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1206
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1355
 msgid "Center"
 msgstr "中间"
 
@@ -1697,7 +1705,7 @@ msgid "Check button"
 msgstr "检查按钮"
 
 #: ../admin/class-quiz-maker-admin.php:263
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2268
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2278
 msgid "Checkbox"
 msgstr "选框"
 
@@ -1915,7 +1923,7 @@ msgstr "清除颜色"
 msgid "Clear filters"
 msgstr "清空筛选器"
 
-#: ../admin/class-quiz-maker-admin.php:2151
+#: ../admin/class-quiz-maker-admin.php:2180
 msgid "Click For Admin Note"
 msgstr "单击查看管理员备注"
 
@@ -2021,7 +2029,7 @@ msgstr ""
 msgid "Conditional Results"
 msgstr "条件结果"
 
-#: ../includes/class-quiz-maker-feedback.php:97
+#: ../includes/class-quiz-maker-feedback.php:104
 msgid "Conflicts with other plugins or themes"
 msgstr ""
 
@@ -2042,12 +2050,17 @@ msgstr "连接"
 msgid "Contact"
 msgstr "联系"
 
+#: ../includes/class-quiz-maker-feedback.php:107
+#, php-format
+msgid "Contact our %s support team %s to find and fix the issue."
+msgstr ""
+
 #: ../quiz-maker.php:174 ../quiz-maker.php:183 ../quiz-maker.php:197
 msgid "Contact us"
 msgstr ""
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2855
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1407
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1417
 msgid "Contain"
 msgstr "包含"
 
@@ -2167,10 +2180,10 @@ msgstr ""
 msgid "Correct"
 msgstr "正确"
 
-#: ../admin/class-quiz-maker-admin.php:2362
-#: ../admin/class-quiz-maker-admin.php:2373
-#: ../admin/class-quiz-maker-admin.php:2406
-#: ../admin/class-quiz-maker-admin.php:2417
+#: ../admin/class-quiz-maker-admin.php:2391
+#: ../admin/class-quiz-maker-admin.php:2402
+#: ../admin/class-quiz-maker-admin.php:2435
+#: ../admin/class-quiz-maker-admin.php:2446
 msgid "Correct answer"
 msgstr "正确答案"
 
@@ -2178,15 +2191,15 @@ msgstr "正确答案"
 msgid "Correct answers count"
 msgstr "正确答案计数"
 
-#: ../admin/class-quiz-maker-admin.php:4799
+#: ../admin/class-quiz-maker-admin.php:4828
 msgid "Could not activate the addon. Please activate it on the Plugins page."
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4796
+#: ../admin/class-quiz-maker-admin.php:4825
 msgid "Could not activate the plugin. Please activate it on the Plugins page."
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4822
+#: ../admin/class-quiz-maker-admin.php:4851
 msgid "Could not install the plugin. Please download and install it manually."
 msgstr ""
 
@@ -2196,7 +2209,7 @@ msgid "Count"
 msgstr "数量"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2854
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1406
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1416
 msgid "Cover"
 msgstr "覆盖"
 
@@ -2205,11 +2218,11 @@ msgstr "覆盖"
 msgid "Create a new category %s here %s"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4969
+#: ../admin/class-quiz-maker-admin.php:4998
 msgid "Create amazing online polls for your WordPress website super easily."
 msgstr "超级轻松为您的WordPress网站创建令人惊叹的在线投票。"
 
-#: ../admin/class-quiz-maker-admin.php:4431
+#: ../admin/class-quiz-maker-admin.php:4460
 #, php-format
 msgid ""
 "Create engaging quizzes, tests, and exams within a few minutes with the help "
@@ -2270,7 +2283,7 @@ msgid "Custom"
 msgstr "自定义"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2686
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1268
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1278
 msgid "Custom class for quiz container"
 msgstr "为测验框自定义类"
 
@@ -2286,9 +2299,9 @@ msgstr "自定义CSS"
 msgid "Custom Field"
 msgstr "自定义字段"
 
-#: ../admin/class-quiz-maker-admin.php:529
-#: ../admin/class-quiz-maker-admin.php:530
-#: ../admin/class-quiz-maker-admin.php:5261
+#: ../admin/class-quiz-maker-admin.php:554
+#: ../admin/class-quiz-maker-admin.php:555
+#: ../admin/class-quiz-maker-admin.php:5290
 msgid "Custom Fields"
 msgstr "自定义字段"
 
@@ -2348,7 +2361,7 @@ msgstr "用户个人信息数据表。您可以选择合适展示该信息表以
 
 #: ../admin/class-quiz-maker-admin.php:276
 #: ../admin/partials/questions/actions/quiz-maker-questions-actions.php:176
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2274
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2284
 #: ../admin/partials/settings/quiz-maker-settings.php:25
 #: ../includes/lists/class-quiz-maker-questions-list-table.php:67
 msgid "Date"
@@ -2363,12 +2376,12 @@ msgstr "日"
 msgid "day"
 msgstr "天"
 
-#: ../admin/class-quiz-maker-admin.php:3673
-#: ../admin/class-quiz-maker-admin.php:3875
-#: ../admin/class-quiz-maker-admin.php:3931
-#: ../admin/class-quiz-maker-admin.php:4077
-#: ../admin/class-quiz-maker-admin.php:4171
-#: ../admin/class-quiz-maker-admin.php:4296
+#: ../admin/class-quiz-maker-admin.php:3702
+#: ../admin/class-quiz-maker-admin.php:3904
+#: ../admin/class-quiz-maker-admin.php:3960
+#: ../admin/class-quiz-maker-admin.php:4106
+#: ../admin/class-quiz-maker-admin.php:4200
+#: ../admin/class-quiz-maker-admin.php:4325
 msgid "Days"
 msgstr "天"
 
@@ -2391,7 +2404,7 @@ msgstr ""
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2507
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:5260
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:8254
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1180
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1190
 msgid "Default"
 msgstr "默认"
 
@@ -2496,14 +2509,14 @@ msgstr "仅删除评论"
 msgid "Delete results older than 'X' the month"
 msgstr "删除\"X\"月之前的结果"
 
-#: ../admin/class-quiz-maker-admin.php:2020
-#: ../admin/class-quiz-maker-admin.php:2022
+#: ../admin/class-quiz-maker-admin.php:2049
+#: ../admin/class-quiz-maker-admin.php:2051
 #: ../includes/lists/class-quiz-maker-all-reviews-list-table.php:422
 #: ../includes/lists/class-quiz-maker-results-list-table.php:573
 msgid "Deleted user"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:710 ../quiz-maker.php:167
+#: ../admin/class-quiz-maker-admin.php:735 ../quiz-maker.php:167
 #: ../quiz-maker.php:181 ../quiz-maker.php:190
 msgid "Demo"
 msgstr "演示"
@@ -2671,7 +2684,7 @@ msgid "Disable"
 msgstr "关闭"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3092
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1480
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1490
 msgid "Disable answer hover"
 msgstr "禁用答案悬停"
 
@@ -2680,7 +2693,7 @@ msgid "Disable copy functionality in quiz page(CTRL+C) and Right-click"
 msgstr "关闭测验页面的复制功能（CTRL+C）和右键单击功能"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:7288
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:944
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:954
 msgid "Disable data storing in database"
 msgstr "关闭数据库中的数据存储"
 
@@ -2710,7 +2723,7 @@ msgstr "禁用答案的斜杠删除"
 msgid "Disable the hover effect for the answers."
 msgstr "禁用答案的悬停效果。"
 
-#: ../admin/class-quiz-maker-admin.php:5005
+#: ../admin/class-quiz-maker-admin.php:5034
 msgid ""
 "Disable the right click, copy paste, content selection and copy shortcut "
 "keys on your website."
@@ -2743,11 +2756,11 @@ msgstr "八折优惠"
 msgid "discount for Quiz Maker plugin! "
 msgstr "Quiz Maker 插件享受折扣！ "
 
-#: ../admin/class-quiz-maker-admin.php:3698
-#: ../admin/class-quiz-maker-admin.php:3853
-#: ../admin/class-quiz-maker-admin.php:4117
-#: ../admin/class-quiz-maker-admin.php:4211
-#: ../admin/class-quiz-maker-admin.php:4278
+#: ../admin/class-quiz-maker-admin.php:3727
+#: ../admin/class-quiz-maker-admin.php:3882
+#: ../admin/class-quiz-maker-admin.php:4146
+#: ../admin/class-quiz-maker-admin.php:4240
+#: ../admin/class-quiz-maker-admin.php:4307
 msgid "Dismiss ad"
 msgstr "关闭广告"
 
@@ -2777,7 +2790,7 @@ msgid ""
 msgstr "显示Facebook社交按钮，以便用户可以分享您的测验发布的页面。"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:8551
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1074
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1084
 msgid "Display form fields with labels"
 msgstr "显示带有标签的表单字段"
 
@@ -2797,7 +2810,7 @@ msgid "Display Quiz Bank(questions)"
 msgstr "显示测验题库（问题）"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:6478
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1026
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1036
 msgid "Display score"
 msgstr "显示分数"
 
@@ -2901,7 +2914,7 @@ msgstr ""
 "您可以看到如何使用MathJax的分步教程。在数学方程中，务必小心使用小于号、和其他HTML特殊字符。%s 例如，要添加平方符号，您需要写下以下符号 "
 "^2。 (不要忘记插入$字符来标记开始和结束)。"
 
-#: ../admin/class-quiz-maker-admin.php:4500
+#: ../admin/class-quiz-maker-admin.php:4529
 msgid "Documentation"
 msgstr "文档"
 
@@ -2915,7 +2928,7 @@ msgstr ""
 
 #: ../admin/class-quiz-maker-admin.php:264
 #: ../admin/partials/questions/actions/quiz-maker-questions-actions.php:172
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2269
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2279
 #: ../admin/partials/settings/quiz-maker-settings.php:21
 #: ../includes/lists/class-quiz-maker-questions-list-table.php:63
 msgid "Dropdown"
@@ -2932,7 +2945,7 @@ msgstr ""
 msgid "Duplicate"
 msgstr "重复"
 
-#: ../admin/class-quiz-maker-admin.php:2263
+#: ../admin/class-quiz-maker-admin.php:2292
 #: ../admin/partials/settings/quiz-maker-settings.php:80
 #: ../admin/partials/settings/quiz-maker-settings.php:88
 #: ../admin/partials/settings/quiz-maker-settings.php:149
@@ -2972,7 +2985,7 @@ msgstr "例如 en, de - reCAPTCHA使用的语言。要获取您语言的代码�
 msgid "Easy Digital Downloads"
 msgstr "轻松数字下载"
 
-#: ../admin/class-quiz-maker-admin.php:2966
+#: ../admin/class-quiz-maker-admin.php:2995
 #: ../includes/lists/class-quiz-maker-question-categories-list-table.php:552
 #: ../includes/lists/class-quiz-maker-questions-list-table.php:1224
 #: ../includes/lists/class-quiz-maker-quiz-categories-list-table.php:609
@@ -2990,8 +3003,8 @@ msgstr "编辑类别"
 msgid "Edit Image"
 msgstr "编辑图像"
 
-#: ../admin/class-quiz-maker-admin.php:1020
-#: ../admin/class-quiz-maker-admin.php:1029
+#: ../admin/class-quiz-maker-admin.php:1045
+#: ../admin/class-quiz-maker-admin.php:1054
 #: ../admin/partials/questions/actions/quiz-maker-questions-actions.php:103
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:1782
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:1791
@@ -3015,7 +3028,7 @@ msgstr "优雅暗色"
 msgid "Elegant Light"
 msgstr "优雅亮色"
 
-#: ../admin/class-quiz-maker-admin.php:2208
+#: ../admin/class-quiz-maker-admin.php:2237
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:8427
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:8448
 #: ../admin/partials/settings/quiz-maker-settings.php:1815
@@ -3149,7 +3162,7 @@ msgid "Enable custom texts for buttons"
 msgstr "启用自定义按钮文本"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:6788
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1011
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1021
 msgid "Enable Default Hide"
 msgstr ""
 
@@ -3356,7 +3369,7 @@ msgstr ""
 "如果您希望向已登录用户显示信息表单，请启用此选项。如果禁用该选项，则已登录用户在测验之前或之后将看不到信息表单，但系统将从其WP帐户中收集姓名和电子邮件信息，并存储在数据库中的姓名和电子邮件字段中。"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:6775
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1001
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1011
 msgid "Enable the Show/Hide toggle"
 msgstr "启用显示/隐藏切换"
 
@@ -3634,11 +3647,11 @@ msgstr "导出和导入问题"
 msgid "Export Filter"
 msgstr "导出过滤器"
 
-#: ../admin/class-quiz-maker-admin.php:2060
+#: ../admin/class-quiz-maker-admin.php:2089
 msgid "Export Individual Result"
 msgstr "导出个体结果"
 
-#: ../admin/class-quiz-maker-admin.php:5260
+#: ../admin/class-quiz-maker-admin.php:5289
 #: ../admin/partials/results/quiz-maker-all-reviews-display.php:26
 #: ../admin/partials/results/quiz-maker-results-display.php:33
 msgid "Export Results"
@@ -3649,7 +3662,7 @@ msgstr "导出结果"
 msgid "Export results"
 msgstr "导出结果"
 
-#: ../admin/class-quiz-maker-admin.php:2175
+#: ../admin/class-quiz-maker-admin.php:2204
 #: ../admin/partials/questions/quiz-maker-questions-display.php:92
 #: ../admin/partials/results/quiz-maker-all-reviews-display.php:156
 msgid "Export to"
@@ -3682,12 +3695,12 @@ msgstr "脸书链接"
 msgid "Facebook profile or page link for showing after quiz finish."
 msgstr "测验完成后显示脸书个人资料或者页面链接。"
 
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1285
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1295
 msgid "Fade"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2291
-#: ../admin/class-quiz-maker-admin.php:2437
+#: ../admin/class-quiz-maker-admin.php:2320
+#: ../admin/class-quiz-maker-admin.php:2466
 #: ../includes/lists/class-quiz-maker-results-list-table.php:654
 #: ../public/partials/class-quiz-maker-all-results-shortcode.php:315
 msgid "Failed"
@@ -3775,6 +3788,7 @@ msgstr "一旦答错一题，测验就会结束"
 msgid "Finish the quiz after one wrong answer."
 msgstr "一旦答错一题，测验就会结束。"
 
+#: ../admin/class-quiz-maker-admin.php:309
 #: ../public/class-quiz-maker-public.php:168
 #: ../public/partials/class-quiz-maker-all-results-shortcode.php:85
 #: ../public/partials/class-quiz-maker-quiz-all-results-shortcode.php:86
@@ -3799,22 +3813,22 @@ msgid ""
 msgstr "按照此逐步视频教程中提到的步骤创建您自己的排行榜。 "
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3393
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1638
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1648
 msgid "Font size for the note text"
 msgstr "备注文字的字体大小"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3585
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1764
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1774
 msgid "Font size for the question explanation"
 msgstr "问题解释的字体大小"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3776
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1916
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1926
 msgid "Font size for the right answer"
 msgstr "正确答案的字体大小"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3967
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2084
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2094
 msgid "Font size for the wrong answer"
 msgstr "错误答案的字体大小"
 
@@ -3822,10 +3836,10 @@ msgstr "错误答案的字体大小"
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3708
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3899
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:4090
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1731
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1857
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2025
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2193
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1741
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1867
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2035
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2203
 msgid "Font weight"
 msgstr ""
 
@@ -3833,8 +3847,8 @@ msgstr ""
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:1994
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2817
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:8310
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1102
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1368
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1112
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1378
 #: ../admin/partials/settings/quiz-maker-settings.php:1799
 #: ../admin/partials/settings/quiz-maker-settings.php:2051
 #: ../admin/partials/settings/quiz-maker-settings.php:2285
@@ -3843,7 +3857,7 @@ msgstr ""
 msgid "For 100% leave blank"
 msgstr "100%留空"
 
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1571
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1581
 msgid "For an initial width, leave blank."
 msgstr ""
 
@@ -3894,7 +3908,7 @@ msgstr "有关更高级的需求，请查看我们的%s Quiz Maker插件用户�
 msgid "For more detailed configuration visit"
 msgstr "更多详细配置信息，请访问"
 
-#: ../admin/class-quiz-maker-admin.php:4498
+#: ../admin/class-quiz-maker-admin.php:4527
 msgid "For more information:"
 msgstr "更多信息："
 
@@ -3914,7 +3928,11 @@ msgstr "要选择问题，请单击问题行，然后点击 \"插入问题 \"按
 msgid "Form Fields"
 msgstr "表单字段"
 
-#: ../admin/class-quiz-maker-admin.php:4959
+#: ../includes/class-quiz-maker-feedback.php:85
+msgid "Formidable Forms"
+msgstr ""
+
+#: ../admin/class-quiz-maker-admin.php:4988
 msgid "Fox LMS"
 msgstr ""
 
@@ -3922,7 +3940,7 @@ msgstr ""
 msgid "Free"
 msgstr "免费"
 
-#: ../admin/class-quiz-maker-admin.php:721 ../quiz-maker.php:168
+#: ../admin/class-quiz-maker-admin.php:746 ../quiz-maker.php:168
 #: ../quiz-maker.php:182 ../quiz-maker.php:191
 msgid "Free Support"
 msgstr ""
@@ -3982,7 +4000,7 @@ msgstr "通用"
 msgid "General CSS File"
 msgstr "通用CSS文件"
 
-#: ../admin/class-quiz-maker-admin.php:4414
+#: ../admin/class-quiz-maker-admin.php:4443
 msgid "General Information"
 msgstr "常规信息"
 
@@ -3995,8 +4013,8 @@ msgstr ""
 msgid "General options"
 msgstr "通用选项"
 
-#: ../admin/class-quiz-maker-admin.php:611
-#: ../admin/class-quiz-maker-admin.php:612
+#: ../admin/class-quiz-maker-admin.php:636
+#: ../admin/class-quiz-maker-admin.php:637
 #: ../admin/partials/questions/actions/quiz-maker-questions-actions.php:400
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:1567
 #: ../admin/partials/settings/quiz-maker-settings.php:383
@@ -4049,9 +4067,9 @@ msgid ""
 "Get Learning Management System and online course solution in WordPress now."
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:3948
-#: ../admin/class-quiz-maker-admin.php:4136
-#: ../admin/class-quiz-maker-admin.php:4232
+#: ../admin/class-quiz-maker-admin.php:3977
+#: ../admin/class-quiz-maker-admin.php:4165
+#: ../admin/class-quiz-maker-admin.php:4261
 msgid "Get Your Deal"
 msgstr "获得优惠"
 
@@ -4154,8 +4172,8 @@ msgstr "Google表格集成"
 msgid "Grab your"
 msgstr "抢购您的"
 
-#: ../admin/class-quiz-maker-admin.php:664
-#: ../admin/class-quiz-maker-admin.php:665 ../quiz-maker.php:170
+#: ../admin/class-quiz-maker-admin.php:689
+#: ../admin/class-quiz-maker-admin.php:690 ../quiz-maker.php:170
 #: ../quiz-maker.php:180 ../quiz-maker.php:193
 msgid "Grab your GIFT"
 msgstr "获取您的礼物"
@@ -4187,7 +4205,7 @@ msgstr "按类别分组问题"
 msgid "Group users by"
 msgstr "按用户分组"
 
-#: ../admin/class-quiz-maker-admin.php:2189
+#: ../admin/class-quiz-maker-admin.php:2218
 #: ../includes/lists/class-quiz-maker-all-reviews-list-table.php:415
 #: ../includes/lists/class-quiz-maker-results-list-table.php:102
 #: ../includes/lists/class-quiz-maker-results-list-table.php:566
@@ -4195,6 +4213,10 @@ msgstr "按用户分组"
 #: ../public/partials/class-quiz-maker-quiz-all-results-shortcode.php:206
 msgid "Guest"
 msgstr "游客"
+
+#: ../includes/class-quiz-maker-feedback.php:86
+msgid "HD Quiz"
+msgstr ""
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:7052
 msgid "Heading for share buttons"
@@ -4256,7 +4278,7 @@ msgid "Hide correct answer"
 msgstr "隐藏正确答案"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:6733
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:968
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:978
 msgid "Hide correct answers"
 msgstr "隐藏正确答案"
 
@@ -4302,12 +4324,12 @@ msgstr "横向"
 msgid "hour"
 msgstr "小时"
 
-#: ../admin/class-quiz-maker-admin.php:3674
-#: ../admin/class-quiz-maker-admin.php:3876
-#: ../admin/class-quiz-maker-admin.php:3932
-#: ../admin/class-quiz-maker-admin.php:4078
-#: ../admin/class-quiz-maker-admin.php:4172
-#: ../admin/class-quiz-maker-admin.php:4297
+#: ../admin/class-quiz-maker-admin.php:3703
+#: ../admin/class-quiz-maker-admin.php:3905
+#: ../admin/class-quiz-maker-admin.php:3961
+#: ../admin/class-quiz-maker-admin.php:4107
+#: ../admin/class-quiz-maker-admin.php:4201
+#: ../admin/class-quiz-maker-admin.php:4326
 msgid "Hours"
 msgstr "小时"
 
@@ -4531,8 +4553,8 @@ msgstr "如何设置最受欢迎测验短代码 - 视频"
 msgid "How to set User Page Settings Shortcode with WordPress Quiz Plugin"
 msgstr "如何使用WordPress Quiz插件设置用户页面设置短代码"
 
-#: ../admin/class-quiz-maker-admin.php:600
-#: ../admin/class-quiz-maker-admin.php:601
+#: ../admin/class-quiz-maker-admin.php:625
+#: ../admin/class-quiz-maker-admin.php:626
 msgid "How to use"
 msgstr "如何使用"
 
@@ -4544,7 +4566,7 @@ msgstr ""
 msgid "I no longer need the plugin"
 msgstr ""
 
-#: ../includes/class-quiz-maker-feedback.php:93
+#: ../includes/class-quiz-maker-feedback.php:100
 msgid "I only needed it temporarily"
 msgstr ""
 
@@ -4746,7 +4768,7 @@ msgid ""
 msgstr ""
 "如果启用此选项，您的测验将在页面完全加载后自动启动。请注意，此选项设计用于页面上的1个测验。如果您在页面上放置了多个测验，只有位于顶部的测验将自动启动。"
 
-#: ../includes/class-quiz-maker-feedback.php:127
+#: ../includes/class-quiz-maker-feedback.php:139
 msgid "If you have a moment, please share why you are deactivating Quiz Maker:"
 msgstr ""
 
@@ -4754,7 +4776,7 @@ msgstr ""
 msgid "If you haven't created questions yet, you need to do it first."
 msgstr "如果您还没有创建问题，您需要首先进行创建。"
 
-#: ../admin/class-quiz-maker-admin.php:3123
+#: ../admin/class-quiz-maker-admin.php:3152
 msgid "If you love our plugin, please do big favor and rate us on"
 msgstr "如果您喜欢我们的插件，请在以下网站上为我们评分"
 
@@ -4833,7 +4855,7 @@ msgid "Image"
 msgstr "图像"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2832
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1384
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1394
 msgid "Image Height"
 msgstr "图像高度"
 
@@ -4843,12 +4865,12 @@ msgid "Image question"
 msgstr ""
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2848
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1402
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1412
 msgid "Image sizing"
 msgstr "图像大小"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2811
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1362
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1372
 msgid "Image Width"
 msgstr "图像宽度"
 
@@ -4864,7 +4886,7 @@ msgid ""
 "languages must be written in the %sLanguage Code%s"
 msgstr "在此短代码中，您可以添加所需的文本及其翻译。翻译后的文本版本将显示在前端。语言必须写在 %sLanguage Code%s 中"
 
-#: ../admin/class-quiz-maker-admin.php:5115
+#: ../admin/class-quiz-maker-admin.php:5144
 msgid "Inactive"
 msgstr ""
 
@@ -4901,7 +4923,7 @@ msgstr "信息表格标题"
 msgid "Insert questions"
 msgstr "添加问题"
 
-#: ../admin/class-quiz-maker-admin.php:4669
+#: ../admin/class-quiz-maker-admin.php:4698
 msgid "Insert your preferred message variable into the editor by clicking."
 msgstr "通过单击在编辑器中插入您喜欢的消息变量。"
 
@@ -4917,12 +4939,12 @@ msgstr "Instagram链接"
 msgid "Instagram profile or page link for showing after quiz finish."
 msgstr "在测验结束后显示的Instagram个人资料或页面链接。"
 
-#: ../admin/class-quiz-maker-admin.php:3745
-#: ../admin/class-quiz-maker-admin.php:3789
+#: ../admin/class-quiz-maker-admin.php:3774
+#: ../admin/class-quiz-maker-admin.php:3818
 msgid "Install Now !"
 msgstr "立即安装！"
 
-#: ../admin/class-quiz-maker-admin.php:5132
+#: ../admin/class-quiz-maker-admin.php:5161
 msgid "Install Plugin"
 msgstr ""
 
@@ -4930,8 +4952,8 @@ msgstr ""
 msgid "Instructions"
 msgstr "说明"
 
-#: ../admin/class-quiz-maker-admin.php:676
-#: ../admin/class-quiz-maker-admin.php:677
+#: ../admin/class-quiz-maker-admin.php:701
+#: ../admin/class-quiz-maker-admin.php:702
 #: ../admin/partials/integrations/quiz-maker-integrations.php:24
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:1543
 #: ../admin/partials/settings/quiz-maker-settings.php:405
@@ -5062,7 +5084,7 @@ msgstr "它将从您在此测验中包含的所有问题中取指定数量的问
 msgid "items"
 msgstr "条目"
 
-#: ../includes/class-quiz-maker-feedback.php:101
+#: ../includes/class-quiz-maker-feedback.php:113
 msgid "I’m using the premium version now"
 msgstr ""
 
@@ -5080,7 +5102,7 @@ msgstr "加入"
 msgid "Just create contact"
 msgstr "只需创建联系人"
 
-#: ../admin/class-quiz-maker-admin.php:2133
+#: ../admin/class-quiz-maker-admin.php:2162
 msgid ""
 "Just type your text in the Admin Note field and save it on detailed reports "
 "easily."
@@ -5099,10 +5121,11 @@ msgid "Labels"
 msgstr "标签"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3253
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1511
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1521
 msgid "Large"
 msgstr "大"
 
+#: ../admin/class-quiz-maker-admin.php:310
 #: ../public/class-quiz-maker-public.php:169
 #: ../public/partials/class-quiz-maker-all-results-shortcode.php:86
 #: ../public/partials/class-quiz-maker-quiz-all-results-shortcode.php:87
@@ -5129,7 +5152,7 @@ msgstr "按测验类别设置的排行榜"
 msgid "Leaderboard Columns"
 msgstr "排行榜列"
 
-#: ../admin/class-quiz-maker-admin.php:5262
+#: ../admin/class-quiz-maker-admin.php:5291
 #: ../admin/partials/features/quiz-maker-features-display.php:404
 #: ../admin/partials/features/quiz-maker-features-display.php:407
 msgid "Leaderboards"
@@ -5149,7 +5172,7 @@ msgstr "学习如何在 Quiz Maker 中使用自定义字段"
 msgid "Learn More"
 msgstr "了解更多"
 
-#: ../admin/class-quiz-maker-admin.php:4979
+#: ../admin/class-quiz-maker-admin.php:5008
 msgid ""
 "Learn what your website visitors want, need, and expect with the help of "
 "Survey Maker. Build surveys without limiting your needs."
@@ -5161,8 +5184,8 @@ msgstr "在X秒后离开当前页面，前往提供的链接"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2555
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2784
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1197
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1344
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1207
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1354
 msgid "Left"
 msgstr "左"
 
@@ -5172,7 +5195,7 @@ msgid "left"
 msgstr "剩余"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3340
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1590
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1600
 msgid "Left / Right"
 msgstr "左/右"
 
@@ -5202,10 +5225,10 @@ msgstr ""
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3689
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3880
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:4071
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1715
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1841
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2009
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2177
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1725
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1851
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2019
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2187
 msgid "Letter spacing"
 msgstr ""
 
@@ -5225,7 +5248,7 @@ msgstr "终身"
 msgid "Lifetime payment"
 msgstr "终身付款"
 
-#: ../admin/class-quiz-maker-admin.php:5267
+#: ../admin/class-quiz-maker-admin.php:5296
 msgid "Lifetime Usage"
 msgstr "终生使用"
 
@@ -5237,10 +5260,10 @@ msgstr "浅色"
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3720
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3911
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:4102
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1737
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1866
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2034
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2202
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1747
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1876
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2044
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2212
 msgid "Lighter"
 msgstr ""
 
@@ -5278,12 +5301,12 @@ msgstr "用户限制"
 msgid "Limitation Users"
 msgstr "用户限制"
 
-#: ../admin/class-quiz-maker-admin.php:3664
-#: ../admin/class-quiz-maker-admin.php:3918
+#: ../admin/class-quiz-maker-admin.php:3693
+#: ../admin/class-quiz-maker-admin.php:3947
 msgid "Limited Time"
 msgstr "限时优惠"
 
-#: ../admin/class-quiz-maker-admin.php:3343
+#: ../admin/class-quiz-maker-admin.php:3372
 msgid ""
 "Limited Time <span class='ays-quiz-dicount-wrap-color'>20%</span> SALE on "
 "<br><span><a href='https://ays-pro.com/wordpress/quiz-maker' target='_blank' "
@@ -5295,7 +5318,7 @@ msgstr ""
 "quiz-dicount-wrap-color ays-quiz-dicount-wrap-text-decoration' "
 "style='display:block;'>Quiz Maker 高级版本</a></span>"
 
-#: ../admin/class-quiz-maker-admin.php:3589
+#: ../admin/class-quiz-maker-admin.php:3618
 msgid ""
 "Limited Time <span class='ays-quiz-dicount-wrap-color-helloween' "
 "style='color:#b2ff00;'>30%</span> <span> SALE on</span><br><span style='' "
@@ -5308,7 +5331,7 @@ msgid ""
 "                            </span>"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:3276
+#: ../admin/class-quiz-maker-admin.php:3305
 msgid ""
 "Limited Time <span style='color:#E85011;'>50%</span> SALE on <br><span><a "
 "href='https://ays-pro.com/mega-bundle' target='_blank' style='color:#E85011; "
@@ -5322,10 +5345,10 @@ msgstr ""
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3677
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3868
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:4059
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1706
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1832
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1997
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2165
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1716
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1842
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2007
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2175
 msgid "Line through"
 msgstr ""
 
@@ -5360,6 +5383,7 @@ msgstr "加载更多按钮"
 msgid "Loading ..."
 msgstr "加载中..."
 
+#: ../admin/class-quiz-maker-admin.php:304
 #: ../public/class-quiz-maker-public.php:163
 #: ../public/partials/class-quiz-maker-all-results-shortcode.php:80
 #: ../public/partials/class-quiz-maker-quiz-all-results-shortcode.php:81
@@ -5383,11 +5407,11 @@ msgstr "登录按钮"
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3653
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3844
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:4035
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1213
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1689
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1817
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1976
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2144
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1223
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1699
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1827
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1986
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2154
 msgid "Lowercase"
 msgstr "小写"
 
@@ -5447,7 +5471,7 @@ msgstr "Mailpoet集成"
 msgid "Make a Suggestion"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4978
+#: ../admin/class-quiz-maker-admin.php:5007
 msgid ""
 "Make amazing online surveys and get real-time feedback quickly and easily."
 msgstr "制作令人惊叹的在线调查，并快速轻松地获得实时反馈。"
@@ -5532,16 +5556,16 @@ msgid "Maybe something went wrong."
 msgstr "可能出了些问题。"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3250
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1508
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1518
 msgid "Medium"
 msgstr "中"
 
-#: ../admin/class-quiz-maker-admin.php:3665
-#: ../admin/class-quiz-maker-admin.php:4130
+#: ../admin/class-quiz-maker-admin.php:3694
+#: ../admin/class-quiz-maker-admin.php:4159
 msgid "Mega Bundle"
 msgstr "超级捆绑包"
 
-#: ../admin/class-quiz-maker-admin.php:3919
+#: ../admin/class-quiz-maker-admin.php:3948
 msgid "Mega bundle"
 msgstr "超级捆绑包"
 
@@ -5596,7 +5620,7 @@ msgstr "给通过测验者的信息"
 msgid "Message for those who haven’t logged in"
 msgstr "给未登录用户的提示"
 
-#: ../admin/class-quiz-maker-admin.php:4668
+#: ../admin/class-quiz-maker-admin.php:4697
 msgid "Message Variables"
 msgstr "消息变量"
 
@@ -5623,12 +5647,12 @@ msgstr "数字字段的最小值"
 msgid "minute"
 msgstr "分"
 
-#: ../admin/class-quiz-maker-admin.php:3675
-#: ../admin/class-quiz-maker-admin.php:3877
-#: ../admin/class-quiz-maker-admin.php:3933
-#: ../admin/class-quiz-maker-admin.php:4079
-#: ../admin/class-quiz-maker-admin.php:4173
-#: ../admin/class-quiz-maker-admin.php:4298
+#: ../admin/class-quiz-maker-admin.php:3704
+#: ../admin/class-quiz-maker-admin.php:3906
+#: ../admin/class-quiz-maker-admin.php:3962
+#: ../admin/class-quiz-maker-admin.php:4108
+#: ../admin/class-quiz-maker-admin.php:4202
+#: ../admin/class-quiz-maker-admin.php:4327
 msgid "Minutes"
 msgstr "分钟"
 
@@ -5637,7 +5661,7 @@ msgstr "分钟"
 msgid "minutes"
 msgstr "分"
 
-#: ../includes/class-quiz-maker-feedback.php:89
+#: ../includes/class-quiz-maker-feedback.php:96
 msgid "Missing essential features"
 msgstr ""
 
@@ -5707,7 +5731,7 @@ msgstr "MyCred集成"
 msgid "MyCred integration Addon"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2214
+#: ../admin/class-quiz-maker-admin.php:2243
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:8421
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:8442
 #: ../admin/partials/results/quiz-maker-results-display.php:148
@@ -5734,7 +5758,7 @@ msgstr "导航栏"
 msgid "Need Authorization"
 msgstr "需要授权"
 
-#: ../admin/class-quiz-maker-admin.php:635
+#: ../admin/class-quiz-maker-admin.php:660
 msgid "New"
 msgstr ""
 
@@ -5742,7 +5766,7 @@ msgstr ""
 msgid "New Integration"
 msgstr "新集成"
 
-#: ../admin/class-quiz-maker-admin.php:3722
+#: ../admin/class-quiz-maker-admin.php:3751
 msgid ""
 "New Integration with <span><a href='https://wordpress.org/plugins/chart-"
 "builder/' target='_blank' style='color:#98FBA6; text-decoration: underline;'>"
@@ -5752,21 +5776,22 @@ msgstr ""
 "target='_blank' style='color:#98FBA6; text-decoration: underline;'>Chart "
 "Builder</a></span>插件的新集成"
 
-#: ../admin/class-quiz-maker-admin.php:3766
+#: ../admin/class-quiz-maker-admin.php:3795
 msgid ""
 "New Integration with <span><a href='https://wordpress.org/plugins/fox-lms/' "
 "target='_blank' style='color:#FF5104; text-decoration: underline;'>FoxLMS</a>"
 "</span> plugin"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:3059
+#: ../admin/class-quiz-maker-admin.php:3088
 msgid "new result"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:3059
+#: ../admin/class-quiz-maker-admin.php:3088
 msgid "new results"
 msgstr ""
 
+#: ../admin/class-quiz-maker-admin.php:311
 #: ../public/class-quiz-maker-public.php:170
 #: ../public/class-quiz-maker-public.php:297
 #: ../public/class-quiz-maker-public.php:375
@@ -5798,6 +5823,7 @@ msgstr "下一个测验"
 msgid "No data"
 msgstr "无数据"
 
+#: ../admin/class-quiz-maker-admin.php:297
 #: ../public/class-quiz-maker-public.php:156
 #: ../public/partials/class-quiz-maker-all-results-shortcode.php:73
 #: ../public/partials/class-quiz-maker-quiz-all-results-shortcode.php:74
@@ -5808,6 +5834,7 @@ msgstr "表中没有可用的数据"
 msgid "No influence to score"
 msgstr "不影响得分"
 
+#: ../admin/class-quiz-maker-admin.php:308
 #: ../public/class-quiz-maker-public.php:167
 #: ../public/partials/class-quiz-maker-all-results-shortcode.php:84
 #: ../public/partials/class-quiz-maker-quiz-all-results-shortcode.php:85
@@ -5822,13 +5849,13 @@ msgstr "没有更多评论"
 msgid "No more reviews Text"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2483
-#: ../admin/class-quiz-maker-admin.php:2503
+#: ../admin/class-quiz-maker-admin.php:2512
+#: ../admin/class-quiz-maker-admin.php:2532
 #: ../includes/lists/class-quiz-maker-results-list-table.php:615
 msgid "No rate provided"
 msgstr "未提供评分"
 
-#: ../admin/class-quiz-maker-admin.php:2495
+#: ../admin/class-quiz-maker-admin.php:2524
 #: ../includes/lists/class-quiz-maker-results-list-table.php:602
 msgid "No review provided"
 msgstr "未提供审查"
@@ -5847,17 +5874,17 @@ msgstr "未提供审查"
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:5059
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:5338
 #: ../admin/partials/quizes/quiz-maker-quizes-display.php:819
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1215
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1284
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1408
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1691
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1704
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1814
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1830
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1967
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1991
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2135
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2159
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1225
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1294
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1418
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1701
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1714
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1824
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1840
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1977
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2001
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2145
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2169
 msgid "None"
 msgstr "无"
 
@@ -5865,10 +5892,10 @@ msgstr "无"
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3717
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3908
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:4099
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1736
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1863
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2031
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2199
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1746
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1873
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2041
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2209
 msgid "Normal"
 msgstr ""
 
@@ -5876,12 +5903,12 @@ msgstr ""
 msgid "Not answered questions text"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:5129
+#: ../admin/class-quiz-maker-admin.php:5158
 msgid "Not Installed"
 msgstr ""
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:7294
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:947
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:957
 msgid "Not recommended"
 msgstr "不建议"
 
@@ -5921,7 +5948,7 @@ msgstr ""
 
 #: ../admin/class-quiz-maker-admin.php:274
 #: ../admin/partials/questions/actions/quiz-maker-questions-actions.php:175
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2272
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2282
 #: ../admin/partials/settings/quiz-maker-settings.php:24
 #: ../includes/lists/class-quiz-maker-questions-list-table.php:66
 msgid "Number"
@@ -5931,9 +5958,9 @@ msgstr "号码"
 msgid "Number of randomly selected questions"
 msgstr "随机抽取的问题数量"
 
-#: ../admin/class-quiz-maker-admin.php:4022
-#: ../admin/class-quiz-maker-admin.php:4073
-#: ../admin/class-quiz-maker-admin.php:4167
+#: ../admin/class-quiz-maker-admin.php:4051
+#: ../admin/class-quiz-maker-admin.php:4102
+#: ../admin/class-quiz-maker-admin.php:4196
 msgid "Offer ends in:"
 msgstr "优惠截止日期："
 
@@ -5953,14 +5980,14 @@ msgstr "两者都有"
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3595
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3786
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3977
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1231
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1302
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1427
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1528
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1646
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1772
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1924
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2092
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1241
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1312
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1437
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1538
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1656
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1782
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1934
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2102
 msgid "On desktop"
 msgstr "在桌面上"
 
@@ -5973,14 +6000,14 @@ msgstr "在桌面上"
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3614
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3805
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3996
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1249
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1320
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1445
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1546
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1664
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1790
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1942
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2110
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1259
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1330
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1455
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1556
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1674
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1800
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1952
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2120
 msgid "On mobile"
 msgstr "在手机上"
 
@@ -6005,11 +6032,11 @@ msgid ""
 "users."
 msgstr "Intervals功能的用例之一是个性测验，您可以在其中向用户展示不同的个性类型。"
 
-#: ../admin/class-quiz-maker-admin.php:3897
-#: ../admin/class-quiz-maker-admin.php:4047
-#: ../admin/class-quiz-maker-admin.php:4138
-#: ../admin/class-quiz-maker-admin.php:4234
-#: ../admin/class-quiz-maker-admin.php:4318
+#: ../admin/class-quiz-maker-admin.php:3926
+#: ../admin/class-quiz-maker-admin.php:4076
+#: ../admin/class-quiz-maker-admin.php:4167
+#: ../admin/class-quiz-maker-admin.php:4263
+#: ../admin/class-quiz-maker-admin.php:4347
 #: ../admin/partials/attributes/quiz-maker-attributes-display.php:112
 #: ../admin/partials/questions/quiz-maker-questions-display.php:226
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:10073
@@ -6048,12 +6075,13 @@ msgstr "糟糕！"
 msgid "Ordering"
 msgstr "排序"
 
-#: ../admin/class-quiz-maker-admin.php:541
-#: ../admin/class-quiz-maker-admin.php:542
+#: ../admin/class-quiz-maker-admin.php:566
+#: ../admin/class-quiz-maker-admin.php:567
 msgid "Orders"
 msgstr "订单"
 
-#: ../includes/class-quiz-maker-feedback.php:106
+#: ../includes/class-quiz-maker-feedback.php:82
+#: ../includes/class-quiz-maker-feedback.php:118
 msgid "Other"
 msgstr ""
 
@@ -6063,8 +6091,8 @@ msgid ""
 "based on user behavior."
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:623
-#: ../admin/class-quiz-maker-admin.php:624
+#: ../admin/class-quiz-maker-admin.php:648
+#: ../admin/class-quiz-maker-admin.php:649
 msgid "Our products"
 msgstr "我们的产品"
 
@@ -6082,10 +6110,10 @@ msgstr "外部"
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3674
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3865
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:4056
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1705
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1831
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1994
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2162
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1715
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1841
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2004
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2172
 msgid "Overline"
 msgstr ""
 
@@ -6202,7 +6230,7 @@ msgstr "PayPal集成"
 msgid "PayPal Settings"
 msgstr "PayPal设置"
 
-#: ../admin/class-quiz-maker-admin.php:2096
+#: ../admin/class-quiz-maker-admin.php:2125
 msgid "PDF"
 msgstr "PDF"
 
@@ -6219,7 +6247,7 @@ msgstr "没有权限"
 msgid "Personal"
 msgstr "个人"
 
-#: ../admin/class-quiz-maker-admin.php:5013
+#: ../admin/class-quiz-maker-admin.php:5042
 msgid "Personal Dictionary"
 msgstr "个人词典"
 
@@ -6228,7 +6256,7 @@ msgstr "个人词典"
 msgid "Personality quiz"
 msgstr "个性测验"
 
-#: ../admin/class-quiz-maker-admin.php:5266
+#: ../admin/class-quiz-maker-admin.php:5295
 msgid "Personalize Result"
 msgstr "个性化结果"
 
@@ -6237,7 +6265,7 @@ msgstr "个性化结果"
 msgid "Personalized results"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2220
+#: ../admin/class-quiz-maker-admin.php:2249
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:8433
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:8454
 #: ../admin/partials/settings/quiz-maker-settings.php:4155
@@ -6313,35 +6341,27 @@ msgstr "请注意，如果更改默认文本，这些单词将无法通过翻译
 msgid "Please select your quiz from dropdown"
 msgstr "请从下拉框中选择您的测验"
 
-#: ../includes/class-quiz-maker-feedback.php:107
+#: ../includes/class-quiz-maker-feedback.php:119
 msgid "Please share the reason"
 msgstr ""
 
-#: ../includes/class-quiz-maker-feedback.php:90
+#: ../includes/class-quiz-maker-feedback.php:97
 msgid "Please share which features"
 msgstr ""
 
-#: ../includes/class-quiz-maker-feedback.php:82
-msgid "Please share which plugin"
-msgstr ""
-
-#: ../includes/class-quiz-maker-feedback.php:98
-msgid "Please share which plugin or theme"
-msgstr ""
-
-#: ../admin/class-quiz-maker-admin.php:4788
+#: ../admin/class-quiz-maker-admin.php:4817
 msgid "Plugin activated."
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4772
+#: ../admin/class-quiz-maker-admin.php:4801
 msgid "Plugin activation is disabled for you on this site."
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4906
+#: ../admin/class-quiz-maker-admin.php:4935
 msgid "Plugin installed and activated."
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4894
+#: ../admin/class-quiz-maker-admin.php:4923
 msgid "Plugin installed."
 msgstr ""
 
@@ -6358,15 +6378,15 @@ msgstr "点数"
 msgid "Points system"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4968
+#: ../admin/class-quiz-maker-admin.php:4997
 msgid "Poll Maker"
 msgstr "投票制作者"
 
-#: ../admin/class-quiz-maker-admin.php:4986
+#: ../admin/class-quiz-maker-admin.php:5015
 msgid "Popup Box"
 msgstr "弹出框"
 
-#: ../admin/class-quiz-maker-admin.php:4987
+#: ../admin/class-quiz-maker-admin.php:5016
 msgid ""
 "Popup everything you want! Create informative and promotional popups all in "
 "one plugin."
@@ -6406,7 +6426,7 @@ msgstr ""
 msgid "Pre-start message"
 msgstr "开始前提示"
 
-#: ../admin/class-quiz-maker-admin.php:5265
+#: ../admin/class-quiz-maker-admin.php:5294
 msgid "Premium Support"
 msgstr "高级支持"
 
@@ -6414,11 +6434,11 @@ msgstr "高级支持"
 msgid "Premium support"
 msgstr "高级支持"
 
-#: ../admin/class-quiz-maker-admin.php:4457
+#: ../admin/class-quiz-maker-admin.php:4486
 msgid "Premium version"
 msgstr "专业版"
 
-#: ../admin/class-quiz-maker-admin.php:4464
+#: ../admin/class-quiz-maker-admin.php:4493
 msgid "Premium versions' overview"
 msgstr "专业版概览"
 
@@ -6458,6 +6478,7 @@ msgstr ""
 msgid "Preview Quiz"
 msgstr ""
 
+#: ../admin/class-quiz-maker-admin.php:312
 #: ../public/class-quiz-maker-public.php:171
 #: ../public/partials/class-quiz-maker-all-results-shortcode.php:88
 #: ../public/partials/class-quiz-maker-quiz-all-results-shortcode.php:89
@@ -6470,8 +6491,8 @@ msgstr "上一页"
 msgid "Previous button"
 msgstr "上一个按钮"
 
-#: ../admin/class-quiz-maker-admin.php:2089
-#: ../admin/class-quiz-maker-admin.php:2142
+#: ../admin/class-quiz-maker-admin.php:2118
+#: ../admin/class-quiz-maker-admin.php:2171
 #: ../admin/partials/attributes/quiz-maker-attributes-display.php:44
 #: ../admin/partials/questions/quiz-maker-questions-display.php:87
 #: ../admin/partials/questions/quiz-maker-questions-display.php:110
@@ -6514,11 +6535,12 @@ msgstr "打印当前测验发布的网页链接。"
 msgid "PRO Demo"
 msgstr "PRO Demo"
 
-#: ../admin/class-quiz-maker-admin.php:651
-#: ../admin/class-quiz-maker-admin.php:652
+#: ../admin/class-quiz-maker-admin.php:676
+#: ../admin/class-quiz-maker-admin.php:677
 msgid "PRO Features"
 msgstr "专业版功能"
 
+#: ../admin/class-quiz-maker-admin.php:305
 #: ../public/class-quiz-maker-public.php:164
 #: ../public/partials/class-quiz-maker-all-results-shortcode.php:81
 #: ../public/partials/class-quiz-maker-quiz-all-results-shortcode.php:82
@@ -6526,16 +6548,16 @@ msgid "Processing..."
 msgstr "处理中..."
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2450
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1159
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1169
 msgid "Progress bar style"
 msgstr "进度条样式"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2499
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1175
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1185
 msgid "Progress live bar style"
 msgstr "进度实时栏样式"
 
-#: ../admin/class-quiz-maker-admin.php:5006
+#: ../admin/class-quiz-maker-admin.php:5035
 msgid ""
 "Protect web content from being plagiarized. Prevent plagiarism from your "
 "website with this easy to use plugin."
@@ -6631,14 +6653,18 @@ msgstr "在页面上放置此短代码以显示用户通过测验所花费的总
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:1972
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2821
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1372
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1382
 msgid "px"
 msgstr "px"
 
-#: ../admin/class-quiz-maker-admin.php:2347
-#: ../admin/class-quiz-maker-admin.php:2398
-#: ../admin/class-quiz-maker-admin.php:2444
-#: ../admin/class-quiz-maker-admin.php:2922
+#: ../includes/class-quiz-maker-feedback.php:84
+msgid "QSM"
+msgstr ""
+
+#: ../admin/class-quiz-maker-admin.php:2376
+#: ../admin/class-quiz-maker-admin.php:2427
+#: ../admin/class-quiz-maker-admin.php:2473
+#: ../admin/class-quiz-maker-admin.php:2951
 #: ../admin/partials/questions/actions/quiz-maker-questions-actions.php:428
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:1717
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:9946
@@ -6647,7 +6673,7 @@ msgstr "px"
 msgid "Question"
 msgstr "问题"
 
-#: ../admin/class-quiz-maker-admin.php:3057
+#: ../admin/class-quiz-maker-admin.php:3086
 msgid "question"
 msgstr ""
 
@@ -6655,9 +6681,9 @@ msgstr ""
 msgid "Question background image"
 msgstr "问题背景图片"
 
-#: ../admin/class-quiz-maker-admin.php:515
-#: ../admin/class-quiz-maker-admin.php:516
-#: ../admin/class-quiz-maker-admin.php:894
+#: ../admin/class-quiz-maker-admin.php:540
+#: ../admin/class-quiz-maker-admin.php:541
+#: ../admin/class-quiz-maker-admin.php:919
 #: ../includes/lists/class-quiz-maker-question-categories-list-table.php:12
 msgid "Question Categories"
 msgstr "问题分类"
@@ -6715,7 +6741,7 @@ msgid "Question created."
 msgstr "问题已创建。"
 
 #: ../admin/class-quiz-maker-admin.php:261
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2263
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2273
 msgid "Question Default Title"
 msgstr "问题默认标题"
 
@@ -6732,12 +6758,12 @@ msgid "Question explanation"
 msgstr "问题说明"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3576
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1757
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1767
 msgid "Question explanation styles"
 msgstr ""
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2725
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1294
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1304
 msgid "Question font size"
 msgstr "问题字体大小"
 
@@ -6754,7 +6780,7 @@ msgid "Question image height in pixels. It accepts only number values."
 msgstr "问题图片的高度（以像素为单位）。只能输入数字值。"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2800
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1354
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1364
 msgid "Question image styles"
 msgstr "问题图片样式"
 
@@ -6802,7 +6828,7 @@ msgid "Question tags"
 msgstr "问题标签"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2775
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1339
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1349
 msgid "Question text alignment"
 msgstr "问题文本对齐"
 
@@ -6836,17 +6862,17 @@ msgstr "问题(们)已发布。"
 msgid "Question(s) unpublished."
 msgstr "问题(们)未发布。"
 
-#: ../admin/class-quiz-maker-admin.php:487
-#: ../admin/class-quiz-maker-admin.php:488
-#: ../admin/class-quiz-maker-admin.php:878
-#: ../admin/class-quiz-maker-admin.php:2285
+#: ../admin/class-quiz-maker-admin.php:512
+#: ../admin/class-quiz-maker-admin.php:513
+#: ../admin/class-quiz-maker-admin.php:903
+#: ../admin/class-quiz-maker-admin.php:2314
 #: ../admin/partials/questions/quiz-maker-questions-display.php:129
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2248
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2258
 #: ../includes/lists/class-quiz-maker-questions-list-table.php:12
 msgid "Questions"
 msgstr "问题"
 
-#: ../admin/class-quiz-maker-admin.php:3057
+#: ../admin/class-quiz-maker-admin.php:3086
 msgid "questions"
 msgstr ""
 
@@ -6888,18 +6914,18 @@ msgstr "问题列表表格"
 msgid "Questions numbering"
 msgstr "问题编号"
 
-#: ../includes/class-quiz-maker-feedback.php:119
+#: ../includes/class-quiz-maker-feedback.php:131
 msgid "Quick Feedback"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2916
+#: ../admin/class-quiz-maker-admin.php:2945
 #: ../includes/lists/class-quiz-maker-all-reviews-list-table.php:485
 #: ../includes/lists/class-quiz-maker-quizes-list-table.php:11
 #: ../includes/lists/class-quiz-maker-results-list-table.php:702
 msgid "Quiz"
 msgstr "测验"
 
-#: ../admin/class-quiz-maker-admin.php:3058
+#: ../admin/class-quiz-maker-admin.php:3087
 msgid "quiz"
 msgstr ""
 
@@ -6975,9 +7001,13 @@ msgstr ""
 msgid "Quiz buttons border-radius in pixels. It accepts only numeric values."
 msgstr "以像素为单位的测验按钮边框半径。仅接受数字值。"
 
-#: ../admin/class-quiz-maker-admin.php:501
-#: ../admin/class-quiz-maker-admin.php:502
-#: ../admin/class-quiz-maker-admin.php:862
+#: ../includes/class-quiz-maker-feedback.php:88
+msgid "Quiz Cat"
+msgstr ""
+
+#: ../admin/class-quiz-maker-admin.php:526
+#: ../admin/class-quiz-maker-admin.php:527
+#: ../admin/class-quiz-maker-admin.php:887
 #: ../includes/lists/class-quiz-maker-quiz-categories-list-table.php:12
 msgid "Quiz Categories"
 msgstr "测验分类"
@@ -7123,11 +7153,11 @@ msgid "Quiz image"
 msgstr ""
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2431
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1143
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1153
 msgid "Quiz image height"
 msgstr "测验图像高度"
 
-#: ../admin/class-quiz-maker-admin.php:2238
+#: ../admin/class-quiz-maker-admin.php:2267
 #: ../admin/partials/settings/quiz-maker-settings.php:4705
 msgid "Quiz Information"
 msgstr "测验信息"
@@ -7157,8 +7187,8 @@ msgstr "测验加载器图标"
 msgid "Quiz Login Form Settings"
 msgstr "测验登录表单设置"
 
-#: ../admin/class-quiz-maker-admin.php:2713
-#: ../includes/class-quiz-maker-feedback.php:118
+#: ../admin/class-quiz-maker-admin.php:2742
+#: ../includes/class-quiz-maker-feedback.php:130
 #: ../pb_templates/quiz_maker_elementor.php:9
 #: ../pb_templates/quiz_maker_elementor.php:22
 #: ../pb_templates/quiz_maker_wpbvc.php:23
@@ -7171,7 +7201,7 @@ msgstr "Quiz Maker"
 msgid "Quiz Maker by AYS"
 msgstr "AYS 的测验制作软件"
 
-#: ../admin/class-quiz-maker-admin.php:4421
+#: ../admin/class-quiz-maker-admin.php:4450
 msgid "Quiz Maker Information"
 msgstr "测验制作者信息"
 
@@ -7179,11 +7209,11 @@ msgstr "测验制作者信息"
 msgid "Quiz Maker Logo"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:4502
+#: ../admin/class-quiz-maker-admin.php:4531
 msgid "Quiz Maker plugin free demo"
 msgstr "测验制作者插件免费演示"
 
-#: ../admin/class-quiz-maker-admin.php:4501
+#: ../admin/class-quiz-maker-admin.php:4530
 msgid "Quiz Maker plugin premium version"
 msgstr "测验制作者插件专业版"
 
@@ -7196,7 +7226,7 @@ msgid "Quiz Message Variables"
 msgstr ""
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2055
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1111
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1121
 msgid "Quiz min-height"
 msgstr "测验最小高度"
 
@@ -7271,7 +7301,7 @@ msgid "Quiz Title"
 msgstr "测验标题"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2591
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1223
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1233
 msgid "Quiz title font size"
 msgstr "测验标题字体大小"
 
@@ -7280,12 +7310,12 @@ msgid "Quiz title text shadow"
 msgstr "测验标题文本阴影"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2565
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1207
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1217
 msgid "Quiz title transformation"
 msgstr "测验标题转换"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:1958
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1095
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1105
 msgid "Quiz width"
 msgstr "测验宽度"
 
@@ -7297,14 +7327,14 @@ msgstr "测验已发布。"
 msgid "Quiz(s) unpublished."
 msgstr "测验未发布。"
 
-#: ../admin/class-quiz-maker-admin.php:473
-#: ../admin/class-quiz-maker-admin.php:474
-#: ../admin/class-quiz-maker-admin.php:846
+#: ../admin/class-quiz-maker-admin.php:498
+#: ../admin/class-quiz-maker-admin.php:499
+#: ../admin/class-quiz-maker-admin.php:871
 #: ../includes/lists/class-quiz-maker-quizes-list-table.php:12
 msgid "Quizzes"
 msgstr "测验"
 
-#: ../admin/class-quiz-maker-admin.php:3058
+#: ../admin/class-quiz-maker-admin.php:3087
 msgid "quizzes"
 msgstr ""
 
@@ -7318,7 +7348,7 @@ msgstr "测验列表表格"
 
 #: ../admin/class-quiz-maker-admin.php:262
 #: ../admin/partials/questions/actions/quiz-maker-questions-actions.php:170
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2267
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2277
 #: ../admin/partials/settings/quiz-maker-settings.php:19
 #: ../includes/lists/class-quiz-maker-questions-list-table.php:61
 msgid "Radio"
@@ -7340,8 +7370,8 @@ msgstr "随机化抽认卡"
 msgid "Randomize questions & answers"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2242
-#: ../admin/class-quiz-maker-admin.php:2248
+#: ../admin/class-quiz-maker-admin.php:2271
+#: ../admin/class-quiz-maker-admin.php:2277
 #: ../includes/lists/class-quiz-maker-all-reviews-list-table.php:490
 #: ../includes/lists/class-quiz-maker-results-list-table.php:709
 msgid "Rate"
@@ -7351,7 +7381,7 @@ msgstr "评分"
 msgid "Rate Date"
 msgstr "评分日期"
 
-#: ../admin/class-quiz-maker-admin.php:2243
+#: ../admin/class-quiz-maker-admin.php:2272
 msgid "Rate Score"
 msgstr "评分分数"
 
@@ -7416,8 +7446,8 @@ msgstr "矩形亮色"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2459
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2508
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1165
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1181
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1175
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1191
 msgid "Rectangle"
 msgstr "矩形"
 
@@ -7507,10 +7537,10 @@ msgstr "结果消息"
 msgid "Result(s) deleted."
 msgstr "结果已删除。"
 
-#: ../admin/class-quiz-maker-admin.php:561
-#: ../admin/class-quiz-maker-admin.php:562
-#: ../admin/class-quiz-maker-admin.php:566
-#: ../admin/class-quiz-maker-admin.php:910
+#: ../admin/class-quiz-maker-admin.php:586
+#: ../admin/class-quiz-maker-admin.php:587
+#: ../admin/class-quiz-maker-admin.php:591
+#: ../admin/class-quiz-maker-admin.php:935
 #: ../admin/partials/results/quiz-maker-all-reviews-display.php:64
 #: ../admin/partials/results/quiz-maker-results-display.php:71
 #: ../includes/lists/class-quiz-maker-results-list-table.php:12
@@ -7547,7 +7577,7 @@ msgstr "附带图表的结果"
 msgid "Reverse the ordering of the questions in the list."
 msgstr "反转问题列表中的顺序。"
 
-#: ../admin/class-quiz-maker-admin.php:2244
+#: ../admin/class-quiz-maker-admin.php:2273
 #: ../includes/lists/class-quiz-maker-all-reviews-list-table.php:10
 #: ../includes/lists/class-quiz-maker-all-reviews-list-table.php:491
 msgid "Review"
@@ -7557,7 +7587,7 @@ msgstr "检查"
 msgid "Review(s) deleted."
 msgstr "评论已删除。"
 
-#: ../admin/class-quiz-maker-admin.php:584
+#: ../admin/class-quiz-maker-admin.php:609
 #: ../admin/partials/results/quiz-maker-all-reviews-display.php:67
 #: ../admin/partials/results/quiz-maker-results-display.php:74
 #: ../includes/lists/class-quiz-maker-all-reviews-list-table.php:11
@@ -7574,13 +7604,13 @@ msgstr "评论列表表"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2556
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2792
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1198
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1346
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1208
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1356
 msgid "Right"
 msgstr "右"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3767
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1909
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1919
 msgid "Right answer styles"
 msgstr ""
 
@@ -7605,7 +7635,7 @@ msgid "Role of the user on the website. Option accepts multiple values."
 msgstr "用户在该网站的角色。可以多选。"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2458
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1164
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1174
 msgid "Rounded"
 msgstr "圆形"
 
@@ -7614,7 +7644,7 @@ msgstr "圆形"
 msgid "Russian Ruble"
 msgstr "俄罗斯卢布"
 
-#: ../admin/class-quiz-maker-admin.php:3918
+#: ../admin/class-quiz-maker-admin.php:3947
 msgid "Sale"
 msgstr "特卖"
 
@@ -7658,7 +7688,7 @@ msgstr "保存更改"
 msgid "Schedule the quiz"
 msgstr "安排测验"
 
-#: ../admin/class-quiz-maker-admin.php:2271
+#: ../admin/class-quiz-maker-admin.php:2300
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:403
 #: ../admin/partials/results/quiz-maker-results-display.php:149
 #: ../admin/partials/settings/quiz-maker-settings.php:79
@@ -7689,6 +7719,7 @@ msgstr "滚动偏移（像素）"
 msgid "Search"
 msgstr "搜索"
 
+#: ../admin/class-quiz-maker-admin.php:306
 #: ../public/class-quiz-maker-public.php:165
 #: ../public/partials/class-quiz-maker-all-results-shortcode.php:82
 #: ../public/partials/class-quiz-maker-quiz-all-results-shortcode.php:83
@@ -7706,12 +7737,12 @@ msgstr "搜索中..."
 msgid "second"
 msgstr "秒"
 
-#: ../admin/class-quiz-maker-admin.php:3676
-#: ../admin/class-quiz-maker-admin.php:3878
-#: ../admin/class-quiz-maker-admin.php:3934
-#: ../admin/class-quiz-maker-admin.php:4080
-#: ../admin/class-quiz-maker-admin.php:4174
-#: ../admin/class-quiz-maker-admin.php:4299
+#: ../admin/class-quiz-maker-admin.php:3705
+#: ../admin/class-quiz-maker-admin.php:3907
+#: ../admin/class-quiz-maker-admin.php:3963
+#: ../admin/class-quiz-maker-admin.php:4109
+#: ../admin/class-quiz-maker-admin.php:4203
+#: ../admin/class-quiz-maker-admin.php:4328
 msgid "Seconds"
 msgstr "秒"
 
@@ -7724,7 +7755,7 @@ msgstr "秒"
 msgid "Secret Key"
 msgstr "秘密密钥"
 
-#: ../admin/class-quiz-maker-admin.php:5004
+#: ../admin/class-quiz-maker-admin.php:5033
 msgid "Secure Copy Content Protection"
 msgstr "安全复制内容保护"
 
@@ -7747,8 +7778,8 @@ msgstr "查看所有视频"
 msgid "See Demo"
 msgstr "查看演示"
 
-#: ../admin/class-quiz-maker-admin.php:2085
-#: ../admin/class-quiz-maker-admin.php:2137
+#: ../admin/class-quiz-maker-admin.php:2114
+#: ../admin/class-quiz-maker-admin.php:2166
 #: ../admin/partials/attributes/quiz-maker-attributes-display.php:40
 #: ../admin/partials/questions/quiz-maker-questions-display.php:83
 #: ../admin/partials/questions/quiz-maker-questions-display.php:106
@@ -7821,6 +7852,7 @@ msgid "Select an answer"
 msgstr "选择一个答案"
 
 #: ../admin/class-quiz-maker-admin.php:291
+#: ../admin/class-quiz-maker-admin.php:317
 #: ../includes/lists/class-quiz-maker-questions-list-table.php:87
 #: ../includes/lists/class-quiz-maker-quizes-list-table.php:67
 #: ../includes/lists/class-quiz-maker-results-list-table.php:117
@@ -7881,6 +7913,7 @@ msgid "Select sound"
 msgstr "选择声音"
 
 #: ../admin/class-quiz-maker-admin.php:292
+#: ../admin/class-quiz-maker-admin.php:318
 msgid "Select Tags"
 msgstr "选择标签"
 
@@ -7958,7 +7991,7 @@ msgid ""
 "the list."
 msgstr "在将其电子邮件地址添加到列表时，向联系人发送确认订阅的电子邮件。"
 
-#: ../admin/class-quiz-maker-admin.php:5263
+#: ../admin/class-quiz-maker-admin.php:5292
 msgid "Send Email & Certificate"
 msgstr "发送邮件和证书"
 
@@ -8071,7 +8104,7 @@ msgid ""
 "Set your preferred text size for the Quiz Title. The default size is 21px."
 msgstr "设置您喜欢的测验标题文本大小。默认大小为21px。"
 
-#: ../admin/class-quiz-maker-admin.php:709
+#: ../admin/class-quiz-maker-admin.php:734
 #: ../admin/partials/questions/actions/quiz-maker-questions-actions.php:373
 #: ../admin/partials/questions/actions/quiz-maker-questions-categories-actions.php:76
 #: ../admin/partials/quizes/actions/quiz-maker-quiz-categories-actions.php:87
@@ -8080,7 +8113,7 @@ msgstr "设置您喜欢的测验标题文本大小。默认大小为21px。"
 msgid "Settings"
 msgstr "设置"
 
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1286
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1296
 msgid "Shake"
 msgstr ""
 
@@ -8090,7 +8123,7 @@ msgstr "共享对话"
 
 #: ../admin/class-quiz-maker-admin.php:271
 #: ../admin/partials/questions/actions/quiz-maker-questions-actions.php:174
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2271
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2281
 #: ../admin/partials/settings/quiz-maker-settings.php:23
 #: ../includes/lists/class-quiz-maker-questions-list-table.php:65
 msgid "Short Text"
@@ -8133,6 +8166,11 @@ msgstr "短代码"
 #: ../public/class-quiz-maker-public.php:204
 msgid "Show"
 msgstr "展示"
+
+#: ../admin/class-quiz-maker-admin.php:303
+#, php-format
+msgid "Show %s entries"
+msgstr ""
 
 #: ../public/class-quiz-maker-public.php:162
 #: ../public/partials/class-quiz-maker-all-results-shortcode.php:79
@@ -8229,7 +8267,7 @@ msgid ""
 msgstr "使用绿色和红色标记来显示所选答案是否正确或错误。要决定何时显示正确/错误答案，请前往“显示正确/错误答案选项”设置。"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:8519
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1048
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1058
 msgid "Show Information Form to logged-in users"
 msgstr "向已登录用户显示信息表单"
 
@@ -8250,7 +8288,7 @@ msgstr "显示正确/错误答案的消息"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:4683
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:6761
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:990
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1000
 msgid "Show only wrong answers"
 msgstr "仅显示错误答案"
 
@@ -8291,7 +8329,7 @@ msgid "Show question explanation"
 msgstr "显示问题说明"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:6720
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:958
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:968
 msgid "Show question results on the results page"
 msgstr "在结果页面上显示问题结果"
 
@@ -8431,6 +8469,7 @@ msgid ""
 msgstr ""
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:6837
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:930
 msgid "Show the last 5 reviews"
 msgstr "显示最近 5 条评论"
 
@@ -8487,7 +8526,7 @@ msgid "Show the Social buttons"
 msgstr "显示“社交媒体”按钮"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:7023
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:933
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:943
 msgid "Show the statistical average"
 msgstr "显示统计平均值"
 
@@ -8578,10 +8617,16 @@ msgid "Show word/character counter"
 msgstr "显示字数/字符计数器"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:6747
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:979
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:989
 msgid "Show wrong answers first"
 msgstr "首先显示错误答案"
 
+#: ../admin/class-quiz-maker-admin.php:298
+#, php-format
+msgid "Showing %s to %s of %s entries"
+msgstr ""
+
+#: ../admin/class-quiz-maker-admin.php:299
 #: ../public/class-quiz-maker-public.php:158
 #: ../public/partials/class-quiz-maker-all-results-shortcode.php:75
 #: ../public/partials/class-quiz-maker-quiz-all-results-shortcode.php:76
@@ -8688,7 +8733,7 @@ msgstr "单测验结果设置"
 msgid "Site title"
 msgstr ""
 
-#: ../includes/class-quiz-maker-feedback.php:146
+#: ../includes/class-quiz-maker-feedback.php:172
 msgid "Skip &amp; Deactivate"
 msgstr ""
 
@@ -8714,11 +8759,11 @@ msgid "Slack Settings"
 msgstr "Slack 设置"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3247
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1505
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1515
 msgid "Small"
 msgstr "小"
 
-#: ../admin/class-quiz-maker-admin.php:2081
+#: ../admin/class-quiz-maker-admin.php:2110
 msgid ""
 "So choose the variant that suits you and easily export the detailed report."
 msgstr "因此，选择适合您的变量，并轻松导出详细报告。"
@@ -8758,7 +8803,7 @@ msgid "Sounds for wrong answers"
 msgstr "错误答案的提示音"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2557
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1199
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1209
 msgid "Space Between"
 msgstr "之间的间距"
 
@@ -8894,7 +8939,7 @@ msgid ""
 "question."
 msgstr "指定显示正确/错误答案的位置。请注意，“显示正确答案”选项应该已启用。为了使该选项生效，您需要从特定问题的编辑页面添加相应的文本。"
 
-#: ../admin/class-quiz-maker-admin.php:3491
+#: ../admin/class-quiz-maker-admin.php:3520
 msgid ""
 "Spring is here! <span class='ays-quiz-dicount-wrap-color'>40%</span> SALE on "
 "<br><span><a href='https://ays-pro.com/spring-bundle' target='_blank' "
@@ -8906,7 +8951,7 @@ msgstr ""
 "dicount-wrap-color ays-quiz-dicount-wrap-text-decoration' style='display:"
 "block;'>Spring Bundle</a></span>（测验+复制+弹出窗口）！"
 
-#: ../admin/class-quiz-maker-admin.php:3552
+#: ../admin/class-quiz-maker-admin.php:3581
 msgid ""
 "Spring is here! <span class='ays-quiz-dicount-wrap-color'>50%</span> SALE on "
 "<span><a href='https://ays-pro.com/spring-bundle' target='_blank' class='ays-"
@@ -8940,7 +8985,7 @@ msgstr "开始按钮"
 msgid "Start button activation"
 msgstr "开始按钮激活"
 
-#: ../admin/class-quiz-maker-admin.php:2255
+#: ../admin/class-quiz-maker-admin.php:2284
 #: ../admin/partials/settings/quiz-maker-settings.php:86
 #: ../admin/partials/settings/quiz-maker-settings.php:147
 #: ../admin/partials/settings/quiz-maker-settings.php:225
@@ -9012,15 +9057,15 @@ msgid "Stripe Settings"
 msgstr "Stripe设置"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:1525
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1088
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1098
 msgid "Styles"
 msgstr "风格"
 
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2368
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2378
 msgid "Submit"
 msgstr "提交"
 
-#: ../includes/class-quiz-maker-feedback.php:147
+#: ../includes/class-quiz-maker-feedback.php:173
 msgid "Submit &amp; Deactivate"
 msgstr ""
 
@@ -9036,7 +9081,7 @@ msgstr "订阅"
 msgid "Subscription duration"
 msgstr "订阅期限"
 
-#: ../admin/class-quiz-maker-admin.php:2392
+#: ../admin/class-quiz-maker-admin.php:2421
 msgid "Succeed"
 msgstr "成功"
 
@@ -9052,7 +9097,7 @@ msgstr "总和"
 msgid "Support for"
 msgstr "支持"
 
-#: ../admin/class-quiz-maker-admin.php:4977
+#: ../admin/class-quiz-maker-admin.php:5006
 msgid "Survey Maker"
 msgstr "调查制作者"
 
@@ -9075,7 +9120,7 @@ msgstr "标签"
 #: ../admin/partials/questions/actions/quiz-maker-questions-actions.php:173
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:6647
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:7390
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2270
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2280
 #: ../admin/partials/settings/quiz-maker-settings.php:22
 #: ../includes/lists/class-quiz-maker-questions-list-table.php:64
 msgid "Text"
@@ -9093,10 +9138,10 @@ msgstr ""
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3662
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3853
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:4044
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1699
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1825
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1985
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2153
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1709
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1835
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1995
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2163
 msgid "Text decoration"
 msgstr ""
 
@@ -9116,10 +9161,10 @@ msgstr "将显示在社交媒体链接上的文本。"
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3635
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3826
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:4017
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1683
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1809
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1961
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2129
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1693
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1819
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1971
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2139
 msgid "Text transformation"
 msgstr ""
 
@@ -9146,7 +9191,7 @@ msgid ""
 "that %s is not possible to cheat. %s"
 msgstr "%s打开额外的安全检查%s选项将帮助您创建一个测验，%s不可能作弊。%s"
 
-#: ../admin/class-quiz-maker-admin.php:2119
+#: ../admin/class-quiz-maker-admin.php:2148
 #, php-format
 msgid ""
 "The Admin Note feature of the WordPress quiz plugin is a great tool for %s "
@@ -9181,7 +9226,7 @@ msgstr "抽认卡的背景颜色。"
 msgid "The Best Quiz Maker Ever"
 msgstr "史上最棒的测验制作软件"
 
-#: ../admin/class-quiz-maker-admin.php:3427
+#: ../admin/class-quiz-maker-admin.php:3456
 msgid ""
 "The BIGGEST <span class='ays-quiz-dicount-wrap-color' style='color:#000;'>"
 "50%</span> SALE on <br><span><a href='https://ays-pro.com/mega-bundle' "
@@ -9316,11 +9361,11 @@ msgstr "当前用户的 ID。"
 msgid "The ID of the quiz."
 msgstr "测验ID。"
 
-#: ../admin/class-quiz-maker-admin.php:3769
+#: ../admin/class-quiz-maker-admin.php:3798
 msgid "The integration will allow you to add your quizzes into your courses."
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:3725
+#: ../admin/class-quiz-maker-admin.php:3754
 msgid ""
 "The integration will allow you to create beautiful charts based on your quiz "
 "data and share them with your users."
@@ -9424,7 +9469,7 @@ msgstr "测验的有效期限。超时会显示过期信息。"
 msgid "The phone the user entered into information form"
 msgstr "用户在信息表中输入的电话"
 
-#: ../includes/class-quiz-maker-feedback.php:85
+#: ../includes/class-quiz-maker-feedback.php:92
 msgid "The plugin didn’t work as expected"
 msgstr ""
 
@@ -9462,7 +9507,7 @@ msgid ""
 "the page."
 msgstr "每次用户刷新页面时，问题将以随机顺序显示。"
 
-#: ../admin/class-quiz-maker-admin.php:1743
+#: ../admin/class-quiz-maker-admin.php:1772
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:126
 #: ../public/class-quiz-maker-public.php:189
 msgid "The quiz has expired!"
@@ -9497,7 +9542,7 @@ msgstr ""
 "Quiz "
 "Maker插件为您的WordPress网站提供了添加%s高级排行榜%s的机会。在网站上使用排行榜有助于%s激发竞争%s，并%s激励测验参与者%s提高他们的技能。"
 
-#: ../admin/class-quiz-maker-admin.php:1742
+#: ../admin/class-quiz-maker-admin.php:1771
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:125
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:4952
 msgid "The quiz will be available soon!"
@@ -9630,8 +9675,8 @@ msgid ""
 "where the users pass your quiz with this addon."
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2541
 #: ../admin/class-quiz-maker-admin.php:2570
+#: ../admin/class-quiz-maker-admin.php:2599
 msgid "The user has not answered this question."
 msgstr "该用户尚未回答此问题。"
 
@@ -9753,7 +9798,7 @@ msgstr "目前还没有评论"
 msgid "There are two ways of making question bank system."
 msgstr "有两种制作题库系统的方式。"
 
-#: ../admin/class-quiz-maker-admin.php:4813
+#: ../admin/class-quiz-maker-admin.php:4842
 msgid "There was an error while performing your request."
 msgstr ""
 
@@ -9772,18 +9817,18 @@ msgstr ""
 msgid "This can be a useful tool for running a fair and safe examination."
 msgstr "这可以是进行公正和安全考试的有用工具。"
 
-#: ../admin/class-quiz-maker-admin.php:2126
+#: ../admin/class-quiz-maker-admin.php:2155
 #, php-format
 msgid ""
 "This feature allows you %s to add additional information %s about each user "
 "on the detailed report page."
 msgstr "此功能允许您%s在详细报告页面上添加有关每个用户的%s附加信息。"
 
-#: ../admin/class-quiz-maker-admin.php:2056
-#: ../admin/class-quiz-maker-admin.php:2096
-#: ../admin/class-quiz-maker-admin.php:2100
-#: ../admin/class-quiz-maker-admin.php:2110
-#: ../admin/class-quiz-maker-admin.php:2150
+#: ../admin/class-quiz-maker-admin.php:2085
+#: ../admin/class-quiz-maker-admin.php:2125
+#: ../admin/class-quiz-maker-admin.php:2129
+#: ../admin/class-quiz-maker-admin.php:2139
+#: ../admin/class-quiz-maker-admin.php:2179
 msgid "This feature available only in pro version"
 msgstr ""
 
@@ -9860,7 +9905,7 @@ msgstr "此属性仅在专业版中可用"
 msgid "This quiz has expired!"
 msgstr "该测验已过期！"
 
-#: ../admin/class-quiz-maker-admin.php:1795
+#: ../admin/class-quiz-maker-admin.php:1824
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:175
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:1090
 #: ../includes/lists/class-quiz-maker-quizes-list-table.php:696
@@ -10072,7 +10117,7 @@ msgid "Top"
 msgstr "顶部"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3344
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1600
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1610
 msgid "Top / Bottom"
 msgstr "顶部/底部"
 
@@ -10123,7 +10168,7 @@ msgstr "真"
 
 #: ../admin/class-quiz-maker-admin.php:275
 #: ../admin/partials/questions/actions/quiz-maker-questions-actions.php:177
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2273
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2283
 #: ../admin/partials/settings/quiz-maker-settings.php:26
 #: ../includes/lists/class-quiz-maker-questions-list-table.php:68
 msgid "True/False"
@@ -10162,10 +10207,10 @@ msgstr "未分类"
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3680
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3871
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:4062
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1707
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1833
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2000
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2168
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1717
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1843
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2010
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2178
 msgid "Underline"
 msgstr ""
 
@@ -10227,12 +10272,12 @@ msgid "Unread"
 msgstr "未读"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2857
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1409
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1419
 msgid "Unset"
 msgstr "取消设置"
 
-#: ../admin/class-quiz-maker-admin.php:711
-#: ../admin/class-quiz-maker-admin.php:5278
+#: ../admin/class-quiz-maker-admin.php:736
+#: ../admin/class-quiz-maker-admin.php:5307
 #: ../admin/partials/attributes/quiz-maker-attributes-display.php:55
 #: ../admin/partials/attributes/quiz-maker-attributes-display.php:78
 #: ../admin/partials/integrations/quiz-maker-integrations.php:91
@@ -10343,11 +10388,11 @@ msgstr "升级为开发者/代理商版本"
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3650
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3841
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:4032
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1212
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1688
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1816
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1973
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2141
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1222
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1698
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1826
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1983
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2151
 msgid "Uppercase"
 msgstr "大写"
 
@@ -10398,7 +10443,7 @@ msgid ""
 msgstr ""
 "使用此短代码在前端显示当前用户%s的%s付款历史。该短代码在一个地方显示测验名称、付款日期、测验金额和付款类型（PayPal或Stripe）表格。"
 
-#: ../admin/class-quiz-maker-admin.php:2201
+#: ../admin/class-quiz-maker-admin.php:2230
 msgid "User"
 msgstr ""
 
@@ -10406,9 +10451,9 @@ msgstr ""
 msgid "User answer explanation"
 msgstr "用户答案说明"
 
-#: ../admin/class-quiz-maker-admin.php:2385
-#: ../admin/class-quiz-maker-admin.php:2429
-#: ../admin/class-quiz-maker-admin.php:2450
+#: ../admin/class-quiz-maker-admin.php:2414
+#: ../admin/class-quiz-maker-admin.php:2458
+#: ../admin/class-quiz-maker-admin.php:2479
 msgid "User answered"
 msgstr "用户已回答"
 
@@ -10433,7 +10478,7 @@ msgid "User Dashboard Addon"
 msgstr ""
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:1537
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1041
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1051
 msgid "User Data"
 msgstr "用户数据"
 
@@ -10446,7 +10491,7 @@ msgstr "用户邮箱"
 msgid "User frontend dashboard"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:2194
+#: ../admin/class-quiz-maker-admin.php:2223
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:433
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:458
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:480
@@ -10463,13 +10508,13 @@ msgstr ""
 msgid "User ID"
 msgstr "用户ID"
 
-#: ../admin/class-quiz-maker-admin.php:2173
+#: ../admin/class-quiz-maker-admin.php:2202
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:8366
 #: ../admin/partials/settings/quiz-maker-settings.php:4637
 msgid "User Information"
 msgstr "用户资料"
 
-#: ../admin/class-quiz-maker-admin.php:2183
+#: ../admin/class-quiz-maker-admin.php:2212
 #: ../includes/lists/class-quiz-maker-all-reviews-list-table.php:486
 #: ../includes/lists/class-quiz-maker-results-list-table.php:705
 msgid "User IP"
@@ -10777,8 +10822,8 @@ msgstr ""
 msgid "Watch Video"
 msgstr "查看视频"
 
-#: ../admin/class-quiz-maker-admin.php:3726
-#: ../admin/class-quiz-maker-admin.php:3770
+#: ../admin/class-quiz-maker-admin.php:3755
+#: ../admin/class-quiz-maker-admin.php:3799
 #: ../admin/partials/features/quiz-maker-addons-display.php:22
 #: ../admin/partials/features/quiz-maker-addons-display.php:35
 #: ../admin/partials/features/quiz-maker-addons-display.php:48
@@ -10795,6 +10840,10 @@ msgstr "查看视频"
 #: ../admin/partials/features/quiz-maker-addons-display.php:194
 #: ../admin/partials/features/quiz-maker-addons-display.php:208
 msgid "Watch video"
+msgstr ""
+
+#: ../includes/class-quiz-maker-feedback.php:87
+msgid "Watu Quiz"
 msgstr ""
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:9441
@@ -10925,26 +10974,26 @@ msgstr "有评论"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2460
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2509
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1166
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1182
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1176
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1192
 msgid "With stripes"
 msgstr "带有条纹"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2461
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:2510
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1167
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1183
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1177
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:1193
 msgid "With stripes and animation"
 msgstr "带有条纹和动画效果"
 
-#: ../admin/class-quiz-maker-admin.php:2065
+#: ../admin/class-quiz-maker-admin.php:2094
 #, php-format
 msgid ""
 "With the excellent plugin Quiz Maker, you can %s export a Detailed report of "
 "the Individual Result %s with just a few clicks."
 msgstr "通过优秀的插件Quiz Maker，您可以%s仅需点击几下即可导出个体结果的详细报告%s。"
 
-#: ../admin/class-quiz-maker-admin.php:4961
+#: ../admin/class-quiz-maker-admin.php:4990
 msgid ""
 "With the FoxLMS plugin, you can create, sell, and organize courses, lessons, "
 "and quizzes, transforming your website into a dynamic e-learning platform."
@@ -11042,7 +11091,7 @@ msgstr "集成 WooCommerce"
 msgid "WordPress LMS Plugin"
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:5198
+#: ../admin/class-quiz-maker-admin.php:5227
 msgid "WordPress.org"
 msgstr ""
 
@@ -11050,7 +11099,7 @@ msgstr ""
 msgid "Words"
 msgstr "字"
 
-#: ../admin/class-quiz-maker-admin.php:3087
+#: ../admin/class-quiz-maker-admin.php:3116
 #, php-format
 msgid "Works version %s of "
 msgstr ""
@@ -11109,7 +11158,7 @@ msgid ""
 msgstr "在任何WordPress语言中编写所需的文本。它将在前端进行翻译。语言必须包含在ISO 639-1代码列中。"
 
 #: ../admin/partials/quizes/actions/quiz-maker-quizes-actions.php:3958
-#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2077
+#: ../admin/partials/quizes/quiz-maker-quizes-display.php:2087
 msgid "Wrong answer styles"
 msgstr ""
 
@@ -11145,7 +11194,7 @@ msgstr ""
 msgid "X profile or page link for showing after quiz finish."
 msgstr "测验完成后显示推特个人资料或者页面链接。"
 
-#: ../admin/class-quiz-maker-admin.php:2100
+#: ../admin/class-quiz-maker-admin.php:2129
 #: ../admin/partials/results/quiz-maker-all-reviews-display.php:157
 msgid "XLSX"
 msgstr "XLSX"
@@ -11271,7 +11320,7 @@ msgstr "您可以复制这些变量，并粘贴到测验设置的以下选项中
 msgid "You can enter your answer explanation"
 msgstr "您可以输入您的答案说明"
 
-#: ../admin/class-quiz-maker-admin.php:2072
+#: ../admin/class-quiz-maker-admin.php:2101
 #, php-format
 msgid ""
 "You can export detailed reports whether as a %s PDF file %s or as an %s XLSX "
@@ -11518,7 +11567,7 @@ msgid ""
 "end."
 msgstr ""
 
-#: ../admin/class-quiz-maker-admin.php:5230
+#: ../admin/class-quiz-maker-admin.php:5259
 #, php-format
 msgid "You've got %s quiz results!"
 msgstr "您得到了 %s 份测验结果！"
@@ -11568,7 +11617,7 @@ msgstr "YouTube链接"
 msgid "YouTube profile or page link for showing after quiz finish."
 msgstr "在测验结束后显示的YouTube个人资料或页面链接。"
 
-#: ../admin/class-quiz-maker-admin.php:4499
+#: ../admin/class-quiz-maker-admin.php:4528
 msgid "YouTube video tutorials"
 msgstr "YouTube 视频教程"
 

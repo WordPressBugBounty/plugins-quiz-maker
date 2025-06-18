@@ -1660,7 +1660,7 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                         <span><?php
                             echo (sprintf(
                                 /* translators: %s: opening and closing <a> HTML code  */
-                                wp_kses_post(__('Create a new category %s here %s', 'fox-lms')),
+                                wp_kses_post(__('Create a new category %s here %s', 'quiz-maker')),
                                 '<a href="'. $quiz_category_page_url .'" target="_blank">',
                                 '</a>'
                             )) ;

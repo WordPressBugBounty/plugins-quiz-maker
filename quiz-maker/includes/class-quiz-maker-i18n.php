@@ -46,7 +46,7 @@ class Quiz_Maker_i18n {
             $domain_path = path_join( WP_PLUGIN_DIR, "{$plugin}/languages" );
             $loaded = load_textdomain( $plugin, path_join( $domain_path, $mofile ) );
 
-            if ( ! $loaded ) { //else, check the installation language path first.
+            if ( ! $loaded ) { //else, check the installation language path.
                 $domain_path = path_join( WP_LANG_DIR, 'plugins' );
                 load_textdomain( $plugin, path_join( $domain_path, $mofile ) );
             }
