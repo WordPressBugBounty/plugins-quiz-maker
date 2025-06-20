@@ -1444,7 +1444,7 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
         <div class="ays-quiz-heading-box ays-quiz-heading-box-margin-top">
             <div class="ays-quiz-wordpress-user-manual-box">
                 <a href="https://www.youtube.com/watch?v=gKjzOsn_yDo" target="_blank" style="text-decoration: none;font-size: 13px;">
-                    <span><img src='<?php echo AYS_QUIZ_ADMIN_URL; ?>/images/icons/youtube-video-icon.svg' ></span>
+                    <span><img loading="lazy" src='<?php echo AYS_QUIZ_ADMIN_URL; ?>/images/icons/youtube-video-icon.svg' ></span>
                     <span style="margin-left: 3px; text-decoration: underline;"><?php echo esc_html__('Getting started', "quiz-maker"); ?></span>
                 </a>
                 <a href="https://quiz-plugin.com/docs/" target="_blank">
@@ -1600,7 +1600,7 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                         </p>
                         <div class="ays-quiz-image-container" style="<?php echo $style; ?>">
                             <span class="ays-remove-quiz-img"></span>
-                            <img src="<?php echo esc_url($quiz_image); ?>" id="ays-quiz-img"/>
+                            <img loading="lazy" src="<?php echo esc_url($quiz_image); ?>" id="ays-quiz-img"/>
                             <input type="hidden" name="ays_quiz_image" id="ays-quiz-image" value="<?php echo esc_url($quiz_image); ?>"/>
                         </div>
                     </div>
@@ -1874,37 +1874,37 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                     <div class="ays_theme_image_div col-sm-2 <?php echo ($quiz_theme == 'elegant_dark') ? 'ays_active_theme_image' : '' ?>" style="padding:0;">
                                         <label for="theme_elegant_dark" class="ays-quiz-theme-item">
                                             <p><?php echo esc_html__('Elegant Dark','quiz-maker')?></p>
-                                            <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL . '/images/themes/elegant_dark.webp' ); ?>" alt="Elegant Dark">
+                                            <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL . '/images/themes/elegant_dark.webp' ); ?>" alt="Elegant Dark">
                                         </label>
                                     </div>
                                     <div class="ays_theme_image_div col-sm-2 <?php echo ($quiz_theme == 'elegant_light') ? 'ays_active_theme_image' : '' ?>" style="padding:0;">
                                         <label for="theme_elegant_light" class="ays-quiz-theme-item">
                                             <p><?php echo esc_html__('Elegant Light','quiz-maker')?></p>
-                                            <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL . '/images/themes/elegant_light.webp' ); ?>" alt="Elegant Light">
+                                            <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL . '/images/themes/elegant_light.webp' ); ?>" alt="Elegant Light">
                                         </label>
                                     </div>
                                     <div class="ays_theme_image_div col-sm-2 <?php echo ($quiz_theme == 'classic_dark') ? 'ays_active_theme_image' : '' ?>" style="padding:0;">
                                         <label for="theme_classic_dark" class="ays-quiz-theme-item">
                                             <p><?php echo esc_html__('Classic Dark','quiz-maker')?></p>
-                                            <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL . '/images/themes/classic_dark.webp' ); ?>" alt="Classic Dark">
+                                            <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL . '/images/themes/classic_dark.webp' ); ?>" alt="Classic Dark">
                                         </label>
                                     </div>
                                     <div class="ays_theme_image_div col-sm-2 <?php echo ($quiz_theme == 'classic_light') ? 'ays_active_theme_image' : '' ?>" style="padding:0;">
                                         <label for="theme_classic_light" class="ays-quiz-theme-item">
                                             <p><?php echo esc_html__('Classic Light','quiz-maker')?></p>
-                                            <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL . '/images/themes/classic_light.webp' ); ?>" alt="Classic Light">
+                                            <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL . '/images/themes/classic_light.webp' ); ?>" alt="Classic Light">
                                         </label>
                                     </div>
                                     <div class="ays_theme_image_div col-sm-2 <?php echo ($quiz_theme == 'rect_dark') ? 'ays_active_theme_image' : '' ?>" style="padding:0;">
                                         <label for="theme_rect_dark" class="ays-quiz-theme-item">
                                             <p><?php echo esc_html__('Rect Dark','quiz-maker')?></p>
-                                            <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL . '/images/themes/rect_dark.webp' ); ?>" alt="Rect Dark" >
+                                            <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL . '/images/themes/rect_dark.webp' ); ?>" alt="Rect Dark" >
                                         </label>
                                     </div>
                                     <div class="ays_theme_image_div col-sm-2 <?php echo ($quiz_theme == 'rect_light') ? 'ays_active_theme_image' : '' ?>" style="padding:0;">
                                         <label for="theme_rect_light" class="ays-quiz-theme-item">
                                             <p><?php echo esc_html__('Rect Light','quiz-maker')?></p>
-                                            <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL . '/images/themes/rect_light.webp' ); ?>" alt="Rect Light" >
+                                            <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL . '/images/themes/rect_light.webp' ); ?>" alt="Rect Light" >
                                         </label>
                                     </div>
                                 </div>
@@ -1918,21 +1918,21 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                             <div class="col-sm-2 ays_theme_image_div" style="padding:0;">
                                                 <label class="ays-quiz-theme-item ays-disable-setting">
                                                     <p><?php echo esc_html__('Modern Light','quiz-maker')?></p>
-                                                    <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL . '/images/themes/modern_light.webp' ); ?>" alt="Modern Light"/>
+                                                    <img loading="lazy" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL . '/images/themes/modern_light.webp' ); ?>" alt="Modern Light"/>
                                                 </label>
                                             </div>
                                             <div class="col-sm-2 ays_theme_image_div" style="padding:0;">
                                                 <label class="ays-quiz-theme-item ays-disable-setting">
                                                     <p><?php echo esc_html__('Modern Dark','quiz-maker')?></p>
-                                                    <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL . '/images/themes/modern_dark.webp'); ?>" alt="Modern Dark"/>
+                                                    <img loading="lazy" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL . '/images/themes/modern_dark.webp'); ?>" alt="Modern Dark"/>
                                                 </label>
                                             </div>
                                         </div>
                                         <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                             <div class="ays-quiz-new-upgrade-button-box">
                                                 <div>
-                                                    <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' );?>">
-                                                    <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg' ); ?>" class="ays-quiz-new-upgrade-button-hover">
+                                                    <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' );?>">
+                                                    <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg' ); ?>" class="ays-quiz-new-upgrade-button-hover">
                                                 </div>
                                                 <div class="ays-quiz-new-upgrade-button"><?php echo esc_html__("Upgrade", "quiz-maker"); ?></div>
                                             </div>
@@ -2225,7 +2225,7 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                                 <i class="ays_fa ays_fa_pencil_square_o"></i>
                                             </span>
                                             <span class="ays-remove-quiz-bg-img"></span>
-                                            <img src="<?php echo $quiz_bg_image; ?>" id="ays-quiz-bg-img"/>
+                                            <img loading="lazy" src="<?php echo $quiz_bg_image; ?>" id="ays-quiz-bg-img"/>
                                         </div>
                                         <hr/>
                                         <div class="form-group row">
@@ -3057,8 +3057,8 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                             <div class="col-sm-7 ays_divider_left">
                                                 <label class="ays_quiz_rw_icon ays_quiz_loader">
                                                     <input name="ays_ans_right_wrong_icon" type="radio" value="default" <?php echo $ans_right_wrong_icon == 'default' ? 'checked' : ''; ?>>
-                                                    <img class="right_icon" src="<?php echo AYS_QUIZ_PUBLIC_URL; ?>/images/correct.png">
-                                                    <img class="wrong_icon" src="<?php echo AYS_QUIZ_PUBLIC_URL; ?>/images/wrong.png">
+                                                    <img loading="lazy" class="right_icon" src="<?php echo AYS_QUIZ_PUBLIC_URL; ?>/images/correct.png">
+                                                    <img loading="lazy" class="wrong_icon" src="<?php echo AYS_QUIZ_PUBLIC_URL; ?>/images/wrong.png">
                                                 </label>
                                                 <?php
                                                     for($i = 1; $i <= 10; $i++):
@@ -3072,8 +3072,8 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                                 ?>
                                                 <label class="ays_quiz_rw_icon ays_quiz_loader">
                                                     <input name="ays_ans_right_wrong_icon" type="radio" value="style-<?php echo $i; ?>" <?php echo $ans_right_wrong_icon == 'style-'.$i ? 'checked' : ''; ?>>
-                                                    <img class="right_icon <?php echo $quiz_rw_answers_img_class; ?>" src="<?php echo AYS_QUIZ_PUBLIC_URL; ?>/images/<?php echo $right_style_name; ?>.png">
-                                                    <img class="wrong_icon <?php echo $quiz_rw_answers_img_class; ?>" src="<?php echo AYS_QUIZ_PUBLIC_URL; ?>/images/<?php echo $wrong_style_name; ?>.png">
+                                                    <img loading="lazy" class="right_icon <?php echo $quiz_rw_answers_img_class; ?>" src="<?php echo AYS_QUIZ_PUBLIC_URL; ?>/images/<?php echo $right_style_name; ?>.png">
+                                                    <img loading="lazy" class="wrong_icon <?php echo $quiz_rw_answers_img_class; ?>" src="<?php echo AYS_QUIZ_PUBLIC_URL; ?>/images/<?php echo $wrong_style_name; ?>.png">
                                                 </label>
                                                 <?php
                                                     endfor;
@@ -3176,8 +3176,8 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                                 <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                                     <div class="ays-quiz-new-upgrade-button-box">
                                                         <div>
-                                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
+                                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
                                                         </div>
                                                         <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
                                                     </div>
@@ -3192,7 +3192,7 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                     <div class="ays-quiz-live-container ays-quiz-live-container-1">
                                         <div class="step active-step">
                                             <div class="ays-abs-fs">
-                                                <img src="" alt="Ays Question Image" class="ays-quiz-live-image">
+                                                <img loading="lazy" src="" alt="Ays Question Image" class="ays-quiz-live-image">
                                                 <p class="ays-fs-title ays-quiz-live-title"></p>
                                                 <p class="ays-fs-subtitle ays-quiz-live-subtitle"></p>
                                                 <input type="hidden" name="ays_quiz_id" value="2">
@@ -3206,7 +3206,7 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                     <div class="ays-quiz-live-container ays-quiz-live-container-2" style="display:none;">
                                         <div class="step active-step">
                                             <div class="ays-abs-fs">
-                                                <img src="" alt="Ays Question Image" class="ays-quiz-live-image">
+                                                <img loading="lazy" src="" alt="Ays Question Image" class="ays-quiz-live-image">
                                                 <p class="ays-fs-title ays-quiz-live-title"></p>
                                                 <p class="ays-fs-subtitle ays-quiz-live-subtitle"></p>
                                                 <input type="hidden" name="ays_quiz_id" value="2">
@@ -4245,8 +4245,8 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                         <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                             <div class="ays-quiz-new-upgrade-button-box">
                                                 <div>
-                                                    <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                                    <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                                    <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
+                                                    <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
                                                 </div>
                                                 <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade to Developer/Agency", "quiz-maker"); ?></div>
                                             </div>
@@ -4529,8 +4529,8 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                         <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                             <div class="ays-quiz-new-upgrade-button-box">
                                                 <div>
-                                                    <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                                    <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                                    <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
+                                                    <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
                                                 </div>
                                                 <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
                                             </div>
@@ -4696,8 +4696,8 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                         <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                             <div class="ays-quiz-new-upgrade-button-box">
                                                 <div>
-                                                    <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                                    <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                                    <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
+                                                    <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
                                                 </div>
                                                 <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
                                             </div>
@@ -4767,8 +4767,8 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                 <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
                                         </div>
                                         <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
                                     </div>
@@ -4833,16 +4833,16 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                 <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-navigation-bar" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
                                         </div>
                                         <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
                                     </div>
                                 </a>
                                 <div class="ays-quiz-new-watch-video-button-box">
                                     <div>
-                                        <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24.svg'?>">
-                                        <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg'?>" class="ays-quiz-new-watch-video-button-hover">
+                                        <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24.svg'?>">
+                                        <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg'?>" class="ays-quiz-new-watch-video-button-hover">
                                     </div>
                                     <div class="ays-quiz-new-watch-video-button"><?php echo __("Watch Video", "quiz-maker"); ?></div>
                                 </div>
@@ -5007,8 +5007,8 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                 <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
                                         </div>
                                         <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
                                     </div>
@@ -5088,8 +5088,8 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                 <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
                                         </div>
                                         <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade to Developer/Agency", "quiz-maker"); ?></div>
                                     </div>
@@ -5164,8 +5164,8 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                 <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
                                         </div>
                                         <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
                                     </div>
@@ -5204,8 +5204,8 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                 <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
                                         </div>
                                         <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
                                     </div>
@@ -5396,8 +5396,8 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                 <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
                                         </div>
                                         <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
                                     </div>
@@ -5572,8 +5572,8 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                 <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
                                         </div>
                                         <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
                                     </div>
@@ -5906,8 +5906,8 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                 <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
                                         </div>
                                         <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
                                     </div>
@@ -6140,8 +6140,8 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                 <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
                                         </div>
                                         <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade to Developer/Agency", "quiz-maker"); ?></div>
                                     </div>
@@ -6185,8 +6185,8 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                 <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
                                         </div>
                                         <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
                                     </div>
@@ -6231,8 +6231,8 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                 <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
                                         </div>
                                         <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
                                     </div>
@@ -6324,16 +6324,16 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                 <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-calculate-score-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
                                         </div>
                                         <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
                                     </div>
                                 </a>
                                 <div class="ays-quiz-new-watch-video-button-box">
                                     <div>
-                                        <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24.svg'?>">
-                                        <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg'?>" class="ays-quiz-new-watch-video-button-hover">
+                                        <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24.svg'?>">
+                                        <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg'?>" class="ays-quiz-new-watch-video-button-hover">
                                     </div>
                                     <div class="ays-quiz-new-watch-video-button"><?php echo __("Watch Video", "quiz-maker"); ?></div>
                                 </div>
@@ -6394,8 +6394,8 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                         <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                             <div class="ays-quiz-new-upgrade-button-box">
                                                 <div>
-                                                    <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                                    <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                                    <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
+                                                    <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
                                                 </div>
                                                 <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
                                             </div>
@@ -6556,8 +6556,8 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                         <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                             <div class="ays-quiz-new-upgrade-button-box">
                                                 <div>
-                                                    <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                                    <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                                    <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
+                                                    <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
                                                 </div>
                                                 <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
                                             </div>
@@ -6663,7 +6663,7 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                                 <i class="ays_fa ays_fa_pencil_square_o"></i>
                                             </span>
                                             <span class="add_quiz_loader_custom_gif ays-remove-quiz-loader-custom-gif"></span>
-                                            <img  src="<?php echo $quiz_loader_custom_gif; ?>" class="img_quiz_loader_custom_gif"/>
+                                            <img loading="lazy"  src="<?php echo $quiz_loader_custom_gif; ?>" class="img_quiz_loader_custom_gif"/>
                                         </div>
                                     </div>
                                     <div class="ays_toggle_loader_target ays_gif_loader_width_container <?php echo ($quiz_loader == 'custom_gif') ? 'display_flex' : 'display_none'; ?>" data-type="gif" style="margin: 10px;">
@@ -7438,16 +7438,16 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                 <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-intervals-table-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
                                         </div>
                                         <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
                                     </div>
                                 </a>
                                 <div class="ays-quiz-new-watch-video-button-box">
                                     <div>
-                                        <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24.svg'?>">
-                                        <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg'?>" class="ays-quiz-new-watch-video-button-hover">
+                                        <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24.svg'?>">
+                                        <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg'?>" class="ays-quiz-new-watch-video-button-hover">
                                     </div>
                                     <div class="ays-quiz-new-watch-video-button"><?php echo __("Watch Video", "quiz-maker"); ?></div>
                                 </div>
@@ -7455,16 +7455,16 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                 <div class="ays-quiz-center-big-main-button-box ays-quiz-new-big-button-flex">
                                     <div class="ays-quiz-center-big-watch-video-button-box ays-quiz-big-upgrade-margin-right-10">
                                         <div class="ays-quiz-center-new-watch-video-demo-button">
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24.svg'?>" class="ays-quiz-new-button-img-hide">
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg'?>" class="ays-quiz-new-watch-video-button-hover">
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24.svg'?>" class="ays-quiz-new-button-img-hide">
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg'?>" class="ays-quiz-new-watch-video-button-hover">
                                             <?php echo __("Watch Video", "quiz-maker"); ?>
                                         </div>
                                     </div>
                                     <div class="ays-quiz-center-big-upgrade-button-box">
                                         <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-intervals-table-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                             <div class="ays-quiz-center-new-big-upgrade-button">
-                                                <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>" class="ays-quiz-new-button-img-hide">
-                                                <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">  
+                                                <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>" class="ays-quiz-new-button-img-hide">
+                                                <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">  
                                                 <?php echo __("Upgrade", "quiz-maker"); ?>
                                             </div>
                                         </a>
@@ -7554,16 +7554,16 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                 <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-top-keywords-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
                                         </div>
                                         <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
                                     </div>
                                 </a>
                                 <div class="ays-quiz-new-watch-video-button-box">
                                     <div>
-                                        <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24.svg'?>">
-                                        <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg'?>" class="ays-quiz-new-watch-video-button-hover">
+                                        <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24.svg'?>">
+                                        <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg'?>" class="ays-quiz-new-watch-video-button-hover">
                                     </div>
                                     <div class="ays-quiz-new-watch-video-button"><?php echo __("Watch Video", "quiz-maker"); ?></div>
                                 </div>
@@ -7616,16 +7616,16 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                 <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-quiz-coupon" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
                                         </div>
                                         <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
                                     </div>
                                 </a>
                                 <div class="ays-quiz-new-watch-video-button-box">
                                     <div>
-                                        <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24.svg'?>">
-                                        <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg'?>" class="ays-quiz-new-watch-video-button-hover">
+                                        <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24.svg'?>">
+                                        <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg'?>" class="ays-quiz-new-watch-video-button-hover">
                                     </div>
                                     <div class="ays-quiz-new-watch-video-button"><?php echo __("Watch Video", "quiz-maker"); ?></div>
                                 </div>
@@ -7778,16 +7778,16 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                         <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-attempts-count" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                             <div class="ays-quiz-new-upgrade-button-box">
                                                 <div>
-                                                    <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                                    <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                                    <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
+                                                    <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
                                                 </div>
                                                 <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
                                             </div>
                                         </a>
                                         <div class="ays-quiz-new-watch-video-button-box">
                                             <div>
-                                                <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24.svg'?>">
-                                                <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg'?>" class="ays-quiz-new-watch-video-button-hover">
+                                                <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24.svg'?>">
+                                                <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg'?>" class="ays-quiz-new-watch-video-button-hover">
                                             </div>
                                             <div class="ays-quiz-new-watch-video-button"><?php echo __("Watch Video", "quiz-maker"); ?></div>
                                         </div>
@@ -7917,16 +7917,16 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                             <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-extra-security" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                                 <div class="ays-quiz-new-upgrade-button-box">
                                                     <div>
-                                                        <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                                        <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                                        <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
+                                                        <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
                                                     </div>
                                                     <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
                                                 </div>
                                             </a>
                                             <div class="ays-quiz-new-watch-video-button-box">
                                                 <div>
-                                                    <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24.svg'?>">
-                                                    <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg'?>" class="ays-quiz-new-watch-video-button-hover">
+                                                    <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24.svg'?>">
+                                                    <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg'?>" class="ays-quiz-new-watch-video-button-hover">
                                                 </div>
                                                 <div class="ays-quiz-new-watch-video-button"><?php echo __("Watch Video", "quiz-maker"); ?></div>
                                             </div>
@@ -8134,32 +8134,32 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                 <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-only-selected-users" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
                                         </div>
                                         <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
                                     </div>
                                 </a>
                                 <div class="ays-quiz-new-watch-video-button-box">
                                     <div>
-                                        <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24.svg'?>">
-                                        <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg'?>" class="ays-quiz-new-watch-video-button-hover">
+                                        <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24.svg'?>">
+                                        <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg'?>" class="ays-quiz-new-watch-video-button-hover">
                                     </div>
                                     <div class="ays-quiz-new-watch-video-button"><?php echo __("Watch Video", "quiz-maker"); ?></div>
                                 </div>
                                 <div class="ays-quiz-center-big-main-button-box ays-quiz-new-big-button-flex">
                                     <div class="ays-quiz-center-big-watch-video-button-box ays-quiz-big-upgrade-margin-right-10">
                                         <div class="ays-quiz-center-new-watch-video-demo-button">
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24.svg'?>" class="ays-quiz-new-button-img-hide">
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg'?>" class="ays-quiz-new-watch-video-button-hover">
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24.svg'?>" class="ays-quiz-new-button-img-hide">
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg'?>" class="ays-quiz-new-watch-video-button-hover">
                                             <?php echo __("Watch Video", "quiz-maker"); ?>
                                         </div>
                                     </div>
                                     <div class="ays-quiz-center-big-upgrade-button-box">
                                         <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-only-selected-users" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                             <div class="ays-quiz-center-new-big-upgrade-button">
-                                                <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>" class="ays-quiz-new-button-img-hide">
-                                                <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">  
+                                                <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>" class="ays-quiz-new-button-img-hide">
+                                                <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">  
                                                 <?php echo __("Upgrade", "quiz-maker"); ?>
                                             </div>
                                         </a>
@@ -8266,8 +8266,8 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                         <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                             <div class="ays-quiz-new-upgrade-button-box">
                                                 <div>
-                                                    <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                                    <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                                    <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
+                                                    <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
                                                 </div>
                                                 <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
                                             </div>
@@ -8498,16 +8498,16 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                             <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-custom-field-option-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                 <div class="ays-quiz-new-upgrade-button-box">
                                     <div>
-                                        <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                        <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                        <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
+                                        <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
                                     </div>
                                     <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
                                 </div>
                             </a>
                             <div class="ays-quiz-new-watch-video-button-box">
                                 <div>
-                                    <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24.svg'?>">
-                                    <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg'?>" class="ays-quiz-new-watch-video-button-hover">
+                                    <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24.svg'?>">
+                                    <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg'?>" class="ays-quiz-new-watch-video-button-hover">
                                 </div>
                                 <div class="ays-quiz-new-watch-video-button"><?php echo __("Watch Video", "quiz-maker"); ?></div>
                             </div>
@@ -8685,32 +8685,32 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                 <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-send-mail-to-user-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
-                                            <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
-                                            <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg' ); ?>" class="ays-quiz-new-upgrade-button-hover">
+                                            <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
+                                            <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg' ); ?>" class="ays-quiz-new-upgrade-button-hover">
                                         </div>
                                         <div class="ays-quiz-new-upgrade-button"><?php echo esc_html__("Upgrade", "quiz-maker"); ?></div>
                                     </div>
                                 </a>
                                 <div class="ays-quiz-new-watch-video-button-box">
                                     <div>
-                                        <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24.svg' ); ?>">
-                                        <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg' ); ?>" class="ays-quiz-new-watch-video-button-hover">
+                                        <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24.svg' ); ?>">
+                                        <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg' ); ?>" class="ays-quiz-new-watch-video-button-hover">
                                     </div>
                                     <div class="ays-quiz-new-watch-video-button"><?php echo esc_html__("Watch Video", "quiz-maker"); ?></div>
                                 </div>
                                 <div class="ays-quiz-center-big-main-button-box ays-quiz-new-big-button-flex">
                                     <div class="ays-quiz-center-big-watch-video-button-box ays-quiz-big-upgrade-margin-right-10">
                                         <div class="ays-quiz-center-new-watch-video-demo-button">
-                                            <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24.svg'); ?>" class="ays-quiz-new-button-img-hide">
-                                            <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg'); ?>" class="ays-quiz-new-watch-video-button-hover">
+                                            <img loading="lazy" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24.svg'); ?>" class="ays-quiz-new-button-img-hide">
+                                            <img loading="lazy" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg'); ?>" class="ays-quiz-new-watch-video-button-hover">
                                             <?php echo esc_html__("Watch Video", "quiz-maker"); ?>
                                         </div>
                                     </div>
                                     <div class="ays-quiz-center-big-upgrade-button-box">
                                         <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-send-mail-to-user-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                             <div class="ays-quiz-center-new-big-upgrade-button">
-                                                <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>" class="ays-quiz-new-button-img-hide">
-                                                <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'); ?>" class="ays-quiz-new-upgrade-button-hover">  
+                                                <img loading="lazy" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>" class="ays-quiz-new-button-img-hide">
+                                                <img loading="lazy" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'); ?>" class="ays-quiz-new-upgrade-button-hover">  
                                                 <?php echo esc_html__("Upgrade", "quiz-maker"); ?>
                                             </div>
                                         </a>
@@ -8824,32 +8824,32 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                 <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-send-certificate-to-user-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
                                         </div>
                                         <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
                                     </div>
                                 </a>
                                 <div class="ays-quiz-new-watch-video-button-box">
                                     <div>
-                                        <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24.svg'?>">
-                                        <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg'?>" class="ays-quiz-new-watch-video-button-hover">
+                                        <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24.svg'?>">
+                                        <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg'?>" class="ays-quiz-new-watch-video-button-hover">
                                     </div>
                                     <div class="ays-quiz-new-watch-video-button"><?php echo __("Watch Video", "quiz-maker"); ?></div>
                                 </div>
                                 <div class="ays-quiz-center-big-main-button-box ays-quiz-new-big-button-flex">
                                     <div class="ays-quiz-center-big-watch-video-button-box ays-quiz-big-upgrade-margin-right-10">
                                         <div class="ays-quiz-center-new-watch-video-demo-button">
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24.svg'?>" class="ays-quiz-new-button-img-hide">
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg'?>" class="ays-quiz-new-watch-video-button-hover">
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24.svg'?>" class="ays-quiz-new-button-img-hide">
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg'?>" class="ays-quiz-new-watch-video-button-hover">
                                             <?php echo __("Watch Video", "quiz-maker"); ?>
                                         </div>
                                     </div>
                                     <div class="ays-quiz-center-big-upgrade-button-box">
                                         <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-send-certificate-to-user-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                             <div class="ays-quiz-center-new-big-upgrade-button">
-                                                <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>" class="ays-quiz-new-button-img-hide">
-                                                <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">  
+                                                <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>" class="ays-quiz-new-button-img-hide">
+                                                <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">  
                                                 <?php echo __("Upgrade", "quiz-maker"); ?>
                                             </div>
                                         </a>
@@ -9055,32 +9055,32 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                 <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-send-mail-to-admin-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
                                         </div>
                                         <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
                                     </div>
                                 </a>
                                 <div class="ays-quiz-new-watch-video-button-box">
                                     <div>
-                                        <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24.svg'?>">
-                                        <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg'?>" class="ays-quiz-new-watch-video-button-hover">
+                                        <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24.svg'?>">
+                                        <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg'?>" class="ays-quiz-new-watch-video-button-hover">
                                     </div>
                                     <div class="ays-quiz-new-watch-video-button"><?php echo __("Watch Video", "quiz-maker"); ?></div>
                                 </div>
                                 <div class="ays-quiz-center-big-main-button-box ays-quiz-new-big-button-flex">
                                     <div class="ays-quiz-center-big-watch-video-button-box ays-quiz-big-upgrade-margin-right-10">
                                         <div class="ays-quiz-center-new-watch-video-demo-button">
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24.svg'?>" class="ays-quiz-new-button-img-hide">
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg'?>" class="ays-quiz-new-watch-video-button-hover">
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24.svg'?>" class="ays-quiz-new-button-img-hide">
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg'?>" class="ays-quiz-new-watch-video-button-hover">
                                             <?php echo __("Watch Video", "quiz-maker"); ?>
                                         </div>
                                     </div>
                                     <div class="ays-quiz-center-big-upgrade-button-box">
                                         <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-send-mail-to-admin-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                             <div class="ays-quiz-center-new-big-upgrade-button">
-                                                <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>" class="ays-quiz-new-button-img-hide">
-                                                <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">  
+                                                <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>" class="ays-quiz-new-button-img-hide">
+                                                <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">  
                                                 <?php echo __("Upgrade", "quiz-maker"); ?>
                                             </div>
                                         </a>
@@ -9111,7 +9111,7 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                     <div class="ays-quiz-accordion-options-box">
                         <fieldset>
                             <legend>
-                                <img class="ays_integration_logo" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL); ?>/images/integrations/mailchimp_logo.png" alt="">
+                                <img loading="lazy" class="ays_integration_logo" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL); ?>/images/integrations/mailchimp_logo.png" alt="">
                                 <h5><?php echo esc_html__('MailChimp Settings','quiz-maker')?></h5>
                             </legend>
                             <div class="form-group row">
@@ -9166,8 +9166,8 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                     <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
-                                                <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
-                                                <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'); ?>" class="ays-quiz-new-upgrade-button-hover">
+                                                <img loading="lazy" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
+                                                <img loading="lazy" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'); ?>" class="ays-quiz-new-upgrade-button-hover">
                                             </div>
                                             <div class="ays-quiz-new-upgrade-button"><?php echo esc_html__("Upgrade", "quiz-maker"); ?></div>
                                         </div>
@@ -9178,7 +9178,7 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                         <hr/>
                         <fieldset>
                             <legend>
-                                <img class="ays_integration_logo" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL); ?>/images/integrations/paypal_logo.png" alt="">
+                                <img loading="lazy" class="ays_integration_logo" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL); ?>/images/integrations/paypal_logo.png" alt="">
                                 <h5><?php echo esc_html__('PayPal Settings','quiz-maker')?></h5>
                             </legend>                    
                             <div class="form-group row">
@@ -9253,8 +9253,8 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                     <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
-                                                <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
-                                                <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'); ?>" class="ays-quiz-new-upgrade-button-hover">
+                                                <img loading="lazy" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
+                                                <img loading="lazy" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'); ?>" class="ays-quiz-new-upgrade-button-hover">
                                             </div>
                                             <div class="ays-quiz-new-upgrade-button"><?php echo esc_html__("Upgrade to Developer/Agency", "quiz-maker"); ?></div>
                                         </div>
@@ -9265,7 +9265,7 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                         <hr/>
                         <fieldset>
                             <legend>
-                                <img class="ays_integration_logo" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL); ?>/images/integrations/stripe_logo.png" alt="">
+                                <img loading="lazy" class="ays_integration_logo" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL); ?>/images/integrations/stripe_logo.png" alt="">
                                 <h5><?php echo esc_html__('Stripe Settings','quiz-maker')?></h5>
                             </legend>
                             <div class="col-sm-12 only_pro" style="padding:20px;">
@@ -9330,8 +9330,8 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                 <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
-                                            <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
-                                            <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'); ?>" class="ays-quiz-new-upgrade-button-hover">
+                                            <img loading="lazy" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
+                                            <img loading="lazy" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'); ?>" class="ays-quiz-new-upgrade-button-hover">
                                         </div>
                                         <div class="ays-quiz-new-upgrade-button"><?php echo esc_html__("Upgrade to Developer/Agency", "quiz-maker"); ?></div>
                                     </div>
@@ -9341,7 +9341,7 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                         <hr/>
                         <fieldset>
                             <legend>
-                                <img class="ays_integration_logo" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL); ?>/images/integrations/recaptcha_logo.png" alt="">
+                                <img loading="lazy" class="ays_integration_logo" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL); ?>/images/integrations/recaptcha_logo.png" alt="">
                                 <h5><?php echo esc_html__('reCAPTCHA Settings','quiz-maker')?></h5>
                             </legend>
                             <div class="col-sm-12 only_pro" style="padding:20px;">
@@ -9359,8 +9359,8 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                 <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
-                                            <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
-                                            <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'); ?>" class="ays-quiz-new-upgrade-button-hover">
+                                            <img loading="lazy" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
+                                            <img loading="lazy" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'); ?>" class="ays-quiz-new-upgrade-button-hover">
                                         </div>
                                         <div class="ays-quiz-new-upgrade-button"><?php echo esc_html__("Upgrade to Developer/Agency", "quiz-maker"); ?></div>
                                     </div>
@@ -9370,7 +9370,7 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                         <hr/>
                         <fieldset>
                             <legend>                        
-                                <img class="ays_integration_logo" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL); ?>/images/integrations/campaignmonitor_logo.png" alt="">
+                                <img loading="lazy" class="ays_integration_logo" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL); ?>/images/integrations/campaignmonitor_logo.png" alt="">
                                 <h5><?php echo esc_html__('Campaign Monitor Settings', 'quiz-maker') ?></h5>
                             </legend>
                             <div class="form-group row">
@@ -9404,8 +9404,8 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                     <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
-                                                <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
-                                                <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'); ?>" class="ays-quiz-new-upgrade-button-hover">
+                                                <img loading="lazy" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
+                                                <img loading="lazy" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'); ?>" class="ays-quiz-new-upgrade-button-hover">
                                             </div>
                                             <div class="ays-quiz-new-upgrade-button"><?php echo esc_html__("Upgrade", "quiz-maker"); ?></div>
                                         </div>
@@ -9416,7 +9416,7 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                         <hr/>                
                         <fieldset>
                             <legend>
-                                <img class="ays_integration_logo" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL); ?>/images/integrations/zapier_logo.png" alt="">
+                                <img loading="lazy" class="ays_integration_logo" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL); ?>/images/integrations/zapier_logo.png" alt="">
                                 <h5><?php echo esc_html__('Zapier Integration Settings', 'quiz-maker') ?></h5>
                             </legend>
                             <div class="form-group row">
@@ -9451,8 +9451,8 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                     <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
-                                                <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
-                                                <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'); ?>" class="ays-quiz-new-upgrade-button-hover">
+                                                <img loading="lazy" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
+                                                <img loading="lazy" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'); ?>" class="ays-quiz-new-upgrade-button-hover">
                                             </div>
                                             <div class="ays-quiz-new-upgrade-button"><?php echo esc_html__("Upgrade", "quiz-maker"); ?></div>
                                         </div>
@@ -9463,7 +9463,7 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                         <hr/>                
                         <fieldset>
                             <legend>
-                                <img class="ays_integration_logo" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL); ?>/images/integrations/activecampaign_logo.png" alt="">
+                                <img loading="lazy" class="ays_integration_logo" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL); ?>/images/integrations/activecampaign_logo.png" alt="">
                                 <h5><?php echo esc_html__('ActiveCampaign Settings', 'quiz-maker') ?></h5>
                             </legend>
                             <div class="form-group row">
@@ -9512,8 +9512,8 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                     <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
-                                                <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
-                                                <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'); ?>" class="ays-quiz-new-upgrade-button-hover">
+                                                <img loading="lazy" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
+                                                <img loading="lazy" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'); ?>" class="ays-quiz-new-upgrade-button-hover">
                                             </div>
                                             <div class="ays-quiz-new-upgrade-button"><?php echo esc_html__("Upgrade", "quiz-maker"); ?></div>
                                         </div>
@@ -9524,7 +9524,7 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                         <hr/>
                         <fieldset>
                             <legend>
-                                <img class="ays_integration_logo" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL); ?>/images/integrations/slack_logo.png" alt="">
+                                <img loading="lazy" class="ays_integration_logo" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL); ?>/images/integrations/slack_logo.png" alt="">
                                 <h5><?php echo esc_html__('Slack Settings', 'quiz-maker'); ?></h5>
                             </legend>
                             <div class="form-group row">
@@ -9558,8 +9558,8 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                     <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
-                                                <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
-                                                <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'); ?>" class="ays-quiz-new-upgrade-button-hover">
+                                                <img loading="lazy" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
+                                                <img loading="lazy" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'); ?>" class="ays-quiz-new-upgrade-button-hover">
                                             </div>
                                             <div class="ays-quiz-new-upgrade-button"><?php echo esc_html__("Upgrade", "quiz-maker"); ?></div>
                                         </div>
@@ -9570,7 +9570,7 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                         <hr/>
                         <fieldset>
                             <legend>
-                                <img class="ays_integration_logo" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL); ?>/images/integrations/sheets_logo.png" alt="">
+                                <img loading="lazy" class="ays_integration_logo" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL); ?>/images/integrations/sheets_logo.png" alt="">
                                 <h5><?php echo esc_html__('Google Sheet Settings', 'quiz-maker'); ?></h5>
                             </legend>
                             <hr/>
@@ -9592,8 +9592,8 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                     <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
-                                                <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
-                                                <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'); ?>" class="ays-quiz-new-upgrade-button-hover">
+                                                <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
+                                                <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'); ?>" class="ays-quiz-new-upgrade-button-hover">
                                             </div>
                                             <div class="ays-quiz-new-upgrade-button"><?php echo esc_html__("Upgrade", "quiz-maker"); ?></div>
                                         </div>
@@ -9604,7 +9604,7 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                         <hr/>
                         <fieldset>
                             <legend>                        
-                                <img class="ays_integration_logo" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL); ?>/images/integrations/mad-mimi-logo.png" alt="">
+                                <img loading="lazy" class="ays_integration_logo" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL); ?>/images/integrations/mad-mimi-logo.png" alt="">
                                 <h5><?php echo esc_html__('Mad Mimi Settings', 'quiz-maker'); ?></h5>
                             </legend>
                             <div class="form-group row">
@@ -9634,8 +9634,8 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                     <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
-                                                <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
-                                                <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'); ?>" class="ays-quiz-new-upgrade-button-hover">
+                                                <img loading="lazy" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
+                                                <img loading="lazy" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'); ?>" class="ays-quiz-new-upgrade-button-hover">
                                             </div>
                                             <div class="ays-quiz-new-upgrade-button"><?php echo esc_html__("Upgrade", "quiz-maker"); ?></div>
                                         </div>
@@ -9646,7 +9646,7 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                         <hr/>
                         <fieldset>
                             <legend>                        
-                                <img class="ays_integration_logo" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL); ?>/images/integrations/convertkit_logo.png" alt="">
+                                <img loading="lazy" class="ays_integration_logo" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL); ?>/images/integrations/convertkit_logo.png" alt="">
                                 <h5><?php echo esc_html__('ConvertKit Settings', 'quiz-maker'); ?></h5>
                             </legend>
                             <div class="form-group row">
@@ -9676,8 +9676,8 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                     <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
-                                                <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg');?>">
-                                                <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'); ?>" class="ays-quiz-new-upgrade-button-hover">
+                                                <img loading="lazy" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg');?>">
+                                                <img loading="lazy" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'); ?>" class="ays-quiz-new-upgrade-button-hover">
                                             </div>
                                             <div class="ays-quiz-new-upgrade-button"><?php echo esc_html__("Upgrade", "quiz-maker"); ?></div>
                                         </div>
@@ -9688,7 +9688,7 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                         <hr/>
                         <fieldset>
                             <legend>                        
-                                <img class="ays_integration_logo" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL); ?>/images/integrations/get_response.png" alt="">
+                                <img loading="lazy" class="ays_integration_logo" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL); ?>/images/integrations/get_response.png" alt="">
                                 <h5><?php echo esc_html__('GetResponse Settings', 'quiz-maker'); ?></h5>
                             </legend>
                             <div class="form-group row">
@@ -9717,8 +9717,8 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                     <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
-                                                <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
-                                                <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg' ); ?>" class="ays-quiz-new-upgrade-button-hover">
+                                                <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
+                                                <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg' ); ?>" class="ays-quiz-new-upgrade-button-hover">
                                             </div>
                                             <div class="ays-quiz-new-upgrade-button"><?php echo esc_html__("Upgrade", "quiz-maker"); ?></div>
                                         </div>
@@ -9859,7 +9859,7 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
             <div class="ays-modal-content">
                 <form method="post" id="ays_add_question_rows">
                     <div class="ays-quiz-preloader">
-                        <img class="ays-quiz-preloader-image" src="<?php echo AYS_QUIZ_ADMIN_URL; ?>/images/loaders/cogs.svg">
+                        <img loading="lazy" class="ays-quiz-preloader-image" src="<?php echo AYS_QUIZ_ADMIN_URL; ?>/images/loaders/cogs.svg">
                     </div>
                     <div class="ays-modal-header">
                         <span class="ays-close">&times;</span>
@@ -9876,7 +9876,7 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                         </span>
                         <div class="ays-quiz-add-question-filter-box">
                             <div class="ays-quiz-add-question-filter" id="ays-quiz-add-question-filter">
-                                <img src="<?php echo AYS_QUIZ_ADMIN_URL . '/images/icons/filter.svg' ?>" style="width: 20px;">
+                                <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL . '/images/icons/filter.svg' ?>" style="width: 20px;">
                                 <span><?php echo esc_html__('Filters', 'quiz-maker'); ?></span>
                             </div>
                             <div style="font-size: 16px; padding-right:20px; margin:0; text-align:right;">
@@ -9930,8 +9930,8 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                 <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
                                         </div>
                                         <div class="ays-quiz-new-upgrade-button"><?php echo esc_html__("Upgrade", "quiz-maker"); ?></div>
                                     </div>
@@ -10131,7 +10131,7 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                     <div id="ays-quiz-all-pages-popup-heading">
                         <div class="ays-quiz-all-pages-popup-heading-center">
                             <a href="http://bit.ly/3HsHaML" target="_blank">
-                                <img src="<?php echo AYS_QUIZ_ADMIN_URL; ?>/images/quiz-maker-and-chart-logo.svg">
+                                <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL; ?>/images/quiz-maker-and-chart-logo.svg">
                             </a>
                         </div>
                     </div>
@@ -10169,8 +10169,8 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                     <div id="ays-quiz-fox-lms-all-pages-popup-heading">
                         <div class="ays-quiz-fox-lms-all-pages-popup-heading-center">
                             <a href="https://bit.ly/43MyeyB" target="_blank">
-                                <img src="<?php echo AYS_QUIZ_ADMIN_URL; ?>/images/banner/ays-quiz-and-lms-popup-logo.svg">
-                                <img class="ays-quiz-fox-lms-all-pages-icon" src="<?php echo AYS_QUIZ_ADMIN_URL; ?>/images/banner/ays-quiz-and-lms-popup-icon.svg">
+                                <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL; ?>/images/banner/ays-quiz-and-lms-popup-logo.svg">
+                                <img loading="lazy" class="ays-quiz-fox-lms-all-pages-icon" src="<?php echo AYS_QUIZ_ADMIN_URL; ?>/images/banner/ays-quiz-and-lms-popup-icon.svg">
                             </a>
                         </div>
                     </div>

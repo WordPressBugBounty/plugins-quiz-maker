@@ -142,9 +142,9 @@ class Quiz_Maker_Admin
         wp_enqueue_style($this->plugin_name . '-bootstrap', plugin_dir_url(__FILE__) . 'css/bootstrap.min.css', array(), $this->version, 'all');
         wp_enqueue_style($this->plugin_name . '-data-bootstrap', plugin_dir_url(__FILE__) . 'css/dataTables.bootstrap4.min.css', array(), $this->version, 'all');
         wp_enqueue_style($this->plugin_name . '-jquery-datetimepicker', plugin_dir_url(__FILE__) . 'css/jquery-ui-timepicker-addon.css', array(), $this->version, 'all');
-        wp_enqueue_style($this->plugin_name, plugin_dir_url(__FILE__) . 'css/quiz-maker-admin.css', array(), time()/*$this->version*/, 'all');
-        wp_enqueue_style($this->plugin_name . '-banner', plugin_dir_url(__FILE__) . 'css/quiz-maker-banner.css', array(), time(), 'all');
-        wp_enqueue_style($this->plugin_name . "-loaders", plugin_dir_url(__FILE__) . 'css/loaders.css', array(), time()/*$this->version*/, 'all');
+        wp_enqueue_style($this->plugin_name, plugin_dir_url(__FILE__) . 'css/quiz-maker-admin.css', array(), $this->version, 'all');
+        wp_enqueue_style($this->plugin_name . '-banner', plugin_dir_url(__FILE__) . 'css/quiz-maker-banner.css', array(), $this->version, 'all');
+        wp_enqueue_style($this->plugin_name . "-loaders", plugin_dir_url(__FILE__) . 'css/loaders.css', array(), $this->version, 'all');
 
     }
 
@@ -225,12 +225,12 @@ class Quiz_Maker_Admin
         wp_enqueue_script($this->plugin_name . '-datatable-min', AYS_QUIZ_PUBLIC_URL . '/js/quiz-maker-datatable.min.js', array('jquery'), $this->version, true);
 		wp_enqueue_script($this->plugin_name . "-db4.min.js", plugin_dir_url( __FILE__ ) . 'js/dataTables.bootstrap4.min.js', array( 'jquery' ), $this->version, true );
 		wp_enqueue_script($this->plugin_name . "-jquery.datetimepicker.js", plugin_dir_url( __FILE__ ) . 'js/jquery-ui-timepicker-addon.js', array( 'jquery' ), $this->version, true );
-        wp_enqueue_script($this->plugin_name . '-ajax', plugin_dir_url(__FILE__) . 'js/quiz-maker-admin-ajax.js', array('jquery'), time(),/*$this->version,*/ true);
+        wp_enqueue_script($this->plugin_name . '-ajax', plugin_dir_url(__FILE__) . 'js/quiz-maker-admin-ajax.js', array('jquery'), $this->version, true);
         wp_enqueue_script(
             $this->plugin_name,
             plugin_dir_url(__FILE__) . 'js/quiz-maker-admin.js',
             array('jquery', 'wp-color-picker'),
-            time(), /*$this->version,*/
+            $this->version,
             true
         );
         wp_localize_script($this->plugin_name . '-ajax', 'quiz_maker_ajax', array(
