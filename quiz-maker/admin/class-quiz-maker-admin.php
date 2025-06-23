@@ -463,8 +463,13 @@ class Quiz_Maker_Admin
          *        Administration Menus: http://codex.wordpress.org/Administration_Menus
          *
          */
-        $setting_actions = new Quiz_Maker_Settings_Actions($this->plugin_name);
-        $options = ($setting_actions->ays_get_setting('options') === false) ? array() : json_decode( stripcslashes( $setting_actions->ays_get_setting('options') ), true);
+        global $ays_quiz_settings;
+        if(!empty($ays_quiz_settings) && !empty($ays_quiz_settings['options'])){
+            $options = $ays_quiz_settings['options'];
+        } else {
+            $setting_actions = new Quiz_Maker_Settings_Actions($this->plugin_name);
+            $options = ($setting_actions->ays_get_setting('options') === false) ? array() : json_decode( stripcslashes( $setting_actions->ays_get_setting('options') ), true);
+        }
 
         // Disable Quiz maker menu item notification
         $options['quiz_disable_quiz_menu_notification'] = isset($options['quiz_disable_quiz_menu_notification']) ? esc_attr( $options['quiz_disable_quiz_menu_notification'] ) : 'off';
@@ -574,9 +579,14 @@ class Quiz_Maker_Admin
 
     public function add_plugin_results_submenu(){
         global $wpdb;
+        global $ays_quiz_settings;
 
-        $setting_actions = new Quiz_Maker_Settings_Actions($this->plugin_name);
-        $options = ($setting_actions->ays_get_setting('options') === false) ? array() : json_decode( stripcslashes( $setting_actions->ays_get_setting('options') ), true);
+        if(!empty($ays_quiz_settings) && $ays_quiz_settings['options']){
+            $options = $ays_quiz_settings['options'];
+        } else {
+            $setting_actions = new Quiz_Maker_Settings_Actions($this->plugin_name);
+            $options = ($setting_actions->ays_get_setting('options') === false) ? array() : json_decode( stripcslashes( $setting_actions->ays_get_setting('options') ), true);
+        }
 
         // Disable Results menu item notification
         $options['quiz_disable_results_menu_notification'] = isset($options['quiz_disable_results_menu_notification']) ? esc_attr( $options['quiz_disable_results_menu_notification'] ) : 'off';
@@ -1096,6 +1106,7 @@ class Quiz_Maker_Admin
      */
     public function ays_quick_start(){
         global $wpdb;
+        global $ays_quiz_settings;
 
         // Run a security check.
         check_ajax_referer( 'quiz-maker-ajax-quick-quiz-nonce', sanitize_key( $_REQUEST['_ajax_nonce'] ) );
@@ -1152,11 +1163,15 @@ class Quiz_Maker_Admin
             'author' => $author,
         );
 
-        $setting_actions = new Quiz_Maker_Settings_Actions(AYS_QUIZ_NAME);
-
         // Buttons Text
-        $buttons_texts_res          = ($setting_actions->ays_get_setting('buttons_texts') === false) ? json_encode(array()) : $setting_actions->ays_get_setting('buttons_texts');
-        $buttons_texts              = json_decode( stripcslashes( $buttons_texts_res ) , true);
+        if(!empty($ays_quiz_settings) && !empty($ays_quiz_settings['buttons_texts'])){
+            $buttons_texts = $ays_quiz_settings['buttons_texts'];
+        } else {
+            $setting_actions = new Quiz_Maker_Settings_Actions(AYS_QUIZ_NAME);
+
+            $buttons_texts_res          = ($setting_actions->ays_get_setting('buttons_texts') === false) ? json_encode(array()) : $setting_actions->ays_get_setting('buttons_texts');
+            $buttons_texts              = json_decode( stripcslashes( $buttons_texts_res ) , true);
+        }        
 
         $gen_start_button           = (isset($buttons_texts['start_button']) && $buttons_texts['start_button'] != '') ? stripslashes( esc_attr( $buttons_texts['start_button'] ) ) : 'Start';
         $gen_next_button            = (isset($buttons_texts['next_button']) && $buttons_texts['next_button'] != '') ? stripslashes( esc_attr( $buttons_texts['next_button'] ) ) : 'Next';
@@ -2016,6 +2031,7 @@ class Quiz_Maker_Admin
     
     public function ays_show_results(){
         global $wpdb;
+        global $ays_quiz_settings;
         $results_table = $wpdb->prefix . "aysquiz_reports";
         $questions_table = $wpdb->prefix . "aysquiz_questions";
 
@@ -2064,8 +2080,13 @@ class Quiz_Maker_Admin
 
             $note_text = ( isset($options->note_text) && $options->note_text != '' ) ? sanitize_text_field( stripslashes( $options->note_text ) ) : '';
 
-            $settings_obj = new Quiz_Maker_Settings_Actions($this->plugin_name);
-            $settings_options = ($settings_obj->ays_get_setting('options') === false) ? array() : json_decode( stripcslashes($settings_obj->ays_get_setting('options') ), true);
+            // Settings Options
+            if(!empty($ays_quiz_settings) && !empty($ays_quiz_settings['options'])){
+                $settings_options = $ays_quiz_settings['options'];
+            } else {
+                $settings_obj = new Quiz_Maker_Settings_Actions($this->plugin_name);
+                $settings_options = ($settings_obj->ays_get_setting('options') === false) ? array() : json_decode( stripcslashes($settings_obj->ays_get_setting('options') ), true);
+            }
             
             $ays_quiz_show_result_info_user_ip = isset($settings_options['ays_quiz_show_result_info_user_ip']) ? sanitize_text_field( $settings_options['ays_quiz_show_result_info_user_ip'] ) : 'on';
             $ays_quiz_show_result_info_user_id = isset($settings_options['ays_quiz_show_result_info_user_id']) ? sanitize_text_field( $settings_options['ays_quiz_show_result_info_user_id'] ) : 'on';
@@ -2693,10 +2714,15 @@ class Quiz_Maker_Admin
 
     function ays_quiz_register_tinymce_plugin($plugin_array){
         if( isset( $_GET['page'] ) && 0 !== strpos(sanitize_key($_GET['page']), $this->plugin_name)){
-            $this->settings_obj = new Quiz_Maker_Settings_Actions($this->plugin_name);
+            global $ays_quiz_settings;
 
             // General Settings | options
-            $gen_options = ($this->settings_obj->ays_get_setting('options') === false) ? array() : json_decode( stripcslashes($this->settings_obj->ays_get_setting('options') ), true);
+            if(!empty($ays_quiz_settings) && !empty($ays_quiz_settings['options'])){
+                $gen_options = $ays_quiz_settings['options'];
+            } else {
+                $this->settings_obj = new Quiz_Maker_Settings_Actions($this->plugin_name);
+                $gen_options = ($this->settings_obj->ays_get_setting('options') === false) ? array() : json_decode( stripcslashes($this->settings_obj->ays_get_setting('options') ), true);
+            }
 
             // Show quiz button to Admins only
             $gen_options['quiz_show_quiz_button_to_admin_only'] = isset($gen_options['quiz_show_quiz_button_to_admin_only']) ? sanitize_text_field( $gen_options['quiz_show_quiz_button_to_admin_only'] ) : 'off';
@@ -3009,11 +3035,17 @@ class Quiz_Maker_Admin
 
     public static function get_listtables_title_length( $listtable_name ) {
         global $wpdb;
+        global $ays_quiz_settings;
 
-        $settings_table = $wpdb->prefix . "aysquiz_settings";
-        $sql = "SELECT meta_value FROM ".$settings_table." WHERE meta_key = 'options'";
-        $result = $wpdb->get_var($sql);
-        $options = ($result == "") ? array() : json_decode(stripcslashes($result), true);
+        // General Settings | options
+        if(!empty($ays_quiz_settings) && !empty($ays_quiz_settings['options'])){
+            $options = $ays_quiz_settings['options'];
+        } else {
+            $settings_table = $wpdb->prefix . "aysquiz_settings";
+            $sql = "SELECT meta_value FROM ".$settings_table." WHERE meta_key = 'options'";
+            $result = $wpdb->get_var($sql);
+            $options = ($result == "") ? array() : json_decode(stripcslashes($result), true);
+        }
 
         $listtable_title_length = 5;
         if(! empty($options) ){

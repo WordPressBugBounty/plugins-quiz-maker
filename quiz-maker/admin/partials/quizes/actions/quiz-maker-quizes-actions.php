@@ -1,4 +1,6 @@
 <?php
+global $ays_quiz_settings;
+
 if(isset($_GET['ays_quiz_tab'])){
     $ays_quiz_tab = sanitize_text_field( $_GET['ays_quiz_tab'] );
 }else{
@@ -329,16 +331,25 @@ foreach($question_categories as $cat){
     $question_categories_array[$cat['id']] = $cat['title'];
 }
 
-$settings_options = ($this->settings_obj->ays_get_setting('options'));
-if($settings_options){
-    $settings_options = json_decode(stripcslashes($settings_options), true);
-}else{
-    $settings_options = array();
+
+if(!empty($ays_quiz_settings) && !empty($ays_quiz_settings['options'])){
+    $settings_options = $ays_quiz_settings['options'];
+} else {
+    $settings_options = ($this->settings_obj->ays_get_setting('options'));
+    if($settings_options){
+        $settings_options = json_decode(stripcslashes($settings_options), true);
+    }else{
+        $settings_options = array();
+    }
 }
 
 // Buttons Text
-$buttons_texts_res      = ($this->settings_obj->ays_get_setting('buttons_texts') === false) ? json_encode(array()) : $this->settings_obj->ays_get_setting('buttons_texts');
-$buttons_texts          = json_decode( stripcslashes( $buttons_texts_res ) , true);
+if(!empty($ays_quiz_settings) && !empty($ays_quiz_settings['buttons_texts']) ){
+    $buttons_texts = $ays_quiz_settings['buttons_texts'];
+} else {
+    $buttons_texts_res      = ($this->settings_obj->ays_get_setting('buttons_texts') === false) ? json_encode(array()) : $this->settings_obj->ays_get_setting('buttons_texts');
+    $buttons_texts          = json_decode( stripcslashes( $buttons_texts_res ) , true);
+}
 
 $start_button           = (isset($buttons_texts['start_button']) && $buttons_texts['start_button'] != '') ? stripslashes( esc_attr( $buttons_texts['start_button'] ) ) : 'Start';
 $next_button            = (isset($buttons_texts['next_button']) && $buttons_texts['next_button'] != '') ? stripslashes( esc_attr( $buttons_texts['next_button'] ) ) : 'Next';

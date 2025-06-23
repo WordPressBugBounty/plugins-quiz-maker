@@ -1232,24 +1232,38 @@ class Questions_List_Table extends WP_List_Table{
     function column_category_id( $item ) {
         global $wpdb;
 
+        static $category_cache = array();
+
         $question_categories_table = esc_sql( $wpdb->prefix . "aysquiz_categories" );
 
         $category_id = ( isset( $item['category_id'] ) && $item['category_id'] != "" ) ? absint( sanitize_text_field( $item['category_id'] ) ) : 0;
 
-        $sql = "SELECT * FROM {$question_categories_table} WHERE id=" . $category_id;
+        if ( ! $category_id ) {
+            return '';
+        }
 
-        $result = $wpdb->get_row($sql, 'ARRAY_A');
+        // Check if category already cached
+        if ( isset( $category_cache[ $category_id ] ) ) {
+            $result = $category_cache[ $category_id ];
+        } else {
+            // Safely prepare query
+            $sql = $wpdb->prepare("SELECT * FROM {$question_categories_table} WHERE id = %d", $category_id);
+            $result = $wpdb->get_row( $sql, ARRAY_A );
+            $category_cache[ $category_id ] = $result;
+        }
 
-        $results = "";
-        if($result !== null){
-
+        $results = '';
+        if ( $result !== null ) {
             $category_title = ( isset( $result['title'] ) && $result['title'] != "" ) ? sanitize_text_field( $result['title'] ) : "";
 
             if ( $category_title != "" ) {
-                $results = sprintf( '<a href="?page=%s&action=edit&question_category=%d" target="_blank">%s</a>', 'quiz-maker-question-categories', $category_id, $category_title);
+                $results = sprintf(
+                    '<a href="?page=%s&action=edit&question_category=%d" target="_blank">%s</a>',
+                    'quiz-maker-question-categories',
+                    $category_id,
+                    esc_html( $category_title )
+                );
             }
-        }else{
-            $results = "";
         }
 
         return $results;
