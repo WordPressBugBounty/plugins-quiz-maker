@@ -4,7 +4,7 @@ Donate link: https://ays-pro.com/wordpress/quiz-maker
 Tags:  exam, quiz, quizzes, education, quiz maker
 Requires at least: 4.0
 Tested up to: 6.8
-Stable tag: 6.7.0.30
+Stable tag: 6.7.0.31
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -420,6 +420,10 @@ For example, to add a squared symbol, you need to write down the following sign 
 
 == Changelog ==
 
+= 6.7.0.31 ( Jun 25, 2025 ) =
+* Improved: Some changes on the question edit page
+* Improved: Code correction on the admin dashboard
+
 = 6.7.0.30 ( Jun 23, 2025 ) =
 * Improved: Page speed optimization on the admin dashboard
 
@@ -429,7 +433,7 @@ For example, to add a squared symbol, you need to write down the following sign 
 * Added: Bulgarian language support
 * Added: Latvian language support
 * Added: Polish language support
-* Added: Norwegian (Bokmål) language support
+* Added: Norwegian (Bokmal) language support
 * Updated: Russian language translation
 * Updated: French (France) language translation
 * Updated: German language translation

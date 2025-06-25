@@ -38,6 +38,8 @@ $options = array(
     'min_selection_number'                  => '',
 );
 
+$question_category_page_url  = admin_url( 'admin.php?page=quiz-maker-question-categories' );
+
 
 $gen_options = ($this->settings_obj->ays_get_setting('options') === false) ? array() : json_decode( stripcslashes($this->settings_obj->ays_get_setting('options') ), true);
 
@@ -510,7 +512,7 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                                 <th class="th-150 removable ays-quiz-question-answer-correct-row"><?php echo esc_html__('Correct', 'quiz-maker'); ?></th>
                             <?php endif; ?>
                                 <th <?php echo ($is_text_type) ? 'class="th-650"' : 'class="ays-quiz-question-answer-answer-row" style="width:500px;"'; ?>><?php echo esc_html__('Answer', 'quiz-maker'); ?></th>
-                                <th class="only_pro ays-weight-row ays-quiz-question-answer-weight-point-row" style="width:120px;padding:0;"><?php echo esc_html__('Weight/Point', 'quiz-maker'); ?><br>
+                                <th class="only_pro ays-weight-row ays-quiz-question-answer-weight-point-row" style="width:120px;padding:0;"><?php echo esc_html__('Point', 'quiz-maker'); ?><br>
                                     <a href="https://ays-pro.com/wordpress/quiz-maker" tabindex="-1" target="_blank" class="ays-quiz-new-upgrade-button-link ays-quiz-new-upgrade-button-without-text-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
@@ -1034,34 +1036,7 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                         </div>
                     </div>
                 </div>
-                <hr/>
-                <div class="form-group row">
-                    <div class="col-sm-12 only_pro" style="padding:15px;">
-                        <div class="pro_features">                            
-
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-sm-3">
-                                <label for="ays_question_weight"><?php echo esc_html__('Question weight', 'quiz-maker'); ?></label>
-                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Specify the weight of the question. It\'s not connected with answers points. It will be multiplied with chosen answer weight (if you choose quiz calculation by points). The default value is 1.','quiz-maker') ); ?>">
-                                    <i class="ays_fa ays_fa_info_circle"></i>
-                                </a>
-                            </div>
-                            <div class="col-sm-9">
-                                <input type="text" id="ays_question_weight" class="ays-text-input ays-text-input-short" value="1" tabindex="-1">
-                            </div>
-                        </div>
-                        <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
-                            <div class="ays-quiz-new-upgrade-button-box">
-                                <div>
-                                    <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
-                                    <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'); ?>" class="ays-quiz-new-upgrade-button-hover">
-                                </div>
-                                <div class="ays-quiz-new-upgrade-button"><?php echo esc_html__("Upgrade", "quiz-maker"); ?></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
+                <hr />
                 <div class="form-group row">
                     <div class="col-sm-3">
                         <label for="ays-category">
@@ -1086,6 +1061,15 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                             }
                             ?>
                         </select>
+                        <div class="ays_quiz_small_hint_text_for_message_variables" style="margin-top: 5px;">
+                        <span><?php
+                            echo (sprintf(
+                                /* translators: %s: opening and closing <a> HTML code  */
+                                wp_kses_post(__('Create a new category %s here %s', 'quiz-maker')),
+                                '<a href="'. $question_category_page_url .'" target="_blank">',
+                                '</a>'
+                            )) ;
+                        ?></div>
                     </div>
                 </div>
                 <hr>
@@ -1245,81 +1229,6 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                 </div>
                 <hr>
                 <div class="form-group row">
-                    <div class="col-sm-12 only_pro" style="padding:15px;">
-                        <div class="pro_features">                            
-
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-sm-3">
-                                <label><?php echo esc_html__('Question background image', 'quiz-maker'); ?></label>
-                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Background image of the container. You can choose different images for different questions.','quiz-maker') ); ?>">
-                                    <i class="ays_fa ays_fa_info_circle"></i>
-                                </a>
-                            </div>
-                            <div class="col-sm-3">
-                                <a href="javascript:void(0)" class="add-question-image m-0" tabindex="-1" style="border: 1px solid #ededed;"><?php echo esc_html__('Add Image', 'quiz-maker'); ?></a>
-                                <p class="ays_quiz_small_hint_text_for_message_variables" style="margin-top: 5px;">
-                                    <span><?php echo esc_html__( "Please Note" , 'quiz-maker' ); ?></span>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('* Note: The plugin doesn’t make any changes concerning the images. It takes the images in a size, in which you have uploaded them. We are using the default WP Media. If the uploaded image is blurred and has a low quality, make sure to choose the right parameters (Full size) while uploading the images. You can find the Full Size option in the opened Add Media popup (Attachment Display Settings).','quiz-maker') ); ?>">
-                                        <i class="ays_fa ays_fa_info_circle"></i>
-                                    </a>
-                                </p>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="ays-question-bg-image-container">
-                                    <span class="ays-remove-question-bg-img"></span>
-                                    <img src="" id="ays-question-bg-img"/>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
-                            <div class="ays-quiz-new-upgrade-button-box">
-                                <div>
-                                    <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
-                                    <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg' ); ?>" class="ays-quiz-new-upgrade-button-hover">
-                                </div>
-                                <div class="ays-quiz-new-upgrade-button"><?php echo esc_html__("Upgrade", "quiz-maker"); ?></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <hr>
-                <div class="form-group row">
-                    <div class="col-sm-12 only_pro" style="padding:15px;">
-                        <div class="pro_features">                            
-
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-sm-3">
-                                <label><?php echo esc_html__('User answer explanation', 'quiz-maker'); ?></label>
-                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('The users can write an explanation for their answers.','quiz-maker') ); ?>">
-                                    <i class="ays_fa ays_fa_info_circle"></i>
-                                </a>
-                            </div>
-                            <div class="col-sm-9">
-                                <div class="form-check form-check-inline">
-                                    <input type="radio" id="ays-user-ex-on" value="on" checked tabindex="-1"/>
-                                    <label class="form-check-label" for="ays-user-ex-on"> <?php echo esc_html__('Enabled', 'quiz-maker'); ?> </label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input type="radio" id="ays-user-ex-off" value="off" tabindex="-1"/>
-                                    <label class="form-check-label" for="ays-user-ex-off"> <?php echo esc_html__('Disabled', 'quiz-maker'); ?> </label>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
-                            <div class="ays-quiz-new-upgrade-button-box">
-                                <div>
-                                    <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
-                                    <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg' ); ?>" class="ays-quiz-new-upgrade-button-hover">
-                                </div>
-                                <div class="ays-quiz-new-upgrade-button"><?php echo esc_html__("Upgrade", "quiz-maker"); ?></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <hr>
-                <div class="form-group row">
                     <div class="col-sm-3">
                         <label for="right_answer_text">
                             <?php echo esc_html__('Question hint','quiz-maker'); ?>
@@ -1411,6 +1320,115 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                         $settings = array('editor_height' => $quiz_wp_editor_height, 'textarea_name' => 'ays_quiz_question_note_message', 'editor_class' => 'ays-textarea', 'media_elements' => false);
                         wp_editor($content, $editor_id, $settings);
                         ?>
+                    </div>
+                </div>
+                <hr/>
+                <div class="form-group row">
+                    <div class="col-sm-12 only_pro" style="padding:15px;">
+                        <div class="pro_features">                            
+
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-3">
+                                <label for="ays_question_weight"><?php echo esc_html__('Question weight', 'quiz-maker'); ?></label>
+                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Specify the weight of the question. It\'s not connected with answers points. It will be multiplied with chosen answer weight (if you choose quiz calculation by points). The default value is 1.','quiz-maker') ); ?>">
+                                    <i class="ays_fa ays_fa_info_circle"></i>
+                                </a>
+                            </div>
+                            <div class="col-sm-9">
+                                <input type="text" id="ays_question_weight" class="ays-text-input ays-text-input-short" value="1" tabindex="-1">
+                            </div>
+                        </div>
+                        <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                            <div class="ays-quiz-new-upgrade-button-box">
+                                <div>
+                                    <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
+                                    <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'); ?>" class="ays-quiz-new-upgrade-button-hover">
+                                </div>
+                                <div class="ays-quiz-new-upgrade-button"><?php echo esc_html__("Upgrade", "quiz-maker"); ?></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <hr>
+                <div class="form-group row">
+                    <div class="col-sm-12 only_pro" style="padding:15px;">
+                        <div class="pro_features">                            
+
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-3">
+                                <label><?php echo esc_html__('Question background image', 'quiz-maker'); ?></label>
+                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Background image of the container. You can choose different images for different questions.','quiz-maker') ); ?>">
+                                    <i class="ays_fa ays_fa_info_circle"></i>
+                                </a>
+                            </div>
+                            <div class="col-sm-3">
+                                <a href="javascript:void(0)" class="add-question-image m-0" tabindex="-1" style="border: 1px solid #ededed;"><?php echo esc_html__('Add Image', 'quiz-maker'); ?></a>
+                                <p class="ays_quiz_small_hint_text_for_message_variables" style="margin-top: 5px;">
+                                    <span><?php echo esc_html__( "Please Note" , 'quiz-maker' ); ?></span>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('* Note: The plugin doesn’t make any changes concerning the images. It takes the images in a size, in which you have uploaded them. We are using the default WP Media. If the uploaded image is blurred and has a low quality, make sure to choose the right parameters (Full size) while uploading the images. You can find the Full Size option in the opened Add Media popup (Attachment Display Settings).','quiz-maker') ); ?>">
+                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                    </a>
+                                </p>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="ays-question-bg-image-container">
+                                    <span class="ays-remove-question-bg-img"></span>
+                                    <img src="" id="ays-question-bg-img"/>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                            <div class="ays-quiz-new-upgrade-button-box">
+                                <div>
+                                    <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
+                                    <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg' ); ?>" class="ays-quiz-new-upgrade-button-hover">
+                                </div>
+                                <div class="ays-quiz-new-upgrade-button"><?php echo esc_html__("Upgrade", "quiz-maker"); ?></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <hr>
+                <div class="form-group row">
+                    <div class="col-sm-12 only_pro" style="padding:15px;">
+                        <div class="pro_features">                            
+
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-3">
+                                <label><?php echo esc_html__('User answer explanation', 'quiz-maker'); ?></label>
+                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('The users can write an explanation for their answers.','quiz-maker') ); ?>">
+                                    <i class="ays_fa ays_fa_info_circle"></i>
+                                </a>
+                            </div>
+                            <div class="col-sm-9">
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" id="ays-user-ex-on" value="on" checked tabindex="-1"/>
+                                    <label class="form-check-label" for="ays-user-ex-on"> <?php echo esc_html__('Enabled', 'quiz-maker'); ?> </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" id="ays-user-ex-off" value="off" tabindex="-1"/>
+                                    <label class="form-check-label" for="ays-user-ex-off"> <?php echo esc_html__('Disabled', 'quiz-maker'); ?> </label>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                            <div class="ays-quiz-new-upgrade-button-box">
+                                <div>
+                                    <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
+                                    <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg' ); ?>" class="ays-quiz-new-upgrade-button-hover">
+                                </div>
+                                <div class="ays-quiz-new-upgrade-button"><?php echo esc_html__("Upgrade", "quiz-maker"); ?></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <hr>
+                <div class="form-group row">
+                    <div class="col-sm-12">
+                        <a href="" class="ays_prev_tab"><?php echo esc_html__( 'General settings' , 'quiz-maker' ); ?></a>
                     </div>
                 </div>
             </div>

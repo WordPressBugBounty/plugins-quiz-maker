@@ -2206,18 +2206,19 @@ class Quiz_Maker_Admin
                 $admin_note_content[] = '</div>';
             $admin_note_content[] = '</div>';
 
-            $admin_note_content = implode('', $admin_note_content);
+            //$admin_note_content = implode('', $admin_note_content);
+            $admin_note_content = '';
 
             
             $row = "<table id='ays-results-table'>";
 
-            $row .= '<tr class="ays_result_element">
-                        <td colspan="3">
-                            <div class="ays-quiz-admin-note">
-                                '. $admin_note_content .'
-                            </div>
-                        </td>
-                    </tr>';
+            // $row .= '<tr class="ays_result_element">
+            //             <td colspan="3">
+            //                 <div class="ays-quiz-admin-note">
+            //                     '. $admin_note_content .'
+            //                 </div>
+            //             </td>
+            //         </tr>';
             
             $row .= '<tr class="ays_result_element">
                         <td colspan="3"><h1>' . __('User Information','quiz-maker') . '</h1></td>

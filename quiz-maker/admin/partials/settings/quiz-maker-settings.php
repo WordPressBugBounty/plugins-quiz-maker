@@ -640,6 +640,7 @@
                                     <input type="checkbox" class="ays-checkbox-input" id="ays_quiz_show_quiz_button_to_admin_only" name="ays_quiz_show_quiz_button_to_admin_only" value="on" <?php echo $quiz_show_quiz_button_to_admin_only ? 'checked' : ''; ?> />
                                 </div>
                             </div>
+                            <?php if( 1 == 0 ): ?>
                             <hr />
                             <div class="form-group row" style="padding:0px;margin:0;">
                                 <div class="col-sm-12 only_pro" style="padding:20px;">
@@ -670,6 +671,7 @@
                                     </a>
                                 </div>
                             </div>
+                            <?php endif; ?>
                         </fieldset> <!-- Default parameters for Quiz -->
                         <hr>
                         <fieldset>

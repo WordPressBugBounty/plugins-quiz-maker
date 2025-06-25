@@ -3076,24 +3076,24 @@
                     // }
                 break;
             }
-            if(emptyQuestion == null || emptyQuestion == ''){
-                if( questionImage == '' ){
-                    swal.fire({
-                        type: 'warning',
-                        text: 'The question can\'t be empty.'
-                    });
-                    status = false;
-                }
-            }
-            let correctAnswers = $(document).find('.ays-correct-answer:checked').length;
+            // if(emptyQuestion == null || emptyQuestion == ''){
+            //     if( questionImage == '' ){
+            //         swal.fire({
+            //             type: 'warning',
+            //             text: 'The question can\'t be empty.'
+            //         });
+            //         status = false;
+            //     }
+            // }
+            // let correctAnswers = $(document).find('.ays-correct-answer:checked').length;
             
-            if(correctAnswers == 0){
-                swal.fire({
-                    type: 'warning',
-                    text: 'You must select at least one correct answer'
-                });
-                status = false;
-            }
+            // if(correctAnswers == 0){
+            //     swal.fire({
+            //         type: 'warning',
+            //         text: 'You must select at least one correct answer'
+            //     });
+            //     status = false;
+            // }
             if(status){
                 $(this)[0].submit();
             }else{                
@@ -3275,6 +3275,18 @@
             var parent = $this.parents('.ays-quiz-tab-content');
             if (typeof parent.next() != undefined && parent.next().hasClass('ays-quiz-tab-content')) {
                 var parentId = parent.next().attr('id');
+                var element = $(document).find('.nav-tab-wrapper a[data-tab='+ parentId +']');
+                element.get(0).scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
+                element.trigger('click');
+            }
+        });
+
+        $(document).find('.ays_prev_tab').on('click', function(e){
+            e.preventDefault();
+            var $this = $(this);
+            var parent = $this.parents('.ays-quiz-tab-content');
+            if (typeof parent.prev() != undefined && parent.prev().hasClass('ays-quiz-tab-content')) {
+                var parentId = parent.prev().attr('id');
                 var element = $(document).find('.nav-tab-wrapper a[data-tab='+ parentId +']');
                 element.get(0).scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
                 element.trigger('click');

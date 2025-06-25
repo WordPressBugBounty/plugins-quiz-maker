@@ -349,6 +349,10 @@ class Questions_List_Table extends WP_List_Table{
                 }
             }
 
+            if(empty( $question )){
+                $question = esc_html__( 'Question', 'quiz-maker' );
+            }
+
             // Question title ( Banner )
             $question_title     = (isset($_POST['ays_question_title']) && $_POST['ays_question_title'] != '') ? sanitize_text_field($_POST['ays_question_title']) : '';
             
