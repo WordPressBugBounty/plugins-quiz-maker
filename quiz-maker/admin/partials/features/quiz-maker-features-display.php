@@ -465,6 +465,17 @@
                     <td><i class="ays_fa ays_fa_check"></i></td>
                     <td><i class="ays_fa ays_fa_check"></i></td>
                 </tr>
+                <tr>
+                    <td></td>
+                    <td colspan="4"><?php echo esc_html__('Product Recommendation (Woo)','quiz-maker')?></td>
+                </tr>
+                <tr>
+                    <td><?php echo esc_html__('Product Recommendation (Woo)','quiz-maker')?></td>
+                    <td><span>–</span></td>
+                    <td><i class="ays_fa ays_fa_check"></i></td>
+                    <td><i class="ays_fa ays_fa_check"></i></td>
+                    <td><i class="ays_fa ays_fa_check"></i></td>
+                </tr>
                 <!-- //////////////// -->
                 <tr>
                     <td></td>
@@ -691,10 +702,10 @@
 
                 <tr>
                     <td></td>
-                    <td colspan="4"><?php echo esc_html__('WooCommerce integration','quiz-maker')?></td>
+                    <td colspan="4"><?php echo esc_html__('Sell via Woocommerce','quiz-maker')?></td>
                 </tr>
                 <tr>
-                    <td><?php echo esc_html__('WooCommerce integration','quiz-maker')?></td>
+                    <td><?php echo esc_html__('Sell via Woocommerce','quiz-maker')?></td>
                     <td><span>–</span></td>
                     <td><span>–</span></td>
                     <td><span>–</span></td>

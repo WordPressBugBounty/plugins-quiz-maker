@@ -11,6 +11,9 @@ if($action == 'duplicate'){
 }
 $example_export_path = AYS_QUIZ_ADMIN_URL . '/partials/questions/export_file/';
 $plus_icon_svg = "<span class=''><img src='". AYS_QUIZ_ADMIN_URL ."/images/icons/plus-icon.svg'></span>";
+$youtube_icon_svg = "<span class=''><img src='". AYS_QUIZ_ADMIN_URL ."/images/icons/youtube-video-icon.svg'></span>";
+
+$question_max_id = $this->get_max_id('questions');
 
 ?>
 
@@ -165,6 +168,30 @@ $plus_icon_svg = "<span class=''><img src='". AYS_QUIZ_ADMIN_URL ."/images/icons
                 echo sprintf( '<a href="?page=%s&action=%s" class="page-title-action button-primary ays-quiz-add-new-button ays-quiz-add-new-button-new-design"> %s '  . esc_html__('Add New', 'quiz-maker') . '</a>', esc_attr( $_REQUEST['page'] ), 'add', $plus_icon_svg);
             ?>
         </div>
+
+        <?php if($question_max_id <= 9): ?>
+        <div class="ays-quiz-create-survey-video-box" style="margin: 0px auto 30px;">
+            <div class="ays-quiz-create-survey-title">
+                <h4><?php echo esc_html__( "All Question Types Explained in One Video", 'quiz-maker' ); ?></h4>
+            </div>
+            <div class="ays-quiz-create-survey-youtube-video">
+                <iframe width="560" height="315" class="ays-quiz-responsive-with-for-iframe" src="https://www.youtube.com/embed/ok6f59iV_R0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <div class="ays_quiz_small_hint_text_for_message_variables" style="text-align: center;">
+                <?php echo esc_html__( 'The video preview will disappear after you create 10 questions.', 'quiz-maker' ); ?>
+            </div>
+            <div class="ays-quiz-create-survey-youtube-video-button-box">
+                <?php echo sprintf( '<a href="?page=%s&action=%s" class="ays-quiz-add-new-button-video ays-quiz-add-new-button-new-design"> %s ' . esc_html__('Add New', 'quiz-maker') . '</a>', esc_attr( $_REQUEST['page'] ), 'add', wp_kses_post( $plus_icon_svg ));?>
+            </div>
+        </div>
+        <?php else: ?>
+        <div class="ays-quiz-create-survey-video-box ays-quiz-create-survey-video-box-only-link" style="margin: auto;">
+            <div class="ays-quiz-create-survey-title">
+                <?php echo wp_kses_post($youtube_icon_svg); ?>
+                <a href="https://www.youtube.com/watch?v=ok6f59iV_R0" target="_blank" title="YouTube video player"><?php echo esc_html__("All Question Types Explained in One Video", 'quiz-maker'); ?></a>
+            </div>
+        </div>
+        <?php endif; ?>
     </div>
 
     <div id="tab2" class="ays-quiz-tab-content <?php echo ($tab == 'tab2') ? 'ays-quiz-tab-content-active' : ''; ?>">

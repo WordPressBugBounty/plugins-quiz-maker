@@ -1965,14 +1965,14 @@ div#ays-quiz-new-mega-bundle-dicount-month-main.ays_quiz_dicount_info {
 }
 
 #ays-quiz-new-mega-bundle-dicount-month-main .ays_quiz_dicount_month img {
-    width: 80px;
+    width: 60px;
 }
 
 #ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-sale-banner-link {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 200px;
+    width: 60px;
 }
 
 #ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box {
@@ -1983,7 +1983,8 @@ div#ays-quiz-new-mega-bundle-dicount-month-main.ays_quiz_dicount_info {
 
 #ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-text-box {
     text-align: left;
-    width: 23%;
+    /*width: 32%;*/
+    width: auto;
     display: flex;
     justify-content: space-around;
     align-items: flex-start;  
@@ -2004,9 +2005,16 @@ div#ays-quiz-new-mega-bundle-dicount-month-main.ays_quiz_dicount_info {
     flex-direction: column;
 }
 
+#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box .ays-quiz-dicount-logo-box {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+}
+
 #ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-text-box .ays-quiz-new-mega-bundle-title {
     color: #FDFDFD;
-    font-size: 16.8px;
+    font-size: 22px;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
@@ -2363,7 +2371,7 @@ div#ays-quiz-new-mega-bundle-dicount-month-main button.notice-dismiss:before{
 
 @media screen and (max-width: 1550px) and (min-width: 1400px){
     div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-text-box {
-        width: 31%;
+        /*width: 31%;*/
     }
 
     div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-countdown-box {

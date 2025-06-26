@@ -4434,12 +4434,6 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
-                                <p class="ays_quiz_small_hint_text_for_message_variables">
-                                    <span><?php echo __( "Please Note" , 'quiz-maker' ); ?></span>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Note: If you notice, that the ordering is not being changed on the Front-end, then, most presumably, there is a cache problem for you. Please exclude the link, where the given quiz is located from the Cache plugin settings. Also, clear all the cache types (DB, plugin, browser). After clearing all the caches, check the case with either the Incognito mode or another browser/device.','quiz-maker'); ?>">
-                                        <i class="ays_fa ays_fa_info_circle"></i>
-                                    </a>
-                                </p>
                             </div>
                             <div class="col-sm-8">
                                 <div class="form-group row">
@@ -4463,12 +4457,14 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
+                                <?php if( 1 == 0 ): ?>
                                 <p class="ays_quiz_small_hint_text_for_message_variables">
                                     <span><?php echo __( "Please Note" , 'quiz-maker' ); ?></span>
                                     <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Note: If you notice, that the ordering is not being changed on the Front-end, then, most presumably, there is a cache problem for you. Please exclude the link, where the given quiz is located from the Cache plugin settings. Also, clear all the cache types (DB, plugin, browser). After clearing all the caches, check the case with either the Incognito mode or another browser/device.','quiz-maker'); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </p>
+                                <?php endif; ?>
                             </div>
                             <div class="col-sm-8">
                                 <div class="form-group row">
@@ -4732,134 +4728,6 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                             </div>
                         </div> <!-- Display all questions on one page -->
                         <hr/>
-                        <div class="form-group row" style="margin:0px;">
-                            <div class="col-sm-12 only_pro" style="padding:10px 0 0 10px;">
-                                <div class="pro_features" style="justify-content:flex-end;">
-
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-4">
-                                        <label class="ays-disable-setting">
-                                            <?php echo __('Question count per page','quiz-maker')?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Allow more than one question per page','quiz-maker')?>">
-                                                <i class="ays_fa ays_fa_info_circle"></i>
-                                            </a>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-1">
-                                        <input type="checkbox" disabled>
-                                    </div>
-                                    <div class="col-sm-7">
-                                        <div class="form-group row">
-                                            <div class="col-sm-12">
-                                                <label class="ays_quiz_loader">
-                                                    <input type="radio" class="ays-enable-timer1" checked/>
-                                                    <span><?php echo __( "General", 'quiz-maker' ); ?></span>
-                                                </label>
-                                                <label class="ays_quiz_loader">
-                                                    <input type="radio" class="ays-enable-timer1" />
-                                                    <span><?php echo __( "Custom", 'quiz-maker' ); ?></span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <hr/>
-                                        <div class="form-group row">
-                                            <div class="col-sm-3">
-                                                <label class="ays-disable-setting">
-                                                    <?php echo __('Questions count','quiz-maker')?>
-                                                </label>
-                                            </div>
-                                            <div class="col-sm-9">
-                                                <input type="number" class="ays-text-input" tabindex="-1" disabled>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
-                                    <div class="ays-quiz-new-upgrade-button-box">
-                                        <div>
-                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
-                                        </div>
-                                        <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div> <!-- Question count per page -->
-                        <hr/>
-                        <div class="form-group row" style="margin:0px;">
-                            <div class="col-sm-12 only_pro" style="padding:10px 0 0 10px;">
-                                <div class="pro_features pro_features_popup">
-                                    <div class="pro-features-popup-conteiner">
-                                        <div class="pro-features-popup-title">
-                                            <?php echo __("Navigation Bar", 'quiz-maker'); ?>
-                                        </div>
-                                        <div class="pro-features-popup-content" data-link="https://youtu.be/pf-HSumxP3Y">
-                                            <p>
-                                                <?php echo sprintf( __("Add a navigation bar at the top of your Quiz and allow the users to %s move into the questions easily. %s Give them to pass the hard questions and get back to it whenever they will have the answer.", 'quiz-maker'),
-                                                    "<strong>",
-                                                    "</strong>"
-                                                ); ?>
-                                            </p>
-                                            <p>
-                                                <?php echo __("After answering the question, the box will change its color by that making it easier for the user to see his/her progress.", 'quiz-maker'); ?>
-                                            </p>
-                                            <div>
-                                                <a href="https://quiz-plugin.com/english-exam-with-certificate/" target="_blank"><?php echo __("See Demo", 'quiz-maker'); ?></a>
-                                            </div>
-                                        </div>
-                                        <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-navigation-bar-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>">
-                                            <?php echo __("Pricing", 'quiz-maker'); ?>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-4">
-                                        <label for="ays_enable_navigation_bar">
-                                           <?php echo __('Enable navigation bar','quiz-maker'); ?>
-                                           <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Activate the quiz navigation box in the upper of the questions․ It helps to move back and forth between questions easily. After answering a question, its box becomes black and indicates that you have answered it already.Please note that it does not work with the Questions count per page and Display all questions on one page options.', 'quiz-maker'); ?>">
-                                                <i class="ays_fa ays_fa_info_circle"></i>
-                                            </a>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-1">
-                                        <input type="checkbox" class="ays-enable-timerl" value="on" tabindex="-1"/>
-                                    </div>
-                                    <div class="col-sm-7 ays_toggle_target ays_divider_left">
-                                        <div class="form-group row">
-                                            <div class="col-sm-4">
-                                                <label for="ays_enable_navigation_bar_marked_questions">
-                                                    <?php echo __('Question marking','quiz-maker')?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Enable question bookmarking for the navigation bar.','quiz-maker')?>">
-                                                        <i class="ays_fa ays_fa_info_circle"></i>
-                                                    </a>
-                                                </label>
-                                            </div>
-                                            <div class="col-sm-8">
-                                                <input type="checkbox" class="ays-enable-timerl" value="on" tabindex="-1" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> <!-- Enable navigation bar -->
-                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-navigation-bar" target="_blank" class="ays-quiz-new-upgrade-button-link">
-                                    <div class="ays-quiz-new-upgrade-button-box">
-                                        <div>
-                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
-                                        </div>
-                                        <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
-                                    </div>
-                                </a>
-                                <div class="ays-quiz-new-watch-video-button-box">
-                                    <div>
-                                        <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24.svg'?>">
-                                        <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg'?>" class="ays-quiz-new-watch-video-button-hover">
-                                    </div>
-                                    <div class="ays-quiz-new-watch-video-button"><?php echo __("Watch Video", "quiz-maker"); ?></div>
-                                </div>
-                            </div>
-                        </div> <!-- Navigation Bar -->
-                        <hr/>
                         <div class="form-group row ays_toggle_parent">
                             <div class="col-sm-4">
                                 <label for="active_date_check">
@@ -4996,37 +4864,6 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                             </div>
                         </div> <!-- Schedule the quiz -->
                         <hr/>
-                        <div class="form-group row" style="margin:0px;">
-                            <div class="col-sm-12 only_pro" style="padding:10px 0 0 10px;">
-                                <div class="pro_features" style="justify-content:flex-end;">
-
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-4">
-                                        <label for="ays_make_questions_required">
-                                            <?php echo __('Make the questions required','quiz-maker')?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('If the user doesn\'t answer the question he/she can\'t go to the next question.','quiz-maker')?>">
-                                                <i class="ays_fa ays_fa_info_circle"></i>
-                                            </a>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <input type="checkbox" class="ays-enable-timer1" tabindex="-1" id="ays_make_questions_required"
-                                               value="on"/>
-                                    </div>
-                                </div>
-                                <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
-                                    <div class="ays-quiz-new-upgrade-button-box">
-                                        <div>
-                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
-                                        </div>
-                                        <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div> <!-- Make the questions required -->
-                        <hr/>
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label>
@@ -5077,6 +4914,7 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                 </select>
                             </div>
                         </div> <!-- Show questions numbering -->
+                        <?php if( 1 == 0 ): ?>
                         <hr/>
                         <div class="form-group row" style="margin:0px;">
                             <div class="col-sm-12 only_pro" style="padding:10px 0 0 10px;">
@@ -5107,6 +4945,7 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                 </a>
                             </div>
                         </div> <!-- Enable copy protection -->
+                        <?php endif; ?>
                         <hr/>
                         <div class="form-group row ays_toggle_parent">
                             <div class="col-sm-4" style="padding-right: 0px;">
@@ -5136,53 +4975,7 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                 </div>
                             </div>
                         </div> <!-- Show question category -->
-                        <hr/>
-                        <div class="form-group row" style="margin:0px;">
-                            <div class="col-sm-12 only_pro" style="padding:10px 0 0 10px;">
-                                <div class="pro_features" style="justify-content:flex-end;">
-
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-4">
-                                        <label>
-                                            <?php echo __('Enable text to speech','quiz-maker')?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Enable this option to allow listening to the questions being read aloud. Note this option can be used only for questions.','quiz-maker')?>">
-                                                <i class="ays_fa ays_fa_info_circle"></i>
-                                            </a>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-1">
-                                        <input type="checkbox" class="ays-enable-timer1" tabindex="-1" />
-                                    </div>
-                                    <div class="col-sm-7 ays_toggle_target ays_divider_left">
-                                        <div class="form-group row">
-                                            <div class="col-sm-4">
-                                                <label>
-                                                    <?php echo __('Select language (voice)','quiz-maker')?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Select the language and voice for the text to speech option. Note: The list may vary depending on your browser.','quiz-maker')?>">
-                                                        <i class="ays_fa ays_fa_info_circle"></i>
-                                                    </a>
-                                                </label>
-                                            </div>
-                                            <div class="col-sm-8">
-                                                <select class="ays-text-input ays-text-input-short">
-                                                    <option><?php echo __('Select','quiz-maker'); ?></option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> <!-- Questions text to speech -->
-                                <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
-                                    <div class="ays-quiz-new-upgrade-button-box">
-                                        <div>
-                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
-                                        </div>
-                                        <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
+                        <?php if( 1 == 0 ): ?>
                         <hr>
                         <div class="form-group row" style="margin:0px;">
                             <div class="col-sm-12 only_pro" style="padding:10px 0 0 10px;">
@@ -5223,6 +5016,7 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                 </a>
                             </div>
                         </div> <!-- Payment Type -->
+                        <?php endif; ?>
                         <hr>
                         <div class="form-group row">
                             <div class="col-sm-4">
@@ -5304,6 +5098,212 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                 </div>
                             </div>
                         </div> <!-- Hint icon -->
+                        <hr/>
+                        <div class="form-group row" style="margin:0px;">
+                            <div class="col-sm-12 only_pro" style="padding:10px 0 0 10px;">
+                                <div class="pro_features" style="justify-content:flex-end;">
+
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-4">
+                                        <label class="ays-disable-setting">
+                                            <?php echo __('Question count per page','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Allow more than one question per page','quiz-maker')?>">
+                                                <i class="ays_fa ays_fa_info_circle"></i>
+                                            </a>
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <input type="checkbox" disabled>
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <div class="form-group row">
+                                            <div class="col-sm-12">
+                                                <label class="ays_quiz_loader">
+                                                    <input type="radio" class="ays-enable-timer1" checked/>
+                                                    <span><?php echo __( "General", 'quiz-maker' ); ?></span>
+                                                </label>
+                                                <label class="ays_quiz_loader">
+                                                    <input type="radio" class="ays-enable-timer1" />
+                                                    <span><?php echo __( "Custom", 'quiz-maker' ); ?></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <hr/>
+                                        <div class="form-group row">
+                                            <div class="col-sm-3">
+                                                <label class="ays-disable-setting">
+                                                    <?php echo __('Questions count','quiz-maker')?>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <input type="number" class="ays-text-input" tabindex="-1" disabled>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <div class="ays-quiz-new-upgrade-button-box">
+                                        <div>
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                        </div>
+                                        <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div> <!-- Question count per page -->
+                        <hr/>
+                        <div class="form-group row" style="margin:0px;">
+                            <div class="col-sm-12 only_pro" style="padding:10px 0 0 10px;">
+                                <div class="pro_features pro_features_popup">
+                                    <div class="pro-features-popup-conteiner">
+                                        <div class="pro-features-popup-title">
+                                            <?php echo __("Navigation Bar", 'quiz-maker'); ?>
+                                        </div>
+                                        <div class="pro-features-popup-content" data-link="https://youtu.be/pf-HSumxP3Y">
+                                            <p>
+                                                <?php echo sprintf( __("Add a navigation bar at the top of your Quiz and allow the users to %s move into the questions easily. %s Give them to pass the hard questions and get back to it whenever they will have the answer.", 'quiz-maker'),
+                                                    "<strong>",
+                                                    "</strong>"
+                                                ); ?>
+                                            </p>
+                                            <p>
+                                                <?php echo __("After answering the question, the box will change its color by that making it easier for the user to see his/her progress.", 'quiz-maker'); ?>
+                                            </p>
+                                            <div>
+                                                <a href="https://quiz-plugin.com/english-exam-with-certificate/" target="_blank"><?php echo __("See Demo", 'quiz-maker'); ?></a>
+                                            </div>
+                                        </div>
+                                        <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-navigation-bar-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>">
+                                            <?php echo __("Pricing", 'quiz-maker'); ?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-4">
+                                        <label for="ays_enable_navigation_bar">
+                                           <?php echo __('Enable navigation bar','quiz-maker'); ?>
+                                           <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Activate the quiz navigation box in the upper of the questions․ It helps to move back and forth between questions easily. After answering a question, its box becomes black and indicates that you have answered it already.Please note that it does not work with the Questions count per page and Display all questions on one page options.', 'quiz-maker'); ?>">
+                                                <i class="ays_fa ays_fa_info_circle"></i>
+                                            </a>
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <input type="checkbox" class="ays-enable-timerl" value="on" tabindex="-1"/>
+                                    </div>
+                                    <div class="col-sm-7 ays_toggle_target ays_divider_left">
+                                        <div class="form-group row">
+                                            <div class="col-sm-4">
+                                                <label for="ays_enable_navigation_bar_marked_questions">
+                                                    <?php echo __('Question marking','quiz-maker')?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Enable question bookmarking for the navigation bar.','quiz-maker')?>">
+                                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                                    </a>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <input type="checkbox" class="ays-enable-timerl" value="on" tabindex="-1" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> <!-- Enable navigation bar -->
+                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-navigation-bar" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <div class="ays-quiz-new-upgrade-button-box">
+                                        <div>
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                        </div>
+                                        <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
+                                    </div>
+                                </a>
+                                <div class="ays-quiz-new-watch-video-button-box">
+                                    <div>
+                                        <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24.svg'?>">
+                                        <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg'?>" class="ays-quiz-new-watch-video-button-hover">
+                                    </div>
+                                    <div class="ays-quiz-new-watch-video-button"><?php echo __("Watch Video", "quiz-maker"); ?></div>
+                                </div>
+                            </div>
+                        </div> <!-- Navigation Bar -->
+                        <hr/>
+                        <div class="form-group row" style="margin:0px;">
+                            <div class="col-sm-12 only_pro" style="padding:10px 0 0 10px;">
+                                <div class="pro_features" style="justify-content:flex-end;">
+
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-4">
+                                        <label for="ays_make_questions_required">
+                                            <?php echo __('Make the questions required','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('If the user doesn\'t answer the question he/she can\'t go to the next question.','quiz-maker')?>">
+                                                <i class="ays_fa ays_fa_info_circle"></i>
+                                            </a>
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input type="checkbox" class="ays-enable-timer1" tabindex="-1" id="ays_make_questions_required"
+                                               value="on"/>
+                                    </div>
+                                </div>
+                                <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <div class="ays-quiz-new-upgrade-button-box">
+                                        <div>
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                        </div>
+                                        <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div> <!-- Make the questions required -->
+                        <hr/>
+                        <div class="form-group row" style="margin:0px;">
+                            <div class="col-sm-12 only_pro" style="padding:10px 0 0 10px;">
+                                <div class="pro_features" style="justify-content:flex-end;">
+
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-4">
+                                        <label>
+                                            <?php echo __('Enable text to speech','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Enable this option to allow listening to the questions being read aloud. Note this option can be used only for questions.','quiz-maker')?>">
+                                                <i class="ays_fa ays_fa_info_circle"></i>
+                                            </a>
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <input type="checkbox" class="ays-enable-timer1" tabindex="-1" />
+                                    </div>
+                                    <div class="col-sm-7 ays_toggle_target ays_divider_left">
+                                        <div class="form-group row">
+                                            <div class="col-sm-4">
+                                                <label>
+                                                    <?php echo __('Select language (voice)','quiz-maker')?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Select the language and voice for the text to speech option. Note: The list may vary depending on your browser.','quiz-maker')?>">
+                                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                                    </a>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <select class="ays-text-input ays-text-input-short">
+                                                    <option><?php echo __('Select','quiz-maker'); ?></option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> <!-- Questions text to speech -->
+                                <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <div class="ays-quiz-new-upgrade-button-box">
+                                        <div>
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                        </div>
+                                        <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div> <!-- Enable text to speech -->
                         <hr/>
                     </div>
                 </div>
@@ -6213,7 +6213,7 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_allow_exporting_quizzes">
-                                            <?php echo __('Allow exporting quizzes','quiz-maker')?>
+                                            <?php echo __('Export Quiz as PDF','quiz-maker')?>
                                             <a class="ays_help" data-toggle="tooltip" title="<?php echo __('After ticking this option the Users field will be activated. You will be able to choose whom you want to give the permission to export the Quiz in the PDF file format. The Export to PDF button will be displayed on the front-end.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
@@ -6221,22 +6221,6 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                     </div>
                                     <div class="col-sm-1">
                                         <input type="checkbox" class="ays-enable-timer1" />
-                                    </div>
-                                    <div class="col-sm-7 ays_divider_left">
-                                        <div class="form-group row">
-                                            <div class="col-sm-2">
-                                                <label for="ays_users_roles">
-                                                    <?php echo __('Users','quiz-maker')?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('User who will have the permission to export the Quiz.','quiz-maker')?>">
-                                                        <i class="ays_fa ays_fa_info_circle"></i>
-                                                    </a>
-                                                </label>
-                                            </div>
-                                            <div class="col-sm-10">
-                                                <select id="ays_quiz_users_to_export" multiple style="width: 100%;">
-                                                </select>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div> <!-- Allow exporting quizzes -->
                                 <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
@@ -6385,6 +6369,7 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                 </label>
                             </div>
                             <div class="col-sm-8">
+                                <?php if(1 == 0): ?>
                                 <div class="form-group row" style="margin:0px;">
                                     <div class="col-sm-12 only_pro" style="padding:10px 0 0 10px;">
                                         <div class="pro_features" style="justify-content:flex-end;">
@@ -6414,6 +6399,7 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                     </div>
                                 </div>
                                 <hr>
+                                <?php endif; ?>
                                 <div class="form-group row">
                                     <div class="col-sm-12">
                                          <input type="number" class="ays-text-input" id='ays-pass-score' name='ays_pass_score' value="<?php echo $pass_score; ?>"/>
@@ -7363,6 +7349,7 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
+                                        <div><?php echo __("Conditional result messages", 'quiz-maker'); ?></div>
                                     </div>
                                     <div class="col-sm-8">
                                         <label class="ays_quiz_loader">
@@ -7552,6 +7539,7 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                         <div class="col-sm-4">
                                             <label for="ays_enable_top_keywords">
                                                 <?php echo __('Assign message to each keyword','quiz-maker'); ?>
+                                                <?php echo __('(Personality Quiz)','quiz-maker'); ?>
                                                 <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show the question results based on keywords on the resultes page with specified texts for each keyword.','quiz-maker'); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
@@ -8072,112 +8060,6 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                 </div>
                             </div>
                         </div>
-                        <hr/>  <!-- AV Access Only selected users -->
-                        <div class="form-group row" style="position:relative;">
-                            <div class="col-sm-12 only_pro" style="padding:15px;">
-                                <div class="pro_features pro_features_popup">
-                                    <div class="pro-features-popup-conteiner">
-                                        <div class="pro-features-popup-title">
-                                            <?php echo __("Access only selected users", 'quiz-maker'); ?>
-                                        </div>
-                                        <div class="pro-features-popup-content" data-link="https://youtu.be/mWAByB5La3Q">
-                                            <p>
-                                                <?php echo sprintf( __("Do you want to decide for yourself who can take your quiz? Access only selected users feature of the Quiz Maker plugin allows you to decide who can take your quiz swiftly. Just enable that feature and type in only the users' names %s who will have an access to your quiz. %s The ones whose names you don’t type, can’t take your quiz. So type in the message and inform them about it.", 'quiz-maker'),
-                                                    "<strong>",
-                                                    "</strong>"
-                                                ); ?>
-                                            </p>
-                                            <div>
-                                                <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo __("See Documentation", 'quiz-maker'); ?></a>
-                                            </div>
-                                        </div>
-                                        <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-only-selected-users-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>">
-                                            <?php echo __("Pricing", 'quiz-maker'); ?>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group row ays_toggle_parent">
-                                    <div class="col-sm-3">
-                                        <label for="ays_enable_restriction_pass_users">
-                                            <?php echo __('Access only selected users','quiz-maker')?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Quiz is available only for the users mentioned in the list.','quiz-maker')?>">
-                                                <i class="ays_fa ays_fa_info_circle"></i>
-                                            </a>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-1">
-                                        <input type="checkbox" class="ays-enable-timer1 ays_toggle_checkbox" id="ays_enable_restriction_pass_users" value="on" tabindex="-1" />
-                                    </div>
-                                    <div class="col-sm-8 ays_toggle_target ays_divider_left">
-                                        <div class="form-group row">
-                                            <div class="col-sm-2">
-                                                <label for="ays_users_roles">
-                                                    <?php echo __('Users','quiz-maker')?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Users on the website.','quiz-maker')?>">
-                                                        <i class="ays_fa ays_fa_info_circle"></i>
-                                                    </a>
-                                                </label>
-                                            </div>
-                                            <div class="col-sm-10">
-                                                <select id="ays_quiz_users_sel" name="ays_users_search[]" tabindex="-1" multiple style="width: 100%; max-width: 100%;">
-                                                    <option></option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <hr>
-                                        <div class="form-group row">
-                                            <div class="col-sm-2">
-                                                <label for="restriction_pass_users_message">
-                                                    <?php echo __('Message','quiz-maker')?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Message for the users who aren’t included in the above-mentioned list.','quiz-maker')?>">
-                                                        <i class="ays_fa ays_fa_info_circle"></i>
-                                                    </a>
-                                                </label>
-                                            </div>
-                                            <div class="col-sm-10">
-                                                <textarea type="text" tabindex="-1" id="restriction_pass_users_message" class="ays-textarea ays-disable-setting"
-                                                      disabled></textarea>                                        
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> <!-- Access Only selected users -->
-
-                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-only-selected-users" target="_blank" class="ays-quiz-new-upgrade-button-link">
-                                    <div class="ays-quiz-new-upgrade-button-box">
-                                        <div>
-                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
-                                        </div>
-                                        <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
-                                    </div>
-                                </a>
-                                <div class="ays-quiz-new-watch-video-button-box">
-                                    <div>
-                                        <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24.svg'?>">
-                                        <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg'?>" class="ays-quiz-new-watch-video-button-hover">
-                                    </div>
-                                    <div class="ays-quiz-new-watch-video-button"><?php echo __("Watch Video", "quiz-maker"); ?></div>
-                                </div>
-                                <div class="ays-quiz-center-big-main-button-box ays-quiz-new-big-button-flex">
-                                    <div class="ays-quiz-center-big-watch-video-button-box ays-quiz-big-upgrade-margin-right-10">
-                                        <div class="ays-quiz-center-new-watch-video-demo-button">
-                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24.svg'?>" class="ays-quiz-new-button-img-hide">
-                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg'?>" class="ays-quiz-new-watch-video-button-hover">
-                                            <?php echo __("Watch Video", "quiz-maker"); ?>
-                                        </div>
-                                    </div>
-                                    <div class="ays-quiz-center-big-upgrade-button-box">
-                                        <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-only-selected-users" target="_blank" class="ays-quiz-new-upgrade-button-link">
-                                            <div class="ays-quiz-center-new-big-upgrade-button">
-                                                <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>" class="ays-quiz-new-button-img-hide">
-                                                <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">  
-                                                <?php echo __("Upgrade", "quiz-maker"); ?>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <hr/>
                         <div class="form-group row ays_toggle_parent ays-quiz-result-message-vars-parent">
                             <div class="col-sm-3">
@@ -8357,6 +8239,112 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                 </div>
                             </div>
                         </div><!-- Password for quiz -->
+                        <hr/>  <!-- AV Access Only selected users -->
+                        <div class="form-group row" style="position:relative;">
+                            <div class="col-sm-12 only_pro" style="padding:15px;">
+                                <div class="pro_features pro_features_popup">
+                                    <div class="pro-features-popup-conteiner">
+                                        <div class="pro-features-popup-title">
+                                            <?php echo __("Access only selected users", 'quiz-maker'); ?>
+                                        </div>
+                                        <div class="pro-features-popup-content" data-link="https://youtu.be/mWAByB5La3Q">
+                                            <p>
+                                                <?php echo sprintf( __("Do you want to decide for yourself who can take your quiz? Access only selected users feature of the Quiz Maker plugin allows you to decide who can take your quiz swiftly. Just enable that feature and type in only the users' names %s who will have an access to your quiz. %s The ones whose names you don’t type, can’t take your quiz. So type in the message and inform them about it.", 'quiz-maker'),
+                                                    "<strong>",
+                                                    "</strong>"
+                                                ); ?>
+                                            </p>
+                                            <div>
+                                                <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo __("See Documentation", 'quiz-maker'); ?></a>
+                                            </div>
+                                        </div>
+                                        <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-only-selected-users-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>">
+                                            <?php echo __("Pricing", 'quiz-maker'); ?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row ays_toggle_parent">
+                                    <div class="col-sm-3">
+                                        <label for="ays_enable_restriction_pass_users">
+                                            <?php echo __('Access only selected users','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Quiz is available only for the users mentioned in the list.','quiz-maker')?>">
+                                                <i class="ays_fa ays_fa_info_circle"></i>
+                                            </a>
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <input type="checkbox" class="ays-enable-timer1 ays_toggle_checkbox" id="ays_enable_restriction_pass_users" value="on" tabindex="-1" />
+                                    </div>
+                                    <div class="col-sm-8 ays_toggle_target ays_divider_left">
+                                        <div class="form-group row">
+                                            <div class="col-sm-2">
+                                                <label for="ays_users_roles">
+                                                    <?php echo __('Users','quiz-maker')?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Users on the website.','quiz-maker')?>">
+                                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                                    </a>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-10">
+                                                <select id="ays_quiz_users_sel" name="ays_users_search[]" tabindex="-1" multiple style="width: 100%; max-width: 100%;">
+                                                    <option></option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="form-group row">
+                                            <div class="col-sm-2">
+                                                <label for="restriction_pass_users_message">
+                                                    <?php echo __('Message','quiz-maker')?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Message for the users who aren’t included in the above-mentioned list.','quiz-maker')?>">
+                                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                                    </a>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-10">
+                                                <textarea type="text" tabindex="-1" id="restriction_pass_users_message" class="ays-textarea ays-disable-setting"
+                                                      disabled></textarea>                                        
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> <!-- Access Only selected users -->
+
+                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-only-selected-users" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <div class="ays-quiz-new-upgrade-button-box">
+                                        <div>
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                        </div>
+                                        <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
+                                    </div>
+                                </a>
+                                <div class="ays-quiz-new-watch-video-button-box">
+                                    <div>
+                                        <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24.svg'?>">
+                                        <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg'?>" class="ays-quiz-new-watch-video-button-hover">
+                                    </div>
+                                    <div class="ays-quiz-new-watch-video-button"><?php echo __("Watch Video", "quiz-maker"); ?></div>
+                                </div>
+                                <div class="ays-quiz-center-big-main-button-box ays-quiz-new-big-button-flex">
+                                    <div class="ays-quiz-center-big-watch-video-button-box ays-quiz-big-upgrade-margin-right-10">
+                                        <div class="ays-quiz-center-new-watch-video-demo-button">
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24.svg'?>" class="ays-quiz-new-button-img-hide">
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg'?>" class="ays-quiz-new-watch-video-button-hover">
+                                            <?php echo __("Watch Video", "quiz-maker"); ?>
+                                        </div>
+                                    </div>
+                                    <div class="ays-quiz-center-big-upgrade-button-box">
+                                        <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-only-selected-users" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                            <div class="ays-quiz-center-new-big-upgrade-button">
+                                                <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>" class="ays-quiz-new-button-img-hide">
+                                                <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">  
+                                                <?php echo __("Upgrade", "quiz-maker"); ?>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -8467,6 +8455,54 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                 </div>
                             </div>
                         </div>
+                        <hr/>
+                        <div class="form-group row">
+                            <div class="col-sm-4">
+                                <label for="ays_show_information_form">
+                                    <?php echo __('Show Information Form to logged-in users','quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Enable the option if you want to show the Information Form to logged-in users as well. If the option is disabled, then logged-in users will not see the Information Form before or after the quiz, but the system will collect the Name and Email info from their WP accounts and store in the Name and Email fields in the database.','quiz-maker')?>">
+                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                    </a>
+                                </label>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="information_form_settings">
+                                    <input type="checkbox" id="ays_show_information_form" name="ays_show_information_form" value="on" <?php echo $show_information_form ? "checked" : ""; ?>>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-group row">
+                            <div class="col-sm-4">
+                                <label for="ays_autofill_user_data">
+                                    <?php echo __('Autofill logged-in user data','quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('After enabling this option, logged in  user’s name and email will be autofilled in Information Form.','quiz-maker'); ?>">
+                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                    </a>
+                                </label>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="information_form_settings">
+                                    <input type="checkbox" id="ays_autofill_user_data" name="ays_autofill_user_data" value="on" <?php echo $autofill_user_data ? "checked" : ""; ?>>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-group row">
+                            <div class="col-sm-4">
+                                <label for="ays_display_fields_labels">
+                                    <?php echo __('Display form fields with labels','quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Show labels of form fields on the top of each field. Texts of labels will be taken from the "Fields placeholder" section on the General setting page.','quiz-maker'); ?>">
+                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                    </a>
+                                </label>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="information_form_settings">
+                                    <input type="checkbox" id="ays_display_fields_labels" name="ays_display_fields_labels" value="on" <?php echo $display_fields_labels ? "checked" : ""; ?>>
+                                </div>
+                            </div>
+                        </div>
                         <hr>
                         <div class="form-group row only_pro" style="position:relative;padding:15px;">
                             <div class="pro_features pro_features_popup">
@@ -8521,54 +8557,6 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                                     <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg'?>" class="ays-quiz-new-watch-video-button-hover">
                                 </div>
                                 <div class="ays-quiz-new-watch-video-button"><?php echo __("Watch Video", "quiz-maker"); ?></div>
-                            </div>
-                        </div>
-                        <hr/>
-                        <div class="form-group row">
-                            <div class="col-sm-4">
-                                <label for="ays_show_information_form">
-                                    <?php echo __('Show Information Form to logged-in users','quiz-maker'); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Enable the option if you want to show the Information Form to logged-in users as well. If the option is disabled, then logged-in users will not see the Information Form before or after the quiz, but the system will collect the Name and Email info from their WP accounts and store in the Name and Email fields in the database.','quiz-maker')?>">
-                                        <i class="ays_fa ays_fa_info_circle"></i>
-                                    </a>
-                                </label>
-                            </div>
-                            <div class="col-sm-8">
-                                <div class="information_form_settings">
-                                    <input type="checkbox" id="ays_show_information_form" name="ays_show_information_form" value="on" <?php echo $show_information_form ? "checked" : ""; ?>>
-                                </div>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="form-group row">
-                            <div class="col-sm-4">
-                                <label for="ays_autofill_user_data">
-                                    <?php echo __('Autofill logged-in user data','quiz-maker'); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('After enabling this option, logged in  user’s name and email will be autofilled in Information Form.','quiz-maker'); ?>">
-                                        <i class="ays_fa ays_fa_info_circle"></i>
-                                    </a>
-                                </label>
-                            </div>
-                            <div class="col-sm-8">
-                                <div class="information_form_settings">
-                                    <input type="checkbox" id="ays_autofill_user_data" name="ays_autofill_user_data" value="on" <?php echo $autofill_user_data ? "checked" : ""; ?>>
-                                </div>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="form-group row">
-                            <div class="col-sm-4">
-                                <label for="ays_display_fields_labels">
-                                    <?php echo __('Display form fields with labels','quiz-maker'); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Show labels of form fields on the top of each field. Texts of labels will be taken from the "Fields placeholder" section on the General setting page.','quiz-maker'); ?>">
-                                        <i class="ays_fa ays_fa_info_circle"></i>
-                                    </a>
-                                </label>
-                            </div>
-                            <div class="col-sm-8">
-                                <div class="information_form_settings">
-                                    <input type="checkbox" id="ays_display_fields_labels" name="ays_display_fields_labels" value="on" <?php echo $display_fields_labels ? "checked" : ""; ?>>
-                                </div>
                             </div>
                         </div>
                     </div>

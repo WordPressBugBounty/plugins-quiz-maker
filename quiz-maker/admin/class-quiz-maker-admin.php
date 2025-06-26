@@ -3878,34 +3878,36 @@ class Quiz_Maker_Admin
 
             $content[] = '<div id="ays-quiz-new-mega-bundle-dicount-month-main" class="ays-quiz-admin-notice notice notice-success is-dismissible ays_quiz_dicount_info">';
                 $content[] = '<div id="ays-quiz-dicount-month" class="ays_quiz_dicount_month">';
-                    // $content[] = '<a href="https://ays-pro.com/mega-bundle" target="_blank" class="ays-quiz-sale-banner-link"><img src="' . AYS_QUIZ_ADMIN_URL . '/images/mega_bundle_logo_box.png"></a>';
 
                     $content[] = '<div class="ays-quiz-dicount-wrap-box ays-quiz-dicount-wrap-text-box">';
                         $content[] = '<div>';
+                            $content[] = '<div class="ays-quiz-dicount-logo-box">';
+                                $content[] = '<a href="' . $quiz_cta_button_link . '" target="_blank" class="ays-quiz-sale-banner-link"><img src="' . AYS_QUIZ_ADMIN_URL . '/images/mega_bundle_logo_box.png"></a>';
 
-                            $content[] = '<span class="ays-quiz-new-mega-bundle-title">';
-                                // $content[] = __( "<span><a href='https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=sale-banner' target='_blank' style='color:#ffffff; text-decoration: underline;'>Quiz Maker</a></span>", 'quiz-maker' );
-                                $content[] = __( "<span><a href='". $quiz_cta_button_link ."' target='_blank' style='color:#ffffff !important; text-decoration: underline;'>Mega Bundle</a></span> (Quiz + Survey + Poll)", 'quiz-maker' );
-                            $content[] = '</span>';
-                            $content[] = '<div class="ays-quiz-new-mega-bundle-title-icon-row" style="display: inline-block;">';
-                                $content[] = '<img src="' . AYS_QUIZ_ADMIN_URL . '/images/ays-quiz-banner-50.svg" class="ays-quiz-new-mega-bundle-mobile-image-display-none" style="width: 70px;">';
+                                $content[] = '<div>';
+                                    $content[] = '<span class="ays-quiz-new-mega-bundle-title">';
+                                        $content[] = sprintf(
+                                            __( '%s Mega Bundle %s (Quiz + Survey + Poll)', 'quiz-maker' ),
+                                            "<span style='display: inline-block; margin-right: 5px;'><a href='". $quiz_cta_button_link ."' target='_blank' style='color:#ffffff !important; text-decoration: underline;'>",
+                                            '</a></span>'
+                                        );
+                                    $content[] = '</span>';
+                                    $content[] = '</br>';
+                                    $content[] = '<span class="ays-quiz-new-mega-bundle-desc">';
+                                        $content[] = __( "30 Day Money Back Guarantee", 'quiz-maker' );
+                                    $content[] = '</span>';
+                                $content[] = '</div>';
+
+                                $content[] = '<div class="ays-quiz-new-mega-bundle-title-icon-row" style="display: inline-block;">';
+                                    $content[] = '<img src="' . AYS_QUIZ_ADMIN_URL . '/images/ays-quiz-banner-50.svg" class="ays-quiz-new-mega-bundle-mobile-image-display-none" style="width: 70px;">';
+                                $content[] = '</div>';
+
                             $content[] = '</div>';
-                            $content[] = '</br>';
+
                             $content[] = '<div class="ays-quiz-new-mega-bundle-mobile-image-display-block display_none">';
                                 $content[] = '<img src="' . AYS_QUIZ_ADMIN_URL . '/images/ays-quiz-banner-50.svg" style="width: 70px;">';
                             $content[] = '</div>';
-
-                            $content[] = '<span class="ays-quiz-new-mega-bundle-desc">';
-                                $content[] = '<img class="ays-quiz-new-mega-bundle-guaranteeicon" src="' . AYS_QUIZ_ADMIN_URL . '/images/quiz-maker-guaranteeicon.svg" style="width: 30px;">';
-                                $content[] = __( "30 Day Money Back Guarantee", 'quiz-maker' );
-                            $content[] = '</span>';
                         $content[] = '</div>';
-
-                        // $content[] = '<br>';
-
-                        // $content[] = '<strong>';
-                        //         $content[] = "Hurry up! <a href='https://ays-pro.com/mega-bundle' target='_blank'>Check it out!</a>";
-                        // $content[] = '</strong>';
 
                         $content[] = '<div style="position: absolute;right: 10px;bottom: 1px;" class="ays-quiz-dismiss-buttons-container-for-form">';
 
