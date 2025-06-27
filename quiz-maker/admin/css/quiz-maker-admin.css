@@ -45,6 +45,10 @@ body.mobile.modal-open #wpwrap {
 
 /* Conflict with WP Adminify – Custom WordPress Dashboard | end */
 
+.notice:not([class*="ays-quiz"]):not([class*="ays_quiz"]) {
+    display: none !important;
+}
+
 h1.wp-heading-inline{
     margin-bottom: 20px;
     margin-top: 20px;
