@@ -41,11 +41,12 @@
 
     $(document).find('form#ays_add_question_rows').on( 'submit', function(e) {
         $(document).find('div.ays-quiz-preloader').css('display', 'flex');
-        $(document).find('td.empty_quiz_td').parent().remove();
         var wp_nonce = $(document).find('#ays_quiz_ajax_add_question_nonce').val();
         var quiz_question_title_view = $(document).find('.quiz_question_title_view');
 
         if(window.aysQuestNewSelected.length > 0){
+            $(document).find('td.empty_quiz_td').parent().remove();
+            
             let data = $(this).serializeFormJSON();
             data.action = 'add_question_rows';
             data._ajax_nonce = wp_nonce;
