@@ -235,6 +235,7 @@ class Quiz_Maker_Admin
         );
         wp_localize_script($this->plugin_name . '-ajax', 'quiz_maker_ajax', array(
             'ajax_url'                          => admin_url('admin-ajax.php'),
+            'nonce'                             => wp_create_nonce('ays_quiz_nonce'),
             "emptyEmailError"                   => __( 'Email field is empty', 'quiz-maker'),
             "invalidEmailError"                 => __( 'Invalid Email address', 'quiz-maker'),
             'selectUser'                        => __( 'Select user', 'quiz-maker'),
@@ -253,6 +254,9 @@ class Quiz_Maker_Admin
             'thumbsUpGreat'                     => __( 'Thumbs up, great!', 'quiz-maker'),
             "preivewQuiz"                       => __( "Preview Quiz", 'quiz-maker' ),
             "mustSelectNewQuestion"             => __( "You must select new questions to add to the quiz.", 'quiz-maker' ),
+
+            "checklistMarkAsDone"               => __( "Mark as done", 'quiz-maker' ),
+            "checklistUnmarkAsDone"             => __( "Unmark as done", 'quiz-maker' ),
         ));
         wp_localize_script( $this->plugin_name, 'quizLangObj', array(
             'quizBannerDate'                    => $quiz_banner_date,
@@ -5491,6 +5495,186 @@ class Quiz_Maker_Admin
         if($type == 'ays-quiz-maker'){
             return $type;
         }
+    }
+
+    public function ays_quiz_add_checklist_guide(){
+
+        if(!empty($_REQUEST['page']) && sanitize_text_field( $_REQUEST['page'] ) != $this->plugin_name . "-getting-started"){
+            if(false !== strpos( sanitize_text_field( $_REQUEST['page'] ), $this->plugin_name)){
+                $current_user_id = get_current_user_id();
+                $completed_steps = get_user_meta($current_user_id, 'ays_quiz_checklist_completed_steps', true);
+
+                // Make sure we always get an array
+                if (!is_array($completed_steps)) {
+                    $completed_steps = array();
+                }
+
+                $popup_closed = get_user_meta($current_user_id, 'ays_quiz_checklist_popup_closed', true);
+
+                $checklist_steps = array(
+                    array(
+                        'title' => esc_html__('Create questions', 'quiz-maker'),
+                        'image' => esc_url( AYS_QUIZ_ADMIN_URL . '/images/checklist/checklist-guide-step-1.png' ),
+                        'description' => esc_html__("Go to the Questions page and create your questions.", 'quiz-maker'),
+                        'button_text' => esc_html__('Add Question', 'quiz-maker'),
+                        'button_link' => esc_url( admin_url('admin.php') . "?page=".$this->plugin_name . "-questions" ),
+                        'learn_more_link' => 'https://quiz-plugin.com/docs/creating-questions/',
+                    ),
+                    array(
+                        'title' => esc_html__('Create quiz', 'quiz-maker'),
+                        'image' => esc_url( AYS_QUIZ_ADMIN_URL . '/images/checklist/checklist-guide-step-2.png' ),
+                        'description' => esc_html__("Go to the Quizzes page and click on Add New to create your first quiz.", 'quiz-maker'),
+                        'button_text' => esc_html__('Add Quiz', 'quiz-maker'),
+                        'button_link' => esc_url( admin_url('admin.php') . "?page=".$this->plugin_name ),
+                        'learn_more_link' => 'https://quiz-plugin.com/docs/how-to-create-a-quiz/',
+                    ),
+                    array(
+                        'title' => esc_html__('Insert questions', 'quiz-maker'),
+                        'image' => esc_url( AYS_QUIZ_ADMIN_URL . '/images/checklist/checklist-guide-step-3.png' ),
+                        'description' => esc_html__('After creating your questions insert them into a quiz by clicking on the "Insert Questions" button.', 'quiz-maker'),
+                        'button_text' => esc_html__('Quizzes', 'quiz-maker'),
+                        'button_link' => esc_url( admin_url('admin.php') . "?page=".$this->plugin_name ),
+                        'learn_more_link' => 'https://quiz-plugin.com/docs/how-to-create-a-quiz/#1-toc-title',
+                    ),
+                    array(
+                        'title' => esc_html__('Copy/paste shortcode', 'quiz-maker'),
+                        'image' => esc_url( AYS_QUIZ_ADMIN_URL . '/images/checklist/checklist-guide-step-4.gif' ),
+                        'description' => esc_html__("Copy the quiz shortcode and insert it into any post.", 'quiz-maker'),
+                        'button_text' => esc_html__('Add new post', 'quiz-maker'),
+                        'button_link' => esc_url( admin_url('post-new.php') ),
+                        'learn_more_link' => 'https://quiz-plugin.com/docs/publish-quiz/',
+                        'img_style' => 'object-fit:contain; height:auto;',
+                    ),
+                );
+                ?>
+                <div class="ays-quiz-checklist-panel" id="ays-quiz-checklist-container" style="display: none;">
+                    <header class="ays-quiz-checklist-header">
+                        <h3><?php echo esc_html__('Create a Quiz with 4 Easy Steps', 'quiz-maker'); ?></h3>
+
+                        <!-- Minimize Button -->
+                        <button class="ays-quiz-checklist-minimize-btn" aria-label="Minimize">
+                            <svg class="ays-quiz-checklist-minimize-icon-expanded" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M6 12h12" stroke="#000" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                            <svg class="ays-quiz-checklist-minimize-icon-collapsed" style="display:none;" width="24" height="24" viewBox="0 0 24 24">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M4 3.25H8C8.41421 3.25 8.75 3.58579 8.75 4C8.75 4.41421 8.41421 4.75 8 4.75H5.81066L10.5303 9.46967C10.8232 9.76256 10.8232 10.2374 10.5303 10.5303C10.2374 10.8232 9.76256 10.8232 9.46967 10.5303L4.75 5.81066V8C4.75 8.41421 4.41421 8.75 4 8.75C3.58579 8.75 3.25 8.41421 3.25 8V4C3.25 3.58579 3.58579 3.25 4 3.25ZM13.4697 13.4697C13.7626 13.1768 14.2374 13.1768 14.5303 13.4697L19.25 18.1893V16C19.25 15.5858 19.5858 15.25 20 15.25C20.4142 15.25 20.75 15.5858 20.75 16V20C20.75 20.4142 20.4142 20.75 20 20.75H16C15.5858 20.75 15.25 20.4142 15.25 20C15.25 19.5858 15.5858 19.25 16 19.25H18.1893L13.4697 14.5303C13.1768 14.2374 13.1768 13.7626 13.4697 13.4697Z"></path>
+                            </svg>
+                        </button>
+
+                        <!-- Close Button -->
+                        <button class="ays-quiz-checklist-close-btn" aria-label="Close"><svg width="24" height="24" class="" focusable="false" aria-hidden="true" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M18.5303 5.46967C18.8232 5.76256 18.8232 6.23744 18.5303 6.53033L6.53033 18.5303C6.23744 18.8232 5.76256 18.8232 5.46967 18.5303C5.17678 18.2374 5.17678 17.7626 5.46967 17.4697L17.4697 5.46967C17.7626 5.17678 18.2374 5.17678 18.5303 5.46967Z"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M5.46967 5.46967C5.76256 5.17678 6.23744 5.17678 6.53033 5.46967L18.5303 17.4697C18.8232 17.7626 18.8232 18.2374 18.5303 18.5303C18.2374 18.8232 17.7626 18.8232 17.4697 18.5303L5.46967 6.53033C5.17678 6.23744 5.17678 5.76256 5.46967 5.46967Z"></path></svg></button>
+                    </header>
+
+                    <div class="ays-quiz-checklist-progress">
+                        <div class="ays-quiz-checklist-progress-bar"><span style="width: 0%"></span></div>
+                        <span class="ays-quiz-checklist-progress-text">0%</span>
+                    </div>
+
+                    <ul class="ays-quiz-checklist-items">
+                    <?php foreach ($checklist_steps as $index => $step): 
+                        $is_checked = in_array($index, $completed_steps);
+                    ?>
+                        <li class="ays-quiz-checklist-step<?php echo $is_checked ? ' completed' : ''; ?>" data-step="<?php echo esc_attr($index); ?>">
+                            <div class="ays-quiz-checklist-header-row">
+                                <label>
+                                    <input type="checkbox" <?php checked($is_checked); ?> />
+                                    <span class="ays-quiz-checklist-step-title"><?php echo esc_html($step['title']); ?></span>
+                                </label>
+                                <button class="ays-quiz-checklist-toggle-step" aria-label="Toggle Step">
+                                    <svg width="16" height="16" class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eui-1nf42ca" focusable="false" aria-hidden="true" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M5.46967 9.21967C5.76256 8.92678 6.23744 8.92678 6.53033 9.21967L12 14.6893L17.4697 9.21967C17.7626 8.92678 18.2374 8.92678 18.5303 9.21967C18.8232 9.51256 18.8232 9.98744 18.5303 10.2803L12.5303 16.2803C12.2374 16.5732 11.7626 16.5732 11.4697 16.2803L5.46967 10.2803C5.17678 9.98744 5.17678 9.51256 5.46967 9.21967Z"></path></svg>
+                                </button>
+                            </div>
+
+                            <div class="ays-quiz-checklist-step-content" style="<?php echo $is_checked ? '' : 'display: none;'; ?>">
+                                <img src="<?php echo esc_url($step['image']); ?>" alt="<?php echo esc_attr($step['title']); ?>" loading="lazy" width="313" height="210" style="<?php echo !empty($step['img_style']) ? esc_attr($step['img_style']) : ''; ?>">
+                                <p class="ays-quiz-checklist-step-paragraph">
+                                    <?php echo esc_html($step['description']); ?>
+                                    <?php if(!empty($step['button_link'])): ?>
+                                        <a href="<?php echo esc_url($step['learn_more_link']); ?>" target="_blank"><?php echo esc_html__('Learn more', 'quiz-maker'); ?></a>
+                                    <?php endif; ?>
+                                </p>
+                                <div class="ays-quiz-checklist-actions">
+                                    <?php if($is_checked): ?>
+                                        <button class="ays-quiz-checklist-mark-done"><?php echo esc_html__('Unmark as done', 'quiz-maker'); ?></button>
+                                    <?php else: ?>
+                                        <button class="ays-quiz-checklist-mark-done"><?php echo esc_html__('Mark as done', 'quiz-maker'); ?></button>
+                                    <?php endif; ?>
+                                    <?php if(!empty($step['button_text'])): ?>
+                                        <a href="<?php echo esc_url($step['button_link']); ?>" target="_blank" class="ays-quiz-checklist-primary-action"><?php echo esc_html($step['button_text']); ?></a>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        </li>
+                    <?php endforeach; ?>
+                    </ul>
+                    <style>
+                        #ays-quiz-checklist-container.ays-quiz-checklist-panel{max-width:100%;background:#fff;font-family:Arial,sans-serif;overflow:hidden;margin:0 auto;color:#0c0d0e;box-shadow:rgba(0,0,0,.2) 0 3px 5px -1px,rgba(0,0,0,.14) 0 5px 8px 0,rgba(0,0,0,.12) 0 1px 14px 0;position:fixed;width:360px;bottom:40px;inset-inline-end:40px;z-index:99999;max-height:730px;overflow-y:auto;transition:box-shadow .3s cubic-bezier(.4, 0, .2, 1);border-radius:4px}#ays-quiz-checklist-container .ays-quiz-checklist-header{box-shadow:none;display:flex;flex-direction:row;align-items:center;width:100%;box-sizing:border-box;flex-shrink:0;position:sticky;z-index:1100;top:0;left:auto;right:0;color:rgba(0,0,0,.87);background-color:#fff;transition:box-shadow .3s cubic-bezier(.4, 0, .2, 1);padding:16px}#ays-quiz-checklist-container .ays-quiz-checklist-header-row{-webkit-tap-highlight-color:transparent;background-color:transparent;user-select:none;vertical-align:middle;appearance:none;display:flex;-webkit-box-flex:1;flex-grow:1;-webkit-box-pack:start;justify-content:space-between;-webkit-box-align:center;align-items:center;position:relative;min-width:0;box-sizing:border-box;text-align:left;padding:0;color:#0c0d0e;outline:0;border:0;margin:0;border-radius:0;text-decoration:none;transition:background-color 150ms cubic-bezier(.4, 0, .2, 1)}#ays-quiz-checklist-container .ays-quiz-checklist-header h3{box-sizing:content-box;display:inline;height:auto;padding:0;width:auto;text-transform:none;margin:0;font-weight:600;line-height:1.3;font-family:Arial,sans-serif;font-size:1rem;letter-spacing:.00938em;-webkit-box-flex:1;flex-grow:1}#ays-quiz-checklist-container .ays-quiz-checklist-close-btn,#ays-quiz-checklist-container .ays-quiz-checklist-minimize-btn{border:none;background:0 0;font-size:20px;cursor:pointer;outline:unset;transition:background-color .3s ease-in-out;border-radius:4px}#ays-quiz-checklist-container .ays-quiz-checklist-close-btn:hover,#ays-quiz-checklist-container .ays-quiz-checklist-minimize-btn:hover{background-color:rgba(0,0,0,.04)}#ays-quiz-checklist-container .ays-quiz-checklist-progress{display:flex;align-items:center;padding:12px 16px;border-bottom:1px solid #eee}#ays-quiz-checklist-container .ays-quiz-checklist-progress-bar{flex:1;background:#eee;height:6px;border-radius:4px;margin-right:10px;overflow:hidden}#ays-quiz-checklist-container .ays-quiz-checklist-progress-bar span{display:block;height:100%;background:#00a0d2;transition:width .3s ease-in-out}#ays-quiz-checklist-container .ays-quiz-checklist-progress-text{font-size:13px;min-width:30px}#ays-quiz-checklist-container .ays-quiz-checklist-items{list-style:none;padding:0;margin:0}#ays-quiz-checklist-container .ays-quiz-checklist-step{padding:12px 16px;border-bottom:1px solid #f0f0f0;transition:background .2s}#ays-quiz-checklist-container .ays-quiz-checklist-step:hover{background-color:#f9f9f9}#ays-quiz-checklist-container .ays-quiz-checklist-step label{display:flex;align-items:center;cursor:pointer}#ays-quiz-checklist-container .ays-quiz-checklist-step input[type=checkbox]{margin-right:10px}#ays-quiz-checklist-container .ays-quiz-checklist-step.completed label span{text-decoration:line-through;opacity:.6}#ays-quiz-checklist-container .ays-quiz-checklist-step-title{margin:0;font-family:Arial,sans-serif;font-weight:400;font-size:.875rem;letter-spacing:.01071em;display:block}#ays-quiz-checklist-container .ays-quiz-checklist-step-content{display:none;margin-top:12px}#ays-quiz-checklist-container .ays-quiz-checklist-step-content img{width:100%;max-width:100%;border-radius:4px;margin-bottom:0;height:240px;object-fit:cover}#wpwrap #wpfooter #ays-quiz-checklist-container .ays-quiz-checklist-step-content p{margin:0;font-size:13px;padding:16px 0}#ays-quiz-checklist-container .ays-quiz-checklist-step-content a:not(.ays-quiz-checklist-primary-action){color:#0073aa;text-decoration:underline}#ays-quiz-checklist-container .ays-quiz-checklist-actions{display:flex;-webkit-box-align:center;align-items:center;-webkit-box-pack:end;justify-content:flex-end;padding-bottom:12px}#ays-quiz-checklist-container .ays-quiz-checklist-mark-done,#ays-quiz-checklist-container .ays-quiz-checklist-primary-action{display:inline-flex;position:relative;box-sizing:border-box;-webkit-tap-highlight-color:transparent;user-select:none;vertical-align:middle;appearance:none;text-transform:none;font-family:Arial,sans-serif;font-weight:500;font-size:.8125rem;line-height:1.75;letter-spacing:.02857em;min-width:64px;box-shadow:none;outline:0;text-decoration:none;padding:4px 10px;transition:background-color 250ms cubic-bezier(.4, 0, .2, 1),box-shadow 250ms cubic-bezier(.4, 0, .2, 1),border-color 250ms cubic-bezier(.4, 0, .2, 1),color 250ms cubic-bezier(.4, 0, .2, 1);white-space:nowrap;cursor:pointer}#ays-quiz-checklist-container .ays-quiz-checklist-mark-done{-webkit-box-align:center;align-items:center;-webkit-box-pack:center;justify-content:center;background-color:transparent;color:#515962;border:0;margin:0;border-radius:4px}#ays-quiz-checklist-container .ays-quiz-checklist-mark-done:hover{color:#515962;text-decoration:none;background-color:rgba(81,89,98,.04)}#ays-quiz-checklist-container .ays-quiz-checklist-primary-action{-webkit-box-align:center;align-items:center;-webkit-box-pack:center;justify-content:center;color:#fff;background-color:#00a0d2;border:0 initial initial;border-image:initial;margin:0 0 0 8px;border-radius:4px}#ays-quiz-checklist-container .ays-quiz-checklist-toggle-step{background:0 0;border:none;font-size:16px;cursor:pointer;transform:rotate(0);transition:transform .2s}#ays-quiz-checklist-container .ays-quiz-checklist-toggle-step.open{transform:rotate(180deg)}#ays-quiz-checklist-container.ays-quiz-checklist-panel.ays-quiz-checklist-minimized .ays-quiz-checklist-items{display:none}.ays-quiz-launch-icon::after{content:"";width:8px;height:8px;background-color:#d179f2;border-radius:50%;position:absolute;top:0;right:0}.ays-quiz-checklist-open-icon{position:absolute;bottom:36px;right:20px;cursor:pointer}@media (max-width:782px){#ays-quiz-checklist-container.ays-quiz-checklist-panel,.ays-quiz-checklist-open-icon{display:none}}@media (max-width:480px){#ays-quiz-checklist-container.ays-quiz-checklist-panel{border-radius:0;max-width:100%}#ays-quiz-checklist-container .ays-quiz-checklist-header h3{font-size:16px}#ays-quiz-checklist-container .ays-quiz-checklist-step-content p{font-size:13px}#ays-quiz-checklist-container .ays-quiz-checklist-actions{flex-direction:column}}
+                    </style>
+                </div>
+                <?php
+            }
+        }
+
+    }
+
+    public function ays_quiz_save_checklist_progress() {
+        check_ajax_referer('ays_quiz_nonce', 'nonce');
+
+        $user_can_capability = $this->quiz_maker_capabilities();
+
+        // Check for permissions.
+        if ( ! current_user_can( $user_can_capability ) ) {
+            wp_send_json_error( esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+
+        if( !is_user_logged_in() ) {
+            wp_send_json_error( esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+
+        $user_id = get_current_user_id();
+        $steps = isset($_POST['steps']) ? array_map('sanitize_text_field', $_POST['steps']) : array();
+
+        update_user_meta($user_id, 'ays_quiz_checklist_completed_steps', $steps);
+
+        wp_send_json_success(array('saved' => true));
+    }
+
+    public function ays_quiz_checklist_close_popup() {
+        check_ajax_referer('ays_quiz_nonce', 'nonce');
+
+        $user_can_capability = $this->quiz_maker_capabilities();
+
+        // Check for permissions.
+        if ( ! current_user_can( $user_can_capability ) ) {
+            wp_send_json_error( esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+
+        if (is_user_logged_in()) {
+            $user_id = get_current_user_id();
+            update_user_meta($user_id, 'ays_quiz_checklist_popup_closed', 1);
+            wp_send_json_success( esc_html__( 'Popup marked as closed.', 'quiz-maker' ) );
+        }
+
+        wp_send_json_error( esc_html__( 'User not logged in.', 'quiz-maker' ) );
+    }
+
+    public function ays_quiz_checklist_reopen_callback() {
+        check_ajax_referer('ays_quiz_nonce', 'nonce');
+
+        $user_can_capability = $this->quiz_maker_capabilities();
+
+        // Check for permissions.
+        if ( ! current_user_can( $user_can_capability ) ) {
+            wp_send_json_error( esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+
+        if (is_user_logged_in()) {
+            $user_id = get_current_user_id();
+            delete_user_meta($user_id, 'ays_quiz_checklist_popup_closed');
+            wp_send_json_success('Popup reopened.');
+        }
+
+        wp_send_json_error( esc_html__( 'User not logged in.', 'quiz-maker' ) );
     }
     
 }

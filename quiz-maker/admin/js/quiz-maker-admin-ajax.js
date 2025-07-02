@@ -742,5 +742,162 @@
             return text.replace(/[&<>\"']/g, function(m) { return map[m]; });
         }
     }
+
+    function updateProgress() {
+        var total = $(document).find(".ays-quiz-checklist-step").length;
+        var done = $(document).find(".ays-quiz-checklist-step input:checked").length;
+        var percent = Math.round((done / total) * 100);
+
+        $(document).find(".ays-quiz-checklist-progress-text").text(percent + "%");
+        $(document).find(".ays-quiz-checklist-progress-bar span").css("width", percent + "%");
+    }
+
+    function saveChecklist() {
+        var checked = [];
+        $(document).find(".ays-quiz-checklist-step input:checked").each(function () {
+                checked.push($(this).closest(".ays-quiz-checklist-step").data("step"));
+            });
+
+        $.post(quiz_maker_ajax.ajax_url, {
+            action: "ays_quiz_save_checklist_progress",
+            nonce: quiz_maker_ajax.nonce,
+            steps: checked,
+        });
+    }
+
+    $(document).find(".ays-quiz-checklist-step").each(function () {
+        var $step = $(this);
+        var $checkbox = $step.find('input[type="checkbox"]');
+        var $content = $step.find(".ays-quiz-checklist-step-content");
+        var $button = $step.find(".ays-quiz-checklist-mark-done");
+
+        // $step.find("label").on("click", function (e) {
+        //     if (!$(e.target).is("input")) {
+        //         $content.slideToggle(200);
+        //     }
+        // });
+
+        $checkbox.on("change", function () {
+            if ($(this).is(':checked')) {
+                $step.addClass('completed');
+                $button.text(quiz_maker_ajax.checklistUnmarkAsDone);
+            } else {
+                $step.removeClass('completed');
+                $button.text(quiz_maker_ajax.checklistMarkAsDone);
+            }
+
+            updateProgress();
+            saveChecklist();
+        });
+
+        // $step.find(".ays-quiz-checklist-mark-done").on("click", function () {
+        //     $checkbox.prop("checked", true).trigger("change");
+        // });
+    });
+
+    $(document).find('.ays-quiz-checklist-mark-done').on('click', function () {
+        var $button = $(this);
+        var $step = $button.closest('.ays-quiz-checklist-step');
+        var $checkbox = $step.find('input[type="checkbox"]');
+
+        var isChecked = $checkbox.prop('checked');
+
+        $checkbox.prop('checked', !isChecked);
+        $step.toggleClass('completed', !isChecked);
+
+        if (isChecked) {
+          $button.text(quiz_maker_ajax.checklistMarkAsDone);
+        } else {
+          $button.text(quiz_maker_ajax.checklistUnmarkAsDone);
+        }
+
+        updateProgress();
+        saveChecklist();
+    });
+
+    $(document).find('.ays-quiz-checklist-toggle-step').on('click', function () {
+        var $step = $(this).closest('.ays-quiz-checklist-step');
+        var $content = $step.find('.ays-quiz-checklist-step-content');
+
+        $(document).find('.ays-quiz-checklist-step-content').not($content).slideUp(200);
+        $(document).find('.ays-quiz-checklist-toggle-step').not(this).removeClass('open');
+
+        $content.slideToggle(200);
+        $(this).toggleClass('open');
+    });
+
+    // Reopen checklist on checklist icon click
+    $(document).find('.ays-quiz-checklist-open-icon').on('click', function () {
+        var $checklist = $(document).find('#ays-quiz-checklist-container');
+        $checklist.fadeIn(200);
+
+        $.ajax({
+            type: 'POST',
+            url: quiz_maker_ajax.ajax_url,
+            data: {
+                action: 'ays_quiz_checklist_reopen_callback',
+                nonce: quiz_maker_ajax.nonce
+            },
+            success: function () {
+            }
+        });
+    });
+
+    // Hide popup permanently
+    $(document).find('.ays-quiz-checklist-popup-close').on('click', function () {
+        var $checklist = $(this).closest('.ays-quiz-checklist-popup');
+        $checklist.fadeOut(200);
+    });
+
+    $(document).find('.ays-quiz-checklist-minimize-btn').on('click', function () {
+        var $panel = $(document).find('.ays-quiz-checklist-panel');
+        var $expandedIcon = $(this).find('.ays-quiz-checklist-minimize-icon-expanded');
+        var $collapsedIcon = $(this).find('.ays-quiz-checklist-minimize-icon-collapsed');
+
+        $panel.toggleClass('ays-quiz-checklist-minimized');
+
+        if ($panel.hasClass('ays-quiz-checklist-minimized')) {
+            $expandedIcon.hide();
+            $collapsedIcon.show();
+        } else {
+            $expandedIcon.show();
+            $collapsedIcon.hide();
+        }
+    });
+
+    $(document).find('.ays-quiz-checklist-close-btn').on('click', function () {
+        var $checklist = $(this).closest('#ays-quiz-checklist-container');
+        $.ajax({
+            type: 'POST',
+            url: quiz_maker_ajax.ajax_url,
+            data: {
+                action: 'ays_quiz_checklist_close_popup',
+                nonce: quiz_maker_ajax.nonce
+            },
+            success: function (response) {
+                if (response.success) {
+                    $checklist.fadeOut(200);
+                } else {
+                    console.error(response.data);
+                    $checklist.fadeOut(200);
+                }
+
+                if (localStorage.getItem('ays_quiz_checklist_popup_closed') !== '1') {
+                    $(document).find('.ays-quiz-checklist-popup').fadeIn(200);
+                }
+
+                localStorage.setItem('ays_quiz_checklist_popup_closed', '1');
+            },
+            error: function() {
+                $checklist.fadeOut(200);
+            }
+        });
+    });
+
+    updateProgress();
+
+    setTimeout(function(){
+        var $panel = $(document).find('.ays-quiz-checklist-panel').fadeIn(200);
+    }, 2000);
     
 })( jQuery );

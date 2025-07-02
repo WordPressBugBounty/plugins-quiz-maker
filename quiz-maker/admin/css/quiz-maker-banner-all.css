@@ -76,6 +76,7 @@
     transform: translate3d(3000px, 0, 0);
 }
 
+div.error:not([class*="ays-quiz"]):not([class*="ays_quiz"]),
 .notice:not([class*="ays-quiz"]):not([class*="ays_quiz"]) {
     display: none !important;
 }
@@ -5132,3 +5133,349 @@ div#ays-quiz-dicount-month-main.ays_quiz_dicount_info.ays_quiz_fox_lms_container
     }
 } 
 /*Chart Builder banner | end*/
+
+/* Checklist guide styles | Start */
+#ays-quiz-checklist-container.ays-quiz-checklist-panel {
+    max-width: 100%;
+    background: #fff;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+    margin: 0 auto;
+    color: rgb(12, 13, 14);
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 5px -1px, rgba(0, 0, 0, 0.14) 0px 5px 8px 0px, rgba(0, 0, 0, 0.12) 0px 1px 14px 0px;
+    background-color: rgb(255, 255, 255);
+    position: fixed;
+    width: 360px;
+    bottom: 40px;
+    inset-inline-end: 40px;
+    z-index: 99999;
+    max-height: 730px;
+    overflow-y: auto;
+    transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 4px;
+}
+
+#ays-quiz-checklist-container .ays-quiz-checklist-header {
+    box-shadow: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    position: sticky;
+    z-index: 1100;
+    top: 0px;
+    left: auto;
+    right: 0px;
+    color: rgba(0, 0, 0, 0.87);
+    background-color: rgb(255, 255, 255);
+    transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 16px;
+}
+
+#ays-quiz-checklist-container .ays-quiz-checklist-header-row {
+    -webkit-tap-highlight-color: transparent;
+    background-color: transparent;
+    user-select: none;
+    vertical-align: middle;
+    appearance: none;
+    display: flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    -webkit-box-pack: start;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+    position: relative;
+    min-width: 0px;
+    box-sizing: border-box;
+    text-align: left;
+    padding: 0;
+    color: rgb(12, 13, 14);
+    outline: 0;
+    border: 0;
+    margin: 0;
+    border-radius: 0;
+    text-decoration: none;
+    transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#ays-quiz-checklist-container .ays-quiz-checklist-header h3 {
+    box-sizing: content-box;
+    display: inline;
+    height: auto;
+    padding: 0;
+    width: auto;
+    text-transform: none;
+    margin: 0px;
+    font-weight: 600;
+    line-height: 1.3;
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.00938em;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+}
+
+#ays-quiz-checklist-container .ays-quiz-checklist-minimize-btn,
+#ays-quiz-checklist-container .ays-quiz-checklist-close-btn {
+    border: none;
+    background: transparent;
+    font-size: 20px;
+    cursor: pointer;
+    outline: unset;
+    transition: background-color 0.3s ease-in-out;
+    border-radius: 4px;
+}
+
+#ays-quiz-checklist-container .ays-quiz-checklist-minimize-btn:hover,
+#ays-quiz-checklist-container .ays-quiz-checklist-close-btn:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+}
+
+#ays-quiz-checklist-container .ays-quiz-checklist-progress {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    border-bottom: 1px solid #eee;
+}
+
+#ays-quiz-checklist-container .ays-quiz-checklist-progress-bar {
+    flex: 1;
+    background: #eee;
+    height: 6px;
+    border-radius: 4px;
+    margin-right: 10px;
+    overflow: hidden;
+}
+
+#ays-quiz-checklist-container .ays-quiz-checklist-progress-bar span {
+    display: block;
+    height: 100%;
+    background: #00a0d2;
+    transition: width 0.3s ease-in-out;
+}
+
+#ays-quiz-checklist-container .ays-quiz-checklist-progress-text {
+    font-size: 13px;
+    min-width: 30px;
+}
+
+#ays-quiz-checklist-container .ays-quiz-checklist-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#ays-quiz-checklist-container .ays-quiz-checklist-step {
+    padding: 12px 16px;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background 0.2s ease;
+}
+
+#ays-quiz-checklist-container .ays-quiz-checklist-step:hover {
+    background-color: #f9f9f9;
+}
+
+#ays-quiz-checklist-container .ays-quiz-checklist-step label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+#ays-quiz-checklist-container .ays-quiz-checklist-step input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+#ays-quiz-checklist-container .ays-quiz-checklist-step.completed label span {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+#ays-quiz-checklist-container .ays-quiz-checklist-step-title {
+    margin: 0px;
+    font-family: Arial, sans-serif;
+    font-weight: 400;
+    font-size: 0.875rem;
+    letter-spacing: 0.01071em;
+    display: block;
+}
+
+#ays-quiz-checklist-container .ays-quiz-checklist-step-content {
+    display: none;
+    margin-top: 12px;
+}
+
+#ays-quiz-checklist-container .ays-quiz-checklist-step-content img {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 4px;
+    margin-bottom: 0;
+    height: 240px;
+    object-fit: cover;
+}
+
+#wpwrap #wpfooter #ays-quiz-checklist-container .ays-quiz-checklist-step-content p {
+    margin: 0;
+    font-size: 13px;
+    padding: 16px 0;
+}
+
+#ays-quiz-checklist-container .ays-quiz-checklist-step-content a:not(.ays-quiz-checklist-primary-action) {
+    color: #0073aa;
+    text-decoration: underline;
+}
+
+#ays-quiz-checklist-container .ays-quiz-checklist-actions {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: end;
+    justify-content: flex-end;
+    padding-bottom: 12px;
+}
+
+#ays-quiz-checklist-container .ays-quiz-checklist-actions button {
+}
+
+#ays-quiz-checklist-container .ays-quiz-checklist-mark-done {
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    position: relative;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    background-color: transparent;
+    cursor: pointer;
+    user-select: none;
+    vertical-align: middle;
+    appearance: none;
+    text-transform: none;
+    font-family: Arial, sans-serif;
+    font-weight: 500;
+    font-size: 0.8125rem;
+    line-height: 1.75;
+    letter-spacing: 0.02857em;
+    min-width: 64px;
+    color: rgb(81, 89, 98);
+    box-shadow: none;
+    outline: 0px;
+    border: 0;
+    margin: 0px;
+    text-decoration: none;
+    padding: 4px 10px;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1), border-color 250ms cubic-bezier(0.4, 0, 0.2, 1), color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 4px;
+    white-space: nowrap;
+}
+
+#ays-quiz-checklist-container .ays-quiz-checklist-mark-done:hover {
+    color: rgb(81, 89, 98);
+    text-decoration: none;
+    background-color: rgba(81, 89, 98, 0.04);
+}
+
+#ays-quiz-checklist-container .ays-quiz-checklist-primary-action {
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    position: relative;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+    user-select: none;
+    vertical-align: middle;
+    appearance: none;
+    text-transform: none;
+    font-family: Arial, sans-serif;
+    font-weight: 500;
+    font-size: 0.8125rem;
+    line-height: 1.75;
+    letter-spacing: 0.02857em;
+    min-width: 64px;
+    color: rgb(12, 13, 14);
+    color: #fff;
+    background-color: rgb(240, 171, 252);
+    background-color: #00a0d2;
+    box-shadow: none;
+    outline: 0px;
+    border-width: 0px;
+    border-style: initial;
+    border-color: initial;
+    border-image: initial;
+    margin: 0px;
+    text-decoration: none;
+    padding: 4px 10px;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1), border-color 250ms cubic-bezier(0.4, 0, 0.2, 1), color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 4px;
+    white-space: nowrap;
+    margin-left: 8px;
+}
+
+#ays-quiz-checklist-container .ays-quiz-checklist-toggle-step {
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    transform: rotate(0deg);
+    transition: transform 0.2s ease;
+}
+
+#ays-quiz-checklist-container .ays-quiz-checklist-toggle-step.open {
+    transform: rotate(180deg);
+}
+
+#ays-quiz-checklist-container.ays-quiz-checklist-panel.ays-quiz-checklist-minimized .ays-quiz-checklist-items {
+    display: none;
+}
+
+.ays-quiz-launch-icon::after {
+    content: "";
+    width: 8px;
+    height: 8px;
+    background-color: #d179f2;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.ays-quiz-checklist-open-icon {
+    position: absolute;
+    bottom: 36px;
+    right: 20px;
+    cursor: pointer;
+}
+
+@media (max-width: 782px) {
+    .ays-quiz-checklist-open-icon,
+    #ays-quiz-checklist-container.ays-quiz-checklist-panel {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    #ays-quiz-checklist-container.ays-quiz-checklist-panel {
+        border-radius: 0;
+        max-width: 100%;
+    }
+
+    #ays-quiz-checklist-container .ays-quiz-checklist-header h3 {
+        font-size: 16px;
+    }
+
+    #ays-quiz-checklist-container .ays-quiz-checklist-step-content p {
+        font-size: 13px;
+    }
+
+    #ays-quiz-checklist-container .ays-quiz-checklist-actions {
+        flex-direction: column;
+    }
+}
+
+/* Checklist guide styles | End */

@@ -44,7 +44,7 @@ body.mobile.modal-open #wpwrap {
 }
 
 /* Conflict with WP Adminify – Custom WordPress Dashboard | end */
-
+div.error:not([class*="ays-quiz"]):not([class*="ays_quiz"]),
 .notice:not([class*="ays-quiz"]):not([class*="ays_quiz"]) {
     display: none !important;
 }
@@ -1661,6 +1661,7 @@ div.ays-notice-banner {
 }
 
 .ays-notice-banner #navigation-container {
+    position: relative;
     width: 100%;
     margin: 0 auto;
     display:  flex;

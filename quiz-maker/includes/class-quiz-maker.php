@@ -282,6 +282,15 @@ class Quiz_Maker {
         $this->loader->add_action( 'wp_ajax_ays_quiz_activate_plugin', $plugin_admin, 'ays_quiz_activate_plugin' );
         $this->loader->add_action( 'wp_ajax_nopriv_ays_quiz_activate_plugin', $plugin_admin, 'ays_quiz_activate_plugin' );
 
+        $this->loader->add_action( 'wp_ajax_ays_quiz_save_checklist_progress', $plugin_admin, 'ays_quiz_save_checklist_progress' );
+        $this->loader->add_action( 'wp_ajax_nopriv_ays_quiz_save_checklist_progress', $plugin_admin, 'ays_quiz_save_checklist_progress' );
+
+        $this->loader->add_action( 'wp_ajax_ays_quiz_checklist_close_popup', $plugin_admin, 'ays_quiz_checklist_close_popup' );
+        $this->loader->add_action( 'wp_ajax_nopriv_ays_quiz_checklist_close_popup', $plugin_admin, 'ays_quiz_checklist_close_popup' );
+
+        $this->loader->add_action( 'wp_ajax_ays_quiz_checklist_reopen_callback', $plugin_admin, 'ays_quiz_checklist_reopen_callback' );
+        $this->loader->add_action( 'wp_ajax_nopriv_ays_quiz_checklist_reopen_callback', $plugin_admin, 'ays_quiz_checklist_reopen_callback' );
+
 		// $this->loader->add_action( 'plugins_loaded', $plugin_admin, 'ays_change_db_questions' );
         // Add Settings link to the plugin
         $plugin_basename = plugin_basename( plugin_dir_path( __DIR__ ) . $this->plugin_name . '.php' );
@@ -301,6 +310,7 @@ class Quiz_Maker {
 		$this->loader->add_action( 'admin_title', $plugin_admin, 'change_dashboard_title' );
 		
         $this->loader->add_action( 'in_admin_footer', $plugin_admin, 'quiz_maker_admin_footer', 1 );
+        $this->loader->add_action( 'in_admin_footer', $plugin_admin, 'ays_quiz_add_checklist_guide', 10 );
         
 		$this->loader->add_action( 'wp_dashboard_setup', $plugin_admin, 'quiz_maker_add_dashboard_widgets' );
 		
