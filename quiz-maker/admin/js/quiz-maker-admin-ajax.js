@@ -896,8 +896,8 @@
 
     updateProgress();
 
-    setTimeout(function(){
-        var $panel = $(document).find('.ays-quiz-checklist-panel').fadeIn(200);
-    }, 2000);
+    // setTimeout(function(){
+    //     var $panel = $(document).find('.ays-quiz-checklist-panel').fadeIn(200);
+    // }, 2000);
     
 })( jQuery );

@@ -5547,7 +5547,7 @@ class Quiz_Maker_Admin
                     ),
                 );
                 ?>
-                <div class="ays-quiz-checklist-panel" id="ays-quiz-checklist-container" style="display: none;">
+                <div class="ays-quiz-checklist-panel" id="ays-quiz-checklist-container" style="<?php echo ($popup_closed) ? 'display: none;' : ''; ?>">
                     <header class="ays-quiz-checklist-header">
                         <h3><?php echo esc_html__('Create a Quiz with 4 Easy Steps', 'quiz-maker'); ?></h3>
 
