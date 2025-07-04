@@ -405,6 +405,7 @@ if ( isset( $id ) && !is_null( $id ) ) {
 
 $wp_general_settings_url = admin_url( 'options-general.php' );
 $quiz_category_page_url  = admin_url( 'admin.php?page=quiz-maker-quiz-categories' );
+$question_add_new_page_url  = admin_url( 'admin.php?page=quiz-maker-questions&action=add' );
 
 $quiz_message_vars = array(
     "%%user_name%%"                                 => __("User Name", 'quiz-maker'),
@@ -1815,19 +1816,21 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                             ?>
                             <tr class="ays-question-row ui-state-default">
                                 <td colspan="6" class="empty_quiz_td">
-                                    <div>
+                                    <div class="ays-quiz-create-question-link-box">
                                         <i class="ays_fa ays_fa_info" aria-hidden="true" style="margin-right:10px"></i>
                                         <span style="font-size: 13px; font-style: italic;">
                                         <?php
                                             echo esc_html__( 'There are no questions yet.', 'quiz-maker' );
                                         ?>
                                         </span>
-                                        <a class="create_question_link" href="admin.php?page=<?php echo esc_attr($this->plugin_name); ?>-questions&action=add" target="_blank"><?php echo esc_html__('Create question', 'quiz-maker'); ?></a>
                                     </div>
                                     <div class='ays_add_question_from_table'>                                        
                                         <a href="javascript:void(0)" class="ays-add-question">
                                             <i class="ays_fa ays_fa_plus_square" aria-hidden="true"></i>
                                             <?php echo esc_html__('Insert questions', 'quiz-maker'); ?>
+                                        </a>
+                                        <a href="<?php echo $question_add_new_page_url; ?>" class="ays-add-question-primary" target="_blank">
+                                            <?php echo esc_html__('Create question', 'quiz-maker'); ?>
                                         </a>
                                     </div>
                                 </td>

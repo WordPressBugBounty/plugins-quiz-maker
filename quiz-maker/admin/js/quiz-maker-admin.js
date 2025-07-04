@@ -1862,17 +1862,19 @@
                     $(document).find('#ays-questions-table').find('.dataTables_empty').parents('tr').remove();
                    let quizEmptytd = '<tr class="ays-question-row ui-state-default">'+
                     '    <td colspan="'+colspan+'" class="empty_quiz_td">'+
-                    '        <div>'+
+                    '        <div class="ays-quiz-create-question-link-box">'+
                     '            <i class="ays_fa ays_fa_info" aria-hidden="true" style="margin-right:10px"></i>'+
                     '            <span style="font-size: 13px; font-style: italic;">'+
                     '               There are no questions yet.'+
                     '            </span>'+
-                    '            <a class="create_question_link" href="admin.php?page=quiz-maker-questions&action=add" target="_blank">Create question</a>'+
                     '        </div>'+
                     '        <div class="ays_add_question_from_table">'+
                     '            <a href="javascript:void(0)" class="ays-add-question">'+
                     '                <i class="ays_fa ays_fa_plus_square" aria-hidden="true"></i>'+
-                    '                Insert questions'+
+                    '                '+ quizLangObj.insertQuestion +
+                    '            </a>'+
+                    '            <a href="admin.php?page=quiz-maker-questions&action=add" class="ays-add-question-primary" target="_blank">'+
+                    '                '+ quizLangObj.createQuestion +
                     '            </a>'+
                     '        </div>'+
                     '    </td>'+
@@ -2969,17 +2971,19 @@
                             accordion.find('.dataTables_empty').parents('tr').remove();
                            let quizEmptytd = '<tr class="ays-question-row ui-state-default">'+
                             '    <td colspan="'+colspan+'" class="empty_quiz_td">'+
-                            '        <div>'+
+                            '        <div class="ays-quiz-create-question-link-box">'+
                             '            <i class="ays_fa ays_fa_info" aria-hidden="true" style="margin-right:10px"></i>'+
                             '            <span style="font-size: 13px; font-style: italic;">'+
                             '               There are no questions yet.'+
                             '            </span>'+
-                            '            <a class="create_question_link" href="admin.php?page=quiz-maker-questions&action=add" target="_blank">Create question</a>'+
                             '        </div>'+
                             '        <div class="ays_add_question_from_table">'+
                             '            <a href="javascript:void(0)" class="ays-add-question">'+
                             '                <i class="ays_fa ays_fa_plus_square" aria-hidden="true"></i>'+
-                            '                Insert questions'+
+                            '                '+ quizLangObj.insertQuestion +
+                            '            </a>'+
+                            '            <a href="admin.php?page=quiz-maker-questions&action=add" class="ays-add-question-primary" target="_blank">'+
+                            '                '+ quizLangObj.createQuestion +
                             '            </a>'+
                             '        </div>'+
                             '    </td>'+

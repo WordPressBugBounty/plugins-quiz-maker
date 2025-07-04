@@ -261,6 +261,7 @@ class Quiz_Maker_Admin
         wp_localize_script( $this->plugin_name, 'quizLangObj', array(
             'quizBannerDate'                    => $quiz_banner_date,
             'AYS_QUIZ_ADMIN_URL'                => AYS_QUIZ_ADMIN_URL,
+            'questionPageUrl'                   => admin_url( 'admin.php?page=quiz-maker-questions' ),
 
             'questionTitle'                     => __( 'Question Default Title', 'quiz-maker'),
             'radio'                             => __( 'Radio', 'quiz-maker'),
@@ -295,6 +296,8 @@ class Quiz_Maker_Admin
             "selectCategory"                => __( "Select Category", 'quiz-maker' ),
             "selectTags"                    => __( "Select Tags", 'quiz-maker' ),
             "preivewQuiz"                   => __( "Preview Quiz", 'quiz-maker' ),
+            "createQuestion"                => __( "Create question", 'quiz-maker' ),
+            "insertQuestion"                => __( "Insert questions", 'quiz-maker' ),
         ) );
 
         wp_localize_script( $this->plugin_name, 'quizLangDataTableObj', array(

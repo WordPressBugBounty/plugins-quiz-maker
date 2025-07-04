@@ -840,10 +840,30 @@ a.ays-add-question:hover {
     cursor: pointer;
 }
 
-.ays_add_question_from_table a.ays-add-question {
-    line-height: 40px;
-    padding: 5px 10px;
+.ays_add_question_from_table {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ays-quiz-create-question-link-box {
+    margin-bottom: 10px;
+}
+
+.ays_add_question_from_table .ays-add-question-primary {
+    padding: 5px 17px;
     display: inline-block;
+    background: #005AE0;
+    color: #fff;
+    border-radius: 4px;
+    width: auto;
+    white-space: nowrap;
+    transition: background 0.3s ease-in-out;
+}
+
+.ays_add_question_from_table .ays-add-question-primary:hover {
+    background: #0044a9;
+    color: #fff !important;
 }
 
 a.ays-edit-question {
@@ -861,6 +881,7 @@ a.ays-delete-interval:hover, a.ays-delete-interval:focus,
 a.ays-add-answer:hover, a.ays-add-answer:focus,
 a.ays-delete-answer:hover, a.ays-delete-answer:focus,
 a.ays-add-question:hover, a.ays-add-question:focus,
+a.ays-add-question-primary:hover, a.ays-add-question-primary:focus,
 a.ays-edit-question:hover, a.ays-edit-question:focus,
 a.ays-delete-question:hover, a.ays-delete-question:focus{
     outline: none;
