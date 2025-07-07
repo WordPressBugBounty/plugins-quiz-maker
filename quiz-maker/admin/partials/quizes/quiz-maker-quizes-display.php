@@ -1,5 +1,4 @@
 <?php
-global $ays_quiz_settings;
 
 $action = ( isset($_GET['action']) ) ? sanitize_text_field( $_GET['action'] ) : '';
 $id     = ( isset($_GET['quiz']) ) ? sanitize_text_field( $_GET['quiz'] ) : null;
@@ -12,11 +11,7 @@ $quiz_max_id = $this->get_max_id('quizes');
 $user_id = get_current_user_id();
 
 
-if(!empty($ays_quiz_settings) && !empty($ays_quiz_settings['options'])){
-    $gen_options = $ays_quiz_settings['options'];
-} else {
-    $gen_options = ($this->settings_obj->ays_get_setting('options') === false) ? array() : json_decode(stripcslashes($this->settings_obj->ays_get_setting('options')), true);
-}
+$gen_options = ($this->settings_obj->ays_get_setting('options') === false) ? array() : json_decode(stripcslashes($this->settings_obj->ays_get_setting('options')), true);
 
 $question_default_type = isset($gen_options['question_default_type']) && $gen_options['question_default_type'] != '' ? $gen_options['question_default_type'] : null;
 
@@ -65,12 +60,8 @@ $youtube_icon_svg = "<span class=''><img src='". AYS_QUIZ_ADMIN_URL ."/images/ic
 $quick_quiz_plugin_nonce = wp_create_nonce( 'quiz-maker-ajax-quick-quiz-nonce' );
 
 // Buttons Text
-if(!empty($ays_quiz_settings) && !empty($ays_quiz_settings['buttons_texts'])){
-    $buttons_texts = $ays_quiz_settings['buttons_texts'];
-} else {
-    $buttons_texts_res      = ($this->settings_obj->ays_get_setting('buttons_texts') === false) ? json_encode(array()) : $this->settings_obj->ays_get_setting('buttons_texts');
-    $buttons_texts          = json_decode( stripcslashes( $buttons_texts_res ) , true);
-}
+$buttons_texts_res      = ($this->settings_obj->ays_get_setting('buttons_texts') === false) ? json_encode(array()) : $this->settings_obj->ays_get_setting('buttons_texts');
+$buttons_texts          = json_decode( stripcslashes( $buttons_texts_res ) , true);
 
 
 $start_button           = (isset($buttons_texts['start_button']) && $buttons_texts['start_button'] != '') ? stripslashes( esc_attr( $buttons_texts['start_button'] ) ) : 'Start';

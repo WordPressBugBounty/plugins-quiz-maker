@@ -139,7 +139,7 @@
         $version2 = '5.2';
         $versionCompare = ays_quiz_versionCompare($version1, $operator, $version2);
 
-        if ( $versionCompare && empty($_GET['page']) ) {
+        if ( $versionCompare ) {
             // Hook scripts function into block editor hook
             add_action( 'enqueue_block_editor_assets', 'ays_quiz_gutenberg_scripts' );
 

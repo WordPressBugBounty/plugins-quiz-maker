@@ -650,7 +650,8 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                                         <option value="A">A</option>
                                     </select>
                                 </td>
-                                <td title="This property available only in pro version" class="ays-quiz-question-answer-image-row">
+                                <td title="This property available only in pro version" class="ays-quiz-question-answer-image-row only_pro">
+                                    <div class="pro_features"></div>
                                     <label class='ays-label' for='ays-answer'>
                                         <a style="opacity: 0.4" href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="add-answer-image" tabindex="-1"><?php echo esc_html__('Add','quiz-maker')?></a>
                                     </label>
@@ -768,7 +769,8 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                                             <option value="A">A</option>
                                         </select>
                                     </td>
-                                    <td title="This property available only in pro version" class="ays-quiz-question-answer-image-row">
+                                    <td title="This property available only in pro version" class="ays-quiz-question-answer-image-row only_pro">
+                                        <div class="pro_features"></div>
                                         <label class='ays-label' for='ays-answer'>
                                             <a style="opacity: 0.4" href="https://ays-pro.com/wordpress/quiz-maker" tabindex="-1" target="_blank" class="add-answer-image"><?php echo esc_html__('Add','quiz-maker')?></a>
                                         </label>
@@ -1157,80 +1159,7 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                 <hr>
                 <div class="form-group row">
                     <div class="col-sm-3">
-                        <label for="ays_quiz_hide_question_text">
-                            <?php echo esc_html__('Hide question text on the front-end', 'quiz-maker'); ?>
-                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Make the question appear without text. The option is designed to use when the question includes an image as well.','quiz-maker') ); ?>">
-                                <i class="ays_fa ays_fa_info_circle"></i>
-                            </a>
-                        </label>
-                    </div>
-
-                    <div class="col-sm-9">
-                        <div class="form-check form-check-inline">
-                            <input type="checkbox" id="ays_quiz_hide_question_text" name="ays_quiz_hide_question_text" value="on" <?php echo ($quiz_hide_question_text) ? "checked" : ""; ?> />
-                        </div>
-                    </div>
-                </div>
-                <hr>
-                <div class="form-group row">
-                    <div class="col-sm-3">
-                        <label for="ays_quiz_disable_answer_stripslashes">
-                            <?php echo esc_html__('Disable strip slashes for answers', 'quiz-maker'); ?>
-                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("By enabling this option, the backslashes will not be removed from your answers' content. It is recommended to have this option enabled, if you are using the MathJax-Latex plugin.",'quiz-maker')  ); ?>">
-                                <i class="ays_fa ays_fa_info_circle"></i>
-                            </a>
-                        </label>
-                    </div>
-
-                    <div class="col-sm-9">
-                        <div class="form-check form-check-inline">
-                            <input type="checkbox" id="ays_quiz_disable_answer_stripslashes" name="ays_quiz_disable_answer_stripslashes" value="on" <?php echo ($quiz_disable_answer_stripslashes) ? "checked" : ""; ?> />
-                        </div>
-                    </div>
-                </div>
-                <hr>
-                <div class="form-group row">
-                    <div class="col-sm-3">
-                        <label for="ays_quiz_enable_question_stripslashes">
-                            <?php echo esc_html__('Enable strip slashes for question', 'quiz-maker'); ?>
-                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("If this option is enabled the backslashes will be removed from your questions' content. If you are using the MathJax-Latex plugin it is recommended to have this option disabled.",'quiz-maker')  ); ?>">
-                                <i class="ays_fa ays_fa_info_circle"></i>
-                            </a>
-                        </label>
-                    </div>
-
-                    <div class="col-sm-9">
-                        <div class="form-check form-check-inline">
-                            <input type="checkbox" id="ays_quiz_enable_question_stripslashes" name="ays_quiz_enable_question_stripslashes" value="on" <?php echo ($quiz_enable_question_stripslashes) ? "checked" : ""; ?> />
-                        </div>
-                    </div>
-                </div>
-                <hr>
-                <div class="form-group row">
-                    <div class="col-sm-3">
-                        <label for="ays_not_influence_to_score">
-                            <?php echo esc_html__('No influence to score', 'quiz-maker'); ?>
-                            <a class="ays_help" data-toggle="tooltip" title="<?php 
-                               echo esc_html__( "If you enable this option, this question will not be counted in the final score.", 'quiz-maker' ) . " " .
-                                    esc_html__( "So this question will be just a Survey question.", 'quiz-maker' ) . " " .
-                                    esc_html__( "There will not be correct/incorrect answers.", 'quiz-maker' ) . " " .
-                                    esc_html__( "This is for just collecting data from users.", 'quiz-maker' );
-                            ?>">
-                                <i class="ays_fa ays_fa_info_circle"></i>
-                            </a>
-                        </label>
-                    </div>
-
-                    <div class="col-sm-9">
-                        <div class="form-check form-check-inline">
-                            <input type="checkbox" id="ays_not_influence_to_score" name="ays_not_influence_to_score" value="on" <?php echo ($not_influence_to_score) ? "checked" : ""; ?> />
-                        </div>
-                    </div>
-                </div>
-                <hr>
-                <div class="form-group row">
-                    <div class="col-sm-3">
-                        <label for="right_answer_text">
+                        <label for="ays_question_hint">
                             <?php echo esc_html__('Question hint','quiz-maker'); ?>
                             <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Add extra information that can help users about the question.','quiz-maker') ); ?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
@@ -1249,7 +1178,7 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                 <hr>
                 <div class="form-group row">
                     <div class="col-sm-3">
-                        <label for="wrong_answer_text">
+                        <label for="explanation">
                             <?php echo esc_html__('Question explanation','quiz-maker'); ?> <sup>(<?php echo esc_html__('except for checkbox type','quiz-maker');?>)</sup>
                             <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Provide descriptive or informative text about the question.','quiz-maker') ); ?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
@@ -1320,6 +1249,79 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                         $settings = array('editor_height' => $quiz_wp_editor_height, 'textarea_name' => 'ays_quiz_question_note_message', 'editor_class' => 'ays-textarea', 'media_elements' => false);
                         wp_editor($content, $editor_id, $settings);
                         ?>
+                    </div>
+                </div>
+                <hr>
+                <div class="form-group row">
+                    <div class="col-sm-3">
+                        <label for="ays_quiz_hide_question_text">
+                            <?php echo esc_html__('Hide question text on the front-end', 'quiz-maker'); ?>
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Make the question appear without text. The option is designed to use when the question includes an image as well.','quiz-maker') ); ?>">
+                                <i class="ays_fa ays_fa_info_circle"></i>
+                            </a>
+                        </label>
+                    </div>
+
+                    <div class="col-sm-9">
+                        <div class="form-check form-check-inline">
+                            <input type="checkbox" id="ays_quiz_hide_question_text" name="ays_quiz_hide_question_text" value="on" <?php echo ($quiz_hide_question_text) ? "checked" : ""; ?> />
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="form-group row">
+                    <div class="col-sm-3">
+                        <label for="ays_quiz_disable_answer_stripslashes">
+                            <?php echo esc_html__('Disable strip slashes for answers', 'quiz-maker'); ?>
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("By enabling this option, the backslashes will not be removed from your answers' content. It is recommended to have this option enabled, if you are using the MathJax-Latex plugin.",'quiz-maker')  ); ?>">
+                                <i class="ays_fa ays_fa_info_circle"></i>
+                            </a>
+                        </label>
+                    </div>
+
+                    <div class="col-sm-9">
+                        <div class="form-check form-check-inline">
+                            <input type="checkbox" id="ays_quiz_disable_answer_stripslashes" name="ays_quiz_disable_answer_stripslashes" value="on" <?php echo ($quiz_disable_answer_stripslashes) ? "checked" : ""; ?> />
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="form-group row">
+                    <div class="col-sm-3">
+                        <label for="ays_quiz_enable_question_stripslashes">
+                            <?php echo esc_html__('Enable strip slashes for question', 'quiz-maker'); ?>
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("If this option is enabled the backslashes will be removed from your questions' content. If you are using the MathJax-Latex plugin it is recommended to have this option disabled.",'quiz-maker')  ); ?>">
+                                <i class="ays_fa ays_fa_info_circle"></i>
+                            </a>
+                        </label>
+                    </div>
+
+                    <div class="col-sm-9">
+                        <div class="form-check form-check-inline">
+                            <input type="checkbox" id="ays_quiz_enable_question_stripslashes" name="ays_quiz_enable_question_stripslashes" value="on" <?php echo ($quiz_enable_question_stripslashes) ? "checked" : ""; ?> />
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="form-group row">
+                    <div class="col-sm-3">
+                        <label for="ays_not_influence_to_score">
+                            <?php echo esc_html__('No influence to score', 'quiz-maker'); ?>
+                            <a class="ays_help" data-toggle="tooltip" title="<?php 
+                               echo esc_html__( "If you enable this option, this question will not be counted in the final score.", 'quiz-maker' ) . " " .
+                                    esc_html__( "So this question will be just a Survey question.", 'quiz-maker' ) . " " .
+                                    esc_html__( "There will not be correct/incorrect answers.", 'quiz-maker' ) . " " .
+                                    esc_html__( "This is for just collecting data from users.", 'quiz-maker' );
+                            ?>">
+                                <i class="ays_fa ays_fa_info_circle"></i>
+                            </a>
+                        </label>
+                    </div>
+
+                    <div class="col-sm-9">
+                        <div class="form-check form-check-inline">
+                            <input type="checkbox" id="ays_not_influence_to_score" name="ays_not_influence_to_score" value="on" <?php echo ($not_influence_to_score) ? "checked" : ""; ?> />
+                        </div>
                     </div>
                 </div>
                 <hr/>

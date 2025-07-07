@@ -174,8 +174,8 @@ class Quiz_Maker_Public
             ) );
 
             wp_enqueue_script($this->plugin_name .'-functions.js', plugin_dir_url(__FILE__) . 'js/quiz-maker-functions.js', array('jquery'), $this->version, true);
-            wp_enqueue_script($this->plugin_name .'-ajax-public', plugin_dir_url(__FILE__) . 'js/quiz-maker-public-ajax.js', array('jquery'), $this->version, true);
-            wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/quiz-maker-public.js', array('jquery'), $this->version, true);
+            wp_enqueue_script($this->plugin_name .'-ajax-public', plugin_dir_url(__FILE__) . 'js/quiz-maker-public-ajax.js', array('jquery'), time(), true);
+            wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/quiz-maker-public.js', array('jquery'), time(), true);
             wp_localize_script($this->plugin_name . '-ajax-public', 'quiz_maker_ajax_public', array(
                 'ajax_url'      => admin_url('admin-ajax.php'),
                 'warningIcon'   => plugin_dir_url(__FILE__) . "images/warning.svg",

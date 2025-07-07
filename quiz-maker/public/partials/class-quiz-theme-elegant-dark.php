@@ -53,7 +53,7 @@ class Quiz_Theme_Elegant_Dark extends Quiz_Maker_Public{
     }
 
     protected function define_theme_styles(){
-        wp_enqueue_style($this->plugin_name.'elegant_dark_css', dirname(plugin_dir_url(__FILE__)) . '/css/theme_elegant_dark.css', array(), $this->version, 'all');
+        wp_enqueue_style($this->plugin_name.'elegant_dark_css', dirname(plugin_dir_url(__FILE__)) . '/css/theme_elegant_dark.css', array(), time(), 'all');
     }
     
     protected function define_theme_scripts(){

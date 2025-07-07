@@ -1687,36 +1687,24 @@ class Quizes_List_Table extends WP_List_Table{
     function column_quiz_category_id( $item ) {
         global $wpdb;
 
-        static $category_cache = array();
-
         $quiz_categories_table = esc_sql( $wpdb->prefix . "aysquiz_quizcategories" );
 
         $quiz_category_id = ( isset( $item['quiz_category_id'] ) && $item['quiz_category_id'] != "" ) ? absint( sanitize_text_field( $item['quiz_category_id'] ) ) : 0;
 
-        if ( ! $quiz_category_id ) {
-            return '';
-        }
+        $sql = "SELECT * FROM {$quiz_categories_table} WHERE id=" . $quiz_category_id;
 
-        if ( isset( $category_cache[ $quiz_category_id ] ) ) {
-            $result = $category_cache[ $quiz_category_id ];
-        } else {
-            $sql = $wpdb->prepare("SELECT * FROM {$quiz_categories_table} WHERE id = %d", $quiz_category_id);
-            $result = $wpdb->get_row( $sql, ARRAY_A );
-            $category_cache[ $quiz_category_id ] = $result;
-        }
+        $result = $wpdb->get_row($sql, 'ARRAY_A');
 
-        $results = '';
-        if ( $result !== null ) {
+        $results = "";
+        if($result !== null){
+
             $category_title = ( isset( $result['title'] ) && $result['title'] != "" ) ? sanitize_text_field( $result['title'] ) : "";
 
             if ( $category_title != "" ) {
-                $results = sprintf(
-                    '<a href="?page=%s&action=edit&quiz_category=%d" target="_blank">%s</a>',
-                    esc_attr( $_REQUEST['page'] ) . '-quiz-categories',
-                    $quiz_category_id,
-                    esc_html( $category_title )
-                );
+                $results = sprintf( '<a href="?page=%s&action=edit&quiz_category=%d" target="_blank">%s</a>', esc_attr( $_REQUEST['page'] ) . '-quiz-categories', $quiz_category_id, $category_title);
             }
+        }else{
+            $results = "";
         }
 
         return $results;

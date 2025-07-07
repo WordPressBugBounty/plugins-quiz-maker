@@ -1803,7 +1803,8 @@
                                             '<option value="A">A</option>' +
                                         '</select>'+
                                     '</td>'+
-                                    '<td title="This property available only in pro version" class="ays-quiz-question-answer-image-row">'+
+                                    '<td title="This property available only in pro version" class="ays-quiz-question-answer-image-row only_pro">'+
+                                        '<div class="pro_features"></div>'+
                                         ' <label class="ays-label" for="ays-answer">'+
                                             '<a style="opacity: 0.4" href="https://ays-pro.com/wordpress/quiz-maker" tabindex="-1" target="_blank" class="add-answer-image">Add</a>'+
                                         '</label>'+

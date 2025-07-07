@@ -421,19 +421,10 @@ class Quiz_Maker_Settings_Actions {
     public function get_db_data(){
         global $wpdb;
         $settings_table = $wpdb->prefix . "aysquiz_settings";
-
-        if($wpdb->get_var("SHOW TABLES LIKE '$settings_table'") != $settings_table) {
-            return array();
-        }
-
-        $sql = "SELECT meta_key, meta_value FROM ". sanitize_text_field($settings_table);
+        $sql = "SELECT * FROM ".$settings_table;
         $results = $wpdb->get_results($sql, ARRAY_A);
-        if(!empty($results) && count($results) > 0){
-            $res = array();
-            foreach ($results as $key => $value) {
-                $res[$value['meta_key']] = !empty($value['meta_key']) ? json_decode( stripcslashes($value['meta_value']), true) : array();
-            }
-            return $res;
+        if(count($results) > 0){
+            return $results;
         }else{
             return array();
         }
