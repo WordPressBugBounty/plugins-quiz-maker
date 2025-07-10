@@ -17,7 +17,11 @@
             <h4><?php echo esc_html__( "Learn How to Use Custom Fields in Quiz Maker", 'quiz-maker' ); ?></h4>
         </div>
         <div class="ays-quiz-how-to-user-custom-fields-youtube-video">
-            <iframe width="560" height="315" class="ays-quiz-responsive-with-for-iframe" src="https://www.youtube.com/embed/Guq_SncdCMo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            <div class="ays-quiz-create-survey-youtube-video">
+                <div class="ays-quiz-youtube-placeholder" data-video-id="Guq_SncdCMo">
+                    <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL .'/images/youtube/custom-fields-in-quiz-maker.webp'); ?>" width="560" height="315">
+                </div>
+            </div>
         </div>
     </div>
     <div class="row" style="margin:0;">

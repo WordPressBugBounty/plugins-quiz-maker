@@ -4148,6 +4148,21 @@
             });
             // $(document).find('#ays_quiz_section_collapse_flag').val('off');
         });
+
+        // Replace image to YouTube embed video
+        $(document).on('click', '.ays-quiz-youtube-placeholder', function() {
+            var videoId = $(this).data('video-id');
+            var iframe = $('<iframe>', {
+                src: 'https://www.youtube.com/embed/' + videoId + '?autoplay=1',
+                class: '',
+                width: 560,
+                height: 315,
+                frameborder: 0,
+                allow: 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture',
+                allowfullscreen: true,
+            });
+            $(this).replaceWith(iframe);
+        });
     });
 
     function showConfirmationIfDelete(e) {

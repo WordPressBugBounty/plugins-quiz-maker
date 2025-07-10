@@ -189,7 +189,9 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
             <h4><?php echo esc_html__( "Create quiz with Quiz Maker plugin in One Minute", 'quiz-maker' ); ?></h4>
         </div>
         <div class="ays-quiz-create-survey-youtube-video">
-            <iframe width="560" height="315" class="ays-quiz-responsive-with-for-iframe" src="https://www.youtube.com/embed/AUHZrVcBrMU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            <div class="ays-quiz-youtube-placeholder" data-video-id="AUHZrVcBrMU">
+                <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL .'/images/youtube/create-quiz-on-wordpress.webp'); ?>" loading="lazy" width="560" height="315">
+            </div>
         </div>
         <div class="ays_quiz_small_hint_text_for_message_variables" style="text-align: center;">
             <?php echo esc_html__( 'Please note that this video will disappear once you created 4 quizzes.', 'quiz-maker' ); ?>

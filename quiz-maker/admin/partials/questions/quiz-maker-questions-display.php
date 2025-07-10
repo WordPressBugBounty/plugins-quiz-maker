@@ -175,7 +175,9 @@ $question_max_id = $this->get_max_id('questions');
                 <h4><?php echo esc_html__( "All Question Types Explained in One Video", 'quiz-maker' ); ?></h4>
             </div>
             <div class="ays-quiz-create-survey-youtube-video">
-                <iframe width="560" height="315" class="ays-quiz-responsive-with-for-iframe" src="https://www.youtube.com/embed/ok6f59iV_R0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                <div class="ays-quiz-youtube-placeholder" data-video-id="ok6f59iV_R0">
+                    <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL .'/images/youtube/all-question-type.webp'); ?>" loading="lazy" width="560" height="315">
+                </div>
             </div>
             <div class="ays_quiz_small_hint_text_for_message_variables" style="text-align: center;">
                 <?php echo esc_html__( 'The video preview will disappear after you create 10 questions.', 'quiz-maker' ); ?>

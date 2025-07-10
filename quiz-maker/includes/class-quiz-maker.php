@@ -328,6 +328,8 @@ class Quiz_Maker {
         	}
         }
 
+		$this->loader->add_action('current_screen', $plugin_admin, 'ays_quiz_disable_all_notice_from_plugin', 200, 1);
+
         /**
 		 * Filter decision if post type is excluded from the XML sitemap.
 		 *

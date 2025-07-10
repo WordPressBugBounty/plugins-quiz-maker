@@ -81,7 +81,11 @@ $new_questions_page_url = sprintf('?page=%s&action=%s', 'quiz-maker-questions', 
             <h4><?php echo esc_html__( "Community", 'quiz-maker' ); ?></h4>
         </div>
         <div class="ays-quiz-community-youtube-video">
-            <iframe width="560" height="315" class="ays-quiz-responsive-with-for-iframe" src="https://www.youtube.com/embed/E2pprALgwhs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            <div class="ays-quiz-create-survey-youtube-video">
+                <div class="ays-quiz-youtube-placeholder" data-video-id="E2pprALgwhs">
+                    <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL .'/images/youtube/wordpress-quiz-plugin.webp'); ?>" loading="lazy" width="560" height="315">
+                </div>
+            </div>
         </div>
         <div class="ays-quiz-community-container">
             <div class="ays-quiz-community-item">

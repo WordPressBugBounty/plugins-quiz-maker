@@ -36,7 +36,11 @@ class Quiz_Maker_i18n {
 
 		if ( version_compare( get_bloginfo( 'version' ), '6.7', '>=' ) ) {
             $plugin = 'quiz-maker';
-            $locale = get_locale();
+            if( is_admin() ){
+                $locale = get_user_locale();
+            } else {
+                $locale = get_locale();
+            }
 
             if ( is_textdomain_loaded( $plugin ) ) {
                 unload_textdomain( $plugin );
