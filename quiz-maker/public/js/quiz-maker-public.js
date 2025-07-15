@@ -1371,6 +1371,10 @@
                 next_sibilings_count = questions_count;
             }
 
+            // Disable input focusing
+            myOptions.quiz_disable_input_focusing = ( myOptions.quiz_disable_input_focusing ) ? myOptions.quiz_disable_input_focusing : 'off';
+            var quizDisableInputFocusing = (myOptions.quiz_disable_input_focusing && myOptions.quiz_disable_input_focusing == "on") ? true : false;
+
             if(parseInt(next_sibilings_count)>0 && ($(this).parents('.step').attr('data-question-id') || $(this).parents('.step').next().attr('data-question-id'))){
 
                 if(parseInt(next_sibilings_count) >= questions_count){
@@ -1602,11 +1606,13 @@
                 next_siblings.eq(0).addClass('active-step');
                 aysAnimateStep(ays_quiz_container.data('questEffect'), current_fs, next_siblings);
 
-                next_siblings.eq(0).find('.ays-text-input').trigger( "focus" );
-                if ( ! next_siblings.eq(0).find('.ays-text-input').is(":focus") ) {
-                    setTimeout(function(e){
-                        next_siblings.eq(0).find('.ays-text-input').trigger( "focus" );
-                    },1001);
+                if( !quizDisableInputFocusing ){
+                    next_siblings.eq(0).find('.ays-text-input').trigger( "focus" );
+                    if ( ! next_siblings.eq(0).find('.ays-text-input').is(":focus") ) {
+                        setTimeout(function(e){
+                            next_siblings.eq(0).find('.ays-text-input').trigger( "focus" );
+                        },1001);
+                    }
                 }
                             
                 setTimeout(function(){
@@ -1737,11 +1743,14 @@
                 }
                 
                 aysAnimateStep(ays_quiz_container.data('questEffect'), current_fs, next_fs);
-                next_fs.find('.ays-text-input').trigger( "focus" );
-                if ( ! next_fs.find('.ays-text-input').is(":focus") ) {
-                    setTimeout(function(e){
-                        next_fs.find('.ays-text-input').trigger( "focus" );
-                    },1001);
+
+                if( !quizDisableInputFocusing ){
+                    next_fs.find('.ays-text-input').trigger( "focus" );
+                    if ( ! next_fs.find('.ays-text-input').is(":focus") ) {
+                        setTimeout(function(e){
+                            next_fs.find('.ays-text-input').trigger( "focus" );
+                        },1001);
+                    }
                 }
 
                 setTimeout(function(){
@@ -1815,6 +1824,11 @@
             if(animating) return false;
             animating = true;
             var next_sibilings_count = $(this).parents('form').find('.ays_question_count_per_page').val();
+
+            // Disable input focusing
+            myOptions.quiz_disable_input_focusing = ( myOptions.quiz_disable_input_focusing ) ? myOptions.quiz_disable_input_focusing : 'off';
+            var quizDisableInputFocusing = (myOptions.quiz_disable_input_focusing && myOptions.quiz_disable_input_focusing == "on") ? true : false;
+
             if(parseInt(next_sibilings_count)>0 && ($(this).parents('.step').attr('data-question-id') || $(this).parents('.step').next().attr('data-question-id'))){
                 var questions_count = $(this).parents('form').find('div[data-question-id]').length;
                 var curent_number_of_this = $(this).parents('form').find('div[data-question-id]').index($(this).parents('div[data-question-id]')) + 1;
@@ -1956,12 +1970,13 @@
                 }
                 
                 aysAnimateStep(ays_quiz_container.data('questEffect'), current_fs, next_fs);
-                
-                next_fs.find('.ays-text-input').trigger( "focus" );
-                if ( ! next_fs.find('.ays-text-input').is(":focus") ) {
-                    setTimeout(function(e){
-                        next_fs.find('.ays-text-input').trigger( "focus" );
-                    },1001);
+                if( !quizDisableInputFocusing ){
+                    next_fs.find('.ays-text-input').trigger( "focus" );
+                    if ( ! next_fs.find('.ays-text-input').is(":focus") ) {
+                        setTimeout(function(e){
+                            next_fs.find('.ays-text-input').trigger( "focus" );
+                        },1001);
+                    }
                 }
             }
             if($(document).scrollTop() >= $(this).parents('.ays-questions-container').offset().top){

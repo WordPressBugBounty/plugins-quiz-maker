@@ -976,6 +976,9 @@ class Quizes_List_Table extends WP_List_Table{
 
             // Show Restart button on quiz fail
             $quiz_show_restart_button_on_quiz_fail = (isset($_REQUEST[ 'ays_quiz_show_restart_button_on_quiz_fail' ]) && $_REQUEST[ 'ays_quiz_show_restart_button_on_quiz_fail' ] == "on") ? 'on' : 'off';
+
+            // Disable input focusing
+            $quiz_disable_input_focusing = (isset( $_POST[ 'ays_quiz_disable_input_focusing' ] ) && $_POST[ 'ays_quiz_disable_input_focusing' ] == 'on') ? 'on' : 'off';
             
 
             $options = array(
@@ -1225,6 +1228,7 @@ class Quizes_List_Table extends WP_List_Table{
                 'quiz_timer_warning_text_color'                     => $quiz_timer_warning_text_color,
                 'quiz_enable_default_hide_results_toggle'           => $quiz_enable_default_hide_results_toggle,
                 'quiz_show_restart_button_on_quiz_fail'             => $quiz_show_restart_button_on_quiz_fail,
+                'quiz_disable_input_focusing'                       => $quiz_disable_input_focusing,
             );
 
             $options['required_fields'] = !isset($_POST['ays_required_field']) ? null : array_map( 'sanitize_text_field', $_POST['ays_required_field'] );

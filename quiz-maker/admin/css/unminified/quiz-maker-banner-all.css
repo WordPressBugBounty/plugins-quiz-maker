@@ -5452,6 +5452,12 @@ div#ays-quiz-dicount-month-main.ays_quiz_dicount_info.ays_quiz_fox_lms_container
     cursor: pointer;
 }
 
+@media (max-width: 1280px) {
+    div#ays-quiz-checklist-container.ays-quiz-checklist-panel {
+        max-height: 580px;
+    }
+}
+
 @media (max-width: 782px) {
     .ays-quiz-checklist-open-icon,
     #ays-quiz-checklist-container.ays-quiz-checklist-panel {

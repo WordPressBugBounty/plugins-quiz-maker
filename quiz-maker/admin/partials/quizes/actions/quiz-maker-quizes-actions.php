@@ -1440,6 +1440,10 @@ $quiz_enable_default_hide_results_toggle = (isset($options['quiz_enable_default_
 $options['quiz_show_restart_button_on_quiz_fail'] = isset($options['quiz_show_restart_button_on_quiz_fail']) ? sanitize_text_field($options['quiz_show_restart_button_on_quiz_fail']) : 'off';
 $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_button_on_quiz_fail']) && $options['quiz_show_restart_button_on_quiz_fail'] == 'on') ? true : false;
 
+// Disable input focusing
+$options[ 'quiz_disable_input_focusing' ] = isset($options[ 'quiz_disable_input_focusing' ]) ? $options[ 'quiz_disable_input_focusing' ] : 'off';
+$quiz_disable_input_focusing = (isset($options[ 'quiz_disable_input_focusing' ]) && $options[ 'quiz_disable_input_focusing' ] == 'on') ? true : false;
+
 
 ?>
 <style id="ays_live_custom_css"></style>
@@ -5381,35 +5385,19 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
                             </div>
                         </div> <!-- Show messages for right/wrong answers  -->
                         <hr/>
-                        <div class="form-group row" style="margin:0px;">
-                            <div class="col-sm-12 only_pro" style="padding:10px 0 0 10px;">
-                                <div class="pro_features" style="justify-content:flex-end;">
-
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-4">
-                                        <label for="ays_quiz_disable_input_focusing">
-                                            <?php echo __('Disable input focusing','quiz-maker')?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Enable this option, and the keyboard will not be focused when clicking on the Next button. The option refers to Text, Short_text, Date, Number, and Fill in the blank question types.','quiz-maker'); ?>">
-                                                <i class="ays_fa ays_fa_info_circle"></i>
-                                            </a>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <input type="checkbox" class="ays-enable-timer1" />
-                                    </div>
-                                </div> <!-- Disable input focusing -->
-                                <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
-                                    <div class="ays-quiz-new-upgrade-button-box">
-                                        <div>
-                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
-                                        </div>
-                                        <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
-                                    </div>
-                                </a>
+                        <div class="form-group row">
+                            <div class="col-sm-4">
+                                <label for="ays_quiz_disable_input_focusing">
+                                    <?php echo esc_html__('Disable input focusing', 'quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Enable this option, and the keyboard will not be focused when clicking on the Next button. The option refers to Text, Short_text, Date, Number, and Fill in the blank question types.', 'quiz-maker') ); ?>">
+                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                    </a>
+                                </label>
                             </div>
-                        </div>
+                            <div class="col-sm-8">
+                                <input type="checkbox" class="ays-enable-timer1" id="ays_quiz_disable_input_focusing" name="ays_quiz_disable_input_focusing" value="on" <?php echo ($quiz_disable_input_focusing) ? 'checked' : ''; ?>/>
+                            </div>
+                        </div> <!-- Disable input focusing -->
                         <hr/>
                     </div>
                 </div>
