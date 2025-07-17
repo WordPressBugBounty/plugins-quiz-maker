@@ -1001,6 +1001,10 @@
         myOptions.quiz_make_responses_anonymous = ( myOptions.quiz_make_responses_anonymous ) ? myOptions.quiz_make_responses_anonymous : 'off';
         var quiz_make_responses_anonymous = (myOptions.quiz_make_responses_anonymous && myOptions.quiz_make_responses_anonymous == "on") ? true : false;
 
+        // Enable Keyboard Navigation
+        myOptions.quiz_enable_keyboard_navigation = ! myOptions.quiz_enable_keyboard_navigation ? 'off' : myOptions.quiz_enable_keyboard_navigation;
+        var quiz_enable_keyboard_navigation = (myOptions.quiz_enable_keyboard_navigation && myOptions.quiz_enable_keyboard_navigation == 'on') ? true : false;
+
         // Make responses anonymous
         myOptions.quiz_enable_user_cհoosing_anonymous_assessment = ( myOptions.quiz_enable_user_cհoosing_anonymous_assessment ) ? myOptions.quiz_enable_user_cհoosing_anonymous_assessment : 'off';
         var quiz_enable_user_cհoosing_anonymous_assessment = (myOptions.quiz_enable_user_cհoosing_anonymous_assessment && myOptions.quiz_enable_user_cհoosing_anonymous_assessment == "on") ? true : false;
@@ -1018,6 +1022,14 @@
             form.find('#ays-quiz-all-result-score-page, .ays-individual-quiz-all-result-score-page').DataTable({ 
                 "destroy": true, //use for reinitialize datatable
             }); 
+        }
+
+        var class_for_keyboard = '';
+        var attributes_for_keyboard = '';
+
+        if( quiz_enable_keyboard_navigation ){
+            class_for_keyboard = "ays-quiz-keyboard-active";
+            attributes_for_keyboard = "tabindex='0'";
         }
 
         if(score > 0){
@@ -1066,7 +1078,7 @@
             resultToggleHTML += '<div class="ays-quiz-results-toggle-block">';
                 resultToggleHTML += '<span class="ays-show-res-toggle ays-res-toggle-show">'+ quizLangObj.show +'</span>';
                 resultToggleHTML += '<input type="checkbox" class="ays_toggle ays_toggle_slide ays-quiz-res-toggle-checkbox" id="ays-quiz-show-results-toggle-'+ quizId +'" '+ hide_result_toggle_checked +'>';
-                resultToggleHTML += '<label for="ays-quiz-show-results-toggle-'+ quizId +'" class="ays_switch_toggle">Toggle</label>';
+                resultToggleHTML += '<label for="ays-quiz-show-results-toggle-'+ quizId +'" class="ays_switch_toggle '+ class_for_keyboard +'" '+ attributes_for_keyboard +'>Toggle</label>';
                 resultToggleHTML += '<span class="ays-show-res-toggle ays-res-toggle-hide quest-toggle-failed">'+ quizLangObj.hide +'</span>';
             resultToggleHTML += '</div>';
 
@@ -1693,6 +1705,12 @@
                 $(this).parents('.ays_quiz_rete').attr('data-rate_score', res);
             }
         });
+
+        if( quiz_enable_keyboard_navigation ){
+            form.find('.for_quiz_rate > i').addClass('ays-quiz-keyboard-active');
+            form.find('.for_quiz_rate > i').attr('tabindex', '0');
+        }
+
         var aysQuizLoader = form.find('div[data-role="loader"]');
         aysQuizLoader.addClass('ays-loader');
         aysQuizLoader.removeClass(aysQuizLoader.data('class'));

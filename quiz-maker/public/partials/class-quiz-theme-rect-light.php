@@ -113,8 +113,18 @@ class Quiz_Theme_Rect_Light extends Quiz_Maker_Public{
         $show_answers_numbering = (isset($options['show_answers_numbering']) && $options['show_answers_numbering'] != '') ? $options['show_answers_numbering'] : 'none';
         $numbering_type_arr = $this->ays_answer_numbering($show_answers_numbering);
         $numbering_type = '';
-        $answer_container = "";
 
+        $quiz_enable_keyboard_navigation = (isset($options['quiz_enable_keyboard_navigation']) && $options['quiz_enable_keyboard_navigation'] == 'on') ? true : false;
+        $attributes_for_keyboard = "";
+        $class_for_keyboard = "";
+        $class_label_for_keyboard = "";
+        if($quiz_enable_keyboard_navigation){
+            $class_for_keyboard = "ays-quiz-keyboard-active";
+            $attributes_for_keyboard = "tabindex='0'";
+            $class_label_for_keyboard = "ays-quiz-keyboard-label";
+        }
+
+        $answer_container = "";
         $answer_container_script    = '';
         $answer_container_script_html = '';
         $script_data_arr = array();
@@ -158,7 +168,7 @@ class Quiz_Theme_Rect_Light extends Quiz_Maker_Public{
             }
 
             $answer_container .= "
-            <div class='ays-field ays_".$options['answersViewClass']."_view_item'>
+            <div class='ays-field ays_".$options['answersViewClass']."_view_item ".$class_for_keyboard."' ".$attributes_for_keyboard.">
                 <input type='hidden' name='ays_answer_correct[]' value='0'/>
 
                 <input type='{$options["questionType"]}' name='ays_questions[ays-question-{$question_id}]' id='ays-answer-{$answer["id"]}-{$quiz_id}' value='{$answer["id"]}'/>

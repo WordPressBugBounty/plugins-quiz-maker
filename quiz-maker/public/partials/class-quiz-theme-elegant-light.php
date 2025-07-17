@@ -109,8 +109,18 @@ class Quiz_Theme_Elegant_Light extends Quiz_Maker_Public{
         $show_answers_numbering = (isset($options['show_answers_numbering']) && $options['show_answers_numbering'] != '') ? $options['show_answers_numbering'] : 'none';
         $numbering_type_arr = $this->ays_answer_numbering($show_answers_numbering);
         $numbering_type = '';
-        $answer_container = "";
 
+        $quiz_enable_keyboard_navigation = (isset($options['quiz_enable_keyboard_navigation']) && $options['quiz_enable_keyboard_navigation'] == 'on') ? true : false;
+        $attributes_for_keyboard = "";
+        $class_for_keyboard = "";
+        $class_label_for_keyboard = "";
+        if($quiz_enable_keyboard_navigation){
+            $class_for_keyboard = "ays-quiz-keyboard-active";
+            $attributes_for_keyboard = "tabindex='0'";
+            $class_label_for_keyboard = "ays-quiz-keyboard-label";
+        }
+
+        $answer_container = "";
         $answer_container_script    = '';
         $answer_container_script_html = '';
         $script_data_arr = array();
@@ -175,12 +185,12 @@ class Quiz_Theme_Elegant_Light extends Quiz_Maker_Public{
             }
 
             $answer_container .= "
-            <div class='ays-field ays_".$options['answersViewClass']."_view_item' $ays_field_style>
+            <div class='ays-field ays_".$options['answersViewClass']."_view_item ".$class_for_keyboard."' ".$attributes_for_keyboard." $ays_field_style>
                 <input type='hidden' name='ays_answer_correct[]' value='0'/>
 
                 <input type='{$options["questionType"]}' name='ays_questions[ays-question-{$question_id}]' id='ays-answer-{$answer["id"]}-{$quiz_id}' value='{$answer["id"]}'/>
 
-                    <label for='ays-answer-{$answer["id"]}-{$quiz_id}' $answer_label_style>
+                    <label for='ays-answer-{$answer["id"]}-{$quiz_id}' class='$class_label_for_keyboard' $answer_label_style>
                         " . $numbering_type . $answer_content . "
                     </label>
                     <label for='ays-answer-{$answer["id"]}-{$quiz_id}' class='ays_answer_image {$correct_answer_flag}'>{$answer_image}</label>

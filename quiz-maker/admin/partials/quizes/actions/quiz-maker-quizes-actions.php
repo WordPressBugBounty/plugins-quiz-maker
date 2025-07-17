@@ -262,6 +262,7 @@ $options = array(
     'quiz_timer_warning_text_color'             => "#ff0000",
     'quiz_enable_default_hide_results_toggle'   => "off",
     'quiz_show_restart_button_on_quiz_fail'     => "off",
+    'quiz_enable_keyboard_navigation'           => 'on',
 
 );
 
@@ -1443,6 +1444,13 @@ $quiz_show_restart_button_on_quiz_fail = (isset($options['quiz_show_restart_butt
 // Disable input focusing
 $options[ 'quiz_disable_input_focusing' ] = isset($options[ 'quiz_disable_input_focusing' ]) ? $options[ 'quiz_disable_input_focusing' ] : 'off';
 $quiz_disable_input_focusing = (isset($options[ 'quiz_disable_input_focusing' ]) && $options[ 'quiz_disable_input_focusing' ] == 'on') ? true : false;
+
+//Enable keyboard navigation
+$options['quiz_enable_keyboard_navigation'] = isset($options['quiz_enable_keyboard_navigation']) ? $options['quiz_enable_keyboard_navigation'] : 'on';
+$quiz_enable_keyboard_navigation = (isset($options['quiz_enable_keyboard_navigation']) && $options['quiz_enable_keyboard_navigation'] == 'on') ? true : false;
+// if( $action == 'add' ){
+//     $quiz_enable_keyboard_navigation = true;
+// }
 
 
 ?>
@@ -5880,34 +5888,19 @@ $quiz_disable_input_focusing = (isset($options[ 'quiz_disable_input_focusing' ])
                         </div> <!-- Enable custom texts for buttons -->
                         <hr>
                         <div class="form-group row">
-                            <div class="col-sm-12 only_pro" style="padding:10px 0 0 10px;">
-                                <div class="pro_features" style="justify-content:flex-end;">
-
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-4">
-                                        <label for="ays_quiz_enable_keyboard_navigation">
-                                            <?php echo __('Enable Keyboard Navigation','quiz-maker')?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('After enabling this option, users can navigate through answers by pressing  the Tab key(forward) or the Shift+Tab shortcut(back), tick an answer by pressing the Space key, and move forward to the next question using the Enter key.','quiz-maker')?>">
-                                                <i class="ays_fa ays_fa_info_circle"></i>
-                                            </a>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <input type="checkbox" class="ays-enable-timer1"/>
-                                    </div>
-                                </div> <!-- Enable Keyboard navigation -->
-                                <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
-                                    <div class="ays-quiz-new-upgrade-button-box">
-                                        <div>
-                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
-                                        </div>
-                                        <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
-                                    </div>
-                                </a>
+                            <div class="col-sm-4">
+                                <label for="ays_quiz_enable_keyboard_navigation">
+                                    <?php echo esc_html__('Enable Keyboard Navigation', 'quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('After enabling this option, users can navigate through answers by pressing  the Tab key(forward) or the Shift+Tab shortcut(back), tick an answer by pressing the Space key, and move forward to the next question using the Enter key.', 'quiz-maker') ); ?>">
+                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                    </a>
+                                </label>
                             </div>
-                        </div> <!--Enable Keyboard Navigation -->
+                            <div class="col-sm-8">
+                                <input type="checkbox" class="ays-enable-timer1" id="ays_quiz_enable_keyboard_navigation"
+                                    name="ays_quiz_enable_keyboard_navigation" value="on" <?php echo $quiz_enable_keyboard_navigation ? 'checked' : ''; ?>/>
+                            </div>
+                        </div> <!-- Enable Keyboard navigation -->
                         <hr>
                     </div>
                 </div>

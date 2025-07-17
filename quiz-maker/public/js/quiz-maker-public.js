@@ -1196,7 +1196,11 @@
             $(this).on('keydown', function(e){
                 myOptions.enable_enter_key = !( myOptions.enable_enter_key ) ? "on" : myOptions.enable_enter_key;
                 var enableEnterKey = (myOptions.enable_enter_key && myOptions.enable_enter_key == "on") ? true : false;
-                if(enableEnterKey){
+
+                myOptions.quiz_enable_keyboard_navigation = !( myOptions.quiz_enable_keyboard_navigation ) ? "on" : myOptions.quiz_enable_keyboard_navigation;
+                var isKeyboardNavigation = (myOptions.quiz_enable_keyboard_navigation && myOptions.quiz_enable_keyboard_navigation == "on") ? true : false;
+
+                if(enableEnterKey || isKeyboardNavigation){
                     if (e.keyCode === 13 && !e.shiftKey) {
                         if(animating){
                             return false;
@@ -2590,6 +2594,46 @@
                 }
             }else{
                 elements.addClass('ays_display_none');             
+            }
+        });
+
+        $(document).on('keydown', function(e) {
+            var keyboardBox = $(document).find(".ays-quiz-container.ays-quiz-keyboard-active");
+
+            if(e.keyCode === 9 && keyboardBox.length > 0){
+                $(document).find(".ays-select-field *:not(.dropdown-wrapper,.select2-selection__arrow, .select2-selection__placeholder, .ays_fa.ays_fa_chevron_down)").attr("tabindex" , "0")
+            }
+
+            if(e.keyCode === 27){
+                var zoomPopup = $(document).find('.ays-quiz-question-image-lightbox-container');
+                if( zoomPopup.length > 0 ){
+                    zoomPopup.hide();
+                }
+
+                var questionReportPopup = $(document).find('div[id*="ays-quiz-question-report-modal"]');
+                if( questionReportPopup.length > 0 ){
+                    questionReportPopup.hide();
+                }
+            }
+
+            if($(e.target).hasClass("ays-quiz-keyboard-active")){
+                if (e.keyCode === 32) {
+                    e.preventDefault();
+                    $(e.target).find('label.ays-quiz-keyboard-label').trigger("click");
+                }
+
+
+                if (e.keyCode === 13) {
+                    e.preventDefault();
+                    var checked_inputs = $(e.target).parents(".ays-quiz-answers").find('input:checked');
+                    if(checked_inputs.length > 0){
+                        $(e.target).parents('.step.active-step').find(".ays_next").trigger('click');
+                    }
+                    else{
+                        $(e.target).trigger('click');
+                    }
+
+                }
             }
         });
 

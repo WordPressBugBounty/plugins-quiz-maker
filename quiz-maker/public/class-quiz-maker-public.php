@@ -1641,8 +1641,18 @@ class Quiz_Maker_Public
         // Disable answer hover
         $settings_options['enable_start_button_loader'] = isset($settings_options['enable_start_button_loader']) ? sanitize_text_field($settings_options['enable_start_button_loader']) : 'off';
         $enable_start_button_loader = (isset($settings_options['enable_start_button_loader']) && sanitize_text_field($settings_options['enable_start_button_loader']) == "on") ? true : false;
+
+        //Enable keyboard navigation
+        $options['quiz_enable_keyboard_navigation'] = isset($options['quiz_enable_keyboard_navigation']) ? $options['quiz_enable_keyboard_navigation'] : 'on';
+        $quiz_enable_keyboard_navigation = (isset($options['quiz_enable_keyboard_navigation']) && $options['quiz_enable_keyboard_navigation'] == "on") ? true : false;
+        $class_for_keyboard = "";
+        $attributes_for_keyboard = "";
+        if($quiz_enable_keyboard_navigation){            
+            $class_for_keyboard = "ays-quiz-keyboard-active";
+            $attributes_for_keyboard = "tabindex='0'";
+        }
         
-        $quiz_start_button = "<input type='button' $empty_questions_button $start_button_disabled class='ays_next start_button action-button' value='". $this->buttons_texts['startButton'] ."' ". $enable_leave_page ." />" . $empty_questions_notification;
+        $quiz_start_button = "<input type='button' $empty_questions_button $start_button_disabled class='ays_next start_button action-button ".$class_for_keyboard."' value='". $this->buttons_texts['startButton'] ."' ". $enable_leave_page ." />" . $empty_questions_notification;
 
 
         $is_elementor_exists        = $this->ays_quiz_is_elementor();
@@ -1665,7 +1675,7 @@ class Quiz_Maker_Public
 
         if ( $enable_start_button_loader ) {
             if ($questions_count != 0) {
-                $quiz_start_butto_html = "<input type='button' $empty_questions_button class='ays_next start_button action-button ays_quiz_enable_loader' disabled='disabled' value='". __('Loading ...', 'quiz-maker') ."' ". $enable_leave_page ." />".$empty_questions_notification;
+                $quiz_start_butto_html = "<input type='button' $empty_questions_button class='ays_next start_button action-button ays_quiz_enable_loader ".$class_for_keyboard."' disabled='disabled' value='". __('Loading ...', 'quiz-maker') ."' ". $enable_leave_page ." />".$empty_questions_notification;
 
                 $quiz_start_button = '
                 <div class="ays-quiz-start-button-preloader">
@@ -2122,7 +2132,7 @@ class Quiz_Maker_Public
         }
 
         if($enable_restart_button){
-            $restart_button = "<button type='button' class='action-button ays_restart_button'>
+            $restart_button = "<button type='button' class='action-button ays_restart_button ".$class_for_keyboard."'>
                     <i class='ays_fa ays_fa_undo'></i>
                     <span>". $this->buttons_texts['restartQuizButton'] ."</span>
                 </button>";
@@ -2147,7 +2157,7 @@ class Quiz_Maker_Public
 
         if($enable_exit_button && $exit_redirect_url !== null){
 
-            $exit_button = "<a style='width:auto;' href='".$exit_redirect_url."' class='action-button ays_restart_button' target='_top'>
+            $exit_button = "<a style='width:auto;' href='".$exit_redirect_url."' class='action-button ays_restart_button ".$class_for_keyboard."' target='_top'>
                         <span>".$this->buttons_texts['exitButton']."</span>
                         <i class='ays_fa ays_fa_sign_out'></i>
                     </a>";
@@ -2464,7 +2474,7 @@ class Quiz_Maker_Public
                 <div class='for_quiz_rate_reason'>
                     ". $review_comment_field_html ."
                     <div class='ays_feedback_button_div'>
-                        <button type='button' class='action-button'>". $this->buttons_texts['sendFeedbackButton'] ."</button>
+                        <button type='button' class='action-button ".$class_for_keyboard."'>". $this->buttons_texts['sendFeedbackButton'] ."</button>
                     </div>
                 </div>
                 <div><div class='lds-spinner2-none'><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
@@ -3220,8 +3230,8 @@ class Quiz_Maker_Public
                                 <div class='ays-form-title'>{$form_title}</div>
                                     " . $form_inputs . "
                                     <div class='ays_buttons_div'>
-                                        <i class='" . ($enable_arrows ? '' : 'ays_display_none') . " ays_fa ays_fa_flag_checkered ays_finish action-button ays_arrow ays_next_arrow'></i>
-                                        <input type='submit' name='ays_finish_quiz' class='" . ($enable_arrows ? 'ays_display_none' : '') . " ays_next ays_finish action-button' value='" . $this->buttons_texts['seeResultButton'] . "'/>
+                                        <i class='" . ($enable_arrows ? '' : 'ays_display_none') . " ays_fa ays_fa_flag_checkered ays_finish action-button ays_arrow ays_next_arrow ".$class_for_keyboard."'></i>
+                                        <input type='submit' name='ays_finish_quiz' class='" . ($enable_arrows ? 'ays_display_none' : '') . " ays_next ays_finish action-button ".$class_for_keyboard."' value='" . $this->buttons_texts['seeResultButton'] . "'/>
                                     </div>
                                 </div>
                               </div>" . $main_content_last_part;
@@ -3232,8 +3242,8 @@ class Quiz_Maker_Public
                                     <div class='ays-form-title'>{$form_title}</div>
                                         " . $form_inputs . "
                                         <div class='ays_buttons_div'>
-                                            <i class='ays_fa " . $quiz_arrow_type_class_right . " ays_next action-button ays_arrow ays_next_arrow " . ($enable_arrows ? '' : 'ays_display_none') . "'></i>
-                                            <input type='button' class='ays_next action-button " . ($enable_arrows ? 'ays_display_none' : '') . "' value='" . $this->buttons_texts['nextButton'] . "' />
+                                            <i class='ays_fa " . $quiz_arrow_type_class_right . " ays_next action-button ays_arrow ays_next_arrow ".$class_for_keyboard." " . ($enable_arrows ? '' : 'ays_display_none') . "'></i>
+                                            <input type='button' class='ays_next action-button ".$class_for_keyboard." " . ($enable_arrows ? 'ays_display_none' : '') . "' value='" . $this->buttons_texts['nextButton'] . "' />
                                         </div>
                                     </div>
                                   </div>" ;
@@ -3419,6 +3429,11 @@ class Quiz_Maker_Public
             #ays-quiz-container-" . $id . " .ays_message{
                color: " . $text_color . ";
                outline: none;
+            }
+
+            div#ays-quiz-container-" . $id . " .ays_question_hint.ays-quiz-keyboard-active,
+            div#ays-quiz-container-" . $id . " .ays_restart_button.ays-quiz-keyboard-active {
+                outline: revert;
             }
 
             #ays-quiz-container-" . $id . " .ays-quiz-password-message-box,
@@ -4299,7 +4314,7 @@ class Quiz_Maker_Public
         }
 
         $quiz_container_first_part = "
-            <div class='ays-quiz-container ".$quiz_theme." ".$quiz_bg_img_class." ". esc_attr($custom_class) ."' data-quest-effect='".$quest_animation."' ".$quiz_gradient." data-hide-bg-image='".$quiz_bg_img_in_finish_page."' id='ays-quiz-container-" . $id . "'>
+            <div class='ays-quiz-container ".$quiz_theme." ".$quiz_bg_img_class." ". esc_attr($custom_class) ." ".$class_for_keyboard."' data-quest-effect='".$quest_animation."' ".$quiz_gradient." data-hide-bg-image='".$quiz_bg_img_in_finish_page."' id='ays-quiz-container-" . $id . "'>
                 {$live_progress_bar}
                 {$ays_quiz_music_html}
                 <div class='ays-questions-container'>
@@ -4360,7 +4375,7 @@ class Quiz_Maker_Public
                 );
                 $cat_selective_start_page = "
                 <div class='ays-quiz-wrap'>
-                    <div class='ays-quiz-container ".$quiz_theme." ".$quiz_bg_img_class." ".$custom_class."'
+                    <div class='ays-quiz-container ".$quiz_theme." ".$quiz_bg_img_class." ".$custom_class." ".$class_for_keyboard."'
                         data-quest-effect='".$quest_animation."' ".$quiz_gradient."
                         data-hide-bg-image='".$quiz_bg_img_in_finish_page."'
                         id='ays-quiz-container-" . $id . "'
@@ -4428,6 +4443,7 @@ class Quiz_Maker_Public
             'enable_questions_ordering_by_cat'          => $enable_questions_ordering_by_cat,
             'quiz_questions_numbering_by_category'      => $quiz_questions_numbering_by_category,
             'question_bank_cats'                        => $question_bank_cats,
+            'quiz_enable_keyboard_navigation'           => $quiz_enable_keyboard_navigation,
         );
         
         $ays_quiz = (object)array(
@@ -4625,16 +4641,17 @@ class Quiz_Maker_Public
                 case "true_or_false":
                 default:
                     $ans_options = array(
-                        'correction'                    => $options['correction'],
-                        'rtlDirection'                  => $options['rtlDirection'],
-                        'questionType'                  => $question["questionType"],
-                        'answersViewClass'              => $options['answersViewClass'],
-                        'show_answers_numbering'        => $options['show_answers_numbering'],
-                        'useHTML'                       => $use_html,
-                        'enable_max_selection_number'   => $question['enable_max_selection_number'],
-                        'max_selection_number'          => $question['max_selection_number'],
-                        'enable_min_selection_number'   => $question['enable_min_selection_number'],
-                        'min_selection_number'          => $question['min_selection_number'],
+                        'correction'                        => $options['correction'],
+                        'rtlDirection'                      => $options['rtlDirection'],
+                        'questionType'                      => $question["questionType"],
+                        'answersViewClass'                  => $options['answersViewClass'],
+                        'show_answers_numbering'            => $options['show_answers_numbering'],
+                        'quiz_enable_keyboard_navigation'   => $options['quiz_enable_keyboard_navigation'],
+                        'useHTML'                           => $use_html,
+                        'enable_max_selection_number'       => $question['enable_max_selection_number'],
+                        'max_selection_number'              => $question['max_selection_number'],
+                        'enable_min_selection_number'       => $question['enable_min_selection_number'],
+                        'min_selection_number'              => $question['min_selection_number'],
                     );
                     $answer_container .= $this->ays_default_answer_html($question['questionID'], $quiz_id, $question['questionAnswers'], $ans_options);
                     break;
@@ -4661,6 +4678,14 @@ class Quiz_Maker_Public
         $enable_questions_ordering_by_cat = $options['enable_questions_ordering_by_cat'];
         $quiz_questions_numbering_by_category = $options['quiz_questions_numbering_by_category'];
         $question_bank_cats = $options['question_bank_cats'];
+
+        $quiz_enable_keyboard_navigation = (isset($options['quiz_enable_keyboard_navigation']) && $options['quiz_enable_keyboard_navigation'] == 'on') ? true : false;
+        $attributes_for_keyboard = "";
+        $class_for_keyboard = "";
+        if($quiz_enable_keyboard_navigation){
+            $class_for_keyboard = "ays-quiz-keyboard-active";
+            $attributes_for_keyboard = "tabindex='0'";
+        }
 
         foreach($ids as $key => $id){
             $current = $key + 1;
@@ -4802,7 +4827,7 @@ class Quiz_Maker_Public
                     }
 
                     $question_image .= '<div class="ays-image-question-img">';
-                        $question_image .= '<img src="' . esc_url($question['question_image']) . '" '. $quiz_question_full_size_url_attr .' '. $question_image_lazy_loading_attr .' alt="'. $question_image_alt_text .'" ' . $question_image_style . ' class="'. $quiz_question_image_zoom_class .'">';
+                        $question_image .= '<img src="' . esc_url($question['question_image']) . '" '. $quiz_question_full_size_url_attr .' '. $question_image_lazy_loading_attr .' alt="'. $question_image_alt_text .'" ' . $question_image_style . ' class="'. $quiz_question_image_zoom_class .' '. $class_for_keyboard .'" '. $attributes_for_keyboard .'>';
                     $question_image .= '</div>';
                 }
                 $answer_view_class = "";
@@ -4817,7 +4842,7 @@ class Quiz_Maker_Public
                     $question_text_value = $options['questionsHint']['questionsHintValue'];
                     $questions_hint_button_value = $options['questionsHint']['questionsHintButtonValue'];
 
-                    $questions_hint_content = "<i class='ays_fa ays_fa_info_circle ays_question_hint' aria-hidden='true'></i>";
+                    $questions_hint_content = "<i class='ays_fa ays_fa_info_circle ays_question_hint ". $class_for_keyboard."' ". $attributes_for_keyboard ." aria-hidden='true'></i>";
                     $questions_hint_max_width_class = '';
                     switch ( $questions_hint_type ) {
                         case 'text':
@@ -4829,7 +4854,7 @@ class Quiz_Maker_Public
                             if ($questions_hint_button_value != '') {
                                 $questions_hint_max_width_class = 'ays_questions_hint_max_width_class';
 
-                                $questions_hint_content = '<button class="ays_question_hint action-button ays_question_hint_button_type">'. $questions_hint_button_value .'</button>';
+                                $questions_hint_content = '<button class="ays_question_hint action-button ays_question_hint_button_type '. $class_for_keyboard.' ">'. $questions_hint_button_value .'</button>';
                             }
                             break;
                         case 'hide':
@@ -4837,7 +4862,7 @@ class Quiz_Maker_Public
                             break;
                         case 'default':
                         default:
-                            $questions_hint_content = "<i class='ays_fa ays_fa_info_circle ays_question_hint' aria-hidden='true'></i>";
+                            $questions_hint_content = "<i class='ays_fa ays_fa_info_circle ays_question_hint ". $class_for_keyboard."' ". $attributes_for_keyboard ." aria-hidden='true'></i>";
                             break;
                     }
 
@@ -4894,12 +4919,12 @@ class Quiz_Maker_Public
                 
                 $early_finish = "";                
                 if($buttons['earlyButton']){
-                    $early_finish = "<i class='" . ($enable_arrows ? '' : 'ays_display_none'). " ays_fa ays_fa_flag_checkered ays_early_finish action-button ays_arrow'></i><input type='button' class='" . ($enable_arrows ? 'ays_display_none' : '') . " ays_early_finish action-button' value='" . $settings_buttons_texts['finishButton'] . "'/>";
+                    $early_finish = "<i class='" . ($enable_arrows ? '' : 'ays_display_none'). " ays_fa ays_fa_flag_checkered ays_early_finish action-button ays_arrow ".$class_for_keyboard."' ". $attributes_for_keyboard ."></i><input type='button' name='next' class='" . ($enable_arrows ? 'ays_display_none' : '') . " ays_early_finish action-button ".$class_for_keyboard."' ". $attributes_for_keyboard ." value='" . $settings_buttons_texts['finishButton'] . "'/>";
                 }
                 
                 $clear_answer = "";                
                 if($buttons['clearAnswerButton']){
-                    $clear_answer = "<i class='" . ($enable_arrows ? '' : 'ays_display_none'). " ays_fa ays_fa_eraser ays_clear_answer action-button ays_arrow'></i><input type='button' class='" . ($enable_arrows ? 'ays_display_none' : '') . " ays_clear_answer action-button' value='" . $settings_buttons_texts['clearButton'] . "'/>";
+                    $clear_answer = "<i class='" . ($enable_arrows ? '' : 'ays_display_none'). " ays_fa ays_fa_eraser ays_clear_answer action-button ays_arrow ".$class_for_keyboard."' ". $attributes_for_keyboard ."></i><input type='button' name='next' class='" . ($enable_arrows ? 'ays_display_none' : '') . " ays_clear_answer action-button ". $class_for_keyboard."' ". $attributes_for_keyboard ." value='" . $settings_buttons_texts['clearButton'] . "'/>";
                 }
                 if($options['correction']){
                     $clear_answer = "";
@@ -4931,32 +4956,32 @@ class Quiz_Maker_Public
                 if ($last) {
                     switch($options['informationForm']){
                         case "disable":
-                            $input = "<i class='" . $buttons['nextArrow'] . " ays_fa ays_fa_flag_checkered ays_finish action-button ays_arrow ays_next_arrow'></i><input type='submit' name='ays_finish_quiz' class=' " . $buttons['nextButton'] . " ays_next ays_finish action-button' value='" . $settings_buttons_texts['seeResultButton'] . "'/>";
+                            $input = "<i class='" . $buttons['nextArrow'] . " ays_fa ays_fa_flag_checkered ays_finish action-button ays_arrow ays_next_arrow ".$class_for_keyboard."' ". $attributes_for_keyboard ."></i><input type='submit' name='ays_finish_quiz' class=' " . $buttons['nextButton'] . " ays_next ays_finish action-button ".$class_for_keyboard."' value='" . $settings_buttons_texts['seeResultButton'] . "'/>";
                             break;
                         case "before":
-                            $input = "<i class='" . $buttons['nextArrow'] . " ays_fa ays_fa_flag_checkered ays_finish action-button ays_arrow ays_next_arrow'></i><input type='submit' name='ays_finish_quiz' class=' " . $buttons['nextButton'] . " ays_next ays_finish action-button' value='" . $settings_buttons_texts['seeResultButton'] . "'/>";
+                            $input = "<i class='" . $buttons['nextArrow'] . " ays_fa ays_fa_flag_checkered ays_finish action-button ays_arrow ays_next_arrow ".$class_for_keyboard."' ". $attributes_for_keyboard ."></i><input type='submit' name='ays_finish_quiz' class=' " . $buttons['nextButton'] . " ays_next ays_finish action-button ".$class_for_keyboard."' value='" . $settings_buttons_texts['seeResultButton'] . "'/>";
                             break;
                         case "after":
-                            $input = "<i class='" . $buttons['nextArrow'] . " ays_fa ". $quiz_arrow_type_class_right ." ays_finish action-button ays_arrow ays_next_arrow'></i><input type='button' class=' " . $buttons['nextButton'] . " ays_next action-button' value='" . $settings_buttons_texts['finishButton'] . "' />";
+                            $input = "<i class='" . $buttons['nextArrow'] . " ays_fa ". $quiz_arrow_type_class_right ." ays_finish action-button ays_arrow ays_next_arrow ".$class_for_keyboard."' ". $attributes_for_keyboard ."></i><input type='button' class=' " . $buttons['nextButton'] . " ays_next action-button ".$class_for_keyboard."' value='" . $settings_buttons_texts['finishButton'] . "' />";
                             break;
                         default:
-                            $input = "<i class='" . $buttons['nextArrow'] . " ays_fa ays_fa_flag_checkered ays_finish action-button ays_arrow ays_next_arrow'></i><input type='submit' name='ays_finish_quiz' class=' " . $buttons['nextButton'] . " ays_next ays_finish action-button' value='" . $settings_buttons_texts['seeResultButton'] . "'/>";
+                            $input = "<i class='" . $buttons['nextArrow'] . " ays_fa ays_fa_flag_checkered ays_finish action-button ays_arrow ays_next_arrow ".$class_for_keyboard."' ". $attributes_for_keyboard ."></i><input type='submit' name='ays_finish_quiz' class=' " . $buttons['nextButton'] . " ays_next ays_finish action-button ".$class_for_keyboard."' value='" . $settings_buttons_texts['seeResultButton'] . "'/>";
                             break;                        
                     }
                     $buttons_div = "<div class='ays_buttons_div'>
                             {$clear_answer}
-                            <i class=\"ays_fa ". $quiz_arrow_type_class_left ." ays_previous action-button ays_arrow " . $buttons['prevArrow'] . "\"></i>
-                            <input type='button' class='ays_previous action-button " . $buttons['prevButton'] . "'  value='".$settings_buttons_texts['previousButton']."' />
+                            <i class=\"ays_fa ". $quiz_arrow_type_class_left ." ays_previous action-button ays_arrow ".$class_for_keyboard." " . $buttons['prevArrow'] . "\" ". $attributes_for_keyboard ."></i>
+                            <input type='button' class='ays_previous action-button ".$class_for_keyboard." " . $buttons['prevButton'] . "'  value='".$settings_buttons_texts['previousButton']."' />
                             {$input}
                         </div>";
                 }else{
                     $buttons_div = "<div class='ays_buttons_div'>
                         {$clear_answer}
-                        <i class=\"ays_fa ". $quiz_arrow_type_class_left ." ays_previous action-button ays_arrow " . $buttons['prevArrow'] . "\"></i>
-                        <input type='button' class='ays_previous action-button " . $buttons['prevButton'] . "' value='".$settings_buttons_texts['previousButton']."' />
+                        <i class=\"ays_fa ". $quiz_arrow_type_class_left ." ays_previous action-button ays_arrow ".$class_for_keyboard." " . $buttons['prevArrow'] . "\" ". $attributes_for_keyboard ."></i>
+                        <input type='button' class='ays_previous action-button ".$class_for_keyboard." " . $buttons['prevButton'] . "' value='".$settings_buttons_texts['previousButton']."' />
                         " . $early_finish . "
-                        <i class=\"ays_fa ". $quiz_arrow_type_class_right ." ays_next action-button ays_arrow ays_next_arrow " . $buttons['nextArrow'] . "\"></i>
-                        <input type='button' class='ays_next action-button " . $buttons['nextButton'] . "' value='" . $settings_buttons_texts['nextButton'] . "' />
+                        <i class=\"ays_fa ". $quiz_arrow_type_class_right ." ays_next action-button ays_arrow ays_next_arrow ".$class_for_keyboard." " . $buttons['nextArrow'] . "\" ". $attributes_for_keyboard ."></i>
+                        <input type='button' class='ays_next action-button ".$class_for_keyboard." " . $buttons['nextButton'] . "' value='" . $settings_buttons_texts['nextButton'] . "' />
                     </div>";
                 }
                 
@@ -6165,6 +6190,16 @@ class Quiz_Maker_Public
         $numbering_type_arr = $this->ays_answer_numbering($show_answers_numbering);
         $numbering_type = '';
 
+        $quiz_enable_keyboard_navigation = (isset($options['quiz_enable_keyboard_navigation']) && $options['quiz_enable_keyboard_navigation'] == 'on') ? true : false;
+        $attributes_for_keyboard = "";
+        $class_for_keyboard = "";
+        $class_label_for_keyboard = "";
+        if($quiz_enable_keyboard_navigation){
+            $class_for_keyboard = "ays-quiz-keyboard-active";
+            $attributes_for_keyboard = "tabindex='0'";
+            $class_label_for_keyboard = "ays-quiz-keyboard-label";
+        }
+
         $answer_container_script    = '';
         $answer_container_script_html = '';
         $script_data_arr = array();
@@ -6229,13 +6264,13 @@ class Quiz_Maker_Public
                     $numbering_type = $numbering_type . ' ';
                 }
 
-                $label .= "<label for='ays-answer-{$answer["id"]}-{$quiz_id}' class='ays_answer_image {$correct_answer_flag}' $answer_label_style>" . $numbering_type  . $answer_content . "</label>";
+                $label .= "<label for='ays-answer-{$answer["id"]}-{$quiz_id}' class='ays_answer_image {$correct_answer_flag} $class_label_for_keyboard' $answer_label_style>" . $numbering_type  . $answer_content . "</label>";
             }
             if( $answer_image != "" ){
                 $label .= "<label for='ays-answer-{$answer["id"]}-{$quiz_id}' style='border-radius:0;margin:0;padding:0;height:100px;'>{$answer_image}</label>";
             }
             $answer_container .= "
-            <div class='ays-field ays_" . $options['answersViewClass'] . "_view_item' $ays_field_style>
+            <div class='ays-field ays_" . $options['answersViewClass'] . "_view_item ".$class_for_keyboard."' ".$attributes_for_keyboard." $ays_field_style>
                 <input type='hidden' name='ays_answer_correct[]' value='0'/>
 
                 <input type='{$options["questionType"]}' name='ays_questions[ays-question-{$question_id}]' id='ays-answer-{$answer["id"]}-{$quiz_id}' value='{$answer["id"]}'/>
@@ -6269,6 +6304,14 @@ class Quiz_Maker_Public
         if ( $this->is_question_not_influence( $question_id ) ) {
             $question_not_influence_class  = "ays_display_none";
             $enable_correction_textarea    = "width:100%;";
+        }
+
+        $quiz_enable_keyboard_navigation = (isset($options['quiz_enable_keyboard_navigation']) && $options['quiz_enable_keyboard_navigation'] == 'on') ? true : false;
+        $attributes_for_keyboard = "";
+        $class_for_keyboard = "";
+        if($quiz_enable_keyboard_navigation){
+            $class_for_keyboard = "ays-quiz-keyboard-active";
+            $attributes_for_keyboard = "tabindex='0'";
         }
 
         $question_text_max_length_array = (isset($options['questionMaxLengthArray']) && ! empty($options['questionMaxLengthArray'])) ? $options['questionMaxLengthArray'] : array();
@@ -6311,7 +6354,7 @@ class Quiz_Maker_Public
                 $answer_image = (isset($answer['image']) && $answer['image'] != '') ? $answer["image"] : "";
                 $answer_container .= "<textarea style='$enable_correction_textarea' type='text' placeholder='$placeholder' class='ays-text-input ". $ays_question_limit_length_class ."' autocomplete='off' name='ays_questions[ays-question-{$question_id}]' data-question-id='". $question_id ."' ></textarea>
                 <input type='hidden' name='ays_answer_correct[]' value='0'/>
-                <button type='button' style='$enable_correction' class='ays_check_answer action-button ". $question_not_influence_class ."'>".$this->buttons_texts['checkButton']."</button>";
+                <button type='button' style='$enable_correction' class='ays_check_answer action-button ".$class_for_keyboard." ". $question_not_influence_class ."'>".$this->buttons_texts['checkButton']."</button>";
                 $answer_container .= "<script>
                         if(typeof window.quizOptions_$quiz_id === 'undefined'){
                             window.quizOptions_$quiz_id = [];
@@ -6342,6 +6385,14 @@ class Quiz_Maker_Public
         if ( $this->is_question_not_influence( $question_id ) ) {
             $question_not_influence_class  = "ays_display_none";
             $enable_correction_textarea    = "width:100%;";
+        }
+
+        $quiz_enable_keyboard_navigation = (isset($options['quiz_enable_keyboard_navigation']) && $options['quiz_enable_keyboard_navigation'] == 'on') ? true : false;
+        $attributes_for_keyboard = "";
+        $class_for_keyboard = "";
+        if($quiz_enable_keyboard_navigation){
+            $class_for_keyboard = "ays-quiz-keyboard-active";
+            $attributes_for_keyboard = "tabindex='0'";
         }
 
         $question_text_max_length_array = (isset($options['questionMaxLengthArray']) && ! empty($options['questionMaxLengthArray'])) ? $options['questionMaxLengthArray'] : array();
@@ -6384,7 +6435,7 @@ class Quiz_Maker_Public
                 $answer_image = (isset($answer['image']) && $answer['image'] != '') ? $answer["image"] : "";
                 $answer_container .= "<input style='$enable_correction_textarea' type='text' placeholder='$placeholder' class='ays-text-input ". $ays_question_limit_length_class ."' autocomplete='off' name='ays_questions[ays-question-{$question_id}]' data-question-id='". $question_id ."'>
                 <input type='hidden' name='ays_answer_correct[]' value='0'/>
-                <button type='button' style='$enable_correction' class='ays_check_answer action-button ". $question_not_influence_class ."'>".$this->buttons_texts['checkButton']."</button>";
+                <button type='button' style='$enable_correction' class='ays_check_answer action-button ". $class_for_keyboard." ". $question_not_influence_class ."'>".$this->buttons_texts['checkButton']."</button>";
                 $answer_container .= "<script>
                         if(typeof window.quizOptions_$quiz_id === 'undefined'){
                             window.quizOptions_$quiz_id = [];
@@ -6415,6 +6466,14 @@ class Quiz_Maker_Public
         if ( $this->is_question_not_influence( $question_id ) ) {
             $question_not_influence_class  = "ays_display_none";
             $enable_correction_textarea    = "width:100%;";
+        }
+
+        $quiz_enable_keyboard_navigation = (isset($options['quiz_enable_keyboard_navigation']) && $options['quiz_enable_keyboard_navigation'] == 'on') ? true : false;
+        $attributes_for_keyboard = "";
+        $class_for_keyboard = "";
+        if($quiz_enable_keyboard_navigation){
+            $class_for_keyboard = "ays-quiz-keyboard-active";
+            $attributes_for_keyboard = "tabindex='0'";
         }
 
         $question_text_max_length_array = (isset($options['questionMaxLengthArray']) && ! empty($options['questionMaxLengthArray'])) ? $options['questionMaxLengthArray'] : array();
@@ -6476,7 +6535,7 @@ class Quiz_Maker_Public
                 $answer_image = (isset($answer['image']) && $answer['image'] != '') ? $answer["image"] : "";
                 $answer_container .= "<input style='$enable_correction_textarea' type='number' placeholder='$placeholder' class='ays-text-input ". $ays_question_limit_length_class ."' ". $ays_quiz_question_number_message_html ." ". $question_number_min_message_html ." name='ays_questions[ays-question-{$question_id}]' data-question-id='". $question_id ."'>
                 <input type='hidden' name='ays_answer_correct[]' value='0'/>
-                <button type='button' style='$enable_correction' class='ays_check_answer action-button ". $question_not_influence_class ."'>".$this->buttons_texts['checkButton']."</button>";
+                <button type='button' style='$enable_correction' class='ays_check_answer action-button ". $class_for_keyboard." ". $question_not_influence_class ."'>".$this->buttons_texts['checkButton']."</button>";
                 $answer_container .= "<script>
                         if(typeof window.quizOptions_$quiz_id === 'undefined'){
                             window.quizOptions_$quiz_id = [];
@@ -6510,13 +6569,22 @@ class Quiz_Maker_Public
             $question_not_influence_class  = "ays_display_none";
             $enable_correction_textarea    = "width:100%;";
         }
+
+        $quiz_enable_keyboard_navigation = (isset($options['quiz_enable_keyboard_navigation']) && $options['quiz_enable_keyboard_navigation'] == 'on') ? true : false;
+        $attributes_for_keyboard = "";
+        $class_for_keyboard = "";
+        if($quiz_enable_keyboard_navigation){
+            $class_for_keyboard = "ays-quiz-keyboard-active";
+            $attributes_for_keyboard = "tabindex='0'";
+        }
+
         $answer_container = "<div class='ays-field ays-text-field'>";
             foreach ($answers as $answer) {
                 $placeholder = isset($answer["placeholder"]) && $answer["placeholder"] != '' ? stripslashes(htmlentities($answer["placeholder"], ENT_QUOTES)) : '';
                 $answer_image = (isset($answer['image']) && $answer['image'] != '') ? $answer["image"] : "";
                 $answer_container .= "<input style='$enable_correction_textarea' type='date' autocomplete='off' placeholder='$placeholder' class='ays-text-input' name='ays_questions[ays-question-{$question_id}]'>
                 <input type='hidden' name='ays_answer_correct[]' value='0'/>
-                <button type='button' style='$enable_correction' class='ays_check_answer action-button ". $question_not_influence_class ."'>".$this->buttons_texts['checkButton']."</button>";
+                <button type='button' style='$enable_correction' class='ays_check_answer action-button ". $class_for_keyboard."  ". $question_not_influence_class ."'>".$this->buttons_texts['checkButton']."</button>";
                 $answer_container .= "<script>
                         if(typeof window.quizOptions_$quiz_id === 'undefined'){
                             window.quizOptions_$quiz_id = [];
