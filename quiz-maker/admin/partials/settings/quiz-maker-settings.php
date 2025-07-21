@@ -1719,6 +1719,46 @@
                         </fieldset> <!-- Most popular quiz -->
                         <hr>
                         <fieldset>
+                            <legend>
+                                <strong style="font-size:30px;">[ ]</strong>
+                                <h5><?php echo __('Recent Quizzes Settings', 'quiz-maker'); ?></h5>
+                            </legend>
+                            <div class="form-group row" style="padding:0px;margin:0;">
+                                <div class="col-sm-12">
+                                    <div class="ays-quiz-heading-box ays-quiz-unset-float ays-quiz-unset-margin">
+                                        <div class="ays-quiz-wordpress-user-manual-box ays-quiz-wordpress-text-align">
+                                            <a href="https://youtu.be/Eg7wzKTSsEA" target="_blank">
+                                                <?php echo __("How to set Recent Quizzes Settings shortcode - video", 'quiz-maker'); ?>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12" style="padding:20px;">
+                                    <div class="form-group row">
+                                        <div class="col-sm-4">
+                                            <label for="ays_quiz_recent_quizes">
+                                                <?php echo __( "Shortcode", 'quiz-maker' ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" data-html="true"
+                                                    title="<?php
+                                                        echo __('Copy the following shortcode, configure it based on your preferences and paste it into the post.','quiz-maker') .
+                                                        "<ul style='list-style-type: circle;padding-left: 20px;'>".
+                                                            "<li>". __('Random - If you set the ordering method as random and gave a value to count option, then it will randomly display that given amount of quizzes from your created quizzes.','quiz-maker') ."</li>".
+                                                            "<li>". __('Recent - If you set the ordering method as recent and gave a value to count option, then it will display that given amount of quizzes from your recently created quizzes.','quiz-maker') ."</li>".
+                                                        "</ul>";
+                                                    ?>">
+                                                    <i class="ays_fa ays_fa_info_circle"></i>
+                                                </a>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <input type="text" id="ays_quiz_recent_quizes" class="ays-text-input" onclick="this.setSelectionRange(0, this.value.length)" readonly="" value='[ays_display_quizzes orderby="random/recent" count="5"]'>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset> <!-- Recent Quizzes Settings -->
+                        <hr>
+                        <fieldset>
                             <legend style="margin-bottom: 0;">
                                 <strong style="font-size:30px;">[ ]</strong>
                                 <h5><?php echo __('Individual Leaderboard Settings','quiz-maker')?></h5>
@@ -2754,92 +2794,6 @@
                                 </div>
                             </div>
                         </fieldset> <!-- Flash Cards Settings -->
-                        <hr>
-                        <fieldset>
-                            <legend>
-                                <strong style="font-size:30px;">[ ]</strong>
-                                <h5><?php echo __('Recent Quizzes Settings','quiz-maker'); ?></h5>
-                            </legend>
-                            <div class="form-group row" style="padding:0px;margin:0;">
-                                <div class="col-sm-12 only_pro" style="padding:20px;">
-                                    <div class="pro_features pro_features_popup pro_features_background_bolder">
-                                        <div class="pro-features-popup-conteiner">
-                                            <div class="pro-features-popup-title">
-                                                <?php echo __("How to set Recent Quizzes Settings shortcode with WordPress Quiz Plugin", 'quiz-maker'); ?>
-                                            </div>
-                                            <div class="pro-features-popup-content" data-link="https://youtu.be/Eg7wzKTSsEA">
-                                                <p>
-                                                    <?php echo sprintf( __("With the help of the Recent Quizzes Settings shortcode, you can display the %s recently created quizzes %s on the Front-end. The shortcode has two ordering options: %s By random or By recent. %s", 'quiz-maker'),
-                                                        "<strong>",
-                                                        "</strong>",
-                                                        "<strong>",
-                                                        "</strong>"
-                                                    ); ?>
-                                                </p>
-                                                <p>
-                                                    <?php echo sprintf( __("With %s random ordering %s, you can display your chosen amount of quizzes of all the quizzes you have created. With %s recent ordering %s, you can display your chosen amount of quizzes of your recently-created quizzes.", 'quiz-maker'),
-                                                        "<strong>",
-                                                        "</strong>",
-                                                        "<strong>",
-                                                        "</strong>"
-                                                    ); ?>
-                                                </p>
-                                                <p>
-                                                    <?php echo sprintf( __("The shortcode will help to %s boost user engagement %s and provide your website visitors with fresh and %s up-to-date content. %s", 'quiz-maker'),
-                                                        "<strong>",
-                                                        "</strong>",
-                                                        "<strong>",
-                                                        "</strong>"
-                                                    ); ?>
-                                                </p>
-                                                <div>
-                                                    <a href="https://quiz-plugin.com/recent-quizzes" target="_blank"><?php echo __("See Demo", 'quiz-maker'); ?></a>
-                                                </div>
-                                            </div>
-                                            <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-recent-quizzes-shortcode-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>">
-                                                <?php echo __("Pricing", 'quiz-maker'); ?>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-4">
-                                            <label>
-                                                <?php echo __( "Shortcode", 'quiz-maker' ); ?>
-                                                <a class="ays_help" data-toggle="tooltip" data-html="true"
-                                                    title="<?php
-                                                        echo __('Copy the following shortcode, configure it based on your preferences and paste it into the post.','quiz-maker') .
-                                                        "<ul style='list-style-type: circle;padding-left: 20px;'>".
-                                                            "<li>". __('Random - If you set the ordering method as random and gave a value to count option, then it will randomly display that given amount of quizzes from your created quizzes.','quiz-maker') ."</li>".
-                                                            "<li>". __('Recent - If you set the ordering method as recent and gave a value to count option, then it will display that given amount of quizzes from your recently created quizzes.','quiz-maker') ."</li>".
-                                                        "</ul>";
-                                                    ?>">
-                                                    <i class="ays_fa ays_fa_info_circle"></i>
-                                                </a>
-                                            </label>
-                                        </div>
-                                        <div class="col-sm-8">
-                                            <input type="text" class="ays-text-input" onclick="this.setSelectionRange(0, this.value.length)" readonly="" value='[ays_display_quizzes orderby="random/recent" count="5"]'>
-                                        </div>
-                                    </div>
-                                    <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-recent-quizzes-shortcode" target="_blank" class="ays-quiz-new-upgrade-button-link">
-                                        <div class="ays-quiz-new-upgrade-button-box">
-                                            <div>
-                                                <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                                <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
-                                            </div>
-                                            <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
-                                        </div>
-                                    </a>
-                                    <div class="ays-quiz-new-watch-video-button-box">
-                                        <div>
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24.svg'?>">
-                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg'?>" class="ays-quiz-new-watch-video-button-hover">
-                                        </div>
-                                        <div class="ays-quiz-new-watch-video-button"><?php echo __("Watch Video", "quiz-maker"); ?></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </fieldset> <!-- Recent Quizzes Settings -->
                         <hr>
                         <fieldset>
                             <legend>

@@ -177,6 +177,8 @@ class Quiz_Maker {
 
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/partials/class-quiz-maker-most-popular-shortcode.php';
 
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/partials/class-quiz-maker-recent-quizes-shortcode.php';
+
         /*
          * The class is responsible for showing quiz results in wordpress default WP_LIST_TABLE style
          */
@@ -362,6 +364,7 @@ class Quiz_Maker {
 		$plugin_public_display_questions = new Quiz_Maker_Display_Questions( $this->get_plugin_name(), $this->get_version() );
 		$plugin_public_extra_shortcodes = new Ays_Quiz_Maker_Extra_Shortcodes_Public( $this->get_plugin_name(), $this->get_version() );
 		$plugin_public_most_popular_shortcodes = new Ays_Quiz_Maker_Most_Popular_Shortcodes_Public( $this->get_plugin_name(), $this->get_version() );
+		$plugin_public_recent_quizes_page = new Quiz_Maker_Recent_Quizes( $this->get_plugin_name(), $this->get_version() );
 
         $this->loader->add_action( 'wp_ajax_ays_finish_quiz', $plugin_public, 'ays_finish_quiz' );
         $this->loader->add_action( 'wp_ajax_nopriv_ays_finish_quiz', $plugin_public, 'ays_finish_quiz' );
