@@ -1327,6 +1327,7 @@ class Quiz_Maker_Admin
         $quick_quiz_show_restart_button_on_quiz_fail        = 'off';
         $quick_quiz_enable_quiz_rate                        = 'off';
         $quick_quiz_enable_rate_comments                    = 'off';
+        $quick_quiz_make_responses_anonymous                = 'off';
 
         // User Data
         $quick_quiz_show_information_form                   = 'on';
@@ -1704,6 +1705,9 @@ class Quiz_Maker_Admin
 
             // Show the last 5 reviews
             $quick_quiz_enable_rate_comments = (isset( $_REQUEST['ays_quick_quiz_enable_rate_comments'] ) && $_REQUEST['ays_quick_quiz_enable_rate_comments'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_rate_comments'] ) ) : "off";
+
+            // Make responses anonymous
+            $quick_quiz_make_responses_anonymous = (isset( $_REQUEST['ays_quick_quiz_make_responses_anonymous'] ) && $_REQUEST['ays_quick_quiz_make_responses_anonymous'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_make_responses_anonymous'] ) ) : "off";
             
             
         }
@@ -1910,7 +1914,7 @@ class Quiz_Maker_Admin
             'quiz_enable_linkedin_share_button'                 => 'on',
             'quiz_enable_facebook_share_button'                 => 'on',
             'quiz_enable_twitter_share_button'                  => 'on',
-            'quiz_make_responses_anonymous'                     => 'off',
+            'quiz_make_responses_anonymous'                     => $quick_quiz_make_responses_anonymous,
             'quiz_make_all_review_link'                         => 'off',
             'show_questions_numbering'                          => $quick_quiz_show_questions_numbering,
             'quiz_message_before_timer'                         => '',

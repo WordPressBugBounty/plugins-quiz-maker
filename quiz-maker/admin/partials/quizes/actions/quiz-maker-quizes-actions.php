@@ -6830,8 +6830,7 @@ $quiz_enable_keyboard_navigation = (isset($options['quiz_enable_keyboard_navigat
                                         </label>
                                     </div>
                                     <div class="col-sm-8">
-                                        <input type="checkbox" name="ays_quiz_make_responses_anonymous" id="ays_quiz_make_responses_anonymous"
-                                               <?php echo ($quiz_make_responses_anonymous) ? 'checked' : ''; ?>/>
+                                        <input type="checkbox" name="ays_quiz_make_responses_anonymous" id="ays_quiz_make_responses_anonymous" value="on" <?php echo ($quiz_make_responses_anonymous) ? 'checked' : ''; ?>/>
                                     </div>
                                 </div>
                                 <hr>
