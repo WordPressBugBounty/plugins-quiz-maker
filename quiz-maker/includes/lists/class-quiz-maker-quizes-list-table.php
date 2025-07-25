@@ -982,6 +982,9 @@ class Quizes_List_Table extends WP_List_Table{
 
             //Enable keyboard navigation
             $quiz_enable_keyboard_navigation = (isset($_REQUEST['ays_quiz_enable_keyboard_navigation']) && $_REQUEST['ays_quiz_enable_keyboard_navigation'] == 'on') ? 'on' : 'off';
+
+            // Note text transform size | Mobile
+            $quiz_admin_note_mobile_text_transform = (isset($_REQUEST['ays_quiz_admin_note_mobile_text_transform']) && $_REQUEST['ays_quiz_admin_note_mobile_text_transform'] != '') ? stripslashes( sanitize_text_field( $_REQUEST['ays_quiz_admin_note_mobile_text_transform'] ) ) : 'none';
             
 
             $options = array(
@@ -1233,6 +1236,7 @@ class Quizes_List_Table extends WP_List_Table{
                 'quiz_show_restart_button_on_quiz_fail'             => $quiz_show_restart_button_on_quiz_fail,
                 'quiz_disable_input_focusing'                       => $quiz_disable_input_focusing,
                 'quiz_enable_keyboard_navigation'                   => $quiz_enable_keyboard_navigation,
+                'quiz_admin_note_mobile_text_transform'             => $quiz_admin_note_mobile_text_transform,
             );
 
             $options['required_fields'] = !isset($_POST['ays_required_field']) ? null : array_map( 'sanitize_text_field', $_POST['ays_required_field'] );
