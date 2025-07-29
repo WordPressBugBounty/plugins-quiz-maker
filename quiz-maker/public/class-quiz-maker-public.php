@@ -1317,6 +1317,9 @@ class Quiz_Maker_Public
         // Question explanation transform size
         $quiz_quest_explanation_text_transform = (isset($options[ 'quiz_quest_explanation_text_transform' ]) && $options[ 'quiz_quest_explanation_text_transform' ] != '') ? stripslashes ( esc_attr( $options[ 'quiz_quest_explanation_text_transform' ] ) ) : 'none';
 
+        // Question explanation transform size | Mobile
+        $quiz_quest_explanation_mobile_text_transform = (isset($options[ 'quiz_quest_explanation_mobile_text_transform' ]) && $options[ 'quiz_quest_explanation_mobile_text_transform' ] != '') ? stripslashes ( esc_attr( $options[ 'quiz_quest_explanation_mobile_text_transform' ] ) ) : $quiz_quest_explanation_text_transform;
+
         // Question Explanation text decoration
         $quiz_quest_explanation_text_decoration = (isset($options[ 'quiz_quest_explanation_text_decoration' ]) && $options[ 'quiz_quest_explanation_text_decoration' ] != '') ? stripslashes ( esc_attr( $options[ 'quiz_quest_explanation_text_decoration' ] ) ) : 'none';
 
@@ -4230,9 +4233,13 @@ class Quiz_Maker_Public
                 #ays-quiz-container-" . $id . " .ays-quiz-question-note-message-box p {
                     font-size:" . $note_text_mobile_font_size . "px;
                 }
-                
+
                 #ays-quiz-container-" . $id . " .ays-quiz-question-note-message-box *:not(strong) {
                     text-transform:" . $quiz_admin_note_mobile_text_transform . ";
+                }
+
+                #ays-quiz-container-" . $id . " .ays_questtion_explanation *:not(strong) {
+                    text-transform:" . $quiz_quest_explanation_mobile_text_transform . ";
                 }
             }
             /* Custom css styles */
