@@ -1297,37 +1297,38 @@ class Quiz_Maker_Admin
         $quick_quiz_enable_live_progress_bar                = 'off';
         $quick_quiz_enable_percent_view_option              = 'off';
 
-        $quick_quiz_custom_texts_start_button               = $gen_start_button;
-        $quick_quiz_custom_texts_next_button                = $gen_next_button;
-        $quick_quiz_custom_texts_prev_button                = $gen_previous_button;
-        $quick_quiz_custom_texts_clear_button               = $gen_clear_button;
-        $quick_quiz_custom_texts_finish_button              = $gen_finish_button;
-        $quick_quiz_custom_texts_see_results_button         = $gen_see_result_button;
-        $quick_quiz_custom_texts_restart_button             = $gen_restart_quiz_button;
-        $quick_quiz_custom_texts_send_feedback_button       = $gen_send_feedback_button;
-        $quick_quiz_custom_texts_load_more_button           = $gen_load_more_button;
-        $quick_quiz_custom_texts_exit_button                = $gen_exit_button;
-        $quick_quiz_custom_texts_check_button               = $gen_check_button;
-        $quick_quiz_custom_texts_login_button               = $gen_login_button;
+        $quick_quiz_custom_texts_start_button                   = $gen_start_button;
+        $quick_quiz_custom_texts_next_button                    = $gen_next_button;
+        $quick_quiz_custom_texts_prev_button                    = $gen_previous_button;
+        $quick_quiz_custom_texts_clear_button                   = $gen_clear_button;
+        $quick_quiz_custom_texts_finish_button                  = $gen_finish_button;
+        $quick_quiz_custom_texts_see_results_button             = $gen_see_result_button;
+        $quick_quiz_custom_texts_restart_button                 = $gen_restart_quiz_button;
+        $quick_quiz_custom_texts_send_feedback_button           = $gen_send_feedback_button;
+        $quick_quiz_custom_texts_load_more_button               = $gen_load_more_button;
+        $quick_quiz_custom_texts_exit_button                    = $gen_exit_button;
+        $quick_quiz_custom_texts_check_button                   = $gen_check_button;
+        $quick_quiz_custom_texts_login_button                   = $gen_login_button;
 
         // Results Settings
-        $quick_quiz_hide_score                              = 'off';
-        $quick_quiz_enable_restart_button                   = 'on';
-        $quick_quiz_enable_progress_bar                     = 'on';
-        $quick_quiz_enable_average_statistical              = 'on';
-        $quick_quiz_disable_store_data                      = 'off';
-        $quick_quiz_display_score                           = 'by_percantage';
-        $quick_quiz_enable_questions_result                 = 'on';
-        $quick_quiz_hide_correct_answers                    = 'off';
-        $quick_quiz_show_wrong_answers_first                = 'off';
-        $quick_quiz_show_only_wrong_answers                 = 'off';
-        $quick_quiz_enable_results_toggle                   = 'off';
-        $quick_quiz_enable_default_hide_results_toggle      = 'off';
-        $quick_quiz_enable_early_finsh_comfirm_box          = 'on';
-        $quick_quiz_show_restart_button_on_quiz_fail        = 'off';
-        $quick_quiz_enable_quiz_rate                        = 'off';
-        $quick_quiz_enable_rate_comments                    = 'off';
-        $quick_quiz_make_responses_anonymous                = 'off';
+        $quick_quiz_hide_score                                  = 'off';
+        $quick_quiz_enable_restart_button                       = 'on';
+        $quick_quiz_enable_progress_bar                         = 'on';
+        $quick_quiz_enable_average_statistical                  = 'on';
+        $quick_quiz_disable_store_data                          = 'off';
+        $quick_quiz_display_score                               = 'by_percantage';
+        $quick_quiz_enable_questions_result                     = 'on';
+        $quick_quiz_hide_correct_answers                        = 'off';
+        $quick_quiz_show_wrong_answers_first                    = 'off';
+        $quick_quiz_show_only_wrong_answers                     = 'off';
+        $quick_quiz_enable_results_toggle                       = 'off';
+        $quick_quiz_enable_default_hide_results_toggle          = 'off';
+        $quick_quiz_enable_early_finsh_comfirm_box              = 'on';
+        $quick_quiz_show_restart_button_on_quiz_fail            = 'off';
+        $quick_quiz_enable_quiz_rate                            = 'off';
+        $quick_quiz_enable_rate_comments                        = 'off';
+        $quick_quiz_make_responses_anonymous                    = 'off';
+        $quick_quiz_enable_user_cհoosing_anonymous_assessment   = 'off';
 
         // User Data
         $quick_quiz_show_information_form                   = 'on';
@@ -1708,6 +1709,9 @@ class Quiz_Maker_Admin
 
             // Make responses anonymous
             $quick_quiz_make_responses_anonymous = (isset( $_REQUEST['ays_quick_quiz_make_responses_anonymous'] ) && $_REQUEST['ays_quick_quiz_make_responses_anonymous'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_make_responses_anonymous'] ) ) : "off";
+
+            // Enable users' anonymous assessment
+            $quick_quiz_enable_user_cհoosing_anonymous_assessment = (isset( $_REQUEST['ays_quick_quiz_enable_user_cհoosing_anonymous_assessment'] ) && $_REQUEST['ays_quick_quiz_enable_user_cհoosing_anonymous_assessment'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_user_cհoosing_anonymous_assessment'] ) ) : "off";
             
             
         }
@@ -1915,6 +1919,7 @@ class Quiz_Maker_Admin
             'quiz_enable_facebook_share_button'                 => 'on',
             'quiz_enable_twitter_share_button'                  => 'on',
             'quiz_make_responses_anonymous'                     => $quick_quiz_make_responses_anonymous,
+            'quiz_enable_user_cհoosing_anonymous_assessment'    => $quick_quiz_enable_user_cհoosing_anonymous_assessment,
             'quiz_make_all_review_link'                         => 'off',
             'show_questions_numbering'                          => $quick_quiz_show_questions_numbering,
             'quiz_message_before_timer'                         => '',

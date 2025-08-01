@@ -137,9 +137,9 @@
 
 .ays_quiz_rect_dark .select2-container .select2-selection--single,
 .ays_quiz_rect_dark .select2-container--default .select2-selection--single .select2-selection__rendered {
-	height: 40px;
-	line-height: 40px;
-	font-size: 17px !important;
+    height: 40px;
+    line-height: 40px;
+    font-size: 17px !important;
     width: 100%;
     color: white;
     display: inline-block;
@@ -154,30 +154,30 @@
     height: 40px;
 }
 .ays_quiz_rect_dark .select2-container--default .select2-selection--single {
-	background: transparent;
-	border: none;
-	border-radius: unset;
+    background: transparent;
+    border: none;
+    border-radius: unset;
 }
 .ays_quiz_rect_dark .select2-container--default .select2-selection--single:focus {
-	outline: none;
-	box-shadow: none;
+    outline: none;
+    box-shadow: none;
 }
 .ays_quiz_rect_dark .select2-container .select2-selection--single .select2-selection__arrow b[role="presentation"] {
-	border: none;
+    border: none;
 }
 .ays_quiz_rect_dark .select2-container--default .select2-selection--single .select2-selection__arrow {
-	top: 0;
-	right: 10px;
+    top: 0;
+    right: 10px;
 }
 
 .ays_quiz_rect_dark .select2-container--default .select2-results__option--highlighted[aria-selected] {
-	color: #fff !important;
+    color: #fff !important;
 }
 .ays_quiz_rect_dark .select2-container--default .select2-results__option[aria-selected="true"] {
-	background-color: #aaa;
+    background-color: #aaa;
 }
 .ays_quiz_rect_dark .select2-container--default .select2-results__option {
-	list-style-type: none;
+    list-style-type: none;
     text-align: left;
-	color: #000 !important;
+    color: #000 !important;
 }

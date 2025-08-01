@@ -950,6 +950,17 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                         <input type="checkbox" name="ays_quick_quiz_make_responses_anonymous" id="ays_quick_quiz_make_responses_anonymous" value="on"/>
                                                     </div>
                                                 </div>
+                                                <hr>
+                                                <div class="form-group row">
+                                                    <div class="col-sm-4">
+                                                        <label for="ays_quick_quiz_enable_user_cհoosing_anonymous_assessment">
+                                                            <?php echo esc_html__("Enable users' anonymous assessment",'quiz-maker'); ?>
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-sm-8">
+                                                        <input type="checkbox" name="ays_quick_quiz_enable_user_cհoosing_anonymous_assessment" id="ays_quick_quiz_enable_user_cհoosing_anonymous_assessment"/>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div><!-- Enable quiz assessment -->
                                         <hr/>
