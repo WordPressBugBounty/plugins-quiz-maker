@@ -1338,6 +1338,9 @@ class Quiz_Maker_Public
         // Right answer transform size
         $quiz_right_answer_text_transform = (isset($options[ 'quiz_right_answer_text_transform' ]) && $options[ 'quiz_right_answer_text_transform' ] != '') ? stripslashes ( esc_attr( $options[ 'quiz_right_answer_text_transform' ] ) ) : 'none';
 
+        // Right answer text transform size | Mobile
+        $quiz_right_answer_mobile_text_transform = (isset($options[ 'quiz_right_answer_mobile_text_transform' ]) && $options[ 'quiz_right_answer_mobile_text_transform' ] != '') ? stripslashes ( esc_attr( $options[ 'quiz_right_answer_mobile_text_transform' ] ) ) : $quiz_right_answer_text_transform;
+
         // Right answer text decoration
         $quiz_right_answers_text_decoration = (isset($options[ 'quiz_right_answers_text_decoration' ]) && $options[ 'quiz_right_answers_text_decoration' ] != '') ? stripslashes ( esc_attr( $options[ 'quiz_right_answers_text_decoration' ] ) ) : 'none';
 
@@ -4240,6 +4243,10 @@ class Quiz_Maker_Public
 
                 #ays-quiz-container-" . $id . " .ays_questtion_explanation *:not(strong) {
                     text-transform:" . $quiz_quest_explanation_mobile_text_transform . ";
+                }
+
+                #ays-quiz-container-" . $id . " .right_answer_text *:not(strong) {
+                    text-transform:" . $quiz_right_answer_mobile_text_transform . ";
                 }
             }
             /* Custom css styles */
