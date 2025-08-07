@@ -1260,42 +1260,42 @@ class Quiz_Maker_Admin
         $quiz_enable_options = (isset( $_REQUEST['ays_quick_quiz_enable_options'] ) && $_REQUEST['ays_quick_quiz_enable_options'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_options'] ) ) : "off";
         
         // Settings
-        $quick_quiz_enable_randomize_questions              = 'off';
-        $quick_quiz_enable_randomize_answers                = 'off';
-        $quick_quiz_display_all_questions                   = 'off';
-        $quick_quiz_enable_correction                       = 'on';
-        $quick_quiz_show_question_category                  = 'off';
-        $quick_quiz_enable_pass_count                       = 'off';
-        $quick_quiz_show_category                           = 'off';
-        $quick_quiz_enable_rate_avg                         = 'off';
-        $quick_quiz_show_author                             = 'off';
-        $quick_quiz_show_create_date                        = 'off';
-        $quick_quiz_enable_next_button                      = 'on';
-        $quick_quiz_enable_previous_button                  = 'on';
-        $quick_quiz_enable_early_finish                     = 'off';
-        $quick_quiz_enable_clear_answer                     = 'off';
-        $quick_quiz_enable_enter_key                        = 'on';
-        $quick_quiz_display_messages_before_buttons         = 'off';
-        $quick_quiz_enable_audio_autoplay                   = 'off';
-        $quick_quiz_enable_rtl_direction                    = 'off';
-        $quick_quiz_enable_questions_counter                = 'on';
-        $quick_quiz_enable_question_image_zoom              = 'off';
-        $quick_quiz_enable_leave_page                       = 'on';
-        $quick_quiz_enable_see_result_confirm_box           = 'off';
-        $quick_quiz_enable_rw_asnwers_sounds                = 'off';
-        $quick_quiz_enable_custom_texts_for_buttons         = 'off';
-        $quick_quiz_show_quiz_title                         = 'on';
-        $quick_quiz_show_quiz_desc                          = 'on';
-        $quick_quiz_show_questions_explanation              = 'on_results_page';
-        $quick_quiz_show_questions_numbering                = 'none';
-        $quick_quiz_answers_view                            = 'list';
-        $quick_quiz_answers_rw_texts                        = 'on_passing';
-        $quick_quiz_enable_questions_ordering_by_cat        = 'off';
-        $quick_quiz_questions_numbering_by_category         = 'off';
-        $quick_quiz_enable_question_category_description    = 'off';
-        $quick_quiz_enable_quiz_category_description        = 'off';
-        $quick_quiz_enable_live_progress_bar                = 'off';
-        $quick_quiz_enable_percent_view_option              = 'off';
+        $quick_quiz_enable_randomize_questions                  = 'off';
+        $quick_quiz_enable_randomize_answers                    = 'off';
+        $quick_quiz_display_all_questions                       = 'off';
+        $quick_quiz_enable_correction                           = 'on';
+        $quick_quiz_show_question_category                      = 'off';
+        $quick_quiz_enable_pass_count                           = 'off';
+        $quick_quiz_show_category                               = 'off';
+        $quick_quiz_enable_rate_avg                             = 'off';
+        $quick_quiz_show_author                                 = 'off';
+        $quick_quiz_show_create_date                            = 'off';
+        $quick_quiz_enable_next_button                          = 'on';
+        $quick_quiz_enable_previous_button                      = 'on';
+        $quick_quiz_enable_early_finish                         = 'off';
+        $quick_quiz_enable_clear_answer                         = 'off';
+        $quick_quiz_enable_enter_key                            = 'on';
+        $quick_quiz_display_messages_before_buttons             = 'off';
+        $quick_quiz_enable_audio_autoplay                       = 'off';
+        $quick_quiz_enable_rtl_direction                        = 'off';
+        $quick_quiz_enable_questions_counter                    = 'on';
+        $quick_quiz_enable_question_image_zoom                  = 'off';
+        $quick_quiz_enable_leave_page                           = 'on';
+        $quick_quiz_enable_see_result_confirm_box               = 'off';
+        $quick_quiz_enable_rw_asnwers_sounds                    = 'off';
+        $quick_quiz_enable_custom_texts_for_buttons             = 'off';
+        $quick_quiz_show_quiz_title                             = 'on';
+        $quick_quiz_show_quiz_desc                              = 'on';
+        $quick_quiz_show_questions_explanation                  = 'on_results_page';
+        $quick_quiz_show_questions_numbering                    = 'none';
+        $quick_quiz_answers_view                                = 'list';
+        $quick_quiz_answers_rw_texts                            = 'on_passing';
+        $quick_quiz_enable_questions_ordering_by_cat            = 'off';
+        $quick_quiz_questions_numbering_by_category             = 'off';
+        $quick_quiz_enable_question_category_description        = 'off';
+        $quick_quiz_enable_quiz_category_description            = 'off';
+        $quick_quiz_enable_live_progress_bar                    = 'off';
+        $quick_quiz_enable_percent_view_option                  = 'off';
 
         $quick_quiz_custom_texts_start_button                   = $gen_start_button;
         $quick_quiz_custom_texts_next_button                    = $gen_next_button;
@@ -1329,6 +1329,7 @@ class Quiz_Maker_Admin
         $quick_quiz_enable_rate_comments                        = 'off';
         $quick_quiz_make_responses_anonymous                    = 'off';
         $quick_quiz_enable_user_cհoosing_anonymous_assessment   = 'off';
+        $quick_quiz_make_all_review_link                        = 'off';
 
         // User Data
         $quick_quiz_show_information_form                   = 'on';
@@ -1712,6 +1713,9 @@ class Quiz_Maker_Admin
 
             // Enable users' anonymous assessment
             $quick_quiz_enable_user_cհoosing_anonymous_assessment = (isset( $_REQUEST['ays_quick_quiz_enable_user_cհoosing_anonymous_assessment'] ) && $_REQUEST['ays_quick_quiz_enable_user_cհoosing_anonymous_assessment'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_user_cհoosing_anonymous_assessment'] ) ) : "off";
+
+            // Display all reviews button
+            $quick_quiz_make_all_review_link = (isset( $_REQUEST['ays_quick_quiz_make_all_review_link'] ) && $_REQUEST['ays_quick_quiz_make_all_review_link'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_make_all_review_link'] ) ) : "off";
             
             
         }
@@ -1920,7 +1924,7 @@ class Quiz_Maker_Admin
             'quiz_enable_twitter_share_button'                  => 'on',
             'quiz_make_responses_anonymous'                     => $quick_quiz_make_responses_anonymous,
             'quiz_enable_user_cհoosing_anonymous_assessment'    => $quick_quiz_enable_user_cհoosing_anonymous_assessment,
-            'quiz_make_all_review_link'                         => 'off',
+            'quiz_make_all_review_link'                         => $quick_quiz_make_all_review_link,
             'show_questions_numbering'                          => $quick_quiz_show_questions_numbering,
             'quiz_message_before_timer'                         => '',
             'enable_full_screen_mode'                           => 'off',
