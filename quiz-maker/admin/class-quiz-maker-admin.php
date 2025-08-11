@@ -161,13 +161,13 @@ class Quiz_Maker_Admin
         $version2 = '5.5';
         $versionCompare = $this->versionCompare($version1, $operator, $version2);
 
-        $check_terms_agreement = get_option('ays_quiz_agree_terms');
-        if($check_terms_agreement === 'true' && strpos($hook_suffix, $this->plugin_name) !== false){
-            wp_enqueue_script( $this->plugin_name . '-hotjar', plugin_dir_url(__FILE__) . 'js/extras/quiz-maker-hotjar.js', array(), $this->version, false);
-            wp_localize_script($this->plugin_name . '-hotjar',  'quiz_maker_hotjar', array(
-                'id' => '2c39f44b-7257-418e-8bba-9c78a81e8ee9',
-            ));
-        }
+        // $check_terms_agreement = get_option('ays_quiz_agree_terms');
+        // if($check_terms_agreement === 'true' && strpos($hook_suffix, $this->plugin_name) !== false){
+        //     wp_enqueue_script( $this->plugin_name . '-hotjar', plugin_dir_url(__FILE__) . 'js/extras/quiz-maker-hotjar.js', array(), $this->version, false);
+        //     wp_localize_script($this->plugin_name . '-hotjar',  'quiz_maker_hotjar', array(
+        //         'id' => '2c39f44b-7257-418e-8bba-9c78a81e8ee9',
+        //     ));
+        // }
 
         if ($versionCompare) {
             wp_enqueue_script( $this->plugin_name.'-wp-load-scripts', plugin_dir_url(__FILE__) . 'js/ays-wp-load-scripts.js', array(), $this->version, true);

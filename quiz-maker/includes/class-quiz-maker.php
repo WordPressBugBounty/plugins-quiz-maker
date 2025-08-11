@@ -118,7 +118,7 @@ class Quiz_Maker {
 		/**
          * The class responsible for showing Quiz Maker Welcome page.
          */
-        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-quiz-maker-ays-welcome.php';
+        // require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-quiz-maker-ays-welcome.php';
 
         /**
          * The class responsible for showing Quiz Maker Feedback popup.

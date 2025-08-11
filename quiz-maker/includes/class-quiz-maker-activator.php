@@ -466,6 +466,16 @@ class Quiz_Maker_Activator
                     );
                 }
             }
+
+            $terms_activation = get_option('ays_quiz_show_agree_terms');
+            $first_activation = get_option('ays_quiz_first_time_activation_page', false);
+
+            if ( !$terms_activation && $first_activation ) {
+                self::ays_quiz_activator_request( 'activator' );
+                update_option('ays_quiz_agree_terms', 'true');
+                update_option('ays_quiz_show_agree_terms', 'hide');
+            }
+
         }
     }
 
@@ -480,5 +490,24 @@ class Quiz_Maker_Activator
         if (get_site_option('ays_quiz_db_version') != $ays_quiz_db_version) {
             self::activate();
         }
+    }
+
+    public static function ays_quiz_activator_request($cta){
+        $curl = curl_init();
+
+        $api_url = "https://poll-plugin.com/quiz-maker/";
+
+        $data = array(
+            'type'  => 'quiz-maker',
+            'cta'   => $cta,
+        );
+
+        wp_remote_post( $api_url, array(
+            'timeout' => 30,
+            'body' => wp_json_encode(array(
+                'type'  => 'quiz-maker',
+                'cta'   => $cta,
+            )),
+        ) );
     }
 }
