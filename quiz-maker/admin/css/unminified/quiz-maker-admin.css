@@ -7340,6 +7340,87 @@ a.ays-quick-quiz-add-question:hover {
 
 /* Big View Demo button end */
 
+/* Small buttons start */
+.ays-pro-features-v2-main-box .ays-pro-features-v2-small-buttons-box{
+    position: absolute;
+    right: 10px;
+    top: -12px;
+    z-index: 4;
+    display: flex;
+    gap: 3px;
+}
+
+.ays-pro-features-v2-main-box .ays-pro-features-v2-small-buttons-box .ays-pro-features-v2-view-demo-button{
+    display: flex;
+    padding: 5px 13px;
+    background-color: #e0ffe4;
+    border-radius: 25px;
+    color: #178c07;
+    font-size: 15px;
+    box-shadow: 0px 1px 1px #00000036;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.ays-pro-features-v2-main-box .ays-pro-features-v2-small-buttons-box .ays-pro-features-v2-view-demo-button:hover{
+    color: #0F6304;
+}
+
+.ays-pro-features-v2-main-box .ays-pro-features-v2-small-buttons-box .ays-pro-features-v2-upgrade-button{
+    display: flex;
+    padding: 5px 13px;
+    background-color: #FFE9DE;
+    border-radius: 25px;
+    color: #F47535;
+    font-size: 15px;
+    box-shadow: 0px 1px 1px #00000036;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.ays-pro-features-v2-main-box .ays-pro-features-v2-small-buttons-box .ays-pro-features-v2-upgrade-button:hover{
+    color: #FF5500;
+}
+
+.ays-pro-features-v2-main-box .ays-pro-features-v2-small-buttons-box .ays-pro-features-v2-video-button{
+    display: flex;
+    padding: 5px 13px;
+    background-color: #E0EBFF;
+    border-radius: 25px;
+    color: #6392D4;
+    font-size: 15px;
+    box-shadow: 0px 1px 1px #00000036;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.ays-pro-features-v2-main-box .ays-pro-features-v2-small-buttons-box .ays-pro-features-v2-video-button:hover{
+    color: #3571C4;
+}
+
+.ays-pro-features-v2-main-box .ays-pro-features-v2-small-buttons-box .ays-pro-features-v2-upgrade-icon,
+.ays-pro-features-v2-main-box .ays-pro-features-v2-small-buttons-box .ays-pro-features-v2-video-icon,
+.ays-pro-features-v2-main-box .ays-pro-features-v2-small-buttons-box .ays-pro-features-v2-view-demo-icon{
+    width: 24px;
+    height: 24px;
+    background-repeat: no-repeat;
+    background-size: cover;    
+    transition: .10s;
+}
+
+.ays-pro-features-v2-main-box .ays-pro-features-v2-small-buttons-box .ays-pro-features-v2-view-demo-icon{
+    opacity: 0.8;
+}
+
+.ays-pro-features-v2-main-box .ays-pro-features-v2-small-buttons-box .ays-pro-features-v2-view-demo-button:hover .ays-pro-features-v2-view-demo-icon{
+    opacity: 1;
+}
+
+/* Small buttons end */
+
 
 .only_pro.ays-quiz-margin-top-20 {
     margin-top: 20px;

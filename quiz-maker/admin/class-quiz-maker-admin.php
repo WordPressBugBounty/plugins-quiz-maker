@@ -226,13 +226,8 @@ class Quiz_Maker_Admin
 		wp_enqueue_script($this->plugin_name . "-db4.min.js", plugin_dir_url( __FILE__ ) . 'js/dataTables.bootstrap4.min.js', array( 'jquery' ), $this->version, true );
 		wp_enqueue_script($this->plugin_name . "-jquery.datetimepicker.js", plugin_dir_url( __FILE__ ) . 'js/jquery-ui-timepicker-addon.js', array( 'jquery' ), $this->version, true );
         wp_enqueue_script($this->plugin_name . '-ajax', plugin_dir_url(__FILE__) . 'js/quiz-maker-admin-ajax.js', array('jquery'), $this->version, true);
-        wp_enqueue_script(
-            $this->plugin_name,
-            plugin_dir_url(__FILE__) . 'js/quiz-maker-admin.js',
-            array('jquery', 'wp-color-picker'),
-            $this->version,
-            true
-        );
+        wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/quiz-maker-admin.js', array('jquery', 'wp-color-picker'), $this->version, true);
+        
         wp_localize_script($this->plugin_name . '-ajax', 'quiz_maker_ajax', array(
             'ajax_url'                          => admin_url('admin-ajax.php'),
             'nonce'                             => wp_create_nonce('ays_quiz_nonce'),

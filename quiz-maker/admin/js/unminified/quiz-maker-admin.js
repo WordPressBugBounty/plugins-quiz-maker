@@ -3858,10 +3858,12 @@
             popupModal.aysModal('show_flex');
         });
 
-        $(document).on('click', '.ays-quiz-new-upgrade-button-box.ays-quiz-new-upgrade-button-box-no-link, .ays-quiz-center-big-upgrade-button-box.ays-quiz-new-upgrade-button-box-no-link, .ays-quiz-new-watch-video-button-box, .ays-quiz-center-big-watch-video-button-box', function(e){
+        $(document).on('click', '.ays-quiz-new-upgrade-button-box.ays-quiz-new-upgrade-button-box-no-link, .ays-quiz-center-big-upgrade-button-box.ays-quiz-new-upgrade-button-box-no-link, .ays-quiz-new-watch-video-button-box, .ays-quiz-small-new-watch-video-button-box, .ays-quiz-center-big-watch-video-button-box', function(e){
             e.preventDefault();
             if( $(this).hasClass('ays-quiz-center-big-watch-video-button-box') ){
                 var _this = $(this).parent().parent().find('.pro_features.pro_features_popup');
+            } else if( $(this).hasClass('ays-quiz-small-new-watch-video-button-box') ){
+                var _this = $(this).parents('.pro_features_parent').find('.pro_features.pro_features_popup');
             } else {
                 var _this = $(this).parent().find('.pro_features.pro_features_popup');
             }

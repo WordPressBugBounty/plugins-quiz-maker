@@ -4371,33 +4371,26 @@ $quiz_right_answer_mobile_text_transform = (isset($options[ 'quiz_right_answer_m
                             </div>
                             <div class="col-sm-7 ays_toggle_target ays_divider_left  <?php echo ( $enable_timer ) ? '' : 'display_none'; ?>">
                                 <div class="ays-quiz-timer-container" id="ays-quiz-timer-container">
-                                    <div class="col-sm-12 only_pro" style="padding:10px 0 0 10px;">
-                                        <div class="pro_features" style="justify-content:flex-end;">
-                                            <div>
-
-                                            </div>
-                                        </div>
+                                    <div class="col-sm-12" style="padding:10px 0 0 10px;">
                                         <div class="form-group row">
-                                            <div class="col-sm-12">
+                                            <div class="col-sm-12" style="display: flex;">
                                                 <label class="ays_quiz_loader">
-                                                    <input type="radio" class="ays-enable-timer1" checked/>
-                                                    <span><?php echo __( "Quiz Timer", 'quiz-maker' ); ?></span>
+                                                    <input type="radio" class="ays-enable-timer1" name="ays_quiz_timer_type" value="quiz_timer" checked />
+                                                    <span><?php echo __( "Quiz Timer", $this->plugin_name ); ?></span>
                                                 </label>
-                                                <label class="ays_quiz_loader">
-                                                    <input type="radio" class="ays-enable-timer1" />
-                                                    <span><?php echo __( "Question Timer", 'quiz-maker' ); ?></span>
-                                                </label>
+                                                <div class="only_pro custom_pro_features ays-pro-features-v2-main-box ays-pro-features-v2-main-box-themes ays-pro-features-v2-main-box-small" style="background: unset;">
+                                                    <div class="ays-pro-features-v2-small-buttons-box" style="right: 65px; top: -15px;">
+                                                        <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
+                                                            <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(AYS_QUIZ_ADMIN_URL); ?>/images/icons/locked_24x24.svg');" data-img-src="<?php echo esc_attr(AYS_QUIZ_ADMIN_URL); ?>/images/icons/locked_24x24.svg"></div>
+                                                        </a>
+                                                    </div>
+                                                    <label class="ays_quiz_loader" style="background: rgba(53 113 196 / 10%);">
+                                                        <input type="radio" class="ays-enable-timer1" disabled />
+                                                        <span><?php echo __( "Question Timer", $this->plugin_name ); ?></span>
+                                                    </label>
+                                                </div>
                                             </div>
                                         </div>
-                                        <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
-                                            <div class="ays-quiz-new-upgrade-button-box">
-                                                <div>
-                                                    <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                                    <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
-                                                </div>
-                                                <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade to Developer/Agency", "quiz-maker"); ?></div>
-                                            </div>
-                                        </a>
                                     </div>
                                     <hr>
                                     <div class="form-group row">
@@ -6376,31 +6369,7 @@ $quiz_right_answer_mobile_text_transform = (isset($options[ 'quiz_right_answer_m
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-12 only_pro ays-quiz-margin-top-20" style="padding:15px;">
-                                <div class="pro_features pro_features_popup" style="align-items: flex-end;justify-content: flex-end;">
-                                    <div class="pro-features-popup-conteiner">
-                                        <div class="pro-features-popup-title">
-                                            <?php echo __("Calculate the score option", 'quiz-maker'); ?>
-                                        </div>
-                                        <div class="pro-features-popup-content" data-link="https://youtu.be/2OYoqJtsjoc">
-                                            <p>
-                                                <?php echo sprintf( __("The option gives you the possibility to choose the most appropriate calculation system for your quiz. You can set the calculation method either %s by Correctness or by Weight/Points. %s", 'quiz-maker'),
-                                                    '<strong>',
-                                                    '</strong>'
-                                                ); ; ?>
-                                            </p>
-                                            <p>
-                                                <?php echo __("You just need to configure the calculation system depending on the type of quiz you want to create.", 'quiz-maker'); ?>
-                                            </p>
-                                            <div>
-                                                <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo __("See Documentation", 'quiz-maker'); ?></a>
-                                            </div>
-                                        </div>
-                                        <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-calculate-score-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>">
-                                            <?php echo __("Pricing", 'quiz-maker'); ?>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="col-sm-12 ays-quiz-margin-top-20" style="padding:15px;">
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_calculate_score">
@@ -6410,32 +6379,51 @@ $quiz_right_answer_mobile_text_transform = (isset($options[ 'quiz_right_answer_m
                                             </a>
                                         </label>
                                     </div>
-                                    <div class="col-sm-8">
+                                    <div class="col-sm-8 pro_features_parent">
                                         <label class="ays_quiz_loader">
                                             <input type="radio" class="ays-enable-timer1" value="by_correctness" tabindex="-1" checked/>
                                             <span><?php echo __( "By correctness", 'quiz-maker' ); ?></span>
                                         </label>
-                                        <label class="ays_quiz_loader">
-                                            <input type="radio" class="ays-enable-timer1" tabindex="-1" value="by_points"/>
+                                        <label class="ays_quiz_loader only_pro ays-pro-features-v2-main-box">
+                                            <div class="ays-pro-features-v2-small-buttons-box" style="right: 40px; top: -15px;">
+                                                <div class="ays-pro-features-v2-video-button ays-quiz-small-new-watch-video-button-box">
+                                                    <div>
+                                                        <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24.svg'?>">
+                                                        <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg'?>" class="ays-quiz-new-watch-video-button-hover">
+                                                    </div>
+                                                </div>
+                                                <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
+                                                    <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(AYS_QUIZ_ADMIN_URL); ?>/images/icons/locked_24x24.svg');" data-img-src="<?php echo esc_attr(AYS_QUIZ_ADMIN_URL); ?>/images/icons/locked_24x24.svg"></div>
+                                                </a>
+                                            </div>
+                                            <div class="pro_features pro_features_popup" style="align-items: flex-end;justify-content: flex-end;">
+                                                <div class="pro-features-popup-conteiner">
+                                                    <div class="pro-features-popup-title">
+                                                        <?php echo __("Calculate the score option", 'quiz-maker'); ?>
+                                                    </div>
+                                                    <div class="pro-features-popup-content" data-link="https://youtu.be/2OYoqJtsjoc">
+                                                        <p>
+                                                            <?php echo sprintf( __("The option gives you the possibility to choose the most appropriate calculation system for your quiz. You can set the calculation method either %s by Correctness or by Weight/Points. %s", 'quiz-maker'),
+                                                                '<strong>',
+                                                                '</strong>'
+                                                            ); ; ?>
+                                                        </p>
+                                                        <p>
+                                                            <?php echo __("You just need to configure the calculation system depending on the type of quiz you want to create.", 'quiz-maker'); ?>
+                                                        </p>
+                                                        <div>
+                                                            <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo __("See Documentation", 'quiz-maker'); ?></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-calculate-score-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>">
+                                                        <?php echo __("Pricing", 'quiz-maker'); ?>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <input type="radio" class="ays-enable-timer1" tabindex="-1" value="by_points" disabled />
                                             <span><?php echo __( "By weight / points", 'quiz-maker' ); ?></span>
                                         </label>
                                     </div>
-                                </div>
-                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-calculate-score-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
-                                    <div class="ays-quiz-new-upgrade-button-box">
-                                        <div>
-                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
-                                        </div>
-                                        <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
-                                    </div>
-                                </a>
-                                <div class="ays-quiz-new-watch-video-button-box">
-                                    <div>
-                                        <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24.svg'?>">
-                                        <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg'?>" class="ays-quiz-new-watch-video-button-hover">
-                                    </div>
-                                    <div class="ays-quiz-new-watch-video-button"><?php echo __("Watch Video", "quiz-maker"); ?></div>
                                 </div>
                             </div>
                         </div><!-- Calculate the score option -->
