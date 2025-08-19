@@ -1299,6 +1299,9 @@ class Quiz_Maker_Public
         // Wrong answer transform size
         $quiz_wrong_answer_text_transform = (isset($options[ 'quiz_wrong_answer_text_transform' ]) && $options[ 'quiz_wrong_answer_text_transform' ] != '') ? stripslashes ( esc_attr( $options[ 'quiz_wrong_answer_text_transform' ] ) ) : 'none';
 
+        // Wrong answer text transform size | Mobile
+        $quiz_wrong_answer_mobile_text_transform = (isset($options[ 'quiz_wrong_answer_mobile_text_transform' ]) && $options[ 'quiz_wrong_answer_mobile_text_transform' ] != '') ? stripslashes ( esc_attr( $options[ 'quiz_wrong_answer_mobile_text_transform' ] ) ) : $quiz_wrong_answer_text_transform;
+
         // Wrong answer text decoration
         $quiz_wrong_answers_text_decoration = (isset($options[ 'quiz_wrong_answers_text_decoration' ]) && $options[ 'quiz_wrong_answers_text_decoration' ] != '') ? stripslashes ( esc_attr( $options[ 'quiz_wrong_answers_text_decoration' ] ) ) : 'none';
 
@@ -4237,16 +4240,20 @@ class Quiz_Maker_Public
                     font-size:" . $note_text_mobile_font_size . "px;
                 }
 
-                #ays-quiz-container-" . $id . " .ays-quiz-question-note-message-box *:not(strong) {
+                div#ays-quiz-container-" . $id . " .ays-quiz-question-note-message-box *:not(strong) {
                     text-transform:" . $quiz_admin_note_mobile_text_transform . ";
                 }
 
-                #ays-quiz-container-" . $id . " .ays_questtion_explanation *:not(strong) {
+                div#ays-quiz-container-" . $id . " .ays_questtion_explanation *:not(strong) {
                     text-transform:" . $quiz_quest_explanation_mobile_text_transform . ";
                 }
 
-                #ays-quiz-container-" . $id . " .right_answer_text *:not(strong) {
+                div#ays-quiz-container-" . $id . " .right_answer_text *:not(strong) {
                     text-transform:" . $quiz_right_answer_mobile_text_transform . ";
+                }
+
+                div#ays-quiz-container-" . $id . " .wrong_answer_text *:not(strong) {
+                    text-transform:" . $quiz_wrong_answer_mobile_text_transform . ";
                 }
             }
             /* Custom css styles */

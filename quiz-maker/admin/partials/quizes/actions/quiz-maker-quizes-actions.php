@@ -266,6 +266,7 @@ $options = array(
     'quiz_admin_note_mobile_text_transform'     => 'none',
     'quiz_quest_explanation_mobile_text_transform' => 'none',
     'quiz_right_answer_mobile_text_transform'   => "none",
+    'quiz_wrong_answer_mobile_text_transform'   => "none",
 
 );
 
@@ -1463,6 +1464,9 @@ $quiz_quest_explanation_mobile_text_transform = (isset($options[ 'quiz_quest_exp
 
 // Right answer text transform size | Mobile
 $quiz_right_answer_mobile_text_transform = (isset($options[ 'quiz_right_answer_mobile_text_transform' ]) && $options[ 'quiz_right_answer_mobile_text_transform' ] != '') ? stripslashes ( esc_attr( $options[ 'quiz_right_answer_mobile_text_transform' ] ) ) : $quiz_right_answer_text_transform;
+
+// Wrong answer text transform size | Mobile
+$quiz_wrong_answer_mobile_text_transform = (isset($options[ 'quiz_wrong_answer_mobile_text_transform' ]) && $options[ 'quiz_wrong_answer_mobile_text_transform' ] != '') ? stripslashes ( esc_attr( $options[ 'quiz_wrong_answer_mobile_text_transform' ] ) ) : $quiz_wrong_answer_text_transform;
 
 
 ?>
@@ -4168,20 +4172,59 @@ $quiz_right_answer_mobile_text_transform = (isset($options[ 'quiz_right_answer_m
                                         </label>
                                     </div>
                                     <div class="col-sm-7 ays_divider_left">
-                                        <select class="ays-text-input ays-text-input-short" id="ays_quiz_wrong_answer_text_transform" name="ays_quiz_wrong_answer_text_transform">
-                                            <option value="none" <?php echo ($quiz_wrong_answer_text_transform == 'none') ? 'selected' : ''; ?>>
-                                                <?php echo __('None','quiz-maker'); ?>
-                                            </option>
-                                            <option value="capitalize" <?php echo ($quiz_wrong_answer_text_transform == 'capitalize') ? 'selected' : ''; ?>>
-                                                <?php echo __('Capitalize','quiz-maker'); ?>
-                                            </option>
-                                            <option value="uppercase" <?php echo ($quiz_wrong_answer_text_transform == 'uppercase')  ? 'selected' : ''; ?>>
-                                                <?php echo __('Uppercase','quiz-maker'); ?>
-                                            </option>
-                                            <option value="lowercase" <?php echo ($quiz_wrong_answer_text_transform == 'lowercase') ? 'selected' : ''; ?>>
-                                                <?php echo __('Lowercase','quiz-maker'); ?>
-                                            </option>
-                                        </select>
+                                        <div class="row">
+                                            <div class="col-sm-5">
+                                                <label for='ays_quiz_right_answer_text_transform'>
+                                                    <?php echo esc_html__('On desktop', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Define the text transformation for desktop devices.','quiz-maker') ); ?>">
+                                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                                    </a>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-7 ays_quiz_display_flex_width">
+                                                <select class="ays-text-input ays-text-input-short" id="ays_quiz_wrong_answer_text_transform" name="ays_quiz_wrong_answer_text_transform">
+                                                    <option value="none" <?php echo ($quiz_wrong_answer_text_transform == 'none') ? 'selected' : ''; ?>>
+                                                        <?php echo __('None','quiz-maker'); ?>
+                                                    </option>
+                                                    <option value="capitalize" <?php echo ($quiz_wrong_answer_text_transform == 'capitalize') ? 'selected' : ''; ?>>
+                                                        <?php echo __('Capitalize','quiz-maker'); ?>
+                                                    </option>
+                                                    <option value="uppercase" <?php echo ($quiz_wrong_answer_text_transform == 'uppercase')  ? 'selected' : ''; ?>>
+                                                        <?php echo __('Uppercase','quiz-maker'); ?>
+                                                    </option>
+                                                    <option value="lowercase" <?php echo ($quiz_wrong_answer_text_transform == 'lowercase') ? 'selected' : ''; ?>>
+                                                        <?php echo __('Lowercase','quiz-maker'); ?>
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-sm-5">
+                                                <label for='ays_quiz_wrong_answer_mobile_text_transform'>
+                                                    <?php echo esc_html__('On mobile', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr(__('Define the text transformation for mobile devices.','quiz-maker')); ?>">
+                                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                                    </a>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-7 ays_quiz_display_flex_width">
+                                                <select class="ays-text-input ays-text-input-short" id="ays_quiz_wrong_answer_mobile_text_transform" name="ays_quiz_wrong_answer_mobile_text_transform">
+                                                    <option value="none" <?php echo ($quiz_wrong_answer_mobile_text_transform == 'none') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html__('None','quiz-maker'); ?>
+                                                    </option>
+                                                    <option value="capitalize" <?php echo ($quiz_wrong_answer_mobile_text_transform == 'capitalize') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html__('Capitalize','quiz-maker'); ?>
+                                                    </option>
+                                                    <option value="uppercase" <?php echo ($quiz_wrong_answer_mobile_text_transform == 'uppercase')  ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html__('Uppercase','quiz-maker'); ?>
+                                                    </option>
+                                                    <option value="lowercase" <?php echo ($quiz_wrong_answer_mobile_text_transform == 'lowercase') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html__('Lowercase','quiz-maker'); ?>
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div><!-- Wrong answer text transform -->
                                 <hr/>

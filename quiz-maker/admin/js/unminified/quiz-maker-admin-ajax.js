@@ -252,8 +252,7 @@
                         showCancelButton: true,
                         focusConfirm: false,
                         cancelButtonClass: "ays-quiz-preview-popup-cancel-button",
-                        confirmButtonText:
-                          '<i class="ays_fa ays_fa_thumbs_up"></i> '+ quiz_maker_ajax.greate,
+                        confirmButtonText: '<i class="ays_fa ays_fa_thumbs_up"></i> '+ quiz_maker_ajax.greate,
                         cancelButtonText: '<a href="'+ link +'" target="_blank">'+ quiz_maker_ajax.preivewQuiz + ' ' + previewButtonSvgIcon +'</a>',
                         confirmButtonAriaLabel: quiz_maker_ajax.thumbsUpGreat,
                         onAfterClose: function() {
