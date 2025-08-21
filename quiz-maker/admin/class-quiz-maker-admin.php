@@ -1325,6 +1325,7 @@ class Quiz_Maker_Admin
         $quick_quiz_make_responses_anonymous                    = 'off';
         $quick_quiz_enable_user_cհoosing_anonymous_assessment   = 'off';
         $quick_quiz_make_all_review_link                        = 'off';
+        $quick_quiz_review_enable_comment_field                 = 'on';
 
         // User Data
         $quick_quiz_show_information_form                   = 'on';
@@ -1711,6 +1712,9 @@ class Quiz_Maker_Admin
 
             // Display all reviews button
             $quick_quiz_make_all_review_link = (isset( $_REQUEST['ays_quick_quiz_make_all_review_link'] ) && $_REQUEST['ays_quick_quiz_make_all_review_link'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_make_all_review_link'] ) ) : "off";
+
+            // Enable Comment Field
+            $quick_quiz_review_enable_comment_field = (isset( $_REQUEST['ays_quick_quiz_review_enable_comment_field'] ) && $_REQUEST['ays_quick_quiz_review_enable_comment_field'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_review_enable_comment_field'] ) ) : "off";
             
             
         }
@@ -1955,7 +1959,7 @@ class Quiz_Maker_Admin
             'quiz_review_placeholder_text'                      => "",
             'quiz_enable_results_toggle'                        => $quick_quiz_enable_results_toggle,
             'quiz_review_thank_you_message'                     => "",
-            'quiz_review_enable_comment_field'                  => "on",
+            'quiz_review_enable_comment_field'                  => $quick_quiz_review_enable_comment_field,
             'quest_explanation_font_size'                       => $quick_quiz_quest_explanation_font_size,
             'quest_explanation_mobile_font_size'                => $quick_quiz_quest_explanation_mobile_font_size,
             'wrong_answers_font_size'                           => $quick_quiz_wrong_answers_font_size,
