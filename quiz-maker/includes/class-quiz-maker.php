@@ -385,7 +385,7 @@ class Quiz_Maker {
 		// $this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		// $this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 		
-		// $this->loader->add_action( 'wp_head', $plugin_public, 'aaaa' );
+		$this->loader->add_action( 'elementor/frontend/widget/before_render', $plugin_public, 'ays_quiz_elementor_remove_tags_before_randering_shortcode', 10, 1 );
 	}
 
 	/**

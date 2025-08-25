@@ -23,6 +23,9 @@
         <?php echo esc_html__(esc_html(get_admin_page_title()), 'quiz-maker'); ?>
     </h1>
     <?php do_action('ays_quiz_sale_banner'); ?>
+    <h3 class="wp-heading" style="text-align: center;">
+        <?php echo esc_html__( 'Back to School Sale – Enjoy 20% off until September 1st!' , 'quiz-maker'); ?>
+    </h3>
     <div class="ays-quiz-features-wrap">
         <div class="comparison">
             <table>
@@ -54,7 +57,7 @@
                         <th class="price-info">
                             <div class="price-now"><span class="sale-price" style="text-decoration: line-through; color: red;">$75</span>
                             </div>
-                            <div class="price-now"><span>$59</span>
+                            <div class="price-now"><span>$47</span>
                             </div>
                             <!-- <div class="price-now"><span style="color: red; font-size: 12px;">Black Friday</span> -->
                             </div>
@@ -66,7 +69,7 @@
                         <th class="price-info">
                             <div class="price-now"><span class="sale-price" style="text-decoration: line-through; color: red;">$250</span>
                             </div>
-                            <div class="price-now"><span>$195</span>
+                            <div class="price-now"><span>$156</span>
                             </div>
                             <!-- <div class="price-now"><span style="color: red; font-size: 12px;">Black Friday</span>
                             </div> -->
@@ -78,7 +81,7 @@
                         <th class="price-info">
                             <div class="price-now"><span class="sale-price" style="text-decoration: line-through; color: red;">$450</span>
                             </div>
-                            <div class="price-now"><span>$355</span>
+                            <div class="price-now"><span>$284</span>
                             </div>
                             <!-- <div class="price-now"><span style="color: red; font-size: 12px;">Black Friday</span>
                             </div> -->

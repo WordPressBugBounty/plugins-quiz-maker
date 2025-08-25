@@ -7889,25 +7889,25 @@ class Quiz_Maker_Public
                     'stroke-width'   => true,
                     'stroke-linecap' => true,
                 ),
-                'circle' => array(
-                    'style' => true,
-                    'id' => true,
-                    'class' => true,
-                    'r' => true,
-                    'cx' => true,
-                    'cy' => true,
+                'circle'             => array(
+                    'style'          => true,
+                    'id'             => true,
+                    'class'          => true,
+                    'r'              => true,
+                    'cx'             => true,
+                    'cy'             => true,
                 ),
                 'rect' => array(
-                    'class' => true,
-                    'x' => true,
-                    'y' => true,
-                    'width' => true,
-                    'height' => true,
-                    'rx' => true,
-                    'fill' => true,
-                    'stroke' => true,
-                    'style' => true,
-                    'transform' => true,
+                    'class'          => true,
+                    'x'              => true,
+                    'y'              => true,
+                    'width'          => true,
+                    'height'         => true,
+                    'rx'             => true,
+                    'fill'           => true,
+                    'stroke'         => true,
+                    'style'          => true,
+                    'transform'      => true,
                 ),
                 'defs' => array(
                     'class' => true,
@@ -8027,5 +8027,32 @@ class Quiz_Maker_Public
             ),
             $additionalAllowedTags
         );
+    }
+
+    /**
+     * Fix [ays_quiz] shortcode inside Elementor text-editor widgets
+     * tid=30764,30758
+     */
+    public function ays_quiz_elementor_remove_tags_before_randering_shortcode( $widget ) {
+        if ( 'text-editor' === $widget->get_name() ) {
+            $settings = $widget->get_settings();
+
+            if ( ! empty( $settings['editor'] ) && strpos( $settings['editor'], '[ays_quiz' ) !== false ) {
+                $content = $settings['editor'];
+
+                // Remove Gutenberg shortcode comments
+                $content = preg_replace( '/<!--\s*wp:shortcode\s*-->/', '', $content );
+                $content = preg_replace( '/<!--\s*\/wp:shortcode\s*-->/', '', $content );
+
+                // Remove wrapping <p> tags
+                $content = preg_replace( '/<p>\s*(\[ays_quiz[^\]]+\])\s*<\/p>/i', '$1', $content );
+
+                // Remove empty paragraphs like <p>&nbsp;</p>
+                $content = preg_replace( '/<p>(&nbsp;|\s)*<\/p>/i', '', $content );
+
+                // Save cleaned editor content back
+                $widget->set_settings( 'editor', $content );
+            }
+        }
     }
 }
