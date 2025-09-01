@@ -1368,6 +1368,9 @@ class Quiz_Maker_Public
         // Note text decoration
         $quiz_admin_note_text_decoration = (isset($options[ 'quiz_admin_note_text_decoration' ]) && $options[ 'quiz_admin_note_text_decoration' ] != '') ? stripslashes ( esc_attr( $options[ 'quiz_admin_note_text_decoration' ] ) ) : 'none';
 
+        // Note text decoration | On mobile
+        $quiz_admin_note_mobile_text_decoration = (isset($options[ 'quiz_admin_note_mobile_text_decoration' ]) && $options[ 'quiz_admin_note_mobile_text_decoration' ] != '') ? stripslashes ( esc_attr( $options[ 'quiz_admin_note_mobile_text_decoration' ] ) ) : $quiz_admin_note_text_decoration;
+
         // Note letter spacing
         $quiz_admin_note_letter_spacing = (isset($options[ 'quiz_admin_note_letter_spacing' ]) && $options[ 'quiz_admin_note_letter_spacing' ] != '') ? stripslashes ( absint( $options[ 'quiz_admin_note_letter_spacing' ] ) ) : 0;
 
@@ -4242,6 +4245,7 @@ class Quiz_Maker_Public
 
                 div#ays-quiz-container-" . $id . " .ays-quiz-question-note-message-box *:not(strong) {
                     text-transform:" . $quiz_admin_note_mobile_text_transform . ";
+                    text-decoration: ". $quiz_admin_note_mobile_text_decoration .";
                 }
 
                 div#ays-quiz-container-" . $id . " .ays_questtion_explanation *:not(strong) {

@@ -24,7 +24,7 @@
     </h1>
     <?php do_action('ays_quiz_sale_banner'); ?>
     <h3 class="wp-heading" style="text-align: center;">
-        <?php echo esc_html__( 'Back to School Sale – Enjoy 20% off until September 1st!' , 'quiz-maker'); ?>
+        <?php echo esc_html__( 'Back to School Sale – Enjoy 20% off!' , 'quiz-maker'); ?>
     </h3>
     <div class="ays-quiz-features-wrap">
         <div class="comparison">

@@ -994,6 +994,9 @@ class Quizes_List_Table extends WP_List_Table{
 
             // Wrong answer text transform size | Mobile
             $quiz_wrong_answer_mobile_text_transform = (isset($_REQUEST['ays_quiz_wrong_answer_mobile_text_transform']) && $_REQUEST['ays_quiz_wrong_answer_mobile_text_transform'] != '') ? stripslashes( sanitize_text_field( $_REQUEST['ays_quiz_wrong_answer_mobile_text_transform'] ) ) : 'none';
+
+            // Note text decoration | On mobile
+            $quiz_admin_note_mobile_text_decoration = (isset($_REQUEST['ays_quiz_admin_note_mobile_text_decoration']) && $_REQUEST['ays_quiz_admin_note_mobile_text_decoration'] != '') ? stripslashes( sanitize_text_field( $_REQUEST['ays_quiz_admin_note_mobile_text_decoration'] ) ) : 'none';
             
 
             $options = array(
@@ -1249,6 +1252,7 @@ class Quizes_List_Table extends WP_List_Table{
                 'quiz_quest_explanation_mobile_text_transform'      => $quiz_quest_explanation_mobile_text_transform,
                 'quiz_right_answer_mobile_text_transform'           => $quiz_right_answer_mobile_text_transform,
                 'quiz_wrong_answer_mobile_text_transform'           => $quiz_wrong_answer_mobile_text_transform,
+                'quiz_admin_note_mobile_text_decoration'            => $quiz_admin_note_mobile_text_decoration,
             );
 
             $options['required_fields'] = !isset($_POST['ays_required_field']) ? null : array_map( 'sanitize_text_field', $_POST['ays_required_field'] );
