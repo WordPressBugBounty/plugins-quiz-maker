@@ -62,7 +62,12 @@ $quiz_results_plugin_nonce = wp_create_nonce( 'quiz-maker-ajax-results-nonce' );
             </div>
             <div>
                 <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-export-results-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>" target="_blank" class="ays-quiz-export-button-link">
-                    <button class="disabled-button" title="<?php echo esc_attr( __( "This property available only in pro version", 'quiz-maker' ) ); ?>" ><?php echo esc_html__('Export','quiz-maker'); ?></button>
+                    <button class="disabled-button" title="<?php echo esc_attr( __( "This property available only in pro version", 'quiz-maker' ) ); ?>" >
+                        <?php echo esc_html__('Export','quiz-maker'); ?>
+                        <svg width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom: 4px;">
+                            <path d="M15.29 4.35796C15.29 4.36496 15.29 4.37096 15.285 4.37796L13.805 11.152C13.7596 11.3905 13.6324 11.6058 13.4453 11.7606C13.2582 11.9154 13.0229 12.0001 12.78 12H3.22203C2.97923 11.9999 2.74405 11.9151 2.55698 11.7604C2.3699 11.6056 2.24262 11.3904 2.19703 11.152L0.718031 4.37796C0.718031 4.37096 0.715031 4.36496 0.714031 4.35796C0.67283 4.13344 0.706421 3.9016 0.809654 3.69801C0.912887 3.49442 1.08006 3.33032 1.28553 3.23087C1.491 3.13143 1.72342 3.10214 1.94714 3.1475C2.17085 3.19285 2.37351 3.31035 2.52403 3.48196L4.71903 5.84896L7.05403 0.612959C7.05412 0.61096 7.05412 0.608958 7.05403 0.606959C7.1377 0.426116 7.27138 0.272996 7.43928 0.165681C7.60717 0.0583672 7.80227 0.00134277 8.00153 0.00134277C8.20079 0.00134277 8.39589 0.0583672 8.56379 0.165681C8.73168 0.272996 8.86536 0.426116 8.94903 0.606959C8.94895 0.608958 8.94895 0.61096 8.94903 0.612959L11.284 5.84896L13.479 3.48196C13.6298 3.31133 13.8323 3.19472 14.0555 3.14994C14.2787 3.10515 14.5105 3.13465 14.7154 3.23393C14.9203 3.33322 15.0871 3.49682 15.1903 3.69978C15.2935 3.90274 15.3275 4.13389 15.287 4.35796H15.289H15.29Z" fill="#ED9700"/>
+                        </svg>
+                    </button>
                 </a>
             </div>
         </div>

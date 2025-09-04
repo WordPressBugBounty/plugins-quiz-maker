@@ -27,6 +27,7 @@
         "custom"            => __("Info Banner (PRO)", 'quiz-maker'),
         "fill_in_blank"     => __("Fill in the blanks (PRO)", 'quiz-maker'),
         "matching"          => __("Matching (PRO)", 'quiz-maker'),
+        "upload_file"       => __("Upload File (PRO)", 'quiz-maker'),
     );
 
     $question_types_icon_url = array(
@@ -41,6 +42,7 @@
         "custom"            => AYS_QUIZ_ADMIN_URL ."/images/QuestionTypes/quiz-maker-custom-type.svg",
         "fill_in_blank"     => AYS_QUIZ_ADMIN_URL ."/images/QuestionTypes/quiz-maker-fill-in-blank-type.svg",
         "matching"          => AYS_QUIZ_ADMIN_URL ."/images/QuestionTypes/quiz-maker-matching-type.svg",
+        "upload_file"       => AYS_QUIZ_ADMIN_URL ."/images/QuestionTypes/quiz-maker-upload-file-type.svg",
     );
 
     $options = ($actions->ays_get_setting('options') === false) ? array() : json_decode( stripcslashes( $actions->ays_get_setting('options') ), true);
@@ -82,13 +84,15 @@
     );
 
     $default_user_page_column_names = array(
-        "quiz_name"     => __( 'Quiz name', 'quiz-maker' ),
-        "start_date"    => __( 'Start date', 'quiz-maker' ),
-        "end_date"      => __( 'End date', 'quiz-maker' ),
-        "duration"      => __( 'Duration', 'quiz-maker' ),
-        "score"         => __( 'Score', 'quiz-maker' ),
-        "details"       => __( 'Details', 'quiz-maker' ),
-        "points"        => __( 'Points', 'quiz-maker' ),
+        "quiz_name"             => __( 'Quiz name', 'quiz-maker' ),
+        "start_date"            => __( 'Start date', 'quiz-maker' ),
+        "end_date"              => __( 'End date', 'quiz-maker' ),
+        "duration"              => __( 'Duration', 'quiz-maker' ),
+        "score"                 => __( 'Score', 'quiz-maker' ),
+        "details"               => __( 'Details', 'quiz-maker' ),
+        "download_certificate"  => __( 'Certificate', 'quiz-maker' ),
+        "points"                => __( 'Points', 'quiz-maker' ),
+        "status"                => __( 'Status', 'quiz-maker' ),
     );
 
      // Aro Buttons Text
@@ -246,11 +250,12 @@
 
     // Leaderboard By Quiz Category Settings
     $default_leadboard_column_names = array(
-        "pos"       => __( 'Pos.', 'quiz-maker' ),
-        "name"      => __( 'Name', 'quiz-maker' ),
-        "score"     => __( 'Score', 'quiz-maker' ),
-        "duration"  => __( 'Duration', 'quiz-maker' ),
-        "points"    => __( 'Points', 'quiz-maker' ),
+        "pos"        => __( 'Pos.', 'quiz-maker' ),
+        "name"       => __( 'Name', 'quiz-maker' ),
+        "score"      => __( 'Score', 'quiz-maker' ),
+        "duration"   => __( 'Duration', 'quiz-maker' ),
+        "points"     => __( 'Points', 'quiz-maker' ),
+        "admin_note" => __( 'Admin Note', 'quiz-maker' ),
     );
 
     // WP Editor height
@@ -375,6 +380,59 @@
     $options['quiz_case_sensitive_text'] = isset($options['quiz_case_sensitive_text']) ? sanitize_text_field( $options['quiz_case_sensitive_text'] ) : 'off';
     $quiz_case_sensitive_text = (isset($options['quiz_case_sensitive_text']) && sanitize_text_field( $options['quiz_case_sensitive_text'] ) == "on") ? true : false;
 
+    $settings_ordering = Quiz_Maker_Admin::ays_quiz_get_settings_order_defaults();
+    
+    $result_page_ordering_htmls = $settings_ordering['result_page'];
+
+    $buttons_ordering = $settings_ordering['buttons'];
+    $buttons_ordering_mobile = $settings_ordering['buttons'];
+
+    $buttons_default_sort = array_keys($buttons_ordering);
+
+    $quiz_result_order_res = json_encode(array());
+    $quiz_result_order = json_decode($quiz_result_order_res, true);
+
+
+    $quiz_buttons_order_res = json_encode(array());
+    $quiz_buttons_order = json_decode($quiz_buttons_order_res, true);
+    $buttons_sort_desktop = isset($quiz_buttons_order['desktop']) ? $quiz_buttons_order['desktop'] : $buttons_default_sort ;
+    $buttons_sort_mobile = isset($quiz_buttons_order['mobile']) ? $quiz_buttons_order['mobile'] : $buttons_default_sort ;
+
+
+    $result_default_sort = array_keys($result_page_ordering_htmls);
+
+    $result_sort = !empty($quiz_result_order) ? $quiz_result_order : $result_default_sort;
+
+    if( isset( $_REQUEST['ays_quiz_default_buttons_order'] ) ){
+        $buttons_sort_desktop = $buttons_default_sort ;
+        $buttons_sort_mobile = $buttons_default_sort ;
+    }
+  
+    if( isset( $_REQUEST['ays_quiz_default_result_order'] ) ){
+        $result_sort = $result_default_sort ;
+    }
+
+    $woo_bg = 'ays-quiz-bg-light-secondary';
+
+    if (class_exists('WooCommerce')) {
+        $woo_bg = '';
+    }
+
+    if (function_exists('is_plugin_active')) {
+        $woo_bg =  is_plugin_active('woocommerce/woocommerce.php') ? '': 'ays-quiz-bg-light-secondary';
+    }
+
+    $conditions_bg = 'ays-quiz-bg-light-secondary';
+
+    if(has_action('ays_qm_conditions_action')){
+        $conditions_bg = '';
+    }
+    $save_button_bg = 'ays-quiz-bg-light-secondary';
+
+    if(has_action('ays_qm_front_end_question_additional_buttons')){
+        $save_button_bg = '';
+    }
+
 ?>
 <div class="wrap" style="position:relative;">
     <div class="container-fluid">
@@ -422,6 +480,12 @@
                         <a href="#tab8" data-tab="tab8" class="nav-tab <?php echo ($ays_quiz_tab == 'tab8') ? 'nav-tab-active' : ''; ?>">
                             <?php echo __("Detailed Report Options", 'quiz-maker');?>
                         </a>
+                        <a href="#tab9" data-tab="tab9" class="nav-tab <?php echo ($ays_quiz_tab == 'tab9') ? 'nav-tab-active' : ''; ?>">
+                            <?php echo __("Export Settings", 'quiz-maker');?>
+                        </a>
+                        <a href="#tab10" data-tab="tab10" class="nav-tab <?php echo ($ays_quiz_tab == 'tab10') ? 'nav-tab-active' : ''; ?>">
+                            <?php echo esc_html__("Ordering", 'quiz-maker');?>
+                        </a>
                     </div>
                 </div>
                 <div class="ays-quiz-tabs-wrapper">
@@ -449,7 +513,7 @@
                                             foreach($question_types as $type => $label):
                                             $selected = $question_default_type == $type ? "selected" : "";
                                             $ays_question_disabled = "";
-                                            if ( $type == "custom" || $type == "fill_in_blank" || $type == "matching" ) {
+                                            if ( $type == "custom" || $type == "fill_in_blank" || $type == "matching" || $type == "upload_file" ) {
                                                 $ays_question_disabled = "disabled title='". __( "This feature is available only in PRO version", 'quiz-maker' ) ."' ";
                                             }
                                         ?>
@@ -984,6 +1048,55 @@
                         <hr>
                         <fieldset>
                             <legend>
+                                <strong style="font-size:30px;"><i class="fa fa-clock-o" aria-hidden="true"></i></strong>
+                                <h5><?php echo esc_html__("Quiz Start/End Date",'quiz-maker')?></h5>
+                            </legend>
+                            <div class="col-sm-12 only_pro" style="padding:20px;">
+                                <div class="pro_features" style="justify-content:flex-end;">
+
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-4">
+                                        <label for="ays_quiz_user_date_type">
+                                            <?php echo esc_html__( "Date Type", 'quiz-maker' ); ?>
+                                            
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <label class="ays_quiz_loader">
+                                            <input type="radio" />
+                                            <span for="ays_quiz_user_date_type_local">
+                                                <?php echo esc_html__('Client Local','quiz-maker'); ?>
+                                                <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php echo  esc_html__("Tick the checkbox to use the user's local device time for the Quiz Start/End Date.",'quiz-maker'); ?>">
+                                                    <i class="ays_fa ays_fa_info_circle"></i>
+                                                </a>
+                                            </span>
+                                        </label>
+                                        <label class="ays_quiz_loader">
+                                            <input type="radio" />
+                                            <span for="ays_quiz_user_date_type_server">
+                                                <?php echo esc_html__('Server','quiz-maker'); ?>
+                                                <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php echo  esc_html__("Tick the checkbox to use the server's time for the Quiz Start/End Date. Note, that in this case, not finished results will be displayed on the Results page as well.",'quiz-maker'); ?>">
+                                                    <i class="ays_fa ays_fa_info_circle"></i>
+                                                </a>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <div class="ays-quiz-new-upgrade-button-box">
+                                        <div>
+                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
+                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                        </div>
+                                        <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </fieldset><!-- Quiz Start/End Date -->
+                        <hr>
+                        <fieldset>
+                            <legend>
                                 <strong style="font-size:30px;"><i class="ays_fa ays_fa_list_alt"></i></strong>
                                 <h5><?php echo __('Results settings','quiz-maker'); ?></h5>
                             </legend>
@@ -1131,6 +1244,138 @@
                                 </div>
                             </div>
                         </fieldset> <!-- Who will have permission to Quiz menu -->
+                        <hr>
+                        <fieldset>
+                            <legend>
+                                <strong style="font-size:30px;"><i class="fa fa-envelope" aria-hidden="true"></i></strong>
+                                <h5><?php echo esc_html__("Report Email",'quiz-maker')?></h5>
+                            </legend>
+                            <div class="col-sm-12 only_pro" style="padding:20px;">
+                                <div class="pro_features" style="justify-content:flex-end;">
+
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-4">
+                                        <label class="form-check-label">
+                                            <?php echo esc_html__('Subject', 'quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_html__('Provide the subject of the email that will be sent when someone reports a question.', 'quiz-maker'); ?>">
+                                                <i class="ays_fa ays_fa_info_circle"></i>
+                                            </a>
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="ays-text-input" value="">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-4">
+                                        <label class="form-check-label">
+                                            <?php echo esc_html__('Message', 'quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_html__('Specify the content of the email that is sent when someone reports a question. The message can include the report message, the reported question ID, and any additional information you want to include.', 'quiz-maker'); ?>">
+                                                <i class="ays_fa ays_fa_info_circle"></i>
+                                            </a>
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <textarea class="ays-textarea" cols="30" rows="10" style="height: 80px;"></textarea>
+                                    </div>
+                                </div>
+                                
+                                <blockquote style="margin-bottom: 20px;">
+                                    <?php echo esc_html__('Please note, that these message variables work only for this option.', 'quiz-maker') ?>
+                                </blockquote>
+                                <p class="vmessage">
+                                    <strong>
+                                        <input type="text" onClick="this.setSelectionRange(0, this.value.length)" readonly value="%%question_id%%"/>
+                                    </strong>
+                                    <span> - </span>
+                                    <span style="font-size:18px;">
+                                        <?php echo esc_html__( "The ID of the reported question", 'quiz-maker'); ?>
+                                    </span>
+                                </p>
+                                <p class="vmessage">
+                                    <strong>
+                                        <input type="text" onClick="this.setSelectionRange(0, this.value.length)" readonly value="%%question_title%%"/>
+                                    </strong>
+                                    <span> - </span>
+                                    <span style="font-size:18px;">
+                                        <?php echo esc_html__( "The reported question Title", 'quiz-maker'); ?>
+                                    </span>
+                                </p>
+                                <p class="vmessage">
+                                    <strong>
+                                        <input type="text" onClick="this.setSelectionRange(0, this.value.length)" readonly value="%%question%%"/>
+                                    </strong>
+                                    <span> - </span>
+                                    <span style="font-size:18px;">
+                                        <?php echo esc_html__( "The reported question", 'quiz-maker'); ?>
+                                    </span>
+                                </p>
+                                <p class="vmessage">
+                                    <strong>
+                                        <input type="text" onClick="this.setSelectionRange(0, this.value.length)" readonly value="%%quiz_link%%"/>
+                                    </strong>
+                                    <span> - </span>
+                                    <span style="font-size:18px;">
+                                        <?php echo esc_html__( "The link of the reported quiz", 'quiz-maker'); ?>
+                                    </span>
+                                </p>
+                                <p class="vmessage">
+                                    <strong>
+                                        <input type="text" onClick="this.setSelectionRange(0, this.value.length)" readonly value="%%quiz_title_with_link%%"/>
+                                    </strong>
+                                    <span> - </span>
+                                    <span style="font-size:18px;">
+                                        <?php echo esc_html__( "The reported quiz title with the link", 'quiz-maker'); ?>
+                                    </span>
+                                </p>
+                                <p class="vmessage">
+                                    <strong>
+                                        <input type="text" onClick="this.setSelectionRange(0, this.value.length)" readonly value="%%question_link%%"/>
+                                    </strong>
+                                    <span> - </span>
+                                    <span style="font-size:18px;">
+                                        <?php echo esc_html__( "The link of the reported question", 'quiz-maker'); ?>
+                                    </span>
+                                </p>
+                                <p class="vmessage">
+                                    <strong>
+                                        <input type="text" onClick="this.setSelectionRange(0, this.value.length)" readonly value="%%question_title_with_link%%"/>
+                                    </strong>
+                                    <span> - </span>
+                                    <span style="font-size:18px;">
+                                        <?php echo esc_html__( "The reported question title with the link", 'quiz-maker'); ?>
+                                    </span>
+                                </p>
+                                <p class="vmessage">
+                                    <strong>
+                                        <input type="text" onClick="this.setSelectionRange(0, this.value.length)" readonly value="%%report_text%%"/>
+                                    </strong>
+                                    <span> - </span>
+                                    <span style="font-size:18px;">
+                                        <?php echo esc_html__( "The report text", 'quiz-maker'); ?>
+                                    </span>
+                                </p>
+                                <p class="vmessage">
+                                    <strong>
+                                        <input type="text" onClick="this.setSelectionRange(0, this.value.length)" readonly value="%%quiz_author_name%%"/>
+                                    </strong>
+                                    <span> - </span>
+                                    <span style="font-size:18px;">
+                                        <?php echo esc_html__( "The quiz author's name", 'quiz-maker'); ?>
+                                    </span>
+                                </p>
+                                <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <div class="ays-quiz-new-upgrade-button-box">
+                                        <div>
+                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
+                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                        </div>
+                                        <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </fieldset><!-- Report Email -->
                     </div>
                     <div id="tab3" class="ays-quiz-tab-content <?php echo ($ays_quiz_tab == 'tab3') ? 'ays-quiz-tab-content-active' : ''; ?>">
                         <p class="ays-subtitle"><?php echo __('Shortcodes','quiz-maker')?></p>
@@ -1850,11 +2095,15 @@
                                         <div class="col-sm-8">
                                             <label class="ays_quiz_loader">
                                                 <input type="radio" value="id" checked/>
-                                                <span><?php echo __( "ID", 'quiz-maker'); ?></span>
+                                                <span><?php echo esc_html__( "ID", 'quiz-maker'); ?></span>
                                             </label>
                                             <label class="ays_quiz_loader">
                                                 <input type="radio" value="email"/>
-                                                <span><?php echo __( "Email", 'quiz-maker'); ?></span>
+                                                <span><?php echo esc_html__( "Email", 'quiz-maker'); ?></span>
+                                            </label>
+                                            <label class="ays_quiz_loader">
+                                                <input type="radio" value="no_grouping"/>
+                                                <span><?php echo esc_html__( "No grouping", 'quiz-maker'); ?></span>
                                             </label>
                                         </div>
                                     </div>
@@ -1867,11 +2116,15 @@
                                         <div class="col-sm-8">
                                             <label class="ays_quiz_loader">
                                                 <input type="radio" value="avg" checked/>
-                                                <span><?php echo __( "AVG", 'quiz-maker'); ?></span>
+                                                <span><?php echo esc_html__( "AVG", 'quiz-maker'); ?></span>
                                             </label>
                                             <label class="ays_quiz_loader">
                                                 <input type="radio" value="max"/>
-                                                <span><?php echo __( "MAX", 'quiz-maker'); ?></span>
+                                                <span><?php echo esc_html__( "MAX", 'quiz-maker'); ?></span>
+                                            </label>
+                                            <label class="ays_quiz_loader">
+                                                <input type="radio" value="first" />
+                                                <span><?php echo esc_html__( "First", 'quiz-maker'); ?></span>
                                             </label>
                                         </div>
                                     </div>
@@ -2194,6 +2447,9 @@
                                                 <ul class="ays-show-user-page-table">
                                                     <?php    
                                                         foreach ($default_leadboard_column_names as $key => $val) {
+                                                            if($key == 'admin_note'){
+                                                                continue;
+                                                            }
                                                             ?>
                                                             <li class="ays-user-page-option-row ui-state-default">
                                                                 <input type="hidden" value="<?php echo $val; ?>" />
@@ -2437,6 +2693,9 @@
                                             <ul class="ays-show-user-page-table">
                                                 <?php
                                                     foreach ($default_leadboard_column_names as $key => $val) {
+                                                        if($key == 'admin_note'){
+                                                            continue;
+                                                        }
                                                         ?>
                                                         <li class="ays-user-page-option-row ui-state-default">
                                                             <input type="checkbox" class="ays-checkbox-input" checked/>
@@ -2487,6 +2746,68 @@
                                 </div>
                             </div>
                         </fieldset> <!-- Leaderboard By Quiz Category Settings -->
+                        <hr>
+                        <fieldset>
+                            <legend>
+                                <strong style="font-size:30px;">[ ]</strong>
+                                <h5 class="ays-subtitle"><?php echo __('User Leaderboard Position Settings', 'quiz-maker'); ?></h5>
+                            </legend>
+                            <div class="col-sm-12 only_pro" style="padding:20px;">
+                                <div class="pro_features" style="justify-content:flex-end;">
+
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-4">
+                                        <label for="ays_user_leaderboard_position">
+                                            <?php echo __( "Shortcode", 'quiz-maker' ); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Copy the shortcode and paste it to any post/page to see the leaderboard position of the current user. It works with Individual Leaderboard shortcode options.','quiz-maker'); ?>">
+                                                <i class="ays_fa ays_fa_info_circle"></i>
+                                            </a>
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input type="text" id="ays_user_leaderboard_position" class="ays-text-input" onclick="this.setSelectionRange(0, this.value.length)" readonly="" value='[ays_user_leaderboard_position id="YOUR_QUIZ_ID"]'>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="form-group row">
+                                    <div class="col-sm-4">
+                                        <label for="ays_user_gleaderboard_position">
+                                            <?php echo __( "Shortcode", 'quiz-maker' ); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Copy the shortcode and paste it to any post/page to see the global leaderboard position of the current user. It works with Global Leaderboard shortcode options.','quiz-maker'); ?>">
+                                                <i class="ays_fa ays_fa_info_circle"></i>
+                                            </a>
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input type="text" id="ays_user_gleaderboard_position" class="ays-text-input" onclick="this.setSelectionRange(0, this.value.length)" readonly="" value='[ays_user_gleaderboard_position]'>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="form-group row">
+                                    <div class="col-sm-4">
+                                        <label for="ays_user_category_leaderboard_position">
+                                            <?php echo __( "Shortcode", 'quiz-maker' ); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Copy the shortcode and paste it to any post/page to see the quiz category leaderboard position of the current user. It works with Leaderboard By Quiz Category shortcode options.', 'quiz-maker'); ?>">
+                                                <i class="ays_fa ays_fa_info_circle"></i>
+                                            </a>
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input type="text" id="ays_user_category_leaderboard_position" class="ays-text-input" onclick="this.setSelectionRange(0, this.value.length)" readonly="" value='[ays_user_category_leaderboard_position id="Your_Quiz_Category_ID"]'>
+                                    </div>
+                                </div>
+                                <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <div class="ays-quiz-new-upgrade-button-box">
+                                        <div>
+                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
+                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                        </div>
+                                        <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </fieldset> <!-- User Leaderboard Position Settings -->
                         <hr>
                         <fieldset>
                             <legend>
@@ -2551,6 +2872,34 @@
                                         </div>
                                         <div class="col-sm-8">
                                             <input type="checkbox" class="ays-checkbox-input" value="on" >
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="form-group row">
+                                        <div class="col-sm-4">
+                                            <label>
+                                                <?php echo __( "Hide Export PDF button", $this->plugin_name ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Tick the checkbox if you want to hide the Export PDF button in the detailed report.', 'quiz-maker'); ?>">
+                                                    <i class="ays_fa ays_fa_info_circle"></i>
+                                                </a>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <input type="checkbox" class="ays-checkbox-input" value="on">
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="form-group row">
+                                        <div class="col-sm-4">
+                                            <label>
+                                                <?php echo esc_html__( "Include Question Explanation", 'quiz-maker' ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_html__('Tick the checkbox to include the Question explanation in the detailed report.', 'quiz-maker'); ?>">
+                                                    <i class="ays_fa ays_fa_info_circle"></i>
+                                                </a>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <input type="checkbox" class="ays-checkbox-input" value="on">
                                         </div>
                                     </div>
                                     <hr>
@@ -3704,6 +4053,24 @@
                                 </p>
                                 <p class="vmessage">
                                     <strong>
+                                        <input type="text" onClick="this.setSelectionRange(0, this.value.length)" readonly value="%%results_by_cats_ordered%%" />
+                                    </strong>
+                                    <span> - </span>
+                                    <span style="font-size:18px;">
+                                        <?php echo __( "It will display the user’s scores by question categories, ordered from the highest to the lowest score.", 'quiz-maker'); ?>
+                                    </span>
+                                </p>
+                                <p class="vmessage">
+                                    <strong>
+                                        <input type="text" onClick="this.setSelectionRange(0, this.value.length)" readonly value="%%results_by_cats_bar_chart_ordered%%" />
+                                    </strong>
+                                    <span> - </span>
+                                    <span style="font-size:18px;">
+                                        <?php echo __( "It will display the user's score by question categories as a bar chart, ordered from the highest to the lowest score.", 'quiz-maker'); ?>
+                                    </span>
+                                </p>
+                                <p class="vmessage">
+                                    <strong>
                                         <input type="text" onClick="this.setSelectionRange(0, this.value.length)" readonly value="%%score_bar_chart%%" />
                                     </strong>
                                     <span> - </span>
@@ -4054,6 +4421,81 @@
                             <div class="col-sm-9">
                                 <input type="text" id="ays_login_button" name="ays_login_button" class="ays-text-input ays-text-input-short"  value='<?php echo $login_button; ?>'>
                             </div>
+                        </div>
+                        <hr>
+                        <p class="ays-subtitle">
+                            <?php echo esc_html__('Email Terms Texts', 'quiz-maker'); ?>
+                            <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php echo esc_html__( 'If you make a change here, these words will not be translatable via translation tools!', 'quiz-maker' ); ?>">
+                                <i class="ays_fa ays_fa_info_circle"></i>
+                            </a>
+                        </p>
+                        <div class="col-sm-12 only_pro" style="padding:20px;">
+                            <div class="pro_features" style="justify-content:flex-end;">
+
+                            </div>
+                            <blockquote class="ays_warning">
+                                <p style="margin:0;"><?php echo esc_html__( "If you make a change here, these words will not be translatable via translation tools!", 'quiz-maker' ); ?></p>
+                            </blockquote>
+                            <hr>
+                            <div class="form-group row">
+                                <div class="col-sm-3">
+                                    <label>
+                                        <?php echo esc_html__( "Correct answer", 'quiz-maker' ); ?>
+                                    </label>
+                                </div>
+                                <div class="col-sm-9">
+                                    <input type="text" class="ays-text-input ays-text-input-short">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-3">
+                                    <label>
+                                        <?php echo esc_html__( "User answered", 'quiz-maker' ); ?>
+                                    </label>
+                                </div>
+                                <div class="col-sm-9">
+                                    <input type="text" class="ays-text-input ays-text-input-short">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-3">
+                                    <label>
+                                        <?php echo esc_html__( "Answer Message", 'quiz-maker' ); ?>
+                                    </label>
+                                </div>
+                                <div class="col-sm-9">
+                                    <input type="text" class="ays-text-input ays-text-input-short">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-3">
+                                    <label>
+                                        <?php echo esc_html__( "Success", 'quiz-maker' ); ?>
+                                    </label>
+                                </div>
+                                <div class="col-sm-9">
+                                    <input type="text" class="ays-text-input ays-text-input-short">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-3">
+                                    <label>
+                                        <?php echo esc_html__( "Fail", 'quiz-maker' ); ?>
+                                    </label>
+                                </div>
+                                <div class="col-sm-9">
+                                    <input type="text" class="ays-text-input ays-text-input-short">
+                                </div>
+                            </div>
+                            <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                <div class="ays-quiz-new-upgrade-button-box">
+                                    <div>
+                                        <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
+                                        <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                    </div>
+                                    <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
+                                </div>
+                            </a>
                         </div>
                     </div>
                     <div id="tab6" class="ays-quiz-tab-content <?php echo ($ays_quiz_tab == 'tab6') ? 'ays-quiz-tab-content-active' : ''; ?>">
@@ -4704,6 +5146,321 @@
                                 <input type="checkbox" class="ays-checkbox-input" id="ays_quiz_show_result_info_rate" name="ays_quiz_show_result_info_rate" value="on" <?php echo $ays_quiz_show_result_info_rate ? 'checked' : ''; ?> />
                             </div>
                         </div>
+                    </div>
+                    <div id="tab9" class="ays-quiz-tab-content <?php echo ($ays_quiz_tab == 'tab9') ? 'ays-quiz-tab-content-active' : ''; ?>">
+                        <p class="ays-subtitle"><?php echo __('Export Settings','quiz-maker'); ?></p>
+                        <hr class="ays-quiz-bolder-hr"/>
+                        <fieldset>
+                            <legend>
+                                <strong style="font-size:30px;"><i class="ays_fa ays_fa_export"></i></strong>
+                                <h5><?php echo __('Individual Quiz Result Export Settings', 'quiz-maker'); ?></h5>
+                            </legend>
+                            <div class="col-sm-12 only_pro" style="padding:20px;">
+                                <div class="pro_features" style="justify-content:flex-end;">
+
+                                </div>
+                                <blockquote>
+                                    <?php echo __('Select the columns you want to include in the XLSX export of each quiz results. Tick the checkboxes for the columns you wish to include for each quiz result.', 'quiz-maker'); ?>
+                                </blockquote>
+                                <hr>
+                                <div class="form-group row">
+                                    <div class="col-sm-12">
+                                        <div class="ays-export-quiz-result-table-container">
+                                            <ul class="ays-export-quiz-result-table">
+                                                <li class="ays-export-quiz-result-option-row">
+                                                    <input type="checkbox">
+                                                    <label>
+                                                        <?php echo __('Score', 'quiz-maker'); ?>
+                                                    </label>
+                                                </li>
+                                                <li class="ays-export-quiz-result-option-row">
+                                                    <input type="checkbox">
+                                                    <label for="ays_quiz_export_result_columns_points">
+                                                        <?php echo __('Points', 'quiz-maker'); ?>
+                                                    </label>
+                                                </li>
+                                                <li class="ays-export-quiz-result-option-row">
+                                                    <input type="checkbox">
+                                                    <label for="ays_quiz_export_result_columns_status">
+                                                        <?php echo __('Status', 'quiz-maker'); ?>
+                                                    </label>
+                                                </li>
+                                                <li class="ays-export-quiz-result-option-row">
+                                                    <input type="checkbox">
+                                                    <label for="ays_quiz_export_result_columns_report_id">
+                                                        <?php echo __('Report ID', 'quiz-maker'); ?>
+                                                    </label>
+                                                </li>
+                                                <li class="ays-export-quiz-result-option-row">
+                                                    <input type="checkbox">
+                                                    <label for="ays_quiz_export_result_columns_unique_code">
+                                                        <?php echo __('Unique Code', 'quiz-maker'); ?>
+                                                    </label>
+                                                </li>
+                                                <li class="ays-export-quiz-result-option-row">
+                                                    <input type="checkbox">
+                                                    <label for="ays_quiz_export_result_columns_quiz_password">
+                                                        <?php echo __('Quiz Password', 'quiz-maker'); ?>
+                                                    </label>
+                                                </li>
+                                                <li class="ays-export-quiz-result-option-row">
+                                                    <input type="checkbox">
+                                                    <label for="ays_quiz_export_result_columns_quiz_coupon">
+                                                        <?php echo __('Quiz Coupon', 'quiz-maker'); ?>
+                                                    </label>
+                                                </li>
+                                                <li class="ays-export-quiz-result-option-row">
+                                                    <input type="checkbox">
+                                                    <label for="ays_quiz_export_result_columns_keywords">
+                                                        <?php echo __('Keywords', 'quiz-maker'); ?>
+                                                    </label>
+                                                </li>
+                                                <li class="ays-export-quiz-result-option-row">
+                                                    <input type="checkbox">
+                                                    <label for="ays_quiz_export_result_columns_start_date">
+                                                        <?php echo __('Start Date', 'quiz-maker'); ?>
+                                                    </label>
+                                                </li>
+                                                <li class="ays-export-quiz-result-option-row">
+                                                    <input type="checkbox">
+                                                    <label for="ays_quiz_export_result_columns_end_date">
+                                                        <?php echo __('End Date', 'quiz-maker'); ?>
+                                                    </label>
+                                                </li>
+                                                <li class="ays-export-quiz-result-option-row">
+                                                    <input type="checkbox">
+                                                    <label for="ays_quiz_export_result_columns_post">
+                                                        <?php echo __('Post Link', 'quiz-maker'); ?>
+                                                    </label>
+                                                </li>
+                                                <li class="ays-export-quiz-result-option-row">
+                                                    <input type="checkbox">
+                                                    <label for="ays_quiz_export_result_columns_duration">
+                                                        <?php echo __('Duration', 'quiz-maker'); ?>
+                                                    </label>
+                                                </li>
+                                                <li class="ays-export-quiz-result-option-row">
+                                                    <input type="checkbox">
+                                                    <label for="ays_quiz_export_result_columns_custom_fields">
+                                                        <?php echo __('Custom Fields', 'quiz-maker'); ?>
+                                                    </label>
+                                                </li>
+                                                <li class="ays-export-quiz-result-option-row">
+                                                    <input type="checkbox">
+                                                    <label for="ays_quiz_export_result_columns_questions">
+                                                        <?php echo __('Questions', 'quiz-maker'); ?>
+                                                    </label>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <div class="ays-quiz-new-upgrade-button-box">
+                                        <div>
+                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
+                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                        </div>
+                                        <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </fieldset>
+                        <hr>
+                    </div>
+                    <div id="tab10" class="ays-quiz-tab-content  <?php echo ($ays_quiz_tab == 'tab10') ? 'ays-quiz-tab-content-active' : ''; ?>">
+                        <p class="ays-subtitle"><?php echo esc_html__('Ordering','quiz-maker')?></p>
+                        <hr class="ays-quiz-bolder-hr"/>
+                        <div class="ays-quiz-tab-ordering ays-quiz-dashboard-main-wrap">
+                            <h4><?php echo esc_html__('Result Page Layout','quiz-maker')?></h4>
+                            <div class="col-sm-12 only_pro" style="padding:20px;">
+                                <div class="pro_features" style="justify-content:flex-end;">
+
+                                </div>
+                                <p><?php echo esc_html__('Customize the order of component on the quiz result page.Drag to reorderitems.These settings  will apply to all quizzes.','quiz-maker')?></p>
+                                <div class="ays-quiz-item-result-component">
+                                    <h6><?php echo esc_html__('Order Component','quiz-maker')?></h6>
+                                    <div  class="form-group row ">
+                                        <div class="col-sm-12 ">
+                                            <div class="ays-quiz-settings-ui-sortable-results">
+                                                <?php foreach($result_sort as $key) { ?>
+                                                    <?php if(isset($result_page_ordering_htmls[$key])) { ?>
+                                                        <div class="ays-quiz-order-item-result ays-quiz-order-item ays-quiz-dlg-dragHandle <?php if($key == 'conditions_message') { echo $conditions_bg; }else if($key == 'woo_block'){ echo $woo_bg;}?>">
+                                                            <div class="">
+                                                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <g clip-path="url(#clip0_141_42)">
+                                                                        <path
+                                                                            d="M9.79463 0.330566C9.35518 -0.108887 8.6415 -0.108887 8.20205 0.330566L5.95205 2.58057C5.5126 3.02002 5.5126 3.73369 5.95205 4.17314C6.3915 4.6126 7.10518 4.6126 7.54463 4.17314L7.8751 3.84268V7.8751H3.84268L4.17314 7.54463C4.6126 7.10518 4.6126 6.3915 4.17314 5.95205C3.73369 5.5126 3.02002 5.5126 2.58057 5.95205L0.330566 8.20205C-0.108887 8.6415 -0.108887 9.35518 0.330566 9.79463L2.58057 12.0446C3.02002 12.4841 3.73369 12.4841 4.17314 12.0446C4.6126 11.6052 4.6126 10.8915 4.17314 10.452L3.84268 10.1216L7.8751 10.1251V14.1575L7.54463 13.827C7.10518 13.3876 6.3915 13.3876 5.95205 13.827C5.5126 14.2665 5.5126 14.9802 5.95205 15.4196L8.20205 17.6696C8.6415 18.1091 9.35518 18.1091 9.79463 17.6696L12.0446 15.4196C12.4841 14.9802 12.4841 14.2665 12.0446 13.827C11.6052 13.3876 10.8915 13.3876 10.452 13.827L10.1216 14.1575L10.1251 10.1251H14.1575L13.827 10.4556C13.3876 10.895 13.3876 11.6087 13.827 12.0481C14.2665 12.4876 14.9802 12.4876 15.4196 12.0481L17.6696 9.79814C18.1091 9.35869 18.1091 8.64502 17.6696 8.20557L15.4196 5.95557C14.9802 5.51611 14.2665 5.51611 13.827 5.95557C13.3876 6.39502 13.3876 7.10869 13.827 7.54814L14.1575 7.87861L10.1251 7.8751V3.84268L10.4556 4.17314C10.895 4.6126 11.6087 4.6126 12.0481 4.17314C12.4876 3.73369 12.4876 3.02002 12.0481 2.58057L9.79814 0.330566H9.79463Z"
+                                                                            fill="black"
+                                                                        />
+                                                                    </g>
+                                                                    <defs>
+                                                                        <clipPath id="clip0_141_42">
+                                                                            <rect width="18" height="18" fill="white" />
+                                                                        </clipPath>
+                                                                    </defs>
+                                                                </svg>
+                                                            </div>
+                                                            <?php echo esc_html($result_page_ordering_htmls[$key]['name']);?>
+                                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_html($result_page_ordering_htmls[$key]['message'])?>">
+                                                                <i class="ays_fa ays_fa_info_circle"></i>
+                                                            </a>
+                                                        </div>
+                                                        <?php unset($result_page_ordering_htmls[$key]);?>
+                                                    <?php } ?>
+                                                <?php } ?>
+                                                <?php if(!empty($result_page_ordering_htmls)){ ?>
+                                                    <?php foreach($result_page_ordering_htmls as $bin=>$key) { ?>
+                                                        <div class="ays-quiz-order-item-result ays-quiz-order-item ays-quiz-dlg-dragHandle <?php if($bin=='conditions_message') { echo $conditions_bg; } else if($bin=='woo_block'){ echo $woo_bg;}?>">
+                                                            <div class="">
+                                                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <g clip-path="url(#clip0_141_42)">
+                                                                        <path
+                                                                            d="M9.79463 0.330566C9.35518 -0.108887 8.6415 -0.108887 8.20205 0.330566L5.95205 2.58057C5.5126 3.02002 5.5126 3.73369 5.95205 4.17314C6.3915 4.6126 7.10518 4.6126 7.54463 4.17314L7.8751 3.84268V7.8751H3.84268L4.17314 7.54463C4.6126 7.10518 4.6126 6.3915 4.17314 5.95205C3.73369 5.5126 3.02002 5.5126 2.58057 5.95205L0.330566 8.20205C-0.108887 8.6415 -0.108887 9.35518 0.330566 9.79463L2.58057 12.0446C3.02002 12.4841 3.73369 12.4841 4.17314 12.0446C4.6126 11.6052 4.6126 10.8915 4.17314 10.452L3.84268 10.1216L7.8751 10.1251V14.1575L7.54463 13.827C7.10518 13.3876 6.3915 13.3876 5.95205 13.827C5.5126 14.2665 5.5126 14.9802 5.95205 15.4196L8.20205 17.6696C8.6415 18.1091 9.35518 18.1091 9.79463 17.6696L12.0446 15.4196C12.4841 14.9802 12.4841 14.2665 12.0446 13.827C11.6052 13.3876 10.8915 13.3876 10.452 13.827L10.1216 14.1575L10.1251 10.1251H14.1575L13.827 10.4556C13.3876 10.895 13.3876 11.6087 13.827 12.0481C14.2665 12.4876 14.9802 12.4876 15.4196 12.0481L17.6696 9.79814C18.1091 9.35869 18.1091 8.64502 17.6696 8.20557L15.4196 5.95557C14.9802 5.51611 14.2665 5.51611 13.827 5.95557C13.3876 6.39502 13.3876 7.10869 13.827 7.54814L14.1575 7.87861L10.1251 7.8751V3.84268L10.4556 4.17314C10.895 4.6126 11.6087 4.6126 12.0481 4.17314C12.4876 3.73369 12.4876 3.02002 12.0481 2.58057L9.79814 0.330566H9.79463Z"
+                                                                            fill="black"
+                                                                        />
+                                                                    </g>
+                                                                    <defs>
+                                                                        <clipPath id="clip0_141_42">
+                                                                            <rect width="18" height="18" fill="white" />
+                                                                        </clipPath>
+                                                                    </defs>
+                                                                </svg>
+                                                            </div>
+                                                            <?php echo esc_html($key['name']);?>
+                                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_html($key['message'])?>">
+                                                                <i class="ays_fa ays_fa_info_circle"></i>
+                                                            </a>
+                                                        </div>
+                                                    <?php } ?>
+                                                <?php }?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex ays-quiz-settings-order-buttons">
+                                    <button type="button" name="ays_quiz_default_result_order" id="ays_quiz_default_result_order" class="button button-primary ays_default_sec_btn ays_default_button_class" data-message="<?php echo  __( "Are you sure you want to reset the ordering to the default configuration? Note: The ordering you have applied will be reset to the default one. To finalize and apply changes, click on the Save button.", 'quiz-maker' );?>">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M105.1 202.6c7.7-21.8 20.2-42.3 37.8-59.8c62.5-62.5 163.8-62.5 226.3 0L386.3 160 352 160c-17.7 0-32 14.3-32 32s14.3 32 32 32l111.5 0c0 0 0 0 0 0l.4 0c17.7 0 32-14.3 32-32l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 35.2L414.4 97.6c-87.5-87.5-229.3-87.5-316.8 0C73.2 122 55.6 150.7 44.8 181.4c-5.9 16.7 2.9 34.9 19.5 40.8s34.9-2.9 40.8-19.5zM39 289.3c-5 1.5-9.8 4.2-13.7 8.2c-4 4-6.7 8.8-8.1 14c-.3 1.2-.6 2.5-.8 3.8c-.3 1.7-.4 3.4-.4 5.1L16 432c0 17.7 14.3 32 32 32s32-14.3 32-32l0-35.1 17.6 17.5c0 0 0 0 0 0c87.5 87.4 229.3 87.4 316.7 0c24.4-24.4 42.1-53.1 52.9-83.8c5.9-16.7-2.9-34.9-19.5-40.8s-34.9 2.9-40.8 19.5c-7.7 21.8-20.2 42.3-37.8 59.8c-62.5 62.5-163.8 62.5-226.3 0l-.1-.1L125.6 352l34.4 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L48.4 288c-1.6 0-3.2 .1-4.8 .3s-3.1 .5-4.6 1z"/></svg>
+                                        <?php echo esc_html__('Reset to Default', 'quiz-maker');?>
+                                    </button>
+                                </div>
+                                <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <div class="ays-quiz-new-upgrade-button-box">
+                                        <div>
+                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
+                                            <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                        </div>
+                                        <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
+                                    </div>
+                                </a>
+                            </div> 
+                        </div>
+                        <div class="ays-quiz-dashboard-main-wrap">
+                            <div class="ays-quiz-tab-ordering nav-sub-tab-wrapper-container">
+                                <h4><?php echo esc_html__('Button Order','quiz-maker')?></h4>
+                                <div class="col-sm-12 only_pro" style="padding:20px;">
+                                    <div class="pro_features" style="justify-content:flex-end;">
+
+                                    </div>
+                                    <p><?php echo esc_html__('Arrange the order of navigation buttons that appear on the quiz result page.','quiz-maker')?></p>
+                                    <div class="form-group row nav-sub-tab-wrapper " style="margin-bottom: 20px;padding-left:20px">
+                                        <a href="#ays_quiz_buttons_order_view_desktop" data-tab="ays_quiz_buttons_order_view_desktop" class="nav-tab nav-tab-active">
+                                            <?php echo __('On desktop', 'quiz-maker'); ?>
+                                        </a>
+                                        <a href="#ays_quiz_buttons_order_view_mobile" data-tab="ays_quiz_buttons_order_view_mobile" class="nav-tab">
+                                            <?php echo __('On mobile', 'quiz-maker'); ?>
+                                        </a>
+                                    </div>
+                                    <div id="ays_quiz_buttons_order_view_desktop" class="form-group row ays-quiz-sub-tab-content ays-quiz-sub-tab-content-active">
+                                        <div class="col-sm-12">
+                                            <div class=" ays-quiz-buttons-order ays-quiz-settings-ui-sortable">
+                                                <?php foreach($buttons_sort_desktop as $key) { ?>
+                                                    <?php if(isset($buttons_ordering[$key])) { ?>
+                                                        <div class="ays-quiz-order-item <?php if($key == 'save') { echo $save_button_bg;}?>" data-value="<?php echo $key;?>">
+                                                            <div class="">
+                                                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <g clip-path="url(#clip0_141_42)">
+                                                                        <path
+                                                                            d="M9.79463 0.330566C9.35518 -0.108887 8.6415 -0.108887 8.20205 0.330566L5.95205 2.58057C5.5126 3.02002 5.5126 3.73369 5.95205 4.17314C6.3915 4.6126 7.10518 4.6126 7.54463 4.17314L7.8751 3.84268V7.8751H3.84268L4.17314 7.54463C4.6126 7.10518 4.6126 6.3915 4.17314 5.95205C3.73369 5.5126 3.02002 5.5126 2.58057 5.95205L0.330566 8.20205C-0.108887 8.6415 -0.108887 9.35518 0.330566 9.79463L2.58057 12.0446C3.02002 12.4841 3.73369 12.4841 4.17314 12.0446C4.6126 11.6052 4.6126 10.8915 4.17314 10.452L3.84268 10.1216L7.8751 10.1251V14.1575L7.54463 13.827C7.10518 13.3876 6.3915 13.3876 5.95205 13.827C5.5126 14.2665 5.5126 14.9802 5.95205 15.4196L8.20205 17.6696C8.6415 18.1091 9.35518 18.1091 9.79463 17.6696L12.0446 15.4196C12.4841 14.9802 12.4841 14.2665 12.0446 13.827C11.6052 13.3876 10.8915 13.3876 10.452 13.827L10.1216 14.1575L10.1251 10.1251H14.1575L13.827 10.4556C13.3876 10.895 13.3876 11.6087 13.827 12.0481C14.2665 12.4876 14.9802 12.4876 15.4196 12.0481L17.6696 9.79814C18.1091 9.35869 18.1091 8.64502 17.6696 8.20557L15.4196 5.95557C14.9802 5.51611 14.2665 5.51611 13.827 5.95557C13.3876 6.39502 13.3876 7.10869 13.827 7.54814L14.1575 7.87861L10.1251 7.8751V3.84268L10.4556 4.17314C10.895 4.6126 11.6087 4.6126 12.0481 4.17314C12.4876 3.73369 12.4876 3.02002 12.0481 2.58057L9.79814 0.330566H9.79463Z"
+                                                                            fill="black"
+                                                                        />
+                                                                    </g>
+                                                                    <defs>
+                                                                        <clipPath id="clip0_141_42">
+                                                                            <rect width="18" height="18" fill="white" />
+                                                                        </clipPath>
+                                                                    </defs>
+                                                                </svg>
+                                                            </div>
+                                                            <?php echo esc_html($buttons_ordering[$key]);?>
+                                                            <?php if($key == 'save') { ?>
+                                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_html__('Please note, that this option will be activated only if the Save and Resume addon is installed and activated and the Enable save and resume option is turned on in the Settings Tab of the given Quiz Edit page','quiz-maker')?>">
+                                                                    <i class="ays_fa ays_fa_info_circle"></i>
+                                                                </a>
+                                                            <?php } else if($key == 'finish') { ?>
+                                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_html__('Note: The Finish and the See Result button (displayed at the end of the quiz on the Result page) are the same.','quiz-maker')?>">
+                                                                    <i class="ays_fa ays_fa_info_circle"></i>
+                                                                </a>
+                                                            <?php } ?>
+                                                            <?php unset($buttons_ordering[$key]);?>
+                                                        </div>
+                                                    <?php } ?>
+                                                <?php } ?>
+                                                <?php if(!empty($buttons_ordering)) { ?>
+                                                    <?php foreach ($buttons_ordering as $bin => $key){ ?>
+                                                        <div class="ays-quiz-order-item <?php if($bin == 'save') { echo $save_button_bg;}?>">
+                                                            <div class="">
+                                                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <g clip-path="url(#clip0_141_42)">
+                                                                        <path
+                                                                            d="M9.79463 0.330566C9.35518 -0.108887 8.6415 -0.108887 8.20205 0.330566L5.95205 2.58057C5.5126 3.02002 5.5126 3.73369 5.95205 4.17314C6.3915 4.6126 7.10518 4.6126 7.54463 4.17314L7.8751 3.84268V7.8751H3.84268L4.17314 7.54463C4.6126 7.10518 4.6126 6.3915 4.17314 5.95205C3.73369 5.5126 3.02002 5.5126 2.58057 5.95205L0.330566 8.20205C-0.108887 8.6415 -0.108887 9.35518 0.330566 9.79463L2.58057 12.0446C3.02002 12.4841 3.73369 12.4841 4.17314 12.0446C4.6126 11.6052 4.6126 10.8915 4.17314 10.452L3.84268 10.1216L7.8751 10.1251V14.1575L7.54463 13.827C7.10518 13.3876 6.3915 13.3876 5.95205 13.827C5.5126 14.2665 5.5126 14.9802 5.95205 15.4196L8.20205 17.6696C8.6415 18.1091 9.35518 18.1091 9.79463 17.6696L12.0446 15.4196C12.4841 14.9802 12.4841 14.2665 12.0446 13.827C11.6052 13.3876 10.8915 13.3876 10.452 13.827L10.1216 14.1575L10.1251 10.1251H14.1575L13.827 10.4556C13.3876 10.895 13.3876 11.6087 13.827 12.0481C14.2665 12.4876 14.9802 12.4876 15.4196 12.0481L17.6696 9.79814C18.1091 9.35869 18.1091 8.64502 17.6696 8.20557L15.4196 5.95557C14.9802 5.51611 14.2665 5.51611 13.827 5.95557C13.3876 6.39502 13.3876 7.10869 13.827 7.54814L14.1575 7.87861L10.1251 7.8751V3.84268L10.4556 4.17314C10.895 4.6126 11.6087 4.6126 12.0481 4.17314C12.4876 3.73369 12.4876 3.02002 12.0481 2.58057L9.79814 0.330566H9.79463Z"
+                                                                            fill="black"
+                                                                        />
+                                                                    </g>
+                                                                    <defs>
+                                                                        <clipPath id="clip0_141_42">
+                                                                            <rect width="18" height="18" fill="white" />
+                                                                        </clipPath>
+                                                                    </defs>
+                                                                </svg>
+                                                            </div>
+                                                            <?php echo esc_html($key);?>
+                                                            <?php if($bin == 'save') { ?>
+                                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_html__('Please note, that this option will be activated only if the Save and Resume addon is installed and activated and the Enable save and resume option is turned on in the Settings Tab of the given Quiz Edit page','quiz-maker')?>">
+                                                                    <i class="ays_fa ays_fa_info_circle"></i>
+                                                                </a>
+                                                            <?php } else if($bin == 'finish') { ?>
+                                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_html__('Note: The Finish and the See Result button (displayed at the end of the quiz on the Result page) are the same.','quiz-maker')?>">
+                                                                    <i class="ays_fa ays_fa_info_circle"></i>
+                                                                </a>
+                                                            <?php } ?>
+                                                        </div>
+                                                    <?php } ?>
+                                                <?php } ?>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="d-flex ays-quiz-settings-order-buttons">
+                                        <button type="button" name="ays_quiz_default_buttons_order" id="ays_quiz_default_buttons_order" class="button button-primary ays_default_sec_btn ays_default_button_class" data-message="<?php echo  __( "Are you sure you want to reset the ordering to the default configuration? Note: The ordering you have applied will be reset to the default one. To finalize and apply changes, click on the Save button.", 'quiz-maker' );?>">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M105.1 202.6c7.7-21.8 20.2-42.3 37.8-59.8c62.5-62.5 163.8-62.5 226.3 0L386.3 160 352 160c-17.7 0-32 14.3-32 32s14.3 32 32 32l111.5 0c0 0 0 0 0 0l.4 0c17.7 0 32-14.3 32-32l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 35.2L414.4 97.6c-87.5-87.5-229.3-87.5-316.8 0C73.2 122 55.6 150.7 44.8 181.4c-5.9 16.7 2.9 34.9 19.5 40.8s34.9-2.9 40.8-19.5zM39 289.3c-5 1.5-9.8 4.2-13.7 8.2c-4 4-6.7 8.8-8.1 14c-.3 1.2-.6 2.5-.8 3.8c-.3 1.7-.4 3.4-.4 5.1L16 432c0 17.7 14.3 32 32 32s32-14.3 32-32l0-35.1 17.6 17.5c0 0 0 0 0 0c87.5 87.4 229.3 87.4 316.7 0c24.4-24.4 42.1-53.1 52.9-83.8c5.9-16.7-2.9-34.9-19.5-40.8s-34.9 2.9-40.8 19.5c-7.7 21.8-20.2 42.3-37.8 59.8c-62.5 62.5-163.8 62.5-226.3 0l-.1-.1L125.6 352l34.4 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L48.4 288c-1.6 0-3.2 .1-4.8 .3s-3.1 .5-4.6 1z"/></svg>
+                                            <?php echo esc_html__('Reset to Default', 'quiz-maker');?>
+                                        </button>
+                                    </div> 
+                                    <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                        <div class="ays-quiz-new-upgrade-button-box">
+                                            <div>
+                                                <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
+                                                <img src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                            </div>
+                                            <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
+                                        </div>
+                                    </a>
+                                </div>         
+                            </div>
+                        </div>
+                        <hr>
                     </div>
                 </div>
             </div>

@@ -5520,6 +5520,36 @@ $quiz_admin_note_mobile_text_decoration = (isset($options[ 'quiz_admin_note_mobi
                             </div>
                         </div> <!-- Enable text to speech -->
                         <hr/>
+                        <div class="form-group row" style="margin:0px;">
+                            <div class="col-sm-12 only_pro" style="padding:10px 0 0 10px;">
+                                <div class="pro_features" style="justify-content:flex-end;">
+
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-4" style="padding-right: 0px;">
+                                        <label>
+                                            <?php echo __('Show Question Max Points', 'quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Enable this option to display the maximum points for each question during the quiz.', 'quiz-maker') ); ?>">
+                                                <i class="ays_fa ays_fa_info_circle"></i>
+                                            </a>
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input type="checkbox" value="on" />
+                                    </div>
+                                </div>
+                                <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <div class="ays-quiz-new-upgrade-button-box">
+                                        <div>
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                        </div>
+                                        <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div> <!-- Show question max point -->
+                        <hr/>
                     </div>
                 </div>
                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">

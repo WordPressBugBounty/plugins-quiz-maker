@@ -44,6 +44,7 @@ body.mobile.modal-open #wpwrap {
 }
 
 /* Conflict with WP Adminify – Custom WordPress Dashboard | end */
+div.masteriyo-notice:not([class*="ays-quiz"]):not([class*="ays_quiz"]),
 div.fs-notice:not([class*="ays-quiz"]):not([class*="ays_quiz"]),
 div.error:not([class*="ays-quiz"]):not([class*="ays_quiz"]),
 .notice:not([class*="ays-quiz"]):not([class*="ays_quiz"]) {
@@ -58,6 +59,10 @@ h1.wp-heading-inline{
 h1.wp-heading-inline.ays-quiz-heading-inline-disable-padding-margin {
     margin: 0px;
     padding: 0px;
+}
+
+.tablenav {
+    margin-bottom: 20px;
 }
 
 div .ays-quiz-add-new-button-box a.ays-quiz-add-new-button {
@@ -672,40 +677,52 @@ table.ays-intervals-table label.ays-label {
 }
 
 /*User Page Settings Table Start*/
+.ays-export-quiz-result-table-container,
 .ays-show-user-page-table-wrap {
     border: 2px dashed #9E9E9E;
     padding: 20px;
     display: flex;
 }
+
+.ays-export-quiz-result-table,
 .ays-show-user-page-table {
     height: 100%;
     margin: 0;
 }
 
 .ays-show-user-page-table .ays_user_page_sortable_placeholder,
+.ays-export-quiz-result-table li,
 .ays-show-user-page-table li {
     font-weight: normal !important;
     font-size: 14px;
     padding: 10px;
     vertical-align: middle;
     text-align: center;
-    width: 140px;
+    min-width: 140px;
     margin-right: 10px;
     cursor: move;
     position: relative;
     float: left;
-    border: 1px solid #d3d3d3;
     background: #e6e6e6 50% 50% repeat-x;
     color: #555555;
 }
 
+.ays-export-quiz-result-table li label,
+.ays-export-quiz-result-table li {
+    cursor: pointer;
+}
+
+.ays-export-quiz-result-table li:last-child,
 .ays-show-user-page-table li:last-child {
     clear: right;
 }
+
+.ays-export-quiz-result-table li label,
 .ays-show-user-page-table li label{
     margin-bottom: 0;
 }
 
+.ays-export-quiz-result-table .ays_user_page_sortable_placeholder,
 .ays-show-user-page-table .ays_user_page_sortable_placeholder {
     border: 1px dotted #aaa;
     background-color: #ccc;
@@ -715,12 +732,20 @@ table.ays-intervals-table label.ays-label {
     form#ays-quiz-general-settings-form input.ays-text-input.ays-text-input-short{
         width: 100%;
     }
+
+    select.ays-text-input.ays-text-input-short,
+    input.ays-text-input.ays-text-input-short{
+        width: 100%;
+        max-width: 100%;
+    }
 }
 
 @media screen and (max-width: 782px) {
     form#ays-quiz-general-settings-form input.ays-text-input,
     form#ays-quiz-general-settings-form .vmessage input[type="text"],
+    form#ays-quiz-category-form .vmessage input[type="text"],
     form#ays-quiz-general-settings-form .ays-show-user-page-table .ays_user_page_sortable_placeholder,
+    form#ays-quiz-general-settings-form .ays-export-quiz-result-table li,
     form#ays-quiz-general-settings-form .ays-show-user-page-table li {
         width: 100%;
     }
@@ -730,8 +755,12 @@ table.ays-intervals-table label.ays-label {
         font-size: 14px;
     }
 
+    #ays-quiz-general-settings-form .row {
+        margin: 0;
+    }
+
     #ays-quiz-general-settings-form .select2-selection--multiple {
-       min-width: unset; 
+       min-width: unset;
     }
 
     #ays-quiz-general-settings-form .ays-quiz-user-roles {
@@ -742,6 +771,7 @@ table.ays-intervals-table label.ays-label {
         font-size: 15px;
     }
 
+    #ays-quiz-general-settings-form .ays-export-quiz-result-table-container,
     #ays-quiz-general-settings-form .ays-show-user-page-table-wrap {
         padding: 10px;
     }
@@ -755,7 +785,7 @@ table.ays-intervals-table label.ays-label {
         padding: 0 0 0 25px;
     }
 
-    #ays-quiz-general-settings-form img.ays_integration_logo {    
+    #ays-quiz-general-settings-form img.ays_integration_logo {
         width: 35px;
         height: auto;
     }
@@ -788,13 +818,14 @@ table.ays-intervals-table label.ays-label {
     list-style: circle;
 }
 
+#ays-quiz-category-form .vmessage input[type="text"],
 #ays-quiz-general-settings-form .vmessage input[type="text"] {
     width: 350px;
     font-size: 16px;
     height: 40px;
     border-radius: 4px;
-    /*margin-top: -1px;*/
 }
+
 /*User Page Settings Table End*/
 
 a.ays-add-interval,
@@ -7760,8 +7791,8 @@ div .wp-picker-container .wp-color-result.button {
     padding: 0 10px;
     background-color: white;
     color:#005AE0;
-    /*line-height: normal !important;*/
-    line-height: 2.15384615;
+    /* line-height: normal !important; */
+    line-height: 2.15384615 !important;
     transition: all 0.3s;
 }
 
@@ -7800,7 +7831,7 @@ div .wp-picker-container .wp-color-result.button {
     padding: 0 10px;
     background-color: #005AE0;
     color: #fff;
-    line-height: normal !important;
+    line-height: 2.15384615 !important;
     transition: all 0.3s;
     top: 0px;
 }
@@ -7839,7 +7870,8 @@ div .wp-picker-container .wp-color-result.button {
     justify-content: space-between;
 }
 
-.ays-quiz-dashboard-main-wrap.ays-quiz-dashboard-main-wrap .ays-top-menu-wrapper .nav-tab{
+.ays-quiz-dashboard-main-wrap.ays-quiz-dashboard-main-wrap .nav-sub-tab-wrapper-container .nav-tab:not(.no-css-nav-tab),
+.ays-quiz-dashboard-main-wrap.ays-quiz-dashboard-main-wrap .ays-top-menu-wrapper .nav-tab:not(.no-css-nav-tab){
     border-top: none;
     border-right: none;
     border-left: none;
@@ -7861,12 +7893,22 @@ div .wp-picker-container .wp-color-result.button {
     background: unset;
 }
 
-.ays-quiz-dashboard-main-wrap .ays-top-menu-wrapper .nav-tab:hover{
+.ays-quiz-dashboard-main-wrap .nav-sub-tab-wrapper-container .nav-tab:hover:not(.no-css-nav-tab),
+.ays-quiz-dashboard-main-wrap .ays-top-menu-wrapper .nav-tab:hover:not(.no-css-nav-tab){
     border-bottom:1px solid #005AE0 !important;
     text-decoration: none;
 }
 
-.ays-quiz-dashboard-main-wrap .nav-tab-active{
+.ays-quiz-dashboard-main-wrap .nav-sub-tab-wrapper-container .nav-tab:focus:not(.no-css-nav-tab){
+    outline: unset;
+    box-shadow: unset;
+}
+
+.ays-quiz-dashboard-main-wrap .nav-sub-tab-wrapper-container .nav-sub-tab-wrapper.answers-view-container-nav-tab-wrapper {
+    padding-left: 20px;
+}
+
+.ays-quiz-dashboard-main-wrap .nav-tab-active:not(.no-css-nav-tab){
     border-bottom:1px solid #005AE0 !important;
     color: #005AE0 !important;
 }
@@ -8253,3 +8295,88 @@ body[class~="toplevel_page_quiz-maker"] .swal2-popup .swal2-actions {
 }
 
 /* Plugin YouTube Video Style | End */
+
+.ays-quiz-bg-light-secondary{
+    background: #dcdcde !important;
+}
+.ays-quiz-tab-ordering{
+    background-color: #fff;
+    padding: 20px 30px;
+    border-radius: 15px;
+    margin: 20px auto 0;
+}
+
+.ays-quiz-item-result-component{
+    padding: 15px;
+    /*background: #f3f4f5;*/
+    border-radius: 10px;
+
+}
+.ays-quiz-buttons-order{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.ays-quiz-order-item{
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 2px 0px #f3f4f5;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    padding: 10px 20px 10px 10px;
+    /* background: #f5f5f5; */
+    cursor: pointer;
+    gap: 10px;
+}
+
+.ays-quiz-order-item svg{
+    width: 18px;
+    fill: #838383;
+}
+
+.ays-quiz-order-item-result {
+    margin-top: 10px;
+    background: #fff;
+}
+
+.ays-quiz-settings-order-buttons{
+    justify-content: space-between;
+    margin-top: 30px;
+}
+.ays-quiz-settings-order-buttons button svg{
+    width: 15px;
+    margin-right: 5px;
+}
+
+.ays-quiz-settings-order-buttons .ays-quiz-loader-banner svg{
+    fill:#fff;
+}
+
+
+.ays-quiz-dashboard-main-wrap .button.ays_default_sec_btn,
+.button.ays_default_sec_btn {
+    background-color: #fff;
+    color: #000;
+    border-color: #ccc;
+    margin-right: 0;
+    margin-left: 0;
+    text-shadow: unset;
+    box-shadow: unset;
+}
+
+.ays-quiz-dashboard-main-wrap .button.ays_default_sec_btn:focus,
+.ays-quiz-dashboard-main-wrap .button.ays_default_sec_btn:active,
+.ays-quiz-dashboard-main-wrap .button.ays_default_sec_btn:hover,
+.button.ays_default_sec_btn:focus,
+.button.ays_default_sec_btn:active,
+.button.ays_default_sec_btn:hover{
+    background-color: #fff;
+    color: #000;
+    border-color: #ccc;
+}
+
+.ays-quiz-dashboard-main-wrap .button.ays_default_sec_btn:focus,
+.button.ays_default_sec_btn:focus{
+    box-shadow: 0 0 0 1px #fff, 0 0 0 3px #ccc;
+}

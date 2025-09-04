@@ -132,7 +132,19 @@ if(isset($_GET['ays_quiz_tab'])){
                                     <div class="form-group row" aria-describedby="aaa">
                                         <div class="col-sm-3">
                                             <label>
-                                                <?php echo esc_html__('Payment terms','quiz-maker')?>
+                                                <?php echo esc_html__('Payment terms','quiz-maker'); ?>
+                                                <a class="ays_help" style="font-size:15px;" data-toggle="tooltip" data-html="true"
+                                                title="<?php
+                                                    echo __('Choose your preferred method.',$this->plugin_name) .
+                                                    "<ul style='list-style-type: circle;padding-left: 20px;'>".
+                                                        "<li>". __('Lifetime  - By enabling this option, the user pays once at the beginning and gets access to the given quiz each time starting from that moment. It detects the user after the first attempt based on their WP user ID (designed for logged-in users).','quiz-maker') ."</li>".
+                                                        "<li>". __('Onetime - By enabling this option, the user needs to pay each time separately for taking the quiz.','quiz-maker') ."</li>".
+                                                        "<li>". __('Active Period - By enabling this option, the quiz will be available during your chosen period of time. You can set the active period duration by Day, Month or Year. This option is (designed for logged-in users).','quiz-maker') ."</li>".
+                                                        "<li>". __('Limit By Count - By enabling this option, users can take the quiz up to the set limit. Once the limit is reached, they will need to pay again to retake the quiz. For example, if the limit count is set as 5, the users can pay for the quiz and pass it 5 times. Once the limit is reached, they will need to make another payment to continue taking the quiz.','quiz-maker') ."</li>".
+                                                    "</ul>";
+                                                ?>">
+                                                <i class="ays_fa ays_fa_info_circle"></i>
+                                            </a>
                                             </label>
                                         </div>
                                         <div class="col-sm-9">
@@ -146,20 +158,24 @@ if(isset($_GET['ays_quiz_tab'])){
                                             </label>
                                             <label class="ays_quiz_loader" style="display:inline-block;">
                                                 <input type="radio" />
-                                                <span><?php echo esc_html__('Subscription','quiz-maker'); ?></span>
+                                                <span><?php echo esc_html__('Active Period','quiz-maker'); ?></span>
                                             </label>
-                                            <label class="ays_toggle_target" style="display:inline-block;">
+                                            <label class="ays_quiz_loader" style="display:inline-block;">
+                                                <input type="radio" />
+                                                <span><?php echo esc_html__('Limit by Count','quiz-maker'); ?></span>
+                                            </label>
+                                            <!-- <label class="ays_toggle_target" style="display:inline-block;">
                                                 <input type="checkbox" value="on"/>
                                                 <span><?php echo esc_html__('Turn on extra security check', 'quiz-maker'); ?></span>
                                                 <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('When the user pays for the quiz and starts passing it but leaves without finishing, he/she has to pay again every time he wants to pass it.','quiz-maker') );?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
-                                            </label>
+                                            </label> -->
                                             <hr>
                                             <div class="ays_toggle_target_2" style="display:block;">
                                                 <div class="form-group row">
                                                     <div class="col-sm-4">
-                                                        <label class="form-check-label" for="ays-subscribtion-duration"> <?php echo esc_html__('Subscription duration', 'quiz-maker'); ?> </label>
+                                                        <label class="form-check-label" for="ays-subscribtion-duration"> <?php echo esc_html__('Active Period duration', 'quiz-maker'); ?> </label>
                                                     </div>
                                                     <div class="col-sm-8 d-flex">
                                                         <input type="text" class="ays-text-input ays-text-input-short" value="30">
@@ -226,7 +242,19 @@ if(isset($_GET['ays_quiz_tab'])){
                                             <div class="form-group row">
                                                 <div class="col-sm-3">
                                                     <label>
-                                                        <?php echo esc_html__('Payment terms','quiz-maker')?>
+                                                        <?php echo esc_html__('Payment terms','quiz-maker'); ?>
+                                                        <a class="ays_help" style="font-size:15px;" data-toggle="tooltip" data-html="true"
+                                                            title="<?php
+                                                                echo __('Choose your preferred method.','quiz-maker') .
+                                                                "<ul style='list-style-type: circle;padding-left: 20px;'>".
+                                                                    "<li>". __('Lifetime  - By enabling this option, the user pays once at the beginning and gets access to the given quiz each time starting from that moment. It detects the user after the first attempt based on their WP user ID (designed for logged-in users).','quiz-maker') ."</li>".
+                                                                    "<li>". __('Onetime - By enabling this option, the user needs to pay each time separately for taking the quiz.','quiz-maker') ."</li>".
+                                                                    "<li>". __('Active Period - By enabling this option, the quiz will be available during your chosen period of time. You can set the active period duration by Day, Month or Year. This option is (designed for logged-in users).','quiz-maker') ."</li>".
+                                                                    "<li>". __('Limit By Count - By enabling this option, users can take the quiz up to the set limit. Once the limit is reached, they will need to pay again to retake the quiz. For example, if the limit count is set as 5, the users can pay for the quiz and pass it 5 times. Once the limit is reached, they will need to make another payment to continue taking the quiz.','quiz-maker') ."</li>".
+                                                                "</ul>";
+                                                            ?>">
+                                                            <i class="ays_fa ays_fa_info_circle"></i>
+                                                        </a>
                                                     </label>
                                                 </div>
                                                 <div class="col-sm-9">
@@ -237,6 +265,14 @@ if(isset($_GET['ays_quiz_tab'])){
                                                     <label class="ays_quiz_loader" style="display:inline-block;">
                                                         <input type="radio" />
                                                         <span><?php echo esc_html__('Onetime payment','quiz-maker');?></span>
+                                                    </label>
+                                                    <label class="ays_quiz_loader" style="display:inline-block;">
+                                                        <input type="radio" />
+                                                        <span><?php echo __('Active Period','quiz-maker'); ?></span>
+                                                    </label>
+                                                    <label class="ays_quiz_loader" style="display:inline-block;">
+                                                        <input type="radio" />
+                                                        <span><?php echo esc_html__('Limit by Count','quiz-maker'); ?></span>
                                                     </label>
                                                 </div>
                                             </div>

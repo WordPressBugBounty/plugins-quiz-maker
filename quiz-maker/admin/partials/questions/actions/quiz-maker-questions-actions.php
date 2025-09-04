@@ -180,6 +180,7 @@ $question_types = array(
     "custom"            => esc_html__("Info Banner (PRO)", 'quiz-maker'),
     "fill_in_blank"     => esc_html__("Fill in the blanks (PRO)", 'quiz-maker'),
     "matching"          => esc_html__("Matching (PRO)", 'quiz-maker'),
+    "upload_file"       => esc_html__("Upload File (PRO)", 'quiz-maker'),
 );
 
 $question_types_icon_url = array(
@@ -194,6 +195,7 @@ $question_types_icon_url = array(
     "custom"            => AYS_QUIZ_ADMIN_URL ."/images/QuestionTypes/quiz-maker-custom-type.svg",
     "fill_in_blank"     => AYS_QUIZ_ADMIN_URL ."/images/QuestionTypes/quiz-maker-fill-in-blank-type.svg",
     "matching"          => AYS_QUIZ_ADMIN_URL ."/images/QuestionTypes/quiz-maker-matching-type.svg",
+    "upload_file"       => AYS_QUIZ_ADMIN_URL ."/images/QuestionTypes/quiz-maker-upload-file-type.svg",
 );
 $true_or_false_arr = array(
     esc_html__("True", 'quiz-maker'),
@@ -473,7 +475,7 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                                 foreach($question_types as $type => $label):
                                 $selected = $question["type"] == $type ? "selected" : "";
                                 $ays_question_disabled = "";
-                                if ( $type == "custom" || $type == "fill_in_blank" || $type == "matching" ) {
+                                if ( $type == "custom" || $type == "fill_in_blank" || $type == "matching" || $type == "upload_file" ) {
                                     $ays_question_disabled = "disabled title='". esc_attr(__( "This feature is available only in PRO version", 'quiz-maker' ) ) ."' ";
                                 }
                             ?>

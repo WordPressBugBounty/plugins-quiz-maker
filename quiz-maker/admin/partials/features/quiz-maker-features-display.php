@@ -725,6 +725,17 @@
                     <td><span>–</span></td>
                     <td><i class="ays_fa ays_fa_check"></i></td>
                 </tr>
+                <tr>
+                    <td></td>
+                    <td colspan="4"><?php echo esc_html__('Save and Resume','quiz-maker')?></td>
+                </tr>
+                <tr>
+                    <td><?php echo esc_html__('Save and Resume','quiz-maker')?></td>
+                    <td><span>–</span></td>
+                    <td><span>–</span></td>
+                    <td><span>–</span></td>
+                    <td><i class="ays_fa ays_fa_check"></i></td>
+                </tr>
 
                 <tr>
                     <td> </td>

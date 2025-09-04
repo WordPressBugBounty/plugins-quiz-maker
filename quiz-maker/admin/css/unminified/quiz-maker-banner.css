@@ -76,6 +76,7 @@
     transform: translate3d(3000px, 0, 0);
 }
 
+div.masteriyo-notice:not([class*="ays-quiz"]):not([class*="ays_quiz"]),
 div.fs-notice:not([class*="ays-quiz"]):not([class*="ays_quiz"]),
 div.error:not([class*="ays-quiz"]):not([class*="ays_quiz"]),
 .notice:not([class*="ays-quiz"]):not([class*="ays_quiz"]) {

@@ -143,6 +143,7 @@ class Quiz_Maker_Admin
         wp_enqueue_style($this->plugin_name . '-data-bootstrap', plugin_dir_url(__FILE__) . 'css/dataTables.bootstrap4.min.css', array(), $this->version, 'all');
         wp_enqueue_style($this->plugin_name . '-jquery-datetimepicker', plugin_dir_url(__FILE__) . 'css/jquery-ui-timepicker-addon.css', array(), $this->version, 'all');
         wp_enqueue_style($this->plugin_name, plugin_dir_url(__FILE__) . 'css/quiz-maker-admin.css', array(), $this->version, 'all');
+        // wp_enqueue_style($this->plugin_name, plugin_dir_url(__FILE__) . 'css/unminified/quiz-maker-admin.css', array(), $this->version, 'all');
         wp_enqueue_style($this->plugin_name . '-banner', plugin_dir_url(__FILE__) . 'css/quiz-maker-banner.css', array(), $this->version, 'all');
         wp_enqueue_style($this->plugin_name . "-loaders", plugin_dir_url(__FILE__) . 'css/loaders.css', array(), $this->version, 'all');
 
@@ -5745,6 +5746,73 @@ class Quiz_Maker_Admin
         }
 
         wp_send_json_error( esc_html__( 'User not logged in.', 'quiz-maker' ) );
+    }
+
+    public static function ays_quiz_get_settings_order_defaults(){
+        $buttons_ordering = array(
+            'clear' =>  __('Clear','quiz-maker'),
+            'prev' =>  __('Prev','quiz-maker'),
+            'finish' =>  __('Finish','quiz-maker'),
+            'next' =>  __('Next','quiz-maker'),
+            'save' =>  __('Save','quiz-maker'),
+        );
+
+        $result_page_ordering = array(
+            'pass_score' => array(
+                                'name' => __('Pass Score','quiz-maker'),
+                                'message' => __('If you want to display the pass score on the Quiz Result page, then go to the Quizzes > given quiz > Results Settings Tab and set your desired value for the Pass Score option.','quiz-maker'),
+                            ),
+            'conditions_message' => array(
+                                'name' => __('Conditions Message','quiz-maker'),
+                                'message' => __('If you want to display the conditional message on the Quiz Result page, then install the Conditional Results addon first․ Then, head to the Conditional Results addon and specify the conditions.','quiz-maker'),
+                            ),
+            'interval_message' => array(
+                                'name' => __('Interval Message','quiz-maker'),
+                                'message' => __('If you want to display the interval message (the most relevant text based on the user’s answers) on the Quiz Result page, then go to the Quizzes > given quiz > Results Settings Tab, tick the Show interval message option and specify your desired texts for each Interval.','quiz-maker'),
+                            ),
+            'ays_message' => array(
+                                'name' => __('Result Message','quiz-maker'),
+                                'message' => __('If you want to display the content you write for the Result Message option on the Quiz Result page, then go to the Quizzes > given quiz > Result Message option and specify the content there.','quiz-maker'),
+                            ),
+            'woo_block' => array(
+                                'name' => __('WooCommerce Products','quiz-maker'),
+                                'message' => __('If you want to display the WooCommerce products on the Quiz Result page, first, install the WooCommerce plugin. Then, go to the Quizzes > given quiz > Results Settings Tab > Intervals option, and specify the WooCommerce products for intervals.','quiz-maker'),
+                            ),
+            'score_html' => array(
+                                'name' => __('Your Score','quiz-maker'),
+                                'message' => __('If you want to display the score on the Quiz Result page, then head to the Quizzes > given quiz > Results Settings Tab and disable the Hide Score option.','quiz-maker'),
+                            ),
+            'average_score' => array(
+                                'name' => __('Average Score','quiz-maker'),
+                                'message' => __('If you want to display the Average Score on the Quiz Result page, then go to the Quizzes > given quiz > Results Settings Tab and enable the Show the statistical average option.','quiz-maker'),
+                            ),
+            'social_buttons' => array(
+                                'name' => __('Social Buttons','quiz-maker'),
+                                'message' => __('If you want to display the social buttons on the Quiz Result page, then go to the Quizzes > given quiz > Results Settings Tab and enable the Show the Social buttons option.','quiz-maker'),
+                            ),
+            'social_links' => array(
+                                'name' => __('Social Links','quiz-maker'),
+                                'message' => __('If you want to display the social links on the Quiz Result page, then go to the Quizzes > given quiz > Results Settings Tab and tick the Enable Social Media links option.','quiz-maker'),
+                            ),
+            'progress_bar' => array(
+                                'name' => __('Progress Bar','quiz-maker'),
+                                'message' => __('If you want to display the progress bar on the Quiz Result page, then go to the Quizzes > given quiz > Results Settings Tab and tick the  Enable progress bar option.','quiz-maker'),
+                            ),
+            'buttons' => array(
+                                'name' => __('Buttons','quiz-maker'),
+                                'message' => __('Please note, that this refers to the Restart Quiz and Exit buttons. When the Chained Quiz addon is installed and active, the Next Quiz button will appear during the quiz, and the See Result button will be displayed at the end.','quiz-maker'),
+                            ),
+            'rate' => array(
+                                'name' => __('Quiz Rate','quiz-maker'),
+                                'message' => __('If you want to display the quiz rate with stars on the Quiz Result page, then go to the Quizzes > given quiz > Results Settings Tab and tick the Enable quiz assessment option.','quiz-maker'),
+                            ),
+            'download_pdf' => array(
+                                'name' => __('Download Quiz Result in PDF','quiz-maker'),
+                                'message' => __(' If you want the users to download the results from the Quiz Result page in PDF after completing the quiz, then go to the Quizzes > given quiz > Results Settings Tab > Show question results on the results page option and tick the Download Result Page in PDF suboption','quiz-maker'),
+                            ),
+        );
+
+        return array('result_page' => $result_page_ordering,'buttons' => $buttons_ordering);
     }
     
 }
