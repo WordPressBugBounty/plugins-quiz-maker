@@ -504,9 +504,8 @@
         var thisParent  = $this.parents("#ays-quiz-dismiss-buttons-content");
         // var thisParent  = $this.parents("#ays-quiz-dismiss-buttons-content-helloween");
         var mainParent  = $this.parents("div.ays_quiz_dicount_info");
-        var closeButton = mainParent.find("button.notice-dismiss");
+        var closeButton = mainParent.find(".notice-dismiss");
 
-        var attr_plugin = $this.attr('data-plugin');
         var wp_nonce    = thisParent.find('#quiz-maker-sale-banner').val();
 
         if(typeof wp_nonce == 'undefined'){
@@ -516,7 +515,7 @@
         var data = {
             action: 'ays_quiz_dismiss_button',
             _ajax_nonce: wp_nonce,
-        };
+        };      
 
         $.ajax({
             url: quiz_maker_ajax.ajax_url,

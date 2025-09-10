@@ -38,30 +38,26 @@ $new_questions_page_url = sprintf('?page=%s&action=%s', 'quiz-maker-questions', 
                 <ol>
                     <li>
                         <?php 
-                            echo sprintf( esc_attr( __( "Go to the %s Questions %s page and create %s new questions, %s", 'quiz-maker' ) ),
+                            echo sprintf( esc_attr( __( "Create %s questions %s", 'quiz-maker' ) ),
                                 '<a href="'. esc_url($questions_page_url) .'" target="_blank">',
-                                '</a>',
-                                '<a href="'. esc_url($new_questions_page_url) .'" target="_blank">',
                                 '</a>'
                             ); 
                         ?> 
                     </li>
                     <li>
                         <?php 
-                            echo sprintf( esc_attr( __( "Then, go to the %s Quizzes %s page and build your first quiz by clicking on the %s Add New %s button,", 'quiz-maker' ) ),
+                            echo sprintf( esc_attr( __( "Create %s quiz %s", 'quiz-maker' ) ),
                                 '<a href="'. esc_url($quiz_page_url) .'" target="_blank">',
-                                '</a>',
-                                '<a href="'. esc_url($add_new_url) .'" target="_blank">',
                                 '</a>'
                             ); 
                         ?>
                     </li>
                     <li>
-                        <?php echo esc_html__( "Fill out the information by adding a title, previously created questions and so on.", 'quiz-maker' ); ?>
+                        <?php echo esc_html__( "Insert questions to the quiz", 'quiz-maker' ); ?>
                     </li>
                     <li>
                         <?php 
-                            echo sprintf( esc_attr( __( "Copy the %s shortcode %s of the quiz and paste it into any post․", 'quiz-maker' ) ),
+                            echo sprintf( esc_attr( __( "Copy and paste %s shortcode %s", 'quiz-maker' ) ),
                                 '<strong>',
                                 '</strong>'
                             ); 

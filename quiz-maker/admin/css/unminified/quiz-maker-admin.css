@@ -891,11 +891,25 @@ a.ays-add-question:hover {
     width: auto;
     white-space: nowrap;
     transition: background 0.3s ease-in-out;
+    margin-right: 5px;
+    min-height: 36px;
 }
 
 .ays_add_question_from_table .ays-add-question-primary:hover {
     background: #0044a9;
     color: #fff !important;
+}
+
+.ays_add_question_from_table a.ays-add-question {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+}
+
+.ays_add_question_from_table a svg {
+    width: 16px;
+    height: 16px;
 }
 
 a.ays-edit-question {
@@ -4271,6 +4285,11 @@ div.wrap .ays-quiz-wp-heading-inline{
 }
 .ays-quiz-faq-main fieldset .ays-quyiz-ol-container{
     text-align: left;
+}
+.ays-quiz-faq-main .ays-quiz-ol-container {
+    width: 250px;
+    margin: 0 auto 20px;
+    max-width: 100%;
 }
 .ays-quiz-p-container p{
     font-weight: 600;

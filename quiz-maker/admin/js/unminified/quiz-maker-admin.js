@@ -1870,12 +1870,13 @@
                     '            </span>'+
                     '        </div>'+
                     '        <div class="ays_add_question_from_table">'+
-                    '            <a href="javascript:void(0)" class="ays-add-question">'+
+                    '            <a href="javascript:void(0)" class="ays-add-question-primary">'+
                     '                <i class="ays_fa ays_fa_plus_square" aria-hidden="true"></i>'+
                     '                '+ quizLangObj.insertQuestion +
                     '            </a>'+
-                    '            <a href="admin.php?page=quiz-maker-questions&action=add" class="ays-add-question-primary" target="_blank">'+
+                    '            <a href="admin.php?page=quiz-maker-questions&action=add" class="ays-add-question" target="_blank">'+
                     '                '+ quizLangObj.createQuestion +
+                    '                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link-icon lucide-external-link"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>'+
                     '            </a>'+
                     '        </div>'+
                     '    </td>'+
@@ -2168,7 +2169,7 @@
             _this.toggleClass('selected');
         }
         
-        $(document).on('click', '.ays-add-question', function () {
+        $(document).on('click', '.ays-add-question.ays-add-question-top-button, #ays-questions-table .ays-add-question-primary', function () {
             $(document).find('#ays-questions-modal').aysModal();
         });
 
@@ -2979,12 +2980,13 @@
                             '            </span>'+
                             '        </div>'+
                             '        <div class="ays_add_question_from_table">'+
-                            '            <a href="javascript:void(0)" class="ays-add-question">'+
+                            '            <a href="javascript:void(0)" class="ays-add-question-primary">'+
                             '                <i class="ays_fa ays_fa_plus_square" aria-hidden="true"></i>'+
                             '                '+ quizLangObj.insertQuestion +
                             '            </a>'+
-                            '            <a href="admin.php?page=quiz-maker-questions&action=add" class="ays-add-question-primary" target="_blank">'+
+                            '            <a href="admin.php?page=quiz-maker-questions&action=add" class="ays-add-question" target="_blank">'+
                             '                '+ quizLangObj.createQuestion +
+                            '                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link-icon lucide-external-link"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>'+
                             '            </a>'+
                             '        </div>'+
                             '    </td>'+
@@ -4693,4 +4695,79 @@ function selectAndCopyElementContents(el) {
         textRange.moveToElementText(el);
         textRange.select();
     }
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    var startDate = new Date("2025-09-08");
+    var endDate = new Date("2025-09-30");
+    var totalLicenses = 50;
+    var progressionPattern = new Array(3, 2, 1, 4, 2, 3, 1, 2, 4, 3, 2, 1, 3, 2, 4, 1, 3, 2, 2, 3, 1, 2);
+    function getCurrentProgress() {
+        var today = new Date();
+        // today.setDate(today.getDate() + 1);
+        var daysPassed = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
+        var usedLicenses = 0;
+        for (var i = 0; i < Math.min(daysPassed, progressionPattern.length); i++) {
+            usedLicenses += progressionPattern[i];
+        }
+        return Math.min(usedLicenses, totalLicenses);
+    }
+    function updateProgress() {
+        var usedLicenses = getCurrentProgress();
+        var remainingLicenses = totalLicenses - usedLicenses;
+        var progressPercentage = (usedLicenses / totalLicenses) * 100;
+        var remainingElement = document.getElementById("remaining-licenses");
+        var progressElement = document.getElementById("progress-fill");
+        if (remainingElement) remainingElement.textContent = remainingLicenses;
+        if (progressElement) progressElement.style.width = progressPercentage + "%";
+    }
+    updateProgress();
+});
+
+// Copy to clipboard function
+function copyToClipboard(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(function() {
+            showCopyNotification(quizLangObj.successCopyCoupon);
+        }).catch(function() {
+            fallbackCopyTextToClipboard(text);
+        });
+    } else {
+        fallbackCopyTextToClipboard(text);
+    }
+}
+
+function fallbackCopyTextToClipboard(text) {
+    var textArea = document.createElement("textarea");
+    textArea.value = text;
+    textArea.style.position = "fixed";
+    textArea.style.top = "-9999px";
+    textArea.style.left = "-9999px";
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    try {
+        var successful = document.execCommand("copy");
+        if (successful) {
+            showCopyNotification(quizLangObj.successCopyCoupon);
+        } else {
+            showCopyNotification(quizLangObj.failedCopyCoupon);
+        }
+    } catch (err) {
+        showCopyNotification(quizLangObj.failedCopyCoupon);
+    }
+    document.body.removeChild(textArea);
+}
+
+function showCopyNotification(message) {
+    var notification = document.createElement("div");
+    notification.className = "ays-quiz-copy-notification show";
+    notification.textContent = message;
+    document.body.appendChild(notification);
+    setTimeout(function() {
+        notification.classList.remove("show");
+        setTimeout(function() {
+            document.body.removeChild(notification);
+        }, 300);
+    }, 2000);
 }

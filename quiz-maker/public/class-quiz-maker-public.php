@@ -7146,19 +7146,39 @@ class Quiz_Maker_Public
         wp_die();
     }
 
-    protected function get_user_by_ip($id){
+    protected function get_user_by_ip($id) {
         global $wpdb;
         $user_ip = $this->get_user_ip();
-        $sql = "SELECT COUNT(*) FROM `{$wpdb->prefix}aysquiz_reports` WHERE `user_ip` = '$user_ip' AND `quiz_id` = $id";
-        $result = $wpdb->get_var($sql);
-        return $result;
+
+        $id = absint($id);
+        $user_ip = sanitize_text_field($user_ip);
+
+        $sql = $wpdb->prepare(
+            "SELECT COUNT(*) 
+             FROM `{$wpdb->prefix}aysquiz_reports` 
+             WHERE `user_ip` = %s AND `quiz_id` = %d",
+            $user_ip,
+            $id
+        );
+
+        return $wpdb->get_var($sql);
     }
 
-    protected function get_limit_user_by_id($quiz_id, $user_id){
+    protected function get_limit_user_by_id($quiz_id, $user_id) {
         global $wpdb;
-        $sql = "SELECT COUNT(*) FROM `{$wpdb->prefix}aysquiz_reports` WHERE `user_id` = '$user_id' AND `quiz_id` = $quiz_id";
-        $result = intval($wpdb->get_var($sql));
-        return $result;
+
+        $quiz_id = absint($quiz_id);
+        $user_id = absint($user_id);
+
+        $sql = $wpdb->prepare(
+            "SELECT COUNT(*) 
+             FROM `{$wpdb->prefix}aysquiz_reports` 
+             WHERE `user_id` = %d AND `quiz_id` = %d",
+            $user_id,
+            $quiz_id
+        );
+
+        return intval($wpdb->get_var($sql));
     }
 
     protected function get_user_ip(){

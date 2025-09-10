@@ -1708,7 +1708,7 @@ $quiz_admin_note_mobile_text_decoration = (isset($options[ 'quiz_admin_note_mobi
                 <div class='form-group row ays-field ays_items_count_div'>
                     <div class="col-sm-3" style="display: flex; align-items: center;">
                         <div style='display: flex;align-items: center;margin-right: 15px;'>
-                            <a href="javascript:void(0)" class="ays-add-question">
+                            <a href="javascript:void(0)" class="ays-add-question ays-add-question-top-button">
                                 <i class="ays_fa ays_fa_plus_square" aria-hidden="true"></i>
                                 <?php echo esc_html__('Insert questions', 'quiz-maker'); ?>
                             </a>
@@ -1849,12 +1849,13 @@ $quiz_admin_note_mobile_text_decoration = (isset($options[ 'quiz_admin_note_mobi
                                         </span>
                                     </div>
                                     <div class='ays_add_question_from_table'>                                        
-                                        <a href="javascript:void(0)" class="ays-add-question">
+                                        <a href="javascript:void(0)" class="ays-add-question-primary">
                                             <i class="ays_fa ays_fa_plus_square" aria-hidden="true"></i>
                                             <?php echo esc_html__('Insert questions', 'quiz-maker'); ?>
                                         </a>
-                                        <a href="<?php echo $question_add_new_page_url; ?>" class="ays-add-question-primary" target="_blank">
+                                        <a href="<?php echo $question_add_new_page_url; ?>" class="ays-add-question" target="_blank">
                                             <?php echo esc_html__('Create question', 'quiz-maker'); ?>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link-icon lucide-external-link"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
                                         </a>
                                     </div>
                                 </td>
