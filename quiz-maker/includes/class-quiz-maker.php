@@ -233,6 +233,7 @@ class Quiz_Maker {
 
         // Add menu item
         $this->loader->add_action( 'admin_menu', $plugin_admin, 'add_plugin_admin_menu' );
+        $this->loader->add_action( 'admin_menu', $plugin_admin, 'add_plugin_admin_dashboard_menu', 10 );
         $this->loader->add_action( 'admin_menu', $plugin_admin, 'add_plugin_quizzes_submenu', 90 );
         $this->loader->add_action( 'admin_menu', $plugin_admin, 'add_plugin_questions_submenu', 95 );
         $this->loader->add_action( 'admin_menu', $plugin_admin, 'add_plugin_quiz_categories_submenu', 100 );

@@ -1433,15 +1433,21 @@
             revert: true,
             forcePlaceholderSize: true,
             forceHelperSize: true,
+            items: 'tr:not(.ays-question-empty-row)',
             update: function (event, ui) {
                 let className = ui.item.attr('class').split(' ')[0];
                 let sorting_ids = [];
-                $('#ays-questions-table').find('tr.' + className).each(function (index) {
+                $('#ays-questions-table').find('tr.' + className + ':not(.ays-question-empty-row)').each(function (index) {
                     let classEven = (((index + 1) % 2) === 0) ? 'even' : '';
                     if ($(this).hasClass('even')) {
                         $(this).removeClass('even');
                     }
-                    sorting_ids.push($(this).data('id'));
+
+                    var current_question_id = $(this).data('id');
+
+                    if( typeof current_question_id != 'undefined' ){
+                        sorting_ids.push($(this).data('id'));
+                    }
                     $(this).addClass(classEven);
                 });
                 $(document).find('input#ays_already_added_questions').val(sorting_ids);
@@ -1861,7 +1867,7 @@
                 if($(document).find('tr.ays-question-row').length == 0){
                     var colspan =  $(document).find('table.ays-questions-table thead th').length;
                     $(document).find('#ays-questions-table').find('.dataTables_empty').parents('tr').remove();
-                   let quizEmptytd = '<tr class="ays-question-row ui-state-default">'+
+                   let quizEmptytd = '<tr class="ays-question-row ays-question-empty-row ui-state-default">'+
                     '    <td colspan="'+colspan+'" class="empty_quiz_td">'+
                     '        <div class="ays-quiz-create-question-link-box">'+
                     '            <i class="ays_fa ays_fa_info" aria-hidden="true" style="margin-right:10px"></i>'+
@@ -1891,6 +1897,10 @@
                     index++;
                     $(this).addClass(className);
                 });
+
+                if( $(document).find('table.ays-questions-table tbody').find('.ays-sort').length == 0 ){
+                    $(document).find("table#ays-questions-table").find('.empty_quiz_td .ays-quiz-create-question-link-box').css('display', 'block');
+                }
             }, 300);
         });
 
@@ -2912,7 +2922,7 @@
         // Bulk delete        
         let accordion = $(document).find('table.ays-questions-table tbody');
 		$(document).on('click', '.ays_select_all', function(e){
-            if(accordion.find('.empty_quiz_td').length > 0){
+            if(accordion.find('.empty_quiz_td').length > 0 && accordion.find('.ays-sort').length == 0){
                 return false;
             }
             accordion.find('.ays_del_tr').prop("checked", true);
@@ -2965,13 +2975,13 @@
                         existing_ids.splice(position, 1);
                         id_container.val(existing_ids.join(','));
                     }
-                    setTimeout(function(){                        
+                    setTimeout(function(){
                         a.parents('tr').remove();
                         questions_count.text(accordion.find('tr.ays-question-row').length);
                         if(accordion.find('tr.ays-question-row').length == 0){
                             var colspan =  $(document).find('table.ays-questions-table thead th').length;
                             accordion.find('.dataTables_empty').parents('tr').remove();
-                           let quizEmptytd = '<tr class="ays-question-row ui-state-default">'+
+                           let quizEmptytd = '<tr class="ays-question-row ays-question-empty-row ui-state-default">'+
                             '    <td colspan="'+colspan+'" class="empty_quiz_td">'+
                             '        <div class="ays-quiz-create-question-link-box">'+
                             '            <i class="ays_fa ays_fa_info" aria-hidden="true" style="margin-right:10px"></i>'+
@@ -3002,6 +3012,10 @@
                             index++;
                             $(this).addClass(className);
                         });
+
+                        if( $(document).find('table.ays-questions-table tbody').find('.ays-sort').length == 0 ){
+                            $(document).find("table#ays-questions-table").find('.empty_quiz_td .ays-quiz-create-question-link-box').css('display', 'block');
+                        }
                         
                     }, 300);
                 }
@@ -3385,11 +3399,16 @@
 
         $(document).find('.ays-question-ordering').on('click',function(){
             var table_tbody = $(document).find('#ays-questions-table tbody');
-            table_tbody.append(table_tbody.find('tr').get().reverse());
+            // table_tbody.append(table_tbody.find('tr:not(.ays-question-empty-row)').get().reverse());
+            table_tbody.find('tr.ays-question-empty-row').before(table_tbody.find('tr:not(.ays-question-empty-row)').get().reverse());
 
             var sorting_ids = [];
-            table_tbody.find('tr').each(function (index) {
-                sorting_ids.push($(this).data('id'));
+            table_tbody.find('tr:not(.ays-question-empty-row)').each(function (index) {
+                var current_question_id = $(this).data('id');
+
+                if( typeof current_question_id != 'undefined' ){
+                    sorting_ids.push($(this).data('id'));
+                }
             });
             $(document).find('input#ays_already_added_questions').val(sorting_ids);
 
@@ -4166,6 +4185,19 @@
                 allowfullscreen: true,
             });
             $(this).replaceWith(iframe);
+        });
+
+        $(document).on('mouseover', '.ays-dashicons', function(){
+            var allRateStars = $(document).find('.ays-dashicons');
+            var index = allRateStars.index(this);
+            allRateStars.removeClass('ays-dashicons-star-filled').addClass('ays-dashicons-star-empty');
+            for (var i = 0; i <= index; i++) {
+                allRateStars.eq(i).removeClass('ays-dashicons-star-empty').addClass('ays-dashicons-star-filled');
+            }
+        });
+
+        $(document).on('mouseleave', '.ays-rated-link', function(){
+            $(document).find('.ays-dashicons').removeClass('ays-dashicons-star-filled').addClass('ays-dashicons-star-empty');
         });
     });
 

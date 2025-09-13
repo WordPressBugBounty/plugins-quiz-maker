@@ -8399,3 +8399,41 @@ body[class~="toplevel_page_quiz-maker"] .swal2-popup .swal2-actions {
 .button.ays_default_sec_btn:focus{
     box-shadow: 0 0 0 1px #fff, 0 0 0 3px #ccc;
 }
+
+/* Dashboard footer (stars) style START */
+a.ays-rated-link, a.ays-rated-link:hover, a.ays-rated-link:focus {
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: unset;
+}
+
+
+span.ays-dashicons{
+    font-family: dashicons;
+    display: inline-block;
+    line-height: 1;
+    font-weight: 400;
+    font-style: normal;
+    speak: never;
+    text-decoration: inherit;
+    text-transform: none;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+    vertical-align: top;
+    text-align: center;
+    transition: color .1s ease-in;
+    color: #ffb900;
+}
+
+span.ays-dashicons-star-empty:before {
+    content: "\f154";
+}
+
+span.ays-dashicons-star-filled:before {
+    content: "\f155";
+}
+/* Dashboard footer (stars) style END */

@@ -68,6 +68,10 @@ ul.ays-wp-notice-answers{
     width: auto; /* optionality */
 }
 
+#toplevel_page_quiz-maker .wp-first-item {
+    display: none !important;
+}
+
 .ays_quiz_deactivation_button{
     background: transparent;
     border: none;

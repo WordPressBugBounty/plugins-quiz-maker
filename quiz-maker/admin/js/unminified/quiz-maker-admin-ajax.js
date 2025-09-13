@@ -45,7 +45,7 @@
         var quiz_question_title_view = $(document).find('.quiz_question_title_view');
 
         if(window.aysQuestNewSelected.length > 0){
-            $(document).find('td.empty_quiz_td').parent().remove();
+            // $(document).find('td.empty_quiz_td').parent().remove();
             
             let data = $(this).serializeFormJSON();
             data.action = 'add_question_rows';
@@ -63,7 +63,8 @@
                 data: data,
                 success: function(response){
                     if( response.status === true ) {
-                        $(document).find("table#ays-questions-table").find('.dataTables_empty').parents('tr').remove();
+                        // $(document).find("table#ays-questions-table").find('.dataTables_empty').parents('tr').remove();
+                        $(document).find("table#ays-questions-table").find('.empty_quiz_td .ays-quiz-create-question-link-box ').css('display', 'none');
                         $(document).find('div.ays-quiz-preloader').css('display', 'none');
                         let table = $('table#ays-questions-table tbody'),
                             id_container = $(document).find('input#ays_already_added_questions'),
@@ -72,8 +73,9 @@
                         for(let i = 0; i < response.ids.length; i++) {
                             if( $.inArray( response.ids[i], existing_ids ) === -1 ) {
                                 new_ids.push(response.ids[i]);
-                                table.append(response.rows[i]);
-                                let table_rows = $('table#ays-questions-table tbody tr'),
+                                // table.append(response.rows[i]);
+                                table.find('tr.ays-question-empty-row').before(response.rows[i]);
+                                let table_rows = $('table#ays-questions-table tbody tr:not(.ays-question-empty-row)'),
                                     table_rows_length = table_rows.length;
                                 if( table_rows_length % 2 === 0 ) {
                                     table_rows.eq( ( table_rows_length - 1 ) ).addClass('even');
@@ -83,7 +85,7 @@
                             }
                         }
                         
-                        let table_rows = $('table#ays-questions-table tbody tr');
+                        let table_rows = $('table#ays-questions-table tbody tr:not(.ays-question-empty-row)');
                         // new_ids = new_ids.reverse();
                         for(var i = 0; i < new_ids.length; i++){
                             existing_ids.push(new_ids[i]);
@@ -99,7 +101,7 @@
                     $(document).find('#ays-questions-modal').aysModal('hide');
                     let questions_count = response.ids.length;
 
-                    let table_rows = $('table#ays-questions-table tbody tr');
+                    let table_rows = $('table#ays-questions-table tbody tr:not(.ays-question-empty-row)');
                     
                     var questions_count_val = questions_count;
                     if ( table_rows.length > 0 && table_rows.length > questions_count ) {
@@ -110,7 +112,7 @@
 
                     let pagination = $('.ays-question-pagination');
                     if (pagination.length > 0) {
-                        let trCount = $(document).find('#ays-questions-table tbody tr').length;
+                        let trCount = $(document).find('#ays-questions-table tbody tr:not(.ays-question-empty-row)').length;
                         let pagesCount = 1;
                         let pageCount = Math.ceil(trCount/5);
                         createPagination(pagination, pageCount, pagesCount);

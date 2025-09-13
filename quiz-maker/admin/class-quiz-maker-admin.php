@@ -147,6 +147,10 @@ class Quiz_Maker_Admin
         wp_enqueue_style($this->plugin_name . '-banner', plugin_dir_url(__FILE__) . 'css/quiz-maker-banner.css', array(), $this->version, 'all');
         wp_enqueue_style($this->plugin_name . "-loaders", plugin_dir_url(__FILE__) . 'css/loaders.css', array(), $this->version, 'all');
 
+        if( isset( $_GET['page'] ) && sanitize_key($_GET['page']) == $this->plugin_name . '-admin-dashboard' ){
+            wp_enqueue_style( $this->plugin_name . "-dashboard", plugin_dir_url( __FILE__ ) . 'css/quiz-maker-dashboard.css', array(), $this->version, 'all' );
+        }
+
     }
 
     /**
@@ -794,6 +798,29 @@ class Quiz_Maker_Admin
         add_action("load-$hook_integrations", array( $this, 'add_tabs' ));
     }
 
+    public function add_plugin_admin_dashboard_menu(){
+
+        if (!doing_action('admin_menu')) {
+            return;
+        }
+
+        $menuHook = add_submenu_page(
+            $this->plugin_name,
+            __('Dashboard', 'quiz-maker'),
+            __('Dashboard', 'quiz-maker'),
+            'manage_options',
+            $this->plugin_name . '-admin-dashboard',
+            array($this, 'display_plugin_admin_dashboard_page'),
+            40
+        );
+
+        if (!$menuHook) {
+            return;
+        }
+
+        add_action("load-$menuHook", array($this, 'add_tabs'));
+    }
+
     public function quiz_maker_select_submenu($file) {
         global $plugin_page;
         if ( $this->plugin_name . "-all-reviews" == $plugin_page ) {
@@ -944,6 +971,10 @@ class Quiz_Maker_Admin
 
     public function display_plugin_integrations_page(){        
         include_once('partials/integrations/quiz-maker-integrations.php');
+    }
+
+    public function display_plugin_admin_dashboard_page(){
+        include_once('partials/dashboard/quiz-maker-dashboard-display.php');
     }
 
     public static function set_screen($status, $option, $value){
@@ -3260,7 +3291,7 @@ class Quiz_Maker_Admin
         if(isset($_REQUEST['page'])){
             if(false !== strpos( sanitize_text_field( $_REQUEST['page'] ), $this->plugin_name)){
                 ?>
-                <p style="font-size:13px;text-align:center;font-style:italic;">
+                <p class="ays-quiz-footer-review-box" style="font-size:13px;text-align:center;font-style:italic;">
                     <span style="margin-left:0px;margin-right:10px;" class="ays_heart_beat"><i class="ays_fa ays_fa_heart_o animated"></i></span>
                     <span><?php echo esc_html__( "If you love our plugin, please do big favor and rate us on", 'quiz-maker'); ?></span> 
                     <a target="_blank" href='https://wordpress.org/support/plugin/quiz-maker/reviews/?rate=5#new-post'>WordPress.org</a>

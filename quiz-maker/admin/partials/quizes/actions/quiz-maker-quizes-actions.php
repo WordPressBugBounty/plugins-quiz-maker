@@ -1708,10 +1708,11 @@ $quiz_admin_note_mobile_text_decoration = (isset($options[ 'quiz_admin_note_mobi
                 <div class='form-group row ays-field ays_items_count_div'>
                     <div class="col-sm-3" style="display: flex; align-items: center;">
                         <div style='display: flex;align-items: center;margin-right: 15px;'>
-                            <a href="javascript:void(0)" class="ays-add-question ays-add-question-top-button">
+                            <!-- <a href="javascript:void(0)" class="ays-add-question ays-add-question-top-button">
                                 <i class="ays_fa ays_fa_plus_square" aria-hidden="true"></i>
                                 <?php echo esc_html__('Insert questions', 'quiz-maker'); ?>
-                            </a>
+                            </a> -->
+                            <span style="margin-right: 5px;"><?php echo esc_html__('Questions', 'quiz-maker'); ?></span>
                             <a class="ays_help" style="font-size:15px;" data-placement="bottom" data-toggle="tooltip" data-html="true" title="<?php echo esc_attr("<p style='margin:0;text-indent:7px;'>").esc_attr(__('For inserting questions to the quiz you need to make questions first from the “Questions page” in the left navbar. After popup’s opening, you can filter and select your prepared questions for this quiz.', 'quiz-maker')).esc_attr("</p><p style='margin:0;text-indent:7px;'>").esc_attr(__('The ordering of the questions will be the same as you chose. Also, you can reorder them after selection. There are no limitations for questions quantity.', 'quiz-maker')).esc_attr("</p>"); ?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
@@ -1836,11 +1837,11 @@ $quiz_admin_note_mobile_text_decoration = (isset($options[ 'quiz_admin_note_mobi
                                 <?php
                             }
                         }
-                        if(empty($question_id_array)){                            
+                        //if(empty($question_id_array)){                            
                             ?>
-                            <tr class="ays-question-row ui-state-default">
+                            <tr class="ays-question-row ays-question-empty-row ui-state-default">
                                 <td colspan="6" class="empty_quiz_td">
-                                    <div class="ays-quiz-create-question-link-box">
+                                    <div class="ays-quiz-create-question-link-box" style="<?php echo !empty($question_id_array) ? 'display: none;' : ''; ?>">
                                         <i class="ays_fa ays_fa_info" aria-hidden="true" style="margin-right:10px"></i>
                                         <span style="font-size: 13px; font-style: italic;">
                                         <?php
@@ -1861,7 +1862,7 @@ $quiz_admin_note_mobile_text_decoration = (isset($options[ 'quiz_admin_note_mobi
                                 </td>
                             </tr>
                             <?php
-                        }
+                        //}
                         ?>
                         </tbody>
                     </table>
