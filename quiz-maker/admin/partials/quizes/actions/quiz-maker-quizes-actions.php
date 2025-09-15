@@ -733,6 +733,40 @@ $quiz_open_quizzes_list_icon_svg_html = '
     </svg>
 </div>';
 
+$tab_docs = array(
+    'tab1' => array(
+        'link' => 'https://quiz-plugin.com/docs/how-to-create-a-quiz/',
+        'text' => __('How to Configure General Settings?', 'quiz-maker'),
+    ),
+    'tab2' => array(
+        'link' => 'https://quiz-plugin.com/docs/styles-settings/',
+        'text' => __('How to Configure Styles Tab?', 'quiz-maker'),
+    ),
+    'tab3' => array(
+        'link' => 'https://quiz-plugin.com/docs/quiz-settings-tab/',
+        'text' => __('How to Configure Settings Tab?', 'quiz-maker'),
+    ),
+    'tab4' => array(
+        'link' => 'https://quiz-plugin.com/docs/quiz-results-settings/',
+        'text' => __('How to Configure Results Settings Tab?', 'quiz-maker'),
+    ),
+    'tab5' => array(
+        'link' => 'https://quiz-plugin.com/docs/quiz-limitation-settings/',
+        'text' => __('How to Configure Limitation Users Tab?', 'quiz-maker'),
+    ),
+    'tab6' => array(
+        'link' => 'https://quiz-plugin.com/docs/quiz-user-data-settings/',
+        'text' => __('How to Configure User Data Tab?', 'quiz-maker'),
+    ),
+    'tab7' => array(
+        'link' => 'https://quiz-plugin.com/docs/email-certificate-settings/',
+        'text' => __('How to Configure E-Mail, Certificate Tab?', 'quiz-maker'),
+    ),
+    'tab8' => array(
+        'link' => 'https://quiz-plugin.com/docs-category/integrations/',
+        'text' => __('How to Configure Integration Tab?', 'quiz-maker'),
+    ),
+);
 $style = null;
 $image_text = __('Add Image', 'quiz-maker');
 $bg_image_text = __('Add Image', 'quiz-maker');
@@ -1477,6 +1511,7 @@ $quiz_admin_note_mobile_text_decoration = (isset($options[ 'quiz_admin_note_mobi
 <style id="ays_live_custom_css"></style>
 <div class="wrap ays-quiz-dashboard-main-wrap">
     <div class="container-fluid">
+        <?php if(1 == 0): ?>
         <div class="ays-quiz-heading-box ays-quiz-heading-box-margin-top">
             <div class="ays-quiz-wordpress-user-manual-box">
                 <a href="https://www.youtube.com/watch?v=gKjzOsn_yDo" target="_blank" style="text-decoration: none;font-size: 13px;">
@@ -1489,6 +1524,7 @@ $quiz_admin_note_mobile_text_decoration = (isset($options[ 'quiz_admin_note_mobi
                 </a>
             </div>
         </div>
+        <?php endif; ?>
         <h1 class="wp-heading-inline">
             <?php
                 echo $heading;
@@ -1547,6 +1583,18 @@ $quiz_admin_note_mobile_text_decoration = (isset($options[ 'quiz_admin_note_mobi
                     </div>
                 </div>
                 <?php endif;?>
+                <div id="ays-quiz-tab-doc-link" class="ays-quiz-heading-box" style="margin-bottom: 40px;">
+                    <div class="ays-quiz-wordpress-user-manual-box">
+                        <a href="https://www.youtube.com/watch?v=gKjzOsn_yDo" target="_blank" style="text-decoration: none;font-size: 13px;">
+                            <span><img loading="lazy" src='<?php echo AYS_QUIZ_ADMIN_URL; ?>/images/icons/youtube-video-icon.svg' ></span>
+                            <span style="margin-left: 3px; text-decoration: underline;"><?php echo esc_html__('Getting started', "quiz-maker"); ?></span>
+                        </a>
+                        <a class="ays-quiz-doc-link" href="<?php echo isset($tab_docs[$ays_quiz_tab]['link']) ? esc_url($tab_docs[$ays_quiz_tab]['link']) : 'https://quiz-plugin.com/docs/how-to-create-a-quiz/'; ?>" target="_blank">
+                            <i class="ays_fa ays_fa_file_text" ></i> 
+                            <span style="margin-left: 3px;text-decoration: underline;"><?php echo isset($tab_docs[$ays_quiz_tab]['text']) ? esc_html($tab_docs[$ays_quiz_tab]['text']) : __('How to Configure General Settings?', 'quiz-maker'); ?></span>
+                        </a>
+                    </div>
+                </div>
             </div>
             <hr/>
             <div class="ays-top-menu-container-wrapper">
@@ -1661,49 +1709,6 @@ $quiz_admin_note_mobile_text_decoration = (isset($options[ 'quiz_admin_note_mobi
                         ?>
                     </div>
                 </div><!-- Quiz Description -->
-                <hr/>
-                <div class="form-group row">
-                    <div class="col-sm-2">
-                        <label for="ays-category">
-                            <?php echo esc_html__('Category', 'quiz-maker'); ?>
-                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Category of the quiz. For making a category please visit Quiz Categories page from the left navbar.','quiz-maker') ); ?>">
-                                <i class="ays_fa ays_fa_info_circle"></i>
-                            </a>
-                        </label>
-                    </div>
-                    <div class="col-sm-10">
-                        <select id="ays-category" name="ays_quiz_category">
-                            <option></option>
-                            <?php
-                            $cat = 0;
-                            foreach ($quiz_categories as $key => $quiz_category) {
-
-                                $quiz_category_id = (isset( $quiz['quiz_category_id'] ) && $quiz['quiz_category_id'] != "") ? $quiz['quiz_category_id'] : 1;
-                                $q_category_id = (isset( $quiz_category['id'] ) && $quiz_category['id'] != "") ? $quiz_category['id'] : 1;
-
-                                $quiz_category_title = (isset( $quiz_category['title'] ) && $quiz_category['title'] != "") ? esc_attr( stripslashes($quiz_category['title']) ) : "";
-
-                                $selected = (intval($q_category_id) == intval($quiz_category_id)) ? "selected" : "";
-                                if ($cat == 0 && intval($quiz_category_id) == 0) {
-                                    $selected = 'selected';
-                                }
-                                echo '<option value="' . esc_attr($q_category_id) . '" ' . esc_attr($selected) . '>' . esc_html($quiz_category_title) . '</option>';
-                                $cat++;
-                            }
-                            ?>
-                        </select>
-                        <div class="ays_quiz_small_hint_text_for_message_variables" style="margin-top: 5px;">
-                        <span><?php
-                            echo (sprintf(
-                                /* translators: %s: opening and closing <a> HTML code  */
-                                wp_kses_post(__('Create a new category %s here %s', 'quiz-maker')),
-                                '<a href="'. $quiz_category_page_url .'" target="_blank">',
-                                '</a>'
-                            )) ;
-                        ?></div>
-                    </p>
-                    </div>
-                </div>
                 <hr/>
                 <div class='form-group row ays-field ays_items_count_div'>
                     <div class="col-sm-3" style="display: flex; align-items: center;">
@@ -3257,6 +3262,9 @@ $quiz_admin_note_mobile_text_decoration = (isset($options[ 'quiz_admin_note_mobi
                                             </div>
                                         </div>
                                     </div>
+                                    <p style="text-align: center;">
+                                        <span class="ays_quiz_small_hint_text" style="color: #ccc;"><?php echo __("Note: This is only a live preview and the quiz cannot be started here.", 'quiz-maker'); ?></span>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -4442,6 +4450,49 @@ $quiz_admin_note_mobile_text_decoration = (isset($options[ 'quiz_admin_note_mobi
                                     <label class="form-check-label"
                                            for="ays-unpublish"> <?php echo __('Unpublished', 'quiz-maker'); ?> </label>
                                 </div>
+                            </div>
+                        </div>
+                        <hr/>
+                        <div class="form-group row">
+                            <div class="col-sm-4">
+                                <label for="ays-category">
+                                    <?php echo esc_html__('Category', 'quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Category of the quiz. For making a category please visit Quiz Categories page from the left navbar.','quiz-maker') ); ?>">
+                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                    </a>
+                                </label>
+                            </div>
+                            <div class="col-sm-8">
+                                <select id="ays-category" name="ays_quiz_category">
+                                    <option></option>
+                                    <?php
+                                    $cat = 0;
+                                    foreach ($quiz_categories as $key => $quiz_category) {
+
+                                        $quiz_category_id = (isset( $quiz['quiz_category_id'] ) && $quiz['quiz_category_id'] != "") ? $quiz['quiz_category_id'] : 1;
+                                        $q_category_id = (isset( $quiz_category['id'] ) && $quiz_category['id'] != "") ? $quiz_category['id'] : 1;
+
+                                        $quiz_category_title = (isset( $quiz_category['title'] ) && $quiz_category['title'] != "") ? esc_attr( stripslashes($quiz_category['title']) ) : "";
+
+                                        $selected = (intval($q_category_id) == intval($quiz_category_id)) ? "selected" : "";
+                                        if ($cat == 0 && intval($quiz_category_id) == 0) {
+                                            $selected = 'selected';
+                                        }
+                                        echo '<option value="' . esc_attr($q_category_id) . '" ' . esc_attr($selected) . '>' . esc_html($quiz_category_title) . '</option>';
+                                        $cat++;
+                                    }
+                                    ?>
+                                </select>
+                                <div class="ays_quiz_small_hint_text_for_message_variables" style="margin-top: 5px;">
+                                <span><?php
+                                    echo (sprintf(
+                                        /* translators: %s: opening and closing <a> HTML code  */
+                                        wp_kses_post(__('Create a new category %s here %s', 'quiz-maker')),
+                                        '<a href="'. $quiz_category_page_url .'" target="_blank">',
+                                        '</a>'
+                                    )) ;
+                                ?></div>
+                            </p>
                             </div>
                         </div>
                         <hr/>
@@ -10088,8 +10139,11 @@ $quiz_admin_note_mobile_text_decoration = (isset($options[ 'quiz_admin_note_mobi
                                 <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL . '/images/icons/filter.svg' ?>" style="width: 20px;">
                                 <span><?php echo esc_html__('Filters', 'quiz-maker'); ?></span>
                             </div>
-                            <div style="font-size: 16px; padding-right:20px; margin:0; text-align:right;">
-                                <a class="" href="admin.php?page=<?php echo $this->plugin_name; ?>-questions&action=add" target="_blank"><?php echo esc_html__('Create question', 'quiz-maker'); ?></a>
+                            <div class="ays-quiz-insert-question-modal-create-link" style="font-size: 16px; padding-right:20px; margin:0; text-align:right;">
+                                <a class="" href="admin.php?page=<?php echo $this->plugin_name; ?>-questions&action=add" target="_blank">
+                                    <?php echo esc_html__('Create question', 'quiz-maker'); ?>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link-icon lucide-external-link"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+                                </a>
                             </div>
                         </div>
                         <div class="form-group row display_none ays-quiz-add-question-filter-option-box">

@@ -644,7 +644,7 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                                 
                                 <td title="This property available only in pro version" class="only_pro ays-quiz-question-answer-weight-point-row">
                                     <div class="pro_features"></div>
-                                    <input class="w-100" type="number" value="2" tabindex="-1"/>
+                                    <input class="w-100" type="number" value="1" tabindex="-1"/>
                                 </td>
                                 <td title="This property available only in pro version" class="only_pro ays-quiz-question-answer-keyword-row">
                                     <div class="pro_features"></div>
@@ -762,7 +762,7 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
 
                                     <td title="This property available only in pro version" class="only_pro ays-quiz-question-answer-weight-point-row">
                                         <div class="pro_features"></div>
-                                        <input class="w-100" type="number" value="2" tabindex="-1"/>
+                                        <input class="w-100" type="number" value="1" tabindex="-1"/>
                                     </td>
 
                                     <td title="This property available only in pro version" class="only_pro ays-quiz-question-answer-keyword-row">
@@ -1258,7 +1258,7 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                     <div class="col-sm-3">
                         <label for="ays_quiz_hide_question_text">
                             <?php echo esc_html__('Hide question text on the front-end', 'quiz-maker'); ?>
-                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Make the question appear without text. The option is designed to use when the question includes an image as well.','quiz-maker') ); ?>">
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Make the question appear without text on the website (quiz page). The option is designed to use when the question includes an image as well.','quiz-maker') ); ?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
                         </label>

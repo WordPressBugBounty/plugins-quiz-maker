@@ -900,6 +900,7 @@ a.ays-add-question:hover {
     color: #fff !important;
 }
 
+#ays-questions-modal .ays-quiz-insert-question-modal-create-link a,
 .ays_add_question_from_table a.ays-add-question {
     display: flex;
     gap: 5px;
@@ -907,6 +908,7 @@ a.ays-add-question:hover {
     align-items: center;
 }
 
+#ays-questions-modal .ays-quiz-insert-question-modal-create-link svg,
 .ays_add_question_from_table a svg {
     width: 16px;
     height: 16px;

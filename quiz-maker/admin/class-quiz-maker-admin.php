@@ -303,6 +303,15 @@ class Quiz_Maker_Admin
 
             "successCopyCoupon"             => __( "Coupon code copied!", 'quiz-maker' ),
             "failedCopyCoupon"              => __( "Failed to copy coupon code", 'quiz-maker' ),
+
+            'generalTabDoc'                 => esc_html__( "How to Configure General Settings?", 'quiz-maker' ),
+            'stylesTabDoc'                  => esc_html__( "How to Configure Styles Tab?", 'quiz-maker' ),
+            'settingsTabDoc'                => esc_html__( "How to Configure Settings Tab?", 'quiz-maker' ),
+            'resultsSettingsTabDoc'         => esc_html__( "How to Configure Results Settings Tab?", 'quiz-maker' ),
+            'limitationUsersTabDoc'         => esc_html__( "How to Configure Limitation Users Tab?", 'quiz-maker' ),
+            'userDataTabDoc'                => esc_html__( "How to Configure User Data Tab?", 'quiz-maker' ),
+            'emailTabDoc'                   => esc_html__( "How to Configure E-Mail, Certificate Tab?", 'quiz-maker' ),
+            'integrationTabDoc'             => esc_html__( "How to Configure Integration Tab?", 'quiz-maker' ),
         ) );
 
         wp_localize_script( $this->plugin_name, 'quizLangDataTableObj', array(

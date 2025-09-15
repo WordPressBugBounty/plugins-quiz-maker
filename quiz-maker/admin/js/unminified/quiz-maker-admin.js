@@ -1801,7 +1801,7 @@
                                     '</td>'+
                                     '<td title="This property available only in pro version" class="only_pro ays-quiz-question-answer-weight-point-row">'+
                                         '<div class="pro_features"></div>'+
-                                        '<input class="w-100" type="number" value="2" tabindex="-1"/>'+
+                                        '<input class="w-100" type="number" value="1" tabindex="-1"/>'+
                                     '</td>'+
                                     '<td title="This property available only in pro version" class="only_pro ays-quiz-question-answer-keyword-row">'+
                                         '<div class="pro_features"></div>'+
@@ -2200,6 +2200,42 @@
             show_hide_rows(page); // show count of rows
         }
 
+        // Tab documentation links data
+        var tabDocsData = {
+            'tab1': {
+                'link': 'https://quiz-plugin.com/docs/how-to-create-a-quiz/',
+                'text': quizLangObj.generalTabDoc
+            },
+            'tab2': {
+                'link': 'https://quiz-plugin.com/docs/styles-settings/',
+                'text': quizLangObj.stylesTabDoc
+            },
+            'tab3': {
+                'link': 'https://quiz-plugin.com/docs/quiz-settings-tab/',
+                'text': quizLangObj.settingsTabDoc
+            },
+            'tab4': {
+                'link': 'https://quiz-plugin.com/docs/quiz-results-settings/',
+                'text': quizLangObj.resultsSettingsTabDoc
+            },
+            'tab5': {
+                'link': 'https://quiz-plugin.com/docs/quiz-limitation-settings/',
+                'text': quizLangObj.limitationUsersTabDoc
+            },
+            'tab6': {
+                'link': 'https://quiz-plugin.com/docs/quiz-user-data-settings/',
+                'text': quizLangObj.userDataTabDoc
+            },
+            'tab7': {
+                'link': 'https://quiz-plugin.com/docs/email-certificate-settings/',
+                'text': quizLangObj.emailTabDoc
+            },
+            'tab8': {
+                'link': 'https://quiz-plugin.com/docs-category/integrations/',
+                'text': quizLangObj.integrationTabDoc
+            },
+        };
+
         $(document).find('.nav-tab-wrapper a.nav-tab').on('click', function (e) {
             if(! $(this).hasClass('no-js')){
                 let elemenetID = $(this).attr('href');
@@ -2217,6 +2253,19 @@
                 $(document).find("[name='ays_quiz_tab']").val(active_tab);
                 $(document).find("[name='ays_question_tab']").val(active_tab);
                 $('.ays-quiz-tab-content' + elemenetID).addClass('ays-quiz-tab-content-active');
+
+                // Update documentation link based on active tab
+                var docLinkContainer = $(document).find('#ays-quiz-tab-doc-link .ays-quiz-doc-link');
+                if (docLinkContainer.length > 0) {
+                    if (tabDocsData[active_tab]) {
+                        docLinkContainer.attr('href', tabDocsData[active_tab].link);
+                        docLinkContainer.find('span').text(tabDocsData[active_tab].text);
+                        docLinkContainer.show();
+                    } else {
+                        docLinkContainer.hide();
+                    }
+                }
+
                 e.preventDefault();
             }
         });
