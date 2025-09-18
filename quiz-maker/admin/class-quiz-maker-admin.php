@@ -1373,6 +1373,7 @@ class Quiz_Maker_Admin
         $quick_quiz_make_all_review_link                        = 'off';
         $quick_quiz_review_enable_comment_field                 = 'on';
         $quick_quiz_make_review_required                        = 'off';
+        $quick_quiz_review_placeholder_text                     = '';
 
         // User Data
         $quick_quiz_show_information_form                   = 'on';
@@ -1765,6 +1766,9 @@ class Quiz_Maker_Admin
 
             // Make the review field required
             $quick_quiz_make_review_required = (isset( $_REQUEST['ays_quick_quiz_make_review_required'] ) && $_REQUEST['ays_quick_quiz_make_review_required'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_make_review_required'] ) ) : "off";
+
+            // Make the review field required
+            $quick_quiz_review_placeholder_text = (isset( $_REQUEST['ays_quick_quiz_review_placeholder_text'] ) && !empty($_REQUEST['ays_quick_quiz_review_placeholder_text'])) ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_review_placeholder_text'] ) ) : "";
             
             
         }
@@ -2006,7 +2010,7 @@ class Quiz_Maker_Admin
             'quiz_title_font_size'                              => $quick_quiz_title_font_size,
             'quiz_title_mobile_font_size'                       => $quick_quiz_title_mobile_font_size,
             'quiz_password_width'                               => "",
-            'quiz_review_placeholder_text'                      => "",
+            'quiz_review_placeholder_text'                      => $quick_quiz_review_placeholder_text,
             'quiz_enable_results_toggle'                        => $quick_quiz_enable_results_toggle,
             'quiz_review_thank_you_message'                     => "",
             'quiz_review_enable_comment_field'                  => $quick_quiz_review_enable_comment_field,

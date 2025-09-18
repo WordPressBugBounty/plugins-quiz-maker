@@ -987,11 +987,22 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                 <div class="form-group row">
                                                     <div class="col-sm-4">
                                                         <label for="ays_quick_quiz_make_review_required">
-                                                            <?php echo __('Make the review field required','quiz-maker'); ?>
+                                                            <?php echo esc_html__('Make the review field required','quiz-maker'); ?>
                                                         </label>
                                                     </div>
                                                     <div class="col-sm-8">
                                                         <input type="checkbox" name="ays_quick_quiz_make_review_required" id="ays_quick_quiz_make_review_required" />
+                                                    </div>
+                                                </div>
+                                                <hr/>
+                                                <div class="form-group row">
+                                                    <div class="col-sm-4">
+                                                        <label for="ays_quick_quiz_review_placeholder_text">
+                                                            <?php echo esc_html__('Placeholder text','quiz-maker'); ?>
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-sm-8">
+                                                        <input type="text" class="ays-text-input" id="ays_quick_quiz_review_placeholder_text" name="ays_quick_quiz_review_placeholder_text" value=""/>
                                                     </div>
                                                 </div>
                                             </div>
