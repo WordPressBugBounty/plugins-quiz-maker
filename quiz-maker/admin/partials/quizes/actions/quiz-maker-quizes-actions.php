@@ -1506,6 +1506,9 @@ $quiz_wrong_answer_mobile_text_transform = (isset($options[ 'quiz_wrong_answer_m
 // Note text decoration | On mobile
 $quiz_admin_note_mobile_text_decoration = (isset($options[ 'quiz_admin_note_mobile_text_decoration' ]) && $options[ 'quiz_admin_note_mobile_text_decoration' ] != '') ? stripslashes ( esc_attr( $options[ 'quiz_admin_note_mobile_text_decoration' ] ) ) : $quiz_admin_note_text_decoration;
 
+// Dont show quiz
+$options['quiz_dont_show_quiz'] = isset($options['quiz_dont_show_quiz']) ? stripslashes ( esc_attr($options['quiz_dont_show_quiz']) ) : 'off';
+$quiz_dont_show_quiz = (isset($options['quiz_dont_show_quiz']) && $options['quiz_dont_show_quiz'] == 'on') ? true : false;
 
 ?>
 <style id="ays_live_custom_css"></style>
@@ -5062,15 +5065,29 @@ $quiz_admin_note_mobile_text_decoration = (isset($options[ 'quiz_admin_note_mobi
                                     <div class="col-sm-8 ays-quiz-show-timer-mobile-style">
                                         <label class="ays_quiz_loader" for="show_time_countdown">
                                            <input type="radio" id="show_time_countdown" name="ays_show_timer_type" value="countdown" <?php echo $show_timer_type == 'countdown' ? 'checked' : ''; ?> />
-                                           <span><?php echo __('Show countdown', 'quiz-maker'); ?></span>
+                                           <span><?php echo esc_html__('Show countdown', 'quiz-maker'); ?></span>
                                         </label>
                                         <label class="ays_quiz_loader" for="show_time_enddate">
                                            <input type="radio" id="show_time_enddate" name="ays_show_timer_type"
                                            value="enddate" <?php echo $show_timer_type == 'enddate' ? 'checked' : ''; ?> />
-                                           <span><?php echo __('Show start date', 'quiz-maker'); ?></span>
+                                           <span><?php echo esc_html__('Show start date', 'quiz-maker'); ?></span>
                                         </label>
                                     </div>
                                 </div> <!--Show timer end-->
+                                <hr>
+                                <div class="form-group row">
+                                    <div class="col-sm-4">
+                                        <label for="ays_quiz_dont_show_quiz">
+                                            <?php echo esc_html__("Don't show quiz", 'quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_html__('Do not show the quiz container on the front-end at all when it is expired or has not started yet.', 'quiz-maker'); ?>">
+                                                <i class="ays_fa ays_fa_info_circle"></i>
+                                            </a>
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input type="checkbox" name="ays_quiz_dont_show_quiz" id="ays_quiz_dont_show_quiz" value="on" <?php echo $quiz_dont_show_quiz ? 'checked' : ''; ?>>
+                                    </div>
+                                </div>
                                 <hr>
                                 <div class="form-group row">
                                     <div class="col-sm-4">

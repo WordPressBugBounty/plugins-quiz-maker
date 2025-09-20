@@ -257,26 +257,26 @@ class Quiz_Maker_Activator
 
             if ($themes == 0) {
                 $wpdb->insert($themes_table, array(
-                    'title'                                 => 'Default',
-                    'border_radius'                         => '4',
-                    'show_result_presentage'                => 1,
-                    'show_result_answers'                   => 1,
-                    'buttons_color'                         => '#ffffff',
-                    'buttons_bg_color'                      => '#70b1f2',
-                    'buttons_hover_color'                   => '#ffffff',
-                    'buttons_hover_bg_color'                => '#4797e7',
-                    'quiz_title_color'                      => '#000000',
-                    'quiz_description_color'                => '#000000',
-                    'question_color'                        => '#ffffff',
-                    'question_bg_color'                     => '#70b1f2',
-                    'question_answer_color'                 => '#7a7575',
-                    'question_answer_bg_color'              => '#efefef',
-                    'question_answer_hover_color'           => '#7a7575',
-                    'question_answer_hover_bg_color'        => '#d6d2c9',
-                    'question_correct_answer_bg_color'      => '#4fed24',
-                    'question_incorrect_answer_bg_color'    => '#ed3324',
-                    'pagination_bg_color'                   => '#efefef',
-                    'pagination_color'                      => '#70b1f2'
+                    'title'                                     => 'Default',
+                    'border_radius'                             => '4',
+                    'show_result_presentage'                    => 1,
+                    'show_result_answers'                       => 1,
+                    'buttons_color'                             => '#ffffff',
+                    'buttons_bg_color'                          => '#70b1f2',
+                    'buttons_hover_color'                       => '#ffffff',
+                    'buttons_hover_bg_color'                    => '#4797e7',
+                    'quiz_title_color'                          => '#000000',
+                    'quiz_description_color'                    => '#000000',
+                    'question_color'                            => '#ffffff',
+                    'question_bg_color'                         => '#70b1f2',
+                    'question_answer_color'                     => '#7a7575',
+                    'question_answer_bg_color'                  => '#efefef',
+                    'question_answer_hover_color'               => '#7a7575',
+                    'question_answer_hover_bg_color'            => '#d6d2c9',
+                    'question_correct_answer_bg_color'          => '#4fed24',
+                    'question_incorrect_answer_bg_color'        => '#ed3324',
+                    'pagination_bg_color'                       => '#efefef',
+                    'pagination_color'                          => '#70b1f2'
                 ));
             }
             

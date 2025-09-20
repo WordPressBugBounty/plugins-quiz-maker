@@ -758,6 +758,9 @@ class Quiz_Maker_Public
         // $this->buttons_texts = $this->ays_set_quiz_texts($id);
         $this->fields_placeholders = $this->ays_set_quiz_fields_placeholders_texts();
         $quiz_parts = $this->ays_quiz_parts($id);
+        if ($quiz_parts === "" || empty($quiz_parts)) {
+            return "";
+        }
         
         $settings_for_theme = $this->settings;
         $buttons_texts_for_theme = $this->buttons_texts;
@@ -3080,6 +3083,9 @@ class Quiz_Maker_Public
             $show_timer_type = isset($options['show_timer_type']) && !empty($options['show_timer_type']) ? $options['show_timer_type'] : 'countdown';
             $activeActiveDateCheck =  isset($options['activeInterval']) && !empty($options['activeInterval']) ? true : false;
 
+            $options['quiz_dont_show_quiz'] = isset($options['quiz_dont_show_quiz']) ? $options['quiz_dont_show_quiz'] : 'off';
+            $quiz_dont_show_quiz = (isset($options['quiz_dont_show_quiz']) && $options['quiz_dont_show_quiz'] == 'on') ? true : false;
+
             $show_timer = '';
             if ($activeDateCheck && $activeActiveDateCheck && $active_date_check) {
                 if (isset($options['show_schedule_timer']) && $options['show_schedule_timer'] == 'on') {
@@ -3097,6 +3103,11 @@ class Quiz_Maker_Public
 
             if ($startDate > $current_time) {
                 $is_expired = true;
+                if( !$is_elementor_exists && !$is_editor_exists && !$is_beaver_builder_exists ){
+                    if ($quiz_dont_show_quiz) {
+                        return "";
+                    }
+                }
                 if(isset($options['active_date_pre_start_message'])){
 
                     $active_date_pre_start_message = isset( $options['active_date_pre_start_message'] ) && $options['active_date_pre_start_message'] != "" ? $this->ays_autoembed($options['active_date_pre_start_message']) : "";
@@ -3118,6 +3129,11 @@ class Quiz_Maker_Public
                 }
             }elseif ($endDate < $current_time) {
                 $is_expired = true;
+                if( !$is_elementor_exists && !$is_editor_exists && !$is_beaver_builder_exists ){
+                    if ($quiz_dont_show_quiz) {
+                        return "";
+                    }
+                }
                 if(isset($options['active_date_message']) && $options['active_date_message'] != ''){
                     $expired_quiz_message = "<div class='step active-step' data-message-exist='true'>
                         <div class='ays-abs-fs'>
