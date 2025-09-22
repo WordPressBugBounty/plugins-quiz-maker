@@ -312,6 +312,8 @@ class Quiz_Maker_Admin
             'userDataTabDoc'                => esc_html__( "How to Configure User Data Tab?", 'quiz-maker' ),
             'emailTabDoc'                   => esc_html__( "How to Configure E-Mail, Certificate Tab?", 'quiz-maker' ),
             'integrationTabDoc'             => esc_html__( "How to Configure Integration Tab?", 'quiz-maker' ),
+
+            'addAnswer'                     => esc_html__( "Add Answer", 'quiz-maker' ),
         ) );
 
         wp_localize_script( $this->plugin_name, 'quizLangDataTableObj', array(

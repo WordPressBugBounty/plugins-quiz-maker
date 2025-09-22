@@ -1624,7 +1624,7 @@
                     '</td>'+
                     '<td title="This property available only in pro version" class="only_pro">'+
                         '<div class="pro_features"></div>'+
-                        '<input class="w-100" type="number" value="2" tabindex="-1"/>'+
+                        '<input class="w-100" type="number" value="1" tabindex="-1"/>'+
                     '</td>'+
                 '</tr>');
                 $(document).find('table#ays-answers-table tbody').addClass('text_answer');
@@ -1654,7 +1654,7 @@
                     '</td>'+
                     '<td title="This property available only in pro version" class="only_pro">'+
                         '<div class="pro_features"></div>'+
-                        '<input class="w-100" type="number" value="2" tabindex="-1"/>'+
+                        '<input class="w-100" type="number" value="1" tabindex="-1"/>'+
                     '</td>'+
                     '<td>'+
                         '<input type="text" name="ays-answer-placeholder[]" class="ays-correct-answer-value" value=""/>'+
@@ -1679,7 +1679,7 @@
                                 '<td title="This property available only in pro version" class="only_pro">'+
                                     '<div class="pro_features"></div>'+
                                     '</div>'+
-                                    '<input class="w-100" type="number" value="2" tabindex="-1"/>'+
+                                    '<input class="w-100" type="number" value="1" tabindex="-1"/>'+
                                 '</td>'+
                                 '<td>'+
                                     '<input type="text" name="ays-answer-placeholder[]" class="ays-correct-answer-value" value=""/>'+
@@ -1704,7 +1704,7 @@
                     '<td title="This property available only in pro version" class="only_pro">'+
                         '<div class="pro_features"></div>'+
                         '</div>'+
-                        '<input class="w-100" type="number" value="2" tabindex="-1"/>'+
+                        '<input class="w-100" type="number" value="1" tabindex="-1"/>'+
                     '</td>'+
                     '<td>'+
                         '<input type="text" name="ays-answer-placeholder[]" class="ays-correct-answer-value" value=""/>'+
@@ -1720,11 +1720,15 @@
                 $('table#ays-answers-table thead tr th:first-child').addClass('th-650');
                 $(document).find('table#ays-answers-table tbody').append(answerRow);
             }else{
-                $(document).find('.ays-answers-toolbar-bottom').show();
+                $(document).find('.ays-answers-toolbar-bottom').css({'display': 'flex'});
                 if($(this).val() == 'select'){
                     $(document).find('.ays-answers-toolbar-bottom').find('.use_html').hide();
                 }else{
                     $(document).find('.ays-answers-toolbar-bottom').find('.use_html').show();
+                }
+
+                if( !$(document).find('.ays-answers-toolbar-bottom').hasClass('ays-answers-toolbar-bottom-center') ){
+                    $(document).find('.ays-answers-toolbar-bottom').addClass('ays-answers-toolbar-bottom-center');
                 }
 
                 var true_or_false_flag = false;
@@ -1749,18 +1753,21 @@
 
                     var keyworHtml = '<th class="only_pro th-150 removable" style="width:120px;padding:0;">Keyword<br>'+ pro_features_new_design_html +'</th>';
 
-                    var addAnswer = $('<a href="javascript:void(0)" class="ays-add-answer">'+
+                    var addAnswer = $('<div class="ays-answers-footer-toolbar" style="padding:5px;padding-top:10px;">'+
+                        '<a href="javascript:void(0)" class="ays-add-answer ays-add-question-answer">'+
                             '<i class="ays_fa ays_fa_plus_square" aria-hidden="true"></i>'+
-                        '</a>'),
+                            quizLangObj.addAnswer +
+                        '</a></div>'),
                         answerHeadRow = $('<th class="th-150 removable">Ordering</th>'+
                                 '<th class="th-150 removable">Correct</th>'),
                         answerHeadKeywordRow = $(keyworHtml),
                         answerHeadRowLast = $('<th class="th-150 removable" style="padding:0;">Image<br>'+ pro_features_new_design_html +'</th>'+
                                 '<th class="th-150 removable">Delete</th>');
-                    $(document).find('label[for="ays-answers-table"]').html('Answers');
                     $('table#ays-answers-table thead tr th.removable').remove();
                     $('table#ays-answers-table thead tr th.reremoveable').remove();
-                    $(document).find('label[for="ays-answers-table"]').append(addAnswer);
+                    // $(document).find('label[for="ays-answers-table"]').append(addAnswer);
+                    $(document).find('.ays-answers-toolbar-bottom-center label[for="ays-answers-table"]').html('');
+                    $(document).find('.ays-answers-toolbar-bottom-center label[for="ays-answers-table"]').append(addAnswer);
                     $(document).find('table#ays-answers-table thead tr').prepend(answerHeadRow);
                     answerHeadKeywordRow.insertAfter('table#ays-answers-table thead .ays-weight-row');
                     $(document).find('table#ays-answers-table thead tr').append(answerHeadRowLast);

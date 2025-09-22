@@ -233,6 +233,9 @@ $is_only_number_type = in_array($question["type"], $only_number_types);
 $only_checkbox_type = array( "checkbox" );
 $is_only_checkbox_type = in_array($question["type"], $only_checkbox_type);
 
+$only_radio_type = array( "radio", "checkbox", "true_or_false" );
+$is_only_radio_type = in_array($question["type"], $only_radio_type);
+
 // Not influence to score
 $question['not_influence_to_score'] = ! isset($question['not_influence_to_score']) ? 'off' : $question['not_influence_to_score'];
 $not_influence_to_score = (isset($question['not_influence_to_score']) && $question['not_influence_to_score'] == 'on') ? true : false;
@@ -497,9 +500,6 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                             else:
                         ?>
                        <?php echo esc_html__('Answers', 'quiz-maker'); ?>
-                        <a href="javascript:void(0)" class="ays-add-answer">
-                            <i class="ays_fa ays_fa_plus_square" aria-hidden="true"></i>
-                        </a>
                        <?php
                             endif;
                         ?>
@@ -567,7 +567,7 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                                 </td>
                                 <td title="This property available only in pro version" class="only_pro">
                                     <div class="pro_features"></div>
-                                    <input class="w-100" type="number" value="2" tabindex="-1"/>
+                                    <input class="w-100" type="number" value="1" tabindex="-1"/>
                                 </td>
                                 <td>
                                     <input type="text" name="ays-answer-placeholder[]" class="ays-correct-answer-value" value=""/>
@@ -583,7 +583,7 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                                 </td>
                                 <td title="This property available only in pro version" class="only_pro">
                                     <div class="pro_features"></div>
-                                    <input class="w-100" type="number" value="2" tabindex="-1"/>
+                                    <input class="w-100" type="number" value="1" tabindex="-1"/>
                                 </td>
                                 <td>
                                     <input type="text" name="ays-answer-placeholder[]" class="ays-correct-answer-value" value=""/>
@@ -599,7 +599,7 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                                 </td>
                                 <td title="This property available only in pro version" class="only_pro">
                                     <div class="pro_features"></div>
-                                    <input class="w-100" type="number" value="2" tabindex="-1"/>
+                                    <input class="w-100" type="number" value="1" tabindex="-1"/>
                                 </td>
                                 <td>
                                     <input type="text" name="ays-answer-placeholder[]" class="ays-correct-answer-value" value=""/>
@@ -615,7 +615,7 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                                 </td>
                                 <td title="This property available only in pro version" class="only_pro">
                                     <div class="pro_features"></div>
-                                    <input class="w-100" type="number" value="2" tabindex="-1"/>
+                                    <input class="w-100" type="number" value="1" tabindex="-1"/>
                                 </td>
                             </tr>
                             <?php
@@ -704,7 +704,7 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                                     </td>
                                     <td title="This property available only in pro version" class="only_pro">
                                         <div class="pro_features"></div>
-                                        <input class="w-100" type="number" value="2" tabindex="-1"/>
+                                        <input class="w-100" type="number" value="1" tabindex="-1"/>
                                     </td>
                                     <td>
                                         <input type="text" name="ays-answer-placeholder[]" class="ays-correct-answer-value" value="<?php echo esc_attr(stripslashes($answer["placeholder"])); ?>"/>
@@ -718,7 +718,7 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                                     </td>
                                     <td title="This property available only in pro version" class="only_pro">
                                         <div class="pro_features"></div>
-                                        <input class="w-100" type="number" value="2" tabindex="-1"/>
+                                        <input class="w-100" type="number" value="1" tabindex="-1"/>
                                     </td>
                                     <td>
                                         <input type="text" name="ays-answer-placeholder[]" class="ays-correct-answer-value" value="<?php echo esc_attr(stripslashes($answer["placeholder"])); ?>"/>
@@ -732,7 +732,7 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                                     </td>
                                     <td title="This property available only in pro version" class="only_pro">
                                         <div class="pro_features"></div>
-                                        <input class="w-100" type="number" value="2" tabindex="-1"/>
+                                        <input class="w-100" type="number" value="1" tabindex="-1"/>
                                     </td>
                                     <td>
                                         <input type="text" name="ays-answer-placeholder[]" class="ays-correct-answer-value" value="<?php echo esc_attr(stripslashes($answer["placeholder"])); ?>"/>
@@ -746,7 +746,7 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                                     </td>
                                     <td title="This property available only in pro version" class="only_pro">
                                         <div class="pro_features"></div>
-                                        <input class="w-100" type="number" value="2" tabindex="-1"/>
+                                        <input class="w-100" type="number" value="1" tabindex="-1"/>
                                     </td>
                                     <?php
                                         else:
@@ -792,31 +792,38 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                         ?>
                         </tbody>
                     </table>
-                    <div class="ays-answers-toolbar-bottom <?php echo ($is_text_type) ? 'display_none' : ''; ?>" style="padding:5px;padding-top:10px;">
-                        <label class='ays-label ays-add-answer-first-label' for="ays-answers-table">
-                        <?php if($is_text_type): ?>
-                        <?php echo esc_html__('Answer', 'quiz-maker'); ?>
-                        <?php else: ?>
-                        <?php echo esc_html__('Answers', 'quiz-maker'); ?>
-                        <a href="javascript:void(0)" class="ays-add-answer">
-                            <i class="ays_fa ays_fa_plus_square" aria-hidden="true"></i>
-                        </a>
-                        <?php endif; ?>
-                        </label>
-                        <span class="ays_divider_left" style="padding-bottom: 10px;padding-top: 5px;margin: 0 15px;"></span>
-                        <label class='ays-label use_html' style="margin:0;<?php echo ($question["type"] == 'select') ? 'display:none;' : ''; ?>">
-                            <?php echo esc_html__( "Use HTML for answers", 'quiz-maker' ); ?>
-                            <a class="ays_help" style="margin-right:15px;" data-toggle="tooltip" title="<?php echo esc_attr( __('Allowed tags list','quiz-maker') . ": <br>, <b>, <em>, <span>, <mark>, <del>, <ins>, <sup>, <sub>, <strong>, <code>, <samp>, <kbd>, <var>, <q>" ); ?>">
-                                <i class="ays_fa ays_fa_info_circle"></i>
-                            </a>
-                            <input type="checkbox" name="ays-use-html" value="on" <?php echo $use_html ? "checked" : ""; ?>>
-                        </label>
-                    </div>
                     <div class="ays-text-answers-desc <?php echo ($text_type) ? '' : 'display_none'; ?>" style="padding:5px;padding-top:15px;">
                         <blockquote>
                             <p style="margin:0px;"><?php echo esc_html__( "For inserting multiple possible correct answers, please use delimeter %%%.", 'quiz-maker' ); ?></p>
                             <p style="margin:0px;"><?php echo esc_html__( "Example:", 'quiz-maker' ); ?> <strong>US%%%USA%%%United States</strong></p>
                         </blockquote>
+                    </div>
+                </div>
+                <div class="ays-answers-toolbar-bottom <?php echo ($is_text_type) ? 'display_none' : 'ays-answers-toolbar-bottom-center'; ?>" style="padding:5px;padding-top:10px;">
+                    <label class='ays-label ays-add-answer-first-label' for="ays-answers-table">
+                    <?php if($is_text_type): ?>
+                    <?php echo esc_html__('Answer', 'quiz-maker'); ?>
+                    <?php else: ?>
+                    <div class="ays-answers-footer-toolbar <?php echo ($is_text_type) ? 'display_none' : ''; ?>" style="padding:5px;padding-top:10px;">
+                        <a href="javascript:void(0)" class="ays-add-answer ays-add-question-answer">
+                            <i class="ays_fa ays_fa_plus_square" aria-hidden="true"></i><?php echo esc_html__('Add Answer', 'quiz-maker'); ?>
+                        </a>
+                    </div>
+                    <?php endif; ?>
+                    </label>
+                </div>
+                <hr class="show_for_text_type <?php echo ($is_only_radio_type) ? '' : 'display_none'; ?>"/>
+                <div class="form-group row ays_toggle_parent show_for_text_type <?php echo ($is_only_radio_type) ? '' : 'display_none'; ?>">
+                    <div class="col-sm-3">
+                        <label for="ays_enable_question_text_max_length">
+                            <?php echo esc_html__( "Use HTML for answers", 'quiz-maker' ); ?>
+                            <a class="ays_help" style="margin-right:15px;" data-toggle="tooltip" title="<?php echo esc_attr( __('Allowed tags list','quiz-maker') . ": <br>, <b>, <em>, <span>, <mark>, <del>, <ins>, <sup>, <sub>, <strong>, <code>, <samp>, <kbd>, <var>, <q>" ); ?>">
+                                <i class="ays_fa ays_fa_info_circle"></i>
+                            </a>
+                        </label>
+                    </div>
+                    <div class="col-sm-9">
+                        <input type="checkbox" name="ays-use-html" value="on" <?php echo $use_html ? "checked" : ""; ?>>
                     </div>
                 </div>
                 <hr class="show_for_text_type <?php echo ($is_only_text_type) ? '' : 'display_none'; ?>"/>
