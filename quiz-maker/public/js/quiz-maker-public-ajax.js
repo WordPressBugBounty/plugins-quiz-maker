@@ -342,7 +342,7 @@
             current_fs = $(this).parents('.step');
             next_fs.addClass('active-step');
             current_fs.removeClass('active-step');
-            form = ays_quiz_container.find('form');
+            form = ays_quiz_container.find('form.ays-quiz-form');
 
             if (!($(this).hasClass('start_button')) && window.aysTimerIntervalFlag == null && ! window.aysEarlyFinishConfirmBox[ quizId ]) {
                 var minSelHasError = 0;
@@ -658,6 +658,62 @@
                     var checkQuizGeneratedPassword = checkQuizPassword(e, myOptions, false);
                 }
             }
+        });
+
+        $(document).find(".ays-quiz-submit-question-report").on('click', function(e) {
+            e.preventDefault();
+            var _this = $(this);
+            var parent = _this.parents(".ays-modal-reports");
+            var reportForm = $(this).parents('form#ays-quiz-question-report-form');
+
+            var questionId = reportForm.find('input.ays-quiz-report-question-id').val();
+            var quizId = reportForm.find('input.ays-quiz-report-quiz-id').val();
+            var reportText = reportForm.find('textarea#ays-quiz-question-report-textarea').val();
+            var sendEmail = reportForm.find('input.ays-quiz-report-question-send-email').val();
+
+            if (reportText === '') {
+                var errorMessageDiv = reportForm.find('div.ays-quiz-question-report-error');
+                errorMessageDiv.show();
+
+                setTimeout(function() {
+                    errorMessageDiv.fadeOut(400, function() {
+                        $(this).hide();
+                    });
+                }, 3000);
+                return false;
+            }
+
+            parent.find('div.ays-quiz-preloader').css('display', 'flex');
+            parent.find('div.ays-quiz-preloader').addClass('ays_quiz_modal_overlay');
+
+            var data = {};
+            data.action = 'ays_quiz_send_question_report';
+            data.question_id = questionId;
+            data.quiz_id = quizId;
+            data.report_text = reportText;
+            data.create_date = GetFullDateTime();
+            data.send_email = sendEmail;
+            $.ajax({
+                url: quiz_maker_ajax_public.ajax_url,
+                method: 'post',
+                dataType: 'json',
+                crossDomain: true,
+                data: data,
+                success: function (response) {
+                    parent.find('div.ays-quiz-preloader').css('display', 'none');
+                    parent.find('div.ays-quiz-preloader').removeClass('ays_quiz_modal_overlay');
+
+                    if(response.status) {
+                        parent.hide();
+
+                        swal.fire({
+                            type: 'success',
+                            html: quizLangObj.reportSentMessage,
+                            customClass: "ays-quiz-question-report-popup-container",
+                        });
+                    }
+                }
+            });
         });
     });
     
@@ -1103,6 +1159,7 @@
                 var question_explanation_html   = questions.eq(z).find('.ays_questtion_explanation');
                 var wrong_answer_text_html      = questions.eq(z).find('.wrong_answer_text');
                 var right_answer_text_html      = questions.eq(z).find('.right_answer_text');
+                var question_report_html        = questions.eq(z).find('.ays_question_report');
                 var note_message_box_html       = questions.eq(z).find('.ays-quiz-question-note-message-box');
 
                 var question_parts_arr = new Array(
@@ -1110,6 +1167,7 @@
                     question_explanation_html,
                     wrong_answer_text_html,
                     right_answer_text_html,
+                    question_report_html,
                 );
 
                 question.find('.ays_quiz_question').remove();

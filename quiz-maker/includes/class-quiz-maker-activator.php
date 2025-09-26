@@ -1,6 +1,6 @@
 <?php
 global $ays_quiz_db_version;
-$ays_quiz_db_version = '3.8.9';
+$ays_quiz_db_version = '3.9.0';
 /**
  * Fired during plugin activation
  *
@@ -46,6 +46,7 @@ class Quiz_Maker_Activator
         $rates_table = $wpdb->prefix . 'aysquiz_rates';
         $themes_table = $wpdb->prefix . 'aysquiz_themes';
         $settings_table = $wpdb->prefix . 'aysquiz_settings';
+        $question_reports_table = $wpdb->prefix . 'aysquiz_question_reports';
         $charset_collate = $wpdb->get_charset_collate();
 
         if ($installed_ver != $ays_quiz_db_version) {
@@ -193,6 +194,29 @@ class Quiz_Maker_Activator
                 PRIMARY KEY (`id`)
             )$charset_collate;";
             dbDelta( $sql );
+
+            $sql="CREATE TABLE `".$question_reports_table."` (
+                `id` INT(11) NOT NULL AUTO_INCREMENT,
+                `question_id` INT(11) NOT NULL,
+                `report_text` TEXT NOT NULL,
+                `resolved` TINYINT(1) NOT NULL DEFAULT 0,
+                `create_date` DATETIME DEFAULT NULL,
+                `resolve_date` DATETIME DEFAULT NULL,
+                `user_id` INT(16) UNSIGNED DEFAULT NULL,
+                `user_name` VARCHAR(256) NULL DEFAULT NULL,
+                `user_email` VARCHAR(256) NULL DEFAULT NULL,
+                PRIMARY KEY (`id`)
+            )$charset_collate;";
+
+            $sql_schema = "SELECT * FROM INFORMATION_SCHEMA.TABLES
+                           WHERE table_schema = '".DB_NAME."' AND table_name = '".$question_reports_table."' ";
+            $results = $wpdb->get_results($sql_schema);
+
+            if(empty($results)){
+                $wpdb->query( $sql );
+            }else{
+                dbDelta( $sql );
+            }
 
             $sql = "SELECT * FROM INFORMATION_SCHEMA.STATISTICS 
                     WHERE TABLE_NAME = '".$quizes_table."'

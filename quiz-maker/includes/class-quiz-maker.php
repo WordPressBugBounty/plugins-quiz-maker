@@ -161,6 +161,11 @@ class Quiz_Maker {
          */
         require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/lists/class-quiz-maker-all-reviews-list-table.php';
 
+        /*
+         * The class is responsible for showing all questions reports in wordpress default WP_LIST_TABLE style
+         */
+        require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/lists/class-quiz-maker-questions-reports-list-table.php';
+
         /**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
@@ -381,6 +386,9 @@ class Quiz_Maker {
         
         $this->loader->add_action( 'wp_ajax_ays_get_user_information', $plugin_public, 'ays_get_user_information' );
         $this->loader->add_action( 'wp_ajax_nopriv_ays_get_user_information', $plugin_public, 'ays_get_user_information' );
+
+        $this->loader->add_action( 'wp_ajax_ays_quiz_send_question_report', $plugin_public, 'ays_quiz_send_question_report' );
+        $this->loader->add_action( 'wp_ajax_nopriv_ays_quiz_send_question_report', $plugin_public, 'ays_quiz_send_question_report' );
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles_early' );
 		// $this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );

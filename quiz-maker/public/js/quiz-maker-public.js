@@ -2693,6 +2693,39 @@
                 });
             }
         });
+
+        $(document).on('click', '.ays-quiz-open-report-window', function() {
+            var _this = $(this);
+            var parent = _this.parents('div.ays-quiz-container');
+
+            if (_this.parents('div.step.active-step').length > 0) {
+                var question = _this.parents('div.step.active-step');
+            } else {
+                var question = _this.parents('div.step.ays_question_result');
+
+            }
+
+            if( question.length == 0 ){
+                var question = _this.parents('div.step');
+            }
+
+            var questionId = question.attr('data-question-id');
+
+            var reportsModal = parent.find('div.ays-modal-reports');
+
+            reportsModal.fadeIn(200, function() {
+                reportsModal.find('textarea#ays-quiz-question-report-textarea').val('');
+                reportsModal.find('input.ays-quiz-report-question-id').val(questionId);
+            });
+        });
+        
+        $(document).find('.ays-close-reports-window').on('click', function() {
+            var _this = $(this);
+            var parent = _this.parents('div.ays-quiz-container');
+            var reportsModal = parent.find('div.ays-modal-reports');
+
+            reportsModal.fadeOut(200);
+        });
     });
 
 })( jQuery );

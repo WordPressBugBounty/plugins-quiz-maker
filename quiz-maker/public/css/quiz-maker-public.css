@@ -2821,3 +2821,22 @@ div.ays-quiz-preloader{
     align-items: center;
     z-index: 1;
 }
+
+.ays_question_report {
+    text-align: right;
+}
+
+.ays_question_report .ays-quiz-open-report-window {
+    cursor: pointer;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+.ays-quiz-question-report-popup-container .swal2-popup {
+    width: 480px;
+    font-size: 15px;
+}
+
+.ays-quiz-question-report-popup-container .swal2-popup .swal2-styled.swal2-confirm {
+    line-height: 15.9375px;
+}

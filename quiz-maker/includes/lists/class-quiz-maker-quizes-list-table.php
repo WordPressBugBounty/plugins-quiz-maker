@@ -1001,6 +1001,8 @@ class Quizes_List_Table extends WP_List_Table{
             // Don't show quiz
             $quiz_dont_show_quiz = (isset($_REQUEST['ays_quiz_dont_show_quiz']) && $_REQUEST['ays_quiz_dont_show_quiz'] == 'on') ? 'on' : 'off';
             
+            // Enable question reporting
+            $enable_questions_reporting = (isset($_REQUEST['ays_enable_questions_reporting']) && $_REQUEST['ays_enable_questions_reporting'] == 'on') ? 'on' : 'off';
 
             $options = array(
                 'quiz_version'                                      => AYS_QUIZ_VERSION,
@@ -1257,6 +1259,7 @@ class Quizes_List_Table extends WP_List_Table{
                 'quiz_wrong_answer_mobile_text_transform'           => $quiz_wrong_answer_mobile_text_transform,
                 'quiz_admin_note_mobile_text_decoration'            => $quiz_admin_note_mobile_text_decoration,
                 'quiz_dont_show_quiz'                               => $quiz_dont_show_quiz,
+                'enable_questions_reporting'                        => $enable_questions_reporting,
             );
 
             $options['required_fields'] = !isset($_POST['ays_required_field']) ? null : array_map( 'sanitize_text_field', $_POST['ays_required_field'] );

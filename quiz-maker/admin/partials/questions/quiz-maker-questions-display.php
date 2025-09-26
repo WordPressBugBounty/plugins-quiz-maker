@@ -9,6 +9,11 @@ $id     = ( isset($_GET['question']) ) ? sanitize_text_field( $_GET['question'] 
 if($action == 'duplicate'){
     $this->questions_obj->duplicate_question($id);
 }
+
+$tab_url = "?page=".$this->plugin_name."-question-reports";
+
+$actual_reports_count = Quiz_Maker_Admin::get_actual_reports_count();
+
 $example_export_path = AYS_QUIZ_ADMIN_URL . '/partials/questions/export_file/';
 $plus_icon_svg = "<span class=''><img src='". AYS_QUIZ_ADMIN_URL ."/images/icons/plus-icon.svg'></span>";
 $youtube_icon_svg = "<span class=''><img src='". AYS_QUIZ_ADMIN_URL ."/images/icons/youtube-video-icon.svg'></span>";
@@ -141,8 +146,12 @@ $question_max_id = $this->get_max_id('questions');
         <a href="#tab1" class="nav-tab <?php echo ($tab == 'tab1') ? 'nav-tab-active' : ''; ?>">
             <?php echo esc_html__("Questions", 'quiz-maker'); ?>
         </a>
-        <a href="#tab2" class="nav-tab <?php echo ($tab == 'tab2') ? 'nav-tab-active' : ''; ?>">
-            <?php echo esc_html__("Reports", 'quiz-maker'); ?>
+        <a href="<?php echo $tab_url; ?>" class="no-js nav-tab">
+            <?php echo esc_html__("Reports", 'quiz-maker');
+            if ($actual_reports_count > 0) {
+                echo '<span class="ays_menu_badge ays_results_bage">' . esc_html($actual_reports_count) . '</span>';
+            }
+            ?>
         </a>
     </div>
 

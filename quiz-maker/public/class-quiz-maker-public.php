@@ -203,6 +203,8 @@ class Quiz_Maker_Public
                 'requiredError'                 => __( 'This is a required question', 'quiz-maker' ),
                 'show'                          => __( 'Show', 'quiz-maker' ),
                 'hide'                          => __( 'Hide', 'quiz-maker' ),
+                'emptyReportMessage'            => __( 'You cannot submit an empty report. Please add some details.', 'quiz-maker' ),
+                'reportSentMessage'             => __( 'Report has been submitted successfully', 'quiz-maker' ),
             ) );
         }
     }
@@ -2025,6 +2027,34 @@ class Quiz_Maker_Public
         }else{
             $questions_counter = false;
         }
+
+        if(isset($options['enable_questions_reporting']) && $options['enable_questions_reporting'] == 'on'){
+            $questions_reporting = true;
+            $send_email = 'off';
+
+            $questions_reporting_modal = '<div class="ays-modal-reports" id="ays-quiz-question-report-modal-' . $id . '">
+                                            <div class="ays-modal-content-reports">
+                                                <span class="ays-close-reports-window"><img src="' . AYS_QUIZ_PUBLIC_URL . '/images/close-report-window.svg" title="close"></span>
+                                                <h3 class="ays-quiz-question-report-title">' . __( "Report a question", 'quiz-maker' ) . '</h3>
+                                                <form id="ays-quiz-question-report-form">
+                                                    <label class="ays-quiz-question-report-textarea-label" for="ays-quiz-question-report-textarea">' . __( "What's wrong with this question?", 'quiz-maker' ) . '</label>
+                                                    <textarea id="ays-quiz-question-report-textarea" name="ays-quiz-question-report-textarea"></textarea>
+                                                    <div class="ays-quiz-question-report-error">' . __( "You cannot submit an empty report. Please add some details.", 'quiz-maker' ) . '</div>
+                                                    <input type="hidden" class="ays-quiz-report-question-id" value="">
+                                                    <input type="hidden" class="ays-quiz-report-quiz-id" value="' . $id . '">
+                                                    <input type="hidden" class="ays-quiz-report-question-send-email" value="' . $send_email . '">
+                                                    <input type="submit" class="ays-quiz-submit-question-report" value="'. __("Submit", 'quiz-maker') .'">
+                                                </form>
+                                                <div class="ays-quiz-preloader" style="top:0">
+                                                    <img src="' . AYS_QUIZ_ADMIN_URL . '/images/loaders/tail-spin.svg">
+                                                </div>
+                                            </div>
+                                          </div>';
+
+        }else{
+            $questions_reporting = false;
+            $questions_reporting_modal = '';
+        }
            
         
         /*
@@ -3793,6 +3823,13 @@ class Quiz_Maker_Public
                 max-width: unset;
             }
 
+            #ays-quiz-container-" . $id . " .ays-quiz-additonal-box {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                position: relative;  
+            }
+
             #ays-quiz-container-" . $id . " .ays_questions_hint_max_width_class {
                 max-width: 80%;
             }
@@ -3825,6 +3862,17 @@ class Quiz_Maker_Public
             }else{
                 $quiz_styles .= "
                     text-shadow: none;";
+            }
+
+            if($questions_reporting){
+                $quiz_styles .= "
+                #ays-quiz-container-" . $id . " .ays-questions-container {
+                    perspective: unset !important;
+                }
+
+                .elementor-sticky--active{
+                    z-index:999999;
+                }";
             }
 
             $quiz_styles .= "
@@ -4208,6 +4256,118 @@ class Quiz_Maker_Public
                 color: $text_color;
             }
 
+            /* report questions modal start */
+            .ays-modal-reports {
+                display: none;
+                position: fixed;
+                z-index: 9999;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                overflow: auto;
+                background-color: rgba(0, 0, 0, 0.4);
+                animation-duration: .5s;
+                background-color: rgba(0, 0, 0, 0.4);
+            }
+
+            #ays-quiz-question-report-modal-" . $id . " .ays-modal-content-reports {
+                background-color: #fefefe;
+                margin: 10% auto;
+                border: 1px solid #888;
+                max-width: 500px;
+                width: 100%;
+                border-radius: 10px;
+                padding: 20px;
+                box-sizing: border-box;
+                position: relative;
+            }
+
+            #ays-quiz-question-report-modal-" . $id . " .ays-modal-content-reports label{
+                display: block;
+                margin-bottom: 10px;
+                font-weight: bold;
+                letter-spacing: normal;
+            }
+
+            #ays-quiz-question-report-modal-" . $id . " .ays-modal-content-reports textarea {
+                display: block;
+                width: 100%;
+                height: 100px;
+                padding: 5px;
+                box-sizing: border-box;
+                border-radius: 5px;
+                border: 1px solid #ccc;
+                max-width: 100%;
+                max-height: 500px;
+                resize: vertical;
+                transition: unset;
+            }
+
+            #ays-quiz-question-report-modal-" . $id . " .ays-modal-content-reports input.ays-quiz-submit-question-report {
+                background-color: #0073aa;
+                color: #fff !important;
+                border: none;
+                border-radius: 5px;
+                padding: 10px 20px;
+                cursor: pointer;
+                margin-top: 20px;
+                line-height: normal;
+                letter-spacing: normal;
+                box-shadow: unset;
+                background-image: unset;
+            }
+
+            #ays-quiz-question-report-modal-" . $id . " .ays-close-reports-window {
+                color: #aaa;
+                font-weight: bold;
+                position: absolute;
+                top: 1%;
+                right: 1%;
+            }
+
+            #ays-quiz-question-report-modal-" . $id . " .ays-close-reports-window img {
+                box-shadow: unset;
+            }
+            
+            #ays-quiz-question-report-modal-" . $id . " .ays-quiz-preloader img {
+                box-shadow: unset;
+            }
+
+            #ays-quiz-question-report-modal-" . $id . " .ays-close-reports-window img:hover,
+            #ays-quiz-question-report-modal-" . $id . " .ays-close-reports-window img:focus {
+                cursor: pointer;
+            }
+
+            #ays-quiz-question-report-modal-" . $id . " .ays-quiz-question-report-error {
+                display: none;
+                font-size: 13px;
+                color: #f00;
+                text-align: left;
+            }
+
+            #ays-quiz-question-report-modal-" . $id . " .ays-quiz-question-report-textarea-label,
+            #ays-quiz-question-report-modal-" . $id . " .ays-quiz-question-report-title {
+                text-align: left;
+            }
+
+            #ays-quiz-question-report-modal-" . $id . " .ays_quiz_modal_overlay {
+                width: 100%;
+                height: 100%;
+                position: fixed;
+                top: 0;
+                left: 0;
+                position: absolute;
+                z-index: 1000000000;
+                flex-direction: column;
+            }
+
+            #ays-quiz-question-report-modal-" . $id . " .ays-quiz-container .ays-quiz-user-cհoosing-anonymous-assessment {
+                margin: 10px 0;
+            }
+
+            /* report questions modal end */
+
             @media screen and (max-width: 768px){
                 #ays-quiz-container-" . $id . "{
                     max-width: $mobile_max_width;
@@ -4368,6 +4528,7 @@ class Quiz_Maker_Public
                 <div class='ays-questions-container'>
                     {$fullcsreen_mode}
                     $ays_quiz_reports
+                    " . $questions_reporting_modal . "
                     <form action='' method='post' id='ays_finish_quiz_" . $id . "' 
                         class='ays-quiz-form " . $correction_class . " " . $enable_questions_result . " " . $enable_logged_users . "'
                     >";
@@ -4492,6 +4653,7 @@ class Quiz_Maker_Public
             'quiz_questions_numbering_by_category'      => $quiz_questions_numbering_by_category,
             'question_bank_cats'                        => $question_bank_cats,
             'quiz_enable_keyboard_navigation'           => $quiz_enable_keyboard_navigation,
+            'questionsReporting'                        => $questions_reporting,
         );
         
         $ays_quiz = (object)array(
@@ -4964,6 +5126,16 @@ class Quiz_Maker_Public
                 }else{
                     $questions_counter = "";
                 }
+
+                if (!empty($options['questionsReporting']) && $options['questionsReporting']) {
+                    $questions_reporting = ' <div class="ays_question_report">
+                                                <span title="' . esc_html__("Report Question", 'quiz-maker') . '">
+                                                <svg class="ays-quiz-open-report-window '. $class_for_keyboard .'" '. $attributes_for_keyboard .' fill="#000000" width="18px" height="18px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3.25 4a.25.25 0 00-.25.25v12.5c0 .138.112.25.25.25h2.5a.75.75 0 01.75.75v3.19l3.427-3.427A1.75 1.75 0 0111.164 17h9.586a.25.25 0 00.25-.25V4.25a.25.25 0 00-.25-.25H3.25zm-1.75.25c0-.966.784-1.75 1.75-1.75h17.5c.966 0 1.75.784 1.75 1.75v12.5a1.75 1.75 0 01-1.75 1.75h-9.586a.25.25 0 00-.177.073l-3.5 3.5A1.457 1.457 0 015 21.043V18.5H3.25a1.75 1.75 0 01-1.75-1.75V4.25zM12 6a.75.75 0 01.75.75v4a.75.75 0 01-1.5 0v-4A.75.75 0 0112 6zm0 9a1 1 0 100-2 1 1 0 000 2z"/></svg>
+                                                </span>
+                                            </div>';                
+                } else {
+                    $questions_reporting = '';
+                }
                 
                 $early_finish = "";                
                 if($buttons['earlyButton']){
@@ -5141,6 +5313,9 @@ class Quiz_Maker_Public
                         <div class='ays_questtion_explanation' style='display:none'>
                             " . $ays_questtion_explanation_html . "
                         </div>
+                        <div class='ays-quiz-additonal-box'>
+                            {$questions_reporting}
+                        </div>   
                         {$new_buttons_div_html}
                         {$additional_css}
                     </div>
@@ -8094,5 +8269,79 @@ class Quiz_Maker_Public
                 $widget->set_settings( 'editor', $content );
             }
         }
+    }
+
+    public function ays_quiz_send_question_report() {
+        global $wpdb;
+
+        $question_id = isset( $_REQUEST['question_id'] ) && $_REQUEST['question_id'] != '' ? absint( $_REQUEST['question_id'] ) : 0;
+        $quiz_id = isset( $_REQUEST['quiz_id'] ) && $_REQUEST['quiz_id'] != '' ? absint( $_REQUEST['quiz_id'] ) : 0;
+        $report_text = isset( $_REQUEST['report_text'] ) && $_REQUEST['report_text'] != '' ? stripslashes( sanitize_textarea_field( $_REQUEST['report_text'] ) ) : '';
+        $create_date = isset($_REQUEST['create_date']) && $_REQUEST['create_date'] != '' ? stripslashes( sanitize_text_field($_REQUEST['create_date']) ) : NULL;
+
+        if(empty($quiz_id) || empty($question_id)){
+            echo json_encode(array(
+                'status' => false,
+            ));
+            wp_die();
+        }
+
+        $current_user_id = 0;
+        $current_user_display_name = "";
+        $current_user_email = "";
+        if(is_user_logged_in()){
+            $current_users = wp_get_current_user();
+
+            if( $current_users ){
+                $current_user_id = ( isset( $current_users->data->ID ) && $current_users->data->ID != '' ) ? absint( $current_users->data->ID ) : 0;
+                $current_user_display_name = ( isset( $current_users->data->display_name ) && $current_users->data->display_name != '' ) ? sanitize_text_field( $current_users->data->display_name ) : "";
+                $current_user_email = ( isset( $current_users->data->user_email ) && $current_users->data->user_email != '' ) ? sanitize_text_field( $current_users->data->user_email ) : "";
+            }
+        }
+
+        if( $question_id !== 0 && $report_text !== ''){
+            $question_reports_table = $wpdb->prefix . 'aysquiz_question_reports';
+            $data = array(
+                'question_id'   => $question_id,
+                'report_text'   => nl2br( stripslashes($report_text) ),
+                'resolved'      => 0,
+                'create_date'   => $create_date,
+                'resolve_date'  => NULL,
+                'user_id'       => $current_user_id,
+                'user_name'     => $current_user_display_name,
+                'user_email'    => $current_user_email,
+            );
+            $format = array( 
+                '%d', // question_id
+                '%s', // report_text
+                '%d', // resolved
+                '%s', // create_date
+                '%s', // resolve_date
+                '%d', // user_id
+                '%s', // user_name
+                '%s', // user_email
+            );
+
+            $result = $wpdb->insert( $question_reports_table, $data, $format );
+
+            if($result) {
+                echo json_encode(array(
+                    'status' => true,
+                ));
+                wp_die();
+            } else {
+                echo json_encode(array(
+                    'status' => false,
+                ));
+                wp_die();
+            }
+        } else{
+            echo json_encode(array(
+                'status' => false,
+            ));
+            wp_die();
+        }
+
+        wp_die();
     }
 }

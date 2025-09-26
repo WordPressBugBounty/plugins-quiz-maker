@@ -72,6 +72,7 @@ class Quiz_Maker_Admin
             'question_categories_per_page',
             'quiz_results_per_page',
             'quiz_all_reviews_per_page',
+            'quiz_question_reports_per_page',
         );
         foreach($per_page_array as $option_name){
             add_filter('set_screen_option_'.$option_name, array(__CLASS__, 'set_screen'), 10, 3);
@@ -606,10 +607,27 @@ class Quiz_Maker_Admin
     }
 
     public function add_plugin_questions_submenu(){
+
+        $actual_reports_count = self::get_actual_reports_count();
+
+        // $setting_actions = new Quiz_Maker_Settings_Actions($this->plugin_name);
+        // $options = ($setting_actions->ays_get_setting('options') === false) ? array() : json_decode( stripcslashes( $setting_actions->ays_get_setting('options') ), true);
+
+        // // Disable Results menu item notification
+        // $options['quiz_disable_question_report_menu_notification'] = isset($options['quiz_disable_question_report_menu_notification']) ? esc_attr( $options['quiz_disable_question_report_menu_notification'] ) : 'off';
+        // $quiz_disable_question_report_menu_notification = (isset($options['quiz_disable_question_report_menu_notification']) && esc_attr( $options['quiz_disable_question_report_menu_notification'] ) == "on") ? true : false;
+        $quiz_disable_question_report_menu_notification = false;
+
+
+        $menu_item = __('Questions', 'quiz-maker');
+        if ($actual_reports_count > 0 && !$quiz_disable_question_report_menu_notification) {
+            $menu_item .= '<span class="ays_menu_badge ays_results_bage">' . $actual_reports_count . '</span>';
+        }
+
         $hook_questions = add_submenu_page(
             $this->plugin_name,
             __('Questions', 'quiz-maker'),
-            __('Questions', 'quiz-maker'),
+            $menu_item,
             $this->capability,
             $this->plugin_name . '-questions',
             array($this, 'display_plugin_questions_page')
@@ -617,6 +635,18 @@ class Quiz_Maker_Admin
 
         add_action("load-$hook_questions", array($this, 'screen_option_questions'));
         add_action("load-$hook_questions", array( $this, 'add_tabs' ));
+
+        $hook_all_results = add_submenu_page(
+            'question_reports_slug',
+            __('Reports', 'quiz-maker'),
+            null,
+            $this->capability,
+            $this->plugin_name . '-question-reports',
+            array($this, 'display_plugin_question_reports_page')
+        );
+
+        add_action("load-$hook_all_results", array($this, 'screen_option_question_reports'));
+        add_action("load-$hook_all_results", array( $this, 'add_tabs' ));
     }
 
     public function add_plugin_quiz_categories_submenu(){
@@ -836,6 +866,8 @@ class Quiz_Maker_Admin
         global $plugin_page;
         if ( $this->plugin_name . "-all-reviews" == $plugin_page ) {
             $plugin_page = $this->plugin_name."-results";
+        }else if($this->plugin_name . "-question-reports" == $plugin_page) {
+            $plugin_page = $this->plugin_name."-questions";
         }
 
         return $file;
@@ -988,6 +1020,10 @@ class Quiz_Maker_Admin
         include_once('partials/dashboard/quiz-maker-dashboard-display.php');
     }
 
+    public function display_plugin_question_reports_page(){
+        include_once('partials/questions/quiz-maker-question-reports-display.php');
+    }
+
     public static function set_screen($status, $option, $value){
         return $value;
     }
@@ -1081,6 +1117,21 @@ class Quiz_Maker_Admin
     }
 
     public function screen_option_settings(){
+        $this->settings_obj = new Quiz_Maker_Settings_Actions($this->plugin_name);
+    }
+
+    public function screen_option_question_reports(){
+        $option = 'per_page';
+
+        $args = array(
+            'label' => __('Question Reports', 'quiz-maker'),
+            'default' => 20,
+            'option' => 'quiz_question_reports_per_page'
+        );
+
+        add_screen_option($option, $args);
+
+        $this->question_reports_obj = new Question_reports_List_Table($this->plugin_name);
         $this->settings_obj = new Quiz_Maker_Settings_Actions($this->plugin_name);
     }
 
@@ -6215,6 +6266,27 @@ class Quiz_Maker_Admin
         );
 
         return array('result_page' => $result_page_ordering,'buttons' => $buttons_ordering);
+    }
+
+    public static function get_quiz_question_by_id($id){
+
+        global $wpdb;
+
+        $sql = "SELECT * FROM {$wpdb->prefix}aysquiz_questions WHERE id = " . intval($id);
+
+        $results = $wpdb->get_row($sql, "ARRAY_A");
+
+        return $results;
+
+    }
+
+    public static function get_actual_reports_count(){
+        global $wpdb;
+
+        $sql = "SELECT COUNT(*) FROM {$wpdb->prefix}aysquiz_question_reports WHERE resolved = 0";
+        $result = $wpdb->get_var($sql);
+
+        return $result;
     }
     
 }

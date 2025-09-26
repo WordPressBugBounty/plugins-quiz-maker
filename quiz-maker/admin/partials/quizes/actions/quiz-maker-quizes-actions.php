@@ -268,6 +268,8 @@ $options = array(
     'quiz_right_answer_mobile_text_transform'   => "none",
     'quiz_wrong_answer_mobile_text_transform'   => "none",
     'quiz_admin_note_mobile_text_decoration'    => "none",
+    'quiz_dont_show_quiz'                       => "off",
+    'enable_questions_reporting'                => "off",
 
 );
 
@@ -1509,6 +1511,10 @@ $quiz_admin_note_mobile_text_decoration = (isset($options[ 'quiz_admin_note_mobi
 // Dont show quiz
 $options['quiz_dont_show_quiz'] = isset($options['quiz_dont_show_quiz']) ? stripslashes ( esc_attr($options['quiz_dont_show_quiz']) ) : 'off';
 $quiz_dont_show_quiz = (isset($options['quiz_dont_show_quiz']) && $options['quiz_dont_show_quiz'] == 'on') ? true : false;
+
+// enable question reporting
+$options['enable_questions_reporting'] = isset($options['enable_questions_reporting']) ? $options['enable_questions_reporting'] : 'off';
+$enable_question_reporting = (isset($options['enable_questions_reporting']) && $options['enable_questions_reporting'] == "on") ? true : false;
 
 ?>
 <style id="ays_live_custom_css"></style>
@@ -6411,6 +6417,20 @@ $quiz_dont_show_quiz = (isset($options['quiz_dont_show_quiz']) && $options['quiz
                             </div>
                         </div> <!-- Enable Background music -->
                         <hr/>
+                        <div class="form-group row ays_toggle_parent">
+                            <div class="col-sm-4" style="padding-right: 0px;">
+                                <label for="ays_enable_questions_reporting">
+                                    <?php echo esc_html__('Enable question reporting', 'quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Enable this option and the users can report questions from the Front-end, once they encounter any issues, errors, or inaccuracies.', 'quiz-maker' );?>">
+                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                    </a>
+                                </label>
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="checkbox" class="ays-enable-timer1 ays_toggle_checkbox" id="ays_enable_questions_reporting" name="ays_enable_questions_reporting" value="on" <?php echo ($enable_question_reporting) ? 'checked' : ''; ?>/>
+                            </div>
+                        </div> <!-- Enable question reporting -->
+                        <hr/>
                         <div class="form-group row" style="margin:0px;">
                             <div class="col-sm-12 only_pro" style="padding:10px 0 0 10px;">
                                 <div class="pro_features" style="justify-content:flex-end;">
@@ -6443,51 +6463,6 @@ $quiz_dont_show_quiz = (isset($options['quiz_dont_show_quiz']) && $options['quiz
                                 </a>
                             </div>
                         </div> <!-- Embed code -->
-                        <hr>
-                        <div class="form-group row" style="margin:0px;">
-                            <div class="col-sm-12 only_pro" style="padding:10px 0 0 10px;">
-                                <div class="pro_features" style="justify-content:flex-end;">
-
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-4" style="padding-right: 0px;">
-                                        <label for="ays_enable_questions_reporting">
-                                            <?php echo __('Enable question reporting','quiz-maker')?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Enable this option and the users can report questions from the Front-end, once they encounter any issues, errors, or inaccuracies.','quiz-maker')?>">
-                                                <i class="ays_fa ays_fa_info_circle"></i>
-                                            </a>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-1">
-                                        <input type="checkbox" class="ays-enable-timer1" />
-                                    </div>
-                                    <div class="col-sm-7  ays_divider_left">
-                                        <div class="form-group row">
-                                            <div class="col-sm-4">
-                                                <label for="ays_quiz_enable_questions_reporting_mail">
-                                                    <?php echo __('Send email to author','quiz-maker'); ?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Enable this option and an email will be sent to the quiz author every time when someone reports a question.','quiz-maker'); ?>">
-                                                        <i class="ays_fa ays_fa_info_circle"></i>
-                                                    </a>
-                                                </label>
-                                            </div>
-                                            <div class="col-sm-8">
-                                                <input type="checkbox" class="ays-enable-timer1" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> <!-- Enable question reporting -->
-                                <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
-                                    <div class="ays-quiz-new-upgrade-button-box">
-                                        <div>
-                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
-                                        </div>
-                                        <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
                         <hr/>
                         <div class="form-group row" style="margin:0px;">
                             <div class="col-sm-12 only_pro" style="padding:10px 0 0 10px;">
