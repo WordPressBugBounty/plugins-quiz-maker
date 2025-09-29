@@ -334,6 +334,9 @@
     $options['quiz_disable_results_menu_notification'] = isset($options['quiz_disable_results_menu_notification']) ? esc_attr( $options['quiz_disable_results_menu_notification'] ) : 'off';
     $quiz_disable_results_menu_notification = (isset($options['quiz_disable_results_menu_notification']) && esc_attr( $options['quiz_disable_results_menu_notification'] ) == "on") ? true : false;
 
+    $options['quiz_disable_question_report_menu_notification'] = isset($options['quiz_disable_question_report_menu_notification']) ? sanitize_text_field( $options['quiz_disable_question_report_menu_notification'] ) : 'off';
+    $quiz_disable_question_report_menu_notification = (isset($options['quiz_disable_question_report_menu_notification']) && sanitize_text_field( $options['quiz_disable_question_report_menu_notification'] ) == "on") ? true : false;
+
     // Show Result Information | Start
 
     $options['ays_quiz_show_result_info_user_ip'] = isset($options['ays_quiz_show_result_info_user_ip']) ? sanitize_text_field( $options['ays_quiz_show_result_info_user_ip'] ) : 'on';
@@ -1016,6 +1019,20 @@
                                 </div>
                                 <div class="col-sm-8">
                                     <input type="checkbox" name="ays_quiz_disable_results_menu_notification" id="ays_quiz_disable_results_menu_notification" value="on" <?php echo $quiz_disable_results_menu_notification ? 'checked' : ''; ?>>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="form-group row">
+                                <div class="col-sm-4">
+                                    <label for="ays_quiz_disable_question_report_menu_notification">
+                                        <?php echo esc_html__( "Disable Question report item notification", 'quiz-maker' ); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Enable this option and the notifications will not be displayed in the Question report menu.','quiz-maker') ); ?>">
+                                            <i class="ays_fa ays_fa_info_circle"></i>
+                                        </a>
+                                    </label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <input type="checkbox" name="ays_quiz_disable_question_report_menu_notification" id="ays_quiz_disable_question_report_menu_notification" value="on" <?php echo $quiz_disable_question_report_menu_notification ? 'checked' : ''; ?>>
                                 </div>
                             </div>
                         </fieldset> <!-- Menu notifications -->

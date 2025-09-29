@@ -610,14 +610,12 @@ class Quiz_Maker_Admin
 
         $actual_reports_count = self::get_actual_reports_count();
 
-        // $setting_actions = new Quiz_Maker_Settings_Actions($this->plugin_name);
-        // $options = ($setting_actions->ays_get_setting('options') === false) ? array() : json_decode( stripcslashes( $setting_actions->ays_get_setting('options') ), true);
+        $setting_actions = new Quiz_Maker_Settings_Actions($this->plugin_name);
+        $options = ($setting_actions->ays_get_setting('options') === false) ? array() : json_decode( stripcslashes( $setting_actions->ays_get_setting('options') ), true);
 
-        // // Disable Results menu item notification
-        // $options['quiz_disable_question_report_menu_notification'] = isset($options['quiz_disable_question_report_menu_notification']) ? esc_attr( $options['quiz_disable_question_report_menu_notification'] ) : 'off';
-        // $quiz_disable_question_report_menu_notification = (isset($options['quiz_disable_question_report_menu_notification']) && esc_attr( $options['quiz_disable_question_report_menu_notification'] ) == "on") ? true : false;
-        $quiz_disable_question_report_menu_notification = false;
-
+        // Disable Results menu item notification
+        $options['quiz_disable_question_report_menu_notification'] = isset($options['quiz_disable_question_report_menu_notification']) ? esc_attr( $options['quiz_disable_question_report_menu_notification'] ) : 'off';
+        $quiz_disable_question_report_menu_notification = (isset($options['quiz_disable_question_report_menu_notification']) && esc_attr( $options['quiz_disable_question_report_menu_notification'] ) == "on") ? true : false;
 
         $menu_item = __('Questions', 'quiz-maker');
         if ($actual_reports_count > 0 && !$quiz_disable_question_report_menu_notification) {
@@ -3296,6 +3294,9 @@ class Quiz_Maker_Admin
         $questions_label = intval($questions_count) == 1 ? __("question", 'quiz-maker') : __("questions", 'quiz-maker');
         $quizzes_label = intval($quizzes_count) == 1 ? __("quiz", 'quiz-maker') : __("quizzes", 'quiz-maker');
         $results_label = intval($results_count) == 1 ? __("new result", 'quiz-maker') : __("new results", 'quiz-maker');
+
+        $actual_reports_count = self::get_actual_reports_count();
+        $reports_label = intval($actual_reports_count) == 1 ? __( "question reports", 'quiz-maker' ) : __( "question reports", 'quiz-maker' );
         
         // Display whatever it is you want to show.
         ?>
@@ -3309,16 +3310,23 @@ class Quiz_Maker_Admin
             </li>
             <li class="ays_dashboard_widget_item">
                 <a href="<?php echo esc_url("admin.php?page=".$this->plugin_name."-questions"); ?>">
-                    <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL."/images/icons/question2.png"); ?>" alt="Questions">
+                    <img src="<?php echo AYS_QUIZ_ADMIN_URL."/images/icons/message-circle-question.svg"; ?>" alt="Questions">
                     <span><?php echo esc_html($questions_count); ?></span>
                     <span><?php echo esc_html($questions_label); ?></span>
                 </a>
             </li>
             <li class="ays_dashboard_widget_item">
                 <a href="<?php echo esc_url("admin.php?page=".$this->plugin_name."-results"); ?>">
-                    <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL."/images/icons/users2.png"); ?>" alt="Results">
+                    <img src="<?php echo AYS_QUIZ_ADMIN_URL."/images/icons/users-icon.svg"; ?>" alt="Results">
                     <span><?php echo esc_html($results_count); ?></span>
                     <span><?php echo esc_html($results_label); ?></span>
+                </a>
+            </li>
+            <li class="ays_dashboard_widget_item">
+                <a href="<?php echo "admin.php?page=".$this->plugin_name."-question-reports" ?>">
+                    <img src="<?php echo AYS_QUIZ_ADMIN_URL."/images/icons/triangle-alert.svg"; ?>" alt="Reports">
+                    <span><?php echo $actual_reports_count; ?></span>
+                    <span><?php echo $reports_label; ?></span>
                 </a>
             </li>
         </ul>

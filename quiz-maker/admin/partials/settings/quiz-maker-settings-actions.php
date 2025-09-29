@@ -255,6 +255,9 @@ class Quiz_Maker_Settings_Actions {
             // Question title view
             $quiz_question_title_view = (isset( $_REQUEST['ays_quiz_question_title_view'] ) && sanitize_text_field( $_REQUEST['ays_quiz_question_title_view'] ) != '') ? stripslashes( sanitize_text_field( $_REQUEST['ays_quiz_question_title_view'] ) ) : 'question_title';
 
+            // Disable Question report menu notification
+            $quiz_disable_question_report_menu_notification = (isset( $_REQUEST['ays_quiz_disable_question_report_menu_notification'] ) && sanitize_text_field( $_REQUEST['ays_quiz_disable_question_report_menu_notification'] ) == 'on') ? 'on' : 'off';
+
             $options = array(
                 "question_default_type"                         => $question_default_type,
                 "ays_answer_default_count"                      => $ays_answer_default_count,
@@ -298,6 +301,7 @@ class Quiz_Maker_Settings_Actions {
                 "quiz_enable_lazy_loading"                          => $quiz_enable_lazy_loading,
                 "quiz_disable_quiz_menu_notification"               => $quiz_disable_quiz_menu_notification,
                 "quiz_disable_results_menu_notification"            => $quiz_disable_results_menu_notification,
+                "quiz_disable_question_report_menu_notification"    => $quiz_disable_question_report_menu_notification,
 
                 // Show Result Information
                 'ays_quiz_show_result_info_user_ip'                 => $ays_quiz_show_result_info_user_ip,
