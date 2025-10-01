@@ -3225,6 +3225,7 @@ class Quiz_Maker_Public
                     {$title}
                     {$description}
                     <input type='hidden' name='ays_quiz_id' value='{$id}'/>
+                    <input type='hidden' name='ays_quiz_finish_nonce' value='". esc_attr( wp_create_nonce( 'ays_quiz_finish_nonce' ) ) ."'>
                     <input type='hidden' name='ays_quiz_curent_page_link' class='ays-quiz-curent-page-link' value='{$quiz_current_page_link}'/>
                     " . (isset($quiz_questions_ids) ? "<input type='hidden' name='ays_quiz_questions' value='{$quiz_questions_ids}'>" : "") . "
                     {$quiz_password_message_html}
@@ -5442,6 +5443,17 @@ class Quiz_Maker_Public
         ob_start();
         $quiz_id = isset($_REQUEST['ays_quiz_id']) ? absint( sanitize_text_field( $_REQUEST['ays_quiz_id'] ) ) : 0;
 
+        $ays_quiz_finish_nonce = isset( $_REQUEST['ays_quiz_finish_nonce'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['ays_quiz_finish_nonce'] ) ) : '';
+
+        if ( ! wp_verify_nonce( $ays_quiz_finish_nonce, 'ays_quiz_finish_nonce' ) ) {
+
+            echo json_encode( array(
+                'status'  => false,
+                'message' => __( 'Invalid request', 'quiz-maker' ),
+            ) );
+            wp_die();
+        }
+
         if($quiz_id === 0){            
             ob_end_clean();
             $ob_get_clean = ob_get_clean();
@@ -5814,7 +5826,7 @@ class Quiz_Maker_Public
                         $final_score_by_cats[$cat_id] = floatval(floor(($correct_answered_count_cat / $quiz_weight_cat) * 100));
                     }
                 }
-//                $average_percent = 100 / $questions_count;
+                // $average_percent = 100 / $questions_count;
                 
                 switch($calculate_score){
                     case "by_correctness":
@@ -8149,47 +8161,47 @@ class Quiz_Maker_Public
                     'style'          => true,
                 ),
                 'image' => array(
-                    'class' => true,
-                    'id' => true,
-                    'xlink' => true,
-                    'xlink:href' => true,
-                    'width' => true,
-                    'height' => true,
-                    'style' => true,
+                    'class'         => true,
+                    'id'            => true,
+                    'xlink'         => true,
+                    'xlink:href'    => true,
+                    'width'         => true,
+                    'height'        => true,
+                    'style'         => true,
                 ),
                 'video' => array(
-                    'class' => true,
-                    'id' => true,
-                    'controls' => true,
-                    'style' => true,
+                    'class'         => true,
+                    'id'            => true,
+                    'controls'      => true,
+                    'style'         => true,
                 ),
                 'source' => array(
-                    'class' => true,
-                    'id' => true,
-                    'src' => true,
-                    'style' => true,
+                    'class'         => true,
+                    'id'            => true,
+                    'src'           => true,
+                    'style'         => true,
                 ),
                 'form' => array(
-                    'name' => true,
-                    'id' => true,
-                    'action' => true,
-                    'method' => true,
-                    'data-*' => true,
-                    'style' => true,
+                    'name'          => true,
+                    'id'            => true,
+                    'action'        => true,
+                    'method'        => true,
+                    'data-*'        => true,
+                    'style'         => true,
                 ),
                 'input' => array(
-                    'id' => true,
-                    'name' => true,
-                    'class' => true,
-                    'type' => true,
-                    'value' => true,
-                    'size' => true,
-                    'required' => true,
-                    'readonly' => true,
-                    'data-*' => true,
-                    'style' => true,
-                    'onClick' => true,
-                    'onclick' => true,
+                    'id'            => true,
+                    'name'          => true,
+                    'class'         => true,
+                    'type'          => true,
+                    'value'         => true,
+                    'size'          => true,
+                    'required'      => true,
+                    'readonly'      => true,
+                    'data-*'        => true,
+                    'style'         => true,
+                    'onClick'       => true,
+                    'onclick'       => true,
                 ),
                 'select' => array(
                     'id' => true,

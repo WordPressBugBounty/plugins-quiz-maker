@@ -3479,8 +3479,8 @@ class Quiz_Maker_Admin
                     $this->ays_quiz_fox_lms_integration_message($ays_quiz_ishmar);
                 } else {
                     if( $this->get_max_id('quizes') > 1 ){
-                        // $this->ays_quiz_new_mega_bundle_message($ays_quiz_ishmar);
-                        $this->ays_quiz_discounted_licenses_banner_message($ays_quiz_ishmar);
+                        $this->ays_quiz_new_mega_bundle_message($ays_quiz_ishmar);
+                        // $this->ays_quiz_discounted_licenses_banner_message($ays_quiz_ishmar);
                     }
                 }
             }

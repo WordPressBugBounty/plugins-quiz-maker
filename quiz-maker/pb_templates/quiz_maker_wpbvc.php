@@ -20,12 +20,12 @@ if( class_exists( 'WPBakeryShortCode' ) ) {
             // Map the block with vc_map()
             vc_map(
                 array(
-                    'name' => __('Quiz Maker', 'quiz-maker'),
-                    'base' => 'vc_quizmaker',
-                    'description' => __('The Best Quiz Maker Ever', 'quiz-maker'),
-                    'category' => __('Quiz Maker by AYS', 'quiz-maker'),
-                    'icon' => AYS_QUIZ_ADMIN_URL . '/images/icons/icon-128x128.png',
-                    'params' => array(
+                    'name'          => __('Quiz Maker', 'quiz-maker'),
+                    'base'          => 'vc_quizmaker',
+                    'description'   => __('The Best Quiz Maker Ever', 'quiz-maker'),
+                    'category'      => __('Quiz Maker by AYS', 'quiz-maker'),
+                    'icon'          => AYS_QUIZ_ADMIN_URL . '/images/icons/icon-128x128.png',
+                    'params'        => array(
                         array(
                             'type'          => 'dropdown',
                             'holder'        => 'div',
