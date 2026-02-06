@@ -1,5 +1,7 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 class Quiz_Maker_Ays_Welcome {
 
     /**
@@ -84,14 +86,14 @@ class Quiz_Maker_Ays_Welcome {
             $this->ays_quiz_request( 'agree' );
             update_option('ays_quiz_agree_terms', 'true');
             update_option('ays_quiz_show_agree_terms', 'hide');
-            wp_safe_redirect( admin_url( 'admin.php?page=quiz-maker' ) );
+            wp_safe_redirect( admin_url( 'admin.php?page=quiz-maker-admin-dashboard' ) );
         }
 
         if(isset($_POST['ays_quiz_cancel_terms']) && $_POST['ays_quiz_cancel_terms'] === 'cancel'){
             $this->ays_quiz_request( 'cancel' );
             update_option('ays_quiz_agree_terms', 'false');
             update_option('ays_quiz_show_agree_terms', 'hide');
-            wp_safe_redirect( admin_url( 'admin.php?page=quiz-maker' ) );
+            wp_safe_redirect( admin_url( 'admin.php?page=quiz-maker-admin-dashboard' ) );
         }
 
         if($current_page === self::SLUG){
@@ -113,7 +115,7 @@ class Quiz_Maker_Ays_Welcome {
         wp_enqueue_style(
             'quiz-maker-welcome-css', 
             esc_url(AYS_QUIZ_ADMIN_URL) . '/css/quiz-maker-welcome.css',
-            array(), false, 'all');
+            array(), AYS_QUIZ_VERSION, 'all');
     }
 
     /**
@@ -191,4 +193,4 @@ class Quiz_Maker_Ays_Welcome {
         ) );
     }
 }
-//new Quiz_Maker_Ays_Welcome();
+new Quiz_Maker_Ays_Welcome();

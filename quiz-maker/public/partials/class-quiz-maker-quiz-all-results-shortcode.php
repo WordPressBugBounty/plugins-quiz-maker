@@ -212,11 +212,11 @@ class Quiz_Maker_Quiz_All_Results
                 }
             }
             $ays_default_html_order = array(
-                "user_name" => "<td>$user_name</td>",
-                "start_date" => "<td data-order='". $start_date_for_ordering ."'>$start_date</td>",
-                "end_date" => "<td data-order='". $end_date_for_ordering ."'>$end_date</td>",
-                "duration" => "<td data-order='". $duration_for_ordering ."' class='ays-quiz-duration-column'>$duration</td>",
-                "score" => "<td class='ays-quiz-score-column'>$score%</td>",
+                "user_name"     => "<td>$user_name</td>",
+                "start_date"    => "<td data-order='". $start_date_for_ordering ."'>$start_date</td>",
+                "end_date"      => "<td data-order='". $end_date_for_ordering ."'>$end_date</td>",
+                "duration"      => "<td data-order='". $duration_for_ordering ."' class='ays-quiz-duration-column'>$duration</td>",
+                "score"         => "<td class='ays-quiz-score-column'>$score%</td>",
             );
 
             $all_results_html .= "<tr>";

@@ -1,5 +1,7 @@
 <?php
 
+if (!defined('ABSPATH')) exit; // Exit if accessed directly
+
 if(isset($_GET['ays_quiz_tab'])){
     $ays_quiz_tab = sanitize_text_field( $_GET['ays_quiz_tab'] );
 }else{
@@ -41,7 +43,7 @@ $options = array(
     'enable_logged_users'                       => 'off',
     'image_width'                               => '',
     'image_height'                              => '',
-    'enable_correction'                         => 'on',
+    'enable_correction'                         => 'off',
     'enable_questions_counter'                  => 'on',
     'limit_users'                               => 'off',
     'limitation_message'                        => '',
@@ -81,7 +83,7 @@ $options = array(
     'create_date'                               => current_time( 'mysql' ),
     'author'                                    => $author,
     'autofill_user_data'                        => 'off',
-    'quest_animation'                           => 'shake',
+    'quest_animation'                           => 'none',
     'form_title'                                => '',
     'enable_bg_music'                           => 'off',
     'quiz_bg_music'                             => '',
@@ -117,6 +119,7 @@ $options = array(
     ),
     'show_quiz_title'                           => 'on',
     'show_quiz_desc'                            => 'on',
+    'show_quiz_image'                           => 'on',
     'show_login_form'                           => 'off',
     'mobile_max_width'                          => '',
     'limit_users_by'                            => 'ip',
@@ -192,6 +195,9 @@ $options = array(
     'answers_border_width'                      => '1',
     'answers_border_style'                      => 'solid',
     'answers_border_color'                      => '#dddddd',
+    'ans_img_height'                            => 150,
+    'show_answers_caption'                      => 'on',
+    'ans_img_caption_position'                  => 'bottom',
     'social_links_heading'                      => '',
     'quiz_enable_question_category_description' => 'off',
     'answers_margin'                            => '12',
@@ -202,7 +208,6 @@ $options = array(
     'quiz_answer_box_shadow_x_offset'           => 0,
     'quiz_answer_box_shadow_y_offset'           => 0,
     'quiz_answer_box_shadow_z_offset'           => 10,
-    'quiz_create_author'                        => $user_id,
     'quiz_create_author'                        => $user_id,
     'quiz_enable_title_text_shadow'             => "off",
     'quiz_title_text_shadow_color'              => "#333",
@@ -248,6 +253,7 @@ $options = array(
     'quiz_right_answers_text_decoration'        => "none",
     'quiz_wrong_answers_text_decoration'        => "none",
     'quiz_admin_note_letter_spacing'            => 0,
+    'quiz_admin_note_mobile_letter_spacing'     => 0,
     'quiz_bg_img_during_the_quiz'               => "off",
     'quiz_quest_explanation_letter_spacing'     => 0,
     'quiz_right_answers_letter_spacing'         => 0,
@@ -270,6 +276,14 @@ $options = array(
     'quiz_admin_note_mobile_text_decoration'    => "none",
     'quiz_dont_show_quiz'                       => "off",
     'enable_questions_reporting'                => "off",
+    'quiz_quest_explanation_mobile_text_decoration' => "none",
+    'quiz_wrong_answers_mobile_text_decoration' => "none",
+    'quiz_right_answers_mobile_letter_spacing'  => 0,
+    'quiz_wrong_answers_mobile_letter_spacing'  => 0,
+    'quiz_admin_note_mobile_font_weight'        => "normal",
+    'quiz_quest_explanation_mobile_font_weight' => "normal",
+    'quiz_right_answers_mobile_font_weight'     => "normal",
+    'quiz_question_image_border_radius'         => 0,
 
 );
 
@@ -330,6 +344,7 @@ $quiz_published = (isset( $quiz['published'] ) && $quiz['published'] != "") ? es
 $loader_iamge = "<span class='display_none ays_quiz_loader_box'><img src='". AYS_QUIZ_ADMIN_URL ."/images/loaders/loading.gif'></span>";
 
 $questions = $this->quizes_obj->get_published_questions();
+$question_max_id = $this->get_max_id('questions');
 $total_questions_count = $this->quizes_obj->published_questions_record_count();
 $quiz_categories = $this->quizes_obj->get_quiz_categories();
 $question_categories = $this->get_questions_categories();
@@ -390,7 +405,8 @@ if (isset($_POST['ays_apply_top']) || isset($_POST['ays_apply'])) {
 if (isset($_POST['ays_quiz_cancel_top']) || isset($_POST['ays_quiz_cancel'])) {
     unset($_GET['page']);
     $url = remove_query_arg( array_keys($_GET) );
-    wp_redirect( $url );
+    wp_safe_redirect( $url );
+    exit;
 }
 
 $next_quiz_id = "";
@@ -446,6 +462,7 @@ $quiz_message_vars = array(
     "%%result_id%%"                                 => __("User result ID", 'quiz-maker'),
     "%%current_quiz_question_categories_count%%"    => __("Question cateogries count", 'quiz-maker'),
     "%%site_title%%"                                => __("Site title", 'quiz-maker'),
+    "%%site_description%%"                          => __("Site description", 'quiz-maker'),
 );
 
 $quiz_message_vars_timer = array(
@@ -469,6 +486,7 @@ $quiz_message_vars_timer = array(
     "%%quiz_id%%"                                   => __("Quiz ID", 'quiz-maker'),
     "%%user_id%%"                                   => __("User ID", 'quiz-maker'),
     "%%site_title%%"                                => __("Site title", 'quiz-maker'),
+    "%%site_description%%"                          => __("Site description", 'quiz-maker'),
 );
 
 $quiz_message_vars_information_form = array(
@@ -491,6 +509,7 @@ $quiz_message_vars_information_form = array(
     "%%quiz_id%%"                                   => __("Quiz ID", 'quiz-maker'),
     "%%user_id%%"                                   => __("User ID", 'quiz-maker'),
     "%%site_title%%"                                => __("Site title", 'quiz-maker'),
+    "%%site_description%%"                          => __("Site description", 'quiz-maker'),
 );
 
 $quiz_message_vars_description = array(
@@ -513,6 +532,7 @@ $quiz_message_vars_description = array(
     "%%quiz_id%%"                                   => __("Quiz ID", 'quiz-maker'),
     "%%user_id%%"                                   => __("User ID", 'quiz-maker'),
     "%%site_title%%"                                => __("Site title", 'quiz-maker'),
+    "%%site_description%%"                          => __("Site description", 'quiz-maker'),
 );
 
 $quiz_message_vars_limitation_message = array(
@@ -535,6 +555,7 @@ $quiz_message_vars_limitation_message = array(
     "%%quiz_id%%"                                   => __("Quiz ID", 'quiz-maker'),
     "%%user_id%%"                                   => __("User ID", 'quiz-maker'),
     "%%site_title%%"                                => __("Site title", 'quiz-maker'),
+    "%%site_description%%"                          => __("Site description", 'quiz-maker'),
 );
 
 $quiz_message_vars_logged_in_users = array(
@@ -551,6 +572,7 @@ $quiz_message_vars_logged_in_users = array(
     "%%quiz_id%%"                                   => __("Quiz ID", 'quiz-maker'),
     "%%user_id%%"                                   => __("User ID", 'quiz-maker'),
     "%%site_title%%"                                => __("Site title", 'quiz-maker'),
+    "%%site_description%%"                          => __("Site description", 'quiz-maker'),
 );
 
 $quiz_message_vars_only_selected_user_role = array(
@@ -573,6 +595,7 @@ $quiz_message_vars_only_selected_user_role = array(
     "%%quiz_id%%"                                   => __("Quiz ID", 'quiz-maker'),
     "%%user_id%%"                                   => __("User ID", 'quiz-maker'),
     "%%site_title%%"                                => __("Site title", 'quiz-maker'),
+    "%%site_description%%"                          => __("Site description", 'quiz-maker'),
 );
 
 $quiz_message_vars_limitation_count_of_takers = array(
@@ -595,6 +618,7 @@ $quiz_message_vars_limitation_count_of_takers = array(
     "%%quiz_id%%"                                   => __("Quiz ID", 'quiz-maker'),
     "%%user_id%%"                                   => __("User ID", 'quiz-maker'),
     "%%site_title%%"                                => __("Site title", 'quiz-maker'),
+    "%%site_description%%"                          => __("Site description", 'quiz-maker'),
 );
 
 $quiz_message_vars_password_for_passing_quiz = array(
@@ -617,6 +641,7 @@ $quiz_message_vars_password_for_passing_quiz = array(
     "%%quiz_id%%"                                   => __("Quiz ID", 'quiz-maker'),
     "%%user_id%%"                                   => __("User ID", 'quiz-maker'),
     "%%site_title%%"                                => __("Site title", 'quiz-maker'),
+    "%%site_description%%"                          => __("Site description", 'quiz-maker'),
 );
 
 $quiz_message_vars_rating_form_title = array(
@@ -639,6 +664,7 @@ $quiz_message_vars_rating_form_title = array(
     "%%quiz_id%%"                                   => __("Quiz ID", 'quiz-maker'),
     "%%user_id%%"                                   => __("User ID", 'quiz-maker'),
     "%%site_title%%"                                => __("Site title", 'quiz-maker'),
+    "%%site_description%%"                          => __("Site description", 'quiz-maker'),
 );
 
 $quiz_message_vars_schedule_pre_start_message = array(
@@ -661,6 +687,7 @@ $quiz_message_vars_schedule_pre_start_message = array(
     "%%quiz_id%%"                                   => __("Quiz ID", 'quiz-maker'),
     "%%user_id%%"                                   => __("User ID", 'quiz-maker'),
     "%%site_title%%"                                => __("Site title", 'quiz-maker'),
+    "%%site_description%%"                          => __("Site description", 'quiz-maker'),
 );
 
 $quiz_message_vars_review_thank_you_message = array(
@@ -683,6 +710,7 @@ $quiz_message_vars_review_thank_you_message = array(
     "%%quiz_id%%"                                   => __("Quiz ID", 'quiz-maker'),
     "%%user_id%%"                                   => __("User ID", 'quiz-maker'),
     "%%site_title%%"                                => __("Site title", 'quiz-maker'),
+    "%%site_description%%"                          => __("Site description", 'quiz-maker'),
 );
 
 $quiz_message_vars_html                             = $this->ays_quiz_generate_message_vars_html( $quiz_message_vars );
@@ -697,6 +725,8 @@ $quiz_message_vars_password_for_passing_quiz_html   = $this->ays_quiz_generate_m
 $quiz_message_vars_rating_form_title_html           = $this->ays_quiz_generate_message_vars_html( $quiz_message_vars_rating_form_title );
 $quiz_message_vars_schedule_pre_start_message_html  = $this->ays_quiz_generate_message_vars_html( $quiz_message_vars_schedule_pre_start_message );
 $quiz_message_vars_review_thank_you_message_html    = $this->ays_quiz_generate_message_vars_html( $quiz_message_vars_review_thank_you_message );
+
+$quiz_allowed_html = Quiz_Maker_Data::ays_quiz_allowed_html();
 
 $certificate_body_html = '
 This is to certify that
@@ -826,7 +856,7 @@ if(isset($options['author']) && $options['author'] != 'null'){
 
 $autofill_user_data = (isset($options['autofill_user_data']) && $options['autofill_user_data'] == 'on') ? true : false;
 
-$quest_animation = (isset($options['quest_animation'])) ? esc_attr( stripslashes($options['quest_animation'])) : "shake";
+$quest_animation = (isset($options['quest_animation'])) ? esc_attr( stripslashes($options['quest_animation'])) : "none";
 $enable_bg_music = (isset($options['enable_bg_music']) && $options['enable_bg_music'] == "on") ? true : false;
 $quiz_bg_music = (isset($options['quiz_bg_music']) && $options['quiz_bg_music'] != "") ? $options['quiz_bg_music'] : "";
 $answers_font_size = (isset($options['answers_font_size']) && $options['answers_font_size'] != "" && absint( esc_attr( $options['answers_font_size'] ) ) > 0) ? absint( esc_attr( $options['answers_font_size'] ) ) : '15';
@@ -890,6 +920,10 @@ $options['show_quiz_title'] = isset($options['show_quiz_title']) ? $options['sho
 $options['show_quiz_desc'] = isset($options['show_quiz_desc']) ? $options['show_quiz_desc'] : 'on';
 $show_quiz_title = (isset($options['show_quiz_title']) && $options['show_quiz_title'] == "on") ? true : false;
 $show_quiz_desc = (isset($options['show_quiz_desc']) && $options['show_quiz_desc'] == "on") ? true : false;
+
+// Show Quiz Image on the front-end
+$options['show_quiz_image'] = isset($options['show_quiz_image']) ? esc_attr($options['show_quiz_image']) : 'on';
+$show_quiz_image = (isset($options['show_quiz_image']) && $options['show_quiz_image'] == "on") ? true : false;
 
 
 // Show login form for not logged in users
@@ -1516,6 +1550,51 @@ $quiz_dont_show_quiz = (isset($options['quiz_dont_show_quiz']) && $options['quiz
 $options['enable_questions_reporting'] = isset($options['enable_questions_reporting']) ? $options['enable_questions_reporting'] : 'off';
 $enable_question_reporting = (isset($options['enable_questions_reporting']) && $options['enable_questions_reporting'] == "on") ? true : false;
 
+// Question Explanation text decoration | Mobile
+$quiz_quest_explanation_mobile_text_decoration = (isset($options[ 'quiz_quest_explanation_mobile_text_decoration' ]) && $options[ 'quiz_quest_explanation_mobile_text_decoration' ] != '') ? stripslashes ( esc_attr( $options[ 'quiz_quest_explanation_mobile_text_decoration' ] ) ) : $quiz_quest_explanation_text_decoration;
+
+// Right answer text decoration | Mobile
+$quiz_right_answers_mobile_text_decoration = (isset($options[ 'quiz_right_answers_mobile_text_decoration' ]) && $options[ 'quiz_right_answers_mobile_text_decoration' ] != '') ? stripslashes ( esc_attr( $options[ 'quiz_right_answers_mobile_text_decoration' ] ) ) : $quiz_right_answers_text_decoration;
+
+// Answers image height
+$ans_img_height = (isset($options['ans_img_height']) && $options['ans_img_height'] != '') ? stripslashes (absint($options['ans_img_height']) ) : 150;
+
+// Show answers caption
+$options['show_answers_caption'] = isset($options['show_answers_caption']) ? stripslashes ( esc_attr($options['show_answers_caption']) ) : 'on';
+$show_answers_caption = (isset($options['show_answers_caption']) && $options['show_answers_caption'] == 'on') ? true : false;
+
+$ans_img_caption_position = (isset($options['ans_img_caption_position']) && $options['ans_img_caption_position'] != '') ? stripslashes ( esc_attr($options['ans_img_caption_position']) ) : 'bottom';
+
+// Wrong answer text decoration | Mobile
+$quiz_wrong_answers_mobile_text_decoration = (isset($options[ 'quiz_wrong_answers_mobile_text_decoration' ]) && $options[ 'quiz_wrong_answers_mobile_text_decoration' ] != '') ? stripslashes ( esc_attr( $options[ 'quiz_wrong_answers_mobile_text_decoration' ] ) ) : $quiz_wrong_answers_text_decoration;
+
+// Note letter spacing | Admin note | Mobile
+$quiz_admin_note_mobile_letter_spacing = (isset($options[ 'quiz_admin_note_mobile_letter_spacing' ]) && $options[ 'quiz_admin_note_mobile_letter_spacing' ] != '') ? absint ( stripslashes( $options[ 'quiz_admin_note_mobile_letter_spacing' ] ) ) : $quiz_admin_note_letter_spacing;
+
+// Letter spacing | Question Explanation | Mobile
+$quiz_quest_explanation_mobile_letter_spacing = (isset($options[ 'quiz_quest_explanation_mobile_letter_spacing' ]) && $options[ 'quiz_quest_explanation_mobile_letter_spacing' ] != '') ? absint ( stripslashes( $options[ 'quiz_quest_explanation_mobile_letter_spacing' ] ) ) : $quiz_quest_explanation_letter_spacing;
+
+// Letter spacing | Right answer | Mobile
+$quiz_right_answers_mobile_letter_spacing = (isset($options[ 'quiz_right_answers_mobile_letter_spacing' ]) && $options[ 'quiz_right_answers_mobile_letter_spacing' ] != '') ? absint ( stripslashes( $options[ 'quiz_right_answers_mobile_letter_spacing' ] ) ) : $quiz_right_answers_letter_spacing;
+
+// Letter spacing | Wrong answer | Mobile
+$quiz_wrong_answers_mobile_letter_spacing = (isset($options[ 'quiz_wrong_answers_mobile_letter_spacing' ]) && $options[ 'quiz_wrong_answers_mobile_letter_spacing' ] != '') ? absint ( stripslashes( $options[ 'quiz_wrong_answers_mobile_letter_spacing' ] ) ) : $quiz_wrong_answers_letter_spacing;
+
+// Admin Notice Font weight | Mobile
+$quiz_admin_note_mobile_font_weight = (isset($options[ 'quiz_admin_note_mobile_font_weight' ]) && $options[ 'quiz_admin_note_mobile_font_weight' ] != '') ? stripslashes ( esc_attr( $options[ 'quiz_admin_note_mobile_font_weight' ] ) ) : $quiz_admin_note_font_weight;
+
+// Question explanation Font weight | Mobile
+$quiz_quest_explanation_mobile_font_weight = (isset($options[ 'quiz_quest_explanation_mobile_font_weight' ]) && $options[ 'quiz_quest_explanation_mobile_font_weight' ] != '') ? stripslashes ( esc_attr( $options[ 'quiz_quest_explanation_mobile_font_weight' ] ) ) : $quiz_quest_explanation_font_weight;
+
+// Right answer font weight | Mobile
+$quiz_right_answers_mobile_font_weight = (isset($options[ 'quiz_right_answers_mobile_font_weight' ]) && $options[ 'quiz_right_answers_mobile_font_weight' ] != '') ? stripslashes ( esc_attr( $options[ 'quiz_right_answers_mobile_font_weight' ] ) ) : $quiz_right_answers_font_weight;
+
+// Question Image border radius
+$quiz_question_image_border_radius = (isset($options[ 'quiz_question_image_border_radius' ]) && $options[ 'quiz_question_image_border_radius' ] != '') ? absint ( stripslashes( $options[ 'quiz_question_image_border_radius' ] ) ) : 0;
+
+// Wrong answer font weight | Mobile
+$quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mobile_font_weight' ]) && $options[ 'quiz_wrong_answers_mobile_font_weight' ] != '') ? stripslashes ( esc_attr( $options[ 'quiz_wrong_answers_mobile_font_weight' ] ) ) : $quiz_wrong_answers_font_weight;
+
 ?>
 <style id="ays_live_custom_css"></style>
 <div class="wrap ays-quiz-dashboard-main-wrap">
@@ -1524,7 +1603,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
         <div class="ays-quiz-heading-box ays-quiz-heading-box-margin-top">
             <div class="ays-quiz-wordpress-user-manual-box">
                 <a href="https://www.youtube.com/watch?v=gKjzOsn_yDo" target="_blank" style="text-decoration: none;font-size: 13px;">
-                    <span><img loading="lazy" src='<?php echo AYS_QUIZ_ADMIN_URL; ?>/images/icons/youtube-video-icon.svg' ></span>
+                    <span><img loading="lazy" src='<?php echo esc_url(AYS_QUIZ_ADMIN_URL); ?>/images/icons/youtube-video-icon.svg' ></span>
                     <span style="margin-left: 3px; text-decoration: underline;"><?php echo esc_html__('Getting started', "quiz-maker"); ?></span>
                 </a>
                 <a href="https://quiz-plugin.com/docs/" target="_blank">
@@ -1536,10 +1615,30 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
         <?php endif; ?>
         <h1 class="wp-heading-inline">
             <?php
-                echo $heading;
+                echo esc_html($heading);
             ?>
         </h1>
         <?php do_action('ays_quiz_sale_banner'); ?>
+
+        <?php if($question_max_id <= 3): ?>
+        <div class="ays-quiz-admin-notice notice notice-success is-dismissible">
+            <p style="font-size:14px;">
+                <strong>
+                    <?php echo esc_html__( "If you haven't created questions yet, you need to do it first.", 'quiz-maker' ); ?> 
+                </strong>
+                <br>
+                <strong>
+                    <em>
+                        <?php echo esc_html__( "For creating a question go", 'quiz-maker' ); ?> 
+                        <a href="<?php echo esc_url( admin_url('admin.php') . "?page=".$this->plugin_name . "-questions" ); ?>" target="_blank">
+                            <?php echo esc_html__( "here", 'quiz-maker' ); ?>.
+                        </a>
+                    </em>
+                </strong>
+            </p>
+        </div>
+        <?php endif; ?>
+
         <form class="ays-quiz-category-form ays-quiz-main-form" id="ays-quiz-category-form" method="post">
             <input type="hidden" name="ays_quiz_tab" value="<?php echo esc_attr($ays_quiz_tab); ?>">
             <input type="hidden" name="ays_quiz_ctrate_date" value="<?php echo esc_attr($quiz_create_date); ?>">
@@ -1571,7 +1670,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                 <label class="ays-quiz-message-vars-each-data-label">
                                     <input type="radio" class="ays-quiz-quizzes-each-data-checker" hidden id="ays_quiz_message_var_count_<?php echo esc_attr($var_counter); ?>" name="ays_quiz_message_var_count">
                                     <div class="ays-quiz-quizzes-each-data">
-                                        <input type="hidden" class="ays-quiz-quizzes-each-var" value="<?php echo $var; ?>">
+                                        <input type="hidden" class="ays-quiz-quizzes-each-var" value="<?php echo esc_attr($var); ?>">
                                         <a href="?page=quiz-maker&action=edit&quiz=<?php echo esc_attr($var_name['id']); ?>" target="_blank" class="ays-quiz-go-to-quizzes"><span><?php echo stripslashes(esc_attr($var_name['title'])); ?></span></a>
                                     </div>
                                 </label>              
@@ -1586,7 +1685,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                     <div class="col-sm-12">
                         <p style="font-size:14px; font-style:italic;">
                             <?php echo esc_html__("To make your quiz live, copy shortcode", 'quiz-maker'); ?>
-                            <strong class="ays-quiz-shortcode-box" onClick="selectElementContents(this)" class="ays_help" data-toggle="tooltip" title="<?php echo esc_html__('Click for copy.','quiz-maker');?>" style="font-size:16px; font-style:normal;"><?php echo esc_html("[ays_quiz id='".$id."']"); ?></strong>
+                            <strong class="ays-quiz-shortcode-box" onClick="selectElementContents(this)" class="ays_help" data-toggle="tooltip" title="<?php echo esc_html__('Click for copy.','quiz-maker');?>" style="font-size:16px; font-style:normal;"><?php echo esc_html("[ays_quiz id='". intval($id) ."']"); ?></strong>
                             <?php echo esc_html(" ") . esc_html__( "and paste it into your desired Page or Post.", 'quiz-maker'); ?>
                         </p>
                     </div>
@@ -1595,7 +1694,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                 <div id="ays-quiz-tab-doc-link" class="ays-quiz-heading-box" style="margin-bottom: 40px;">
                     <div class="ays-quiz-wordpress-user-manual-box">
                         <a href="https://www.youtube.com/watch?v=gKjzOsn_yDo" target="_blank" style="text-decoration: none;font-size: 13px;">
-                            <span><img loading="lazy" src='<?php echo AYS_QUIZ_ADMIN_URL; ?>/images/icons/youtube-video-icon.svg' ></span>
+                            <span><img loading="lazy" src='<?php echo esc_url(AYS_QUIZ_ADMIN_URL); ?>/images/icons/youtube-video-icon.svg' ></span>
                             <span style="margin-left: 3px; text-decoration: underline;"><?php echo esc_html__('Getting started', "quiz-maker"); ?></span>
                         </a>
                         <a class="ays-quiz-doc-link" href="<?php echo isset($tab_docs[$ays_quiz_tab]['link']) ? esc_url($tab_docs[$ays_quiz_tab]['link']) : 'https://quiz-plugin.com/docs/how-to-create-a-quiz/'; ?>" target="_blank">
@@ -1648,7 +1747,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                         'data-toggle' => 'tooltip',
                         'data-delay'=> '{"show":"1000"}'
                     );
-                    echo $loader_iamge;
+                    echo wp_kses($loader_iamge, $quiz_allowed_html);
                     submit_button(esc_html__('Save', 'quiz-maker'), 'primary ays-quiz-loader-banner', 'ays_apply_top', false, $other_attributes_only_save);
                     submit_button(esc_html__('Save and close', 'quiz-maker'), 'ays-quiz-loader-banner ays-quiz-submit-button-margin-unset', 'ays_submit_top', false, $other_attributes);
                     submit_button(esc_html__('Cancel', "quiz-maker"), 'ays-quiz-loader-banner', 'ays_quiz_cancel_top', false, array());
@@ -1691,7 +1790,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
                         </p>
-                        <div class="ays-quiz-image-container" style="<?php echo $style; ?>">
+                        <div class="ays-quiz-image-container" style="<?php echo !empty($style) ? esc_attr($style) : ''; ?>">
                             <span class="ays-remove-quiz-img"></span>
                             <img loading="lazy" src="<?php echo esc_url($quiz_image); ?>" id="ays-quiz-img"/>
                             <input type="hidden" name="ays_quiz_image" id="ays-quiz-image" value="<?php echo esc_url($quiz_image); ?>"/>
@@ -1710,7 +1809,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                     </div>
                     <div class="col-sm-10">
                         <?php
-                            echo $quiz_message_vars_description_html;
+                            echo wp_kses($quiz_message_vars_description_html, $quiz_allowed_html);
                             $content = $quiz_description;
                             $editor_id = 'ays-quiz-description';
                             $settings = array('editor_height' => $quiz_wp_editor_height, 'textarea_name' => 'ays_quiz_description', 'editor_class' => 'ays-textarea', 'media_elements' => false);
@@ -1738,7 +1837,9 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                 <p class="ays_questions_action">
                                     <span class="ays_questions_count">
                                         <?php
-                                        echo '<span class="questions_count_number">' . count($question_id_array) . '</span> '. __('items','quiz-maker');
+                                        $ays_questions_count = '<span class="questions_count_number">' . count($question_id_array) . '</span> '. __('items','quiz-maker');
+
+                                        echo wp_kses($ays_questions_count, $quiz_allowed_html);
                                         ?>
                                     </span>
                                 </p>
@@ -1883,7 +1984,9 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                     <p class="ays_questions_action" style="width:100%;">                
                         <span class="ays_questions_count">
                             <?php
-                            echo '<span class="questions_count_number">' . ((isset($question_id_array) && !empty($question_id_array)) ? count($question_id_array) : 0) . '</span> '. esc_html__('items','quiz-maker');
+                            $ays_questions_count = '<span class="questions_count_number">' . ((isset($question_id_array) && !empty($question_id_array)) ? count($question_id_array) : 0) . '</span> '. esc_html__('items','quiz-maker');
+
+                            echo wp_kses($ays_questions_count, $quiz_allowed_html);
                             ?>
                         </span>
                         <button class="ays_bulk_del_questions button" type="button" disabled>
@@ -1909,7 +2012,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                 </div>
                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                     <div class="ays-quiz-accordion-container">
-                        <?php echo $quiz_accordion_svg_html; ?>
+                        <?php echo wp_kses($quiz_accordion_svg_html, $quiz_allowed_html); ?>
                         <p class="ays-subtitle"><?php echo esc_html__('Quiz Styles','quiz-maker')?></p>
                     </div>
                     <hr class="ays-quiz-bolder-hr"/>
@@ -1982,7 +2085,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                                 </label>
                                             </div>
                                         </div>
-                                        <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                        <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=style-tab-theme-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                             <div class="ays-quiz-new-upgrade-button-box">
                                                 <div>
                                                     <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' );?>">
@@ -2140,7 +2243,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for='ays-quiz-bg-color'>
-                                            <?php echo __('Background color', 'quiz-maker'); ?>
+                                            <?php echo esc_html__('Background color', 'quiz-maker'); ?>
                                             <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Background color of the quiz box. You can also choose the opacity(alfa) level on the right side.','quiz-maker') ); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
@@ -2156,8 +2259,8 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for='ays-quiz-text-color'>
-                                            <?php echo __('Text Color', 'quiz-maker'); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the text color inside the quiz and questions. It affects all kinds of texts and icons.','quiz-maker')?>">
+                                            <?php echo esc_html__('Text Color', 'quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Specify the text color inside the quiz and questions. It affects all kinds of texts and icons.','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -2172,8 +2275,8 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for='ays-quiz-buttons-text-color'>
-                                            <?php echo __('Buttons text color', 'quiz-maker'); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the text color of buttons inside the quiz and questions. It affects only to buttons.','quiz-maker')?>">
+                                            <?php echo esc_html__('Buttons text color', 'quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Specify the text color of buttons inside the quiz and questions. It affects only to buttons.','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -2181,15 +2284,15 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                     <div class="col-sm-7 ays_divider_left">
                                         <input type="text" class="ays-text-input" id='ays-quiz-buttons-text-color' data-alpha="true"
                                                name='ays_buttons_text_color'
-                                               value="<?php echo $buttons_text_color; ?>"/>
+                                               value="<?php echo esc_attr($buttons_text_color); ?>"/>
                                     </div>
                                 </div><!-- Buttons text color -->
                                 <hr/> 
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_quiz_border_radius">
-                                            <?php echo __('Border radius','quiz-maker')?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Quiz container border-radius in pixels. It accepts only numeric values.','quiz-maker')?>">
+                                            <?php echo esc_html__('Border radius','quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Quiz container border-radius in pixels. It accepts only numeric values.','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -2199,7 +2302,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                             <input type="number" class="ays-text-input ays-text-input-short"
                                                id="ays_quiz_border_radius"
                                                name="ays_quiz_border_radius"
-                                               value="<?php echo $quiz_border_radius; ?>"/>
+                                               value="<?php echo intval($quiz_border_radius); ?>"/>
                                         </div>
                                         <div class="ays_quiz_dropdown_max_width ays-display-flex" style="align-items: end;">
                                             <input type="text" value="px" class='ays-quiz-form-hint-for-size' disabled>
@@ -2210,8 +2313,8 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_enable_box_shadow">
-                                            <?php echo __('Box shadow','quiz-maker')?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Allow quiz container box shadow','quiz-maker')?>">
+                                            <?php echo esc_html__('Box shadow','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Allow quiz container box shadow','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -2226,28 +2329,28 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                             <div class="form-group row">
                                                 <div class="col-sm-12">
                                                     <label for="ays-quiz-box-shadow-color">
-                                                        <?php echo __('Box shadow color','quiz-maker')?>
-                                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The color of the shadow of the quiz container','quiz-maker' ); ?>">
+                                                        <?php echo esc_html__('Box shadow color','quiz-maker')?>
+                                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('The color of the shadow of the quiz container','quiz-maker' ); ?>">
                                                             <i class="ays_fa ays_fa_info_circle"></i>
                                                         </a>
                                                      </label>
-                                                    <input type="text" class="ays-text-input" id='ays-quiz-box-shadow-color' name='ays_quiz_box_shadow_color' data-alpha="true" data-default-color="#c9c9c9" value="<?php echo $box_shadow_color; ?>"/>
+                                                    <input type="text" class="ays-text-input" id='ays-quiz-box-shadow-color' name='ays_quiz_box_shadow_color' data-alpha="true" data-default-color="#c9c9c9" value="<?php echo esc_attr($box_shadow_color); ?>"/>
                                                </div>
                                             </div>
                                             <hr>
                                             <div class="form-group row">
                                                 <div class="col-sm-12">
                                                     <div class="col-sm-3" style="display: inline-block;">
-                                                        <span class="ays_quiz_small_hint_text"><?php echo __('X', 'quiz-maker'); ?></span>
-                                                        <input type="number" class="ays-text-input ays-text-input-90-width" id='ays_quiz_box_shadow_x_offset' name='ays_quiz_box_shadow_x_offset' value="<?php echo $quiz_box_shadow_x_offset; ?>" />
+                                                        <span class="ays_quiz_small_hint_text"><?php echo esc_html__('X', 'quiz-maker'); ?></span>
+                                                        <input type="number" class="ays-text-input ays-text-input-90-width" id='ays_quiz_box_shadow_x_offset' name='ays_quiz_box_shadow_x_offset' value="<?php echo esc_attr($quiz_box_shadow_x_offset); ?>" />
                                                     </div>
                                                     <div class="col-sm-3 ays_divider_left" style="display: inline-block;">
-                                                        <span class="ays_quiz_small_hint_text"><?php echo __('Y', 'quiz-maker'); ?></span>
-                                                        <input type="number" class="ays-text-input ays-text-input-90-width" id='ays_quiz_box_shadow_y_offset' name='ays_quiz_box_shadow_y_offset' value="<?php echo $quiz_box_shadow_y_offset; ?>" />
+                                                        <span class="ays_quiz_small_hint_text"><?php echo esc_html__('Y', 'quiz-maker'); ?></span>
+                                                        <input type="number" class="ays-text-input ays-text-input-90-width" id='ays_quiz_box_shadow_y_offset' name='ays_quiz_box_shadow_y_offset' value="<?php echo esc_attr($quiz_box_shadow_y_offset); ?>" />
                                                     </div>
                                                     <div class="col-sm-3 ays_divider_left" style="display: inline-block;">
-                                                        <span class="ays_quiz_small_hint_text"><?php echo __('Z', 'quiz-maker'); ?></span>
-                                                        <input type="number" class="ays-text-input ays-text-input-90-width" id='ays_quiz_box_shadow_z_offset' name='ays_quiz_box_shadow_z_offset' value="<?php echo $quiz_box_shadow_z_offset; ?>" />
+                                                        <span class="ays_quiz_small_hint_text"><?php echo esc_html__('Z', 'quiz-maker'); ?></span>
+                                                        <input type="number" class="ays-text-input ays-text-input-90-width" id='ays_quiz_box_shadow_z_offset' name='ays_quiz_box_shadow_z_offset' value="<?php echo esc_attr($quiz_box_shadow_z_offset); ?>" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -2258,48 +2361,48 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                 <div class="form-group row ays-quiz-bg-image-main-container">
                                     <div class="col-sm-5">
                                         <label>
-                                            <?php echo __('Background image','quiz-maker')?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Background image of the container. You can choose different images for each question from the Settings tab on the Edit question page. The background-size is set “Cover” by default for not scaling the image.','quiz-maker')?>">
+                                            <?php echo esc_html__('Background image','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Background image of the container. You can choose different images for each question from the Settings tab on the Edit question page. The background-size is set “Cover” by default for not scaling the image.','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
                                     </div>
                                     <div class="col-sm-7 ays_divider_left">                                
-                                        <a href="javascript:void(0)" style="<?php echo $quiz_bg_image == '' ? 'display:inline-block' : 'display:none'; ?>" class="add-quiz-bg-image"><?php echo $bg_image_text; ?></a>
+                                        <a href="javascript:void(0)" style="<?php echo $quiz_bg_image == '' ? 'display:inline-block' : 'display:none'; ?>" class="add-quiz-bg-image"><?php echo esc_html($bg_image_text); ?></a>
                                         <p class="ays_quiz_small_hint_text_for_message_variables" style="margin-top: 5px;">
-                                            <span><?php echo __( "Please Note" , 'quiz-maker' ); ?></span>
+                                            <span><?php echo esc_html__( "Please Note" , 'quiz-maker' ); ?></span>
                                             <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('* Note: The plugin doesn’t make any changes concerning the images. It takes the images in a size, in which you have uploaded them. We are using the default WP Media. If the uploaded image is blurred and has a low quality, make sure to choose the right parameters (Full size) while uploading the images. You can find the Full Size option in the opened Add Media popup (Attachment Display Settings).','quiz-maker') ); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </p>
                                         <input type="hidden" id="ays_quiz_bg_image" name="ays_quiz_bg_image"
-                                               value="<?php echo $quiz_bg_image; ?>"/>
+                                               value="<?php echo esc_url($quiz_bg_image); ?>"/>
                                         <div class="ays-quiz-bg-image-container" style="<?php echo $quiz_bg_image == '' ? 'display:none' : 'display:block'; ?>">
                                             <span class="ays-edit-quiz-bg-img">
                                                 <i class="ays_fa ays_fa_pencil_square_o"></i>
                                             </span>
                                             <span class="ays-remove-quiz-bg-img"></span>
-                                            <img loading="lazy" src="<?php echo $quiz_bg_image; ?>" id="ays-quiz-bg-img"/>
+                                            <img loading="lazy" src="<?php echo esc_url($quiz_bg_image); ?>" id="ays-quiz-bg-img"/>
                                         </div>
                                         <hr/>
                                         <div class="form-group row">
                                             <div class="col-sm-12">
                                                 <label for="ays_quiz_bg_image_position">
-                                                    <?php echo __( "Background image position", 'quiz-maker' ); ?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The position of background image of the quiz','quiz-maker')?>">
+                                                    <?php echo esc_html__( "Background image position", 'quiz-maker' ); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('The position of background image of the quiz','quiz-maker')?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
                                                 <select id="ays_quiz_bg_image_position" name="ays_quiz_bg_image_position" class="ays-text-input ays-text-input-short" style="display:inline-block;">
-                                                    <option value="left top" <?php echo $quiz_bg_image_position == "left top" ? "selected" : ""; ?>><?php echo __( "Left Top", 'quiz-maker' ); ?></option>
-                                                    <option value="left center" <?php echo $quiz_bg_image_position == "left center" ? "selected" : ""; ?>><?php echo __( "Left Center", 'quiz-maker' ); ?></option>
-                                                    <option value="left bottom" <?php echo $quiz_bg_image_position == "left bottom" ? "selected" : ""; ?>><?php echo __( "Left Bottom", 'quiz-maker' ); ?></option>
-                                                    <option value="center top" <?php echo $quiz_bg_image_position == "center top" ? "selected" : ""; ?>><?php echo __( "Center Top", 'quiz-maker' ); ?></option>
-                                                    <option value="center center" <?php echo $quiz_bg_image_position == "center center" ? "selected" : ""; ?>><?php echo __( "Center Center", 'quiz-maker' ); ?></option>
-                                                    <option value="center bottom" <?php echo $quiz_bg_image_position == "center bottom" ? "selected" : ""; ?>><?php echo __( "Center Bottom", 'quiz-maker' ); ?></option>
-                                                    <option value="right top" <?php echo $quiz_bg_image_position == "right top" ? "selected" : ""; ?>><?php echo __( "Right Top", 'quiz-maker' ); ?></option>
-                                                    <option value="right center" <?php echo $quiz_bg_image_position == "right center" ? "selected" : ""; ?>><?php echo __( "Right Center", 'quiz-maker' ); ?></option>
-                                                    <option value="right bottom" <?php echo $quiz_bg_image_position == "right bottom" ? "selected" : ""; ?>><?php echo __( "Right Bottom", 'quiz-maker' ); ?></option>
+                                                    <option value="left top" <?php echo $quiz_bg_image_position == "left top" ? "selected" : ""; ?>><?php echo esc_html__( "Left Top", 'quiz-maker' ); ?></option>
+                                                    <option value="left center" <?php echo $quiz_bg_image_position == "left center" ? "selected" : ""; ?>><?php echo esc_html__( "Left Center", 'quiz-maker' ); ?></option>
+                                                    <option value="left bottom" <?php echo $quiz_bg_image_position == "left bottom" ? "selected" : ""; ?>><?php echo esc_html__( "Left Bottom", 'quiz-maker' ); ?></option>
+                                                    <option value="center top" <?php echo $quiz_bg_image_position == "center top" ? "selected" : ""; ?>><?php echo esc_html__( "Center Top", 'quiz-maker' ); ?></option>
+                                                    <option value="center center" <?php echo $quiz_bg_image_position == "center center" ? "selected" : ""; ?>><?php echo esc_html__( "Center Center", 'quiz-maker' ); ?></option>
+                                                    <option value="center bottom" <?php echo $quiz_bg_image_position == "center bottom" ? "selected" : ""; ?>><?php echo esc_html__( "Center Bottom", 'quiz-maker' ); ?></option>
+                                                    <option value="right top" <?php echo $quiz_bg_image_position == "right top" ? "selected" : ""; ?>><?php echo esc_html__( "Right Top", 'quiz-maker' ); ?></option>
+                                                    <option value="right center" <?php echo $quiz_bg_image_position == "right center" ? "selected" : ""; ?>><?php echo esc_html__( "Right Center", 'quiz-maker' ); ?></option>
+                                                    <option value="right bottom" <?php echo $quiz_bg_image_position == "right bottom" ? "selected" : ""; ?>><?php echo esc_html__( "Right Bottom", 'quiz-maker' ); ?></option>
                                                 </select>
                                             </div>
                                         </div>
@@ -2307,8 +2410,8 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                         <div class="form-group row">
                                             <div class="col-sm-8">
                                                 <label for="ays_quiz_bg_img_in_finish_page">
-                                                    <?php echo __( "Hide background image on result page", 'quiz-maker' ); ?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('If this option is enabled background image of quiz will disappear on the result page.','quiz-maker')?>">
+                                                    <?php echo esc_html__( "Hide background image on result page", 'quiz-maker' ); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('If this option is enabled background image of quiz will disappear on the result page.','quiz-maker')?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
@@ -2325,8 +2428,8 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                         <div class="form-group row">
                                             <div class="col-sm-8">
                                                 <label for="ays_quiz_bg_img_on_start_page">
-                                                    <?php echo __( "Hide background image on start page", 'quiz-maker' ); ?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('If this option is enabled background image of quiz will disappear on the start page.','quiz-maker'); ?>">
+                                                    <?php echo esc_html__( "Hide background image on start page", 'quiz-maker' ); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('If this option is enabled background image of quiz will disappear on the start page.','quiz-maker'); ?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
@@ -2340,8 +2443,8 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                         <div class="form-group row">
                                             <div class="col-sm-8">
                                                 <label for="ays_quiz_bg_img_during_the_quiz">
-                                                    <?php echo __( "Hide background image during the quiz", 'quiz-maker' ); ?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('If this option is enabled the quiz background image will not be displayed during the quiz.','quiz-maker'); ?>">
+                                                    <?php echo esc_html__( "Hide background image during the quiz", 'quiz-maker' ); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('If this option is enabled the quiz background image will not be displayed during the quiz.','quiz-maker'); ?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
@@ -2357,8 +2460,8 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays-enable-background-gradient">
-                                            <?php echo __('Background gradient','quiz-maker')?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Color gradient of the quiz background','quiz-maker')?>">
+                                            <?php echo esc_html__('Background gradient','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Color gradient of the quiz background','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -2372,34 +2475,34 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                         <div class="row ays_toggle_target" style="margin: 10px 0 0 0; padding-top: 10px; <?php echo ($enable_background_gradient) ? '' : 'display:none;' ?>">
                                             <div class="col-sm-12 ays_divider_top" style="margin-top: 10px; padding-top: 10px;">
                                                 <label for='ays-background-gradient-color-1'>
-                                                    <?php echo __('Color 1', 'quiz-maker'); ?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Color 1 of the quiz background gradient','quiz-maker')?>">
+                                                    <?php echo esc_html__('Color 1', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Color 1 of the quiz background gradient','quiz-maker'); ?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
-                                                <input type="text" class="ays-text-input" id='ays-background-gradient-color-1' data-alpha="true" name='ays_background_gradient_color_1' value="<?php echo $background_gradient_color_1; ?>"/>
+                                                <input type="text" class="ays-text-input" id='ays-background-gradient-color-1' data-alpha="true" name='ays_background_gradient_color_1' value="<?php echo esc_attr($background_gradient_color_1); ?>"/>
                                             </div>
                                             <div class="col-sm-12 ays_divider_top" style="margin-top: 10px; padding-top: 10px;">
                                                 <label for='ays-background-gradient-color-2'>
-                                                    <?php echo __('Color 2', 'quiz-maker'); ?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Color 2 of the quiz background gradient','quiz-maker')?>">
+                                                    <?php echo esc_html__('Color 2', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Color 2 of the quiz background gradient','quiz-maker')?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
-                                                <input type="text" class="ays-text-input" id='ays-background-gradient-color-2' data-alpha="true" name='ays_background_gradient_color_2' value="<?php echo $background_gradient_color_2; ?>"/>
+                                                <input type="text" class="ays-text-input" id='ays-background-gradient-color-2' data-alpha="true" name='ays_background_gradient_color_2' value="<?php echo esc_attr($background_gradient_color_2); ?>"/>
                                             </div>
                                             <div class="col-sm-12 ays_divider_top" style="margin-top: 10px; padding-top: 10px;">
                                                 <label for="ays_quiz_gradient_direction">
-                                                    <?php echo __('Gradient direction','quiz-maker')?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The direction of the color gradient','quiz-maker')?>">
+                                                    <?php echo esc_html__('Gradient direction','quiz-maker')?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('The direction of the color gradient','quiz-maker')?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
                                                 <select id="ays_quiz_gradient_direction" name="ays_quiz_gradient_direction" class="ays-text-input ays-text-input-short">
-                                                    <option <?php echo ($quiz_gradient_direction == 'vertical') ? 'selected' : ''; ?> value="vertical"><?php echo __( 'Vertical', 'quiz-maker'); ?></option>
-                                                    <option <?php echo ($quiz_gradient_direction == 'horizontal') ? 'selected' : ''; ?> value="horizontal"><?php echo __( 'Horizontal', 'quiz-maker'); ?></option>
-                                                    <option <?php echo ($quiz_gradient_direction == 'diagonal_left_to_right') ? 'selected' : ''; ?> value="diagonal_left_to_right"><?php echo __( 'Diagonal left to right', 'quiz-maker'); ?></option>
-                                                    <option <?php echo ($quiz_gradient_direction == 'diagonal_right_to_left') ? 'selected' : ''; ?> value="diagonal_right_to_left"><?php echo __( 'Diagonal right to left', 'quiz-maker'); ?></option>
+                                                    <option <?php echo ($quiz_gradient_direction == 'vertical') ? 'selected' : ''; ?> value="vertical"><?php echo esc_html__( 'Vertical', 'quiz-maker'); ?></option>
+                                                    <option <?php echo ($quiz_gradient_direction == 'horizontal') ? 'selected' : ''; ?> value="horizontal"><?php echo esc_html__( 'Horizontal', 'quiz-maker'); ?></option>
+                                                    <option <?php echo ($quiz_gradient_direction == 'diagonal_left_to_right') ? 'selected' : ''; ?> value="diagonal_left_to_right"><?php echo esc_html__( 'Diagonal left to right', 'quiz-maker'); ?></option>
+                                                    <option <?php echo ($quiz_gradient_direction == 'diagonal_right_to_left') ? 'selected' : ''; ?> value="diagonal_right_to_left"><?php echo esc_html__( 'Diagonal right to left', 'quiz-maker'); ?></option>
                                                 </select>
                                             </div>
                                         </div>
@@ -2409,8 +2512,8 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_enable_border">
-                                            <?php echo __('Quiz container border','quiz-maker')?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Allow quiz container border','quiz-maker')?>">
+                                            <?php echo esc_html__('Quiz container border','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Allow quiz container border','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -2426,14 +2529,14 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                             <div class="ays_quiz_display_flex_width">
                                                 <div>
                                                     <label for="ays_quiz_border_width">
-                                                        <?php echo __('Border width','quiz-maker')?>
-                                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The width of quiz container border','quiz-maker')?>">
+                                                        <?php echo esc_html__('Border width','quiz-maker'); ?>
+                                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('The width of quiz container border','quiz-maker')?>">
                                                             <i class="ays_fa ays_fa_info_circle"></i>
                                                         </a>
                                                      </label>
                                                     <input type="number" class="ays-text-input ays-text-input-short" id='ays_quiz_border_width'
                                                        name='ays_quiz_border_width'
-                                                       value="<?php echo $quiz_border_width; ?>"/>
+                                                       value="<?php echo intval($quiz_border_width); ?>"/>
                                                 </div>
                                                 <div class="ays_quiz_dropdown_max_width ays-display-flex" style="align-items: end;">
                                                     <input type="text" value="px" class='ays-quiz-form-hint-for-size' disabled>
@@ -2442,8 +2545,8 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                         </div>
                                         <div class="col-sm-12 ays_toggle_target ays_divider_top" style="margin-top: 10px; padding-top: 10px; <?php echo ($enable_border) ? '' : 'display:none;' ?>">
                                             <label for="ays_quiz_border_style">
-                                                <?php echo __('Border style','quiz-maker')?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The style of quiz container border','quiz-maker')?>">
+                                                <?php echo esc_html__('Border style','quiz-maker'); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('The style of quiz container border','quiz-maker'); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -2463,8 +2566,8 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                         </div>
                                         <div class="col-sm-12 ays_toggle_target ays_divider_top" style="margin-top: 10px; padding-top: 10px; <?php echo ($enable_border) ? '' : 'display:none;' ?>">
                                             <label for="ays_quiz_border_color">
-                                                <?php echo __('Border color','quiz-maker')?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The color of the quiz container border','quiz-maker')?>">
+                                                <?php echo esc_html__('Border color','quiz-maker'); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('The color of the quiz container border','quiz-maker')?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -2473,7 +2576,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                                    type="text" 
                                                    data-alpha="true"
                                                    name='ays_quiz_border_color'
-                                                   value="<?php echo $quiz_border_color; ?>" 
+                                                   value="<?php echo esc_attr($quiz_border_color); ?>" 
                                                    data-default-color="#000000">
                                         </div>
                                     </div>
@@ -2482,15 +2585,15 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for='ays_quiz_image_height'>
-                                            <?php echo __('Quiz image height', 'quiz-maker'); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Set quiz image height in pixels. It accepts only number values.','quiz-maker'); ?>">
+                                            <?php echo esc_html__('Quiz image height', 'quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Set quiz image height in pixels. It accepts only number values.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
                                     </div>
                                     <div class="col-sm-7 ays_divider_left ays_quiz_display_flex_width">
                                         <div>
-                                            <input type="number" class="ays-text-input ays-text-input-short" id='ays_quiz_image_height' name='ays_quiz_image_height' value="<?php echo $quiz_image_height; ?>"/>
+                                            <input type="number" class="ays-text-input ays-text-input-short" id='ays_quiz_image_height' name='ays_quiz_image_height' value="<?php echo intval($quiz_image_height); ?>"/>
                                         </div>
                                         <div class="ays_quiz_dropdown_max_width">
                                             <input type="text" value="px" class='ays-quiz-form-hint-for-size' disabled>
@@ -2501,18 +2604,18 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_progress_bar_style">
-                                            <?php echo __('Progress bar style','quiz-maker')?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Design of the progress bar which will appear on the finish page only. It will show the user’s score.','quiz-maker')?>">
+                                            <?php echo esc_html__('Progress bar style','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Design of the progress bar which will appear on the finish page only. It will show the user’s score.','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
                                     </div>
                                     <div class="col-sm-7 ays_divider_left">
                                         <select id="ays_progress_bar_style" name="ays_progress_bar_style" class="ays-text-input ays-text-input-short">
-                                            <option <?php echo ($progress_bar_style == 'first') ? 'selected' : ''; ?> value="first"><?php echo __( 'Rounded', 'quiz-maker'); ?></option>
-                                            <option <?php echo ($progress_bar_style == 'second') ? 'selected' : ''; ?> value="second"><?php echo __( 'Rectangle', 'quiz-maker'); ?></option>
-                                            <option <?php echo ($progress_bar_style == 'third') ? 'selected' : ''; ?> value="third"><?php echo __( 'With stripes', 'quiz-maker'); ?></option>
-                                            <option <?php echo ($progress_bar_style == 'fourth') ? 'selected' : ''; ?> value="fourth"><?php echo __( 'With stripes and animation', 'quiz-maker'); ?></option>
+                                            <option <?php echo ($progress_bar_style == 'first') ? 'selected' : ''; ?> value="first"><?php echo esc_html__( 'Rounded', 'quiz-maker'); ?></option>
+                                            <option <?php echo ($progress_bar_style == 'second') ? 'selected' : ''; ?> value="second"><?php echo esc_html__( 'Rectangle', 'quiz-maker'); ?></option>
+                                            <option <?php echo ($progress_bar_style == 'third') ? 'selected' : ''; ?> value="third"><?php echo esc_html__( 'With stripes', 'quiz-maker'); ?></option>
+                                            <option <?php echo ($progress_bar_style == 'fourth') ? 'selected' : ''; ?> value="fourth"><?php echo esc_html__( 'With stripes and animation', 'quiz-maker'); ?></option>
                                         </select>
                                         <div style="margin:20px 0;">
                                             <div class='ays-progress first <?php echo ($progress_bar_style == 'first') ? "display_block" : ""; ?>'>
@@ -2550,18 +2653,18 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_progress_bar_style">
-                                            <?php echo __('Progress live bar style','quiz-maker'); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Choose your preferred design for the progress live bar which will appear while taking the quiz. It will show the current state of the user in the quiz.','quiz-maker');?>">
+                                            <?php echo esc_html__('Progress live bar style','quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Choose your preferred design for the progress live bar which will appear while taking the quiz. It will show the current state of the user in the quiz.','quiz-maker');?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
                                     </div>
                                     <div class="col-sm-7 ays_divider_left">
                                         <select id="ays_progress_live_bar_style" name="ays_progress_live_bar_style" class="ays-text-input ays-text-input-short">
-                                            <option <?php echo ($progress_live_bar_style == 'default') ? 'selected' : ''; ?> value="default"><?php echo __( 'Default', 'quiz-maker'); ?></option>
-                                            <option <?php echo ($progress_live_bar_style == 'second') ? 'selected' : ''; ?> value="second"><?php echo __( 'Rectangle', 'quiz-maker'); ?></option>
-                                            <option <?php echo ($progress_live_bar_style == 'third') ? 'selected' : ''; ?> value="third"><?php echo __( 'With stripes', 'quiz-maker'); ?></option>
-                                            <option <?php echo ($progress_live_bar_style == 'fourth') ? 'selected' : ''; ?> value="fourth"><?php echo __( 'With stripes and animation', 'quiz-maker'); ?></option>
+                                            <option <?php echo ($progress_live_bar_style == 'default') ? 'selected' : ''; ?> value="default"><?php echo esc_html__( 'Default', 'quiz-maker'); ?></option>
+                                            <option <?php echo ($progress_live_bar_style == 'second') ? 'selected' : ''; ?> value="second"><?php echo esc_html__( 'Rectangle', 'quiz-maker'); ?></option>
+                                            <option <?php echo ($progress_live_bar_style == 'third') ? 'selected' : ''; ?> value="third"><?php echo esc_html__( 'With stripes', 'quiz-maker'); ?></option>
+                                            <option <?php echo ($progress_live_bar_style == 'fourth') ? 'selected' : ''; ?> value="fourth"><?php echo esc_html__( 'With stripes and animation', 'quiz-maker'); ?></option>
                                         </select>
                                         <div style="margin:20px 0;">
                                             <div class="ays-progress default <?php echo ($progress_live_bar_style == 'default') ? "display_block" : ""; ?>">
@@ -2597,18 +2700,18 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_buttons_position">
-                                            <?php echo __('Buttons position','quiz-maker')?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the position of buttons of the quiz.','quiz-maker')?>">
+                                            <?php echo esc_html__('Buttons position','quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Specify the position of buttons of the quiz.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
                                     </div>
                                     <div class="col-sm-7 ays_divider_left">
                                         <select id="ays_buttons_position" name="ays_buttons_position" class="ays-text-input ays-text-input-short">
-                                            <option <?php echo ($buttons_position == 'center') ? 'selected' : ''; ?> value="center"><?php echo __( 'Center', 'quiz-maker'); ?></option>
-                                            <option <?php echo ($buttons_position == 'flex-start') ? 'selected' : ''; ?> value="flex-start"><?php echo __( 'Left', 'quiz-maker'); ?></option>
-                                            <option <?php echo ($buttons_position == 'flex-end') ? 'selected' : ''; ?> value="flex-end"><?php echo __( 'Right', 'quiz-maker'); ?></option>
-                                            <option <?php echo ($buttons_position == 'space-between') ? 'selected' : ''; ?> value="space-between"><?php echo __( 'Space Between', 'quiz-maker'); ?></option>
+                                            <option <?php echo ($buttons_position == 'center') ? 'selected' : ''; ?> value="center"><?php echo esc_html__( 'Center', 'quiz-maker'); ?></option>
+                                            <option <?php echo ($buttons_position == 'flex-start') ? 'selected' : ''; ?> value="flex-start"><?php echo esc_html__( 'Left', 'quiz-maker'); ?></option>
+                                            <option <?php echo ($buttons_position == 'flex-end') ? 'selected' : ''; ?> value="flex-end"><?php echo esc_html__( 'Right', 'quiz-maker'); ?></option>
+                                            <option <?php echo ($buttons_position == 'space-between') ? 'selected' : ''; ?> value="space-between"><?php echo esc_html__( 'Space Between', 'quiz-maker'); ?></option>
                                         </select>
                                     </div>
                                 </div><!-- Buttons position -->
@@ -2616,9 +2719,9 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_quiz_title_transformation">
-                                            <?php echo __('Quiz title transformation', 'quiz-maker' ); ?>
+                                            <?php echo esc_html__('Quiz title transformation', 'quiz-maker' ); ?>
                                             <a class="ays_help" data-toggle="tooltip" data-html="true" data-placement="top" title="<?php
-                                                echo __("Specify how to capitalize a title text of your quiz.", 'quiz-maker') .
+                                                echo esc_attr__("Specify how to capitalize a title text of your quiz.", 'quiz-maker') .
                                                     "<ul style='list-style-type: circle;padding-left: 20px;'>".
                                                         "<li>". __('Uppercase – Transforms all characters to uppercase','quiz-maker') ."</li>".
                                                         "<li>". __('Lowercase – Transforms all characters to lowercase','quiz-maker') ."</li>".
@@ -2631,10 +2734,10 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                     </div>
                                     <div class="col-sm-7 ays_divider_left">
                                         <select name="ays_quiz_title_transformation" id="ays_quiz_title_transformation" class="ays-text-input ays-text-input-short" style="display:block;">
-                                            <option value="uppercase" <?php echo $quiz_title_transformation == 'uppercase' ? 'selected' : ''; ?>><?php echo __( "Uppercase", 'quiz-maker' ); ?></option>
-                                            <option value="lowercase" <?php echo $quiz_title_transformation == 'lowercase' ? 'selected' : ''; ?>><?php echo __( "Lowercase", 'quiz-maker' ); ?></option>
-                                            <option value="capitalize" <?php echo $quiz_title_transformation == 'capitalize' ? 'selected' : ''; ?>><?php echo __( "Capitalize", 'quiz-maker' ); ?></option>
-                                            <option value="none" <?php echo $quiz_title_transformation == 'none' ? 'selected' : ''; ?>><?php echo __( "None", 'quiz-maker' ); ?></option>
+                                            <option value="uppercase" <?php echo $quiz_title_transformation == 'uppercase' ? 'selected' : ''; ?>><?php echo esc_html__( "Uppercase", 'quiz-maker' ); ?></option>
+                                            <option value="lowercase" <?php echo $quiz_title_transformation == 'lowercase' ? 'selected' : ''; ?>><?php echo esc_html__( "Lowercase", 'quiz-maker' ); ?></option>
+                                            <option value="capitalize" <?php echo $quiz_title_transformation == 'capitalize' ? 'selected' : ''; ?>><?php echo esc_html__( "Capitalize", 'quiz-maker' ); ?></option>
+                                            <option value="none" <?php echo $quiz_title_transformation == 'none' ? 'selected' : ''; ?>><?php echo esc_html__( "None", 'quiz-maker' ); ?></option>
                                         </select>
                                     </div>
                                 </div><!-- Quiz title transformation -->
@@ -2642,8 +2745,8 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for='ays_quiz_title_font_size'>
-                                            <?php echo __('Quiz title font size', 'quiz-maker'); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Set your preferred text size for the Quiz Title. The default size is 21px.','quiz-maker'); ?>">
+                                            <?php echo esc_html__('Quiz title font size', 'quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Set your preferred text size for the Quiz Title. The default size is 21px.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -2652,15 +2755,15 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                         <div class="row">
                                             <div class="col-sm-5">
                                                 <label for='ays_answers_font_size'>
-                                                    <?php echo __('On desktop', 'quiz-maker'); ?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the font size for desktop devices.','quiz-maker'); ?>">
+                                                    <?php echo esc_html__('On desktop', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Define the font size for desktop devices.','quiz-maker'); ?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
                                             </div>
                                             <div class="col-sm-7 ays_quiz_display_flex_width">
                                                 <div>
-                                                    <input type="number" class="ays-text-input" id='ays_quiz_title_font_size' name='ays_quiz_title_font_size' value="<?php echo $quiz_title_font_size; ?>"/>
+                                                    <input type="number" class="ays-text-input" id='ays_quiz_title_font_size' name='ays_quiz_title_font_size' value="<?php echo intval($quiz_title_font_size); ?>"/>
                                                 </div>
                                                 <div class="ays_quiz_dropdown_max_width">
                                                     <input type="text" value="px" class='ays-quiz-form-hint-for-size' disabled>
@@ -2671,15 +2774,15 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                         <div class="row">
                                             <div class="col-sm-5">
                                                 <label for='ays_quiz_title_mobile_font_size'>
-                                                    <?php echo __('On mobile', 'quiz-maker'); ?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the font size for mobile devices.','quiz-maker'); ?>">
+                                                    <?php echo esc_html__('On mobile', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Define the font size for mobile devices.','quiz-maker'); ?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
                                             </div>
                                             <div class="col-sm-7 ays_quiz_display_flex_width">
                                                 <div>
-                                                    <input type="number" class="ays-text-input" id='ays_quiz_title_mobile_font_size' name='ays_quiz_title_mobile_font_size' value="<?php echo $quiz_title_mobile_font_size; ?>"/>
+                                                    <input type="number" class="ays-text-input" id='ays_quiz_title_mobile_font_size' name='ays_quiz_title_mobile_font_size' value="<?php echo intval($quiz_title_mobile_font_size); ?>"/>
                                                 </div>
                                                 <div class="ays_quiz_dropdown_max_width">
                                                     <input type="text" value="px" class='ays-quiz-form-hint-for-size' disabled>
@@ -2692,8 +2795,8 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_quiz_enable_title_text_shadow">
-                                            <?php echo __('Quiz title text shadow','quiz-maker')?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the text shadow of the quiz title.','quiz-maker')?>">
+                                            <?php echo esc_html__('Quiz title text shadow','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Specify the text shadow of the quiz title.','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -2705,28 +2808,28 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                             <div class="form-group row">
                                                 <div class="col-sm-12">
                                                     <label for="ays_quiz_title_text_shadow_color">
-                                                        <?php echo __('Text shadow color','quiz-maker')?>
-                                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The color of the text shadow of the quiz title.','quiz-maker' ); ?>">
+                                                        <?php echo esc_html__('Text shadow color','quiz-maker')?>
+                                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('The color of the text shadow of the quiz title.','quiz-maker' ); ?>">
                                                             <i class="ays_fa ays_fa_info_circle"></i>
                                                         </a>
                                                      </label>
-                                                    <input type="text" class="ays-text-input" id='ays_quiz_title_text_shadow_color' name='ays_quiz_title_text_shadow_color' data-alpha="true" data-default-color="#333" value="<?php echo $quiz_title_text_shadow_color; ?>"/>
+                                                    <input type="text" class="ays-text-input" id='ays_quiz_title_text_shadow_color' name='ays_quiz_title_text_shadow_color' data-alpha="true" data-default-color="#333" value="<?php echo esc_attr($quiz_title_text_shadow_color); ?>"/>
                                                </div>
                                             </div>
                                             <hr>
                                             <div class="form-group row">
                                                 <div class="col-sm-12">
                                                     <div class="col-sm-3" style="display: inline-block;">
-                                                        <span class="ays_quiz_small_hint_text"><?php echo __('X', 'quiz-maker'); ?></span>
-                                                        <input type="number" class="ays-text-input ays-text-input-90-width" id='ays_quiz_title_text_shadow_x_offset' name='ays_quiz_title_text_shadow_x_offset' value="<?php echo $quiz_title_text_shadow_x_offset; ?>" />
+                                                        <span class="ays_quiz_small_hint_text"><?php echo esc_html__('X', 'quiz-maker'); ?></span>
+                                                        <input type="number" class="ays-text-input ays-text-input-90-width" id='ays_quiz_title_text_shadow_x_offset' name='ays_quiz_title_text_shadow_x_offset' value="<?php echo intval($quiz_title_text_shadow_x_offset); ?>" />
                                                     </div>
                                                     <div class="col-sm-3 ays_divider_left" style="display: inline-block;">
-                                                        <span class="ays_quiz_small_hint_text"><?php echo __('Y', 'quiz-maker'); ?></span>
-                                                        <input type="number" class="ays-text-input ays-text-input-90-width" id='ays_quiz_title_text_shadow_y_offset' name='ays_quiz_title_text_shadow_y_offset' value="<?php echo $quiz_title_text_shadow_y_offset; ?>" />
+                                                        <span class="ays_quiz_small_hint_text"><?php echo esc_html__('Y', 'quiz-maker'); ?></span>
+                                                        <input type="number" class="ays-text-input ays-text-input-90-width" id='ays_quiz_title_text_shadow_y_offset' name='ays_quiz_title_text_shadow_y_offset' value="<?php echo intval($quiz_title_text_shadow_y_offset); ?>" />
                                                     </div>
                                                     <div class="col-sm-3 ays_divider_left" style="display: inline-block;">
-                                                        <span class="ays_quiz_small_hint_text"><?php echo __('Z', 'quiz-maker'); ?></span>
-                                                        <input type="number" class="ays-text-input ays-text-input-90-width" id='ays_quiz_title_text_shadow_z_offset' name='ays_quiz_title_text_shadow_z_offset' value="<?php echo $quiz_title_text_shadow_z_offset; ?>" />
+                                                        <span class="ays_quiz_small_hint_text"><?php echo esc_html__('Z', 'quiz-maker'); ?></span>
+                                                        <input type="number" class="ays-text-input ays-text-input-90-width" id='ays_quiz_title_text_shadow_z_offset' name='ays_quiz_title_text_shadow_z_offset' value="<?php echo intval($quiz_title_text_shadow_z_offset); ?>" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -2737,8 +2840,8 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_custom_class">
-                                            <?php echo __('Custom class for quiz container','quiz-maker'); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Custom HTML class for quiz container. You can use your class for adding your custom styles for quiz container.','quiz-maker'); ?>">
+                                            <?php echo esc_html__('Custom class for quiz container','quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Custom HTML class for quiz container. You can use your class for adding your custom styles for quiz container.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -2750,25 +2853,25 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                 <hr/>
                                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                                     <div class="ays-quiz-accordion-container">
-                                        <?php echo $quiz_accordion_svg_html; ?>
-                                        <p class="ays-subtitle"><?php echo __('Question Styles','quiz-maker'); ?></p>
+                                        <?php echo wp_kses($quiz_accordion_svg_html, $quiz_allowed_html); ?>
+                                        <p class="ays-subtitle"><?php echo esc_html__('Question Styles','quiz-maker'); ?></p>
                                     </div>
                                     <hr class="ays-quiz-bolder-hr"/>
                                     <div class="ays-quiz-accordion-options-box">
                                         <div class="form-group row">
                                             <div class="col-sm-5">
                                                 <label for='ays_quest_animation'>
-                                                    <?php echo __('Animation effect', 'quiz-maker'); ?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Animation effect of transition between questions','quiz-maker')?>">
+                                                    <?php echo esc_html__('Animation effect', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Animation effect of transition between questions','quiz-maker')?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
                                             </div>
                                             <div class="col-sm-7 ays_divider_left">
                                                 <select class="ays-text-input ays-text-input-short" name="ays_quest_animation" id="ays_quest_animation">
-                                                    <option <?php echo $quest_animation == "none" ? "selected" : ""; ?> value="none">None</option>
-                                                    <option <?php echo $quest_animation == "fade" ? "selected" : ""; ?> value="fade">Fade</option>
-                                                    <option <?php echo $quest_animation == "shake" ? "selected" : ""; ?> value="shake">Shake</option>
+                                                    <option <?php echo $quest_animation == "none" ? "selected" : ""; ?> value="none"><?php echo esc_html__('None','quiz-maker'); ?></option>
+                                                    <option <?php echo $quest_animation == "fade" ? "selected" : ""; ?> value="fade"><?php echo esc_html__('Fade','quiz-maker'); ?></option>
+                                                    <option <?php echo $quest_animation == "shake" ? "selected" : ""; ?> value="shake"><?php echo esc_html__('Shake','quiz-maker'); ?></option>
                                                 </select>
                                             </div>
                                         </div><!-- Animation effect -->
@@ -2776,8 +2879,8 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                         <div class="form-group row">
                                             <div class="col-sm-5">
                                                 <label for='ays_answers_font_size'>
-                                                    <?php echo __('Question font size', 'quiz-maker'); ?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The font size of the questions in pixels in the quiz (only for <p> tag). It accepts only numeric values.','quiz-maker')?>">
+                                                    <?php echo esc_html__('Question font size', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('The font size of the questions in pixels in the quiz (only for <p> tag). It accepts only numeric values.','quiz-maker')?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
@@ -2786,15 +2889,15 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                                 <div class="row">
                                                     <div class="col-sm-5">
                                                         <label for='ays_question_font_size'>
-                                                            <?php echo __('On desktop', 'quiz-maker'); ?>
-                                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the font size for desktop devices.','quiz-maker'); ?>">
+                                                            <?php echo esc_html__('On desktop', 'quiz-maker'); ?>
+                                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Define the font size for desktop devices.','quiz-maker'); ?>">
                                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                                             </a>
                                                         </label>
                                                     </div>
                                                     <div class="col-sm-7 ays_quiz_display_flex_width">
                                                         <div>
-                                                            <input type="number" class="ays-text-input" id='ays_question_font_size'name='ays_question_font_size' value="<?php echo $question_font_size; ?>"/>
+                                                            <input type="number" class="ays-text-input" id='ays_question_font_size'name='ays_question_font_size' value="<?php echo intval($question_font_size); ?>"/>
                                                         </div>
                                                         <div class="ays_quiz_dropdown_max_width ays-display-flex" style="align-items: end;">
                                                             <input type="text" value="px" class='ays-quiz-form-hint-for-size' disabled>
@@ -2805,15 +2908,15 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                                 <div class="row">
                                                     <div class="col-sm-5">
                                                         <label for='ays_question_mobile_font_size'>
-                                                            <?php echo __('On mobile', 'quiz-maker'); ?>
-                                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the font size for mobile devices.','quiz-maker'); ?>">
+                                                            <?php echo esc_html__('On mobile', 'quiz-maker'); ?>
+                                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Define the font size for mobile devices.','quiz-maker'); ?>">
                                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                                             </a>
                                                         </label>
                                                     </div>
                                                     <div class="col-sm-7 ays_quiz_display_flex_width">
                                                         <div>
-                                                            <input type="number" class="ays-text-input" id='ays_question_mobile_font_size'name='ays_question_mobile_font_size' value="<?php echo $question_mobile_font_size; ?>"/>
+                                                            <input type="number" class="ays-text-input" id='ays_question_mobile_font_size'name='ays_question_mobile_font_size' value="<?php echo intval($question_mobile_font_size); ?>"/>
                                                         </div>
                                                         <div class="ays_quiz_dropdown_max_width ays-display-flex" style="align-items: end;">
                                                             <input type="text" value="px" class='ays-quiz-form-hint-for-size' disabled>
@@ -2826,8 +2929,8 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                         <div class="form-group row">
                                             <div class="col-sm-5">
                                                 <label for="ays_limitation_message">
-                                                    <?php echo __( 'Question text alignment', 'quiz-maker' ); ?>
-                                                    <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php echo __( 'Align the text of your questions to the left, center, or right.', 'quiz-maker' ); ?>">
+                                                    <?php echo esc_html__( 'Question text alignment', 'quiz-maker' ); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php echo esc_attr__( 'Align the text of your questions to the left, center, or right.', 'quiz-maker' ); ?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
@@ -2835,15 +2938,15 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                             <div class="col-sm-7 ays_divider_left">
                                                 <label class="ays_quiz_loader">
                                                     <input type="radio" id="ays_quiz_question_text_alignment_left" name="ays_quiz_question_text_alignment" value="left" <?php echo ($quiz_question_text_alignment == 'left') ? 'checked' : ''; ?>/>
-                                                    <span for="ays_quiz_question_text_alignment_left"><?php echo __( 'Left', 'quiz-maker' ); ?></span>
+                                                    <span for="ays_quiz_question_text_alignment_left"><?php echo esc_html__( 'Left', 'quiz-maker' ); ?></span>
                                                 </label>
                                                 <label class="ays_quiz_loader">
                                                     <input type="radio" id="ays_quiz_question_text_alignment_center" name="ays_quiz_question_text_alignment" value="center" <?php echo ($quiz_question_text_alignment == 'center') ? 'checked' : ''; ?>/>
-                                                    <span for="ays_quiz_question_text_alignment_center"><?php echo __( 'Center', 'quiz-maker' ); ?></span>
+                                                    <span for="ays_quiz_question_text_alignment_center"><?php echo esc_html__( 'Center', 'quiz-maker' ); ?></span>
                                                 </label>
                                                 <label class="ays_quiz_loader">
                                                     <input type="radio" id="ays_quiz_question_text_alignment_right" name="ays_quiz_question_text_alignment" value="right" <?php echo ($quiz_question_text_alignment == 'right') ? 'checked' : ''; ?>/>
-                                                    <span for="ays_quiz_question_text_alignment_right"><?php echo __( 'Right', 'quiz-maker' ); ?></span>
+                                                    <span for="ays_quiz_question_text_alignment_right"><?php echo esc_html__( 'Right', 'quiz-maker' ); ?></span>
                                                 </label>
                                             </div>
                                         </div><!-- Question text alignment -->
@@ -2851,8 +2954,8 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                         <div class="form-group row">
                                             <div class="col-sm-5">
                                                 <label>
-                                                    <?php echo __('Question image styles','quiz-maker')?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('It affects the images chosen from “Add Image” not from “Add media”  on the Edit question page.','quiz-maker')?>">
+                                                    <?php echo esc_html__('Question image styles','quiz-maker')?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('It affects the images chosen from “Add Image” not from “Add media”  on the Edit question page.','quiz-maker')?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
@@ -2862,18 +2965,18 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                                     <div class="col-sm-12 ays_quiz_display_flex_width">
                                                         <div>
                                                             <label for="ays_image_width">
-                                                                <?php echo __('Image Width','quiz-maker')?>
-                                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Question image width in pixels. Set it 0 or leave it blank for making it 100%. It accepts only numeric values.','quiz-maker')?>">
+                                                                <?php echo esc_html__('Image Width','quiz-maker')?>
+                                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Question image width in pixels. Set it 0 or leave it blank for making it 100%. It accepts only numeric values.','quiz-maker')?>">
                                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                                 </a>
                                                             </label>
-                                                            <input type="number" class="ays-text-input ays-text-input-short" id="ays_image_width" name="ays_image_width" value="<?php echo $image_width; ?>"/>
-                                                            <span class="ays_quiz_small_hint_text"><?php echo __("For 100% leave blank", 'quiz-maker');?></span>
+                                                            <input type="number" class="ays-text-input ays-text-input-short" id="ays_image_width" name="ays_image_width" value="<?php echo intval($image_width); ?>"/>
+                                                            <span class="ays_quiz_small_hint_text"><?php echo esc_html__("For 100% leave blank", 'quiz-maker');?></span>
                                                         </div>
                                                         <div class="ays_quiz_dropdown_max_width ays-display-flex" style="align-items: center;">
                                                             <select id="ays_quiz_image_width_by_percentage_px" name="ays_quiz_image_width_by_percentage_px" class="ays-text-input ays-text-input-short" style="display:inline-block; width: 60px; margin-top: .5rem;">
-                                                                <option value="pixels" <?php echo $quiz_image_width_by_percentage_px == "pixels" ? "selected" : ""; ?>><?php echo __( "px", 'quiz-maker' ); ?></option>
-                                                                <option value="percentage" <?php echo $quiz_image_width_by_percentage_px == "percentage" ? "selected" : ""; ?>><?php echo __( "%", 'quiz-maker' ); ?></option>
+                                                                <option value="pixels" <?php echo $quiz_image_width_by_percentage_px == "pixels" ? "selected" : ""; ?>><?php echo esc_html__( "px", 'quiz-maker' ); ?></option>
+                                                                <option value="percentage" <?php echo $quiz_image_width_by_percentage_px == "percentage" ? "selected" : ""; ?>><?php echo esc_html__( "%", 'quiz-maker' ); ?></option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -2883,8 +2986,8 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                                     <div class="col-sm-12 ays_quiz_display_flex_width">
                                                         <div>
                                                             <label for="ays_image_height">
-                                                                <?php echo __('Image Height','quiz-maker')?>
-                                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Question image height in pixels. It accepts only number values.','quiz-maker')?>">
+                                                                <?php echo esc_html__('Image Height','quiz-maker')?>
+                                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Question image height in pixels. It accepts only number values.','quiz-maker')?>">
                                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                                 </a>
                                                             </label>
@@ -2899,17 +3002,34 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                                 <div class="form-group row">
                                                     <div class="col-sm-12">
                                                         <label for="ays_image_sizing">
-                                                            <?php echo __('Image sizing', 'quiz-maker' ); ?>
-                                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('It helps to configure the scale of the images inside the quiz in case of differences between the sizes.','quiz-maker')?>">
+                                                            <?php echo esc_html__('Image sizing', 'quiz-maker' ); ?>
+                                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('It helps to configure the scale of the images inside the quiz in case of differences between the sizes.','quiz-maker')?>">
                                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                                             </a>
                                                         </label>
                                                         <select name="ays_image_sizing" id="ays_image_sizing" class="ays-text-input ays-text-input-short" style="display:block;">
-                                                            <option value="cover" <?php echo $image_sizing == 'cover' ? 'selected' : ''; ?>><?php echo __( "Cover", 'quiz-maker' ); ?></option>
-                                                            <option value="contain" <?php echo $image_sizing == 'contain' ? 'selected' : ''; ?>><?php echo __( "Contain", 'quiz-maker' ); ?></option>
-                                                            <option value="none" <?php echo $image_sizing == 'none' ? 'selected' : ''; ?>><?php echo __( "None", 'quiz-maker' ); ?></option>
-                                                            <option value="unset" <?php echo $image_sizing == 'unset' ? 'selected' : ''; ?>><?php echo __( "Unset", 'quiz-maker' ); ?></option>
+                                                            <option value="cover" <?php echo $image_sizing == 'cover' ? 'selected' : ''; ?>><?php echo esc_html__( "Cover", 'quiz-maker' ); ?></option>
+                                                            <option value="contain" <?php echo $image_sizing == 'contain' ? 'selected' : ''; ?>><?php echo esc_html__( "Contain", 'quiz-maker' ); ?></option>
+                                                            <option value="none" <?php echo $image_sizing == 'none' ? 'selected' : ''; ?>><?php echo esc_html__( "None", 'quiz-maker' ); ?></option>
+                                                            <option value="unset" <?php echo $image_sizing == 'unset' ? 'selected' : ''; ?>><?php echo esc_html__( "Unset", 'quiz-maker' ); ?></option>
                                                         </select>
+                                                    </div>
+                                                </div>
+                                                <hr/>
+                                                <div class="form-group row">
+                                                    <div class="col-sm-12 ays_quiz_display_flex_width">
+                                                        <div>
+                                                            <label for="ays_quiz_question_image_border_radius">
+                                                                <?php echo esc_html__('Image border radius','quiz-maker'); ?>
+                                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Set the border radius of the question image in pixels. It accepts only number values.','quiz-maker'); ?>">
+                                                                    <i class="ays_fa ays_fa_info_circle"></i>
+                                                                </a>
+                                                            </label>
+                                                            <input type="number" class="ays-text-input ays-text-input-short" id="ays_quiz_question_image_border_radius" name="ays_quiz_question_image_border_radius" value="<?php echo intval($quiz_question_image_border_radius); ?>"/>
+                                                        </div>
+                                                        <div class="ays_quiz_dropdown_max_width ays-display-flex" style="align-items: end;">
+                                                            <input type="text" value="px" class='ays-quiz-form-hint-for-size' disabled>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -2919,16 +3039,16 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                 </div>
                                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                                     <div class="ays-quiz-accordion-container">
-                                        <?php echo $quiz_accordion_svg_html; ?>
-                                        <p class="ays-subtitle"><?php echo __('Answers Styles','quiz-maker'); ?></p>
+                                        <?php echo wp_kses($quiz_accordion_svg_html, $quiz_allowed_html); ?>
+                                        <p class="ays-subtitle"><?php echo esc_html__('Answers Styles','quiz-maker'); ?></p>
                                     </div>
                                     <div class="ays-quiz-accordion-options-box">
                                         <hr class="ays-quiz-bolder-hr"/>
                                         <div class="form-group row">
                                             <div class="col-sm-5">
                                                 <label for='ays_answers_font_size'>
-                                                    <?php echo __('Answer font size', 'quiz-maker'); ?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The font size of the answers in pixels in the quiz. It accepts only numeric values.','quiz-maker')?>">
+                                                    <?php echo esc_html__('Answer font size', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('The font size of the answers in pixels in the quiz. It accepts only numeric values.','quiz-maker')?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
@@ -2937,15 +3057,15 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                                 <div class="row">
                                                     <div class="col-sm-5">
                                                         <label for='ays_answers_font_size'>
-                                                            <?php echo __('On desktop', 'quiz-maker'); ?>
-                                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the font size for desktop devices.','quiz-maker'); ?>">
+                                                            <?php echo esc_html__('On desktop', 'quiz-maker'); ?>
+                                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Define the font size for desktop devices.','quiz-maker'); ?>">
                                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                                             </a>
                                                         </label>
                                                     </div>
                                                     <div class="col-sm-7 ays_quiz_display_flex_width">
                                                         <div>
-                                                            <input type="number" class="ays-text-input" id='ays_answers_font_size'name='ays_answers_font_size' value="<?php echo $answers_font_size; ?>"/>
+                                                            <input type="number" class="ays-text-input" id='ays_answers_font_size'name='ays_answers_font_size' value="<?php echo intval($answers_font_size); ?>"/>
                                                         </div>
                                                         <div class="ays_quiz_dropdown_max_width ays-display-flex" style="align-items: end;">
                                                             <input type="text" value="px" class='ays-quiz-form-hint-for-size' disabled>
@@ -2956,15 +3076,15 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                                 <div class="row">
                                                     <div class="col-sm-5">
                                                         <label for='ays_answers_mobile_font_size'>
-                                                            <?php echo __('On mobile', 'quiz-maker'); ?>
-                                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the font size for mobile devices.','quiz-maker'); ?>">
+                                                            <?php echo esc_html__('On mobile', 'quiz-maker'); ?>
+                                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Define the font size for mobile devices.','quiz-maker'); ?>">
                                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                                             </a>
                                                         </label>
                                                     </div>
                                                     <div class="col-sm-7 ays_quiz_display_flex_width">
                                                         <div>
-                                                            <input type="number" class="ays-text-input" id='ays_answers_mobile_font_size'name='ays_answers_mobile_font_size' value="<?php echo $answers_mobile_font_size; ?>"/>
+                                                            <input type="number" class="ays-text-input" id='ays_answers_mobile_font_size'name='ays_answers_mobile_font_size' value="<?php echo intval($answers_mobile_font_size); ?>"/>
                                                         </div>
                                                         <div class="ays_quiz_dropdown_max_width ays-display-flex" style="align-items: end;">
                                                             <input type="text" value="px" class='ays-quiz-form-hint-for-size' disabled>
@@ -2976,9 +3096,30 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                         <hr/>
                                         <div class="form-group row">
                                             <div class="col-sm-5">
+                                                <label for="ays_answers_view">
+                                                    <?php echo esc_html__('Answers view','quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Specify the design of the answers of question.','quiz-maker'); ?>">
+                                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                                    </a>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-7 ays_divider_left">
+                                                <select class="ays-enable-timerl" id="ays_answers_view" name="ays_answers_view">
+                                                    <option value="list" <?php echo (isset($options['answers_view']) && $options['answers_view'] == 'list') ? 'selected' : ''; ?>>
+                                                        List
+                                                    </option>
+                                                    <option value="grid" <?php echo (isset($options['answers_view']) && $options['answers_view'] == 'grid') ? 'selected' : ''; ?>>
+                                                        Grid
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div> <!-- Answers view  -->
+                                        <hr/>
+                                        <div class="form-group row">
+                                            <div class="col-sm-5">
                                                 <label for="ays_answers_border">
-                                                    <?php echo __('Answer border','quiz-maker')?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Allow answer border','quiz-maker')?>">
+                                                    <?php echo esc_html__('Answer border','quiz-maker')?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Allow answer border','quiz-maker')?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
@@ -2991,13 +3132,13 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                                     <div class="ays_quiz_display_flex_width">
                                                         <div>
                                                             <label for="ays_answers_border_width">
-                                                                <?php echo __('Border width','quiz-maker')?>
-                                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The width of answers border','quiz-maker')?>">
+                                                                <?php echo esc_html__('Border width','quiz-maker')?>
+                                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('The width of answers border','quiz-maker')?>">
                                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                                 </a>
                                                              </label>
                                                             <input type="number" class="ays-text-input" id='ays_answers_border_width' name='ays_answers_border_width'
-                                                                   value="<?php echo $answers_border_width; ?>"/>
+                                                                   value="<?php echo intval($answers_border_width); ?>"/>
                                                         </div>
                                                         <div class="ays_quiz_dropdown_max_width ays-display-flex" style="align-items: end;">
                                                             <input type="text" value="px" class='ays-quiz-form-hint-for-size' disabled>
@@ -3006,8 +3147,8 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                                 </div>
                                                 <div class="col-sm-12 ays_toggle_target ays_divider_top" style="margin-top: 10px; padding-top: 10px; <?php echo ($answers_border) ? '' : 'display:none;' ?>">
                                                     <label for="ays_answers_border_style">
-                                                        <?php echo __('Border style','quiz-maker')?>
-                                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The style of answers border','quiz-maker')?>">
+                                                        <?php echo esc_html__('Border style','quiz-maker'); ?>
+                                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('The style of answers border','quiz-maker')?>">
                                                             <i class="ays_fa ays_fa_info_circle"></i>
                                                         </a>
                                                     </label>
@@ -3025,13 +3166,13 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                                 </div>
                                                 <div class="col-sm-12 ays_toggle_target ays_divider_top" style="margin-top: 10px; padding-top: 10px; <?php echo ($answers_border) ? '' : 'display:none;' ?>">
                                                     <label for="ays_answers_border_color">
-                                                        <?php echo __('Border color','quiz-maker')?>
-                                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The color of the answers border','quiz-maker')?>">
+                                                        <?php echo esc_html__('Border color','quiz-maker')?>
+                                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('The color of the answers border','quiz-maker')?>">
                                                             <i class="ays_fa ays_fa_info_circle"></i>
                                                         </a>
                                                     </label>
                                                     <input id="ays_answers_border_color" class="ays-text-input" type="text" data-alpha="true" name='ays_answers_border_color'
-                                                           value="<?php echo $answers_border_color; ?>" data-default-color="#dddddd">
+                                                           value="<?php echo esc_attr($answers_border_color); ?>" data-default-color="#dddddd">
                                                 </div>
                                             </div>
                                         </div><!-- Answers border -->
@@ -3039,15 +3180,15 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                         <div class="form-group row">
                                             <div class="col-sm-5">
                                                 <label for="ays_answers_margin">
-                                                    <?php echo __('Answer gap','quiz-maker')?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Gap between answers.','quiz-maker')?>">
+                                                    <?php echo esc_html__('Answer gap','quiz-maker')?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Gap between answers.','quiz-maker')?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
                                             </div>
                                             <div class="col-sm-7 ays_divider_left ays_quiz_display_flex_width">
                                                 <div>
-                                                    <input type="number" class="ays-text-input ays-text-input-short" id='ays_answers_margin' name='ays_answers_margin' value="<?php echo $answers_margin; ?>"/>
+                                                    <input type="number" class="ays-text-input ays-text-input-short" id='ays_answers_margin' name='ays_answers_margin' value="<?php echo intval($answers_margin); ?>"/>
                                                 </div>
                                                 <div class="ays_quiz_dropdown_max_width ays-display-flex" style="align-items: end;">
                                                     <input type="text" value="px" class='ays-quiz-form-hint-for-size' disabled>
@@ -3058,8 +3199,8 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                         <div class="form-group row">
                                             <div class="col-sm-5">
                                                 <label for="ays_answers_box_shadow">
-                                                    <?php echo __('Answers box shadow','quiz-maker')?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Allow answer container box shadow','quiz-maker')?>">
+                                                    <?php echo esc_html__('Answers box shadow','quiz-maker')?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Allow answer container box shadow','quiz-maker')?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
@@ -3073,28 +3214,28 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                                     <div class="form-group row">
                                                         <div class="col-sm-12">
                                                             <label for="ays_answers_box_shadow_color">
-                                                                <?php echo __('Answer box-shadow color','quiz-maker')?>
-                                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The shadow color of answers container','quiz-maker')?>">
+                                                                <?php echo esc_html__('Answer box-shadow color','quiz-maker')?>
+                                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('The shadow color of answers container','quiz-maker')?>">
                                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                                 </a>
                                                              </label>
-                                                            <input type="text" class="ays-text-input" id='ays_answers_box_shadow_color' name='ays_answers_box_shadow_color' data-alpha="true" data-default-color="#000000" value="<?php echo $answers_box_shadow_color; ?>"/>
+                                                            <input type="text" class="ays-text-input" id='ays_answers_box_shadow_color' name='ays_answers_box_shadow_color' data-alpha="true" data-default-color="#000000" value="<?php echo esc_attr( $answers_box_shadow_color ); ?>"/>
                                                        </div>
                                                     </div>
                                                     <hr>
                                                     <div class="form-group row">
                                                         <div class="col-sm-12">
                                                             <div class="col-sm-3" style="display: inline-block;">
-                                                                <span class="ays_quiz_small_hint_text"><?php echo __('X', 'quiz-maker'); ?></span>
-                                                                <input type="number" class="ays-text-input ays-text-input-90-width" id='ays_quiz_answer_box_shadow_x_offset' name='ays_quiz_answer_box_shadow_x_offset' value="<?php echo $quiz_answer_box_shadow_x_offset; ?>" />
+                                                                <span class="ays_quiz_small_hint_text"><?php echo esc_html__('X', 'quiz-maker'); ?></span>
+                                                                <input type="number" class="ays-text-input ays-text-input-90-width" id='ays_quiz_answer_box_shadow_x_offset' name='ays_quiz_answer_box_shadow_x_offset' value="<?php echo esc_attr($quiz_answer_box_shadow_x_offset); ?>" />
                                                             </div>
                                                             <div class="col-sm-3 ays_divider_left" style="display: inline-block;">
-                                                                <span class="ays_quiz_small_hint_text"><?php echo __('Y', 'quiz-maker'); ?></span>
-                                                                <input type="number" class="ays-text-input ays-text-input-90-width" id='ays_quiz_answer_box_shadow_y_offset' name='ays_quiz_answer_box_shadow_y_offset' value="<?php echo $quiz_answer_box_shadow_y_offset; ?>" />
+                                                                <span class="ays_quiz_small_hint_text"><?php echo esc_html__('Y', 'quiz-maker'); ?></span>
+                                                                <input type="number" class="ays-text-input ays-text-input-90-width" id='ays_quiz_answer_box_shadow_y_offset' name='ays_quiz_answer_box_shadow_y_offset' value="<?php echo esc_attr($quiz_answer_box_shadow_y_offset); ?>" />
                                                             </div>
                                                             <div class="col-sm-3 ays_divider_left" style="display: inline-block;">
-                                                                <span class="ays_quiz_small_hint_text"><?php echo __('Z', 'quiz-maker'); ?></span>
-                                                                <input type="number" class="ays-text-input ays-text-input-90-width" id='ays_quiz_answer_box_shadow_z_offset' name='ays_quiz_answer_box_shadow_z_offset' value="<?php echo $quiz_answer_box_shadow_z_offset; ?>" />
+                                                                <span class="ays_quiz_small_hint_text"><?php echo esc_html__('Z', 'quiz-maker'); ?></span>
+                                                                <input type="number" class="ays-text-input ays-text-input-90-width" id='ays_quiz_answer_box_shadow_z_offset' name='ays_quiz_answer_box_shadow_z_offset' value="<?php echo esc_attr($quiz_answer_box_shadow_z_offset); ?>" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -3105,14 +3246,14 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                         <div class="form-group row">
                                             <div class="col-sm-5">
                                                 <label for="ays_ans_right_wrong_icon">
-                                                    <?php echo __('Right/wrong answer icons','quiz-maker'); ?>
+                                                    <?php echo esc_html__('Right/wrong answer icons','quiz-maker'); ?>
                                                 </label>
                                             </div>
                                             <div class="col-sm-7 ays_divider_left">
                                                 <label class="ays_quiz_rw_icon ays_quiz_loader">
                                                     <input name="ays_ans_right_wrong_icon" type="radio" value="default" <?php echo $ans_right_wrong_icon == 'default' ? 'checked' : ''; ?>>
-                                                    <img loading="lazy" class="right_icon" src="<?php echo AYS_QUIZ_PUBLIC_URL; ?>/images/correct.png">
-                                                    <img loading="lazy" class="wrong_icon" src="<?php echo AYS_QUIZ_PUBLIC_URL; ?>/images/wrong.png">
+                                                    <img loading="lazy" class="right_icon" src="<?php echo esc_url(AYS_QUIZ_PUBLIC_URL); ?>/images/correct.png">
+                                                    <img loading="lazy" class="wrong_icon" src="<?php echo esc_url(AYS_QUIZ_PUBLIC_URL); ?>/images/wrong.png">
                                                 </label>
                                                 <?php
                                                     for($i = 1; $i <= 10; $i++):
@@ -3126,15 +3267,15 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                                 ?>
                                                 <label class="ays_quiz_rw_icon ays_quiz_loader">
                                                     <input name="ays_ans_right_wrong_icon" type="radio" value="style-<?php echo $i; ?>" <?php echo $ans_right_wrong_icon == 'style-'.$i ? 'checked' : ''; ?>>
-                                                    <img loading="lazy" class="right_icon <?php echo $quiz_rw_answers_img_class; ?>" src="<?php echo AYS_QUIZ_PUBLIC_URL; ?>/images/<?php echo $right_style_name; ?>.png">
-                                                    <img loading="lazy" class="wrong_icon <?php echo $quiz_rw_answers_img_class; ?>" src="<?php echo AYS_QUIZ_PUBLIC_URL; ?>/images/<?php echo $wrong_style_name; ?>.png">
+                                                    <img loading="lazy" class="right_icon <?php echo esc_attr($quiz_rw_answers_img_class); ?>" src="<?php echo esc_url(AYS_QUIZ_PUBLIC_URL); ?>/images/<?php echo esc_attr($right_style_name); ?>.png">
+                                                    <img loading="lazy" class="wrong_icon <?php echo esc_attr($quiz_rw_answers_img_class); ?>" src="<?php echo esc_url(AYS_QUIZ_PUBLIC_URL); ?>/images/<?php echo esc_attr($wrong_style_name); ?>.png">
                                                 </label>
                                                 <?php
                                                     endfor;
                                                 ?>
                                                 <label class="ays_quiz_rw_icon ays_quiz_loader">
                                                     <input name="ays_ans_right_wrong_icon" type="radio" value="none" <?php echo $ans_right_wrong_icon == 'none' ? 'checked' : ''; ?>>
-                                                    <?php echo __("None", 'quiz-maker'); ?>
+                                                    <?php echo esc_html__("None", 'quiz-maker'); ?>
                                                     <div></div>
                                                 </label>
                                             </div>
@@ -3143,8 +3284,8 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                         <div class="form-group row">
                                             <div class="col-sm-5">
                                                 <label for="ays_disable_hover_effect">
-                                                    <?php echo __('Disable answer hover','quiz-maker'); ?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Disable the hover effect for the answers.', 'quiz-maker'); ?>">
+                                                    <?php echo esc_html__('Disable answer hover','quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Disable the hover effect for the answers.', 'quiz-maker'); ?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
@@ -3156,84 +3297,86 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                         </div><!-- Disable answer hover -->
                                         <hr/>
                                         <div class="form-group row">
+                                            <div class="col-sm-5">
+                                                <label for="ays_ans_img_height">
+                                                    <?php echo esc_html__('Answer image height', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_html__('Height of answers images.','quiz-maker'); ?>">
+                                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                                    </a>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-7 ays_divider_left ays_quiz_display_flex_width">
+                                                <div>
+                                                    <input type="number" class="ays-text-input ays-text-input-short" id='ays_ans_img_height' name='ays_ans_img_height' value="<?php echo esc_attr($ans_img_height); ?>"/>
+                                                </div>
+                                                <div class="ays_quiz_dropdown_max_width ays-display-flex" style="align-items: end;">
+                                                    <input type="text" value="px" class='ays-quiz-form-hint-for-size' disabled>
+                                                </div>
+                                            </div>
+                                        </div> <!-- Answers image height -->
+                                        <hr/>
+                                        <div class="form-group row">
+                                            <div class="col-sm-5">
+                                                <label for="ays_show_answers_caption">
+                                                    <?php echo esc_html__('Show answer caption', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Show answers caption near the answer image. This option will be work only when answer has image.', 'quiz-maker'); ?>">
+                                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                                    </a>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-7 ays_divider_left">
+                                                <input type="checkbox" class="ays_toggle ays_toggle_slide"
+                                                    id="ays_show_answers_caption" name="ays_show_answers_caption"
+                                                    <?php echo ($show_answers_caption) ? 'checked' : ''; ?>/>
+                                                <label for="ays_show_answers_caption" class="ays_switch_toggle">Toggle</label>
+                                            </div>
+                                        </div> <!-- Show answers caption -->
+                                        <hr/>
+                                        <div class="form-group row">
+                                            <div class="col-sm-5">
+                                                <label for="ays_ans_img_caption_position">
+                                                    <?php echo esc_html__('Caption position of the image answer', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Choose the position of captions in the image answers.', 'quiz-maker')?>">
+                                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                                    </a>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-7 ays_divider_left">
+                                                <select id="ays_ans_img_caption_position" name="ays_ans_img_caption_position" class="ays-text-input ays-text-input-short">
+                                                    <option <?php echo ($ans_img_caption_position == 'top') ? 'selected' : ''; ?> value="top"><?php echo esc_html__('Top', 'quiz-maker'); ?></option>
+                                                    <option <?php echo ($ans_img_caption_position == 'bottom') ? 'selected' : ''; ?> value="bottom"><?php echo esc_html__('Bottom', 'quiz-maker'); ?></option>
+                                                </select>
+                                            </div>
+                                        </div> <!-- Answers image caption position -->
+                                        <hr/>
+                                        <div class="form-group row">
                                             <div class="col-sm-12 only_pro" style="padding:10px 0 0 10px;">
                                                 <div class="pro_features" style="justify-content:flex-end;">
 
                                                 </div>
                                                 <div class="form-group row">
                                                     <div class="col-sm-5">
-                                                        <label for="ays_ans_img_height">
-                                                            <?php echo __('Answer image height','quiz-maker')?>
-                                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Height of answers images.','quiz-maker'); ?>">
-                                                                <i class="ays_fa ays_fa_info_circle"></i>
-                                                            </a>
-                                                        </label>
-                                                    </div>
-                                                    <div class="col-sm-7 ays_divider_left ays_quiz_display_flex_width">
-                                                        <div>
-                                                            <input type="number" class="ays-text-input ays-text-input-short"/>
-                                                        </div>
-                                                        <div class="ays_quiz_dropdown_max_width ays-display-flex" style="align-items: end;">
-                                                            <input type="text" value="px" class='ays-quiz-form-hint-for-size' disabled>
-                                                        </div>
-                                                    </div>
-                                                </div> <!-- Answers image height -->
-                                                <hr/>
-                                                <div class="form-group row">
-                                                    <div class="col-sm-5">
-                                                        <label for="ays_show_answers_caption">
-                                                            <?php echo __('Show answer caption','quiz-maker'); ?>
-                                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show answers caption near the answer image. This option will be work only when answer has image.','quiz-maker'); ?>">
-                                                                <i class="ays_fa ays_fa_info_circle"></i>
-                                                            </a>
-                                                        </label>
-                                                    </div>
-                                                    <div class="col-sm-7 ays_divider_left">
-                                                        <input type="checkbox" class="ays_toggle ays_toggle_slide"/>
-                                                        <label for="ays_show_answers_caption" class="ays_switch_toggle">Toggle</label>
-                                                    </div>
-                                                </div> <!-- Show answers caption -->
-                                                <hr/>
-                                                <div class="form-group row">
-                                                    <div class="col-sm-5">
                                                         <label for="ays_ans_img_caption_style">
-                                                            <?php echo __('Caption style of the image answer','quiz-maker'); ?>
-                                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Choose the preferred view type of captions in the image answers.','quiz-maker'); ?>">
+                                                            <?php echo esc_html__('Caption style of the image answer','quiz-maker'); ?>
+                                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Choose the preferred view type of captions in the image answers.','quiz-maker'); ?>">
                                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                                             </a>
                                                         </label>
                                                     </div>
                                                     <div class="col-sm-7 ays_divider_left">
                                                         <select class="ays-text-input ays-text-input-short">
-                                                            <option value="outside" selected><?php echo __('Outside', 'quiz-maker'); ?></option>
-                                                            <option value="inside"><?php echo __('Inside', 'quiz-maker'); ?></option>
+                                                            <option value="outside" selected><?php echo esc_html__('Outside', 'quiz-maker'); ?></option>
+                                                            <option value="inside"><?php echo esc_html__('Inside', 'quiz-maker'); ?></option>
                                                         </select>
                                                     </div>
                                                 </div> <!-- Answers image caption style -->
-                                                <hr/>
-                                                <div class="form-group row">
-                                                    <div class="col-sm-5">
-                                                        <label for="ays_ans_img_caption_position">
-                                                            <?php echo __('Caption position of the image answer','quiz-maker'); ?>
-                                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Choose the position of captions in the image answers.','quiz-maker'); ?>">
-                                                                <i class="ays_fa ays_fa_info_circle"></i>
-                                                            </a>
-                                                        </label>
-                                                    </div>
-                                                    <div class="col-sm-7 ays_divider_left">
-                                                        <select class="ays-text-input ays-text-input-short">
-                                                            <option value="top" selected><?php echo __('Top', 'quiz-maker'); ?></option>
-                                                            <option value="bottom"><?php echo __('Bottom', 'quiz-maker'); ?></option>
-                                                        </select>
-                                                    </div>
-                                                </div> <!-- Answers image caption position -->
-                                                <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=style-tab-answer-image-options-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                                     <div class="ays-quiz-new-upgrade-button-box">
                                                         <div>
-                                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                                            <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
+                                                            <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg' ); ?>" class="ays-quiz-new-upgrade-button-hover">
                                                         </div>
-                                                        <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
+                                                        <div class="ays-quiz-new-upgrade-button"><?php echo esc_html__("Upgrade", "quiz-maker"); ?></div>
                                                     </div>
                                                 </a>
                                             </div>
@@ -3252,7 +3395,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                                 <input type="hidden" name="ays_quiz_id" value="2">
                                                 <div class="ays_buttons_div">
                                                     <input type="button" name="next" class="ays_next action-button ays-quiz-live-button"
-                                                        value="<?php echo __( "Start", 'quiz-maker' ); ?>">
+                                                        value="<?php echo esc_attr__( "Start", 'quiz-maker' ); ?>">
                                                 </div>
                                             </div>
                                         </div>
@@ -3266,13 +3409,13 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                                 <input type="hidden" name="ays_quiz_id" value="2">
                                                 <div class="ays_buttons_div">
                                                     <input type="button" name="next" class="ays_next action-button ays-quiz-live-button"
-                                                       value="<?php echo __( "Start", 'quiz-maker' ); ?>">
+                                                       value="<?php echo esc_attr__( "Start", 'quiz-maker' ); ?>">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <p style="text-align: center;">
-                                        <span class="ays_quiz_small_hint_text" style="color: #ccc;"><?php echo __("Note: This is only a live preview and the quiz cannot be started here.", 'quiz-maker'); ?></span>
+                                        <span class="ays_quiz_small_hint_text" style="color: #ccc;"><?php echo esc_html__("Note: This is only a live preview and the quiz cannot be started here.", 'quiz-maker'); ?></span>
                                     </p>
                                 </div>
                             </div>
@@ -3282,8 +3425,8 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                 </div><!-- .ays-quiz-accordion-options-main-container -->
                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                     <div class="ays-quiz-accordion-container">
-                        <?php echo $quiz_accordion_svg_html; ?>
-                        <p class="ays-subtitle"><?php echo __('Buttons Styles','quiz-maker'); ?></p>
+                        <?php echo wp_kses($quiz_accordion_svg_html, $quiz_allowed_html); ?>
+                        <p class="ays-subtitle"><?php echo esc_html__('Buttons Styles','quiz-maker'); ?></p>
                     </div>
                     <hr class="ays-quiz-bolder-hr"/>
                     <div class="ays-quiz-accordion-options-box">
@@ -3292,8 +3435,8 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_buttons_size">
-                                            <?php echo __('Button size','quiz-maker'); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The default sizes of buttons.','quiz-maker')?>">
+                                            <?php echo esc_html__('Button size','quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('The default sizes of buttons.','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -3301,13 +3444,13 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                     <div class="col-sm-7 ays_divider_left">
                                         <select class="ays-text-input ays-text-input-short" id="ays_buttons_size" name="ays_buttons_size">
                                             <option value="small" <?php echo (isset($options['buttons_size']) && $options['buttons_size'] == 'small') ? 'selected' : ''; ?>>
-                                                <?php echo __('Small','quiz-maker')?>
+                                                <?php echo esc_html__('Small','quiz-maker')?>
                                             </option>
                                             <option value="medium" <?php echo ( (isset($options['buttons_size']) && $options['buttons_size'] == 'medium') || !isset($options['buttons_size']) ) ? 'selected' : ''; ?>>
-                                                <?php echo __('Medium','quiz-maker')?>
+                                                <?php echo esc_html__('Medium','quiz-maker')?>
                                             </option>
                                             <option value="large" <?php echo (isset($options['buttons_size']) && $options['buttons_size'] == 'large') ? 'selected' : ''; ?>>
-                                                <?php echo __('Large','quiz-maker')?>
+                                                <?php echo esc_html__('Large','quiz-maker')?>
                                             </option>
                                         </select>
                                     </div>
@@ -3316,8 +3459,8 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for='ays_buttons_font_size'>
-                                            <?php echo __('Button font-size', 'quiz-maker'); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The font size of the buttons in pixels in the quiz. It accepts only numeric values.','quiz-maker')?>">
+                                            <?php echo esc_html__('Button font-size', 'quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('The font size of the buttons in pixels in the quiz. It accepts only numeric values.','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -3326,15 +3469,15 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                         <div class="row">
                                             <div class="col-sm-5">
                                                 <label for='ays_buttons_font_size'>
-                                                    <?php echo __('On desktop', 'quiz-maker'); ?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the font size for desktop devices.','quiz-maker'); ?>">
+                                                    <?php echo esc_html__('On desktop', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Define the font size for desktop devices.','quiz-maker'); ?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
                                             </div>
                                             <div class="col-sm-7 ays_quiz_display_flex_width">
                                                 <div>
-                                                    <input type="number" class="ays-text-input" id='ays_buttons_font_size' name='ays_buttons_font_size' value="<?php echo $buttons_font_size; ?>"/>
+                                                    <input type="number" class="ays-text-input" id='ays_buttons_font_size' name='ays_buttons_font_size' value="<?php echo intval($buttons_font_size); ?>"/>
                                                 </div>
                                                 <div class="ays_quiz_dropdown_max_width ays-display-flex" style="align-items: end;">
                                                     <input type="text" value="px" class='ays-quiz-form-hint-for-size' disabled>
@@ -3345,15 +3488,15 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                         <div class="row">
                                             <div class="col-sm-5">
                                                 <label for='ays_buttons_mobile_font_size'>
-                                                    <?php echo __('On mobile', 'quiz-maker'); ?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the font size for mobile devices.','quiz-maker'); ?>">
+                                                    <?php echo esc_html__('On mobile', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Define the font size for mobile devices.','quiz-maker'); ?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
                                             </div>
                                             <div class="col-sm-7 ays_quiz_display_flex_width">
                                                 <div>
-                                                    <input type="number" class="ays-text-input" id='ays_buttons_mobile_font_size'name='ays_buttons_mobile_font_size' value="<?php echo $buttons_mobile_font_size; ?>"/>
+                                                    <input type="number" class="ays-text-input" id='ays_buttons_mobile_font_size'name='ays_buttons_mobile_font_size' value="<?php echo intval($buttons_mobile_font_size); ?>"/>
                                                 </div>
                                                 <div class="ays_quiz_dropdown_max_width ays-display-flex" style="align-items: end;">
                                                     <input type="text" value="px" class='ays-quiz-form-hint-for-size' disabled>
@@ -3366,16 +3509,16 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for='ays_buttons_width'>
-                                            <?php echo __('Button width', 'quiz-maker'); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Set the button width in pixels. For an initial width, leave the field blank.', 'quiz-maker'); ?>">
+                                            <?php echo esc_html__('Button width', 'quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Set the button width in pixels. For an initial width, leave the field blank.', 'quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
                                     </div>
                                     <div class="col-sm-7 ays_divider_left ays_quiz_display_flex_width">
                                         <div>
-                                            <input type="number" class="ays-text-input ays-text-input-short" id='ays_buttons_width'name='ays_buttons_width' value="<?php echo $buttons_width; ?>"/>
-                                            <span style="display:block;" class="ays_quiz_small_hint_text"><?php echo __('For an initial width, leave the field blank.', 'quiz-maker'); ?></span>
+                                            <input type="number" class="ays-text-input ays-text-input-short" id='ays_buttons_width'name='ays_buttons_width' value="<?php echo esc_attr($buttons_width); ?>"/>
+                                            <span style="display:block;" class="ays_quiz_small_hint_text"><?php echo esc_html__('For an initial width, leave the field blank.', 'quiz-maker'); ?></span>
                                         </div>
                                         <div class="ays_quiz_dropdown_max_width ays-display-flex" style="align-items: flex-start;">
                                             <input type="text" value="px" class='ays-quiz-form-hint-for-size' disabled>
@@ -3386,20 +3529,20 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_buttons_padding">
-                                            <?php echo __('Button padding','quiz-maker')?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Padding of buttons.','quiz-maker')?>">
+                                            <?php echo esc_html__('Button padding','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Padding of buttons.','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
                                     </div>
                                     <div class="col-sm-7 ays_divider_left">
                                         <div class="col-sm-5" style="display: inline-block; padding-left: 0;">
-                                            <span class="ays_quiz_small_hint_text"><?php echo __('Left / Right','quiz-maker')?></span>
-                                            <input type="number" class="ays-text-input" id='ays_buttons_left_right_padding' name='ays_buttons_left_right_padding' value="<?php echo $buttons_left_right_padding; ?>" style="width: 100px;" />
+                                            <span class="ays_quiz_small_hint_text"><?php echo esc_html__('Left / Right','quiz-maker')?></span>
+                                            <input type="number" class="ays-text-input" id='ays_buttons_left_right_padding' name='ays_buttons_left_right_padding' value="<?php echo intval($buttons_left_right_padding); ?>" style="width: 100px;" />
                                         </div>
                                         <div class="col-sm-5 ays_divider_left ays-buttons-top-bottom-padding-box" style="display: inline-block;">
-                                            <span class="ays_quiz_small_hint_text"><?php echo __('Top / Bottom','quiz-maker')?></span>
-                                            <input type="number" class="ays-text-input" id='ays_buttons_top_bottom_padding' name='ays_buttons_top_bottom_padding' value="<?php echo $buttons_top_bottom_padding; ?>" style="width: 100px;" />
+                                            <span class="ays_quiz_small_hint_text"><?php echo esc_html__('Top / Bottom','quiz-maker')?></span>
+                                            <input type="number" class="ays-text-input" id='ays_buttons_top_bottom_padding' name='ays_buttons_top_bottom_padding' value="<?php echo intval($buttons_top_bottom_padding); ?>" style="width: 100px;" />
                                         </div>
                                     </div>
                                 </div><!-- Buttons padding -->
@@ -3407,15 +3550,15 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_buttons_border_radius">
-                                            <?php echo __('Button border-radius','quiz-maker')?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Quiz buttons border-radius in pixels. It accepts only numeric values.','quiz-maker')?>">
+                                            <?php echo esc_html__('Button border-radius','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Quiz buttons border-radius in pixels. It accepts only numeric values.','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
                                     </div>
                                     <div class="col-sm-7 ays_divider_left ays_quiz_display_flex_width">
                                         <div>
-                                            <input type="number" class="ays-text-input ays-text-input-short" id="ays_buttons_border_radius" name="ays_buttons_border_radius" value="<?php echo $buttons_border_radius; ?>"/>
+                                            <input type="number" class="ays-text-input ays-text-input-short" id="ays_buttons_border_radius" name="ays_buttons_border_radius" value="<?php echo intval($buttons_border_radius); ?>"/>
                                         </div>
                                         <div class="ays_quiz_dropdown_max_width ays-display-flex" style="align-items: flex-start;">
                                             <input type="text" value="px" class='ays-quiz-form-hint-for-size' disabled>
@@ -3428,7 +3571,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                             <div class="col-lg-5 col-sm-12 ays_divider_left" style="position:relative;">
                                 <div id="ays_buttons_styles_tab" style="position:sticky;top:50px; margin:auto;">
                                     <div class="ays_buttons_div" style="justify-content: center; overflow: hidden;">
-                                        <input type="button" name="next" class="action-button ays-quiz-live-button" style="padding:0;" value="<?php echo __( "Start", 'quiz-maker' ); ?>">
+                                        <input type="button" name="next" class="action-button ays-quiz-live-button" style="padding:0;" value="<?php echo esc_attr__( "Start", 'quiz-maker' ); ?>">
                                     </div>
                                 </div>
                             </div><!-- Buttons Styles Live -->
@@ -3437,8 +3580,8 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                 </div>
                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                     <div class="ays-quiz-accordion-container">
-                        <?php echo $quiz_accordion_svg_html; ?>
-                        <p class="ays-subtitle" style="margin-top:0;"><?php echo __('Admin note styles','quiz-maker'); ?></p>
+                        <?php echo wp_kses($quiz_accordion_svg_html, $quiz_allowed_html); ?>
+                        <p class="ays-subtitle" style="margin-top:0;"><?php echo esc_html__('Admin note styles','quiz-maker'); ?></p>
                     </div>
                     <hr class="ays-quiz-bolder-hr"/>
                     <div class="ays-quiz-accordion-options-box">
@@ -3447,8 +3590,8 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_note_text_font_size">
-                                            <?php echo __('Font size for the note text','quiz-maker')?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Choose the Font Size for the Message displayed for the note text( only for <p> tag ).','quiz-maker')?>">
+                                            <?php echo esc_html__('Font size for the note text','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Choose the Font Size for the Message displayed for the note text( only for <p> tag ).','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -3457,15 +3600,15 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                         <div class="row">
                                             <div class="col-sm-5">
                                                 <label for='ays_note_text_font_size'>
-                                                    <?php echo __('On desktop', 'quiz-maker'); ?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the font size for desktop devices.','quiz-maker'); ?>">
+                                                    <?php echo esc_html__('On desktop', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Define the font size for desktop devices.','quiz-maker'); ?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
                                             </div>
                                             <div class="col-sm-7 ays_quiz_display_flex_width">
                                                 <div>
-                                                    <input type="number" class="ays-text-input" id='ays_note_text_font_size' name='ays_note_text_font_size' value="<?php echo $note_text_font_size; ?>"/>
+                                                    <input type="number" class="ays-text-input" id='ays_note_text_font_size' name='ays_note_text_font_size' value="<?php echo intval($note_text_font_size); ?>"/>
                                                 </div>
                                                 <div class="ays_quiz_dropdown_max_width ays-display-flex" style="align-items: end;">
                                                     <input type="text" value="px" class='ays-quiz-form-hint-for-size' disabled>
@@ -3476,15 +3619,15 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                         <div class="row">
                                             <div class="col-sm-5">
                                                 <label for='ays_note_text_mobile_font_size'>
-                                                    <?php echo __('On mobile', 'quiz-maker'); ?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the font size for mobile devices.','quiz-maker'); ?>">
+                                                    <?php echo esc_html__('On mobile', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Define the font size for mobile devices.','quiz-maker'); ?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
                                             </div>
                                             <div class="col-sm-7 ays_quiz_display_flex_width">
                                                 <div>
-                                                    <input type="number" class="ays-text-input" id='ays_note_text_mobile_font_size' name='ays_note_text_mobile_font_size' value="<?php echo $note_text_mobile_font_size; ?>"/>
+                                                    <input type="number" class="ays-text-input" id='ays_note_text_mobile_font_size' name='ays_note_text_mobile_font_size' value="<?php echo intval($note_text_mobile_font_size); ?>"/>
                                                 </div>
                                                 <div class="ays_quiz_dropdown_max_width ays-display-flex" style="align-items: end;">
                                                     <input type="text" value="px" class='ays-quiz-form-hint-for-size' disabled>
@@ -3563,8 +3706,8 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_quiz_admin_note_text_decoration">
-                                            <?php echo __('Text decoration','quiz-maker'); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Choose the line position for the Note Text on the front end. Note: It is set as None by default.','quiz-maker'); ?>">
+                                            <?php echo esc_html__('Text decoration','quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Choose the line position for the Note Text on the front end. Note: It is set as None by default.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -3582,16 +3725,16 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                             <div class="col-sm-7 ays_quiz_display_flex_width">
                                                 <select class="ays-text-input ays-text-input-short" id="ays_quiz_admin_note_text_decoration" name="ays_quiz_admin_note_text_decoration">
                                                     <option value="none" <?php echo ($quiz_admin_note_text_decoration == 'none') ? 'selected' : ''; ?>>
-                                                        <?php echo __('None','quiz-maker'); ?>
+                                                        <?php echo esc_html__('None','quiz-maker'); ?>
                                                     </option>
                                                     <option value="overline" <?php echo ($quiz_admin_note_text_decoration == 'overline') ? 'selected' : ''; ?>>
-                                                        <?php echo __('Overline','quiz-maker'); ?>
+                                                        <?php echo esc_html__('Overline','quiz-maker'); ?>
                                                     </option>
                                                     <option value="line-through" <?php echo ($quiz_admin_note_text_decoration == 'line-through')  ? 'selected' : ''; ?>>
-                                                        <?php echo __('Line through','quiz-maker'); ?>
+                                                        <?php echo esc_html__('Line through','quiz-maker'); ?>
                                                     </option>
                                                     <option value="underline" <?php echo ($quiz_admin_note_text_decoration == 'underline') ? 'selected' : ''; ?>>
-                                                        <?php echo __('Underline','quiz-maker'); ?>
+                                                        <?php echo esc_html__('Underline','quiz-maker'); ?>
                                                     </option>
                                                 </select>
                                             </div>
@@ -3609,16 +3752,16 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                             <div class="col-sm-7 ays_quiz_display_flex_width">
                                                 <select class="ays-text-input ays-text-input-short" id="ays_quiz_admin_note_mobile_text_decoration" name="ays_quiz_admin_note_mobile_text_decoration">
                                                     <option value="none" <?php echo ($quiz_admin_note_mobile_text_decoration == 'none') ? 'selected' : ''; ?>>
-                                                        <?php echo __('None','quiz-maker'); ?>
+                                                        <?php echo esc_html__('None','quiz-maker'); ?>
                                                     </option>
                                                     <option value="overline" <?php echo ($quiz_admin_note_mobile_text_decoration == 'overline') ? 'selected' : ''; ?>>
-                                                        <?php echo __('Overline','quiz-maker'); ?>
+                                                        <?php echo esc_html__('Overline','quiz-maker'); ?>
                                                     </option>
                                                     <option value="line-through" <?php echo ($quiz_admin_note_mobile_text_decoration == 'line-through')  ? 'selected' : ''; ?>>
-                                                        <?php echo __('Line through','quiz-maker'); ?>
+                                                        <?php echo esc_html__('Line through','quiz-maker'); ?>
                                                     </option>
                                                     <option value="underline" <?php echo ($quiz_admin_note_mobile_text_decoration == 'underline') ? 'selected' : ''; ?>>
-                                                        <?php echo __('Underline','quiz-maker'); ?>
+                                                        <?php echo esc_html__('Underline','quiz-maker'); ?>
                                                     </option>
                                                 </select>
                                             </div>
@@ -3629,18 +3772,49 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_quiz_admin_note_letter_spacing">
-                                            <?php echo __('Letter spacing','quiz-maker')?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the space between the letters of the admin note text in pixels. Note: The default value for this option is 0.','quiz-maker'); ?>">
+                                            <?php echo esc_html__('Letter spacing','quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Define the space between the letters of the admin note text in pixels. Note: The default value for this option is 0.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
                                     </div>
-                                    <div class="col-sm-7 ays_divider_left ays_quiz_display_flex_width">
-                                        <div>
-                                            <input type="number" class="ays-text-input ays-text-input-short" id="ays_quiz_admin_note_letter_spacing" name="ays_quiz_admin_note_letter_spacing" value="<?php echo $quiz_admin_note_letter_spacing; ?>"/>
+                                    <div class="col-sm-7 ays_divider_left">
+                                        <div class="row">
+                                            <div class="col-sm-5">
+                                                <label for='ays_quiz_admin_note_letter_spacing'>
+                                                    <?php echo esc_html__('On desktop', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Choose the letter spacing for the Note Text on the front end for desktop devices. Note: It is set as Empty (0px) by default.','quiz-maker') ); ?>">
+                                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                                    </a>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-7 ays_quiz_display_flex_width">
+                                                <div>
+                                                    <input type="number" class="ays-text-input" id="ays_quiz_admin_note_letter_spacing" name="ays_quiz_admin_note_letter_spacing" value="<?php echo intval($quiz_admin_note_letter_spacing); ?>"/>
+                                                </div>
+                                                <div class="ays_quiz_dropdown_max_width ays-display-flex" style="align-items: flex-start;">
+                                                    <input type="text" value="px" class='ays-quiz-form-hint-for-size' disabled>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="ays_quiz_dropdown_max_width ays-display-flex" style="align-items: flex-start;">
-                                            <input type="text" value="px" class='ays-quiz-form-hint-for-size' disabled>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-sm-5">
+                                                <label for='ays_quiz_admin_note_mobile_letter_spacing'>
+                                                    <?php echo esc_html__('On mobile', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr(__('Choose the letter spacing for the Note Text on the front end for mobile devices. Note: It is set as Empty (0px) by default.','quiz-maker')); ?>">
+                                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                                    </a>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-7 ays_quiz_display_flex_width">
+                                                <div>
+                                                    <input type="number" class="ays-text-input" id="ays_quiz_admin_note_mobile_letter_spacing" name="ays_quiz_admin_note_mobile_letter_spacing" value="<?php echo intval($quiz_admin_note_mobile_letter_spacing); ?>"/>
+                                                </div>
+                                                <div class="ays_quiz_dropdown_max_width ays-display-flex" style="align-items: flex-start;">
+                                                    <input type="text" value="px" class='ays-quiz-form-hint-for-size' disabled>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div><!-- Letter spacing -->
@@ -3648,54 +3822,120 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_quiz_admin_note_font_weight">
-                                            <?php echo __('Font weight','quiz-maker'); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the font weight for the Admin Note. Note: By default, it is set as Normal.','quiz-maker'); ?>">
+                                            <?php echo esc_html__('Font weight','quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Specify the font weight for the Admin Note. Note: By default, it is set as Normal.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
                                     </div>
                                     <div class="col-sm-7 ays_divider_left">
-                                        <select class="ays-text-input ays-text-input-short" id="ays_quiz_admin_note_font_weight" name="ays_quiz_admin_note_font_weight">
-                                            <option value="normal" <?php echo ($quiz_admin_note_font_weight == 'normal') ? 'selected' : ''; ?>>
-                                                <?php echo __('Normal','quiz-maker'); ?>
-                                            </option>
-                                            <option value="lighter" <?php echo ($quiz_admin_note_font_weight == 'lighter') ? 'selected' : ''; ?>>
-                                                <?php echo __('Lighter','quiz-maker'); ?>
-                                            </option>
-                                            <option value="bold" <?php echo ($quiz_admin_note_font_weight == 'bold')  ? 'selected' : ''; ?>>
-                                                <?php echo __('Bold','quiz-maker'); ?>
-                                            </option>
-                                            <option value="bolder" <?php echo ($quiz_admin_note_font_weight == 'bolder') ? 'selected' : ''; ?>>
-                                                <?php echo __('Bolder','quiz-maker'); ?>
-                                            </option>
-                                            <option value="100" <?php echo ($quiz_admin_note_font_weight == '100') ? 'selected' : ''; ?>>
-                                                <?php echo '100'; ?>
-                                            </option>
-                                            <option value="200" <?php echo ($quiz_admin_note_font_weight == '200') ? 'selected' : ''; ?>>
-                                                <?php echo '200'; ?>
-                                            </option>
-                                            <option value="300" <?php echo ($quiz_admin_note_font_weight == '300') ? 'selected' : ''; ?>>
-                                                <?php echo '300'; ?>
-                                            </option>
-                                            <option value="400" <?php echo ($quiz_admin_note_font_weight == '400') ? 'selected' : ''; ?>>
-                                                <?php echo '400'; ?>
-                                            </option>
-                                            <option value="500" <?php echo ($quiz_admin_note_font_weight == '500') ? 'selected' : ''; ?>>
-                                                <?php echo '500'; ?>
-                                            </option>
-                                            <option value="600" <?php echo ($quiz_admin_note_font_weight == '600') ? 'selected' : ''; ?>>
-                                                <?php echo '600'; ?>
-                                            </option>
-                                            <option value="700" <?php echo ($quiz_admin_note_font_weight == '700') ? 'selected' : ''; ?>>
-                                                <?php echo '700'; ?>
-                                            </option>
-                                            <option value="800" <?php echo ($quiz_admin_note_font_weight == '800') ? 'selected' : ''; ?>>
-                                                <?php echo '800'; ?>
-                                            </option>
-                                            <option value="900" <?php echo ($quiz_admin_note_font_weight == '900') ? 'selected' : ''; ?>>
-                                                <?php echo '900'; ?>
-                                            </option>
-                                        </select>
+                                        <div class="row">
+                                            <div class="col-sm-5">
+                                                <label for='ays_quiz_admin_note_text_transform'>
+                                                    <?php echo esc_html__('On desktop', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Choose the font weight for the Note Text on the front end for desktop devices.','quiz-maker') ); ?>">
+                                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                                    </a>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-7 ays_quiz_display_flex_width">
+                                                <select class="ays-text-input ays-text-input-short" id="ays_quiz_admin_note_font_weight" name="ays_quiz_admin_note_font_weight">
+                                                    <option value="normal" <?php echo ($quiz_admin_note_font_weight == 'normal') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html__('Normal','quiz-maker'); ?>
+                                                    </option>
+                                                    <option value="lighter" <?php echo ($quiz_admin_note_font_weight == 'lighter') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html__('Lighter','quiz-maker'); ?>
+                                                    </option>
+                                                    <option value="bold" <?php echo ($quiz_admin_note_font_weight == 'bold')  ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html__('Bold','quiz-maker'); ?>
+                                                    </option>
+                                                    <option value="bolder" <?php echo ($quiz_admin_note_font_weight == 'bolder') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html__('Bolder','quiz-maker'); ?>
+                                                    </option>
+                                                    <option value="100" <?php echo ($quiz_admin_note_font_weight == '100') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('100'); ?>
+                                                    </option>
+                                                    <option value="200" <?php echo ($quiz_admin_note_font_weight == '200') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('200'); ?>
+                                                    </option>
+                                                    <option value="300" <?php echo ($quiz_admin_note_font_weight == '300') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('300'); ?>
+                                                    </option>
+                                                    <option value="400" <?php echo ($quiz_admin_note_font_weight == '400') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('400'); ?>
+                                                    </option>
+                                                    <option value="500" <?php echo ($quiz_admin_note_font_weight == '500') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('500'); ?>
+                                                    </option>
+                                                    <option value="600" <?php echo ($quiz_admin_note_font_weight == '600') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('600'); ?>
+                                                    </option>
+                                                    <option value="700" <?php echo ($quiz_admin_note_font_weight == '700') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('700'); ?>
+                                                    </option>
+                                                    <option value="800" <?php echo ($quiz_admin_note_font_weight == '800') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('800'); ?>
+                                                    </option>
+                                                    <option value="900" <?php echo ($quiz_admin_note_font_weight == '900') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('900'); ?>
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-sm-5">
+                                                <label for='ays_quiz_admin_note_mobile_font_weight'>
+                                                    <?php echo esc_html__('On mobile', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr(__('Choose the font weight for the Note Text on the front end for mobile devices.','quiz-maker')); ?>">
+                                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                                    </a>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-7 ays_quiz_display_flex_width">
+                                                <select class="ays-text-input ays-text-input-short" id="ays_quiz_admin_note_mobile_font_weight" name="ays_quiz_admin_note_mobile_font_weight">
+                                                    <option value="normal" <?php echo ($quiz_admin_note_mobile_font_weight == 'normal') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html__('Normal','quiz-maker'); ?>
+                                                    </option>
+                                                    <option value="lighter" <?php echo ($quiz_admin_note_mobile_font_weight == 'lighter') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html__('Lighter','quiz-maker'); ?>
+                                                    </option>
+                                                    <option value="bold" <?php echo ($quiz_admin_note_mobile_font_weight == 'bold')  ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html__('Bold','quiz-maker'); ?>
+                                                    </option>
+                                                    <option value="bolder" <?php echo ($quiz_admin_note_mobile_font_weight == 'bolder') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html__('Bolder','quiz-maker'); ?>
+                                                    </option>
+                                                    <option value="100" <?php echo ($quiz_admin_note_mobile_font_weight == '100') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('100'); ?>
+                                                    </option>
+                                                    <option value="200" <?php echo ($quiz_admin_note_mobile_font_weight == '200') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('200'); ?>
+                                                    </option>
+                                                    <option value="300" <?php echo ($quiz_admin_note_mobile_font_weight == '300') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('300'); ?>
+                                                    </option>
+                                                    <option value="400" <?php echo ($quiz_admin_note_mobile_font_weight == '400') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('400'); ?>
+                                                    </option>
+                                                    <option value="500" <?php echo ($quiz_admin_note_mobile_font_weight == '500') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('500'); ?>
+                                                    </option>
+                                                    <option value="600" <?php echo ($quiz_admin_note_mobile_font_weight == '600') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('600'); ?>
+                                                    </option>
+                                                    <option value="700" <?php echo ($quiz_admin_note_mobile_font_weight == '700') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('700'); ?>
+                                                    </option>
+                                                    <option value="800" <?php echo ($quiz_admin_note_mobile_font_weight == '800') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('800'); ?>
+                                                    </option>
+                                                    <option value="900" <?php echo ($quiz_admin_note_mobile_font_weight == '900') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('900'); ?>
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div><!-- Admin note font weight -->
                             </div>
@@ -3707,7 +3947,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                 <!-- <hr/> -->
                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                     <div class="ays-quiz-accordion-container">
-                        <?php echo $quiz_accordion_svg_html; ?>
+                        <?php echo wp_kses($quiz_accordion_svg_html, $quiz_allowed_html); ?>
                         <p class="ays-subtitle" style="margin-top:0;"><?php echo __('Question explanation styles','quiz-maker'); ?></p>
                     </div>
                     <hr class="ays-quiz-bolder-hr"/>
@@ -3717,7 +3957,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_quest_explanation_font_size">
-                                            <?php echo __('Font size for the question explanation','quiz-maker')?>
+                                            <?php echo esc_html__('Font size for the question explanation','quiz-maker'); ?>
                                             <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Choose the Font Size for the question explanation text( only for <p> tag ).','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
@@ -3727,15 +3967,15 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                         <div class="row">
                                             <div class="col-sm-5">
                                                 <label for='ays_question_font_size'>
-                                                    <?php echo __('On desktop', 'quiz-maker'); ?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the font size for desktop devices.','quiz-maker'); ?>">
+                                                    <?php echo esc_html__('On desktop', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Define the font size for desktop devices.','quiz-maker'); ?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
                                             </div>
                                             <div class="col-sm-7 ays_quiz_display_flex_width">
                                                 <div>
-                                                    <input type="number" class="ays-text-input" id='ays_quest_explanation_font_size' name='ays_quest_explanation_font_size' value="<?php echo $quest_explanation_font_size; ?>"/>
+                                                    <input type="number" class="ays-text-input" id='ays_quest_explanation_font_size' name='ays_quest_explanation_font_size' value="<?php echo intval($quest_explanation_font_size); ?>"/>
                                                 </div>
                                                 <div class="ays_quiz_dropdown_max_width ays-display-flex" style="align-items: end;">
                                                     <input type="text" value="px" class='ays-quiz-form-hint-for-size' disabled>
@@ -3746,15 +3986,15 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                         <div class="row">
                                             <div class="col-sm-5">
                                                 <label for='ays_quest_explanation_mobile_font_size'>
-                                                    <?php echo __('On mobile', 'quiz-maker'); ?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the font size for mobile devices.','quiz-maker'); ?>">
+                                                    <?php echo esc_html__('On mobile', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Define the font size for mobile devices.','quiz-maker'); ?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
                                             </div>
                                             <div class="col-sm-7 ays_quiz_display_flex_width">
                                                 <div>
-                                                    <input type="number" class="ays-text-input" id='ays_quest_explanation_mobile_font_size' name='ays_quest_explanation_mobile_font_size' value="<?php echo $quest_explanation_mobile_font_size; ?>"/>
+                                                    <input type="number" class="ays-text-input" id='ays_quest_explanation_mobile_font_size' name='ays_quest_explanation_mobile_font_size' value="<?php echo esc_attr( $quest_explanation_mobile_font_size ); ?>"/>
                                                 </div>
                                                 <div class="ays_quiz_dropdown_max_width ays-display-flex" style="align-items: end;">
                                                     <input type="text" value="px" class='ays-quiz-form-hint-for-size' disabled>
@@ -3767,8 +4007,8 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_quiz_quest_explanation_text_transform">
-                                            <?php echo __('Text transformation','quiz-maker'); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify how the text appears in all-uppercase or all-lowercase, or with each word capitalized.','quiz-maker'); ?>">
+                                            <?php echo esc_html__('Text transformation','quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Specify how the text appears in all-uppercase or all-lowercase, or with each word capitalized.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -3786,16 +4026,16 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                             <div class="col-sm-7 ays_quiz_display_flex_width">
                                                 <select class="ays-text-input ays-text-input-short" id="ays_quiz_quest_explanation_text_transform" name="ays_quiz_quest_explanation_text_transform">
                                                     <option value="none" <?php echo ($quiz_quest_explanation_text_transform == 'none') ? 'selected' : ''; ?>>
-                                                        <?php echo __('None','quiz-maker'); ?>
+                                                        <?php echo esc_html__('None','quiz-maker'); ?>
                                                     </option>
                                                     <option value="capitalize" <?php echo ($quiz_quest_explanation_text_transform == 'capitalize') ? 'selected' : ''; ?>>
-                                                        <?php echo __('Capitalize','quiz-maker'); ?>
+                                                        <?php echo esc_html__('Capitalize','quiz-maker'); ?>
                                                     </option>
                                                     <option value="uppercase" <?php echo ($quiz_quest_explanation_text_transform == 'uppercase')  ? 'selected' : ''; ?>>
-                                                        <?php echo __('Uppercase','quiz-maker'); ?>
+                                                        <?php echo esc_html__('Uppercase','quiz-maker'); ?>
                                                     </option>
                                                     <option value="lowercase" <?php echo ($quiz_quest_explanation_text_transform == 'lowercase') ? 'selected' : ''; ?>>
-                                                        <?php echo __('Lowercase','quiz-maker'); ?>
+                                                        <?php echo esc_html__('Lowercase','quiz-maker'); ?>
                                                     </option>
                                                 </select>
                                             </div>
@@ -3813,16 +4053,16 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                             <div class="col-sm-7 ays_quiz_display_flex_width">
                                                 <select class="ays-text-input ays-text-input-short" id="ays_quiz_quest_explanation_mobile_text_transform" name="ays_quiz_quest_explanation_mobile_text_transform">
                                                     <option value="none" <?php echo ($quiz_quest_explanation_mobile_text_transform == 'none') ? 'selected' : ''; ?>>
-                                                        <?php echo __('None','quiz-maker'); ?>
+                                                        <?php echo esc_html__('None','quiz-maker'); ?>
                                                     </option>
                                                     <option value="capitalize" <?php echo ($quiz_quest_explanation_mobile_text_transform == 'capitalize') ? 'selected' : ''; ?>>
-                                                        <?php echo __('Capitalize','quiz-maker'); ?>
+                                                        <?php echo esc_html__('Capitalize','quiz-maker'); ?>
                                                     </option>
                                                     <option value="uppercase" <?php echo ($quiz_quest_explanation_mobile_text_transform == 'uppercase')  ? 'selected' : ''; ?>>
-                                                        <?php echo __('Uppercase','quiz-maker'); ?>
+                                                        <?php echo esc_html__('Uppercase','quiz-maker'); ?>
                                                     </option>
                                                     <option value="lowercase" <?php echo ($quiz_quest_explanation_mobile_text_transform == 'lowercase') ? 'selected' : ''; ?>>
-                                                        <?php echo __('Lowercase','quiz-maker'); ?>
+                                                        <?php echo esc_html__('Lowercase','quiz-maker'); ?>
                                                     </option>
                                                 </select>
                                             </div>
@@ -3833,45 +4073,115 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_quiz_quest_explanation_text_decoration">
-                                            <?php echo __('Text decoration','quiz-maker'); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Choose the line position for the Question Explanation on the front end. Note: It is set as None by default.','quiz-maker'); ?>">
+                                            <?php echo esc_html__('Text decoration','quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Choose the line position for the Question Explanation on the front end. Note: It is set as None by default.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
                                     </div>
                                     <div class="col-sm-7 ays_divider_left">
-                                        <select class="ays-text-input ays-text-input-short" id="ays_quiz_quest_explanation_text_decoration" name="ays_quiz_quest_explanation_text_decoration">
-                                            <option value="none" <?php echo ($quiz_quest_explanation_text_decoration == 'none') ? 'selected' : ''; ?>>
-                                                <?php echo __('None','quiz-maker'); ?>
-                                            </option>
-                                            <option value="overline" <?php echo ($quiz_quest_explanation_text_decoration == 'overline') ? 'selected' : ''; ?>>
-                                                <?php echo __('Overline','quiz-maker'); ?>
-                                            </option>
-                                            <option value="line-through" <?php echo ($quiz_quest_explanation_text_decoration == 'line-through')  ? 'selected' : ''; ?>>
-                                                <?php echo __('Line through','quiz-maker'); ?>
-                                            </option>
-                                            <option value="underline" <?php echo ($quiz_quest_explanation_text_decoration == 'underline') ? 'selected' : ''; ?>>
-                                                <?php echo __('Underline','quiz-maker'); ?>
-                                            </option>
-                                        </select>
+                                        <div class="row">
+                                            <div class="col-sm-5">
+                                                <label for='ays_quiz_admin_note_text_transform'>
+                                                    <?php echo esc_html__('On desktop', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Choose the line position for the Note Text on the front end for desktop devices. Note: It is set as None by default.','quiz-maker') ); ?>">
+                                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                                    </a>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-7 ays_quiz_display_flex_width">
+                                                <select class="ays-text-input ays-text-input-short" id="ays_quiz_quest_explanation_text_decoration" name="ays_quiz_quest_explanation_text_decoration">
+                                                    <option value="none" <?php echo ($quiz_quest_explanation_text_decoration == 'none') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html__('None','quiz-maker'); ?>
+                                                    </option>
+                                                    <option value="overline" <?php echo ($quiz_quest_explanation_text_decoration == 'overline') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html__('Overline','quiz-maker'); ?>
+                                                    </option>
+                                                    <option value="line-through" <?php echo ($quiz_quest_explanation_text_decoration == 'line-through')  ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html__('Line through','quiz-maker'); ?>
+                                                    </option>
+                                                    <option value="underline" <?php echo ($quiz_quest_explanation_text_decoration == 'underline') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html__('Underline','quiz-maker'); ?>
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-sm-5">
+                                                <label for='ays_quiz_quest_explanation_mobile_text_decoration'>
+                                                    <?php echo esc_html__('On mobile', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr(__('Choose the line position for the Note Text on the front end  for mobile devices. Note: It is set as None by default.','quiz-maker')); ?>">
+                                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                                    </a>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-7 ays_quiz_display_flex_width">
+                                                <select class="ays-text-input ays-text-input-short" id="ays_quiz_quest_explanation_mobile_text_decoration" name="ays_quiz_quest_explanation_mobile_text_decoration">
+                                                    <option value="none" <?php echo ($quiz_quest_explanation_mobile_text_decoration == 'none') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html__('None','quiz-maker'); ?>
+                                                    </option>
+                                                    <option value="overline" <?php echo ($quiz_quest_explanation_mobile_text_decoration == 'overline') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html__('Overline','quiz-maker'); ?>
+                                                    </option>
+                                                    <option value="line-through" <?php echo ($quiz_quest_explanation_mobile_text_decoration == 'line-through')  ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html__('Line through','quiz-maker'); ?>
+                                                    </option>
+                                                    <option value="underline" <?php echo ($quiz_quest_explanation_mobile_text_decoration == 'underline') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html__('Underline','quiz-maker'); ?>
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div><!-- Admin note text transform -->
                                 <hr/>
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_quiz_quest_explanation_letter_spacing">
-                                            <?php echo __('Letter spacing','quiz-maker')?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the space between the letters of the question explanation text in pixels. Note: The default value for this option is 0.','quiz-maker'); ?>">
+                                            <?php echo esc_html__('Letter spacing','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Define the space between the letters of the question explanation text in pixels. Note: The default value for this option is 0.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
                                     </div>
-                                    <div class="col-sm-7 ays_divider_left ays_quiz_display_flex_width">
-                                        <div>
-                                            <input type="number" class="ays-text-input ays-text-input-short" id="ays_quiz_quest_explanation_letter_spacing" name="ays_quiz_quest_explanation_letter_spacing" value="<?php echo $quiz_quest_explanation_letter_spacing; ?>"/>
+                                    <div class="col-sm-7 ays_divider_left">
+                                        <div class="row">
+                                            <div class="col-sm-5">
+                                                <label for='ays_quiz_admin_note_text_transform'>
+                                                    <?php echo esc_html__('On desktop', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Choose the letter spacing for the Question Explanation Text on the front end for desktop devices. Note: It is set as Empty (0px) by default.','quiz-maker') ); ?>">
+                                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                                    </a>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-7 ays_quiz_display_flex_width">
+                                                <div>
+                                                    <input type="number" class="ays-text-input" id="ays_quiz_quest_explanation_letter_spacing" name="ays_quiz_quest_explanation_letter_spacing" value="<?php echo intval($quiz_quest_explanation_letter_spacing); ?>"/>
+                                                </div>
+                                                <div class="ays_quiz_dropdown_max_width ays-display-flex" style="align-items: flex-start;">
+                                                    <input type="text" value="px" class='ays-quiz-form-hint-for-size' disabled>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="ays_quiz_dropdown_max_width ays-display-flex" style="align-items: flex-start;">
-                                            <input type="text" value="px" class='ays-quiz-form-hint-for-size' disabled>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-sm-5">
+                                                <label for='ays_quiz_quest_explanation_mobile_letter_spacing'>
+                                                    <?php echo esc_html__('On mobile', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr(__('Choose the letter spacing for the Question Explanation Text on the front end for mobile devices. Note: It is set as Empty (0px) by default.','quiz-maker')); ?>">
+                                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                                    </a>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-7 ays_quiz_display_flex_width">
+                                                <div>
+                                                    <input type="number" class="ays-text-input" id="ays_quiz_quest_explanation_mobile_letter_spacing" name="ays_quiz_quest_explanation_mobile_letter_spacing" value="<?php echo intval($quiz_quest_explanation_mobile_letter_spacing); ?>"/>
+                                                </div>
+                                                <div class="ays_quiz_dropdown_max_width ays-display-flex" style="align-items: flex-start;">
+                                                    <input type="text" value="px" class='ays-quiz-form-hint-for-size' disabled>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div><!-- Letter spacing -->
@@ -3879,54 +4189,120 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_quiz_quest_explanation_font_weight">
-                                            <?php echo __('Font weight','quiz-maker'); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the font weight for the Question Explanation. Note: By default, it is set as Normal.','quiz-maker'); ?>">
+                                            <?php echo esc_html__('Font weight','quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Specify the font weight for the Question Explanation. Note: By default, it is set as Normal.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
                                     </div>
                                     <div class="col-sm-7 ays_divider_left">
-                                        <select class="ays-text-input ays-text-input-short" id="ays_quiz_quest_explanation_font_weight" name="ays_quiz_quest_explanation_font_weight">
-                                            <option value="normal" <?php echo ($quiz_quest_explanation_font_weight == 'normal') ? 'selected' : ''; ?>>
-                                                <?php echo __('Normal','quiz-maker'); ?>
-                                            </option>
-                                            <option value="lighter" <?php echo ($quiz_quest_explanation_font_weight == 'lighter') ? 'selected' : ''; ?>>
-                                                <?php echo __('Lighter','quiz-maker'); ?>
-                                            </option>
-                                            <option value="bold" <?php echo ($quiz_quest_explanation_font_weight == 'bold')  ? 'selected' : ''; ?>>
-                                                <?php echo __('Bold','quiz-maker'); ?>
-                                            </option>
-                                            <option value="bolder" <?php echo ($quiz_quest_explanation_font_weight == 'bolder') ? 'selected' : ''; ?>>
-                                                <?php echo __('Bolder','quiz-maker'); ?>
-                                            </option>
-                                            <option value="100" <?php echo ($quiz_quest_explanation_font_weight == '100') ? 'selected' : ''; ?>>
-                                                <?php echo '100'; ?>
-                                            </option>
-                                            <option value="200" <?php echo ($quiz_quest_explanation_font_weight == '200') ? 'selected' : ''; ?>>
-                                                <?php echo '200'; ?>
-                                            </option>
-                                            <option value="300" <?php echo ($quiz_quest_explanation_font_weight == '300') ? 'selected' : ''; ?>>
-                                                <?php echo '300'; ?>
-                                            </option>
-                                            <option value="400" <?php echo ($quiz_quest_explanation_font_weight == '400') ? 'selected' : ''; ?>>
-                                                <?php echo '400'; ?>
-                                            </option>
-                                            <option value="500" <?php echo ($quiz_quest_explanation_font_weight == '500') ? 'selected' : ''; ?>>
-                                                <?php echo '500'; ?>
-                                            </option>
-                                            <option value="600" <?php echo ($quiz_quest_explanation_font_weight == '600') ? 'selected' : ''; ?>>
-                                                <?php echo '600'; ?>
-                                            </option>
-                                            <option value="700" <?php echo ($quiz_quest_explanation_font_weight == '700') ? 'selected' : ''; ?>>
-                                                <?php echo '700'; ?>
-                                            </option>
-                                            <option value="800" <?php echo ($quiz_quest_explanation_font_weight == '800') ? 'selected' : ''; ?>>
-                                                <?php echo '800'; ?>
-                                            </option>
-                                            <option value="900" <?php echo ($quiz_quest_explanation_font_weight == '900') ? 'selected' : ''; ?>>
-                                                <?php echo '900'; ?>
-                                            </option>
-                                        </select>
+                                        <div class="row">
+                                            <div class="col-sm-5">
+                                                <label for='ays_quiz_quest_explanation_font_weight'>
+                                                    <?php echo esc_html__('On desktop', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Choose the font weight for the Question Explanation on the front end for desktop devices.','quiz-maker') ); ?>">
+                                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                                    </a>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-7 ays_quiz_display_flex_width">
+                                                <select class="ays-text-input ays-text-input-short" id="ays_quiz_quest_explanation_font_weight" name="ays_quiz_quest_explanation_font_weight">
+                                                    <option value="normal" <?php echo ($quiz_quest_explanation_font_weight == 'normal') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html__('Normal','quiz-maker'); ?>
+                                                    </option>
+                                                    <option value="lighter" <?php echo ($quiz_quest_explanation_font_weight == 'lighter') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html__('Lighter','quiz-maker'); ?>
+                                                    </option>
+                                                    <option value="bold" <?php echo ($quiz_quest_explanation_font_weight == 'bold')  ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html__('Bold','quiz-maker'); ?>
+                                                    </option>
+                                                    <option value="bolder" <?php echo ($quiz_quest_explanation_font_weight == 'bolder') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html__('Bolder','quiz-maker'); ?>
+                                                    </option>
+                                                    <option value="100" <?php echo ($quiz_quest_explanation_font_weight == '100') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('100'); ?>
+                                                    </option>
+                                                    <option value="200" <?php echo ($quiz_quest_explanation_font_weight == '200') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('200'); ?>
+                                                    </option>
+                                                    <option value="300" <?php echo ($quiz_quest_explanation_font_weight == '300') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('300'); ?>
+                                                    </option>
+                                                    <option value="400" <?php echo ($quiz_quest_explanation_font_weight == '400') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('400'); ?>
+                                                    </option>
+                                                    <option value="500" <?php echo ($quiz_quest_explanation_font_weight == '500') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('500'); ?>
+                                                    </option>
+                                                    <option value="600" <?php echo ($quiz_quest_explanation_font_weight == '600') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('600'); ?>
+                                                    </option>
+                                                    <option value="700" <?php echo ($quiz_quest_explanation_font_weight == '700') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('700'); ?>
+                                                    </option>
+                                                    <option value="800" <?php echo ($quiz_quest_explanation_font_weight == '800') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('800'); ?>
+                                                    </option>
+                                                    <option value="900" <?php echo ($quiz_quest_explanation_font_weight == '900') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('900'); ?>
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-sm-5">
+                                                <label for='ays_quiz_quest_explanation_mobile_font_weight'>
+                                                    <?php echo esc_html__('On mobile', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr(__('Choose the font weight for the Question Explanation on the front end for mobile devices.','quiz-maker')); ?>">
+                                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                                    </a>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-7 ays_quiz_display_flex_width">
+                                                <select class="ays-text-input ays-text-input-short" id="ays_quiz_quest_explanation_mobile_font_weight" name="ays_quiz_quest_explanation_mobile_font_weight">
+                                                    <option value="normal" <?php echo ($quiz_quest_explanation_mobile_font_weight == 'normal') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html__('Normal','quiz-maker'); ?>
+                                                    </option>
+                                                    <option value="lighter" <?php echo ($quiz_quest_explanation_mobile_font_weight == 'lighter') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html__('Lighter','quiz-maker'); ?>
+                                                    </option>
+                                                    <option value="bold" <?php echo ($quiz_quest_explanation_mobile_font_weight == 'bold')  ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html__('Bold','quiz-maker'); ?>
+                                                    </option>
+                                                    <option value="bolder" <?php echo ($quiz_quest_explanation_mobile_font_weight == 'bolder') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html__('Bolder','quiz-maker'); ?>
+                                                    </option>
+                                                    <option value="100" <?php echo ($quiz_quest_explanation_mobile_font_weight == '100') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('100'); ?>
+                                                    </option>
+                                                    <option value="200" <?php echo ($quiz_quest_explanation_mobile_font_weight == '200') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('200'); ?>
+                                                    </option>
+                                                    <option value="300" <?php echo ($quiz_quest_explanation_mobile_font_weight == '300') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('300'); ?>
+                                                    </option>
+                                                    <option value="400" <?php echo ($quiz_quest_explanation_mobile_font_weight == '400') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('400'); ?>
+                                                    </option>
+                                                    <option value="500" <?php echo ($quiz_quest_explanation_mobile_font_weight == '500') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('500'); ?>
+                                                    </option>
+                                                    <option value="600" <?php echo ($quiz_quest_explanation_mobile_font_weight == '600') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('600'); ?>
+                                                    </option>
+                                                    <option value="700" <?php echo ($quiz_quest_explanation_mobile_font_weight == '700') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('700'); ?>
+                                                    </option>
+                                                    <option value="800" <?php echo ($quiz_quest_explanation_mobile_font_weight == '800') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('800'); ?>
+                                                    </option>
+                                                    <option value="900" <?php echo ($quiz_quest_explanation_mobile_font_weight == '900') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('900'); ?>
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div><!-- Question explanation font weight -->
                             </div>
@@ -3937,8 +4313,8 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                 </div>
                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                     <div class="ays-quiz-accordion-container">
-                        <?php echo $quiz_accordion_svg_html; ?>
-                        <p class="ays-subtitle" style="margin-top:0;"><?php echo __('Right answer styles','quiz-maker'); ?></p>
+                        <?php echo wp_kses($quiz_accordion_svg_html, $quiz_allowed_html); ?>
+                        <p class="ays-subtitle" style="margin-top:0;"><?php echo esc_html__('Right answer message styles','quiz-maker'); ?></p>
                     </div>
                     <hr class="ays-quiz-bolder-hr"/>
                     <div class="ays-quiz-accordion-options-box">
@@ -3947,8 +4323,8 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_right_answers_font_size">
-                                            <?php echo __('Font size for the right answer','quiz-maker')?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Choose the Font Size for the Message displayed for the right answer( only for <p> tag ).','quiz-maker')?>">
+                                            <?php echo esc_html__('Font size for the right answer','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Choose the Font Size for the Message displayed for the right answer( only for <p> tag ).','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -3957,15 +4333,15 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                         <div class="row">
                                             <div class="col-sm-5">
                                                 <label for='ays_right_answers_font_size'>
-                                                    <?php echo __('On desktop', 'quiz-maker'); ?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the font size for desktop devices.','quiz-maker'); ?>">
+                                                    <?php echo esc_html__('On desktop', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Define the font size for desktop devices.','quiz-maker'); ?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
                                             </div>
                                             <div class="col-sm-7 ays_quiz_display_flex_width">
                                                 <div>
-                                                    <input type="number" class="ays-text-input" id='ays_right_answers_font_size' name='ays_right_answers_font_size' value="<?php echo $right_answers_font_size; ?>"/>
+                                                    <input type="number" class="ays-text-input" id='ays_right_answers_font_size' name='ays_right_answers_font_size' value="<?php echo intval($right_answers_font_size); ?>"/>
                                                 </div>
                                                 <div class="ays_quiz_dropdown_max_width ays-display-flex" style="align-items: end;">
                                                     <input type="text" value="px" class='ays-quiz-form-hint-for-size' disabled>
@@ -3976,15 +4352,15 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                         <div class="row">
                                             <div class="col-sm-5">
                                                 <label for='ays_right_answers_mobile_font_size'>
-                                                    <?php echo __('On mobile', 'quiz-maker'); ?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the font size for mobile devices.','quiz-maker'); ?>">
+                                                    <?php echo esc_html__('On mobile', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Define the font size for mobile devices.','quiz-maker'); ?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
                                             </div>
                                             <div class="col-sm-7 ays_quiz_display_flex_width">
                                                 <div>
-                                                    <input type="number" class="ays-text-input" id='ays_right_answers_mobile_font_size' name='ays_right_answers_mobile_font_size' value="<?php echo $right_answers_mobile_font_size; ?>"/>
+                                                    <input type="number" class="ays-text-input" id='ays_right_answers_mobile_font_size' name='ays_right_answers_mobile_font_size' value="<?php echo intval($right_answers_mobile_font_size); ?>"/>
                                                 </div>
                                                 <div class="ays_quiz_dropdown_max_width ays-display-flex" style="align-items: end;">
                                                     <input type="text" value="px" class='ays-quiz-form-hint-for-size' disabled>
@@ -3997,8 +4373,8 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_quiz_right_answer_text_transform">
-                                            <?php echo __('Text transformation','quiz-maker'); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify how the text appears in all-uppercase or all-lowercase, or with each word capitalized.','quiz-maker'); ?>">
+                                            <?php echo esc_html__('Text transformation','quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Specify how the text appears in all-uppercase or all-lowercase, or with each word capitalized.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -4063,45 +4439,115 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_quiz_right_answers_text_decoration">
-                                            <?php echo __('Text decoration','quiz-maker'); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Choose the line position for the Right answer on the front end. Note: It is set as None by default.','quiz-maker'); ?>">
+                                            <?php echo esc_html__('Text decoration','quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Choose the line position for the Right answer on the front end. Note: It is set as None by default.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
                                     </div>
                                     <div class="col-sm-7 ays_divider_left">
-                                        <select class="ays-text-input ays-text-input-short" id="ays_quiz_right_answers_text_decoration" name="ays_quiz_right_answers_text_decoration">
-                                            <option value="none" <?php echo ($quiz_right_answers_text_decoration == 'none') ? 'selected' : ''; ?>>
-                                                <?php echo __('None','quiz-maker'); ?>
-                                            </option>
-                                            <option value="overline" <?php echo ($quiz_right_answers_text_decoration == 'overline') ? 'selected' : ''; ?>>
-                                                <?php echo __('Overline','quiz-maker'); ?>
-                                            </option>
-                                            <option value="line-through" <?php echo ($quiz_right_answers_text_decoration == 'line-through')  ? 'selected' : ''; ?>>
-                                                <?php echo __('Line through','quiz-maker'); ?>
-                                            </option>
-                                            <option value="underline" <?php echo ($quiz_right_answers_text_decoration == 'underline') ? 'selected' : ''; ?>>
-                                                <?php echo __('Underline','quiz-maker'); ?>
-                                            </option>
-                                        </select>
+                                        <div class="row">
+                                            <div class="col-sm-5">
+                                                <label for='ays_quiz_right_answers_text_decoration'>
+                                                    <?php echo esc_html__('On desktop', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Choose the line position for the Right answer Text on the front end for desktop devices. Note: It is set as None by default.','quiz-maker') ); ?>">
+                                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                                    </a>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-7 ays_quiz_display_flex_width">
+                                                <select class="ays-text-input ays-text-input-short" id="ays_quiz_right_answers_text_decoration" name="ays_quiz_right_answers_text_decoration">
+                                                    <option value="none" <?php echo ($quiz_right_answers_text_decoration == 'none') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html__('None','quiz-maker'); ?>
+                                                    </option>
+                                                    <option value="overline" <?php echo ($quiz_right_answers_text_decoration == 'overline') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html__('Overline','quiz-maker'); ?>
+                                                    </option>
+                                                    <option value="line-through" <?php echo ($quiz_right_answers_text_decoration == 'line-through')  ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html__('Line through','quiz-maker'); ?>
+                                                    </option>
+                                                    <option value="underline" <?php echo ($quiz_right_answers_text_decoration == 'underline') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html__('Underline','quiz-maker'); ?>
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-sm-5">
+                                                <label for='ays_quiz_right_answers_mobile_text_decoration'>
+                                                    <?php echo esc_html__('On mobile', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr(__('Choose the line position for the Right answer Text on the front end for mobile devices. Note: It is set as None by default.','quiz-maker')); ?>">
+                                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                                    </a>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-7 ays_quiz_display_flex_width">
+                                                <select class="ays-text-input ays-text-input-short" id="ays_quiz_right_answers_mobile_text_decoration" name="ays_quiz_right_answers_mobile_text_decoration">
+                                                    <option value="none" <?php echo ($quiz_right_answers_mobile_text_decoration == 'none') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html__('None','quiz-maker'); ?>
+                                                    </option>
+                                                    <option value="overline" <?php echo ($quiz_right_answers_mobile_text_decoration == 'overline') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html__('Overline','quiz-maker'); ?>
+                                                    </option>
+                                                    <option value="line-through" <?php echo ($quiz_right_answers_mobile_text_decoration == 'line-through')  ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html__('Line through','quiz-maker'); ?>
+                                                    </option>
+                                                    <option value="underline" <?php echo ($quiz_right_answers_mobile_text_decoration == 'underline') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html__('Underline','quiz-maker'); ?>
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div><!-- Right answer text decoration -->
                                 <hr/>
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_quiz_right_answers_letter_spacing">
-                                            <?php echo __('Letter spacing','quiz-maker')?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the space between the letters of the right answer text in pixels. Note: The default value for this option is 0.','quiz-maker'); ?>">
+                                            <?php echo esc_html__('Letter spacing','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Define the space between the letters of the right answer text in pixels. Note: The default value for this option is 0.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
                                     </div>
-                                    <div class="col-sm-7 ays_divider_left ays_quiz_display_flex_width">
-                                        <div>
-                                            <input type="number" class="ays-text-input ays-text-input-short" id="ays_quiz_right_answers_letter_spacing" name="ays_quiz_right_answers_letter_spacing" value="<?php echo $quiz_right_answers_letter_spacing; ?>"/>
+                                    <div class="col-sm-7 ays_divider_left">
+                                        <div class="row">
+                                            <div class="col-sm-5">
+                                                <label for='ays_quiz_right_answers_letter_spacing'>
+                                                    <?php echo esc_html__('On desktop', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Choose the letter spacing for the Right answer Text on the front end for desktop devices. Note: It is set as Empty (0px) by default.','quiz-maker') ); ?>">
+                                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                                    </a>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-7 ays_quiz_display_flex_width">
+                                                <div>
+                                                    <input type="number" class="ays-text-input ays-text-input-short" id="ays_quiz_right_answers_letter_spacing" name="ays_quiz_right_answers_letter_spacing" value="<?php echo intval($quiz_right_answers_letter_spacing); ?>"/>
+                                                </div>
+                                                <div class="ays_quiz_dropdown_max_width ays-display-flex" style="align-items: flex-start;">
+                                                    <input type="text" value="px" class='ays-quiz-form-hint-for-size' disabled>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="ays_quiz_dropdown_max_width ays-display-flex" style="align-items: flex-start;">
-                                            <input type="text" value="px" class='ays-quiz-form-hint-for-size' disabled>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-sm-5">
+                                                <label for='ays_quiz_right_answers_mobile_letter_spacing'>
+                                                    <?php echo esc_html__('On mobile', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr(__('Choose the letter spacing for the Right answer Text on the front end for mobile devices. Note: It is set as Empty (0px) by default.','quiz-maker')); ?>">
+                                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                                    </a>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-7 ays_quiz_display_flex_width">
+                                                <div>
+                                                    <input type="number" class="ays-text-input" id="ays_quiz_right_answers_mobile_letter_spacing" name="ays_quiz_right_answers_mobile_letter_spacing" value="<?php echo intval($quiz_right_answers_mobile_letter_spacing); ?>"/>
+                                                </div>
+                                                <div class="ays_quiz_dropdown_max_width ays-display-flex" style="align-items: flex-start;">
+                                                    <input type="text" value="px" class='ays-quiz-form-hint-for-size' disabled>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div><!-- Letter spacing -->
@@ -4109,54 +4555,120 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_quiz_right_answers_font_weight">
-                                            <?php echo __('Font weight','quiz-maker'); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the font weight for the Right answer. Note: By default, it is set as Normal.','quiz-maker'); ?>">
+                                            <?php echo esc_html__('Font weight','quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Specify the font weight for the Right answer. Note: By default, it is set as Normal.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
                                     </div>
                                     <div class="col-sm-7 ays_divider_left">
-                                        <select class="ays-text-input ays-text-input-short" id="ays_quiz_right_answers_font_weight" name="ays_quiz_right_answers_font_weight">
-                                            <option value="normal" <?php echo ($quiz_right_answers_font_weight == 'normal') ? 'selected' : ''; ?>>
-                                                <?php echo __('Normal','quiz-maker'); ?>
-                                            </option>
-                                            <option value="lighter" <?php echo ($quiz_right_answers_font_weight == 'lighter') ? 'selected' : ''; ?>>
-                                                <?php echo __('Lighter','quiz-maker'); ?>
-                                            </option>
-                                            <option value="bold" <?php echo ($quiz_right_answers_font_weight == 'bold')  ? 'selected' : ''; ?>>
-                                                <?php echo __('Bold','quiz-maker'); ?>
-                                            </option>
-                                            <option value="bolder" <?php echo ($quiz_right_answers_font_weight == 'bolder') ? 'selected' : ''; ?>>
-                                                <?php echo __('Bolder','quiz-maker'); ?>
-                                            </option>
-                                            <option value="100" <?php echo ($quiz_right_answers_font_weight == '100') ? 'selected' : ''; ?>>
-                                                <?php echo '100'; ?>
-                                            </option>
-                                            <option value="200" <?php echo ($quiz_right_answers_font_weight == '200') ? 'selected' : ''; ?>>
-                                                <?php echo '200'; ?>
-                                            </option>
-                                            <option value="300" <?php echo ($quiz_right_answers_font_weight == '300') ? 'selected' : ''; ?>>
-                                                <?php echo '300'; ?>
-                                            </option>
-                                            <option value="400" <?php echo ($quiz_right_answers_font_weight == '400') ? 'selected' : ''; ?>>
-                                                <?php echo '400'; ?>
-                                            </option>
-                                            <option value="500" <?php echo ($quiz_right_answers_font_weight == '500') ? 'selected' : ''; ?>>
-                                                <?php echo '500'; ?>
-                                            </option>
-                                            <option value="600" <?php echo ($quiz_right_answers_font_weight == '600') ? 'selected' : ''; ?>>
-                                                <?php echo '600'; ?>
-                                            </option>
-                                            <option value="700" <?php echo ($quiz_right_answers_font_weight == '700') ? 'selected' : ''; ?>>
-                                                <?php echo '700'; ?>
-                                            </option>
-                                            <option value="800" <?php echo ($quiz_right_answers_font_weight == '800') ? 'selected' : ''; ?>>
-                                                <?php echo '800'; ?>
-                                            </option>
-                                            <option value="900" <?php echo ($quiz_right_answers_font_weight == '900') ? 'selected' : ''; ?>>
-                                                <?php echo '900'; ?>
-                                            </option>
-                                        </select>
+                                        <div class="row">
+                                            <div class="col-sm-5">
+                                                <label for='ays_quiz_right_answers_font_weight'>
+                                                    <?php echo esc_html__('On desktop', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Choose the font weight for the Right answer on the front end for desktop devices.','quiz-maker') ); ?>">
+                                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                                    </a>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-7 ays_quiz_display_flex_width">
+                                                <select class="ays-text-input ays-text-input-short" id="ays_quiz_right_answers_font_weight" name="ays_quiz_right_answers_font_weight">
+                                                    <option value="normal" <?php echo ($quiz_right_answers_font_weight == 'normal') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html__('Normal','quiz-maker'); ?>
+                                                    </option>
+                                                    <option value="lighter" <?php echo ($quiz_right_answers_font_weight == 'lighter') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html__('Lighter','quiz-maker'); ?>
+                                                    </option>
+                                                    <option value="bold" <?php echo ($quiz_right_answers_font_weight == 'bold')  ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html__('Bold','quiz-maker'); ?>
+                                                    </option>
+                                                    <option value="bolder" <?php echo ($quiz_right_answers_font_weight == 'bolder') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html__('Bolder','quiz-maker'); ?>
+                                                    </option>
+                                                    <option value="100" <?php echo ($quiz_right_answers_font_weight == '100') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('100'); ?>
+                                                    </option>
+                                                    <option value="200" <?php echo ($quiz_right_answers_font_weight == '200') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('200'); ?>
+                                                    </option>
+                                                    <option value="300" <?php echo ($quiz_right_answers_font_weight == '300') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('300'); ?>
+                                                    </option>
+                                                    <option value="400" <?php echo ($quiz_right_answers_font_weight == '400') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('400'); ?>
+                                                    </option>
+                                                    <option value="500" <?php echo ($quiz_right_answers_font_weight == '500') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('500'); ?>
+                                                    </option>
+                                                    <option value="600" <?php echo ($quiz_right_answers_font_weight == '600') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('600'); ?>
+                                                    </option>
+                                                    <option value="700" <?php echo ($quiz_right_answers_font_weight == '700') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('700'); ?>
+                                                    </option>
+                                                    <option value="800" <?php echo ($quiz_right_answers_font_weight == '800') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('800'); ?>
+                                                    </option>
+                                                    <option value="900" <?php echo ($quiz_right_answers_font_weight == '900') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('900'); ?>
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-sm-5">
+                                                <label for='ays_quiz_right_answers_mobile_font_weight'>
+                                                    <?php echo esc_html__('On mobile', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr(__('Choose the font weight for the Right answer on the front end for mobile devices.','quiz-maker')); ?>">
+                                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                                    </a>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-7 ays_quiz_display_flex_width">
+                                                <select class="ays-text-input ays-text-input-short" id="ays_quiz_right_answers_mobile_font_weight" name="ays_quiz_right_answers_mobile_font_weight">
+                                                    <option value="normal" <?php echo ($quiz_right_answers_mobile_font_weight == 'normal') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html__('Normal','quiz-maker'); ?>
+                                                    </option>
+                                                    <option value="lighter" <?php echo ($quiz_right_answers_mobile_font_weight == 'lighter') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html__('Lighter','quiz-maker'); ?>
+                                                    </option>
+                                                    <option value="bold" <?php echo ($quiz_right_answers_mobile_font_weight == 'bold')  ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html__('Bold','quiz-maker'); ?>
+                                                    </option>
+                                                    <option value="bolder" <?php echo ($quiz_right_answers_mobile_font_weight == 'bolder') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html__('Bolder','quiz-maker'); ?>
+                                                    </option>
+                                                    <option value="100" <?php echo ($quiz_right_answers_mobile_font_weight == '100') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('100'); ?>
+                                                    </option>
+                                                    <option value="200" <?php echo ($quiz_right_answers_mobile_font_weight == '200') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('200'); ?>
+                                                    </option>
+                                                    <option value="300" <?php echo ($quiz_right_answers_mobile_font_weight == '300') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('300'); ?>
+                                                    </option>
+                                                    <option value="400" <?php echo ($quiz_right_answers_mobile_font_weight == '400') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('400'); ?>
+                                                    </option>
+                                                    <option value="500" <?php echo ($quiz_right_answers_mobile_font_weight == '500') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('500'); ?>
+                                                    </option>
+                                                    <option value="600" <?php echo ($quiz_right_answers_mobile_font_weight == '600') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('600'); ?>
+                                                    </option>
+                                                    <option value="700" <?php echo ($quiz_right_answers_mobile_font_weight == '700') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('700'); ?>
+                                                    </option>
+                                                    <option value="800" <?php echo ($quiz_right_answers_mobile_font_weight == '800') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('800'); ?>
+                                                    </option>
+                                                    <option value="900" <?php echo ($quiz_right_answers_mobile_font_weight == '900') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('900'); ?>
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div><!-- Right answer font weight -->
                             </div>
@@ -4167,8 +4679,8 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                 </div>
                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                     <div class="ays-quiz-accordion-container">
-                        <?php echo $quiz_accordion_svg_html; ?>
-                        <p class="ays-subtitle" style="margin-top:0;"><?php echo __('Wrong answer styles','quiz-maker'); ?></p>
+                        <?php echo wp_kses($quiz_accordion_svg_html, $quiz_allowed_html); ?>
+                        <p class="ays-subtitle" style="margin-top:0;"><?php echo esc_html__('Wrong answer message styles','quiz-maker'); ?></p>
                     </div>
                     <hr class="ays-quiz-bolder-hr"/>
                     <div class="ays-quiz-accordion-options-box">
@@ -4177,8 +4689,8 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_wrong_answers_font_size">
-                                            <?php echo __('Font size for the wrong answer','quiz-maker')?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Choose the Font Size for the Message displayed for the wrong answer( only for <p> tag ).','quiz-maker')?>">
+                                            <?php echo esc_html__('Font size for the wrong answer','quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Choose the Font Size for the Message displayed for the wrong answer( only for <p> tag ).','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -4187,15 +4699,15 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                         <div class="row">
                                             <div class="col-sm-5">
                                                 <label for='ays_question_font_size'>
-                                                    <?php echo __('On desktop', 'quiz-maker'); ?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the font size for desktop devices.','quiz-maker'); ?>">
+                                                    <?php echo esc_html__('On desktop', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Define the font size for desktop devices.','quiz-maker'); ?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
                                             </div>
                                             <div class="col-sm-7 ays_quiz_display_flex_width">
                                                 <div>
-                                                    <input type="number" class="ays-text-input" id='ays_wrong_answers_font_size' name='ays_wrong_answers_font_size' value="<?php echo $wrong_answers_font_size; ?>"/>
+                                                    <input type="number" class="ays-text-input" id='ays_wrong_answers_font_size' name='ays_wrong_answers_font_size' value="<?php echo intval($wrong_answers_font_size); ?>"/>
                                                 </div>
                                                 <div class="ays_quiz_dropdown_max_width ays-display-flex" style="align-items: end;">
                                                     <input type="text" value="px" class='ays-quiz-form-hint-for-size' disabled>
@@ -4206,15 +4718,15 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                         <div class="row">
                                             <div class="col-sm-5">
                                                 <label for='ays_wrong_answers_mobile_font_size'>
-                                                    <?php echo __('On mobile', 'quiz-maker'); ?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the font size for mobile devices.','quiz-maker'); ?>">
+                                                    <?php echo esc_html__('On mobile', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Define the font size for mobile devices.','quiz-maker'); ?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
                                             </div>
                                             <div class="col-sm-7 ays_quiz_display_flex_width">
                                                 <div>
-                                                    <input type="number" class="ays-text-input" id='ays_wrong_answers_mobile_font_size' name='ays_wrong_answers_mobile_font_size' value="<?php echo $wrong_answers_mobile_font_size; ?>"/>
+                                                    <input type="number" class="ays-text-input" id='ays_wrong_answers_mobile_font_size' name='ays_wrong_answers_mobile_font_size' value="<?php echo intval($wrong_answers_mobile_font_size); ?>"/>
                                                 </div>
                                                 <div class="ays_quiz_dropdown_max_width ays-display-flex" style="align-items: end;">
                                                     <input type="text" value="px" class='ays-quiz-form-hint-for-size' disabled>
@@ -4227,8 +4739,8 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_quiz_wrong_answer_text_transform">
-                                            <?php echo __('Text transformation','quiz-maker'); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify how the text appears in all-uppercase or all-lowercase, or with each word capitalized.','quiz-maker'); ?>">
+                                            <?php echo esc_html__('Text transformation','quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Specify how the text appears in all-uppercase or all-lowercase, or with each word capitalized.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -4246,16 +4758,16 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                             <div class="col-sm-7 ays_quiz_display_flex_width">
                                                 <select class="ays-text-input ays-text-input-short" id="ays_quiz_wrong_answer_text_transform" name="ays_quiz_wrong_answer_text_transform">
                                                     <option value="none" <?php echo ($quiz_wrong_answer_text_transform == 'none') ? 'selected' : ''; ?>>
-                                                        <?php echo __('None','quiz-maker'); ?>
+                                                        <?php echo esc_html__('None','quiz-maker'); ?>
                                                     </option>
                                                     <option value="capitalize" <?php echo ($quiz_wrong_answer_text_transform == 'capitalize') ? 'selected' : ''; ?>>
-                                                        <?php echo __('Capitalize','quiz-maker'); ?>
+                                                        <?php echo esc_html__('Capitalize','quiz-maker'); ?>
                                                     </option>
                                                     <option value="uppercase" <?php echo ($quiz_wrong_answer_text_transform == 'uppercase')  ? 'selected' : ''; ?>>
-                                                        <?php echo __('Uppercase','quiz-maker'); ?>
+                                                        <?php echo esc_html__('Uppercase','quiz-maker'); ?>
                                                     </option>
                                                     <option value="lowercase" <?php echo ($quiz_wrong_answer_text_transform == 'lowercase') ? 'selected' : ''; ?>>
-                                                        <?php echo __('Lowercase','quiz-maker'); ?>
+                                                        <?php echo esc_html__('Lowercase','quiz-maker'); ?>
                                                     </option>
                                                 </select>
                                             </div>
@@ -4293,45 +4805,115 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_quiz_wrong_answers_text_decoration">
-                                            <?php echo __('Text decoration','quiz-maker'); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Choose the line position for the Wrong answer on the front end. Note: It is set as None by default.','quiz-maker'); ?>">
+                                            <?php echo esc_html__('Text decoration','quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Choose the line position for the Wrong answer on the front end. Note: It is set as None by default.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
                                     </div>
                                     <div class="col-sm-7 ays_divider_left">
-                                        <select class="ays-text-input ays-text-input-short" id="ays_quiz_wrong_answers_text_decoration" name="ays_quiz_wrong_answers_text_decoration">
-                                            <option value="none" <?php echo ($quiz_wrong_answers_text_decoration == 'none') ? 'selected' : ''; ?>>
-                                                <?php echo __('None','quiz-maker'); ?>
-                                            </option>
-                                            <option value="overline" <?php echo ($quiz_wrong_answers_text_decoration == 'overline') ? 'selected' : ''; ?>>
-                                                <?php echo __('Overline','quiz-maker'); ?>
-                                            </option>
-                                            <option value="line-through" <?php echo ($quiz_wrong_answers_text_decoration == 'line-through')  ? 'selected' : ''; ?>>
-                                                <?php echo __('Line through','quiz-maker'); ?>
-                                            </option>
-                                            <option value="underline" <?php echo ($quiz_wrong_answers_text_decoration == 'underline') ? 'selected' : ''; ?>>
-                                                <?php echo __('Underline','quiz-maker'); ?>
-                                            </option>
-                                        </select>
+                                        <div class="row">
+                                            <div class="col-sm-5">
+                                                <label for='ays_quiz_right_answers_text_decoration'>
+                                                    <?php echo esc_html__('On desktop', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Choose the line position for the Wrong answer Text on the front end for desktop devices. Note: It is set as None by default.','quiz-maker') ); ?>">
+                                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                                    </a>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-7 ays_quiz_display_flex_width">
+                                                <select class="ays-text-input ays-text-input-short" id="ays_quiz_wrong_answers_text_decoration" name="ays_quiz_wrong_answers_text_decoration">
+                                                    <option value="none" <?php echo ($quiz_wrong_answers_text_decoration == 'none') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html__('None','quiz-maker'); ?>
+                                                    </option>
+                                                    <option value="overline" <?php echo ($quiz_wrong_answers_text_decoration == 'overline') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html__('Overline','quiz-maker'); ?>
+                                                    </option>
+                                                    <option value="line-through" <?php echo ($quiz_wrong_answers_text_decoration == 'line-through')  ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html__('Line through','quiz-maker'); ?>
+                                                    </option>
+                                                    <option value="underline" <?php echo ($quiz_wrong_answers_text_decoration == 'underline') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html__('Underline','quiz-maker'); ?>
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-sm-5">
+                                                <label for='ays_quiz_wrong_answers_mobile_text_decoration'>
+                                                    <?php echo esc_html__('On mobile', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr(__('Choose the line position for the Wrong answer Text on the front end for mobile devices. Note: It is set as None by default.','quiz-maker')); ?>">
+                                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                                    </a>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-7 ays_quiz_display_flex_width">
+                                                <select class="ays-text-input ays-text-input-short" id="ays_quiz_wrong_answers_mobile_text_decoration" name="ays_quiz_wrong_answers_mobile_text_decoration">
+                                                    <option value="none" <?php echo ($quiz_wrong_answers_mobile_text_decoration == 'none') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html__('None','quiz-maker'); ?>
+                                                    </option>
+                                                    <option value="overline" <?php echo ($quiz_wrong_answers_mobile_text_decoration == 'overline') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html__('Overline','quiz-maker'); ?>
+                                                    </option>
+                                                    <option value="line-through" <?php echo ($quiz_wrong_answers_mobile_text_decoration == 'line-through')  ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html__('Line through','quiz-maker'); ?>
+                                                    </option>
+                                                    <option value="underline" <?php echo ($quiz_wrong_answers_mobile_text_decoration == 'underline') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html__('Underline','quiz-maker'); ?>
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div><!-- Text decoration -->
                                 <hr/>
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_quiz_wrong_answers_letter_spacing">
-                                            <?php echo __('Letter spacing','quiz-maker')?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the space between the letters of the wrong answer text in pixels. Note: The default value for this option is 0.','quiz-maker'); ?>">
+                                            <?php echo esc_html__('Letter spacing','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Define the space between the letters of the wrong answer text in pixels. Note: The default value for this option is 0.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
                                     </div>
-                                    <div class="col-sm-7 ays_divider_left ays_quiz_display_flex_width">
-                                        <div>
-                                            <input type="number" class="ays-text-input ays-text-input-short" id="ays_quiz_wrong_answers_letter_spacing" name="ays_quiz_wrong_answers_letter_spacing" value="<?php echo $quiz_wrong_answers_letter_spacing; ?>"/>
+                                    <div class="col-sm-7 ays_divider_left">
+                                        <div class="row">
+                                            <div class="col-sm-5">
+                                                <label for='ays_quiz_wrong_answers_letter_spacing'>
+                                                    <?php echo esc_html__('On desktop', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Choose the letter spacing for the Right answer Text on the front end for desktop devices. Note: It is set as Empty (0px) by default.','quiz-maker') ); ?>">
+                                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                                    </a>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-7 ays_quiz_display_flex_width">
+                                                <div>
+                                                    <input type="number" class="ays-text-input ays-text-input-short" id="ays_quiz_wrong_answers_letter_spacing" name="ays_quiz_wrong_answers_letter_spacing" value="<?php echo intval($quiz_wrong_answers_letter_spacing); ?>"/>
+                                                </div>
+                                                <div class="ays_quiz_dropdown_max_width ays-display-flex" style="align-items: flex-start;">
+                                                    <input type="text" value="px" class='ays-quiz-form-hint-for-size' disabled>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="ays_quiz_dropdown_max_width ays-display-flex" style="align-items: flex-start;">
-                                            <input type="text" value="px" class='ays-quiz-form-hint-for-size' disabled>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-sm-5">
+                                                <label for='ays_quiz_wrong_answers_mobile_letter_spacing'>
+                                                    <?php echo esc_html__('On mobile', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr(__('Choose the letter spacing for the Wrong answer Text on the front end for mobile devices. Note: It is set as Empty (0px) by default.','quiz-maker')); ?>">
+                                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                                    </a>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-7 ays_quiz_display_flex_width">
+                                                <div>
+                                                    <input type="number" class="ays-text-input" id="ays_quiz_wrong_answers_mobile_letter_spacing" name="ays_quiz_wrong_answers_mobile_letter_spacing" value="<?php echo intval($quiz_wrong_answers_mobile_letter_spacing); ?>"/>
+                                                </div>
+                                                <div class="ays_quiz_dropdown_max_width ays-display-flex" style="align-items: flex-start;">
+                                                    <input type="text" value="px" class='ays-quiz-form-hint-for-size' disabled>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div><!-- Letter spacing -->
@@ -4339,54 +4921,120 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                 <div class="form-group row">
                                     <div class="col-sm-5">
                                         <label for="ays_quiz_wrong_answers_font_weight">
-                                            <?php echo __('Font weight','quiz-maker'); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the font weight for the Wrong answer. Note: By default, it is set as Normal.','quiz-maker'); ?>">
+                                            <?php echo esc_html__('Font weight','quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Specify the font weight for the Wrong answer. Note: By default, it is set as Normal.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
                                     </div>
                                     <div class="col-sm-7 ays_divider_left">
-                                        <select class="ays-text-input ays-text-input-short" id="ays_quiz_wrong_answers_font_weight" name="ays_quiz_wrong_answers_font_weight">
-                                            <option value="normal" <?php echo ($quiz_wrong_answers_font_weight == 'normal') ? 'selected' : ''; ?>>
-                                                <?php echo __('Normal','quiz-maker'); ?>
-                                            </option>
-                                            <option value="lighter" <?php echo ($quiz_wrong_answers_font_weight == 'lighter') ? 'selected' : ''; ?>>
-                                                <?php echo __('Lighter','quiz-maker'); ?>
-                                            </option>
-                                            <option value="bold" <?php echo ($quiz_wrong_answers_font_weight == 'bold')  ? 'selected' : ''; ?>>
-                                                <?php echo __('Bold','quiz-maker'); ?>
-                                            </option>
-                                            <option value="bolder" <?php echo ($quiz_wrong_answers_font_weight == 'bolder') ? 'selected' : ''; ?>>
-                                                <?php echo __('Bolder','quiz-maker'); ?>
-                                            </option>
-                                            <option value="100" <?php echo ($quiz_wrong_answers_font_weight == '100') ? 'selected' : ''; ?>>
-                                                <?php echo '100'; ?>
-                                            </option>
-                                            <option value="200" <?php echo ($quiz_wrong_answers_font_weight == '200') ? 'selected' : ''; ?>>
-                                                <?php echo '200'; ?>
-                                            </option>
-                                            <option value="300" <?php echo ($quiz_wrong_answers_font_weight == '300') ? 'selected' : ''; ?>>
-                                                <?php echo '300'; ?>
-                                            </option>
-                                            <option value="400" <?php echo ($quiz_wrong_answers_font_weight == '400') ? 'selected' : ''; ?>>
-                                                <?php echo '400'; ?>
-                                            </option>
-                                            <option value="500" <?php echo ($quiz_wrong_answers_font_weight == '500') ? 'selected' : ''; ?>>
-                                                <?php echo '500'; ?>
-                                            </option>
-                                            <option value="600" <?php echo ($quiz_wrong_answers_font_weight == '600') ? 'selected' : ''; ?>>
-                                                <?php echo '600'; ?>
-                                            </option>
-                                            <option value="700" <?php echo ($quiz_wrong_answers_font_weight == '700') ? 'selected' : ''; ?>>
-                                                <?php echo '700'; ?>
-                                            </option>
-                                            <option value="800" <?php echo ($quiz_wrong_answers_font_weight == '800') ? 'selected' : ''; ?>>
-                                                <?php echo '800'; ?>
-                                            </option>
-                                            <option value="900" <?php echo ($quiz_wrong_answers_font_weight == '900') ? 'selected' : ''; ?>>
-                                                <?php echo '900'; ?>
-                                            </option>
-                                        </select>
+                                        <div class="row">
+                                            <div class="col-sm-5">
+                                                <label for='ays_quiz_wrong_answers_font_weight'>
+                                                    <?php echo esc_html__('On desktop', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Choose the font weight for the Wrong answer on the front end for desktop devices.','quiz-maker') ); ?>">
+                                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                                    </a>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-7 ays_quiz_display_flex_width">
+                                                <select class="ays-text-input ays-text-input-short" id="ays_quiz_wrong_answers_font_weight" name="ays_quiz_wrong_answers_font_weight">
+                                                    <option value="normal" <?php echo ($quiz_wrong_answers_font_weight == 'normal') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html__('Normal','quiz-maker'); ?>
+                                                    </option>
+                                                    <option value="lighter" <?php echo ($quiz_wrong_answers_font_weight == 'lighter') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html__('Lighter','quiz-maker'); ?>
+                                                    </option>
+                                                    <option value="bold" <?php echo ($quiz_wrong_answers_font_weight == 'bold')  ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html__('Bold','quiz-maker'); ?>
+                                                    </option>
+                                                    <option value="bolder" <?php echo ($quiz_wrong_answers_font_weight == 'bolder') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html__('Bolder','quiz-maker'); ?>
+                                                    </option>
+                                                    <option value="100" <?php echo ($quiz_wrong_answers_font_weight == '100') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('100'); ?>
+                                                    </option>
+                                                    <option value="200" <?php echo ($quiz_wrong_answers_font_weight == '200') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('200'); ?>
+                                                    </option>
+                                                    <option value="300" <?php echo ($quiz_wrong_answers_font_weight == '300') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('300'); ?>
+                                                    </option>
+                                                    <option value="400" <?php echo ($quiz_wrong_answers_font_weight == '400') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('400'); ?>
+                                                    </option>
+                                                    <option value="500" <?php echo ($quiz_wrong_answers_font_weight == '500') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('500'); ?>
+                                                    </option>
+                                                    <option value="600" <?php echo ($quiz_wrong_answers_font_weight == '600') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('600'); ?>
+                                                    </option>
+                                                    <option value="700" <?php echo ($quiz_wrong_answers_font_weight == '700') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('700'); ?>
+                                                    </option>
+                                                    <option value="800" <?php echo ($quiz_wrong_answers_font_weight == '800') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('800'); ?>
+                                                    </option>
+                                                    <option value="900" <?php echo ($quiz_wrong_answers_font_weight == '900') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('900'); ?>
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-sm-5">
+                                                <label for='ays_quiz_wrong_answers_mobile_font_weight'>
+                                                    <?php echo esc_html__('On mobile', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr(__('Choose the font weight for the Wrong answer on the front end for mobile devices.','quiz-maker')); ?>">
+                                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                                    </a>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-7 ays_quiz_display_flex_width">
+                                                <select class="ays-text-input ays-text-input-short" id="ays_quiz_wrong_answers_mobile_font_weight" name="ays_quiz_wrong_answers_mobile_font_weight">
+                                                    <option value="normal" <?php echo ($quiz_wrong_answers_mobile_font_weight == 'normal') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html__('Normal','quiz-maker'); ?>
+                                                    </option>
+                                                    <option value="lighter" <?php echo ($quiz_wrong_answers_mobile_font_weight == 'lighter') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html__('Lighter','quiz-maker'); ?>
+                                                    </option>
+                                                    <option value="bold" <?php echo ($quiz_wrong_answers_mobile_font_weight == 'bold')  ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html__('Bold','quiz-maker'); ?>
+                                                    </option>
+                                                    <option value="bolder" <?php echo ($quiz_wrong_answers_mobile_font_weight == 'bolder') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html__('Bolder','quiz-maker'); ?>
+                                                    </option>
+                                                    <option value="100" <?php echo ($quiz_wrong_answers_mobile_font_weight == '100') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('100'); ?>
+                                                    </option>
+                                                    <option value="200" <?php echo ($quiz_wrong_answers_mobile_font_weight == '200') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('200'); ?>
+                                                    </option>
+                                                    <option value="300" <?php echo ($quiz_wrong_answers_mobile_font_weight == '300') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('300'); ?>
+                                                    </option>
+                                                    <option value="400" <?php echo ($quiz_wrong_answers_mobile_font_weight == '400') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('400'); ?>
+                                                    </option>
+                                                    <option value="500" <?php echo ($quiz_wrong_answers_mobile_font_weight == '500') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('500'); ?>
+                                                    </option>
+                                                    <option value="600" <?php echo ($quiz_wrong_answers_mobile_font_weight == '600') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('600'); ?>
+                                                    </option>
+                                                    <option value="700" <?php echo ($quiz_wrong_answers_mobile_font_weight == '700') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('700'); ?>
+                                                    </option>
+                                                    <option value="800" <?php echo ($quiz_wrong_answers_mobile_font_weight == '800') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('800'); ?>
+                                                    </option>
+                                                    <option value="900" <?php echo ($quiz_wrong_answers_mobile_font_weight == '900') ? 'selected' : ''; ?>>
+                                                        <?php echo esc_html('900'); ?>
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div><!-- Wrong answer font weight -->
                             </div>
@@ -4398,22 +5046,22 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                 </div>
                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                     <div class="ays-quiz-accordion-container">
-                        <?php echo $quiz_accordion_svg_html; ?>
-                        <p class="ays-subtitle" style="margin-top:0;"><?php echo __('Advanced settings','quiz-maker'); ?></p>
+                        <?php echo wp_kses($quiz_accordion_svg_html, $quiz_allowed_html); ?>
+                        <p class="ays-subtitle" style="margin-top:0;"><?php echo esc_html__('Advanced settings','quiz-maker'); ?></p>
                     </div>
                     <hr class="ays-quiz-bolder-hr"/>
                     <div class="ays-quiz-accordion-options-box">
                         <div class="form-group row">
                             <div class="col-sm-3">
                                 <label for="ays_custom_css">
-                                    <?php echo __('Custom CSS','quiz-maker')?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Field for entering your own CSS code. Example: p{color:red !important}','quiz-maker')?>">
+                                    <?php echo esc_html__('Custom CSS','quiz-maker')?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Field for entering your own CSS code. Example: p{color:red !important}','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
                             </div>
                             <div class="col-sm-9">
-                                <textarea class="ays-textarea" id="ays_custom_css" name="ays_custom_css" cols="30" rows="10"><?php echo $ays_quiz_custom_css; ?></textarea>
+                                <textarea class="ays-textarea" id="ays_custom_css" name="ays_custom_css" cols="30" rows="10"><?php echo esc_attr($ays_quiz_custom_css); ?></textarea>
                             </div>
                         </div> <!-- Custom CSS -->
                     </div>
@@ -4432,7 +5080,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                 </div>
                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                     <div class="ays-quiz-accordion-container">
-                        <?php echo $quiz_accordion_svg_html; ?>
+                        <?php echo wp_kses($quiz_accordion_svg_html, $quiz_allowed_html); ?>
                         <p class="ays-subtitle"><?php echo __('Primary','quiz-maker')?></p>
                     </div>
                     <hr class="ays-quiz-bolder-hr"/>
@@ -4524,17 +5172,17 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                             <div class="col-sm-12" style="display: flex;">
                                                 <label class="ays_quiz_loader">
                                                     <input type="radio" class="ays-enable-timer1" name="ays_quiz_timer_type" value="quiz_timer" checked />
-                                                    <span><?php echo __( "Quiz Timer", $this->plugin_name ); ?></span>
+                                                    <span><?php echo esc_html__( "Quiz Timer", 'quiz-maker' ); ?></span>
                                                 </label>
                                                 <div class="only_pro custom_pro_features ays-pro-features-v2-main-box ays-pro-features-v2-main-box-themes ays-pro-features-v2-main-box-small" style="background: unset;">
-                                                    <div class="ays-pro-features-v2-small-buttons-box" style="right: 65px; top: -15px;">
-                                                        <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
+                                                    <div class="ays-pro-features-v2-small-buttons-box" style="right: -20px; top: -20px;">
+                                                        <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=quiz-timer-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-pro-features-v2-upgrade-button">
                                                             <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(AYS_QUIZ_ADMIN_URL); ?>/images/icons/locked_24x24.svg');" data-img-src="<?php echo esc_attr(AYS_QUIZ_ADMIN_URL); ?>/images/icons/locked_24x24.svg"></div>
                                                         </a>
                                                     </div>
                                                     <label class="ays_quiz_loader" style="background: rgba(53 113 196 / 10%);">
                                                         <input type="radio" class="ays-enable-timer1" disabled />
-                                                        <span><?php echo __( "Question Timer", $this->plugin_name ); ?></span>
+                                                        <span><?php echo esc_html__( "Question Timer", 'quiz-maker' ); ?></span>
                                                     </label>
                                                 </div>
                                             </div>
@@ -4810,7 +5458,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                                 <button type="button" class="button ays_refresh_qbank_cats_button"><?php echo __( "Refresh Categories", 'quiz-maker' ); ?></button>
                                             </p>
                                         </div>
-                                        <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                        <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=question-bank-by-category-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                             <div class="ays-quiz-new-upgrade-button-box">
                                                 <div>
                                                     <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
@@ -4893,8 +5541,8 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                         <div class="form-group row ays_toggle_parent">
                             <div class="col-sm-4" style="padding-right: 0px;">
                                 <label for="ays_enable_correction">
-                                    <?php echo __('Show correct answers','quiz-maker')?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show if the selected answer is right or wrong with green and red marks. To decide when the right/wrong answers will be shown go to “Show messages for right/wrong answers option”.','quiz-maker')?>">
+                                    <?php echo esc_html__('Show correct answers','quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Show if the selected answer is right or wrong with green and red marks. To decide when the right/wrong answers will be shown go to “Show messages for right/wrong answers option”.','quiz-maker'); ?> <?php echo esc_attr__('Visibility of specific response data may depend on the user’s familiarity with source-level structures.','quiz-maker'); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -4977,7 +5625,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                                 </div>
                                             </div>
                                         </div>
-                                        <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                        <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=show-only-wrong-answer-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                             <div class="ays-quiz-new-upgrade-button-box">
                                                 <div>
                                                     <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
@@ -5225,7 +5873,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                         <input type="checkbox" class="ays-enable-timer1" id="ays_enable_copy_protection" value="on" tabindex="-1"/>
                                     </div>
                                 </div>
-                                <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=enable-copy-protection-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
                                             <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
@@ -5266,48 +5914,6 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                 </div>
                             </div>
                         </div> <!-- Show question category -->
-                        <?php if( 1 == 0 ): ?>
-                        <hr>
-                        <div class="form-group row" style="margin:0px;">
-                            <div class="col-sm-12 only_pro" style="padding:10px 0 0 10px;">
-                                <div class="pro_features" style="justify-content:flex-end;">
-
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-4">
-                                        <label for="ays_payment_type">
-                                            <?php echo __('Payment Type','quiz-maker'); ?>
-                                            <a class="ays_help" data-toggle="tooltip" data-html="true"
-                                                title="<?php
-                                                    echo __('Select the time when the quiz taker will need to pay to pass the quiz:','quiz-maker') .
-                                                    "<ul style='list-style-type: circle;padding-left: 20px;'>".
-                                                        "<li>". __('Prepay: The quiz taker will be allowed to pass the quiz only after paying.','quiz-maker') ."</li>".
-                                                        "<li>". __('Postpay: The quiz taker will be able to see the results of his/her quiz only after doing a payment. That means that they could pass the quiz but would not be allowed to get results, emails, or certificates until they pay. Besides, if you set the payment type as Postpay the only payment term that will be available is Onetime payment․','quiz-maker') ."</li>".
-                                                    "</ul>";
-                                                ?>">
-                                                <i class="ays_fa ays_fa_info_circle"></i>
-                                            </a>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <select name="ays_payment_type" class="ays-text-input ays-text-input-short" id="ays_payment_type" tabindex="-1">
-                                            <option><?php echo __( "Prepay", 'quiz-maker' ); ?></option>
-                                            <option><?php echo __( "Postpay", 'quiz-maker' ); ?></option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
-                                    <div class="ays-quiz-new-upgrade-button-box">
-                                        <div>
-                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
-                                        </div>
-                                        <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div> <!-- Payment Type -->
-                        <?php endif; ?>
                         <hr>
                         <div class="form-group row">
                             <div class="col-sm-4">
@@ -5389,6 +5995,46 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                 </div>
                             </div>
                         </div> <!-- Hint icon -->
+                        <hr>
+                        <div class="form-group row" style="margin:0px;">
+                            <div class="col-sm-12 only_pro" style="padding:10px 0 0 10px;">
+                                <div class="pro_features" style="justify-content:flex-end;">
+
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-4">
+                                        <label for="ays_payment_type">
+                                            <?php echo __('Payment Type','quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" data-html="true"
+                                                title="<?php
+                                                    echo __('Select the time when the quiz taker will need to pay to pass the quiz:','quiz-maker') .
+                                                    "<ul style='list-style-type: circle;padding-left: 20px;'>".
+                                                        "<li>". __('Prepay: The quiz taker will be allowed to pass the quiz only after paying.','quiz-maker') ."</li>".
+                                                        "<li>". __('Postpay: The quiz taker will be able to see the results of his/her quiz only after doing a payment. That means that they could pass the quiz but would not be allowed to get results, emails, or certificates until they pay. Besides, if you set the payment type as Postpay the only payment term that will be available is Onetime payment․','quiz-maker') ."</li>".
+                                                    "</ul>";
+                                                ?>">
+                                                <i class="ays_fa ays_fa_info_circle"></i>
+                                            </a>
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <select name="ays_payment_type" class="ays-text-input ays-text-input-short" id="ays_payment_type" tabindex="-1">
+                                            <option><?php echo __( "Prepay", 'quiz-maker' ); ?></option>
+                                            <option><?php echo __( "Postpay", 'quiz-maker' ); ?></option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=payment-type-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <div class="ays-quiz-new-upgrade-button-box">
+                                        <div>
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
+                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                        </div>
+                                        <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div> <!-- Payment Type -->
                         <hr/>
                         <div class="form-group row" style="margin:0px;">
                             <div class="col-sm-12 only_pro" style="padding:10px 0 0 10px;">
@@ -5433,7 +6079,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                         </div>
                                     </div>
                                 </div>
-                                <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=question-count-per-page-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
                                             <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
@@ -5466,7 +6112,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                                 <a href="https://quiz-plugin.com/english-exam-with-certificate/" target="_blank"><?php echo __("See Demo", 'quiz-maker'); ?></a>
                                             </div>
                                         </div>
-                                        <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-navigation-bar-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>">
+                                        <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-navigation-bar-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
                                             <?php echo __("Pricing", 'quiz-maker'); ?>
                                         </div>
                                     </div>
@@ -5499,7 +6145,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                         </div>
                                     </div>
                                 </div> <!-- Enable navigation bar -->
-                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-navigation-bar" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-navigation-bar-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
                                             <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
@@ -5537,7 +6183,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                                value="on"/>
                                     </div>
                                 </div>
-                                <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=make-the-questions-required-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
                                             <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
@@ -5584,7 +6230,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                         </div>
                                     </div>
                                 </div> <!-- Questions text to speech -->
-                                <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=text-to-speech-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
                                             <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
@@ -5614,7 +6260,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                         <input type="checkbox" value="on" />
                                     </div>
                                 </div>
-                                <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=show-question-max-points-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
                                             <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
@@ -5630,32 +6276,11 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                 </div>
                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                     <div class="ays-quiz-accordion-container">
-                        <?php echo $quiz_accordion_svg_html; ?>
+                        <?php echo wp_kses($quiz_accordion_svg_html, $quiz_allowed_html); ?>
                         <p class="ays-subtitle"><?php echo __('Answer Settings','quiz-maker')?></p>
                     </div>
                     <hr class="ays-quiz-bolder-hr"/>
                     <div class="ays-quiz-accordion-options-box">
-                        <div class="form-group row">
-                            <div class="col-sm-4">
-                                <label for="ays_answers_view">
-                                    <?php echo __('Answers view','quiz-maker')?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the design of the answers of question.','quiz-maker')?>">
-                                        <i class="ays_fa ays_fa_info_circle"></i>
-                                    </a>
-                                </label>
-                            </div>
-                            <div class="col-sm-8">
-                                <select class="ays-enable-timerl" id="ays_answers_view" name="ays_answers_view">
-                                    <option value="list" <?php echo (isset($options['answers_view']) && $options['answers_view'] == 'list') ? 'selected' : ''; ?>>
-                                        List
-                                    </option>
-                                    <option value="grid" <?php echo (isset($options['answers_view']) && $options['answers_view'] == 'grid') ? 'selected' : ''; ?>>
-                                        Grid
-                                    </option>
-                                </select>
-                            </div>
-                        </div> <!-- Answers view  -->
-                        <hr/>
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label for="ays_show_answers_numbering">
@@ -5725,7 +6350,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                 </div>
                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                     <div class="ays-quiz-accordion-container">
-                        <?php echo $quiz_accordion_svg_html; ?>
+                        <?php echo wp_kses($quiz_accordion_svg_html, $quiz_allowed_html); ?>
                         <p class="ays-subtitle"><?php echo __('Start Page','quiz-maker')?></p>
                     </div>
                     <hr class="ays-quiz-bolder-hr"/>
@@ -5743,13 +6368,19 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                 <div class="form-check form-check-inline checkbox_ays">
                                     <input type="checkbox" id="ays_show_quiz_title" name="ays_show_quiz_title"
                                             value="on" <?php echo $show_quiz_title ? 'checked' : ''; ?>/>
-                                    <label class="form-check-label" for="ays_show_quiz_title"><?php echo __('Show title','quiz-maker')?></label>
+                                    <label class="form-check-label" for="ays_show_quiz_title"><?php echo esc_html__('Show title','quiz-maker')?></label>
                                 </div>
                                 <div class="form-check form-check-inline checkbox_ays">
                                     <input type="checkbox" id="ays_show_quiz_desc" name="ays_show_quiz_desc"
                                             value="on" <?php echo $show_quiz_desc ? 'checked' : ''; ?>/>
-                                    <label class="form-check-label" for="ays_show_quiz_desc"><?php echo __('Show description','quiz-maker')?></label>
+                                    <label class="form-check-label" for="ays_show_quiz_desc"><?php echo esc_html__('Show description','quiz-maker')?></label>
                                 </div>
+                                <div class="form-check form-check-inline checkbox_ays">
+                                    <input type="checkbox" id="ays_show_quiz_image" name="ays_show_quiz_image"
+                                            value="on" <?php echo $show_quiz_image ? 'checked' : ''; ?>/>
+                                    <label class="form-check-label" for="ays_show_quiz_image"><?php echo esc_html__('Show quiz image','quiz-maker'); ?></label>
+                                </div>
+
                             </div>
                         </div> <!-- Show quiz head information -->
                         <hr/>
@@ -5885,7 +6516,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                         <input type="checkbox" value="on" tabindex="-1"/>
                                     </div>
                                 </div> <!-- Enable autostart -->
-                                <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=enable-autostart-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
                                             <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
@@ -5901,7 +6532,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                 </div>
                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                     <div class="ays-quiz-accordion-container">
-                        <?php echo $quiz_accordion_svg_html; ?>
+                        <?php echo wp_kses($quiz_accordion_svg_html, $quiz_allowed_html); ?>
                         <p class="ays-subtitle"><?php echo __('Button Settings','quiz-maker')?></p>
                     </div>
                     <hr class="ays-quiz-bolder-hr" />
@@ -6220,7 +6851,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                 </div>
                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                     <div class="ays-quiz-accordion-container">
-                        <?php echo $quiz_accordion_svg_html; ?>
+                        <?php echo wp_kses($quiz_accordion_svg_html, $quiz_allowed_html); ?>
                         <p class="ays-subtitle"><?php echo __('Advanced Settings','quiz-maker')?></p>
                     </div>
                     <hr class="ays-quiz-bolder-hr">
@@ -6452,7 +7083,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                         <input type="text" class="ays-text-input" tabindex="-1" value="<?php echo esc_attr($embed_code_html); ?>"/>
                                     </div>
                                 </div>
-                                <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=embed-code-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
                                             <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
@@ -6482,7 +7113,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                         <input type="checkbox" class="ays-enable-timer1" />
                                     </div>
                                 </div> <!-- Allow exporting quizzes -->
-                                <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=export-quiz-pdf-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
                                             <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
@@ -6515,7 +7146,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                 </div>
                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                     <div class="ays-quiz-accordion-container">
-                        <?php echo $quiz_accordion_svg_html; ?>
+                        <?php echo wp_kses($quiz_accordion_svg_html, $quiz_allowed_html); ?>
                         <p class="ays-subtitle"><?php echo __('Primary','quiz-maker'); ?></p>
                     </div>
                     <hr class="ays-quiz-bolder-hr"/>
@@ -6540,20 +7171,20 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                             </a>
                                         </label>
                                     </div>
-                                    <div class="col-sm-8 pro_features_parent">
+                                    <div class="col-sm-8 pro_features_parent ays-quiz-pro-features-parent-box-display-flex">
                                         <label class="ays_quiz_loader">
                                             <input type="radio" class="ays-enable-timer1" value="by_correctness" tabindex="-1" checked/>
                                             <span><?php echo __( "By correctness", 'quiz-maker' ); ?></span>
                                         </label>
                                         <label class="ays_quiz_loader only_pro ays-pro-features-v2-main-box">
-                                            <div class="ays-pro-features-v2-small-buttons-box" style="right: 40px; top: -15px;">
+                                            <div class="ays-pro-features-v2-small-buttons-box" style="right: -20px; top: -30px;">
                                                 <div class="ays-pro-features-v2-video-button ays-quiz-small-new-watch-video-button-box">
                                                     <div>
                                                         <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24.svg'?>">
                                                         <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg'?>" class="ays-quiz-new-watch-video-button-hover">
                                                     </div>
                                                 </div>
-                                                <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
+                                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=calculate-the-score-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-pro-features-v2-upgrade-button">
                                                     <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(AYS_QUIZ_ADMIN_URL); ?>/images/icons/locked_24x24.svg');" data-img-src="<?php echo esc_attr(AYS_QUIZ_ADMIN_URL); ?>/images/icons/locked_24x24.svg"></div>
                                                 </a>
                                             </div>
@@ -6576,7 +7207,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                                             <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo __("See Documentation", 'quiz-maker'); ?></a>
                                                         </div>
                                                     </div>
-                                                    <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-calculate-score-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>">
+                                                    <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-calculate-score-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
                                                         <?php echo __("Pricing", 'quiz-maker'); ?>
                                                     </div>
                                                 </div>
@@ -6641,7 +7272,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                                 </label>
                                             </div>
                                         </div>
-                                        <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                        <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pass-score-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                             <div class="ays-quiz-new-upgrade-button-box">
                                                 <div>
                                                     <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
@@ -6804,7 +7435,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                                 ); 
                                             ?>
                                         </span>
-                                        <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                        <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=redirect-url-hook-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                             <div class="ays-quiz-new-upgrade-button-box">
                                                 <div>
                                                     <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
@@ -6852,7 +7483,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                 </div>
                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                     <div class="ays-quiz-accordion-container">
-                        <?php echo $quiz_accordion_svg_html; ?>
+                        <?php echo wp_kses($quiz_accordion_svg_html, $quiz_allowed_html); ?>
                         <p class="ays-subtitle"><?php echo __('Completion Actions','quiz-maker'); ?></p>
                     </div>
                     <hr class="ays-quiz-bolder-hr"/>
@@ -7229,7 +7860,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                 </div>
                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                     <div class="ays-quiz-accordion-container">
-                        <?php echo $quiz_accordion_svg_html; ?>
+                        <?php echo wp_kses($quiz_accordion_svg_html, $quiz_allowed_html); ?>
                         <p class="ays-subtitle"><?php echo __('Advanced','quiz-maker'); ?></p>
                     </div>
                     <hr class="ays-quiz-bolder-hr"/>
@@ -7536,7 +8167,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                             <div class="col-sm-4">
                                 <label for="ays_disable_store_data">
                                     <?php echo __('Disable data storing in database','quiz-maker')?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Disable data storing in the database, and results will not be displayed on the \'Results\' page (not recommended).','quiz-maker')?>">
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("When this option is enabled, results will not be shown in the admin dashboard (not recommended), however, they will remain visible to users on the front end after submitting the quiz.",'quiz-maker') );?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -7587,7 +8218,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                                 <a href="https://quiz-plugin.com/personality-quiz-for-wp/" target="_blank"><?php echo __("See Demo", 'quiz-maker'); ?></a>
                                             </div>
                                         </div>
-                                        <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-intervals-table-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>">
+                                        <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-intervals-table-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
                                             <?php echo __("Pricing", 'quiz-maker'); ?>
                                         </div>
                                     </div>
@@ -7686,7 +8317,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                     </table>
                                 </div> <!-- Intervals -->
 
-                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-intervals-table-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-intervals-table-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
                                             <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
@@ -7712,7 +8343,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                         </div>
                                     </div>
                                     <div class="ays-quiz-center-big-upgrade-button-box">
-                                        <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-intervals-table-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                        <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-intervals-table-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                             <div class="ays-quiz-center-new-big-upgrade-button">
                                                 <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>" class="ays-quiz-new-button-img-hide">
                                                 <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">  
@@ -7782,7 +8413,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                                 <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo __("See Documentation", 'quiz-maker'); ?></a>
                                             </div>
                                         </div>
-                                        <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-top-keywords-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>">
+                                        <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-top-keywords-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
                                             <?php echo __("Pricing", 'quiz-maker'); ?>
                                         </div>
                                     </div>
@@ -7803,7 +8434,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                         </div>
                                     </div>
                                 </div> <!-- Show all questions result in finish page -->
-                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-top-keywords-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-top-keywords-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
                                             <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
@@ -7847,7 +8478,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                                 <a href="https://quiz-plugin.com/coupon-quiz/" target="_blank"><?php echo __("See Demo", 'quiz-maker'); ?></a>
                                             </div>
                                         </div>
-                                        <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-quiz-coupon-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>">
+                                        <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-quiz-coupon-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
                                             <?php echo __("Pricing", 'quiz-maker'); ?>
                                         </div>
                                     </div>
@@ -7865,7 +8496,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                         <input type="checkbox" class="ays-enable-timer1" value="on" tabindex="-1" />
                                     </div>
                                 </div> <!-- Show all questions result in finish page -->
-                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-quiz-coupon" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-quiz-coupon-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
                                             <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
@@ -7899,7 +8530,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                 </div>
                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                     <div class="ays-quiz-accordion-container">
-                        <?php echo $quiz_accordion_svg_html; ?>
+                        <?php echo wp_kses($quiz_accordion_svg_html, $quiz_allowed_html); ?>
                         <p class="ays-subtitle"><?php echo __('Limitation of Users','quiz-maker')?></p>
                     </div>
                     <hr class="ays-quiz-bolder-hr"/>
@@ -7977,7 +8608,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                                         <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo __("Learn More", 'quiz-maker'); ?></a>
                                                     </div>
                                                 </div>
-                                                <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-attempts-count-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>">
+                                                <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-attempts-count-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
                                                     <?php echo __("Pricing", 'quiz-maker'); ?>
                                                 </div>
                                             </div>
@@ -8027,7 +8658,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                             </div>
                                         </div>
 
-                                        <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-attempts-count" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                        <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-attempts-count-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                             <div class="ays-quiz-new-upgrade-button-box">
                                                 <div>
                                                     <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
@@ -8131,7 +8762,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                                             <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo __("See Documentation", 'quiz-maker'); ?></a>
                                                         </div>
                                                     </div>
-                                                    <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-extra-security-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>">
+                                                    <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-extra-security-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
                                                         <?php echo __("Pricing", 'quiz-maker'); ?>
                                                     </div>
                                                 </div>
@@ -8166,7 +8797,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                                 </div>
                                             </div>
 
-                                            <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-extra-security" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                            <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-extra-security-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                                 <div class="ays-quiz-new-upgrade-button-box">
                                                     <div>
                                                         <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
@@ -8409,7 +9040,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                                 </label>
                                             </div>
                                         </div>
-                                        <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                        <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=generated-passwords-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                             <div class="ays-quiz-new-upgrade-button-box">
                                                 <div>
                                                     <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
@@ -8511,7 +9142,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                                 <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo __("See Documentation", 'quiz-maker'); ?></a>
                                             </div>
                                         </div>
-                                        <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-only-selected-users-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>">
+                                        <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-only-selected-users-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
                                             <?php echo __("Pricing", 'quiz-maker'); ?>
                                         </div>
                                     </div>
@@ -8562,7 +9193,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                     </div>
                                 </div> <!-- Access Only selected users -->
 
-                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-only-selected-users" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-only-selected-users-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
                                             <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
@@ -8587,7 +9218,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                         </div>
                                     </div>
                                     <div class="ays-quiz-center-big-upgrade-button-box">
-                                        <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-only-selected-users" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                        <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-only-selected-users-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                             <div class="ays-quiz-center-new-big-upgrade-button">
                                                 <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>" class="ays-quiz-new-button-img-hide">
                                                 <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">  
@@ -8614,7 +9245,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                 </div>
                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                     <div class="ays-quiz-accordion-container">
-                        <?php echo $quiz_accordion_svg_html; ?>
+                        <?php echo wp_kses($quiz_accordion_svg_html, $quiz_allowed_html); ?>
                         <p class="ays-subtitle"><?php echo __('User Information','quiz-maker')?></p>
                     </div>
                     <hr class="ays-quiz-bolder-hr"/>
@@ -8776,7 +9407,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                             <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo __("See Documentation", 'quiz-maker'); ?></a>
                                         </div>
                                     </div>
-                                    <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-custom-field-option-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>">
+                                    <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-custom-field-option-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
                                         <?php echo __("Pricing", 'quiz-maker'); ?>
                                     </div>
                                 </div>
@@ -8795,7 +9426,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                     <a href="?page=<?php echo $this->plugin_name; ?>-quiz-attributes" target="_blank" ><?php echo __("here", 'quiz-maker'); ?></a>
                                 </blockquote>
                             </div>
-                            <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-custom-field-option-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                            <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-custom-field-option-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                 <div class="ays-quiz-new-upgrade-button-box">
                                     <div>
                                         <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
@@ -8828,7 +9459,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                 </div>
                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                     <div class="ays-quiz-accordion-container">
-                        <?php echo $quiz_accordion_svg_html; ?>
+                        <?php echo wp_kses($quiz_accordion_svg_html, $quiz_allowed_html); ?>
                         <p class="ays-subtitle"><?php echo esc_html__('E-mail and Certificate settings','quiz-maker')?></p>
                     </div>
                     <hr class="ays-quiz-bolder-hr"/>
@@ -8866,7 +9497,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                                 <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo esc_html__("See Documentation", 'quiz-maker'); ?></a>
                                             </div>
                                         </div>
-                                        <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-send-mail-to-user-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>">
+                                        <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-send-mail-to-user-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
                                             <?php echo esc_html__("Pricing", 'quiz-maker'); ?>
                                         </div>
                                     </div>
@@ -8934,7 +9565,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                         </div>
                                     </div>
                                 </div>
-                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-send-mail-to-user-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-send-mail-to-user-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
                                             <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -8959,7 +9590,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                         </div>
                                     </div>
                                     <div class="ays-quiz-center-big-upgrade-button-box">
-                                        <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-send-mail-to-user-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                        <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-send-mail-to-user-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                             <div class="ays-quiz-center-new-big-upgrade-button">
                                                 <img loading="lazy" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>" class="ays-quiz-new-button-img-hide">
                                                 <img loading="lazy" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'); ?>" class="ays-quiz-new-upgrade-button-hover">  
@@ -8997,7 +9628,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                                 <a href="https://quiz-plugin.com/english-exam-with-certificate/" target="_blank"><?php echo esc_html__("PRO Demo", 'quiz-maker'); ?></a>
                                             </div>
                                         </div>
-                                        <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-send-certificate-to-user-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>">
+                                        <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-send-certificate-to-user-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
                                             <?php echo esc_html__("Pricing", 'quiz-maker'); ?>
                                         </div>
                                     </div>
@@ -9073,7 +9704,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                         </div>
                                     </div>
                                 </div>
-                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-send-certificate-to-user-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-send-certificate-to-user-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
                                             <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
@@ -9098,7 +9729,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                         </div>
                                     </div>
                                     <div class="ays-quiz-center-big-upgrade-button-box">
-                                        <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-send-certificate-to-user-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                        <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-send-certificate-to-user-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                             <div class="ays-quiz-center-new-big-upgrade-button">
                                                 <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>" class="ays-quiz-new-button-img-hide">
                                                 <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">  
@@ -9144,7 +9775,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                                 <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo __("See Documentation", 'quiz-maker'); ?></a>
                                             </div>
                                         </div>
-                                        <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-send-mail-to-admin-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>">
+                                        <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-send-mail-to-admin-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
                                             <?php echo __("Pricing", 'quiz-maker'); ?>
                                         </div>
                                     </div>
@@ -9304,7 +9935,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                         </div>
                                     </div>
                                 </div>
-                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-send-mail-to-admin-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-send-mail-to-admin-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
                                             <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
@@ -9329,7 +9960,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                         </div>
                                     </div>
                                     <div class="ays-quiz-center-big-upgrade-button-box">
-                                        <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-send-mail-to-admin-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                        <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-send-mail-to-admin-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                             <div class="ays-quiz-center-new-big-upgrade-button">
                                                 <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>" class="ays-quiz-new-button-img-hide">
                                                 <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">  
@@ -9356,7 +9987,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                 </div>
                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                     <div class="ays-quiz-accordion-container">
-                        <?php echo $quiz_accordion_svg_html; ?>
+                        <?php echo wp_kses($quiz_accordion_svg_html, $quiz_allowed_html); ?>
                         <p class="ays-subtitle"><?php echo esc_html__('Integrations settings','quiz-maker'); ?></p>
                     </div>
                     <hr class="ays-quiz-bolder-hr"/>
@@ -9415,7 +10046,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                             <span class="ays_option_description"><?php echo esc_html__( 'Send contacts an opt-in confirmation email when their email address added to the list.', 'quiz-maker' ); ?></span>
                                         </div>
                                     </div>
-                                    <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=quiz-edit-page-mailchimp-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
                                                 <img loading="lazy" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
@@ -9502,7 +10133,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                             <textarea type="text" class="ays-textarea ays-disable-setting" disabled></textarea>
                                         </div>
                                     </div>
-                                    <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=quiz-edit-page-paypal-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
                                                 <img loading="lazy" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
@@ -9579,7 +10210,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                         <textarea type="text" class="ays-textarea ays-disable-setting" disabled></textarea>
                                     </div>
                                 </div>
-                                <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=quiz-edit-page-stripe-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
                                             <img loading="lazy" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
@@ -9608,7 +10239,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                         <input type="checkbox" class="ays-enable-timer1"/>
                                     </div>
                                 </div>
-                                <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=quiz-edit-page-recaptcha-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
                                             <img loading="lazy" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
@@ -9653,7 +10284,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                             </select>
                                         </div>
                                     </div>
-                                    <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=quiz-edit-page-campaign-monitor-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
                                                 <img loading="lazy" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
@@ -9700,7 +10331,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                         <input type="checkbox"/>
                                         <input type="checkbox"/>
                                     </div>
-                                    <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=quiz-edit-page-zapier-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
                                                 <img loading="lazy" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
@@ -9761,7 +10392,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                             </select>
                                         </div>
                                     </div>
-                                    <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=quiz-edit-page-activecampaign-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
                                                 <img loading="lazy" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
@@ -9807,7 +10438,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                             </select>
                                         </div>
                                     </div>
-                                    <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=quiz-edit-page-slack-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
                                                 <img loading="lazy" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
@@ -9841,7 +10472,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                             <input type="checkbox" class="ays-enable-timer1" id="ays_enable_google" value="on" />
                                         </div>
                                     </div>
-                                    <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=quiz-edit-page-google-sheets-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
                                                 <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
@@ -9883,7 +10514,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                             </select>
                                         </div>
                                     </div>
-                                    <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=quiz-edit-page-mad-mimi-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
                                                 <img loading="lazy" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
@@ -9925,7 +10556,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                             </select>
                                         </div>
                                     </div>
-                                    <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=quiz-edit-page-convertkit-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
                                                 <img loading="lazy" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg');?>">
@@ -9966,7 +10597,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                             </select>
                                         </div>
                                     </div>
-                                    <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=quiz-edit-page-getresponse-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
                                                 <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -10182,7 +10813,7 @@ $enable_question_reporting = (isset($options['enable_questions_reporting']) && $
                                     </div>
                                 </div>
                                 <!-- Add Question Tag Filter End  -->
-                                <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=insert-question-popup-filters-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
                                             <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">

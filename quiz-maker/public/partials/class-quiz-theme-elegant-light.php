@@ -143,6 +143,23 @@ class Quiz_Theme_Elegant_Light extends Quiz_Maker_Public{
                 $ays_field_style = "style='display: flex; flex-direction: {$ays_flex_dir};'";
                 $answer_label_style = "style='margin-bottom: 0; line-height: 100px'";
             }
+
+            if($answer_image == ""){
+                $answer_label_class = "";
+                $answer_img_label_class = " ays_position_initial ";
+            }else{
+                if($options['answersViewClass'] == 'grid'){
+                    $answer_label_class = " ays_empty_before_content ";
+                }else{
+                    $answer_label_class = "";
+                }
+
+                if( !empty($options['ans_right_wrong_icon']) && $options['ans_right_wrong_icon'] == 'none'){
+                    $answer_img_label_class = " ays_answer_caption ays_without_after_content ";
+                } else {
+                    $answer_img_label_class = " ays_answer_caption ";
+                }
+            }
             
             if($options['answersViewClass'] == 'grid'){
                 $ays_field_style = "style='display: flex; flex-direction: column-reverse;'";
@@ -190,7 +207,7 @@ class Quiz_Theme_Elegant_Light extends Quiz_Maker_Public{
 
                 <input type='{$options["questionType"]}' name='ays_questions[ays-question-{$question_id}]' id='ays-answer-{$answer["id"]}-{$quiz_id}' value='{$answer["id"]}'/>
 
-                    <label for='ays-answer-{$answer["id"]}-{$quiz_id}' class='$class_label_for_keyboard' $answer_label_style>
+                    <label for='ays-answer-{$answer["id"]}-{$quiz_id}' class='$answer_label_class $answer_img_label_class $class_label_for_keyboard' $answer_label_style>
                         " . $numbering_type . $answer_content . "
                     </label>
                     <label for='ays-answer-{$answer["id"]}-{$quiz_id}' class='ays_answer_image {$correct_answer_flag}'>{$answer_image}</label>
@@ -198,7 +215,7 @@ class Quiz_Theme_Elegant_Light extends Quiz_Maker_Public{
             </div>";
         }
 
-        $script_data_arr['question_answer'] = $question_answer;
+        // $script_data_arr['question_answer'] = $question_answer;
 
         $answer_container_script_html .= '<script>';
         $answer_container_script_html .= "

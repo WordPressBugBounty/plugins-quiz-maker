@@ -177,8 +177,10 @@ class Quiz_Maker_Public
             wp_enqueue_script($this->plugin_name .'-ajax-public', plugin_dir_url(__FILE__) . 'js/quiz-maker-public-ajax.js', array('jquery'), time(), true);
             wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/quiz-maker-public.js', array('jquery'), time(), true);
             wp_localize_script($this->plugin_name . '-ajax-public', 'quiz_maker_ajax_public', array(
+                'nonce'         => wp_create_nonce('ays_quiz_nonce'),
                 'ajax_url'      => admin_url('admin-ajax.php'),
                 'warningIcon'   => plugin_dir_url(__FILE__) . "images/warning.svg",
+                'checkingError' => __( 'Error checking answer', 'quiz-maker' ),
             ));
             wp_localize_script($this->plugin_name, 'quizLangObj', array(
                 'notAnsweredText'               => $this->default_texts['notAnsweredQuestionText'],
@@ -648,6 +650,7 @@ class Quiz_Maker_Public
         }
 
         $get_site_title = get_bloginfo('name');
+        $get_site_description = get_bloginfo('description');
 
         $message_data = array(
             'quiz_name'                             => $quiz_title,
@@ -670,6 +673,7 @@ class Quiz_Maker_Public
             'user_id'                               => $user_id,
             'site_title'                            => $get_site_title,
             'current_quiz_author_website_url'       => $current_quiz_author_website_url,
+            'site_description'                      => $get_site_description,
         );
 
         return $message_data;
@@ -1063,6 +1067,8 @@ class Quiz_Maker_Public
          *
          * Quiz container styles
          */
+
+        $answer_view_class = "";
         
         
         // Quiz container minimal height
@@ -1274,12 +1280,40 @@ class Quiz_Maker_Public
         }else{
             $question_image_sizing = "cover";
         }
+
+        // Question Image border radius
+        $quiz_question_image_border_radius = (isset($options[ 'quiz_question_image_border_radius' ]) && $options[ 'quiz_question_image_border_radius' ] != '') ? absint ( stripslashes( $options[ 'quiz_question_image_border_radius' ] ) ) : 0;
+
+
+        /*
+        ==========================================
+            Answers styles
+        ==========================================
+        */
+
+        // Answers view
+        $answer_view_class = "list";
+        if(isset($options['answers_view']) && $options['answers_view'] != ''){
+            $answer_view_class = sanitize_text_field($options['answers_view']);
+        }
+
+        // Answer view mobile
+        $answer_view_class_mobile = "list";
+        if(isset($options['answers_view_mobile']) && $options['answers_view_mobile'] != ''){
+            $answer_view_class_mobile = sanitize_text_field($options['answers_view_mobile']);
+        }
         
         // Answers font size
         
         $answers_font_size = '15';
         if(isset($options['answers_font_size']) && $options['answers_font_size'] != ""){
-            $answers_font_size = $options['answers_font_size'];
+            $answers_font_size = intval($options['answers_font_size']);
+        }
+
+        // Answers padding option
+        $answers_padding = '5';
+        if(isset($options['answers_padding']) && $options['answers_padding'] != ''){
+            $answers_padding = intval($options['answers_padding']);
         }
 
         // Answer font size | On mobile
@@ -1310,11 +1344,20 @@ class Quiz_Maker_Public
         // Wrong answer text decoration
         $quiz_wrong_answers_text_decoration = (isset($options[ 'quiz_wrong_answers_text_decoration' ]) && $options[ 'quiz_wrong_answers_text_decoration' ] != '') ? stripslashes ( esc_attr( $options[ 'quiz_wrong_answers_text_decoration' ] ) ) : 'none';
 
+        // Wrong answer text decoration | Mobile
+        $quiz_wrong_answers_mobile_text_decoration = (isset($options[ 'quiz_wrong_answers_mobile_text_decoration' ]) && $options[ 'quiz_wrong_answers_mobile_text_decoration' ] != '') ? stripslashes ( esc_attr( $options[ 'quiz_wrong_answers_mobile_text_decoration' ] ) ) : $quiz_wrong_answers_text_decoration;
+
         // Letter spacing | Wrong answer
         $quiz_wrong_answers_letter_spacing = (isset($options[ 'quiz_wrong_answers_letter_spacing' ]) && $options[ 'quiz_wrong_answers_letter_spacing' ] != '') ? stripslashes ( absint( $options[ 'quiz_wrong_answers_letter_spacing' ] ) ) : 0;
 
+        // Letter spacing | Wrong answer | Mobile
+        $quiz_wrong_answers_mobile_letter_spacing = (isset($options[ 'quiz_wrong_answers_mobile_letter_spacing' ]) && $options[ 'quiz_wrong_answers_mobile_letter_spacing' ] != '') ? absint ( stripslashes( $options[ 'quiz_wrong_answers_mobile_letter_spacing' ] ) ) : $quiz_wrong_answers_letter_spacing;
+
         // Wrong answer font weight
         $quiz_wrong_answers_font_weight = (isset($options[ 'quiz_wrong_answers_font_weight' ]) && $options[ 'quiz_wrong_answers_font_weight' ] != '') ? stripslashes ( esc_attr( $options[ 'quiz_wrong_answers_font_weight' ] ) ) : 'normal';
+
+        // Wrong answer font weight | Mobile
+        $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mobile_font_weight' ]) && $options[ 'quiz_wrong_answers_mobile_font_weight' ] != '') ? stripslashes ( esc_attr( $options[ 'quiz_wrong_answers_mobile_font_weight' ] ) ) : $quiz_wrong_answers_font_weight;
 
         // Font size for the question explanation
         $quest_explanation_font_size = (isset($options['quest_explanation_font_size']) && $options['quest_explanation_font_size'] != '') ? absint(sanitize_text_field($options['quest_explanation_font_size'])) : '16';
@@ -1331,11 +1374,20 @@ class Quiz_Maker_Public
         // Question Explanation text decoration
         $quiz_quest_explanation_text_decoration = (isset($options[ 'quiz_quest_explanation_text_decoration' ]) && $options[ 'quiz_quest_explanation_text_decoration' ] != '') ? stripslashes ( esc_attr( $options[ 'quiz_quest_explanation_text_decoration' ] ) ) : 'none';
 
+        // Question Explanation text decoration | Mobile
+        $quiz_quest_explanation_mobile_text_decoration = (isset($options[ 'quiz_quest_explanation_mobile_text_decoration' ]) && $options[ 'quiz_quest_explanation_mobile_text_decoration' ] != '') ? stripslashes ( esc_attr( $options[ 'quiz_quest_explanation_mobile_text_decoration' ] ) ) : $quiz_quest_explanation_text_decoration;
+
         // Letter spacing | Question Explanation
         $quiz_quest_explanation_letter_spacing = (isset($options[ 'quiz_quest_explanation_letter_spacing' ]) && $options[ 'quiz_quest_explanation_letter_spacing' ] != '') ? stripslashes ( absint( $options[ 'quiz_quest_explanation_letter_spacing' ] ) ) : 0;
 
+        // Letter spacing | Question Explanation | Mobile
+        $quiz_quest_explanation_mobile_letter_spacing = (isset($options[ 'quiz_quest_explanation_mobile_letter_spacing' ]) && $options[ 'quiz_quest_explanation_mobile_letter_spacing' ] != '') ? stripslashes ( absint( $options[ 'quiz_quest_explanation_mobile_letter_spacing' ] ) ) : $quiz_quest_explanation_letter_spacing;
+
         // Question Explanation font weight
         $quiz_quest_explanation_font_weight = (isset($options[ 'quiz_quest_explanation_font_weight' ]) && $options[ 'quiz_quest_explanation_font_weight' ] != '') ? stripslashes ( esc_attr( $options[ 'quiz_quest_explanation_font_weight' ] ) ) : 'normal';
+
+        // Question explanation Font weight | Mobile
+        $quiz_quest_explanation_mobile_font_weight = (isset($options[ 'quiz_quest_explanation_mobile_font_weight' ]) && $options[ 'quiz_quest_explanation_mobile_font_weight' ] != '') ? stripslashes ( esc_attr( $options[ 'quiz_quest_explanation_mobile_font_weight' ] ) ) : $quiz_quest_explanation_font_weight;
 
         // Font size for the right answer | PC
         $right_answers_font_size = (isset($options['right_answers_font_size']) && $options['right_answers_font_size'] != '') ? absint(sanitize_text_field($options['right_answers_font_size'])) : '16';
@@ -1352,11 +1404,20 @@ class Quiz_Maker_Public
         // Right answer text decoration
         $quiz_right_answers_text_decoration = (isset($options[ 'quiz_right_answers_text_decoration' ]) && $options[ 'quiz_right_answers_text_decoration' ] != '') ? stripslashes ( esc_attr( $options[ 'quiz_right_answers_text_decoration' ] ) ) : 'none';
 
+        // Right answer text decoration | Mobile
+        $quiz_right_answers_mobile_text_decoration = (isset($options[ 'quiz_right_answers_mobile_text_decoration' ]) && $options[ 'quiz_right_answers_mobile_text_decoration' ] != '') ? stripslashes ( esc_attr( $options[ 'quiz_right_answers_mobile_text_decoration' ] ) ) : $quiz_right_answers_text_decoration;
+
         // Letter spacing | Right answer
         $quiz_right_answers_letter_spacing = (isset($options[ 'quiz_right_answers_letter_spacing' ]) && $options[ 'quiz_right_answers_letter_spacing' ] != '') ? stripslashes ( absint( $options[ 'quiz_right_answers_letter_spacing' ] ) ) : 0;
 
+        // Letter spacing | Right answer | Mobile
+        $quiz_right_answers_mobile_letter_spacing = (isset($options[ 'quiz_right_answers_mobile_letter_spacing' ]) && $options[ 'quiz_right_answers_mobile_letter_spacing' ] != '') ? stripslashes ( absint( $options[ 'quiz_right_answers_mobile_letter_spacing' ] ) ) : $quiz_right_answers_letter_spacing;
+
         // Right answer font weight
         $quiz_right_answers_font_weight = (isset($options[ 'quiz_right_answers_font_weight' ]) && $options[ 'quiz_right_answers_font_weight' ] != '') ? stripslashes ( esc_attr( $options[ 'quiz_right_answers_font_weight' ] ) ) : 'normal';
+
+        // Right answer font weight | Mobile
+        $quiz_right_answers_mobile_font_weight = (isset($options[ 'quiz_right_answers_mobile_font_weight' ]) && $options[ 'quiz_right_answers_mobile_font_weight' ] != '') ? stripslashes ( esc_attr( $options[ 'quiz_right_answers_mobile_font_weight' ] ) ) : $quiz_right_answers_font_weight;
 
         // Font size for the Note text | PC
         $note_text_font_size = (isset($options['note_text_font_size']) && $options['note_text_font_size'] != '') ? absint(esc_attr($options['note_text_font_size'])) : '14';
@@ -1379,8 +1440,14 @@ class Quiz_Maker_Public
         // Note letter spacing
         $quiz_admin_note_letter_spacing = (isset($options[ 'quiz_admin_note_letter_spacing' ]) && $options[ 'quiz_admin_note_letter_spacing' ] != '') ? stripslashes ( absint( $options[ 'quiz_admin_note_letter_spacing' ] ) ) : 0;
 
+        // Note letter spacing | Admin note | Mobile
+        $quiz_admin_note_mobile_letter_spacing = (isset($options[ 'quiz_admin_note_mobile_letter_spacing' ]) && $options[ 'quiz_admin_note_mobile_letter_spacing' ] != '') ? stripslashes ( absint( $options[ 'quiz_admin_note_mobile_letter_spacing' ] ) ) : $quiz_admin_note_letter_spacing;
+
         // Admin Note font weight
         $quiz_admin_note_font_weight = (isset($options[ 'quiz_admin_note_font_weight' ]) && $options[ 'quiz_admin_note_font_weight' ] != '') ? stripslashes ( esc_attr( $options[ 'quiz_admin_note_font_weight' ] ) ) : 'normal';
+
+        // Admin Notice Font weight | Mobile
+        $quiz_admin_note_mobile_font_weight = (isset($options[ 'quiz_admin_note_mobile_font_weight' ]) && $options[ 'quiz_admin_note_mobile_font_weight' ] != '') ? stripslashes ( esc_attr( $options[ 'quiz_admin_note_mobile_font_weight' ] ) ) : $quiz_admin_note_font_weight;
 
         // Disable answer hover
         $options['disable_hover_effect'] = isset($options['disable_hover_effect']) ? $options['disable_hover_effect'] : 'off';
@@ -1388,6 +1455,87 @@ class Quiz_Maker_Public
 
         // Question text alignment
         $quiz_question_text_alignment = (isset($options['quiz_question_text_alignment']) && sanitize_text_field( $options['quiz_question_text_alignment'] ) != '') ? sanitize_text_field( $options['quiz_question_text_alignment'] ) : 'center';
+
+        // Answers image options
+        // Show answers caption
+        $show_answers_caption = false;
+        $options['show_answers_caption'] = isset($options['show_answers_caption']) ? stripslashes ( esc_attr($options['show_answers_caption']) ) : 'on';
+        if(isset($options['show_answers_caption']) && $options['show_answers_caption'] == 'on'){
+            $show_answers_caption = true;
+        }
+
+        $ans_img_height = "150px";
+        if(isset($options['ans_img_height']) && $options['ans_img_height'] != ''){
+            $ans_img_height = absint($options['ans_img_height']) . "px";
+        }
+
+        $ans_img_caption_position = 'bottom';
+        if(isset($options['ans_img_caption_position']) && $options['ans_img_caption_position'] != ''){
+            $ans_img_caption_position = sanitize_text_field($options['ans_img_caption_position']);
+        }
+
+        $answers_object_fit = 'cover';
+        if(isset($options['answers_object_fit']) && $options['answers_object_fit'] != ''){
+            $answers_object_fit = sanitize_text_field($options['answers_object_fit']);
+        }
+
+        $ans_image_caption_style = 'outside';
+        $ans_img_caption_style = "column-reverse";
+        if(isset($options['ans_img_caption_style']) && $options['ans_img_caption_style'] != ''){
+            $ans_image_caption_style = sanitize_text_field($options['ans_img_caption_style']);
+        }
+        $ans_image_caption_position = $ans_img_caption_position;
+
+        // Desktop styles
+        if($answer_view_class == 'list'){
+            if($ans_image_caption_style == 'outside'){
+                $ans_img_caption_position = "position:initial;".$ans_img_caption_position.":0;";
+            }elseif($ans_image_caption_style == 'inside'){
+                $ans_img_caption_position = "position:absolute;".$ans_img_caption_position.":0;";
+            }
+            if($ans_image_caption_position == 'top'){
+                $ans_img_caption_style = "row";
+            }elseif($ans_image_caption_position == 'bottom'){
+                $ans_img_caption_style = "row-reverse";
+            }
+        }elseif($answer_view_class == 'grid'){
+            if($ans_image_caption_style == 'outside'){
+                $ans_img_caption_position = "position:initial;".$ans_img_caption_position.":0;";
+            }elseif($ans_image_caption_style == 'inside'){
+                $ans_img_caption_position = "position:absolute;".$ans_img_caption_position.":0;";
+            }
+            if($ans_image_caption_position == 'top'){
+                $ans_img_caption_style = "column";
+            }elseif($ans_image_caption_position == 'bottom'){
+                $ans_img_caption_style = "column-reverse";
+            }
+        }
+
+        // Mobile styles
+        // $ans_img_caption_position_mobile = $ans_img_caption_position;
+        // if($answer_view_class_mobile == 'list'){
+        //     if($ans_image_caption_style == 'outside'){
+        //         $ans_img_caption_position_mobile = "position:initial;".$ans_img_caption_position.":0;";
+        //     }elseif($ans_image_caption_style == 'inside'){
+        //         $ans_img_caption_position_mobile = "position:absolute;".$ans_img_caption_position.":0;";
+        //     }
+        //     if($ans_image_caption_position == 'top'){
+        //         $ans_img_caption_style_mobile = "row";
+        //     }elseif($ans_image_caption_position == 'bottom'){
+        //         $ans_img_caption_style_mobile = "row-reverse";
+        //     }
+        // }elseif($answer_view_class_mobile == 'grid'){
+        //     if($ans_image_caption_style == 'outside'){
+        //         $ans_img_caption_position_mobile = "position:initial;".$ans_img_caption_position.":0;";
+        //     }elseif($ans_image_caption_style == 'inside'){
+        //         $ans_img_caption_position_mobile = "position:absolute;".$ans_img_caption_position.":0;";
+        //     }
+        //     if($ans_image_caption_position == 'top'){
+        //         $ans_img_caption_style_mobile = "column";
+        //     }elseif($ans_image_caption_position == 'bottom'){
+        //         $ans_img_caption_style_mobile = "column-reverse";
+        //     }
+        // }
         
 
         // Answers border options
@@ -1581,7 +1729,7 @@ class Quiz_Maker_Public
         
         
         if($questions_count == 0){
-            $empty_questions_notification = '<p id="ays_no_questions_message" style="color:red">' . __('You need to add questions', 'quiz-maker') . '</p>';
+            $empty_questions_notification = '<p id="ays_no_questions_message" style="color:red">' . __('Add at least one question to start', 'quiz-maker') . '</p>';
             $empty_questions_button = "disabled";
         }else{
             $empty_questions_notification = "";
@@ -1721,6 +1869,10 @@ class Quiz_Maker_Public
         $options['show_quiz_desc'] = isset($options['show_quiz_desc']) ? $options['show_quiz_desc'] : 'on';
         $show_quiz_title = (isset($options['show_quiz_title']) && $options['show_quiz_title'] == "on") ? true : false;
         $show_quiz_desc = (isset($options['show_quiz_desc']) && $options['show_quiz_desc'] == "on") ? true : false;
+
+        // Show Quiz Image on the front-end
+        $options['show_quiz_image'] = isset($options['show_quiz_image']) ? esc_attr($options['show_quiz_image']) : 'on';
+        $show_quiz_image = (isset($options['show_quiz_image']) && $options['show_quiz_image'] == "on") ? true : false;
 
         
         /* 
@@ -1881,7 +2033,6 @@ class Quiz_Maker_Public
         
         $live_progress_bar = "";
         $timer_row = "";
-        $answer_view_class = "";
         $correction_class = "";
         $ie_container_css = "";
         $rtl_style = "";
@@ -1979,9 +2130,9 @@ class Quiz_Maker_Public
          * Generate HTML class for answers view
          */
         
-        if(isset($options['answers_view']) && $options['answers_view'] != ''){
-            $answer_view_class = $options['answers_view'];
-        }
+        // if(isset($options['answers_view']) && $options['answers_view'] != ''){
+        //     $answer_view_class = $options['answers_view'];
+        // }
         
         
         /*
@@ -2325,12 +2476,12 @@ class Quiz_Maker_Public
 
         if(isset($settings_options['right_answer_sound']) && $settings_options['right_answer_sound'] != ''){
             $right_answer_sound_status = true;
-            $right_answer_sound = $settings_options['right_answer_sound'];
+            $right_answer_sound = esc_url($settings_options['right_answer_sound']);
         }
 
         if(isset($settings_options['wrong_answer_sound']) && $settings_options['wrong_answer_sound'] != ''){
             $wrong_answer_sound_status = true;
-            $wrong_answer_sound = $settings_options['wrong_answer_sound'];
+            $wrong_answer_sound = esc_url($settings_options['wrong_answer_sound']);
         }
 
         if($right_answer_sound_status && $wrong_answer_sound_status){
@@ -2344,8 +2495,8 @@ class Quiz_Maker_Public
         }
 
         if($enable_rw_asnwers_sounds){
-            $rw_asnwers_sounds_html = "<audio id='ays_quiz_right_ans_sound_".$id."' class='ays_quiz_right_ans_sound' src='".$right_answer_sound."'></audio>";
-            $rw_asnwers_sounds_html .= "<audio id='ays_quiz_wrong_ans_sound_".$id."' class='ays_quiz_wrong_ans_sound' src='".$wrong_answer_sound."'></audio>";
+            $rw_asnwers_sounds_html = "<audio id='ays_quiz_right_ans_sound_".$id."' class='ays_quiz_right_ans_sound' src='".esc_url($right_answer_sound)."'></audio>";
+            $rw_asnwers_sounds_html .= "<audio id='ays_quiz_wrong_ans_sound_".$id."' class='ays_quiz_wrong_ans_sound' src='".esc_url($wrong_answer_sound)."'></audio>";
         }
 
 
@@ -3190,7 +3341,7 @@ class Quiz_Maker_Public
          */
         
         
-        if($quiz_image != ""){
+        if($show_quiz_image && $quiz_image != ""){
             $quiz_image_alt_text = $this->ays_quiz_get_image_id_by_url($quiz_image);
 
             $quiz_image = "<img src='{$quiz_image}' alt='". $quiz_image_alt_text ."' class='ays_quiz_image'>";
@@ -3395,7 +3546,7 @@ class Quiz_Maker_Public
          */
         
         
-        $quest_animation = 'shake';
+        $quest_animation = 'none';
         
         if(isset($options['quest_animation']) && $options['quest_animation'] != ''){
             $quest_animation = $options['quest_animation'];
@@ -3898,7 +4049,7 @@ class Quiz_Maker_Public
                 letter-spacing: 0;
                 box-shadow: unset;
                 width: auto;
-                border: unset;
+                /* border: unset; */
                 min-height: unset;
                 line-height: normal;
                 text-shadow: unset;
@@ -4005,8 +4156,12 @@ class Quiz_Maker_Public
                     box-shadow: none;";
             }
 
-            $quiz_styles .= "
+            $quiz_styles .=
+                "flex-direction: ".$ans_img_caption_style.";
             }
+            ";
+
+            $quiz_styles .= "
 
             /* Answer maximum length of a text field */
             #ays-quiz-container-" . $id . " .ays_quiz_question_text_message{
@@ -4018,16 +4173,23 @@ class Quiz_Maker_Public
             div#ays-quiz-container-" . $id . " div.ays_quiz_question_text_error_message {
                 color: #ff0000;
             }
+
+            /* Questions answer image */
+            #ays-quiz-container-" . $id . " .ays-answer-image {
+                width:" . ($answer_view_class == "grid" ? "100%" : "15em") . ";
+                height:" . $ans_img_height . ";
+                object-fit: " . $answers_object_fit . ";
+            }
             ";
 
         if (! $disable_hover_effect) {
             $quiz_styles .= "
-            #ays-quiz-container-" . $id . " .ays-quiz-answers .ays-field:hover{
+            #ays-quiz-container-" . $id . " .ays-quiz-answers .ays-field:hover:not(.ays-answered-text-input){
                 opacity: 1;
             }";
         } else{
             $quiz_styles .= "
-            #ays-quiz-container-" . $id . " .ays-quiz-answers .ays-field:hover,
+            #ays-quiz-container-" . $id . " .ays-quiz-answers .ays-field:hover:not(.ays-answered-text-input),
             #ays-quiz-container-" . $id . " .ays-quiz-answers .ays-field{
                 opacity: 1;
             }
@@ -4041,6 +4203,38 @@ class Quiz_Maker_Public
         }
 
         $quiz_styles .= "
+            #ays-quiz-container-" . $id . " #ays_finish_quiz_" . $id . " .ays-field label.ays_answer_caption[for^='ays-answer-'] {
+                z-index: 1;
+                " . $ans_img_caption_position;
+
+        if(! $show_answers_caption ){
+            $quiz_styles .= "display: none !important;";
+        }
+        $quiz_styles .= "}";
+
+        if( $ans_image_caption_position == 'top' && $answer_view_class == 'list' ){
+            $quiz_styles .= "
+            #ays-quiz-container-" . $id . " #ays_finish_quiz_" . $id . " .ays-field.ays_list_view_item label.ays_answer_image[for^='ays-answer-'] {
+                display: flex !important;
+                justify-content: flex-end;
+            }";
+        }
+
+        if($ans_image_caption_style == 'inside'){
+            $quiz_styles .= "
+            #ays-quiz-container-" . $id . " #ays_finish_quiz_" . $id . " .ays-field.ays_grid_view_item label.ays_answer_caption[for^='ays-answer-'] {
+                background-color: " . $this->hex2rgba($color, '0.6') . ";
+            }
+            #ays-quiz-container-" . $id . " #ays_finish_quiz_" . $id . " .ays-field.ays_grid_view_item label.ays_answer_caption[for^='ays-answer-']:hover {
+                background-color: " . $this->hex2rgba($color, '1') . ";
+            }";
+        }
+
+        $quiz_styles .= "
+            #ays-quiz-container-" . $id . " #ays_finish_quiz_" . $id . " .ays-field input~label[for^='ays-answer-'] {
+                padding: " . $answers_padding . "px;
+            }
+
             #ays-quiz-container-" . $id . " #ays_finish_quiz_" . $id . " .ays-field {
                 margin-bottom: " . ($answers_margin) . "px;
             }
@@ -4059,12 +4253,7 @@ class Quiz_Maker_Public
             #ays-quiz-container-" . $id . " .ays-quiz-answers div.ays-text-right-answer {
                 color: " . $text_color . ";
             }
-            
-            /* Questions answer image */
-            #ays-quiz-container-" . $id . " .ays-answer-image {
-                width:" . (isset($options['answers_view']) && ($options['answers_view'] == "grid") ? "90%" : "50%") . ";
-            }
-            
+                        
             /* Questions answer right/wrong icons */
             ";
         if($ans_right_wrong_icon == 'default'){
@@ -4080,10 +4269,10 @@ class Quiz_Maker_Public
                 content: '';
             }";
         } else{
-            $quiz_styles .= "#ays-quiz-container-" . $id . " .ays-field input~label.answered.correct:after{
+            $quiz_styles .= "#ays-quiz-container-" . $id . " .ays-field input~label.answered.correct::after{
                 content: url('".AYS_QUIZ_PUBLIC_URL."/images/correct-".$ans_right_wrong_icon.".png');
             }
-            #ays-quiz-container-" . $id . " .ays-field input~label.answered.wrong:after{
+            #ays-quiz-container-" . $id . " .ays-field input~label.answered.wrong::after{
                 content: url('".AYS_QUIZ_PUBLIC_URL."/images/wrong-".$ans_right_wrong_icon.".png');
             }";
             
@@ -4094,6 +4283,24 @@ class Quiz_Maker_Public
                 }";
             }
         }
+
+        if($ans_right_wrong_icon == 'style-9'){
+            $quiz_styles .= "
+                #ays-quiz-container-" . $id . " .ays-field label.answered::after{
+                    height: auto;
+                }";
+        }
+        $quiz_styles .= "
+            #ays-quiz-container-" . $id . " .ays-field label.answered:last-of-type:after{
+                display: none;
+                height: auto;
+                left: " . ($answers_padding+5) . "px;";
+        if($ans_image_caption_position == 'top'){
+            $quiz_styles .= "bottom: " . ($answers_padding+5) . "px;";
+        }else{
+            $quiz_styles .= "top: " . ($answers_padding+5) . "px;";
+        }
+        $quiz_styles .= "}";
 
         $quiz_styles .= "
             /* Dropdown questions */            
@@ -4209,6 +4416,7 @@ class Quiz_Maker_Public
             #ays-quiz-container-" . $id . ".ays_quiz_classic_light .ays-field input:checked+label.answered.correct:before,
             #ays-quiz-container-" . $id . ".ays_quiz_classic_dark .ays-field input:checked+label.answered.correct:before {
                 background-color: ". $color ." !important;
+                background-color: rgba(39,174,96, 1) !important;
             }
             /* Go theme (Version: 1.4.3) | End */
 
@@ -4235,6 +4443,10 @@ class Quiz_Maker_Public
             #ays-quiz-container-" . $id . ".ays_quiz_classic_light .wrong_div{
                 border-color:red !important;
                 opacity: 1 !important;
+                background-color: rgba(243,134,129,0.4) !important;
+            }
+            #ays-quiz-container-" . $id . ".ays_quiz_classic_dark .ays-field.checked_answer_div.wrong_div input:checked~label,
+            #ays-quiz-container-" . $id . ".ays_quiz_classic_light .ays-field.checked_answer_div.wrong_div input:checked~label {
                 background-color: rgba(243,134,129,0.4) !important;
             }
             #ays-quiz-container-" . $id . ".ays_quiz_classic_dark .ays-field,
@@ -4423,18 +4635,29 @@ class Quiz_Maker_Public
                 div#ays-quiz-container-" . $id . " .ays-quiz-question-note-message-box *:not(strong) {
                     text-transform:" . $quiz_admin_note_mobile_text_transform . ";
                     text-decoration: ". $quiz_admin_note_mobile_text_decoration .";
+                    letter-spacing: ". $quiz_admin_note_mobile_letter_spacing ."px;
+                    font-weight: ". $quiz_admin_note_mobile_font_weight .";
                 }
 
                 div#ays-quiz-container-" . $id . " .ays_questtion_explanation *:not(strong) {
                     text-transform:" . $quiz_quest_explanation_mobile_text_transform . ";
+                    text-decoration: ". $quiz_quest_explanation_mobile_text_decoration .";
+                    letter-spacing: ". $quiz_quest_explanation_mobile_letter_spacing ."px;
+                    font-weight: ". $quiz_quest_explanation_mobile_font_weight .";
                 }
 
                 div#ays-quiz-container-" . $id . " .right_answer_text *:not(strong) {
                     text-transform:" . $quiz_right_answer_mobile_text_transform . ";
+                    text-decoration: ". $quiz_right_answers_mobile_text_decoration .";
+                    letter-spacing: ". $quiz_right_answers_mobile_letter_spacing ."px;
+                    font-weight: ". $quiz_right_answers_mobile_font_weight .";
                 }
 
                 div#ays-quiz-container-" . $id . " .wrong_answer_text *:not(strong) {
                     text-transform:" . $quiz_wrong_answer_mobile_text_transform . ";
+                    text-decoration: ". $quiz_wrong_answers_mobile_text_decoration .";
+                    letter-spacing: ". $quiz_wrong_answers_mobile_letter_spacing ."px;
+                    font-weight: ". $quiz_wrong_answers_mobile_font_weight .";
                 }
             }
             /* Custom css styles */
@@ -4633,6 +4856,7 @@ class Quiz_Maker_Public
             'questionImageWidth'                        => $question_image_width,
             'questionImageHeight'                       => $question_image_height,
             'questionImageSizing'                       => $question_image_sizing,
+            'questionImageBorderRadius'                 => $quiz_question_image_border_radius,
             'questionsCounter'                          => $questions_counter,
             'informationForm'                           => $options['information_form'],
             'answersViewClass'                          => $answer_view_class,
@@ -4655,6 +4879,7 @@ class Quiz_Maker_Public
             'question_bank_cats'                        => $question_bank_cats,
             'quiz_enable_keyboard_navigation'           => $quiz_enable_keyboard_navigation,
             'questionsReporting'                        => $questions_reporting,
+            'ans_right_wrong_icon'                      => $ans_right_wrong_icon,
         );
         
         $ays_quiz = (object)array(
@@ -4702,21 +4927,32 @@ class Quiz_Maker_Public
                     margin: 0.625em;
                 }
                 
-                #ays-quiz-container-" . $quiz_id . " .ays-field.checked_answer_div input:checked+label {
+                #ays-quiz-container-" . $quiz_id . " .ays-field.checked_answer_div input:checked~label {
                     background-color: " . $this->hex2rgba($quiz->quizColors['Color'], '0.6') . ";
                 }
 
-                #ays-quiz-container-" . $quiz_id . ".ays_quiz_classic_light  .enable_correction .ays-field.checked_answer_div input:checked+label,
-                #ays-quiz-container-" . $quiz_id . ".ays_quiz_classic_dark  .enable_correction .ays-field.checked_answer_div input:checked+label {
+                #ays-quiz-container-" . $quiz_id . ".ays_quiz_classic_light  .ays_quiz_results .ays-field.checked_answer_div input:checked~label,
+                #ays-quiz-container-" . $quiz_id . ".ays_quiz_classic_dark  .ays_quiz_results .ays-field.checked_answer_div input:checked~label,
+                #ays-quiz-container-" . $quiz_id . ".ays_quiz_classic_light  .enable_correction .ays-field.checked_answer_div input:checked~label,
+                #ays-quiz-container-" . $quiz_id . ".ays_quiz_classic_dark  .enable_correction .ays-field.checked_answer_div input:checked~label {
                     background-color: transparent;
-                }";
+                }
+
+                #ays-quiz-container-" . $quiz_id . ".ays_quiz_classic_light  .ays_quiz_results .not_influence_to_score .ays-field.checked_answer_div input:checked~label,
+                #ays-quiz-container-" . $quiz_id . ".ays_quiz_classic_dark  .ays_quiz_results .not_influence_to_score .ays-field.checked_answer_div input:checked~label,
+                #ays-quiz-container-" . $quiz_id . ".ays_quiz_classic_light  .enable_correction .not_influence_to_score .ays-field.checked_answer_div input:checked~label,
+                #ays-quiz-container-" . $quiz_id . ".ays_quiz_classic_dark  .enable_correction .not_influence_to_score .ays-field.checked_answer_div input:checked~label {
+                    background-color: " . $this->hex2rgba($quiz->quizColors['Color'], '0.6') . ";
+                }
+                ";
         if (! $disable_hover_effect) {
             $additional_css .= "
-                #ays-quiz-container-" . $quiz_id . " .ays-field.checked_answer_div input:checked+label:hover {
+                #ays-quiz-container-" . $quiz_id . " .ays-field.checked_answer_div input:checked~label:hover {
                     background-color: " . $this->hex2rgba($quiz->quizColors['Color'], '0.8') . ";
                 }
 
-                #ays-quiz-container-" . $quiz_id . " .ays-field:hover label{
+                #ays-quiz-container-" . $quiz_id . ".ays-quiz-container.ays_quiz_classic_light .ays-questions-container .ays-field:hover label[for^='ays-answer-'],
+                #ays-quiz-container-" . $quiz_id . " .ays-field:hover:not(.ays-answered-text-input){
                     background: " . $this->hex2rgba($quiz->quizColors['Color'], '0.8') . ";
                     /* border-radius: 4px; */
                     color: #fff;
@@ -4746,7 +4982,7 @@ class Quiz_Maker_Public
 
         $sql = "SELECT *
                 FROM {$wpdb->prefix}aysquiz_quizes
-                WHERE id=" . $id;
+                WHERE id=" . intval($id);
 
         $quiz = $wpdb->get_row($sql, 'ARRAY_A');
 
@@ -4863,6 +5099,9 @@ class Quiz_Maker_Public
                         'max_selection_number'              => $question['max_selection_number'],
                         'enable_min_selection_number'       => $question['enable_min_selection_number'],
                         'min_selection_number'              => $question['min_selection_number'],
+                        'quiz_enable_lazy_loading'          => $options['quiz_enable_lazy_loading'],
+                        'ans_right_wrong_icon'              => $options['ans_right_wrong_icon'],
+                        'key_number'                        => $key,
                     );
                     $answer_container .= $this->ays_default_answer_html($question['questionID'], $quiz_id, $question['questionAnswers'], $ans_options);
                     break;
@@ -4959,7 +5198,10 @@ class Quiz_Maker_Public
                 $question_options['quiz_hide_question_text'] = isset($question_options['quiz_hide_question_text']) ? sanitize_text_field( $question_options['quiz_hide_question_text'] ) : 'off';
                 $quiz_hide_question_text = (isset($question_options['quiz_hide_question_text']) && $question_options['quiz_hide_question_text'] == 'on') ? true : false;
 
-                $question_image_style = "style='width:{$options['questionImageWidth']};height:{$options['questionImageHeight']};object-fit:{$options['questionImageSizing']};object-position:center center;'";
+                // Question Image border radius
+                $quiz_question_image_border_radius = absint ( stripslashes( $options[ 'questionImageBorderRadius' ] ) );
+
+                $question_image_style = "style='width:{$options['questionImageWidth']};height:{$options['questionImageHeight']};object-fit:{$options['questionImageSizing']};border-radius:{$quiz_question_image_border_radius}px;object-position:center center;'";
 
                 // Enable maximum selection number
                 $question_options['enable_max_selection_number'] = isset($question_options['enable_max_selection_number']) ? sanitize_text_field( $question_options['enable_max_selection_number'] ) : 'off';
@@ -5355,6 +5597,43 @@ class Quiz_Maker_Public
         return $answer;
     }
 
+    protected function get_answers_with_question_ids($q_ids){
+        global $wpdb;
+
+        $new_ids_arr = array();
+        if (!empty( $q_ids )) {
+            foreach ($q_ids as $key => $q_id) {
+                if( !is_null($q_id) && $q_id != "" && absint( $q_id ) > 0  ){
+                    $new_ids_arr[] = absint($q_id);
+                }
+            }
+        }
+
+        if( empty( $new_ids_arr ) ){
+            return array();
+        }
+
+        $in_values = $new_ids_arr;
+
+        $in_pholders = implode( ',', array_fill( 0, count( $in_values ), '%d' ) );
+
+        $sql = $wpdb->prepare( 
+            "SELECT id, answer AS question_answer, correct, question_id
+                FROM {$wpdb->prefix}aysquiz_answers c
+                WHERE question_id IN ( $in_pholders )",
+            $in_values
+        );
+
+        $result = $wpdb->get_results( $sql, 'ARRAY_A');
+        $questions = array();
+        
+        foreach($result as $res){
+            $questions[$res['question_id']][$res['id']] = $res;
+        }
+
+        return $questions;
+    }
+
     public function get_quiz_questions_count($id){
         global $wpdb;
 
@@ -5731,7 +6010,12 @@ class Quiz_Maker_Public
                         $correctness_results["question_id_" . $question_id] = $this->check_answer_correctness($question_id, $questions_answer, $calculate_score);
                     }
                 }
-                
+
+                $question_answer_data = array();
+                if( !empty($quiz_questions_ids) ){
+                    $question_answer_data = $this->get_answers_with_question_ids( $quiz_questions_ids );
+                }
+
                 $new_correctness = array();
                 $quiz_weight = array();
                 $corrects_count = 0;
@@ -6027,6 +6311,7 @@ class Quiz_Maker_Public
                 $wp_home_page_url = '<a href="'.$home_main_url.'" target="_blank">'.$home_main_url.'</a>';
 
                 $get_site_title = get_bloginfo('name');
+                $get_site_description = get_bloginfo('description');
                 
                 $message_data = array(
                     'quiz_name'                                 => stripslashes($quiz['title']),
@@ -6067,6 +6352,7 @@ class Quiz_Maker_Public
                     'current_quiz_question_categories_count'    => $current_quiz_question_categories_count,
                     'site_title'                                => $get_site_title,
                     'current_quiz_author_website_url'           => $current_quiz_author_website_url,
+                    'site_description'                          => $get_site_description,
                 );
 
                 $data = array(
@@ -6182,6 +6468,7 @@ class Quiz_Maker_Public
                         "socialHeading"         => $heading_for_share_buttons,
                         "socialLinksHeading"    => $heading_for_social_links,
                         "pass_score_flag"       => $quiz_show_results_based_pass_score_flag,
+                        "question_answer_data"  => $question_answer_data,
                     ));
                     wp_die();                
                 }else{
@@ -6343,6 +6630,73 @@ class Quiz_Maker_Public
         return $answer_res;
     }
 
+    public function get_correct_and_wrong_answers($question_id, $question_type){
+        $question_id = absint(sanitize_text_field($question_id));
+
+        $answers = $this->get_answers_with_question_id($question_id);
+
+        if( empty( $answers ) ){
+            return false;
+        }
+
+        $question_answer = array();
+        switch ($question_type) {
+            case "text":
+            case "short_text":
+            case "number":
+            case "date":
+                foreach ($answers as $key => $answer) {
+                    $question_answer = htmlspecialchars_decode(stripslashes($answer["answer"]), ENT_QUOTES);
+                }
+                break;
+            case "radio":
+            case "checkbox":
+            case "true_or_false":
+            case "select":
+            default:
+                foreach ($answers as $key => $answer) {
+                    $question_answer[ $answer["id"] ] = htmlspecialchars_decode(stripslashes($answer["correct"]), ENT_QUOTES);
+                }
+                break;
+        }
+
+        return $question_answer;
+    }
+
+    public function get_correct_text_answer($question_id, $answer, $calc_method, $options = array()){
+        global $wpdb;
+        $answers_table = $wpdb->prefix . "aysquiz_answers";
+        $question_id = absint(intval($question_id));
+        $checks = $wpdb->get_row("SELECT COUNT(*) AS qanak, answer, weight FROM {$answers_table} WHERE question_id={$question_id}", ARRAY_A);
+
+        $checks['answer'] = (isset( $checks['answer'] ) && $checks['answer'] != "") ? $checks['answer'] : "";
+
+        $correct_answers = mb_strtolower($checks['answer']);
+
+        // Disable strip slashes for answers
+        $options['quiz_disable_answer_stripslashes'] = isset($options['quiz_disable_answer_stripslashes']) ? sanitize_text_field( $options['quiz_disable_answer_stripslashes'] ) : 'off';
+        $quiz_disable_answer_stripslashes = (isset($options['quiz_disable_answer_stripslashes']) && $options['quiz_disable_answer_stripslashes'] == 'on') ? true : false;
+
+        if ( !$quiz_disable_answer_stripslashes ) {
+            $answer = stripslashes($answer);
+        }
+
+        $correct = false;
+        $text_type = $this->text_answer_is($question_id);
+
+        // Enable case sensitive text
+        $options['enable_case_sensitive_text'] = isset($options['enable_case_sensitive_text']) ? sanitize_text_field( $options['enable_case_sensitive_text'] ) : 'off';
+        $enable_case_sensitive_text = (isset($options['enable_case_sensitive_text']) && sanitize_text_field( $options['enable_case_sensitive_text'] ) == 'on') ? true : false;
+
+        if( $text_type == 'text' || $text_type == 'short_text' ){
+            if ( $enable_case_sensitive_text ) {
+                $correct_answers = $checks['answer'];
+            }
+        }
+
+        return $correct_answers;
+    }
+
     public function count_multiple_correct_answers($question_id){
         global $wpdb;
         $answers_table = $wpdb->prefix . "aysquiz_answers";
@@ -6426,6 +6780,8 @@ class Quiz_Maker_Public
         $numbering_type = '';
 
         $quiz_enable_keyboard_navigation = (isset($options['quiz_enable_keyboard_navigation']) && $options['quiz_enable_keyboard_navigation'] == 'on') ? true : false;
+        $quiz_enable_lazy_loading = (isset($options['quiz_enable_lazy_loading']) && $options['quiz_enable_lazy_loading'] === true) ? true : false;
+        $question_key_number = intval($options['key_number']);
         $attributes_for_keyboard = "";
         $class_for_keyboard = "";
         $class_label_for_keyboard = "";
@@ -6442,23 +6798,58 @@ class Quiz_Maker_Public
         foreach ($answers as $key => $answer) {
             $answer_image = (isset($answer['image']) && $answer['image'] != '') ? "<img src='{$answer["image"]}' alt='answer_image' class='ays-answer-image'>" : "";
 
-            if($answer_image == ""){
-                $ays_field_style = "";
-                $answer_label_style = "";
-            }else{
-                if($options['rtlDirection']){
-                    $ays_flex_dir = 'unset';
-                    $ays_border_dir = "right";
-                }else{
-                    $ays_flex_dir = 'row-reverse';
-                    $ays_border_dir = "left";
+            $answer_image = "";
+            if(isset($answer['image']) && $answer['image'] != ''){
+                $ans_img = esc_url($answer['image']);
+                $answer_image_alt_text = $this->ays_quiz_get_image_id_by_url($ans_img);
+
+                $question_image_lazy_loading_attr = "";
+                if ( $quiz_enable_lazy_loading ) {
+                    if( $question_key_number != 0 ){
+                        $question_image_lazy_loading_attr = 'loading="lazy"';
+                    }
                 }
+
+                $answer_image = "<img src='". esc_url($ans_img) ."' alt='". esc_attr($answer_image_alt_text) ."' ". esc_attr($question_image_lazy_loading_attr) ." class='ays-answer-image'>";
+            }
+
+            $ays_field_style = "";
+            $answer_label_style = "";
+
+            // if($answer_image == ""){
+            //     $ays_field_style = "";
+            //     $answer_label_style = "";
+            // }else{
+            //     if($options['rtlDirection']){
+            //         $ays_flex_dir = 'unset';
+            //         $ays_border_dir = "right";
+            //     }else{
+            //         $ays_flex_dir = 'row-reverse';
+            //         $ays_border_dir = "left";
+            //     }
+            //     if($options['answersViewClass'] == 'grid'){
+            //         $ays_field_style = "style='display: block; height: fit-content; margin-bottom: 10px; width:200px;'";
+            //         $answer_label_style = "style='margin-bottom: 0; box-shadow: 0px 0px 10px; line-height: 1.5'";
+            //     }else{
+            //         $ays_field_style = "style='margin-bottom: 10px; border-radius: 4px 4px 0 0; overflow: hidden; display: flex; box-shadow: 0px 0px 10px; flex-direction: {$ays_flex_dir};'";
+            //         $answer_label_style = "style='border-radius:0; border-{$ays_border_dir}:1px solid #ccc; line-height: 100px'";
+            //     }
+            // }
+
+            if($answer_image == ""){
+                $answer_label_class = "";
+                $answer_img_label_class = " ays_position_initial ";
+            }else{
                 if($options['answersViewClass'] == 'grid'){
-                    $ays_field_style = "style='display: block; height: fit-content; margin-bottom: 10px; width:200px;'";
-                    $answer_label_style = "style='margin-bottom: 0; box-shadow: 0px 0px 10px; line-height: 1.5'";
+                    $answer_label_class = " ays_empty_before_content ";
                 }else{
-                    $ays_field_style = "style='margin-bottom: 10px; border-radius: 4px 4px 0 0; overflow: hidden; display: flex; box-shadow: 0px 0px 10px; flex-direction: {$ays_flex_dir};'";
-                    $answer_label_style = "style='border-radius:0; border-{$ays_border_dir}:1px solid #ccc; line-height: 100px'";
+                    $answer_label_class = "";
+                }
+
+                if( !empty($options['ans_right_wrong_icon']) && $options['ans_right_wrong_icon'] == 'none'){
+                    $answer_img_label_class = " ays_answer_caption ays_without_after_content ";
+                } else {
+                    $answer_img_label_class = " ays_answer_caption ";
                 }
             }
 
@@ -6485,6 +6876,7 @@ class Quiz_Maker_Public
             }
 
             $label = "";
+            $answer_content = "";
             if( $answer["answer"] != "" ){
                 if($options['useHTML']){
                     $answer_content = do_shortcode((stripslashes($answer["answer"])));
@@ -6499,11 +6891,16 @@ class Quiz_Maker_Public
                     $numbering_type = $numbering_type . ' ';
                 }
 
-                $label .= "<label for='ays-answer-{$answer["id"]}-{$quiz_id}' class='ays_answer_image {$correct_answer_flag} $class_label_for_keyboard' $answer_label_style>" . $numbering_type  . $answer_content . "</label>";
+                // $label .= "<label for='ays-answer-{$answer["id"]}-{$quiz_id}' class='ays_answer_image {$correct_answer_flag} $class_label_for_keyboard' $answer_label_style>" . $numbering_type  . $answer_content . "</label>";
             }
             if( $answer_image != "" ){
-                $label .= "<label for='ays-answer-{$answer["id"]}-{$quiz_id}' style='border-radius:0;margin:0;padding:0;height:100px;'>{$answer_image}</label>";
+                // $label .= "<label for='ays-answer-{$answer["id"]}-{$quiz_id}' style='border-radius:0;margin:0;padding:0;height:100px;'>{$answer_image}</label>";
+                // $label .= "<label for='ays-answer-{$answer["id"]}-{$quiz_id}' class='ays_answer_image {$correct_answer_flag} ays_empty_before_content'>{$answer_image}</label>";
             }
+
+            $label .= "<label for='ays-answer-{$answer["id"]}-{$quiz_id}' class='$answer_label_class $answer_img_label_class $class_label_for_keyboard'>" . $numbering_type . $answer_content . "</label>";
+            $label .= "<label for='ays-answer-{$answer["id"]}-{$quiz_id}' class='ays_answer_image {$correct_answer_flag} ays_empty_before_content'>{$answer_image}</label>";
+
             $answer_container .= "
             <div class='ays-field ays_" . $options['answersViewClass'] . "_view_item ".$class_for_keyboard."' ".$attributes_for_keyboard." $ays_field_style>
                 <input type='hidden' name='ays_answer_correct[]' value='0'/>
@@ -6515,7 +6912,7 @@ class Quiz_Maker_Public
             </div>";
         }
 
-        $script_data_arr['question_answer'] = $question_answer;
+        // $script_data_arr['question_answer'] = $question_answer;
 
         $answer_container_script_html .= '<script>';
         $answer_container_script_html .= "
@@ -6587,7 +6984,9 @@ class Quiz_Maker_Public
             foreach ($answers as $answer) {
                 $placeholder = isset($answer["placeholder"]) && $answer["placeholder"] != '' ? stripslashes(htmlentities($answer["placeholder"], ENT_QUOTES)) : '';
                 $answer_image = (isset($answer['image']) && $answer['image'] != '') ? $answer["image"] : "";
-                $answer_container .= "<textarea style='$enable_correction_textarea' type='text' placeholder='$placeholder' class='ays-text-input ". $ays_question_limit_length_class ."' autocomplete='off' name='ays_questions[ays-question-{$question_id}]' data-question-id='". $question_id ."' ></textarea>
+                $answer_id = (isset($answer['id']) && $answer['id'] != '') ? intval($answer["id"]) : 0;
+
+                $answer_container .= "<textarea style='$enable_correction_textarea' type='text' placeholder='$placeholder' class='ays-text-input ". $ays_question_limit_length_class ."' autocomplete='off' name='ays_questions[ays-question-{$question_id}]' data-question-id='". $question_id ."' data-answer-id='" . $answer_id . "'></textarea>
                 <input type='hidden' name='ays_answer_correct[]' value='0'/>
                 <button type='button' style='$enable_correction' class='ays_check_answer action-button ".$class_for_keyboard." ". $question_not_influence_class ."'>".$this->buttons_texts['checkButton']."</button>";
                 $answer_container .= "<script>
@@ -6596,7 +6995,7 @@ class Quiz_Maker_Public
                         }
                         window.quizOptions_".$quiz_id."['".$question_id."'] = '" . base64_encode(json_encode(array(
                             'question_type'                     => 'text',
-                            'question_answer'                   => htmlspecialchars_decode(stripslashes($answer["answer"]), ENT_QUOTES),
+                            // 'question_answer'                   => htmlspecialchars_decode(stripslashes($answer["answer"]), ENT_QUOTES),
                             'enable_question_text_max_length'   => $enable_question_text_max_length,
                             'question_text_max_length'          => $question_text_max_length,
                             'question_limit_text_type'          => $question_limit_text_type,
@@ -6668,7 +7067,9 @@ class Quiz_Maker_Public
             foreach ($answers as $answer) {
                 $placeholder = isset($answer["placeholder"]) && $answer["placeholder"] != '' ? stripslashes(htmlentities($answer["placeholder"], ENT_QUOTES)) : '';
                 $answer_image = (isset($answer['image']) && $answer['image'] != '') ? $answer["image"] : "";
-                $answer_container .= "<input style='$enable_correction_textarea' type='text' placeholder='$placeholder' class='ays-text-input ". $ays_question_limit_length_class ."' autocomplete='off' name='ays_questions[ays-question-{$question_id}]' data-question-id='". $question_id ."'>
+                $answer_id = (isset($answer['id']) && $answer['id'] != '') ? intval($answer["id"]) : 0;
+
+                $answer_container .= "<input style='$enable_correction_textarea' type='text' placeholder='$placeholder' class='ays-text-input ". $ays_question_limit_length_class ."' autocomplete='off' name='ays_questions[ays-question-{$question_id}]' data-question-id='". $question_id ."' data-answer-id='" . $answer_id . "'>
                 <input type='hidden' name='ays_answer_correct[]' value='0'/>
                 <button type='button' style='$enable_correction' class='ays_check_answer action-button ". $class_for_keyboard." ". $question_not_influence_class ."'>".$this->buttons_texts['checkButton']."</button>";
                 $answer_container .= "<script>
@@ -6677,7 +7078,7 @@ class Quiz_Maker_Public
                         }
                         window.quizOptions_".$quiz_id."['".$question_id."'] = '" . base64_encode(json_encode(array(
                             'question_type'                     => 'short_text',
-                            'question_answer'                   => htmlspecialchars_decode(stripslashes($answer["answer"]), ENT_QUOTES),
+                            // 'question_answer'                   => htmlspecialchars_decode(stripslashes($answer["answer"]), ENT_QUOTES),
                             'enable_question_text_max_length'   => $enable_question_text_max_length,
                             'question_text_max_length'          => $question_text_max_length,
                             'question_limit_text_type'          => $question_limit_text_type,
@@ -6768,7 +7169,9 @@ class Quiz_Maker_Public
             foreach ($answers as $answer) {
                 $placeholder = isset($answer["placeholder"]) && $answer["placeholder"] != '' ? stripslashes(htmlentities($answer["placeholder"], ENT_QUOTES)) : '';
                 $answer_image = (isset($answer['image']) && $answer['image'] != '') ? $answer["image"] : "";
-                $answer_container .= "<input style='$enable_correction_textarea' type='number' placeholder='$placeholder' class='ays-text-input ". $ays_question_limit_length_class ."' ". $ays_quiz_question_number_message_html ." ". $question_number_min_message_html ." name='ays_questions[ays-question-{$question_id}]' data-question-id='". $question_id ."'>
+                $answer_id = (isset($answer['id']) && $answer['id'] != '') ? intval($answer["id"]) : 0;
+
+                $answer_container .= "<input style='$enable_correction_textarea' type='number' placeholder='$placeholder' class='ays-text-input ". $ays_question_limit_length_class ."' ". $ays_quiz_question_number_message_html ." ". $question_number_min_message_html ." name='ays_questions[ays-question-{$question_id}]' data-question-id='". $question_id ."' data-answer-id='" . $answer_id . "'>
                 <input type='hidden' name='ays_answer_correct[]' value='0'/>
                 <button type='button' style='$enable_correction' class='ays_check_answer action-button ". $class_for_keyboard." ". $question_not_influence_class ."'>".$this->buttons_texts['checkButton']."</button>";
                 $answer_container .= "<script>
@@ -6777,7 +7180,7 @@ class Quiz_Maker_Public
                         }
                         window.quizOptions_".$quiz_id."['".$question_id."'] = '" . base64_encode(json_encode(array(
                             'question_type'                         => 'text',
-                            'question_answer'                       => htmlspecialchars(stripslashes($answer["answer"])),
+                            // 'question_answer'                       => htmlspecialchars(stripslashes($answer["answer"])),
                             'enable_question_number_max_length'     => $enable_question_number_max_length,
                             'question_number_max_length'            => $question_number_max_length,
                             'enable_question_number_min_length'     => $enable_question_number_min_length,
@@ -6817,7 +7220,9 @@ class Quiz_Maker_Public
             foreach ($answers as $answer) {
                 $placeholder = isset($answer["placeholder"]) && $answer["placeholder"] != '' ? stripslashes(htmlentities($answer["placeholder"], ENT_QUOTES)) : '';
                 $answer_image = (isset($answer['image']) && $answer['image'] != '') ? $answer["image"] : "";
-                $answer_container .= "<input style='$enable_correction_textarea' type='date' autocomplete='off' placeholder='$placeholder' class='ays-text-input' name='ays_questions[ays-question-{$question_id}]'>
+                $answer_id = (isset($answer['id']) && $answer['id'] != '') ? intval($answer["id"]) : 0;
+                
+                $answer_container .= "<input style='$enable_correction_textarea' type='date' autocomplete='off' placeholder='$placeholder' class='ays-text-input' name='ays_questions[ays-question-{$question_id}]' data-answer-id='" . $answer_id . "'>
                 <input type='hidden' name='ays_answer_correct[]' value='0'/>
                 <button type='button' style='$enable_correction' class='ays_check_answer action-button ". $class_for_keyboard."  ". $question_not_influence_class ."'>".$this->buttons_texts['checkButton']."</button>";
                 $answer_container .= "<script>
@@ -6826,7 +7231,7 @@ class Quiz_Maker_Public
                         }
                         window.quizOptions_".$quiz_id."['".$question_id."'] = '" . base64_encode(json_encode(array(
                             'question_type'     => 'date',
-                            'question_answer'   => htmlspecialchars(stripslashes($answer["answer"]))
+                            // 'question_answer'   => htmlspecialchars(stripslashes($answer["answer"]))
                         ))) . "';
                     </script>";
             }
@@ -6858,7 +7263,7 @@ class Quiz_Maker_Public
 
                 $question_answer[ $answer["id"] ] = htmlspecialchars_decode(stripslashes($answer["correct"]), ENT_QUOTES);
 
-                $answer_image = (isset($answer['image']) && $answer['image'] != '') ? $answer["image"] : "";
+                $answer_image = (isset($answer['image']) && $answer['image'] != '') ? esc_url($answer["image"]) : "";
                 $answer_container .= "<option data-nkar='{$answer_image}' data-chisht='0' class='ays_answer_image {$correct_answer_flag}' value='{$answer["id"]}'>" . $numbering_type . do_shortcode(htmlspecialchars(stripslashes($answer["answer"]))) . "</option>";
             }
         $answer_container .= "</select>";
@@ -6869,7 +7274,7 @@ class Quiz_Maker_Public
             }
         $answer_container .= "</div>";
 
-        $script_data_arr['question_answer'] = $question_answer;
+        // $script_data_arr['question_answer'] = $question_answer;
 
         $answer_container_script_html .= '<script>';
         $answer_container_script_html .= "
@@ -8086,176 +8491,6 @@ class Quiz_Maker_Public
         return null;
     }
 
-    public static function ays_quiz_allowed_html() {
-        $additionalAllowedTags = wp_kses_allowed_html('post');
-        return array_merge(
-            $additionalAllowedTags,
-            array(
-                'div' => array(
-                    'class'          => true,
-                    'id'             => true,
-                    'style'          => true,
-                    'data-*'         => true,
-                    'aria-selected'  => true,
-                ),
-                'svg' => array(
-                    'class'          => true,
-                    'width'          => true,
-                    'height'         => true,
-                    'viewBox'        => true,
-                    'viewbox'        => true,
-                    'xmlns'          => true,
-                    'fill'           => true,
-                ),
-                'path' => array(
-                    'class'          => true,
-                    'd'              => true,
-                    'fill'           => true,
-                    'fill-rule'      => true,
-                    'clip-rule'      => true,
-                    'stroke-width'   => true,
-                    'stroke-linecap' => true,
-                ),
-                'circle'             => array(
-                    'style'          => true,
-                    'id'             => true,
-                    'class'          => true,
-                    'r'              => true,
-                    'cx'             => true,
-                    'cy'             => true,
-                ),
-                'rect' => array(
-                    'class'          => true,
-                    'x'              => true,
-                    'y'              => true,
-                    'width'          => true,
-                    'height'         => true,
-                    'rx'             => true,
-                    'fill'           => true,
-                    'stroke'         => true,
-                    'style'          => true,
-                    'transform'      => true,
-                ),
-                'defs' => array(
-                    'class'          => true,
-                    'width'          => true,
-                    'height'         => true,
-                    'fill'           => true,
-                    'style'          => true,
-                ),
-                'pattern' => array(
-                    'class'          => true,
-                    'id'             => true,
-                    'width'          => true,
-                    'height'         => true,
-                    'patternContentUnits' => true,
-                    'patterncontentunits' => true,
-                    'style'          => true,
-                ),
-                'use' => array(
-                    'class'          => true,
-                    'id'             => true,
-                    'xlink'          => true,
-                    'xlink:href'     => true,
-                    'transform'      => true,
-                    'style'          => true,
-                ),
-                'image' => array(
-                    'class'         => true,
-                    'id'            => true,
-                    'xlink'         => true,
-                    'xlink:href'    => true,
-                    'width'         => true,
-                    'height'        => true,
-                    'style'         => true,
-                ),
-                'video' => array(
-                    'class'         => true,
-                    'id'            => true,
-                    'controls'      => true,
-                    'style'         => true,
-                ),
-                'source' => array(
-                    'class'         => true,
-                    'id'            => true,
-                    'src'           => true,
-                    'style'         => true,
-                ),
-                'form' => array(
-                    'name'          => true,
-                    'id'            => true,
-                    'action'        => true,
-                    'method'        => true,
-                    'data-*'        => true,
-                    'style'         => true,
-                ),
-                'input' => array(
-                    'id'            => true,
-                    'name'          => true,
-                    'class'         => true,
-                    'type'          => true,
-                    'value'         => true,
-                    'size'          => true,
-                    'required'      => true,
-                    'readonly'      => true,
-                    'data-*'        => true,
-                    'style'         => true,
-                    'onClick'       => true,
-                    'onclick'       => true,
-                ),
-                'select' => array(
-                    'id' => true,
-                    'name' => true,
-                    'class' => true,
-                    'type' => true,
-                    'value' => true,
-                    'size' => true,
-                    'required' => true,
-                    'readonly' => true,
-                    'data-*' => true,
-                    'style' => true,
-                ),
-                'option' => array(
-                    'id' => true,
-                    'class' => true,
-                    'type' => true,
-                    'value' => true,
-                    'size' => true,
-                    'required' => true,
-                    'readonly' => true,
-                    'data-*' => true,
-                    'style' => true,
-                ),
-                'progress' => array(
-                    'id' => true,
-                    'class' => true,
-                    'max' => true,
-                    'value' => true,
-                    'data-*' => true,
-                    'style' => true,
-                ),
-                'img' => array(
-                    'id' => true,
-                    'class' => true,
-                    'loading' => true,
-                    'decoding' => true,
-                    'src' => true,
-                    'sizes' => true,
-                    'srcset' => true,
-                    'width' => true,
-                    'height' => true,
-                ),
-                'a' => array(
-                    'aria-selected' => true,
-                    'data-*' => true,
-                    'style' => true,
-                    'target' => true,
-                ),
-            ),
-            $additionalAllowedTags
-        );
-    }
-
     /**
      * Fix [ays_quiz] shortcode inside Elementor text-editor widgets
      * tid=30764,30758
@@ -8355,5 +8590,170 @@ class Quiz_Maker_Public
         }
 
         wp_die();
+    }
+
+    public function ays_quiz_check_answer() {
+
+        if(empty( $_REQUEST['_ajax_nonce'] )){
+            wp_send_json_error( array( 'message' => 'Invalid request' ) );
+        }
+
+        if ( ! check_ajax_referer( 'ays_quiz_nonce', sanitize_key( $_REQUEST['_ajax_nonce'] ) ) ) {
+            wp_send_json_error( array( 'message' => 'Invalid request' ) );
+        }
+
+        $quiz_id     = isset($_POST['quiz_id']) && !empty($_POST['quiz_id']) ? absint($_POST['quiz_id']) : 0;
+
+        if(empty($quiz_id) || $quiz_id == 0){
+            wp_send_json_error( array( 'message' => 'Invalid request' ) );
+        }
+
+        $quiz = $this->get_quiz_by_id($quiz_id);
+        $options = ( isset($quiz['options']) && ( json_decode($quiz['options'], true) != null ) ) ? json_decode($quiz['options'], true) : array();
+
+        if(empty($options)){
+            wp_send_json_error( array( 'message' => 'Invalid request' ) );
+        }
+
+        $enable_correction = false;
+        if(isset($options['enable_correction']) && $options['enable_correction'] == "on"){
+            $enable_correction = true;
+        }
+
+        if(!$enable_correction){
+            wp_send_json_error( array( 'message' => 'Invalid request' ) );
+        }
+
+        $question_id = isset($_POST['question_id']) && !empty($_POST['question_id']) ? absint($_POST['question_id']) : 0;
+        $question_type = isset($_POST['question_type']) && !empty($_POST['question_type']) ? sanitize_text_field($_POST['question_type']) : 'radio';
+        $user_answer = isset($_POST['answer']) ? sanitize_text_field($_POST['answer']) : '';
+        $questions_answer = $user_answer;
+
+        $calculate_score = 'by_correctness';
+        $strong_count_checkbox = true;
+
+        $correctness = array();
+        $correctness_results = array();
+
+        $quests = array();
+        $quiz_questions_ids = array();
+        $question_bank_by_categories1 = array();
+
+        if( absint($question_id) > 0 ){
+            $quiz_questions_ids[] = strval( absint($question_id) );
+        }
+
+        $questions_categories = $this->get_questions_categories( implode( ',', $quiz_questions_ids ) );
+        $quest_s = $this->get_quiz_questions_by_ids($quiz_questions_ids);
+        foreach($quest_s as $quest){
+            $quests[$quest['id']] = $quest;
+        }
+
+        $continue = false;
+        if($this->is_question_not_influence($question_id)){
+            $continue = true;
+
+            wp_send_json_success( array(
+                'correct' => true,
+                'answer'  => '', //$correct_answer,
+                'not_influence_question'  => true,
+            ) );
+
+        }
+        $multiple_correctness = array();
+        $has_multiple = $this->has_multiple_correct_answers($question_id);
+        if ($has_multiple) {                        
+            if (is_array($questions_answer)) {
+                foreach ($questions_answer as $answer_id) {
+                    $answer_id = intval($answer_id);
+                    $multiple_correctness[] = $this->check_answer_correctness($question_id, $answer_id, $calculate_score);
+                }
+                
+                if($calculate_score == 'by_points'){
+                    if(!$continue){
+                        $correctness[$question_id] = array_sum($multiple_correctness);
+                    }
+                    $correctness_results["question_id_" . $question_id] = array_sum($multiple_correctness);
+                    // continue;
+                }
+                
+                if($strong_count_checkbox === false){
+                    if(!$continue){
+                        $correctness[$question_id] = $this->isHomogenousStrong($multiple_correctness, $question_id);
+                    }
+                    $correctness_results["question_id_" . $question_id] = $this->isHomogenousStrong($multiple_correctness, $question_id);
+                }else{
+                    if ($this->isHomogenous($multiple_correctness, $question_id)) {
+                        if(!$continue){
+                            $correctness[$question_id] = true;
+                        }
+                        $correctness_results["question_id_" . $question_id] = true;
+                    } else {
+                        if(!$continue){
+                            $correctness[$question_id] = false;
+                        }
+                        $correctness_results["question_id_" . $question_id] = false;
+                    }
+                }
+            } else {
+                if($calculate_score == 'by_points'){
+                    $questions_answer = intval($questions_answer);
+                    if(!$continue){
+                        $correctness[$question_id] = $this->check_answer_correctness($question_id, $questions_answer, $calculate_score);
+                    }
+                    $correctness_results["question_id_" . $question_id] = $this->check_answer_correctness($question_id, $questions_answer, $calculate_score);
+                    // continue;
+                }
+                if($strong_count_checkbox === false){
+                    $questions_answer = intval($questions_answer);
+                    if($this->check_answer_correctness($question_id, $questions_answer, $calculate_score)){
+                        if(!$continue){
+                            $correctness[$question_id] = 1 / intval($this->count_multiple_correct_answers($question_id));
+                        }
+                    }else{
+                        if(!$continue){
+                            $correctness[$question_id] = false;
+                        }
+                    }
+                    $correctness_results["question_id_" . $question_id] = $this->check_answer_correctness($question_id, $questions_answer, $calculate_score);
+                }else{
+                    if(!$continue){
+                        $correctness[$question_id] = false;
+                    }
+                    $correctness_results["question_id_" . $question_id] = false;
+                }
+            }
+        } elseif($this->has_text_answer($question_id)) {
+            $quests_data = ( isset( $quests[$question_id] ) && ! empty( $quests[$question_id] ) ) ? $quests[$question_id] : array();
+            $quests_data_options = isset( $quests_data['options'] ) ? json_decode( $quests_data['options'], true ) : array(); 
+
+            $correctness_data = $this->check_text_answer_correctness($question_id, $questions_answer, $calculate_score, $quests_data_options);
+
+            if(!$continue){
+                $correctness[$question_id] = $correctness_data;
+            }
+            $correctness_results["question_id_" . $question_id] = $correctness_data;
+        } else {
+            $questions_answer = intval($questions_answer);
+
+            $correctness_data = $this->check_answer_correctness($question_id, $questions_answer, $calculate_score);
+
+            if(!$continue){
+                $correctness[$question_id] = $correctness_data;
+            }
+            $correctness_results["question_id_" . $question_id] = $correctness_data;
+        }
+
+        $question_answer = $this->get_correct_and_wrong_answers($question_id, $question_type);
+
+        $is_correct = false;
+        if ( $user_answer !== '' && !empty($question_answer)) {
+            $is_correct = $correctness[$question_id];
+        }
+
+        wp_send_json_success( array(
+            'correct'           => $is_correct,
+            'question_answer'   => $question_answer,
+        ) );
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+if (!defined('ABSPATH')) exit; // Exit if accessed directly
+
 $course_page_url = sprintf('?page=%s', 'quiz-maker');
 // $course_add_new_url = sprintf('?page=%s&action=%s', 'quiz-maker', 'add');
 $lessons_page_url = admin_url( 'edit.php?post_type=flessons' );
@@ -195,6 +197,36 @@ $new_questions_page_url = sprintf('?page=%s&action=%s', 'quiz-maker-questions', 
                         </div>
                     </a>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What's New Section -->
+    <section id="quiz-maker-what-is-new" class="quiz-maker-what-is-new-section">
+        <div class="quiz-maker-what-is-new-container">
+            <a href="https://wordpress.org/plugins/quiz-maker/#developers" class="quiz-maker-what-is-new-see-more-btn" target="_blank">
+                <?php echo esc_html__('Show More', 'quiz-maker'); ?>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="quiz-maker-what-is-new-btn-icon">
+                    <path d="M15 3h6v6"></path>
+                    <path d="M10 14 21 3"></path>
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                </svg>
+            </a>
+            
+            <div class="quiz-maker-what-is-new-header">
+                <h2 class="quiz-maker-what-is-new-title"><?php echo esc_html__('What’s New', 'quiz-maker'); ?></h2>
+                <p class="quiz-maker-what-is-new-subtitle"><?php echo esc_html__('New Features Added in Free Version', 'quiz-maker'); ?></p>
+            </div>
+            
+            <div class="quiz-maker-what-is-new-content">
+                <div class="quiz-maker-what-is-new-version-badge"><?php echo esc_html__('New', 'quiz-maker'); ?></div>
+                
+                <ul class="quiz-maker-what-is-new-features-list">
+                    <li class="quiz-maker-what-is-new-feature-item"><?php echo esc_html__('Answer image functionality', 'quiz-maker'); ?></li>
+                    <li class="quiz-maker-what-is-new-feature-item"><?php echo esc_html__('Question report functionality', 'quiz-maker'); ?></li>
+                    <li class="quiz-maker-what-is-new-feature-item"><?php echo esc_html__('Question Report Statistics in the Dashboard Widget', 'quiz-maker'); ?></li>
+                    <li class="quiz-maker-what-is-new-feature-item"><?php echo esc_html__('Keyboard navigation option', 'quiz-maker'); ?></li>
+                </ul>
             </div>
         </div>
     </section>

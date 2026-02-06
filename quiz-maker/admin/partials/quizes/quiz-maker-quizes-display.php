@@ -1,5 +1,7 @@
 <?php
 
+if (!defined('ABSPATH')) exit; // Exit if accessed directly
+
 $action = ( isset($_GET['action']) ) ? sanitize_text_field( $_GET['action'] ) : '';
 $id     = ( isset($_GET['quiz']) ) ? sanitize_text_field( $_GET['quiz'] ) : null;
 
@@ -45,7 +47,7 @@ $quiz_accordion_svg_html = '
     </svg>
 </div>';
 
-$svg_sanitize_properties = self::ays_quiz_svg_sanitize_allowed_properties();
+$svg_sanitize_properties = Quiz_Maker_Admin::ays_quiz_svg_sanitize_allowed_properties();
 
 if(empty($svg_sanitize_properties)){
     $svg_sanitize_properties = 'post';
@@ -120,7 +122,8 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
     </div>
     <h1 class="wp-heading-inline">
         <?php
-            echo esc_html(get_admin_page_title());
+            echo esc_html__( "Quizzes", 'quiz-maker' );
+
             // echo sprintf( '<a href="?page=%s&action=%s" class="page-title-action button-primary ays-quiz-add-new-button ays-quiz-add-new-button-new-design"> %s '  . __('Add New', 'quiz-maker') . '</a>', esc_attr( $_REQUEST['page'] ), 'add', $plus_icon_svg);
         ?>
     </h1>
@@ -129,6 +132,9 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
     <?php if($max_id <= 3): ?>
     <div class="ays-quiz-admin-notice notice notice-success is-dismissible">
         <p style="font-size:14px;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10.7541 0.0528105C8.02071 0.318022 5.13594 1.75774 3.25374 3.77525C1.10672 6.0769 0.00010276 8.88057 0.00010276 12.0252C-0.0093555 14.5353 0.633806 16.6285 2.05254 18.7597C3.81178 21.3929 6.64926 23.2494 9.88398 23.865C10.8298 24.045 12.8539 24.045 13.9794 23.865C18.5194 23.1262 22.3027 19.7353 23.5512 15.2551C24.7524 10.9644 23.5039 6.43683 20.2692 3.33954C18.3397 1.49253 15.7576 0.299078 13.2511 0.0906979C11.804 -0.0229642 11.577 -0.0229642 10.7541 0.0528105ZM13.743 3.83208C16.5615 4.45722 18.7369 6.3137 19.8057 8.99423C20.4016 10.4908 20.5434 11.9873 20.2408 13.5691C20.0611 14.4784 19.3801 14.9899 18.4815 14.8857C17.9897 14.8289 17.6303 14.6016 17.3749 14.1564C17.2236 13.9006 17.1952 13.7017 17.2236 13.124C17.2993 11.4853 17.1668 10.5287 16.7412 9.68568C16.4007 9.0037 15.5589 8.03757 14.9536 7.63976C14.0362 7.02409 13.4592 6.84412 12.2296 6.78729C11.246 6.7494 11.0946 6.76835 10.3569 7.00514C8.16258 7.725 6.72492 9.68568 6.72492 11.9779C6.72492 13.5407 7.19784 14.6584 8.32337 15.7666C9.55294 16.9695 10.4704 17.301 12.5418 17.2632C14.0362 17.2442 14.1497 17.2821 14.5753 17.8693C15.0671 18.5513 14.8969 19.5364 14.2159 19.991C13.5632 20.4267 11.4068 20.5215 9.98802 20.1805C7.68021 19.6122 5.5521 17.9262 4.51169 15.814C3.8307 14.4405 3.65099 13.6165 3.66045 11.9305C3.66045 10.6707 3.68882 10.415 3.91582 9.6762C5.02244 6.06743 8.20041 3.67105 11.927 3.65211C12.5796 3.65211 13.2038 3.70894 13.743 3.83208ZM15.1333 13.2566C15.3792 13.3134 15.7765 13.6354 16.7791 14.6205C18.6802 16.4865 19.2193 17.1116 19.3044 17.5852C19.4084 18.1061 19.276 18.485 18.8599 18.9113C18.2924 19.4985 17.5925 19.5648 16.9398 19.1102C16.8074 19.0154 15.9278 18.1535 14.9914 17.1874C13.62 15.7855 13.2511 15.3593 13.166 15.0562C13.0336 14.5826 13.166 14.0617 13.516 13.6733C13.7808 13.3797 14.4145 13.0955 14.6699 13.1618C14.7455 13.1808 14.9536 13.2281 15.1333 13.2566Z" fill="#E85011"/>
+            </svg>
             <strong>
                 <?php echo esc_html__( "If you haven't created questions yet, you need to do it first.", 'quiz-maker' ); ?> 
             </strong>
@@ -1765,12 +1771,41 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
-                                                <select name="ays_quick_quiz_admin_note_text_transform" id="ays_quick_quiz_admin_note_text_transform" class="ays-text-input ays-text-input-short" style="display:block;">
-                                                    <option value="uppercase"><?php echo esc_html__( "Uppercase", 'quiz-maker' ); ?></option>
-                                                    <option value="lowercase"><?php echo esc_html__( "Lowercase", 'quiz-maker' ); ?></option>
-                                                    <option value="capitalize"><?php echo esc_html__( "Capitalize", 'quiz-maker' ); ?></option>
-                                                    <option value="none" selected><?php echo esc_html__( "None", 'quiz-maker' ); ?></option>
-                                                </select>
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div style="margin-bottom: 10px;">
+                                                            <label for='ays_quick_quiz_admin_note_text_transform'>
+                                                                <?php echo esc_html__('On desktop', 'quiz-maker'); ?>
+                                                            </label>
+                                                        </div>
+                                                        <div class="ays_quiz_display_flex_width">
+                                                            <select name="ays_quick_quiz_admin_note_text_transform" id="ays_quick_quiz_admin_note_text_transform" class="ays-text-input ays-text-input-short" style="display:block;">
+                                                                <option value="uppercase"><?php echo esc_html__( "Uppercase", 'quiz-maker' ); ?></option>
+                                                                <option value="lowercase"><?php echo esc_html__( "Lowercase", 'quiz-maker' ); ?></option>
+                                                                <option value="capitalize"><?php echo esc_html__( "Capitalize", 'quiz-maker' ); ?></option>
+                                                                <option value="none" selected><?php echo esc_html__( "None", 'quiz-maker' ); ?></option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <hr>
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div style="margin-bottom: 10px;">
+                                                            <label for='ays_quick_quiz_admin_note_mobile_text_transform'>
+                                                                <?php echo esc_html__('On mobile', 'quiz-maker'); ?>
+                                                            </label>
+                                                        </div>
+                                                        <div class="ays_quiz_display_flex_width">
+                                                            <select name="ays_quick_quiz_admin_note_mobile_text_transform" id="ays_quick_quiz_admin_note_mobile_text_transform" class="ays-text-input ays-text-input-short" style="display:block;">
+                                                                <option value="uppercase"><?php echo esc_html__( "Uppercase", 'quiz-maker' ); ?></option>
+                                                                <option value="lowercase"><?php echo esc_html__( "Lowercase", 'quiz-maker' ); ?></option>
+                                                                <option value="capitalize"><?php echo esc_html__( "Capitalize", 'quiz-maker' ); ?></option>
+                                                                <option value="none" selected><?php echo esc_html__( "None", 'quiz-maker' ); ?></option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div><!-- Admin note text transform -->
                                         <hr/>
@@ -1781,12 +1816,41 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
-                                                <select class="ays-text-input ays-text-input-short" id="ays_quick_quiz_admin_note_text_decoration" name="ays_quick_quiz_admin_note_text_decoration">
-                                                    <option value="none" selected><?php echo esc_html__('None','quiz-maker'); ?></option>
-                                                    <option value="overline"><?php echo esc_html__('Overline','quiz-maker'); ?></option>
-                                                    <option value="line-through"><?php echo esc_html__('Line through','quiz-maker'); ?></option>
-                                                    <option value="underline"><?php echo esc_html__('Underline','quiz-maker'); ?></option>
-                                                </select>
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div style="margin-bottom: 10px;">
+                                                            <label for='ays_quick_quiz_admin_note_text_decoration'>
+                                                                <?php echo esc_html__('On desktop', 'quiz-maker'); ?>
+                                                            </label>
+                                                        </div>
+                                                        <div class="ays_quiz_display_flex_width">
+                                                            <select class="ays-text-input ays-text-input-short" id="ays_quick_quiz_admin_note_text_decoration" name="ays_quick_quiz_admin_note_text_decoration">
+                                                                <option value="none" selected><?php echo esc_html__('None','quiz-maker'); ?></option>
+                                                                <option value="overline"><?php echo esc_html__('Overline','quiz-maker'); ?></option>
+                                                                <option value="line-through"><?php echo esc_html__('Line through','quiz-maker'); ?></option>
+                                                                <option value="underline"><?php echo esc_html__('Underline','quiz-maker'); ?></option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <hr>
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div style="margin-bottom: 10px;">
+                                                            <label for='ays_quick_quiz_admin_note_mobile_text_decoration'>
+                                                                <?php echo esc_html__('On mobile', 'quiz-maker'); ?>
+                                                            </label>
+                                                        </div>
+                                                        <div class="ays_quiz_display_flex_width">
+                                                            <select class="ays-text-input ays-text-input-short" id="ays_quick_quiz_admin_note_mobile_text_decoration" name="ays_quick_quiz_admin_note_mobile_text_decoration">
+                                                                <option value="none"><?php echo esc_html__('None','quiz-maker'); ?></option>
+                                                                <option value="overline"><?php echo esc_html__('Overline','quiz-maker'); ?></option>
+                                                                <option value="line-through"><?php echo esc_html__('Line through','quiz-maker'); ?></option>
+                                                                <option value="underline"><?php echo esc_html__('Underline','quiz-maker'); ?></option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div><!-- Admin note text decoration -->
                                         <hr/>
@@ -1796,14 +1860,44 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                     <?php echo esc_html__('Letter spacing','quiz-maker'); ?>
                                                 </label>
                                             </div>
-                                            <div class="col-sm-8 ays_quiz_display_flex_width">
-                                                <div>
-                                                    <input type="number" class="ays-text-input ays-text-input-short" id="ays_quick_quiz_admin_note_letter_spacing" name="ays_quick_quiz_admin_note_letter_spacing" value="0"/>
+                                            <div class="col-sm-8">
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div style="margin-bottom: 10px;">
+                                                            <label for='ays_quick_quiz_admin_note_letter_spacing'>
+                                                                <?php echo esc_html__('On desktop', 'quiz-maker'); ?>
+                                                            </label>
+                                                        </div>
+                                                        <div class="ays_quiz_display_flex_width">
+                                                            <div>
+                                                                <input type="number" class="ays-text-input ays-text-input-short" id="ays_quick_quiz_admin_note_letter_spacing" name="ays_quick_quiz_admin_note_letter_spacing" value="0"/>
+                                                            </div>
+                                                            <div class="ays_quiz_dropdown_max_width ays-display-flex" style="align-items: flex-start;">
+                                                                <input type="text" value="px" class='ays-quiz-form-hint-for-size' disabled>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="ays_quiz_dropdown_max_width ays-display-flex" style="align-items: flex-start;">
-                                                    <input type="text" value="px" class='ays-quiz-form-hint-for-size' disabled>
+                                                <hr>
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div style="margin-bottom: 10px;">
+                                                            <label for='ays_quick_quiz_admin_note_mobile_letter_spacing'>
+                                                                <?php echo esc_html__('On mobile', 'quiz-maker'); ?>
+                                                            </label>
+                                                        </div>
+                                                        <div class="ays_quiz_display_flex_width">
+                                                            <div>
+                                                                <input type="number" class="ays-text-input" id='ays_quick_quiz_admin_note_mobile_letter_spacing' name='ays_quick_quiz_admin_note_mobile_letter_spacing' value="0"/>
+                                                            </div>
+                                                            <div class="ays_quiz_dropdown_max_width ays-display-flex" style="align-items: end;">
+                                                                <input type="text" value="px" class='ays-quiz-form-hint-for-size' disabled>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
+
                                         </div><!-- Letter spacing -->
                                         <hr/>
                                         <div class="form-group row">
@@ -1813,21 +1907,59 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
-                                                <select class="ays-text-input ays-text-input-short" id="ays_quick_quiz_admin_note_font_weight" name="ays_quick_quiz_admin_note_font_weight">
-                                                    <option value="normal" selected><?php echo esc_html__('Normal','quiz-maker'); ?></option>
-                                                    <option value="lighter"><?php echo esc_html__('Lighter','quiz-maker'); ?></option>
-                                                    <option value="bold"><?php echo esc_html__('Bold','quiz-maker'); ?></option>
-                                                    <option value="bolder"><?php echo esc_html__('Bolder','quiz-maker'); ?></option>
-                                                    <option value="100"><?php echo '100'; ?></option>
-                                                    <option value="200"><?php echo '200'; ?></option>
-                                                    <option value="300"><?php echo '300'; ?></option>
-                                                    <option value="400"><?php echo '400'; ?></option>
-                                                    <option value="500"><?php echo '500'; ?></option>
-                                                    <option value="600"><?php echo '600'; ?></option>
-                                                    <option value="700"><?php echo '700'; ?></option>
-                                                    <option value="800"><?php echo '800'; ?></option>
-                                                    <option value="900"><?php echo '900'; ?></option>
-                                                </select>
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div style="margin-bottom: 10px;">
+                                                            <label for='ays_quick_quiz_admin_note_letter_spacing'>
+                                                                <?php echo esc_html__('On desktop', 'quiz-maker'); ?>
+                                                            </label>
+                                                        </div>
+                                                        <div class="ays_quiz_display_flex_width">
+                                                            <select class="ays-text-input ays-text-input-short" id="ays_quick_quiz_admin_note_font_weight" name="ays_quick_quiz_admin_note_font_weight">
+                                                                <option value="normal" selected><?php echo esc_html__('Normal','quiz-maker'); ?></option>
+                                                                <option value="lighter"><?php echo esc_html__('Lighter','quiz-maker'); ?></option>
+                                                                <option value="bold"><?php echo esc_html__('Bold','quiz-maker'); ?></option>
+                                                                <option value="bolder"><?php echo esc_html__('Bolder','quiz-maker'); ?></option>
+                                                                <option value="100"><?php echo '100'; ?></option>
+                                                                <option value="200"><?php echo '200'; ?></option>
+                                                                <option value="300"><?php echo '300'; ?></option>
+                                                                <option value="400"><?php echo '400'; ?></option>
+                                                                <option value="500"><?php echo '500'; ?></option>
+                                                                <option value="600"><?php echo '600'; ?></option>
+                                                                <option value="700"><?php echo '700'; ?></option>
+                                                                <option value="800"><?php echo '800'; ?></option>
+                                                                <option value="900"><?php echo '900'; ?></option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <hr>
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div style="margin-bottom: 10px;">
+                                                            <label for='ays_quick_quiz_admin_note_mobile_font_weight'>
+                                                                <?php echo esc_html__('On mobile', 'quiz-maker'); ?>
+                                                            </label>
+                                                        </div>
+                                                        <div class="ays_quiz_display_flex_width">
+                                                            <select class="ays-text-input ays-text-input-short" id="ays_quick_quiz_admin_note_mobile_font_weight" name="ays_quick_quiz_admin_note_mobile_font_weight">
+                                                                <option value="normal" selected><?php echo esc_html__('Normal','quiz-maker'); ?></option>
+                                                                <option value="lighter"><?php echo esc_html__('Lighter','quiz-maker'); ?></option>
+                                                                <option value="bold"><?php echo esc_html__('Bold','quiz-maker'); ?></option>
+                                                                <option value="bolder"><?php echo esc_html__('Bolder','quiz-maker'); ?></option>
+                                                                <option value="100"><?php echo '100'; ?></option>
+                                                                <option value="200"><?php echo '200'; ?></option>
+                                                                <option value="300"><?php echo '300'; ?></option>
+                                                                <option value="400"><?php echo '400'; ?></option>
+                                                                <option value="500"><?php echo '500'; ?></option>
+                                                                <option value="600"><?php echo '600'; ?></option>
+                                                                <option value="700"><?php echo '700'; ?></option>
+                                                                <option value="800"><?php echo '800'; ?></option>
+                                                                <option value="900"><?php echo '900'; ?></option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div><!-- Admin note font weight -->
                                     </div>
@@ -1987,7 +2119,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                                     <div class="ays-quiz-accordion-container">
                                         <?php echo wp_kses($quiz_accordion_svg_html, $svg_sanitize_properties); ?>
-                                        <p class="ays-subtitle" style="margin-top:0;"><?php echo esc_html__('Right answer styles','quiz-maker'); ?></p>
+                                        <p class="ays-subtitle" style="margin-top:0;"><?php echo esc_html__('Right answer message styles','quiz-maker'); ?></p>
                                     </div>
                                     <hr class="ays-quiz-bolder-hr"/>
                                     <div class="ays-quiz-accordion-options-box">
@@ -2155,7 +2287,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                                     <div class="ays-quiz-accordion-container">
                                         <?php echo wp_kses($quiz_accordion_svg_html, $svg_sanitize_properties); ?>
-                                        <p class="ays-subtitle" style="margin-top:0;"><?php echo esc_html__('Wrong answer styles','quiz-maker'); ?></p>
+                                        <p class="ays-subtitle" style="margin-top:0;"><?php echo esc_html__('Wrong answer message styles','quiz-maker'); ?></p>
                                     </div>
                                     <hr class="ays-quiz-bolder-hr"/>
                                     <div class="ays-quiz-accordion-options-box">

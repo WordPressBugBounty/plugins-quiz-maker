@@ -1,30 +1,68 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 class Question_Reports_List_Table extends WP_List_Table{
 
     private $plugin_name;
-    protected $current_user_can_edit;
+    private $title_length;
+
+    /**
+     * The wp nonce of this plugin.
+     *
+     * @since    1.0.0
+     * @access   private
+     * @var      string    $ays_quiz_nonce
+     */
+    private $ays_quiz_nonce;
+
+    private $current_user_can_edit;
 
     /** Class constructor */
 
     public function __construct($plugin_name) {
 
         $this->plugin_name = $plugin_name;
-        // $this->current_user_can_edit = Quiz_Maker_Data::quiz_maker_capabilities_for_editing();
+        $this->title_length = Quiz_Maker_Admin::get_listtables_title_length('question_reports');
+        $this->current_user_can_edit = Quiz_Maker_Admin::quiz_maker_capabilities();
 
         parent::__construct( array(
-            'singular' => __( 'Question report', $this->plugin_name ), //singular name of the listed records
-            'plural'   => __( 'Question reports', $this->plugin_name ), //plural name of the listed records
+            'singular' => __( 'Question report', 'quiz-maker' ), //singular name of the listed records
+            'plural'   => __( 'Question reports', 'quiz-maker' ), //plural name of the listed records
             'ajax'     => false //does this table support ajax?
         ) );
 
         add_action( 'admin_notices', array( $this, 'question_report_notices' ) );
         add_filter( 'default_hidden_columns', array( $this, 'get_hidden_columns'), 10, 2 );
+
+        $this->ays_quiz_nonce = wp_create_nonce('ays_quiz_admin_question_reports_list_table_nonce');
+
+        if( empty($this->ays_quiz_nonce) ){
+            add_action('init', function () {
+                $this->ays_quiz_nonce = wp_create_nonce('ays_quiz_admin_question_reports_list_table_nonce');
+            }, 1);
+        }
     }
 
     /**
      * Override of table nav to avoid breaking with bulk actions & according nonce field
      */
     public function display_tablenav( $which ) {
+
+        // Run a security check.
+        if (empty($this->ays_quiz_nonce) || ! wp_verify_nonce( $this->ays_quiz_nonce, 'ays_quiz_admin_question_reports_list_table_nonce' ) ) {
+            // This nonce is not valid.
+            wp_die('Nonce verification failed!');
+        }
+
+        if( !is_user_logged_in()){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+
+        // Verify unauthorized requests
+        if( !current_user_can( $this->current_user_can_edit ) ){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+
         ?>
         <div class="tablenav <?php echo esc_attr( $which ); ?>">
             
@@ -42,6 +80,21 @@ class Question_Reports_List_Table extends WP_List_Table{
     }
 
     protected function get_views() {
+        // Run a security check.
+        if (empty($this->ays_quiz_nonce) || ! wp_verify_nonce( $this->ays_quiz_nonce, 'ays_quiz_admin_question_reports_list_table_nonce' ) ) {
+            // This nonce is not valid.
+            wp_die('Nonce verification failed!');
+        }
+
+        if( !is_user_logged_in()){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+
+        // Verify unauthorized requests
+        if( !current_user_can( $this->current_user_can_edit ) ){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+
         $resolved_count = $this->resolved_records_count();
         $in_review_count = $this->in_review_records_count();
         $all_count = $this->all_record_count();
@@ -65,9 +118,9 @@ class Question_Reports_List_Table extends WP_List_Table{
         }
 
         $status_links = array(
-            "all" => "<a ".$selected_all." href='?page=".esc_attr( $_REQUEST['page'] )."'>". __( 'All', $this->plugin_name )." (".$all_count.")</a>",
-            "resolved" => "<a ".$selected_1." href='?page=".esc_attr( $_REQUEST['page'] )."&fstatus=1'>". __( 'Resolved', $this->plugin_name ) ." (".$resolved_count.")</a>",
-            "in_review"   => "<a ".$selected_0." href='?page=".esc_attr( $_REQUEST['page'] )."&fstatus=0'>". __( 'In review', $this->plugin_name ) ." (".$in_review_count.")</a>"
+            "all" => "<a ".$selected_all." href='?page=".esc_attr( $_REQUEST['page'] )."'>". __( 'All', 'quiz-maker' )." (".$all_count.")</a>",
+            "resolved" => "<a ".$selected_1." href='?page=".esc_attr( $_REQUEST['page'] )."&fstatus=1'>". __( 'Resolved', 'quiz-maker' ) ." (".$resolved_count.")</a>",
+            "in_review"   => "<a ".$selected_0." href='?page=".esc_attr( $_REQUEST['page'] )."&fstatus=0'>". __( 'In review', 'quiz-maker' ) ." (".$in_review_count.")</a>"
         );
         return $status_links;
     }
@@ -80,13 +133,28 @@ class Question_Reports_List_Table extends WP_List_Table{
      *
      * @return mixed
      */
-    public static function get_question_reports( $per_page = 20, $page_number = 1 ) {
+    public function get_question_reports( $per_page = 20, $page_number = 1 ) {
+
+        // Run a security check.
+        if (empty($this->ays_quiz_nonce) || ! wp_verify_nonce( $this->ays_quiz_nonce, 'ays_quiz_admin_question_reports_list_table_nonce' ) ) {
+            // This nonce is not valid.
+            wp_die('Nonce verification failed!');
+        }
+
+        if( !is_user_logged_in()){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+
+        // Verify unauthorized requests
+        if( !current_user_can( $this->current_user_can_edit ) ){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
 
         global $wpdb;
 
         $sql = "SELECT * FROM {$wpdb->prefix}aysquiz_question_reports";
 
-        $sql .= self::get_where_condition();
+        $sql .= $this->get_where_condition();
 
         if ( ! empty( $_REQUEST['orderby'] ) ) {
             $order_by  = ( isset( $_REQUEST['orderby'] ) && sanitize_text_field( $_REQUEST['orderby'] ) != '' ) ? sanitize_text_field( $_REQUEST['orderby'] ) : 'id';
@@ -110,7 +178,22 @@ class Question_Reports_List_Table extends WP_List_Table{
         return $result;
     }
 
-    public static function get_where_condition(){
+    public function get_where_condition(){
+        // Run a security check.
+        if (empty($this->ays_quiz_nonce) || ! wp_verify_nonce( $this->ays_quiz_nonce, 'ays_quiz_admin_question_reports_list_table_nonce' ) ) {
+            // This nonce is not valid.
+            wp_die('Nonce verification failed!');
+        }
+
+        if( !is_user_logged_in()){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+
+        // Verify unauthorized requests
+        if( !current_user_can( $this->current_user_can_edit ) ){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+
         global $wpdb;
 
         $where = array();
@@ -139,25 +222,40 @@ class Question_Reports_List_Table extends WP_List_Table{
      *
      * @param int $id customer ID
      */
-    public static function delete_reports( $id ) {
+    public function delete_reports( $id ) {
+        // Run a security check.
+        if (empty($this->ays_quiz_nonce) || ! wp_verify_nonce( $this->ays_quiz_nonce, 'ays_quiz_admin_question_reports_list_table_nonce' ) ) {
+            // This nonce is not valid.
+            wp_die('Nonce verification failed!');
+        }
+
+        if( !is_user_logged_in()){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+
+        // Verify unauthorized requests
+        if( !current_user_can( $this->current_user_can_edit ) ){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+
         global $wpdb;
 
         $wpdb->delete(
             "{$wpdb->prefix}aysquiz_question_reports",
-            array('id' => $id),
+            array('id' => intval($id)),
             array('%d')
         );
     }
 
-    public static function record_count() {
+    public function record_count() {
         global $wpdb;
 
         $sql = "SELECT COUNT(*) FROM {$wpdb->prefix}aysquiz_question_reports";
-        $sql .= self::get_where_condition();
+        $sql .= $this->get_where_condition();
         return $wpdb->get_var( $sql );
     }
 
-    public static function all_record_count() {
+    public function all_record_count() {
         global $wpdb;
 
         $sql = "SELECT COUNT(*) FROM {$wpdb->prefix}aysquiz_question_reports";
@@ -165,7 +263,7 @@ class Question_Reports_List_Table extends WP_List_Table{
         return $wpdb->get_var( $sql );
     }
 
-    public static function in_review_records_count() {
+    public function in_review_records_count() {
         global $wpdb;
 
         $sql = "SELECT COUNT(*) FROM {$wpdb->prefix}aysquiz_question_reports WHERE `resolved` = 0";
@@ -173,7 +271,7 @@ class Question_Reports_List_Table extends WP_List_Table{
         return $wpdb->get_var( $sql );
     }
 
-    public static function resolved_records_count() {
+    public function resolved_records_count() {
         global $wpdb;
 
         $sql = "SELECT COUNT(*) FROM {$wpdb->prefix}aysquiz_question_reports WHERE `resolved` = 1";
@@ -183,7 +281,7 @@ class Question_Reports_List_Table extends WP_List_Table{
 
     /** Text displayed when no customer data is available */
     public function no_items() {
-        echo __( 'There are no question reports yet.', $this->plugin_name );
+        echo esc_html__( 'There are no question reports yet.', 'quiz-maker' );
     }
 
     /**
@@ -200,18 +298,18 @@ class Question_Reports_List_Table extends WP_List_Table{
             case 'question_id':
                 break;
             case 'report_text':
-                return nl2br( stripslashes($item[$column_name]) );
+                // return nl2br( stripslashes($item[$column_name]) );
                 break;
             case 'resolved':
                 if ($item[$column_name]) {
-                    return '<span style="color: green">'. __( 'Resolved', $this->plugin_name ) .'</span>';
+                    return '<span style="color: green">'. __( 'Resolved', 'quiz-maker' ) .'</span>';
                 } else {
-                    return '<span style="color: red">'. __( 'In review', $this->plugin_name ) .'</span>';
+                    return '<span style="color: red">'. __( 'In review', 'quiz-maker' ) .'</span>';
                 }
                 break;
             case 'user_name':
                 if(isset($item['user_id']) && $item['user_id'] === '0'){
-                    $guest_user_name = __( 'Guest', $this->plugin_name );
+                    $guest_user_name = __( 'Guest', 'quiz-maker' );
 
                     return $guest_user_name;
                     break;
@@ -241,7 +339,7 @@ class Question_Reports_List_Table extends WP_List_Table{
 
         $question_id = isset($item['question_id']) && $item['question_id'] != "" ? intval($item['question_id']) : "";
 
-        $title = __( "Deleted question", $this->plugin_name );
+        $title = __( "Deleted question", 'quiz-maker' );
         $title = '<span class="ays_color_red">'. $title .'</span>';
 
         if( empty( $question_id ) || $question_id <= 0 ){
@@ -283,6 +381,22 @@ class Question_Reports_List_Table extends WP_List_Table{
      * @return string
      */
     function column_question( $item ) {
+
+        // Run a security check.
+        if (empty($this->ays_quiz_nonce) || ! wp_verify_nonce( $this->ays_quiz_nonce, 'ays_quiz_admin_question_reports_list_table_nonce' ) ) {
+            // This nonce is not valid.
+            wp_die('Nonce verification failed!');
+        }
+
+        if( !is_user_logged_in()){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+
+        // Verify unauthorized requests
+        if( !current_user_can( $this->current_user_can_edit ) ){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+
         $current_page = $this->get_pagenum();
 
         $delete_nonce = wp_create_nonce( $this->plugin_name . '-delete-report' );
@@ -296,7 +410,7 @@ class Question_Reports_List_Table extends WP_List_Table{
         $question_data = Quiz_Maker_Admin::get_quiz_question_by_id($question_id);
 
         if( is_null( $question_data ) ){
-            $title = __( "Deleted question", $this->plugin_name );
+            $title = __( "Deleted question", 'quiz-maker' );
 
             $title = '<span class="ays_color_red">'. $title .'</span>';
             return $title;
@@ -315,7 +429,7 @@ class Question_Reports_List_Table extends WP_List_Table{
                 $question_title = htmlspecialchars_decode($question_data['question_title'], ENT_COMPAT);
                 $question_title = stripslashes($question_title);
             }else{
-                $question_title = __( 'Custom question', $this->plugin_name ) . ' #'.$question_data['id'];
+                $question_title = __( 'Custom question', 'quiz-maker' ) . ' #'.$question_data['id'];
             }
             $q = esc_attr($question_title);
         }else{
@@ -325,10 +439,10 @@ class Question_Reports_List_Table extends WP_List_Table{
                 $question_title = strip_tags(stripslashes($question_data['question']));
 
                 if ($question_title == '') {
-                    $question_title = __( 'Question ID', $this->plugin_name ) .' '. $question_data['id'];
+                    $question_title = __( 'Question ID', 'quiz-maker' ) .' '. $question_data['id'];
                 }
             }elseif(isset($question_data['question_image']) && $question_data['question_image'] !=''){
-                $question_title = __( 'Image question', $this->plugin_name );
+                $question_title = __( 'Image question', 'quiz-maker' );
             }
             $q = esc_attr($question_title);
         }
@@ -353,44 +467,53 @@ class Question_Reports_List_Table extends WP_List_Table{
         $title = sprintf( '<a href="%s" title="%s">%s</a>', $url, $q, $question_title );
 
         if ($report_status) {
-            $change_report_status = sprintf( '<a data-message="this review" href="?page=%s&action=%s&report=%s&_wpnonce=%s">%s</a>', esc_attr( $_REQUEST['page'] ), 'review', absint( $item['id'] ), $in_review_nonce, __( "Not Resolved", $this->plugin_name ) );
+            $change_report_status = sprintf( '<a data-message="this review" href="?page=%s&action=%s&report=%s&_wpnonce=%s">%s</a>', esc_attr( $_REQUEST['page'] ), 'review', absint( $item['id'] ), $in_review_nonce, __( "Not Resolved", 'quiz-maker' ) );
         } else {
-            $change_report_status = sprintf( '<a data-message="this review" href="?page=%s&action=%s&report=%s&_wpnonce=%s">%s</a>', esc_attr( $_REQUEST['page'] ), 'resolve', absint( $item['id'] ), $resolve_nonce, __( "Resolve", $this->plugin_name ) );
+            $change_report_status = sprintf( '<a data-message="this review" href="?page=%s&action=%s&report=%s&_wpnonce=%s">%s</a>', esc_attr( $_REQUEST['page'] ), 'resolve', absint( $item['id'] ), $resolve_nonce, __( "Resolve", 'quiz-maker' ) );
         }
 
         $actions = array(
-            'edit'   => sprintf( '<a data-message="this review" href="?page=%s&action=%s&question=%s">%s</a>', 'quiz-maker-questions', 'edit', absint( $item['question_id'] ), __( "Edit", $this->plugin_name ) ),
+            'edit'   => sprintf( '<a data-message="this review" href="?page=%s&action=%s&question=%s">%s</a>', 'quiz-maker-questions', 'edit', absint( $item['question_id'] ), __( "Edit", 'quiz-maker' ) ),
             'change_report_status' => $change_report_status,
-            'delete' => sprintf( '<a class="ays_confirm_del" data-message="%s" href="?page=%s&action=%s&report=%s&_wpnonce=%s">%s</a>', __( "Are you sure you want to delete this report?", $this->plugin_name ), esc_attr( $_REQUEST['page'] ), 'delete', absint( $item['id'] ), $delete_nonce, __( "Delete Report", $this->plugin_name ) )
+            'delete' => sprintf( '<a class="ays_confirm_del" data-message="%s" href="?page=%s&action=%s&report=%s&_wpnonce=%s">%s</a>', __( "Are you sure you want to delete this report?", 'quiz-maker' ), esc_attr( $_REQUEST['page'] ), 'delete', absint( $item['id'] ), $delete_nonce, __( "Delete Report", 'quiz-maker' ) )
         );
 
-        // $actions = array();
-
-        // if( $item['published'] == 2 ) {
-        //     $title              = sprintf( '<strong><a title="%s">%s</a></strong>', $q, $question_title );
-
-        //     $actions['restore'] = sprintf( '<a href="?page=%s&action=%s&question=%d&_wpnonce=%s' . $fstatus . '">' . __( 'Restore', $this->plugin_name ) . '</a>', esc_attr( $_REQUEST['page'] ), 'restore', absint( $item['id'] ), $restore_nonce );
-        //     $actions['delete']  = sprintf( '<a class="ays_confirm_del" data-message="%s" href="?page=%s&action=%s&question=%s&_wpnonce=%s' . $fstatus . '">' . __( 'Delete Permanently', $this->plugin_name ) . '</a>', $question_title, esc_attr( $_REQUEST['page'] ), 'delete', absint( $item['id'] ), $delete_nonce );
-        // } else {
-        //     if( $owner ){
-        //         $actions['edit'] = sprintf( '<a href="%s">'. __('Edit', $this->plugin_name) .'</a>', $url );
-        //     }else{
-        //         $actions['edit'] = sprintf( '<a href="%s">'. __('View', $this->plugin_name) .'</a>', $url );
-        //     }
-
-        //     $url_args['action']   = "duplicate";
-        //     $url                  = add_query_arg( $url_args, $url );
-        //     $actions['duplicate'] = sprintf( '<a href="%s">' . __( 'Duplicate', $this->plugin_name ) . '</a>', $url );
-
-        //     if ( $owner ) {
-        //         $url_args['action']   = "trash";
-        //         $url_args['_wpnonce'] = $trash_nonce;
-        //         $url                  = add_query_arg( $url_args, $url );
-        //         $actions['trash']     = sprintf( '<a href="%s">' . __( 'Move to trash', $this->plugin_name ) . '</a>', $url );
-        //     }
-        // }
-
         return $title . $this->row_actions( $actions );
+    }
+
+    /**
+     * Method for name column
+     *
+     * @param array $item an array of DB data
+     *
+     * @return string
+     */
+    function column_report_text( $item ) {
+
+        // Run a security check.
+        if (empty($this->ays_quiz_nonce) || ! wp_verify_nonce( $this->ays_quiz_nonce, 'ays_quiz_admin_question_reports_list_table_nonce' ) ) {
+            // This nonce is not valid.
+            wp_die('Nonce verification failed!');
+        }
+
+        if( !is_user_logged_in()){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+
+        // Verify unauthorized requests
+        if( !current_user_can( $this->current_user_can_edit ) ){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+
+        $report_text = !empty( $item['report_text'] ) ? esc_attr(stripcslashes($item['report_text'])) : '';
+
+        $q = nl2br( esc_attr( stripslashes($report_text) ) );
+        $report_text_title_length = intval( $this->title_length );
+
+        $restitle = Quiz_Maker_Admin::ays_restriction_string("word", $report_text, $report_text_title_length);
+        $title = sprintf( '<div class="ays-quiz-question-report-text" title="%s">%s</div>', $q, $restitle);
+
+        return $title;
     }
     
     /**
@@ -414,16 +537,16 @@ class Question_Reports_List_Table extends WP_List_Table{
     function get_columns() {
         $columns = array(
             'cb'             => '<input type="checkbox" />',
-            'question'       => __( 'Question', $this->plugin_name ),
-            'report_text'    => __( 'Report', $this->plugin_name ),
-            'create_date'    => __( 'Created', $this->plugin_name ),
-            'resolve_date'   => __( 'Resolve date', $this->plugin_name ),
-            'resolved'       => __( 'Resolved', $this->plugin_name ),
-            'question_id'    => __( 'Question ID', $this->plugin_name ),
-            'report_id'      => __( 'ID', $this->plugin_name ),
-            'user_id'        => __( 'User ID', $this->plugin_name ),
-            'user_name'      => __( 'User Name', $this->plugin_name ),
-            'user_email'     => __( 'User Email', $this->plugin_name ),
+            'question'       => __( 'Question', 'quiz-maker' ),
+            'report_text'    => __( 'Report', 'quiz-maker' ),
+            'create_date'    => __( 'Created', 'quiz-maker' ),
+            'resolve_date'   => __( 'Resolve date', 'quiz-maker' ),
+            'resolved'       => __( 'Resolved', 'quiz-maker' ),
+            'question_id'    => __( 'Question ID', 'quiz-maker' ),
+            'user_id'        => __( 'User ID', 'quiz-maker' ),
+            'user_name'      => __( 'User Name', 'quiz-maker' ),
+            'user_email'     => __( 'User Email', 'quiz-maker' ),
+            'report_id'      => __( 'ID', 'quiz-maker' ),
         );
 
         return $columns;
@@ -460,7 +583,29 @@ class Question_Reports_List_Table extends WP_List_Table{
      *
      * @param int $id customer ID
      */
-    public static function mark_as_resolved_reports( $id ) {
+    public function mark_as_resolved_reports( $id ) {
+        // Run a security check.
+        if (empty($this->ays_quiz_nonce) || ! wp_verify_nonce( $this->ays_quiz_nonce, 'ays_quiz_admin_question_reports_list_table_nonce' ) ) {
+            // This nonce is not valid.
+            wp_die('Nonce verification failed!');
+        }
+
+        if( $this->current_action() != "mark-as-resolved" ) {
+            if( empty( $_GET["_wpnonce"] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET["_wpnonce"] ) ), $this->plugin_name . '-resolve-report' ) ){
+                // This nonce is not valid.
+                wp_die('Nonce verification failed!');
+            }
+        }
+
+        if( !is_user_logged_in()){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+
+        // Verify unauthorized requests
+        if( !current_user_can( $this->current_user_can_edit ) ){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+
         global $wpdb;
         $current_time = current_time('Y-m-d H:i:s');
         $wpdb->update(
@@ -480,7 +625,29 @@ class Question_Reports_List_Table extends WP_List_Table{
      *
      * @param int $id customer ID
      */
-    public static function mark_as_reviewed_reports( $id ) {
+    public function mark_as_reviewed_reports( $id ) {
+        // Run a security check.
+        if (empty($this->ays_quiz_nonce) || ! wp_verify_nonce( $this->ays_quiz_nonce, 'ays_quiz_admin_question_reports_list_table_nonce' ) ) {
+            // This nonce is not valid.
+            wp_die('Nonce verification failed!');
+        }
+
+        if( $this->current_action() != "mark-as-reviewed" ) {
+            if( empty( $_GET["_wpnonce"] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET["_wpnonce"] ) ), $this->plugin_name . '-review-report' ) ){
+                // This nonce is not valid.
+                wp_die('Nonce verification failed!');
+            }
+        }
+
+        if( !is_user_logged_in()){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+
+        // Verify unauthorized requests
+        if( !current_user_can( $this->current_user_can_edit ) ){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+
         global $wpdb;
         $wpdb->update(
             $wpdb->prefix . "aysquiz_question_reports",
@@ -498,9 +665,9 @@ class Question_Reports_List_Table extends WP_List_Table{
      */
     public function get_bulk_actions() {
         $actions = array(
-            'mark-as-resolved' => __( 'Mark as resolved', $this->plugin_name),
-            'mark-as-reviewed' => __( 'Mark as reviewed', $this->plugin_name),
-            'bulk-delete' => __( 'Delete', $this->plugin_name),
+            'mark-as-resolved' => __( 'Mark as resolved', 'quiz-maker'),
+            'mark-as-reviewed' => __( 'Mark as reviewed', 'quiz-maker'),
+            'bulk-delete' => __( 'Delete', 'quiz-maker'),
         );
 
         return $actions;
@@ -511,6 +678,21 @@ class Question_Reports_List_Table extends WP_List_Table{
      */
     public function prepare_items() {
 
+        // Run a security check.
+        if (empty($this->ays_quiz_nonce) || ! wp_verify_nonce( $this->ays_quiz_nonce, 'ays_quiz_admin_question_reports_list_table_nonce' ) ) {
+            // This nonce is not valid.
+            wp_die('Nonce verification failed!');
+        }
+
+        if( !is_user_logged_in()){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+
+        // Verify unauthorized requests
+        if( !current_user_can( $this->current_user_can_edit ) ){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+
         global $wpdb;
 
         $this->_column_headers = $this->get_column_info();
@@ -520,151 +702,194 @@ class Question_Reports_List_Table extends WP_List_Table{
 
         $per_page     = $this->get_items_per_page( 'quiz_question_reports_per_page', 20 );
         $current_page = $this->get_pagenum();
-        $total_items  = self::record_count();
+        $total_items  = $this->record_count();
 
         $this->set_pagination_args( array(
             'total_items' => $total_items, //WE have to calculate the total number of items
             'per_page'    => $per_page //WE have to determine how many items to show on a page
         ) );
 
-        $this->items = self::get_question_reports( $per_page, $current_page );
+        $this->items = $this->get_question_reports( $per_page, $current_page );
     }
 
     public function process_bulk_action() {
 
-        //Detect when a bulk action is being triggered...
-        $message = 'deleted';
-        if ( 'delete' === $this->current_action() ) {
+        // Detect when a bulk action is being triggered.
+        $action = $this->current_action();
+        if ( ! $action ) {
+            return;
+        }
 
-            // In our file that handles the request, verify the nonce.
-            $nonce = esc_attr( $_REQUEST['_wpnonce'] );
+        if( !is_user_logged_in()){
+            return;
+        }
 
-            if ( ! wp_verify_nonce( $nonce, $this->plugin_name . '-delete-report' ) ) {
-                die( 'Go get a life script kiddies' );
+        // Verify unauthorized requests
+        if( !current_user_can( $this->current_user_can_edit ) ){
+            return;
+        }
+
+        if( current_user_can( $this->current_user_can_edit ) && is_user_logged_in() ){
+            //Detect when a bulk action is being triggered...
+            $message = 'deleted';
+            if ( 'delete' === $this->current_action() ) {
+
+                // In our file that handles the request, verify the nonce.
+                $nonce = esc_attr( $_REQUEST['_wpnonce'] );
+
+                if ( ! wp_verify_nonce( $nonce, $this->plugin_name . '-delete-report' ) ) {
+                    die( 'Go get a life script kiddies' );
+                }
+                else {
+                    $this->delete_reports( absint( $_GET['report'] ) );
+
+                    // esc_url_raw() is used to prevent converting ampersand in url to "#038;"
+                    // add_query_arg() return the current url
+
+                    $url = esc_url_raw( remove_query_arg(array('action', 'report', '_wpnonce')  ) ) . '&status=' . $message;
+                    wp_safe_redirect( $url );
+                    exit;
+                }
+
             }
-            else {
-                self::delete_reports( absint( $_GET['report'] ) );
+
+            //Detect when a bulk action is being triggered...
+            $message = 'resolved';
+            if ( 'resolve' === $this->current_action() ) {
+
+                // In our file that handles the request, verify the nonce.
+                $nonce = esc_attr( $_REQUEST['_wpnonce'] );
+
+                if ( ! wp_verify_nonce( $nonce, $this->plugin_name . '-resolve-report' ) ) {
+                    die( 'Go get a life script kiddies' );
+                }
+                else {
+                    $this->mark_as_resolved_reports( absint( $_GET['report'] ) );
+
+                    // esc_url_raw() is used to prevent converting ampersand in url to "#038;"
+                    // add_query_arg() return the current url
+
+                    $url = esc_url_raw( remove_query_arg(array('action', 'report', '_wpnonce')  ) ) . '&status=' . $message;
+                    wp_safe_redirect( $url );
+                    exit;
+                }
+
+            }
+
+            //Detect when a bulk action is being triggered...
+            $message = 'reviewed';
+            if ( 'review' === $this->current_action() ) {
+
+                // In our file that handles the request, verify the nonce.
+                $nonce = esc_attr( $_REQUEST['_wpnonce'] );
+
+                if ( ! wp_verify_nonce( $nonce, $this->plugin_name . '-review-report' ) ) {
+                    die( 'Go get a life script kiddies' );
+                }
+                else {
+                    $this->mark_as_reviewed_reports( absint( $_GET['report'] ) );
+
+                    // esc_url_raw() is used to prevent converting ampersand in url to "#038;"
+                    // add_query_arg() return the current url
+
+                    $url = esc_url_raw( remove_query_arg(array('action', 'report', '_wpnonce')  ) ) . '&status=' . $message;
+                    wp_safe_redirect( $url );
+                    exit;
+                }
+
+            }
+
+            // If the delete bulk action is triggered
+            if ( ( isset( $_POST['action'] ) && $_POST['action'] == 'bulk-delete' )
+                || ( isset( $_POST['action2'] ) && $_POST['action2'] == 'bulk-delete' )
+            ) {
+
+                $delete_ids = ( isset( $_POST['bulk-delete'] ) && ! empty( $_POST['bulk-delete'] ) ) ? esc_sql( $_POST['bulk-delete'] ) : array();
+
+                // loop over the array of record IDs and delete them
+                foreach ( $delete_ids as $id ) {
+                    $this->delete_reports( $id );
+                }
 
                 // esc_url_raw() is used to prevent converting ampersand in url to "#038;"
                 // add_query_arg() return the current url
 
-                $url = esc_url_raw( remove_query_arg(array('action', 'report', '_wpnonce')  ) ) . '&status=' . $message;
-                wp_redirect( $url );
+                $url = esc_url_raw( remove_query_arg(array('action', 'result', '_wpnonce')  ) ) . '&status=' . $message;
+                wp_safe_redirect( $url );
+                exit;
             }
 
-        }
+            // If the mark-as-resolved bulk action is triggered
+            if ( ( isset( $_POST['action'] ) && $_POST['action'] == 'mark-as-resolved' ) || ( isset( $_POST['action2'] ) && $_POST['action2'] == 'mark-as-resolved' ) ) {
 
-        //Detect when a bulk action is being triggered...
-        $message = 'resolved';
-        if ( 'resolve' === $this->current_action() ) {
+                $delete_ids = ( isset( $_POST['bulk-delete'] ) && ! empty( $_POST['bulk-delete'] ) ) ? esc_sql( $_POST['bulk-delete'] ) : array();
 
-            // In our file that handles the request, verify the nonce.
-            $nonce = esc_attr( $_REQUEST['_wpnonce'] );
-
-            if ( ! wp_verify_nonce( $nonce, $this->plugin_name . '-resolve-report' ) ) {
-                die( 'Go get a life script kiddies' );
-            }
-            else {
-                self::mark_as_resolved_reports( absint( $_GET['report'] ) );
+                // loop over the array of record IDs and delete them
+                foreach ( $delete_ids as $id ) {
+                    $this->mark_as_resolved_reports( $id );
+                }
 
                 // esc_url_raw() is used to prevent converting ampersand in url to "#038;"
                 // add_query_arg() return the current url
 
-                $url = esc_url_raw( remove_query_arg(array('action', 'report', '_wpnonce')  ) ) . '&status=' . $message;
-                wp_redirect( $url );
+                $url = esc_url_raw( remove_query_arg(array('action', 'result', '_wpnonce') ) );
+
+                $message = 'marked-as-resolved';
+                $url = add_query_arg( array(
+                    'status' => $message,
+                ), $url );
+                wp_safe_redirect( $url );
+                exit;
             }
 
-        }
+            // If the mark-as-unread bulk action is triggered
+            if ( ( isset( $_POST['action'] ) && $_POST['action'] == 'mark-as-unread' ) || ( isset( $_POST['action2'] ) && $_POST['action2'] == 'mark-as-reviewed' ) ) {
 
-        //Detect when a bulk action is being triggered...
-        $message = 'reviewed';
-        if ( 'review' === $this->current_action() ) {
+                $delete_ids = ( isset( $_POST['bulk-delete'] ) && ! empty( $_POST['bulk-delete'] ) ) ? esc_sql( $_POST['bulk-delete'] ) : array();
 
-            // In our file that handles the request, verify the nonce.
-            $nonce = esc_attr( $_REQUEST['_wpnonce'] );
-
-            if ( ! wp_verify_nonce( $nonce, $this->plugin_name . '-review-report' ) ) {
-                die( 'Go get a life script kiddies' );
-            }
-            else {
-                self::mark_as_reviewed_reports( absint( $_GET['report'] ) );
+                // loop over the array of record IDs and delete them
+                foreach ( $delete_ids as $id ) {
+                    $this->mark_as_reviewed_reports( $id );
+                }
 
                 // esc_url_raw() is used to prevent converting ampersand in url to "#038;"
                 // add_query_arg() return the current url
 
-                $url = esc_url_raw( remove_query_arg(array('action', 'report', '_wpnonce')  ) ) . '&status=' . $message;
-                wp_redirect( $url );
+                $url = esc_url_raw( remove_query_arg(array('action', 'result', '_wpnonce') ) );
+
+                $message = 'marked-as-in-review';
+                $url = add_query_arg( array(
+                    'status' => $message,
+                ), $url );
+
+                wp_safe_redirect( $url );
+                exit;
             }
-
-        }
-
-        // If the delete bulk action is triggered
-        if ( ( isset( $_POST['action'] ) && $_POST['action'] == 'bulk-delete' )
-            || ( isset( $_POST['action2'] ) && $_POST['action2'] == 'bulk-delete' )
-        ) {
-
-            $delete_ids = ( isset( $_POST['bulk-delete'] ) && ! empty( $_POST['bulk-delete'] ) ) ? esc_sql( $_POST['bulk-delete'] ) : array();
-
-            // loop over the array of record IDs and delete them
-            foreach ( $delete_ids as $id ) {
-                self::delete_reports( $id );
-
-            }
-
-            // esc_url_raw() is used to prevent converting ampersand in url to "#038;"
-            // add_query_arg() return the current url
-
-            $url = esc_url_raw( remove_query_arg(array('action', 'result', '_wpnonce')  ) ) . '&status=' . $message;
-            wp_redirect( $url );
-        }
-
-        // If the mark-as-resolved bulk action is triggered
-        if ( ( isset( $_POST['action'] ) && $_POST['action'] == 'mark-as-resolved' ) || ( isset( $_POST['action2'] ) && $_POST['action2'] == 'mark-as-resolved' ) ) {
-
-            $delete_ids = ( isset( $_POST['bulk-delete'] ) && ! empty( $_POST['bulk-delete'] ) ) ? esc_sql( $_POST['bulk-delete'] ) : array();
-
-            // loop over the array of record IDs and delete them
-            foreach ( $delete_ids as $id ) {
-                self::mark_as_resolved_reports( $id );
-            }
-
-            // esc_url_raw() is used to prevent converting ampersand in url to "#038;"
-            // add_query_arg() return the current url
-
-            $url = esc_url_raw( remove_query_arg(array('action', 'result', '_wpnonce') ) );
-
-            $message = 'marked-as-resolved';
-            $url = add_query_arg( array(
-                'status' => $message,
-            ), $url );
-            wp_redirect( $url );
-        }
-
-        // If the mark-as-unread bulk action is triggered
-        if ( ( isset( $_POST['action'] ) && $_POST['action'] == 'mark-as-unread' ) || ( isset( $_POST['action2'] ) && $_POST['action2'] == 'mark-as-reviewed' ) ) {
-
-            $delete_ids = ( isset( $_POST['bulk-delete'] ) && ! empty( $_POST['bulk-delete'] ) ) ? esc_sql( $_POST['bulk-delete'] ) : array();
-
-            // loop over the array of record IDs and delete them
-            foreach ( $delete_ids as $id ) {
-                self::mark_as_reviewed_reports( $id );
-            }
-
-            // esc_url_raw() is used to prevent converting ampersand in url to "#038;"
-            // add_query_arg() return the current url
-
-            $url = esc_url_raw( remove_query_arg(array('action', 'result', '_wpnonce') ) );
-
-            $message = 'marked-as-in-review';
-            $url = add_query_arg( array(
-                'status' => $message,
-            ), $url );
-
-            wp_redirect( $url );
+        } else {
+            return;
         }
     }
 
     public function question_report_notices(){
+
+        // Run a security check.
+        if (empty($this->ays_quiz_nonce) || ! wp_verify_nonce( $this->ays_quiz_nonce, 'ays_quiz_admin_question_reports_list_table_nonce' ) ) {
+            // This nonce is not valid.
+            wp_die('Nonce verification failed!');
+        }
+
+        if( !is_user_logged_in()){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+
+        // Verify unauthorized requests
+        if( !current_user_can( $this->current_user_can_edit ) ){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+
+        if( empty($_REQUEST['status']) ){
+            return;
+        }
 
         $status = (isset($_REQUEST['status'])) ? sanitize_text_field( $_REQUEST['status'] ) : '';
 
@@ -672,7 +897,7 @@ class Question_Reports_List_Table extends WP_List_Table{
             return;
 
         if ( 'updated' == $status ){
-            $updated_message = esc_html( __( 'Question report updated.', $this->plugin_name ) );
+            $updated_message = esc_html( __( 'Question report updated.', 'quiz-maker' ) );
         }
         $error_statuses = array( 'failed' );
         $notice_class = 'notice-success';
@@ -684,8 +909,8 @@ class Question_Reports_List_Table extends WP_List_Table{
             return;
 
         ?>
-        <div class="notice <?php echo $notice_class; ?> is-dismissible">
-            <p> <?php echo $updated_message; ?> </p>
+        <div class="notice <?php echo esc_attr($notice_class); ?> is-dismissible">
+            <p> <?php echo esc_html($updated_message); ?> </p>
         </div>
         <?php
     }

@@ -637,3 +637,134 @@
         font-size: 1.5rem;
     }
 }
+
+
+/* What's New Section Styles | Start */
+.quiz-maker-what-is-new-section {
+    background-color: #f8fafc;
+    padding: 60px 20px;
+}
+
+.quiz-maker-what-is-new-section .quiz-maker-what-is-new-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.quiz-maker-what-is-new-section .quiz-maker-what-is-new-see-more-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #3b83f6;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 12px;
+    transition: color 0.3s ease;
+    position: absolute;
+    top: 30px;
+    right: 30px;
+}
+
+.quiz-maker-what-is-new-section .quiz-maker-what-is-new-see-more-btn:hover {
+    color: #3730A3;
+}
+
+.quiz-maker-what-is-new-section .quiz-maker-what-is-new-btn-icon {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.3s ease;
+}
+
+.quiz-maker-what-is-new-section .quiz-maker-what-is-new-see-more-btn:hover .quiz-maker-what-is-new-btn-icon {
+    transform: translateY(-2px);
+}
+
+.quiz-maker-what-is-new-section .quiz-maker-what-is-new-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.quiz-maker-what-is-new-section .quiz-maker-what-is-new-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0 0 10px 0;
+}
+
+.quiz-maker-what-is-new-section .quiz-maker-what-is-new-subtitle {
+    font-size: 16px;
+    color: #666666;
+    margin: 0;
+}
+
+.quiz-maker-what-is-new-section .quiz-maker-what-is-new-content {
+    margin-top: 30px;
+}
+
+.quiz-maker-what-is-new-section .quiz-maker-what-is-new-version-badge {
+    display: inline-block;
+    background-color: #ff6600;
+    color: #ffffff;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.quiz-maker-what-is-new-section .quiz-maker-what-is-new-features-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.quiz-maker-what-is-new-section .quiz-maker-what-is-new-feature-item {
+    padding: 12px 0;
+    font-size: 15px;
+    color: #333333;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.quiz-maker-what-is-new-section .quiz-maker-what-is-new-feature-item:before {
+    content: "•";
+    color: #2563eb;
+    font-weight: bold;
+    display: inline-block;
+    width: 20px;
+    font-size: 18px;
+}
+
+.quiz-maker-what-is-new-section .quiz-maker-what-is-new-feature-item:last-child {
+    border-bottom: none;
+}
+
+@media (max-width: 768px) {
+    .quiz-maker-what-is-new-section {
+        padding: 40px 15px;
+    }
+    
+    .quiz-maker-what-is-new-section .quiz-maker-what-is-new-container {
+        padding: 30px 20px;
+        padding-top: 60px;
+    }
+    
+    .quiz-maker-what-is-new-section .quiz-maker-what-is-new-see-more-btn {
+        top: 20px;
+        right: 20px;
+        font-size: 13px;
+    }
+    
+    .quiz-maker-what-is-new-section .quiz-maker-what-is-new-title {
+        font-size: 26px;
+    }
+    
+    .quiz-maker-what-is-new-section .quiz-maker-what-is-new-subtitle {
+        font-size: 14px;
+    }
+}
+/* What's New Section Styles | End */

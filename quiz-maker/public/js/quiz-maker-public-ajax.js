@@ -26,7 +26,7 @@
         var current_fs, next_fs, previous_fs; //fieldsets
         var left, opacity, scale; //fieldset properties which we will animate
         var animating; //flag to prevent quick multi-click glitches
-        var form, ays_quiz_container, ays_quiz_container_id;
+        var form, ays_quiz_container, ays_quiz_container_id, explanationTimeout;
         if(!$.fn.goTo){
             $.fn.goTo = function(myOptions) {
                 var QuizAnimationTop = (myOptions.quiz_animation_top && myOptions.quiz_animation_top != 0) ? parseInt(myOptions.quiz_animation_top) : 100;
@@ -344,7 +344,7 @@
             current_fs.removeClass('active-step');
             form = ays_quiz_container.find('form.ays-quiz-form');
 
-            if (!($(this).hasClass('start_button')) && window.aysTimerIntervalFlag == null && ! window.aysEarlyFinishConfirmBox[ quizId ]) {
+            if (!($(this).hasClass('start_button')) && window.aysTimerIntervalFlag == null && ! window.aysEarlyFinishConfirmBox[ quizId ] && ! ays_quiz_container.hasClass('ays-quiz-container-go-to-last-page') ) {
                 var minSelHasError = 0;
                 var buttonsDiv = current_fs.find('.ays_buttons_div');
                 var enableArrows = $(this).parents(".ays-questions-container").find(".ays_qm_enable_arrows").val();
@@ -392,143 +392,145 @@
                 }
             }
             
-            var textAnswers = form.find('div.ays-text-field textarea.ays-text-input');            
-            for(var i=0; i < textAnswers.length; i++){
-                var userAnsweredText = textAnswers.eq(i).val().trim();
-                var questionId = textAnswers.eq(i).parents('.step').data('questionId');
+            // var textAnswers = form.find('div.ays-text-field textarea.ays-text-input');            
+            // for(var i=0; i < textAnswers.length; i++){
+            //     var userAnsweredText = textAnswers.eq(i).val().trim();
+            //     var questionId = textAnswers.eq(i).parents('.step').data('questionId');
                 
-                var trueAnswered = false;
+            //     var trueAnswered = false;
 
-                // Enable case sensitive text
-                var enable_case_sensitive_text = (myQuizOptions[questionId].enable_case_sensitive_text && myQuizOptions[questionId].enable_case_sensitive_text != "") ? myQuizOptions[questionId].enable_case_sensitive_text : false;
+            //     // Enable case sensitive text
+            //     var enable_case_sensitive_text = (myQuizOptions[questionId].enable_case_sensitive_text && myQuizOptions[questionId].enable_case_sensitive_text != "") ? myQuizOptions[questionId].enable_case_sensitive_text : false;
                 
-                var thisQuestionCorrectAnswer = myQuizOptions[questionId].question_answer == '' ? "" : myQuizOptions[questionId].question_answer;
-                var thisQuestionAnswer = thisQuestionCorrectAnswer.toLowerCase();
+            //     // var thisQuestionCorrectAnswer = myQuizOptions[questionId].question_answer == '' ? "" : myQuizOptions[questionId].question_answer;
+            //     var thisQuestionCorrectAnswer = '';
+            //     var thisQuestionAnswer = thisQuestionCorrectAnswer.toLowerCase();
 
-                if ( enable_case_sensitive_text ) {
-                    thisQuestionAnswer = thisQuestionCorrectAnswer;
-                }
+            //     if ( enable_case_sensitive_text ) {
+            //         thisQuestionAnswer = thisQuestionCorrectAnswer;
+            //     }
 
-                thisQuestionAnswer = thisQuestionAnswer.split('%%%');
-                for(var i_answer = 0; i_answer < thisQuestionAnswer.length; i_answer++){
-                    if ( enable_case_sensitive_text ) {
-                        if(userAnsweredText == thisQuestionAnswer[i_answer].trim()){
-                            trueAnswered = true;
-                            break;
-                        }
-                    } else {
-                        if(userAnsweredText.toLowerCase() == thisQuestionAnswer[i_answer].trim()){
-                            trueAnswered = true;
-                            break;
-                        }
-                    }
-                }
+            //     thisQuestionAnswer = thisQuestionAnswer.split('%%%');
+            //     for(var i_answer = 0; i_answer < thisQuestionAnswer.length; i_answer++){
+            //         if ( enable_case_sensitive_text ) {
+            //             if(userAnsweredText == thisQuestionAnswer[i_answer].trim()){
+            //                 trueAnswered = true;
+            //                 break;
+            //             }
+            //         } else {
+            //             if(userAnsweredText.toLowerCase() == thisQuestionAnswer[i_answer].trim()){
+            //                 trueAnswered = true;
+            //                 break;
+            //             }
+            //         }
+            //     }
                 
-                if(trueAnswered){
-                    textAnswers.eq(i).next().val(1);
-                }else{
-                    textAnswers.eq(i).next().val(0);
-                    if(thisQuestionCorrectAnswer == ''){
-                        textAnswers.eq(i).attr('chishtpatasxan', '-');
-                    }else{
-                        textAnswers.eq(i).attr('chishtpatasxan', thisQuestionCorrectAnswer);
-                    }
-                }
-                textAnswers.eq(i).removeAttr('disabled');
-            }
+            //     if(trueAnswered){
+            //         textAnswers.eq(i).next().val(1);
+            //     }else{
+            //         textAnswers.eq(i).next().val(0);
+            //         if(thisQuestionCorrectAnswer == ''){
+            //             textAnswers.eq(i).attr('chishtpatasxan', '-');
+            //         }else{
+            //             textAnswers.eq(i).attr('chishtpatasxan', thisQuestionCorrectAnswer);
+            //         }
+            //     }
+            //     textAnswers.eq(i).removeAttr('disabled');
+            // }
             
-            var numberAnswers = form.find('div.ays-text-field input[type="number"].ays-text-input');            
-            for(var i=0; i < numberAnswers.length; i++){
-                var userAnsweredText = numberAnswers.eq(i).val().trim();
-                var questionId = numberAnswers.eq(i).parents('.step').data('questionId');
-                if(userAnsweredText.toLowerCase().replace(/\.([^0]+)0+$/,".$1") === myQuizOptions[questionId].question_answer.toLowerCase().replace(/\.([^0]+)0+$/,".$1")){
-                    numberAnswers.eq(i).next().val(1);
-                }else{
-                    numberAnswers.eq(i).next().val(0);
-                    numberAnswers.eq(i).attr('chishtpatasxan', myQuizOptions[questionId].question_answer);                    
-                }
-                numberAnswers.eq(i).removeAttr('disabled')
-            }
+            // var numberAnswers = form.find('div.ays-text-field input[type="number"].ays-text-input');            
+            // for(var i=0; i < numberAnswers.length; i++){
+            //     var userAnsweredText = numberAnswers.eq(i).val().trim();
+            //     var questionId = numberAnswers.eq(i).parents('.step').data('questionId');
+            //     if(userAnsweredText.toLowerCase().replace(/\.([^0]+)0+$/,".$1") === myQuizOptions[questionId].question_answer.toLowerCase().replace(/\.([^0]+)0+$/,".$1")){
+            //         numberAnswers.eq(i).next().val(1);
+            //     }else{
+            //         numberAnswers.eq(i).next().val(0);
+            //         numberAnswers.eq(i).attr('chishtpatasxan', myQuizOptions[questionId].question_answer);                    
+            //     }
+            //     numberAnswers.eq(i).removeAttr('disabled')
+            // }
             
-            var shortTextAnswers = form.find('div.ays-text-field input[type="text"].ays-text-input');            
-            for(var i=0; i < shortTextAnswers.length; i++){
-                var userAnsweredText = shortTextAnswers.eq(i).val().trim();
-                var questionId = shortTextAnswers.eq(i).parents('.step').data('questionId');
+            // var shortTextAnswers = form.find('div.ays-text-field input[type="text"].ays-text-input');            
+            // for(var i=0; i < shortTextAnswers.length; i++){
+            //     var userAnsweredText = shortTextAnswers.eq(i).val().trim();
+            //     var questionId = shortTextAnswers.eq(i).parents('.step').data('questionId');
                 
-                var trueAnswered = false;
+            //     var trueAnswered = false;
 
-                // Enable case sensitive text
-                var enable_case_sensitive_text = (myQuizOptions[questionId].enable_case_sensitive_text && myQuizOptions[questionId].enable_case_sensitive_text != "") ? myQuizOptions[questionId].enable_case_sensitive_text : false;
+            //     // Enable case sensitive text
+            //     var enable_case_sensitive_text = (myQuizOptions[questionId].enable_case_sensitive_text && myQuizOptions[questionId].enable_case_sensitive_text != "") ? myQuizOptions[questionId].enable_case_sensitive_text : false;
                 
-                var thisQuestionCorrectAnswer = myQuizOptions[questionId].question_answer == '' ? "" : myQuizOptions[questionId].question_answer;
-                var thisQuestionAnswer = thisQuestionCorrectAnswer.toLowerCase();
+            //     // var thisQuestionCorrectAnswer = myQuizOptions[questionId].question_answer == '' ? "" : myQuizOptions[questionId].question_answer;
+            //     var thisQuestionCorrectAnswer = "";
+            //     var thisQuestionAnswer = thisQuestionCorrectAnswer.toLowerCase();
 
-                if ( enable_case_sensitive_text ) {
-                    thisQuestionAnswer = thisQuestionCorrectAnswer;
-                }
+            //     if ( enable_case_sensitive_text ) {
+            //         thisQuestionAnswer = thisQuestionCorrectAnswer;
+            //     }
 
-                thisQuestionAnswer = thisQuestionAnswer.split('%%%');
-                for(var i_answer = 0; i_answer < thisQuestionAnswer.length; i_answer++){
-                    if ( enable_case_sensitive_text ) {
-                        if(userAnsweredText == thisQuestionAnswer[i_answer].trim()){
-                            trueAnswered = true;
-                            break;
-                        }
-                    } else {
-                        if(userAnsweredText.toLowerCase() == thisQuestionAnswer[i_answer].trim()){
-                            trueAnswered = true;
-                            break;
-                        }
-                    }
-                }
+            //     thisQuestionAnswer = thisQuestionAnswer.split('%%%');
+            //     for(var i_answer = 0; i_answer < thisQuestionAnswer.length; i_answer++){
+            //         if ( enable_case_sensitive_text ) {
+            //             if(userAnsweredText == thisQuestionAnswer[i_answer].trim()){
+            //                 trueAnswered = true;
+            //                 break;
+            //             }
+            //         } else {
+            //             if(userAnsweredText.toLowerCase() == thisQuestionAnswer[i_answer].trim()){
+            //                 trueAnswered = true;
+            //                 break;
+            //             }
+            //         }
+            //     }
                 
-                if(trueAnswered){
-                    shortTextAnswers.eq(i).next().val(1);
-                }else{
-                    shortTextAnswers.eq(i).next().val(0);
-                    if(thisQuestionCorrectAnswer == ''){
-                        shortTextAnswers.eq(i).attr('chishtpatasxan', '-');
-                    }else{
-                        shortTextAnswers.eq(i).attr('chishtpatasxan', thisQuestionCorrectAnswer);
-                    }
-                }
+            //     if(trueAnswered){
+            //         shortTextAnswers.eq(i).next().val(1);
+            //     }else{
+            //         shortTextAnswers.eq(i).next().val(0);
+            //         if(thisQuestionCorrectAnswer == ''){
+            //             shortTextAnswers.eq(i).attr('chishtpatasxan', '-');
+            //         }else{
+            //             shortTextAnswers.eq(i).attr('chishtpatasxan', thisQuestionCorrectAnswer);
+            //         }
+            //     }
                 
-                shortTextAnswers.eq(i).removeAttr('disabled')
-            }
+            //     shortTextAnswers.eq(i).removeAttr('disabled')
+            // }
             
-            var dateAnswers = form.find('div.ays-text-field input[type="date"].ays-text-input');
-            for(var i=0; i < dateAnswers.length; i++){
-                var userAnsweredText = dateAnswers.eq(i).val();
-                var questionId = dateAnswers.eq(i).parents('.step').data('questionId');
-                var thisQuestionCorrectAnswer = myQuizOptions[questionId].question_answer == '' ? "" : myQuizOptions[questionId].question_answer;
+            // var dateAnswers = form.find('div.ays-text-field input[type="date"].ays-text-input');
+            // for(var i=0; i < dateAnswers.length; i++){
+            //     var userAnsweredText = dateAnswers.eq(i).val();
+            //     var questionId = dateAnswers.eq(i).parents('.step').data('questionId');
+            //     var thisQuestionCorrectAnswer = myQuizOptions[questionId].question_answer == '' ? "" : myQuizOptions[questionId].question_answer;
                 
-                var trueAnswered = false;
-                var correctDate = new Date(thisQuestionCorrectAnswer),
-                    correctDateYear = correctDate.getFullYear(),
-                    correctDateMonth = correctDate.getMonth(),
-                    correctDateDay = correctDate.getDate();
-                var userDate = new Date(userAnsweredText),
-                    userDateYear = userDate.getFullYear(),
-                    userDateMonth = userDate.getMonth(),
-                    userDateDay = userDate.getDate();
+            //     var trueAnswered = false;
+            //     var correctDate = new Date(thisQuestionCorrectAnswer),
+            //         correctDateYear = correctDate.getFullYear(),
+            //         correctDateMonth = correctDate.getMonth(),
+            //         correctDateDay = correctDate.getDate();
+            //     var userDate = new Date(userAnsweredText),
+            //         userDateYear = userDate.getFullYear(),
+            //         userDateMonth = userDate.getMonth(),
+            //         userDateDay = userDate.getDate();
 
-                if(correctDateYear == userDateYear && correctDateMonth == userDateMonth && correctDateDay == userDateDay){
-                    trueAnswered = true;
-                }
+            //     if(correctDateYear == userDateYear && correctDateMonth == userDateMonth && correctDateDay == userDateDay){
+            //         trueAnswered = true;
+            //     }
                 
-                if(trueAnswered){
-                    dateAnswers.eq(i).next().val(1);
-                }else{
-                    dateAnswers.eq(i).next().val(0);
-                    if(thisQuestionCorrectAnswer == ''){
-                        dateAnswers.eq(i).attr('chishtpatasxan', '-');
-                    }else{
-                        dateAnswers.eq(i).attr('chishtpatasxan', thisQuestionCorrectAnswer);
-                    }
-                }
+            //     if(trueAnswered){
+            //         dateAnswers.eq(i).next().val(1);
+            //     }else{
+            //         dateAnswers.eq(i).next().val(0);
+            //         if(thisQuestionCorrectAnswer == ''){
+            //             dateAnswers.eq(i).attr('chishtpatasxan', '-');
+            //         }else{
+            //             dateAnswers.eq(i).attr('chishtpatasxan', thisQuestionCorrectAnswer);
+            //         }
+            //     }
                 
-                dateAnswers.eq(i).removeAttr('disabled')
-            }
+            //     dateAnswers.eq(i).removeAttr('disabled')
+            // }
             
             var data = form.serializeFormJSON();
 
@@ -541,85 +543,85 @@
                 }
             }
 
-            var checked_inputs_arr = ays_quiz_container.find(".step .ays-field input[id*='ays-answer-']:checked");
-            if ( checked_inputs_arr.length > 0 ) {
-                checked_inputs_arr.each(function () {
-                    var checked_input = $(this);
-                    var parent = checked_input.parents('.step');
-                    var checked_input_name  = checked_input.attr('name');
-                    var checked_input_value = checked_input.attr('value');
+            // var checked_inputs_arr = ays_quiz_container.find(".step .ays-field input[id*='ays-answer-']:checked");
+            // if ( checked_inputs_arr.length > 0 ) {
+            //     checked_inputs_arr.each(function () {
+            //         var checked_input = $(this);
+            //         var parent = checked_input.parents('.step');
+            //         var checked_input_name  = checked_input.attr('name');
+            //         var checked_input_value = checked_input.attr('value');
 
-                    var questionId = parent.attr('data-question-id');
-                    var answerId = checked_input.val();
+            //         var questionId = parent.attr('data-question-id');
+            //         var answerId = checked_input.val();
 
-                    if( typeof questionId != "undefined" && questionId !== null ){
+            //         if( typeof questionId != "undefined" && questionId !== null ){
 
-                        var thisQuestionCorrectAnswer = myQuizOptions[questionId].question_answer.length <= 0 ? new Array() : myQuizOptions[questionId].question_answer;
-                        var ifCorrectAnswer = thisQuestionCorrectAnswer[answerId] == '' ? '' : thisQuestionCorrectAnswer[answerId];
-                        if( typeof ifCorrectAnswer != "undefined" ){
-                            checked_input.parents('.ays-field').find('input[name="ays_answer_correct[]"]').val(ifCorrectAnswer);
-                        }
+            //             var thisQuestionCorrectAnswer = myQuizOptions[questionId].question_answer.length <= 0 ? new Array() : myQuizOptions[questionId].question_answer;
+            //             var ifCorrectAnswer = thisQuestionCorrectAnswer[answerId] == '' ? '' : thisQuestionCorrectAnswer[answerId];
+            //             if( typeof ifCorrectAnswer != "undefined" ){
+            //                 checked_input.parents('.ays-field').find('input[name="ays_answer_correct[]"]').val(ifCorrectAnswer);
+            //             }
 
-                        if (checked_input_name != "" && checked_input_value != "") {
-                            if ( data[checked_input_name] !== undefined && data[checked_input_name] == "") {
-                                data[checked_input_name] = checked_input_value;
-                            }
-                        }
-                    }
-                });
+            //             if (checked_input_name != "" && checked_input_value != "") {
+            //                 if ( data[checked_input_name] !== undefined && data[checked_input_name] == "") {
+            //                     data[checked_input_name] = checked_input_value;
+            //                 }
+            //             }
+            //         }
+            //     });
 
-                var newData = form.serializeFormJSON();
-                var ays_answer_correct_data = typeof newData["ays_answer_correct[]"] != "undefined" ? newData["ays_answer_correct[]"] : new Array();
-                if(typeof ays_answer_correct_data != "undefined" && ays_answer_correct_data.length > 0){
-                    data['ays_answer_correct[]'] = ays_answer_correct_data;
-                }
-            }
+            //     var newData = form.serializeFormJSON();
+            //     var ays_answer_correct_data = typeof newData["ays_answer_correct[]"] != "undefined" ? newData["ays_answer_correct[]"] : new Array();
+            //     if(typeof ays_answer_correct_data != "undefined" && ays_answer_correct_data.length > 0){
+            //         data['ays_answer_correct[]'] = ays_answer_correct_data;
+            //     }
+            // }
 
-            var selected_options_arr = ays_quiz_container.find(".step .ays-field select");
-            if ( selected_options_arr.length > 0 ) {
-                selected_options_arr.each(function (element, item) {
-                    var selected_options = $(this);
-                    var selectOptions = $(item).children("option[data-chisht]");
+            // var selected_options_arr = ays_quiz_container.find(".step .ays-field select");
+            // if ( selected_options_arr.length > 0 ) {
+            //     selected_options_arr.each(function (element, item) {
+            //         var selected_options = $(this);
+            //         var selectOptions = $(item).children("option[data-chisht]");
 
-                    var parent = selected_options.parents('.step');
-                    var fieldParent = parent.find('.ays-field');
-                    var fieldParentInput = fieldParent.find('input.ays-select-field-value');
-                    var checked_input_name  = fieldParentInput.attr('name');
-                    var checked_input_value = fieldParentInput.attr('value');
+            //         var parent = selected_options.parents('.step');
+            //         var fieldParent = parent.find('.ays-field');
+            //         var fieldParentInput = fieldParent.find('input.ays-select-field-value');
+            //         var checked_input_name  = fieldParentInput.attr('name');
+            //         var checked_input_value = fieldParentInput.attr('value');
 
-                    var questionId = parent.attr('data-question-id');
-                    for(var j = 0; j < selectOptions.length; j++){
-                        var currnetSelectOption = $(selectOptions[j]);
-                        var answerId = currnetSelectOption.val();
+            //         var questionId = parent.attr('data-question-id');
+            //         for(var j = 0; j < selectOptions.length; j++){
+            //             var currnetSelectOption = $(selectOptions[j]);
+            //             var answerId = currnetSelectOption.val();
 
-                        if( typeof questionId != "undefined" && questionId !== null ){
+            //             if( typeof questionId != "undefined" && questionId !== null ){
 
-                            var thisQuestionCorrectAnswer = myQuizOptions[questionId].question_answer.length <= 0 ? new Array() : myQuizOptions[questionId].question_answer;
-                            var ifCorrectAnswer = thisQuestionCorrectAnswer[answerId] == '' ? '' : thisQuestionCorrectAnswer[answerId];
-                            if( typeof ifCorrectAnswer != "undefined" ){
-                                fieldParent.find('input[data-id="'+ answerId +'"][name="ays_answer_correct[]"]').val(ifCorrectAnswer);
-                                currnetSelectOption.attr('data-chisht', ifCorrectAnswer);
-                            }
-                        }
+            //                 var thisQuestionCorrectAnswer = myQuizOptions[questionId].question_answer.length <= 0 ? new Array() : myQuizOptions[questionId].question_answer;
+            //                 var ifCorrectAnswer = thisQuestionCorrectAnswer[answerId] == '' ? '' : thisQuestionCorrectAnswer[answerId];
+            //                 if( typeof ifCorrectAnswer != "undefined" ){
+            //                     fieldParent.find('input[data-id="'+ answerId +'"][name="ays_answer_correct[]"]').val(ifCorrectAnswer);
+            //                     currnetSelectOption.attr('data-chisht', ifCorrectAnswer);
+            //                 }
+            //             }
 
-                    }
+            //         }
 
-                    if( typeof questionId != "undefined" && questionId !== null ){
+            //         if( typeof questionId != "undefined" && questionId !== null ){
 
-                        if (checked_input_name != "" && checked_input_value != "") {
-                            if ( data[checked_input_name] !== undefined && data[checked_input_name] == "") {
-                                data[checked_input_name] = checked_input_value;
-                            }
-                        }
-                    }
-                });
+            //             if (checked_input_name != "" && checked_input_value != "") {
+            //                 if ( data[checked_input_name] !== undefined && data[checked_input_name] == "") {
+            //                     data[checked_input_name] = checked_input_value;
+            //                 }
+            //             }
+            //         }
+            //     });
 
-                var newData = form.serializeFormJSON();
-                var ays_answer_correct_data = typeof newData["ays_answer_correct[]"] != "undefined" ? newData["ays_answer_correct[]"] : new Array();
-                if(typeof ays_answer_correct_data != "undefined" && ays_answer_correct_data.length > 0){
-                    data['ays_answer_correct[]'] = ays_answer_correct_data;
-                }
-            }
+            //     var newData = form.serializeFormJSON();
+            //     var ays_answer_correct_data = typeof newData["ays_answer_correct[]"] != "undefined" ? newData["ays_answer_correct[]"] : new Array();
+            //     if(typeof ays_answer_correct_data != "undefined" && ays_answer_correct_data.length > 0){
+            //         data['ays_answer_correct[]'] = ays_answer_correct_data;
+            //     }
+            // }
 
             data.action = 'ays_finish_quiz';
             data.end_date = GetFullDateTime();
@@ -714,6 +716,854 @@
                     }
                 }
             });
+        });
+
+        $(document).find('button.ays_check_answer').on('click', function (e) {
+            var _this = $(this);
+
+            var quizContainer = _this.parents('.ays-quiz-container');
+            var quizForm = quizContainer.find('form.ays-quiz-form');
+            var quizId = quizContainer.find('input[name="ays_quiz_id"]').val();
+            var right_answer_sound = quizContainer.find('.ays_quiz_right_ans_sound').get(0);
+            var wrong_answer_sound = quizContainer.find('.ays_quiz_wrong_ans_sound').get(0);
+
+            var parentStep = _this.parents('.step');
+            var parentQuizAnswers = _this.parents('.ays-quiz-answers');
+            var questionId = parentStep.attr('data-question-id');
+            var questionType = parentStep.attr('data-type');
+            var answerId = _this.val();
+
+            if ( window.aysQuizOptions[quizId] ) {
+                var myOptions = JSON.parse(window.atob(window.aysQuizOptions[quizId]));
+            }
+
+            var quizOptionsName = 'quizOptions_'+quizId;
+            var myQuizOptions = [];            
+            
+            if(typeof window[quizOptionsName] !== 'undefined'){
+                for(var i in window[quizOptionsName]){
+                    if(window[quizOptionsName].hasOwnProperty(i)){
+                         myQuizOptions[i] = (JSON.parse(window.atob(window[quizOptionsName][i])));
+                    }
+                }
+            }
+
+            var finishAfterWrongAnswer = (myOptions.finish_after_wrong_answer && myOptions.finish_after_wrong_answer == "on") ? true : false;
+            var thisAnswerOptions = myQuizOptions[questionId];
+
+            var userAnswerInput = _this.parent().find('.ays-text-input');
+            var userAnswer = userAnswerInput.val().trim();
+
+            if (!userAnswer) return;
+
+            _this.attr("disabled", true);
+
+            $.ajax({
+                url: quiz_maker_ajax_public.ajax_url,
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    action: 'ays_quiz_check_answer',
+                    quiz_id: quizId,
+                    question_id: questionId,
+                    question_type: questionType,
+                    answer: userAnswer,
+                    _ajax_nonce: quiz_maker_ajax_public.nonce
+                },
+                success: function (response) {
+                    if (!response.success) {
+                        alert(response.data && response.data.message ? response.data.message : quiz_maker_ajax_public.checkingError);
+                        return;
+                    }
+
+                    if(_this.parent().find('.ays-text-input').val() !== ""){
+                        if (_this.parents('form[id^="ays_finish_quiz"]').hasClass('enable_correction')) {
+                            if(_this.parents('.step').hasClass('not_influence_to_score')){
+                                return false;
+                            }
+                            _this.css({
+                                animation: "bounceOut .5s",
+                            });
+                            setTimeout(function(){
+                                _this.parent().find('.ays-text-input').css('width', '100%');
+                                _this.css("display", "none");
+                            },480);
+                            _this.parent().find('.ays-text-input').css('background-color', '#eee');
+                            _this.parent().find('.ays-text-input').attr('disabled', 'disabled');
+                            _this.attr('disabled', 'disabled');
+                            _this.off('change');
+                            _this.off('click');
+                            _this.parents('.ays-field').addClass('ays-answered-text-input');
+                            var input = _this.parent().find('.ays-text-input');
+                            var type = input.attr('type');
+                            var userAnsweredText = input.val().trim();
+
+                            // Enable case sensitive text
+                            var enable_case_sensitive_text = (thisAnswerOptions.enable_case_sensitive_text && thisAnswerOptions.enable_case_sensitive_text != "") ? thisAnswerOptions.enable_case_sensitive_text : false;
+                            
+                            var question_answer = response.data && response.data.question_answer ? response.data.question_answer : '';
+
+                            var trueAnswered = false;
+                            var thisQuestionAnswer = question_answer.toLowerCase();
+                            var displayingQuestionAnswer = question_answer;
+
+                            if( type == 'text' || type == 'short_text' ){
+                                if ( enable_case_sensitive_text ) {
+                                    thisQuestionAnswer = question_answer;
+                                }
+                            }
+                            
+                            if(type == 'date'){
+                                var correctDate = new Date(question_answer),
+                                    correctDateYear = correctDate.getFullYear(),
+                                    correctDateMonth = correctDate.getMonth(),
+                                    correctDateDay = correctDate.getDate();
+                                var userDate = new Date(userAnsweredText),
+                                    userDateYear = userDate.getFullYear(),
+                                    userDateMonth = userDate.getMonth(),
+                                    userDateDay = userDate.getDate();
+                                if(correctDateYear == userDateYear && correctDateMonth == userDateMonth && correctDateDay == userDateDay){
+                                    trueAnswered = true;
+                                }
+                            }else if(type != 'number'){
+                                thisQuestionAnswer = thisQuestionAnswer.split('%%%');
+                                displayingQuestionAnswer = displayingQuestionAnswer.split('%%%');
+                                for(var i = 0; i < thisQuestionAnswer.length; i++){
+                                    if ( enable_case_sensitive_text ) {
+                                        if(userAnsweredText == thisQuestionAnswer[i].trim()){
+                                            trueAnswered = true;
+                                            break;
+                                        }
+                                    } else {
+                                        if(userAnsweredText.toLowerCase() == thisQuestionAnswer[i].trim()){
+                                            trueAnswered = true;
+                                            break;
+                                        }
+                                    }
+                                }
+                            }else{
+                                if(type == 'number'){
+                                    if(userAnsweredText.toLowerCase().replace(/\.([^0]+)0+$/,".$1") == thisQuestionAnswer.trim().replace(/\.([^0]+)0+$/,".$1")){
+                                        trueAnswered = true;
+                                    }
+                                } else {
+                                    if(userAnsweredText.toLowerCase() == thisQuestionAnswer.trim()){
+                                        trueAnswered = true;
+                                    }
+                                }
+                            }
+                            
+                            if(trueAnswered){
+                                if((right_answer_sound)){
+                                    resetPlaying([right_answer_sound, wrong_answer_sound]);
+                                    setTimeout(function(){
+                                        right_answer_sound.play();
+                                    }, 10);
+                                }
+                                _this.parent().find('.ays-text-input').css('background-color', 'rgba(39,174,96,0.5)');
+                                _this.parent().find('input[name="ays_answer_correct[]"]').val(1);
+                                if(! parentStep.hasClass('not_influence_to_score')){
+                                    parentStep.find('.right_answer_text').slideDown(250);
+                                }
+                            }else{
+                                if((wrong_answer_sound)){
+                                    resetPlaying([right_answer_sound, wrong_answer_sound]);
+                                    setTimeout(function(){
+                                        wrong_answer_sound.play();
+                                    }, 10);
+                                }
+                                _this.parent().find('.ays-text-input').css('background-color', 'rgba(243,134,129,0.8)');
+                                _this.parent().find('input[name="ays_answer_correct[]"]').val(0);
+                                var rightAnswerText = '<div class="ays-text-right-answer">';
+                                    
+                                if(type == 'date'){
+                                    if( question_answer == '' ){
+                                        rightAnswerText += '-';
+                                    } else {
+                                        var correctDate = new Date(question_answer),
+                                            correctDateYear = correctDate.getUTCFullYear(),
+                                            correctDateMonth = (correctDate.getUTCMonth() + 1) < 10 ? "0"+(correctDate.getUTCMonth() + 1) : (correctDate.getUTCMonth() + 1),
+                                            correctDateDay = (correctDate.getUTCDate() < 10) ? "0"+correctDate.getUTCDate() : correctDate.getUTCDate();
+                                        rightAnswerText += [correctDateMonth, correctDateDay, correctDateYear].join('/');
+                                    }
+                                }else if(type != 'number'){
+                                    // rightAnswerText += thisQuestionAnswer[0];
+                                    if( displayingQuestionAnswer[0] == '' ){
+                                        rightAnswerText += '-';
+                                    } else {
+                                        rightAnswerText += displayingQuestionAnswer[0];
+                                    }
+                                }else{
+                                    // rightAnswerText += thisQuestionAnswer;
+                                    if( displayingQuestionAnswer == '' ){
+                                        rightAnswerText += '-';
+                                    } else {
+                                        rightAnswerText += displayingQuestionAnswer;
+                                    }
+                                }
+
+                                rightAnswerText += '</div>';
+                                parentQuizAnswers.append(rightAnswerText);
+                                parentQuizAnswers.find('.ays-text-right-answer').slideDown(500);
+                                if(! parentStep.hasClass('not_influence_to_score')){
+                                    parentStep.find('.wrong_answer_text').slideDown(250);
+                                }
+                                if(finishAfterWrongAnswer){
+                                    goToLastPage(e);
+                                }
+                            }
+                            var showExplanationOn = (myOptions.show_questions_explanation && myOptions.show_questions_explanation != "") ? myOptions.show_questions_explanation : "on_results_page";
+                            if(showExplanationOn == 'on_passing' || showExplanationOn == 'on_both'){
+                                if(! parentStep.hasClass('not_influence_to_score')){
+                                    parentStep.find('.ays_questtion_explanation').slideDown(250);
+                                }
+                            }
+                        }
+                    }
+                },
+                error: function (xhr, status, error) {
+                    alert(quiz_maker_ajax_public.checkingError);
+                    console.error('AJAX error:', status, error);
+                }
+            });
+        });
+
+        $(document).on("select2:select", 'select.ays-select', function(e){
+            var _this = $(this);
+
+            var quizContainer = _this.parents('.ays-quiz-container');
+            var quizForm = quizContainer.find('form.ays-quiz-form');
+            var quizId = quizContainer.find('input[name="ays_quiz_id"]').val();
+            var right_answer_sound = quizContainer.find('.ays_quiz_right_ans_sound').get(0);
+            var wrong_answer_sound = quizContainer.find('.ays_quiz_wrong_ans_sound').get(0);
+
+            var parentStep = _this.parents('.step');
+            var parentQuizAnswers = _this.parents('.ays-quiz-answers');
+            var questionId = parentStep.attr('data-question-id');
+            var questionType = parentStep.attr('data-type');
+            var answerId = _this.val();
+
+            if ( window.aysQuizOptions[quizId] ) {
+                var myOptions = JSON.parse(window.atob(window.aysQuizOptions[quizId]));
+            }
+
+            var finishAfterWrongAnswer = (myOptions.finish_after_wrong_answer && myOptions.finish_after_wrong_answer == "on") ? true : false;
+
+            var explanationTime = myOptions.explanation_time && myOptions.explanation_time != "" ? parseInt(myOptions.explanation_time) : 4;
+
+            myOptions.quiz_waiting_time = ( myOptions.quiz_waiting_time ) ? myOptions.quiz_waiting_time : "off";
+            var quizWaitingTime = (myOptions.quiz_waiting_time && myOptions.quiz_waiting_time == "on") ? true : false;
+
+            myOptions.enable_next_button = ( myOptions.enable_next_button ) ? myOptions.enable_next_button : "off";
+            var quizNextButton = (myOptions.enable_next_button && myOptions.enable_next_button == "on") ? true : false;
+            
+            if ( quizWaitingTime && !quizNextButton ) {
+                explanationTime += 2;
+            }
+
+            var quizWaitingCountDownDate = new Date().getTime() + (explanationTime * 1000);
+
+            _this.parent().find('.ays-select-field-value').attr("value", _this.val());
+            if(_this.parents(".ays-questions-container").find('form[id^="ays_finish_quiz"]').hasClass('enable_correction') 
+                && !parentStep.hasClass('not_influence_to_score') ) {
+
+                var userAnswer = _this.find('option:selected').val();
+                _this.attr("disabled", true);
+                _this.next().css("background-color", "#777");
+                _this.next().find('.selection').css("background-color", "#777");
+                _this.next().find('.select2-selection').css("background-color", "#777");
+
+                $.ajax({
+                    url: quiz_maker_ajax_public.ajax_url,
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {
+                        action: 'ays_quiz_check_answer',
+                        quiz_id: quizId,
+                        question_id: questionId,
+                        question_type: questionType,
+                        answer: userAnswer,
+                        _ajax_nonce: quiz_maker_ajax_public.nonce
+                    },
+                    success: function (response) {
+                        if (!response.success) {
+                            alert(response.data && response.data.message ? response.data.message : quiz_maker_ajax_public.checkingError);
+                            return;
+                        }
+
+                        var question_answer = response.data && response.data.question_answer ? response.data.question_answer : new Array();
+
+                        // var questionId = parentStep.attr('data-question-id');
+                        var selectOptions = _this.children("option[data-chisht]");
+                        for(var j = 0; j < selectOptions.length; j++){
+                            var currnetSelectOption = $(selectOptions[j]);
+                            var answerId = currnetSelectOption.val();
+
+                            if( typeof questionId != "undefined" && questionId !== null && quizForm.hasClass('enable_correction') ){
+
+                                var thisQuestionCorrectAnswer = question_answer.length <= 0 ? new Array() : question_answer;
+                                var ifCorrectAnswer = thisQuestionCorrectAnswer[answerId] == '' ? '' : thisQuestionCorrectAnswer[answerId];
+
+                                if( typeof ifCorrectAnswer != "undefined" ){
+                                    parentStep.find('.ays-field input[data-id="'+ answerId +'"][name="ays_answer_correct[]"]').val(ifCorrectAnswer);
+                                    currnetSelectOption.attr('data-chisht', ifCorrectAnswer);
+                                }
+                            }
+                        }
+
+                        // var chishtPatasxan = _this.find('option:selected').data("chisht");
+                        var chishtPatasxan = response.data && response.data.correct === true ? 1 : 0;
+
+                        if (chishtPatasxan == 1) {
+                            if((right_answer_sound)){
+                                resetPlaying([right_answer_sound, wrong_answer_sound]);
+                                setTimeout(function(){
+                                    right_answer_sound.play();
+                                }, 10);
+                            }
+                            _this.parents('.ays-field').addClass('correct correct_div');
+                            _this.parents('.ays-field').find('.select2-selection.select2-selection--single').css("border-bottom-color", "green");
+                        } else {
+                            if((wrong_answer_sound)){
+                                resetPlaying([right_answer_sound, wrong_answer_sound]);
+                                setTimeout(function(){
+                                    wrong_answer_sound.play();
+                                }, 10);
+                            }
+                            _this.parents('.ays-field').addClass('wrong wrong_div');
+                            _this.parents('.ays-field').find('.select2-selection.select2-selection--single').css("border-bottom-color", "red");
+
+                            var rightAnswerDisplayText = _this.find('option[data-chisht="1"]').html();
+
+                            if( typeof rightAnswerDisplayText == 'undefined' ){
+                                var rightAnswerText = '<div class="ays-text-right-answer">'+
+                                    '-'+
+                                    '</div>';
+                            } else {
+                                var rightAnswerText = '<div class="ays-text-right-answer">'+
+                                    _this.find('option[data-chisht="1"]').html()+
+                                    '</div>';
+                            }
+                            _this.parents('.ays-quiz-answers').append(rightAnswerText);
+                            _this.parents('.ays-quiz-answers').find('.ays-text-right-answer').css("text-align", "left");
+                            _this.parents('.ays-quiz-answers').find('.ays-text-right-answer').slideDown(500);
+                        }
+                        if(myOptions.answers_rw_texts && (myOptions.answers_rw_texts == 'on_passing' || myOptions.answers_rw_texts == 'on_both')){
+                            if (chishtPatasxan == 1) {
+                                _this.parents().eq(3).find('.right_answer_text').slideDown(500);
+                            } else {
+                                _this.parents().eq(3).find('.wrong_answer_text').slideDown(500);
+                            }
+                        }                
+                        if(finishAfterWrongAnswer && chishtPatasxan != 1){
+                            _this.parents('div[data-question-id]').find('.ays_next').attr('disabled', 'disabled');
+                            _this.parents('div[data-question-id]').find('.ays_early_finish').attr('disabled', 'disabled');
+                        }
+                        explanationTimeout = setTimeout(function(){
+                            if (chishtPatasxan == 1) {
+                                if (_this.parents('div[data-question-id]').find('input.ays_next').hasClass('ays_display_none') &&
+                                    _this.parents('div[data-question-id]').find('i.ays_next_arrow').hasClass('ays_display_none')) {
+                                    _this.parents('div[data-question-id]').find('.ays_next').trigger('click');
+                                }
+                            }else{
+                                if(finishAfterWrongAnswer){
+                                    goToLastPage(e);
+                                }else{
+                                    if (_this.parents('div[data-question-id]').find('input.ays_next').hasClass('ays_display_none') &&
+                                        _this.parents('div[data-question-id]').find('i.ays_next_arrow').hasClass('ays_display_none')) {
+                                        _this.parents('div[data-question-id]').find('.ays_next').trigger('click');
+                                    }
+                                }
+                            }
+                        }, explanationTime*1000);
+                        if (quizWaitingTime && !quizNextButton) {
+                            window.countdownTimeForShowInterval = setInterval(function () {
+                                countdownTimeForShow( parentStep, quizWaitingCountDownDate );
+                            }, 1000);
+                        }
+                        
+                        var showExplanationOn = (myOptions.show_questions_explanation && myOptions.show_questions_explanation != "") ? myOptions.show_questions_explanation : "on_results_page";
+                        if(showExplanationOn == 'on_passing' || showExplanationOn == 'on_both'){
+                            if(! _this.parents('.step').hasClass('not_influence_to_score')){
+                                _this.parents('.step').find('.ays_questtion_explanation').slideDown(250);
+                            }
+                        }
+                        
+                        _this.attr("disabled", true);
+                        _this.next().css("background-color", "#777");
+                        _this.next().find('.selection').css("background-color", "#777");
+                        _this.next().find('.select2-selection').css("background-color", "#777");
+
+                    },
+                    error: function (xhr, status, error) {
+                        alert(quiz_maker_ajax_public.checkingError);
+                        console.error('AJAX error:', status, error);
+                    }
+                });
+            }else{
+                if (_this.parents('div[data-question-id]').find('input.ays_next').hasClass('ays_display_none') && _this.parents('div[data-question-id]').find('i.ays_next_arrow').hasClass('ays_display_none')) {
+                    _this.parents('div[data-question-id]').find('.ays_next').trigger('click');
+                }
+            }
+            var this_select_value = _this.val();
+            _this.find("option").removeAttr("selected");
+            _this.find("option[value='"+this_select_value+"']").attr("selected", true);
+        });
+
+        $(document).on('change', 'input[name^="ays_questions"]', function (e) {
+
+            var _this = $(this);
+            var parentStep = _this.parents('.step');
+            var questionID = parentStep.data('questionId');
+            var questionId = questionID;
+            var questionType = parentStep.attr('data-type');
+            var answerId = _this.val();
+
+            var quizContainer = _this.parents('.ays-quiz-container');
+            var quizForm = quizContainer.find('form.ays-quiz-form');
+            var quizId = _this.parents('.ays-quiz-container').find('input[name="ays_quiz_id"]').val();
+
+            if ( window.aysQuizOptions[quizId] ) {
+                var myOptions = JSON.parse(window.atob(window.aysQuizOptions[quizId]));
+            }
+
+            if(_this.parents('.step').hasClass('not_influence_to_score')){
+                if(_this.attr('type') === 'radio') {
+                    _this.parents('.ays-quiz-answers').find('.checked_answer_div').removeClass('checked_answer_div');
+                    _this.parents('.ays-field').addClass('checked_answer_div');
+                }
+                if(_this.attr('type') === 'checkbox') {
+                    if(!_this.parents('.ays-field').hasClass('checked_answer_div')){
+                        _this.parents('.ays-field').addClass('checked_answer_div');
+                    }else{
+                        _this.parents('.ays-field').removeClass('checked_answer_div');
+                    }
+                } 
+                var checked_inputs = _this.parents().eq(1).find('input:checked');
+                if (checked_inputs.parents('div[data-question-id]').find('input.ays_next').hasClass('ays_display_none') && checked_inputs.parents('div[data-question-id]').find('i.ays_next_arrow').hasClass('ays_display_none')) {
+                    if (checked_inputs.attr('type') === 'radio') {
+                        checked_inputs.parents('div[data-question-id]').find('.ays_next').trigger('click');                    
+                    }
+                }
+                return false;
+            }
+
+            if (_this.parents().eq(4).hasClass('enable_correction') && ( questionType == 'radio' || questionType == 'checkbox' || questionType == 'true_or_false' )) {
+
+                var userAnswer = _this.parents().eq(1).find('input:checked').val();
+                _this.attr("disabled", true);
+                _this.off('change');
+
+                if( questionType == 'radio' || questionType == 'true_or_false' ){
+                    _this.parents('div[data-question-id]').find('input[name^="ays_questions"]').attr('disabled', true);
+                    _this.parents('div[data-question-id]').find('input[name^="ays_questions"]').off('change');
+                    _this.parents('div[data-question-id]').find('.ays-field').css({
+                        'pointer-events': 'none'
+                    });
+                } else if( questionType == 'checkbox' ){
+                    _this.parents('.ays-field').find('label[for^="ays-answer"]').on('click',function(){return false;});
+                    _this.parents('.ays-field').find('div[data-question-id]').find('input[name^="ays_questions"]').off('change');
+                    _this.parents('.ays-field').find('input[name^="ays_questions"]').attr('disabled', true);
+                    _this.parents('.ays-field').css({
+                        'pointer-events': 'none'
+                    });
+                }
+
+                $.ajax({
+                    url: quiz_maker_ajax_public.ajax_url,
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {
+                        action: 'ays_quiz_check_answer',
+                        quiz_id: quizId,
+                        question_id: questionId,
+                        question_type: questionType,
+                        answer: userAnswer,
+                        _ajax_nonce: quiz_maker_ajax_public.nonce
+                    },
+                    success: function (response) {
+                        if (!response.success) {
+                            alert(response.data && response.data.message ? response.data.message : quiz_maker_ajax_public.checkingError);
+                            return;
+                        }
+
+                        if( typeof questionID != "undefined" && questionID !== null && quizForm.hasClass('enable_correction') ){
+
+                            var question_answer = response.data && response.data.question_answer ? response.data.question_answer : new Array();
+
+                            var thisQuestionCorrectAnswer = new Array();
+                            if (question_answer && typeof question_answer !== "undefined") {
+                                thisQuestionCorrectAnswer = question_answer.length <= 0 ? new Array() : question_answer;
+                            }
+
+                            var ifCorrectAnswer = thisQuestionCorrectAnswer[answerId] == '' ? '' : thisQuestionCorrectAnswer[answerId];
+                            if( typeof ifCorrectAnswer != "undefined" ){
+                                _this.parents('.ays-field').find('input[name="ays_answer_correct[]"]').val(ifCorrectAnswer);
+
+                                if( ifCorrectAnswer == '0' && questionType === 'radio' && $(e.target).parents('form.ays-quiz-form').hasClass('enable_correction') ){
+
+                                    for (var question_answer_ID in thisQuestionCorrectAnswer) {
+                                        var UserAnswered_true_or_false = thisQuestionCorrectAnswer[question_answer_ID];
+                                        parentStep.find('.ays-quiz-answers .ays-field input[value="'+ question_answer_ID +'"]').prev().val(UserAnswered_true_or_false);
+                                    }
+                                }
+                            }
+                        }
+
+                        var right_answer_sound = quizContainer.find('.ays_quiz_right_ans_sound').get(0);
+                        var wrong_answer_sound = quizContainer.find('.ays_quiz_wrong_ans_sound').get(0);
+                        var finishAfterWrongAnswer = (myOptions.finish_after_wrong_answer && myOptions.finish_after_wrong_answer == "on") ? true : false;
+                        var showExplanationOn = (myOptions.show_questions_explanation && myOptions.show_questions_explanation != "") ? myOptions.show_questions_explanation : "on_results_page";
+                        var explanationTime = myOptions.explanation_time && myOptions.explanation_time != "" ? parseInt(myOptions.explanation_time) : 4;
+
+                        myOptions.quiz_waiting_time = ( myOptions.quiz_waiting_time ) ? myOptions.quiz_waiting_time : "off";
+                        var quizWaitingTime = (myOptions.quiz_waiting_time && myOptions.quiz_waiting_time == "on") ? true : false;
+
+                        myOptions.enable_next_button = ( myOptions.enable_next_button ) ? myOptions.enable_next_button : "off";
+                        var quizNextButton = (myOptions.enable_next_button && myOptions.enable_next_button == "on") ? true : false;
+                        
+                        if ( quizWaitingTime && !quizNextButton ) {
+                            explanationTime += 2;
+                        }
+
+                        var quizWaitingCountDownDate = new Date().getTime() + (explanationTime * 1000);
+
+                        if(_this.parents('.ays-quiz-container').hasClass('ays_quiz_rect_light')){
+                            if (_this.parents().eq(4).hasClass('enable_correction')) {
+                                if (_this.parents().eq(1).find('input[name="ays_answer_correct[]"]').length !== 0) {
+                                    var checked_inputs = _this.parents().eq(1).find('input:checked');
+                                    if (checked_inputs.length === 1) {
+                                        if (_this.parent().find('input[name="ays_answer_correct[]"]').val() == 1) {
+                                            _this.parent().find('label[for^="ays-answer"]').addClass('correct');
+                                            _this.parent().find('label[for^="ays-answer"]').on('click',function(){return false;});
+                                            _this.parent().find('label[for^="ays-answer"]').parent().addClass('correct_div checked_answer_div');
+                                        } else {
+                                            _this.parent().find('label[for^="ays-answer"]').addClass('wrong');
+                                            _this.parent().find('label[for^="ays-answer"]').on('click',function(){return false;});
+                                            _this.parent().find('label[for^="ays-answer"]').parent().addClass('wrong_div checked_answer_div');
+                                        }
+                                        if (checked_inputs.attr('type') === "radio") {
+                                            _this.parents('div[data-question-id]').find('input[name^="ays_questions"]').attr('disabled', true);
+                                            _this.parents('div[data-question-id]').find('input[name^="ays_questions"]').off('change');
+                                        }
+                                    }else{
+                                        for(var i = 0; i < checked_inputs.length; i++){
+                                            if (_this.parent().find('input[name="ays_answer_correct[]"]').val() == 1) {
+                                                _this.parent().find('label[for^="ays-answer"]').addClass('correct');
+                                                _this.parent().find('label[for^="ays-answer"]').on('click',function(){return false;});
+                                                _this.parent().find('label[for^="ays-answer"]').parent().addClass('correct_div checked_answer_div');
+                                            } else {
+                                                _this.parent().find('label[for^="ays-answer"]').addClass('wrong');
+                                                _this.parent().find('label[for^="ays-answer"]').on('click',function(){return false;});
+                                                _this.parent().find('label[for^="ays-answer"]').parent().addClass('wrong_div checked_answer_div');
+                                            }
+                                            if (checked_inputs.attr('type') === "radio") {
+                                                _this.parents('div[data-question-id]').find('input[name^="ays_questions"]').attr('disabled', true);
+                                                _this.parents('div[data-question-id]').find('input[name^="ays_questions"]').off('change');
+                                            }
+                                        }
+                                    }
+                                    _this.parents('div[data-question-id]').find('input[name^="ays_questions"]').next().css('background-color', "transparent");
+                                }
+                            }
+                        }
+
+                        if(_this.parents('.ays-quiz-container').hasClass('ays_quiz_rect_dark')){
+                            if (_this.parents().eq(4).hasClass('enable_correction')) {
+                                if (_this.parents().eq(1).find('input[name="ays_answer_correct[]"]').length !== 0) {
+                                    var checked_inputs = _this.parents().eq(1).find('input:checked');
+                                    if (checked_inputs.length === 1) {
+                                        if (_this.parent().find('input[name="ays_answer_correct[]"]').val() == 1) {
+                                            _this.parent().find('label[for^="ays-answer"]').addClass('correct');
+                                            _this.parent().find('label[for^="ays-answer"]').on('click',function(){return false;});
+                                            _this.parent().find('label[for^="ays-answer"]').parent().addClass('correct_div checked_answer_div');
+                                        } else {
+                                            _this.parent().find('label[for^="ays-answer"]').addClass('wrong');
+                                            _this.parent().find('label[for^="ays-answer"]').on('click',function(){return false;});
+                                            _this.parent().find('label[for^="ays-answer"]').parent().addClass('wrong_div checked_answer_div');
+                                        }
+                                        if (checked_inputs.attr('type') === "radio") {
+                                            _this.parents('div[data-question-id]').find('input[name^="ays_questions"]').attr('disabled', true);
+                                            _this.parents('div[data-question-id]').find('input[name^="ays_questions"]').off('change');
+                                        }
+                                    }else{
+                                        for(var i = 0; i < checked_inputs.length; i++){
+                                            if (_this.parent().find('input[name="ays_answer_correct[]"]').val() == 1) {
+                                                _this.parent().find('label[for^="ays-answer"]').addClass('correct');
+                                                _this.parent().find('label[for^="ays-answer"]').on('click',function(){return false;});
+                                                _this.parent().find('label[for^="ays-answer"]').parent().addClass('correct_div checked_answer_div');
+                                            } else {
+                                                _this.parent().find('label[for^="ays-answer"]').addClass('wrong');
+                                                _this.parent().find('label[for^="ays-answer"]').on('click',function(){return false;});
+                                                _this.parent().find('label[for^="ays-answer"]').parent().addClass('wrong_div checked_answer_div');
+                                            }
+                                            if (checked_inputs.attr('type') === "radio") {
+                                                _this.parents('div[data-question-id]').find('input[name^="ays_questions"]').attr('disabled', true);
+                                                _this.parents('div[data-question-id]').find('input[name^="ays_questions"]').off('change');
+                                            }
+                                        }
+                                    }                
+                                    _this.parents('div[data-question-id]').find('input[name^="ays_questions"]').next().css('background-color', "transparent");
+                                }
+                            }
+                        }
+
+                        if(_this.parents('.ays-quiz-container').hasClass('ays_quiz_elegant_light')){
+                            if (_this.parents().eq(4).hasClass('enable_correction')) {
+                                if (_this.parents().eq(1).find('input[name="ays_answer_correct[]"]').length !== 0) {
+                                    var checked_inputs = _this.parents().eq(1).find('input:checked');
+                                    if (checked_inputs.length === 1) {
+                                        if (_this.parent().find('input[name="ays_answer_correct[]"]').val() == 1) {
+                                            _this.parent().find('label[for^="ays-answer"]').addClass('correct');
+                                            _this.parent().find('label[for^="ays-answer"]').parent().addClass('correct_div checked_answer_div');
+                                        } else {
+                                            _this.parent().find('label[for^="ays-answer"]').addClass('wrong');
+                                            _this.parent().find('label[for^="ays-answer"]').parent().addClass('wrong_div checked_answer_div');
+                                        }
+                                        if (checked_inputs.attr('type') === "radio") {
+                                            _this.parents('div[data-question-id]').find('input[name^="ays_questions"]').attr('disabled', true);
+                                            _this.parents('div[data-question-id]').find('input[name^="ays_questions"]').off('change');
+                                            _this.parent().find('label[for^="ays-answer"]').css('padding',"0 10px 0 10px");
+                                        }
+                                        _this.parent().find('label[for^="ays-answer"]').css('padding',"0 10px 0 10px");
+                                    }else{
+                                        for(var i = 0; i < checked_inputs.length; i++){
+                                            if (_this.parent().find('input[name="ays_answer_correct[]"]').val() == 1) {
+                                                _this.parent().find('label[for^="ays-answer"]').addClass('correct');
+                                                _this.parent().find('label[for^="ays-answer"]').parent().addClass('correct_div checked_answer_div');
+                                            } else {
+                                                _this.parent().find('label[for^="ays-answer"]').addClass('wrong');
+                                                _this.parent().find('label[for^="ays-answer"]').parent().addClass('wrong_div checked_answer_div');
+                                            }
+                                            if (checked_inputs.attr('type') === "radio") {
+                                                _this.parents('div[data-question-id]').find('input[name^="ays_questions"]').attr('disabled', true);
+                                                _this.parents('div[data-question-id]').find('input[name^="ays_questions"]').off('change');
+                                                _this.parent().find('label[for^="ays-answer"]').css('padding',"0 10px 0 10px");
+                                            }
+                                        }
+                                        _this.parent().find('label[for^="ays-answer"]').css('padding',"0 10px 0 10px");
+                                    }                
+                                    _this.parents('div[data-question-id]').find('input[name^="ays_questions"]').next().css('background-color', "transparent");
+                                }
+                            }
+                        }
+
+                        if(_this.parents('.ays-quiz-container').hasClass('ays_quiz_elegant_dark')){
+                            if (_this.parents().eq(4).hasClass('enable_correction')) {
+                                if (_this.parents().eq(1).find('input[name="ays_answer_correct[]"]').length !== 0) {
+                                    var checked_inputs = _this.parents().eq(1).find('input:checked');
+                                    if (checked_inputs.length === 1) {
+                                        if (_this.parent().find('input[name="ays_answer_correct[]"]').val() == 1) {
+                                            _this.parent().find('label[for^="ays-answer"]').addClass('correct');
+                                            _this.parent().find('label[for^="ays-answer"]').parent().addClass('correct_div checked_answer_div');
+                                        } else {
+                                            _this.parent().find('label[for^="ays-answer"]').addClass('wrong');
+                                            _this.parent().find('label[for^="ays-answer"]').parent().addClass('wrong_div checked_answer_div');
+                                        }
+                                        if (checked_inputs.attr('type') === "radio") {
+                                            _this.parents('div[data-question-id]').find('input[name^="ays_questions"]').attr('disabled', true);
+                                            _this.parents('div[data-question-id]').find('input[name^="ays_questions"]').off('change');
+                                            // _this.parent().find('label[for^="ays-answer"]').css('padding',"0 10px 0 10px");
+                                        }
+                                        // _this.parent().find('label[for^="ays-answer"]').css('padding',"0 10px 0 10px");
+                                    }else{
+                                        for(var i = 0; i < checked_inputs.length; i++){
+                                            if (_this.parent().find('input[name="ays_answer_correct[]"]').val() == 1) {
+                                                _this.parent().find('label[for^="ays-answer"]').addClass('correct');
+                                                _this.parent().find('label[for^="ays-answer"]').parent().addClass('correct_div checked_answer_div');
+                                            } else {
+                                                _this.parent().find('label[for^="ays-answer"]').addClass('wrong');
+                                                _this.parent().find('label[for^="ays-answer"]').parent().addClass('wrong_div checked_answer_div');
+                                            }
+                                            if (checked_inputs.attr('type') === "radio") {
+                                                _this.parents('div[data-question-id]').find('input[name^="ays_questions"]').attr('disabled', true);
+                                                _this.parents('div[data-question-id]').find('input[name^="ays_questions"]').off('change');
+                                                // _this.parent().find('label[for^="ays-answer"]').css('padding',"0 10px 0 10px");
+                                            }
+                                        }
+                                        // _this.parent().find('label[for^="ays-answer"]').css('padding',"0 10px 0 10px");
+                                    }                
+                                    _this.parents('div[data-question-id]').find('input[name^="ays_questions"]').next().css('background-color', "transparent");
+                                }
+                            }
+                        }
+
+                        if (_this.parents().eq(1).find('input[name="ays_answer_correct[]"]').length !== 0) {
+                            var checked_inputs = _this.parents().eq(1).find('input:checked');
+                            if (checked_inputs.attr('type') === "radio") {
+                                checked_inputs.next().addClass('answered');
+                                (checked_inputs.prev().val() == 1) ? checked_inputs.next().addClass('correct') : checked_inputs.next().addClass('wrong');
+                                if (checked_inputs.prev().val() == 1) {
+                                    _this.parents('.ays-field').addClass('correct_div checked_answer_div');
+                                    _this.next('label').addClass('correct answered');
+
+                                    if(myOptions.answers_rw_texts && (myOptions.answers_rw_texts == 'on_passing' || myOptions.answers_rw_texts == 'on_both' || myOptions.answers_rw_texts == 'disable' || myOptions.answers_rw_texts == 'on_results_page')){
+                                        if( myOptions.answers_rw_texts != 'on_results_page' ){
+                                            if(! _this.parents('.step').hasClass('not_influence_to_score')){
+                                                _this.parents().eq(3).find('.right_answer_text').slideDown(250);
+                                            }
+                                        }
+                                        explanationTimeout = setTimeout(function(){
+                                            if (checked_inputs.parents('div[data-question-id]').find('input.ays_next').hasClass('ays_display_none') && checked_inputs.parents('div[data-question-id]').find('i.ays_next_arrow').hasClass('ays_display_none')) {
+                                                checked_inputs.parents('div[data-question-id]').find('.ays_next').trigger('click');
+                                            }
+                                        }, explanationTime*1000);
+                                        if (quizWaitingTime && !quizNextButton) {
+                                            window.countdownTimeForShowInterval = setInterval(function () {
+                                                countdownTimeForShow( parentStep, quizWaitingCountDownDate );
+                                            }, 1000);
+                                        }
+                                    }else{
+                                        if (checked_inputs.parents('div[data-question-id]').find('input.ays_next').hasClass('ays_display_none') && checked_inputs.parents('div[data-question-id]').find('i.ays_next_arrow').hasClass('ays_display_none')) {
+                                            checked_inputs.parents('div[data-question-id]').find('.ays_next').trigger('click');
+                                        }
+                                    }
+                                    if((right_answer_sound)){
+                                        resetPlaying([right_answer_sound, wrong_answer_sound]);
+                                        setTimeout(function(){
+                                            right_answer_sound.play();
+                                        }, 10);
+                                    }
+                                }
+                                else {
+                                    _this.parents('.ays-quiz-answers').find('input[name="ays_answer_correct[]"][value="1"]').parent().addClass('correct_div checked_answer_div');
+                                    _this.parents('.ays-quiz-answers').find('input[name="ays_answer_correct[]"][value="1"]').next().next().addClass('correct answered');
+                                    _this.parents('.ays-field').addClass('wrong_div');
+                                    
+                                    if(myOptions.answers_rw_texts && (myOptions.answers_rw_texts == 'on_passing' || myOptions.answers_rw_texts == 'on_both' || myOptions.answers_rw_texts == 'disable' || myOptions.answers_rw_texts == 'on_results_page')){
+                                        if( myOptions.answers_rw_texts != 'on_results_page' ){
+                                            if(! _this.parents('.step').hasClass('not_influence_to_score')){
+                                                _this.parents().eq(3).find('.wrong_answer_text').slideDown(250);
+                                            }
+                                        }
+                                        explanationTimeout = setTimeout(function(){
+                                            if (checked_inputs.parents('div[data-question-id]').find('input.ays_next').hasClass('ays_display_none') && 
+                                                checked_inputs.parents('div[data-question-id]').find('i.ays_next_arrow').hasClass('ays_display_none')) {
+                                                if(finishAfterWrongAnswer){
+                                                    goToLastPage(e);
+                                                }else{
+                                                    checked_inputs.parents('div[data-question-id]').find('.ays_next').trigger('click');
+                                                }
+                                            }else{
+                                                if(finishAfterWrongAnswer){
+                                                    goToLastPage(e);
+                                                }
+                                            }
+                                        }, explanationTime * 1000);
+                                        if (quizWaitingTime && !quizNextButton) {
+                                            window.countdownTimeForShowInterval = setInterval(function () {
+                                                countdownTimeForShow( parentStep, quizWaitingCountDownDate );
+                                            }, 1000);
+                                        }
+                                    }else{
+                                        if (checked_inputs.parents('div[data-question-id]').find('input.ays_next').hasClass('ays_display_none') && 
+                                            checked_inputs.parents('div[data-question-id]').find('i.ays_next_arrow').hasClass('ays_display_none')) {                                    
+                                            if(finishAfterWrongAnswer){
+                                                goToLastPage(e);
+                                            }else{
+                                                checked_inputs.parents('div[data-question-id]').find('.ays_next').trigger('click');
+                                            }
+                                        }else{
+                                            if(finishAfterWrongAnswer){
+                                                goToLastPage(e);
+                                            }
+                                        }
+                                    }
+                                    if((wrong_answer_sound)){
+                                        resetPlaying([right_answer_sound, wrong_answer_sound]);
+                                        setTimeout(function(){
+                                            wrong_answer_sound.play();
+                                        }, 10);
+                                    }
+                                }
+                                if(showExplanationOn == 'on_passing' || showExplanationOn == 'on_both'){
+                                    if(! _this.parents('.step').hasClass('not_influence_to_score')){
+                                        _this.parents().eq(3).find('.ays_questtion_explanation').slideDown(250);
+                                    }
+                                }
+                                _this.parents('div[data-question-id]').find('input[name^="ays_questions"]').attr('disabled', true);
+                                _this.parents('div[data-question-id]').find('input[name^="ays_questions"]').off('change');
+                                _this.parents('div[data-question-id]').find('.ays-field').css({
+                                    'pointer-events': 'none'
+                                });
+                            }else if(checked_inputs.attr('type') === "checkbox"){
+                                checked_inputs = _this;
+                                if (checked_inputs.length === 1) {
+                                    if(checked_inputs.prev().val() == 1){
+                                        checked_inputs.parents('.ays-field').addClass('correct_div checked_answer_div');
+                                        checked_inputs.next().addClass('correct answered');
+                                        if((right_answer_sound)){
+                                            resetPlaying([right_answer_sound, wrong_answer_sound]);
+                                            setTimeout(function(){
+                                                right_answer_sound.play();
+                                            }, 10);
+                                        }
+                                    }else{
+                                        checked_inputs.parents('.ays-field').addClass('wrong_div');
+                                        checked_inputs.next().addClass('wrong answered');  
+                                        if((wrong_answer_sound)){
+                                            resetPlaying([right_answer_sound, wrong_answer_sound]);
+                                            setTimeout(function(){
+                                                wrong_answer_sound.play();
+                                            }, 10);
+                                        }
+                                        if(finishAfterWrongAnswer){
+                                            goToLastPage(e);
+                                        }
+                                    }
+                                }else{
+                                    for (var i = 0; i < checked_inputs.length; i++) {
+                                        if(checked_inputs.eq(i).prev().val() == 1){
+                                            checked_inputs.eq(i).next().addClass('correct answered');
+                                            if((right_answer_sound)){
+                                                resetPlaying([right_answer_sound, wrong_answer_sound]);
+                                                setTimeout(function(){
+                                                    right_answer_sound.play();
+                                                }, 10);
+                                            }
+                                        }else{
+                                            checked_inputs.eq(i).next().addClass('wrong answered');
+                                            if((wrong_answer_sound)){
+                                                resetPlaying([right_answer_sound, wrong_answer_sound]);
+                                                setTimeout(function(){
+                                                    wrong_answer_sound.play();
+                                                }, 10);
+                                            }
+                                            if(finishAfterWrongAnswer){
+                                                goToLastPage(e);
+                                            }
+                                        }
+                                    }
+                                }
+                                _this.attr('disabled', true);
+                                _this.off('change');
+                            }
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        alert(quiz_maker_ajax_public.checkingError);
+                        console.error('AJAX error:', status, error);
+                    }
+                });
+            }else{                
+                if(_this.attr('type') === 'radio') {
+                    _this.parents('.ays-quiz-answers').find('.checked_answer_div').removeClass('checked_answer_div');
+                    _this.parents('.ays-field').addClass('checked_answer_div');
+                }
+                if(_this.attr('type') === 'checkbox') {
+                    if(!_this.parents('.ays-field').hasClass('checked_answer_div')){
+                        _this.parents('.ays-field').addClass('checked_answer_div');
+                    }else{
+                        _this.parents('.ays-field').removeClass('checked_answer_div');
+                    }
+                } 
+                var checked_inputs = _this.parents().eq(1).find('input:checked');
+                if (checked_inputs.parents('div[data-question-id]').find('input.ays_next').hasClass('ays_display_none') && checked_inputs.parents('div[data-question-id]').find('i.ays_next_arrow').hasClass('ays_display_none')) {
+                    if (checked_inputs.attr('type') === 'radio') {
+                        checked_inputs.parents('div[data-question-id]').find('.ays_next').trigger('click');                    
+                    }
+                }
+            }
         });
     });
     
@@ -1142,6 +1992,8 @@
                 formResults.append(resultToggleHTML);
             }
 
+            aysQuizChangeResultPageHtml(response, form, myOptions, myQuizOptions);
+
             var questions = form.find('div[data-question-id]');
             var answerIsRightArr = new Array();
             for (var z = 0; z < questions.length; z++) {
@@ -1200,30 +2052,33 @@
                 var fieldset_html = "<fieldset class='ays_fieldset'>" + "<legend>" + quizLangObj.notAnsweredText + "</legend>" + "</fieldset>";
                 var question_html = question.find('.ays-abs-fs > *:not(.ays_quiz_question)').clone(true, true);
 
-                if( questionType == "radio" || questionType == "checkbox"){
-                    var parentStep = question;
-                    var questionID = questionId;
-                    var radioInputData = question.find('.ays-quiz-answers .ays-field input[name*="ays_questions"]');
+                // if( questionType == "radio" || questionType == "checkbox"){
+                //     var parentStep = question;
+                //     var questionID = questionId;
+                //     var radioInputData = question.find('.ays-quiz-answers .ays-field input[name*="ays_questions"]');
 
-                    for (var i = 0; i < radioInputData.length; i++) {
-                        var currentAnswer = $( radioInputData[i] );
-                        var currentAnswerID = currentAnswer.val();
+                //     for (var i = 0; i < radioInputData.length; i++) {
+                //         var currentAnswer = $( radioInputData[i] );
+                //         var currentAnswerID = currentAnswer.val();
                         
-                        if( typeof questionID != "undefined" && questionID !== null ){
+                //         if( typeof questionID != "undefined" && questionID !== null ){
 
-                            var thisQuestionCorrectAnswer = myQuizOptions[questionID].question_answer.length <= 0 ? array() : myQuizOptions[questionID].question_answer;
-                            var ifCorrectAnswer = thisQuestionCorrectAnswer[currentAnswerID] == '' ? '' : thisQuestionCorrectAnswer[currentAnswerID];
-                            if( typeof ifCorrectAnswer != "undefined" ){
-                                question.find('input[name="ays_answer_correct[]"]').val(ifCorrectAnswer);
+                //             var question_answer = response && response.question_answer_data ? response.question_answer_data : new Array();
 
-                                for (var question_answer_ID in thisQuestionCorrectAnswer) {
-                                    var UserAnswered_true_or_false = thisQuestionCorrectAnswer[question_answer_ID];
-                                    question.find('.ays-quiz-answers .ays-field input[value="'+ question_answer_ID +'"]').prev().val(UserAnswered_true_or_false);
-                                }
-                            }
-                        }
-                    }
-                }
+                //             var thisQuestionCorrectAnswer = question_answer[questionID].length <= 0 ? new Array() : question_answer[questionID];
+                //             var ifCorrectAnswer = thisQuestionCorrectAnswer[currentAnswerID].correct == '' ? '' : thisQuestionCorrectAnswer[currentAnswerID].correct;
+
+                //             if( typeof ifCorrectAnswer != "undefined" ){
+                //                 question.find('input[name="ays_answer_correct[]"]').val(ifCorrectAnswer);
+
+                //                 for (var question_answer_ID in thisQuestionCorrectAnswer) {
+                //                     var UserAnswered_true_or_false = thisQuestionCorrectAnswer[question_answer_ID];
+                //                     question.find('.ays-quiz-answers .ays-field input[value="'+ question_answer_ID +'"]').prev().val(UserAnswered_true_or_false);
+                //                 }
+                //             }
+                //         }
+                //     }
+                // }
                 
                 question.find('input[name="ays_answer_correct[]"][value="1"]').parent().find('label').addClass('correct answered');
                 question.find('input[name="ays_answer_correct[]"][value="1"]').parents('div.ays-field').addClass('correct_div');
@@ -1264,7 +2119,12 @@
                     var selectOptions = $(item).children("option[data-chisht]");
                     var answerClass, answerDivClass, attrChecked, answerClassForSelected, answerClass_tpel, answerViewClass, attrCheckedStyle = "";
                     var correctAnswersDiv = '', rectAnswerBefore = "";
-                    
+
+                    var answers_view = (myOptions.answers_view && myOptions.answers_view != "") ? myOptions.answers_view : "list";
+                    var ans_right_wrong_icon = (myOptions.ans_right_wrong_icon && myOptions.ans_right_wrong_icon != "") ? myOptions.ans_right_wrong_icon : "none";
+
+                    myOptions.show_answers_caption = (myOptions.show_answers_caption) ? myOptions.show_answers_caption : "on";
+                    var showAnswersCaption = (myOptions.show_answers_caption && myOptions.show_answers_caption == "on") ? true : false;
                     
                     answerViewClass = form.find('.answer_view_class').val();
                     answerViewClass = "ays_"+form.find('.answer_view_class').val()+"_view_item";
@@ -1274,6 +2134,19 @@
                            $(selectOptions[j]).attr("value") == null){
                             continue;
                         }
+
+                        if($(selectOptions[j]).attr("data-nkar") == '' || $(selectOptions[j]).attr("data-nkar") == undefined || $(selectOptions[j]).attr("data-nkar") == null){
+                            var selectedOptionImageHTML = "";
+                        } else {
+                            var selectedOptionImageStyle = '';
+                            if( !showAnswersCaption && answers_view == 'grid'){
+                                var selectedOptionImageStyle = 'width: 100% !important;';
+                            }
+
+                            var selectedOptionImageURL = $(selectOptions[j]).attr("data-nkar");
+                            var selectedOptionImageHTML = '<img src="'+ selectedOptionImageURL +'" alt="" style="'+ selectedOptionImageStyle +'" class="ays-answer-image" />';
+                        }
+
                         if($(selectOptions[j]).prop('selected') == true){
                             if(parseInt($(selectOptions[j]).data("chisht")) === 1){
                                 answerClassForSelected = " correct answered";
@@ -1333,9 +2206,30 @@
                                 rectAnswerBefore = "rect_answer_wrong_before";
                             }
                         }
+
+                        var answer_label_class = '';
+                        var answer_img_label_class = '';
+                        if( selectedOptionImageHTML == ""){
+                            answer_label_class = "";
+                            answer_img_label_class = " ays_position_initial ";
+                        }else{
+                            if( answers_view == 'grid'){
+                                answer_label_class = " ays_empty_before_content ";
+                            }else{
+                                answer_label_class = " ays_empty_before_content ";
+                            }
+
+                            if( ans_right_wrong_icon == 'none'){
+                                answer_img_label_class = " ays_answer_caption ays_without_after_content ";
+                            } else {
+                                answer_img_label_class = " ays_answer_caption ";
+                            }
+                        }
+
                         correctAnswersDiv += '<div class="ays-field '+answerViewClass+' '+answerDivClass+'" '+attrCheckedStyle+'>'+
                                 '<input type="radio" value="'+$(selectOptions[j]).attr("value")+'" name="'+$(item).parent().find('.ays-select-field-value').attr('name')+'" disabled="disabled" '+attrChecked+'>'+
-                                '<label class="'+rectAnswerBefore+" "+answerClassForSelected+'" for="ays-answer-'+$(selectOptions[j]).attr("value")+'">'+aysEscapeHtml($(selectOptions[j]).text())+'</label>'+
+                                '<label class="'+answer_label_class+" "+answer_img_label_class+" "+rectAnswerBefore+" "+answerClassForSelected+'" for="ays-answer-'+$(selectOptions[j]).attr("value")+'">'+aysEscapeHtml($(selectOptions[j]).text())+'</label>'+
+                                '<label for="ays-answer-'+$(selectOptions[j]).attr("value")+'" class="ays_answer_image ays_empty_before_content '+answerClassForSelected+'">'+ selectedOptionImageHTML +'</label>' +
                             '</div>';
                     }
                     $(item).parent().parent().find('.ays-text-right-answer').remove();
@@ -1381,7 +2275,12 @@
                     }else{
                         thisQuestionAnswer = [''];
                     }
-                    rightAnswerText += thisQuestionAnswer[0].trim();
+
+                    if( thisQuestionAnswer[0].trim() == '' ){
+                        rightAnswerText += '-';
+                    } else {
+                        rightAnswerText += thisQuestionAnswer[0].trim();
+                    }
                     
                     rightAnswerText += '</div>';
                     if(text_answer.parents('.ays-quiz-answers').find('.ays-text-right-answer').length == 0){
@@ -1418,7 +2317,12 @@
                         }else{
                             thisQuestionAnswer = [''];
                         }
-                        rightAnswerText += thisQuestionAnswer[0].trim();
+
+                        if( thisQuestionAnswer[0].trim() == '' ){
+                            rightAnswerText += '-';
+                        } else {
+                            rightAnswerText += thisQuestionAnswer[0].trim();
+                        }
 
                         rightAnswerText += '</div>';                            
                         if(text_answer.parents('.ays-quiz-answers').find('.ays-text-right-answer').length == 0){
@@ -1431,9 +2335,15 @@
                     }
                 }
                 if(number_answer.val() == ''){
-                    var rightAnswerText = '<div class="ays-text-right-answer">'+
-                        number_answer.attr('chishtpatasxan')+
-                    '</div>';
+                    if( typeof number_answer.attr('chishtpatasxan') == 'undefined' ){
+                        var rightAnswerText = '<div class="ays-text-right-answer">'+
+                            '-'+
+                        '</div>';
+                    } else{
+                        var rightAnswerText = '<div class="ays-text-right-answer">'+
+                            number_answer.attr('chishtpatasxan')+
+                        '</div>';
+                    }
                     if(number_answer.parents('.ays-quiz-answers').find('.ays-text-right-answer').length == 0){
                         number_answer.parents('.ays-quiz-answers').append(rightAnswerText);
                     }
@@ -1463,9 +2373,16 @@
                         answerIsRight = true;
                     }else{
                         number_answer.css('background-color', 'rgba(243,134,129,0.4)');
-                        var rightAnswerText = '<div class="ays-text-right-answer">'+
-                            number_answer.attr('chishtpatasxan')+
+                        if( typeof number_answer.attr('chishtpatasxan') == 'undefined' ){
+                            var rightAnswerText = '<div class="ays-text-right-answer">'+
+                                '-'+
                             '</div>';
+                        } else{
+                            var rightAnswerText = '<div class="ays-text-right-answer">'+
+                                number_answer.attr('chishtpatasxan')+
+                            '</div>';
+                        }
+
                         if(number_answer.parents('.ays-quiz-answers').find('.ays-text-right-answer').length == 0){
                             number_answer.parents('.ays-quiz-answers').append(rightAnswerText);
                         }
@@ -1483,7 +2400,12 @@
                     }else{
                         thisQuestionAnswer = [''];
                     }
-                    rightAnswerText += thisQuestionAnswer[0].trim();
+
+                    if( thisQuestionAnswer[0].trim() == '' ){
+                        rightAnswerText += '-';
+                    } else {
+                        rightAnswerText += thisQuestionAnswer[0].trim();
+                    }
                     
                     rightAnswerText += '</div>';
                     if(short_text_answer.parents('.ays-quiz-answers').find('.ays-text-right-answer').length == 0){
@@ -1522,7 +2444,12 @@
                         }else{
                             thisQuestionAnswer = [''];
                         }
-                        rightAnswerText += thisQuestionAnswer[0].trim();
+
+                        if( thisQuestionAnswer[0].trim() == '' ){
+                            rightAnswerText += '-';
+                        } else {
+                            rightAnswerText += thisQuestionAnswer[0].trim();
+                        }
                         
                         rightAnswerText += '</div>';
                         if(short_text_answer.parents('.ays-quiz-answers').find('.ays-text-right-answer').length == 0){
@@ -1537,12 +2464,15 @@
                 if(date_answer.val() == ''){
                     var rightAnswerText = '<div class="ays-text-right-answer">';
                     var thisQuestionAnswer = date_answer.attr('chishtpatasxan');
-
-                    var correctDate = new Date(thisQuestionAnswer),
-                        correctDateYear = correctDate.getUTCFullYear(),
-                        correctDateMonth = (correctDate.getUTCMonth() + 1) < 10 ? "0"+(correctDate.getUTCMonth() + 1) : (correctDate.getUTCMonth() + 1),
-                        correctDateDay = (correctDate.getUTCDate() < 10) ? "0"+correctDate.getUTCDate() : correctDate.getUTCDate();
-                    rightAnswerText += [correctDateMonth, correctDateDay, correctDateYear].join('/');
+                    if( typeof thisQuestionAnswer == 'undefined' || thisQuestionAnswer == '-' ) {
+                        rightAnswerText += '-';
+                    } else {
+                        var correctDate = new Date(thisQuestionAnswer),
+                            correctDateYear = correctDate.getUTCFullYear(),
+                            correctDateMonth = (correctDate.getUTCMonth() + 1) < 10 ? "0"+(correctDate.getUTCMonth() + 1) : (correctDate.getUTCMonth() + 1),
+                            correctDateDay = (correctDate.getUTCDate() < 10) ? "0"+correctDate.getUTCDate() : correctDate.getUTCDate();
+                        rightAnswerText += [correctDateMonth, correctDateDay, correctDateYear].join('/');
+                    }
                     
                     rightAnswerText += '</div>';
                     if(date_answer.parents('.ays-quiz-answers').find('.ays-text-right-answer').length == 0){
@@ -1575,11 +2505,15 @@
                         date_answer.css('background-color', 'rgba(243,134,129,0.4)');
                         var rightAnswerText = '<div class="ays-text-right-answer">';
                         var thisQuestionAnswer = date_answer.attr('chishtpatasxan');
-                        var correctDate = new Date(thisQuestionAnswer),
-                            correctDateYear = correctDate.getUTCFullYear(),
-                            correctDateMonth = (correctDate.getUTCMonth() + 1) < 10 ? "0"+(correctDate.getUTCMonth() + 1) : (correctDate.getUTCMonth() + 1),
-                            correctDateDay = (correctDate.getUTCDate() < 10) ? "0"+correctDate.getUTCDate() : correctDate.getUTCDate();
-                        rightAnswerText += [correctDateMonth, correctDateDay, correctDateYear].join('/');
+                        if( typeof thisQuestionAnswer == 'undefined' || thisQuestionAnswer == '-' ) {
+                            rightAnswerText += '-';
+                        } else {
+                            var correctDate = new Date(thisQuestionAnswer),
+                                correctDateYear = correctDate.getUTCFullYear(),
+                                correctDateMonth = (correctDate.getUTCMonth() + 1) < 10 ? "0"+(correctDate.getUTCMonth() + 1) : (correctDate.getUTCMonth() + 1),
+                                correctDateDay = (correctDate.getUTCDate() < 10) ? "0"+correctDate.getUTCDate() : correctDate.getUTCDate();
+                            rightAnswerText += [correctDateMonth, correctDateDay, correctDateYear].join('/');
+                        }
                         
                         rightAnswerText += '</div>';
                         if(date_answer.parents('.ays-quiz-answers').find('.ays-text-right-answer').length == 0){
@@ -1594,10 +2528,10 @@
                 checked_inputs.each(function (element, item) {
                     if (checked_inputs.length === 1) {
                         if(parseInt(checked_inputs.prev().val()) === 1){
-                            checked_inputs.next().addClass('correct answered');
+                            checked_inputs.parent().find('label').addClass('correct answered');
                             answerIsRight = true;
                         }else{
-                            checked_inputs.next().addClass('wrong wrong_div answered');
+                            checked_inputs.parent().find('label').addClass('wrong wrong_div answered');
                         }
                         $( checked_inputs).parents().eq(3).find('input[name^="ays_questions"]').attr('disabled', true);
 
@@ -1605,9 +2539,9 @@
                         var checked_right = 0;
                         checked_inputs.map(function() {
                             if(parseInt($(this).prev().val()) === 1){
-                                $(this).next().addClass('correct answered');
+                                $(this).parent().find('label').addClass('correct answered');
                             } else {
-                                $(this).next().addClass('wrong wrong_div answered');
+                                $(this).parent().find('label').addClass('wrong wrong_div answered');
                                 checked_right++;
                             }
                             $(this).parents().eq(3).find('input[name^="ays_questions"]').attr('disabled', true);
@@ -1929,6 +2863,210 @@
         CustomEvent.prototype = window.Event.prototype;
     
         window.CustomEvent = CustomEvent;
+    }
+
+    function aysQuizChangeResultPageHtml(response, form, myOptions, myQuizOptions) {
+
+        var ays_quiz_container_element = form.parents(".ays-quiz-container");
+        var question_answer_data = response.question_answer_data;
+
+        var textAnswers = form.find('div.ays-text-field textarea.ays-text-input');            
+        for(var i=0; i < textAnswers.length; i++){
+            var userAnsweredText = textAnswers.eq(i).val().trim();
+            var questionId = textAnswers.eq(i).parents('.step').data('questionId');
+            var answerId = textAnswers.eq(i).attr('data-answer-id');
+            
+            var trueAnswered = false;
+
+            // Enable case sensitive text
+            var enable_case_sensitive_text = (myQuizOptions[questionId].enable_case_sensitive_text && myQuizOptions[questionId].enable_case_sensitive_text != "") ? myQuizOptions[questionId].enable_case_sensitive_text : false;
+            
+            var thisQuestionCorrectAnswer = question_answer_data[questionId][answerId].question_answer == '' ? "" : question_answer_data[questionId][answerId].question_answer;
+            var thisQuestionAnswer = thisQuestionCorrectAnswer.toLowerCase();
+
+            if ( enable_case_sensitive_text ) {
+                thisQuestionAnswer = thisQuestionCorrectAnswer;
+            }
+
+            thisQuestionAnswer = thisQuestionAnswer.split('%%%');
+            for(var i_answer = 0; i_answer < thisQuestionAnswer.length; i_answer++){
+                if ( enable_case_sensitive_text ) {
+                    if(userAnsweredText == thisQuestionAnswer[i_answer].trim()){
+                        trueAnswered = true;
+                        break;
+                    }
+                } else {
+                    if(userAnsweredText.toLowerCase() == thisQuestionAnswer[i_answer].trim()){
+                        trueAnswered = true;
+                        break;
+                    }
+                }
+            }
+            
+            if(trueAnswered){
+                textAnswers.eq(i).next().val(1);
+            }else{
+                textAnswers.eq(i).next().val(0);
+                if(thisQuestionCorrectAnswer == ''){
+                    textAnswers.eq(i).attr('chishtpatasxan', '-');
+                }else{
+                    textAnswers.eq(i).attr('chishtpatasxan', thisQuestionCorrectAnswer);
+                }
+            }
+            textAnswers.eq(i).removeAttr('disabled');
+        }
+        
+        var numberAnswers = form.find('div.ays-text-field input[type="number"].ays-text-input');            
+        for(var i=0; i < numberAnswers.length; i++){
+            var userAnsweredText = numberAnswers.eq(i).val().trim();
+            var questionId = numberAnswers.eq(i).parents('.step').data('questionId');
+            var answerId = numberAnswers.eq(i).attr('data-answer-id');
+
+            if(userAnsweredText.toLowerCase().replace(/\.([^0]+)0+$/,".$1") === question_answer_data[questionId][answerId].question_answer.toLowerCase().replace(/\.([^0]+)0+$/,".$1")){
+                numberAnswers.eq(i).next().val(1);
+            }else{
+                numberAnswers.eq(i).next().val(0);
+                numberAnswers.eq(i).attr('chishtpatasxan', question_answer_data[questionId][answerId].question_answer);                    
+            }
+            numberAnswers.eq(i).removeAttr('disabled')
+        }
+        
+        var shortTextAnswers = form.find('div.ays-text-field input[type="text"].ays-text-input');            
+        for(var i=0; i < shortTextAnswers.length; i++){
+            var userAnsweredText = shortTextAnswers.eq(i).val().trim();
+            var questionId = shortTextAnswers.eq(i).parents('.step').data('questionId');
+            var answerId = shortTextAnswers.eq(i).attr('data-answer-id');
+            
+            var trueAnswered = false;
+
+            // Enable case sensitive text
+            var enable_case_sensitive_text = (myQuizOptions[questionId].enable_case_sensitive_text && myQuizOptions[questionId].enable_case_sensitive_text != "") ? myQuizOptions[questionId].enable_case_sensitive_text : false;
+            
+            var thisQuestionCorrectAnswer = question_answer_data[questionId][answerId].question_answer == '' ? "" : question_answer_data[questionId][answerId].question_answer;
+            var thisQuestionAnswer = thisQuestionCorrectAnswer.toLowerCase();
+
+            if ( enable_case_sensitive_text ) {
+                thisQuestionAnswer = thisQuestionCorrectAnswer;
+            }
+
+            thisQuestionAnswer = thisQuestionAnswer.split('%%%');
+            for(var i_answer = 0; i_answer < thisQuestionAnswer.length; i_answer++){
+                if ( enable_case_sensitive_text ) {
+                    if(userAnsweredText == thisQuestionAnswer[i_answer].trim()){
+                        trueAnswered = true;
+                        break;
+                    }
+                } else {
+                    if(userAnsweredText.toLowerCase() == thisQuestionAnswer[i_answer].trim()){
+                        trueAnswered = true;
+                        break;
+                    }
+                }
+            }
+            
+            if(trueAnswered){
+                shortTextAnswers.eq(i).next().val(1);
+            }else{
+                shortTextAnswers.eq(i).next().val(0);
+                if(thisQuestionCorrectAnswer == ''){
+                    shortTextAnswers.eq(i).attr('chishtpatasxan', '-');
+                }else{
+                    shortTextAnswers.eq(i).attr('chishtpatasxan', thisQuestionCorrectAnswer);
+                }
+            }
+            
+            shortTextAnswers.eq(i).removeAttr('disabled')
+        }
+        
+        var dateAnswers = form.find('div.ays-text-field input[type="date"].ays-text-input');
+        for(var i=0; i < dateAnswers.length; i++){
+            var userAnsweredText = dateAnswers.eq(i).val();
+            var questionId = dateAnswers.eq(i).parents('.step').data('questionId');
+            var answerId = dateAnswers.eq(i).attr('data-answer-id');
+
+            var thisQuestionCorrectAnswer = question_answer_data[questionId][answerId].question_answer == '' ? "" : question_answer_data[questionId][answerId].question_answer;
+            
+            var trueAnswered = false;
+            var correctDate = new Date(thisQuestionCorrectAnswer),
+                correctDateYear = correctDate.getFullYear(),
+                correctDateMonth = correctDate.getMonth(),
+                correctDateDay = correctDate.getDate();
+            var userDate = new Date(userAnsweredText),
+                userDateYear = userDate.getFullYear(),
+                userDateMonth = userDate.getMonth(),
+                userDateDay = userDate.getDate();
+
+            if(correctDateYear == userDateYear && correctDateMonth == userDateMonth && correctDateDay == userDateDay){
+                trueAnswered = true;
+            }
+            
+            if(trueAnswered){
+                dateAnswers.eq(i).next().val(1);
+            }else{
+                dateAnswers.eq(i).next().val(0);
+                if(thisQuestionCorrectAnswer == ''){
+                    dateAnswers.eq(i).attr('chishtpatasxan', '-');
+                }else{
+                    dateAnswers.eq(i).attr('chishtpatasxan', thisQuestionCorrectAnswer);
+                }
+            }
+            
+            dateAnswers.eq(i).removeAttr('disabled')
+        }
+
+        // var checked_inputs_arr = ays_quiz_container_element.find(".step .ays-field input[id*='ays-answer-']:checked");
+        var checked_inputs_arr = ays_quiz_container_element.find(".step .ays-field input[id*='ays-answer-']");
+        if ( checked_inputs_arr.length > 0 ) {
+            checked_inputs_arr.each(function () {
+                var checked_input = $(this);
+                var parent = checked_input.parents('.step');
+                var checked_input_name  = checked_input.attr('name');
+                var checked_input_value = checked_input.attr('value');
+
+                var questionId = parent.attr('data-question-id');
+                var answerId = checked_input.val();
+
+                if( typeof questionId != "undefined" && questionId !== null ){
+
+                    var thisQuestionCorrectAnswer = question_answer_data[questionId].length <= 0 ? new Array() : question_answer_data[questionId];
+                    var ifCorrectAnswer = thisQuestionCorrectAnswer[answerId].correct == '' ? '' : thisQuestionCorrectAnswer[answerId].correct;
+                    if( typeof ifCorrectAnswer != "undefined" ){
+                        checked_input.parents('.ays-field').find('input[name="ays_answer_correct[]"]').val(ifCorrectAnswer);
+                    }
+                }
+            });
+        }
+
+        var selected_options_arr = ays_quiz_container_element.find(".step .ays-field select");
+        if ( selected_options_arr.length > 0 ) {
+            selected_options_arr.each(function (element, item) {
+                var selected_options = $(this);
+                var selectOptions = $(item).children("option[data-chisht]");
+
+                var parent = selected_options.parents('.step');
+                var fieldParent = parent.find('.ays-field');
+                var fieldParentInput = fieldParent.find('input.ays-select-field-value');
+                var checked_input_name  = fieldParentInput.attr('name');
+                var checked_input_value = fieldParentInput.attr('value');
+
+                var questionId = parent.attr('data-question-id');
+                for(var j = 0; j < selectOptions.length; j++){
+                    var currnetSelectOption = $(selectOptions[j]);
+                    var answerId = currnetSelectOption.val();
+
+                    if( typeof questionId != "undefined" && questionId !== null ){
+
+                        var thisQuestionCorrectAnswer = question_answer_data[questionId].length <= 0 ? new Array() : question_answer_data[questionId];
+                        var ifCorrectAnswer = thisQuestionCorrectAnswer[answerId].correct == '' ? '' : thisQuestionCorrectAnswer[answerId].correct;
+                        if( typeof ifCorrectAnswer != "undefined" ){
+                            fieldParent.find('input[data-id="'+ answerId +'"][name="ays_answer_correct[]"]').val(ifCorrectAnswer);
+                            currnetSelectOption.attr('data-chisht', ifCorrectAnswer);
+                        }
+                    }
+
+                }
+            });
+        }
     }
     
 })(jQuery);

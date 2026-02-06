@@ -10,7 +10,7 @@
 }
 
 
-.ays_quiz_rect_dark label[for^="ays-answer"]:before {
+.ays_quiz_rect_dark .ays_list_view_container label[for^="ays-answer"]:before {
     content: url('../images/traditional-checkbox-no.jpg') !important;
     margin-bottom: 8px;
     border: none;

@@ -1469,6 +1469,13 @@
             cloned.find('input.ays-correct-answer').val(row_id);
             cloned.find('input.ays-correct-answer').prop('checked', false);
             cloned.find('input.ays-correct-answer-value').val('');
+            cloned.find('.ays-answer-image-container').parent().html(' <label class=\'ays-label\' for=\'ays-answer\'><a href="javascript:void(0)" class="add-answer-image" style=display:block;>'+ quizLangObj.add +'</a></label>\n' +
+                '<div class="ays-answer-image-container ays-answer-image-container-div" style=display:none; >\n' +
+                '<span class="ays-edit-answer-img" title="'+ quizLangObj.editImage +'"></span>\n' +
+                '<span class="ays-remove-answer-img" title="'+ quizLangObj.deleteImage +'"></span>\n' +
+                '<img src="" class="ays-answer-img" />\n' +
+                '<input type="hidden" name="ays_answer_image[]" class="ays-answer-image-path" value=""/>\n' +
+                '                                    </div>');
             cloned.find('label').attr('for', 'ays-correct-answer-' + row_id);
             cloned.appendTo('table#ays-answers-table tbody');
 
@@ -1742,7 +1749,7 @@
 
                     var pro_features_new_design_html = "";
 
-                    pro_features_new_design_html += '<a href="https://ays-pro.com/wordpress/quiz-maker" tabindex="-1" target="_blank" class="ays-quiz-new-upgrade-button-link ays-quiz-new-upgrade-button-without-text-link">';
+                    pro_features_new_design_html += '<a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=answer-table-'+ quizLangObj.AYS_QUIZ_UTM_VERSION +'" tabindex="-1" target="_blank" class="ays-quiz-new-upgrade-button-link ays-quiz-new-upgrade-button-without-text-link">';
                         pro_features_new_design_html += '<div class="ays-quiz-new-upgrade-button-box">';
                             pro_features_new_design_html += '<div>';
                                 pro_features_new_design_html += '<img src="'+ quizLangObj.AYS_QUIZ_ADMIN_URL +'/images/icons/locked_24x24.svg">';
@@ -1761,7 +1768,7 @@
                         answerHeadRow = $('<th class="th-150 removable">Ordering</th>'+
                                 '<th class="th-150 removable">Correct</th>'),
                         answerHeadKeywordRow = $(keyworHtml),
-                        answerHeadRowLast = $('<th class="th-150 removable" style="padding:0;">Image<br>'+ pro_features_new_design_html +'</th>'+
+                        answerHeadRowLast = $('<th class="th-150 removable" style="padding:0;">Image</th>'+
                                 '<th class="th-150 removable">Delete</th>');
                     $('table#ays-answers-table thead tr th.removable').remove();
                     $('table#ays-answers-table thead tr th.reremoveable').remove();
@@ -1816,11 +1823,14 @@
                                             '<option value="A">A</option>' +
                                         '</select>'+
                                     '</td>'+
-                                    '<td title="This property available only in pro version" class="ays-quiz-question-answer-image-row only_pro">'+
-                                        '<div class="pro_features"></div>'+
-                                        ' <label class="ays-label" for="ays-answer">'+
-                                            '<a style="opacity: 0.4" href="https://ays-pro.com/wordpress/quiz-maker" tabindex="-1" target="_blank" class="add-answer-image">Add</a>'+
-                                        '</label>'+
+                                    '<td class="ays-quiz-question-answer-image-row">'+
+                                        '<label class="ays-label" for="ays-answer"><a href="javascript:void(0)" class="add-answer-image" style="display:block;">'+ quizLangObj.add +'</a></label>'+
+                                        '<div class="ays-answer-image-container ays-answer-image-container-div" style="display:none;">'+
+                                            '<span class="ays-edit-answer-img" title="'+ quizLangObj.editImage +'"></span>'+
+                                            '<span class="ays-remove-answer-img" title="'+ quizLangObj.deleteImage +'"></span>'+
+                                            '<img src="" class="ays-answer-img"/>'+
+                                            '<input type="hidden" name="ays_answer_image[]" class="ays-answer-image-path" value=""/>'+
+                                        '</div>'+
                                     '</td>'+
                                     '<td class="ays-quiz-question-answer-delete-row">'+
                                         '<a href="javascript:void(0)" class="ays-delete-answer">'+
@@ -1947,7 +1957,7 @@
             }
         });
         $(document).find('#open_ays_pro').on('click', function () {
-            window.open('https://ays-pro.com/wordpress/quiz-maker/');
+            window.open('https://ays-pro.com/wordpress/quiz-maker');
         });
         let flags = [];
         $(document).find('input[type="checkbox"].ays-select-single').each(function () {
@@ -1974,6 +1984,19 @@
             $(this).parent().find('input#ays-question-image').val('');
             $(this).parent().fadeOut();
             $(document).find('a.add-question-image').text('Add Image');
+        });
+
+        $(document).on('click', 'label.ays-label a.add-answer-image, .ays-answer-image-container .ays-edit-answer-img', function (e) {
+            openAnswerMediaUploader(e, $(this));
+        });
+        $(document).on('click', '.ays-remove-answer-img', function () {
+            $(this).parent().fadeOut();
+            var ays_remove_answer_img = $(this);
+            setTimeout(function(){
+                ays_remove_answer_img.parents().eq(1).find('.add-answer-image').fadeIn();
+                ays_remove_answer_img.parent().find('img.ays-answer-img').attr('src', '');
+                ays_remove_answer_img.parent().find('input.ays-answer-image-path').eq(0).val('');
+            },300);
         });
 
         $(document).on('click', 'a.add-quiz-image', function (e) {
@@ -3707,7 +3730,7 @@
                 day     = hour * 24;
 
             var quizCountdownEndTime = quizLangObj.quizBannerDate;
-            // var quizCountdownEndTime = "JAN 15, 2025 23:59:59";
+            // var quizCountdownEndTime = "DEC 05, 2025 23:59:59";
             var countDown_new = new Date(quizCountdownEndTime).getTime();
 
             if ( isNaN(countDown_new) || isFinite(countDown_new) == false ) {
@@ -4381,6 +4404,44 @@
             let attachment = aysUploader.state().get('selection').first().toJSON();
             element.next().attr('src', attachment.url);
             element.parent().find('input.ays_quiz_bg_music').val(attachment.url);
+        }).open();
+        return false;
+    }
+
+    function openAnswerMediaUploader(e, element) {
+        e.preventDefault();
+        var aysUploader = wp.media({
+            title: 'Upload',
+            button: {
+                text: 'Upload'
+            },
+            frame:    'post',    // <-- this is the important part
+            state:    'insert',
+            library: {
+                type: 'image'
+            },
+            multiple: false
+        }).on('insert', function () {
+            // var attachment = aysUploader.state().get('selection').first().toJSON();
+
+            var state = aysUploader.state();
+            var selection = selection || state.get('selection');
+            if (! selection) return;
+            // We set multiple to false so only get one image from the uploader
+            var attachment = selection.first();
+            var display = state.display(attachment).toJSON();  // <-- additional properties
+            attachment = attachment.toJSON();
+            // Do something with attachment.id and/or attachment.url here
+            var imgurl = attachment.sizes[display.size].url;
+            
+            element.parents().eq(1).find('.add-answer-image').css({'display': 'none'})
+            element.parent().parent().find('.ays-answer-image-container').fadeIn();
+            element.parent().parent().find('img.ays-answer-img').attr('src', imgurl);
+            element.parents('tr').find('input.ays-answer-image-path').val(imgurl);
+            if(element.hasClass('add-interval-image')){
+                element.parent().parent().find('img').attr('src', imgurl);
+                element.parents('tr').find('input.ays-answer-image').val(imgurl);
+            }
         }).open();
         return false;
     }

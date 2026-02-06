@@ -1,5 +1,7 @@
 <?php
 
+if (!defined('ABSPATH')) exit; // Exit if accessed directly
+
 if(isset($_GET['ays_result_tab'])){
     $tab = sanitize_key( $_GET['ays_result_tab'] );
 }else{
@@ -37,31 +39,49 @@ $quiz_results_plugin_nonce = wp_create_nonce( 'quiz-maker-ajax-results-nonce' );
                             <?php echo esc_html__("The WordPress Quiz Maker plugin allows you to export the result pages easily.", 'quiz-maker'); ?>
                         </p>
                         <p>
-                            <?php echo sprintf( wp_kses_post( __("You also have an opportunity to filter whose results and what quiz results you want to export. Filter %s by Users, Quizzes, by both Users and Quizzes, %s and also select the period by choosing the date.", 'quiz-maker') ),
-                                "<strong>",
-                                "</strong>"
-                            ); ?>
+                            <?php
+                            echo sprintf(
+                                /* translators: 1: opening <strong> tag, 2: closing </strong> tag */
+                                wp_kses_post(
+                                    __(
+                                        'You also have an opportunity to filter whose results and what quiz results you want to export. Filter %1$s by Users, Quizzes, by both Users and Quizzes, %2$s and also select the period by choosing the date.',
+                                        'quiz-maker'
+                                    )
+                                ),
+                                '<strong>',
+                                '</strong>'
+                            );
+                            ?>
                         </p>
                         <p>
                             <?php echo esc_html__("Here for filtering you have two more checkboxes- export only guest’s results or include guests who do not have any personal data. The choice is yours. Just choose the best variant for you.", 'quiz-maker'); ?>
                         </p>
                         <p>
-                            <?php echo sprintf( wp_kses_post( __("After filtering you should choose the file format for exporting the results page. You have three variants- %s CSV, XLSX, and JSON. %s", 'quiz-maker') ),
-                                "<strong>",
-                                "</strong>"
-                            ); ?>
+                            <?php
+                            echo sprintf(
+                                /* translators: 1: opening <strong> tag, 2: closing </strong> tag */
+                                wp_kses_post(
+                                    __(
+                                        'After filtering you should choose the file format for exporting the results page. You have three variants- %1$s CSV, XLSX, and JSON. %2$s',
+                                        'quiz-maker'
+                                    )
+                                ),
+                                '<strong>',
+                                '</strong>'
+                            );
+                            ?>
                         </p>
                         <div>
                             <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo esc_html__("See Documentation", 'quiz-maker'); ?></a>
                         </div>
                     </div>
-                    <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-export-results-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>">
+                    <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-export-results-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
                         <?php echo esc_html__("Pricing", 'quiz-maker'); ?>
                     </div>
                 </div>
             </div>
             <div>
-                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-export-results-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>" target="_blank" class="ays-quiz-export-button-link">
+                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-export-results-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-export-button-link">
                     <button class="disabled-button" title="<?php echo esc_attr( __( "This property available only in pro version", 'quiz-maker' ) ); ?>" >
                         <?php echo esc_html__('Export','quiz-maker'); ?>
                         <svg width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom: 4px;">
@@ -108,7 +128,7 @@ $quiz_results_plugin_nonce = wp_create_nonce( 'quiz-maker-ajax-results-nonce' );
 
                 </div>
                 <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/chart_screen.png' ); ?>" alt="Statistics" style="width:100%;">
-                <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=results-menu-statistics-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                     <div class="ays-quiz-new-upgrade-button-box">
                         <div>
                             <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -119,7 +139,7 @@ $quiz_results_plugin_nonce = wp_create_nonce( 'quiz-maker-ajax-results-nonce' );
                 </a>
                 <div class="ays-quiz-center-big-main-button-box ays-quiz-new-big-button-flex">
                     <div class="ays-quiz-center-big-upgrade-button-box">
-                        <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                        <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=results-menu-statistics-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                             <div class="ays-quiz-center-new-big-upgrade-button">
                                 <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>" class="ays-quiz-new-button-img-hide">
                                 <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg' ); ?>" class="ays-quiz-new-upgrade-button-hover">  

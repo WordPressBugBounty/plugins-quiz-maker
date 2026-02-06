@@ -364,6 +364,7 @@ textarea.ays-textarea-height-100 {
 }
 
 a.ays-add-image,
+a.add-answer-image,
 a.add-question-image,
 a.add-quiz-bg-image,
 a.add-quiz-bg-music,
@@ -379,6 +380,12 @@ a.add-quiz-image{
     transition: all .3s;
     margin-left: 10px;
 }
+
+.ays-quiz-question-answer-image-row a.add-answer-image {
+    background: #666;
+    color: #fff !important;
+}
+
 a.add-quiz-bg-image {
     margin-left: 0px;
 }
@@ -414,6 +421,15 @@ a.add-quiz-bg-music {
     margin: 10px auto;
     box-shadow: 0px 0px 10px #888;
 }
+.ays-answer-image-container.ays-answer-image-container-div {
+    width: 100px;
+}
+
+.ays-answer-image-container {
+    position: relative;
+    display: none;
+    margin: 10px auto;
+}
 .ays-image-container .ays-edit-quiz-loader-custom-gif,
 .ays-question-image-container .ays-edit-question-img,
 .ays-quiz-bg-image-container .ays-edit-quiz-bg-img,
@@ -438,6 +454,34 @@ a.add-quiz-bg-music {
     margin: 0;
     padding-left: 3px;
 }
+.ays-answer-image-container .ays-remove-answer-img{
+    background: url(../images/remove-normal.png) no-repeat center center/80% rgba(255,255,255, .9);
+    position: absolute;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    border-radius: 3px;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+    transition: all .3s;
+    box-shadow: 0px 0px 5px;
+}
+
+.ays-answer-image-container .ays-edit-answer-img {
+    background: url(../images/edit-image.svg) no-repeat center center/80% rgba(255,255,255, .9);
+    position: absolute;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    border-radius: 3px;
+    top: 5px;
+    left: 5px;
+    cursor: pointer;
+    transition: all .3s;
+    box-shadow: 0px 0px 5px;
+}
+
 .ays-image-container .ays-remove-quiz-loader-custom-gif,
 .ays-question-image-container .ays-remove-question-img,
 .ays-quiz-bg-image-container .ays-remove-quiz-bg-img,
@@ -482,6 +526,16 @@ a.add-question-image:focus{
     display: none;
     margin: 10px auto;
     box-shadow: 0px 0px 10px #888;
+}
+
+.ays-answer-image-container img {    
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    object-position: center center;
+    box-shadow: 0px 0px 10px;
+    min-width: 100px;
+    min-height: 100px;
 }
 
 .ays-image-container .ays-edit-img{
@@ -1221,6 +1275,14 @@ table#ays-results-table p.error {
     color: #D06079;
 }
 
+table#ays-results-table .question-answer-image-box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 5px;
+}
+
 table#ays-results-table {
     width: 100%;
     table-layout: fixed;
@@ -1564,6 +1626,29 @@ td.ays-sort{
     color: #96a3bd;
     text-transform: uppercase;
     margin-top: 5px;
+}
+
+.ays-quiz-heading-box.ays-quiz-unset-float .ays-quiz-wordpress-user-manual-box a.ays-quiz-comparison-secondary-button,
+.comparison .ays-quiz-comparison-secondary-button {
+    background: transparent;
+    padding: 10px 20px;
+    font-size: 14px;
+    display: inline-block;
+    color: #69c7f1;
+    text-decoration: none;
+    border-radius: 3px;
+    margin: 5px 0 10px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    -webkit-transition: .3s;
+    transition: .3s;
+    border: 1px solid #69c7f1;
+}
+
+.ays-quiz-heading-box.ays-quiz-unset-float .ays-quiz-wordpress-user-manual-box a.ays-quiz-comparison-secondary-button:hover,
+.comparison .ays-quiz-comparison-secondary-button:hover {
+    background-color: #69c7f1;
+    color: #fff;
 }
 
 .ays-quiz-row{
@@ -7914,6 +7999,10 @@ div .wp-picker-container .wp-color-result.button {
     background: unset;
 }
 
+#wpwrap .ays-quiz-main-form .nav-tab-wrapper {
+    display: flex;
+}
+
 .ays-quiz-dashboard-main-wrap .nav-sub-tab-wrapper-container .nav-tab:hover:not(.no-css-nav-tab),
 .ays-quiz-dashboard-main-wrap .ays-top-menu-wrapper .nav-tab:hover:not(.no-css-nav-tab){
     border-bottom:1px solid #005AE0 !important;
@@ -8097,6 +8186,14 @@ div .wp-picker-container .wp-color-result.button {
 
 @media screen and (max-width: 1270px) {
     .ays-quiz-dashboard-main-wrap .top-menu-buttons-container{
+        justify-content: flex-start;
+    }
+
+    .ays-quiz-pro-features-parent-box-display-flex {
+        row-gap: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
         justify-content: flex-start;
     }
 }

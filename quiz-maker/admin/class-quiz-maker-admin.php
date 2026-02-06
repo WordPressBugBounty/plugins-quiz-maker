@@ -1,5 +1,7 @@
 <?php
 
+if (!defined('ABSPATH')) exit; // Exit if accessed directly
+
 /**
  * The admin-specific functionality of the plugin.
  *
@@ -50,6 +52,7 @@ class Quiz_Maker_Admin
     private $results_obj;
     private $settings_obj;
     private $all_reviews_obj;
+    private $question_reports_obj;
 
     private $capability;
     
@@ -167,13 +170,13 @@ class Quiz_Maker_Admin
         $version2 = '5.5';
         $versionCompare = $this->versionCompare($version1, $operator, $version2);
 
-        // $check_terms_agreement = get_option('ays_quiz_agree_terms');
-        // if($check_terms_agreement === 'true' && strpos($hook_suffix, $this->plugin_name) !== false){
-        //     wp_enqueue_script( $this->plugin_name . '-hotjar', plugin_dir_url(__FILE__) . 'js/extras/quiz-maker-hotjar.js', array(), $this->version, false);
-        //     wp_localize_script($this->plugin_name . '-hotjar',  'quiz_maker_hotjar', array(
-        //         'id' => '2c39f44b-7257-418e-8bba-9c78a81e8ee9',
-        //     ));
-        // }
+        $check_terms_agreement = get_option('ays_quiz_agree_terms');
+        if($check_terms_agreement === 'true' && strpos($hook_suffix, $this->plugin_name) !== false){
+            wp_enqueue_script( $this->plugin_name . '-hotjar', plugin_dir_url(__FILE__) . 'js/extras/quiz-maker-hotjar.js', array(), $this->version, false);
+            wp_localize_script($this->plugin_name . '-hotjar',  'quiz_maker_hotjar', array(
+                'id' => '2c39f44b-7257-418e-8bba-9c78a81e8ee9',
+            ));
+        }
 
         if ($versionCompare) {
             wp_enqueue_script( $this->plugin_name.'-wp-load-scripts', plugin_dir_url(__FILE__) . 'js/ays-wp-load-scripts.js', array(), $this->version, true);
@@ -264,6 +267,7 @@ class Quiz_Maker_Admin
         wp_localize_script( $this->plugin_name, 'quizLangObj', array(
             'quizBannerDate'                    => $quiz_banner_date,
             'AYS_QUIZ_ADMIN_URL'                => AYS_QUIZ_ADMIN_URL,
+            'AYS_QUIZ_UTM_VERSION'              => AYS_QUIZ_UTM_VERSION,
             'questionPageUrl'                   => admin_url( 'admin.php?page=quiz-maker-questions' ),
 
             'questionTitle'                     => __( 'Question Default Title', 'quiz-maker'),
@@ -288,58 +292,73 @@ class Quiz_Maker_Admin
             'deleteQuestion'                    => __( 'Are you sure you want to delete question ?', 'quiz-maker'),
             'deleteElementFromListTable'        => __( 'Are you sure you want to delete?', 'quiz-maker'),
             'youCanUuseThisShortcode'           => __( 'Copy the generated shortcode and paste it into any post or page to display Quiz.', 'quiz-maker'),
-            'youQuizIsCreated'              => __( 'Your Quiz is Created!', 'quiz-maker'),
-            'greateJob'                     => __( 'Great job', 'quiz-maker'),
-            'formMoreDetailed'              => __( 'For more detailed configuration visit', 'quiz-maker'),
-            'editQuizPage'                  => __( 'edit quiz page', 'quiz-maker'),
-            'greate'                        => __( 'Done', 'quiz-maker'),
-            'thumbsUpGreat'                 => __( 'Thumbs up, great!', 'quiz-maker'),
+            'youQuizIsCreated'                  => __( 'Your Quiz is Created!', 'quiz-maker'),
+            'greateJob'                         => __( 'Great job', 'quiz-maker'),
+            'formMoreDetailed'                  => __( 'For more detailed configuration visit', 'quiz-maker'),
+            'editQuizPage'                      => __( 'edit quiz page', 'quiz-maker'),
+            'greate'                            => __( 'Done', 'quiz-maker'),
+            'thumbsUpGreat'                     => __( 'Thumbs up, great!', 'quiz-maker'),
 
-            "all"                           => __( "All", 'quiz-maker' ),
-            "selectCategory"                => __( "Select Category", 'quiz-maker' ),
-            "selectTags"                    => __( "Select Tags", 'quiz-maker' ),
-            "preivewQuiz"                   => __( "Preview Quiz", 'quiz-maker' ),
-            "createQuestion"                => __( "Create question", 'quiz-maker' ),
-            "insertQuestion"                => __( "Insert questions", 'quiz-maker' ),
+            "all"                               => __( "All", 'quiz-maker' ),
+            "selectCategory"                    => __( "Select Category", 'quiz-maker' ),
+            "selectTags"                        => __( "Select Tags", 'quiz-maker' ),
+            "preivewQuiz"                       => __( "Preview Quiz", 'quiz-maker' ),
+            "createQuestion"                    => __( "Create question", 'quiz-maker' ),
+            "insertQuestion"                    => __( "Insert questions", 'quiz-maker' ),
 
-            "successCopyCoupon"             => __( "Coupon code copied!", 'quiz-maker' ),
-            "failedCopyCoupon"              => __( "Failed to copy coupon code", 'quiz-maker' ),
+            "successCopyCoupon"                 => __( "Coupon code copied!", 'quiz-maker' ),
+            "failedCopyCoupon"                  => __( "Failed to copy coupon code", 'quiz-maker' ),
 
-            'generalTabDoc'                 => esc_html__( "How to Configure General Settings?", 'quiz-maker' ),
-            'stylesTabDoc'                  => esc_html__( "How to Configure Styles Tab?", 'quiz-maker' ),
-            'settingsTabDoc'                => esc_html__( "How to Configure Settings Tab?", 'quiz-maker' ),
-            'resultsSettingsTabDoc'         => esc_html__( "How to Configure Results Settings Tab?", 'quiz-maker' ),
-            'limitationUsersTabDoc'         => esc_html__( "How to Configure Limitation Users Tab?", 'quiz-maker' ),
-            'userDataTabDoc'                => esc_html__( "How to Configure User Data Tab?", 'quiz-maker' ),
-            'emailTabDoc'                   => esc_html__( "How to Configure E-Mail, Certificate Tab?", 'quiz-maker' ),
-            'integrationTabDoc'             => esc_html__( "How to Configure Integration Tab?", 'quiz-maker' ),
+            'generalTabDoc'                     => esc_html__( "How to Configure General Settings?", 'quiz-maker' ),
+            'stylesTabDoc'                      => esc_html__( "How to Configure Styles Tab?", 'quiz-maker' ),
+            'settingsTabDoc'                    => esc_html__( "How to Configure Settings Tab?", 'quiz-maker' ),
+            'resultsSettingsTabDoc'             => esc_html__( "How to Configure Results Settings Tab?", 'quiz-maker' ),
+            'limitationUsersTabDoc'             => esc_html__( "How to Configure Limitation Users Tab?", 'quiz-maker' ),
+            'userDataTabDoc'                    => esc_html__( "How to Configure User Data Tab?", 'quiz-maker' ),
+            'emailTabDoc'                       => esc_html__( "How to Configure E-Mail, Certificate Tab?", 'quiz-maker' ),
+            'integrationTabDoc'                 => esc_html__( "How to Configure Integration Tab?", 'quiz-maker' ),
 
-            'addAnswer'                     => esc_html__( "Add Answer", 'quiz-maker' ),
+            'addAnswer'                         => esc_html__( "Add Answer", 'quiz-maker' ),
+            'add'                               => esc_html__( 'Add', 'quiz-maker'),
+            'editImage'                         => esc_html__( 'Edit Image', 'quiz-maker'),
+            'deleteImage'                       => esc_html__( 'Delete Image', 'quiz-maker'),
         ) );
 
         wp_localize_script( $this->plugin_name, 'quizLangDataTableObj', array(
-            "sEmptyTable"           => __( "No data available in table", 'quiz-maker' ),
-            "sInfo"                 => sprintf( __( "Showing %s to %s of %s entries", 'quiz-maker' ), '_START_', '_END_', '_TOTAL_' ),
-            "sInfoEmpty"            => __( "Showing 0 to 0 of 0 entries", 'quiz-maker' ),
-            "sInfoFiltered"         => sprintf( __( "(filtered from %s total entries)", 'quiz-maker' ), '_MAX_' ),
-            // "sInfoPostFix":          => __( "", $this->plugin_name ),
-            // "sInfoThousands":        => __( ",", $this->plugin_name ),
-            "sLengthMenu"           => sprintf( __( "Show %s entries", 'quiz-maker' ), '_MENU_' ),
-            "sLoadingRecords"       => __( "Loading...",'quiz-maker' ),
-            "sProcessing"           => __( "Processing...", 'quiz-maker' ),
-            "sSearch"               => __( "Search:", 'quiz-maker' ),
-            // "sUrl":                  => __( "", $this->plugin_name ),
-            "sZeroRecords"          => __( "No matching records found", 'quiz-maker' ),
-            "sFirst"                => __( "First", 'quiz-maker' ),
-            "sLast"                 => __( "Last", 'quiz-maker' ),
-            "sNext"                 => __( "Next", 'quiz-maker' ),
-            "sPrevious"             => __( "Previous", 'quiz-maker' ),
-            "sSortAscending"        => __( ": activate to sort column ascending", 'quiz-maker' ),
-            "sSortDescending"       => __( ": activate to sort column descending",'quiz-maker' ),
+            "sEmptyTable"                       => __( "No data available in table", 'quiz-maker' ),
+            'sInfo' => sprintf(
+                /* translators: 1: start record number, 2: end record number, 3: total records */
+                __( 'Showing %1$s to %2$s of %3$s entries', 'quiz-maker' ),
+                '_START_',
+                '_END_',
+                '_TOTAL_'
+            ),
+            "sInfoEmpty"                        => __( "Showing 0 to 0 of 0 entries", 'quiz-maker' ),
+            'sInfoFiltered' => sprintf(
+                /* translators: %s: total number of entries */
+                __( '(filtered from %s total entries)', 'quiz-maker' ),
+                '_MAX_'
+            ),
+            'sLengthMenu'                       => sprintf(
+                /* translators: %s: number of entries to show */
+                __( 'Show %s entries', 'quiz-maker' ),
+                '_MENU_'
+            ),
+            "sLoadingRecords"                   => __( "Loading...",'quiz-maker' ),
+            "sProcessing"                       => __( "Processing...", 'quiz-maker' ),
+            "sSearch"                           => __( "Search:", 'quiz-maker' ),
+            // "sUrl":                          => __( "", $this->plugin_name ),
+            "sZeroRecords"                      => __( "No matching records found", 'quiz-maker' ),
+            "sFirst"                            => __( "First", 'quiz-maker' ),
+            "sLast"                             => __( "Last", 'quiz-maker' ),
+            "sNext"                             => __( "Next", 'quiz-maker' ),
+            "sPrevious"                         => __( "Previous", 'quiz-maker' ),
+            "sSortAscending"                    => __( ": activate to sort column ascending", 'quiz-maker' ),
+            "sSortDescending"                   => __( ": activate to sort column descending",'quiz-maker' ),
 
-            "all"                   => __( "All", 'quiz-maker' ),
-            "selectCategory"        => __( "Select Category", 'quiz-maker' ),
-            "selectTags"            => __( "Select Tags", 'quiz-maker' ),
+            "all"                               => __( "All", 'quiz-maker' ),
+            "selectCategory"                    => __( "Select Category", 'quiz-maker' ),
+            "selectTags"                        => __( "Select Tags", 'quiz-maker' ),
         ) );
 
         $question_categories = $this->get_question_categories();
@@ -398,6 +417,11 @@ class Quiz_Maker_Admin
 
             if (is_plugin_active('real-media-library-lite/index.php')) {
                 wp_dequeue_style('real-media-library-lite-rml');
+            }
+
+            if (is_plugin_active('wpschoolpress/wpschoolpress.php')) {
+                wp_dequeue_style('wpsp_wp_admin_wpsp-style');
+                wp_dequeue_script('wpsp_wp_admin_jquery8');
             }
 
             // Theme | Pixel Ebook Store
@@ -579,7 +603,7 @@ class Quiz_Maker_Admin
             $menu_item = ($unread_results_count == 0) ? 'Quiz Maker' : 'Quiz Maker' . '<span class="ays_menu_badge ays_results_bage">' . $unread_results_count . '</span>';
         }
 
-        $this->capability = $this->quiz_maker_capabilities();
+        $this->capability = self::quiz_maker_capabilities();
         
         add_menu_page(
             'Quiz Maker', 
@@ -886,7 +910,7 @@ class Quiz_Maker_Admin
         $settings_link = array(
             '<a href="' . admin_url('admin.php?page=' . $this->plugin_name) . '">' . __('Settings', 'quiz-maker') . '</a>',
             '<a href="https://quiz-plugin.com/wordpress-quiz-plugin-free-demo/" target="_blank">' . __('Demo', 'quiz-maker') . '</a>',
-            '<a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=plugins-buy-now-button-' . esc_attr( AYS_QUIZ_VERSION ) . '" id="ays-quiz-plugins-buy-now-button" target="_blank">' . __('Upgrade', 'quiz-maker') . '</a>
+            '<a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=plugins-buy-now-button-' . esc_attr( AYS_QUIZ_UTM_VERSION ) . '" id="ays-quiz-plugins-buy-now-button" target="_blank">' . __('Upgrade', 'quiz-maker') . '</a>
             <input type="hidden" id="ays_quiz_ajax_deactivate_plugin_nonce" name="ays_quiz_ajax_deactivate_plugin_nonce" value="' . $quiz_ajax_deactivate_plugin_nonce .'">',
             );
         return array_merge($settings_link, $links);
@@ -1129,7 +1153,7 @@ class Quiz_Maker_Admin
 
         add_screen_option($option, $args);
 
-        $this->question_reports_obj = new Question_reports_List_Table($this->plugin_name);
+        $this->question_reports_obj = new Question_Reports_List_Table($this->plugin_name);
         $this->settings_obj = new Quiz_Maker_Settings_Actions($this->plugin_name);
     }
 
@@ -1141,7 +1165,7 @@ class Quiz_Maker_Admin
         // Run a security check.
         check_ajax_referer( 'quiz-maker-ajax-add-question-nonce', sanitize_key( $_REQUEST['_ajax_nonce'] ) );
 
-        $user_can_capability = $this->quiz_maker_capabilities();
+        $user_can_capability = self::quiz_maker_capabilities();
 
         // Check for permissions.
         if ( ! current_user_can( $user_can_capability ) ) {
@@ -1276,7 +1300,7 @@ class Quiz_Maker_Admin
         // Run a security check.
         check_ajax_referer( 'quiz-maker-ajax-quick-quiz-nonce', sanitize_key( $_REQUEST['_ajax_nonce'] ) );
 
-        $user_can_capability = $this->quiz_maker_capabilities();
+        $user_can_capability = self::quiz_maker_capabilities();
 
         // Check for permissions.
         if ( ! current_user_can( $user_can_capability ) ) {
@@ -1444,7 +1468,7 @@ class Quiz_Maker_Admin
         $quick_quiz_title_mobile_font_size                  = 20;
         $quick_quiz_custom_class                            = "";
 
-        $quick_quiz_quest_animation                         = "shake";
+        $quick_quiz_quest_animation                         = "none";
         $quick_quiz_question_font_size                      = 16;
         $quick_quiz_question_mobile_font_size               = 16;
         $quick_quiz_question_text_alignment                 = "center";
@@ -1487,6 +1511,10 @@ class Quiz_Maker_Admin
         $quick_quiz_wrong_answers_text_decoration           = "none";
         $quick_quiz_wrong_answers_letter_spacing            = 0;
         $quick_quiz_wrong_answers_font_weight               = "normal";
+        $quick_quiz_admin_note_mobile_text_transform        = "none";
+        $quick_quiz_admin_note_mobile_text_decoration       = "none";
+        $quick_quiz_admin_note_mobile_letter_spacing        = 0;
+        $quick_quiz_admin_note_mobile_font_weight           = "normal";
 
         if($quiz_enable_options == 'on'){
             $quick_quiz_enable_randomize_questions = (isset( $_REQUEST['ays_quick_quiz_enable_randomize_questions'] ) && $_REQUEST['ays_quick_quiz_enable_randomize_questions'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_randomize_questions'] ) ) : "off";
@@ -1598,7 +1626,7 @@ class Quiz_Maker_Admin
             $quick_quiz_custom_class = (isset($_REQUEST['ays_quick_quiz_custom_class']) && $_REQUEST['ays_quick_quiz_custom_class'] != '') ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_custom_class'] ) ) : '';
 
             // Animation effect
-            $quick_quiz_quest_animation = (isset($_REQUEST['ays_quick_quiz_quest_animation']) && $_REQUEST['ays_quick_quiz_quest_animation'] != '') ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_quest_animation'] ) ) : 'shake';
+            $quick_quiz_quest_animation = (isset($_REQUEST['ays_quick_quiz_quest_animation']) && $_REQUEST['ays_quick_quiz_quest_animation'] != '') ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_quest_animation'] ) ) : 'none';
 
             // Question Font Size | desktop
             $quick_quiz_question_font_size = (isset($_REQUEST['ays_quick_quiz_question_font_size']) && $_REQUEST['ays_quick_quiz_question_font_size'] != '') ? stripslashes( absint( $_REQUEST['ays_quick_quiz_question_font_size'] ) ) : 16;
@@ -1820,6 +1848,19 @@ class Quiz_Maker_Admin
 
             // Make the review field required
             $quick_quiz_review_placeholder_text = (isset( $_REQUEST['ays_quick_quiz_review_placeholder_text'] ) && !empty($_REQUEST['ays_quick_quiz_review_placeholder_text'])) ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_review_placeholder_text'] ) ) : "";
+
+            // Admin note text transform | Mobile
+            $quick_quiz_admin_note_mobile_text_transform = (isset( $_REQUEST['ays_quick_quiz_admin_note_mobile_text_transform'] ) && $_REQUEST['ays_quick_quiz_admin_note_mobile_text_transform'] != "") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_admin_note_mobile_text_transform'] ) ) : "none";    
+
+            // Note text decoration
+            $quick_quiz_admin_note_mobile_text_decoration = (isset( $_REQUEST['ays_quick_quiz_admin_note_mobile_text_decoration'] ) && $_REQUEST['ays_quick_quiz_admin_note_mobile_text_decoration'] != "") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_admin_note_mobile_text_decoration'] ) ) : "none";
+
+            // Note letter spacing | Admin note | Mobile
+            $quick_quiz_admin_note_mobile_letter_spacing = (isset( $_REQUEST['ays_quick_quiz_admin_note_mobile_letter_spacing'] ) && $_REQUEST['ays_quick_quiz_admin_note_mobile_letter_spacing'] != "") ? absint( stripslashes( $_REQUEST['ays_quick_quiz_admin_note_mobile_letter_spacing'] ) ) : 0; 
+
+            // Admin Note font weight
+            $quick_quiz_admin_note_mobile_font_weight = (isset( $_REQUEST['ays_quick_quiz_admin_note_mobile_font_weight'] ) && $_REQUEST['ays_quick_quiz_admin_note_mobile_font_weight'] != "") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_admin_note_mobile_font_weight'] ) ) : "normal";
+                  
             
             
         }
@@ -2052,7 +2093,6 @@ class Quiz_Maker_Admin
             'quiz_answer_box_shadow_y_offset'                   => 0,
             'quiz_answer_box_shadow_z_offset'                   => 10,
             'quiz_create_author'                                => $user_id,
-            'quiz_create_author'                                => $user_id,
             'quiz_enable_title_text_shadow'                     => "off",
             'quiz_title_text_shadow_color'                      => "#333",
             'quiz_title_text_shadow_x_offset'                   => 2,
@@ -2116,6 +2156,13 @@ class Quiz_Maker_Admin
             'enable_live_progress_bar'                          => $quick_quiz_enable_live_progress_bar,
             'enable_percent_view'                               => $quick_quiz_enable_percent_view_option,
             'quiz_enable_keyboard_navigation'                   => 'on',
+            'quiz_admin_note_mobile_text_transform'             => $quick_quiz_admin_note_mobile_text_transform,
+            'quiz_admin_note_mobile_text_decoration'            => $quick_quiz_admin_note_mobile_text_decoration,
+            'quiz_admin_note_mobile_letter_spacing'             => $quick_quiz_admin_note_mobile_letter_spacing,
+            'quiz_admin_note_mobile_font_weight'                => $quick_quiz_admin_note_mobile_font_weight,
+            'quiz_quest_explanation_mobile_font_weight'         => "normal",
+            'quiz_right_answers_mobile_font_weight'             => "normal",
+            'quiz_question_image_border_radius'                 => 0,
         );
 
 
@@ -2226,7 +2273,7 @@ class Quiz_Maker_Admin
         // Run a security check.
         check_ajax_referer( 'quiz-maker-ajax-results-nonce', sanitize_key( $_REQUEST['_ajax_nonce'] ) );
 
-        $user_can_capability = $this->quiz_maker_capabilities();
+        $user_can_capability = self::quiz_maker_capabilities();
 
         // Check for permissions.
         if ( ! current_user_can( $user_can_capability ) ) {
@@ -2297,18 +2344,22 @@ class Quiz_Maker_Admin
 
                         $pro_content[] = '<div class="pro-features-popup-content" data-link="https://www.youtube.com/watch?v=vrKgo74ZMzI">';
                             $pro_content[] = '<p>';
-                                $pro_content[] = sprintf( __("With the excellent plugin Quiz Maker, you can %s export a Detailed report of the Individual Result %s with just a few clicks.", 'quiz-maker'),
-                                    "<strong>",
-                                    "</strong>"
+                                $pro_content[] = sprintf(
+                                    /* translators: 1: opening <strong> tag, 2: closing </strong> tag */
+                                    __( 'With the excellent plugin Quiz Maker, you can %1$s export a Detailed report of the Individual Result %2$s with just a few clicks.', 'quiz-maker' ),
+                                    '<strong>',
+                                    '</strong>'
                                 );
                             $pro_content[] = '</p>';
 
                             $pro_content[] = '<p>';
-                                $pro_content[] = sprintf( __("You can export detailed reports whether as a %s PDF file %s or as an %s XLSX file. %s", 'quiz-maker'),
-                                    "<strong>",
-                                    "</strong>",
-                                    "<strong>",
-                                    "</strong>"
+                                $pro_content[] = sprintf(
+                                    /* translators: 1: opening <strong> tag before "PDF file", 2: closing </strong> tag after "PDF file", 3: opening <strong> tag before "XLSX file", 4: closing </strong> tag after "XLSX file" */
+                                    __( 'You can export detailed reports whether as a %1$s PDF file %2$s or as an %3$s XLSX file. %4$s', 'quiz-maker' ),
+                                    '<strong>',
+                                    '</strong>',
+                                    '<strong>',
+                                    '</strong>'
                                 );
                             $pro_content[] = '</p>';
 
@@ -2320,18 +2371,18 @@ class Quiz_Maker_Admin
                                 $pro_content[] = '<a href="https://quiz-plugin.com/docs/" target="_blank"> '. __("See Documentation", 'quiz-maker'). '</a>';
                             $pro_content[] = '</div>';
                         $pro_content[] = '</div>';
-                        $pro_content[] = '<div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-xlsx-export-'. esc_attr( AYS_QUIZ_VERSION ) .'">';
+                        $pro_content[] = '<div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-xlsx-export-'. esc_attr( AYS_QUIZ_UTM_VERSION ) .'">';
                             $pro_content[] = __("Pricing", 'quiz-maker');
                         $pro_content[] = '</div>';
                     $pro_content[] = '</div>';
                 $pro_content[] = '</div>';
                 $pro_content[] = '<div>';
 
-                    $pro_content[] = '<a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-pdf-export-'. esc_attr( AYS_QUIZ_VERSION ) .'" target="_blank" class="ays-pro-a" style="margin: 0 10px;">';
+                    $pro_content[] = '<a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-pdf-export-'. esc_attr( AYS_QUIZ_UTM_VERSION ) .'" target="_blank" class="ays-pro-a" style="margin: 0 10px;">';
                         $pro_content[] = '<span type="button" class="disabled-button" title="'. __("This feature available only in pro version", 'quiz-maker') .'">'.__("PDF", 'quiz-maker').'</span>';
                     $pro_content[] = '</a>';
 
-                    $pro_content[] = '<a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-xlsx-export-'. esc_attr( AYS_QUIZ_VERSION ) .'" target="_blank" class="ays-pro-a">';
+                    $pro_content[] = '<a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-xlsx-export-'. esc_attr( AYS_QUIZ_UTM_VERSION ) .'" target="_blank" class="ays-pro-a">';
                         $pro_content[] = '<span type="button" class="disabled-button" title="'. __("This feature available only in pro version", 'quiz-maker') .'">'.__("XLSX", 'quiz-maker').'</span>';
                     $pro_content[] = '</a>';
                 $pro_content[] = '</div>';
@@ -2351,16 +2402,20 @@ class Quiz_Maker_Admin
 
                         $admin_note_content[] = '<div class="pro-features-popup-content" data-link="https://youtu.be/MdbEsayrPUc">';
                             $admin_note_content[] = '<p>';
-                                $admin_note_content[] = sprintf( __("The Admin Note feature of the WordPress quiz plugin is a great tool for %s customizing each detailed report. %s", 'quiz-maker'),
-                                    "<strong>",
-                                    "</strong>"
+                                $admin_note_content[] = sprintf(
+                                    /* translators: 1: opening <strong> tag, 2: closing </strong> tag */
+                                    __( 'The Admin Note feature of the WordPress quiz plugin is a great tool for %1$s customizing each detailed report. %2$s', 'quiz-maker' ),
+                                    '<strong>',
+                                    '</strong>'
                                 );
                             $admin_note_content[] = '</p>';
 
                             $admin_note_content[] = '<p>';
-                                $admin_note_content[] = sprintf( __("This feature allows you %s to add additional information %s about each user on the detailed report page.", 'quiz-maker'),
-                                    "<strong>",
-                                    "</strong>"
+                                $admin_note_content[] = sprintf(
+                                    /* translators: 1: opening <strong> tag, 2: closing </strong> tag */
+                                    __( 'This feature allows you %1$s to add additional information %2$s about each user on the detailed report page.', 'quiz-maker' ),
+                                    '<strong>',
+                                    '</strong>'
                                 );
                             $admin_note_content[] = '</p>';
 
@@ -2373,7 +2428,7 @@ class Quiz_Maker_Admin
                             $admin_note_content[] = '</div>';
                         $admin_note_content[] = '</div>';
 
-                        $admin_note_content[] = '<div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-admin-note-'. esc_attr( AYS_QUIZ_VERSION ) .'">';
+                        $admin_note_content[] = '<div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-admin-note-'. esc_attr( AYS_QUIZ_UTM_VERSION ) .'">';
                             $admin_note_content[] = __("Pricing", 'quiz-maker');
                         $admin_note_content[] = '</div>';
                     $admin_note_content[] = '</div>';
@@ -2381,7 +2436,7 @@ class Quiz_Maker_Admin
                 $admin_note_content[] = '<div>';
 
                     $admin_note_content[] = '<div class="ays-quiz-click-for-admin-note">';
-                        $admin_note_content[] = '<a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-admin-note-'. esc_attr( AYS_QUIZ_VERSION ) .'" target="_blank" class="ays-pro-a">';
+                        $admin_note_content[] = '<a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-admin-note-'. esc_attr( AYS_QUIZ_UTM_VERSION ) .'" target="_blank" class="ays-pro-a">';
                             $admin_note_content[] = '<button class="button button-primary disabled-button" style="color:#ffffff !important; font-weight:normal;" title="'. __("This feature available only in pro version", 'quiz-maker') .'">';
                                 $admin_note_content[] = __( 'Click For Admin Note', 'quiz-maker' );
                             $admin_note_content[] = '</button>';
@@ -2543,16 +2598,27 @@ class Quiz_Maker_Admin
                             continue;
                         }
 
+                        $question_type = isset($question['type']) && $question['type'] != '' ? sanitize_text_field( $question['type'] ) : 'radio';
+
+                        $question_type_with_images_arr = array("radio", "checkbox", 'select', 'true_or_false');
+
                         $qoptions = isset($question['options']) && $question['options'] != '' ? json_decode($question['options'], true) : array();
                         $use_html = isset($qoptions['use_html']) && $qoptions['use_html'] == 'on' ? true : false;
                         $correct_answers = $this->get_correct_answers($question_id);
+
+                        $correct_answer_images = "";
+                        if( !empty($question_type) && in_array($question_type, $question_type_with_images_arr) ){
+                            $correct_answer_images = $this->get_correct_answer_images($question_id);
+                        }
                         $is_text_type = $this->question_is_text_type($question_id);
                         $text_type = $this->text_answer_is($question_id);
                         $not_multiple_text_types = array("number", "date");
                         if($text_type){
-                            $user_answered = $this->get_user_text_answered($options->user_answered, $key);                            
+                            $user_answered = $this->get_user_text_answered($options->user_answered, $key);  
+                            $user_answered_images = '';
                         }else{
                             $user_answered = $this->get_user_answered($options->user_answered, $key);
+                            $user_answered_images = $this->get_user_answered_images($options->user_answered, $key);
                         }
                         $ans_point = $option;
                         $ans_point_class = 'success';
@@ -2606,7 +2672,7 @@ class Quiz_Maker_Admin
                                     if($use_html){
                                         $correct_answer_content = stripslashes( $correct_answers );
                                     }
-                                    $row .='<td>'.__('Correct answer','quiz-maker').':<br/><p class="success">' . $correct_answer_content . '</p></td>';
+                                    $row .='<td>'.__('Correct answer','quiz-maker').':<br/><p class="success">' . $correct_answer_content . '<br>' . $correct_answer_images . '</p></td>';
                                 }
                                 
                                 if($text_type == 'date'){
@@ -2618,7 +2684,7 @@ class Quiz_Maker_Admin
                                 if($use_html){
                                     $user_answer_content = stripslashes( $user_answered );
                                 }
-                                $row .='<td '.$not_influance_check_td.'>'.__('User answered','quiz-maker').':<br/><p class="success">' . $user_answer_content . '</p></td>';
+                                $row .='<td '.$not_influance_check_td.'>'.__('User answered','quiz-maker').':<br/><p class="success">' . $user_answer_content . $user_answered_images . '</p></td>';
                                 if ($not_influance_check) {
                                     $row .='<td>
                                                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
@@ -2650,7 +2716,7 @@ class Quiz_Maker_Admin
                                     if($use_html){
                                         $correct_answer_content = stripslashes( $correct_answers );
                                     }
-                                    $row .= '<td>'.__('Correct answer','quiz-maker').':<br/><p class="success">' . $correct_answer_content . '</p></td>';
+                                    $row .= '<td>'.__('Correct answer','quiz-maker').':<br/><p class="success">' . $correct_answer_content . '<br>' . $correct_answer_images . '</p></td>';
                                 }
                                                 
                                 if($text_type == 'date'){
@@ -2662,7 +2728,7 @@ class Quiz_Maker_Admin
                                 if($use_html){
                                     $user_answer_content = stripslashes( $user_answered );
                                 }
-                                $row .= '<td '.$not_influance_check_td.'>'.__('User answered','quiz-maker').':<br/><p class="error">' . $user_answer_content . '</p></td>';
+                                $row .= '<td '.$not_influance_check_td.'>'.__('User answered','quiz-maker').':<br/><p class="error">' . $user_answer_content . $user_answered_images . '</p></td>';
                                 if ($not_influance_check) {
                                     $row .='<td>
                                         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
@@ -2759,6 +2825,33 @@ class Quiz_Maker_Admin
         return $text;
     }
 
+    public function get_correct_answer_images($id){
+        global $wpdb;
+
+        if(empty($id)){
+            return '';
+        }
+
+        $id = intval($id);
+
+        if (empty($id) || is_null($id)) {
+            return '';
+        }
+
+        $answers_table = $wpdb->prefix . "aysquiz_answers";
+        $correct_answers = $wpdb->get_results("SELECT image FROM {$answers_table} WHERE correct=1 AND question_id={$id}");
+        $text = "";
+        $text .= '<div class="question-answer-image-box">';
+        foreach ($correct_answers as $key => $correct_answer) {
+            if ($correct_answer->image){
+                $text .= "<img src='". $correct_answer->image ."' alt='Answer image'>";
+            }
+        }
+        $text .= "</div>";
+
+        return $text;
+    }
+
     public function get_user_answered($user_choice, $key){
         global $wpdb;
         $answers_table = $wpdb->prefix . "aysquiz_answers";
@@ -2794,6 +2887,51 @@ class Quiz_Maker_Admin
             if(!empty($choice) && $choices > 0){
                 $result = $wpdb->get_row($wpdb->prepare("SELECT answer FROM {$answers_table} WHERE id=%d ;", $choice ), 'ARRAY_A');
                 $text = (isset($result['answer']) && $result['answer'] != "") ? $result['answer'] : '';
+            }
+        }
+        return $text;
+    }
+
+    public function get_user_answered_images($user_choice, $key){
+        global $wpdb;
+        $answers_table = $wpdb->prefix . "aysquiz_answers";
+        $choices = '';
+        if( !empty($user_choice->$key) ){
+            if (is_array($user_choice->$key)) {
+                $choices = array_map('intval', $user_choice->$key);
+            } else {
+                $choices = intval($user_choice->$key);
+            }
+        }
+
+        if($choices == ''){
+            return '';
+        }
+
+        $text = array();
+        if (is_array($choices)) {
+            foreach ($choices as $choice) {
+                $choice = (isset($choice) && intval($choice) > 0) ? intval($choice) : null;
+                if(empty($choice)){
+                    continue;
+                }
+                $result = $wpdb->get_row($wpdb->prepare("SELECT image FROM {$answers_table} WHERE id=%d ;", $choice ), 'ARRAY_A');
+                if(isset($result['image']) && $result['image'] != ''){
+                    $text[] = "<img src='". esc_url($result['image']) ."' alt='Answer image'>";
+                }
+            }
+            $text = '<br><div class="question-answer-image-box">' . implode('<br>', $text) . '</div>';
+        } else {
+            $choice = (isset($choices) && intval($choices) > 0) ? intval($choices) : null;
+
+            $text = "";
+            if(!empty($choice) && $choice > 0){
+                $result = $wpdb->get_row($wpdb->prepare("SELECT image FROM {$answers_table} WHERE id=%d ;", $choice ), 'ARRAY_A');
+                if(isset($result['image']) && $result['image'] != ''){
+                    $text = "<br><img src='". esc_url($result['image']) ."' alt='Answer image'>";
+                }else{
+                    $text = '';
+                }
             }
         }
         return $text;
@@ -3243,6 +3381,9 @@ class Quiz_Maker_Admin
                     break;
                 case 'quiz_reviews':
                     $listtable_title_length = (isset($options['quiz_reviews_title_length']) && intval($options['quiz_reviews_title_length']) != 0) ? absint(sanitize_text_field($options['quiz_reviews_title_length'])) : 5;
+                    break; 
+                case 'question_reports':
+                    $listtable_title_length = (isset($options['question_reports_title_length']) && intval($options['question_reports_title_length']) != 0) ? absint(sanitize_text_field($options['question_reports_title_length'])) : 5;
                     break;        
                 default:
                     $listtable_title_length = 5;
@@ -3286,10 +3427,19 @@ class Quiz_Maker_Admin
      * Create the function to output the contents of our Dashboard Widget.
      */
     public function quiz_maker_dashboard_widget() {
+
+        if (empty($this->questions_obj)) {
+            $this->questions_obj = new Questions_List_Table($this->plugin_name);
+        }
+
+        if (empty($this->results_obj)) {
+            $this->results_obj = new Results_List_Table($this->plugin_name);
+        }
+
         global $wpdb;
-        $questions_count = Questions_List_Table::record_count();
-        $quizzes_count = Quizes_List_Table::record_count();
-        $results_count = Results_List_Table::unread_records_count();
+        $questions_count = $this->questions_obj->record_count();
+        $quizzes_count = $this->questions_obj->record_count();
+        $results_count = $this->results_obj->unread_records_count();
         
         $questions_label = intval($questions_count) == 1 ? __("question", 'quiz-maker') : __("questions", 'quiz-maker');
         $quizzes_label = intval($quizzes_count) == 1 ? __("quiz", 'quiz-maker') : __("quizzes", 'quiz-maker');
@@ -3325,13 +3475,19 @@ class Quiz_Maker_Admin
             <li class="ays_dashboard_widget_item">
                 <a href="<?php echo "admin.php?page=".$this->plugin_name."-question-reports" ?>">
                     <img src="<?php echo AYS_QUIZ_ADMIN_URL."/images/icons/triangle-alert.svg"; ?>" alt="Reports">
-                    <span><?php echo $actual_reports_count; ?></span>
-                    <span><?php echo $reports_label; ?></span>
+                    <span><?php echo esc_html($actual_reports_count); ?></span>
+                    <span><?php echo esc_html($reports_label); ?></span>
                 </a>
             </li>
         </ul>
         <div style="padding:10px;font-size:14px;border-top:1px solid #ccc;">
-            <?php echo sprintf( esc_html__("Works version %s of ", 'quiz-maker'), esc_html(AYS_QUIZ_VERSION) ); ?>
+            <?php
+                echo sprintf(
+                    /* translators: %s: plugin version number */
+                    esc_html__( 'Works version %s of ', 'quiz-maker' ),
+                    esc_html( AYS_QUIZ_VERSION )
+                );
+            ?>
             <a href="<?php echo esc_url("admin.php?page=".$this->plugin_name); ?>">Quiz Maker</a>
         </div>
     <?php
@@ -3480,7 +3636,9 @@ class Quiz_Maker_Admin
                 } else {
                     if( $this->get_max_id('quizes') > 1 ){
                         $this->ays_quiz_new_mega_bundle_message($ays_quiz_ishmar);
-                        // $this->ays_quiz_discounted_licenses_banner_message($ays_quiz_ishmar);
+                        // $this->ays_quiz_black_friday_message($ays_quiz_ishmar);
+                        // $this->ays_quiz_new_halloween_bundle_message_2025($ays_quiz_ishmar);
+                        // $this->ays_quiz_christmas_banner_message_2025($ays_quiz_ishmar);
                     }
                 }
             }
@@ -4059,7 +4217,7 @@ class Quiz_Maker_Admin
                 $style_attr = 'style="display:none;"';
             }
 
-            $quiz_cta_button_link = esc_url('https://ays-pro.com/mega-bundle?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=mega-bundle-sale-banner-' . AYS_QUIZ_VERSION);
+            $quiz_cta_button_link = esc_url('https://ays-pro.com/mega-bundle?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=mega-bundle-sale-banner-' . AYS_QUIZ_UTM_VERSION);
 
             $content[] = '<div id="ays-quiz-new-mega-bundle-dicount-month-main" class="ays-quiz-admin-notice notice notice-success is-dismissible ays_quiz_dicount_info">';
                 $content[] = '<div id="ays-quiz-dicount-month" class="ays_quiz_dicount_month">';
@@ -4072,10 +4230,11 @@ class Quiz_Maker_Admin
                                 $content[] = '<div>';
                                     $content[] = '<span class="ays-quiz-new-mega-bundle-title">';
                                         $content[] = sprintf(
-                                            __( '%s Mega Bundle %s (Quiz + Survey + Poll)', 'quiz-maker' ),
-                                            "<span style='display: inline-block; margin-right: 5px;'><a href='". $quiz_cta_button_link ."' target='_blank' style='color:#ffffff !important; text-decoration: underline;'>",
-                                            '</a></span>'
-                                        );
+                                        /* translators: 1: opening link wrapper with <a> tag, 2: closing </a> tag */
+                                        __( '%1$s Mega Bundle %2$s (Quiz + Survey + Poll)', 'quiz-maker' ),
+                                        '<span style="display:inline-block; margin-right:5px;"><a href="' . esc_url( $quiz_cta_button_link ) . '" target="_blank" rel="noopener noreferrer" style="color:#ffffff !important; text-decoration: underline;">',
+                                        '</a></span>'
+                                    );
                                     $content[] = '</span>';
                                     $content[] = '</br>';
                                     $content[] = '<span class="ays-quiz-new-mega-bundle-desc">';
@@ -4121,10 +4280,15 @@ class Quiz_Maker_Admin
                                     // $content[] = '</div>';
 
                                     $content[] = '<ul>';
-                                        $content[] = '<li><span id="ays-quiz-countdown-days"></span>'. __( "Days", 'quiz-maker' ) .'</li>';
-                                        $content[] = '<li><span id="ays-quiz-countdown-hours"></span>'. __( "Hours", 'quiz-maker' ) .'</li>';
-                                        $content[] = '<li><span id="ays-quiz-countdown-minutes"></span>'. __( "Minutes", 'quiz-maker' ) .'</li>';
-                                        $content[] = '<li><span id="ays-quiz-countdown-seconds"></span>'. __( "Seconds", 'quiz-maker' ) .'</li>';
+                                        // $content[] = '<li><span id="ays-quiz-countdown-days"></span>'. __( "Days", 'quiz-maker' ) .'</li>';
+                                        // $content[] = '<li><span id="ays-quiz-countdown-hours"></span>'. __( "Hours", 'quiz-maker' ) .'</li>';
+                                        // $content[] = '<li><span id="ays-quiz-countdown-minutes"></span>'. __( "Minutes", 'quiz-maker' ) .'</li>';
+                                        // $content[] = '<li><span id="ays-quiz-countdown-seconds"></span>'. __( "Seconds", 'quiz-maker' ) .'</li>';
+
+                                    $content[] = '<li><span id="ays-quiz-countdown-days"></span></li>';
+                                        $content[] = '<li><span id="ays-quiz-countdown-hours"></span></li>';
+                                        $content[] = '<li><span id="ays-quiz-countdown-minutes"></span></li>';
+                                        $content[] = '<li><span id="ays-quiz-countdown-seconds"></span></li>';
                                     $content[] = '</ul>';
                                 $content[] = '</div>';
 
@@ -4151,7 +4315,8 @@ class Quiz_Maker_Admin
 
             // /* New Mega Bundle Banner Quiz | Start */
             $content[] = '<style id="ays-quiz-mega-bundle-styles-inline-css">';
-            $content[] = 'div#ays-quiz-new-mega-bundle-dicount-month-main{border:0;background:#fff;border-radius:20px;box-shadow:unset;position:relative;z-index:1;min-height:80px}div#ays-quiz-new-mega-bundle-dicount-month-main.ays_quiz_dicount_info button{display:flex;align-items:center}div#ays-quiz-new-mega-bundle-dicount-month-main div#ays-quiz-dicount-month a.ays-quiz-sale-banner-link:focus{outline:0;box-shadow:0}div#ays-quiz-new-mega-bundle-dicount-month-main .btn-link{color:#007bff;background-color:transparent;display:inline-block;font-weight:400;text-align:center;white-space:nowrap;vertical-align:middle;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;border:1px solid transparent;padding:.375rem .75rem;font-size:1rem;line-height:1.5;border-radius:.25rem}div#ays-quiz-new-mega-bundle-dicount-month-main.ays_quiz_dicount_info{background-image:url("' . esc_attr(AYS_QUIZ_ADMIN_URL) . '/images/new-mega-bundle-logo-background.svg");background-position:center right;background-repeat:no-repeat;background-size:cover;background-color:#5551ff;padding:1px 38px 1px 12px}#ays-quiz-new-mega-bundle-dicount-month-main .ays_quiz_dicount_month{display:flex;align-items:center;justify-content:space-between;color:#fff}#ays-quiz-new-mega-bundle-dicount-month-main .ays_quiz_dicount_month img{width:60px}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-sale-banner-link{display:flex;justify-content:center;align-items:center;width:60px}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box{font-size:14px;padding:12px;text-align:center}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-text-box{text-align:left;width:auto;display:flex;justify-content:space-around;align-items:flex-start}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-countdown-box{width:30%;display:flex;justify-content:center;align-items:center}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-button-box{width:20%;display:flex;justify-content:center;align-items:center;flex-direction:column}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box .ays-quiz-dicount-logo-box{display:flex;justify-content:flex-start;align-items:center;gap:20px}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-text-box .ays-quiz-new-mega-bundle-title{color:#fdfdfd;font-size:22px;font-style:normal;font-weight:600;line-height:normal}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-text-box .ays-quiz-new-mega-bundle-title-icon-row{display:inline-block}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-text-box .ays-quiz-new-mega-bundle-desc{display:inline-block;color:#fff;font-size:15px;font-style:normal;font-weight:400;line-height:normal;margin-top:10px}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box strong{font-size:17px;font-weight:700;letter-spacing:.8px}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-color{color:#971821}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-text-decoration{text-decoration:underline}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-buy-now-button-box{display:flex;justify-content:flex-end;align-items:center;width:30%}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box .ays-button,#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box .ays-buy-now-button{align-items:center;font-weight:500}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box .ays-buy-now-button{background:#971821;border-color:#fff;display:flex;justify-content:center;align-items:center;padding:5px 15px;font-size:16px;border-radius:5px}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box .ays-buy-now-button:hover{background:#7d161d;border-color:#971821}#ays-quiz-new-mega-bundle-dicount-month-main #ays-quiz-dismiss-buttons-content{display:flex;justify-content:center}#ays-quiz-new-mega-bundle-dicount-month-main #ays-quiz-dismiss-buttons-content .ays-button{margin:0!important;font-size:13px;color:#fff}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-opacity-box{width:19%}#ays-quiz-new-mega-bundle-dicount-month-main .ays-buy-now-opacity-button{padding:40px 15px;display:flex;justify-content:center;align-items:center;opacity:0}#ays-quiz-maker-countdown-main-container .ays-quiz-maker-countdown-container{margin:0 auto;text-align:center}#ays-quiz-maker-countdown-main-container #ays-quiz-countdown-headline{letter-spacing:.125rem;text-transform:uppercase;font-size:18px;font-weight:400;margin:0;padding:9px 0 4px;line-height:1.3}#ays-quiz-maker-countdown-main-container li,#ays-quiz-maker-countdown-main-container ul{margin:0}#ays-quiz-maker-countdown-main-container li{display:inline-block;font-size:14px;list-style-type:none;padding:14px;text-transform:lowercase}#ays-quiz-maker-countdown-main-container li span{display:flex;justify-content:center;align-items:center;font-size:40px;min-height:62px;min-width:62px;border-radius:4.273px;border:.534px solid #f4f4f4;background:#9896ed;color:#fff}#ays-quiz-maker-countdown-main-container .emoji{display:none;padding:1rem}#ays-quiz-maker-countdown-main-container .emoji span{font-size:30px;padding:0 .5rem}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box li{position:relative}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box li span:after{content:":";color:#fff;position:absolute;top:10px;right:-5px;font-size:40px}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box li span#ays-quiz-countdown-seconds:after{content:unset}#ays-quiz-new-mega-bundle-dicount-month-main #ays-button-top-buy-now{display:flex;align-items:center;border-radius:6.409px;background:#f66123;padding:12px 32px;color:#fff;font-size:15px;font-style:normal;line-height:normal;margin:0!important}div#ays-quiz-new-mega-bundle-dicount-month-main button.notice-dismiss:before{color:#fff;content:"\f00d";font-family:fontawesome;font-size:22px}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-new-mega-bundle-guaranteeicon{width:30px;margin-right:5px}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-one-time-text{color:#fff;font-size:12px;font-style:normal;font-weight:600;line-height:normal}@media all and (max-width:768px){div#ays-quiz-new-mega-bundle-dicount-month-main.ays_quiz_dicount_info.notice{display:none!important;background-position:bottom right;background-repeat:no-repeat;background-size:cover;border-radius:32px}div#ays-quiz-new-mega-bundle-dicount-month-main{padding-right:0}div#ays-quiz-new-mega-bundle-dicount-month-main .ays_quiz_dicount_month{display:flex;align-items:center;justify-content:space-between;align-content:center;flex-wrap:wrap;flex-direction:column;padding:10px 0}div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box{width:100%!important;text-align:center}#ays-quiz-maker-countdown-main-container #ays-quiz-countdown-headline{font-size:15px;font-weight:600}#ays-quiz-maker-countdown-main-container ul{font-weight:500}#ays-quiz-maker-countdown-main-container li span{font-size:35px;min-height:57px;min-width:55px}div#ays-quiz-maker-countdown-main-container li{padding:10px}div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-new-mega-bundle-mobile-image-display-none{display:none!important}div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-new-mega-bundle-mobile-image-display-block{display:block!important;margin-top:5px}div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-text-box{width:100%!important;text-align:center;flex-direction:column;margin-top:20px;justify-content:center;align-items:center}div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box li span:after{top:unset}div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-countdown-box{width:100%;display:flex;justify-content:center;align-items:center}#ays-quiz-new-mega-bundle-dicount-month-main .ays-button{margin:0 auto!important}#ays-quiz-new-mega-bundle-dicount-month-main #ays-quiz-dismiss-buttons-content .ays-button{padding-left:unset!important}div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-buy-now-button-box{justify-content:center}div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box .ays-buy-now-button{font-size:14px;padding:5px 10px}div#ays-quiz-new-mega-bundle-dicount-month-main .ays-buy-now-opacity-button{display:none}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dismiss-buttons-container-for-form{position:static!important}.comparison .product img{width:70px}.ays-quiz-features-wrap .comparison a.price-buy{padding:8px 5px;font-size:11px}}@media screen and (max-width:1350px) and (min-width:768px){div#ays-quiz-new-mega-bundle-dicount-month-main.ays_quiz_dicount_info.notice{background-position:bottom right;background-repeat:no-repeat;background-size:cover}div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box strong{font-size:15px}#ays-quiz-maker-countdown-main-container li{font-size:11px}div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-opacity-box{display:none}}@media screen and (max-width:1680px){#ays-quiz-maker-countdown-main-container li span{font-size:30px;min-height:50px;min-width:50px}}@media screen and (max-width:1680px) and (min-width:1551px){div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-text-box{width:29%}div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-countdown-box{width:30%}}@media screen and (max-width:1410px){#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-coupon-row{width:150px}}@media screen and (max-width:1550px) and (min-width:1400px){div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-countdown-box{width:35%}}@media screen and (max-width:1400px) and (min-width:1250px){div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-countdown-box{width:35%}div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-text-box{width:40%}div#ays-quiz-maker-countdown-main-container li span{font-size:30px;min-height:50px;min-width:50px}}@media screen and (max-width:1274px){div#ays-quiz-maker-countdown-main-container li span{font-size:25px;min-height:40px;min-width:40px}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-text-box .ays-quiz-new-mega-bundle-title{font-size:15px}}@media screen and (max-width:1200px){#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-button-box{margin-bottom:16px}#ays-quiz-maker-countdown-main-container ul{padding-left:0}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-coupon-row{width:120px;font-size:18px}#ays-quiz-new-mega-bundle-dicount-month-main #ays-button-top-buy-now{padding:12px 20px}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box{font-size:12px}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-text-box .ays-quiz-new-mega-bundle-desc{font-size:13px}}@media screen and (max-width:1076px) and (min-width:769px){#ays-quiz-maker-countdown-main-container li{padding:10px}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-coupon-row{width:100px;font-size:16px}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-button-box{margin-bottom:16px}#ays-quiz-new-mega-bundle-dicount-month-main #ays-button-top-buy-now{padding:12px 15px}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box{font-size:11px;padding:12px 0}}@media screen and (max-width:1250px) and (min-width:769px){div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-countdown-box{width:45%}div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-text-box{width:35%}div#ays-quiz-maker-countdown-main-container li span{font-size:30px;min-height:50px;min-width:50px}}';
+            $content[] = '
+            div#ays-quiz-new-mega-bundle-dicount-month-main{border:0;background:#fff;border-radius:20px;box-shadow:unset;position:relative;z-index:1;min-height:80px}div#ays-quiz-new-mega-bundle-dicount-month-main.ays_quiz_dicount_info button{display:flex;align-items:center}div#ays-quiz-new-mega-bundle-dicount-month-main div#ays-quiz-dicount-month a.ays-quiz-sale-banner-link:focus{outline:0;box-shadow:0}div#ays-quiz-new-mega-bundle-dicount-month-main .btn-link{color:#007bff;background-color:transparent;display:inline-block;font-weight:400;text-align:center;white-space:nowrap;vertical-align:middle;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;border:1px solid transparent;padding:.375rem .75rem;font-size:1rem;line-height:1.5;border-radius:.25rem}div#ays-quiz-new-mega-bundle-dicount-month-main.ays_quiz_dicount_info{background-image:url("'. AYS_QUIZ_ADMIN_URL .'/images/new-mega-bundle-logo-background.svg");background-position:center right;background-repeat:no-repeat;background-size:cover;background-color:#5551ff;padding:1px 38px 1px 12px}#ays-quiz-new-mega-bundle-dicount-month-main .ays_quiz_dicount_month{display:flex;align-items:center;justify-content:space-between;color:#fff}#ays-quiz-new-mega-bundle-dicount-month-main .ays_quiz_dicount_month img{width:60px}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-sale-banner-link{display:flex;justify-content:center;align-items:center;width:60px}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box{font-size:14px;padding:12px;text-align:center}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-text-box{text-align:left;width:auto;display:flex;justify-content:space-around;align-items:flex-start}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-countdown-box{width:30%;display:flex;justify-content:center;align-items:center}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-button-box{width:20%;display:flex;justify-content:center;align-items:center;flex-direction:column}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box .ays-quiz-dicount-logo-box{display:flex;justify-content:flex-start;align-items:center;gap:20px}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-text-box .ays-quiz-new-mega-bundle-title{color:#fdfdfd;font-size:19px;font-style:normal;font-weight:600;line-height:normal}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-text-box .ays-quiz-new-mega-bundle-title-icon-row{display:inline-block}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-text-box .ays-quiz-new-mega-bundle-desc{display:inline-block;color:#fff;font-size:15px;font-style:normal;font-weight:400;line-height:normal;margin-top:10px}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box strong{font-size:17px;font-weight:700;letter-spacing:.8px}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-color{color:#971821}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-text-decoration{text-decoration:underline}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-buy-now-button-box{display:flex;justify-content:flex-end;align-items:center;width:30%}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box .ays-button,#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box .ays-buy-now-button{align-items:center;font-weight:500}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box .ays-buy-now-button{background:#971821;border-color:#fff;display:flex;justify-content:center;align-items:center;padding:5px 15px;font-size:16px;border-radius:5px}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box .ays-buy-now-button:hover{background:#7d161d;border-color:#971821}#ays-quiz-new-mega-bundle-dicount-month-main #ays-quiz-dismiss-buttons-content{display:flex;justify-content:center}#ays-quiz-new-mega-bundle-dicount-month-main #ays-quiz-dismiss-buttons-content .ays-button{margin:0!important;font-size:13px;color:#fff}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-opacity-box{width:19%}#ays-quiz-new-mega-bundle-dicount-month-main .ays-buy-now-opacity-button{padding:40px 15px;display:flex;justify-content:center;align-items:center;opacity:0}#ays-quiz-maker-countdown-main-container .ays-quiz-maker-countdown-container{margin:0 auto;text-align:center}#ays-quiz-maker-countdown-main-container #ays-quiz-countdown-headline{letter-spacing:.125rem;text-transform:uppercase;font-size:18px;font-weight:400;margin:0;padding:9px 0 4px;line-height:1.3}#ays-quiz-maker-countdown-main-container li,#ays-quiz-maker-countdown-main-container ul{margin:0}#ays-quiz-maker-countdown-main-container li{display:inline-block;font-size:14px;list-style-type:none;padding:14px;text-transform:lowercase}#ays-quiz-maker-countdown-main-container li span{display:flex;justify-content:center;align-items:center;font-size:22px;min-height:40px;min-width:40px;border-radius:4.273px;border:.534px solid #f4f4f4;background:#9896ed;color:#fff}#ays-quiz-maker-countdown-main-container .emoji{display:none;padding:1rem}#ays-quiz-maker-countdown-main-container .emoji span{font-size:30px;padding:0 .5rem}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box li{position:relative}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box li span:after{content:":";color:#fff;position:absolute;top:0;right:-5px;font-size:40px}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box li span#ays-quiz-countdown-seconds:after{content:unset}#ays-quiz-new-mega-bundle-dicount-month-main #ays-button-top-buy-now{display:flex;align-items:center;border-radius:6.409px;background:#f66123;padding:12px 32px;color:#fff;font-size:15px;font-style:normal;line-height:normal;margin:0!important}div#ays-quiz-new-mega-bundle-dicount-month-main button.notice-dismiss:before{color:#fff;content:"\f00d";font-family:fontawesome;font-size:22px}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-new-mega-bundle-guaranteeicon{width:30px;margin-right:5px}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-one-time-text{color:#fff;font-size:12px;font-style:normal;font-weight:600;line-height:normal}@media all and (max-width:768px){div#ays-quiz-new-mega-bundle-dicount-month-main.ays_quiz_dicount_info.notice{display:none!important;background-position:bottom right;background-repeat:no-repeat;background-size:cover;border-radius:32px}div#ays-quiz-new-mega-bundle-dicount-month-main{padding-right:0}div#ays-quiz-new-mega-bundle-dicount-month-main .ays_quiz_dicount_month{display:flex;align-items:center;justify-content:space-between;align-content:center;flex-wrap:wrap;flex-direction:column;padding:10px 0}div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box{width:100%!important;text-align:center}#ays-quiz-maker-countdown-main-container #ays-quiz-countdown-headline{font-size:15px;font-weight:600}#ays-quiz-maker-countdown-main-container ul{font-weight:500}div#ays-quiz-maker-countdown-main-container li{padding:10px}div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-new-mega-bundle-mobile-image-display-none{display:none!important}div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-new-mega-bundle-mobile-image-display-block{display:block!important;margin-top:5px}div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-text-box{width:100%!important;text-align:center;flex-direction:column;margin-top:20px;justify-content:center;align-items:center}div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box li span:after{top:unset}div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-countdown-box{width:100%;display:flex;justify-content:center;align-items:center}#ays-quiz-new-mega-bundle-dicount-month-main .ays-button{margin:0 auto!important}#ays-quiz-new-mega-bundle-dicount-month-main #ays-quiz-dismiss-buttons-content .ays-button{padding-left:unset!important}div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-buy-now-button-box{justify-content:center}div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box .ays-buy-now-button{font-size:14px;padding:5px 10px}div#ays-quiz-new-mega-bundle-dicount-month-main .ays-buy-now-opacity-button{display:none}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dismiss-buttons-container-for-form{position:static!important}.comparison .product img{width:70px}.ays-quiz-features-wrap .comparison a.price-buy{padding:8px 5px;font-size:11px}}@media screen and (max-width:1350px) and (min-width:768px){div#ays-quiz-new-mega-bundle-dicount-month-main.ays_quiz_dicount_info.notice{background-position:bottom right;background-repeat:no-repeat;background-size:cover}div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box strong{font-size:15px}#ays-quiz-maker-countdown-main-container li{font-size:11px}div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-opacity-box{display:none}}@media screen and (max-width:1680px) and (min-width:1551px){div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-text-box{width:29%}div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-countdown-box{width:30%}}@media screen and (max-width:1410px){#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-coupon-row{width:150px}}@media screen and (max-width:1550px) and (min-width:1400px){div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-countdown-box{width:35%}}@media screen and (max-width:1400px) and (min-width:1250px){div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-countdown-box{width:35%}div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-text-box{width:40%}}@media screen and (max-width:1274px){#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-text-box .ays-quiz-new-mega-bundle-title{font-size:15px}}@media screen and (max-width:1200px){#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-button-box{margin-bottom:16px}#ays-quiz-maker-countdown-main-container ul{padding-left:0}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-coupon-row{width:120px;font-size:18px}#ays-quiz-new-mega-bundle-dicount-month-main #ays-button-top-buy-now{padding:12px 20px}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box{font-size:12px}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-text-box .ays-quiz-new-mega-bundle-desc{font-size:13px}}@media screen and (max-width:1076px) and (min-width:769px){#ays-quiz-maker-countdown-main-container li{padding:10px}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-coupon-row{width:100px;font-size:16px}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-button-box{margin-bottom:16px}#ays-quiz-new-mega-bundle-dicount-month-main #ays-button-top-buy-now{padding:12px 15px}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box{font-size:11px;padding:12px 0}}@media screen and (max-width:1250px) and (min-width:769px){div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-countdown-box{width:45%}div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-text-box{width:35%}}';
             $content[] = '</style>';
             // /* New Mega Bundle Banner Quiz | End */
 
@@ -4166,16 +4331,32 @@ class Quiz_Maker_Admin
         if($ishmar == 0 ){
             $content = array();
 
+            $ays_quiz_cta_button_link = esc_url('https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=black-friday-sale-banner-' . AYS_QUIZ_UTM_VERSION);
+
             $content[] = '<div id="ays-quiz-dicount-black-friday-month-main" class="notice notice-success is-dismissible ays_quiz_dicount_info">';
                 $content[] = '<div id="ays-quiz-dicount-black-friday-month" class="ays_quiz_dicount_month">';
                     $content[] = '<div class="ays-quiz-dicount-black-friday-box">';
                         $content[] = '<div class="ays-quiz-dicount-black-friday-wrap-box ays-quiz-dicount-black-friday-wrap-box-80" style="width: 70%;">';
-                            $content[] = '<div class="ays-quiz-dicount-black-friday-title-row">' . __( 'Limited Time', "quiz-maker" ) .' '. '<a href="https://ays-pro.com/mega-bundle?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=black-friday-sale-banner" class="ays-quiz-dicount-black-friday-button-sale" target="_blank">' . __( 'Sale', "quiz-maker" ) . '</a>' . '</div>';
-                            $content[] = '<div class="ays-quiz-dicount-black-friday-title-row">' . __( 'Mega bundle', "quiz-maker" ) . ' (Quiz+Survey+Poll)!</div> ';
+                            $content[] = '<div class="">';
+                                $content[] = '<div class="ays-quiz-dicount-black-friday-title-row" >' . __( 'Coupon Code', "quiz-maker" ) .' ' . '</div>';
+                                $content[] = '<div class="ays-quiz-dicount-black-friday-title-row">';
+
+                                $content[] = '
+                                    <span class="ays-quiz-dicount-black-friday-banner-2025-coupon-wrapper">
+                                        <span class="ays-quiz-dicount-black-friday-banner-2025-coupon-box" onclick="aysQuizHalloweenCopyToClipboard(\'FREE2PROBF\')" title="Click to copy">
+                                            <span class="ays-quiz-dicount-black-friday-banner-2025-coupon-text">FREE2PROBF</span>
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="ays-quiz-dicount-black-friday-banner-2025-copy-icon">
+                                                <path d="M13.5 2.5H6.5C5.67 2.5 5 3.17 5 4V10C5 10.83 5.67 11.5 6.5 11.5H13.5C14.33 11.5 15 10.83 15 10V4C15 3.17 14.33 2.5 13.5 2.5ZM13.5 10H6.5V4H13.5V10ZM2.5 6.5V12.5C2.5 13.33 3.17 14 4 14H10V12.5H4V6.5H2.5Z" fill="white"/>
+                                            </svg>
+                                        </span>
+                                    </span>';
+                                $content[] = '</div> ';
+                            $content[] = '</div>';
+
                         $content[] = '</div>';
 
                         $content[] = '<div class="ays-quiz-dicount-black-friday-wrap-box ays-quiz-dicount-black-friday-wrap-text-box">';
-                            $content[] = '<div class="ays-quiz-dicount-black-friday-text-row">' . '50% off' . '</div>';
+                            $content[] = '<div class="ays-quiz-dicount-black-friday-text-row">' . '30% off' . '</div>';
                         $content[] = '</div>';
 
                         $content[] = '<div class="ays-quiz-dicount-black-friday-wrap-box" style="width: 25%;">';
@@ -4183,24 +4364,24 @@ class Quiz_Maker_Admin
                                 $content[] = '<div class="ays-quiz-countdown-container">';
                                     $content[] = '<div id="ays-quiz-countdown" style="display: block;">';
                                         $content[] = '<ul>';
-                                            $content[] = '<li><span id="ays-quiz-countdown-days">0</span>' . __( 'Days', "quiz-maker" ) . '</li>';
-                                            $content[] = '<li><span id="ays-quiz-countdown-hours">0</span>' . __( 'Hours', "quiz-maker" ) . '</li>';
-                                            $content[] = '<li><span id="ays-quiz-countdown-minutes">0</span>' . __( 'Minutes', "quiz-maker" ) . '</li>';
-                                            $content[] = '<li><span id="ays-quiz-countdown-seconds">0</span>' . __( 'Seconds', "quiz-maker" ) . '</li>';
+                                            $content[] = '<li><span id="ays-quiz-countdown-days"></span>' . __( 'Days', "quiz-maker" ) . '</li>';
+                                            $content[] = '<li><span id="ays-quiz-countdown-hours"></span>' . __( 'Hours', "quiz-maker" ) . '</li>';
+                                            $content[] = '<li><span id="ays-quiz-countdown-minutes"></span>' . __( 'Minutes', "quiz-maker" ) . '</li>';
+                                            $content[] = '<li><span id="ays-quiz-countdown-seconds"></span>' . __( 'Seconds', "quiz-maker" ) . '</li>';
                                         $content[] = '</ul>';
                                     $content[] = '</div>';
                                     $content[] = '<div id="ays-quiz-countdown-content" class="emoji" style="display: none;">';
-                                        $content[] = '<span>🚀</span>';
-                                        $content[] = '<span>⌛</span>';
-                                        $content[] = '<span>🔥</span>';
-                                        $content[] = '<span>💣</span>';
+                                        $content[] = '<span></span>';
+                                        $content[] = '<span></span>';
+                                        $content[] = '<span></span>';
+                                        $content[] = '<span></span>';
                                     $content[] = '</div>';
                                 $content[] = '</div>';
                             $content[] = '</div>';
                         $content[] = '</div>';
 
                         $content[] = '<div class="ays-quiz-dicount-black-friday-wrap-box" style="width: 25%;">';
-                            $content[] = '<a href="https://ays-pro.com/mega-bundle?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=black-friday-sale-banner" class="ays-quiz-dicount-black-friday-button-buy-now" target="_blank">' . __( 'Get Your Deal', "quiz-maker" ) . '</a>';
+                            $content[] = '<a href="'. $ays_quiz_cta_button_link .'" class="ays-quiz-dicount-black-friday-button-buy-now" target="_blank">' . __( 'Get Your Deal', "quiz-maker" ) . '</a>';
                         $content[] = '</div>';
                     $content[] = '</div>';
                 $content[] = '</div>';
@@ -4216,6 +4397,68 @@ class Quiz_Maker_Admin
                     $content[] = '</form>';
                 $content[] = '</div>';
             $content[] = '</div>';
+
+            $content[] = '<script>';
+            $content[] = "
+                    function aysQuizHalloweenCopyToClipboard(text) {
+                        // Create a temporary textarea element
+                        var textarea = document.createElement('textarea');
+                        textarea.value = text;
+                        textarea.style.position = 'fixed';
+                        textarea.style.opacity = '0';
+                        document.body.appendChild(textarea);
+                        
+                        // Select and copy the text
+                        textarea.select();
+                        textarea.setSelectionRange(0, 99999); // For mobile devices
+                        
+                        try {
+                            document.execCommand('copy');
+                            aysQuizHalloweenShowCopyNotification('Coupon code copied!');
+                        } catch (err) {
+                            console.error('Failed to copy text: ', err);
+                        }
+                        
+                        // Remove the temporary textarea
+                        document.body.removeChild(textarea);
+                    }
+
+                    function aysQuizHalloweenShowCopyNotification(message) {
+                        // Check if notification already exists
+                        var existingNotification = document.querySelector('.ays-quiz-discount-black-friday-banner-2025-copy-notification');
+                        if (existingNotification) {
+                            document.body.removeChild(existingNotification);
+                        }
+                        
+                        // Create notification element
+                        var notification = document.createElement('div');
+                        notification.className = 'ays-quiz-discount-black-friday-banner-2025-copy-notification';
+                        notification.textContent = message;
+                        document.body.appendChild(notification);
+                        
+                        // Show notification with animation
+                        setTimeout(function() {
+                            notification.classList.add('show');
+                        }, 10);
+                        
+                        // Hide and remove notification after 2 seconds
+                        setTimeout(function() {
+                            notification.classList.remove('show');
+                            setTimeout(function() {
+                                if (notification.parentNode) {
+                                    document.body.removeChild(notification);
+                                }
+                            }, 300);
+                        }, 2000);
+                    }";
+            $content[] = '</script>';
+
+            $content[] = '<style>';
+            $content[] = '
+                /* Black friday banner start */
+                div#ays-quiz-dicount-black-friday-month-main *{color:#fff}div#ays-quiz-dicount-black-friday-month-main div#ays-quiz-dicount-black-friday-month a.ays-quiz-sale-banner-link:focus{outline:0;box-shadow:0}div#ays-quiz-dicount-black-friday-month-main .btn-link{background-color:transparent;display:inline-block;font-weight:400;text-align:center;white-space:nowrap;vertical-align:middle;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;border:1px solid transparent;padding:.375rem .75rem;font-size:12px;line-height:1.5;border-radius:.25rem;color:rgba(255,255,255,.6)}div#ays-quiz-dicount-black-friday-month-main.ays_quiz_dicount_info{background-image:linear-gradient(45deg,#1e101d,#c60af4);padding:unset;border-left:0}#ays-quiz-dicount-black-friday-month-main .ays_quiz_dicount_month{position:relative;background-image:url("'. esc_attr(AYS_QUIZ_ADMIN_URL) .'/images/black-friday-plugins-background-image.webp");background-position:center right;background-repeat:no-repeat;background-size:100% 100%}#ays-quiz-dicount-black-friday-month-main .ays_quiz_dicount_month img{width:80px}#ays-quiz-dicount-black-friday-month-main .ays-quiz-sale-banner-link{display:flex;justify-content:center;align-items:center;width:200px}#ays-quiz-dicount-black-friday-month-main .ays-quiz-dicount-black-friday-button-sale{font-style:normal;font-weight:600;font-size:24px;text-align:center;color:#b2ff00;text-transform:uppercase}#ays-quiz-dicount-black-friday-month-main .ays-quiz-dicount-black-friday-wrap-box{font-size:14px;padding:12px;text-align:center;width:50%;white-space:nowrap}#ays-quiz-dicount-black-friday-month-main .ays-quiz-dicount-black-friday-wrap-box strong{font-size:17px;font-weight:700;letter-spacing:.8px}#ays-quiz-dicount-black-friday-month-main .ays-quiz-dicount-black-friday-wrap-color{color:#971821}#ays-quiz-dicount-black-friday-month-main .ays-quiz-dicount-black-friday-wrap-text-decoration{text-decoration:underline}#ays-quiz-dicount-black-friday-month-main .ays-quiz-dicount-black-friday-wrap-box.ays-buy-now-button-box{display:flex;justify-content:flex-end;align-items:center;width:30%}#ays-quiz-dicount-black-friday-month-main .ays-quiz-dicount-black-friday-wrap-box .ays-button,#ays-quiz-dicount-black-friday-month-main .ays-quiz-dicount-black-friday-wrap-box .ays-buy-now-button{align-items:center;font-weight:500}#ays-quiz-dicount-black-friday-month-main .ays-quiz-dicount-black-friday-wrap-box .ays-buy-now-button{background:#971821;border-color:#fff;display:flex;justify-content:center;align-items:center;padding:5px 15px;font-size:16px;border-radius:5px}#ays-quiz-dicount-black-friday-month-main .ays-quiz-dicount-black-friday-wrap-box .ays-buy-now-button:hover{background:#7d161d;border-color:#971821}#ays-quiz-dicount-black-friday-month-main #ays-quiz-dismiss-buttons-content{display:flex;justify-content:center}#ays-quiz-dicount-black-friday-month-main #ays-quiz-dismiss-buttons-content .ays-button{margin:0!important;font-size:13px;color:#969393b0}#ays-quiz-dicount-black-friday-month-main .ays-quiz-dicount-black-friday-wrap-opacity-box{width:19%}#ays-quiz-dicount-black-friday-month-main .ays-buy-now-opacity-button{padding:40px 15px;display:flex;justify-content:center;align-items:center;opacity:0}#ays-quiz-countdown-main-container .ays-quiz-countdown-container{margin:0 auto;text-align:center}#ays-quiz-countdown-main-container #ays-quiz-countdown-headline{letter-spacing:.125rem;text-transform:uppercase;font-size:18px;font-weight:400;margin:0;padding:9px 0 4px;line-height:1.3}#ays-quiz-countdown-main-container li,#ays-quiz-countdown-main-container ul{margin:0;font-weight:600}#ays-quiz-countdown-main-container li{display:inline-block;font-size:10px;list-style-type:none;padding:10px;text-transform:uppercase}#ays-quiz-countdown-main-container li span{display:block;font-size:22px;min-height:33px}#ays-quiz-countdown-main-container .emoji{display:none;padding:1rem}#ays-quiz-countdown-main-container .emoji span{font-size:25px;padding:0 .5rem}#ays-quiz-dicount-black-friday-month-main .ays-quiz-dicount-black-friday-box{display:flex;justify-content:space-between;align-items:center;width:95%;margin:auto}#ays-quiz-dicount-black-friday-month-main .ays-quiz-dicount-black-friday-title-row{text-align:center;padding-right:50px;font-style:normal;font-weight:900;font-size:19px;color:#fff;}#ays-quiz-dicount-black-friday-month-main .ays-quiz-dicount-black-friday-button-buy-now{border:none;outline:0;padding:10px 20px;font-size:22px;text-transform:uppercase;font-weight:700;text-decoration:none;background:linear-gradient(180deg,#dd0bef 0,#82008d 100%);border-radius:16px}#ays-quiz-dicount-black-friday-month-main .ays-quiz-dicount-black-friday-text-row{text-transform:uppercase;text-shadow:-1.5px 0 #dd0bef,0 1.5px #dd0bef,1.5px 0 #dd0bef,0 -1.5px #dd0bef;font-weight:900;font-style:normal;font-size:40px;line-height:40px;color:#fff}#ays-quiz-dicount-black-friday-month-main .ays-quiz-dicount-black-friday-wrap-text-box{position:absolute;width:25%;top:10px;bottom:0;right:0;left:0;margin:0 auto}#ays-quiz-countdown ul{padding:0}#ays-quiz-dicount-black-friday-month-main .ays-quiz-dicount-black-friday-banner-2025-coupon-box{border:2px dashed rgba(255,255,255,.4);padding:0 12px;border-radius:6px;background:rgba(255,255,255,.1);cursor:pointer;transition:.3s;display:flex;align-items:center;justify-content:center;gap:6px;backdrop-filter:blur(10px);width:fit-content;margin:0 auto}#ays-quiz-dicount-black-friday-month-main .ays-quiz-dicount-black-friday-banner-2025-coupon-box:hover{background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.6);transform:translateY(-1px)}#ays-quiz-dicount-black-friday-month-main .ays-quiz-discount-black-friday-banner-2025-coupon-text{font-size:14px;font-weight:700;letter-spacing:1px;color:#fff;font-family:monospace}#ays-quiz-dicount-black-friday-month-main .ays-quiz-discount-black-friday-banner-2025-copy-icon{opacity:.8;transition:opacity .3s}#ays-quiz-dicount-black-friday-month-main .ays-quiz-discount-black-friday-banner-banner-2025-coupon-box:hover .ays-quiz-discount-black-friday-banner-2025-copy-icon,.ays-quiz-discount-black-friday-banner-2025-copy-notification.show{opacity:1}.ays-quiz-discount-black-friday-banner-2025-copy-notification{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.8);color:#fff;padding:12px 24px;border-radius:8px;font-size:14px;z-index:10000;opacity:0;transition:opacity .3s}@media screen and (max-width:1400px) and (min-width:1200px){div#ays-quiz-dicount-black-friday-month-main .ays-quiz-dicount-black-friday-title-row{font-size:15px}div#ays-quiz-dicount-black-friday-month-main .ays-quiz-dicount-black-friday-text-row{font-size:27px}div#ays-quiz-dicount-black-friday-month-main .ays-quiz-dicount-black-friday-box{width:100%}div#ays-quiz-dicount-black-friday-month-main .ays-quiz-dicount-black-friday-button-buy-now{font-size:13px}div#ays-quiz-dicount-black-friday-month-main .ays-quiz-dicount-black-friday-wrap-box-80{width:80%!important}}@media all and (max-width:1200px){div#ays-quiz-dicount-black-friday-month-main .ays_quiz_dicount_month{background:unset}div#ays-quiz-dicount-black-friday-month-main .ays-quiz-dicount-black-friday-text-row{font-size:30px}div#ays-quiz-dicount-black-friday-month-main .ays-quiz-dicount-black-friday-box{width:100%}div#ays-quiz-dicount-black-friday-month-main .ays-quiz-dicount-black-friday-button-buy-now{font-size:15px}div#ays-quiz-dicount-black-friday-month-main .ays-quiz-dicount-black-friday-wrap-box-80{width:80%!important}}@media all and (max-width:1200px) and (min-width:1150px){div#ays-quiz-dicount-black-friday-month-main .ays-quiz-dicount-black-friday-title-row{font-size:15px}div#ays-quiz-dicount-black-friday-month-main .ays-quiz-dicount-black-friday-button-buy-now{font-size:10px}}@media all and (max-width:1150px){div#ays-quiz-dicount-black-friday-month-main .ays-quiz-dicount-black-friday-wrap-box-80{width:80%!important}div#ays-quiz-dicount-black-friday-month-main .ays-quiz-dicount-black-friday-box{flex-direction:column}div#ays-quiz-dicount-black-friday-month-main{padding-right:0}div#ays-quiz-dicount-black-friday-month-main .ays_quiz_dicount_month{display:flex;align-items:center;justify-content:space-between;align-content:center;flex-wrap:wrap;flex-direction:column;padding:10px 0}div#ays-quiz-dicount-black-friday-month-main div.ays-quiz-dicount-black-friday-wrap-box{width:100%!important;text-align:center}#ays-quiz-dicount-black-friday-month-main .ays-quiz-dicount-black-friday-title-row,div#ays-quiz-dicount-black-friday-month-main #ays-quiz-countdown-main-container ul{padding:0;font-size:13px}#ays-quiz-dicount-black-friday-month-main .ays-quiz-dicount-black-friday-button-sale,div#ays-quiz-countdown-main-container li{font-size:15px}div#ays-quiz-countdown-main-container li span{font-size:25px}div#ays-quiz-dicount-black-friday-month-main div.ays-quiz-dicount-black-friday-wrap-text-box{position:unset}#ays-quiz-countdown-main-container #ays-quiz-countdown-headline{font-size:15px;font-weight:600}#ays-quiz-countdown-main-container ul{font-weight:500}#ays-quiz-countdown-main-container li span{font-size:20px}#ays-quiz-dicount-black-friday-month-main .ays-button{margin:0 auto!important}div#ays-quiz-dicount-black-friday-month-main.ays_quiz_dicount_info.notice{background-position:bottom right;background-repeat:no-repeat;background-size:contain;display:flex;justify-content:center;background-image:linear-gradient(45deg,#1e101d,#c60af4)}div#ays-quiz-dicount-black-friday-month-main .ays-quiz-dicount-black-friday-wrap-box.ays-buy-now-button-box{justify-content:center}div#ays-quiz-dicount-black-friday-month-main .ays-quiz-dicount-black-friday-wrap-box .ays-buy-now-button{font-size:14px;padding:5px 10px}div#ays-quiz-dicount-black-friday-month-main .ays-quiz-dicount-black-friday-button-buy-now{padding:10px 18px;font-size:15px}}@media all and (max-width:768px){#ays-quiz-dicount-black-friday-month-main{display:none!important}}
+                ';
+            $content[] = '</style>';
 
             $content = implode( '', $content );
 
@@ -4406,7 +4649,7 @@ class Quiz_Maker_Admin
         if($ishmar == 0 ){
             $content = array();
 
-            $quiz_cta_button_link = esc_url('https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=christmas-sale-banner' . AYS_QUIZ_VERSION);
+            $quiz_cta_button_link = esc_url('https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=christmas-sale-banner' . AYS_QUIZ_UTM_VERSION);
 
             $content[] = '<div id="ays-quiz-christmas-top-bundle-dicount-month-main" class="notice notice-success is-dismissible ays_quiz_dicount_info">';
                 $content[] = '<div id="ays-quiz-dicount-month" class="ays_quiz_dicount_month">';
@@ -4446,7 +4689,14 @@ class Quiz_Maker_Admin
                         $content[] = '<div>';
 
                             $content[] = '<span class="ays-quiz-christmas-top-bundle-title">';
-                                $content[] = __( "<span><a href='". $quiz_cta_button_link ."' class='ays-quiz-christmas-top-bundle-title-link' target='_blank'>Christmas Sale</a></span>", 'quiz-maker' );
+                                $content[] = sprintf(
+                                    /* translators: 1: opening <span><a> tag, 2: closing </a></span> tag */
+                                    wp_kses_post(
+                                        __( '%1$s Christmas Sale %2$s', 'quiz-maker' )
+                                    ),
+                                    '<span><a href="' . esc_url( $quiz_cta_button_link ) . '" class="ays-quiz-christmas-top-bundle-title-link" target="_blank">',
+                                    '</a></span>'
+                                );
                             $content[] = '</span>';
 
                             $content[] = '</br>';
@@ -4511,7 +4761,14 @@ class Quiz_Maker_Admin
                         $content[] = '<div>';
 
                             $content[] = '<span class="ays-quiz-new-mega-bundle-2025-title">';
-                                $content[] = __( "<span><a href='". $quiz_cta_button_link ."' target='_blank' style='color:#ffffff; text-decoration: underline;'>Mega Bundle</a></span> (Quiz + Survey + Poll)", 'quiz-maker' );
+                                $content[] = sprintf(
+                                    /* translators: 1: opening <span><a> tag, 2: closing </a></span> tag */
+                                    wp_kses_post(
+                                        __( '%1$s Mega Bundle %2$s (Quiz + Survey + Poll)', 'quiz-maker' )
+                                    ),
+                                    '<span><a href="' . esc_url( $quiz_cta_button_link ) . '" target="_blank" style="color:#ffffff; text-decoration: underline;">',
+                                    '</a></span>'
+                                );
                             $content[] = '</span>';
 
                             $content[] = '</br>';
@@ -4610,7 +4867,7 @@ class Quiz_Maker_Admin
             $remaining_licenses = $total_licenses - $used_licenses;
             $progress_percentage = ($used_licenses / $total_licenses) * 100;
 
-            $ays_quiz_cta_button_link = esc_url('https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=quiz-maker-license-banner-' . AYS_QUIZ_VERSION);
+            $ays_quiz_cta_button_link = esc_url('https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=quiz-maker-license-banner-' . AYS_QUIZ_UTM_VERSION);
 
             $content[] = '<div id="ays-quiz-progress-banner-main" class="ays-quiz-progress-banner-main ays_quiz_dicount_info ays-quiz-admin-notice notice notice-success is-dismissible" ' . $style_attr . '>';
                 $content[] = '<div class="ays-quiz-progress-banner-content">';
@@ -4932,6 +5189,1089 @@ class Quiz_Maker_Admin
         }
     }
 
+    // Halloween Bundle 2025
+    public function ays_quiz_new_halloween_bundle_message_2025($ishmar){
+        if($ishmar == 0 ){
+            $content = array();
+
+            $date = time() + (int) ( get_option( 'gmt_offset' ) * HOUR_IN_SECONDS);
+            $now_date = date('M d, Y H:i:s', $date);
+
+            $start_date = strtotime('2025-09-08 00:00:01');
+            $end_date = strtotime('2025-11-07 23:59:59');
+            $diff_end = $end_date - $date;
+
+            $style_attr = '';
+            if( $diff_end < 0 ){
+                $style_attr = 'style="display:none;"';
+            }
+
+            $ays_quiz_cta_button_link = esc_url('https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=halloween-deal-banner-' . AYS_QUIZ_UTM_VERSION);
+
+            $content[] = '
+                <div id="ays-quiz-halloween-banner-2025-main" class="ays-quiz-halloween-banner-2025-main ays_quiz_dicount_info notice notice-success is-dismissible">
+                    <div class="ays-quiz-halloween-banner-2025-content">
+                        <div class="ays-quiz-halloween-banner-2025-left">
+                            <div class="ays-quiz-halloween-banner-2025-text">
+                                <h2 class="ays-quiz-halloween-banner-2025-title">Boo! Grab Your <a href="'. $ays_quiz_cta_button_link .'" class="" target="_blank">Halloween Deal</a> <br/> Before It Vanishes!</h2>
+                                <p class="ays-quiz-halloween-banner-2025-subtitle">Don’t get spooked by missing out!<br/> Get 25% discount using the coupon code while the magic lasts!</p>
+                            </div>
+                        </div>
+
+                        <div class="ays-quiz-halloween-banner-2025-center">';
+
+                        $content[] = '<div id="ays-quiz-halloween-banner-2025-countdown" class="ays-quiz-halloween-banner-2025-countdown" ' . $style_attr . '>';
+                            $content[] = '<div class="ays-quiz-halloween-banner-2025-countdown-timer">';
+                                $content[] = '<div class="ays-quiz-halloween-banner-2025-countdown-item">';
+                                    $content[] = '<div class="ays-quiz-halloween-banner-2025-countdown-value" id="ays-quiz-halloween-banner-2025-days">00</div>';
+                                    $content[] = '<div class="ays-quiz-halloween-banner-2025-countdown-label">' . __('days', 'quiz-maker') . '</div>';
+                                $content[] = '</div>';
+                                $content[] = '<div class="ays-quiz-halloween-banner-2025-countdown-separator">:</div>';
+                                $content[] = '<div class="ays-quiz-halloween-banner-2025-countdown-item">';
+                                    $content[] = '<div class="ays-quiz-halloween-banner-2025-countdown-value" id="ays-quiz-halloween-banner-2025-hours">00</div>';
+                                    $content[] = '<div class="ays-quiz-halloween-banner-2025-countdown-label">' . __('hours', 'quiz-maker') . '</div>';
+                                $content[] = '</div>';
+                                $content[] = '<div class="ays-quiz-halloween-banner-2025-countdown-separator">:</div>';
+                                $content[] = '<div class="ays-quiz-halloween-banner-2025-countdown-item">';
+                                    $content[] = '<div class="ays-quiz-halloween-banner-2025-countdown-value" id="ays-quiz-halloween-banner-2025-minutes">00</div>';
+                                    $content[] = '<div class="ays-quiz-halloween-banner-2025-countdown-label">' . __('minutes', 'quiz-maker') . '</div>';
+                                $content[] = '</div>';
+                                $content[] = '<div class="ays-quiz-halloween-banner-2025-countdown-separator">:</div>';
+                                $content[] = '<div class="ays-quiz-halloween-banner-2025-countdown-item">';
+                                    $content[] = '<div class="ays-quiz-halloween-banner-2025-countdown-value" id="ays-quiz-halloween-banner-2025-seconds">00</div>';
+                                    $content[] = '<div class="ays-quiz-halloween-banner-2025-countdown-label">' . __('seconds', 'quiz-maker') . '</div>';
+                                $content[] = '</div>';
+                            $content[] = '</div>';
+                        $content[] = '</div>';
+
+                        $content[] = '</div>
+                                                
+                        <div class="ays-quiz-halloween-banner-2025-right">
+                            <div class="ays-quiz-halloween-banner-2025-pumpkin">
+                                <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_177_40)">
+                                    <path d="M32.664 8.519C29.364 5.134 23.42 4.75 18 4.75C12.58 4.75 6.636 5.134 3.336 8.519C0.582 11.344 0 15.751 0 19.791C0 25.054 1.982 31.102 6.357 34.035C9.364 36.051 13.95 35.871 18 35.871C22.05 35.871 26.636 36.051 29.643 34.035C34.018 31.101 36 25.054 36 19.791C36 15.751 35.418 11.344 32.664 8.519Z" fill="#F4900C"/>
+                                    <path d="M20.783 5.44401C20.852 5.86401 20.561 6.20801 20.136 6.20801H15.685C15.259 6.20801 14.968 5.86401 15.038 5.44401L15.783 0.972008C15.853 0.551008 16.259 0.208008 16.685 0.208008H19.136C19.562 0.208008 19.968 0.552008 20.037 0.972008L20.783 5.44401Z" fill="#3F7123"/>
+                                    <path d="M20.6541 21.159L19.0561 18.563C18.7651 18.021 18.3831 17.75 17.9991 17.746C17.6161 17.75 17.2331 18.021 16.9421 18.563L15.3441 21.159C14.7571 22.252 16.2171 22.875 17.9981 22.875C19.7791 22.875 21.2411 22.251 20.6541 21.159ZM30.1621 24.351C30.1171 24.276 30.0361 24.23 29.9481 24.23H29.1071C29.0391 24.23 28.9731 24.258 28.9261 24.307L26.6951 26.641L23.9971 24.472C23.9461 24.431 23.8801 24.414 23.8121 24.419C23.7461 24.426 23.6851 24.46 23.6441 24.513L21.2361 27.575L18.1821 24.309C18.1691 24.295 18.1491 24.292 18.1341 24.281C18.1191 24.271 18.1091 24.254 18.0911 24.247C18.0851 24.245 18.0781 24.247 18.0721 24.245C18.0481 24.238 18.0251 24.24 18.0001 24.24C17.9751 24.24 17.9521 24.238 17.9281 24.246C17.9221 24.248 17.9151 24.245 17.9081 24.248C17.8901 24.255 17.8811 24.272 17.8651 24.282C17.8491 24.292 17.8301 24.295 17.8171 24.309L14.7641 27.575L12.3551 24.513C12.3141 24.46 12.2531 24.426 12.1871 24.419C12.1211 24.413 12.0541 24.431 12.0021 24.472L9.30411 26.641L7.07411 24.307C7.02711 24.258 6.96211 24.23 6.89311 24.23H6.05211C5.96511 24.23 5.88311 24.276 5.83811 24.351C5.79311 24.426 5.79011 24.519 5.83111 24.596L8.58511 29.815C8.61911 29.879 8.6781 29.925 8.7491 29.942C8.8201 29.959 8.8941 29.944 8.9521 29.902L10.9861 28.444L13.9901 32.077C14.0331 32.13 14.0961 32.162 14.1641 32.167L14.1831 32.168C14.2451 32.168 14.3041 32.146 14.3501 32.105L18.0001 28.836L21.6501 32.104C21.6961 32.145 21.7551 32.167 21.8171 32.167L21.8361 32.166C21.9041 32.161 21.9671 32.129 22.0101 32.076L25.0151 28.443L27.0491 29.901C27.1091 29.944 27.1821 29.961 27.2521 29.941C27.3221 29.924 27.3821 29.879 27.4151 29.815L30.1701 24.596C30.2101 24.519 30.2081 24.426 30.1621 24.351ZM27.9761 15.421C28.1051 17.548 27.1921 19.227 24.7711 19.374C22.3511 19.52 21.2421 17.963 21.1131 15.837C20.9841 13.711 22.3451 10.717 24.2401 10.603C26.1361 10.487 27.8481 13.294 27.9761 15.421ZM8.02411 15.421C7.89511 17.548 8.80811 19.227 11.2291 19.374C13.6491 19.52 14.7581 17.963 14.8871 15.837C15.0161 13.711 13.6551 10.717 11.7601 10.603C9.86511 10.489 8.15211 13.294 8.02411 15.421Z" fill="#642116"/>
+                                    </g>
+                                    <defs>
+                                    <clipPath id="clip0_177_40">
+                                    <rect width="36" height="36" fill="white"/>
+                                    </clipPath>
+                                    </defs>
+                                </svg>
+                            </div>
+
+
+
+                            <div class="ays-quiz-halloween-banner-2025-discount-section">
+                                <div class="ays-quiz-halloween-banner-2025-discount">25% OFF</div>
+                                <div class="ays-quiz-halloween-banner-2025-coupon-wrapper">
+                                    <div class="ays-quiz-halloween-banner-2025-coupon-box" onclick="aysQuizHalloweenCopyToClipboard(\'HALLOWEEN25\')" title="Click to copy">
+                                        <span class="ays-quiz-halloween-banner-2025-coupon-text">HALLOWEEN25</span>
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="ays-quiz-halloween-banner-2025-copy-icon">
+                                            <path d="M13.5 2.5H6.5C5.67 2.5 5 3.17 5 4V10C5 10.83 5.67 11.5 6.5 11.5H13.5C14.33 11.5 15 10.83 15 10V4C15 3.17 14.33 2.5 13.5 2.5ZM13.5 10H6.5V4H13.5V10ZM2.5 6.5V12.5C2.5 13.33 3.17 14 4 14H10V12.5H4V6.5H2.5Z" fill="white"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <a href="'. $ays_quiz_cta_button_link .'" class="ays-quiz-halloween-banner-2025-upgrade" target="_blank">Upgrade Now</a>
+                            </div>';
+
+                            if( current_user_can( 'manage_options' ) ){
+                                $content[] = '<div id="ays-quiz-dismiss-buttons-content">';
+                                    $content[] = '<form action="" method="POST" style="position: absolute; bottom: -5px; right: 0; color: #fff;">';
+                                            $content[] = '<button class="btn btn-link ays-button" name="ays_quiz_sale_btn" style="color: darkgrey; font-size: 11px;">'. __( "Dismiss ad", 'quiz-maker' ) .'</button>';
+                                            $content[] = wp_nonce_field( AYS_QUIZ_NAME . '-sale-banner' ,  AYS_QUIZ_NAME . '-sale-banner' );
+                                    $content[] = '</form>';
+                                $content[] = '</div>';
+                            }
+
+                            $content[] = '
+                        </div>
+                    </div>
+                </div>';
+
+            $content[] = '<style id="ays-quiz-progress-banner-styles-inline-css">';
+            $content[] = '
+                .ays-quiz-halloween-banner-2025-main {
+                    background: linear-gradient(135deg, #1A0F2E 100%, #2D1B4E 0%);
+                    background-image: url("' . esc_attr(AYS_QUIZ_ADMIN_URL) . '/images/halloween-banner-background-image-remove.png"), linear-gradient(135deg, #2D1B4E 0%, #1A0F2E 100%);
+                    background-position: left center, center;
+                    background-repeat: no-repeat, no-repeat;
+                    background-size: auto 100%, cover;
+                    padding: 20px 30px 20px 130px;
+                    border-radius: 12px;
+                    color: white;
+                    margin: 20px 0;
+                    border: 0;
+                    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+                    overflow: hidden;
+                }
+
+                .ays-quiz-halloween-banner-2025-main .ays-quiz-halloween-banner-2025-content {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    gap: 30px;
+                }
+
+                .ays-quiz-halloween-banner-2025-main .ays-quiz-halloween-banner-2025-left {
+                    display: flex;
+                    align-items: center;
+                    gap: 20px;
+                }
+
+                .ays-quiz-halloween-banner-2025-main .ays-quiz-halloween-banner-2025-center {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex: 1;
+                    max-width: 350px;
+                }
+
+                .ays-quiz-halloween-banner-2025-main .ays-quiz-halloween-banner-2025-right {
+                    display: flex;
+                    align-items: center;
+                    gap: 15px;
+                    flex-shrink: 0;
+                }
+
+                .ays-quiz-halloween-banner-2025-main .ays-quiz-halloween-banner-2025-icon {
+                    flex-shrink: 0;
+                }
+
+                .ays-quiz-halloween-banner-2025-main .ays-quiz-halloween-banner-2025-pumpkin svg {
+                    display: inline !important;
+                    border: none !important;
+                    box-shadow: none !important;
+                    height: 1em !important;
+                    width: 1em !important;
+                    margin: 0 0.07em !important;
+                    vertical-align: -0.1em !important;
+                    background: none !important;
+                    padding: 0 !important;
+                }
+
+                .ays-quiz-halloween-banner-2025-main .ays-quiz-halloween-banner-2025-orb {
+                    width: 80px;
+                    height: 80px;
+                    background: linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%);
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    box-shadow: 0 0 30px rgba(139, 92, 246, 0.6);
+                    border: 3px solid rgba(168, 85, 247, 0.4);
+                }
+
+                .ays-quiz-halloween-banner-2025-main .ays-quiz-halloween-banner-2025-question {
+                    font-size: 48px;
+                    font-weight: 700;
+                    color: #E9D5FF;
+                }
+
+                .ays-quiz-halloween-banner-2025-main .ays-quiz-halloween-banner-2025-bat {
+                    font-size: 20px;
+                    opacity: 0.8;
+                }
+
+                .ays-quiz-halloween-banner-2025-main .ays-quiz-halloween-banner-2025-bat-1 {
+                    margin-left: -100px;
+                    margin-top: -40px;
+                }
+
+                .ays-quiz-halloween-banner-2025-main .ays-quiz-halloween-banner-2025-bat-2 {
+                    margin-left: -110px;
+                    margin-top: 35px;
+                }
+
+                .ays-quiz-halloween-banner-2025-main .ays-quiz-halloween-banner-2025-sparkle {
+                    font-size: 12px;
+                    opacity: 0.7;
+                }
+
+                .ays-quiz-halloween-banner-2025-main .ays-quiz-halloween-banner-2025-sparkle-1 {
+                    margin-left: -95px;
+                    margin-top: -60px;
+                }
+
+                .ays-quiz-halloween-banner-2025-main .ays-quiz-halloween-banner-2025-sparkle-2 {
+                    margin-left: -70px;
+                    margin-top: -15px;
+                }
+
+                .ays-quiz-halloween-banner-2025-main .ays-quiz-halloween-banner-2025-sparkle-3 {
+                    margin-left: -120px;
+                    margin-top: 10px;
+                }
+
+                .ays-quiz-halloween-banner-2025-main .ays-quiz-halloween-banner-2025-text {
+                    flex: 1;
+                }
+
+                .ays-quiz-halloween-banner-2025-main .ays-quiz-halloween-banner-2025-title {
+                    font-size: 24px;
+                    font-weight: 700;
+                    margin: 0 0 8px 0;
+                    line-height: 1.2;
+                    color: #fff;
+                    text-transform: uppercase;
+                    letter-spacing: 1px;
+                }
+
+                .ays-quiz-halloween-banner-2025-main .ays-quiz-halloween-banner-2025-title a {
+                    color: #FB923C;
+                    text-decoration: underline;
+                }
+
+                .ays-quiz-halloween-banner-2025-main .ays-quiz-halloween-banner-2025-subtitle {
+                    font-size: 16px;
+                    margin: 0;
+                    opacity: 0.9;
+                    font-weight: 400;
+                    color: #E9D5FF;
+                }
+
+                .ays-quiz-halloween-banner-2025-main .ays-quiz-halloween-banner-2025-description {
+                    font-size: 14px;
+                    margin: 0;
+                    opacity: 0.85;
+                    line-height: 1.5;
+                    color: #D8B4FE;
+                }
+
+                .ays-quiz-halloween-banner-2025-main .ays-quiz-halloween-banner-2025-pumpkin {
+                    font-size: 64px;
+                    filter: drop-shadow(0 0 20px rgba(251, 146, 60, 0.8));
+                    flex-shrink: 0;
+                }
+
+                .ays-quiz-halloween-banner-2025-main .ays-quiz-halloween-banner-2025-discount-section {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 10px;
+                }
+
+                .ays-quiz-halloween-banner-2025-main .ays-quiz-halloween-banner-2025-discount {
+                    font-size: 36px;
+                    font-weight: 700;
+                    color: #FB923C;
+                    text-shadow: 0 0 20px rgba(251, 146, 60, 0.6);
+                    margin: 0;
+                    line-height: 1;
+                }
+
+                .ays-quiz-halloween-banner-2025-main .ays-quiz-halloween-banner-2025-coupon-wrapper {
+                    margin-bottom: 5px;
+                }
+
+                .ays-quiz-halloween-banner-2025-main .ays-quiz-halloween-banner-2025-coupon-box {
+                    border: 2px dashed rgba(255, 255, 255, 0.4);
+                    padding: 6px 12px;
+                    border-radius: 6px;
+                    background: rgba(255, 255, 255, 0.1);
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    display: flex;
+                    align-items: center;
+                    gap: 6px;
+                    backdrop-filter: blur(10px);
+                }
+
+                .ays-quiz-halloween-banner-2025-main .ays-quiz-halloween-banner-2025-coupon-box:hover {
+                    background: rgba(255, 255, 255, 0.2);
+                    border-color: rgba(255, 255, 255, 0.6);
+                    transform: translateY(-1px);
+                }
+
+                .ays-quiz-halloween-banner-2025-main .ays-quiz-halloween-banner-2025-coupon-text {
+                    font-size: 14px;
+                    font-weight: 700;
+                    letter-spacing: 1px;
+                    color: #fff;
+                    font-family: monospace;
+                }
+
+                .ays-quiz-halloween-banner-2025-main .ays-quiz-halloween-banner-2025-copy-icon {
+                    opacity: 0.8;
+                    transition: opacity 0.3s ease;
+                }
+
+                .ays-quiz-halloween-banner-2025-main .ays-quiz-halloween-banner-2025-coupon-box:hover .ays-quiz-halloween-banner-2025-copy-icon {
+                    opacity: 1;
+                }
+
+                .ays-quiz-halloween-banner-2025-main .ays-quiz-halloween-banner-2025-upgrade {
+                    background: linear-gradient(135deg, #FB923C 0%, #F97316 100%);
+                    color: white;
+                    border: none;
+                    padding: 12px 28px;
+                    border-radius: 8px;
+                    font-size: 16px;
+                    font-weight: 600;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    box-shadow: 0 4px 16px rgba(251, 146, 60, 0.5);
+                    text-decoration: none;
+                    display: inline-flex;
+                    align-items: center;
+                    text-align: center;
+                }
+
+                .ays-quiz-halloween-banner-2025-main .ays-quiz-halloween-banner-2025-upgrade:hover {
+                    transform: translateY(-2px);
+                    box-shadow: 0 6px 20px rgba(251, 146, 60, 0.7);
+                    text-decoration: none;
+                    color: white;
+                }
+
+                .ays-quiz-halloween-banner-2025-main .notice-dismiss:before {
+                    color: #fff;
+                }
+
+                .ays-quiz-halloween-banner-2025-copy-notification {
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background: rgba(0, 0, 0, 0.8);
+                    color: white;
+                    padding: 12px 24px;
+                    border-radius: 8px;
+                    font-size: 14px;
+                    z-index: 10000;
+                    opacity: 0;
+                    transition: opacity 0.3s ease;
+                }
+
+                .ays-quiz-halloween-banner-2025-copy-notification.show {
+                    opacity: 1;
+                }
+
+                .ays-quiz-halloween-banner-2025-main .ays-quiz-halloween-banner-2025-countdown-timer {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 8px;
+                }
+
+                .ays-quiz-halloween-banner-2025-main .ays-quiz-halloween-banner-2025-countdown-item {
+                    background: rgba(255, 255, 255, 0.15);
+                    border-radius: 8px;
+                    padding: 8px 12px;
+                    min-width: 60px;
+                    backdrop-filter: blur(10px);
+                }
+
+                .ays-quiz-halloween-banner-2025-main .ays-quiz-halloween-banner-2025-countdown-value {
+                    font-size: 24px;
+                    font-weight: 700;
+                    line-height: 1;
+                    margin-bottom: 4px;
+                    color: #fff;
+                    text-align: center;
+                }
+
+                .ays-quiz-halloween-banner-2025-main .ays-quiz-halloween-banner-2025-countdown-label {
+                    font-size: 11px;
+                    opacity: 0.8;
+                    text-transform: lowercase;
+                    text-align: center;
+                }
+
+                .ays-quiz-halloween-banner-2025-main .ays-quiz-halloween-banner-2025-countdown-separator {
+                    font-size: 24px;
+                    font-weight: 700;
+                    opacity: 0.6;
+                    margin: 0 4px;
+                }
+
+                @media (min-width: 1200px) {
+                    .ays-quiz-halloween-banner-2025-main .wp-core-ui .notice.is-dismissible {
+                        padding-right: 60px;
+                    }
+                }
+
+                @media (max-width: 1200px) {
+
+                    div.ays-quiz-halloween-banner-2025-main {
+                        padding: 20px 30px;
+                    }
+
+                    div.ays-quiz-halloween-banner-2025-main .ays-quiz-halloween-banner-2025-pumpkin {
+                        display: none;
+                    }
+
+                    .ays-quiz-halloween-banner-2025-main .ays-quiz-halloween-banner-2025-subtitle,
+                    .ays-quiz-halloween-banner-2025-main .ays-quiz-halloween-banner-2025-title {
+                        text-align: center;
+                    }
+
+                    .ays-quiz-halloween-banner-2025-main .ays-quiz-halloween-banner-2025-content {
+                        flex-wrap: wrap;
+                        gap: 20px;
+                    }
+
+                    .ays-quiz-halloween-banner-2025-main .ays-quiz-halloween-banner-2025-left {
+                        width: 100%;
+                    }
+
+                    .ays-quiz-halloween-banner-2025-main .ays-quiz-halloween-banner-2025-center {
+                        width: 100%;
+                        max-width: 100%;
+                        text-align: center;
+                    }
+
+                    .ays-quiz-halloween-banner-2025-main .ays-quiz-halloween-banner-2025-right {
+                        width: 100%;
+                        justify-content: center;
+                    }
+                }
+
+                @media (max-width: 786px) {
+                    #ays-quiz-halloween-banner-2025-main {
+                        display: none !important;
+                    }
+                }
+
+                @media (max-width: 768px) {
+                    .ays-quiz-halloween-banner-2025-main {
+                        padding: 15px 20px;
+                        margin: 15px 0;
+                    }
+
+                    .ays-quiz-halloween-banner-2025-main .ays-quiz-halloween-banner-2025-title {
+                        font-size: 20px;
+                    }
+
+                    .ays-quiz-halloween-banner-2025-main .ays-quiz-halloween-banner-2025-subtitle {
+                        font-size: 14px;
+                    }
+
+                    .ays-quiz-halloween-banner-2025-main .ays-quiz-halloween-banner-2025-description {
+                        font-size: 13px;
+                    }
+
+                    .ays-quiz-halloween-banner-2025-main .ays-quiz-halloween-banner-2025-pumpkin {
+                        font-size: 48px;
+                    }
+
+                    .ays-quiz-halloween-banner-2025-main .ays-quiz-halloween-banner-2025-discount {
+                        font-size: 28px;
+                    }
+
+                    .ays-quiz-halloween-banner-2025-main .ays-quiz-halloween-banner-2025-upgrade {
+                        padding: 10px 20px;
+                        font-size: 14px;
+                    }
+                }
+
+                @media (max-width: 480px) {
+                    .ays-quiz-halloween-banner-2025-main {
+                        padding: 12px 15px;
+                    }
+
+                    .ays-quiz-halloween-banner-2025-main .ays-quiz-halloween-banner-2025-orb {
+                        width: 60px;
+                        height: 60px;
+                    }
+
+                    .ays-quiz-halloween-banner-2025-main .ays-quiz-halloween-banner-2025-question {
+                        font-size: 36px;
+                    }
+
+                    .ays-quiz-halloween-banner-2025-main .ays-quiz-halloween-banner-2025-title {
+                        font-size: 18px;
+                    }
+
+                    .ays-quiz-halloween-banner-2025-main .ays-quiz-halloween-banner-2025-coupon-text {
+                        font-size: 12px;
+                    }
+                }
+            ';
+
+            $content[] = '</style>';
+
+            $content[] = '<script>';
+            $content[] = "
+                    function aysQuizHalloweenCopyToClipboard(text) {
+                        // Create a temporary textarea element
+                        var textarea = document.createElement('textarea');
+                        textarea.value = text;
+                        textarea.style.position = 'fixed';
+                        textarea.style.opacity = '0';
+                        document.body.appendChild(textarea);
+                        
+                        // Select and copy the text
+                        textarea.select();
+                        textarea.setSelectionRange(0, 99999); // For mobile devices
+                        
+                        try {
+                            document.execCommand('copy');
+                            aysQuizHalloweenShowCopyNotification('Coupon code copied!');
+                        } catch (err) {
+                            console.error('Failed to copy text: ', err);
+                        }
+                        
+                        // Remove the temporary textarea
+                        document.body.removeChild(textarea);
+                    }
+
+                    function aysQuizHalloweenShowCopyNotification(message) {
+                        // Check if notification already exists
+                        var existingNotification = document.querySelector('.ays-quiz-halloween-banner-2025-copy-notification');
+                        if (existingNotification) {
+                            document.body.removeChild(existingNotification);
+                        }
+                        
+                        // Create notification element
+                        var notification = document.createElement('div');
+                        notification.className = 'ays-quiz-halloween-banner-2025-copy-notification';
+                        notification.textContent = message;
+                        document.body.appendChild(notification);
+                        
+                        // Show notification with animation
+                        setTimeout(function() {
+                            notification.classList.add('show');
+                        }, 10);
+                        
+                        // Hide and remove notification after 2 seconds
+                        setTimeout(function() {
+                            notification.classList.remove('show');
+                            setTimeout(function() {
+                                if (notification.parentNode) {
+                                    document.body.removeChild(notification);
+                                }
+                            }, 300);
+                        }, 2000);
+                    }
+
+                    (function() {
+                        var endDate = new Date('". date('Y-m-d H:i:s', $end_date) ."').getTime();
+                    
+                        function updateCountdown() {
+                            var now = new Date().getTime();
+                            var distance = endDate - now;
+                            
+                            if (distance < 0) {
+                                clearInterval(updateCountdown);
+                                document.getElementById('ays-quiz-halloween-banner-2025-progress-banner-countdown').style.display = 'none';
+                                return;
+                            }
+                            
+                            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                            
+                            function padZero(num) {
+                                return num < 10 ? '0' + num : num;
+                            }
+                            
+                            document.getElementById('ays-quiz-halloween-banner-2025-days').textContent = padZero(days);
+                            document.getElementById('ays-quiz-halloween-banner-2025-hours').textContent = padZero(hours);
+                            document.getElementById('ays-quiz-halloween-banner-2025-minutes').textContent = padZero(minutes);
+                            document.getElementById('ays-quiz-halloween-banner-2025-seconds').textContent = padZero(seconds);
+                        }
+                        
+                        updateCountdown();
+                        setInterval(updateCountdown, 1000);
+                    })()";
+            $content[] = '</script>';
+
+            $content = implode( '', $content );
+            echo ($content);
+        }
+    }
+ 
+    // Christmas Banner
+    public function ays_quiz_christmas_banner_message_2025($ishmar){
+        if($ishmar == 0 ){
+            $content = array();
+
+           $svg_icon = '<svg width="21" height="22" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M10.0445 0C10.4587 0 10.7945 0.33579 10.7945 0.75V2.93934L12.5141 1.21967C12.807 0.92678 13.2819 0.92678 13.5748 1.21967C13.8677 1.51256 13.8677 1.98744 13.5748 2.28033L10.7945 5.06066V9.451L14.5965 7.25588L15.6142 3.45788C15.7214 3.05778 16.1326 2.82034 16.5327 2.92755C16.9328 3.03475 17.1703 3.44601 17.0631 3.84611L16.4336 6.19522L18.3296 5.10055C18.6884 4.89344 19.147 5.01635 19.3542 5.37507C19.5613 5.73379 19.4384 6.19248 19.0796 6.39959L17.1836 7.49426L19.5327 8.1237C19.9328 8.23091 20.1703 8.64216 20.0631 9.0423C19.9558 9.4424 19.5446 9.6798 19.1445 9.5726L15.3465 8.55492L11.5445 10.75L15.3467 12.9452L19.1447 11.9275C19.5448 11.8203 19.956 12.0578 20.0633 12.4579C20.1705 12.858 19.933 13.2692 19.5329 13.3764L17.1838 14.0059L19.0798 15.1005C19.4386 15.3077 19.5615 15.7663 19.3544 16.1251C19.1472 16.4838 18.6886 16.6067 18.3298 16.3996L16.4338 15.3049L17.0633 17.654C17.1705 18.0541 16.933 18.4654 16.5329 18.5726C16.1328 18.6798 15.7216 18.4424 15.6144 18.0423L14.5967 14.2443L10.7945 12.049V16.4393L13.5748 19.2197C13.8677 19.5126 13.8677 19.9874 13.5748 20.2803C13.2819 20.5732 12.807 20.5732 12.5141 20.2803L10.7945 18.5607V20.75C10.7945 21.1642 10.4587 21.5 10.0445 21.5C9.63033 21.5 9.29453 21.1642 9.29453 20.75V18.5607L7.57484 20.2803C7.28195 20.5732 6.80707 20.5732 6.51418 20.2803C6.22129 19.9874 6.22129 19.5126 6.51418 19.2197L9.29453 16.4393V12.049L5.4923 14.2443L4.47463 18.0423C4.36742 18.4424 3.95617 18.6798 3.55607 18.5726C3.15597 18.4654 2.91853 18.0541 3.02574 17.654L3.65518 15.3049L1.75916 16.3996C1.40044 16.6067 0.941743 16.4838 0.734643 16.1251C0.527533 15.7663 0.650443 15.3077 1.00916 15.1005L2.90518 14.0059L0.556073 13.3764C0.155973 13.2692 -0.081467 12.858 0.0257431 12.4579C0.132943 12.0578 0.544203 11.8203 0.944303 11.9275L4.7423 12.9452L8.54453 10.75L4.74249 8.55492L0.944493 9.5726C0.544393 9.6798 0.133143 9.4424 0.0259331 9.0423C-0.0812669 8.64216 0.156163 8.23091 0.556263 8.1237L2.90538 7.49426L1.00935 6.39959C0.650633 6.19248 0.527733 5.73379 0.734833 5.37507C0.941943 5.01635 1.40063 4.89344 1.75935 5.10055L3.65538 6.19522L3.02593 3.84611C2.91873 3.44601 3.15616 3.03475 3.55626 2.92755C3.95636 2.82034 4.36762 3.05778 4.47482 3.45788L5.49249 7.25588L9.29453 9.451V5.06066L6.51418 2.28033C6.22129 1.98744 6.22129 1.51256 6.51418 1.21967C6.80707 0.92678 7.28195 0.92678 7.57484 1.21967L9.29453 2.93934V0.75C9.29453 0.33579 9.63033 0 10.0445 0Z" fill="white" fill-opacity="0.2"/>
+            </svg>
+            ';
+
+            $ays_quiz_cta_button_link = esc_url('https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=christmas-sale-banner-' . AYS_QUIZ_UTM_VERSION);
+
+            $content[] = '<div id="ays-quiz-christmas-banner-main" class="notice notice-success is-dismissible ays-quiz-christmas-banner-info ays_quiz_dicount_info">';
+                $content[] = '<div id="ays-quiz-christmas-banner-month" class="ays-quiz-christmas-banner-month">';
+                    
+                    // Background effects
+                    $content[] = '<div class="ays-quiz-christmas-banner-bg-effects">';
+                        $content[] = '<div class="ays-quiz-christmas-banner-bg-gradient-1"></div>';
+                        $content[] = '<div class="ays-quiz-christmas-banner-bg-gradient-2"></div>';
+                        
+                        // Snowflakes
+                        $content[] = '<div class="ays-quiz-christmas-banner-snowflake" style="left: 5%; animation-delay: 0s; animation-duration: 8s;">'. $svg_icon .'</div>';
+                        $content[] = '<div class="ays-quiz-christmas-banner-snowflake" style="left: 15%; animation-delay: 2s; animation-duration: 10s;">'. $svg_icon .'</div>';
+                        $content[] = '<div class="ays-quiz-christmas-banner-snowflake" style="left: 25%; animation-delay: 4s; animation-duration: 9s;">'. $svg_icon .'</div>';
+                        $content[] = '<div class="ays-quiz-christmas-banner-snowflake" style="left: 75%; animation-delay: 1s; animation-duration: 11s;">'. $svg_icon .'</div>';
+                        $content[] = '<div class="ays-quiz-christmas-banner-snowflake" style="left: 85%; animation-delay: 3s; animation-duration: 8s;">'. $svg_icon .'</div>';
+                        $content[] = '<div class="ays-quiz-christmas-banner-snowflake" style="left: 92%; animation-delay: 5s; animation-duration: 10s;">'. $svg_icon .'</div>';
+                        
+                        // Sparkles
+                        $content[] = '<svg class="ays-quiz-christmas-banner-sparkle" style="top: 20%; left: 8%; animation-delay: 0s; width: 14px; height: 14px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">';
+                            $content[] = '<path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/>';
+                        $content[] = '</svg>';
+                        $content[] = '<svg class="ays-quiz-christmas-banner-sparkle" style="top: 60%; left: 3%; animation-delay: 0.5s; width: 10px; height: 10px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">';
+                            $content[] = '<path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/>';
+                        $content[] = '</svg>';
+                        $content[] = '<svg class="ays-quiz-christmas-banner-sparkle" style="top: 30%; right: 12%; animation-delay: 1s; width: 12px; height: 12px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">';
+                            $content[] = '<path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/>';
+                        $content[] = '</svg>';
+                    $content[] = '</div>';
+
+                    // Main content
+                    $content[] = '<div class="ays-quiz-christmas-banner-content">';
+                        $content[] = '<div class="ays-quiz-christmas-banner-left">';
+                            // Gift icon with hat
+                            $content[] = '<div class="ays-quiz-christmas-banner-gift-wrapper">';
+                                $content[] = '<svg class="ays-quiz-christmas-banner-gift-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">';
+                                    $content[] = '<rect x="3" y="8" width="18" height="4" rx="1"></rect>';
+                                    $content[] = '<path d="M12 8v13"></path>';
+                                    $content[] = '<path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"></path>';
+                                    $content[] = '<path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"></path>';
+                                $content[] = '</svg>';
+                                $content[] = '<div class="ays-quiz-christmas-banner-hat">';
+                                    $content[] = '<svg viewBox="0 0 24 24" fill="none" class="ays-quiz-christmas-banner-hat-svg">';
+                                        $content[] = '<path d="M12 2L4 14h16L12 2z" fill="hsl(0 80% 45%)"></path>';
+                                        $content[] = '<path d="M4 14c0 2 3.5 3 8 3s8-1 8-3" fill="hsl(0 0% 100%)"></path>';
+                                        $content[] = '<circle cx="12" cy="3" r="2" fill="hsl(0 0% 100%)"></circle>';
+                                    $content[] = '</svg>';
+                                $content[] = '</div>';
+                            $content[] = '</div>';
+
+                            $content[] = '<div class="ays-quiz-christmas-banner-special-label">';
+                                $content[] = '<div class="ays-quiz-christmas-banner-special-label-name">';
+                                    $content[] = '<a href="'. $ays_quiz_cta_button_link .'" class="ays-quiz-christmas-banner-special-label-name-link" target="_blank">';
+                                        $content[] = __( 'Quiz Maker', "quiz-maker" );
+                                    $content[] = '</a>';
+                                $content[] = '</div>';
+
+                                $content[] = '<div>✦ ' . __( 'CHRISTMAS SPECIAL', "quiz-maker" ) . ' ✦</div>';
+                            $content[] = '</div>';
+                        $content[] = '</div>';
+
+                        $content[] = '<div class="ays-quiz-christmas-banner-center">';
+                            $content[] = '<div class="ays-quiz-christmas-banner-discount-text">25% OFF</div>';
+                            $content[] = '<div class="ays-quiz-christmas-banner-limited-offer">' . __( 'Limited time offer', "quiz-maker" ) . '</div>';
+                        $content[] = '</div>';
+
+                        $content[] = '<div class="ays-quiz-christmas-banner-right">';
+                            $content[] = '<div class="ays-quiz-christmas-banner-coupon-box" onclick="aysQuizChristmasCopyToClipboard(\'XMAS25\')" title="' . __( 'Click to copy', "quiz-maker" ) . '">';
+                                $content[] = '<span class="ays-quiz-christmas-banner-coupon-text">XMAS25</span>';
+                                $content[] = '<svg class="ays-quiz-christmas-banner-copy-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">';
+                                    $content[] = '<path d="M13.5 2.5H6.5C5.67 2.5 5 3.17 5 4V10C5 10.83 5.67 11.5 6.5 11.5H13.5C14.33 11.5 15 10.83 15 10V4C15 3.17 14.33 2.5 13.5 2.5ZM13.5 10H6.5V4H13.5V10ZM2.5 6.5V12.5C2.5 13.33 3.17 14 4 14H10V12.5H4V6.5H2.5Z" fill="white"/>';
+                                $content[] = '</svg>';
+                            $content[] = '</div>';
+
+                            $content[] = '<a href="'. $ays_quiz_cta_button_link .'" class="ays-quiz-christmas-banner-buy-now-btn" target="_blank">';
+                                $content[] = __( 'Buy Now', "quiz-maker" );
+                                // $content[] = '<span class="ays-quiz-christmas-banner-btn-arrow">→</span>';
+                            $content[] = '</a>';
+                        $content[] = '</div>';
+                    $content[] = '</div>';
+
+                $content[] = '</div>';
+
+                if( current_user_can( 'manage_options' ) ){
+                $content[] = '<div id="ays-quiz-dismiss-buttons-content">';
+                    $content[] = '<form action="" method="POST" style="position: absolute; bottom: 0; right: 0; color: #fff;">';
+                            $content[] = '<button class="btn btn-link ays-button" name="ays_quiz_sale_btn" style="color: darkgrey; font-size: 11px; padding: 0 .75rem;">'. __( "Dismiss ad", 'quiz-maker' ) .'</button>';
+                            $content[] = wp_nonce_field( AYS_QUIZ_NAME . '-sale-banner' ,  AYS_QUIZ_NAME . '-sale-banner' );
+                    $content[] = '</form>';
+                $content[] = '</div>';
+                }
+
+            $content[] = '</div>';
+
+            $content[] = '<script>';
+            $content[] = "
+                function aysQuizChristmasCopyToClipboard(text) {
+                    var textarea = document.createElement('textarea');
+                    textarea.value = text;
+                    textarea.style.position = 'fixed';
+                    textarea.style.opacity = '0';
+                    document.body.appendChild(textarea);
+                    
+                    textarea.select();
+                    textarea.setSelectionRange(0, 99999);
+                    
+                    try {
+                        document.execCommand('copy');
+                        aysQuizChristmasShowCopyNotification('" . __( 'Coupon code copied!', "quiz-maker" ) . "');
+                    } catch (err) {
+                        console.error('Failed to copy text: ', err);
+                    }
+                    
+                    document.body.removeChild(textarea);
+                }
+
+                function aysQuizChristmasShowCopyNotification(message) {
+                    var existingNotification = document.querySelector('.ays-quiz-christmas-banner-copy-notification');
+                    if (existingNotification) {
+                        document.body.removeChild(existingNotification);
+                    }
+                    
+                    var notification = document.createElement('div');
+                    notification.className = 'ays-quiz-christmas-banner-copy-notification';
+                    notification.textContent = message;
+                    document.body.appendChild(notification);
+                    
+                    setTimeout(function() {
+                        notification.classList.add('show');
+                    }, 10);
+                    
+                    setTimeout(function() {
+                        notification.classList.remove('show');
+                        setTimeout(function() {
+                            if (notification.parentNode) {
+                                document.body.removeChild(notification);
+                            }
+                        }, 300);
+                    }, 2000);
+                }";
+            $content[] = '</script>';                
+
+            $content[] = '<style>';
+            $content[] = '
+                /* Christmas banner start */
+
+                div#ays-quiz-christmas-banner-main .btn-link {
+                    background-color: transparent;
+                    display: inline-block;
+                    font-weight: 400;
+                    text-align: center;
+                    white-space: nowrap;
+                    vertical-align: middle;
+                    -webkit-user-select: none;
+                    -moz-user-select: none;
+                    -ms-user-select: none;
+                    user-select: none;
+                    border: 1px solid transparent;
+                    padding: .375rem .75rem;
+                    font-size: 12px;
+                    line-height: 1.5;
+                    border-radius: .25rem;
+                    color: rgba(255, 255, 255, .6);
+                }
+                
+                div#ays-quiz-christmas-banner-main.ays-quiz-christmas-banner-info {
+                    background: linear-gradient(to right, hsl(0, 70%, 28%), hsl(0, 65%, 38%), hsl(0, 70%, 28%));
+                    padding: unset;
+                    border-left: 0;
+                    position: relative;
+                }
+                
+                #ays-quiz-christmas-banner-main .ays-quiz-christmas-banner-month {
+                    position: relative;
+                    padding: 15px 40px;
+                    overflow: hidden;
+                }
+                
+                /* Background effects */
+                .ays-quiz-christmas-banner-bg-effects {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    pointer-events: none;
+                    z-index: 1;
+                }
+                
+                .ays-quiz-christmas-banner-bg-gradient-1 {
+                    position: absolute;
+                    top: 0;
+                    left: 30%;
+                    width: 40%;
+                    height: 100%;
+                    background: radial-gradient(circle, rgba(202, 43, 43, 0.5) 0%, transparent 60%);
+                    opacity: 0.4;
+                }
+                
+                .ays-quiz-christmas-banner-bg-gradient-2 {
+                    position: absolute;
+                    top: 0;
+                    right: 15%;
+                    width: 35%;
+                    height: 100%;
+                    background: radial-gradient(circle, rgba(246, 201, 85, 0.15) 0%, transparent 50%);
+                    opacity: 0.3;
+                }
+                
+                .ays-quiz-christmas-banner-snowflake {
+                    position: absolute;
+                    color: rgba(255, 255, 255, 0.2);
+                    font-size: 20px;
+                    animation: ays-quiz-christmas-snowfall linear infinite;
+                    top: -10px;
+                }
+                
+                @keyframes ays-quiz-christmas-snowfall {
+                    0% {
+                        transform: translateY(-10px) rotate(0deg);
+                        opacity: 0;
+                    }
+                    10% {
+                        opacity: 0.8;
+                    }
+                    90% {
+                        opacity: 0.8;
+                    }
+                    100% {
+                        transform: translateY(100%) rotate(360deg);
+                        opacity: 0;
+                    }
+                }
+                
+                .ays-quiz-christmas-banner-sparkle {
+                    position: absolute;
+                    color: hsl(43, 90%, 65%);
+                    animation: ays-quiz-christmas-twinkle 2s ease-in-out infinite;
+                }
+                
+                @keyframes ays-quiz-christmas-twinkle {
+                    0%, 100% {
+                        opacity: 0.3;
+                        transform: scale(0.8);
+                    }
+                    50% {
+                        opacity: 1;
+                        transform: scale(1.2);
+                    }
+                }
+                
+                /* Main content */
+                .ays-quiz-christmas-banner-content {
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    z-index: 2;
+                }
+                
+                /* Left section */
+                .ays-quiz-christmas-banner-left {
+                    display: flex;
+                    align-items: center;
+                    gap: 50px;
+                }
+                
+                .ays-quiz-christmas-banner-gift-wrapper {
+                    position: relative;
+                    animation: ays-quiz-christmas-float 3s ease-in-out infinite;
+                }
+                
+                .ays-quiz-christmas-banner-gift-icon {
+                    width: 48px;
+                    height: 48px;
+                    color: rgba(255, 247, 237, 0.9);
+                }
+                
+                @keyframes ays-quiz-christmas-float {
+                    0%, 100% {
+                        transform: translateY(0);
+                    }
+                    50% {
+                        transform: translateY(-5px);
+                    }
+                }
+                
+                .ays-quiz-christmas-banner-hat {
+                    position: absolute;
+                    top: -12px;
+                    right: -4px;
+                    width: 24px;
+                    height: 24px;
+                }
+                
+                .ays-quiz-christmas-banner-hat-svg {
+                    width: 100%;
+                    height: 100%;
+                }
+                
+                .ays-quiz-christmas-banner-special-label {
+                    color: hsl(43, 90%, 65%);
+                    font-size: 14px;
+                    font-weight: 500;
+                    text-transform: uppercase;
+                    letter-spacing: 1px;
+                    /* font-family: "Outfit", sans-serif; */
+                }
+
+                .ays-quiz-christmas-banner-special-label-name {
+                    color: #fffaf0;
+                    text-align: center;
+                }
+
+                div#ays-quiz-christmas-banner-main .ays-quiz-christmas-banner-special-label-name-link {
+                    color: #fffaf0;
+                    box-shadow: unset;
+                }
+                
+                /* Center section */
+                .ays-quiz-christmas-banner-center {
+                    display: flex;
+                    flex-direction: row;
+                    text-align: center;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 30px;
+                }
+                
+                .ays-quiz-christmas-banner-discount-text {
+                    font-family: "Outfit", sans-serif;
+                    font-weight: 800;
+                    font-size: 30px;
+                    color: hsl(40, 100%, 97%);
+                    letter-spacing: -1px;
+                    line-height: 1;
+                }
+                
+                .ays-quiz-christmas-banner-limited-offer {
+                    color: rgba(255, 247, 237, 0.7);
+                    font-size: 13px;
+                    font-weight: 500;
+                }
+                
+                /* Right section */
+                .ays-quiz-christmas-banner-right {
+                    display: flex;
+                    align-items: center;
+                    gap: 20px;
+                }
+                
+                .ays-quiz-christmas-banner-coupon-box {
+                    border: 2px dashed rgba(255, 255, 255, 0.4);
+                    padding: 8px 16px;
+                    border-radius: 6px;
+                    background: rgba(255, 255, 255, 0.1);
+                    cursor: pointer;
+                    transition: all 0.3s;
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    backdrop-filter: blur(10px);
+                }
+                
+                .ays-quiz-christmas-banner-coupon-box:hover {
+                    background: rgba(255, 255, 255, 0.2);
+                    border-color: rgba(255, 255, 255, 0.6);
+                    transform: translateY(-1px);
+                }
+                
+                .ays-quiz-christmas-banner-coupon-text {
+                    font-size: 16px;
+                    font-weight: 700;
+                    letter-spacing: 1px;
+                    color: #fff;
+                    font-family: monospace;
+                }
+                
+                .ays-quiz-christmas-banner-copy-icon {
+                    opacity: 0.8;
+                    transition: opacity 0.3s;
+                }
+                
+                .ays-quiz-christmas-banner-coupon-box:hover .ays-quiz-christmas-banner-copy-icon {
+                    opacity: 1;
+                }
+                
+                #ays-quiz-christmas-banner-main .ays-quiz-christmas-banner-buy-now-btn {
+                    background-color: #fbe19f;
+                    color: hsl(0, 72%, 35%);
+                    padding: 10px 30px;
+                    border-radius: 9999px;
+                    font-size: 16px;
+                    font-weight: 600;
+                    font-family: "Outfit", sans-serif;
+                    border: none;
+                    cursor: pointer;
+                    transition: all 0.3s;
+                    text-decoration: none;
+                    display: flex;
+                    align-items: center;
+                    gap: 6px;
+                    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15), 0 0 30px rgba(246, 201, 85, 0.2);
+                }
+                
+                #ays-quiz-christmas-banner-main .ays-quiz-christmas-banner-buy-now-btn:hover {
+                    background-color: #f2d58c;
+                    transform: scale(1.05);
+                    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2), 0 0 40px rgba(246, 201, 85, 0.3);
+                }
+                
+                .ays-quiz-christmas-banner-btn-arrow {
+                    display: inline-block;
+                    transition: transform 0.3s;
+                }
+                
+                .ays-quiz-christmas-banner-buy-now-btn:hover .ays-quiz-christmas-banner-btn-arrow {
+                    transform: translateX(4px);
+                }
+                
+                /* Notification */
+                .ays-quiz-christmas-banner-copy-notification {
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background: rgba(0, 0, 0, 0.8);
+                    color: #fff;
+                    padding: 12px 24px;
+                    border-radius: 8px;
+                    font-size: 14px;
+                    z-index: 10000;
+                    opacity: 0;
+                    transition: opacity 0.3s;
+                }
+                
+                .ays-quiz-christmas-banner-copy-notification.show {
+                    opacity: 1;
+                }
+                
+                /* Dismiss button */
+                #ays-quiz-christmas-banner-main #ays-quiz-christmas-banner-dismiss-content {
+                    display: flex;
+                    justify-content: center;
+                }
+                
+                #ays-quiz-christmas-banner-main #ays-quiz-christmas-banner-dismiss-content .ays-button {
+                    margin: 0 !important;
+                    font-size: 13px;
+                    color: rgba(150, 147, 147, 0.69);
+                }
+                
+                /* Responsive */
+                @media (max-width: 1024px) {
+                    .ays-quiz-christmas-banner-discount-text {
+                        font-size: 40px;
+                    }
+                    .ays-quiz-christmas-banner-content {
+                        flex-wrap: wrap;
+                    }
+                }
+                
+                @media (max-width: 768px) {
+                    #ays-quiz-christmas-banner-main {
+                        display: none !important;
+                    }
+                }
+                /* Christmas banner end */
+            ';
+            $content[] = '</style>';
+
+            $content = implode( '', $content );
+
+            echo $content;
+        }
+    }
+
 
     /*
     ==========================================
@@ -5104,7 +6444,7 @@ class Quiz_Maker_Admin
         <p><strong>' . __( 'For more information:', 'quiz-maker' ) . '</strong></p>' .
         '<p><a href="https://www.youtube.com/@AysProPlugins" target="_blank">' . __( 'YouTube video tutorials' , 'quiz-maker' ) . '</a></p>' .
         '<p><a href="https://quiz-plugin.com/docs/" target="_blank">' . __( 'Documentation', 'quiz-maker' ) . '</a></p>' .
-        '<p><a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank">' . __( 'Quiz Maker plugin premium version', 'quiz-maker' ) . '</a></p>' .
+        '<p><a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=help-tab-'. esc_attr( AYS_QUIZ_UTM_VERSION ) .'" target="_blank">' . __( 'Quiz Maker plugin premium version', 'quiz-maker' ) . '</a></p>' .
         '<p><a href="https://quiz-plugin.com/wordpress-quiz-plugin-free-demo" target="_blank">' . __( 'Quiz Maker plugin free demo', 'quiz-maker' ) . '</a></p>';
 
         /*
@@ -5841,7 +7181,7 @@ class Quiz_Maker_Admin
 
                         $content[] = '<div class="ays-quiz-popup-box-header-desc-row">';
                             $content[] = '<div class="ays-quiz-popup-box-header-desc">';
-                                $content[] ='Upgrade now and enjoy a ' . '<a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=result-popup-box-banner" class="ays-quiz-popup-box-header-desc-a" target="blank"><span class="ays-quiz-popup-box-header-desc-span">' . '20%'. '</a></span>' .' discount.';
+                                $content[] ='Upgrade now and enjoy a ' . '<a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=result-popup-box-banner'. esc_attr( AYS_QUIZ_UTM_VERSION ) .'" class="ays-quiz-popup-box-header-desc-a" target="blank"><span class="ays-quiz-popup-box-header-desc-span">' . '20%'. '</a></span>' .' discount.';
                             $content[] = '</div>';
                         $content[] = '</div>';
 
@@ -5880,7 +7220,7 @@ class Quiz_Maker_Admin
 
                     $content[] = '<div class="ays-quiz-popup-box-action">';
                         $content[] = '<div class="ays-quiz-popup-box-action-button-row">';
-                            $content[] = '<a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=result-popup-box-banner" target="blank" class="ays-quiz-popup-box-action-button">';
+                            $content[] = '<a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=result-popup-box-banner-'.esc_attr( AYS_QUIZ_UTM_VERSION ) .'" target="blank" class="ays-quiz-popup-box-action-button">';
                                 $content[] = __( "Upgrade", 'quiz-maker' );
                             $content[] = '</a>';
                         $content[] = '</div>';
@@ -5996,7 +7336,7 @@ class Quiz_Maker_Admin
         return $allowed_properties;
     }
 
-    protected function quiz_maker_capabilities(){
+    public static function quiz_maker_capabilities(){
 
         $ays_user_roles = array('fox_instructor');
         
@@ -6062,7 +7402,7 @@ class Quiz_Maker_Admin
                     ),
                     array(
                         'title' => esc_html__('Insert questions', 'quiz-maker'),
-                        'image' => esc_url( AYS_QUIZ_ADMIN_URL . '/images/checklist/checklist-guide-step-3.png' ),
+                        'image' => esc_url( AYS_QUIZ_ADMIN_URL . '/images/checklist/checklist-guide-step-3.jpg' ),
                         'description' => esc_html__('After creating your questions insert them into a quiz by clicking on the "Insert Questions" button.', 'quiz-maker'),
                         'button_text' => esc_html__('Quizzes', 'quiz-maker'),
                         'button_link' => esc_url( admin_url('admin.php') . "?page=".$this->plugin_name ),
@@ -6152,7 +7492,7 @@ class Quiz_Maker_Admin
     public function ays_quiz_save_checklist_progress() {
         check_ajax_referer('ays_quiz_nonce', 'nonce');
 
-        $user_can_capability = $this->quiz_maker_capabilities();
+        $user_can_capability = self::quiz_maker_capabilities();
 
         // Check for permissions.
         if ( ! current_user_can( $user_can_capability ) ) {
@@ -6174,7 +7514,7 @@ class Quiz_Maker_Admin
     public function ays_quiz_checklist_close_popup() {
         check_ajax_referer('ays_quiz_nonce', 'nonce');
 
-        $user_can_capability = $this->quiz_maker_capabilities();
+        $user_can_capability = self::quiz_maker_capabilities();
 
         // Check for permissions.
         if ( ! current_user_can( $user_can_capability ) ) {
@@ -6193,7 +7533,7 @@ class Quiz_Maker_Admin
     public function ays_quiz_checklist_reopen_callback() {
         check_ajax_referer('ays_quiz_nonce', 'nonce');
 
-        $user_can_capability = $this->quiz_maker_capabilities();
+        $user_can_capability = self::quiz_maker_capabilities();
 
         // Check for permissions.
         if ( ! current_user_can( $user_can_capability ) ) {
@@ -6295,6 +7635,187 @@ class Quiz_Maker_Admin
         $result = $wpdb->get_var($sql);
 
         return $result;
+    }
+
+    public function ays_quiz_black_friady_popup_box(){
+        if(!empty($_REQUEST['page']) && sanitize_text_field( $_REQUEST['page'] ) != $this->plugin_name . "-admin-dashboard"){
+            if(false !== strpos( sanitize_text_field( $_REQUEST['page'] ), $this->plugin_name)){
+
+                $flag = true;
+
+                if( isset($_COOKIE['aysQuizBlackFridayPopupCount']) && intval($_COOKIE['aysQuizBlackFridayPopupCount']) >= 2 ){
+                    $flag = false;
+                }
+
+                $ays_quiz_cta_button_link = esc_url('https://ays-pro.com/mega-bundle?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=mega-bundle-popup-black-friday-sale-' . AYS_QUIZ_UTM_VERSION);
+
+                if( $flag ){
+                ?>
+                <div class="ays-quiz-black-friday-popup-overlay" style="opacity: 0; visibility: hidden; display: none;">
+                  <div class="ays-quiz-black-friday-popup-dialog">
+                    <div class="ays-quiz-black-friday-popup-content">
+                      <div class="ays-quiz-black-friday-popup-background-pattern">
+                        <div class="ays-quiz-black-friday-popup-pattern-row">
+                          <div class="ays-quiz-black-friday-popup-pattern-text">SALE SALE SALE</div>
+                          <div class="ays-quiz-black-friday-popup-pattern-text">SALE SALE SALE</div>
+                        </div>
+                        <div class="ays-quiz-black-friday-popup-pattern-row">
+                          <div class="ays-quiz-black-friday-popup-pattern-text">SALE SALE SALE</div>
+                          <div class="ays-quiz-black-friday-popup-pattern-text">SALE SALE SALE</div>
+                        </div>
+                        <div class="ays-quiz-black-friday-popup-pattern-row">
+                          <div class="ays-quiz-black-friday-popup-pattern-text">SALE SALE SALE</div>
+                          <div class="ays-quiz-black-friday-popup-pattern-text">SALE SALE SALE</div>
+                        </div>
+                        <div class="ays-quiz-black-friday-popup-pattern-row">
+                          <div class="ays-quiz-black-friday-popup-pattern-text">SALE SALE SALE</div>
+                          <div class="ays-quiz-black-friday-popup-pattern-text">SALE SALE SALE</div>
+                        </div>
+                      </div>
+                      
+                      <button class="ays-quiz-black-friday-popup-close" aria-label="Close">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M18 6 6 18"></path>
+                          <path d="m6 6 12 12"></path>
+                        </svg>
+                      </button>
+                      
+                      <div class="ays-quiz-black-friday-popup-badge">
+                        <div class="ays-quiz-black-friday-popup-badge-content">
+                          <div class="ays-quiz-black-friday-popup-badge-text-sm"><?php echo esc_html__( 'Up to', 'quiz-maker' ); ?></div>
+                          <div class="ays-quiz-black-friday-popup-badge-text-lg">50%</div>
+                          <div class="ays-quiz-black-friday-popup-badge-text-md"><?php echo esc_html__( 'OFF', 'quiz-maker' ); ?></div>
+                        </div>
+                      </div>
+                      
+                      <div class="ays-quiz-black-friday-popup-main-content">
+                        <div class="ays-quiz-black-friday-popup-hashtag"><?php echo esc_html__( '#BLACKFRIDAY', 'quiz-maker' ); ?></div>
+                        <h1 class="ays-quiz-black-friday-popup-title-mega"><?php echo esc_html__( 'MEGA', 'quiz-maker' ); ?></h1>
+                        <h1 class="ays-quiz-black-friday-popup-title-bundle"><?php echo esc_html__( 'BUNDLE', 'quiz-maker' ); ?></h1>
+                        <div class="ays-quiz-black-friday-popup-offer-label">
+                          <h2 class="ays-quiz-black-friday-popup-offer-text"><?php echo esc_html__( 'BLACK FRIDAY OFFER', 'quiz-maker' ); ?></h2>
+                        </div>
+                        <p class="ays-quiz-black-friday-popup-description"><?php echo esc_html__( 'Get our exclusive plugins in one bundle', 'quiz-maker' ); ?></p>
+                        <a href="<?php echo esc_url($ays_quiz_cta_button_link); ?>" target="_blank" class="ays-quiz-black-friday-popup-cta-btn"><?php echo esc_html__( 'Get Mega Bundle', 'quiz-maker' ); ?></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <script type="text/javascript">
+                    (function() {
+                      var overlay = document.querySelector('.ays-quiz-black-friday-popup-overlay');
+                      var closeBtn = document.querySelector('.ays-quiz-black-friday-popup-close');
+                      var learnMoreBtn = document.querySelector('.ays-quiz-black-friday-popup-learn-more');
+                      var ctaBtn = document.querySelector('.ays-quiz-black-friday-popup-cta-btn');
+
+                      // Cookie helper functions
+                      function setCookie(name, value, days) {
+                        var expires = "";
+                        if (days) {
+                          var date = new Date();
+                          date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                          expires = "; expires=" + date.toUTCString();
+                        }
+                        document.cookie = name + "=" + (value || "") + expires + "; path=/";
+                      }
+
+                      function getCookie(name) {
+                        var nameEQ = name + "=";
+                        var ca = document.cookie.split(';');
+                        for (var i = 0; i < ca.length; i++) {
+                          var c = ca[i];
+                          while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                          if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+                        }
+                        return null;
+                      }
+
+                      // Get current show count from cookie
+                      var showCount = parseInt(getCookie('aysQuizBlackFridayPopupCount') || '0', 10);
+                      var maxShows = 2;
+
+                      // Show popup function
+                      function showPopup() {
+                        if (overlay && showCount < maxShows) {
+                          overlay.classList.add('ays-quiz-black-friday-popup-active');
+                          showCount++;
+                          // Update cookie with new count (expires in 30 days)
+                          setCookie('aysQuizBlackFridayPopupCount', showCount.toString(), 30);
+                        }
+                      }
+
+                      // Close popup function
+                      function closePopup(e) {
+                        if (e) {
+                          e.preventDefault();
+                          e.stopPropagation();
+                        }
+                        if (overlay) {
+                          overlay.classList.remove('ays-quiz-black-friday-popup-active');
+                        }
+                      }
+
+                      // Determine timing based on show count
+                      if (showCount === 0) {
+                        // First time - show after 30 seconds
+                        setTimeout(function() {
+                          showPopup();
+                        }, 30000);
+                      } else if (showCount === 1) {
+                        // Second time - show after 200 seconds
+                        setTimeout(function() {
+                          showPopup();
+                        }, 200000);
+                      }
+                      // If showCount >= 2, don't show popup at all
+
+                      // Close button
+                      if (closeBtn) {
+                        closeBtn.addEventListener('click', function(e) {
+                          closePopup(e);
+                        });
+                      }
+
+                      // Learn more button
+                      if (learnMoreBtn) {
+                        learnMoreBtn.addEventListener('click', function(e) {
+                          closePopup(e);
+                        });
+                      }
+
+                      // CTA button (optional - if you want it to close popup too)
+                      if (ctaBtn) {
+                        ctaBtn.addEventListener('click', function(e) {
+                          // You can add redirect logic here if needed
+                          // window.location.href = 'your-url';
+                        });
+                      }
+
+                      // Close on overlay click
+                      if (overlay) {
+                        overlay.addEventListener('click', function(e) {
+                          if (e.target === overlay) {
+                            closePopup(e);
+                          }
+                        });
+                      }
+
+                      // Close on Escape key
+                      document.addEventListener('keydown', function(e) {
+                        if (e.key === 'Escape' && overlay && overlay.classList.contains('ays-quiz-black-friday-popup-active')) {
+                          closePopup();
+                        }
+                      });
+                    })();
+                </script>
+                <style>
+                    .ays-quiz-black-friday-popup-overlay{position:fixed;top:0;left:0;right:0;bottom:0;z-index:9999;background-color:rgba(0,0,0,.8);display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity .2s,visibility .2s}.ays-quiz-black-friday-popup-overlay.ays-quiz-black-friday-popup-active{display:flex!important;opacity:1!important;visibility:visible!important}.ays-quiz-black-friday-popup-overlay .ays-quiz-black-friday-popup-dialog{position:relative;max-width:470px;width:100%;border-radius:8px;overflow:hidden;background:0 0;box-shadow:0 25px 50px -12px rgba(0,0,0,.25);transform:scale(.95);transition:transform .2s}.ays-quiz-black-friday-popup-overlay.ays-quiz-black-friday-popup-active .ays-quiz-black-friday-popup-dialog{transform:scale(1)}.ays-quiz-black-friday-popup-overlay .ays-quiz-black-friday-popup-content{position:relative;width:470px;height:410px;background:linear-gradient(to right bottom,#c056f5,#f042f0,#7d7de8);overflow:hidden}.ays-quiz-black-friday-popup-overlay .ays-quiz-black-friday-popup-background-pattern{position:absolute;top:0;left:0;right:0;bottom:0;opacity:.07;pointer-events:none;transform:rotate(-12deg) translateY(32px);overflow:hidden}.ays-quiz-black-friday-popup-overlay .ays-quiz-black-friday-popup-pattern-row{display:flex;gap:16px;margin-bottom:16px}.ays-quiz-black-friday-popup-overlay .ays-quiz-black-friday-popup-pattern-text{color:#fff;font-weight:900;font-size:96px;white-space:nowrap;line-height:1}.ays-quiz-black-friday-popup-overlay .ays-quiz-black-friday-popup-close{position:absolute;top:16px;right:16px;z-index:9999;background:0 0;border:none;color:rgba(255,255,255,.8);cursor:pointer;padding:4px;transition:color .2s;line-height:0}.ays-quiz-black-friday-popup-overlay .ays-quiz-black-friday-popup-close:hover,.ays-quiz-black-friday-popup-overlay .ays-quiz-black-friday-popup-learn-more:hover{color:#fff}.ays-quiz-black-friday-popup-overlay .ays-quiz-black-friday-popup-badge{position:absolute;top:32px;right:32px;width:96px;height:96px;background-color:#d4fc79;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 25px 50px -12px rgba(0,0,0,.25);animation:3s ease-in-out infinite ays-quiz-black-friday-popup-float}@keyframes ays-quiz-black-friday-popup-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}.ays-quiz-black-friday-popup-overlay .ays-quiz-black-friday-popup-badge-content{text-align:center}.ays-quiz-black-friday-popup-overlay .ays-quiz-black-friday-popup-badge-text-sm{color:#1a1a1a;font-weight:900;font-size:24px;line-height:1}.ays-quiz-black-friday-popup-overlay .ays-quiz-black-friday-popup-badge-text-lg{color:#1a1a1a;font-weight:900;font-size:30px;line-height:1;margin-top:4px}.ays-quiz-black-friday-popup-overlay .ays-quiz-black-friday-popup-badge-text-md{color:#1a1a1a;font-weight:900;font-size:20px;line-height:1}.ays-quiz-black-friday-popup-overlay .ays-quiz-black-friday-popup-main-content{position:relative;z-index:10;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 48px;text-align:center}.ays-quiz-black-friday-popup-overlay .ays-quiz-black-friday-popup-hashtag{color:rgba(255,255,255,.9);font-weight:700;font-size:14px;margin-bottom:16px;letter-spacing:.1em}.ays-quiz-black-friday-popup-overlay .ays-quiz-black-friday-popup-title-mega{color:#fff;font-weight:900;font-size:60px;line-height:1;margin:0 0 12px;text-shadow:0 4px 6px rgba(0,0,0,.1)}.ays-quiz-black-friday-popup-overlay .ays-quiz-black-friday-popup-title-bundle{color:#fff;font-weight:900;font-size:60px;line-height:1;margin:0 0 24px;text-shadow:0 4px 6px rgba(0,0,0,.1)}.ays-quiz-black-friday-popup-overlay .ays-quiz-black-friday-popup-offer-label{background-color:#000;padding:12px 32px;margin-bottom:24px;display:inline-block}.ays-quiz-black-friday-popup-overlay .ays-quiz-black-friday-popup-offer-text{color:#fff;font-weight:700;font-size:20px;letter-spacing:.05em;margin:0}.ays-quiz-black-friday-popup-overlay .ays-quiz-black-friday-popup-description{color:rgba(255,255,255,.95);font-size:18px;font-weight:500;margin:0 0 32px!important}.ays-quiz-black-friday-popup-overlay .ays-quiz-black-friday-popup-cta-btn{display:inline-flex;align-items:center;justify-content:center;height:48px;background-color:#fff;color:#a855f7;font-size:18px;font-weight:700;border:none;border-radius:24px;padding:0 40px;cursor:pointer;box-shadow:0 20px 25px -5px rgba(0,0,0,.1);transition:.2s;text-decoration:none}.ays-quiz-black-friday-popup-overlay .ays-quiz-black-friday-popup-cta-btn:hover{background-color:rgba(255,255,255,.9);box-shadow:0 25px 50px -12px rgba(0,0,0,.25);transform:scale(1.05)}.ays-quiz-black-friday-popup-overlay .ays-quiz-black-friday-popup-learn-more{background:0 0;border:none;color:rgba(255,255,255,.9);font-size:14px;text-decoration:underline;text-underline-offset:4px;cursor:pointer;padding:8px;margin-top:16px;transition:color .2s}@media (max-width:768px){.ays-quiz-black-friday-popup-overlay{display:none!important}.ays-quiz-black-friday-popup-overlay .ays-quiz-black-friday-popup-content{width:90vw;max-width:400px;height:380px}.ays-quiz-black-friday-popup-overlay .ays-quiz-black-friday-popup-main-content{padding:0 32px}.ays-quiz-black-friday-popup-overlay .ays-quiz-black-friday-popup-badge{width:80px;height:80px;top:24px;right:24px}.ays-quiz-black-friday-popup-overlay .ays-quiz-black-friday-popup-badge-text-sm{font-size:20px}.ays-quiz-black-friday-popup-overlay .ays-quiz-black-friday-popup-badge-text-lg{font-size:26px}.ays-quiz-black-friday-popup-overlay .ays-quiz-black-friday-popup-badge-text-md,.ays-quiz-black-friday-popup-overlay .ays-quiz-black-friday-popup-offer-text{font-size:18px}.ays-quiz-black-friday-popup-overlay .ays-quiz-black-friday-popup-title-bundle,.ays-quiz-black-friday-popup-overlay .ays-quiz-black-friday-popup-title-mega{font-size:48px}.ays-quiz-black-friday-popup-overlay .ays-quiz-black-friday-popup-description{font-size:16px}.ays-quiz-black-friday-popup-overlay .ays-quiz-black-friday-popup-pattern-text{font-size:72px}}@media (max-width:480px){.ays-quiz-black-friday-popup-overlay .ays-quiz-black-friday-popup-content{width:95vw;max-width:340px;height:360px}.ays-quiz-black-friday-popup-overlay .ays-quiz-black-friday-popup-main-content{padding:0 24px}.ays-quiz-black-friday-popup-overlay .ays-quiz-black-friday-popup-badge{width:70px;height:70px;top:20px;right:20px}.ays-quiz-black-friday-popup-overlay .ays-quiz-black-friday-popup-badge-text-sm,.ays-quiz-black-friday-popup-overlay .ays-quiz-black-friday-popup-offer-text{font-size:16px}.ays-quiz-black-friday-popup-overlay .ays-quiz-black-friday-popup-badge-text-lg{font-size:22px}.ays-quiz-black-friday-popup-overlay .ays-quiz-black-friday-popup-badge-text-md{font-size:14px}.ays-quiz-black-friday-popup-overlay .ays-quiz-black-friday-popup-hashtag{font-size:12px;margin-bottom:12px}.ays-quiz-black-friday-popup-overlay .ays-quiz-black-friday-popup-title-bundle,.ays-quiz-black-friday-popup-overlay .ays-quiz-black-friday-popup-title-mega{font-size:40px;margin-bottom:8px}.ays-quiz-black-friday-popup-overlay .ays-quiz-black-friday-popup-offer-label{padding:10px 24px;margin-bottom:20px}.ays-quiz-black-friday-popup-overlay .ays-quiz-black-friday-popup-description{font-size:15px;margin-bottom:24px}.ays-quiz-black-friday-popup-overlay .ays-quiz-black-friday-popup-cta-btn{font-size:16px;height:44px;padding:0 32px}.ays-quiz-black-friday-popup-overlay .ays-quiz-black-friday-popup-pattern-text{font-size:60px}}
+                </style>
+                <?php
+                }
+            }
+        }
+
     }
     
 }

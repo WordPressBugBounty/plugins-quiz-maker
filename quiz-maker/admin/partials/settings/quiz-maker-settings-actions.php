@@ -140,9 +140,9 @@ class Quiz_Maker_Settings_Actions {
 
                         
             $question_default_type = isset($_REQUEST['ays_question_default_type']) ? esc_sql( sanitize_text_field( $_REQUEST['ays_question_default_type'] ) ) : '';                        
-            $ays_answer_default_count = isset($_REQUEST['ays_answer_default_count']) ? esc_sql( sanitize_text_field( $_REQUEST['ays_answer_default_count'] ) ) : '';
-            $right_answer_sound = isset($_REQUEST['ays_right_answer_sound']) ? esc_sql( sanitize_text_field( $_REQUEST['ays_right_answer_sound'] ) ) : '';
-            $wrong_answer_sound = isset($_REQUEST['ays_wrong_answer_sound']) ? esc_sql( sanitize_text_field( $_REQUEST['ays_wrong_answer_sound'] ) ) : '';
+            $ays_answer_default_count = isset($_REQUEST['ays_answer_default_count']) ? intval( sanitize_text_field( $_REQUEST['ays_answer_default_count'] ) ) : '';
+            $right_answer_sound = isset($_REQUEST['ays_right_answer_sound']) ? sanitize_url( $_REQUEST['ays_right_answer_sound'] ) : '';
+            $wrong_answer_sound = isset($_REQUEST['ays_wrong_answer_sound']) ? sanitize_url( $_REQUEST['ays_wrong_answer_sound'] ) : '';
 
             // Questions title length
             $question_title_length = (isset($_REQUEST['ays_question_title_length']) && intval($_REQUEST['ays_question_title_length']) != 0) ? absint(intval($_REQUEST['ays_question_title_length'])) : 5;
@@ -161,6 +161,9 @@ class Quiz_Maker_Settings_Actions {
 
             // Reviews title length
             $quiz_reviews_title_length = (isset($_REQUEST['ays_quiz_reviews_title_length']) && intval($_REQUEST['ays_quiz_reviews_title_length']) != 0) ? absint(sanitize_text_field($_REQUEST['ays_quiz_reviews_title_length'])) : 5;
+
+            // Question categories title length
+            $question_reports_title_length = (isset($_REQUEST['ays_question_reports_title_length']) && intval($_REQUEST['ays_question_reports_title_length']) != 0) ? absint(sanitize_text_field($_REQUEST['ays_question_reports_title_length'])) : 5;
 
             // Do not store IP adressess
             $disable_user_ip = (isset( $_REQUEST['ays_disable_user_ip'] ) && sanitize_text_field( $_REQUEST['ays_disable_user_ip'] ) == 'on') ? 'on' : 'off';
@@ -258,6 +261,10 @@ class Quiz_Maker_Settings_Actions {
             // Disable Question report menu notification
             $quiz_disable_question_report_menu_notification = (isset( $_REQUEST['ays_quiz_disable_question_report_menu_notification'] ) && sanitize_text_field( $_REQUEST['ays_quiz_disable_question_report_menu_notification'] ) == 'on') ? 'on' : 'off';
 
+            // Disable Question report menu notification
+            $quiz_disable_live_chat_icon = (isset( $_REQUEST['ays_quiz_disable_live_chat_icon'] ) && sanitize_text_field( $_REQUEST['ays_quiz_disable_live_chat_icon'] ) == 'on') ? 'on' : 'off';
+            update_option('ays_quiz_disable_live_chat_icon', $quiz_disable_live_chat_icon);
+
             $options = array(
                 "question_default_type"                         => $question_default_type,
                 "ays_answer_default_count"                      => $ays_answer_default_count,
@@ -295,6 +302,7 @@ class Quiz_Maker_Settings_Actions {
                 "question_categories_title_length"                  => $question_categories_title_length,
                 "quiz_categories_title_length"                      => $quiz_categories_title_length,
                 "quiz_reviews_title_length"                         => $quiz_reviews_title_length,
+                "question_reports_title_length"                     => $question_reports_title_length,
                 "quiz_exclude_general_css"                          => $quiz_exclude_general_css,
                 "quiz_enable_question_answers"                      => $quiz_enable_question_answers,
                 "quiz_show_correct_answers"                         => $quiz_show_correct_answers,
@@ -302,6 +310,7 @@ class Quiz_Maker_Settings_Actions {
                 "quiz_disable_quiz_menu_notification"               => $quiz_disable_quiz_menu_notification,
                 "quiz_disable_results_menu_notification"            => $quiz_disable_results_menu_notification,
                 "quiz_disable_question_report_menu_notification"    => $quiz_disable_question_report_menu_notification,
+                "quiz_disable_live_chat_icon"                       => $quiz_disable_live_chat_icon,
 
                 // Show Result Information
                 'ays_quiz_show_result_info_user_ip'                 => $ays_quiz_show_result_info_user_ip,
@@ -415,7 +424,8 @@ class Quiz_Maker_Settings_Actions {
                     $tab = "&ays_quiz_tab=". sanitize_text_field( $_REQUEST['ays_quiz_tab'] );
                 }
                 $url = admin_url('admin.php') . "?page=quiz-maker-settings" . $tab . '&status=' . $message . $del_stat;
-                wp_redirect( esc_url_raw( $url ) );
+                wp_safe_redirect( esc_url_raw( $url ) );
+                exit;
             }
         }
         
@@ -499,7 +509,9 @@ class Quiz_Maker_Settings_Actions {
         $result = $wpdb->insert(
             $settings_table,
             array(
+                // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key
                 'meta_key'    => esc_sql( $meta_key ),
+                // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value
                 'meta_value'  => esc_sql( $meta_value ),
                 'note'        => esc_sql( $note ),
                 'options'     => esc_sql( $options )
@@ -516,6 +528,7 @@ class Quiz_Maker_Settings_Actions {
         global $wpdb;
         $settings_table = $wpdb->prefix . "aysquiz_settings";
         $value = array(
+            // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value
             'meta_value'  => esc_sql( $meta_value ),
         );
         $value_s = array( '%s' );
@@ -530,6 +543,7 @@ class Quiz_Maker_Settings_Actions {
         $result = $wpdb->update(
             $settings_table,
             $value,
+            // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key
             array( 'meta_key' => esc_sql( $meta_key ) ),
             $value_s,
             array( '%s' )
@@ -545,6 +559,7 @@ class Quiz_Maker_Settings_Actions {
         $settings_table = $wpdb->prefix . "aysquiz_settings";
         $wpdb->delete(
             $settings_table,
+            // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key
             array( 'meta_key' => esc_sql( $meta_key ) ),
             array( '%s' )
         );

@@ -1,6 +1,9 @@
 <?php
 
+if (!defined('ABSPATH')) exit; // Exit if accessed directly
+
 $loader_iamge = "<span class='display_none ays_quiz_loader_box'><img src='". esc_url(AYS_QUIZ_ADMIN_URL) ."/images/loaders/loading.gif'></span>";
+$youtube_icon_svg = "<span class=''><img src='". AYS_QUIZ_ADMIN_URL ."/images/icons/youtube-video-icon.svg'></span>";
 
 if(isset($_GET['ays_quiz_tab'])){
     $ays_quiz_tab = sanitize_key( $_GET['ays_quiz_tab'] );
@@ -40,8 +43,9 @@ if(isset($_GET['ays_quiz_tab'])){
                                 <div class="col-sm-12">
                                     <div class="ays-quiz-heading-box ays-quiz-unset-float ays-quiz-unset-margin">
                                         <div class="ays-quiz-wordpress-user-manual-box ays-quiz-wordpress-text-align">
-                                            <a href="https://www.youtube.com/watch?v=joPQrsF0a60" target="_blank">
-                                                <?php echo esc_html__("How to integrate MailChimp - video", 'quiz-maker'); ?>
+                                            <a href="https://www.youtube.com/watch?v=joPQrsF0a60" target="_blank" style="text-decoration: none;">
+                                                <?php echo wp_kses_post($youtube_icon_svg); ?>
+                                                <span style="margin-left: 3px; text-decoration: underline;"><?php echo esc_html__("How to integrate MailChimp - video", 'quiz-maker'); ?></span>
                                             </a>
                                         </div>
                                     </div>
@@ -82,7 +86,7 @@ if(isset($_GET['ays_quiz_tab'])){
                                     <blockquote>
                                         <?php echo sprintf( esc_attr( __( "You can get your API key from your %s Account Extras menu. %s", 'quiz-maker' ) ), "<a href='https://us20.admin.mailchimp.com/account/api/' target='_blank'>", '</a>' ); ?>
                                     </blockquote>
-                                    <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=mailchimp-integration-menu-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
                                                 <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
@@ -104,8 +108,9 @@ if(isset($_GET['ays_quiz_tab'])){
                                 <div class="col-sm-12">
                                     <div class="ays-quiz-heading-box ays-quiz-unset-float ays-quiz-unset-margin">
                                         <div class="ays-quiz-wordpress-user-manual-box ays-quiz-wordpress-text-align">
-                                            <a href="https://www.youtube.com/watch?v=IwT-2d9OE1g" target="_blank">
-                                                <?php echo esc_html__("How to integrate PayPal - video", 'quiz-maker'); ?>
+                                            <a href="https://www.youtube.com/watch?v=IwT-2d9OE1g" target="_blank" style="text-decoration: none;">
+                                                <?php echo wp_kses_post($youtube_icon_svg); ?>
+                                                <span style="margin-left: 3px; text-decoration: underline;"><?php echo esc_html__("How to integrate PayPal - video", 'quiz-maker'); ?></span>
                                             </a>
                                         </div>
                                     </div>
@@ -135,12 +140,12 @@ if(isset($_GET['ays_quiz_tab'])){
                                                 <?php echo esc_html__('Payment terms','quiz-maker'); ?>
                                                 <a class="ays_help" style="font-size:15px;" data-toggle="tooltip" data-html="true"
                                                 title="<?php
-                                                    echo __('Choose your preferred method.',$this->plugin_name) .
+                                                    echo esc_attr__('Choose your preferred method.',$this->plugin_name) .
                                                     "<ul style='list-style-type: circle;padding-left: 20px;'>".
-                                                        "<li>". __('Lifetime  - By enabling this option, the user pays once at the beginning and gets access to the given quiz each time starting from that moment. It detects the user after the first attempt based on their WP user ID (designed for logged-in users).','quiz-maker') ."</li>".
-                                                        "<li>". __('Onetime - By enabling this option, the user needs to pay each time separately for taking the quiz.','quiz-maker') ."</li>".
-                                                        "<li>". __('Active Period - By enabling this option, the quiz will be available during your chosen period of time. You can set the active period duration by Day, Month or Year. This option is (designed for logged-in users).','quiz-maker') ."</li>".
-                                                        "<li>". __('Limit By Count - By enabling this option, users can take the quiz up to the set limit. Once the limit is reached, they will need to pay again to retake the quiz. For example, if the limit count is set as 5, the users can pay for the quiz and pass it 5 times. Once the limit is reached, they will need to make another payment to continue taking the quiz.','quiz-maker') ."</li>".
+                                                        "<li>". esc_attr__('Lifetime  - By enabling this option, the user pays once at the beginning and gets access to the given quiz each time starting from that moment. It detects the user after the first attempt based on their WP user ID (designed for logged-in users).','quiz-maker') ."</li>".
+                                                        "<li>". esc_attr__('Onetime - By enabling this option, the user needs to pay each time separately for taking the quiz.','quiz-maker') ."</li>".
+                                                        "<li>". esc_attr__('Active Period - By enabling this option, the quiz will be available during your chosen period of time. You can set the active period duration by Day, Month or Year. This option is (designed for logged-in users).','quiz-maker') ."</li>".
+                                                        "<li>". esc_attr__('Limit By Count - By enabling this option, users can take the quiz up to the set limit. Once the limit is reached, they will need to pay again to retake the quiz. For example, if the limit count is set as 5, the users can pay for the quiz and pass it 5 times. Once the limit is reached, they will need to make another payment to continue taking the quiz.','quiz-maker') ."</li>".
                                                     "</ul>";
                                                 ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
@@ -192,7 +197,7 @@ if(isset($_GET['ays_quiz_tab'])){
                                     <blockquote>
                                         <?php echo sprintf( wp_kses_post( __( "You can get your Client ID from", 'quiz-maker' ) ) . "<a href='%s' target='_blank'> %s.</a>", "https://developer.paypal.com/developer/applications", esc_html__( "Developer PayPal", 'quiz-maker' ) ); ?>
                                     </blockquote>
-                                    <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=paypal-integration-menu-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
                                                 <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -245,12 +250,12 @@ if(isset($_GET['ays_quiz_tab'])){
                                                         <?php echo esc_html__('Payment terms','quiz-maker'); ?>
                                                         <a class="ays_help" style="font-size:15px;" data-toggle="tooltip" data-html="true"
                                                             title="<?php
-                                                                echo __('Choose your preferred method.','quiz-maker') .
+                                                                echo esc_attr__('Choose your preferred method.','quiz-maker') .
                                                                 "<ul style='list-style-type: circle;padding-left: 20px;'>".
-                                                                    "<li>". __('Lifetime  - By enabling this option, the user pays once at the beginning and gets access to the given quiz each time starting from that moment. It detects the user after the first attempt based on their WP user ID (designed for logged-in users).','quiz-maker') ."</li>".
-                                                                    "<li>". __('Onetime - By enabling this option, the user needs to pay each time separately for taking the quiz.','quiz-maker') ."</li>".
-                                                                    "<li>". __('Active Period - By enabling this option, the quiz will be available during your chosen period of time. You can set the active period duration by Day, Month or Year. This option is (designed for logged-in users).','quiz-maker') ."</li>".
-                                                                    "<li>". __('Limit By Count - By enabling this option, users can take the quiz up to the set limit. Once the limit is reached, they will need to pay again to retake the quiz. For example, if the limit count is set as 5, the users can pay for the quiz and pass it 5 times. Once the limit is reached, they will need to make another payment to continue taking the quiz.','quiz-maker') ."</li>".
+                                                                    "<li>". esc_attr__('Lifetime  - By enabling this option, the user pays once at the beginning and gets access to the given quiz each time starting from that moment. It detects the user after the first attempt based on their WP user ID (designed for logged-in users).','quiz-maker') ."</li>".
+                                                                    "<li>". esc_attr__('Onetime - By enabling this option, the user needs to pay each time separately for taking the quiz.','quiz-maker') ."</li>".
+                                                                    "<li>". esc_attr__('Active Period - By enabling this option, the quiz will be available during your chosen period of time. You can set the active period duration by Day, Month or Year. This option is (designed for logged-in users).','quiz-maker') ."</li>".
+                                                                    "<li>". esc_attr__('Limit By Count - By enabling this option, users can take the quiz up to the set limit. Once the limit is reached, they will need to pay again to retake the quiz. For example, if the limit count is set as 5, the users can pay for the quiz and pass it 5 times. Once the limit is reached, they will need to make another payment to continue taking the quiz.','quiz-maker') ."</li>".
                                                                 "</ul>";
                                                             ?>">
                                                             <i class="ays_fa ays_fa_info_circle"></i>
@@ -268,7 +273,7 @@ if(isset($_GET['ays_quiz_tab'])){
                                                     </label>
                                                     <label class="ays_quiz_loader" style="display:inline-block;">
                                                         <input type="radio" />
-                                                        <span><?php echo __('Active Period','quiz-maker'); ?></span>
+                                                        <span><?php echo esc_html__('Active Period','quiz-maker'); ?></span>
                                                     </label>
                                                     <label class="ays_quiz_loader" style="display:inline-block;">
                                                         <input type="radio" />
@@ -281,7 +286,7 @@ if(isset($_GET['ays_quiz_tab'])){
                                             </blockquote>
                                         </div>
                                     </div>
-                                    <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=stripe-integration-menu-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
                                                 <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
@@ -355,7 +360,7 @@ if(isset($_GET['ays_quiz_tab'])){
                                             </blockquote>
                                         </div>
                                     </div>
-                                    <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=recaptcha-integration-menu-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
                                                 <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
@@ -402,7 +407,7 @@ if(isset($_GET['ays_quiz_tab'])){
                                     <blockquote>
                                         <?php echo esc_html__("You can get your API key and Client ID from your Account Settings page", 'quiz-maker'); ?>
                                     </blockquote>
-                                    <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=campaign-monitor-integration-menu-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
                                                 <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -441,7 +446,7 @@ if(isset($_GET['ays_quiz_tab'])){
                                     <blockquote>
                                         <?php echo esc_html__("We will send you all data from quiz information form with \"AysQuiz\" key by POST method", 'quiz-maker'); ?>
                                     </blockquote>
-                                    <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=zapier-integration-menu-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
                                                 <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -488,7 +493,7 @@ if(isset($_GET['ays_quiz_tab'])){
                                     <blockquote>
                                         <?php echo esc_html__("Your API URL and Key can be found in your account on the My Settings page under the \"Developer\" tab", 'quiz-maker'); ?>
                                     </blockquote>
-                                    <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=activecampaign-integration-menu-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
                                                 <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -562,7 +567,7 @@ if(isset($_GET['ays_quiz_tab'])){
                                     <blockquote>
                                         <?php echo esc_html__("You can get your App Client ID and Client Secret from your App's the Basic Information page", 'quiz-maker'); ?>
                                     </blockquote>
-                                    <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=slack-integration-menu-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
                                                 <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -626,7 +631,7 @@ if(isset($_GET['ays_quiz_tab'])){
                                             </div>
                                         </div>
                                     </div>
-                                    <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=google-sheets-integration-menu-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
                                                 <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -674,7 +679,7 @@ if(isset($_GET['ays_quiz_tab'])){
                                             </blockquote>
                                         </div>
                                     </div>
-                                    <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=mad-mimi-integration-menu-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
                                                 <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -712,7 +717,7 @@ if(isset($_GET['ays_quiz_tab'])){
                                             </blockquote>
                                         </div>
                                     </div>
-                                    <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=convertkit-integration-menu-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
                                                 <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL .'/images/icons/locked_24x24.svg' ); ?>">
@@ -753,7 +758,7 @@ if(isset($_GET['ays_quiz_tab'])){
                                             </blockquote>
                                         </div>
                                     </div>
-                                    <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=getresponse-integration-menu-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
                                                 <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">

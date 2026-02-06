@@ -27,14 +27,17 @@
     margin: 0;
 }
 .ays-field {
+    display: flex;
     text-align: left;
     opacity: 1;
+    margin-bottom: 10px;
+    position: relative;
 }
 [id^="ays-quiz-container-"] .ays-field input[type='checkbox'],
 [id^="ays-quiz-container-"] .ays-field input[type='radio']{
     display: none!important;
 }
-.ays-quiz-answers .ays-field input+label[for^="ays-answer-"] {
+.ays-quiz-answers .ays-field input~label[for^="ays-answer-"] {
     font-weight: 600;
     color: #484848;
     margin-bottom: 0;
@@ -51,6 +54,9 @@
     line-height: 33px;
     text-transform: initial;
     letter-spacing: unset;
+}
+.ays-quiz-answers .ays-field input~label.ays_answer_image_label[for^="ays-answer-"] {
+    line-height: 0 !important;
 }
 .ays-quiz-answers .ays-field input[type="checkbox"]+label[for^="ays-answer-"] {
     margin-left: 0;
@@ -1047,29 +1053,63 @@ div.ays-quiz-container[id^="ays-quiz-container-"] .ays-quiz-share-btn-icon {
         width: 0;
     }
 }
-.ays-field input+label.answered:after{
+.ays-field.ays_list_view_item input+label.answered::after,
+.ays-field.ays_grid_view_item label.answered::after{
     content: '';
     display: inline-block;
     width: 30px;
-    height: 30px;
+    height: auto;
+    /*height: 30px;*/
     vertical-align: middle;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     margin-left: 5px;
+    position: unset;
 }
 
-.ays-field input+label.answered.correct:after{
+.ays-field input~label.answered.correct::after{
     content: url('../images/correct.png');
 }
 
-.ays-field input+label.answered.wrong:after{
+.ays_quiz_results .ays-field input~label.ays_answer_image.answered.correct::after {
+    content: none;
+}
+
+.ays-field input~label.answered.wrong::after{
     content: url('../images/wrong.png');
 }
-.ays-field input:checked+label.answered.wrong:before {
+.ays-field label.answered {
+    position: relative;
+}
+.ays-field label.answered.correct:last-of-type::after,
+.ays-field label.answered.wrong:last-of-type::after{
+    position: absolute;
+}
+.ays-field input~label.ays_without_after_content.answered::after {
+    content: none;
+}
+.ays-field.ays_grid_view_item input:checked~label.answered.wrong:before,
+.ays-field.ays_list_view_item input:checked~label.answered.wrong:before {
     border-color: #cc3700!important;
     background: #cc3700!important;
     background-clip: content-box!important;
+}
+.ays-field.ays_grid_view_item input:checked~label.answered.correct:before,
+.ays-field.ays_list_view_item input:checked~label.answered.correct:before {
+    border-color: #27ae60!important;
+    background: #27ae60!important;
+    background-clip: content-box!important;
+}
+
+.ays-field label.ays_position_initial,
+.ays-field.ays_list_view_item input+label {
+    position: initial !important;
+}
+.ays_quiz_rect_light .ays-field.ays_list_view_item label[for^="ays-answer"]:last-of-type::before,
+.ays_quiz_rect_dark .ays-field.ays_list_view_item label[for^="ays-answer"]:last-of-type::before,
+.ays-field.ays_list_view_item label[for^="ays-answer"]:last-of-type::before {
+    content: none!important;
 }
 .ays-field input:checked+label.answered.correct:before{
     background-color: #1cbf8b;
@@ -1217,7 +1257,21 @@ div.ays-quiz-container[id^="ays-quiz-container-"] .ays-quiz-share-btn-icon {
 .ays-quiz-container .ays-field label:empty{
     display: none;
 }
-
+.ays-quiz-container .ays-field input ~ label[for^="ays-answer"]:empty{
+    display: none !important;
+    padding: 0px !important;
+}
+.ays-quiz-container .ays-field input ~ label[for^="ays-answer"].ays_empty_before_content::before,
+.ays-quiz-container .ays-field input:checked ~ label[for^="ays-answer"].ays_empty_before_content::before {
+    content: none !important;
+}
+.ays-field label.ays_answer_image {
+    overflow: hidden;
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
+    line-height: 0 !important;
+}
 .ays-quiz-container{
     max-width: 100%;
 }
@@ -1249,8 +1303,10 @@ div.ays-quiz-container[id^="ays-quiz-container-"] .ays-quiz-share-btn-icon {
     padding: 5px;
     width: 100% !important;
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: nowrap !important;
+    flex-direction: row !important;
     margin-bottom: 20px;
+    align-items: stretch;
 }
 .ays-quiz-container .ays-field.ays-text-field textarea.ays-text-input{
     padding: 10px;

@@ -91,7 +91,7 @@ class Quiz_Theme_Rect_Dark extends Quiz_Maker_Public{
             ";
         if (! $disable_hover_effect ) {
             $additional_css .= "
-            #ays-quiz-container-".$quiz_id.".ays_quiz_rect_dark .ays-quiz-answers .ays-field:hover {
+            #ays-quiz-container-".$quiz_id.".ays_quiz_rect_dark .ays-quiz-answers .ays-field:hover:not(.ays-answered-text-input) {
                 background: " . $this->hex2rgba($quiz->quizColors['Color'], '0.3') . ";
             }";
         }
@@ -136,6 +136,23 @@ class Quiz_Theme_Rect_Dark extends Quiz_Maker_Public{
                 $correct_answer_flag = 'ays_anser_image_class';
             }
 
+            if($answer_image == ""){
+                $answer_label_class = "";
+                $answer_img_label_class = " ays_position_initial ";
+            }else{
+                if($options['answersViewClass'] == 'grid'){
+                    $answer_label_class = " ays_empty_before_content ";
+                }else{
+                    $answer_label_class = "";
+                }
+
+                if( !empty($options['ans_right_wrong_icon']) && $options['ans_right_wrong_icon'] == 'none'){
+                    $answer_img_label_class = " ays_answer_caption ays_without_after_content ";
+                } else {
+                    $answer_img_label_class = " ays_answer_caption ";
+                }
+            }
+
             if ( $options["questionType"] == 'checkbox' ) {
 
                 $enable_max_selection_number = ( isset( $options['enable_max_selection_number'] ) && $options["enable_max_selection_number"] == 'on' ) ? true : false;
@@ -171,7 +188,7 @@ class Quiz_Theme_Rect_Dark extends Quiz_Maker_Public{
                 <input type='hidden' name='ays_answer_correct[]' value='0'/>
 
                 <input type='{$options["questionType"]}' name='ays_questions[ays-question-{$question_id}]' id='ays-answer-{$answer["id"]}-{$quiz_id}' value='{$answer["id"]}'/>
-                    <label for='ays-answer-{$answer["id"]}-{$quiz_id}' class='$class_label_for_keyboard'>
+                    <label for='ays-answer-{$answer["id"]}-{$quiz_id}' class='$answer_label_class $answer_img_label_class $class_label_for_keyboard'>
                         ". $numbering_type . $answer_content . "
                     </label>
                     <label for='ays-answer-{$answer["id"]}-{$quiz_id}' class='ays_answer_image {$correct_answer_flag}'>{$answer_image}</label>
@@ -179,7 +196,7 @@ class Quiz_Theme_Rect_Dark extends Quiz_Maker_Public{
             </div>";
         }
 
-        $script_data_arr['question_answer'] = $question_answer;
+        // $script_data_arr['question_answer'] = $question_answer;
 
         $answer_container_script_html .= '<script>';
         $answer_container_script_html .= "

@@ -23,5 +23,7 @@ class Quiz_Maker_Install_Skin extends Quiz_Maker_Plugin_Silent_Upgrader_Skin {
 		if ( ! empty( $errors ) ) {
 			wp_send_json_error( $errors );
 		}
+
+		return (array) $errors;
 	}
 }

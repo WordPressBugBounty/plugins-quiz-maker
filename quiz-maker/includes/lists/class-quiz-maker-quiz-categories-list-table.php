@@ -1,24 +1,63 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 ob_start();
 class Quiz_Categories_List_Table extends WP_List_Table{
     private $plugin_name;
     private $title_length;
+
+    /**
+     * The wp nonce of this plugin.
+     *
+     * @since    1.0.0
+     * @access   private
+     * @var      string    $ays_quiz_nonce
+     */
+    private $ays_quiz_nonce;
+
+    private $current_user_can_edit;
+
     /** Class constructor */
     public function __construct($plugin_name) {
         $this->plugin_name = $plugin_name;
         $this->title_length = Quiz_Maker_Admin::get_listtables_title_length('quiz_categories');
+        $this->current_user_can_edit = Quiz_Maker_Admin::quiz_maker_capabilities();
+
         parent::__construct( array(
             'singular' => __( 'Quiz Category', 'quiz-maker' ), //singular name of the listed records
             'plural'   => __( 'Quiz Categories', 'quiz-maker' ), //plural name of the listed records
             'ajax'     => false //does this table support ajax?
         ) );
         add_action( 'admin_notices', array( $this, 'quiz_category_notices' ) );
+
+        $this->ays_quiz_nonce = wp_create_nonce('ays_quiz_admin_quiz_categories_list_table_nonce');
+
+        if( empty($this->ays_quiz_nonce) ){
+            add_action('init', function () {
+                $this->ays_quiz_nonce = wp_create_nonce('ays_quiz_admin_quiz_categories_list_table_nonce');
+            }, 1);
+        }
     }
 
     /**
      * Override of table nav to avoid breaking with bulk actions & according nonce field
      */
     public function display_tablenav( $which ) {
+        // Run a security check.
+        if (empty($this->ays_quiz_nonce) || ! wp_verify_nonce( $this->ays_quiz_nonce, 'ays_quiz_admin_quiz_categories_list_table_nonce' ) ) {
+            // This nonce is not valid.
+            wp_die('Nonce verification failed!');
+        }
+
+        if( !is_user_logged_in()){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+
+        // Verify unauthorized requests
+        if( !current_user_can( $this->current_user_can_edit ) ){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+
         ?>
         <div class="tablenav <?php echo esc_attr( $which ); ?>">
 
@@ -42,6 +81,21 @@ class Quiz_Categories_List_Table extends WP_List_Table{
      * @see WP_List_Table::extra_tablenav()
      */
     public function extra_tablenav($which) {
+
+        // Run a security check.
+        if (empty($this->ays_quiz_nonce) || ! wp_verify_nonce( $this->ays_quiz_nonce, 'ays_quiz_admin_quiz_categories_list_table_nonce' ) ) {
+            // This nonce is not valid.
+            wp_die('Nonce verification failed!');
+        }
+
+        if( !is_user_logged_in()){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+
+        // Verify unauthorized requests
+        if( !current_user_can( $this->current_user_can_edit ) ){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
 
         $quiz_cat_description = array(
             "with"    => __( "With description", 'quiz-maker'),
@@ -79,6 +133,22 @@ class Quiz_Categories_List_Table extends WP_List_Table{
 
     
     protected function get_views() {
+
+        // Run a security check.
+        if (empty($this->ays_quiz_nonce) || ! wp_verify_nonce( $this->ays_quiz_nonce, 'ays_quiz_admin_quiz_categories_list_table_nonce' ) ) {
+            // This nonce is not valid.
+            wp_die('Nonce verification failed!');
+        }
+
+        if( !is_user_logged_in()){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+
+        // Verify unauthorized requests
+        if( !current_user_can( $this->current_user_can_edit ) ){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+
         $published_count = $this->published_quiz_categories_count();
         $unpublished_count = $this->unpublished_quiz_categories_count();
         $all_count = $this->all_record_count();
@@ -128,7 +198,22 @@ class Quiz_Categories_List_Table extends WP_List_Table{
      *
      * @return mixed
      */
-    public static function get_quiz_categories( $per_page = 20, $page_number = 1, $search = '' ) {
+    public function get_quiz_categories( $per_page = 20, $page_number = 1, $search = '' ) {
+
+        // Run a security check.
+        if (empty($this->ays_quiz_nonce) || ! wp_verify_nonce( $this->ays_quiz_nonce, 'ays_quiz_admin_quiz_categories_list_table_nonce' ) ) {
+            // This nonce is not valid.
+            wp_die('Nonce verification failed!');
+        }
+
+        if( !is_user_logged_in()){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+
+        // Verify unauthorized requests
+        if( !current_user_can( $this->current_user_can_edit ) ){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
 
         global $wpdb;
 
@@ -202,6 +287,21 @@ class Quiz_Categories_List_Table extends WP_List_Table{
     }
 
     public function add_edit_quiz_category(){
+        // Run a security check.
+        if (empty($this->ays_quiz_nonce) || ! wp_verify_nonce( $this->ays_quiz_nonce, 'ays_quiz_admin_quiz_categories_list_table_nonce' ) ) {
+            // This nonce is not valid.
+            wp_die('Nonce verification failed!');
+        }
+
+        if( !is_user_logged_in()){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+
+        // Verify unauthorized requests
+        if( !current_user_can( $this->current_user_can_edit ) ){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+
         global $wpdb;
         $quiz_category_table = $wpdb->prefix . 'aysquiz_quizcategories';
         $ays_change_type = (isset($_POST['ays_change_type'])) ? sanitize_text_field( $_POST['ays_change_type'] ) : '';
@@ -262,10 +362,12 @@ class Quiz_Categories_List_Table extends WP_List_Table{
                     }else{
                         $url = esc_url_raw( remove_query_arg(false) ) . '&status=' . $message;
                     }
-                    wp_redirect( $url );
+                    wp_safe_redirect( $url );
+                    exit;
                 }else{
                     $url = esc_url_raw( remove_query_arg(array('action', 'quiz_category')  ) ) . '&status=' . $message;
-                    wp_redirect( $url );
+                    wp_safe_redirect( $url );
+                    exit;
                 }
             }
         }
@@ -276,16 +378,48 @@ class Quiz_Categories_List_Table extends WP_List_Table{
      *
      * @param int $id customer ID
      */
-    public static function delete_quiz_categories( $id ) {
+    public function delete_quiz_categories( $id ) {
+
+        // Run a security check.
+        if (empty($this->ays_quiz_nonce) || ! wp_verify_nonce( $this->ays_quiz_nonce, 'ays_quiz_admin_quiz_categories_list_table_nonce' ) ) {
+            // This nonce is not valid.
+            wp_die('Nonce verification failed!');
+        }
+
+        if( !is_user_logged_in()){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+
+        // Verify unauthorized requests
+        if( !current_user_can( $this->current_user_can_edit ) ){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+
         global $wpdb;
         $wpdb->delete(
             "{$wpdb->prefix}aysquiz_quizcategories",
-            array( 'id' => $id ),
+            array( 'id' => intval($id) ),
             array( '%d' )
         );
     }
 
-    public static function ays_quiz_published_unpublished_quiz_categories( $id, $status = 'published' ) {
+    public function ays_quiz_published_unpublished_quiz_categories( $id, $status = 'published' ) {
+
+        // Run a security check.
+        if (empty($this->ays_quiz_nonce) || ! wp_verify_nonce( $this->ays_quiz_nonce, 'ays_quiz_admin_quiz_categories_list_table_nonce' ) ) {
+            // This nonce is not valid.
+            wp_die('Nonce verification failed!');
+        }
+
+        if( !is_user_logged_in()){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+
+        // Verify unauthorized requests
+        if( !current_user_can( $this->current_user_can_edit ) ){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+
         global $wpdb;
 
         $quizcategories_table = esc_sql( $wpdb->prefix . "aysquiz_quizcategories" );
@@ -322,6 +456,27 @@ class Quiz_Categories_List_Table extends WP_List_Table{
     }
 
     public function duplicate_quiz_categories( $id ){
+
+        // Run a security check.
+        if (empty($this->ays_quiz_nonce) || ! wp_verify_nonce( $this->ays_quiz_nonce, 'ays_quiz_admin_quiz_categories_list_table_nonce' ) ) {
+            // This nonce is not valid.
+            wp_die('Nonce verification failed!');
+        }
+
+        if( empty( $_GET["_wpnonce"] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET["_wpnonce"] ) ), $this->plugin_name . '-duplicate-quiz-category' ) ){
+            // This nonce is not valid.
+            wp_die('Nonce verification failed!');
+        }
+
+        if( !is_user_logged_in()){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+
+        // Verify unauthorized requests
+        if( !current_user_can( $this->current_user_can_edit ) ){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+
         global $wpdb;
 
         if ( is_null( $id ) || empty($id) || $id == 0 ) {
@@ -354,8 +509,9 @@ class Quiz_Categories_List_Table extends WP_List_Table{
         );
         if( $result >= 0 ){
             $message = "duplicated";
-            $url = esc_url_raw( remove_query_arg(array('action', 'quiz_category')  ) ) . '&status=' . $message;
-            wp_redirect( $url );
+            $url = esc_url_raw( remove_query_arg(array('action', 'quiz_category', '_wpnonce')  ) ) . '&status=' . $message;
+            wp_safe_redirect( $url );
+            exit;
         }
         
     }
@@ -366,7 +522,23 @@ class Quiz_Categories_List_Table extends WP_List_Table{
      *
      * @return null|string
      */
-    public static function record_count() {
+    public function record_count() {
+
+        // Run a security check.
+        if (empty($this->ays_quiz_nonce) || ! wp_verify_nonce( $this->ays_quiz_nonce, 'ays_quiz_admin_quiz_categories_list_table_nonce' ) ) {
+            // This nonce is not valid.
+            wp_die('Nonce verification failed!');
+        }
+
+        if( !is_user_logged_in()){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+
+        // Verify unauthorized requests
+        if( !current_user_can( $this->current_user_can_edit ) ){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+
         global $wpdb;
 
         $where = array();
@@ -405,7 +577,23 @@ class Quiz_Categories_List_Table extends WP_List_Table{
         return $wpdb->get_var( $sql );
     }
 
-    public static function all_record_count() {
+    public function all_record_count() {
+
+        // Run a security check.
+        if (empty($this->ays_quiz_nonce) || ! wp_verify_nonce( $this->ays_quiz_nonce, 'ays_quiz_admin_quiz_categories_list_table_nonce' ) ) {
+            // This nonce is not valid.
+            wp_die('Nonce verification failed!');
+        }
+
+        if( !is_user_logged_in()){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+
+        // Verify unauthorized requests
+        if( !current_user_can( $this->current_user_can_edit ) ){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+
         global $wpdb;
 
         $where = array();
@@ -444,7 +632,23 @@ class Quiz_Categories_List_Table extends WP_List_Table{
         return $wpdb->get_var( $sql );
     }
 
-    public static function published_quiz_categories_count() {
+    public function published_quiz_categories_count() {
+
+        // Run a security check.
+        if (empty($this->ays_quiz_nonce) || ! wp_verify_nonce( $this->ays_quiz_nonce, 'ays_quiz_admin_quiz_categories_list_table_nonce' ) ) {
+            // This nonce is not valid.
+            wp_die('Nonce verification failed!');
+        }
+
+        if( !is_user_logged_in()){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+
+        // Verify unauthorized requests
+        if( !current_user_can( $this->current_user_can_edit ) ){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+
         global $wpdb;
 
         $where = array();
@@ -485,7 +689,23 @@ class Quiz_Categories_List_Table extends WP_List_Table{
         return $wpdb->get_var( $sql );
     }
     
-    public static function unpublished_quiz_categories_count() {
+    public function unpublished_quiz_categories_count() {
+
+        // Run a security check.
+        if (empty($this->ays_quiz_nonce) || ! wp_verify_nonce( $this->ays_quiz_nonce, 'ays_quiz_admin_quiz_categories_list_table_nonce' ) ) {
+            // This nonce is not valid.
+            wp_die('Nonce verification failed!');
+        }
+
+        if( !is_user_logged_in()){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+
+        // Verify unauthorized requests
+        if( !current_user_can( $this->current_user_can_edit ) ){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+
         global $wpdb;
 
         $where = array();
@@ -595,7 +815,24 @@ class Quiz_Categories_List_Table extends WP_List_Table{
      * @return string
      */
     function column_title( $item ) {
-        $delete_nonce = wp_create_nonce( $this->plugin_name . '-delete-quiz-category' );
+
+        // Run a security check.
+        if (empty($this->ays_quiz_nonce) || ! wp_verify_nonce( $this->ays_quiz_nonce, 'ays_quiz_admin_quiz_categories_list_table_nonce' ) ) {
+            // This nonce is not valid.
+            wp_die('Nonce verification failed!');
+        }
+
+        if( !is_user_logged_in()){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+
+        // Verify unauthorized requests
+        if( !current_user_can( $this->current_user_can_edit ) ){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+
+        $delete_nonce    = wp_create_nonce( $this->plugin_name . '-delete-quiz-category' );
+        $duplicate_nonce = wp_create_nonce( $this->plugin_name . '-duplicate-quiz-category' );
 
         $quiz_categories_title_length = intval( $this->title_length );
 
@@ -607,7 +844,7 @@ class Quiz_Categories_List_Table extends WP_List_Table{
 
         $actions = array(
             'edit' => sprintf( '<a href="?page=%s&action=%s&quiz_category=%d">'. __('Edit', 'quiz-maker') .'</a>', esc_attr( $_REQUEST['page'] ), 'edit', absint( $item['id'] ) ),
-            'duplicate' => sprintf( '<a href="?page=%s&action=%s&quiz_category=%d">'. __('Duplicate', 'quiz-maker') .'</a>', esc_attr( $_REQUEST['page'] ), 'duplicate', absint( $item['id'] ) ),
+            'duplicate' => sprintf( '<a href="?page=%s&action=%s&_wpnonce=%s&quiz_category=%d">'. __('Duplicate', 'quiz-maker') .'</a>', esc_attr( $_REQUEST['page'] ), 'duplicate', $duplicate_nonce, absint( $item['id'] ) ),
         );
         
         if(intval($item['id']) !== 1){
@@ -678,6 +915,21 @@ class Quiz_Categories_List_Table extends WP_List_Table{
      * @return array
      */
     function get_columns() {
+        // Run a security check.
+        if (empty($this->ays_quiz_nonce) || ! wp_verify_nonce( $this->ays_quiz_nonce, 'ays_quiz_admin_quiz_categories_list_table_nonce' ) ) {
+            // This nonce is not valid.
+            wp_die('Nonce verification failed!');
+        }
+
+        if( !is_user_logged_in()){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+
+        // Verify unauthorized requests
+        if( !current_user_can( $this->current_user_can_edit ) ){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+
         $columns = array(
             'cb'            => '<input type="checkbox" />',
             'title'         => __( 'Title', 'quiz-maker' ),
@@ -730,6 +982,22 @@ class Quiz_Categories_List_Table extends WP_List_Table{
      * Handles data query and filter, sorting, and pagination.
      */
     public function prepare_items() {
+
+        // Run a security check.
+        if (empty($this->ays_quiz_nonce) || ! wp_verify_nonce( $this->ays_quiz_nonce, 'ays_quiz_admin_quiz_categories_list_table_nonce' ) ) {
+            // This nonce is not valid.
+            wp_die('Nonce verification failed!');
+        }
+
+        if( !is_user_logged_in()){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+
+        // Verify unauthorized requests
+        if( !current_user_can( $this->current_user_can_edit ) ){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+
         global $wpdb;
 
         $this->_column_headers = $this->get_column_info();
@@ -739,7 +1007,7 @@ class Quiz_Categories_List_Table extends WP_List_Table{
 
         $per_page     = $this->get_items_per_page( 'quiz_categories_per_page', 20 );
         $current_page = $this->get_pagenum();
-        $total_items  = self::record_count();
+        $total_items  = $this->record_count();
 
         $this->set_pagination_args( array(
             'total_items' => $total_items, //WE have to calculate the total number of items
@@ -750,85 +1018,128 @@ class Quiz_Categories_List_Table extends WP_List_Table{
 
         $do_search = ( $search ) ? sprintf(" title LIKE '%%%s%%' ", esc_sql( $wpdb->esc_like( $search ) ) ) : '';
 
-        $this->items = self::get_quiz_categories( $per_page, $current_page , $do_search );
+        $this->items = $this->get_quiz_categories( $per_page, $current_page , $do_search );
     }
 
     public function process_bulk_action() {
 
-        //Detect when a bulk action is being triggered...
-        if ( 'delete' === $this->current_action() ) {
+        // Detect when a bulk action is being triggered.
+        $action = $this->current_action();
+        if ( ! $action ) {
+            return;
+        }
 
-            // In our file that handles the request, verify the nonce.
-            $nonce = esc_attr( $_REQUEST['_wpnonce'] );
+        if( !is_user_logged_in()){
+            return;
+        }
 
-            if ( ! wp_verify_nonce( $nonce, $this->plugin_name . '-delete-quiz-category' ) ) {
-                die( 'Go get a life script kiddies' );
+        // Verify unauthorized requests
+        if( !current_user_can( $this->current_user_can_edit ) ){
+            return;
+        }
+
+        if( current_user_can( $this->current_user_can_edit ) && is_user_logged_in() ){
+
+            //Detect when a bulk action is being triggered...
+            if ( 'delete' === $this->current_action() ) {
+
+                // In our file that handles the request, verify the nonce.
+                $nonce = esc_attr( $_REQUEST['_wpnonce'] );
+
+                if ( ! wp_verify_nonce( $nonce, $this->plugin_name . '-delete-quiz-category' ) ) {
+                    die( 'Go get a life script kiddies' );
+                }
+                else {
+                    $this->delete_quiz_categories( absint( $_GET['quiz_category'] ) );
+
+                    // esc_url_raw() is used to prevent converting ampersand in url to "#038;"
+                    // add_query_arg() return the current url
+
+                    $url = esc_url_raw( remove_query_arg(array('action', 'quiz_category', '_wpnonce')  ) ) . '&status=deleted';
+                    wp_safe_redirect( $url );
+                    exit;
+                }
+
             }
-            else {
-                self::delete_quiz_categories( absint( $_GET['quiz_category'] ) );
+
+            // If the delete bulk action is triggered
+            if ( ( isset( $_POST['action'] ) && $_POST['action'] == 'bulk-delete' ) || ( isset( $_POST['action2'] ) && $_POST['action2'] == 'bulk-delete' ) ) {
+
+                $delete_ids = ( isset( $_POST['bulk-delete'] ) && ! empty( $_POST['bulk-delete'] ) ) ? esc_sql( $_POST['bulk-delete'] ) : array();
+
+                // loop over the array of record IDs and delete them
+                foreach ( $delete_ids as $id ) {
+                    $this->delete_quiz_categories( $id );
+                }
 
                 // esc_url_raw() is used to prevent converting ampersand in url to "#038;"
                 // add_query_arg() return the current url
-
                 $url = esc_url_raw( remove_query_arg(array('action', 'quiz_category', '_wpnonce')  ) ) . '&status=deleted';
-                wp_redirect( $url );
+                wp_safe_redirect( $url );
+                exit;
+            } elseif ((isset($_POST['action']) && $_POST['action'] == 'bulk-published')
+                      || (isset($_POST['action2']) && $_POST['action2'] == 'bulk-published')
+            ) {
+
+                $published_ids = ( isset( $_POST['bulk-delete'] ) && ! empty( $_POST['bulk-delete'] ) ) ? esc_sql( $_POST['bulk-delete'] ) : array();
+
+                // loop over the array of record IDs and mark as read them
+
+                foreach ( $published_ids as $id ) {
+                    $this->ays_quiz_published_unpublished_quiz_categories( $id , 'published' );
+                }
+
+                // esc_url_raw() is used to prevent converting ampersand in url to "#038;"
+                // add_query_arg() return the current url
+                $url = esc_url_raw( remove_query_arg(array('action', 'quiz_category', '_wpnonce')  ) ) . '&status=published';
+                wp_safe_redirect( $url );
+                exit;
+            } elseif ((isset($_POST['action']) && $_POST['action'] == 'bulk-unpublished')
+                      || (isset($_POST['action2']) && $_POST['action2'] == 'bulk-unpublished')
+            ) {
+
+                $unpublished_ids = ( isset( $_POST['bulk-delete'] ) && ! empty( $_POST['bulk-delete'] ) ) ? esc_sql( $_POST['bulk-delete'] ) : array();
+
+                // loop over the array of record IDs and mark as read them
+
+                foreach ( $unpublished_ids as $id ) {
+                    $this->ays_quiz_published_unpublished_quiz_categories( $id , 'unpublished' );
+                }
+
+                // esc_url_raw() is used to prevent converting ampersand in url to "#038;"
+                // add_query_arg() return the current url
+                $url = esc_url_raw( remove_query_arg(array('action', 'quiz_category', '_wpnonce')  ) ) . '&status=unpublished';
+                wp_safe_redirect( $url );
+                exit;
             }
-
-        }
-
-        // If the delete bulk action is triggered
-        if ( ( isset( $_POST['action'] ) && $_POST['action'] == 'bulk-delete' ) || ( isset( $_POST['action2'] ) && $_POST['action2'] == 'bulk-delete' ) ) {
-
-            $delete_ids = ( isset( $_POST['bulk-delete'] ) && ! empty( $_POST['bulk-delete'] ) ) ? esc_sql( $_POST['bulk-delete'] ) : array();
-
-            // loop over the array of record IDs and delete them
-            foreach ( $delete_ids as $id ) {
-                self::delete_quiz_categories( $id );
-
-            }
-
-            // esc_url_raw() is used to prevent converting ampersand in url to "#038;"
-            // add_query_arg() return the current url
-            $url = esc_url_raw( remove_query_arg(array('action', 'quiz_category', '_wpnonce')  ) ) . '&status=deleted';
-            wp_redirect( $url );
-        } elseif ((isset($_POST['action']) && $_POST['action'] == 'bulk-published')
-                  || (isset($_POST['action2']) && $_POST['action2'] == 'bulk-published')
-        ) {
-
-            $published_ids = ( isset( $_POST['bulk-delete'] ) && ! empty( $_POST['bulk-delete'] ) ) ? esc_sql( $_POST['bulk-delete'] ) : array();
-
-            // loop over the array of record IDs and mark as read them
-
-            foreach ( $published_ids as $id ) {
-                self::ays_quiz_published_unpublished_quiz_categories( $id , 'published' );
-            }
-
-            // esc_url_raw() is used to prevent converting ampersand in url to "#038;"
-            // add_query_arg() return the current url
-            $url = esc_url_raw( remove_query_arg(array('action', 'quiz_category', '_wpnonce')  ) ) . '&status=published';
-            wp_redirect( $url );
-        } elseif ((isset($_POST['action']) && $_POST['action'] == 'bulk-unpublished')
-                  || (isset($_POST['action2']) && $_POST['action2'] == 'bulk-unpublished')
-        ) {
-
-            $unpublished_ids = ( isset( $_POST['bulk-delete'] ) && ! empty( $_POST['bulk-delete'] ) ) ? esc_sql( $_POST['bulk-delete'] ) : array();
-
-            // loop over the array of record IDs and mark as read them
-
-            foreach ( $unpublished_ids as $id ) {
-                self::ays_quiz_published_unpublished_quiz_categories( $id , 'unpublished' );
-            }
-
-            // esc_url_raw() is used to prevent converting ampersand in url to "#038;"
-            // add_query_arg() return the current url
-            $url = esc_url_raw( remove_query_arg(array('action', 'quiz_category', '_wpnonce')  ) ) . '&status=unpublished';
-            wp_redirect( $url );
+        } else {
+            return;
         }
     }
 
 
 
     public function quiz_category_notices(){
+
+        // Run a security check.
+        if (empty($this->ays_quiz_nonce) || ! wp_verify_nonce( $this->ays_quiz_nonce, 'ays_quiz_admin_quiz_categories_list_table_nonce' ) ) {
+            // This nonce is not valid.
+            wp_die('Nonce verification failed!');
+        }
+
+        if( !is_user_logged_in()){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+
+        // Verify unauthorized requests
+        if( !current_user_can( $this->current_user_can_edit ) ){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+        
+        if( empty($_REQUEST['status']) ){
+            return;
+        }
+
         $status = (isset($_REQUEST['status'])) ? sanitize_text_field( $_REQUEST['status'] ) : '';
 
         if ( empty( $status ) )

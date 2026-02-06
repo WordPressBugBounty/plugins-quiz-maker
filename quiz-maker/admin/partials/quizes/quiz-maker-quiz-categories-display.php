@@ -1,5 +1,7 @@
 <?php
 
+if (!defined('ABSPATH')) exit; // Exit if accessed directly
+
 $action = ( isset($_GET['action']) ) ? sanitize_text_field( $_GET['action'] ) : '';
 $id     = ( isset($_GET['quiz_category']) ) ? absint( sanitize_text_field( $_GET['quiz_category'] ) ) : null;
 

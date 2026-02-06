@@ -264,7 +264,62 @@ function aysAnimateStep(animation, current_fs, next_fs){
     }
 }
 
-
+function goToLastPage(e){
+    if(typeof explanationTimeout != 'undefined'){
+        clearTimeout(explanationTimeout);
+    }
+    if ( typeof aysTimerInterval !== "undefined" ) {
+        clearInterval(aysTimerInterval);
+    }
+    var container = jQuery(e.target).parents('.ays-quiz-container');
+    var totalSteps = container.find('div.step').length;
+    var currentStep = container.find('div.step.active-step');
+    var thankYouStep = container.find('div.step.ays_thank_you_fs');
+    var infoFormLast = thankYouStep.prev().find('div.information_form');
+    var questions_count = jQuery(e.target).parents('form').find('div[data-question-id]').length;
+    if(container.find('.ays-live-bar-percent').hasClass('ays-live-bar-count')){
+        container.find('.ays-live-bar-percent').text(questions_count);
+    }else{
+        container.find('.ays-live-bar-fill').animate({
+            width: '100%'
+        });
+        container.find('.ays-live-bar-percent').text(100);
+    }
+    container.find('.ays-quiz-timer').slideUp();
+    setTimeout(function () {                                        
+        container.find('.ays-quiz-timer').parent().hide();
+    },300);
+    if(infoFormLast.length == 0){
+        if (currentStep.hasClass('ays_thank_you_fs') === false) {
+            if( ! container.hasClass('ays-quiz-container-go-to-last-page') ){
+                container.addClass('ays-quiz-container-go-to-last-page');
+            }
+            
+            var steps = totalSteps - 3;
+            container.find('div.step').each(function (index) {
+                if (jQuery(this).hasClass('ays_thank_you_fs')) {
+                    jQuery(this).addClass('active-step')
+                }else{
+                    jQuery(this).css('display', 'none');
+                }
+            });
+            container.find('input.ays_finish').trigger('click');
+        }
+    }else{
+        container.find('.ays-quiz-timer').parent().hide();
+        container.find('.ays-live-bar-wrap').removeClass('rubberBand').addClass('bounceOut');
+        setTimeout(function () {
+            container.find('.ays-live-bar-wrap').css('display','none');
+        },300);
+        aysAnimateStep(container.data('quest-effect'), currentStep, infoFormLast.parent());
+        container.find('div.step').each(function (index) {
+            jQuery(this).css('display', 'none');
+            jQuery(this).removeClass('active-step')
+        });
+        infoFormLast.parent().css('display', 'flex');
+        infoFormLast.parent().addClass('active-step'); 
+    }
+}
 
 /**
  * @return {string}

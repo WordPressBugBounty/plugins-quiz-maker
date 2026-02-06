@@ -3,8 +3,8 @@ Contributors: ays-pro
 Donate link: https://ays-pro.com/wordpress/quiz-maker
 Tags:  exam, quiz, quizzes, education, quiz maker
 Requires at least: 4.0
-Tested up to: 6.8
-Stable tag: 6.7.0.65
+Tested up to: 6.9
+Stable tag: 6.7.1.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -155,7 +155,7 @@ You can choose one of them and then customize it with our 50+ style options (col
 
 You can restrict your users by enabling and selecting user roles from the dashboard and only selected users with given roles can pass your quiz. If you don't want to restrict your quiz by role, we have created another opportunity for you, just enable **"Only for logged in users"** option and write some message to non-logged-in users, in this way you can enlarge your community. If your quiz is interesting non-registered users will register on your website for passing the quiz and you will have ultra **traffic** on your website. Please note that by selecting restriction by user roles, the quiz will automatically select only for logged-in users option.
 
-[PRO](https://ays-pro.com/wordpress/quiz-maker) | [DEMO](https://quiz-plugin.com/wordpress-quiz-plugin-pro-demo/) | [DOCUMENTATION](https://quiz-plugin.com/docs/) | [ALL FEATURES](https://ays-pro.com/quiz-maker-all-features)
+[PRO](https://ays-pro.com/wordpress/quiz-maker) | [DEMO](https://quiz-plugin.com/wordpress-quiz-plugin-pro-demo/) | [DOCUMENTATION](https://quiz-plugin.com/docs/) | [ALL FEATURES](https://quiz-plugin.com/features/)
 
 = Quiz social sharing =
 
@@ -420,6 +420,159 @@ For example, to add a squared symbol, you need to write down the following sign 
 
 == Changelog ==
 
+= 6.7.1.5 ( Feb 04, 2026 ) =
+* Added: Excerpt words count option for Question reports list table
+* Tested: Compatible up to WP 6.9.1
+
+= 6.7.1.4 ( Feb 02, 2026 ) =
+* Added: Admin Note mobile letter spacing option for the Quick Quiz Popup
+* Improved: Code correction on the General Settings page
+
+= 6.7.1.3 ( Jan 30, 2026 ) =
+* Improved: Code correction on the admin dashboard
+* Fixed: Minor issues in admin dashboard list tables
+
+= 6.7.1.2 ( Jan 23, 2026 ) =
+* Improved: Code correction on the General Settings page
+
+= 6.7.1.1 ( Jan 21, 2026 ) =
+* Added: Admin Note mobile letter spacing option for the Quick Quiz Popup
+* Improved: Code correction on the General Settings page
+
+= 6.7.1.0 ( Jan 19, 2026 ) =
+* Added: Font weight option for Wrong answer on mobile devices
+* Improved: Code correction on the General Settings page
+
+= 6.7.0.99 ( Jan 16, 2026 ) =
+* Added: Border radius option for question images
+* Improved: Code correction on the admin dashboard
+
+= 6.7.0.98 ( Jan 14, 2026 ) =
+* Improved: Some changes on the admin dashboard
+* Improved: Code correction on the General Settings page
+
+= 6.7.0.97 ( Jan 12, 2026 ) =
+* Added: Font weight option for Right answer on mobile devices
+* Updated: POT file
+
+= 6.7.0.96 ( Jan 09, 2026 ) =
+* Added: Site description message variable on the General Settings Page
+* Improved: Some changes on the General Settings page
+
+= 6.7.0.95 ( Jan 07, 2026 ) =
+* Added: Font weight option for Question explanation on mobile devices
+* Improved: Some changes on the quizzes edit page
+
+= 6.7.0.94 ( Jan 05, 2026 ) =
+* Added: Font weight option for admin notes on mobile devices
+* Fixed: Check button position on the front end
+
+= 6.7.0.93 ( Dec 29, 2025 ) =
+* Added: Show Quiz Image option
+* Improved: Some changes on the quizzes edit page
+
+= 6.7.0.92 ( Dec 26, 2025 ) =
+* Added: Admin Note mobile text transformation option for the Quick Quiz Popup
+
+= 6.7.0.91 ( Dec 24, 2025 ) =
+* Improved: Some changes on the admin dashboard
+* Improved: Code correction on the quizzes edit page
+
+= 6.7.0.90 ( Dec 17, 2025 ) =
+* Updated: POT file
+* Fixed: Fatal Error on the WP Dashboard page widget
+
+= 6.7.0.89 ( Dec 16, 2025 ) =
+* Improved: Permission checks and nonce validation in admin list tables
+* Improved: Validation and access control
+
+= 6.7.0.88 ( Dec 10, 2025 ) =
+* Added: Admin Note mobile text transformation option for the Quick Quiz Popup
+* Improved: Some changes on the admin dashboard
+
+= 6.7.0.87 ( Dec 08, 2025 ) =
+* Added: Disable Live Chat icon option on the General Settings Page
+* Improved: Code correction on the admin dashboard
+
+= 6.7.0.86 ( Dec 04, 2025 ) =
+* Added: Letter spacing option for wrong answer text on mobile devices
+* Improved: Some changes on the admin dashboard
+
+= 6.7.0.85 ( Dec 01, 2025 ) =
+* Added: Letter spacing option for right answer text on mobile devices
+* Improved: Several enhancements on the Question Edit page
+* Tested: Compatible up to WP 6.9
+* Fixed: CSS conflict with the WPSchoolPress plugin
+
+= 6.7.0.84 ( Nov 27, 2025 ) =
+* Added: Edit Answer Image icon on the Question Edit page
+* Added: Admin notice on the Quiz Edit page
+
+= 6.7.0.83 ( Nov 24, 2025 ) =
+* Improved: Some changes on the admin dashboard
+
+= 6.7.0.82 ( Nov 19, 2025 ) =
+* Added: "Black Friday Deal" Banner
+* Improved: Some changes on the admin dashboard
+
+= 6.7.0.81 ( Nov 17, 2025 ) =
+* Fixed: Issue in the Reviews list table
+* Fixed: Front-end issue when checking correct answers
+
+= 6.7.0.80 ( Nov 12, 2025 ) =
+* Added: Question explanation text Letter Spacing option for mobile devices
+
+= 6.7.0.79 ( Nov 10, 2025 ) =
+* Fixed: Debugging problem
+* Updated: POT file
+
+= 6.7.0.78 ( Nov 10, 2025 ) =
+* Added: Admin note text Letter Spacing option for mobile devices
+
+= 6.7.0.77 ( Nov 07, 2025 ) =
+* Added: Wrong answer text decoration option for mobile devices
+* Improved: Some changes on the admin dashboard
+
+= 6.7.0.76 ( Nov 05, 2025 ) =
+* Added: Caption position of the image answer option
+* Changed: Moved the Answer list view option to the Styles tab
+
+= 6.7.0.75 ( Nov 03, 2025 ) =
+* Added: Show answer caption option
+
+= 6.7.0.74 ( Oct 31, 2025 ) =
+* Added: Answer image height option
+
+= 6.7.0.73 ( Oct 28, 2025 ) =
+* Added: Answer image functionality
+
+= 6.7.0.72 ( Oct 24, 2025 ) =
+* Added: Right answer text decoration option for mobile devices
+
+= 6.7.0.71 ( Oct 22, 2025 ) =
+* Improved: Code correction on the admin dashboard
+
+= 6.7.0.70 ( Oct 20, 2025 ) =
+* Improved: Some changes on the admin dashboard
+
+= 6.7.0.69 ( Oct 17, 2025 ) =
+* Added: Question explanation text decoration option for mobile devices
+
+= 6.7.0.68 ( Oct 13, 2025 ) =
+* Improved: Quiz edit page tab navigation on mobile and tablet devices
+* Fixed: Image display issue on the questions list table
+
+= 6.7.0.67 ( Oct 8, 2025 ) =
+* Changed: Quiz Animation effect default value to None
+* Fixed: Question No influence to score and Checked answer options conflict
+* Fixed: Checkbox minimum selection number and Finish the quiz after one wrong answer options conflict
+* Fixed: Finish button and Checkbox minimum selection number option conflict
+* Fixed: Buttons border styles problem on the front-end
+
+= 6.7.0.66 ( Oct 4, 2025 ) =
+* Changed: Show correct answers option logic during the quiz
+* Fixed: Code correction on the front-end
+
 = 6.7.0.65 ( Oct 1, 2025 ) =
 * Improved: Some changes on the admin dashboard
 * Fixed: Code correction when submitting quiz on the front-end
@@ -478,7 +631,7 @@ For example, to add a squared symbol, you need to write down the following sign 
 
 = 6.7.0.50 ( Aug 14, 2025 ) =
 * Improved: Some Style changes on the quiz edit page
-* Improved: Code correction on the on the General Settings Page
+* Improved: Code correction on the General Settings Page
 
 = 6.7.0.49 ( Aug 11, 2025 ) =
 * Updated: POT file

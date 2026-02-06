@@ -1,17 +1,42 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 class All_Reviews_List_Table extends WP_List_Table{
     private $plugin_name;
     private $title_length;
+
+    /**
+     * The wp nonce of this plugin.
+     *
+     * @since    1.0.0
+     * @access   private
+     * @var      string    $ays_quiz_nonce
+     */
+    private $ays_quiz_nonce;
+
+    private $current_user_can_edit;
+
+
     /** Class constructor */
     public function __construct($plugin_name) {
         $this->plugin_name = $plugin_name;
         $this->title_length = Quiz_Maker_Admin::get_listtables_title_length('quiz_reviews');
+        $this->current_user_can_edit = Quiz_Maker_Admin::quiz_maker_capabilities();
+
         parent::__construct( array(
             'singular' => __( 'Review', 'quiz-maker' ), //singular name of the listed records
             'plural'   => __( 'Reviews', 'quiz-maker' ), //plural name of the listed records
             'ajax'     => false //does this table support ajax?
         ) );
         add_action( 'admin_notices', array( $this, 'reviews_notices' ) );
+
+        $this->ays_quiz_nonce = wp_create_nonce('ays_quiz_admin_all_reviews_list_table_nonce');
+
+        if( empty($this->ays_quiz_nonce) ){
+            add_action('init', function () {
+                $this->ays_quiz_nonce = wp_create_nonce('ays_quiz_admin_all_reviews_list_table_nonce');
+            }, 1);
+        }
 
     }
 
@@ -44,6 +69,21 @@ class All_Reviews_List_Table extends WP_List_Table{
     public function extra_tablenav($which) {
         global $wpdb;
 
+        // Run a security check.
+        if (empty($this->ays_quiz_nonce) || ! wp_verify_nonce( $this->ays_quiz_nonce, 'ays_quiz_admin_all_reviews_list_table_nonce' ) ) {
+            // This nonce is not valid.
+            wp_die('Nonce verification failed!');
+        }
+
+        if( !is_user_logged_in()){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+
+        // Verify unauthorized requests
+        if( !current_user_can( $this->current_user_can_edit ) ){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+
         $quizes_table  = esc_sql( $wpdb->prefix . "aysquiz_quizes" );
 
         $titles_sql = "SELECT {$quizes_table}.title,
@@ -54,7 +94,7 @@ class All_Reviews_List_Table extends WP_List_Table{
         $quiz_id = null;
 
         if( isset( $_GET['filterby'] )){
-            $quiz_id = absint( sanitize_text_field( $_GET['filterby'] ) );
+            $quiz_id = absint( $_GET['filterby'] );
         }
 
         $quiz_reviews = array(
@@ -68,7 +108,7 @@ class All_Reviews_List_Table extends WP_List_Table{
         $review_key = null;
 
         if( isset( $_GET['filterbyreview'] )){
-            $review_key = absint( sanitize_text_field( $_GET['filterbyreview'] ) );
+            $review_key = absint( $_GET['filterbyreview'] );
         }
 
         $quiz_comments = array(
@@ -79,7 +119,7 @@ class All_Reviews_List_Table extends WP_List_Table{
         $comment_key = null;
 
         if( isset( $_GET['filterbycomment'] )){
-            $comment_key = sanitize_text_field( $_GET['filterbycomment'] );
+            $comment_key = sanitize_text_field( wp_unslash($_GET['filterbycomment']) );
         }
 
         ?>
@@ -125,11 +165,27 @@ class All_Reviews_List_Table extends WP_List_Table{
             <input type="button" id="doaction-quiz-<?php echo esc_attr( $which ); ?>" class="ays-quiz-question-tab-all-filter-button-<?php echo esc_attr( $which ); ?> button" value="<?php echo esc_html__( "Filter", 'quiz-maker' ); ?>">
         </div>
 
-        <a style="" href="?page=<?php echo esc_attr( sanitize_text_field( $_REQUEST['page'] ) ); ?>" class="button"><?php echo esc_html__( "Clear filters", 'quiz-maker' ); ?></a>
+        <a style="" href="?page=<?php echo !empty($_REQUEST['page']) ? esc_attr( $_REQUEST['page'] ) : ''; ?>" class="button"><?php echo esc_html__( "Clear filters", 'quiz-maker' ); ?></a>
         <?php
     }
 
     protected function get_views() {
+
+        // Run a security check.
+        if (empty($this->ays_quiz_nonce) || ! wp_verify_nonce( $this->ays_quiz_nonce, 'ays_quiz_admin_all_reviews_list_table_nonce' ) ) {
+            // This nonce is not valid.
+            wp_die( esc_html__( 'Nonce verification failed!', 'quiz-maker' ) );
+        }
+
+        if( !is_user_logged_in()){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+
+        // Verify unauthorized requests
+        if( !current_user_can( $this->current_user_can_edit ) ){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+
         $all_count = $this->all_record_count();
         $filter_by_quiz = (isset($_GET['filterby']) && $_GET['filterby'] > 0) ? esc_attr($_GET['filterby']) : '';
         $avg_score = '';
@@ -143,9 +199,9 @@ class All_Reviews_List_Table extends WP_List_Table{
         $selected_all = "";
         $selected_0 = "";
         $selected_1 = "";
-        if( isset( $_REQUEST['fstatus'] ) && is_numeric( $_REQUEST['fstatus'] ) && ! is_null( sanitize_text_field( $_REQUEST['fstatus'] ) ) ){
+        if( isset( $_REQUEST['fstatus'] ) && is_numeric( $_REQUEST['fstatus'] ) && ! is_null( $_REQUEST['fstatus'] ) ){
 
-            $fstatus  = absint( sanitize_text_field( $_REQUEST['fstatus'] ) );
+            $fstatus  = absint( $_REQUEST['fstatus'] );
 
             switch( $fstatus ){
                 case 0:
@@ -163,7 +219,7 @@ class All_Reviews_List_Table extends WP_List_Table{
         }
 
         $status_links = array(
-            "all" => "<a ".$selected_all." href='?page=".esc_attr( $_REQUEST['page'] )."'>". __( 'All', 'quiz-maker' )." (".$all_count.")</a> ".$avg_score,
+            "all" => "<a ".$selected_all." href='?page=". ( !empty($_REQUEST['page']) ? esc_attr( $_REQUEST['page'] ) : '' ) ."'>". __( 'All', 'quiz-maker' )." (".$all_count.")</a> ".$avg_score,
         );
         return $status_links;
     }
@@ -176,18 +232,33 @@ class All_Reviews_List_Table extends WP_List_Table{
      *
      * @return mixed
      */
-    public static function get_reviews( $per_page = 50, $page_number = 1 ) {
+    public function get_reviews( $per_page = 50, $page_number = 1 ) {
         global $wpdb;
+
+        // Run a security check.
+        if (empty($this->ays_quiz_nonce) || ! wp_verify_nonce( $this->ays_quiz_nonce, 'ays_quiz_admin_all_reviews_list_table_nonce' ) ) {
+            // This nonce is not valid.
+            wp_die('Nonce verification failed!');
+        }
+
+        if( !is_user_logged_in()){
+            return array();
+        }
+
+        // Verify unauthorized requests
+        if( !current_user_can( $this->current_user_can_edit ) ){
+            return array();
+        }
 
         $rates_table  = esc_sql( $wpdb->prefix . "aysquiz_rates" );
 
         $sql = "SELECT * FROM {$rates_table}";
 
-        $sql .= self::get_where_condition();
+        $sql .= $this->get_where_condition();
 
         if ( ! empty( $_REQUEST['orderby'] ) ) {
 
-            $order_by  = ( isset( $_REQUEST['orderby'] ) && sanitize_text_field( $_REQUEST['orderby'] ) != '' ) ? sanitize_text_field( $_REQUEST['orderby'] ) : 'rate_date';
+            $order_by  = ( isset( $_REQUEST['orderby'] ) && sanitize_text_field( wp_unslash($_REQUEST['orderby']) ) != '' ) ? sanitize_text_field( wp_unslash($_REQUEST['orderby']) ) : 'rate_date';
             $order_by .= ( ! empty( $_REQUEST['order'] ) && strtolower( $_REQUEST['order'] ) == 'asc' ) ? ' ASC' : ' DESC';
 
             $sql_orderby = sanitize_sql_orderby($order_by);
@@ -212,13 +283,28 @@ class All_Reviews_List_Table extends WP_List_Table{
         return $result;
     }
 
-    public static function get_where_condition(){
+    public function get_where_condition(){
         global $wpdb;
+
+        // Run a security check.
+        if (empty($this->ays_quiz_nonce) || ! wp_verify_nonce( $this->ays_quiz_nonce, 'ays_quiz_admin_all_reviews_list_table_nonce' ) ) {
+            // This nonce is not valid.
+            wp_die( esc_html__( 'Nonce verification failed!', 'quiz-maker' ) );
+        }
+
+        if( !is_user_logged_in()){
+            return '';
+        }
+
+        // Verify unauthorized requests
+        if( !current_user_can( $this->current_user_can_edit ) ){
+            return '';
+        }
 
         $where = array();
         $sql = '';
 
-        $search = ( isset( $_REQUEST['s'] ) ) ? esc_sql( $wpdb->esc_like( sanitize_text_field( $_REQUEST['s'] ) ) ) : false;
+        $search = ( isset( $_REQUEST['s'] ) ) ? esc_sql( $wpdb->esc_like( sanitize_text_field( wp_unslash($_REQUEST['s']) ) ) ) : false;
         if( $search ){
             $s = array();
             $s[] = sprintf( " `id` LIKE '%%%s%%' ", esc_sql( $wpdb->esc_like( $search ) ) );
@@ -230,18 +316,18 @@ class All_Reviews_List_Table extends WP_List_Table{
             $where[] = ' ( ' . implode(' OR ', $s) . ' ) ';
         }
 
-        if( isset( $_REQUEST['filterby'] ) && absint( sanitize_text_field( $_REQUEST['filterby'] ) ) > 0){
-            $quiz_id = intval( sanitize_text_field( $_REQUEST['filterby'] ) );
+        if( isset( $_REQUEST['filterby'] ) && intval( $_REQUEST['filterby'] ) > 0){
+            $quiz_id = intval( $_REQUEST['filterby'] );
             $where[] = ' `quiz_id` = '. $quiz_id .' ';
         }
 
-        if( isset( $_REQUEST['filterbyreview'] ) && absint( sanitize_text_field( $_REQUEST['filterbyreview'] ) ) > 0){
-            $review_key = intval( sanitize_text_field( $_REQUEST['filterbyreview'] ) );
+        if( isset( $_REQUEST['filterbyreview'] ) && intval( $_REQUEST['filterbyreview'] ) > 0){
+            $review_key = intval( $_REQUEST['filterbyreview'] );
             $where[] = ' `score` = '. $review_key .' ';
         }
 
-        if( isset( $_REQUEST['filterbycomment'] ) && sanitize_text_field( $_REQUEST['filterbycomment'] ) != ""){
-            $comment_key = sanitize_text_field( $_REQUEST['filterbycomment'] );
+        if( isset( $_REQUEST['filterbycomment'] ) && sanitize_text_field( wp_unslash($_REQUEST['filterbycomment']) ) != ""){
+            $comment_key = sanitize_text_field( wp_unslash($_REQUEST['filterbycomment']) );
 
             switch ( $comment_key ) {
                 case 'with_answer':
@@ -265,12 +351,27 @@ class All_Reviews_List_Table extends WP_List_Table{
      *
      * @param int $id customer ID
      */
-    public static function delete_reviews( $id ) {
+    public function delete_reviews( $id ) {
         global $wpdb;
+
+        // Run a security check.
+        if (empty($this->ays_quiz_nonce) || ! wp_verify_nonce( $this->ays_quiz_nonce, 'ays_quiz_admin_all_reviews_list_table_nonce' ) ) {
+            // This nonce is not valid.
+            wp_die( esc_html__( 'Nonce verification failed!', 'quiz-maker' ) );
+        }
+
+        if( !is_user_logged_in()){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+
+        // Verify unauthorized requests
+        if( !current_user_can( $this->current_user_can_edit ) ){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
 
         $rates_table  = esc_sql( $wpdb->prefix . "aysquiz_rates" );
 
-        $id = ( isset( $id ) && $id != '' ) ? absint( sanitize_text_field ( $id ) ) : null;
+        $id = ( isset( $id ) && $id != '' ) ? absint( $id ) : null;
 
         if ( ! is_null( $id ) && $id > 0 ) {
             $wpdb->delete(
@@ -286,12 +387,27 @@ class All_Reviews_List_Table extends WP_List_Table{
      *
      * @param int $id customer ID
      */
-    public static function delete_only_reviews( $id ) {
+    public function delete_only_reviews( $id ) {
         global $wpdb;
+
+        // Run a security check.
+        if (empty($this->ays_quiz_nonce) || ! wp_verify_nonce( $this->ays_quiz_nonce, 'ays_quiz_admin_all_reviews_list_table_nonce' ) ) {
+            // This nonce is not valid.
+            wp_die( esc_html__( 'Nonce verification failed!', 'quiz-maker' ) );
+        }
+
+        if( !is_user_logged_in()){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
+
+        // Verify unauthorized requests
+        if( !current_user_can( $this->current_user_can_edit ) ){
+            wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
+        }
 
         $rates_table  = esc_sql( $wpdb->prefix . "aysquiz_rates" );
 
-        $id = ( isset( $id ) && $id != '' ) ? absint( sanitize_text_field ( $id ) ) : null;
+        $id = ( isset( $id ) && $id != '' ) ? absint( $id ) : null;
 
         if ( ! is_null( $id ) && $id > 0 ) {
             $rates_result = $wpdb->update(
@@ -313,29 +429,47 @@ class All_Reviews_List_Table extends WP_List_Table{
      *
      * @return null|string
      */
-    public static function record_count() {
+    public function record_count() {
         global $wpdb;
+
+        // Run a security check.
+        if (empty($this->ays_quiz_nonce) || ! wp_verify_nonce( $this->ays_quiz_nonce, 'ays_quiz_admin_all_reviews_list_table_nonce' ) ) {
+            // This nonce is not valid.
+            wp_die( esc_html__( 'Nonce verification failed!', 'quiz-maker' ) );
+        }
 
         $rates_table  = esc_sql( $wpdb->prefix . "aysquiz_rates" );
 
         $sql = "SELECT COUNT(*) FROM {$rates_table}";
-        $sql .= self::get_where_condition();
+        $sql .= $this->get_where_condition();
         return $wpdb->get_var( $sql );
     }
 
-    public static function all_record_count() {
+    public function all_record_count() {
         global $wpdb;
+
+        // Run a security check.
+        if (empty($this->ays_quiz_nonce) || ! wp_verify_nonce( $this->ays_quiz_nonce, 'ays_quiz_admin_all_reviews_list_table_nonce' ) ) {
+            // This nonce is not valid.
+            wp_die( esc_html__( 'Nonce verification failed!', 'quiz-maker' ) );
+        }
 
         $rates_table  = esc_sql( $wpdb->prefix . "aysquiz_rates" );
 
         $sql = "SELECT COUNT(*) FROM {$rates_table}";
-        $sql .= self::get_where_condition();
+        $sql .= $this->get_where_condition();
 
         return $wpdb->get_var( $sql );
     }
 
     public function avg_review($quiz_id) {
         global $wpdb;
+
+        // Run a security check.
+        if (empty($this->ays_quiz_nonce) || ! wp_verify_nonce( $this->ays_quiz_nonce, 'ays_quiz_admin_all_reviews_list_table_nonce' ) ) {
+            // This nonce is not valid.
+            wp_die( esc_html__( 'Nonce verification failed!', 'quiz-maker' ) );
+        }
 
         $rates_table  = esc_sql( $wpdb->prefix . "aysquiz_rates" );
 
@@ -346,6 +480,12 @@ class All_Reviews_List_Table extends WP_List_Table{
 
     public function get_quiz_by_id( $id ){
         global $wpdb;
+
+        // Run a security check.
+        if (empty($this->ays_quiz_nonce) || ! wp_verify_nonce( $this->ays_quiz_nonce, 'ays_quiz_admin_all_reviews_list_table_nonce' ) ) {
+            // This nonce is not valid.
+            wp_die( esc_html__( 'Nonce verification failed!', 'quiz-maker' ) );
+        }
 
         $sql = "SELECT * FROM {$wpdb->prefix}aysquiz_quizes WHERE id=" . absint( intval( $id ) );
 
@@ -408,6 +548,13 @@ class All_Reviews_List_Table extends WP_List_Table{
      * @return string
      */
     function column_user_id( $item ) {
+
+        // Run a security check.
+        if (empty($this->ays_quiz_nonce) || ! wp_verify_nonce( $this->ays_quiz_nonce, 'ays_quiz_admin_all_reviews_list_table_nonce' ) ) {
+            // This nonce is not valid.
+            wp_die( esc_html__( 'Nonce verification failed!', 'quiz-maker' ) );
+        }
+
         $delete_nonce = wp_create_nonce( $this->plugin_name . '-delete-result' );
         $user_id = intval($item['user_id']);
 
@@ -439,10 +586,10 @@ class All_Reviews_List_Table extends WP_List_Table{
      * @return string
      */
     function column_quiz_id( $item ) {
-        $quiz_id = intval( sanitize_text_field( $item['quiz_id'] ) );
+        $quiz_id = intval( $item['quiz_id'] );
         $quiz = $this->get_quiz_by_id( $quiz_id );
 
-        $quiz_title = (isset( $quiz['title'] ) && $quiz['title'] != "") ? sanitize_text_field( $quiz['title'] ) : "";
+        $quiz_title = (isset( $quiz['title'] ) && $quiz['title'] != "") ? sanitize_text_field( wp_unslash($quiz['title']) ) : "";
 
         $result = "<span>". $quiz_title ."<span>";
         if ( $quiz_title != "" ) {
@@ -460,6 +607,12 @@ class All_Reviews_List_Table extends WP_List_Table{
      * @return string
      */
     function column_review( $item ) {
+
+        // Run a security check.
+        if (empty($this->ays_quiz_nonce) || ! wp_verify_nonce( $this->ays_quiz_nonce, 'ays_quiz_admin_all_reviews_list_table_nonce' ) ) {
+            // This nonce is not valid.
+            wp_die( esc_html__( 'Nonce verification failed!', 'quiz-maker' ) );
+        }
 
         $column_t = (isset( $item['review'] ) && $item['review'] != '') ? stripcslashes( nl2br( trim($item['review']) ) ) : '';
         $t = esc_attr($column_t);
@@ -541,6 +694,12 @@ class All_Reviews_List_Table extends WP_List_Table{
      */
     public function prepare_items() {
 
+        // Run a security check.
+        if (empty($this->ays_quiz_nonce) || ! wp_verify_nonce( $this->ays_quiz_nonce, 'ays_quiz_admin_all_reviews_list_table_nonce' ) ) {
+            // This nonce is not valid.
+            wp_die( esc_html__( 'Nonce verification failed!', 'quiz-maker' ) );
+        }
+
         $this->_column_headers = $this->get_column_info();
 
         /** Process bulk action */
@@ -549,77 +708,120 @@ class All_Reviews_List_Table extends WP_List_Table{
         $per_page     = $this->get_items_per_page( 'quiz_all_reviews_per_page', 50 );
 
         $current_page = $this->get_pagenum();
-        $total_items  = self::record_count();
+        $total_items  = $this->record_count();
 
         $this->set_pagination_args( array(
             'total_items' => $total_items, //WE have to calculate the total number of items
             'per_page'    => $per_page //WE have to determine how many items to show on a page
         ) );
 
-        $this->items = self::get_reviews( $per_page, $current_page );
+        $this->items = $this->get_reviews( $per_page, $current_page );
     }
 
     public function process_bulk_action() {
-        //Detect when a bulk action is being triggered...
-        $message = 'deleted';
-        if ( 'delete' === $this->current_action() ) {
+        // Detect when a bulk action is being triggered.
+        $action = $this->current_action();
+        if ( ! $action ) {
+            return;
+        }
 
-            // In our file that handles the request, verify the nonce.
-            $nonce = esc_attr( $_REQUEST['_wpnonce'] );
+        if( !is_user_logged_in()){
+            return;
+        }
 
-            if ( ! wp_verify_nonce( $nonce, $this->plugin_name . '-delete-result' ) ) {
-                die( 'Go get a life script kiddies' );
+        // Verify unauthorized requests
+        if( !current_user_can( $this->current_user_can_edit ) ){
+            return;
+        }
+
+        if( current_user_can( $this->current_user_can_edit ) && is_user_logged_in() ){
+
+            //Detect when a bulk action is being triggered...
+            $message = 'deleted';
+            if ( 'delete' === $this->current_action() ) {
+
+                // In our file that handles the request, verify the nonce.
+                $nonce = esc_attr( $_REQUEST['_wpnonce'] );
+
+                if ( ! wp_verify_nonce( $nonce, $this->plugin_name . '-delete-result' ) ) {
+                    die( 'Go get a life script kiddies' );
+                }
+                else {
+                    $this->delete_reviews( absint( $_GET['result'] ) );
+
+                    // esc_url_raw() is used to prevent converting ampersand in url to "#038;"
+                    // add_query_arg() return the current url
+
+                    $url = esc_url_raw( remove_query_arg(array('action', 'result', '_wpnonce')  ) ) . '&status=' . $message;
+                    wp_safe_redirect( $url );
+                    exit();
+                }
+
             }
-            else {
-                self::delete_reviews( absint( $_GET['result'] ) );
+
+            // If the delete bulk action is triggered
+            if ( ( isset( $_POST['action'] ) && $_POST['action'] == 'bulk-delete' )
+                || ( isset( $_POST['action2'] ) && $_POST['action2'] == 'bulk-delete' )
+            ) {
+
+                $delete_ids = ( isset( $_POST['bulk-delete'] ) && ! empty( $_POST['bulk-delete'] ) ) ? esc_sql( $_POST['bulk-delete'] ) : array();
+
+                // loop over the array of record IDs and delete them
+                foreach ( $delete_ids as $id ) {
+                    $this->delete_reviews( $id );
+
+                }
 
                 // esc_url_raw() is used to prevent converting ampersand in url to "#038;"
                 // add_query_arg() return the current url
 
                 $url = esc_url_raw( remove_query_arg(array('action', 'result', '_wpnonce')  ) ) . '&status=' . $message;
-                wp_redirect( $url );
+                wp_safe_redirect( $url );
+                exit();
+            } elseif ((isset($_POST['action']) && $_POST['action'] == 'bulk-delete-review')
+                      || (isset($_POST['action2']) && $_POST['action2'] == 'bulk-delete-review')
+            ) {
+
+                $review_ids = ( isset( $_POST['bulk-delete'] ) && ! empty( $_POST['bulk-delete'] ) ) ? esc_sql( $_POST['bulk-delete'] ) : array();
+
+                // loop over the array of record IDs and mark as read them
+
+                foreach ( $review_ids as $id ) {
+                    $this->delete_only_reviews( $id );
+                }
+
+                // esc_url_raw() is used to prevent converting ampersand in url to "#038;"
+                // add_query_arg() return the current url
+                $url = esc_url_raw( remove_query_arg(array('action', 'result', '_wpnonce')  ) ) . '&status=' . $message;
+                wp_safe_redirect( $url );
+                exit();
             }
-
-        }
-
-        // If the delete bulk action is triggered
-        if ( ( isset( $_POST['action'] ) && $_POST['action'] == 'bulk-delete' )
-            || ( isset( $_POST['action2'] ) && $_POST['action2'] == 'bulk-delete' )
-        ) {
-
-            $delete_ids = ( isset( $_POST['bulk-delete'] ) && ! empty( $_POST['bulk-delete'] ) ) ? esc_sql( $_POST['bulk-delete'] ) : array();
-
-            // loop over the array of record IDs and delete them
-            foreach ( $delete_ids as $id ) {
-                self::delete_reviews( $id );
-
-            }
-
-            // esc_url_raw() is used to prevent converting ampersand in url to "#038;"
-            // add_query_arg() return the current url
-
-            $url = esc_url_raw( remove_query_arg(array('action', 'result', '_wpnonce')  ) ) . '&status=' . $message;
-            wp_redirect( $url );
-        } elseif ((isset($_POST['action']) && $_POST['action'] == 'bulk-delete-review')
-                  || (isset($_POST['action2']) && $_POST['action2'] == 'bulk-delete-review')
-        ) {
-
-            $review_ids = ( isset( $_POST['bulk-delete'] ) && ! empty( $_POST['bulk-delete'] ) ) ? esc_sql( $_POST['bulk-delete'] ) : array();
-
-            // loop over the array of record IDs and mark as read them
-
-            foreach ( $review_ids as $id ) {
-                self::delete_only_reviews( $id );
-            }
-
-            // esc_url_raw() is used to prevent converting ampersand in url to "#038;"
-            // add_query_arg() return the current url
-            $url = esc_url_raw( remove_query_arg(array('action', 'result', '_wpnonce')  ) ) . '&status=' . $message;
-            wp_redirect( $url );
+        } else {
+            return;
         }
     }
 
     public function reviews_notices(){
+
+        // Run a security check.
+        if (empty($this->ays_quiz_nonce) || ! wp_verify_nonce( $this->ays_quiz_nonce, 'ays_quiz_admin_all_reviews_list_table_nonce' ) ) {
+            // This nonce is not valid.
+            wp_die( esc_html__( 'Nonce verification failed!', 'quiz-maker' ) );
+        }
+
+        if( !is_user_logged_in()){
+            return;
+        }
+
+        // Verify unauthorized requests
+        if( !current_user_can( $this->current_user_can_edit ) ){
+            return;
+        }
+
+        if( empty($_REQUEST['status']) ){
+            return;
+        }
+
         $status = (isset($_REQUEST['status'])) ? sanitize_text_field( $_REQUEST['status'] ) : '';
 
         if ( empty( $status ) )

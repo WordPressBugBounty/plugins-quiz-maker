@@ -1,4 +1,7 @@
-    <?php
+<?php
+
+if (!defined('ABSPATH')) exit; // Exit if accessed directly
+
 if(isset($_GET['tab'])){
     $ays_question_tab = sanitize_key( $_GET['tab'] );
 }else{
@@ -39,12 +42,13 @@ $options = array(
 );
 
 $question_category_page_url  = admin_url( 'admin.php?page=quiz-maker-question-categories' );
+$youtube_icon_svg = "<span class=''><img src='". AYS_QUIZ_ADMIN_URL ."/images/icons/youtube-video-icon.svg'></span>";
 
 
 $gen_options = ($this->settings_obj->ays_get_setting('options') === false) ? array() : json_decode( stripcslashes($this->settings_obj->ays_get_setting('options') ), true);
 
-$question_default_type = isset($gen_options['question_default_type']) ? $gen_options['question_default_type'] : null;
-$ays_answer_default_count = isset($gen_options['ays_answer_default_count']) ? $gen_options['ays_answer_default_count'] : null;
+$question_default_type = isset($gen_options['question_default_type']) ? sanitize_text_field( stripslashes($gen_options['question_default_type']) ) : null;
+$ays_answer_default_count = isset($gen_options['ays_answer_default_count']) ? intval($gen_options['ays_answer_default_count']) : null;
 // Question Default Category
 $question_default_category = isset($gen_options['question_default_category']) ? absint(intval($gen_options['question_default_category'])) : null;
 
@@ -110,8 +114,8 @@ switch ($action) {
 
 $loader_iamge = "<span class='display_none ays_quiz_loader_box'><img src='". AYS_QUIZ_ADMIN_URL ."/images/loaders/loading.gif'></span>";
 
-$question['type'] = (isset($question['type']) && $question['type'] != '') ? $question['type'] : $question_default_type;
-$question['category_id'] = (isset($question['category_id']) && $question['category_id'] != '') ? $question['category_id'] : $question_default_category;
+$question['type'] = (isset($question['type']) && $question['type'] != '') ? sanitize_text_field( stripslashes($question['type']) ) : sanitize_text_field( stripslashes($question_default_type) );
+$question['category_id'] = (isset($question['category_id']) && $question['category_id'] != '') ? intval($question['category_id']) : intval($question_default_category);
 $question_categories = $this->questions_obj->get_question_categories();
 if (isset($_POST['ays_submit']) || isset($_POST['ays_submit_top'])) {
     $_POST["id"] = $id;
@@ -142,14 +146,14 @@ $q_question_title = (isset( $question["question"] ) && $question["question"] != 
 
 $question_published = (isset( $question["published"] ) && $question["published"] != "") ? absint($question["published"]) : 1;
 
-$question_image = (isset( $question['question_image'] ) && $question['question_image']) ? $question['question_image'] : "";
+$question_image = (isset( $question['question_image'] ) && $question['question_image']) ? esc_url($question['question_image']) : "";
 
 $style = null;
 if ($question_image != '') {
     $style = "display: block;";
     $image_text = esc_html__('Edit Image', 'quiz-maker');
 }
-$question_create_date = (isset($question['create_date']) && $question['create_date'] != '') ? $question['create_date'] : "0000-00-00 00:00:00";
+$question_create_date = (isset($question['create_date']) && $question['create_date'] != '') ? sanitize_text_field( stripslashes($question['create_date']) ) : "0000-00-00 00:00:00";
 
 if ( isset( $question['options'] ) && $question['options'] != "" ) {
     $options = json_decode($question['options'], true);
@@ -465,8 +469,9 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                         </label>
                         <div class="ays-quiz-heading-box ays-quiz-unset-float">
                             <div class="ays-quiz-wordpress-user-manual-box">
-                                <a href="https://www.youtube.com/watch?v=ok6f59iV_R0" target="_blank">
-                                    <?php echo esc_html__("View All Question Types - video", 'quiz-maker'); ?>
+                                <a href="https://www.youtube.com/watch?v=ok6f59iV_R0" target="_blank" style="text-decoration: none;">
+                                    <?php echo wp_kses_post($youtube_icon_svg); ?>
+                                    <span style="margin-left: 3px; text-decoration: underline;"><?php echo esc_html__("View All Question Types - video", 'quiz-maker'); ?></span>
                                 </a>
                             </div>
                         </div>
@@ -515,7 +520,7 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                             <?php endif; ?>
                                 <th <?php echo ($is_text_type) ? 'class="th-650"' : 'class="ays-quiz-question-answer-answer-row" style="width:500px;"'; ?>><?php echo esc_html__('Answer', 'quiz-maker'); ?></th>
                                 <th class="only_pro ays-weight-row ays-quiz-question-answer-weight-point-row" style="width:120px;padding:0;"><?php echo esc_html__('Point', 'quiz-maker'); ?><br>
-                                    <a href="https://ays-pro.com/wordpress/quiz-maker" tabindex="-1" target="_blank" class="ays-quiz-new-upgrade-button-link ays-quiz-new-upgrade-button-without-text-link">
+                                    <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=answer-points-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" tabindex="-1" target="_blank" class="ays-quiz-new-upgrade-button-link ays-quiz-new-upgrade-button-without-text-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
                                                 <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
@@ -527,7 +532,7 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                             <?php if( $question["type"] == 'checkbox' || $question["type"] == 'radio' || $question["type"] == 'select' || $question["type"] == 'true_or_false' ): ?>
                                 <th class="only_pro th-150 removable ays-quiz-question-answer-keyword-row" style="width:120px;padding:0;">
                                     <?php echo esc_html__('Keyword', 'quiz-maker'); ?><br>
-                                    <a href="https://ays-pro.com/wordpress/quiz-maker" tabindex="-1" target="_blank" class="ays-quiz-new-upgrade-button-link ays-quiz-new-upgrade-button-without-text-link">
+                                    <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=answer-keywords-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" tabindex="-1" target="_blank" class="ays-quiz-new-upgrade-button-link ays-quiz-new-upgrade-button-without-text-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
                                                 <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
@@ -538,16 +543,7 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                                 </th>
                             <?php endif; ?>
                             <?php if(! $is_text_type): ?>
-                                <th class="th-150 removable ays-quiz-question-answer-image-row" style="padding:0;"><?php echo esc_html__('Image', 'quiz-maker'); ?><br>
-                                    <a href="https://ays-pro.com/wordpress/quiz-maker" tabindex="-1" target="_blank" class="ays-quiz-new-upgrade-button-link ays-quiz-new-upgrade-button-without-text-link">
-                                        <div class="ays-quiz-new-upgrade-button-box">
-                                            <div>
-                                                <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
-                                                <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'); ?>" class="ays-quiz-new-upgrade-button-hover">
-                                            </div>
-                                        </div>
-                                    </a>
-                                </th>
+                                <th class="th-150 removable ays-quiz-question-answer-image-row"><?php echo esc_html__('Image', 'quiz-maker'); ?></th>
                                 <th class="th-150 removable ays-quiz-question-answer-delete-row"><?php echo esc_html__('Delete', 'quiz-maker'); ?></th>
                             <?php endif; ?>
                             <?php if($is_text_type && $question["type"] != 'date'): ?>
@@ -652,11 +648,14 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                                         <option value="A">A</option>
                                     </select>
                                 </td>
-                                <td title="This property available only in pro version" class="ays-quiz-question-answer-image-row only_pro">
-                                    <div class="pro_features"></div>
-                                    <label class='ays-label' for='ays-answer'>
-                                        <a style="opacity: 0.4" href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="add-answer-image" tabindex="-1"><?php echo esc_html__('Add','quiz-maker')?></a>
-                                    </label>
+                                <td class="ays-quiz-question-answer-image-row">
+                                    <label class='ays-label' for='ays-answer'><a href="javascript:void(0)" class="add-answer-image" style="display:block;"><?php echo esc_html__('Add', 'quiz-maker'); ?></a></label>
+                                    <div class="ays-answer-image-container ays-answer-image-container-div" style="display:none;">
+                                        <span class="ays-edit-answer-img" title="<?php echo esc_html__('Edit Image', 'quiz-maker'); ?>"></span>
+                                        <span class="ays-remove-answer-img" title="<?php echo esc_html__('Delete Image', 'quiz-maker'); ?>"></span>
+                                        <img src="" class="ays-answer-img"/>
+                                        <input type="hidden" name="ays_answer_image[]" class="ays-answer-image-path" value=""/>
+                                    </div>
                                 </td>
 
                                 <td class="ays-quiz-question-answer-delete-row">
@@ -674,6 +673,7 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                         else:
                             foreach ($answers as $index => $answer) {
                                 $class = (($index + 1) % 2 == 0) ? "even" : "";
+                                $answer_text =  __('Add', 'quiz-maker');
                                 
                                 switch ($question["type"]) {
                                     case "number":
@@ -771,11 +771,14 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                                             <option value="A">A</option>
                                         </select>
                                     </td>
-                                    <td title="This property available only in pro version" class="ays-quiz-question-answer-image-row only_pro">
-                                        <div class="pro_features"></div>
-                                        <label class='ays-label' for='ays-answer'>
-                                            <a style="opacity: 0.4" href="https://ays-pro.com/wordpress/quiz-maker" tabindex="-1" target="_blank" class="add-answer-image"><?php echo esc_html__('Add','quiz-maker')?></a>
-                                        </label>
+                                    <td class="ays-quiz-question-answer-image-row">
+                                        <label class='ays-label' for='ays-answer'><a href="javascript:void(0)" class="add-answer-image" <?php echo (is_null($answer['image'])||$answer['image']=='') ? "style=display:block;":"style=display:none"?>><?php echo esc_html( $answer_text ); ?></a></label>
+                                        <div class="ays-answer-image-container ays-answer-image-container-div" <?php echo (is_null($answer['image'])||$answer['image']=='') ? "style=display:none; ":"style=display:block"?>>
+                                            <span class="ays-edit-answer-img" title="<?php echo esc_html__('Edit Image', 'quiz-maker'); ?>"></span>
+                                            <span class="ays-remove-answer-img" title="<?php echo esc_html__('Delete Image', 'quiz-maker'); ?>"></span>
+                                            <img src="<?php echo esc_url($answer['image']); ?>" class="ays-answer-img"/>
+                                            <input type="hidden" name="ays_answer_image[]" class="ays-answer-image-path" value="<?php echo !empty( $answer['image'] ) ? esc_url($answer['image']) : ''; ?>"/>
+                                        </div>
                                     </td>
                                     <td>
                                         <a href="javascript:void(0)" class="ays-delete-answer">
@@ -990,8 +993,8 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                     </div>
                 </div>
                 <hr class="show_for_checkbox_type <?php echo ($is_only_checkbox_type) ? '' : 'display_none'; ?>"/>
-                <div class="form-group row ays_toggle_parent show_for_checkbox_type <?php echo ($is_only_checkbox_type) ? '' : 'display_none'; ?>" style="margin: 0;">
-                    <div class="col-sm-3" style="padding-left: 0;">
+                <div class="form-group row ays_toggle_parent show_for_checkbox_type <?php echo ($is_only_checkbox_type) ? '' : 'display_none'; ?>">
+                    <div class="col-sm-3">
                         <label for="ays_enable_max_selection_number">
                             <?php echo esc_html__('Enable maximum selection number', 'quiz-maker'); ?>
                             <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __( 'Allow users to choose more than one answer but not over the max value you provided. It will work with the Checkbox type.' , 'quiz-maker' ) ); ?>">
@@ -1019,8 +1022,8 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                     </div>
                 </div>
                 <hr class="show_for_checkbox_type <?php echo ($is_only_checkbox_type) ? '' : 'display_none'; ?>"/>
-                <div class="form-group row ays_toggle_parent show_for_checkbox_type <?php echo ($is_only_checkbox_type) ? '' : 'display_none'; ?>" style="margin: 0;">
-                    <div class="col-sm-3" style="padding-left: 0;">
+                <div class="form-group row ays_toggle_parent show_for_checkbox_type <?php echo ($is_only_checkbox_type) ? '' : 'display_none'; ?>">
+                    <div class="col-sm-3">
                         <label for="ays_enable_min_selection_number">
                             <?php echo esc_html__('Enable minimum selection number', 'quiz-maker'); ?>
                             <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __( 'Require users to choose answers not under the min value you provided. It will work with the Checkbox type.' , 'quiz-maker' ) ); ?>">
@@ -1074,12 +1077,12 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                         </select>
                         <div class="ays_quiz_small_hint_text_for_message_variables" style="margin-top: 5px;">
                         <span><?php
-                            echo (sprintf(
-                                /* translators: %s: opening and closing <a> HTML code  */
-                                wp_kses_post(__('Create a new category %s here %s', 'quiz-maker')),
-                                '<a href="'. $question_category_page_url .'" target="_blank">',
+                            echo sprintf(
+                                /* translators: 1: opening <a> tag, 2: closing </a> tag */
+                                wp_kses_post( __( 'Create a new category %1$s here %2$s', 'quiz-maker' ) ),
+                                '<a href="' . esc_url( $question_category_page_url ) . '" target="_blank" rel="noopener noreferrer">',
                                 '</a>'
-                            )) ;
+                            );
                         ?></div>
                     </div>
                 </div>
@@ -1105,7 +1108,7 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                                 </select>
                             </div>
                         </div>
-                        <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                        <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=question-tags-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                             <div class="ays-quiz-new-upgrade-button-box">
                                 <div>
                                     <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -1350,7 +1353,7 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                                 <input type="text" id="ays_question_weight" class="ays-text-input ays-text-input-short" value="1" tabindex="-1">
                             </div>
                         </div>
-                        <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                        <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=question-weight-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                             <div class="ays-quiz-new-upgrade-button-box">
                                 <div>
                                     <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -1390,7 +1393,7 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                                 </div>
                             </div>
                         </div>
-                        <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                        <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=question-bg-img-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                             <div class="ays-quiz-new-upgrade-button-box">
                                 <div>
                                     <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -1425,7 +1428,7 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                                 </div>
                             </div>
                         </div>
-                        <a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                        <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=user-answer-explanation-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                             <div class="ays-quiz-new-upgrade-button-box">
                                 <div>
                                     <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">

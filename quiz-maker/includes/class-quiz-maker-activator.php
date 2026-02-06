@@ -1,4 +1,6 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 global $ays_quiz_db_version;
 $ays_quiz_db_version = '3.9.0';
 /**
@@ -281,26 +283,26 @@ class Quiz_Maker_Activator
 
             if ($themes == 0) {
                 $wpdb->insert($themes_table, array(
-                    'title'                                     => 'Default',
-                    'border_radius'                             => '4',
-                    'show_result_presentage'                    => 1,
-                    'show_result_answers'                       => 1,
-                    'buttons_color'                             => '#ffffff',
-                    'buttons_bg_color'                          => '#70b1f2',
-                    'buttons_hover_color'                       => '#ffffff',
-                    'buttons_hover_bg_color'                    => '#4797e7',
-                    'quiz_title_color'                          => '#000000',
-                    'quiz_description_color'                    => '#000000',
-                    'question_color'                            => '#ffffff',
-                    'question_bg_color'                         => '#70b1f2',
-                    'question_answer_color'                     => '#7a7575',
-                    'question_answer_bg_color'                  => '#efefef',
-                    'question_answer_hover_color'               => '#7a7575',
-                    'question_answer_hover_bg_color'            => '#d6d2c9',
-                    'question_correct_answer_bg_color'          => '#4fed24',
-                    'question_incorrect_answer_bg_color'        => '#ed3324',
-                    'pagination_bg_color'                       => '#efefef',
-                    'pagination_color'                          => '#70b1f2'
+                    'title'                               => 'Default',
+                    'border_radius'                       => '4',
+                    'show_result_presentage'              => 1,
+                    'show_result_answers'                 => 1,
+                    'buttons_color'                       => '#ffffff',
+                    'buttons_bg_color'                    => '#70b1f2',
+                    'buttons_hover_color'                 => '#ffffff',
+                    'buttons_hover_bg_color'              => '#4797e7',
+                    'quiz_title_color'                    => '#000000',
+                    'quiz_description_color'              => '#000000',
+                    'question_color'                      => '#ffffff',
+                    'question_bg_color'                   => '#70b1f2',
+                    'question_answer_color'               => '#7a7575',
+                    'question_answer_bg_color'            => '#efefef',
+                    'question_answer_hover_color'         => '#7a7575',
+                    'question_answer_hover_bg_color'      => '#d6d2c9',
+                    'question_correct_answer_bg_color'    => '#4fed24',
+                    'question_incorrect_answer_bg_color'  => '#ed3324',
+                    'pagination_bg_color'                 => '#efefef',
+                    'pagination_color'                    => '#70b1f2'
                 ));
             }
             
@@ -336,97 +338,97 @@ class Quiz_Maker_Activator
 
                 $quizes_array = array(
                     array(
-                        'title'                                     => 'Mathematic Quiz',
-                        'description'                               => 'Math quiz helps us to increase our knowledge',
-                        'quiz_category_id'                          => 1,
-                        'question_ids'                              => 2,
-                        'ordering'                                  => 1,
-                        'published'                                 => 1,
-                        'author_id'                                 => get_current_user_id(),
-                        'create_date'                               => $current_time_mysql,
+                        'title'                                         => 'Mathematic Quiz',
+                        'description'                                   => 'Math quiz helps us to increase our knowledge',
+                        'quiz_category_id'                              => 1,
+                        'question_ids'                                  => 2,
+                        'ordering'                                      => 1,
+                        'published'                                     => 1,
+                        'author_id'                                     => get_current_user_id(),
+                        'create_date'                                   => $current_time_mysql,
                         'options' => json_encode(array(
-                            'color'                                 => '#5d6cf9',
-                            'bg_color'                              => '#fff',
-                            'text_color'                            => '#000000',
-                            'height'                                => 450,
-                            'width'                                 => 800,
-                            'timer'                                 => 100,
-                            'information_form'                      => 'disable',
-                            'form_name'                             => 'off',
-                            'form_email'                            => 'off',
-                            'form_phone'                            => 'off',
-                            'enable_logged_users'                   => 'off',
-                            'image_width'                           => '',
-                            'image_height'                          => '',
-                            'enable_correction'                     => 'on',
-                            'enable_questions_counter'              => 'on',
-                            'limit_users'                           => 'off',
-                            'limitation_message'                    => '',
-                            'redirect_url'                          => '',
-                            'redirection_delay'                     => '',
-                            'enable_progress_bar'                   => 'on',
-                            'randomize_questions'                   => 'on',
-                            'randomize_answers'                     => 'off',
-                            'enable_questions_result'               => 'on',
-                            'custom_css'                            => '',
-                            'enable_restriction_pass'               => 'off',
-                            'restriction_pass_message'              => '',
-                            'user_role'                             => '',
-                            'result_text'                           => 'Thanks for taking part in the math quiz. Keep up the good work! ',
-                            'enable_result'                         => 'off',
-                            'enable_timer'                          => 'on',
-                            'enable_pass_count'                     => 'off',
-                            'enable_quiz_rate'                      => 'off',
-                            'enable_rate_avg'                       => 'off',
-                            'enable_rate_comments'                  => 'on',
-                            'hide_score'                            => 'off',
-                            'rate_form_title'                       => 'Please rate this quiz',
-                            'enable_box_shadow'                     => 'on',
-                            'box_shadow_color'                      => '#c9c9c9',
-                            'quiz_border_radius'                    => '8',
-                            'quiz_bg_image'                         => '',
-                            'enable_border'                         => 'off',
-                            'quiz_border_width'                     => '1',
-                            'quiz_border_style'                     => 'solid',
-                            'quiz_border_color'                     => '#000',
-                            'quiz_timer_in_title'                   => 'off',
-                            'enable_restart_button'                 => 'on',
-                            'quiz_loader'                           => 'default',
-                            'buttons_text_color'                    => '#ffffff',
-                            'buttons_size'                          => 'large',
-                            'progress_bar_style'                    => 'third',
-                            'ans_right_wrong_icon'                  => 'none',
-                            'buttons_font_size'                     => '18',
-                            'buttons_mobile_font_size'              => 18,
-                            'buttons_left_right_padding'            => '36',
-                            'buttons_top_bottom_padding'            => '14',
-                            'buttons_border_radius'                 => '8',
-                            'answers_margin'                        => '12',
-                            'answers_border_color'                  => '#dddddd',
-                            'quiz_title_font_size'                  => 28,
-                            'quiz_title_mobile_font_size'           => 20,
-                            'create_date'                           => $current_time_mysql,
+                            'color'                                     => '#5d6cf9',
+                            'bg_color'                                  => '#fff',
+                            'text_color'                                => '#000000',
+                            'height'                                    => 450,
+                            'width'                                     => 800,
+                            'timer'                                     => 100,
+                            'information_form'                          => 'disable',
+                            'form_name'                                 => 'off',
+                            'form_email'                                => 'off',
+                            'form_phone'                                => 'off',
+                            'enable_logged_users'                       => 'off',
+                            'image_width'                               => '',
+                            'image_height'                              => '',
+                            'enable_correction'                         => 'off',
+                            'enable_questions_counter'                  => 'on',
+                            'limit_users'                               => 'off',
+                            'limitation_message'                        => '',
+                            'redirect_url'                              => '',
+                            'redirection_delay'                         => '',
+                            'enable_progress_bar'                       => 'on',
+                            'randomize_questions'                       => 'on',
+                            'randomize_answers'                         => 'off',
+                            'enable_questions_result'                   => 'on',
+                            'custom_css'                                => '',
+                            'enable_restriction_pass'                   => 'off',
+                            'restriction_pass_message'                  => '',
+                            'user_role'                                 => '',
+                            'result_text'                               => 'Thanks for taking part in the math quiz. Keep up the good work! ',
+                            'enable_result'                             => 'off',
+                            'enable_timer'                              => 'on',
+                            'enable_pass_count'                         => 'off',
+                            'enable_quiz_rate'                          => 'off',
+                            'enable_rate_avg'                           => 'off',
+                            'enable_rate_comments'                      => 'on',
+                            'hide_score'                                => 'off',
+                            'rate_form_title'                           => 'Please rate this quiz',
+                            'enable_box_shadow'                         => 'on',
+                            'box_shadow_color'                          => '#c9c9c9',
+                            'quiz_border_radius'                        => '8',
+                            'quiz_bg_image'                             => '',
+                            'enable_border'                             => 'off',
+                            'quiz_border_width'                         => '1',
+                            'quiz_border_style'                         => 'solid',
+                            'quiz_border_color'                         => '#000',
+                            'quiz_timer_in_title'                       => 'off',
+                            'enable_restart_button'                     => 'on',
+                            'quiz_loader'                               => 'default',
+                            'buttons_text_color'                        => '#ffffff',
+                            'buttons_size'                              => 'large',
+                            'progress_bar_style'                        => 'third',
+                            'ans_right_wrong_icon'                      => 'none',
+                            'buttons_font_size'                         => '18',
+                            'buttons_mobile_font_size'                  => 18,
+                            'buttons_left_right_padding'                => '36',
+                            'buttons_top_bottom_padding'                => '14',
+                            'buttons_border_radius'                     => '8',
+                            'answers_margin'                            => '12',
+                            'answers_border_color'                      => '#dddddd',
+                            'quiz_title_font_size'                      => 28,
+                            'quiz_title_mobile_font_size'               => 20,
+                            'create_date'                               => $current_time_mysql,
                             'author' => array(
                                 'name' => "Unknown"
                             ),
-                            'autofill_user_data'                    => 'off',
-                            'quest_animation'                       => 'fade',
-                            'form_title'                            => '',
-                            'enable_bg_music'                       => 'off',
-                            'quiz_bg_music'                         => '',
-                            'answers_font_size'                     => '16',
-                            'show_create_date'                      => 'off',
-                            'show_author'                           => 'off',
-                            'enable_early_finish'                   => 'on',
-                            'enable_live_progress_bar'              => 'on',
-                            'enable_percent_view'                   => 'off',
-                            'enable_average_statistical'            => 'off',
-                            'enable_next_button'                    => 'on',
-                            'enable_previous_button'                => 'on',
-                            'enable_arrows'                         => 'off',
-                            'timer_text'                            => '',
-                            'quiz_theme'                            => 'classic_light',
-                            'enable_social_buttons'                 => 'off',
+                            'autofill_user_data'                        => 'off',
+                            'quest_animation'                           => 'fade',
+                            'form_title'                                => '',
+                            'enable_bg_music'                           => 'off',
+                            'quiz_bg_music'                             => '',
+                            'answers_font_size'                         => '16',
+                            'show_create_date'                          => 'off',
+                            'show_author'                               => 'off',
+                            'enable_early_finish'                       => 'on',
+                            'enable_live_progress_bar'                  => 'on',
+                            'enable_percent_view'                       => 'off',
+                            'enable_average_statistical'                => 'off',
+                            'enable_next_button'                        => 'on',
+                            'enable_previous_button'                    => 'on',
+                            'enable_arrows'                             => 'off',
+                            'timer_text'                                => '',
+                            'quiz_theme'                                => 'classic_light',
+                            'enable_social_buttons'                     => 'off',
                         ))
                     )
                 );
@@ -478,10 +480,13 @@ class Quiz_Maker_Activator
                 $sql = "SELECT COUNT(*) FROM `".$settings_table."` WHERE `meta_key` = '".$meta_key."'";
                 $result = $wpdb->get_var($sql);
                 if(intval($result) == 0){
+                    // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key, WordPress.DB.SlowDBQuery.slow_db_query_meta_value -- Custom plugin table, not a WordPress meta table.
                     $result = $wpdb->insert(
                         $settings_table,
                         array(
+                            // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key
                             'meta_key'    => $meta_key,
+                            // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value
                             'meta_value'  => $meta_val,
                             'note'        => "",
                             'options'     => ""
@@ -491,14 +496,14 @@ class Quiz_Maker_Activator
                 }
             }
 
-            $terms_activation = get_option('ays_quiz_show_agree_terms');
-            $first_activation = get_option('ays_quiz_first_time_activation_page', false);
+            // $terms_activation = get_option('ays_quiz_show_agree_terms');
+            // $first_activation = get_option('ays_quiz_first_time_activation_page', false);
 
-            if ( !$terms_activation && $first_activation ) {
-                self::ays_quiz_activator_request( 'activator' );
-                update_option('ays_quiz_agree_terms', 'true');
-                update_option('ays_quiz_show_agree_terms', 'hide');
-            }
+            // if ( !$terms_activation && $first_activation ) {
+            //     self::ays_quiz_activator_request( 'activator' );
+            //     update_option('ays_quiz_agree_terms', 'true');
+            //     update_option('ays_quiz_show_agree_terms', 'hide');
+            // }
 
         }
     }
@@ -509,7 +514,10 @@ class Quiz_Maker_Activator
         $is_plugin_downloaded = get_site_option('ays_quiz_db_version', false) === false;
         if ($is_plugin_downloaded) {
             update_option('ays_quiz_first_time_activation_page', true);
+            update_option('ays_quiz_first_time_activation_verson', AYS_QUIZ_VERSION);
         }
+
+        self::ays_quiz_load_constants();
 
         if (get_site_option('ays_quiz_db_version') != $ays_quiz_db_version) {
             self::activate();
@@ -517,14 +525,9 @@ class Quiz_Maker_Activator
     }
 
     public static function ays_quiz_activator_request($cta){
-        $curl = curl_init();
+        //$curl = curl_init();
 
         $api_url = "https://poll-plugin.com/quiz-maker/";
-
-        $data = array(
-            'type'  => 'quiz-maker',
-            'cta'   => $cta,
-        );
 
         wp_remote_post( $api_url, array(
             'timeout' => 30,
@@ -533,5 +536,28 @@ class Quiz_Maker_Activator
                 'cta'   => $cta,
             )),
         ) );
+    }
+
+    public static function ays_quiz_load_constants() {
+        if ( ! defined( 'AYS_QUIZ_UTM_VERSION' ) ) {
+
+            $first_version = get_option( 'ays_quiz_first_time_activation_verson' );
+
+            if ( ! empty( $first_version ) ) {
+                preg_match( '/(\d+\.\d+)$/', $first_version, $matches );
+                $first_suffix = ! empty( $matches[1] ) ? $matches[1] : '';
+
+                if ( $first_suffix ) {
+                    $utm_version = $first_suffix . '-' . AYS_QUIZ_VERSION;
+                } else {
+                    $utm_version = AYS_QUIZ_VERSION;
+                }
+
+            } else {
+                $utm_version = AYS_QUIZ_VERSION;
+            }
+
+            define( 'AYS_QUIZ_UTM_VERSION', $utm_version );
+        }
     }
 }

@@ -91,44 +91,60 @@ class Quiz_Maker_All_Results
         ) );
     }
 
-    public function get_user_reports_info( $show_publicly, $attr ){
+    public function get_user_reports_info( $show_publicly, $attr ) {
         global $wpdb;
 
-        $where = array();
-        $where_condition = "";
-
         $current_user = wp_get_current_user();
-        $id = $current_user->ID;
+        $user_id      = (int) $current_user->ID;
 
-        if (! $show_publicly) {
-            if($id == 0){
-                return null;
-            }
+        if ( ! $show_publicly && 0 === $user_id ) {
+            return null;
         }
 
-        $category_id = (isset($attr['id']) && $attr['id'] != '') ? absint( sanitize_text_field($attr['id']) ) : null;
+        $category_id = isset( $attr['id'] ) ? absint( $attr['id'] ) : 0;
 
-        if( !is_null($category_id) && $category_id > 0 ){
-            $where[] = ' q.quiz_category_id = ' . $category_id;
+        $reports_table = $wpdb->prefix . 'aysquiz_reports';
+        $quizes_table  = $wpdb->prefix . 'aysquiz_quizes';
+
+        $where   = array();
+        $params  = array();
+
+        if ( $category_id > 0 ) {
+            $where[]  = 'q.quiz_category_id = %d';
+            $params[] = $category_id;
         }
 
-        if( ! empty($where) ){
-            $where_condition = " WHERE " . implode( " AND ", $where );
+        $where_sql = '';
+        if ( ! empty( $where ) ) {
+            $where_sql = ' WHERE ' . implode( ' AND ', $where );
         }
 
-        $reports_table = $wpdb->prefix . "aysquiz_reports";
-        $quizes_table  = $wpdb->prefix . "aysquiz_quizes";
-        $sql = "SELECT q.quiz_category_id,r.quiz_id,q.title, r.start_date, r.end_date, r.duration, r.score, r.id, r.user_name, r.user_id,
-                       TIMESTAMPDIFF(second, r.start_date, r.end_date) AS duration_2
-                FROM $reports_table AS r
-                LEFT JOIN $quizes_table AS q
+        $sql = "
+            SELECT
+                q.quiz_category_id,
+                r.quiz_id,
+                q.title,
+                r.start_date,
+                r.end_date,
+                r.duration,
+                r.score,
+                r.id,
+                r.user_name,
+                r.user_id,
+                TIMESTAMPDIFF(SECOND, r.start_date, r.end_date) AS duration_2
+            FROM {$reports_table} AS r
+            LEFT JOIN {$quizes_table} AS q
                 ON r.quiz_id = q.id
-                ". $where_condition ."
-                ORDER BY r.id DESC";
-        $results = $wpdb->get_results($sql, "ARRAY_A");
+            {$where_sql}
+            ORDER BY r.id DESC
+        ";
 
-        return $results;
+        if ( ! empty( $params ) ) {
+            $sql = $wpdb->prepare( $sql, $params );
+        }
 
+        // phpcs:ignore
+        return $wpdb->get_results( $sql, ARRAY_A );
     }
 
     public function ays_all_results_html( $attr ){
@@ -279,7 +295,11 @@ class Quiz_Maker_All_Results
                 $user_name = (isset($result['user_name']) && $result['user_name'] != '') ? $result['user_name'] : '';
                 if($user_name == ''){
                     $user = get_user_by('id', $user_id);
-                    $user_name = $user->data->display_name ? $user->data->display_name : $user->user_login;
+                    if(!empty($user) && !empty($user->data)){
+                        $user_name = $user->data->display_name ? $user->data->display_name : $user->user_login;
+                    } else {
+                        $user_name = __('Guest', 'quiz-maker');;
+                    }
                 }
             }
 

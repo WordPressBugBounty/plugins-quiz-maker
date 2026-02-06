@@ -1,3 +1,8 @@
+<?php
+
+if (!defined('ABSPATH')) exit; // Exit if accessed directly
+
+?>
 <div class="wrap ays-quiz-addon-menu-container">
     <div class="container-fluid">
         <div class="ays-quiz-heading-box" style="text-align: right;float:unset;">

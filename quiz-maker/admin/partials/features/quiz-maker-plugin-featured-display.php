@@ -1,3 +1,8 @@
+<?php
+
+if (!defined('ABSPATH')) exit; // Exit if accessed directly
+
+?>
 <!-- This file should primarily consist of HTML with a little bit of PHP. -->
 <div class="wrap">
     <h1 id="ays-quiz-intro-title"><?php echo esc_html__('Please feel free to use our other awesome plugins!', 'quiz-maker'); ?></h1>

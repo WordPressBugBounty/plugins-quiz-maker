@@ -1,3 +1,8 @@
+<?php
+
+if (!defined('ABSPATH')) exit; // Exit if accessed directly
+
+?>
 <div class="wrap">
     <div id="ays-quiz-subscribe-email-page-main">
         <div class="ays-quiz-subscribe-email-page-info-header">

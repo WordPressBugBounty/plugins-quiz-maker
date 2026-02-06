@@ -1,4 +1,7 @@
 <?php
+
+if (!defined('ABSPATH')) exit; // Exit if accessed directly
+
 $action = (isset($_GET['action'])) ? sanitize_text_field( $_GET['action'] ) : '';
 $heading = '';
 $loader_iamge = '';

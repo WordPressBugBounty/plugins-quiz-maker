@@ -1,3 +1,9 @@
+<?php
+
+if (!defined('ABSPATH')) exit; // Exit if accessed directly
+
+?>
+
 <br>
 <div class="wrap ays-quiz-custom-fields-list-table">
     <div class="ays-quiz-heading-box ays-quiz-heading-box-margin-top">
@@ -33,24 +39,33 @@
                     </div>
                     <div class="pro-features-popup-content" data-link="https://youtu.be/SEv7ZY7idtE">
                         <p>
-                            <?php echo sprintf( esc_attr( __("Custom Fields will allow you to create various fields with %s 8 available field types, %s including text, number, telephone. With just two simple steps, you can get any information you wish from the Quiz takers and add  %s GDPR %s checkbox as well. Get personal data, such as gender, country, age etc.", 'quiz-maker') ),
-                                "<strong>",
-                                "</strong>",
-                                "<strong>",
-                                "</strong>"
-                            ); ?>
+                            <?php
+                            echo sprintf(
+                                /* translators: 1: opening <strong> tag before "8 available field types", 2: closing </strong> tag, 3: opening <strong> tag before "GDPR", 4: closing </strong> tag */
+                                wp_kses_post(
+                                    __(
+                                        'Custom Fields will allow you to create various fields with %1$s 8 available field types, %2$s including text, number, telephone. With just two simple steps, you can get any information you wish from the Quiz takers and add %3$s GDPR %4$s checkbox as well. Get personal data, such as gender, country, age etc.',
+                                        'quiz-maker'
+                                    )
+                                ),
+                                '<strong>',
+                                '</strong>',
+                                '<strong>',
+                                '</strong>'
+                            );
+                            ?>
                         </p>
                         <div>
                             <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo esc_html__("See Documentation", 'quiz-maker'); ?></a>
                         </div>
                     </div>
-                    <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=custom-field-list-table-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>">
+                    <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=custom-field-list-table-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
                         <?php echo esc_html__("Pricing", 'quiz-maker'); ?>
                     </div>
                 </div>
             </div>
             <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/attributes_screen.png'); ?>" alt="Statistics" style="width:100%;" >
-            <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=custom-field-list-table-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>" target="_blank">
+            <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=custom-field-list-table-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank">
                 <div class="ays-quiz-new-upgrade-button-box">
                     <div>
                         <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
@@ -75,7 +90,7 @@
                     </div>
                 </div>
                 <div class="ays-quiz-center-big-upgrade-button-box">
-                    <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=custom-field-list-table-<?php echo esc_attr( AYS_QUIZ_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                    <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=custom-field-list-table-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                         <div class="ays-quiz-center-new-big-upgrade-button">
                             <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>" class="ays-quiz-new-button-img-hide">
                             <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg' ); ?>" class="ays-quiz-new-upgrade-button-hover">  

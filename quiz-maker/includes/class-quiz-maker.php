@@ -1,4 +1,6 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 /**
  * The file that defines the core plugin class
  *
@@ -103,6 +105,12 @@ class Quiz_Maker {
         if ( ! class_exists( 'WP_List_Table' ) ) {
             require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
         }
+
+        /**
+		 * The class responsible for defining all functions for getting all quiz data
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-quiz-maker-data.php';
+        
 		/**
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
@@ -118,7 +126,7 @@ class Quiz_Maker {
 		/**
          * The class responsible for showing Quiz Maker Welcome page.
          */
-        // require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-quiz-maker-ays-welcome.php';
+        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-quiz-maker-ays-welcome.php';
 
         /**
          * The class responsible for showing Quiz Maker Feedback popup.
@@ -311,6 +319,7 @@ class Quiz_Maker {
 		
         $this->loader->add_action( 'in_admin_footer', $plugin_admin, 'quiz_maker_admin_footer', 1 );
         $this->loader->add_action( 'in_admin_footer', $plugin_admin, 'ays_quiz_add_checklist_guide', 10 );
+        // $this->loader->add_action( 'in_admin_footer', $plugin_admin, 'ays_quiz_black_friady_popup_box', 10 );
         
 		$this->loader->add_action( 'wp_dashboard_setup', $plugin_admin, 'quiz_maker_add_dashboard_widgets' );
 		
@@ -389,6 +398,9 @@ class Quiz_Maker {
 
         $this->loader->add_action( 'wp_ajax_ays_quiz_send_question_report', $plugin_public, 'ays_quiz_send_question_report' );
         $this->loader->add_action( 'wp_ajax_nopriv_ays_quiz_send_question_report', $plugin_public, 'ays_quiz_send_question_report' );
+
+        $this->loader->add_action( 'wp_ajax_ays_quiz_check_answer', $plugin_public, 'ays_quiz_check_answer' );
+        $this->loader->add_action( 'wp_ajax_nopriv_ays_quiz_check_answer', $plugin_public, 'ays_quiz_check_answer' );
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles_early' );
 		// $this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );

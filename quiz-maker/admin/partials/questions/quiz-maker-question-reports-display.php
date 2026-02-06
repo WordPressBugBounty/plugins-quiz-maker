@@ -1,7 +1,10 @@
 <?php
-    $tab_url = "?page=".$this->plugin_name."-questions";
 
-    $actual_reports_count = Quiz_Maker_Admin::get_actual_reports_count();
+if (!defined('ABSPATH')) exit; // Exit if accessed directly
+
+$tab_url = "?page=".$this->plugin_name."-questions";
+
+$actual_reports_count = Quiz_Maker_Admin::get_actual_reports_count();
 ?>
 <div id="reports">
     <div class="wrap ays-quiz-list-table ays_quiz_question_reports_list_table">
@@ -11,13 +14,13 @@
             ?>
         </h1>
         <div class="nav-tab-wrapper">
-            <a href="<?php echo $tab_url; ?>" class="no-js nav-tab">
+            <a href="<?php echo esc_url($tab_url); ?>" class="no-js nav-tab">
                 <?php echo esc_html__("Questions", 'quiz-maker'); ?>
             </a>
             <a href="#reports" class="nav-tab nav-tab-active">
                 <?php echo esc_html__("Reports", 'quiz-maker');
                 if ($actual_reports_count > 0) {
-                    echo '<span class="ays_menu_badge ays_results_bage">' . $actual_reports_count . '</span>';
+                    echo '<span class="ays_menu_badge ays_results_bage">' . esc_html( absint( $actual_reports_count ) ) . '</span>';
                 }
                 ?>
             </a>

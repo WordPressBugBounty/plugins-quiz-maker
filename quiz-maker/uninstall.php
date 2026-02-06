@@ -54,6 +54,7 @@ if(get_option('ays_quiz_maker_upgrade_plugin','false') === 'false'){
 
     delete_option( "ays_quiz_db_version");
     delete_option( "ays_quiz_maker_upgrade_plugin");
+    delete_option( "ays_quiz_disable_live_chat_icon");
 
     delete_option('ays_quiz_first_time_activation_page');
     delete_option('ays_quiz_agree_terms');

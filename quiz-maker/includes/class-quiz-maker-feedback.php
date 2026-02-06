@@ -242,6 +242,7 @@ class Quiz_Maker_Feedback {
 			'body' => wp_json_encode(array(
 				'type' 				=> 'quiz-maker',
 				'version' 			=> AYS_QUIZ_VERSION,
+				'first_version' 	=> get_option( 'ays_quiz_first_time_activation_verson' ),
 				'site_lang' 		=> get_bloginfo( 'language' ),
 				'button' 			=> $type,
 				'feedback_key' 		=> $feedback_key,
