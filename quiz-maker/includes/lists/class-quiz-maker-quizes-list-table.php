@@ -405,13 +405,13 @@ class Quizes_List_Table extends WP_List_Table{
             //     }
             // }
 
-            if( $image != "" ){
-                $check_if_current_image_exists = Quiz_Maker_Admin::ays_quiz_check_if_current_image_exists($image);
+            // if( $image != "" ){
+            //     $check_if_current_image_exists = Quiz_Maker_Admin::ays_quiz_check_if_current_image_exists($image);
 
-                if( !$check_if_current_image_exists ){
-                    $image = "";
-                }
-            }
+            //     if( !$check_if_current_image_exists ){
+            //         $image = "";
+            //     }
+            // }
 
             $setting_actions = new Quiz_Maker_Settings_Actions($this->plugin_name);
 

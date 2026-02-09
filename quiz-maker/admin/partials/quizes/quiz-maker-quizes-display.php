@@ -2023,12 +2023,41 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
-                                                <select class="ays-text-input ays-text-input-short" id="ays_quick_quiz_quest_explanation_text_transform" name="ays_quick_quiz_quest_explanation_text_transform">
-                                                    <option value="none" selected><?php echo esc_html__('None','quiz-maker'); ?></option>
-                                                    <option value="capitalize"><?php echo esc_html__('Capitalize','quiz-maker'); ?></option>
-                                                    <option value="uppercase"><?php echo esc_html__('Uppercase','quiz-maker'); ?></option>
-                                                    <option value="lowercase"><?php echo esc_html__('Lowercase','quiz-maker'); ?></option>
-                                                </select>
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div style="margin-bottom: 10px;">
+                                                            <label for='ays_quick_quiz_quest_explanation_text_transform'>
+                                                                <?php echo esc_html__('On desktop', 'quiz-maker'); ?>
+                                                            </label>
+                                                        </div>
+                                                        <div class="ays_quiz_display_flex_width">
+                                                            <select class="ays-text-input ays-text-input-short" id="ays_quick_quiz_quest_explanation_text_transform" name="ays_quick_quiz_quest_explanation_text_transform">
+                                                                <option value="none" selected><?php echo esc_html__('None','quiz-maker'); ?></option>
+                                                                <option value="capitalize"><?php echo esc_html__('Capitalize','quiz-maker'); ?></option>
+                                                                <option value="uppercase"><?php echo esc_html__('Uppercase','quiz-maker'); ?></option>
+                                                                <option value="lowercase"><?php echo esc_html__('Lowercase','quiz-maker'); ?></option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <hr>
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div style="margin-bottom: 10px;">
+                                                            <label for='ays_quick_quiz_quest_explanation_mobile_text_transform'>
+                                                                <?php echo esc_html__('On mobile', 'quiz-maker'); ?>
+                                                            </label>
+                                                        </div>
+                                                        <div class="ays_quiz_display_flex_width">
+                                                            <select class="ays-text-input ays-text-input-short" id="ays_quick_quiz_quest_explanation_mobile_text_transform" name="ays_quick_quiz_quest_explanation_mobile_text_transform">
+                                                                <option value="none" selected><?php echo esc_html__('None','quiz-maker'); ?></option>
+                                                                <option value="capitalize"><?php echo esc_html__('Capitalize','quiz-maker'); ?></option>
+                                                                <option value="uppercase"><?php echo esc_html__('Uppercase','quiz-maker'); ?></option>
+                                                                <option value="lowercase"><?php echo esc_html__('Lowercase','quiz-maker'); ?></option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div><!-- Question explanation text transform -->
                                         <hr/>
