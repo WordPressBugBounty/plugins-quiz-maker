@@ -1715,13 +1715,13 @@ class Quiz_Maker_Public
         //     }
         // }
 
-        if( $quiz_image != "" ){
-            $check_if_current_image_exists = Quiz_Maker_Admin::ays_quiz_check_if_current_image_exists($quiz_image);
+        // if( $quiz_image != "" ){
+        //     $check_if_current_image_exists = Quiz_Maker_Admin::ays_quiz_check_if_current_image_exists($quiz_image);
 
-            if( !$check_if_current_image_exists ){
-                $quiz_image = "";
-            }
-        }
+        //     if( !$check_if_current_image_exists ){
+        //         $quiz_image = "";
+        //     }
+        // }
         
         
         $quiz_rate_reports = '';

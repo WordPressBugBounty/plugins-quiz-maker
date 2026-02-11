@@ -6285,21 +6285,21 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label for="ays_show_answers_numbering">
-                                    <?php echo __('Answers numbering','quiz-maker'); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Assign numbering to each answer in ascending sequential order. Choose your preferred type from the list.','quiz-maker'); ?>">
+                                    <?php echo esc_html__('Answers numbering','quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Assign numbering to each answer in ascending sequential order. Choose your preferred type from the list.','quiz-maker'); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
                             </div>
                             <div class="col-sm-8">
                                 <select class="ays-text-input ays-text-input-short" name="ays_show_answers_numbering" id="ays_show_answers_numbering">
-                                    <option <?php echo $show_answers_numbering == "none" ? "selected" : ""; ?> value="none"><?php echo __( "None", 'quiz-maker'); ?></option>
-                                    <option <?php echo $show_answers_numbering == "1." ? "selected" : ""; ?> value="1."><?php echo __( "1.", 'quiz-maker'); ?></option>
-                                    <option <?php echo $show_answers_numbering == "1)" ? "selected" : ""; ?> value="1)"><?php echo __( "1)", 'quiz-maker'); ?></option>
-                                    <option <?php echo $show_answers_numbering == "A." ? "selected" : ""; ?> value="A."><?php echo __( "A.", 'quiz-maker'); ?></option>
-                                    <option <?php echo $show_answers_numbering == "A)" ? "selected" : ""; ?> value="A)"><?php echo __( "A)", 'quiz-maker'); ?></option>
-                                    <option <?php echo $show_answers_numbering == "a." ? "selected" : ""; ?> value="a."><?php echo __( "a.", 'quiz-maker'); ?></option>
-                                    <option <?php echo $show_answers_numbering == "a)" ? "selected" : ""; ?> value="a)"><?php echo __( "a)", 'quiz-maker'); ?></option>
+                                    <option <?php echo $show_answers_numbering == "none" ? "selected" : ""; ?> value="none"><?php echo esc_html__( "None", 'quiz-maker'); ?></option>
+                                    <option <?php echo $show_answers_numbering == "1." ? "selected" : ""; ?> value="1."><?php echo esc_html__( "1.", 'quiz-maker'); ?></option>
+                                    <option <?php echo $show_answers_numbering == "1)" ? "selected" : ""; ?> value="1)"><?php echo esc_html__( "1)", 'quiz-maker'); ?></option>
+                                    <option <?php echo $show_answers_numbering == "A." ? "selected" : ""; ?> value="A."><?php echo esc_html__( "A.", 'quiz-maker'); ?></option>
+                                    <option <?php echo $show_answers_numbering == "A)" ? "selected" : ""; ?> value="A)"><?php echo esc_html__( "A)", 'quiz-maker'); ?></option>
+                                    <option <?php echo $show_answers_numbering == "a." ? "selected" : ""; ?> value="a."><?php echo esc_html__( "a.", 'quiz-maker'); ?></option>
+                                    <option <?php echo $show_answers_numbering == "a)" ? "selected" : ""; ?> value="a)"><?php echo esc_html__( "a)", 'quiz-maker'); ?></option>
                                 </select>
                             </div>
                         </div> <!-- Show answers numbering -->
@@ -6307,8 +6307,8 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label>
-                                    <?php echo __('Show messages for right/wrong answers','quiz-maker'); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify where to display right/wrong answers. Note that the “Show correct answers” option should be enabled. In order to make this option work, you need to add the corresponding texts from the Edit page of the particular question.','quiz-maker')?>">
+                                    <?php echo esc_html__('Show messages for right/wrong answers','quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Specify where to display right/wrong answers. Note that the “Show correct answers” option should be enabled. In order to make this option work, you need to add the corresponding texts from the Edit page of the particular question.','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -6316,19 +6316,19 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                             <div class="col-sm-8">
                                 <label class="ays_quiz_loader">
                                     <input type="radio" class="ays-enable-timer1" name="ays_answers_rw_texts" value="on_passing" <?php echo ($answers_rw_texts == 'on_passing') ? 'checked' : '' ?>/>
-                                    <span><?php echo __( "During the quiz", 'quiz-maker' ); ?></span>
+                                    <span><?php echo esc_html__( "During the quiz", 'quiz-maker' ); ?></span>
                                 </label>
                                 <label class="ays_quiz_loader">
                                     <input type="radio" class="ays-enable-timer1" name="ays_answers_rw_texts" value="on_results_page" <?php echo ($answers_rw_texts == 'on_results_page') ? 'checked' : '' ?>/>
-                                    <span><?php echo __( "On results page", 'quiz-maker' ); ?></span>
+                                    <span><?php echo esc_html__( "On results page", 'quiz-maker' ); ?></span>
                                 </label>
                                 <label class="ays_quiz_loader">
                                     <input type="radio" class="ays-enable-timer1" name="ays_answers_rw_texts" value="on_both" <?php echo ($answers_rw_texts == 'on_both') ? 'checked' : '' ?>/>
-                                    <span><?php echo __( "On Both", 'quiz-maker' ); ?></span>
+                                    <span><?php echo esc_html__( "On Both", 'quiz-maker' ); ?></span>
                                 </label>
                                 <label class="ays_quiz_loader">
                                     <input type="radio" class="ays-enable-timer1" name="ays_answers_rw_texts" value="disable" <?php echo ($answers_rw_texts == 'disable') ? 'checked' : '' ?>/>
-                                    <span><?php echo __( "Disable", 'quiz-maker' ); ?></span>
+                                    <span><?php echo esc_html__( "Disable", 'quiz-maker' ); ?></span>
                                 </label>
                             </div>
                         </div> <!-- Show messages for right/wrong answers  -->
@@ -6352,15 +6352,15 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                     <div class="ays-quiz-accordion-container">
                         <?php echo wp_kses($quiz_accordion_svg_html, $quiz_allowed_html); ?>
-                        <p class="ays-subtitle"><?php echo __('Start Page','quiz-maker')?></p>
+                        <p class="ays-subtitle"><?php echo esc_html__('Start Page','quiz-maker')?></p>
                     </div>
                     <hr class="ays-quiz-bolder-hr"/>
                     <div class="ays-quiz-accordion-options-box">
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label>
-                                    <?php echo __('Show quiz head information','quiz-maker')?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Enable to show the quiz title and description in the start page of the quiz(in the front-end).','quiz-maker')?>">
+                                    <?php echo esc_html__('Show quiz head information','quiz-maker')?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Enable to show the quiz title and description in the start page of the quiz(in the front-end).','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -6388,8 +6388,8 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                         <div class="form-group row">
                             <div class="col-sm-4" style="padding-right: 0px;">
                                 <label for="ays_enable_pass_count">
-                                    <?php echo __('Show passed users count','quiz-maker')?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show how many users passed the quiz. It will be shown at the bottom of  the start page of the quiz','quiz-maker')?>">
+                                    <?php echo esc_html__('Show passed users count','quiz-maker')?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Show how many users passed the quiz. It will be shown at the bottom of  the start page of the quiz','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -6404,8 +6404,8 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                         <div class="form-group row ays_toggle_parent">
                             <div class="col-sm-4" style="padding-right: 0px;">
                                 <label for="ays_show_category">
-                                    <?php echo __('Show quiz category','quiz-maker')?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show quiz category in quiz start page','quiz-maker')?>">
+                                    <?php echo esc_html__('Show quiz category','quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Show quiz category in quiz start page','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -6417,8 +6417,8 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_quiz_enable_quiz_category_description">
-                                            <?php echo __('Show quiz category description','quiz-maker'); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show the quiz category description on the Quiz Start page.','quiz-maker'); ?>">
+                                            <?php echo esc_html__('Show quiz category description','quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Show the quiz category description on the Quiz Start page.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -6433,8 +6433,8 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                         <div class="form-group row">
                             <div class="col-sm-4" style="padding-right: 0px;">
                                 <label for="ays_enable_rate_avg">
-                                    <?php echo __('Show average rate','quiz-maker'); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show the average rate of the quiz. It will be shown at the bottom of the start page of the quiz.','quiz-maker'); ?>">
+                                    <?php echo esc_html__('Show average rate','quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Show the average rate of the quiz. It will be shown at the bottom of the start page of the quiz.','quiz-maker'); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -6449,8 +6449,8 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                         <div class="form-group row">
                             <div class="col-sm-4" style="padding-right: 0px;">
                                 <label for="ays_show_author">
-                                    <?php echo __('Show quiz author','quiz-maker')?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show quiz author in quiz start page','quiz-maker')?>">
+                                    <?php echo esc_html__('Show quiz author','quiz-maker')?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Show quiz author in quiz start page','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -6465,8 +6465,8 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                         <div class="form-group row">
                             <div class="col-sm-4" style="padding-right: 0px;">
                                 <label for="ays_show_create_date">
-                                    <?php echo __('Show creation date','quiz-maker')?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show creation date in quiz start page','quiz-maker'); ?>">
+                                    <?php echo esc_html__('Show creation date','quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Show creation date in quiz start page','quiz-maker'); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -6481,15 +6481,15 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label for="ays_quiz_change_creation_date">
-                                    <?php echo __('Change current quiz creation date','quiz-maker'); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Change the quiz creation date to your preferred date.','quiz-maker'); ?>">
+                                    <?php echo esc_html__('Change current quiz creation date','quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Change the quiz creation date to your preferred date.','quiz-maker'); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
                             </div>
                             <div class="col-sm-8">
                                 <div class="input-group mb-3">
-                                    <input type="text" class="ays-text-input ays-text-input-short ays-quiz-date-create" id="ays_quiz_change_creation_date" name="ays_quiz_change_creation_date" value="<?php echo $change_creation_date; ?>" placeholder="<?php echo current_time( 'mysql' ); ?>">
+                                    <input type="text" class="ays-text-input ays-text-input-short ays-quiz-date-create" id="ays_quiz_change_creation_date" name="ays_quiz_change_creation_date" value="<?php echo esc_attr($change_creation_date); ?>" placeholder="<?php echo current_time( 'mysql' ); ?>">
                                     <div class="input-group-append">
                                         <label for="ays_quiz_change_creation_date" class="input-group-text">
                                             <span><i class="ays_fa ays_fa_calendar"></i></span>
@@ -6507,8 +6507,8 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_enable_autostart">
-                                            <?php echo __('Enable autostart','quiz-maker')?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('If you enable this option, your quiz will start automatically after the page is fully loaded. Note, that this option is designed for 1 quiz in a page. If you put multiple quizzes in a page, only the one located at the top will autostart.','quiz-maker')?>">
+                                            <?php echo esc_html__('Enable autostart','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('If you enable this option, your quiz will start automatically after the page is fully loaded. Note, that this option is designed for 1 quiz in a page. If you put multiple quizzes in a page, only the one located at the top will autostart.','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -6520,10 +6520,10 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                 <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=enable-autostart-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
-                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                            <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
+                                            <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg' ); ?>" class="ays-quiz-new-upgrade-button-hover">
                                         </div>
-                                        <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
+                                        <div class="ays-quiz-new-upgrade-button"><?php echo esc_html__("Upgrade", "quiz-maker"); ?></div>
                                     </div>
                                 </a>
                             </div>
@@ -6534,15 +6534,15 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                     <div class="ays-quiz-accordion-container">
                         <?php echo wp_kses($quiz_accordion_svg_html, $quiz_allowed_html); ?>
-                        <p class="ays-subtitle"><?php echo __('Button Settings','quiz-maker')?></p>
+                        <p class="ays-subtitle"><?php echo esc_html__('Button Settings','quiz-maker')?></p>
                     </div>
                     <hr class="ays-quiz-bolder-hr" />
                     <div class="ays-quiz-accordion-options-box">
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label for="ays_enable_next_button">
-                                    <?php echo __('Enable next button','quiz-maker'); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('User can change the question forward manually. If you want to make the questions required just disable this option.','quiz-maker'); ?>">
+                                    <?php echo esc_html__('Enable next button','quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('User can change the question forward manually. If you want to make the questions required just disable this option.','quiz-maker'); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -6555,8 +6555,8 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label for="ays_enable_previous_button">
-                                    <?php echo __('Enable previous button','quiz-maker')?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('User can change the question backward manually','quiz-maker'); ?>">
+                                    <?php echo esc_html__('Enable previous button','quiz-maker')?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('User can change the question backward manually','quiz-maker'); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -6569,8 +6569,8 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                         <div class="form-group row ays_toggle_parent">
                             <div class="col-sm-4">
                                 <label for="ays_enable_early_finish">
-                                    <?php echo __('Enable finish button','quiz-maker')?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Allow user to finish the quiz early.','quiz-maker')?>">
+                                    <?php echo esc_html__('Enable finish button','quiz-maker')?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Allow user to finish the quiz early.','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -6584,8 +6584,8 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_enable_early_finsh_comfirm_box">
-                                            <?php echo __('Enable confirm box for the Finish button','quiz-maker')?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('If the checkbox is ticked and the Finish button is enabled too, then when the user clicks on the Finish button, the confirmation box will be displayed. It will ask `Do you want to finish the quiz? Are you sure? `.','quiz-maker')?>">
+                                            <?php echo esc_html__('Enable confirm box for the Finish button','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('If the checkbox is ticked and the Finish button is enabled too, then when the user clicks on the Finish button, the confirmation box will be displayed. It will ask `Do you want to finish the quiz? Are you sure? `.','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -6600,8 +6600,8 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label for="ays_enable_clear_answer">
-                                    <?php echo __('Enable clear answer button','quiz-maker')?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Allow user to clear the selected answer. Button will not be displayed if Show correct answers option is enabled.','quiz-maker')?>">
+                                    <?php echo esc_html__('Enable clear answer button','quiz-maker')?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Allow user to clear the selected answer. Button will not be displayed if Show correct answers option is enabled.','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -6616,8 +6616,8 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label for="ays_enable_enter_key">
-                                    <?php echo __('Enable to go next by pressing Enter key','quiz-maker')?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('This option allows users to go to the next question by pressing Enter key. It is working with the following question types only: Text, Short Text, Number.','quiz-maker')?>">
+                                    <?php echo esc_html__('Enable to go next by pressing Enter key','quiz-maker')?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('This option allows users to go to the next question by pressing Enter key. It is working with the following question types only: Text, Short Text, Number.','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -6632,14 +6632,14 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                         <div class="form-group row ays_toggle_parent">
                             <div class="col-sm-4">
                                 <label for="ays_enable_arrows">
-                                    <?php echo __('Use arrows instead of buttons','quiz-maker'); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Buttons will be replaced to icons.','quiz-maker'); ?>">
+                                    <?php echo esc_html__('Use arrows instead of buttons','quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Buttons will be replaced to icons.','quiz-maker'); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
                                 <p class="ays_quiz_small_hint_text_for_message_variables">
-                                    <span><?php echo __( "Please Note" , 'quiz-maker' ); ?></span>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Please note that if the background color and the button text color are the same, the arrows will not be visible.','quiz-maker'); ?>">
+                                    <span><?php echo esc_html__( "Please Note" , 'quiz-maker' ); ?></span>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Please note that if the background color and the button text color are the same, the arrows will not be visible.','quiz-maker'); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </p>
@@ -6674,8 +6674,8 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label for="ays_quiz_display_messages_before_buttons">
-                                    <?php echo __('Display messages before the buttons','quiz-maker'); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('If you enable this option, you can display the texts of the following options before the buttons: Message for the right/wrong answers, Question Explanation, and Show correct answers. Note: If the Show correct answers option is disabled, the messages will not be displayed.','quiz-maker'); ?>">
+                                    <?php echo esc_html__('Display messages before the buttons','quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('If you enable this option, you can display the texts of the following options before the buttons: Message for the right/wrong answers, Question Explanation, and Show correct answers. Note: If the Show correct answers option is disabled, the messages will not be displayed.','quiz-maker'); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -6689,8 +6689,8 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                         <div class="form-group row ays_toggle_parent">
                             <div class="col-sm-4" style="padding-right: 0px;">
                                 <label for="ays_quiz_enable_custom_texts_for_buttons">
-                                    <?php echo __('Enable custom texts for buttons','quiz-maker'); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Enable this option and write your desired custom texts for buttons, instead of the default ones. Note: If this option is disabled, the Buttons Texts will be taken from the General Settings page > Buttons Texts tab.','quiz-maker')?>">
+                                    <?php echo esc_html__('Enable custom texts for buttons','quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Enable this option and write your desired custom texts for buttons, instead of the default ones. Note: If this option is disabled, the Buttons Texts will be taken from the General Settings page > Buttons Texts tab.','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -6702,7 +6702,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_quiz_custom_texts_start_button">
-                                            <?php echo __('Start button','quiz-maker'); ?>
+                                            <?php echo esc_html__('Start button','quiz-maker'); ?>
                                         </label> 
                                     </div>
                                     <div class="col-sm-8">
@@ -6713,7 +6713,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_quiz_custom_texts_next_button">
-                                            <?php echo __('Next button','quiz-maker'); ?>
+                                            <?php echo esc_html__('Next button','quiz-maker'); ?>
                                         </label> 
                                     </div>
                                     <div class="col-sm-8">
@@ -6724,7 +6724,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_quiz_custom_texts_prev_button">
-                                            <?php echo __('Previous button','quiz-maker'); ?>
+                                            <?php echo esc_html__('Previous button','quiz-maker'); ?>
                                         </label> 
                                     </div>
                                     <div class="col-sm-8">
@@ -6735,7 +6735,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_quiz_custom_texts_clear_button">
-                                            <?php echo __('Clear button','quiz-maker'); ?>
+                                            <?php echo esc_html__('Clear button','quiz-maker'); ?>
                                         </label> 
                                     </div>
                                     <div class="col-sm-8">
@@ -6746,7 +6746,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_quiz_custom_texts_finish_button">
-                                            <?php echo __('Finish button','quiz-maker'); ?>
+                                            <?php echo esc_html__('Finish button','quiz-maker'); ?>
                                         </label> 
                                     </div>
                                     <div class="col-sm-8">
@@ -6757,7 +6757,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_quiz_custom_texts_see_results_button">
-                                            <?php echo __('See Result button','quiz-maker'); ?>
+                                            <?php echo esc_html__('See Result button','quiz-maker'); ?>
                                         </label> 
                                     </div>
                                     <div class="col-sm-8">
@@ -6768,7 +6768,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_quiz_custom_texts_restart_quiz_button">
-                                            <?php echo __('Restart quiz button','quiz-maker'); ?>
+                                            <?php echo esc_html__('Restart quiz button','quiz-maker'); ?>
                                         </label> 
                                     </div>
                                     <div class="col-sm-8">
@@ -6779,7 +6779,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_quiz_custom_texts_send_feedback_button">
-                                            <?php echo __('Send feedback button','quiz-maker'); ?>
+                                            <?php echo esc_html__('Send feedback button','quiz-maker'); ?>
                                         </label> 
                                     </div>
                                     <div class="col-sm-8">
@@ -6790,7 +6790,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_quiz_custom_texts_load_more_button">
-                                            <?php echo __('Load more button','quiz-maker'); ?>
+                                            <?php echo esc_html__('Load more button','quiz-maker'); ?>
                                         </label> 
                                     </div>
                                     <div class="col-sm-8">
@@ -6801,7 +6801,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_quiz_custom_texts_exit_button">
-                                            <?php echo __('Exit button','quiz-maker'); ?>
+                                            <?php echo esc_html__('Exit button','quiz-maker'); ?>
                                         </label> 
                                     </div>
                                     <div class="col-sm-8">
@@ -6812,7 +6812,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_quiz_custom_texts_check_button">
-                                            <?php echo __('Check button','quiz-maker'); ?>
+                                            <?php echo esc_html__('Check button','quiz-maker'); ?>
                                         </label> 
                                     </div>
                                     <div class="col-sm-8">
@@ -6823,7 +6823,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_quiz_custom_texts_login_button">
-                                            <?php echo __('Log In button','quiz-maker'); ?>
+                                            <?php echo esc_html__('Log In button','quiz-maker'); ?>
                                         </label> 
                                     </div>
                                     <div class="col-sm-8">
@@ -6853,15 +6853,15 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                     <div class="ays-quiz-accordion-container">
                         <?php echo wp_kses($quiz_accordion_svg_html, $quiz_allowed_html); ?>
-                        <p class="ays-subtitle"><?php echo __('Advanced Settings','quiz-maker')?></p>
+                        <p class="ays-subtitle"><?php echo esc_html__('Advanced Settings','quiz-maker')?></p>
                     </div>
                     <hr class="ays-quiz-bolder-hr">
                     <div class="ays-quiz-accordion-options-box">
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label for="ays_enable_audio_autoplay">
-                                    <?php echo __('Enable audio autoplay','quiz-maker')?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('If there is audio in the question, it will automatically turn on.','quiz-maker')?>">
+                                    <?php echo esc_html__('Enable audio autoplay','quiz-maker')?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('If there is audio in the question, it will automatically turn on.','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -6876,8 +6876,8 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label for="ays_enable_live_bar_option">
-                                    <?php echo __('Enable live progress bar','quiz-maker'); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show the current state of the user passing the quiz. It will be shown at the top of the quiz container. Note: If the Display all questions on one page option is enabled, then, the Progress Bar will display the 100% value. If the Question count per page option is enabled and you have a multipage quiz, then, the Progress Bar value will be displayed by stages.','quiz-maker'); ?>">
+                                    <?php echo esc_html__('Enable live progress bar','quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Show the current state of the user passing the quiz. It will be shown at the top of the quiz container. Note: If the Display all questions on one page option is enabled, then, the Progress Bar will display the 100% value. If the Question count per page option is enabled and you have a multipage quiz, then, the Progress Bar value will be displayed by stages.','quiz-maker'); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -6892,8 +6892,8 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_enable_percent_view_option">
-                                            <?php echo __('Enable percent view','quiz-maker')?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show the progress bar by percentage.','quiz-maker')?>">
+                                            <?php echo esc_html__('Enable percent view','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Show the progress bar by percentage.','quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -6910,8 +6910,8 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label for="ays_enable_rtl_direction">
-                                    <?php echo __('Use RTL Direction','quiz-maker')?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Enable Right to Left direction for the text. This option is intended for the Arabic language.','quiz-maker')?>">
+                                    <?php echo esc_html__('Use RTL Direction','quiz-maker')?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Enable Right to Left direction for the text. This option is intended for the Arabic language.','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -6926,17 +6926,17 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label for="ays_quiz_create_author">
-                                    <?php echo __('Change the author of the current quiz','quiz-maker'); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('You can change the author who created the current quiz to your preferred one. You need to write the User ID here. Please note, that in case you write an ID, by which there are no users found, the changes will not be applied and the previous author will remain the same.','quiz-maker'); ?>">
+                                    <?php echo esc_html__('Change the author of the current quiz','quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('You can change the author who created the current quiz to your preferred one. You need to write the User ID here. Please note, that in case you write an ID, by which there are no users found, the changes will not be applied and the previous author will remain the same.','quiz-maker'); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
                             </div>
                             <div class="col-sm-8">
                                 <select class="ays-text-input ays-text-input-short select2-container-200-width" id='ays_quiz_create_author'name='ays_quiz_create_author'>
-                                    <option value=""><?php echo __('Select User','quiz-maker')?></option>
+                                    <option value=""><?php echo esc_html__('Select User','quiz-maker')?></option>
                                     <?php
-                                        echo "<option value='" . $ays_quiz_create_author_data['ID'] . "' selected>" . $ays_quiz_create_author_data['display_name'] . "</option>";
+                                        echo "<option value='" . esc_attr($ays_quiz_create_author_data['ID']) . "' selected>" . esc_html( $ays_quiz_create_author_data['display_name'] ) . "</option>";
                                     ?>
                                 </select>
                             </div>
@@ -6945,8 +6945,8 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label for="ays_enable_questions_counter">
-                                    <?php echo __('Show questions counter','quiz-maker')?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show the number of the current question and the total amount of the question in the quiz. It will be shown on the right top corner of the quiz container. Example: 3/7.','quiz-maker')?>">
+                                    <?php echo esc_html__('Show questions counter','quiz-maker')?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Show the number of the current question and the total amount of the question in the quiz. It will be shown on the right top corner of the quiz container. Example: 3/7.','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -6961,8 +6961,8 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label for="ays_quiz_enable_question_image_zoom">
-                                    <?php echo __('Question Image Zoom','quiz-maker')?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('By enabling this option, the users can zoom the question images and open them in the large size on the Front-end.','quiz-maker')?>">
+                                    <?php echo esc_html__('Question Image Zoom','quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('By enabling this option, the users can zoom the question images and open them in the large size on the Front-end.','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -6976,8 +6976,8 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label for="ays_enable_leave_page">
-                                    <?php echo __('Enable confirmation box for leaving the page','quiz-maker')?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show confirmation popup if user tries to refresh or leave the page during the quiz taking process.','quiz-maker')?>">
+                                    <?php echo esc_html__('Enable confirmation box for leaving the page','quiz-maker')?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Show confirmation popup if user tries to refresh or leave the page during the quiz taking process.','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -6992,8 +6992,8 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label for="ays_enable_see_result_confirm_box">
-                                    <?php echo __('Enable confirmation box for the See Result button','quiz-maker'); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('When this option is ticked, a confirmation box will appear after the user clicks the See Result button at the end of the quiz.','quiz-maker'); ?>">
+                                    <?php echo esc_html__('Enable confirmation box for the See Result button','quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('When this option is ticked, a confirmation box will appear after the user clicks the See Result button at the end of the quiz.','quiz-maker'); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -7006,8 +7006,8 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                         <div class="form-group row ays_toggle_parent">
                             <div class="col-sm-4" style="padding-right: 0px;">
                                 <label for="ays_enable_rw_asnwers_sounds">
-                                    <?php echo __('Enable sounds for right/wrong answers','quiz-maker'); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('This option will work only when Enable Show correct answers option is enabled and sounds are selected from General options page.','quiz-maker')?>">
+                                    <?php echo esc_html__('Enable sounds for right/wrong answers','quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('This option will work only when Enable Show correct answers option is enabled and sounds are selected from General options page.','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -7019,9 +7019,9 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                             </div>
                             <div class="col-sm-7 ays_toggle_target ays_divider_left" style="<?php echo $enable_rw_asnwers_sounds ? '' : 'display:none;' ?>">
                                 <?php if($rw_answers_sounds_status): ?>
-                                <blockquote class=""><?php echo __('Sounds are selected. For change sounds go to', 'quiz-maker'); ?> <a href="?page=quiz-maker-settings"><?php echo __('General options', 'quiz-maker'); ?></a> <?php echo __('page', 'quiz-maker'); ?></blockquote>
+                                <blockquote class=""><?php echo esc_html__('Sounds are selected. For change sounds go to', 'quiz-maker'); ?> <a href="?page=quiz-maker-settings"><?php echo esc_html__('General options', 'quiz-maker'); ?></a> <?php echo esc_html__('page', 'quiz-maker'); ?></blockquote>
                                 <?php else: ?>
-                                <blockquote class=""><?php echo __('Sounds are not selected. For selecting sounds go to', 'quiz-maker'); ?> <a href="?page=quiz-maker-settings"><?php echo __('General options', 'quiz-maker'); ?></a> <?php echo __('page', 'quiz-maker'); ?></blockquote>
+                                <blockquote class=""><?php echo esc_html__('Sounds are not selected. For selecting sounds go to', 'quiz-maker'); ?> <a href="?page=quiz-maker-settings"><?php echo esc_html__('General options', 'quiz-maker'); ?></a> <?php echo esc_html__('page', 'quiz-maker'); ?></blockquote>
                                 <?php endif; ?>
                             </div>
                         </div> <!-- Enable sounds for right/wrong answers -->
@@ -7029,8 +7029,8 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                         <div class="form-group row ays_toggle_parent">
                             <div class="col-sm-4" style="padding-right: 0px;">
                                 <label for="ays_enable_bg_music">
-                                    <?php echo __('Enable Background music','quiz-maker')?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Background music will play while passing the quiz. Upload your own audio file for the quiz.','quiz-maker')?>">
+                                    <?php echo esc_html__('Enable Background music','quiz-maker')?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Background music will play while passing the quiz. Upload your own audio file for the quiz.','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -7043,8 +7043,8 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                             <div class="col-sm-7 ays_toggle_target ays_divider_left" style="<?php echo $enable_bg_music ? '' : 'display:none;' ?>">
                                 <div class="ays-bg-music-container">
                                     <a class="add-quiz-bg-music" href="javascript:void(0);"><?php echo __("Select music", 'quiz-maker'); ?></a>
-                                    <audio controls src="<?php echo $quiz_bg_music; ?>"></audio>
-                                    <input type="hidden" name="ays_quiz_bg_music" class="ays_quiz_bg_music" value="<?php echo $quiz_bg_music; ?>">
+                                    <audio controls src="<?php echo esc_url($quiz_bg_music); ?>"></esc_html__>
+                                    <input type="hidden" name="ays_quiz_bg_music" class="ays_quiz_bg_music" value="<?php echo esc_url($quiz_bg_music); ?>">
                                 </div>
                             </div>
                         </div> <!-- Enable Background music -->
@@ -7071,14 +7071,14 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label>
-                                            <?php echo __('Embed code','quiz-maker')?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Copy the iframe and embed it on another/your website. Paste the iframe like HTML on your desired WP Editor. By this, the quiz will be opened on that particular page.','quiz-maker'); ?>">
+                                            <?php echo esc_html__('Embed code','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Copy the iframe and embed it on another/your website. Paste the iframe like HTML on your desired WP Editor. By this, the quiz will be opened on that particular page.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
                                     </div>
                                     <div class="col-sm-2">
-                                        <input type="button" class="button button-primary" value="<?php echo __('Copy Code','quiz-maker');?>">
+                                        <input type="button" class="button button-primary" value="<?php echo esc_attr__('Copy Code','quiz-maker');?>">
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="text" class="ays-text-input" tabindex="-1" value="<?php echo esc_attr($embed_code_html); ?>"/>
@@ -7087,10 +7087,10 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                 <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=embed-code-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
-                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                            <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
+                                            <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg' ); ?>" class="ays-quiz-new-upgrade-button-hover">
                                         </div>
-                                        <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade to Developer/Agency", "quiz-maker"); ?></div>
+                                        <div class="ays-quiz-new-upgrade-button"><?php echo esc_html__("Upgrade to Developer/Agency", "quiz-maker"); ?></div>
                                     </div>
                                 </a>
                             </div>
@@ -7104,8 +7104,8 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_allow_exporting_quizzes">
-                                            <?php echo __('Export Quiz as PDF','quiz-maker')?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('After ticking this option the Users field will be activated. You will be able to choose whom you want to give the permission to export the Quiz in the PDF file format. The Export to PDF button will be displayed on the front-end.','quiz-maker'); ?>">
+                                            <?php echo esc_html__('Export Quiz as PDF','quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('After ticking this option the Users field will be activated. You will be able to choose whom you want to give the permission to export the Quiz in the PDF file format. The Export to PDF button will be displayed on the front-end.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -7117,10 +7117,10 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                 <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=export-quiz-pdf-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
-                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                            <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
+                                            <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg' ); ?>" class="ays-quiz-new-upgrade-button-hover">
                                         </div>
-                                        <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
+                                        <div class="ays-quiz-new-upgrade-button"><?php echo esc_html__("Upgrade", "quiz-maker"); ?></div>
                                     </div>
                                 </a>
                             </div>

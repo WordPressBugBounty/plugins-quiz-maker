@@ -2169,7 +2169,7 @@ div#ays-quiz-new-mega-bundle-dicount-month-main.ays_quiz_dicount_info {
     content: unset;
 }
 
-#ays-quiz-new-mega-bundle-dicount-month-main  #ays-button-top-buy-now {
+#ays-quiz-new-mega-bundle-dicount-month-main #ays-button-top-buy-now {
     display: flex;
     align-items: center;
     border-radius: 6.409px;
@@ -2178,7 +2178,7 @@ div#ays-quiz-new-mega-bundle-dicount-month-main.ays_quiz_dicount_info {
     color: #FFF;
     font-size:15px;
     font-style: normal;
-    line-height: normal;
+    line-height: normal !important;
     margin: 0 !important;
 }
 
