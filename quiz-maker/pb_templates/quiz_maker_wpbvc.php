@@ -45,21 +45,30 @@ if( class_exists( 'WPBakeryShortCode' ) ) {
         }
 
         public function vc_quizmaker_html( $atts ) {
-            // Params extraction
-            extract(
-                shortcode_atts(
-                    array(
-                        'quiz'   => null
-                    ),
-                    $atts
+            // Get shortcode attributes safely
+            $atts = shortcode_atts(
+                array(
+                    'quiz' => '',
+                ),
+                $atts,
+                'vc_quizmaker'
+            );
+            
+            // Quiz ID must be numeric
+            $quiz_id = (isset( $atts['quiz'] ) && $atts['quiz'] != '') ? absint($atts['quiz']) : '';
+
+            // If invalid ID, return empty output
+            if ( empty( $quiz_id ) ) {
+                return '';
+            }
+
+            // Build shortcode safely
+            return do_shortcode(
+                sprintf(
+                    '[ays_quiz id="%d"]',
+                    $quiz_id
                 )
             );
-            // Fill $html var with data
-
-            // Fill $html var with data
-            $html = do_shortcode("[ays_quiz id={$quiz}]");
-
-            return $html;
         }
 
         public function get_active_quizzes(){
