@@ -1,5 +1,5 @@
 jQuery(document).ready(function ($) {
-    $(document).find('input[name^="ays_questions"]').on('change', function (e) {
+    $(document).on('change', 'input[name^="ays_questions"]', function (e) {
 
         var _this = $(this);
         var parentStep = _this.parents('.step');

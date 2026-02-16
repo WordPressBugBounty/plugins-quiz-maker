@@ -71,7 +71,7 @@
             }
         });
 
-        $(document).find('.ays-quiz-rate-link-box .ays-quiz-rate-link').on('click', function (e) {
+        $(document).on('click', '.ays-quiz-rate-link-box .ays-quiz-rate-link', function (e) {
             e.preventDefault();
             var _this  = $(this);
             var parent = _this.parents('.ays-quiz-container');
@@ -142,7 +142,7 @@
             });
         });
 
-        $(document).find('input.ays_finish').on('click', function (e) {
+        $(document).on('click', 'input.ays_finish', function (e) {
             e.preventDefault();
             ays_quiz_container_id = $(this).parents(".ays-quiz-container").attr("id");
             ays_quiz_container = $('#'+ays_quiz_container_id);
@@ -648,7 +648,7 @@
             // aysAnimateStep(ays_quiz_container.data('questEffect'), current_fs, next_fs);
         });
 
-        $(document).find('.ays_next.start_button').on('click',function(e){
+        $(document).on('click', '.ays_next.start_button', function(e){
             var $this    = $(this);
             var thisCont = $this.parents('.ays-quiz-container');
             var quizId   = thisCont.find('input[name="ays_quiz_id"]').val();
@@ -662,7 +662,7 @@
             }
         });
 
-        $(document).find(".ays-quiz-submit-question-report").on('click', function(e) {
+        $(document).on('click', ".ays-quiz-submit-question-report", function(e) {
             e.preventDefault();
             var _this = $(this);
             var parent = _this.parents(".ays-modal-reports");
@@ -718,7 +718,7 @@
             });
         });
 
-        $(document).find('button.ays_check_answer').on('click', function (e) {
+        $(document).on('click', 'button.ays_check_answer', function (e) {
             var _this = $(this);
 
             var quizContainer = _this.parents('.ays-quiz-container');

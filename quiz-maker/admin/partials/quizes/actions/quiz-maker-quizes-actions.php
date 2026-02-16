@@ -8200,11 +8200,11 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                 <div class="pro_features pro_features_popup">
                                     <div class="pro-features-popup-conteiner">
                                         <div class="pro-features-popup-title">
-                                            <?php echo __("Intervals feature", 'quiz-maker'); ?>
+                                            <?php echo esc_html__("Intervals feature", 'quiz-maker'); ?>
                                         </div>
                                         <div class="pro-features-popup-content" data-link="https://youtu.be/W_H69qg3LFA">
                                             <p>
-                                                <?php echo __("With the help of the Intervals feature you can display different specified results based on the Interval the user appeared in. Then, attach an image to each Interval.", 'quiz-maker'); ?>
+                                                <?php echo esc_html__("With the help of the Intervals feature you can display different specified results based on the Interval the user appeared in. Then, attach an image to each Interval.", 'quiz-maker'); ?>
                                             </p>
                                             <p>
                                                 <?php echo sprintf( __("You can choose either %s By percentage, By Points, or By Keywords %s as a method of calculation for the Intervals.", 'quiz-maker'),
@@ -8213,49 +8213,49 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                                 ); ; ?>
                                             </p>
                                             <p>
-                                                <?php echo __("One of the best examples of the use case of the Intervals feature is a personality quiz, where you can show different personality types to the users.", 'quiz-maker'); ?>
+                                                <?php echo esc_html__("One of the best examples of the use case of the Intervals feature is a personality quiz, where you can show different personality types to the users.", 'quiz-maker'); ?>
                                             </p>
                                             <div>
-                                                <a href="https://quiz-plugin.com/personality-quiz-for-wp/" target="_blank"><?php echo __("See Demo", 'quiz-maker'); ?></a>
+                                                <a href="https://quiz-plugin.com/personality-quiz-for-wp/" target="_blank"><?php echo esc_html__("See Demo", 'quiz-maker'); ?></a>
                                             </div>
                                         </div>
                                         <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-intervals-table-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
-                                            <?php echo __("Pricing", 'quiz-maker'); ?>
+                                            <?php echo esc_html__("Pricing", 'quiz-maker'); ?>
                                         </div>
                                     </div>
                                 </div>
                                 <div class='form-group row ays-field-dashboard'>
                                     <div class="col-sm-4">
-                                        <label for="ays-answers-table"><?php echo __('Intervals', 'quiz-maker'); ?>
+                                        <label for="ays-answers-table"><?php echo esc_html__('Intervals', 'quiz-maker'); ?>
                                             <a href="javascript:void(0)" class="ays-add-interval" tabindex="-1">
                                                 <i class="ays_fa ays_fa_plus_square" aria-hidden="true"></i>
                                             </a>
-                                            <a class="ays_help" style="font-size:15px;" data-toggle="tooltip" title="<?php echo __('Set different messages based on the user\'s score. The message will be displayed on the result page of the quiz.','quiz-maker'); ?>">
+                                            <a class="ays_help" style="font-size:15px;" data-toggle="tooltip" title="<?php echo esc_attr__('Set different messages based on the user\'s score. The message will be displayed on the result page of the quiz.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
-                                        <div><?php echo __("Conditional result messages", 'quiz-maker'); ?></div>
+                                        <div><?php echo esc_html__("Conditional result messages", 'quiz-maker'); ?></div>
                                     </div>
                                     <div class="col-sm-8">
                                         <label class="ays_quiz_loader">
                                             <input type="radio" class="ays-enable-timer1 ays_table_by ays_intervals_display_by" tabindex="-1" checked>
-                                            <span><?php echo __( "By percentage", 'quiz-maker' ); ?></span>
+                                            <span><?php echo esc_html__( "By percentage", 'quiz-maker' ); ?></span>
                                         </label>
                                         <label class="ays_quiz_loader">
                                             <input type="radio" class="ays-enable-timer1 ays_table_by ays_intervals_display_by" tabindex="-1">
-                                            <span><?php echo __( "By points", 'quiz-maker' ); ?></span>
+                                            <span><?php echo esc_html__( "By points", 'quiz-maker' ); ?></span>
                                         </label>
                                         <label class="ays_quiz_loader">
                                             <input type="radio" class="ays-enable-timer1 ays_table_by ays_intervals_display_by" tabindex="-1">
-                                            <span><?php echo __( "By keywords", 'quiz-maker' ); ?></span>
+                                            <span><?php echo esc_html__( "By keywords", 'quiz-maker' ); ?></span>
                                         </label>
                                         <a class="ays_help" style="font-size:15px;" data-toggle="tooltip" data-html="true"
                                             title="<?php
-                                                echo __('Choose your preferred method of calculation.','quiz-maker') .
+                                                echo esc_html__('Choose your preferred method of calculation.','quiz-maker') .
                                                 "<ul style='list-style-type: circle;padding-left: 20px;'>".
-                                                    "<li>". __('By percentage - If this option is enabled, you need to assign values to Min and Max fields by percentage and write a correspondent message and attach an image for each interval separately. You need to cover the 0-100 range with as many intervals as you want.','quiz-maker') ."</li>".
-                                                    "<li>". __('By points - If this option is enabled, you need to assign values to Min and Max fields by points and write a correspondent message and attach an image for each interval separately. There is no limitation to that.','quiz-maker') ."</li>".
-                                                    "<li>". __('By keywords - If this option is enabled, you need to select the keywords, which you have already assigned to your answers and write a correspondent message and attach an image for each interval separately. It will be calculated based on the majority of the selected answers of the user.','quiz-maker') ."</li>".
+                                                    "<li>". esc_html__('By percentage - If this option is enabled, you need to assign values to Min and Max fields by percentage and write a correspondent message and attach an image for each interval separately. You need to cover the 0-100 range with as many intervals as you want.','quiz-maker') ."</li>".
+                                                    "<li>". esc_html__('By points - If this option is enabled, you need to assign values to Min and Max fields by points and write a correspondent message and attach an image for each interval separately. There is no limitation to that.','quiz-maker') ."</li>".
+                                                    "<li>". esc_html__('By keywords - If this option is enabled, you need to select the keywords, which you have already assigned to your answers and write a correspondent message and attach an image for each interval separately. It will be calculated based on the majority of the selected answers of the user.','quiz-maker') ."</li>".
                                                 "</ul>";
                                             ?>">
                                             <i class="ays_fa ays_fa_info_circle"></i>
@@ -8267,12 +8267,12 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                     <table class="ays-intervals-table">
                                         <thead>
                                         <tr class="ui-state-default">
-                                            <th><?php echo __('Ordering', 'quiz-maker'); ?></th>
-                                            <th class="ays_interval_min_row"><?php echo __('Min', 'quiz-maker'); ?></th>
-                                            <th class="ays_interval_max_row"><?php echo __('Max', 'quiz-maker'); ?></th>
-                                            <th><?php echo __('Text', 'quiz-maker'); ?></th>
-                                            <th><?php echo __('Image', 'quiz-maker'); ?></th>
-                                            <th><?php echo __('Delete', 'quiz-maker'); ?></th>
+                                            <th><?php echo esc_html__('Ordering', 'quiz-maker'); ?></th>
+                                            <th class="ays_interval_min_row"><?php echo esc_html__('Min', 'quiz-maker'); ?></th>
+                                            <th class="ays_interval_max_row"><?php echo esc_html__('Max', 'quiz-maker'); ?></th>
+                                            <th><?php echo esc_html__('Text', 'quiz-maker'); ?></th>
+                                            <th><?php echo esc_html__('Image', 'quiz-maker'); ?></th>
+                                            <th><?php echo esc_html__('Delete', 'quiz-maker'); ?></th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -8285,15 +8285,15 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                                 $quiz_interval_text = 'Add';
 
                                                 ?>
-                                                <tr class="ays-interval-row ui-state-default <?php echo $className; ?>">
+                                                <tr class="ays-interval-row ui-state-default <?php echo esc_attr($className); ?>">
                                                     <td class="ays-sort">
                                                         <i class="ays_fa ays_fa_arrows" aria-hidden="true"></i>
                                                     </td>
                                                     <td class="ays_interval_min_row">
-                                                        <input type="number" tabindex="-1" value="<?php echo $quiz_interval['interval_min'] ?>" class="interval_min">
+                                                        <input type="number" tabindex="-1" value="<?php echo intval($quiz_interval['interval_min']); ?>" class="interval_min">
                                                     </td>
                                                     <td class="ays_interval_max_row">
-                                                        <input type="number" tabindex="-1" value="<?php echo $quiz_interval['interval_max'] ?>" class="interval_max">
+                                                        <input type="number" tabindex="-1" value="<?php echo intval($quiz_interval['interval_max']); ?>" class="interval_max">
                                                     </td>
                                                     <td>
                                                         <textarea type="text" class="interval__text" tabindex="-1"></textarea>
@@ -8301,12 +8301,12 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                                     <td class="ays-interval-image-td">
                                                         <label class='ays-label' for='ays-answer'>
                                                             <a href="javascript:void(0)" class="add-answer-image add-interval-image" style="display:block;" tabindex="-1">
-                                                                <?php echo $quiz_interval_text; ?>
+                                                                <?php echo esc_html($quiz_interval_text); ?>
                                                             </a>
                                                         </label>
                                                     </td>
                                                     <td>
-                                                        <a href="javascript:void(0)" class="ays-delete-interval" tabindex="-1" data-id="<?php echo $key; ?>">
+                                                        <a href="javascript:void(0)" class="ays-delete-interval" tabindex="-1" data-id="<?php echo esc_attr($key); ?>">
                                                             <i class="ays_fa ays_fa_minus_square" aria-hidden="true"></i>
                                                         </a>
                                                     </td>
@@ -8321,34 +8321,34 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                 <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-intervals-table-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
-                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                            <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
+                                            <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg' ); ?>" class="ays-quiz-new-upgrade-button-hover">
                                         </div>
-                                        <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
+                                        <div class="ays-quiz-new-upgrade-button"><?php echo esc_html__("Upgrade", "quiz-maker"); ?></div>
                                     </div>
                                 </a>
                                 <div class="ays-quiz-new-watch-video-button-box">
                                     <div>
-                                        <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24.svg'?>">
-                                        <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg'?>" class="ays-quiz-new-watch-video-button-hover">
+                                        <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24.svg' ); ?>">
+                                        <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg' ); ?>" class="ays-quiz-new-watch-video-button-hover">
                                     </div>
-                                    <div class="ays-quiz-new-watch-video-button"><?php echo __("Watch Video", "quiz-maker"); ?></div>
+                                    <div class="ays-quiz-new-watch-video-button"><?php echo esc_html__("Watch Video", "quiz-maker"); ?></div>
                                 </div>
 
                                 <div class="ays-quiz-center-big-main-button-box ays-quiz-new-big-button-flex">
                                     <div class="ays-quiz-center-big-watch-video-button-box ays-quiz-big-upgrade-margin-right-10">
                                         <div class="ays-quiz-center-new-watch-video-demo-button">
-                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24.svg'?>" class="ays-quiz-new-button-img-hide">
-                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg'?>" class="ays-quiz-new-watch-video-button-hover">
-                                            <?php echo __("Watch Video", "quiz-maker"); ?>
+                                            <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24.svg' ); ?>" class="ays-quiz-new-button-img-hide">
+                                            <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg' ); ?>" class="ays-quiz-new-watch-video-button-hover">
+                                            <?php echo esc_html__("Watch Video", "quiz-maker"); ?>
                                         </div>
                                     </div>
                                     <div class="ays-quiz-center-big-upgrade-button-box">
                                         <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-intervals-table-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                             <div class="ays-quiz-center-new-big-upgrade-button">
-                                                <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>" class="ays-quiz-new-button-img-hide">
-                                                <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">  
-                                                <?php echo __("Upgrade", "quiz-maker"); ?>
+                                                <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>" class="ays-quiz-new-button-img-hide">
+                                                <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg' ); ?>" class="ays-quiz-new-upgrade-button-hover">  
+                                                <?php echo esc_html__("Upgrade", "quiz-maker"); ?>
                                             </div>
                                         </a>
                                     </div>
@@ -8358,7 +8358,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                         <div class="ays-quiz-heading-box ays-quiz-unset-float ays-quiz-unset-margin">
                             <div class="ays-quiz-wordpress-user-manual-box ays-quiz-wordpress-text-align">
                                 <a href="https://www.youtube.com/watch?v=lUbLHe9mEZ0" target="_blank">
-                                    <?php echo __("How to create personality quiz - video", 'quiz-maker'); ?>
+                                    <?php echo esc_html__("How to create personality quiz - video", 'quiz-maker'); ?>
                                 </a>
                             </div>
                         </div>
@@ -8368,7 +8368,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                         <div class="ays-quiz-heading-box ays-quiz-unset-float ays-quiz-unset-margin">
                             <div class="ays-quiz-wordpress-user-manual-box ays-quiz-wordpress-text-align">
                                 <a href="https://www.youtube.com/watch?v=BeYNME9TZsQ" target="_blank">
-                                    <?php echo __("How to create WooCommerce quiz - video", 'quiz-maker'); ?>
+                                    <?php echo esc_html__("How to create WooCommerce quiz - video", 'quiz-maker'); ?>
                                 </a>
                             </div>
                         </div>
@@ -8383,11 +8383,11 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                 <div class="pro_features pro_features_popup">
                                     <div class="pro-features-popup-conteiner">
                                         <div class="pro-features-popup-title">
-                                            <?php echo __("Top Keywords", 'quiz-maker'); ?>
+                                            <?php echo esc_html__("Top Keywords", 'quiz-maker'); ?>
                                         </div>
                                         <div class="pro-features-popup-content" data-link="https://youtu.be/o-GB91dfsLo">
                                             <p>
-                                                <?php echo __("Are you interested in showing the question results based on chosen keywords? If yes, then, you can use the Top Keywords functionality.", 'quiz-maker'); ?>
+                                                <?php echo esc_html__("Are you interested in showing the question results based on chosen keywords? If yes, then, you can use the Top Keywords functionality.", 'quiz-maker'); ?>
                                             </p>
                                             <p>
                                                 <?php echo sprintf( __("One of the %s best use cases %s of the feature is the %s Personality Trait quiz. %s", 'quiz-maker'),
@@ -8408,14 +8408,14 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                                 ); ?>
                                             </p>
                                             <p>
-                                                <?php echo __("By using this feature, you can display what percentage of which personality traits the particular user has.", 'quiz-maker'); ?>
+                                                <?php echo esc_html__("By using this feature, you can display what percentage of which personality traits the particular user has.", 'quiz-maker'); ?>
                                             </p>
                                             <div>
-                                                <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo __("See Documentation", 'quiz-maker'); ?></a>
+                                                <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo esc_html__("See Documentation", 'quiz-maker'); ?></a>
                                             </div>
                                         </div>
                                         <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-top-keywords-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
-                                            <?php echo __("Pricing", 'quiz-maker'); ?>
+                                            <?php echo esc_html__("Pricing", 'quiz-maker'); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -8423,9 +8423,9 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                     <div class="row">
                                         <div class="col-sm-4">
                                             <label for="ays_enable_top_keywords">
-                                                <?php echo __('Assign message to each keyword','quiz-maker'); ?>
-                                                <?php echo __('(Personality Quiz)','quiz-maker'); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show the question results based on keywords on the resultes page with specified texts for each keyword.','quiz-maker'); ?>">
+                                                <?php echo esc_html__('Assign message to each keyword','quiz-maker'); ?>
+                                                <?php echo esc_html__('(Personality Quiz)','quiz-maker'); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Show the question results based on keywords on the resultes page with specified texts for each keyword.','quiz-maker'); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -8438,18 +8438,18 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                 <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-top-keywords-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
-                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                            <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
+                                            <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg' ); ?>" class="ays-quiz-new-upgrade-button-hover">
                                         </div>
-                                        <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
+                                        <div class="ays-quiz-new-upgrade-button"><?php echo esc_html__("Upgrade", "quiz-maker"); ?></div>
                                     </div>
                                 </a>
                                 <div class="ays-quiz-new-watch-video-button-box">
                                     <div>
-                                        <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24.svg'?>">
-                                        <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg'?>" class="ays-quiz-new-watch-video-button-hover">
+                                        <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24.svg' ); ?>">
+                                        <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg' ); ?>" class="ays-quiz-new-watch-video-button-hover">
                                     </div>
-                                    <div class="ays-quiz-new-watch-video-button"><?php echo __("Watch Video", "quiz-maker"); ?></div>
+                                    <div class="ays-quiz-new-watch-video-button"><?php echo esc_html__("Watch Video", "quiz-maker"); ?></div>
                                 </div>
                             </div>
                         </div><!-- Top Keywords -->
@@ -8457,7 +8457,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                         <div class="ays-quiz-heading-box ays-quiz-unset-float" style="margin-bottom: 20px;">
                             <div class="ays-quiz-wordpress-user-manual-box ays-quiz-wordpress-text-align">
                                 <a href="https://www.youtube.com/watch?v=LJ5X2-AMdm0" target="_blank">
-                                    <?php echo __("How to Add Coupons - video", 'quiz-maker'); ?>
+                                    <?php echo esc_html__("How to Add Coupons - video", 'quiz-maker'); ?>
                                 </a>
                             </div>
                         </div>
@@ -8466,7 +8466,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                 <div class="pro_features pro_features_popup">
                                     <div class="pro-features-popup-conteiner">
                                         <div class="pro-features-popup-title">
-                                            <?php echo __("Quiz Coupon", 'quiz-maker'); ?>
+                                            <?php echo esc_html__("Quiz Coupon", 'quiz-maker'); ?>
                                         </div>
                                         <div class="pro-features-popup-content" data-link="https://youtu.be/EfdYE1o2ALk">
                                             <p>
@@ -8476,19 +8476,19 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                                 ); ?>
                                             </p>
                                             <div>
-                                                <a href="https://quiz-plugin.com/coupon-quiz/" target="_blank"><?php echo __("See Demo", 'quiz-maker'); ?></a>
+                                                <a href="https://quiz-plugin.com/coupon-quiz/" target="_blank"><?php echo esc_html__("See Demo", 'quiz-maker'); ?></a>
                                             </div>
                                         </div>
                                         <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-quiz-coupon-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
-                                            <?php echo __("Pricing", 'quiz-maker'); ?>
+                                            <?php echo esc_html__("Pricing", 'quiz-maker'); ?>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_quiz_enable_coupon">
-                                            <?php echo __('Enable quiz coupons','quiz-maker'); ?>
-                                            <a class="ays_help" data-html="true" data-toggle="tooltip" title="<?php echo __("Enable coupon receiving after finishing the quiz. For showing the coupons, you have to use the %%quiz_coupon%% message variable from General Settings>Message variables.",'quiz-maker'); ?>">
+                                            <?php echo esc_html__('Enable quiz coupons','quiz-maker'); ?>
+                                            <a class="ays_help" data-html="true" data-toggle="tooltip" title="<?php echo esc_attr__("Enable coupon receiving after finishing the quiz. For showing the coupons, you have to use the %%quiz_coupon%% message variable from General Settings>Message variables.",'quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -8500,18 +8500,18 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                 <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-quiz-coupon-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
-                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'?>">
-                                            <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'?>" class="ays-quiz-new-upgrade-button-hover">
+                                            <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
+                                            <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg' ); ?>" class="ays-quiz-new-upgrade-button-hover">
                                         </div>
-                                        <div class="ays-quiz-new-upgrade-button"><?php echo __("Upgrade", "quiz-maker"); ?></div>
+                                        <div class="ays-quiz-new-upgrade-button"><?php echo esc_html__("Upgrade", "quiz-maker"); ?></div>
                                     </div>
                                 </a>
                                 <div class="ays-quiz-new-watch-video-button-box">
                                     <div>
-                                        <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24.svg'?>">
-                                        <img loading="lazy" src="<?php echo AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg'?>" class="ays-quiz-new-watch-video-button-hover">
+                                        <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24.svg' ); ?>">
+                                        <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg' ); ?>" class="ays-quiz-new-watch-video-button-hover">
                                     </div>
-                                    <div class="ays-quiz-new-watch-video-button"><?php echo __("Watch Video", "quiz-maker"); ?></div>
+                                    <div class="ays-quiz-new-watch-video-button"><?php echo esc_html__("Watch Video", "quiz-maker"); ?></div>
                                 </div>
                             </div>
                         </div><!-- Quiz Coupon -->

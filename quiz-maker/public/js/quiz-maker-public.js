@@ -252,9 +252,9 @@
             }
         }
         
-        $(document).find('.ays_next.start_button').on('click', time_limit);
+        $(document).on('click', '.ays_next.start_button', time_limit);
         
-        $(document).find('.ays_next.start_button').on('click', function(e){
+        $(document).on('click', '.ays_next.start_button', function(e){
 
             if(checkQuizPassword(e, myOptions, false) === false){
                 return false;
@@ -336,7 +336,7 @@
             }
         });
 
-        $(document).find('.ays-quiz-container input').on('focus', function () {
+        $(document).on('focus', '.ays-quiz-container input', function () {
             $(window).on('keydown', function (event) {
                 var _this = $(event.target);
                 var submitFlag = true;
@@ -352,7 +352,7 @@
             });
         });
 
-        $(document).find('.ays-quiz-container input').on('blur', function () {
+        $(document).on('blur', '.ays-quiz-container input', function () {
             $(window).off('keydown');
         });
         
@@ -565,7 +565,7 @@
         //     }
         // });
 
-        $(document).find('textarea.ays_question_limit_length, input.ays_question_limit_length').on('keyup keypress', function(e) {
+        $(document).on('keyup keypress', 'textarea.ays_question_limit_length, input.ays_question_limit_length', function(e) {
             var $this = $(this);
             var questionId = $this.attr('data-question-id');
             var container = $this.parents('.ays-field').next('.ays_quiz_question_text_conteiner');
@@ -770,7 +770,7 @@
             });
         });
 
-        $(document).find('input.ays_question_number_limit_length').on('keyup keypress', function(e) {
+        $(document).on('keyup keypress', 'input.ays_question_number_limit_length', function(e) {
             var $this = $(this);
             var questionId = $this.attr('data-question-id');
             var parent = $this.parents('.ays-abs-fs');
@@ -1226,7 +1226,7 @@
             });
         });
 
-        $(document).find('.ays_next').on('click', function(e){
+        $(document).on('click', '.ays_next', function(e){
             e.preventDefault();
             var quizId = $(this).parents('.ays-quiz-container').find('input[name="ays_quiz_id"]').val();
 
@@ -1817,7 +1817,7 @@
                 
         });
          
-        $(document).find('.ays_previous').on("click", function(e){
+        $(document).on("click", '.ays_previous', function(e){
             ays_quiz_container = $(this).parents(".ays-quiz-container");
             if(typeof explanationTimeout != 'undefined'){
                 clearTimeout(explanationTimeout);
@@ -2054,16 +2054,16 @@
             }
         });
 
-        $(document).find('select.ays-select').on("select2:selecting", function(e){
+        $(document).on("select2:selecting", 'select.ays-select', function(e){
             $(this).parents('.ays-quiz-container').find('b[role="presentation"]').addClass('ays_fa ays_fa_chevron_down');
         });
 
-        $(document).find('select.ays-select').on("select2:opening", function(e){
+        $(document).on("select2:opening", 'select.ays-select', function(e){
             $(this).parents('.ays-quiz-container').css('z-index', 1);
             $(this).parents('.step').css('z-index', 1);
         });
         
-        $(document).find('select.ays-select').on("select2:closing", function(e){
+        $(document).on("select2:closing", 'select.ays-select', function(e){
             $(this).parents('.ays-quiz-container').find('b[role="presentation"]').addClass('ays_fa ays_fa_chevron_down');
             $(this).parents('.ays-quiz-container').css('z-index', 'initial');
             $(this).parents('.step').css('z-index', 'initial');
@@ -2217,7 +2217,7 @@
             }
         });
 
-        $(document).find('.ays_finish.action-button.ays_arrow').on('click', function () {
+        $(document).on('click', '.ays_finish.action-button.ays_arrow', function () {
             $(this).parents('.ays_buttons_div').find('input.ays_next.action-button').trigger('click');
         });
 
@@ -2232,7 +2232,7 @@
             });
         });
         
-        $(document).find('.ays_finish.action-button').on('click', function () {
+        $(document).on('click', '.ays_finish.action-button', function () {
             var quizId = $(this).parents(".ays-quiz-container").find('input[name="ays_quiz_id"]').val();
             if ( typeof window.aysEarlyFinishConfirmBox != 'undefined') {
                 if ( typeof window.aysEarlyFinishConfirmBox[ quizId ] != 'undefined' ) {
@@ -2319,7 +2319,7 @@
             window.location.href = window.location.href + ( window.location.search ? '&' : '?' ) + 'reset_quiz=1';
         });
         
-        $(document).find('.action-button.ays_restart_button').on('click', function () {
+        $(document).on('click', '.action-button.ays_restart_button', function () {
             window.location.reload();
         });
         
@@ -2553,7 +2553,7 @@
             }
         }, false);
 
-        $(document).find('.ays-quiz-open-full-screen, .ays-quiz-close-full-screen').on('click', function() {
+        $(document).on('click', '.ays-quiz-open-full-screen, .ays-quiz-close-full-screen', function() {
             var quiz_container = $(this).parents('.ays-quiz-container').get(0);
             toggleFullscreen(quiz_container);
         });
@@ -2694,7 +2694,7 @@
             });
         });
         
-        $(document).find('.ays-close-reports-window').on('click', function() {
+        $(document).on('click', '.ays-close-reports-window', function() {
             var _this = $(this);
             var parent = _this.parents('div.ays-quiz-container');
             var reportsModal = parent.find('div.ays-modal-reports');

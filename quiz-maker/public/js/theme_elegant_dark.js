@@ -1,5 +1,5 @@
 jQuery(document).ready(function ($) {
-    $(document).find('input[name^="ays_questions"]').on('change', function (e) {
+    $(document).on('change', 'input[name^="ays_questions"]', function (e) {
         e.preventDefault();
 
         var _this = $(this);
@@ -116,7 +116,7 @@ jQuery(document).ready(function ($) {
         }
     });
     
-    $(document).find('.ays_next.start_button').on('click', function(e){
+    $(document).on('click', '.ays_next.start_button', function(e){
         var _this = $(this);
         var container = _this.parents('.ays-quiz-container');
 
