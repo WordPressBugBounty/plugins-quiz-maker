@@ -1451,71 +1451,72 @@ class Quiz_Maker_Admin
         $quick_quiz_review_placeholder_text                     = '';
 
         // User Data
-        $quick_quiz_show_information_form                   = 'on';
-        $quick_quiz_autofill_user_data                      = 'off';
-        $quick_quiz_display_fields_labels                   = 'off';
+        $quick_quiz_show_information_form                       = 'on';
+        $quick_quiz_autofill_user_data                          = 'off';
+        $quick_quiz_display_fields_labels                       = 'off';
 
         // Styles Settings
-        $quick_quiz_width                                   = 800;
-        $quick_quiz_height                                  = 450;
-        $quick_quiz_border_radius                           = 8;
-        $quick_quiz_image_height                            = "";
-        $quick_quiz_progress_bar_style                      = "third";
-        $quick_quiz_progress_live_bar_style                 = "default";
-        $quick_quiz_buttons_position                        = "center";
-        $quick_quiz_title_transformation                    = "uppercase";
-        $quick_quiz_title_font_size                         = 28;
-        $quick_quiz_title_mobile_font_size                  = 20;
-        $quick_quiz_custom_class                            = "";
+        $quick_quiz_width                                       = 800;
+        $quick_quiz_height                                      = 450;
+        $quick_quiz_border_radius                               = 8;
+        $quick_quiz_image_height                                = "";
+        $quick_quiz_progress_bar_style                          = "third";
+        $quick_quiz_progress_live_bar_style                     = "default";
+        $quick_quiz_buttons_position                            = "center";
+        $quick_quiz_title_transformation                        = "uppercase";
+        $quick_quiz_title_font_size                             = 28;
+        $quick_quiz_title_mobile_font_size                      = 20;
+        $quick_quiz_custom_class                                = "";
 
-        $quick_quiz_quest_animation                         = "none";
-        $quick_quiz_question_font_size                      = 16;
-        $quick_quiz_question_mobile_font_size               = 16;
-        $quick_quiz_question_text_alignment                 = "center";
-        $quick_quiz_image_width                             = "";
-        $quick_quiz_image_width_by_percentage_px            = "pixels";
-        $quick_quiz_image_height                            = "";
-        $quick_quiz_image_sizing                            = "cover";
-        $quick_quiz_answers_font_size                       = 15;
-        $quick_quiz_answers_mobile_font_size                = 15;
-        $quick_quiz_answers_margin                          = 12;
-        $quick_quiz_disable_hover_effect                    = "off";
-        $quick_quiz_buttons_size                            = "large";
-        $quick_quiz_buttons_font_size                       = 18;
-        $quick_quiz_buttons_mobile_font_size                = 18;
-        $quick_quiz_buttons_width                           = "";
-        $quick_quiz_buttons_left_right_padding              = 36;
-        $quick_quiz_buttons_top_bottom_padding              = 14;
-        $quick_quiz_buttons_border_radius                   = 8;
-        $quick_quiz_note_text_font_size                     = 14;
-        $quick_quiz_note_text_mobile_font_size              = 14;
-        $quick_quiz_admin_note_text_transform               = "none";
-        $quick_quiz_admin_note_text_decoration              = "none";
-        $quick_quiz_admin_note_letter_spacing               = 0;
-        $quick_quiz_admin_note_font_weight                  = "normal";
-        $quick_quiz_quest_explanation_font_size             = 16;
-        $quick_quiz_quest_explanation_mobile_font_size      = 16;
-        $quick_quiz_quest_explanation_text_transform        = "none";
-        $quick_quiz_quest_explanation_text_decoration       = "none";
-        $quick_quiz_quest_explanation_letter_spacing        = 0;
-        $quick_quiz_quest_explanation_font_weight           = "normal";
-        $quick_quiz_right_answers_font_size                 = 16;
-        $quick_quiz_right_answers_mobile_font_size          = 16;
-        $quick_quiz_right_answer_text_transform             = "none";
-        $quick_quiz_right_answers_text_decoration           = "none";
-        $quick_quiz_right_answers_letter_spacing            = 0;
-        $quick_quiz_right_answers_font_weight               = "normal";
-        $quick_quiz_wrong_answers_font_size                 = 16;
-        $quick_quiz_wrong_answers_mobile_font_size          = 16;
-        $quick_quiz_wrong_answer_text_transform             = "none";
-        $quick_quiz_wrong_answers_text_decoration           = "none";
-        $quick_quiz_wrong_answers_letter_spacing            = 0;
-        $quick_quiz_wrong_answers_font_weight               = "normal";
-        $quick_quiz_admin_note_mobile_text_transform        = "none";
-        $quick_quiz_admin_note_mobile_text_decoration       = "none";
-        $quick_quiz_admin_note_mobile_letter_spacing        = 0;
-        $quick_quiz_admin_note_mobile_font_weight           = "normal";
-        $quick_quiz_quest_explanation_mobile_text_transform = "none";
+        $quick_quiz_quest_animation                             = "none";
+        $quick_quiz_question_font_size                          = 16;
+        $quick_quiz_question_mobile_font_size                   = 16;
+        $quick_quiz_question_text_alignment                     = "center";
+        $quick_quiz_image_width                                 = "";
+        $quick_quiz_image_width_by_percentage_px                = "pixels";
+        $quick_quiz_image_height                                = "";
+        $quick_quiz_image_sizing                                = "cover";
+        $quick_quiz_answers_font_size                           = 15;
+        $quick_quiz_answers_mobile_font_size                    = 15;
+        $quick_quiz_answers_margin                              = 12;
+        $quick_quiz_disable_hover_effect                        = "off";
+        $quick_quiz_buttons_size                                = "large";
+        $quick_quiz_buttons_font_size                           = 18;
+        $quick_quiz_buttons_mobile_font_size                    = 18;
+        $quick_quiz_buttons_width                               = "";
+        $quick_quiz_buttons_left_right_padding                  = 36;
+        $quick_quiz_buttons_top_bottom_padding                  = 14;
+        $quick_quiz_buttons_border_radius                       = 8;
+        $quick_quiz_note_text_font_size                         = 14;
+        $quick_quiz_note_text_mobile_font_size                  = 14;
+        $quick_quiz_admin_note_text_transform                   = "none";
+        $quick_quiz_admin_note_text_decoration                  = "none";
+        $quick_quiz_admin_note_letter_spacing                   = 0;
+        $quick_quiz_admin_note_font_weight                      = "normal";
+        $quick_quiz_quest_explanation_font_size                 = 16;
+        $quick_quiz_quest_explanation_mobile_font_size          = 16;
+        $quick_quiz_quest_explanation_text_transform            = "none";
+        $quick_quiz_quest_explanation_text_decoration           = "none";
+        $quick_quiz_quest_explanation_letter_spacing            = 0;
+        $quick_quiz_quest_explanation_font_weight               = "normal";
+        $quick_quiz_right_answers_font_size                     = 16;
+        $quick_quiz_right_answers_mobile_font_size              = 16;
+        $quick_quiz_right_answer_text_transform                 = "none";
+        $quick_quiz_right_answers_text_decoration               = "none";
+        $quick_quiz_right_answers_letter_spacing                = 0;
+        $quick_quiz_right_answers_font_weight                   = "normal";
+        $quick_quiz_wrong_answers_font_size                     = 16;
+        $quick_quiz_wrong_answers_mobile_font_size              = 16;
+        $quick_quiz_wrong_answer_text_transform                 = "none";
+        $quick_quiz_wrong_answers_text_decoration               = "none";
+        $quick_quiz_wrong_answers_letter_spacing                = 0;
+        $quick_quiz_wrong_answers_font_weight                   = "normal";
+        $quick_quiz_admin_note_mobile_text_transform            = "none";
+        $quick_quiz_admin_note_mobile_text_decoration           = "none";
+        $quick_quiz_admin_note_mobile_letter_spacing            = 0;
+        $quick_quiz_admin_note_mobile_font_weight               = "normal";
+        $quick_quiz_quest_explanation_mobile_text_transform     = "none";
+        $quick_quiz_quest_explanation_mobile_text_decoration    = "none";
 
         if($quiz_enable_options == 'on'){
             $quick_quiz_enable_randomize_questions = (isset( $_REQUEST['ays_quick_quiz_enable_randomize_questions'] ) && $_REQUEST['ays_quick_quiz_enable_randomize_questions'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_randomize_questions'] ) ) : "off";
@@ -1864,6 +1865,9 @@ class Quiz_Maker_Admin
 
             // Text transformation for the question explanation | Mobile
             $quick_quiz_quest_explanation_mobile_text_transform = (isset( $_REQUEST['ays_quick_quiz_quest_explanation_mobile_text_transform'] ) && $_REQUEST['ays_quick_quiz_quest_explanation_mobile_text_transform'] != "") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_quest_explanation_mobile_text_transform'] ) ) : "none";
+
+            // Text decoration for the question explanation | Mobile
+            $quick_quiz_quest_explanation_mobile_text_decoration = (isset( $_REQUEST['ays_quick_quiz_quest_explanation_mobile_text_decoration'] ) && $_REQUEST['ays_quick_quiz_quest_explanation_mobile_text_decoration'] != "") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_quest_explanation_mobile_text_decoration'] ) ) : "none";
             
         }
         
@@ -2166,6 +2170,7 @@ class Quiz_Maker_Admin
             'quiz_right_answers_mobile_font_weight'             => "normal",
             'quiz_question_image_border_radius'                 => 0,
             'quiz_quest_explanation_mobile_text_transform'      => $quick_quiz_quest_explanation_mobile_text_transform,
+            'quiz_quest_explanation_mobile_text_decoration'     => $quick_quiz_quest_explanation_mobile_text_decoration,
         );
 
 
