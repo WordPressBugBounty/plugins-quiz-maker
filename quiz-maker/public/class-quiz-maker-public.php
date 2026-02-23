@@ -4994,7 +4994,7 @@ class Quiz_Maker_Public
 
         $sql = "SELECT *
                 FROM {$wpdb->prefix}aysquiz_quizcategories
-                WHERE id=" . $id;
+                WHERE id=" . intval($id);
 
         $category = $wpdb->get_row($sql, 'ARRAY_A');
 
@@ -5006,7 +5006,7 @@ class Quiz_Maker_Public
 
         $sql = "SELECT *
                 FROM {$wpdb->prefix}aysquiz_categories
-                WHERE id=" . $id;
+                WHERE id=" . intval($id);
 
         $category = $wpdb->get_row($sql, 'ARRAY_A');
 
@@ -5018,7 +5018,7 @@ class Quiz_Maker_Public
 
         $sql = "SELECT COUNT(*) AS res_count
                 FROM {$wpdb->prefix}aysquiz_reports
-                WHERE quiz_id=" . $id;
+                WHERE quiz_id=" . intval($id);
 
         $quiz = $wpdb->get_row($sql, 'ARRAY_A');
 
@@ -5144,7 +5144,7 @@ class Quiz_Maker_Public
             }else{
                 $last = false;
             }
-            $sql = "SELECT * FROM {$wpdb->prefix}aysquiz_questions WHERE id = " . $id;
+            $sql = "SELECT * FROM {$wpdb->prefix}aysquiz_questions WHERE id = " . intval($id);
             $question = $wpdb->get_row($sql, 'ARRAY_A');
             
             if (!empty($question)) {
@@ -7805,7 +7805,7 @@ class Quiz_Maker_Public
             $ipaddress = getenv('HTTP_FORWARDED');
         else
             $ipaddress = 'UNKNOWN';
-        return $ipaddress;
+        return sanitize_text_field($ipaddress);
     }
 
     protected function get_time_difference($strStart, $strEnd){

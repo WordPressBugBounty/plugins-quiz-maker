@@ -175,7 +175,6 @@ class Quiz_Maker_Ays_Welcome {
     }
 
     public function ays_quiz_request($cta){
-        $curl = curl_init();
 
         $api_url = "https://poll-plugin.com/quiz-maker/";
 

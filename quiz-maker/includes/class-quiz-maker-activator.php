@@ -525,7 +525,6 @@ class Quiz_Maker_Activator
     }
 
     public static function ays_quiz_activator_request($cta){
-        //$curl = curl_init();
 
         $api_url = "https://poll-plugin.com/quiz-maker/";
 
