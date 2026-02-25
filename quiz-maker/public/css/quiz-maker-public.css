@@ -291,6 +291,7 @@ div.ays-quiz-container[id^="ays-quiz-container-"] .information_form label[for^="
     text-transform: initial;
     max-width: 100%;
     box-shadow: unset;
+    float: unset;
 }
 
 [id^="ays_finish_quiz_"] .action-button.start_button {

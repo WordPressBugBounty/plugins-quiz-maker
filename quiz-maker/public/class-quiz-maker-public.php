@@ -7622,7 +7622,7 @@ class Quiz_Maker_Public
             $ob_get_clean = ob_get_clean();
             echo "<p class='ays_no_more'>" . esc_html($this->default_texts['noMoreReviewsText']) . "</p>";
             wp_die();
-        }else{       
+        }else{
             ob_end_clean();
             $ob_get_clean = ob_get_clean();     
             $quiz_rate_html = "<div class='quiz_rate_more_review'>".$quiz_rate_html."</div>";            

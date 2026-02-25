@@ -611,7 +611,7 @@
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <label for="ays_quiz_question_title_view">
-                                        <?php echo __( "Question Title View", 'quiz-maker' ); ?>
+                                        <?php echo esc_html__( "Question Title View", 'quiz-maker' ); ?>
                                         <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php
                                             echo 
                                                 esc_attr(
@@ -1085,7 +1085,7 @@
                             </legend>
                             <?php if( isset( $_GET['del_stat'] ) ): ?>
                             <blockquote style="border-color:#46b450;background: rgba(70, 180, 80, 0.2);">
-                                <?php echo "Results up to a ". sanitize_text_field( $_GET['mcount'] ) ." month ago deleted successfully."; ?>
+                                <?php echo "Results up to a ". esc_html( sanitize_text_field( $_GET['mcount'] ) ) ." month ago deleted successfully."; ?>
                             </blockquote>
                             <hr>
                             <?php endif; ?>
@@ -1436,7 +1436,7 @@
                         </fieldset><!-- Report Email -->
                     </div>
                     <div id="tab3" class="ays-quiz-tab-content <?php echo ($ays_quiz_tab == 'tab3') ? 'ays-quiz-tab-content-active' : ''; ?>">
-                        <p class="ays-subtitle"><?php echo __('Shortcodes','quiz-maker')?></p>
+                        <p class="ays-subtitle"><?php echo esc_html__('Shortcodes','quiz-maker')?></p>
                         <hr class="ays-quiz-bolder-hr"/>
                         <fieldset>
                             <legend>
@@ -2591,7 +2591,7 @@
                                                 <?php echo esc_html__("Follow the steps mentioned in this step-by-step video tutorial to create your own Leaderboard. ", 'quiz-maker'); ?>
                                             </p>
                                             <div>
-                                                <a href="https://quiz-plugin.com/leaderboard-by-quiz-category" target="_blank"><?php echo __("See Demo", 'quiz-maker'); ?></a>
+                                                <a href="https://quiz-plugin.com/leaderboard-by-quiz-category" target="_blank"><?php echo esc_html__("See Demo", 'quiz-maker'); ?></a>
                                             </div>
                                         </div>
                                         <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-quiz-category-leaderboard-shortcode-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">

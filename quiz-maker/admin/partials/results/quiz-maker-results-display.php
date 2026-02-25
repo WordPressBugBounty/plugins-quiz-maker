@@ -181,9 +181,9 @@ $quiz_results_plugin_nonce = wp_create_nonce( 'quiz-maker-ajax-results-nonce' );
                     $user_name = $user->data->display_name ? $user->data->display_name : $user->user_login;
 
                     $content .= "<li class='ays_lb_li'>
-                                    <div class='ays_lb_pos'>".$c.".</div>
-                                    <div class='ays_lb_user'>".$user_name."</div>
-                                    <div class='ays_lb_score'>".$score." %</div>
+                                    <div class='ays_lb_pos'>" . esc_html($c) . ".</div>
+                                    <div class='ays_lb_user'>" . esc_html($user_name) . "</div>
+                                    <div class='ays_lb_score'>" . esc_html($score) . " %</div>
                                 </li>";
                     $c++;   
                 }
