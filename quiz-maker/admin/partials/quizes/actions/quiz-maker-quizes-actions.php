@@ -10906,8 +10906,8 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                     </td>
                                     <td class="ays-modal-td-question"><?php echo esc_html($table_question); ?></td>
                                     <td><?php echo esc_html( $question_type ); ?></td>
-                                    <td><?php echo $text; ?></td>
-                                    <td class="ays-modal-td-category"><?php echo stripslashes($question["title"]); ?></td>
+                                    <td><?php echo wp_kses($text, $quiz_allowed_html); ?></td>
+                                    <td class="ays-modal-td-category"><?php echo esc_html(stripslashes($question["title"])); ?></td>
                                     <td><?php echo esc_html($question["id"]); ?></td>
                                 </tr>
                                 <?php
@@ -10925,7 +10925,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                         $quiz_ajax_add_question_nonce = wp_create_nonce( 'quiz-maker-ajax-add-question-nonce' );
 
                         ?>
-                        <input type="hidden" id="ays_quiz_ajax_add_question_nonce" name="ays_quiz_ajax_add_question_nonce" value="<?php echo $quiz_ajax_add_question_nonce; ?>">
+                        <input type="hidden" id="ays_quiz_ajax_add_question_nonce" name="ays_quiz_ajax_add_question_nonce" value="<?php echo esc_attr($quiz_ajax_add_question_nonce); ?>">
                     </div>
                 </form>
             </div>

@@ -133,7 +133,7 @@ class Ays_Quiz_Maker_Extra_Shortcodes_Public
 
         $sql = "SELECT AVG(`score`)
                 FROM `{$reports_table}`
-                WHERE `quiz_id`={$id}";
+                WHERE `quiz_id`= " . intval($id);
 
         $data = $wpdb->get_var($sql);
         $result = !empty( $data ) ? round($data) : null;
@@ -205,7 +205,7 @@ class Ays_Quiz_Maker_Extra_Shortcodes_Public
 
         $sql = "SELECT COUNT(*) AS res_count
                 FROM {$reports_table}
-                WHERE `quiz_id`=" . $id;
+                WHERE `quiz_id`=" . intval($id);
 
         $quiz = $wpdb->get_row($sql, 'ARRAY_A');
 
@@ -845,7 +845,7 @@ class Ays_Quiz_Maker_Extra_Shortcodes_Public
 
         $user_id = absint( sanitize_text_field( $user_id ) );
 
-        $sql = "SELECT SUM(`duration`) FROM `{$reports_table}` WHERE `user_id` = {$user_id}";
+        $sql = "SELECT SUM(`duration`) FROM `{$reports_table}` WHERE `user_id` = " . intval($user_id);
 
         $results = $wpdb->get_var($sql);
 
@@ -1480,7 +1480,7 @@ class Ays_Quiz_Maker_Extra_Shortcodes_Public
 
         $sql = "SELECT COUNT(*) AS res_count
                 FROM {$reports_table}
-                WHERE `quiz_id`= {$id} AND `read` = ".$read_unread;
+                WHERE `quiz_id`= ". intval($id) ." AND `read` = ".$read_unread;
 
         $quiz = $wpdb->get_row($sql, 'ARRAY_A');
 

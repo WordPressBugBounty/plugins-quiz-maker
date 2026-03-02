@@ -65,10 +65,10 @@ class Quiz_Maker_Recent_Quizes
 
         $quiz_table = $wpdb->prefix.'aysquiz_quizes';
 
-        $ays_recent_quiz_order_by = (isset($quiz_attr['orderby']) && sanitize_text_field($quiz_attr['orderby']) != '') ?sanitize_text_field($quiz_attr['orderby']) : "recent";
+        $ays_recent_quiz_order_by = (isset($quiz_attr['orderby']) && sanitize_text_field($quiz_attr['orderby']) != '') ? sanitize_text_field($quiz_attr['orderby']) : "recent";
         $ays_recent_quiz_count = (isset($quiz_attr['count']) && intval($quiz_attr['count']) != '') ? intval($quiz_attr['count']) : "5";
 
-        $last_quizes_sql = "SELECT id from {$quiz_table} WHERE published=1 ";
+        $last_quizes_sql = "SELECT id from {$quiz_table} WHERE published = 1 ";
 
         switch ($ays_recent_quiz_order_by) {
             case 'recent':

@@ -1517,6 +1517,7 @@ class Quiz_Maker_Admin
         $quick_quiz_admin_note_mobile_font_weight               = "normal";
         $quick_quiz_quest_explanation_mobile_text_transform     = "none";
         $quick_quiz_quest_explanation_mobile_text_decoration    = "none";
+        $quick_quiz_quest_explanation_mobile_letter_spacing     = 0;
 
         if($quiz_enable_options == 'on'){
             $quick_quiz_enable_randomize_questions = (isset( $_REQUEST['ays_quick_quiz_enable_randomize_questions'] ) && $_REQUEST['ays_quick_quiz_enable_randomize_questions'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_randomize_questions'] ) ) : "off";
@@ -1868,6 +1869,9 @@ class Quiz_Maker_Admin
 
             // Text decoration for the question explanation | Mobile
             $quick_quiz_quest_explanation_mobile_text_decoration = (isset( $_REQUEST['ays_quick_quiz_quest_explanation_mobile_text_decoration'] ) && $_REQUEST['ays_quick_quiz_quest_explanation_mobile_text_decoration'] != "") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_quest_explanation_mobile_text_decoration'] ) ) : "none";
+
+            // Letter spacing for the question explanation | Mobile
+            $quick_quiz_quest_explanation_mobile_letter_spacing = (isset( $_REQUEST['ays_quick_quiz_quest_explanation_mobile_letter_spacing'] ) && $_REQUEST['ays_quick_quiz_quest_explanation_mobile_letter_spacing'] != "") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_quest_explanation_mobile_letter_spacing'] ) ) : 0;
             
         }
         
@@ -2171,6 +2175,7 @@ class Quiz_Maker_Admin
             'quiz_question_image_border_radius'                 => 0,
             'quiz_quest_explanation_mobile_text_transform'      => $quick_quiz_quest_explanation_mobile_text_transform,
             'quiz_quest_explanation_mobile_text_decoration'     => $quick_quiz_quest_explanation_mobile_text_decoration,
+            'quiz_quest_explanation_mobile_letter_spacing'      => $quick_quiz_quest_explanation_mobile_letter_spacing,
         );
 
 
@@ -3468,21 +3473,21 @@ class Quiz_Maker_Admin
             </li>
             <li class="ays_dashboard_widget_item">
                 <a href="<?php echo esc_url("admin.php?page=".$this->plugin_name."-questions"); ?>">
-                    <img src="<?php echo AYS_QUIZ_ADMIN_URL."/images/icons/message-circle-question.svg"; ?>" alt="Questions">
+                    <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL."/images/icons/message-circle-question.svg" ); ?>" alt="Questions">
                     <span><?php echo esc_html($questions_count); ?></span>
                     <span><?php echo esc_html($questions_label); ?></span>
                 </a>
             </li>
             <li class="ays_dashboard_widget_item">
                 <a href="<?php echo esc_url("admin.php?page=".$this->plugin_name."-results"); ?>">
-                    <img src="<?php echo AYS_QUIZ_ADMIN_URL."/images/icons/users-icon.svg"; ?>" alt="Results">
+                    <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL."/images/icons/users-icon.svg"); ?>" alt="Results">
                     <span><?php echo esc_html($results_count); ?></span>
                     <span><?php echo esc_html($results_label); ?></span>
                 </a>
             </li>
             <li class="ays_dashboard_widget_item">
-                <a href="<?php echo "admin.php?page=".$this->plugin_name."-question-reports" ?>">
-                    <img src="<?php echo AYS_QUIZ_ADMIN_URL."/images/icons/triangle-alert.svg"; ?>" alt="Reports">
+                <a href="<?php echo "admin.php?page=". esc_attr($this->plugin_name) ."-question-reports" ?>">
+                    <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL."/images/icons/triangle-alert.svg"); ?>" alt="Reports">
                     <span><?php echo esc_html($actual_reports_count); ?></span>
                     <span><?php echo esc_html($reports_label); ?></span>
                 </a>
@@ -3738,7 +3743,7 @@ class Quiz_Maker_Admin
             $content[] = '</div>';
 
             $content = implode( '', $content );
-            echo $content;
+            // echo $content;
         }
     }
 
@@ -3820,7 +3825,7 @@ class Quiz_Maker_Admin
             $content[] = '</div>';
 
             $content = implode( '', $content );
-            echo $content;
+            // echo $content;
         }
     }
 
@@ -3887,7 +3892,7 @@ class Quiz_Maker_Admin
         // $content[] = '</div>';
 
         $content = implode( '', $content );
-        echo $content;
+        // echo $content;
     }
 
     public static function ays_quiz_spring_bundle_message($ishmar){
@@ -3947,7 +3952,7 @@ class Quiz_Maker_Admin
             $content[] = '</div>';
 
             $content = implode( '', $content );
-            echo $content;
+            // echo $content;
         }
     }
 
@@ -3985,7 +3990,7 @@ class Quiz_Maker_Admin
             $content[] = '</div>';
 
             $content = implode( '', $content );
-            echo $content;
+            // echo $content;
         }
     }
 
@@ -4061,7 +4066,7 @@ class Quiz_Maker_Admin
 
             $content = implode( '', $content );
 
-            echo $content;
+            // echo $content;
         }
     }
 
@@ -4116,7 +4121,7 @@ class Quiz_Maker_Admin
 
             $content = implode( '', $content );
 
-            echo $content;
+            // echo $content;
         }
     }
 
@@ -4160,7 +4165,7 @@ class Quiz_Maker_Admin
             $content[] = '</div>';
 
             $content = implode( '', $content );
-            echo $content;
+            // echo $content;
         }
     }
 
@@ -4470,7 +4475,7 @@ class Quiz_Maker_Admin
 
             $content = implode( '', $content );
 
-            echo $content;
+            // echo $content;
         }
     }
 
@@ -4556,7 +4561,7 @@ class Quiz_Maker_Admin
             $content[] = '</div>';
 
             $content = implode( '', $content );
-            echo html_entity_decode(esc_html( $content ));
+            // echo html_entity_decode(esc_html( $content ));
         }        
     }
 
@@ -4751,7 +4756,7 @@ class Quiz_Maker_Admin
             $content[] = '</div>';
 
             $content = implode( '', $content );
-            echo $content;
+            // echo $content;
         }
     }
 
@@ -4842,7 +4847,7 @@ class Quiz_Maker_Admin
             $content[] = '</div>';
 
             $content = implode( '', $content );
-            echo wp_kses_post($content);
+            // echo wp_kses_post($content);
         }
     }
 
@@ -5193,7 +5198,7 @@ class Quiz_Maker_Admin
             $content[] = '</style>';
 
             $content = implode( '', $content );
-            echo ($content);
+            // echo ($content);
         }
     }
 
@@ -5789,7 +5794,7 @@ class Quiz_Maker_Admin
             $content[] = '</script>';
 
             $content = implode( '', $content );
-            echo ($content);
+            // echo ($content);
         }
     }
  
@@ -6276,7 +6281,7 @@ class Quiz_Maker_Admin
 
             $content = implode( '', $content );
 
-            echo $content;
+            // echo $content;
         }
     }
 

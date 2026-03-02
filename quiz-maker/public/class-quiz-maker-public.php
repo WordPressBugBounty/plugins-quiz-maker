@@ -6497,7 +6497,9 @@ class Quiz_Maker_Public
 
     public function replace_message_variables($content, $data){
         foreach($data as $variable => $value){
-            $content = str_replace("%%".$variable."%%", $value, $content);
+            if( !is_array( $value ) ){
+                $content = str_replace("%%".$variable."%%", $value, $content);
+            }
         }
         return $content;
     }
@@ -7462,14 +7464,39 @@ class Quiz_Maker_Public
     
     protected function ays_get_count_of_rates($id){
         global $wpdb;
-        $sql = "SELECT COUNT(`id`) AS count FROM {$wpdb->prefix}aysquiz_rates WHERE quiz_id= $id";
+
+        $id = absint($id);
+
+        $sql = $wpdb->prepare(
+            "SELECT COUNT(`id`) AS count
+             FROM {$wpdb->prefix}aysquiz_rates
+             WHERE quiz_id = %d",
+            $id
+        );
+
         $result = $wpdb->get_var($sql);
         return $result;
     }
     
     protected function ays_get_count_of_reviews($start, $limit, $quiz_id){
         global $wpdb;
-        $sql = "SELECT COUNT(`id`) AS count FROM {$wpdb->prefix}aysquiz_rates WHERE (review<>'' OR options<>'') AND quiz_id = $quiz_id ORDER BY id DESC LIMIT $start, $limit";
+
+        $start   = absint($start);
+        $limit   = absint($limit);
+        $quiz_id = absint($quiz_id);
+
+        $sql = $wpdb->prepare(
+            "SELECT COUNT(`id`) AS count
+             FROM {$wpdb->prefix}aysquiz_rates
+             WHERE (review <> '' OR options <> '')
+             AND quiz_id = %d
+             ORDER BY id DESC
+             LIMIT %d, %d",
+            $quiz_id,
+            $start,
+            $limit
+        );
+
         $result = $wpdb->get_var($sql);
         return $result;
     }
@@ -7503,7 +7530,16 @@ class Quiz_Maker_Public
     
     protected function ays_get_average_of_rates($id){
         global $wpdb;
-        $sql = "SELECT AVG(`score`) AS avg_score FROM {$wpdb->prefix}aysquiz_rates WHERE quiz_id= $id";
+
+        $id = absint($id);
+
+        $sql = $wpdb->prepare(
+            "SELECT AVG(`score`) AS avg_score
+             FROM {$wpdb->prefix}aysquiz_rates
+             WHERE quiz_id = %d",
+            $id
+        );
+
         $result = $wpdb->get_var($sql);
 
         if ( is_null( $result ) || empty( $result ) ) {
@@ -7515,7 +7551,15 @@ class Quiz_Maker_Public
 
     protected function ays_get_average_of_scores($id){
         global $wpdb;
-        $sql = "SELECT AVG(`score`) FROM {$wpdb->prefix}aysquiz_reports WHERE quiz_id= $id";
+
+        $id = absint($id);
+
+        $sql = $wpdb->prepare(
+            "SELECT AVG(`score`) 
+             FROM {$wpdb->prefix}aysquiz_reports 
+             WHERE quiz_id = %d",
+            $id
+        );
 
         $avg_result = $wpdb->get_var($sql);
         if ( is_null( $avg_result ) || empty( $avg_result ) ) {
@@ -7528,8 +7572,25 @@ class Quiz_Maker_Public
     
     protected function ays_get_reasons_of_rates($start, $limit, $quiz_id){
         global $wpdb;
-        $sql = "SELECT * FROM {$wpdb->prefix}aysquiz_rates WHERE quiz_id=$quiz_id AND (review<>'' OR options<>'') ORDER BY id DESC LIMIT $start, $limit";
+
+        $start   = absint($start);
+        $limit   = absint($limit);
+        $quiz_id = absint($quiz_id);
+
+        $sql = $wpdb->prepare(
+            "SELECT * 
+             FROM {$wpdb->prefix}aysquiz_rates 
+             WHERE quiz_id = %d 
+             AND (review <> '' OR options <> '') 
+             ORDER BY id DESC 
+             LIMIT %d, %d",
+            $quiz_id,
+            $start,
+            $limit
+        );
+
         $result = $wpdb->get_results($sql, "ARRAY_A");
+
         return $result;
     }
     

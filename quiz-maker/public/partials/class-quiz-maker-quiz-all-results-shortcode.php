@@ -115,7 +115,7 @@ class Quiz_Maker_Quiz_All_Results
                 FROM $reports_table AS r
                 LEFT JOIN $quizes_table AS q
                 ON r.quiz_id = q.id
-                WHERE r.quiz_id = ". $quiz_id ."
+                WHERE r.quiz_id = ". intval($quiz_id) ."
                 ORDER BY r.id DESC";
         $results = $wpdb->get_results($sql, "ARRAY_A");
 
