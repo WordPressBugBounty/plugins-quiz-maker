@@ -115,7 +115,9 @@ function aysAnimateStep(animation, current_fs, next_fs){
                         opacity = 1 - now;
                         current_fs.css({
                             'position': 'absolute',
-                            'pointer-events': 'none'
+                            'pointer-events': 'none',
+                            'opacity': 0,
+                            'display':'none',
                         });
                         next_fs.css({
                             'opacity': opacity,
@@ -129,7 +131,9 @@ function aysAnimateStep(animation, current_fs, next_fs){
                         current_fs.hide();
                         current_fs.css({                        
                             'pointer-events': 'auto',
-                            'position': 'static'
+                            'position': 'static',
+                            'opacity': 0,
+                            'display':'none',
                         });
                         next_fs.css({
                             'display':'flex',

@@ -543,7 +543,7 @@ class Question_Categories_List_Table extends WP_List_Table{
         $where = array();
         $sql = "SELECT COUNT(*) FROM {$wpdb->prefix}aysquiz_categories";
 
-        $search = ( isset( $_REQUEST['s'] ) ) ? sanitize_text_field( $_REQUEST['s'] ) : false;
+        $search = ( isset( $_REQUEST['s'] ) ) ? esc_sql( sanitize_text_field( $_REQUEST['s'] ) ) : false;
         if( $search ){
             $where[] = sprintf(" title LIKE '%%%s%%' ", esc_sql( $wpdb->esc_like( $search ) ) );
         }
@@ -940,7 +940,7 @@ class Question_Categories_List_Table extends WP_List_Table{
         $current_page = $this->get_pagenum();
         $total_items  = $this->record_count();
 
-        $search = ( isset( $_REQUEST['s'] ) ) ? sanitize_text_field( $_REQUEST['s'] ) : false;
+        $search = ( isset( $_REQUEST['s'] ) ) ? esc_sql( sanitize_text_field( $_REQUEST['s'] ) ) : false;
 
         $do_search = ( $search ) ? sprintf(" title LIKE '%%%s%%' ", esc_sql( $wpdb->esc_like( $search ) ) ) : '';
 

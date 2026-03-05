@@ -4,7 +4,7 @@ Donate link: https://ays-pro.com/wordpress/quiz-maker
 Tags:  exam, quiz, quizzes, education, quiz maker
 Requires at least: 4.0
 Tested up to: 6.9
-Stable tag: 6.7.1.13
+Stable tag: 6.7.1.14
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -420,7 +420,11 @@ For example, to add a squared symbol, you need to write down the following sign 
 
 == Changelog ==
 
-= 6.7.1.13 ( Feb 27, 2026 ) =
+= 6.7.1.14 ( Mar 05, 2026 ) =
+* Added: Mobile font weight option for question explanations in the Quick Quiz popup
+* Fixed: Fade animation and Previous button display issue in quizzes
+
+= 6.7.1.13 ( Mar 02, 2026 ) =
 * Added: Mobile letter spacing option for question explanations in the Quick Quiz popup
 * Improved: Code correction on the front-end
 

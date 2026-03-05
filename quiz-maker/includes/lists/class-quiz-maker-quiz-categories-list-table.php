@@ -544,7 +544,7 @@ class Quiz_Categories_List_Table extends WP_List_Table{
         $where = array();
         $sql = "SELECT COUNT(*) FROM {$wpdb->prefix}aysquiz_quizcategories";
 
-        $search = ( isset( $_REQUEST['s'] ) ) ? sanitize_text_field( $_REQUEST['s'] ) : false;
+        $search = ( isset( $_REQUEST['s'] ) ) ? esc_sql( sanitize_text_field( $_REQUEST['s'] ) ) : false;
         if( $search ){
             $where[] = sprintf(" title LIKE '%%%s%%' ", esc_sql( $wpdb->esc_like( $search ) ) );
         }
@@ -599,7 +599,7 @@ class Quiz_Categories_List_Table extends WP_List_Table{
         $where = array();
         $sql = "SELECT COUNT(*) FROM {$wpdb->prefix}aysquiz_quizcategories";
 
-        $search = ( isset( $_REQUEST['s'] ) ) ? sanitize_text_field( $_REQUEST['s'] ) : false;
+        $search = ( isset( $_REQUEST['s'] ) ) ? esc_sql( sanitize_text_field( $_REQUEST['s'] ) ) : false;
         if( $search ){
             $where[] = sprintf(" title LIKE '%%%s%%' ", esc_sql( $wpdb->esc_like( $search ) ) );
         }
@@ -656,7 +656,7 @@ class Quiz_Categories_List_Table extends WP_List_Table{
 
         $where[] = ' `published` = 1 ';
 
-        $search = ( isset( $_REQUEST['s'] ) ) ? sanitize_text_field( $_REQUEST['s'] ) : false;
+        $search = ( isset( $_REQUEST['s'] ) ) ? esc_sql( sanitize_text_field( $_REQUEST['s'] ) ) : false;
         if( $search ){
             $where[] = sprintf(" title LIKE '%%%s%%' ", esc_sql( $wpdb->esc_like( $search ) ) );
         }
@@ -1014,7 +1014,7 @@ class Quiz_Categories_List_Table extends WP_List_Table{
             'per_page'    => $per_page //WE have to determine how many items to show on a page
         ) );
 
-        $search = ( isset( $_REQUEST['s'] ) ) ? sanitize_text_field( $_REQUEST['s'] ) : false;
+        $search = ( isset( $_REQUEST['s'] ) ) ? esc_sql( sanitize_text_field( $_REQUEST['s'] ) ) : false;
 
         $do_search = ( $search ) ? sprintf(" title LIKE '%%%s%%' ", esc_sql( $wpdb->esc_like( $search ) ) ) : '';
 
