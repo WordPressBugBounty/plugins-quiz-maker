@@ -2195,6 +2195,8 @@ class Quiz_Maker_Public
                                                     <input type="hidden" class="ays-quiz-report-quiz-id" value="' . $id . '">
                                                     <input type="hidden" class="ays-quiz-report-question-send-email" value="' . $send_email . '">
                                                     <input type="submit" class="ays-quiz-submit-question-report" value="'. __("Submit", 'quiz-maker') .'">
+                                                    <input type="hidden" class="ays_quiz_question_report_nonce" name="ays_quiz_question_report_nonce" value="'. esc_attr( wp_create_nonce( 'ays_quiz_question_report_nonce' ) ) .'">
+
                                                 </form>
                                                 <div class="ays-quiz-preloader" style="top:0">
                                                     <img src="' . AYS_QUIZ_ADMIN_URL . '/images/loaders/tail-spin.svg">
@@ -2604,7 +2606,10 @@ class Quiz_Maker_Public
         $all_review_link_html = '';
         if ( $quiz_make_all_review_link ) {
             if ( $this->ays_get_count_of_reviews(0, 5, $id) > 0 ) {
-                $all_review_link_html = "<div class='ays-quiz-rate-link-box'><span class='ays-quiz-rate-link'>". __( "See review", 'quiz-maker' ) ."</span></div>";
+                $all_review_link_html = "
+                <div class='ays-quiz-rate-link-box'>
+                    <span class='ays-quiz-rate-link'>". __( "See review", 'quiz-maker' ) ."</span>
+                </div>";
             }
         }
 
@@ -2678,6 +2683,7 @@ class Quiz_Maker_Public
                 </div>
                 <div><div class='lds-spinner2-none'><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
                 <div class='quiz_rate_reasons_body'></div>
+                <input type='hidden' class='ays_quiz_rate_reason_nonce' name='ays_quiz_rate_reason_nonce' value='". esc_attr( wp_create_nonce( 'ays_quiz_rate_reason_nonce' ) ) ."'>
             </div>";
         }
         
@@ -7642,6 +7648,20 @@ class Quiz_Maker_Public
     }
     
     public function ays_get_rate_last_reviews(){
+
+
+        if( empty($_REQUEST['_ajax_nonce']) ){
+            ob_end_clean();
+            $ob_get_clean = ob_get_clean();
+            echo json_encode(array(
+                'status'    => false,
+                'quiz_rate_html' => ''
+            ));
+            wp_die();
+        }
+
+        // Run a security check.
+        check_ajax_referer( 'ays_quiz_rate_reason_nonce', sanitize_key( wp_unslash($_REQUEST['_ajax_nonce']) ) );
         
         $quiz_id = absint( sanitize_text_field( $_REQUEST["quiz_id"] ) );
         $this->buttons_texts = $this->ays_set_quiz_texts($quiz_id);
@@ -7705,6 +7725,19 @@ class Quiz_Maker_Public
     }
     
     public function ays_rate_the_quiz(){
+
+        if( empty($_REQUEST['_ajax_nonce']) ){
+            ob_end_clean();
+            $ob_get_clean = ob_get_clean();
+            echo json_encode(array(
+                'status'    => false,
+            ));
+            wp_die();
+        }
+
+        // Run a security check.
+        check_ajax_referer( 'ays_quiz_rate_reason_nonce', sanitize_key( wp_unslash($_REQUEST['_ajax_nonce']) ) );
+
         global $wpdb;
         $rates_table = $wpdb->prefix . 'aysquiz_rates';
 
@@ -8580,6 +8613,19 @@ class Quiz_Maker_Public
     }
 
     public function ays_quiz_send_question_report() {
+
+        if( empty($_REQUEST['_ajax_nonce']) ){
+            ob_end_clean();
+            $ob_get_clean = ob_get_clean();
+            echo json_encode(array(
+                'status' => false,
+            ));
+            wp_die();
+        }
+
+        // Run a security check.
+        check_ajax_referer( 'ays_quiz_question_report_nonce', sanitize_key( wp_unslash($_REQUEST['_ajax_nonce']) ) );
+
         global $wpdb;
 
         $question_id = isset( $_REQUEST['question_id'] ) && $_REQUEST['question_id'] != '' ? absint( $_REQUEST['question_id'] ) : 0;

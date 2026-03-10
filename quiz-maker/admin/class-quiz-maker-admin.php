@@ -1519,6 +1519,7 @@ class Quiz_Maker_Admin
         $quick_quiz_quest_explanation_mobile_text_decoration    = "none";
         $quick_quiz_quest_explanation_mobile_letter_spacing     = 0;
         $quick_quiz_quest_explanation_mobile_font_weight        = "normal";
+        $quick_quiz_right_answer_mobile_text_transform          = "none";
 
         if($quiz_enable_options == 'on'){
             $quick_quiz_enable_randomize_questions = (isset( $_REQUEST['ays_quick_quiz_enable_randomize_questions'] ) && $_REQUEST['ays_quick_quiz_enable_randomize_questions'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_randomize_questions'] ) ) : "off";
@@ -1876,6 +1877,9 @@ class Quiz_Maker_Admin
 
             // Font weight for the question explanation | Mobile
             $quick_quiz_quest_explanation_mobile_font_weight = (isset( $_REQUEST['ays_quick_quiz_quest_explanation_mobile_font_weight'] ) && $_REQUEST['ays_quick_quiz_quest_explanation_mobile_font_weight'] != "") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_quest_explanation_mobile_font_weight'] ) ) : "normal";
+
+            // Text transformation for the question explanation | Mobile
+            $quick_quiz_right_answer_mobile_text_transform = (isset( $_REQUEST['ays_quick_quiz_right_answer_mobile_text_transform'] ) && $_REQUEST['ays_quick_quiz_right_answer_mobile_text_transform'] != "") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_right_answer_mobile_text_transform'] ) ) : "none";
             
         }
         
@@ -2180,6 +2184,7 @@ class Quiz_Maker_Admin
             'quiz_quest_explanation_mobile_text_transform'      => $quick_quiz_quest_explanation_mobile_text_transform,
             'quiz_quest_explanation_mobile_text_decoration'     => $quick_quiz_quest_explanation_mobile_text_decoration,
             'quiz_quest_explanation_mobile_letter_spacing'      => $quick_quiz_quest_explanation_mobile_letter_spacing,
+            'quiz_right_answer_mobile_text_transform'           => $quick_quiz_right_answer_mobile_text_transform,
         );
 
 
@@ -6769,6 +6774,10 @@ class Quiz_Maker_Admin
      * @since 6.4.0.4 Updated the permissions checking.
      */
     public function ays_quiz_install_plugin() {
+
+        if( empty($_REQUEST['_ajax_nonce']) ){
+            wp_send_json_error( esc_html__( 'There was an error while performing your request.', 'quiz-maker' ) );
+        }
 
         // Run a security check.
         check_ajax_referer( $this->plugin_name . '-install-plugin-nonce', sanitize_key( $_REQUEST['_ajax_nonce'] ) );

@@ -776,7 +776,7 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                                         <div class="ays-answer-image-container ays-answer-image-container-div" <?php echo (is_null($answer['image'])||$answer['image']=='') ? "style=display:none; ":"style=display:block"?>>
                                             <span class="ays-edit-answer-img" title="<?php echo esc_html__('Edit Image', 'quiz-maker'); ?>"></span>
                                             <span class="ays-remove-answer-img" title="<?php echo esc_html__('Delete Image', 'quiz-maker'); ?>"></span>
-                                            <img src="<?php echo esc_url($answer['image']); ?>" class="ays-answer-img"/>
+                                            <img src="<?php echo !empty( $answer['image'] ) ? esc_url($answer['image']) : ''; ?>" class="ays-answer-img"/>
                                             <input type="hidden" name="ays_answer_image[]" class="ays-answer-image-path" value="<?php echo !empty( $answer['image'] ) ? esc_url($answer['image']) : ''; ?>"/>
                                         </div>
                                     </td>

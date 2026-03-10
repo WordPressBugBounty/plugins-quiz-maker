@@ -78,6 +78,8 @@
             var quizId = parent.find('input[name="ays_quiz_id"]').val();
             var form   = parent.find('form');
 
+            var wp_nonce = parent.find('.ays_quiz_rete').find('.ays_quiz_rate_reason_nonce').val();
+
             var action = 'ays_get_rate_last_reviews';
             $.ajax({
                 url: quiz_maker_ajax_public.ajax_url,
@@ -85,7 +87,8 @@
                 dataType: 'json',
                 data: {
                     quiz_id: quizId,
-                    action: action
+                    action: action,
+                    _ajax_nonce: wp_nonce
                 },
                 success: function(response){
                     if(response.status === true){
@@ -672,6 +675,7 @@
             var quizId = reportForm.find('input.ays-quiz-report-quiz-id').val();
             var reportText = reportForm.find('textarea#ays-quiz-question-report-textarea').val();
             var sendEmail = reportForm.find('input.ays-quiz-report-question-send-email').val();
+            var wp_nonce = reportForm.find('input.ays_quiz_question_report_nonce').val();
 
             if (reportText === '') {
                 var errorMessageDiv = reportForm.find('div.ays-quiz-question-report-error');
@@ -695,6 +699,7 @@
             data.report_text = reportText;
             data.create_date = GetFullDateTime();
             data.send_email = sendEmail;
+            data._ajax_nonce = wp_nonce;
             $.ajax({
                 url: quiz_maker_ajax_public.ajax_url,
                 method: 'post',
@@ -713,7 +718,24 @@
                             html: quizLangObj.reportSentMessage,
                             customClass: "ays-quiz-question-report-popup-container",
                         });
+                    } else {
+                        parent.hide();
+
+                        swal.fire({
+                            type: 'info',
+                            html: "<h2>"+ quizLangObj.loadResource +"</h2><br><h6>"+ quizLangObj.somethingWentWrong +"</h6>"
+                        });                        
                     }
+                },
+                error: function(){
+                    swal.fire({
+                        type: 'info',
+                        html: "<h2>"+ quizLangObj.loadResource +"</h2><br><h6>"+ quizLangObj.somethingWentWrong +"</h6>"
+                    });
+                    parent.find('div.ays-quiz-preloader').css('display', 'none');
+                    parent.find('div.ays-quiz-preloader').removeClass('ays_quiz_modal_overlay');
+
+                    parent.hide();
                 }
             });
         });
@@ -2762,6 +2784,7 @@
 
             data.action = 'ays_rate_the_quiz';
             data.rate_reason = $(this).parents('.for_quiz_rate_reason').find('.quiz_rate_reason').val();
+            data._ajax_nonce = $(this).parents('.ays_quiz_rete').find('.ays_quiz_rate_reason_nonce').val();
             data.rate_score = $(this).parents('.ays_quiz_rete').data('rate_score');
             data.rate_date = GetFullDateTime();
             data.quiz_id = quizId;
@@ -2798,8 +2821,12 @@
 
                             if(myOptions.enable_quiz_rate == 'on' && myOptions.enable_rate_comments == 'on'){
                                 var data = {};
+
+                                var wp_nonce = form.find('.ays_quiz_rete').find('.ays_quiz_rate_reason_nonce').val();
+
                                 data.action = 'ays_get_rate_last_reviews';
                                 data.quiz_id = response.quiz_id;
+                                data._ajax_nonce = wp_nonce;
                                 $.ajax({
                                     url: quiz_maker_ajax_public.ajax_url,
                                     method: 'post',
@@ -2849,6 +2876,15 @@
                             }
                         },1000);
                     }
+                },
+                error: function(){
+                    swal.fire({
+                        type: 'info',
+                        html: "<h2>"+ quizLangObj.loadResource +"</h2><br><h6>"+ quizLangObj.somethingWentWrong +"</h6>"
+                    });
+                    form.find('.for_quiz_rate_reason').slideUp(800);
+                    form.find('.ays_quiz_rete').find('.for_quiz_rate').rating('disable');
+                    form.find('.lds-spinner').addClass('lds-spinner-none').removeClass('lds-spinner');
                 }
             });
         });
