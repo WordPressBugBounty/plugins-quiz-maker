@@ -7739,11 +7739,95 @@ class Quiz_Maker_Public
         check_ajax_referer( 'ays_quiz_rate_reason_nonce', sanitize_key( wp_unslash($_REQUEST['_ajax_nonce']) ) );
 
         global $wpdb;
-        $rates_table = $wpdb->prefix . 'aysquiz_rates';
+        $rates_table   = $wpdb->prefix . 'aysquiz_rates';
+        $quizzes_table = $wpdb->prefix . 'aysquiz_quizes';
+
+        $quiz_id = isset( $_REQUEST["quiz_id"] ) ? absint( sanitize_text_field($_REQUEST["quiz_id"]) ) : 0;
+
+        if ( empty($quiz_id) ) {
+            ob_end_clean();
+            $ob_get_clean = ob_get_clean();
+            echo json_encode(array(
+                'status'    => false,
+            ));
+            wp_die();
+        }
+
+        $quiz_exists = $wpdb->get_var(
+            $wpdb->prepare(
+                "SELECT id FROM {$quizzes_table} WHERE id = %d",
+                $quiz_id
+            )
+        );
+
+        if ( ! $quiz_exists ) {
+            ob_end_clean();
+            $ob_get_clean = ob_get_clean();
+            echo json_encode(array(
+                'status'    => false,
+            ));
+            wp_die();
+        }
+
+        $user_ip = $this->get_user_ip();
+
+        $one_minute_ago = date('Y-m-d H:i:s', current_time('timestamp') - 60);
+
+        $recent_rates = $wpdb->get_var(
+            $wpdb->prepare(
+                "SELECT COUNT(id)
+                 FROM {$rates_table}
+                 WHERE user_ip = %s
+                 AND rate_date > %s",
+                $user_ip,
+                $one_minute_ago
+            )
+        );
+
+        if ( $recent_rates > 3 ) {
+            ob_end_clean();
+            $ob_get_clean = ob_get_clean();
+            echo json_encode(array(
+                'status'    => false,
+            ));
+            wp_die();
+        }
 
         $user_id = get_current_user_id();
         
         $report_id = (isset($_REQUEST['last_result_id']) && sanitize_text_field($_REQUEST['last_result_id']) != '' && ! is_null( sanitize_text_field($_REQUEST['last_result_id']) ) ) ? intval( sanitize_text_field( $_REQUEST['last_result_id'] ) ) : 0;
+
+        if ( empty($report_id) ) {
+            ob_end_clean();
+            $ob_get_clean = ob_get_clean();
+            echo json_encode(array(
+                'status'    => false,
+            ));
+            wp_die();
+        }
+
+        if ($report_id > 0) {
+
+            $result_exists = $wpdb->get_var(
+                $wpdb->prepare(
+                    "SELECT id
+                     FROM {$wpdb->prefix}aysquiz_reports
+                     WHERE id = %d
+                     AND quiz_id = %d",
+                    $report_id,
+                    $quiz_id
+                )
+            );
+
+            if (!$result_exists) {
+                ob_end_clean();
+                $ob_get_clean = ob_get_clean();
+                echo json_encode(array(
+                    'status'    => false,
+                ));
+                wp_die();
+            }
+        }
 
         // Make responses anonymous
         $quiz_make_responses_anonymous = (isset($_REQUEST['quiz_make_responses_anonymous']) && sanitize_text_field($_REQUEST['quiz_make_responses_anonymous']) == 'true' ) ? true : false;
@@ -7763,9 +7847,8 @@ class Quiz_Maker_Public
         }
         $user_email = isset($_REQUEST['ays_user_email']) ? esc_sql( sanitize_email( $_REQUEST['ays_user_email'] ) ) : '';
         $user_phone = isset($_REQUEST['ays_user_phone']) ? esc_sql( sanitize_text_field( $_REQUEST['ays_user_phone'] ) ) : '';
-        $quiz_id = absint( sanitize_text_field($_REQUEST["quiz_id"]) );
         $score = (isset($_REQUEST['rate_score']) && $_REQUEST['rate_score'] != "") ? esc_sql( absint( sanitize_text_field( $_REQUEST['rate_score'] ) ) ) : 5;
-        $rate_date = esc_sql( sanitize_text_field( $_REQUEST['rate_date'] ) );
+        $rate_date = current_time('mysql'); // For Security // esc_sql( sanitize_text_field( $_REQUEST['rate_date'] ) );
         $rate_reason = (isset($_REQUEST['rate_reason']) && $_REQUEST['rate_reason'] != "") ? stripslashes( sanitize_textarea_field( $_REQUEST['rate_reason'] ) ) : '';
 
         switch ($score) {
@@ -8631,9 +8714,64 @@ class Quiz_Maker_Public
         $question_id = isset( $_REQUEST['question_id'] ) && $_REQUEST['question_id'] != '' ? absint( $_REQUEST['question_id'] ) : 0;
         $quiz_id = isset( $_REQUEST['quiz_id'] ) && $_REQUEST['quiz_id'] != '' ? absint( $_REQUEST['quiz_id'] ) : 0;
         $report_text = isset( $_REQUEST['report_text'] ) && $_REQUEST['report_text'] != '' ? stripslashes( sanitize_textarea_field( $_REQUEST['report_text'] ) ) : '';
-        $create_date = isset($_REQUEST['create_date']) && $_REQUEST['create_date'] != '' ? stripslashes( sanitize_text_field($_REQUEST['create_date']) ) : NULL;
+        // $create_date = isset($_REQUEST['create_date']) && $_REQUEST['create_date'] != '' ? stripslashes( sanitize_text_field($_REQUEST['create_date']) ) : current_time('mysql');
+        $create_date = current_time('mysql'); // For Security 
 
         if(empty($quiz_id) || empty($question_id)){
+            echo json_encode(array(
+                'status' => false,
+            ));
+            wp_die();
+        }
+
+        if ( empty( $report_text ) || strlen($report_text) < 2 || strlen($report_text) > 1000 ) {
+            echo json_encode(array(
+                'status' => false,
+            ));
+            wp_die();
+        }
+
+        $quiz_question_ids = $wpdb->get_var(
+            $wpdb->prepare(
+                "SELECT question_ids 
+                 FROM {$wpdb->prefix}aysquiz_quizes
+                 WHERE id = %d",
+                $quiz_id
+            )
+        );
+
+        if ( empty($quiz_question_ids) ) {
+            echo json_encode(array(
+                'status' => false,
+            ));
+            wp_die();
+        }
+
+        $question_ids_array = array_map('absint', explode(',', $quiz_question_ids));
+
+        if ( is_array($question_ids_array) && ! in_array( $question_id, $question_ids_array, true ) ) {
+            echo json_encode(array(
+                'status' => false,
+            ));
+            wp_die();
+        }
+
+        $user_ip = $this->get_user_ip();
+
+        $one_minute_ago = date('Y-m-d H:i:s', current_time('timestamp') - 60);
+
+        $recent_reports = $wpdb->get_var(
+            $wpdb->prepare(
+                "SELECT COUNT(id)
+                 FROM {$wpdb->prefix}aysquiz_question_reports
+                 WHERE user_ip = %s
+                 AND create_date > %s",
+                $user_ip,
+                $one_minute_ago
+            )
+        );
+
+        if ( $recent_reports > 3 ) {
             echo json_encode(array(
                 'status' => false,
             ));
@@ -8662,6 +8800,7 @@ class Quiz_Maker_Public
                 'create_date'   => $create_date,
                 'resolve_date'  => NULL,
                 'user_id'       => $current_user_id,
+                'user_ip'       => $user_ip,
                 'user_name'     => $current_user_display_name,
                 'user_email'    => $current_user_email,
             );
@@ -8672,6 +8811,7 @@ class Quiz_Maker_Public
                 '%s', // create_date
                 '%s', // resolve_date
                 '%d', // user_id
+                '%s', // user_ip
                 '%s', // user_name
                 '%s', // user_email
             );

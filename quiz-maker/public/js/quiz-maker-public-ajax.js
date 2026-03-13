@@ -2875,6 +2875,15 @@
                                 });
                             }
                         },1000);
+                    } else {
+                        swal.fire({
+                            type: 'info',
+                            html: "<h2>"+ quizLangObj.loadResource +"</h2><br><h6>"+ quizLangObj.somethingWentWrong +"</h6>"
+                        });
+                        form.find('.for_quiz_rate_reason').slideUp(800);
+                        form.find('.ays_quiz_rete').find('.for_quiz_rate').rating('disable');
+                        form.find('.lds-spinner').addClass('lds-spinner-none').removeClass('lds-spinner');
+                        form.find('.lds-spinner2').addClass('lds-spinner2-none').removeClass('lds-spinner2');
                     }
                 },
                 error: function(){
