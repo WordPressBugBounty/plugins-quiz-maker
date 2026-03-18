@@ -378,14 +378,16 @@ class Quizes_List_Table extends WP_List_Table{
         $quiz_table = $wpdb->prefix . 'aysquiz_quizes';
         $ays_change_type = (isset($_POST['ays_change_type'])) ? sanitize_text_field( $_POST['ays_change_type'] ) : '';
         if( isset($_POST["quiz_action"]) && wp_verify_nonce( sanitize_text_field( $_POST["quiz_action"] ), 'quiz_action' ) ){
+
+            $quiz_allowed_html = Quiz_Maker_Data::ays_quiz_custom_allowed_html();
             
-            $id                         = ( $_POST["id"] != NULL ) ? absint( intval( $_POST["id"] ) ) : null;
+            $id                         = ( isset($_POST["id"]) && $_POST["id"] != NULL ) ? absint( intval( $_POST["id"] ) ) : null;
             $max_id                     = $this->get_max_id();
-            $title                      = sanitize_text_field( $_POST['ays_quiz_title'] );
-            $description                = wp_kses_post( $_POST['ays_quiz_description'] );
-            $quiz_category_id           = absint( sanitize_text_field( $_POST['ays_quiz_category'] ) );
-            $question_ids               = sanitize_text_field( $_POST['ays_added_questions'] );
-            $published                  = absint( sanitize_text_field( $_POST['ays_publish'] ) );
+            $title                      = (isset($_POST['ays_quiz_title']) && $_POST['ays_quiz_title'] != "") ? sanitize_text_field( $_POST['ays_quiz_title'] ) : '';
+            $description                = (isset($_POST['ays_quiz_description']) && $_POST['ays_quiz_description'] != "") ? wp_kses( $_POST['ays_quiz_description'], $quiz_allowed_html ) : '';
+            $quiz_category_id           = (isset($_POST['ays_quiz_category']) && $_POST['ays_quiz_category'] != "") ? absint( sanitize_text_field( $_POST['ays_quiz_category'] ) ) : 1;
+            $question_ids               = (isset($_POST['ays_added_questions']) && $_POST['ays_added_questions'] != "") ? sanitize_text_field( $_POST['ays_added_questions'] ) : '';
+            $published                  = (isset($_POST['ays_publish']) && $_POST['ays_publish'] != "") ? absint( sanitize_text_field( $_POST['ays_publish'] ) ) : 1;
             $ordering                   = ( $max_id != NULL ) ? ( $max_id + 1 ) : 1;
             $image                      = (isset($_POST['ays_quiz_image']) && $_POST['ays_quiz_image'] != "") ? sanitize_url( $_POST['ays_quiz_image'] ) : "";
 
@@ -470,10 +472,10 @@ class Quizes_List_Table extends WP_List_Table{
             $enable_arrows              = !isset($_POST['ays_enable_arrows']) ? "off" : sanitize_text_field( $_POST['ays_enable_arrows'] );
             $quiz_theme                 = !isset($_POST['ays_quiz_theme']) ? null : sanitize_text_field( $_POST['ays_quiz_theme'] );
             $social_buttons             = !isset($_POST['ays_social_buttons']) ? "off" : sanitize_text_field( $_POST['ays_social_buttons'] );
-            $enable_logged_users_mas    = !isset($_POST['ays_enable_logged_users_message']) ? null : wp_kses_post( $_POST['ays_enable_logged_users_message'] );
+            $enable_logged_users_mas    = !isset($_POST['ays_enable_logged_users_message']) ? null : wp_kses( $_POST['ays_enable_logged_users_message'], $quiz_allowed_html );
             $enable_pass_count          = !isset($_POST['ays_enable_pass_count']) ? "off" : sanitize_text_field( $_POST['ays_enable_pass_count'] );
             $hide_score                 = !isset($_POST['ays_hide_score']) ? "off" : sanitize_text_field( $_POST['ays_hide_score'] );
-            $rate_form_title            = !isset($_POST['ays_rate_form_title']) ? '' : wp_kses_post( $_POST['ays_rate_form_title'] );
+            $rate_form_title            = !isset($_POST['ays_rate_form_title']) ? '' : wp_kses( $_POST['ays_rate_form_title'], $quiz_allowed_html );
             $quiz_box_shadow_color      = !isset($_POST['ays_quiz_box_shadow_color']) ? '' : sanitize_text_field( $_POST['ays_quiz_box_shadow_color'] );
             $quiz_border_radius         = !isset($_POST['ays_quiz_border_radius']) ? '' : sanitize_text_field( $_POST['ays_quiz_border_radius'] );
             $quiz_bg_image              = !isset($_POST['ays_quiz_bg_image']) ? '' : sanitize_url( $_POST['ays_quiz_bg_image'] );
@@ -524,7 +526,7 @@ class Quizes_List_Table extends WP_List_Table{
                 }
             }
             
-            $form_title                 = !isset($_POST['ays_form_title']) ? '' : wp_kses_post( $_POST['ays_form_title'] );
+            $form_title                 = !isset($_POST['ays_form_title']) ? '' : wp_kses( $_POST['ays_form_title'], $quiz_allowed_html );
             $limit_user_roles           = !isset($_POST['ays_users_roles']) ? array() : array_map( 'sanitize_text_field', $_POST['ays_users_roles'] );
             
             $enable_bg_music            = (isset($_POST['ays_enable_bg_music']) && sanitize_text_field( $_POST['ays_enable_bg_music'] ) == "on") ? "on" : "off";
@@ -611,8 +613,8 @@ class Quizes_List_Table extends WP_List_Table{
 			$active_date_check = (isset($_POST['active_date_check']) && sanitize_text_field( $_POST['active_date_check'] ) == "on") ? 'on' : 'off';
 			$activeInterval = isset($_POST['ays-active']) ? sanitize_text_field( $_POST['ays-active'] ) : "";
 			$deactiveInterval = isset($_POST['ays-deactive']) ? sanitize_text_field( $_POST['ays-deactive'] ) : "";
-            $active_date_pre_start_message = wp_kses_post( $_POST['active_date_pre_start_message'] );
-            $active_date_message = wp_kses_post( $_POST['active_date_message'] );
+            $active_date_pre_start_message = isset($_POST['active_date_pre_start_message']) && $_POST['active_date_pre_start_message'] != '' ?  wp_kses( $_POST['active_date_pre_start_message'], $quiz_allowed_html ) : '';
+            $active_date_message = isset($_POST['active_date_message']) && $_POST['active_date_message'] != '' ?  wp_kses( $_POST['active_date_message'], $quiz_allowed_html ) : '';
             
             // Right/wrong answer text showing time option
             $explanation_time = (isset($_POST['ays_explanation_time']) && sanitize_text_field( $_POST['ays_explanation_time'] ) != '') ? sanitize_text_field( $_POST['ays_explanation_time'] ) : '4';
@@ -642,7 +644,7 @@ class Quizes_List_Table extends WP_List_Table{
             $finish_after_wrong_answer = (isset($_POST['ays_finish_after_wrong_answer']) && sanitize_text_field( $_POST['ays_finish_after_wrong_answer'] ) == "on") ? 'on' : 'off';
             
             // Text after timer ends
-            $after_timer_text = (isset($_POST['ays_after_timer_text']) && $_POST['ays_after_timer_text'] != '') ? wp_kses_post( $_POST['ays_after_timer_text'] ) : '';
+            $after_timer_text = (isset($_POST['ays_after_timer_text']) && $_POST['ays_after_timer_text'] != '') ? wp_kses( $_POST['ays_after_timer_text'], $quiz_allowed_html ) : '';
             
             // Enable to go next by pressing Enter key
             $enable_enter_key = (isset($_POST['ays_enable_enter_key']) && sanitize_text_field( $_POST['ays_enable_enter_key'] ) == "on") ? 'on' : 'off';
@@ -690,8 +692,8 @@ class Quizes_List_Table extends WP_List_Table{
 
             // Pass Score
             $pass_score = (isset($_POST['ays_pass_score']) && $_POST['ays_pass_score'] != '') ? absint(intval($_POST['ays_pass_score'])) : '0';
-            $pass_score_message = isset($_POST['ays_pass_score_message']) ? wp_kses_post( $_POST['ays_pass_score_message'] ) : '<h4 style="text-align: center;">'. __("Congratulations!", 'quiz-maker') .'</h4><p style="text-align: center;">'. __("You passed the quiz!", 'quiz-maker') .'</p>';
-            $fail_score_message = isset($_POST['ays_fail_score_message']) ? wp_kses_post( $_POST['ays_fail_score_message'] ) : '<h4 style="text-align: center;">'. __("Oops!", 'quiz-maker') .'</h4><p style="text-align: center;">'. __("You have not passed the quiz! <br> Try again!", 'quiz-maker') .'</p>';
+            $pass_score_message = isset($_POST['ays_pass_score_message']) ? wp_kses( $_POST['ays_pass_score_message'], $quiz_allowed_html ) : '<h4 style="text-align: center;">'. __("Congratulations!", 'quiz-maker') .'</h4><p style="text-align: center;">'. __("You passed the quiz!", 'quiz-maker') .'</p>';
+            $fail_score_message = isset($_POST['ays_fail_score_message']) ? wp_kses( $_POST['ays_fail_score_message'], $quiz_allowed_html ) : '<h4 style="text-align: center;">'. __("Oops!", 'quiz-maker') .'</h4><p style="text-align: center;">'. __("You have not passed the quiz! <br> Try again!", 'quiz-maker') .'</p>';
 
             // Question Font Size
             $question_font_size = (isset($_POST['ays_question_font_size']) && $_POST['ays_question_font_size'] != '' && absint(sanitize_text_field($_POST['ays_question_font_size'])) > 0) ? absint(sanitize_text_field($_POST['ays_question_font_size'])) : '16';
@@ -812,7 +814,7 @@ class Quizes_List_Table extends WP_List_Table{
             $questions_hint_button_value = (isset($_POST['ays_questions_hint_button_value']) && sanitize_text_field( $_POST['ays_questions_hint_button_value']) != '') ? stripcslashes( sanitize_text_field( $_POST['ays_questions_hint_button_value'] ) ) : '';
 
             // Quiz takers message
-            $quiz_tackers_message = ( isset($_POST['ays_quiz_tackers_message']) && $_POST['ays_quiz_tackers_message'] != '' ) ? wp_kses_post( $_POST['ays_quiz_tackers_message'] ) : __( "This quiz is expired!", 'quiz-maker' );
+            $quiz_tackers_message = ( isset($_POST['ays_quiz_tackers_message']) && $_POST['ays_quiz_tackers_message'] != '' ) ? wp_kses( $_POST['ays_quiz_tackers_message'], $quiz_allowed_html ) : __( "This quiz is expired!", 'quiz-maker' );
 
             // Enable Linkedin button
             $quiz_enable_linkedin_share_button = (isset($_POST['ays_quiz_enable_linkedin_share_button']) && sanitize_text_field( $_POST['ays_quiz_enable_linkedin_share_button'] ) == 'on') ? 'on' : 'off';
@@ -842,7 +844,7 @@ class Quizes_List_Table extends WP_List_Table{
             $password_quiz = (isset($_POST['ays_password_quiz']) && $_POST['ays_password_quiz'] != '') ? stripcslashes( sanitize_text_field( $_POST['ays_password_quiz'] ) ) : '';
 
             // Password for passing quiz | Message
-            $quiz_password_message = ( isset($_POST['ays_quiz_password_message']) && $_POST['ays_quiz_password_message'] != '' ) ? wp_kses_post( $_POST['ays_quiz_password_message'] ) : '';
+            $quiz_password_message = ( isset($_POST['ays_quiz_password_message']) && $_POST['ays_quiz_password_message'] != '' ) ? wp_kses( $_POST['ays_quiz_password_message'], $quiz_allowed_html ) : '';
 
             // Enable confirmation box for the See Result button
             $enable_see_result_confirm_box = ( isset($_POST['ays_enable_see_result_confirm_box']) && sanitize_text_field( $_POST['ays_enable_see_result_confirm_box'] ) == 'on' ) ? 'on' : 'off';
@@ -863,7 +865,7 @@ class Quizes_List_Table extends WP_List_Table{
             $answers_mobile_font_size = ( isset($_POST['ays_answers_mobile_font_size']) && $_POST['ays_answers_mobile_font_size'] != "" && absint( sanitize_text_field( $_POST['ays_answers_mobile_font_size'] ) ) > 0 ) ? absint( sanitize_text_field( $_POST['ays_answers_mobile_font_size'] ) ) : 15;
 
             // Heading for social buttons
-            $social_buttons_heading = (isset($_POST['ays_social_buttons_heading']) && $_POST['ays_social_buttons_heading'] != '') ? wp_kses_post( $_POST['ays_social_buttons_heading'] ) : "";
+            $social_buttons_heading = (isset($_POST['ays_social_buttons_heading']) && $_POST['ays_social_buttons_heading'] != '') ? wp_kses( $_POST['ays_social_buttons_heading'], $quiz_allowed_html ) : "";
 
             // Enable VKontakte button
             $quiz_enable_vkontakte_share_button = (isset($_POST['ays_quiz_enable_vkontakte_share_button']) && sanitize_text_field( $_POST['ays_quiz_enable_vkontakte_share_button'] ) == 'on') ? 'on' : 'off';
@@ -875,7 +877,7 @@ class Quizes_List_Table extends WP_List_Table{
             $answers_border_color = (isset($_POST['ays_answers_border_color']) && $_POST['ays_answers_border_color'] != '') ? sanitize_text_field( $_POST['ays_answers_border_color'] ) : '#444';
 
             // Heading for social media links
-            $social_links_heading = (isset($_POST['ays_social_links_heading']) && $_POST['ays_social_links_heading'] != '') ? wp_kses_post( $_POST['ays_social_links_heading'] ) : "";
+            $social_links_heading = (isset($_POST['ays_social_links_heading']) && $_POST['ays_social_links_heading'] != '') ? wp_kses( $_POST['ays_social_links_heading'], $quiz_allowed_html ) : "";
 
             // Show question category description
             $quiz_enable_question_category_description = ( isset($_POST['ays_quiz_enable_question_category_description']) && sanitize_text_field( $_POST['ays_quiz_enable_question_category_description'] ) == 'on' ) ? 'on' : 'off';
@@ -941,7 +943,7 @@ class Quizes_List_Table extends WP_List_Table{
             $quiz_enable_results_toggle = (isset($_POST['ays_quiz_enable_results_toggle']) && sanitize_text_field($_POST['ays_quiz_enable_results_toggle']) == 'on') ? 'on' : 'off';
 
             // Thank you message | Review
-            $quiz_review_thank_you_message = (isset($_POST['ays_quiz_review_thank_you_message']) && $_POST['ays_quiz_review_thank_you_message'] != '') ? wp_kses_post( $_POST['ays_quiz_review_thank_you_message'] ) : "";
+            $quiz_review_thank_you_message = (isset($_POST['ays_quiz_review_thank_you_message']) && $_POST['ays_quiz_review_thank_you_message'] != '') ? wp_kses( $_POST['ays_quiz_review_thank_you_message'], $quiz_allowed_html ) : "";
 
             // Enable Comment Field
             $quiz_review_enable_comment_field = (isset($_POST['ays_quiz_review_enable_comment_field']) && sanitize_text_field($_POST['ays_quiz_review_enable_comment_field']) == 'on') ? 'on' : 'off';
@@ -1194,11 +1196,11 @@ class Quizes_List_Table extends WP_List_Table{
                 'randomize_answers'                                 => $enable_random_answers,
                 'enable_questions_counter'                          => $enable_questions_counter,
                 'enable_restriction_pass'                           => $enable_restriction_pass,
-                'restriction_pass_message'                          => wp_kses_post( $_POST['restriction_pass_message'] ),
+                'restriction_pass_message'                          => wp_kses( $_POST['restriction_pass_message'], $quiz_allowed_html ),
                 'user_role'                                         => $limit_user_roles,                
                 'custom_css'                                        => $custom_css,
                 'limit_users'                                       => $limit_users,
-                'limitation_message'                                => wp_kses_post( $_POST['ays_limitation_message'] ),
+                'limitation_message'                                => wp_kses( $_POST['ays_limitation_message'], $quiz_allowed_html ),
                 'redirect_url'                                      => sanitize_text_field( $_POST['ays_redirect_url'] ),
                 'redirection_delay'                                 => intval( sanitize_text_field( $_POST['ays_redirection_delay'] ) ),
                 'answers_view'                                      => sanitize_text_field( $_POST['ays_answers_view'] ),
@@ -1212,10 +1214,10 @@ class Quizes_List_Table extends WP_List_Table{
                 'enable_next_button'                                => $next_button,
                 'enable_previous_button'                            => $prev_button,
                 'enable_arrows'                                     => $enable_arrows,
-                'timer_text'                                        => wp_kses_post( $_POST['ays_timer_text'] ),
+                'timer_text'                                        => wp_kses( $_POST['ays_timer_text'], $quiz_allowed_html ),
                 'quiz_theme'                                        => $quiz_theme,
                 'enable_social_buttons'                             => $social_buttons,
-                'result_text'                                       => wp_kses_post( $_POST['ays_result_text'] ),
+                'result_text'                                       => wp_kses( $_POST['ays_result_text'], $quiz_allowed_html ),
                 'enable_pass_count'                                 => $enable_pass_count,
                 'hide_score'                                        => $hide_score,
                 'rate_form_title'                                   => $rate_form_title,

@@ -1880,6 +1880,9 @@ class Quiz_Maker_Admin
 
             // Text transformation for the question explanation | Mobile
             $quick_quiz_right_answer_mobile_text_transform = (isset( $_REQUEST['ays_quick_quiz_right_answer_mobile_text_transform'] ) && $_REQUEST['ays_quick_quiz_right_answer_mobile_text_transform'] != "") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_right_answer_mobile_text_transform'] ) ) : "none";
+
+            // Text transformation for the question explanation
+            $quick_quiz_right_answers_mobile_text_decoration = (isset( $_REQUEST['ays_quick_quiz_right_answers_mobile_text_decoration'] ) && $_REQUEST['ays_quick_quiz_right_answers_mobile_text_decoration'] != "") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_right_answers_mobile_text_decoration'] ) ) : "none";
             
         }
         
@@ -2185,6 +2188,7 @@ class Quiz_Maker_Admin
             'quiz_quest_explanation_mobile_text_decoration'     => $quick_quiz_quest_explanation_mobile_text_decoration,
             'quiz_quest_explanation_mobile_letter_spacing'      => $quick_quiz_quest_explanation_mobile_letter_spacing,
             'quiz_right_answer_mobile_text_transform'           => $quick_quiz_right_answer_mobile_text_transform,
+            'quiz_right_answers_mobile_text_decoration'         => $quick_quiz_right_answers_mobile_text_decoration,
         );
 
 
@@ -6731,6 +6735,10 @@ class Quiz_Maker_Admin
      * @since 6.4.0.4 Updated the permissions checking.
      */
     public function ays_quiz_activate_plugin() {
+
+        if( empty($_REQUEST['_ajax_nonce']) ){
+            wp_send_json_error( esc_html__( 'There was an error while performing your request.', 'quiz-maker' ) );
+        }
 
         // Run a security check.
         check_ajax_referer( $this->plugin_name . '-install-plugin-nonce', sanitize_key( $_REQUEST['_ajax_nonce'] ) );

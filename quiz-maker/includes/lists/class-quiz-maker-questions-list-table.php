@@ -472,6 +472,8 @@ class Questions_List_Table extends WP_List_Table{
             $id = absint( intval( $_POST['id'] ) );
             $author_id = get_current_user_id();
 
+            $quiz_allowed_html = Quiz_Maker_Data::ays_quiz_custom_allowed_html();
+
             $question = '';
             if ( isset( $_POST['ays_question'] ) ) {
 
@@ -480,7 +482,7 @@ class Questions_List_Table extends WP_List_Table{
                 if ( $is_exists_ruby ) {
                     $question = $_POST['ays_question'];
                 } else {
-                    $question = wp_kses_post( $_POST['ays_question'] );
+                    $question = wp_kses( $_POST['ays_question'], $quiz_allowed_html );
                 }
             }
 
@@ -491,7 +493,7 @@ class Questions_List_Table extends WP_List_Table{
             // Question title ( Banner )
             $question_title     = (isset($_POST['ays_question_title']) && $_POST['ays_question_title'] != '') ? sanitize_text_field($_POST['ays_question_title']) : '';
             
-            $question_hint      = wp_kses_post( $_POST['ays_question_hint'] );
+            $question_hint      = (isset($_POST['ays_question_hint']) && $_POST['ays_question_hint'] != '') ? wp_kses( $_POST['ays_question_hint'], $quiz_allowed_html ) : '';
             $question_image     = (isset( $_POST['ays_question_image'] ) && $_POST['ays_question_image'] != '') ? sanitize_url( $_POST['ays_question_image'] ) : NULL;
 
             // if( $question_image != "" && !is_null($question_image) ){
@@ -513,11 +515,18 @@ class Questions_List_Table extends WP_List_Table{
             $published          = (isset($_POST['ays_publish']) && $_POST['ays_publish'] != '') ? absint( sanitize_text_field( $_POST['ays_publish'] ) ) : 0;
             $type               = (isset($_POST['ays_question_type']) && $_POST['ays_question_type'] != '') ? sanitize_text_field( $_POST['ays_question_type'] ) : 'radio';
             $correct_answers    = (isset($_POST['ays-correct-answer']) ) && ! empty($_POST['ays-correct-answer']) ? array_map( 'sanitize_text_field', $_POST['ays-correct-answer'] ) : array();
-            $answer_values      = (isset($_POST['ays-correct-answer-value']) ) && ! empty($_POST['ays-correct-answer-value']) ? array_map( 'wp_kses_post', $_POST['ays-correct-answer-value'] ) : array();
+            // $answer_values      = (isset($_POST['ays-correct-answer-value']) ) && ! empty($_POST['ays-correct-answer-value']) ? array_map( 'wp_kses_post', $_POST['ays-correct-answer-value'] ) : array();
+            
+            $answer_values = ( isset($_POST['ays-correct-answer-value']) && ! empty($_POST['ays-correct-answer-value']) )
+            ? array_map(function($value) use ($quiz_allowed_html) {
+                return wp_kses($value, $quiz_allowed_html);
+            }, $_POST['ays-correct-answer-value'])
+            : array();
+
             $answer_placeholders = isset($_POST['ays-answer-placeholder']) ? array_map( 'sanitize_text_field', $_POST['ays-answer-placeholder'] ) : array();
-            $wrong_answer_text  = (isset($_POST['wrong_answer_text']) && $_POST['wrong_answer_text'] != '') ? wp_kses_post( $_POST['wrong_answer_text'] ) : '';
-            $right_answer_text  = (isset($_POST['right_answer_text']) && $_POST['right_answer_text'] != '') ? wp_kses_post( $_POST['right_answer_text'] ) : '';
-            $explanation        = (isset($_POST['explanation']) && $_POST['explanation'] != '') ? wp_kses_post( $_POST['explanation'] ) : '';
+            $wrong_answer_text  = (isset($_POST['wrong_answer_text']) && $_POST['wrong_answer_text'] != '') ? wp_kses( $_POST['wrong_answer_text'], $quiz_allowed_html ) : '';
+            $right_answer_text  = (isset($_POST['right_answer_text']) && $_POST['right_answer_text'] != '') ? wp_kses( $_POST['right_answer_text'], $quiz_allowed_html ) : '';
+            $explanation        = (isset($_POST['explanation']) && $_POST['explanation'] != '') ? wp_kses( $_POST['explanation'], $quiz_allowed_html ) : '';
             $not_influence_to_score = (isset($_POST['ays_not_influence_to_score']) && $_POST['ays_not_influence_to_score'] == 'on') ? 'on' : 'off';
 
             // Answers image Array
@@ -559,7 +568,7 @@ class Questions_List_Table extends WP_List_Table{
             $max_selection_number = ( isset($_POST['ays_max_selection_number']) && $_POST['ays_max_selection_number'] != '' ) ? intval( sanitize_text_field ( $_POST['ays_max_selection_number'] ) ) : '';
 
             // Note text
-            $quiz_question_note_message = ( isset($_POST['ays_quiz_question_note_message']) && $_POST['ays_quiz_question_note_message'] != '' ) ? wp_kses_post( $_POST['ays_quiz_question_note_message'] ) : '';
+            $quiz_question_note_message = ( isset($_POST['ays_quiz_question_note_message']) && $_POST['ays_quiz_question_note_message'] != '' ) ? wp_kses( $_POST['ays_quiz_question_note_message'], $quiz_allowed_html ) : '';
 
             // Enable case sensitive text
             $enable_case_sensitive_text = (isset($_POST['ays_enable_case_sensitive_text']) && sanitize_text_field( $_POST['ays_enable_case_sensitive_text'] ) == 'on') ? 'on' : 'off';
@@ -974,6 +983,8 @@ class Questions_List_Table extends WP_List_Table{
             wp_die(  esc_html__( 'Something went wrong', 'quiz-maker' ) );
         }
 
+        $quiz_allowed_html = Quiz_Maker_Data::ays_quiz_custom_allowed_html();
+
         global $wpdb;
         $questions_table = $wpdb->prefix . "aysquiz_questions";
         $answers_table = $wpdb->prefix . "aysquiz_answers";
@@ -1030,7 +1041,7 @@ class Questions_List_Table extends WP_List_Table{
         $max_selection_number = ( isset($question_options['max_selection_number']) && $question_options['max_selection_number'] != '' ) ? intval( sanitize_text_field ( $question_options['max_selection_number'] ) ) : '';
 
         // Note text
-        $quiz_question_note_message = ( isset($question_options['quiz_question_note_message']) && $question_options['quiz_question_note_message'] != '' ) ? wp_kses_post( $question_options['quiz_question_note_message'] ) : '';
+        $quiz_question_note_message = ( isset($question_options['quiz_question_note_message']) && $question_options['quiz_question_note_message'] != '' ) ? wp_kses( $question_options['quiz_question_note_message'], $quiz_allowed_html ) : '';
 
         // Enable case sensitive text
         $enable_case_sensitive_text = (isset($question_options['enable_case_sensitive_text']) && sanitize_text_field( $question_options['enable_case_sensitive_text'] ) == 'on') ? 'on' : 'off';

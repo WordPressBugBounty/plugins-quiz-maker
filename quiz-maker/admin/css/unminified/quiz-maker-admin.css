@@ -1209,7 +1209,7 @@ table#ays-results-table tr td video,
 table#ays-results-table tr td img{
     max-width: 150px;
     height: auto;
-    float:left;
+    /*float:left;*/
 }
 
 table#ays-results-table tr td{
@@ -1296,6 +1296,7 @@ table#ays-results-table tr td:first-child{
     font-weight: bold;
 }
 
+table#ays-results-table tr td iframe,
 table#ays-results-table tr td:first-child iframe {
     max-width: 250px;
     height: auto;

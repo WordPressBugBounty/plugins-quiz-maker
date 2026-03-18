@@ -306,12 +306,14 @@ class Quiz_Categories_List_Table extends WP_List_Table{
         $quiz_category_table = $wpdb->prefix . 'aysquiz_quizcategories';
         $ays_change_type = (isset($_POST['ays_change_type'])) ? sanitize_text_field( $_POST['ays_change_type'] ) : '';
         if( isset($_POST["quiz_category_action"]) && wp_verify_nonce( sanitize_text_field( $_POST["quiz_category_action"] ), 'quiz_category_action' ) ){
+
+            $quiz_allowed_html = Quiz_Maker_Data::ays_quiz_custom_allowed_html();
             
-            $id = absint( sanitize_text_field( $_POST['id'] ) );
+            $id = (isset($_POST['id']) && $_POST['id'] != "") ? absint( sanitize_text_field( $_POST['id'] ) ) : 0;
             $author_id = get_current_user_id();
-            $title = stripslashes( sanitize_text_field( $_POST['ays_title'] ) );
-            $description =  wp_kses_post( $_POST['ays_description'] );
-            $publish = absint( sanitize_text_field( $_POST['ays_publish'] ) );
+            $title = (isset($_POST['ays_title']) && $_POST['ays_title'] != "") ? stripslashes( sanitize_text_field( $_POST['ays_title'] ) ) : '';
+            $description = (isset($_POST['ays_description']) && $_POST['ays_description'] != "") ? wp_kses($_POST['ays_description'], $quiz_allowed_html) : '';
+            $publish = (isset($_POST['ays_publish']) && $_POST['ays_publish'] != "") ? absint( sanitize_text_field( $_POST['ays_publish'] ) ) : 1;
             $message = '';
             if( $id == 0 ){
                 $result = $wpdb->insert(
@@ -487,9 +489,11 @@ class Quiz_Categories_List_Table extends WP_List_Table{
         $quiz_category_data = $this->get_quiz_categories_by_id($id);
 
         $author_id = get_current_user_id();
+
+        $quiz_allowed_html = Quiz_Maker_Data::ays_quiz_custom_allowed_html();
         
         $title = (isset($quiz_category_data['title']) && $quiz_category_data['title'] != "") ? stripslashes( sanitize_text_field( $quiz_category_data['title'] ) ) : __("Copy", 'quiz-maker');
-        $description =  (isset($quiz_category_data['description']) && $quiz_category_data['description'] != "") ? wp_kses_post( $quiz_category_data['description'] ) : "";
+        $description =  (isset($quiz_category_data['description']) && $quiz_category_data['description'] != "") ? wp_kses( $quiz_category_data['description'], $quiz_allowed_html ) : "";
         $publish = (isset($quiz_category_data['published']) && $quiz_category_data['published'] != "") ? absint( sanitize_text_field( $quiz_category_data['published'] ) ) : 0;
 
         $result = $wpdb->insert(

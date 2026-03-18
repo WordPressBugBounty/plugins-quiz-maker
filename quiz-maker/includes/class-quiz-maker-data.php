@@ -135,8 +135,6 @@ class Quiz_Maker_Data {
                     'readonly'              => true,
                     'data-*'                => true,
                     'style'                 => true,
-                    'onClick'               => true,
-                    'onclick'               => true,
                 ),
                 'select' => array(
                     'id'                    => true,
@@ -185,6 +183,80 @@ class Quiz_Maker_Data {
                     'data-*'                => true,
                     'style'                 => true,
                     'target'                => true,
+                ),
+            ),
+            $additionalAllowedTags
+        );
+    }
+
+    public static function ays_quiz_custom_allowed_html() {
+        $additionalAllowedTags = self::ays_quiz_allowed_html();
+        return array_merge(
+            $additionalAllowedTags,
+            array(
+                'iframe' => array(
+                    'class'                 => true,
+                    'id'                    => true,
+                    'width'                 => true,
+                    'height'                => true,
+                    'src'                   => true,
+                    'title'                 => true,
+                    'frameborder'           => true,
+                    'allow'                 => true,
+                    'allowfullscreen'       => true,
+                    'loading'               => true,
+                    'referrerpolicy'        => true,
+                    'style'                 => true,
+                ),
+                'audio' => array(
+                    'class'                 => true,
+                    'id'                    => true,
+                    'controls'              => true,
+                    'autoplay'              => true,
+                    'loop'                  => true,
+                    'muted'                 => true,
+                    'preload'               => true,
+                    'src'                   => true,
+                    'style'                 => true,
+                ),
+                'source' => array(
+                    'src'                   => true,
+                    'type'                  => true,
+                ),
+                'track' => array(
+                    'kind'                  => true,
+                    'src'                   => true,
+                    'srclang'               => true,
+                    'label'                 => true,
+                    'default'               => true,
+                ),
+                'video' => array(
+                    'class'                 => true,
+                    'id'                    => true,
+                    'width'                 => true,
+                    'height'                => true,
+                    'controls'              => true,
+                    'autoplay'              => true,
+                    'loop'                  => true,
+                    'muted'                 => true,
+                    'poster'                => true,
+                    'preload'               => true,
+                    'src'                   => true,
+                    'style'                 => true,
+                ),
+                'picture' => array(
+                    'class'                 => true,
+                    'id'                    => true,
+                ),
+                'figure' => array(
+                    'class'                 => true,
+                    'id'                    => true,
+                    'style'                 => true,
+                ),
+                'figcaption' => array(
+                    'class'                 => true,
+                    'id'                    => true,
+                    'style'                 => true,
                 ),
             ),
             $additionalAllowedTags
