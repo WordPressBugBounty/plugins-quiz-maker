@@ -180,6 +180,7 @@ $options = array(
     'quiz_enable_linkedin_share_button'         => 'on',
     'quiz_enable_facebook_share_button'         => 'on',
     'quiz_enable_twitter_share_button'          => 'on',
+    'quiz_enable_whatsapp_share_button'         => 'on',
     'quiz_make_responses_anonymous'             => 'off',
     'quiz_make_all_review_link'                 => 'off',
     'show_questions_numbering'                  => 'none',
@@ -1185,14 +1186,24 @@ $quiz_enable_facebook_share_button = (isset($options['quiz_enable_facebook_share
 $options['quiz_enable_twitter_share_button'] = isset($options['quiz_enable_twitter_share_button']) ? sanitize_text_field($options['quiz_enable_twitter_share_button']) : 'on';
 $quiz_enable_twitter_share_button = (isset($options['quiz_enable_twitter_share_button']) && $options['quiz_enable_twitter_share_button'] == 'on') ? true : false;
 
+// Enable Whatsapp button
+if( $action == 'add' ){
+    $options['quiz_enable_whatsapp_share_button'] = isset($options['quiz_enable_whatsapp_share_button']) ? sanitize_text_field($options['quiz_enable_whatsapp_share_button']) : 'on';
+} else {
+    $options['quiz_enable_whatsapp_share_button'] = isset($options['quiz_enable_whatsapp_share_button']) ? sanitize_text_field($options['quiz_enable_whatsapp_share_button']) : 'off';
+}
+$quiz_enable_whatsapp_share_button = (isset($options['quiz_enable_whatsapp_share_button']) && $options['quiz_enable_whatsapp_share_button'] == 'on') ? true : false;
+
+
 // Enable Vkontakte button
 $options['quiz_enable_vkontakte_share_button'] = isset($options['quiz_enable_vkontakte_share_button']) ? sanitize_text_field($options['quiz_enable_vkontakte_share_button']) : 'on';
 $quiz_enable_vkontakte_share_button = (isset($options['quiz_enable_vkontakte_share_button']) && $options['quiz_enable_vkontakte_share_button'] == 'on') ? true : false;
 
-if ( ! $quiz_enable_linkedin_share_button && ! $quiz_enable_facebook_share_button && ! $quiz_enable_twitter_share_button && ! $quiz_enable_vkontakte_share_button ) {
+if ( ! $quiz_enable_linkedin_share_button && ! $quiz_enable_facebook_share_button && ! $quiz_enable_twitter_share_button && ! $quiz_enable_whatsapp_share_button && ! $quiz_enable_vkontakte_share_button ) {
     $quiz_enable_linkedin_share_button = true;
     $quiz_enable_facebook_share_button = true;
     $quiz_enable_twitter_share_button  = true;
+    $quiz_enable_whatsapp_share_button = true;
     $quiz_enable_vkontakte_share_button  = true;
 }
 
@@ -8007,6 +8018,21 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                     </div>
                                     <div class="col-sm-8">
                                         <input type="checkbox" class="ays-enable-timer1" id="ays_quiz_enable_vkontakte_share_button" name="ays_quiz_enable_vkontakte_share_button" value="on" <?php echo ( $quiz_enable_vkontakte_share_button ) ? 'checked' : ''; ?>/>
+                                    </div>
+                                </div>
+                                <hr/>
+                                <div class="form-group row">
+                                    <div class="col-sm-4">
+                                        <label for="ays_quiz_enable_whatsapp_share_button">
+                                            <i class="ays_fa ays_fa_whatsapp"></i>
+                                            <?php echo esc_html__('Enable Whatsapp button','quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Display Whatsapp social button so that the users can share the page on which your quiz is posted.','quiz-maker'); ?>">
+                                                <i class="ays_fa ays_fa_info_circle"></i>
+                                            </a>
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input type="checkbox" class="ays-enable-timer1" id="ays_quiz_enable_whatsapp_share_button" name="ays_quiz_enable_whatsapp_share_button" value="on" <?php echo ( $quiz_enable_whatsapp_share_button ) ? 'checked' : ''; ?>/>
                                     </div>
                                 </div>
                             </div>

@@ -3128,6 +3128,10 @@ input[name=ays_quiz_theme]{
     content: "\f15c";
     font-weight: 400;
 }
+.ays_fa_whatsapp::before{
+    content: "\f232";
+    font-weight: 400;
+}
 
 .ays-question-ordering .ays_fa_exchange::after {
     opacity: 1;

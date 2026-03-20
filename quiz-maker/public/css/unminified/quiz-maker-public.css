@@ -609,6 +609,9 @@ div.ays-quiz-container[id^="ays-quiz-container-"] .ays-quiz-share-btn-icon {
 .ays-share-btn-twitter .ays-quiz-share-btn-icon:before {
 	/*content: "\f081";*/
 }
+.ays-share-btn-whatsapp .ays-quiz-share-btn-icon:before {
+	content: "\f232";
+}
 
 
 .ays-share-btn-email .ays-quiz-share-btn-icon:before {
@@ -735,6 +738,19 @@ div.ays-quiz-container[id^="ays-quiz-container-"] .ays-quiz-share-btn-icon {
 .ays-share-btn.ays-share-btn-branded.ays-share-btn-twitter:active {
 	background: #000000;
 	border-color: #000000;
+}
+.ays-share-btn.ays-share-btn-branded.ays-share-btn-whatsapp {
+	background: #25D366;
+	border-color: #1ebe5b;
+}
+.ays-share-btn.ays-share-btn-branded.ays-share-btn-whatsapp:hover,
+.ays-share-btn.ays-share-btn-branded.ays-share-btn-whatsapp:focus {
+	background: #1ebe5b;
+	border-color: #18aa50;
+}
+.ays-share-btn.ays-share-btn-branded.ays-share-btn-whatsapp:active {
+	background: #18aa50;
+	border-color: #149145;
 }
 .ays-share-btn.ays-share-btn-branded.ays-share-btn-facebook {
 	background: #3b5998;
@@ -931,6 +947,7 @@ div.ays-quiz-container[id^="ays-quiz-container-"] .ays-quiz-share-btn-icon {
 	color: #eeeeee;
 }
 .ays-share-btn.ays-share-btn-twitter .ays-quiz-share-btn-icon,
+.ays-share-btn.ays-share-btn-whatsapp .ays-quiz-share-btn-icon,
 .ays-share-btn.ays-share-btn-googleplus .ays-quiz-share-btn-icon,
 .ays-share-btn.ays-share-btn-tumblr .ays-quiz-share-btn-icon,
 .ays-share-btn.ays-share-btn-linkedin .ays-quiz-share-btn-icon,
@@ -943,6 +960,7 @@ div.ays-quiz-container[id^="ays-quiz-container-"] .ays-quiz-share-btn-icon {
 }
 @-moz-document url-prefix() {
 	.ays-share-btn.ays-share-btn-twitter .ays-quiz-share-btn-icon,
+	.ays-share-btn.ays-share-btn-whatsapp .ays-quiz-share-btn-icon,
 	.ays-share-btn.ays-share-btn-googleplus .ays-quiz-share-btn-icon,
 	.ays-share-btn.ays-share-btn-tumblr .ays-quiz-share-btn-icon,
 	.ays-share-btn.ays-share-btn-linkedin .ays-quiz-share-btn-icon,

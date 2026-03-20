@@ -2088,6 +2088,7 @@ class Quiz_Maker_Admin
             'quiz_enable_linkedin_share_button'                 => 'on',
             'quiz_enable_facebook_share_button'                 => 'on',
             'quiz_enable_twitter_share_button'                  => 'on',
+            'quiz_enable_whatsapp_share_button'                 => 'on',
             'quiz_make_responses_anonymous'                     => $quick_quiz_make_responses_anonymous,
             'quiz_enable_user_cհoosing_anonymous_assessment'    => $quick_quiz_enable_user_cհoosing_anonymous_assessment,
             'quiz_make_all_review_link'                         => $quick_quiz_make_all_review_link,

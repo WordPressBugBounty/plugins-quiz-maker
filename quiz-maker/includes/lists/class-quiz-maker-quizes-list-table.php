@@ -825,6 +825,9 @@ class Quizes_List_Table extends WP_List_Table{
             // Enable Twitter button
             $quiz_enable_twitter_share_button = (isset($_POST['ays_quiz_enable_twitter_share_button']) && sanitize_text_field( $_POST['ays_quiz_enable_twitter_share_button'] ) == 'on') ? 'on' : 'off';
 
+            // Enable Whatsapp button
+            $quiz_enable_whatsapp_share_button = (isset($_POST['ays_quiz_enable_whatsapp_share_button']) && sanitize_text_field( $_POST['ays_quiz_enable_whatsapp_share_button'] ) == 'on') ? 'on' : 'off';
+
             // Make responses anonymous
             $quiz_make_responses_anonymous = (isset($_POST['ays_quiz_make_responses_anonymous']) && sanitize_text_field( $_POST['ays_quiz_make_responses_anonymous'] ) == 'on') ? 'on' : 'off';
 
@@ -1327,6 +1330,7 @@ class Quizes_List_Table extends WP_List_Table{
                 'quiz_enable_linkedin_share_button'                 => $quiz_enable_linkedin_share_button,
                 'quiz_enable_facebook_share_button'                 => $quiz_enable_facebook_share_button,
                 'quiz_enable_twitter_share_button'                  => $quiz_enable_twitter_share_button,
+                'quiz_enable_whatsapp_share_button'                 => $quiz_enable_whatsapp_share_button,
                 'quiz_make_responses_anonymous'                     => $quiz_make_responses_anonymous,
                 'quiz_make_all_review_link'                         => $quiz_make_all_review_link,
                 'show_questions_numbering'                          => $show_questions_numbering,

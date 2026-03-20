@@ -2710,14 +2710,19 @@ class Quiz_Maker_Public
         $options['quiz_enable_twitter_share_button'] = isset($options['quiz_enable_twitter_share_button']) ? sanitize_text_field($options['quiz_enable_twitter_share_button']) : 'on';
         $quiz_enable_twitter_share_button = (isset($options['quiz_enable_twitter_share_button']) && $options['quiz_enable_twitter_share_button'] == 'on') ? true : false;
 
+        // Enable Whatsapp button
+        $options['quiz_enable_whatsapp_share_button'] = isset($options['quiz_enable_whatsapp_share_button']) ? sanitize_text_field($options['quiz_enable_whatsapp_share_button']) : 'off';
+        $quiz_enable_whatsapp_share_button = (isset($options['quiz_enable_whatsapp_share_button']) && $options['quiz_enable_whatsapp_share_button'] == 'on') ? true : false;
+
         // Enable VKontakte button
         $options['quiz_enable_vkontakte_share_button'] = isset($options['quiz_enable_vkontakte_share_button']) ? sanitize_text_field($options['quiz_enable_vkontakte_share_button']) : 'on';
         $quiz_enable_vkontakte_share_button = (isset($options['quiz_enable_vkontakte_share_button']) && $options['quiz_enable_vkontakte_share_button'] == 'on') ? true : false;
 
-        if ( ! $quiz_enable_linkedin_share_button && ! $quiz_enable_facebook_share_button && ! $quiz_enable_twitter_share_button && ! $quiz_enable_vkontakte_share_button) {
+        if ( ! $quiz_enable_linkedin_share_button && ! $quiz_enable_facebook_share_button && ! $quiz_enable_twitter_share_button && ! $quiz_enable_whatsapp_share_button && ! $quiz_enable_vkontakte_share_button) {
             $quiz_enable_linkedin_share_button = true;
             $quiz_enable_facebook_share_button = true;
             $quiz_enable_twitter_share_button = true;
+            $quiz_enable_whatsapp_share_button = true;
             $quiz_enable_vkontakte_share_button = true;
         }
         
@@ -2737,7 +2742,7 @@ class Quiz_Maker_Public
                     <!-- Branded LinkedIn button -->
                     <a class='ays-share-btn ays-to-share ays-share-btn-branded ays-share-btn-linkedin'
                        href='https://www.linkedin.com/shareArticle?mini=true&url=" . $actual_link . "'
-                       title='Share on LinkedIn'>
+                       title='". esc_attr__('Share on LinkedIn', 'quiz-maker') ."'>
                         <span class='ays-quiz-share-btn-icon'></span>
                         <span class='ays-share-btn-text'>LinkedIn</span>
                     </a>";
@@ -2748,7 +2753,7 @@ class Quiz_Maker_Public
                     <!-- Branded Facebook button -->
                     <a class='ays-share-btn ays-to-share ays-share-btn-branded ays-share-btn-facebook'
                        href='https://www.facebook.com/sharer/sharer.php?u=" . $actual_link . "'
-                       title='Share on Facebook'>
+                       title='". esc_attr__('Share on Facebook', 'quiz-maker') ."'>
                         <span class='ays-quiz-share-btn-icon'></span>
                         <span class='ays-share-btn-text'>Facebook</span>
                     </a>";
@@ -2759,9 +2764,20 @@ class Quiz_Maker_Public
                 <!-- Branded X button -->
                 <a class='ays-share-btn ays-to-share ays-share-btn-branded ays-share-btn-twitter'
                    href='https://x.com/share?url=" . $actual_link . "'
-                   title='Share on X'>
+                   title='". esc_attr__('Share on X', 'quiz-maker') ."'>
                     <span class='ays-quiz-share-btn-icon'>". $ays_social_twitter_x_icon ."</span>
                     <!-- <span class='ays-share-btn-text'></span> -->
+                </a>";
+            }
+
+            if ( $quiz_enable_whatsapp_share_button ) {
+                $ays_social_buttons .= "
+                <!-- Branded Whatsapp button -->
+                <a class='ays-share-btn ays-to-share ays-share-btn-branded ays-share-btn-whatsapp'
+                   href='https://api.whatsapp.com/send?text=" . rawurlencode( $actual_link ) . "'
+                   title='". esc_attr__('Share on Whatsapp', 'quiz-maker') ."'>
+                    <span class='ays-quiz-share-btn-icon'></span>
+                    <span class='ays-share-btn-text'>Whatsapp</span>
                 </a>";
             }
 
@@ -2770,7 +2786,7 @@ class Quiz_Maker_Public
                 <!-- Branded VK button -->
                 <a class='ays-share-btn ays-to-share ays-share-btn-branded ays-share-btn-vkontakte'
                    href='https://vk.com/share.php?url=" . $actual_link . "'
-                   title='Share on VKontakte'>
+                   title='". esc_attr__('Share on VKontakte', 'quiz-maker') ."'>
                     <span class='ays-quiz-share-btn-icon'></span>
                     <span class='ays-share-btn-text'>VKontakte</span>
                 </a>";
