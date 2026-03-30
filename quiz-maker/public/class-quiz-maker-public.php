@@ -699,6 +699,8 @@ class Quiz_Maker_Public
         $select_question_placeholder_text  = (isset($settings_static_texts['select_question_placeholder_text']) && $settings_static_texts['select_question_placeholder_text'] != '') ? stripslashes( esc_attr( $settings_static_texts['select_question_placeholder_text'] ) ) : 'Select an answer';
         $no_more_reviews_text  = (isset($settings_static_texts['no_more_reviews_text']) && $settings_static_texts['no_more_reviews_text'] != '') ? stripslashes( esc_attr( $settings_static_texts['no_more_reviews_text'] ) ) : 'No more reviews';
 
+        $report_question_text  = (isset($settings_static_texts['report_question_text']) && $settings_static_texts['report_question_text'] != '') ? stripslashes( esc_attr( $settings_static_texts['report_question_text'] ) ) : 'Report a question';
+
         if ($wrong_shortcode_text === 'Wrong shortcode initialized') {
             $wrong_shortcode_text = __('Wrong shortcode initialized', 'quiz-maker');
         }
@@ -731,6 +733,10 @@ class Quiz_Maker_Public
             $no_more_reviews_text = __('No more reviews', 'quiz-maker');
         }
 
+        if ($report_question_text === 'Report a question') {
+            $report_question_text = __('Report a question', 'quiz-maker');
+        }
+
         $texts = array(
             'wrongShortcode'                => $wrong_shortcode_text,
             'enterPassword'                 => $enter_password_text,
@@ -740,6 +746,7 @@ class Quiz_Maker_Public
             'finishQuizText'                => $finish_quiz_text,
             'selectAnswerText'              => $select_question_placeholder_text,
             'noMoreReviewsText'             => $no_more_reviews_text,
+            'reportQuestionText'            => $report_question_text,
         );
 
         return $texts;
@@ -2186,7 +2193,7 @@ class Quiz_Maker_Public
             $questions_reporting_modal = '<div class="ays-modal-reports" id="ays-quiz-question-report-modal-' . $id . '">
                                             <div class="ays-modal-content-reports">
                                                 <span class="ays-close-reports-window"><img src="' . AYS_QUIZ_PUBLIC_URL . '/images/close-report-window.svg" title="close"></span>
-                                                <h3 class="ays-quiz-question-report-title">' . __( "Report a question", 'quiz-maker' ) . '</h3>
+                                                <h3 class="ays-quiz-question-report-title">' . esc_html($this->default_texts['reportQuestionText']) . '</h3>
                                                 <form id="ays-quiz-question-report-form">
                                                     <label class="ays-quiz-question-report-textarea-label" for="ays-quiz-question-report-textarea">' . __( "What's wrong with this question?", 'quiz-maker' ) . '</label>
                                                     <textarea id="ays-quiz-question-report-textarea" name="ays-quiz-question-report-textarea"></textarea>
@@ -7769,14 +7776,15 @@ class Quiz_Maker_Public
             wp_die();
         }
 
-        $quiz_exists = $wpdb->get_var(
+        $quiz_exists = $wpdb->get_row(
             $wpdb->prepare(
-                "SELECT id FROM {$quizzes_table} WHERE id = %d",
+                "SELECT id, options FROM {$quizzes_table} WHERE id = %d",
                 $quiz_id
-            )
+            ),
+            ARRAY_A
         );
 
-        if ( ! $quiz_exists ) {
+        if ( empty($quiz_exists) ) {
             ob_end_clean();
             $ob_get_clean = ob_get_clean();
             echo json_encode(array(
@@ -7784,6 +7792,8 @@ class Quiz_Maker_Public
             ));
             wp_die();
         }
+
+        $options = ( isset($quiz_exists['options']) && ( json_decode($quiz_exists['options'], true) != null ) ) ? json_decode($quiz_exists['options'], true) : array();
 
         $user_ip = $this->get_user_ip();
 
@@ -7813,35 +7823,40 @@ class Quiz_Maker_Public
         
         $report_id = (isset($_REQUEST['last_result_id']) && sanitize_text_field($_REQUEST['last_result_id']) != '' && ! is_null( sanitize_text_field($_REQUEST['last_result_id']) ) ) ? intval( sanitize_text_field( $_REQUEST['last_result_id'] ) ) : 0;
 
-        if ( empty($report_id) ) {
-            ob_end_clean();
-            $ob_get_clean = ob_get_clean();
-            echo json_encode(array(
-                'status'    => false,
-            ));
-            wp_die();
-        }
+        $options['disable_store_data'] = !isset($options['disable_store_data']) ? 'off' : sanitize_text_field($options['disable_store_data']);
+        $disable_store_data = (isset($options['disable_store_data']) && $options['disable_store_data'] == 'on') ? true : false;
 
-        if ($report_id > 0) {
-
-            $result_exists = $wpdb->get_var(
-                $wpdb->prepare(
-                    "SELECT id
-                     FROM {$wpdb->prefix}aysquiz_reports
-                     WHERE id = %d
-                     AND quiz_id = %d",
-                    $report_id,
-                    $quiz_id
-                )
-            );
-
-            if (!$result_exists) {
+        if( !$disable_store_data ){
+            if ( empty($report_id) ) {
                 ob_end_clean();
                 $ob_get_clean = ob_get_clean();
                 echo json_encode(array(
                     'status'    => false,
                 ));
                 wp_die();
+            }
+
+            if ($report_id > 0) {
+
+                $result_exists = $wpdb->get_var(
+                    $wpdb->prepare(
+                        "SELECT id
+                         FROM {$wpdb->prefix}aysquiz_reports
+                         WHERE id = %d
+                         AND quiz_id = %d",
+                        $report_id,
+                        $quiz_id
+                    )
+                );
+
+                if (!$result_exists) {
+                    ob_end_clean();
+                    $ob_get_clean = ob_get_clean();
+                    echo json_encode(array(
+                        'status'    => false,
+                    ));
+                    wp_die();
+                }
             }
         }
 

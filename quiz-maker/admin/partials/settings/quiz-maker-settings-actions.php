@@ -70,6 +70,7 @@ class Quiz_Maker_Settings_Actions {
             $finish_quiz_text                   = (isset($_REQUEST['ays_quiz_finish_quiz_text']) && $_REQUEST['ays_quiz_finish_quiz_text'] != '') ? stripslashes( sanitize_text_field( $_REQUEST['ays_quiz_finish_quiz_text'] ) ) : 'Do you want to finish the quiz? Are you sure?';
             $select_question_placeholder_text   = (isset($_REQUEST['ays_quiz_select_question_placeholder_text']) && $_REQUEST['ays_quiz_select_question_placeholder_text'] != '') ? stripslashes( sanitize_text_field( $_REQUEST['ays_quiz_select_question_placeholder_text'] ) ) : 'Select an answer';
             $no_more_reviews_text   = (isset($_REQUEST['ays_quiz_no_more_reviews_text']) && $_REQUEST['ays_quiz_no_more_reviews_text'] != '') ? stripslashes( sanitize_text_field( $_REQUEST['ays_quiz_no_more_reviews_text'] ) ) : 'No more reviews';
+            $report_question_text   = (isset($_REQUEST['ays_quiz_report_question_text']) && $_REQUEST['ays_quiz_report_question_text'] != '') ? sanitize_text_field( stripslashes( $_REQUEST['ays_quiz_report_question_text'] ) ) : 'Report a question';
 
             $default_texts = array(
                 'wrong_shortcode_text'                  => $wrong_shortcode_text,
@@ -80,6 +81,8 @@ class Quiz_Maker_Settings_Actions {
                 'finish_quiz_text'                      => $finish_quiz_text,
                 'select_question_placeholder_text'      => $select_question_placeholder_text,
                 'no_more_reviews_text'                  => $no_more_reviews_text,
+                'no_more_reviews_text'                  => $no_more_reviews_text,
+                'report_question_text'                  => $report_question_text,
             );
             // Default texts | End
 

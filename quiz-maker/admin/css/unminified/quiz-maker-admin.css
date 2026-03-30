@@ -115,6 +115,8 @@ div .ays-quiz-add-new-button-box a.ays-quiz-add-new-button {
 .tablenav a.button,
 .tablenav a.button-secondary {
     display: inline-block;
+    min-height: 30px;
+    line-height: 2.15384615 !important;
 }
 
 .row {
@@ -2271,6 +2273,7 @@ div.tooltip {
 .tablenav .actions select {
     float: left;
     margin-right: 6px;
+    margin-top: 0;
     max-width: 200px;
 }
 .ays-modal-header{
@@ -2726,6 +2729,8 @@ div.step {
 }
 .shortcode.column-shortcode input{
     width:100%;
+    min-height: 30px;
+    line-height: 24px;
 }
 input[name=ays_quiz_theme]{
     display: none;
@@ -4451,6 +4456,11 @@ div.wrap .ays-quiz-wp-heading-inline{
     justify-content: flex-end;
 }
 
+.question-action-butons a.button {
+    line-height: 2.15384615 !important;
+    min-height: 30px;
+}
+
 .dropdown-menu.ays-dropdown-menu {
     min-width: 4rem;
     width: 100%;
@@ -4780,6 +4790,11 @@ div.ays_live_chat_ask_question_content a.ays_quiz_question_link:after {
 }
 /* Mozilla firefox | End */
 
+.row input[type=search],
+.row input[type=number] {
+    line-height: 24px !important;
+}
+
 .ays_option_description {
     display: block;
     margin-top: 2px;
@@ -4826,6 +4841,17 @@ img.ays-quiz-image-list-table-img-column {
 
 #e-admin-top-bar-root~#wpbody h1#ays-quiz-maker-header-title {
     display: block;
+}
+
+#screen-options-wrap input[type="number"],
+#screen-options-wrap input[type="submit"] {
+    min-height: 30px;
+    line-height: 24px;
+}
+
+#screen-options-wrap input[type="checkbox"]:focus {
+    border-color: #005AE0;
+    box-shadow: 0 0 0 1px #005AE0;
 }
 
 /* Sale Banner | Start */
@@ -7215,6 +7241,8 @@ a.ays-quick-quiz-add-question:hover {
     border-radius: 8px;
     padding: 5px 27px;
     color: #fff;
+    line-height: 2.15384615 !important;
+    min-height: 40px;
 }
 
 .wrap.ays-quiz-list-table .ays-quiz-add-new-button-new-design:hover {
@@ -7893,6 +7921,7 @@ div .wp-picker-container .wp-color-result.button {
 
 .ays-quiz-dashboard-main-wrap .button {
     margin-right:10px;
+    min-height: 30px;
 }
 
 .ays-quiz-dashboard-main-wrap .button:not(.button-primary,.wp-color-result),
@@ -8135,14 +8164,23 @@ div .wp-picker-container .wp-color-result.button {
     margin: 20px auto 0;
 }
 
-.ays-quiz-dashboard-main-wrap input[type=checkbox] {
-    accent-color: #005AE0;
+.ays-quiz-general-settings-form input[type=radio],
+.ays-quiz-dashboard-main-wrap input[type=radio] {
+    background: #fff;
 }
 
+.ays-quiz-general-settings-form input[type=checkbox],
+.ays-quiz-dashboard-main-wrap input[type=checkbox] {
+    accent-color: #005AE0;
+    background-color: #fff;
+}
+
+.ays-quiz-general-settings-form input[type="checkbox"]:checked::before,
 .ays-quiz-dashboard-main-wrap input[type="checkbox"]:checked::before {
     filter: brightness(0) saturate(100%) invert(20%) sepia(95%) saturate(6593%) hue-rotate(211deg) brightness(98%) contrast(103%);
 }
 
+.ays-quiz-general-settings-form input[type="radio"]:checked::before,
 .ays-quiz-dashboard-main-wrap input[type="radio"]:checked::before {
     background-color: #005AE0;
 }
@@ -8151,7 +8189,14 @@ div .wp-picker-container .wp-color-result.button {
     opacity: 0.5;
 }
 
+.ays-quiz-general-settings-form input[type="checkbox"]:focus,
 .ays-quiz-dashboard-main-wrap input[type="checkbox"]:focus {
+    border-color: #005AE0;
+    box-shadow: 0 0 0 1px #005AE0;
+}
+
+.ays-quiz-general-settings-form input[type="radio"]:focus,
+.ays-quiz-dashboard-main-wrap input[type="radio"]:focus {
     border-color: #005AE0;
     box-shadow: 0 0 0 1px #005AE0;
 }

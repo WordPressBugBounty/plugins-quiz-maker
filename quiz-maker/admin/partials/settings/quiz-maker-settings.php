@@ -135,6 +135,8 @@
     $finish_quiz_text                  = (isset($default_texts['finish_quiz_text']) && $default_texts['finish_quiz_text'] != '') ? stripslashes( esc_attr( $default_texts['finish_quiz_text'] ) ) : 'Do you want to finish the quiz? Are you sure?';
     $select_question_placeholder_text  = (isset($default_texts['select_question_placeholder_text']) && $default_texts['select_question_placeholder_text'] != '') ? stripslashes( esc_attr( $default_texts['select_question_placeholder_text'] ) ) : 'Select an answer';
     $no_more_reviews_text              = (isset($default_texts['no_more_reviews_text']) && $default_texts['no_more_reviews_text'] != '') ? stripslashes( esc_attr( $default_texts['no_more_reviews_text'] ) ) : 'No more reviews';
+
+    $report_question_text         = (isset($default_texts['report_question_text']) && $default_texts['report_question_text'] != '') ? stripslashes( esc_attr( $default_texts['report_question_text'] ) ) : 'Report a question';
     // Default texts | End
 
 
@@ -4389,6 +4391,19 @@
                             </div>
                             <div class="col-sm-9">
                                 <input type="text" id="ays_quiz_no_more_reviews_text" name="ays_quiz_no_more_reviews_text" class="ays-text-input"  value='<?php echo esc_attr($no_more_reviews_text); ?>'>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-3">
+                                <label for="ays_quiz_report_question_text">
+                                    <?php echo esc_html__( "Report a question Text", 'quiz-maker' ); ?>
+                                    <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php echo esc_attr( __( "The text written here will appear as the title for the report question popup.", 'quiz-maker' ) ); ?>">
+                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                    </a>
+                                </label>
+                            </div>
+                            <div class="col-sm-9">
+                                <input type="text" id="ays_quiz_report_question_text" name="ays_quiz_report_question_text" class="ays-text-input"  value='<?php echo esc_attr($report_question_text); ?>'>
                             </div>
                         </div>
                         <hr />
