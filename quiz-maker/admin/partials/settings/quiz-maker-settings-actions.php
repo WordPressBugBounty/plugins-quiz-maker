@@ -71,6 +71,7 @@ class Quiz_Maker_Settings_Actions {
             $select_question_placeholder_text   = (isset($_REQUEST['ays_quiz_select_question_placeholder_text']) && $_REQUEST['ays_quiz_select_question_placeholder_text'] != '') ? stripslashes( sanitize_text_field( $_REQUEST['ays_quiz_select_question_placeholder_text'] ) ) : 'Select an answer';
             $no_more_reviews_text   = (isset($_REQUEST['ays_quiz_no_more_reviews_text']) && $_REQUEST['ays_quiz_no_more_reviews_text'] != '') ? stripslashes( sanitize_text_field( $_REQUEST['ays_quiz_no_more_reviews_text'] ) ) : 'No more reviews';
             $report_question_text   = (isset($_REQUEST['ays_quiz_report_question_text']) && $_REQUEST['ays_quiz_report_question_text'] != '') ? sanitize_text_field( stripslashes( $_REQUEST['ays_quiz_report_question_text'] ) ) : 'Report a question';
+            $whats_wrong_report_question_text   = (isset($_REQUEST['ays_quiz_whats_wrong_report_question_text']) && $_REQUEST['ays_quiz_whats_wrong_report_question_text'] != '') ? sanitize_text_field( stripslashes( $_REQUEST['ays_quiz_whats_wrong_report_question_text'] ) ) : 'What’s wrong with this question?';
 
             $default_texts = array(
                 'wrong_shortcode_text'                  => $wrong_shortcode_text,
@@ -83,6 +84,7 @@ class Quiz_Maker_Settings_Actions {
                 'no_more_reviews_text'                  => $no_more_reviews_text,
                 'no_more_reviews_text'                  => $no_more_reviews_text,
                 'report_question_text'                  => $report_question_text,
+                'whats_wrong_report_question_text'      => $whats_wrong_report_question_text,
             );
             // Default texts | End
 

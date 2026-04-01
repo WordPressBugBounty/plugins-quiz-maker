@@ -700,6 +700,7 @@ class Quiz_Maker_Public
         $no_more_reviews_text  = (isset($settings_static_texts['no_more_reviews_text']) && $settings_static_texts['no_more_reviews_text'] != '') ? stripslashes( esc_attr( $settings_static_texts['no_more_reviews_text'] ) ) : 'No more reviews';
 
         $report_question_text  = (isset($settings_static_texts['report_question_text']) && $settings_static_texts['report_question_text'] != '') ? stripslashes( esc_attr( $settings_static_texts['report_question_text'] ) ) : 'Report a question';
+        $whats_wrong_report_question_text  = (isset($settings_static_texts['whats_wrong_report_question_text']) && $settings_static_texts['whats_wrong_report_question_text'] != '') ? stripslashes( esc_attr( $settings_static_texts['whats_wrong_report_question_text'] ) ) : 'What’s wrong with this question?';
 
         if ($wrong_shortcode_text === 'Wrong shortcode initialized') {
             $wrong_shortcode_text = __('Wrong shortcode initialized', 'quiz-maker');
@@ -737,6 +738,10 @@ class Quiz_Maker_Public
             $report_question_text = __('Report a question', 'quiz-maker');
         }
 
+        if ($whats_wrong_report_question_text === 'What’s wrong with this question?') {
+            $whats_wrong_report_question_text = __('What’s wrong with this question?', 'quiz-maker');
+        }
+
         $texts = array(
             'wrongShortcode'                => $wrong_shortcode_text,
             'enterPassword'                 => $enter_password_text,
@@ -747,6 +752,7 @@ class Quiz_Maker_Public
             'selectAnswerText'              => $select_question_placeholder_text,
             'noMoreReviewsText'             => $no_more_reviews_text,
             'reportQuestionText'            => $report_question_text,
+            'whatsWrongReportQuestionText'  => $whats_wrong_report_question_text,
         );
 
         return $texts;
@@ -2195,7 +2201,7 @@ class Quiz_Maker_Public
                                                 <span class="ays-close-reports-window"><img src="' . AYS_QUIZ_PUBLIC_URL . '/images/close-report-window.svg" title="close"></span>
                                                 <h3 class="ays-quiz-question-report-title">' . esc_html($this->default_texts['reportQuestionText']) . '</h3>
                                                 <form id="ays-quiz-question-report-form">
-                                                    <label class="ays-quiz-question-report-textarea-label" for="ays-quiz-question-report-textarea">' . __( "What's wrong with this question?", 'quiz-maker' ) . '</label>
+                                                    <label class="ays-quiz-question-report-textarea-label" for="ays-quiz-question-report-textarea">' . esc_html($this->default_texts['whatsWrongReportQuestionText']) . '</label>
                                                     <textarea id="ays-quiz-question-report-textarea" name="ays-quiz-question-report-textarea"></textarea>
                                                     <div class="ays-quiz-question-report-error">' . __( "You cannot submit an empty report. Please add some details.", 'quiz-maker' ) . '</div>
                                                     <input type="hidden" class="ays-quiz-report-question-id" value="">
