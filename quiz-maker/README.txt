@@ -420,6 +420,9 @@ For example, to add a squared symbol, you need to write down the following sign 
 
 == Changelog ==
 
+= 6.7.1.23 ( Apr 03, 2026 ) =
+* Added: Font weight option for right answers in the Quick Quiz popup
+
 = 6.7.1.22 ( Apr 01, 2026 ) =
 * Added: Default text customization option for the "What's wrong report question Text"
 

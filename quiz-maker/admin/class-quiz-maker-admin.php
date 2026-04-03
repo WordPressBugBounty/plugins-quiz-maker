@@ -1521,6 +1521,7 @@ class Quiz_Maker_Admin
         $quick_quiz_quest_explanation_mobile_font_weight        = "normal";
         $quick_quiz_right_answer_mobile_text_transform          = "none";
         $quick_quiz_right_answers_mobile_letter_spacing         = 0;
+        $quick_quiz_right_answers_mobile_font_weight            = "normal";
 
         if($quiz_enable_options == 'on'){
             $quick_quiz_enable_randomize_questions = (isset( $_REQUEST['ays_quick_quiz_enable_randomize_questions'] ) && $_REQUEST['ays_quick_quiz_enable_randomize_questions'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_randomize_questions'] ) ) : "off";
@@ -1887,6 +1888,9 @@ class Quiz_Maker_Admin
 
             // Letter spacing for the right answers | Mobile
             $quick_quiz_right_answers_mobile_letter_spacing = (isset( $_REQUEST['ays_quick_quiz_right_answers_mobile_letter_spacing'] ) && $_REQUEST['ays_quick_quiz_right_answers_mobile_letter_spacing'] != "") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_right_answers_mobile_letter_spacing'] ) ) : 0;
+
+            // Admin Note font weight | Mobile
+            $quick_quiz_right_answers_mobile_font_weight = (isset( $_REQUEST['ays_quick_quiz_right_answers_mobile_font_weight'] ) && $_REQUEST['ays_quick_quiz_right_answers_mobile_font_weight'] != "") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_right_answers_mobile_font_weight'] ) ) : "normal";
             
         }
         
@@ -2187,7 +2191,7 @@ class Quiz_Maker_Admin
             'quiz_admin_note_mobile_letter_spacing'             => $quick_quiz_admin_note_mobile_letter_spacing,
             'quiz_admin_note_mobile_font_weight'                => $quick_quiz_admin_note_mobile_font_weight,
             'quiz_quest_explanation_mobile_font_weight'         => $quick_quiz_quest_explanation_mobile_font_weight,
-            'quiz_right_answers_mobile_font_weight'             => "normal",
+            'quiz_right_answers_mobile_font_weight'             => $quick_quiz_right_answers_mobile_font_weight,
             'quiz_question_image_border_radius'                 => 0,
             'quiz_quest_explanation_mobile_text_transform'      => $quick_quiz_quest_explanation_mobile_text_transform,
             'quiz_quest_explanation_mobile_text_decoration'     => $quick_quiz_quest_explanation_mobile_text_decoration,

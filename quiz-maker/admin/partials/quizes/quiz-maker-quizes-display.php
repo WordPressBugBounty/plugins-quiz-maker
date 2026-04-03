@@ -2493,47 +2493,111 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                 </label>
                                             </div>
                                             <div class="col-sm-8">
-                                                <select class="ays-text-input ays-text-input-short" id="ays_quick_quiz_right_answers_font_weight" name="ays_quick_quiz_right_answers_font_weight">
-                                                    <option value="normal" selected>
-                                                        <?php echo esc_html__('Normal','quiz-maker'); ?>
-                                                    </option>
-                                                    <option value="lighter">
-                                                        <?php echo esc_html__('Lighter','quiz-maker'); ?>
-                                                    </option>
-                                                    <option value="bold">
-                                                        <?php echo esc_html__('Bold','quiz-maker'); ?>
-                                                    </option>
-                                                    <option value="bolder">
-                                                        <?php echo esc_html__('Bolder','quiz-maker'); ?>
-                                                    </option>
-                                                    <option value="100">
-                                                        <?php echo '100'; ?>
-                                                    </option>
-                                                    <option value="200">
-                                                        <?php echo '200'; ?>
-                                                    </option>
-                                                    <option value="300">
-                                                        <?php echo '300'; ?>
-                                                    </option>
-                                                    <option value="400">
-                                                        <?php echo '400'; ?>
-                                                    </option>
-                                                    <option value="500">
-                                                        <?php echo '500'; ?>
-                                                    </option>
-                                                    <option value="600">
-                                                        <?php echo '600'; ?>
-                                                    </option>
-                                                    <option value="700">
-                                                        <?php echo '700'; ?>
-                                                    </option>
-                                                    <option value="800">
-                                                        <?php echo '800'; ?>
-                                                    </option>
-                                                    <option value="900">
-                                                        <?php echo '900'; ?>
-                                                    </option>
-                                                </select>
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div style="margin-bottom: 10px;">
+                                                            <label for='ays_quick_quiz_right_answers_font_weight'>
+                                                                <?php echo esc_html__('On desktop', 'quiz-maker'); ?>
+                                                            </label>
+                                                        </div>
+                                                        <div class="ays_quiz_display_flex_width">
+                                                            <select class="ays-text-input ays-text-input-short" id="ays_quick_quiz_right_answers_font_weight" name="ays_quick_quiz_right_answers_font_weight">
+                                                                <option value="normal" selected>
+                                                                    <?php echo esc_html__('Normal','quiz-maker'); ?>
+                                                                </option>
+                                                                <option value="lighter">
+                                                                    <?php echo esc_html__('Lighter','quiz-maker'); ?>
+                                                                </option>
+                                                                <option value="bold">
+                                                                    <?php echo esc_html__('Bold','quiz-maker'); ?>
+                                                                </option>
+                                                                <option value="bolder">
+                                                                    <?php echo esc_html__('Bolder','quiz-maker'); ?>
+                                                                </option>
+                                                                <option value="100">
+                                                                    <?php echo '100'; ?>
+                                                                </option>
+                                                                <option value="200">
+                                                                    <?php echo '200'; ?>
+                                                                </option>
+                                                                <option value="300">
+                                                                    <?php echo '300'; ?>
+                                                                </option>
+                                                                <option value="400">
+                                                                    <?php echo '400'; ?>
+                                                                </option>
+                                                                <option value="500">
+                                                                    <?php echo '500'; ?>
+                                                                </option>
+                                                                <option value="600">
+                                                                    <?php echo '600'; ?>
+                                                                </option>
+                                                                <option value="700">
+                                                                    <?php echo '700'; ?>
+                                                                </option>
+                                                                <option value="800">
+                                                                    <?php echo '800'; ?>
+                                                                </option>
+                                                                <option value="900">
+                                                                    <?php echo '900'; ?>
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <hr>
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div style="margin-bottom: 10px;">
+                                                            <label for='ays_quick_quiz_right_answers_mobile_font_weight'>
+                                                                <?php echo esc_html__('On mobile', 'quiz-maker'); ?>
+                                                            </label>
+                                                        </div>
+                                                        <div class="ays_quiz_display_flex_width">
+                                                            <select class="ays-text-input ays-text-input-short" id="ays_quick_quiz_right_answers_mobile_font_weight" name="ays_quick_quiz_right_answers_mobile_font_weight">
+                                                                <option value="normal" selected>
+                                                                    <?php echo esc_html__('Normal','quiz-maker'); ?>
+                                                                </option>
+                                                                <option value="lighter">
+                                                                    <?php echo esc_html__('Lighter','quiz-maker'); ?>
+                                                                </option>
+                                                                <option value="bold">
+                                                                    <?php echo esc_html__('Bold','quiz-maker'); ?>
+                                                                </option>
+                                                                <option value="bolder">
+                                                                    <?php echo esc_html__('Bolder','quiz-maker'); ?>
+                                                                </option>
+                                                                <option value="100">
+                                                                    <?php echo '100'; ?>
+                                                                </option>
+                                                                <option value="200">
+                                                                    <?php echo '200'; ?>
+                                                                </option>
+                                                                <option value="300">
+                                                                    <?php echo '300'; ?>
+                                                                </option>
+                                                                <option value="400">
+                                                                    <?php echo '400'; ?>
+                                                                </option>
+                                                                <option value="500">
+                                                                    <?php echo '500'; ?>
+                                                                </option>
+                                                                <option value="600">
+                                                                    <?php echo '600'; ?>
+                                                                </option>
+                                                                <option value="700">
+                                                                    <?php echo '700'; ?>
+                                                                </option>
+                                                                <option value="800">
+                                                                    <?php echo '800'; ?>
+                                                                </option>
+                                                                <option value="900">
+                                                                    <?php echo '900'; ?>
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div><!-- Right answer font weight -->
                                     </div>
