@@ -138,6 +138,7 @@
 
     $report_question_text              = (isset($default_texts['report_question_text']) && $default_texts['report_question_text'] != '') ? stripslashes( esc_attr( $default_texts['report_question_text'] ) ) : 'Report a question';
     $whats_wrong_report_question_text  = (isset($default_texts['whats_wrong_report_question_text']) && $default_texts['whats_wrong_report_question_text'] != '') ? stripslashes( esc_attr( $default_texts['whats_wrong_report_question_text'] ) ) : 'What’s wrong with this question?';
+    $question_report_submitted_text  = (isset($default_texts['question_report_submitted_text']) && $default_texts['question_report_submitted_text'] != '') ? stripslashes( esc_attr( $default_texts['question_report_submitted_text'] ) ) : 'Report has been submitted successfully';
     // Default texts | End
 
 
@@ -4418,6 +4419,19 @@
                             </div>
                             <div class="col-sm-9">
                                 <input type="text" id="ays_quiz_whats_wrong_report_question_text" name="ays_quiz_whats_wrong_report_question_text" class="ays-text-input"  value='<?php echo esc_attr($whats_wrong_report_question_text); ?>'>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-3">
+                                <label for="ays_quiz_question_report_submitted_text">
+                                    <?php echo esc_html__( "Report submitted message text", 'quiz-maker' ); ?>
+                                    <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php echo esc_attr__( "The text written here will appear after the user submits a report for a question.", 'quiz-maker' ); ?>">
+                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                    </a>
+                                </label>
+                            </div>
+                            <div class="col-sm-9">
+                                <input type="text" id="ays_quiz_question_report_submitted_text" name="ays_quiz_question_report_submitted_text" class="ays-text-input"  value='<?php echo esc_attr($question_report_submitted_text); ?>'>
                             </div>
                         </div>
                         <hr />

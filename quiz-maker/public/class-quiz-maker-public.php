@@ -206,7 +206,7 @@ class Quiz_Maker_Public
                 'show'                          => __( 'Show', 'quiz-maker' ),
                 'hide'                          => __( 'Hide', 'quiz-maker' ),
                 'emptyReportMessage'            => __( 'You cannot submit an empty report. Please add some details.', 'quiz-maker' ),
-                'reportSentMessage'             => __( 'Report has been submitted successfully', 'quiz-maker' ),
+                'reportSentMessage'             => $this->default_texts['questionReportSubmittedText'],
             ) );
         }
     }
@@ -702,6 +702,8 @@ class Quiz_Maker_Public
         $report_question_text  = (isset($settings_static_texts['report_question_text']) && $settings_static_texts['report_question_text'] != '') ? stripslashes( esc_attr( $settings_static_texts['report_question_text'] ) ) : 'Report a question';
         $whats_wrong_report_question_text  = (isset($settings_static_texts['whats_wrong_report_question_text']) && $settings_static_texts['whats_wrong_report_question_text'] != '') ? stripslashes( esc_attr( $settings_static_texts['whats_wrong_report_question_text'] ) ) : 'What’s wrong with this question?';
 
+        $question_report_submitted_text  = (isset($settings_static_texts['question_report_submitted_text']) && $settings_static_texts['question_report_submitted_text'] != '') ? stripslashes( esc_attr( $settings_static_texts['question_report_submitted_text'] ) ) : 'Report has been submitted successfully';
+
         if ($wrong_shortcode_text === 'Wrong shortcode initialized') {
             $wrong_shortcode_text = __('Wrong shortcode initialized', 'quiz-maker');
         }
@@ -742,6 +744,10 @@ class Quiz_Maker_Public
             $whats_wrong_report_question_text = __('What’s wrong with this question?', 'quiz-maker');
         }
 
+        if ($question_report_submitted_text === 'Report has been submitted successfully') {
+            $question_report_submitted_text = __('Report has been submitted successfully', 'quiz-maker');
+        }
+
         $texts = array(
             'wrongShortcode'                => $wrong_shortcode_text,
             'enterPassword'                 => $enter_password_text,
@@ -753,6 +759,7 @@ class Quiz_Maker_Public
             'noMoreReviewsText'             => $no_more_reviews_text,
             'reportQuestionText'            => $report_question_text,
             'whatsWrongReportQuestionText'  => $whats_wrong_report_question_text,
+            'questionReportSubmittedText'   => $question_report_submitted_text,
         );
 
         return $texts;
