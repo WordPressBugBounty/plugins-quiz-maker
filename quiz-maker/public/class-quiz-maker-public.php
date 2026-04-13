@@ -703,6 +703,7 @@ class Quiz_Maker_Public
         $whats_wrong_report_question_text  = (isset($settings_static_texts['whats_wrong_report_question_text']) && $settings_static_texts['whats_wrong_report_question_text'] != '') ? stripslashes( esc_attr( $settings_static_texts['whats_wrong_report_question_text'] ) ) : 'What’s wrong with this question?';
 
         $question_report_submitted_text  = (isset($settings_static_texts['question_report_submitted_text']) && $settings_static_texts['question_report_submitted_text'] != '') ? stripslashes( esc_attr( $settings_static_texts['question_report_submitted_text'] ) ) : 'Report has been submitted successfully';
+        $empty_report_text  = (isset($settings_static_texts['empty_report_text']) && $settings_static_texts['empty_report_text'] != '') ? stripslashes( esc_attr( $settings_static_texts['empty_report_text'] ) ) : 'You cannot submit an empty report. Please add some details.';
 
         if ($wrong_shortcode_text === 'Wrong shortcode initialized') {
             $wrong_shortcode_text = __('Wrong shortcode initialized', 'quiz-maker');
@@ -748,6 +749,10 @@ class Quiz_Maker_Public
             $question_report_submitted_text = __('Report has been submitted successfully', 'quiz-maker');
         }
 
+        if ($empty_report_text === 'You cannot submit an empty report. Please add some details.') {
+            $empty_report_text = __('You cannot submit an empty report. Please add some details.', 'quiz-maker');
+        }
+
         $texts = array(
             'wrongShortcode'                => $wrong_shortcode_text,
             'enterPassword'                 => $enter_password_text,
@@ -760,6 +765,7 @@ class Quiz_Maker_Public
             'reportQuestionText'            => $report_question_text,
             'whatsWrongReportQuestionText'  => $whats_wrong_report_question_text,
             'questionReportSubmittedText'   => $question_report_submitted_text,
+            'emptyReportText'               => $empty_report_text,
         );
 
         return $texts;
@@ -2210,7 +2216,7 @@ class Quiz_Maker_Public
                                                 <form id="ays-quiz-question-report-form">
                                                     <label class="ays-quiz-question-report-textarea-label" for="ays-quiz-question-report-textarea">' . esc_html($this->default_texts['whatsWrongReportQuestionText']) . '</label>
                                                     <textarea id="ays-quiz-question-report-textarea" name="ays-quiz-question-report-textarea"></textarea>
-                                                    <div class="ays-quiz-question-report-error">' . __( "You cannot submit an empty report. Please add some details.", 'quiz-maker' ) . '</div>
+                                                    <div class="ays-quiz-question-report-error">' . esc_html($this->default_texts['emptyReportText']) . '</div>
                                                     <input type="hidden" class="ays-quiz-report-question-id" value="">
                                                     <input type="hidden" class="ays-quiz-report-quiz-id" value="' . $id . '">
                                                     <input type="hidden" class="ays-quiz-report-question-send-email" value="' . $send_email . '">

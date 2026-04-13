@@ -74,6 +74,7 @@ class Quiz_Maker_Settings_Actions {
             $whats_wrong_report_question_text   = (isset($_REQUEST['ays_quiz_whats_wrong_report_question_text']) && $_REQUEST['ays_quiz_whats_wrong_report_question_text'] != '') ? sanitize_text_field( stripslashes( $_REQUEST['ays_quiz_whats_wrong_report_question_text'] ) ) : 'What’s wrong with this question?';
 
             $question_report_submitted_text   = (isset($_REQUEST['ays_quiz_question_report_submitted_text']) && $_REQUEST['ays_quiz_question_report_submitted_text'] != '') ? sanitize_text_field( stripslashes( $_REQUEST['ays_quiz_question_report_submitted_text'] ) ) : 'Report has been submitted successfully';
+            $empty_report_text   = (isset($_REQUEST['ays_quiz_empty_report_text']) && $_REQUEST['ays_quiz_empty_report_text'] != '') ? sanitize_text_field( stripslashes( $_REQUEST['ays_quiz_empty_report_text'] ) ) : 'You cannot submit an empty report. Please add some details.';
 
             $default_texts = array(
                 'wrong_shortcode_text'                  => $wrong_shortcode_text,
@@ -88,6 +89,7 @@ class Quiz_Maker_Settings_Actions {
                 'report_question_text'                  => $report_question_text,
                 'whats_wrong_report_question_text'      => $whats_wrong_report_question_text,
                 'question_report_submitted_text'        => $question_report_submitted_text,
+                'empty_report_text'                     => $empty_report_text,
             );
             // Default texts | End
 
