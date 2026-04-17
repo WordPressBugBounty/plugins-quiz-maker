@@ -259,19 +259,19 @@ class Quiz_Maker_Public
             $settings_buttons_texts = array();
         }
 
-        $ays_start_button           = (isset($settings_buttons_texts['start_button']) && $settings_buttons_texts['start_button'] != '') ? stripslashes( esc_attr( $settings_buttons_texts['start_button'] ) ) : 'Start' ;
-        $ays_next_button            = (isset($settings_buttons_texts['next_button']) && $settings_buttons_texts['next_button'] != '') ? stripslashes( esc_attr( $settings_buttons_texts['next_button'] ) ) : 'Next' ;
-        $ays_previous_button        = (isset($settings_buttons_texts['previous_button']) && $settings_buttons_texts['previous_button'] != '') ? stripslashes( esc_attr( $settings_buttons_texts['previous_button'] ) ) : 'Prev' ;
-        $ays_clear_button           = (isset($settings_buttons_texts['clear_button']) && $settings_buttons_texts['clear_button'] != '') ? stripslashes( esc_attr( $settings_buttons_texts['clear_button'] ) ) : 'Clear' ;
-        $ays_finish_button          = (isset($settings_buttons_texts['finish_button']) && $settings_buttons_texts['finish_button'] != '') ? stripslashes( esc_attr( $settings_buttons_texts['finish_button'] ) ) : 'Finish' ;
-        $ays_see_result_button      = (isset($settings_buttons_texts['see_result_button']) && $settings_buttons_texts['see_result_button'] != '') ? stripslashes( esc_attr( $settings_buttons_texts['see_result_button'] ) ) : 'See Result' ;
-        $ays_restart_quiz_button    = (isset($settings_buttons_texts['restart_quiz_button']) && $settings_buttons_texts['restart_quiz_button'] != '') ? stripslashes( esc_attr( $settings_buttons_texts['restart_quiz_button'] ) ) : 'Restart quiz' ;
-        $ays_send_feedback_button   = (isset($settings_buttons_texts['send_feedback_button']) && $settings_buttons_texts['send_feedback_button'] != '') ? stripslashes( esc_attr( $settings_buttons_texts['send_feedback_button'] ) ) : 'Send feedback' ;
-        $ays_load_more_button       = (isset($settings_buttons_texts['load_more_button']) && $settings_buttons_texts['load_more_button'] != '') ? stripslashes( esc_attr( $settings_buttons_texts['load_more_button'] ) ) : 'Load more' ;
-        $ays_exit_button            = (isset($settings_buttons_texts['exit_button']) && $settings_buttons_texts['exit_button'] != '') ? stripslashes( esc_attr( $settings_buttons_texts['exit_button'] ) ) : 'Exit' ;
-        $ays_check_button           = (isset($settings_buttons_texts['check_button']) && $settings_buttons_texts['check_button'] != '') ? stripslashes( esc_attr( $settings_buttons_texts['check_button'] ) ) : 'Check' ;
-        $ays_login_button           = (isset($settings_buttons_texts['login_button']) && $settings_buttons_texts['login_button'] != '') ? stripslashes( esc_attr( $settings_buttons_texts['login_button'] ) ) : 'Log In' ;
-
+        $ays_start_button           = (isset($settings_buttons_texts['start_button']) && $settings_buttons_texts['start_button'] != '') ? stripslashes( esc_attr( $settings_buttons_texts['start_button'] ) ) : 'Start';
+        $ays_next_button            = (isset($settings_buttons_texts['next_button']) && $settings_buttons_texts['next_button'] != '') ? stripslashes( esc_attr( $settings_buttons_texts['next_button'] ) ) : 'Next';
+        $ays_previous_button        = (isset($settings_buttons_texts['previous_button']) && $settings_buttons_texts['previous_button'] != '') ? stripslashes( esc_attr( $settings_buttons_texts['previous_button'] ) ) : 'Prev';
+        $ays_clear_button           = (isset($settings_buttons_texts['clear_button']) && $settings_buttons_texts['clear_button'] != '') ? stripslashes( esc_attr( $settings_buttons_texts['clear_button'] ) ) : 'Clear';
+        $ays_finish_button          = (isset($settings_buttons_texts['finish_button']) && $settings_buttons_texts['finish_button'] != '') ? stripslashes( esc_attr( $settings_buttons_texts['finish_button'] ) ) : 'Finish';
+        $ays_see_result_button      = (isset($settings_buttons_texts['see_result_button']) && $settings_buttons_texts['see_result_button'] != '') ? stripslashes( esc_attr( $settings_buttons_texts['see_result_button'] ) ) : 'See Result';
+        $ays_restart_quiz_button    = (isset($settings_buttons_texts['restart_quiz_button']) && $settings_buttons_texts['restart_quiz_button'] != '') ? stripslashes( esc_attr( $settings_buttons_texts['restart_quiz_button'] ) ) : 'Restart quiz';
+        $ays_send_feedback_button   = (isset($settings_buttons_texts['send_feedback_button']) && $settings_buttons_texts['send_feedback_button'] != '') ? stripslashes( esc_attr( $settings_buttons_texts['send_feedback_button'] ) ) : 'Send feedback';
+        $ays_load_more_button       = (isset($settings_buttons_texts['load_more_button']) && $settings_buttons_texts['load_more_button'] != '') ? stripslashes( esc_attr( $settings_buttons_texts['load_more_button'] ) ) : 'Load more';
+        $ays_exit_button            = (isset($settings_buttons_texts['exit_button']) && $settings_buttons_texts['exit_button'] != '') ? stripslashes( esc_attr( $settings_buttons_texts['exit_button'] ) ) : 'Exit';
+        $ays_check_button           = (isset($settings_buttons_texts['check_button']) && $settings_buttons_texts['check_button'] != '') ? stripslashes( esc_attr( $settings_buttons_texts['check_button'] ) ) : 'Check';
+        $ays_login_button           = (isset($settings_buttons_texts['login_button']) && $settings_buttons_texts['login_button'] != '') ? stripslashes( esc_attr( $settings_buttons_texts['login_button'] ) ) : 'Log In';
+        $ays_report_submit_button = (isset($settings_buttons_texts['report_submit_button']) && $settings_buttons_texts['report_submit_button'] != '') ? stripslashes( esc_attr( $settings_buttons_texts['report_submit_button'] ) ) : 'Submit';
 
         //////////////////////////
         //////////////////////////
@@ -361,6 +361,12 @@ class Quiz_Maker_Public
             $ays_login_button_text = __('Log In', 'quiz-maker');
         }else{
             $ays_login_button_text = $ays_login_button;
+        }
+
+        if ($ays_report_submit_button === 'Submit') {
+            $ays_report_submit_button_text = __('Submit', 'quiz-maker');
+        }else{
+            $ays_report_submit_button_text = $ays_report_submit_button;
         }
 
         ////////////////////////////////////////////
@@ -455,6 +461,7 @@ class Quiz_Maker_Public
             'exitButton'            => $ays_exit_button_text,
             'checkButton'           => $ays_check_button_text,
             'loginButton'           => $ays_login_button_text,
+            'reportSubmitButton'    => $ays_report_submit_button_text,
         );
         return $texts;
     }
@@ -2220,7 +2227,7 @@ class Quiz_Maker_Public
                                                     <input type="hidden" class="ays-quiz-report-question-id" value="">
                                                     <input type="hidden" class="ays-quiz-report-quiz-id" value="' . $id . '">
                                                     <input type="hidden" class="ays-quiz-report-question-send-email" value="' . $send_email . '">
-                                                    <input type="submit" class="ays-quiz-submit-question-report" value="'. __("Submit", 'quiz-maker') .'">
+                                                    <input type="submit" class="ays-quiz-submit-question-report" value="'. $this->buttons_texts['reportSubmitButton'] .'">
                                                     <input type="hidden" class="ays_quiz_question_report_nonce" name="ays_quiz_question_report_nonce" value="'. esc_attr( wp_create_nonce( 'ays_quiz_question_report_nonce' ) ) .'">
 
                                                 </form>

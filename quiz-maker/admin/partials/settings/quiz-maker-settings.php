@@ -120,6 +120,7 @@
     $exit_button            = (isset($buttons_texts['exit_button']) && $buttons_texts['exit_button'] != '') ? stripslashes( esc_attr( $buttons_texts['exit_button'] ) ) : 'Exit' ;
     $check_button           = (isset($buttons_texts['check_button']) && $buttons_texts['check_button'] != '') ? stripslashes( esc_attr( $buttons_texts['check_button'] ) ) : 'Check' ;
     $login_button           = (isset($buttons_texts['login_button']) && $buttons_texts['login_button'] != '') ? stripslashes( esc_attr( $buttons_texts['login_button'] ) ) : 'Log In' ;
+    $report_submit_button = (isset($buttons_texts['report_submit_button']) && $buttons_texts['report_submit_button'] != '') ? stripslashes( esc_attr( $buttons_texts['report_submit_button'] ) ) : 'Submit' ;
     
     //Aro end
 
@@ -4580,6 +4581,16 @@
                             </div>
                             <div class="col-sm-9">
                                 <input type="text" id="ays_login_button" name="ays_login_button" class="ays-text-input ays-text-input-short"  value='<?php echo esc_attr($login_button); ?>'>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-3">
+                                <label for="ays_report_submit_button">
+                                    <?php echo esc_html__( "Report Submit button", 'quiz-maker' ); ?>
+                                </label>
+                            </div>
+                            <div class="col-sm-9">
+                                <input type="text" id="ays_report_submit_button" name="ays_report_submit_button" class="ays-text-input ays-text-input-short"  value='<?php echo esc_attr($report_submit_button); ?>'>
                             </div>
                         </div>
                         <hr>

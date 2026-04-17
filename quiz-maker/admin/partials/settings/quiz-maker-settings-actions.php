@@ -24,20 +24,22 @@ class Quiz_Maker_Settings_Actions {
             $exit_button            = (isset($_REQUEST['ays_exit_button']) && $_REQUEST['ays_exit_button'] != '') ? stripslashes( sanitize_text_field( $_REQUEST['ays_exit_button'] ) ) : 'Exit' ;
             $check_button           = (isset($_REQUEST['ays_check_button']) && $_REQUEST['ays_check_button'] != '') ? stripslashes( sanitize_text_field( $_REQUEST['ays_check_button'] ) ) : 'Check' ;
             $login_button           = (isset($_REQUEST['ays_login_button']) && $_REQUEST['ays_login_button'] != '') ? stripslashes( sanitize_text_field( $_REQUEST['ays_login_button'] ) ) : 'Log In' ;
+            $report_submit_button           = (isset($_REQUEST['ays_report_submit_button']) && $_REQUEST['ays_report_submit_button'] != '') ? stripslashes( sanitize_text_field( $_REQUEST['ays_report_submit_button'] ) ) : 'Submit' ;
 
             $buttons_texts = array(
-                'start_button'          => $start_button,
-                'next_button'           => $next_button,
-                'previous_button'       => $previous_button,
-                'clear_button'          => $clear_button,
-                'finish_button'         => $finish_button,
-                'see_result_button'     => $see_result_button,
-                'restart_quiz_button'   => $restart_quiz_button,
-                'send_feedback_button'  => $send_feedback_button,
-                'load_more_button'      => $load_more_button,
-                'exit_button'           => $exit_button,
-                'check_button'          => $check_button,
-                'login_button'          => $login_button,
+                'start_button'              => $start_button,
+                'next_button'               => $next_button,
+                'previous_button'           => $previous_button,
+                'clear_button'              => $clear_button,
+                'finish_button'             => $finish_button,
+                'see_result_button'         => $see_result_button,
+                'restart_quiz_button'       => $restart_quiz_button,
+                'send_feedback_button'      => $send_feedback_button,
+                'load_more_button'          => $load_more_button,
+                'exit_button'               => $exit_button,
+                'check_button'              => $check_button,
+                'login_button'              => $login_button,
+                'report_submit_button'      => $report_submit_button,
             );
 
             $quiz_fields_placeholder_name  = (isset($_REQUEST['ays_quiz_fields_placeholder_name']) && $_REQUEST['ays_quiz_fields_placeholder_name'] != '') ? stripslashes( sanitize_text_field( $_REQUEST['ays_quiz_fields_placeholder_name'] ) ) : 'Name' ;
