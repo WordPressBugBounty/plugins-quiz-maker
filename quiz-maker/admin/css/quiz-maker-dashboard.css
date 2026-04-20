@@ -768,3 +768,183 @@
     }
 }
 /* What's New Section Styles | End */
+
+
+/* FAQ Section Styles | Start */
+
+.quiz-maker-dashboard-faq-section {
+  background-color: #f8fafc;
+  padding: 80px 0;
+}
+
+.quiz-maker-dashboard-page-container {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+  box-sizing: border-box;
+}
+
+.quiz-maker-dashboard-page-faq__header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.quiz-maker-dashboard-page-faq__eyebrow {
+  display: inline-block;
+  background-color: rgb(220, 235, 254);
+  color: rgb(25, 68, 154);
+  /*font-family: 'Lato', sans-serif;*/
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1;
+  padding: 6px 14px;
+  border-radius: 999px;
+  margin-bottom: 20px;
+}
+
+.quiz-maker-dashboard-page-faq__title {
+  /*font-family: 'Lato', sans-serif;*/
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #1e2a3b;
+  margin: 0;
+}
+
+/* ---------- FAQ list ---------- */
+.quiz-maker-dashboard-page-faq__list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.quiz-maker-dashboard-page-faq__item {
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  overflow: hidden;
+  list-style: none;
+}
+
+.quiz-maker-dashboard-page-faq__item summary::-webkit-details-marker {
+  display: none;
+}
+
+.quiz-maker-dashboard-page-faq__item summary::marker {
+  display: none;
+  content: '';
+}
+
+.quiz-maker-dashboard-page-faq__question {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 24px;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.quiz-maker-dashboard-page-faq__question span:first-child {
+  /*font-family: 'Lato', sans-serif;*/
+  font-size: 15px;
+  font-weight: 500;
+  color: #1e2a3b;
+  line-height: 1.5;
+  flex: 1 1 0%;
+  min-width: 0;
+}
+
+.quiz-maker-dashboard-page-faq__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #1e2a3b;
+  transition: transform 0.25s ease;
+}
+
+.quiz-maker-dashboard-page-faq__icon svg {
+  display: block;
+}
+
+.quiz-maker-dashboard-page-faq__item[open] .quiz-maker-dashboard-page-faq__icon {
+  transform: rotate(180deg);
+}
+
+.quiz-maker-dashboard-page-faq__answer {
+  padding: 0 24px 20px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.quiz-maker-dashboard-page-faq__answer p {
+  /*font-family: 'Lato', sans-serif;*/
+  font-size: 14px;
+  line-height: 1.75;
+  color: #6b7280;
+  margin: 16px 0 0;
+}
+
+.quiz-maker-dashboard-page-faq__item:not([open]) .quiz-maker-dashboard-page-faq__question:hover {
+  background-color: #f9fafb;
+}
+
+.quiz-maker-dashboard-page-faq__question:focus-visible {
+  outline: 2px solid #1a56db;
+  outline-offset: -2px;
+  border-radius: 14px;
+}
+
+@media (max-width: 1024px) {
+  .quiz-maker-dashboard-page-faq {
+    padding: 64px 0;
+  }
+
+  .quiz-maker-dashboard-page-container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .quiz-maker-dashboard-page-faq__list {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .quiz-maker-dashboard-page-faq {
+    padding: 48px 0;
+  }
+
+  .quiz-maker-dashboard-page-container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .quiz-maker-dashboard-page-faq__header {
+    margin-bottom: 32px;
+  }
+
+  .quiz-maker-dashboard-page-faq__question {
+    padding: 16px 18px;
+  }
+
+  .quiz-maker-dashboard-page-faq__answer {
+    padding: 0 18px 16px;
+  }
+
+  .quiz-maker-dashboard-page-faq__question span:first-child {
+    font-size: 14px;
+  }
+}
+
+/* FAQ Section Styles | End */

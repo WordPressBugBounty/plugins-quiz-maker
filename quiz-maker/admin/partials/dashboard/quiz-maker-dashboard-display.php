@@ -26,6 +26,7 @@ $new_questions_page_url = sprintf('?page=%s&action=%s', 'quiz-maker-questions', 
             <h2 class="quiz-maker-hero-title"><?php echo esc_html__("Welcome to Quiz Maker", 'quiz-maker'); ?></h2>
             <p class="quiz-maker-hero-subtitle"><?php echo esc_html__("Easily create, customize, and manage engaging quizzes for your WordPress website", 'quiz-maker'); ?></p>
             <div class="quiz-maker-hero-buttons">
+                <?php if( 1 == 0 ): ?>
                 <a class="quiz-maker-btn quiz-maker-btn-secondary" href="<?php echo esc_url($questions_page_url); ?>">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_158_47)">
@@ -41,6 +42,7 @@ $new_questions_page_url = sprintf('?page=%s&action=%s', 'quiz-maker-questions', 
                     </svg>
                     <?php echo esc_html__("Create Question", 'quiz-maker'); ?>
                 </a>
+                <?php endif; ?>
                 <a class="quiz-maker-btn quiz-maker-btn-primary" href="<?php echo esc_url($quiz_page_url); ?>">
                     <svg width="16" height="20" viewBox="0 0 16 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M13.9495 7.91656V5.66656C13.9495 4.26644 13.9495 3.56636 13.6812 3.03159C13.4452 2.56119 13.0687 2.17874 12.6054 1.93905C12.0789 1.66656 11.3896 1.66656 10.011 1.66656H4.75975C3.38116 1.66656 2.69186 1.66656 2.16531 1.93905C1.70215 2.17874 1.32558 2.56119 1.08958 3.03159C0.821289 3.56636 0.821289 4.26644 0.821289 5.66656V14.3333C0.821289 15.7334 0.821289 16.4334 1.08958 16.9683C1.32558 17.4386 1.70215 17.8211 2.16531 18.0608C2.69186 18.3333 3.38116 18.3333 4.75975 18.3333H9.02642M9.02642 9.16656H4.10334M5.74436 12.4999H4.10334M10.6674 5.83324H4.10334M11.0777 12.5018C11.2223 12.0844 11.5076 11.7324 11.8832 11.5082C12.2588 11.284 12.7004 11.2021 13.1299 11.2769C13.5593 11.3517 13.9487 11.5784 14.2293 11.9169C14.5098 12.2554 14.6634 12.6839 14.6628 13.1263C14.6628 14.3754 12.818 14.9999 12.818 14.9999M12.8417 17.4999H12.85" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
@@ -227,6 +229,179 @@ $new_questions_page_url = sprintf('?page=%s&action=%s', 'quiz-maker-questions', 
                     <li class="quiz-maker-what-is-new-feature-item"><?php echo esc_html__('Question Report Statistics in the Dashboard Widget', 'quiz-maker'); ?></li>
                     <li class="quiz-maker-what-is-new-feature-item"><?php echo esc_html__('Keyboard navigation option', 'quiz-maker'); ?></li>
                 </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="quiz-maker-dashboard-faq" class="quiz-maker-dashboard-faq-section">
+        <div class="quiz-maker-dashboard-page-container">
+            <div class="quiz-maker-dashboard-page-faq__header">
+                <span class="quiz-maker-dashboard-page-faq__eyebrow">
+                    <?php echo esc_html__( 'FAQ', 'quiz-maker' ); ?>
+                </span>
+                <h2 class="quiz-maker-dashboard-page-faq__title">
+                    <?php echo esc_html__( 'Frequently Asked Questions', 'quiz-maker' ); ?>
+                </h2>
+            </div>
+
+            <div class="quiz-maker-dashboard-page-faq__list">
+                <details class="quiz-maker-dashboard-page-faq__item">
+                    <summary class="quiz-maker-dashboard-page-faq__question">
+                        <span><?php echo esc_html__( 'Is the user data from the information form saved in the results?', 'quiz-maker' ); ?></span>
+                        <span class="quiz-maker-dashboard-page-faq__icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="m6 9 6 6 6-6" />
+                            </svg>
+                        </span>
+                    </summary>
+                    <div class="quiz-maker-dashboard-page-faq__answer">
+                        <p>
+                            <?php
+                            echo sprintf(
+                                /* translators: 1: opening anchor tag for information form link, 2: closing anchor tag */
+                                esc_html__( 'Yes, all data submitted through the %1$sinformation form%2$s (such as name, email, etc.) is saved along with the quiz results and can be viewed from your dashboard.', 'quiz-maker' ),
+                                '<a href="' . esc_url( 'https://quiz-plugin.com/docs/quiz-user-data-settings/' ) . '" target="_blank">',
+                                '</a>'
+                            );
+                            ?>
+                        </p>
+                    </div>
+                </details>
+
+                <details class="quiz-maker-dashboard-page-faq__item">
+                    <summary class="quiz-maker-dashboard-page-faq__question">
+                        <span><?php echo esc_html__( 'Can I translate the quiz into different languages?', 'quiz-maker' ); ?></span>
+                        <span class="quiz-maker-dashboard-page-faq__icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="m6 9 6 6 6-6" />
+                            </svg>
+                        </span>
+                    </summary>
+                    <div class="quiz-maker-dashboard-page-faq__answer">
+                        <p>
+                            <?php echo esc_html__( 'Yes, you can translate the quiz into any language you want. The plugin is fully translation-ready, so all texts can be changed easily.', 'quiz-maker' ); ?>
+                        </p>
+                        <p>
+                            <?php echo esc_html__( 'You can even modify the default English texts if needed. The plugin includes a PO file where you can find any text and replace it with your preferred wording.', 'quiz-maker' ); ?>
+                        </p>
+                        <p>
+                            <?php
+                            echo sprintf(
+                                /* translators: 1: opening anchor tag for WordPress plugin translation guide link, 2: closing anchor tag, 3: opening anchor tag for WordPress plugin translation video tutorial link, 4: closing anchor tag */
+                                esc_html__( 'For step-by-step guidance, check our %1$sWordPress plugin translation guide%2$s or watch our %3$sWordPress plugin translation video tutorial%4$s.', 'quiz-maker' ),
+                                '<a href="' . esc_url( 'https://ays-pro.com/blog/how-to-translate-wordpress-plugins-beginner-s-guide' ) . '" target="_blank">',
+                                '</a>',
+                                '<a href="' . esc_url( 'https://www.youtube.com/watch?v=e2LbgAkphRM' ) . '" target="_blank">',
+                                '</a>'
+                            );
+                            ?>
+                        </p>
+                    </div>
+                </details>
+
+                <details class="quiz-maker-dashboard-page-faq__item">
+                    <summary class="quiz-maker-dashboard-page-faq__question">
+                        <span><?php echo esc_html__( 'How can I change the font type of the quiz?', 'quiz-maker' ); ?></span>
+                        <span class="quiz-maker-dashboard-page-faq__icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="m6 9 6 6 6-6" />
+                            </svg>
+                        </span>
+                    </summary>
+                    <div class="quiz-maker-dashboard-page-faq__answer">
+                        <p>
+                            <?php
+                            echo sprintf(
+                                /* translators: 1: opening strong tag for custom CSS text, 2: closing strong tag, 3: opening anchor tag for Styles Settings link, 4: closing anchor tag */
+                                esc_html__( 'There is no built-in option to change the font directly in the settings. However, Quiz Maker allows you to fully customize styles using %1$scustom CSS%2$s in the %3$sStyles Settings%4$s tab.', 'quiz-maker' ),
+                                '<strong>',
+                                '</strong>',
+                                '<a href="' . esc_url( 'https://quiz-plugin.com/docs/styles-settings/' ) . '" target="_blank">',
+                                '</a>'
+                            );
+                            ?>
+                        </p>
+                    </div>
+                </details>
+
+                <details class="quiz-maker-dashboard-page-faq__item">
+                    <summary class="quiz-maker-dashboard-page-faq__question">
+                        <span><?php echo esc_html__( 'Can I change the quiz button texts?', 'quiz-maker' ); ?></span>
+                        <span class="quiz-maker-dashboard-page-faq__icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="m6 9 6 6 6-6" />
+                            </svg>
+                        </span>
+                    </summary>
+                    <div class="quiz-maker-dashboard-page-faq__answer">
+                        <p>
+                            <?php
+                            echo sprintf(
+                                /* translators: 1: opening anchor tag for button texts link, 2: closing anchor tag, 3: opening strong tag for Quiz → General Settings → Text Customizations text, 4: closing strong tag */
+                                esc_html__( 'Yes, you can change the %1$sbutton texts%2$s from %3$sQuiz → General Settings → Text Customizations%4$s. This allows you to fully customize labels like “Next”, “Submit”, or “Start” to match your style or language.', 'quiz-maker' ),
+                                '<a href="' . esc_url( 'https://quiz-plugin.com/docs/buttons-texts/' ) . '" target="_blank">',
+                                '</a>',
+                                '<strong>',
+                                '</strong>'
+                            );
+                            ?>
+                        </p>
+                    </div>
+                </details>
+
+                <details class="quiz-maker-dashboard-page-faq__item">
+                    <summary class="quiz-maker-dashboard-page-faq__question">
+                        <span><?php echo esc_html__( 'Can I show all questions on one page or display them one by one?', 'quiz-maker' ); ?></span>
+                        <span class="quiz-maker-dashboard-page-faq__icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="m6 9 6 6 6-6" />
+                            </svg>
+                        </span>
+                    </summary>
+                    <div class="quiz-maker-dashboard-page-faq__answer">
+                        <p>
+                            <?php echo esc_html__( 'Yes, you can choose how your quiz is displayed. You can either show all questions on a single page or present them one by one.', 'quiz-maker' ); ?>
+                        </p>
+                        <p>
+                            <?php
+                            echo sprintf(
+                                /* translators: 1: opening strong tag for Quiz Maker → Your Quiz → Settings text, 2: closing strong tag, 3: opening strong tag for Display all questions on one page text, 4: closing strong tag */
+                                esc_html__( 'To show all questions at once, go to %1$sQuiz Maker → Your Quiz → Settings%2$s and enable the %3$sDisplay all questions on one page%4$s option. If you keep it disabled, the questions will be shown step by step automatically.', 'quiz-maker' ),
+                                '<strong>',
+                                '</strong>',
+                                '<strong>',
+                                '</strong>'
+                            );
+                            ?>
+                        </p>
+                    </div>
+                </details>
+
+                <details class="quiz-maker-dashboard-page-faq__item">
+                    <summary class="quiz-maker-dashboard-page-faq__question">
+                        <span><?php echo esc_html__( 'Will I lose the data after the upgrade?', 'quiz-maker' ); ?></span>
+                        <span class="quiz-maker-dashboard-page-faq__icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="m6 9 6 6 6-6" />
+                            </svg>
+                        </span>
+                    </summary>
+                    <div class="quiz-maker-dashboard-page-faq__answer">
+                        <p>
+                            <?php echo esc_html__( 'Nope! All your content and assigned settings of the plugin will remain unchanged even after switching to the Pro version. You don’t need to redo what you have already built with the free version.', 'quiz-maker' ); ?>
+                        </p>
+                        <p>
+                            <?php
+                            echo sprintf(
+                                /* translators: 1: opening anchor tag for upgrade guide link, 2: closing anchor tag */
+                                esc_html__( 'For detailed instructions, please take a look at our %1$supgrade guide%2$s.', 'quiz-maker' ),
+                                '<a href="' . esc_url( 'https://quiz-plugin.com/docs/plugin-setup-and-installation/' ) . '" target="_blank">',
+                                '</a>'
+                            );
+                            ?>
+                        </p>
+                    </div>
+                </details>
             </div>
         </div>
     </section>

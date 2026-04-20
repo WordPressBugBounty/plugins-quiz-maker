@@ -4278,6 +4278,24 @@
         $(document).on('mouseleave', '.ays-rated-link', function(){
             $(document).find('.ays-dashicons').removeClass('ays-dashicons-star-filled').addClass('ays-dashicons-star-empty');
         });
+
+        $(document).on('click', '.quiz-maker-dashboard-page-faq__question', function(e){
+            e.preventDefault();
+
+            var $item  = $(this).closest('.quiz-maker-dashboard-page-faq__item');
+            var $items = $(document).find('.quiz-maker-dashboard-page-faq__item');
+            var isOpen = $item.attr('open') !== undefined;
+
+            // Close all other items
+            $items.not($item).removeAttr('open');
+
+            // Toggle current item
+            if (isOpen) {
+                $item.removeAttr('open');
+            } else {
+                $item.attr('open', 'open');
+            }
+        });
     });
 
     function showConfirmationIfDelete(e) {
