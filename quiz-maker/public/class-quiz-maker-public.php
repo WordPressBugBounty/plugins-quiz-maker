@@ -7651,48 +7651,60 @@ class Quiz_Maker_Public
     
     protected function ays_get_full_reasons_of_rates($start, $limit, $quiz_id, $zuyga){
         $quiz_rate_reasons = $this->ays_get_reasons_of_rates($start, $limit, $quiz_id);
-        $quiz_rate_html = "";
+        $quiz_rate_html = '';
+
         foreach($quiz_rate_reasons as $key => $reasons){
-            $user_name = !empty($reasons['user_name']) ? "<span>".$reasons['user_name']."</span>" : '';
-            if($this->isJSON($reasons['options'])){
-                $reason = json_decode($reasons['options'], true)['reason'];
-            }elseif($reasons['options'] != ''){
-                $reason = $reasons['options'];
-            }else{
-                $reason = $reasons['review'];                
+
+            $user_name = ! empty( $reasons['user_name'] ) ? '<span>' . esc_html( $reasons['user_name'] ) . '</span>' : '';
+
+            if ( $this->isJSON( $reasons['options'] ) ) {
+                $options = json_decode( $reasons['options'], true );
+                $reason  = isset( $options['reason'] ) ? (string) $options['reason'] : '';
+            } elseif ( ! empty( $reasons['options'] ) ) {
+                $reason = (string) $reasons['options'];
+            } else {
+                $reason = isset( $reasons['review'] ) ? (string) $reasons['review'] : '';
             }
-            if(intval($reasons['user_id']) != 0){
-                $user_img = esc_url( get_avatar_url( intval($reasons['user_id']) ) );
-            }else{
-                $user_img = AYS_QUIZ_PUBLIC_URL . "/images/avatar_2x.png";
+
+            if ( intval( $reasons['user_id'] ) !== 0 ) {
+                $user_img = esc_url( get_avatar_url( intval( $reasons['user_id'] ) ) );
+            } else {
+                $user_img = esc_url( AYS_QUIZ_PUBLIC_URL . '/images/avatar_2x.png' );
             }
-            $score = $reasons['score'];
-            $commented = date('M j, Y', strtotime($reasons['rate_date']));
-            if($zuyga == 1){
-                $row_reverse = ($key % 2 == 0) ? 'row_reverse' : '';
-            }else{
-                $row_reverse = ($key % 2 == 0) ? '' : 'row_reverse';
+
+            $score     = absint( $reasons['score'] );
+            $commented = esc_html( date_i18n( 'M j, Y', strtotime( $reasons['rate_date'] ) ) );
+
+            if ( $zuyga == 1 ) {
+                $row_reverse = ( $key % 2 == 0 ) ? 'row_reverse' : '';
+            } else {
+                $row_reverse = ( $key % 2 == 0 ) ? '' : 'row_reverse';
             }
-            $quiz_rate_html .= "<div class='quiz_rate_reasons'>
-                  <div class='rate_comment_row $row_reverse'>
-                    <div class='rate_comment_user'>
-                        <div class='thumbnail'>
-                            <img class='img-responsive user-photo' src='".$user_img."'>
-                        </div>
-                    </div>
-                    <div class='rate_comment'>
-                        <div class='panel panel-default'>
-                            <div class='panel-heading'>
-                                <i class='ays_fa ays_fa_user'></i> <strong>$user_name</strong><br/>
-                                <i class='ays_fa ays_fa_clock_o'></i> $commented<br/>
-                                ".__("Rated", 'quiz-maker')." <i class='ays_fa ays_fa_star'></i> $score
+
+            $quiz_rate_html .= "
+                <div class='quiz_rate_reasons'>
+                    <div class='rate_comment_row " . esc_attr( $row_reverse ) . "'>
+                        <div class='rate_comment_user'>
+                            <div class='thumbnail'>
+                                <img class='img-responsive user-photo' src='" . esc_url( $user_img ) . "' alt=''>
                             </div>
-                            <div class='panel-body'><div>". stripslashes(nl2br($reason)) ."</div></div>
+                        </div>
+                        <div class='rate_comment'>
+                            <div class='panel panel-default'>
+                                <div class='panel-heading'>
+                                    <i class='ays_fa ays_fa_user'></i> <strong>" . $user_name . "</strong><br/>
+                                    <i class='ays_fa ays_fa_clock_o'></i> " . $commented . "<br/>
+                                    " . esc_html__( 'Rated', 'quiz-maker' ) . " <i class='ays_fa ays_fa_star'></i> " . esc_html( $score ) . "
+                                </div>
+                                <div class='panel-body'>
+                                    <div>" . nl2br( esc_html( $reason ) ) . "</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>";
+                </div>";
         }
+
         return $quiz_rate_html;
     }
     
@@ -7906,7 +7918,8 @@ class Quiz_Maker_Public
         $user_phone = isset($_REQUEST['ays_user_phone']) ? esc_sql( sanitize_text_field( $_REQUEST['ays_user_phone'] ) ) : '';
         $score = (isset($_REQUEST['rate_score']) && $_REQUEST['rate_score'] != "") ? esc_sql( absint( sanitize_text_field( $_REQUEST['rate_score'] ) ) ) : 5;
         $rate_date = current_time('mysql'); // For Security // esc_sql( sanitize_text_field( $_REQUEST['rate_date'] ) );
-        $rate_reason = (isset($_REQUEST['rate_reason']) && $_REQUEST['rate_reason'] != "") ? stripslashes( sanitize_textarea_field( $_REQUEST['rate_reason'] ) ) : '';
+        // $rate_reason = (isset($_REQUEST['rate_reason']) && $_REQUEST['rate_reason'] != "") ? stripslashes( sanitize_textarea_field( $_REQUEST['rate_reason'] ) ) : '';
+        $rate_reason = isset($_REQUEST['rate_reason']) ? sanitize_textarea_field( wp_unslash( $_REQUEST['rate_reason'] ) ) : '';
 
         switch ($score) {
             case "1":

@@ -781,43 +781,59 @@ class Results_List_Table extends WP_List_Table{
     function column_quiz_rate( $item ) {
         global $wpdb;
 
-        // $delete_nonce = wp_create_nonce( $this->plugin_name . '-delete-result' );
+        $options = json_decode( $item['options'], true );
+        $rate_id = isset( $options['rate_id'] ) ? absint( $options['rate_id'] ) : 0;
 
-        $options = json_decode($item['options'], true);
-        $rate_id = (isset($options['rate_id'])) ? $options['rate_id'] : null;
-        if($rate_id !== null){
+        if ( $rate_id > 0 ) {
             $margin_of_icon = "style='margin-left: 5px;'";
-            $result = $wpdb->get_row("SELECT * FROM {$wpdb->prefix}aysquiz_rates WHERE id={$rate_id}", "ARRAY_A");
+            $result = $wpdb->get_row(
+                $wpdb->prepare(
+                    "SELECT * FROM {$wpdb->prefix}aysquiz_rates WHERE id = %d",
+                    $rate_id
+                ),
+                ARRAY_A
+            );
 
-            $res_options = (isset( $result['options'] ) && $result['options'] != '') ? $result['options'] : '';
+            if ( empty( $result ) ) {
+                return '';
+            }
 
-            if($this->isJSON($res_options)){
-                $review_json = json_decode($res_options, true);
-                $review = $review_json['reason'];
-            }elseif($res_options != ''){
-                $review = $res_options;
-            }else{
-                $review = (isset( $result['review'] ) && $result['review'] != '') ? $result['review'] : '';
+            $res_options = isset( $result['options'] ) ? $result['options'] : '';
+
+            if ( $this->isJSON( $res_options ) ) {
+                $review_json = json_decode( $res_options, true );
+                $review = isset( $review_json['reason'] ) ? (string) $review_json['reason'] : '';
+            } elseif ( $res_options !== '' ) {
+                $review = (string) $res_options;
+            } else {
+                $review = isset( $result['review'] ) ? (string) $result['review'] : '';
             }
-            $reason = htmlentities(stripslashes(wpautop($review)));
-            if($reason == ''){
-                $reason = __("No review provided", 'quiz-maker');
+
+            $reason = trim( $review );
+
+            if ( $reason === '' ) {
+                $reason = __( 'No review provided', 'quiz-maker' );
             }
-            $score = (isset( $result['score'] ) && $result['score'] != '') ? $result['score'] : '';
+
+            $score = isset( $result['score'] ) ? absint( $result['score'] ) : 0;
             $title = '';
-            if ( $score != '' ) {
-                $title = "
-                <span data-result='".absint( $item['id'] )."' class='ays-show-rate-avg'>
-                    $score
-                    <a class='ays_help' $margin_of_icon data-template='<div class=\"rate_tooltip tooltip\" role=\"tooltip\"><div class=\"arrow\"></div><div class=\"rate-tooltip-inner tooltip-inner\"></div></div>' data-toggle='tooltip' data-html='true' title='$reason'><i class='ays_fa ays_fa_info_circle'></i></a>                        
-                </span>";
+
+            if ( $score > 0 ) {
+                $title = sprintf(
+                    '<span data-result="%1$d" class="ays-show-rate-avg">
+                        %2$s
+                        <a class="ays_help" %3$s data-template="<div class=&quot;rate_tooltip tooltip&quot; role=&quot;tooltip&quot;><div class=&quot;arrow&quot;></div><div class=&quot;rate-tooltip-inner tooltip-inner&quot;></div></div>" data-toggle="tooltip" data-html="false" title="%4$s"><i class="ays_fa ays_fa_info_circle"></i></a>
+                    </span>',
+                    absint( $item['id'] ),
+                    esc_html( $score ),
+                    $margin_of_icon,
+                    esc_attr( $reason )
+                );
             }
-        }else{
-            $margin_of_icon = '';
-            $reason = __("No rate provided", 'quiz-maker');
-            $score = '';
-            $title = "";
+        } else {
+            $title = '';
         }
+
         return $title;
     }
     
