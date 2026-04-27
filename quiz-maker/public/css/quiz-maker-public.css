@@ -2915,3 +2915,30 @@ div.ays-quiz-preloader{
 .ays-quiz-question-report-popup-container .swal2-popup .swal2-styled.swal2-confirm {
     line-height: 15.9375px;
 }
+
+.ays-quiz-question-report-popup-container.swal2-popup {
+    padding: 1.25em;
+}
+
+.ays-quiz-question-report-popup-container.swal2-popup .swal2-icon {
+    margin: 1.25em auto 1.875em;
+}
+
+.ays-quiz-question-report-popup-container.swal2-popup *:before,
+.ays-quiz-question-report-popup-container.swal2-popup *:after {
+    content: unset;
+}
+
+.ays-modal-content-reports .ays-quiz-submit-question-report-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ays-quiz-question-report-popup-container.swal2-popup .swal2-content {
+    font-size: 18px;
+}
+
+.ays-quiz-question-report-popup-container.swal2-popup {
+    min-width: 480px;
+}

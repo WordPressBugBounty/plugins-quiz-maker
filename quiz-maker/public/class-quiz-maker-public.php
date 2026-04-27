@@ -2227,7 +2227,9 @@ class Quiz_Maker_Public
                                                     <input type="hidden" class="ays-quiz-report-question-id" value="">
                                                     <input type="hidden" class="ays-quiz-report-quiz-id" value="' . $id . '">
                                                     <input type="hidden" class="ays-quiz-report-question-send-email" value="' . $send_email . '">
-                                                    <input type="submit" class="ays-quiz-submit-question-report" value="'. $this->buttons_texts['reportSubmitButton'] .'">
+                                                    <div class="ays-quiz-submit-question-report-box">
+                                                        <input type="submit" class="ays-quiz-submit-question-report" value="'. $this->buttons_texts['reportSubmitButton'] .'">
+                                                    </div>
                                                     <input type="hidden" class="ays_quiz_question_report_nonce" name="ays_quiz_question_report_nonce" value="'. esc_attr( wp_create_nonce( 'ays_quiz_question_report_nonce' ) ) .'">
 
                                                 </form>
@@ -3491,6 +3493,8 @@ class Quiz_Maker_Public
                 break;
         }
 
+        $quiz_theme_type = isset($options['quiz_theme']) && $options['quiz_theme'] != "" ? esc_attr( stripslashes($options['quiz_theme']) ) : "";
+
         if($show_form != null){
             if ($options['information_form'] == "after") {
                 $main_content_last_part = "<div class='step'>
@@ -3930,6 +3934,14 @@ class Quiz_Maker_Public
                 background-color: " . $this->hex2rgba($text_color, '0.3') . ";
             }";
 
+        if( $quiz_theme_type == 'elegant_dark' || $quiz_theme_type == 'elegant_light' ){
+            $quiz_styles .= "
+            #ays-quiz-container-" . $id . " #ays_finish_quiz_" . $id . " .ays-progress-bg,
+            #ays-quiz-container-" . $id . " #ays_finish_quiz_" . $id . " .ays-progress-bg {
+                border: 1px solid " . $this->hex2rgba($text_color, '0.3') . ";
+            }";
+        }
+
         if ($enable_live_progress_bar) {
             $quiz_styles .= "
             #ays-quiz-container-" . $id . " ." . $filling_type . " {
@@ -4169,6 +4181,14 @@ class Quiz_Maker_Public
                         font-size: " . $buttons_font_size . " !important;
                         padding: " . $buttons_top_bottom_padding . " " . $buttons_left_right_padding . " !important;
                         border-radius: " . $buttons_border_radius . " !important;
+                    }";
+                }
+
+                if( 'Colibri WP' == $current_user_theme_obj->name || 'Colibri WP' == $current_user_theme_obj->parent_theme ) {
+                    $quiz_styles .= "
+                    .ays-quiz-question-report-popup-container.swal2-popup .swal2-icon {
+                        width: 88px;
+                        height: 88px;
                     }";
                 }
             }
