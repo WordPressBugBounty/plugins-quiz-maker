@@ -75,13 +75,13 @@ $quiz_results_plugin_nonce = wp_create_nonce( 'quiz-maker-ajax-results-nonce' );
                             <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo esc_html__("See Documentation", 'quiz-maker'); ?></a>
                         </div>
                     </div>
-                    <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-export-results-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
+                    <div class="pro-features-popup-button" data-link="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-export-results-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
                         <?php echo esc_html__("Pricing", 'quiz-maker'); ?>
                     </div>
                 </div>
             </div>
             <div>
-                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-export-results-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-export-button-link">
+                <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-export-results-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-export-button-link">
                     <button class="disabled-button" title="<?php echo esc_attr( __( "This property available only in pro version", 'quiz-maker' ) ); ?>" >
                         <?php echo esc_html__('Export','quiz-maker'); ?>
                         <svg width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom: 4px;">
@@ -128,7 +128,7 @@ $quiz_results_plugin_nonce = wp_create_nonce( 'quiz-maker-ajax-results-nonce' );
 
                 </div>
                 <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/chart_screen.png' ); ?>" alt="Statistics" style="width:100%;">
-                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=results-menu-statistics-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=results-menu-statistics-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                     <div class="ays-quiz-new-upgrade-button-box">
                         <div>
                             <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -139,7 +139,7 @@ $quiz_results_plugin_nonce = wp_create_nonce( 'quiz-maker-ajax-results-nonce' );
                 </a>
                 <div class="ays-quiz-center-big-main-button-box ays-quiz-new-big-button-flex">
                     <div class="ays-quiz-center-big-upgrade-button-box">
-                        <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=results-menu-statistics-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                        <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=results-menu-statistics-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                             <div class="ays-quiz-center-new-big-upgrade-button">
                                 <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>" class="ays-quiz-new-button-img-hide">
                                 <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg' ); ?>" class="ays-quiz-new-upgrade-button-hover">  

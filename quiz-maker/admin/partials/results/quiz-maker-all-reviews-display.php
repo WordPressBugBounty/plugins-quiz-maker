@@ -64,13 +64,13 @@ $tab_url = "?page=".$this->plugin_name."-results&ays_result_tab=";
                             <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo esc_html__("See Documentation", 'quiz-maker'); ?></a>
                         </div>
                     </div>
-                    <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-export-results-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
+                    <div class="pro-features-popup-button" data-link="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-export-results-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
                         <?php echo esc_html__("Pricing", 'quiz-maker'); ?>
                     </div>
                 </div>
             </div>
             <div>
-                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-export-results-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-export-button-link">
+                <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-export-results-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-export-button-link">
                     <button class="disabled-button" title="<?php echo esc_attr( __( "This property aviable only in pro version", 'quiz-maker' ) ); ?>" >
                         <?php echo esc_html__('Export','quiz-maker')?>
                         <svg width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom: 4px;">

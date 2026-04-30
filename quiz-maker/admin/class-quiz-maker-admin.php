@@ -910,7 +910,7 @@ class Quiz_Maker_Admin
         $settings_link = array(
             '<a href="' . admin_url('admin.php?page=' . $this->plugin_name) . '">' . __('Settings', 'quiz-maker') . '</a>',
             '<a href="https://quiz-plugin.com/wordpress-quiz-plugin-free-demo/" target="_blank">' . __('Demo', 'quiz-maker') . '</a>',
-            '<a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=plugins-buy-now-button-' . esc_attr( AYS_QUIZ_UTM_VERSION ) . '" id="ays-quiz-plugins-buy-now-button" target="_blank">' . __('Upgrade', 'quiz-maker') . '</a>
+            '<a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=plugins-buy-now-button-' . esc_attr( AYS_QUIZ_UTM_VERSION ) . '" id="ays-quiz-plugins-buy-now-button" target="_blank">' . __('Upgrade', 'quiz-maker') . '</a>
             <input type="hidden" id="ays_quiz_ajax_deactivate_plugin_nonce" name="ays_quiz_ajax_deactivate_plugin_nonce" value="' . $quiz_ajax_deactivate_plugin_nonce .'">',
             );
         return array_merge($settings_link, $links);
@@ -1524,6 +1524,7 @@ class Quiz_Maker_Admin
         $quick_quiz_right_answers_mobile_font_weight            = "normal";
         $quick_quiz_wrong_answer_mobile_text_transform          = "none";
         $quick_quiz_wrong_answers_mobile_text_decoration        = "none";
+        $quick_quiz_wrong_answers_mobile_letter_spacing         = 0;
 
         if($quiz_enable_options == 'on'){
             $quick_quiz_enable_randomize_questions = (isset( $_REQUEST['ays_quick_quiz_enable_randomize_questions'] ) && $_REQUEST['ays_quick_quiz_enable_randomize_questions'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_randomize_questions'] ) ) : "off";
@@ -1899,6 +1900,9 @@ class Quiz_Maker_Admin
 
             // Text decoration for the wrong answers | Mobile
             $quick_quiz_wrong_answers_mobile_text_decoration = (isset( $_REQUEST['ays_quick_quiz_wrong_answers_mobile_text_decoration'] ) && $_REQUEST['ays_quick_quiz_wrong_answers_mobile_text_decoration'] != "") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_wrong_answers_mobile_text_decoration'] ) ) : "none";
+
+            // Letter spacing | Wrong answer | Mobile
+            $quick_quiz_wrong_answers_mobile_letter_spacing = (isset($_REQUEST['ays_quick_quiz_wrong_answers_mobile_letter_spacing']) && $_REQUEST['ays_quick_quiz_wrong_answers_mobile_letter_spacing'] != '') ? absint ( stripslashes( $_REQUEST['ays_quick_quiz_wrong_answers_mobile_letter_spacing'] ) ) : 0;
             
         }
         
@@ -2209,6 +2213,7 @@ class Quiz_Maker_Admin
             'quiz_right_answers_mobile_letter_spacing'          => $quick_quiz_right_answers_mobile_letter_spacing,
             'quiz_wrong_answer_mobile_text_transform'           => $quick_quiz_wrong_answer_mobile_text_transform,
             'quiz_wrong_answers_mobile_text_decoration'         => $quick_quiz_wrong_answers_mobile_text_decoration,
+            'quiz_wrong_answers_mobile_letter_spacing'          => $quick_quiz_wrong_answers_mobile_letter_spacing,
         );
 
 
@@ -2417,18 +2422,18 @@ class Quiz_Maker_Admin
                                 $pro_content[] = '<a href="https://quiz-plugin.com/docs/" target="_blank"> '. __("See Documentation", 'quiz-maker'). '</a>';
                             $pro_content[] = '</div>';
                         $pro_content[] = '</div>';
-                        $pro_content[] = '<div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-xlsx-export-'. esc_attr( AYS_QUIZ_UTM_VERSION ) .'">';
+                        $pro_content[] = '<div class="pro-features-popup-button" data-link="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-xlsx-export-'. esc_attr( AYS_QUIZ_UTM_VERSION ) .'">';
                             $pro_content[] = __("Pricing", 'quiz-maker');
                         $pro_content[] = '</div>';
                     $pro_content[] = '</div>';
                 $pro_content[] = '</div>';
                 $pro_content[] = '<div>';
 
-                    $pro_content[] = '<a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-pdf-export-'. esc_attr( AYS_QUIZ_UTM_VERSION ) .'" target="_blank" class="ays-pro-a" style="margin: 0 10px;">';
+                    $pro_content[] = '<a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-pdf-export-'. esc_attr( AYS_QUIZ_UTM_VERSION ) .'" target="_blank" class="ays-pro-a" style="margin: 0 10px;">';
                         $pro_content[] = '<span type="button" class="disabled-button" title="'. __("This feature available only in pro version", 'quiz-maker') .'">'.__("PDF", 'quiz-maker').'</span>';
                     $pro_content[] = '</a>';
 
-                    $pro_content[] = '<a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-xlsx-export-'. esc_attr( AYS_QUIZ_UTM_VERSION ) .'" target="_blank" class="ays-pro-a">';
+                    $pro_content[] = '<a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-xlsx-export-'. esc_attr( AYS_QUIZ_UTM_VERSION ) .'" target="_blank" class="ays-pro-a">';
                         $pro_content[] = '<span type="button" class="disabled-button" title="'. __("This feature available only in pro version", 'quiz-maker') .'">'.__("XLSX", 'quiz-maker').'</span>';
                     $pro_content[] = '</a>';
                 $pro_content[] = '</div>';
@@ -2474,7 +2479,7 @@ class Quiz_Maker_Admin
                             $admin_note_content[] = '</div>';
                         $admin_note_content[] = '</div>';
 
-                        $admin_note_content[] = '<div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-admin-note-'. esc_attr( AYS_QUIZ_UTM_VERSION ) .'">';
+                        $admin_note_content[] = '<div class="pro-features-popup-button" data-link="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-admin-note-'. esc_attr( AYS_QUIZ_UTM_VERSION ) .'">';
                             $admin_note_content[] = __("Pricing", 'quiz-maker');
                         $admin_note_content[] = '</div>';
                     $admin_note_content[] = '</div>';
@@ -2482,7 +2487,7 @@ class Quiz_Maker_Admin
                 $admin_note_content[] = '<div>';
 
                     $admin_note_content[] = '<div class="ays-quiz-click-for-admin-note">';
-                        $admin_note_content[] = '<a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-admin-note-'. esc_attr( AYS_QUIZ_UTM_VERSION ) .'" target="_blank" class="ays-pro-a">';
+                        $admin_note_content[] = '<a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-admin-note-'. esc_attr( AYS_QUIZ_UTM_VERSION ) .'" target="_blank" class="ays-pro-a">';
                             $admin_note_content[] = '<button class="button button-primary disabled-button" style="color:#ffffff !important; font-weight:normal;" title="'. __("This feature available only in pro version", 'quiz-maker') .'">';
                                 $admin_note_content[] = __( 'Click For Admin Note', 'quiz-maker' );
                             $admin_note_content[] = '</button>';
@@ -3786,18 +3791,18 @@ class Quiz_Maker_Admin
 
             $content[] = '<div id="ays-quiz-dicount-month-main" class="notice notice-success is-dismissible ays_quiz_dicount_info">';
                 $content[] = '<div id="ays-quiz-dicount-month" class="ays_quiz_dicount_month">';
-                    $content[] = '<a href="https://ays-pro.com/wordpress/quiz-maker" target="_blank" class="ays-quiz-sale-banner-link"><img src="' . AYS_QUIZ_ADMIN_URL . '/images/icons/quiz-maker-logo.png"></a>';
+                    $content[] = '<a href="https://quiz-plugin.com/pricing/" target="_blank" class="ays-quiz-sale-banner-link"><img src="' . AYS_QUIZ_ADMIN_URL . '/images/icons/quiz-maker-logo.png"></a>';
 
                     $content[] = '<div class="ays-quiz-dicount-wrap-box">';
 
                         $content[] = '<strong style="font-weight: bold;">';
-                            $content[] = __( "Limited Time <span class='ays-quiz-dicount-wrap-color'>20%</span> SALE on <br><span><a href='https://ays-pro.com/wordpress/quiz-maker' target='_blank' class='ays-quiz-dicount-wrap-color ays-quiz-dicount-wrap-text-decoration' style='display:block;'>Quiz Maker Premium Versions</a></span>", 'quiz-maker' );
+                            $content[] = __( "Limited Time <span class='ays-quiz-dicount-wrap-color'>20%</span> SALE on <br><span><a href='https://quiz-plugin.com/pricing/' target='_blank' class='ays-quiz-dicount-wrap-color ays-quiz-dicount-wrap-text-decoration' style='display:block;'>Quiz Maker Premium Versions</a></span>", 'quiz-maker' );
                         $content[] = '</strong>';
 
                         // $content[] = '<br>';
 
                         $content[] = '<strong>';
-                                $content[] = "Hurry up! <a href='https://ays-pro.com/wordpress/quiz-maker' target='_blank'>Check it out!</a>";
+                                $content[] = "Hurry up! <a href='https://quiz-plugin.com/pricing/' target='_blank'>Check it out!</a>";
                         $content[] = '</strong>';
                             
                     $content[] = '</div>';
@@ -3837,7 +3842,7 @@ class Quiz_Maker_Admin
                     $content[] = '</div>';
 
                     $content[] = '<div class="ays-quiz-dicount-wrap-box ays-buy-now-button-box">';
-                        $content[] = '<a href="https://ays-pro.com/wordpress/quiz-maker" class="button button-primary ays-buy-now-button" id="ays-button-top-buy-now" target="_blank" style="" >' . __( 'Buy Now !', 'quiz-maker' ) . '</a>';
+                        $content[] = '<a href="https://quiz-plugin.com/pricing/" class="button button-primary ays-buy-now-button" id="ays-button-top-buy-now" target="_blank" style="" >' . __( 'Buy Now !', 'quiz-maker' ) . '</a>';
                     $content[] = '</div>';
 
                     // $content[] = '<div class="ays-quiz-dicount-wrap-box ays-quiz-dicount-wrap-opacity-box">';
@@ -4037,12 +4042,12 @@ class Quiz_Maker_Admin
                     $content[] = '<div class="ays-quiz-dicount-wrap-box-helloween-limited">';
 
                         $content[] = '<p>';
-                            $content[] = __( "Limited Time <span class='ays-quiz-dicount-wrap-color-helloween' style='color:#b2ff00;'>30%</span> <span> SALE on</span><br><span style='' class='ays-quiz-helloween-bundle'><a href='https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=helloween-sale-banner' target='_blank' class='ays-quiz-dicount-wrap-color-helloween ays-quiz-dicount-wrap-text-decoration-helloween' style='display:block; color:#b2ff00;margin-right:6px;'>Quiz Maker</a>
+                            $content[] = __( "Limited Time <span class='ays-quiz-dicount-wrap-color-helloween' style='color:#b2ff00;'>30%</span> <span> SALE on</span><br><span style='' class='ays-quiz-helloween-bundle'><a href='https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=helloween-sale-banner' target='_blank' class='ays-quiz-dicount-wrap-color-helloween ays-quiz-dicount-wrap-text-decoration-helloween' style='display:block; color:#b2ff00;margin-right:6px;'>Quiz Maker</a>
                             </span>", 'quiz-maker' );
                         $content[] = '</p>';
                         $content[] = '<p>';
                                 $content[] = "Hurry up! 
-                                                <a href='https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=helloween-sale-banner' target='_blank' style='color:#ffc700;'>
+                                                <a href='https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=helloween-sale-banner' target='_blank' style='color:#ffc700;'>
                                                     Check it out!
                                                 </a>";
                         $content[] = '</p>';
@@ -4076,7 +4081,7 @@ class Quiz_Maker_Admin
                                 
                         $content[] = '</div>';
                         $content[] = '<div class="ays-quiz-dicount-wrap-box ays-buy-now-button-box-helloween">';
-                            $content[] = '<a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=helloween-sale-banner" class="button button-primary ays-buy-now-button-helloween" id="ays-button-top-buy-now-helloween" target="_blank" style="" >' . __( 'Buy Now !', 'quiz-maker' ) . '</a>';
+                            $content[] = '<a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=helloween-sale-banner" class="button button-primary ays-buy-now-button-helloween" id="ays-button-top-buy-now-helloween" target="_blank" style="" >' . __( 'Buy Now !', 'quiz-maker' ) . '</a>';
                         $content[] = '</div>';
                     $content[] = '</div>';
 
@@ -4263,7 +4268,7 @@ class Quiz_Maker_Admin
                 $style_attr = 'style="display:none;"';
             }
 
-            $quiz_cta_button_link = esc_url('https://ays-pro.com/mega-bundle?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=mega-bundle-sale-banner-' . AYS_QUIZ_UTM_VERSION);
+            $quiz_cta_button_link = esc_url('https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=top-20-sale-banner-' . AYS_QUIZ_UTM_VERSION);
 
             $content[] = '<div id="ays-quiz-new-mega-bundle-dicount-month-main" class="ays-quiz-admin-notice notice notice-success is-dismissible ays_quiz_dicount_info">';
                 $content[] = '<div id="ays-quiz-dicount-month" class="ays_quiz_dicount_month">';
@@ -4271,13 +4276,13 @@ class Quiz_Maker_Admin
                     $content[] = '<div class="ays-quiz-dicount-wrap-box ays-quiz-dicount-wrap-text-box">';
                         $content[] = '<div>';
                             $content[] = '<div class="ays-quiz-dicount-logo-box">';
-                                $content[] = '<a href="' . $quiz_cta_button_link . '" target="_blank" class="ays-quiz-sale-banner-link"><img src="' . AYS_QUIZ_ADMIN_URL . '/images/mega_bundle_logo_box.png"></a>';
+                                $content[] = '<a href="' . $quiz_cta_button_link . '" target="_blank" class="ays-quiz-sale-banner-link"><img src="' . AYS_QUIZ_ADMIN_URL . '/images/ays-quiz-banner-announcement-icon.svg"></a>';
 
                                 $content[] = '<div>';
                                     $content[] = '<span class="ays-quiz-new-mega-bundle-title">';
                                         $content[] = sprintf(
                                         /* translators: 1: opening link wrapper with <a> tag, 2: closing </a> tag */
-                                        __( '%1$s Mega Bundle %2$s (Quiz + Survey + Poll)', 'quiz-maker' ),
+                                        __( 'Upgrade to %1$s Quiz Maker Pro %2$s', 'quiz-maker' ),
                                         '<span style="display:inline-block; margin-right:5px;"><a href="' . esc_url( $quiz_cta_button_link ) . '" target="_blank" rel="noopener noreferrer" style="color:#ffffff !important; text-decoration: underline;">',
                                         '</a></span>'
                                     );
@@ -4289,13 +4294,13 @@ class Quiz_Maker_Admin
                                 $content[] = '</div>';
 
                                 $content[] = '<div class="ays-quiz-new-mega-bundle-title-icon-row" style="display: inline-block;">';
-                                    $content[] = '<img src="' . AYS_QUIZ_ADMIN_URL . '/images/ays-quiz-banner-50.svg" class="ays-quiz-new-mega-bundle-mobile-image-display-none" style="width: 70px;">';
+                                    $content[] = '<img src="' . AYS_QUIZ_ADMIN_URL . '/images/ays-quiz-banner-sale-20.svg" class="ays-quiz-new-mega-bundle-mobile-image-display-none" style="width: 70px;">';
                                 $content[] = '</div>';
 
                             $content[] = '</div>';
 
                             $content[] = '<div class="ays-quiz-new-mega-bundle-mobile-image-display-block display_none">';
-                                $content[] = '<img src="' . AYS_QUIZ_ADMIN_URL . '/images/ays-quiz-banner-50.svg" style="width: 70px;">';
+                                $content[] = '<img src="' . AYS_QUIZ_ADMIN_URL . '/images/ays-quiz-banner-sale-20.svg" style="width: 70px;">';
                             $content[] = '</div>';
                         $content[] = '</div>';
 
@@ -4351,6 +4356,15 @@ class Quiz_Maker_Admin
                     $content[] = '</div>';
 
                     $content[] = '<div class="ays-quiz-dicount-wrap-box ays-quiz-dicount-wrap-button-box">';
+                        $content[] = '<div class="ays-quiz-dicount-banner-coupon-box" onclick="aysQuizBundleCopyToClipboard(\'QUIZPRO20\')" title="' . __( 'Click to copy coupon code', "ays-popup-box" ) . '">';
+                            $content[] = '<span class="ays-quiz-dicount-banner-coupon-text">QUIZPRO20</span>';
+                            $content[] = '<svg class="ays-quiz-dicount-banner-copy-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">';
+                                $content[] = '<path d="M13.5 2.5H6.5C5.67 2.5 5 3.17 5 4V10C5 10.83 5.67 11.5 6.5 11.5H13.5C14.33 11.5 15 10.83 15 10V4C15 3.17 14.33 2.5 13.5 2.5ZM13.5 10H6.5V4H13.5V10ZM2.5 6.5V12.5C2.5 13.33 3.17 14 4 14H10V12.5H4V6.5H2.5Z" fill="white"/>';
+                            $content[] = '</svg>';
+                        $content[] = '</div>';
+                    $content[] = '</div>';
+
+                    $content[] = '<div class="ays-quiz-dicount-wrap-box ays-quiz-dicount-wrap-button-box">';
                         $content[] = '<a href="'. $quiz_cta_button_link .'" class="button button-primary ays-button" id="ays-button-top-buy-now" target="_blank">' . __( 'Buy Now', 'quiz-maker' ) . '</a>';
                         $content[] = '<span class="ays-quiz-dicount-one-time-text">';
                             $content[] = __( "One-time payment", 'quiz-maker' );
@@ -4359,10 +4373,123 @@ class Quiz_Maker_Admin
                 $content[] = '</div>';
             $content[] = '</div>';
 
+            $content[] = '<script>';
+            $content[] = "
+                function aysQuizBundleCopyToClipboard(text) {
+                    var textarea = document.createElement('textarea');
+                    textarea.value = text;
+                    textarea.style.position = 'fixed';
+                    textarea.style.opacity = '0';
+                    document.body.appendChild(textarea);
+                    
+                    textarea.select();
+                    textarea.setSelectionRange(0, 99999);
+                    
+                    try {
+                        document.execCommand('copy');
+                        aysQuizBundleShowCopyNotification('" . __( 'Coupon code copied!', "ays-popup-box" ) . "');
+                    } catch (err) {
+                        console.error('Failed to copy text: ', err);
+                    }
+                    
+                    document.body.removeChild(textarea);
+                }
+
+                function aysQuizBundleShowCopyNotification(message) {
+                    var existingNotification = document.querySelector('.ays-quiz-dicount-banner-copy-notification');
+                    if (existingNotification) {
+                        document.body.removeChild(existingNotification);
+                    }
+                    
+                    var notification = document.createElement('div');
+                    notification.className = 'ays-quiz-dicount-banner-copy-notification';
+                    notification.textContent = message;
+                    document.body.appendChild(notification);
+                    
+                    setTimeout(function() {
+                        notification.classList.add('show');
+                    }, 10);
+                    
+                    setTimeout(function() {
+                        notification.classList.remove('show');
+                        setTimeout(function() {
+                            if (notification.parentNode) {
+                                document.body.removeChild(notification);
+                            }
+                        }, 300);
+                    }, 2000);
+                }";
+            $content[] = '</script>';
+
             // /* New Mega Bundle Banner Quiz | Start */
             $content[] = '<style id="ays-quiz-mega-bundle-styles-inline-css">';
             $content[] = '
-            div#ays-quiz-new-mega-bundle-dicount-month-main{border:0;background:#fff;border-radius:20px;box-shadow:unset;position:relative;z-index:1;min-height:80px}div#ays-quiz-new-mega-bundle-dicount-month-main.ays_quiz_dicount_info button{display:flex;align-items:center}div#ays-quiz-new-mega-bundle-dicount-month-main div#ays-quiz-dicount-month a.ays-quiz-sale-banner-link:focus{outline:0;box-shadow:0}div#ays-quiz-new-mega-bundle-dicount-month-main .btn-link{color:#007bff;background-color:transparent;display:inline-block;font-weight:400;text-align:center;white-space:nowrap;vertical-align:middle;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;border:1px solid transparent;padding:.375rem .75rem;font-size:1rem;line-height:1.5;border-radius:.25rem}div#ays-quiz-new-mega-bundle-dicount-month-main.ays_quiz_dicount_info{background-image:url("'. AYS_QUIZ_ADMIN_URL .'/images/new-mega-bundle-logo-background.svg");background-position:center right;background-repeat:no-repeat;background-size:cover;background-color:#5551ff;padding:1px 38px 1px 12px}#ays-quiz-new-mega-bundle-dicount-month-main .ays_quiz_dicount_month{display:flex;align-items:center;justify-content:space-between;color:#fff}#ays-quiz-new-mega-bundle-dicount-month-main .ays_quiz_dicount_month img{width:60px}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-sale-banner-link{display:flex;justify-content:center;align-items:center;width:60px}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box{font-size:14px;padding:12px;text-align:center}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-text-box{text-align:left;width:auto;display:flex;justify-content:space-around;align-items:flex-start}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-countdown-box{width:30%;display:flex;justify-content:center;align-items:center}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-button-box{width:20%;display:flex;justify-content:center;align-items:center;flex-direction:column}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box .ays-quiz-dicount-logo-box{display:flex;justify-content:flex-start;align-items:center;gap:20px}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-text-box .ays-quiz-new-mega-bundle-title{color:#fdfdfd;font-size:19px;font-style:normal;font-weight:600;line-height:normal}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-text-box .ays-quiz-new-mega-bundle-title-icon-row{display:inline-block}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-text-box .ays-quiz-new-mega-bundle-desc{display:inline-block;color:#fff;font-size:15px;font-style:normal;font-weight:400;line-height:normal;margin-top:10px}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box strong{font-size:17px;font-weight:700;letter-spacing:.8px}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-color{color:#971821}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-text-decoration{text-decoration:underline}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-buy-now-button-box{display:flex;justify-content:flex-end;align-items:center;width:30%}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box .ays-button,#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box .ays-buy-now-button{align-items:center;font-weight:500}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box .ays-buy-now-button{background:#971821;border-color:#fff;display:flex;justify-content:center;align-items:center;padding:5px 15px;font-size:16px;border-radius:5px}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box .ays-buy-now-button:hover{background:#7d161d;border-color:#971821}#ays-quiz-new-mega-bundle-dicount-month-main #ays-quiz-dismiss-buttons-content{display:flex;justify-content:center}#ays-quiz-new-mega-bundle-dicount-month-main #ays-quiz-dismiss-buttons-content .ays-button{margin:0!important;font-size:13px;color:#fff}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-opacity-box{width:19%}#ays-quiz-new-mega-bundle-dicount-month-main .ays-buy-now-opacity-button{padding:40px 15px;display:flex;justify-content:center;align-items:center;opacity:0}#ays-quiz-maker-countdown-main-container .ays-quiz-maker-countdown-container{margin:0 auto;text-align:center}#ays-quiz-maker-countdown-main-container #ays-quiz-countdown-headline{letter-spacing:.125rem;text-transform:uppercase;font-size:18px;font-weight:400;margin:0;padding:9px 0 4px;line-height:1.3}#ays-quiz-maker-countdown-main-container li,#ays-quiz-maker-countdown-main-container ul{margin:0}#ays-quiz-maker-countdown-main-container li{display:inline-block;font-size:14px;list-style-type:none;padding:14px;text-transform:lowercase}#ays-quiz-maker-countdown-main-container li span{display:flex;justify-content:center;align-items:center;font-size:22px;min-height:40px;min-width:40px;border-radius:4.273px;border:.534px solid #f4f4f4;background:#9896ed;color:#fff}#ays-quiz-maker-countdown-main-container .emoji{display:none;padding:1rem}#ays-quiz-maker-countdown-main-container .emoji span{font-size:30px;padding:0 .5rem}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box li{position:relative}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box li span:after{content:":";color:#fff;position:absolute;top:0;right:-5px;font-size:40px}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box li span#ays-quiz-countdown-seconds:after{content:unset}#ays-quiz-new-mega-bundle-dicount-month-main #ays-button-top-buy-now{display:flex;align-items:center;border-radius:6.409px;background:#f66123;padding:12px 32px;color:#fff;font-size:15px;font-style:normal;line-height:normal !important;margin:0!important}div#ays-quiz-new-mega-bundle-dicount-month-main button.notice-dismiss:before{color:#fff;content:"\f00d";font-family:fontawesome;font-size:22px}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-new-mega-bundle-guaranteeicon{width:30px;margin-right:5px}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-one-time-text{color:#fff;font-size:12px;font-style:normal;font-weight:600;line-height:normal}@media all and (max-width:768px){div#ays-quiz-new-mega-bundle-dicount-month-main.ays_quiz_dicount_info.notice{display:none!important;background-position:bottom right;background-repeat:no-repeat;background-size:cover;border-radius:32px}div#ays-quiz-new-mega-bundle-dicount-month-main{padding-right:0}div#ays-quiz-new-mega-bundle-dicount-month-main .ays_quiz_dicount_month{display:flex;align-items:center;justify-content:space-between;align-content:center;flex-wrap:wrap;flex-direction:column;padding:10px 0}div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box{width:100%!important;text-align:center}#ays-quiz-maker-countdown-main-container #ays-quiz-countdown-headline{font-size:15px;font-weight:600}#ays-quiz-maker-countdown-main-container ul{font-weight:500}div#ays-quiz-maker-countdown-main-container li{padding:10px}div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-new-mega-bundle-mobile-image-display-none{display:none!important}div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-new-mega-bundle-mobile-image-display-block{display:block!important;margin-top:5px}div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-text-box{width:100%!important;text-align:center;flex-direction:column;margin-top:20px;justify-content:center;align-items:center}div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box li span:after{top:unset}div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-countdown-box{width:100%;display:flex;justify-content:center;align-items:center}#ays-quiz-new-mega-bundle-dicount-month-main .ays-button{margin:0 auto!important}#ays-quiz-new-mega-bundle-dicount-month-main #ays-quiz-dismiss-buttons-content .ays-button{padding-left:unset!important}div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-buy-now-button-box{justify-content:center}div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box .ays-buy-now-button{font-size:14px;padding:5px 10px}div#ays-quiz-new-mega-bundle-dicount-month-main .ays-buy-now-opacity-button{display:none}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dismiss-buttons-container-for-form{position:static!important}.comparison .product img{width:70px}.ays-quiz-features-wrap .comparison a.price-buy{padding:8px 5px;font-size:11px}}@media screen and (max-width:1350px) and (min-width:768px){div#ays-quiz-new-mega-bundle-dicount-month-main.ays_quiz_dicount_info.notice{background-position:bottom right;background-repeat:no-repeat;background-size:cover}div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box strong{font-size:15px}#ays-quiz-maker-countdown-main-container li{font-size:11px}div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-opacity-box{display:none}}@media screen and (max-width:1680px) and (min-width:1551px){div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-text-box{width:29%}div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-countdown-box{width:30%}}@media screen and (max-width:1410px){#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-coupon-row{width:150px}}@media screen and (max-width:1550px) and (min-width:1400px){div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-countdown-box{width:35%}}@media screen and (max-width:1400px) and (min-width:1250px){div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-countdown-box{width:35%}div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-text-box{width:40%}}@media screen and (max-width:1274px){#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-text-box .ays-quiz-new-mega-bundle-title{font-size:15px}}@media screen and (max-width:1200px){#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-button-box{margin-bottom:16px}#ays-quiz-maker-countdown-main-container ul{padding-left:0}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-coupon-row{width:120px;font-size:18px}#ays-quiz-new-mega-bundle-dicount-month-main #ays-button-top-buy-now{padding:12px 20px}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box{font-size:12px}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-text-box .ays-quiz-new-mega-bundle-desc{font-size:13px}}@media screen and (max-width:1076px) and (min-width:769px){#ays-quiz-maker-countdown-main-container li{padding:10px}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-coupon-row{width:100px;font-size:16px}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-button-box{margin-bottom:16px}#ays-quiz-new-mega-bundle-dicount-month-main #ays-button-top-buy-now{padding:12px 15px}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box{font-size:11px;padding:12px 0}}@media screen and (max-width:1250px) and (min-width:769px){div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-countdown-box{width:45%}div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-text-box{width:35%}}';
+            div#ays-quiz-new-mega-bundle-dicount-month-main{border:0;background:#fff;border-radius:20px;box-shadow:unset;position:relative;z-index:1;min-height:80px}div#ays-quiz-new-mega-bundle-dicount-month-main.ays_quiz_dicount_info button{display:flex;align-items:center}div#ays-quiz-new-mega-bundle-dicount-month-main div#ays-quiz-dicount-month a.ays-quiz-sale-banner-link:focus{outline:0;box-shadow:0}div#ays-quiz-new-mega-bundle-dicount-month-main .btn-link{color:#007bff;background-color:transparent;display:inline-block;font-weight:400;text-align:center;white-space:nowrap;vertical-align:middle;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;border:1px solid transparent;padding:.375rem .75rem;font-size:1rem;line-height:1.5;border-radius:.25rem}div#ays-quiz-new-mega-bundle-dicount-month-main.ays_quiz_dicount_info{background-image:url("'. AYS_QUIZ_ADMIN_URL .'/images/ays-quiz-banner-background-20.svg");background-position:center right;background-repeat:no-repeat;background-size:cover;background-color:#5551ff;padding:1px 38px 1px 12px}#ays-quiz-new-mega-bundle-dicount-month-main .ays_quiz_dicount_month{display:flex;align-items:center;justify-content:space-between;color:#fff}#ays-quiz-new-mega-bundle-dicount-month-main .ays_quiz_dicount_month img{width:60px}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-sale-banner-link{display:flex;justify-content:center;align-items:center;width:60px}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box{font-size:14px;padding:12px;text-align:center}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-text-box{text-align:left;width:auto;display:flex;justify-content:space-around;align-items:flex-start}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-countdown-box{width:30%;display:flex;justify-content:center;align-items:center}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-button-box{width:20%;display:flex;justify-content:center;align-items:center;flex-direction:column}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box .ays-quiz-dicount-logo-box{display:flex;justify-content:flex-start;align-items:center;gap:20px}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-text-box .ays-quiz-new-mega-bundle-title{color:#fdfdfd;font-size:19px;font-style:normal;font-weight:600;line-height:normal}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-text-box .ays-quiz-new-mega-bundle-title-icon-row{display:inline-block}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-text-box .ays-quiz-new-mega-bundle-desc{display:inline-block;color:#fff;font-size:15px;font-style:normal;font-weight:400;line-height:normal;margin-top:10px}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box strong{font-size:17px;font-weight:700;letter-spacing:.8px}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-color{color:#971821}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-text-decoration{text-decoration:underline}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-buy-now-button-box{display:flex;justify-content:flex-end;align-items:center;width:30%}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box .ays-button,#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box .ays-buy-now-button{align-items:center;font-weight:500}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box .ays-buy-now-button{background:#971821;border-color:#fff;display:flex;justify-content:center;align-items:center;padding:5px 15px;font-size:16px;border-radius:5px}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box .ays-buy-now-button:hover{background:#7d161d;border-color:#971821}#ays-quiz-new-mega-bundle-dicount-month-main #ays-quiz-dismiss-buttons-content{display:flex;justify-content:center}#ays-quiz-new-mega-bundle-dicount-month-main #ays-quiz-dismiss-buttons-content .ays-button{margin:0!important;font-size:13px;color:#fff}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-opacity-box{width:19%}#ays-quiz-new-mega-bundle-dicount-month-main .ays-buy-now-opacity-button{padding:40px 15px;display:flex;justify-content:center;align-items:center;opacity:0}#ays-quiz-maker-countdown-main-container .ays-quiz-maker-countdown-container{margin:0 auto;text-align:center}#ays-quiz-maker-countdown-main-container #ays-quiz-countdown-headline{letter-spacing:.125rem;text-transform:uppercase;font-size:18px;font-weight:400;margin:0;padding:9px 0 4px;line-height:1.3}#ays-quiz-maker-countdown-main-container li,#ays-quiz-maker-countdown-main-container ul{margin:0}#ays-quiz-maker-countdown-main-container li{display:inline-block;font-size:14px;list-style-type:none;padding:14px;text-transform:lowercase}#ays-quiz-maker-countdown-main-container li span{display:flex;justify-content:center;align-items:center;font-size:22px;min-height:40px;min-width:40px;border-radius:4.273px;border:.534px solid #f4f4f4;background:#9896ed;color:#fff}#ays-quiz-maker-countdown-main-container .emoji{display:none;padding:1rem}#ays-quiz-maker-countdown-main-container .emoji span{font-size:30px;padding:0 .5rem}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box li{position:relative}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box li span:after{content:":";color:#fff;position:absolute;top:0;right:-5px;font-size:40px}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box li span#ays-quiz-countdown-seconds:after{content:unset}#ays-quiz-new-mega-bundle-dicount-month-main #ays-button-top-buy-now{display:flex;align-items:center;border-radius:6.409px;background:#f66123;padding:12px 32px;color:#fff;font-size:15px;font-style:normal;line-height:normal !important;margin:0!important}div#ays-quiz-new-mega-bundle-dicount-month-main button.notice-dismiss:before{color:#fff;content:"\f00d";font-family:fontawesome;font-size:22px}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-new-mega-bundle-guaranteeicon{width:30px;margin-right:5px}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-one-time-text{color:#fff;font-size:12px;font-style:normal;font-weight:600;line-height:normal}@media all and (max-width:768px){div#ays-quiz-new-mega-bundle-dicount-month-main.ays_quiz_dicount_info.notice{display:none!important;background-position:bottom right;background-repeat:no-repeat;background-size:cover;border-radius:32px}div#ays-quiz-new-mega-bundle-dicount-month-main{padding-right:0}div#ays-quiz-new-mega-bundle-dicount-month-main .ays_quiz_dicount_month{display:flex;align-items:center;justify-content:space-between;align-content:center;flex-wrap:wrap;flex-direction:column;padding:10px 0}div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box{width:100%!important;text-align:center}#ays-quiz-maker-countdown-main-container #ays-quiz-countdown-headline{font-size:15px;font-weight:600}#ays-quiz-maker-countdown-main-container ul{font-weight:500}div#ays-quiz-maker-countdown-main-container li{padding:10px}div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-new-mega-bundle-mobile-image-display-none{display:none!important}div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-new-mega-bundle-mobile-image-display-block{display:block!important;margin-top:5px}div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-text-box{width:100%!important;text-align:center;flex-direction:column;margin-top:20px;justify-content:center;align-items:center}div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box li span:after{top:unset}div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-countdown-box{width:100%;display:flex;justify-content:center;align-items:center}#ays-quiz-new-mega-bundle-dicount-month-main .ays-button{margin:0 auto!important}#ays-quiz-new-mega-bundle-dicount-month-main #ays-quiz-dismiss-buttons-content .ays-button{padding-left:unset!important}div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-buy-now-button-box{justify-content:center}div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box .ays-buy-now-button{font-size:14px;padding:5px 10px}div#ays-quiz-new-mega-bundle-dicount-month-main .ays-buy-now-opacity-button{display:none}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dismiss-buttons-container-for-form{position:static!important}.comparison .product img{width:70px}.ays-quiz-features-wrap .comparison a.price-buy{padding:8px 5px;font-size:11px}}@media screen and (max-width:1350px) and (min-width:768px){div#ays-quiz-new-mega-bundle-dicount-month-main.ays_quiz_dicount_info.notice{background-position:bottom right;background-repeat:no-repeat;background-size:cover}div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box strong{font-size:15px}#ays-quiz-maker-countdown-main-container li{font-size:11px}div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-opacity-box{display:none}}@media screen and (max-width:1680px) and (min-width:1551px){div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-text-box{width:29%}div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-countdown-box{width:30%}}@media screen and (max-width:1410px){#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-coupon-row{width:150px}}@media screen and (max-width:1550px) and (min-width:1400px){div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-countdown-box{width:35%}}@media screen and (max-width:1400px) and (min-width:1250px){div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-countdown-box{width:35%}div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-text-box{width:40%}}@media screen and (max-width:1274px){#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-text-box .ays-quiz-new-mega-bundle-title{font-size:15px}}@media screen and (max-width:1200px){#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-button-box{margin-bottom:16px}#ays-quiz-maker-countdown-main-container ul{padding-left:0}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-coupon-row{width:120px;font-size:18px}#ays-quiz-new-mega-bundle-dicount-month-main #ays-button-top-buy-now{padding:12px 20px}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box{font-size:12px}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-text-box .ays-quiz-new-mega-bundle-desc{font-size:13px}}@media screen and (max-width:1076px) and (min-width:769px){#ays-quiz-maker-countdown-main-container li{padding:10px}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-coupon-row{width:100px;font-size:16px}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-button-box{margin-bottom:16px}#ays-quiz-new-mega-bundle-dicount-month-main #ays-button-top-buy-now{padding:12px 15px}#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box{font-size:11px;padding:12px 0}}@media screen and (max-width:1250px) and (min-width:769px){div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-countdown-box{width:45%}div#ays-quiz-new-mega-bundle-dicount-month-main .ays-quiz-dicount-wrap-box.ays-quiz-dicount-wrap-text-box{width:35%}}';
+            $content[] = '
+            .ays-quiz-dicount-banner-coupon-box {
+                border: 2px dashed rgba(255, 255, 255, 0.4);
+                padding: 8px 16px;
+                border-radius: 6px;
+                background: rgba(255, 255, 255, 0.1);
+                cursor: pointer;
+                transition: all 0.3s;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                backdrop-filter: blur(10px);
+            }
+
+            .ays-quiz-dicount-banner-coupon-box:hover {
+                background: rgba(255, 255, 255, 0.2);
+                border-color: rgba(255, 255, 255, 0.6);
+                transform: translateY(-1px);
+            }
+
+            .ays-quiz-dicount-banner-coupon-text {
+                font-size: 16px;
+                font-weight: 700;
+                letter-spacing: 1px;
+                color: #fff;
+                font-family: monospace;
+            }
+
+            .ays-quiz-dicount-banner-copy-icon {
+                opacity: 0.8;
+                transition: opacity 0.3s;
+            }
+
+            .ays-quiz-dicount-banner-coupon-box:hover .ays-quiz-dicount-banner-copy-icon {
+                opacity: 1;
+            }
+
+            .ays-quiz-dicount-banner-btn-arrow {
+                display: inline-block;
+                transition: transform 0.3s;
+            }
+
+            .ays-quiz-dicount-banner-buy-now-btn:hover .ays-quiz-dicount-banner-btn-arrow {
+                transform: translateX(4px);
+            }
+
+            /* Notification */
+            .ays-quiz-dicount-banner-copy-notification {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(0, 0, 0, 0.8);
+                color: #fff;
+                padding: 12px 24px;
+                border-radius: 8px;
+                font-size: 14px;
+                z-index: 10000;
+                opacity: 0;
+                transition: opacity 0.3s;
+            }
+
+            .ays-quiz-dicount-banner-copy-notification.show {
+                opacity: 1;
+            }';
             $content[] = '</style>';
             // /* New Mega Bundle Banner Quiz | End */
 
@@ -4377,7 +4504,7 @@ class Quiz_Maker_Admin
         if($ishmar == 0 ){
             $content = array();
 
-            $ays_quiz_cta_button_link = esc_url('https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=black-friday-sale-banner-' . AYS_QUIZ_UTM_VERSION);
+            $ays_quiz_cta_button_link = esc_url('https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=black-friday-sale-banner-' . AYS_QUIZ_UTM_VERSION);
 
             $content[] = '<div id="ays-quiz-dicount-black-friday-month-main" class="notice notice-success is-dismissible ays_quiz_dicount_info">';
                 $content[] = '<div id="ays-quiz-dicount-black-friday-month" class="ays_quiz_dicount_month">';
@@ -4695,7 +4822,7 @@ class Quiz_Maker_Admin
         if($ishmar == 0 ){
             $content = array();
 
-            $quiz_cta_button_link = esc_url('https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=christmas-sale-banner' . AYS_QUIZ_UTM_VERSION);
+            $quiz_cta_button_link = esc_url('https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=christmas-sale-banner' . AYS_QUIZ_UTM_VERSION);
 
             $content[] = '<div id="ays-quiz-christmas-top-bundle-dicount-month-main" class="notice notice-success is-dismissible ays_quiz_dicount_info">';
                 $content[] = '<div id="ays-quiz-dicount-month" class="ays_quiz_dicount_month">';
@@ -4913,7 +5040,7 @@ class Quiz_Maker_Admin
             $remaining_licenses = $total_licenses - $used_licenses;
             $progress_percentage = ($used_licenses / $total_licenses) * 100;
 
-            $ays_quiz_cta_button_link = esc_url('https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=quiz-maker-license-banner-' . AYS_QUIZ_UTM_VERSION);
+            $ays_quiz_cta_button_link = esc_url('https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=quiz-maker-license-banner-' . AYS_QUIZ_UTM_VERSION);
 
             $content[] = '<div id="ays-quiz-progress-banner-main" class="ays-quiz-progress-banner-main ays_quiz_dicount_info ays-quiz-admin-notice notice notice-success is-dismissible" ' . $style_attr . '>';
                 $content[] = '<div class="ays-quiz-progress-banner-content">';
@@ -5252,7 +5379,7 @@ class Quiz_Maker_Admin
                 $style_attr = 'style="display:none;"';
             }
 
-            $ays_quiz_cta_button_link = esc_url('https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=halloween-deal-banner-' . AYS_QUIZ_UTM_VERSION);
+            $ays_quiz_cta_button_link = esc_url('https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=halloween-deal-banner-' . AYS_QUIZ_UTM_VERSION);
 
             $content[] = '
                 <div id="ays-quiz-halloween-banner-2025-main" class="ays-quiz-halloween-banner-2025-main ays_quiz_dicount_info notice notice-success is-dismissible">
@@ -5841,7 +5968,7 @@ class Quiz_Maker_Admin
             </svg>
             ';
 
-            $ays_quiz_cta_button_link = esc_url('https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=christmas-sale-banner-' . AYS_QUIZ_UTM_VERSION);
+            $ays_quiz_cta_button_link = esc_url('https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=christmas-sale-banner-' . AYS_QUIZ_UTM_VERSION);
 
             $content[] = '<div id="ays-quiz-christmas-banner-main" class="notice notice-success is-dismissible ays-quiz-christmas-banner-info ays_quiz_dicount_info">';
                 $content[] = '<div id="ays-quiz-christmas-banner-month" class="ays-quiz-christmas-banner-month">';
@@ -6490,7 +6617,7 @@ class Quiz_Maker_Admin
         <p><strong>' . __( 'For more information:', 'quiz-maker' ) . '</strong></p>' .
         '<p><a href="https://www.youtube.com/@AysProPlugins" target="_blank">' . __( 'YouTube video tutorials' , 'quiz-maker' ) . '</a></p>' .
         '<p><a href="https://quiz-plugin.com/docs/" target="_blank">' . __( 'Documentation', 'quiz-maker' ) . '</a></p>' .
-        '<p><a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=help-tab-'. esc_attr( AYS_QUIZ_UTM_VERSION ) .'" target="_blank">' . __( 'Quiz Maker plugin premium version', 'quiz-maker' ) . '</a></p>' .
+        '<p><a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=help-tab-'. esc_attr( AYS_QUIZ_UTM_VERSION ) .'" target="_blank">' . __( 'Quiz Maker plugin premium version', 'quiz-maker' ) . '</a></p>' .
         '<p><a href="https://quiz-plugin.com/wordpress-quiz-plugin-free-demo" target="_blank">' . __( 'Quiz Maker plugin free demo', 'quiz-maker' ) . '</a></p>';
 
         /*
@@ -7235,7 +7362,7 @@ class Quiz_Maker_Admin
 
                         $content[] = '<div class="ays-quiz-popup-box-header-desc-row">';
                             $content[] = '<div class="ays-quiz-popup-box-header-desc">';
-                                $content[] ='Upgrade now and enjoy a ' . '<a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=result-popup-box-banner'. esc_attr( AYS_QUIZ_UTM_VERSION ) .'" class="ays-quiz-popup-box-header-desc-a" target="blank"><span class="ays-quiz-popup-box-header-desc-span">' . '20%'. '</a></span>' .' discount.';
+                                $content[] ='Upgrade now and enjoy a ' . '<a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=result-popup-box-banner'. esc_attr( AYS_QUIZ_UTM_VERSION ) .'" class="ays-quiz-popup-box-header-desc-a" target="blank"><span class="ays-quiz-popup-box-header-desc-span">' . '20%'. '</a></span>' .' discount.';
                             $content[] = '</div>';
                         $content[] = '</div>';
 
@@ -7274,7 +7401,7 @@ class Quiz_Maker_Admin
 
                     $content[] = '<div class="ays-quiz-popup-box-action">';
                         $content[] = '<div class="ays-quiz-popup-box-action-button-row">';
-                            $content[] = '<a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=result-popup-box-banner-'.esc_attr( AYS_QUIZ_UTM_VERSION ) .'" target="blank" class="ays-quiz-popup-box-action-button">';
+                            $content[] = '<a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=result-popup-box-banner-'.esc_attr( AYS_QUIZ_UTM_VERSION ) .'" target="blank" class="ays-quiz-popup-box-action-button">';
                                 $content[] = __( "Upgrade", 'quiz-maker' );
                             $content[] = '</a>';
                         $content[] = '</div>';

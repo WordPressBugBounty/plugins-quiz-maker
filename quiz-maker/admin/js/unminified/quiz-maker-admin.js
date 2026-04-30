@@ -1749,7 +1749,7 @@
 
                     var pro_features_new_design_html = "";
 
-                    pro_features_new_design_html += '<a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=answer-table-'+ quizLangObj.AYS_QUIZ_UTM_VERSION +'" tabindex="-1" target="_blank" class="ays-quiz-new-upgrade-button-link ays-quiz-new-upgrade-button-without-text-link">';
+                    pro_features_new_design_html += '<a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=answer-table-'+ quizLangObj.AYS_QUIZ_UTM_VERSION +'" tabindex="-1" target="_blank" class="ays-quiz-new-upgrade-button-link ays-quiz-new-upgrade-button-without-text-link">';
                         pro_features_new_design_html += '<div class="ays-quiz-new-upgrade-button-box">';
                             pro_features_new_design_html += '<div>';
                                 pro_features_new_design_html += '<img src="'+ quizLangObj.AYS_QUIZ_ADMIN_URL +'/images/icons/locked_24x24.svg">';
@@ -1957,7 +1957,7 @@
             }
         });
         $(document).find('#open_ays_pro').on('click', function () {
-            window.open('https://ays-pro.com/wordpress/quiz-maker');
+            window.open('https://quiz-plugin.com/pricing/');
         });
         let flags = [];
         $(document).find('input[type="checkbox"].ays-select-single').each(function () {

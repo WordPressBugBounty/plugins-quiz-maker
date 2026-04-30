@@ -606,26 +606,6 @@ class All_Reviews_List_Table extends WP_List_Table{
      *
      * @return string
      */
-    // function column_review( $item ) {
-
-    //     // Run a security check.
-    //     if (empty($this->ays_quiz_nonce) || ! wp_verify_nonce( $this->ays_quiz_nonce, 'ays_quiz_admin_all_reviews_list_table_nonce' ) ) {
-    //         // This nonce is not valid.
-    //         wp_die( esc_html__( 'Nonce verification failed!', 'quiz-maker' ) );
-    //     }
-
-    //     $column_t = (isset( $item['review'] ) && $item['review'] != '') ? stripcslashes( nl2br( trim($item['review']) ) ) : '';
-    //     $t = esc_attr($column_t);
-
-    //     $review_title_length = intval( $this->title_length );
-        
-    //     $restitle = Quiz_Maker_Admin::ays_restriction_string("word", $column_t, $review_title_length);
-
-    //     $title = sprintf( '<span title="%s">%s</span>', $t, $restitle );
-
-    //     return $title;
-    // }
-
     function column_review( $item ) {
 
         if (empty($this->ays_quiz_nonce) || ! wp_verify_nonce( $this->ays_quiz_nonce, 'ays_quiz_admin_all_reviews_list_table_nonce' ) ) {

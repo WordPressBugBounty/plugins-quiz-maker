@@ -1,10 +1,11 @@
 === Quiz Maker by AYS ===
 Contributors: ays-pro
-Donate link: https://ays-pro.com/wordpress/quiz-maker
+Donate link: https://quiz-plugin.com/pricing/
 Tags:  exam, quiz, quizzes, education, quiz maker
 Requires at least: 4.0
 Tested up to: 7.0
-Stable tag: 6.7.1.31
+Stable tag: 6.7.1.32
+Requires PHP: 7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -15,14 +16,14 @@ QUIZ MAKER plugin allows you to make an unlimited number of Quizzes, Exams and T
 
 ### Wordpress Quiz Maker plugin
 
-* [Quiz Maker Homepage](https://ays-pro.com/wordpress/quiz-maker)
-* [Quiz Maker Free Demo](https://quiz-plugin.com/wordpress-quiz-plugin-free-demo)
-* [Quiz Maker Pro Demo](https://quiz-plugin.com/wordpress-quiz-plugin-pro-demo)
+* [Quiz Maker Pro Version](https://quiz-plugin.com/pricing/?utm_source=wporg&utm_medium=free&utm_campaign=description)
+* [Quiz Maker Free Demo](https://quiz-plugin.com/wordpress-quiz-plugin-free-demo/)
+* [Quiz Maker Pro Demo](https://quiz-plugin.com/wordpress-quiz-plugin-pro-demo/)
 * [Quiz Maker Documentation](https://quiz-plugin.com/docs/)
 
 https://www.youtube.com/watch?v=oKPOdbZahK0
 
-[WordPress Quiz Plugin](https://ays-pro.com/wordpress/quiz-maker) allows you to create advanced quizzes and exams easily and quickly. Just follow a few simple steps to create online quizzes. What you need to do first is to make questions and then include them in your quiz. You are free to choose the types of questions. There are 7 types of questions available to use:
+[WordPress Quiz Plugin](https://quiz-plugin.com/pricing/?utm_source=wporg&utm_medium=free&utm_campaign=wordpress-quiz-plugin) allows you to create advanced quizzes and exams easily and quickly. Just follow a few simple steps to create online quizzes. What you need to do first is to make questions and then include them in your quiz. You are free to choose the types of questions. There are 7 types of questions available to use:
 
 **Radio** - a multiple-choice question(MCQ) with one right answer.
 **Checkbox** - a multiple-choice question(MCQ) with more than one right answer.
@@ -102,7 +103,7 @@ Here are presented some of those settings:
 * Show answers and explanation - Write an explanation for each question separately and display them when the user answers it.
 * Redirect users - Redirect your quiz takers to another page after quiz completion.
 * Pass score - Specify the passing score of your exam and show different result messages to passed and failed users.
-* Intervals [Quiz PRO](https://ays-pro.com/wordpress/quiz-maker)  - show different messages according to the user's score. This functionality allows you to create a **Personality quiz**. 
+* Intervals [Quiz PRO](https://quiz-plugin.com/pricing/?utm_source=wporg&utm_medium=free&utm_campaign=intervals)  - show different messages according to the user's score. This functionality allows you to create a **Personality quiz**. 
 
 
 = Quiz with timer =
@@ -114,7 +115,7 @@ You can set a timer for your quiz and when the timer ends, the quiz will be subm
 
 After successful completion of the quiz, you can track from your dashboard your visitors' results, duration, when they start, and when they end the quiz.
 We have created a beautiful form and you can choose fields of the form from the dashboard and assign this form to your quiz ( After or Before quiz ) and when the user finishes the quiz you can collect data and have beautiful **statistics** on your dashboard. This data allows you to create your **email and SMS marketing**, which will attract much more users from your specific target.
-There are 3 static form fields in the free version` name, email and phone. For more custom fields you need to upgrade to the [Quiz PRO](https://ays-pro.com/wordpress/quiz-maker) version.
+There are 3 static form fields in the free version` name, email and phone. For more custom fields you need to upgrade to the [Quiz PRO](https://quiz-plugin.com/pricing/?utm_source=wporg&utm_medium=free&utm_campaign=quiz-results-data-form) version.
 Also, results' statistics with **graphs and export functionality** are available only in the Pro version.
 
 
@@ -155,7 +156,7 @@ You can choose one of them and then customize it with our 50+ style options (col
 
 You can restrict your users by enabling and selecting user roles from the dashboard and only selected users with given roles can pass your quiz. If you don't want to restrict your quiz by role, we have created another opportunity for you, just enable **"Only for logged in users"** option and write some message to non-logged-in users, in this way you can enlarge your community. If your quiz is interesting non-registered users will register on your website for passing the quiz and you will have ultra **traffic** on your website. Please note that by selecting restriction by user roles, the quiz will automatically select only for logged-in users option.
 
-[PRO](https://ays-pro.com/wordpress/quiz-maker) | [DEMO](https://quiz-plugin.com/wordpress-quiz-plugin-pro-demo/) | [DOCUMENTATION](https://quiz-plugin.com/docs/) | [ALL FEATURES](https://quiz-plugin.com/features/)
+[PRO](https://quiz-plugin.com/pricing/?utm_source=wporg&utm_medium=free&utm_campaign=quiz-user-restriction) | [DEMO](https://quiz-plugin.com/wordpress-quiz-plugin-pro-demo/) | [DOCUMENTATION](https://quiz-plugin.com/docs/) | [ALL FEATURES](https://quiz-plugin.com/features/)
 
 = Quiz social sharing =
 
@@ -203,7 +204,7 @@ The privacy policy can be found at this URL https://ipinfo.io/privacy-policy
 *   Supports RTL languages (right-to-left)
 
 
-**[Quiz PRO](https://ays-pro.com/wordpress/quiz-maker) Features**
+**[Quiz PRO](https://quiz-plugin.com/pricing/?utm_source=wporg&utm_medium=free&utm_campaign=quiz-pro-features-list) Features**
 
 *   Includes ALL Free version Features and
 *   Export and import questions
@@ -240,7 +241,7 @@ The privacy policy can be found at this URL https://ipinfo.io/privacy-policy
 *   ChatGPT Question Builder 
 *   More on the way ...
 
-**Connect with your Favorite Tools and Plugins** ([Pro feature](https://ays-pro.com/wordpress/quiz-maker))
+**Connect with your Favorite Tools and Plugins** ([Pro feature](https://quiz-plugin.com/pricing/?utm_source=wporg&utm_medium=free&utm_campaign=favorite-tools-and-plugins))
 
 PayPal integration (paid quiz), Stripe integration (paid quiz), Mailchimp integration, Campaign Monitor integration, Zapier integration, Slack integration, Recaptcha integration, ActiveCampaign integration, Mad Mimi integration, ConvertKit integration, GetResponse integration, Sendinblue integration, MailerLite integration, Mailpoet integration, WooCommerce integration, Easy Digital Downloads integration, GamiPress integration, MyCred integration.
 
@@ -386,7 +387,7 @@ Of course, you can! This WordPress questionnaire plugin is fully translatable. Y
 
 = Why should I buy the PRO package? =
 
-There are plenty of reasons! Firstly, you can create **advanced level quizzes and exams** with the dozens of available functions of the Premium versions. But most importantly, the Premium versions provide **Support** and **Update**. Check out the [changelog of the quiz plugin](https://ays-pro.com/changelog-for-quiz-maker-pro) and see the frequency of updates and added options on each update. It is important to mention, that all suggestions are welcomed. Hence, feel free to share your valuable feedback with us anytime.
+There are plenty of reasons! Firstly, you can create **advanced level quizzes and exams** with the dozens of available functions of the Premium versions. But most importantly, the Premium versions provide **Support** and **Update**. Check out the [changelog of the quiz plugin](https://quiz-plugin.com/changelog-for-quiz-maker/) and see the frequency of updates and added options on each update. It is important to mention, that all suggestions are welcomed. Hence, feel free to share your valuable feedback with us anytime.
 
 = Is there any documentation or user guide? =
 
@@ -398,7 +399,7 @@ With just one hit! All you need to click on the **Upgrade** button instead of th
 
 = Can I create a personality quiz(Pro)? =
 
-Sure, you can! Firstly, please note that you need to have a [Premium version of the plugin](https://ays-pro.com/wordpress/quiz-maker) to create a personality test on your WordPress website. You need to assign keywords to your answers in the first place such as A, B, C, D, and etc. Then, you need to type in keyword-based result messages such as *A - Absolutely perfect! Keep it up,  B - Nice shot! Keep it going and so on.* At the end of the test, each user will see the most fitting result text based on the majority of the chosen answers. For more information go through [How to create a Personality Test in WordPress - Step-by-step Guide](https://ays-pro.com/blog/how-to-create-a-personality-test-in-wordpress) in our blog.
+Sure, you can! Firstly, please note that you need to have a [Premium version of the plugin](https://quiz-plugin.com/pricing/?utm_source=wporg&utm_medium=free&utm_campaign=personality-quiz-faq-question) to create a personality test on your WordPress website. You need to assign keywords to your answers in the first place such as A, B, C, D, and etc. Then, you need to type in keyword-based result messages such as *A - Absolutely perfect! Keep it up,  B - Nice shot! Keep it going and so on.* At the end of the test, each user will see the most fitting result text based on the majority of the chosen answers. For more information go through [How to create a Personality Test in WordPress - Step-by-step Guide](https://ays-pro.com/blog/how-to-create-a-personality-test-in-wordpress) in our blog.
 
 = Can I send certificates after the quiz completed(Pro)? =
 
@@ -419,6 +420,12 @@ Do you wonder how to create a Math Quiz with hard mathematical equations in Word
 For example, to add a squared symbol, you need to write down the following sign ^2. (do not forget to insert $ character to mark the beginning and ending).
 
 == Changelog ==
+
+= 6.7.1.32 ( Apr 30, 2026 ) =
+* Added: Mobile letter spacing option for wrong answers in the Quick Quiz popup
+* Improved: Admin dashboard link handling and navigation
+* Improved: Code quality on the admin dashboard
+* Updated: POT file
 
 = 6.7.1.31 ( Apr 27, 2026 ) =
 * Improved: CSS issue with the Elegant Light/Dark quiz theme on the front end

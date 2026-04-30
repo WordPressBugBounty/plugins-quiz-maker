@@ -15,11 +15,11 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
                 <div>
                     <p>
                         <?php echo esc_html__("This feature is available only in", 'quiz-maker'); ?>
-                        <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=orders-menu-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" title="<?php echo esc_attr(__("Developer version!!!", 'quiz-maker') ); ?>"><?php echo esc_html__("Developer version!!!", 'quiz-maker'); ?></a>
+                        <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=orders-menu-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" title="<?php echo esc_attr(__("Developer version!!!", 'quiz-maker') ); ?>"><?php echo esc_html__("Developer version!!!", 'quiz-maker'); ?></a>
                     </p>
                     <p class="ays-quiz-pro-features-text">
                         <?php echo esc_html__("This feature is available only in", 'quiz-maker'); ?>
-                        <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=orders-menu-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" title="<?php echo esc_attr(__("Developer version!!!", 'quiz-maker') ); ?>"><?php echo esc_html__("Developer version!!!", 'quiz-maker'); ?></a>
+                        <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=orders-menu-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" title="<?php echo esc_attr(__("Developer version!!!", 'quiz-maker') ); ?>"><?php echo esc_html__("Developer version!!!", 'quiz-maker'); ?></a>
                     </p>
                 </div>
             </div>

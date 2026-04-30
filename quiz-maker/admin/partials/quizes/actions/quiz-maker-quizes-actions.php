@@ -623,26 +623,26 @@ $quiz_message_vars_limitation_count_of_takers = array(
 );
 
 $quiz_message_vars_password_for_passing_quiz = array(
-    "%%quiz_name%%"                                 => __("Quiz Title", 'quiz-maker'),
-    "%%user_first_name%%"                           => __("User's First Name", 'quiz-maker'),
-    "%%user_last_name%%"                            => __("User's Last Name", 'quiz-maker'),
-    "%%questions_count%%"                           => __("Questions count", 'quiz-maker'),
-    "%%user_nickname%%"                             => __("User's Nick Name", 'quiz-maker'),
-    "%%user_display_name%%"                         => __("User's Display Name", 'quiz-maker'),
-    "%%user_wordpress_email%%"                      => __("User's WordPress profile email", 'quiz-maker'),
-    "%%user_wordpress_roles%%"                      => __("User's WordPress Roles", 'quiz-maker'),
-    "%%quiz_creation_date%%"                        => __("Quiz creation date", 'quiz-maker'),
-    "%%current_quiz_author%%"                       => __("Quiz Author", 'quiz-maker'),
-    "%%current_user_ip%%"                           => __("User's IP Address", 'quiz-maker'),
-    "%%current_quiz_author_email%%"                 => __("Quiz Author Email", 'quiz-maker'),
-    "%%current_quiz_author_nickname%%"              => __("Quiz Author Nickname", 'quiz-maker'),
-    "%%current_quiz_author_website_url%%"           => __("Quiz Author Website", 'quiz-maker'),
-    "%%admin_email%%"                               => __("Admin Email", 'quiz-maker'),
-    "%%home_page_url%%"                             => __("Home page URL", 'quiz-maker'),
-    "%%quiz_id%%"                                   => __("Quiz ID", 'quiz-maker'),
-    "%%user_id%%"                                   => __("User ID", 'quiz-maker'),
-    "%%site_title%%"                                => __("Site title", 'quiz-maker'),
-    "%%site_description%%"                          => __("Site description", 'quiz-maker'),
+    "%%quiz_name%%"                                     => __("Quiz Title", 'quiz-maker'),
+    "%%user_first_name%%"                               => __("User's First Name", 'quiz-maker'),
+    "%%user_last_name%%"                                => __("User's Last Name", 'quiz-maker'),
+    "%%questions_count%%"                               => __("Questions count", 'quiz-maker'),
+    "%%user_nickname%%"                                 => __("User's Nick Name", 'quiz-maker'),
+    "%%user_display_name%%"                             => __("User's Display Name", 'quiz-maker'),
+    "%%user_wordpress_email%%"                          => __("User's WordPress profile email", 'quiz-maker'),
+    "%%user_wordpress_roles%%"                          => __("User's WordPress Roles", 'quiz-maker'),
+    "%%quiz_creation_date%%"                            => __("Quiz creation date", 'quiz-maker'),
+    "%%current_quiz_author%%"                           => __("Quiz Author", 'quiz-maker'),
+    "%%current_user_ip%%"                               => __("User's IP Address", 'quiz-maker'),
+    "%%current_quiz_author_email%%"                     => __("Quiz Author Email", 'quiz-maker'),
+    "%%current_quiz_author_nickname%%"                  => __("Quiz Author Nickname", 'quiz-maker'),
+    "%%current_quiz_author_website_url%%"               => __("Quiz Author Website", 'quiz-maker'),
+    "%%admin_email%%"                                   => __("Admin Email", 'quiz-maker'),
+    "%%home_page_url%%"                                 => __("Home page URL", 'quiz-maker'),
+    "%%quiz_id%%"                                       => __("Quiz ID", 'quiz-maker'),
+    "%%user_id%%"                                       => __("User ID", 'quiz-maker'),
+    "%%site_title%%"                                    => __("Site title", 'quiz-maker'),
+    "%%site_description%%"                              => __("Site description", 'quiz-maker'),
 );
 
 $quiz_message_vars_rating_form_title = array(
@@ -2096,7 +2096,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                                 </label>
                                             </div>
                                         </div>
-                                        <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=style-tab-theme-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                        <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=style-tab-theme-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                             <div class="ays-quiz-new-upgrade-button-box">
                                                 <div>
                                                     <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' );?>">
@@ -3381,7 +3381,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                                         </select>
                                                     </div>
                                                 </div> <!-- Answers image caption style -->
-                                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=style-tab-answer-image-options-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                                <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=style-tab-answer-image-options-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                                     <div class="ays-quiz-new-upgrade-button-box">
                                                         <div>
                                                             <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -5187,7 +5187,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                                 </label>
                                                 <div class="only_pro custom_pro_features ays-pro-features-v2-main-box ays-pro-features-v2-main-box-themes ays-pro-features-v2-main-box-small" style="background: unset;">
                                                     <div class="ays-pro-features-v2-small-buttons-box" style="right: -20px; top: -20px;">
-                                                        <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=quiz-timer-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-pro-features-v2-upgrade-button">
+                                                        <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=quiz-timer-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-pro-features-v2-upgrade-button">
                                                             <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(AYS_QUIZ_ADMIN_URL); ?>/images/icons/locked_24x24.svg');" data-img-src="<?php echo esc_attr(AYS_QUIZ_ADMIN_URL); ?>/images/icons/locked_24x24.svg"></div>
                                                         </a>
                                                     </div>
@@ -5469,7 +5469,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                                 <button type="button" class="button ays_refresh_qbank_cats_button"><?php echo esc_html__( "Refresh Categories", 'quiz-maker' ); ?></button>
                                             </p>
                                         </div>
-                                        <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=question-bank-by-category-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                        <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=question-bank-by-category-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                             <div class="ays-quiz-new-upgrade-button-box">
                                                 <div>
                                                     <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -5636,7 +5636,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                                 </div>
                                             </div>
                                         </div>
-                                        <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=show-only-wrong-answer-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                        <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=show-only-wrong-answer-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                             <div class="ays-quiz-new-upgrade-button-box">
                                                 <div>
                                                     <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -5884,7 +5884,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                         <input type="checkbox" class="ays-enable-timer1" id="ays_enable_copy_protection" value="on" tabindex="-1"/>
                                     </div>
                                 </div>
-                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=enable-copy-protection-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=enable-copy-protection-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
                                             <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -6036,7 +6036,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                         </select>
                                     </div>
                                 </div>
-                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=payment-type-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=payment-type-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
                                             <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -6091,7 +6091,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                         </div>
                                     </div>
                                 </div>
-                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=question-count-per-page-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=question-count-per-page-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
                                             <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -6124,7 +6124,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                                 <a href="https://quiz-plugin.com/english-exam-with-certificate/" target="_blank"><?php echo esc_html__("See Demo", 'quiz-maker'); ?></a>
                                             </div>
                                         </div>
-                                        <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-navigation-bar-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
+                                        <div class="pro-features-popup-button" data-link="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-navigation-bar-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
                                             <?php echo esc_html__("Pricing", 'quiz-maker'); ?>
                                         </div>
                                     </div>
@@ -6157,7 +6157,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                         </div>
                                     </div>
                                 </div> <!-- Enable navigation bar -->
-                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-navigation-bar-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-navigation-bar-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
                                             <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -6195,7 +6195,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                                value="on"/>
                                     </div>
                                 </div>
-                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=make-the-questions-required-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=make-the-questions-required-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
                                             <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -6242,7 +6242,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                         </div>
                                     </div>
                                 </div> <!-- Questions text to speech -->
-                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=text-to-speech-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=text-to-speech-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
                                             <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -6272,7 +6272,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                         <input type="checkbox" value="on" />
                                     </div>
                                 </div>
-                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=show-question-max-points-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=show-question-max-points-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
                                             <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -6528,7 +6528,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                         <input type="checkbox" value="on" tabindex="-1"/>
                                     </div>
                                 </div> <!-- Enable autostart -->
-                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=enable-autostart-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=enable-autostart-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
                                             <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -7095,7 +7095,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                         <input type="text" class="ays-text-input" tabindex="-1" value="<?php echo esc_attr($embed_code_html); ?>"/>
                                     </div>
                                 </div>
-                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=embed-code-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=embed-code-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
                                             <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -7125,7 +7125,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                         <input type="checkbox" class="ays-enable-timer1" />
                                     </div>
                                 </div> <!-- Allow exporting quizzes -->
-                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=export-quiz-pdf-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=export-quiz-pdf-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
                                             <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -7196,7 +7196,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                                         <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg' ); ?>" class="ays-quiz-new-watch-video-button-hover">
                                                     </div>
                                                 </div>
-                                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=calculate-the-score-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-pro-features-v2-upgrade-button">
+                                                <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=calculate-the-score-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-pro-features-v2-upgrade-button">
                                                     <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(AYS_QUIZ_ADMIN_URL); ?>/images/icons/locked_24x24.svg');" data-img-src="<?php echo esc_attr(AYS_QUIZ_ADMIN_URL); ?>/images/icons/locked_24x24.svg"></div>
                                                 </a>
                                             </div>
@@ -7219,7 +7219,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                                             <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo esc_html__("See Documentation", 'quiz-maker'); ?></a>
                                                         </div>
                                                     </div>
-                                                    <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-calculate-score-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
+                                                    <div class="pro-features-popup-button" data-link="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-calculate-score-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
                                                         <?php echo esc_html__("Pricing", 'quiz-maker'); ?>
                                                     </div>
                                                 </div>
@@ -7284,7 +7284,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                                 </label>
                                             </div>
                                         </div>
-                                        <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pass-score-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                        <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pass-score-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                             <div class="ays-quiz-new-upgrade-button-box">
                                                 <div>
                                                     <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -7447,7 +7447,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                                 ) ); 
                                             ?>
                                         </span>
-                                        <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=redirect-url-hook-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                        <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=redirect-url-hook-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                             <div class="ays-quiz-new-upgrade-button-box">
                                                 <div>
                                                     <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -8245,7 +8245,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                                 <a href="https://quiz-plugin.com/personality-quiz-for-wp/" target="_blank"><?php echo esc_html__("See Demo", 'quiz-maker'); ?></a>
                                             </div>
                                         </div>
-                                        <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-intervals-table-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
+                                        <div class="pro-features-popup-button" data-link="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-intervals-table-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
                                             <?php echo esc_html__("Pricing", 'quiz-maker'); ?>
                                         </div>
                                     </div>
@@ -8344,7 +8344,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                     </table>
                                 </div> <!-- Intervals -->
 
-                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-intervals-table-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-intervals-table-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
                                             <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -8370,7 +8370,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                         </div>
                                     </div>
                                     <div class="ays-quiz-center-big-upgrade-button-box">
-                                        <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-intervals-table-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                        <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-intervals-table-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                             <div class="ays-quiz-center-new-big-upgrade-button">
                                                 <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>" class="ays-quiz-new-button-img-hide">
                                                 <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg' ); ?>" class="ays-quiz-new-upgrade-button-hover">  
@@ -8440,7 +8440,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                                 <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo esc_html__("See Documentation", 'quiz-maker'); ?></a>
                                             </div>
                                         </div>
-                                        <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-top-keywords-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
+                                        <div class="pro-features-popup-button" data-link="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-top-keywords-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
                                             <?php echo esc_html__("Pricing", 'quiz-maker'); ?>
                                         </div>
                                     </div>
@@ -8461,7 +8461,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                         </div>
                                     </div>
                                 </div> <!-- Show all questions result in finish page -->
-                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-top-keywords-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-top-keywords-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
                                             <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -8505,7 +8505,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                                 <a href="https://quiz-plugin.com/coupon-quiz/" target="_blank"><?php echo esc_html__("See Demo", 'quiz-maker'); ?></a>
                                             </div>
                                         </div>
-                                        <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-quiz-coupon-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
+                                        <div class="pro-features-popup-button" data-link="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-quiz-coupon-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
                                             <?php echo esc_html__("Pricing", 'quiz-maker'); ?>
                                         </div>
                                     </div>
@@ -8523,7 +8523,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                         <input type="checkbox" class="ays-enable-timer1" value="on" tabindex="-1" />
                                     </div>
                                 </div> <!-- Show all questions result in finish page -->
-                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-quiz-coupon-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-quiz-coupon-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
                                             <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -8635,7 +8635,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                                         <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo esc_html__("Learn More", 'quiz-maker'); ?></a>
                                                     </div>
                                                 </div>
-                                                <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-attempts-count-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
+                                                <div class="pro-features-popup-button" data-link="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-attempts-count-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
                                                     <?php echo esc_html__("Pricing", 'quiz-maker'); ?>
                                                 </div>
                                             </div>
@@ -8685,7 +8685,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                             </div>
                                         </div>
 
-                                        <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-attempts-count-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                        <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-attempts-count-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                             <div class="ays-quiz-new-upgrade-button-box">
                                                 <div>
                                                     <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -8789,7 +8789,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                                             <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo esc_html__("See Documentation", 'quiz-maker'); ?></a>
                                                         </div>
                                                     </div>
-                                                    <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-extra-security-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
+                                                    <div class="pro-features-popup-button" data-link="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-extra-security-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
                                                         <?php echo esc_html__("Pricing", 'quiz-maker'); ?>
                                                     </div>
                                                 </div>
@@ -8824,7 +8824,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                                 </div>
                                             </div>
 
-                                            <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-extra-security-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                            <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-extra-security-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                                 <div class="ays-quiz-new-upgrade-button-box">
                                                     <div>
                                                         <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -9067,7 +9067,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                                 </label>
                                             </div>
                                         </div>
-                                        <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=generated-passwords-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                        <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=generated-passwords-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                             <div class="ays-quiz-new-upgrade-button-box">
                                                 <div>
                                                     <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -9169,7 +9169,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                                 <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo esc_html__("See Documentation", 'quiz-maker'); ?></a>
                                             </div>
                                         </div>
-                                        <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-only-selected-users-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
+                                        <div class="pro-features-popup-button" data-link="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-only-selected-users-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
                                             <?php echo esc_html__("Pricing", 'quiz-maker'); ?>
                                         </div>
                                     </div>
@@ -9220,7 +9220,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                     </div>
                                 </div> <!-- Access Only selected users -->
 
-                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-only-selected-users-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-only-selected-users-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
                                             <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -9245,7 +9245,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                         </div>
                                     </div>
                                     <div class="ays-quiz-center-big-upgrade-button-box">
-                                        <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-only-selected-users-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                        <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-only-selected-users-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                             <div class="ays-quiz-center-new-big-upgrade-button">
                                                 <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>" class="ays-quiz-new-button-img-hide">
                                                 <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg' ); ?>" class="ays-quiz-new-upgrade-button-hover">  
@@ -9434,7 +9434,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                             <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo esc_html__("See Documentation", 'quiz-maker'); ?></a>
                                         </div>
                                     </div>
-                                    <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-custom-field-option-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
+                                    <div class="pro-features-popup-button" data-link="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-custom-field-option-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
                                         <?php echo esc_html__("Pricing", 'quiz-maker'); ?>
                                     </div>
                                 </div>
@@ -9453,7 +9453,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                     <a href="?page=<?php echo esc_attr($this->plugin_name); ?>-quiz-attributes" target="_blank" ><?php echo esc_html__("here", 'quiz-maker'); ?></a>
                                 </blockquote>
                             </div>
-                            <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-custom-field-option-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                            <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-custom-field-option-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                 <div class="ays-quiz-new-upgrade-button-box">
                                     <div>
                                         <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -9524,7 +9524,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                                 <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo esc_html__("See Documentation", 'quiz-maker'); ?></a>
                                             </div>
                                         </div>
-                                        <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-send-mail-to-user-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
+                                        <div class="pro-features-popup-button" data-link="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-send-mail-to-user-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
                                             <?php echo esc_html__("Pricing", 'quiz-maker'); ?>
                                         </div>
                                     </div>
@@ -9592,7 +9592,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                         </div>
                                     </div>
                                 </div>
-                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-send-mail-to-user-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-send-mail-to-user-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
                                             <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -9617,7 +9617,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                         </div>
                                     </div>
                                     <div class="ays-quiz-center-big-upgrade-button-box">
-                                        <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-send-mail-to-user-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                        <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-send-mail-to-user-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                             <div class="ays-quiz-center-new-big-upgrade-button">
                                                 <img loading="lazy" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>" class="ays-quiz-new-button-img-hide">
                                                 <img loading="lazy" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'); ?>" class="ays-quiz-new-upgrade-button-hover">  
@@ -9655,7 +9655,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                                 <a href="https://quiz-plugin.com/english-exam-with-certificate/" target="_blank"><?php echo esc_html__("PRO Demo", 'quiz-maker'); ?></a>
                                             </div>
                                         </div>
-                                        <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-send-certificate-to-user-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
+                                        <div class="pro-features-popup-button" data-link="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-send-certificate-to-user-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
                                             <?php echo esc_html__("Pricing", 'quiz-maker'); ?>
                                         </div>
                                     </div>
@@ -9731,7 +9731,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                         </div>
                                     </div>
                                 </div>
-                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-send-certificate-to-user-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-send-certificate-to-user-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
                                             <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -9756,7 +9756,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                         </div>
                                     </div>
                                     <div class="ays-quiz-center-big-upgrade-button-box">
-                                        <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-send-certificate-to-user-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                        <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-send-certificate-to-user-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                             <div class="ays-quiz-center-new-big-upgrade-button">
                                                 <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>" class="ays-quiz-new-button-img-hide">
                                                 <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg' ); ?>" class="ays-quiz-new-upgrade-button-hover">  
@@ -9802,7 +9802,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                                 <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo esc_html__("See Documentation", 'quiz-maker'); ?></a>
                                             </div>
                                         </div>
-                                        <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-send-mail-to-admin-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
+                                        <div class="pro-features-popup-button" data-link="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-send-mail-to-admin-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
                                             <?php echo esc_html__("Pricing", 'quiz-maker'); ?>
                                         </div>
                                     </div>
@@ -9962,7 +9962,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                         </div>
                                     </div>
                                 </div>
-                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-send-mail-to-admin-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-send-mail-to-admin-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
                                             <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -9987,7 +9987,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                         </div>
                                     </div>
                                     <div class="ays-quiz-center-big-upgrade-button-box">
-                                        <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-send-mail-to-admin-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                        <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-send-mail-to-admin-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                             <div class="ays-quiz-center-new-big-upgrade-button">
                                                 <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>" class="ays-quiz-new-button-img-hide">
                                                 <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg' ); ?>" class="ays-quiz-new-upgrade-button-hover">  
@@ -10073,7 +10073,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                             <span class="ays_option_description"><?php echo esc_html__( 'Send contacts an opt-in confirmation email when their email address added to the list.', 'quiz-maker' ); ?></span>
                                         </div>
                                     </div>
-                                    <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=quiz-edit-page-mailchimp-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=quiz-edit-page-mailchimp-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
                                                 <img loading="lazy" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
@@ -10160,7 +10160,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                             <textarea type="text" class="ays-textarea ays-disable-setting" disabled></textarea>
                                         </div>
                                     </div>
-                                    <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=quiz-edit-page-paypal-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=quiz-edit-page-paypal-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
                                                 <img loading="lazy" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
@@ -10237,7 +10237,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                         <textarea type="text" class="ays-textarea ays-disable-setting" disabled></textarea>
                                     </div>
                                 </div>
-                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=quiz-edit-page-stripe-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=quiz-edit-page-stripe-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
                                             <img loading="lazy" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
@@ -10266,7 +10266,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                         <input type="checkbox" class="ays-enable-timer1"/>
                                     </div>
                                 </div>
-                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=quiz-edit-page-recaptcha-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=quiz-edit-page-recaptcha-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
                                             <img loading="lazy" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
@@ -10311,7 +10311,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                             </select>
                                         </div>
                                     </div>
-                                    <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=quiz-edit-page-campaign-monitor-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=quiz-edit-page-campaign-monitor-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
                                                 <img loading="lazy" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
@@ -10358,7 +10358,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                         <input type="checkbox"/>
                                         <input type="checkbox"/>
                                     </div>
-                                    <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=quiz-edit-page-zapier-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=quiz-edit-page-zapier-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
                                                 <img loading="lazy" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
@@ -10419,7 +10419,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                             </select>
                                         </div>
                                     </div>
-                                    <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=quiz-edit-page-activecampaign-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=quiz-edit-page-activecampaign-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
                                                 <img loading="lazy" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
@@ -10465,7 +10465,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                             </select>
                                         </div>
                                     </div>
-                                    <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=quiz-edit-page-slack-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=quiz-edit-page-slack-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
                                                 <img loading="lazy" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
@@ -10499,7 +10499,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                             <input type="checkbox" class="ays-enable-timer1" id="ays_enable_google" value="on" />
                                         </div>
                                     </div>
-                                    <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=quiz-edit-page-google-sheets-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=quiz-edit-page-google-sheets-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
                                                 <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
@@ -10541,7 +10541,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                             </select>
                                         </div>
                                     </div>
-                                    <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=quiz-edit-page-mad-mimi-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=quiz-edit-page-mad-mimi-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
                                                 <img loading="lazy" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
@@ -10583,7 +10583,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                             </select>
                                         </div>
                                     </div>
-                                    <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=quiz-edit-page-convertkit-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=quiz-edit-page-convertkit-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
                                                 <img loading="lazy" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg');?>">
@@ -10624,7 +10624,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                             </select>
                                         </div>
                                     </div>
-                                    <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=quiz-edit-page-getresponse-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=quiz-edit-page-getresponse-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
                                                 <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -10656,11 +10656,11 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                         </div>
                         <p><?php echo esc_html__( "Warm up your website for the winter colds with the best quiz plugin on WP.", 'quiz-maker' ); ?></p>
                         <div class="ays-quiz-general-bundle-sale-text ays-quiz-general-bundle-color">
-                            <div><a href="https://ays-pro.com/wordpress/quiz-maker" class="ays-quiz-general-bundle-link-color" target="_blank"><?php echo esc_html__( "Discount 20% OFF", 'quiz-maker' ); ?></a></div>
+                            <div><a href="https://quiz-plugin.com/pricing/" class="ays-quiz-general-bundle-link-color" target="_blank"><?php echo esc_html__( "Discount 20% OFF", 'quiz-maker' ); ?></a></div>
                         </div>
                     </div>
                     <div class="ays-quiz-general-bundle-row">
-                        <a href="https://ays-pro.com/wordpress/quiz-maker" class="ays-quiz-general-bundle-button" target="_blank">Get Now!</a>
+                        <a href="https://quiz-plugin.com/pricing/" class="ays-quiz-general-bundle-button" target="_blank">Get Now!</a>
                     </div>
                 </div>
             </div> --> <!-- Grab your GIFT banner -->
@@ -10694,13 +10694,13 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                 $pro_content[] = '</div>';
                             $pro_content[] = '</div>';
 
-                            $pro_content[] = '<div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker">';
+                            $pro_content[] = '<div class="pro-features-popup-button" data-link="https://quiz-plugin.com/pricing/">';
                                 $pro_content[] = __("Pricing", 'quiz-maker');
                             $pro_content[] = '</div>';
                         $pro_content[] = '</div>';
                     $pro_content[] = '</div>';
                     $pro_content[] = '<div>';
-                        $pro_content[] = '<a href="https://ays-pro.com/wordpress/quiz-maker" class="" target="_blank" title="'.__("This property available only in pro version",'quiz-maker') .'">';
+                        $pro_content[] = '<a href="https://quiz-plugin.com/pricing/" class="" target="_blank" title="'.__("This property available only in pro version",'quiz-maker') .'">';
                             $pro_content[] = '<button type="button" class="button button-primary ays_default_btn disabled-button">'.__( "Save as default" , 'quiz-maker' );
                             $pro_content[] = '</button>';
                         $pro_content[] = '</a>';
@@ -10752,7 +10752,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                         // echo $buttons_html;
                         $buttons_html = '';
                         // $buttons_html .= '<div>';
-                            // $buttons_html .= '<a href="https://ays-pro.com/wordpress/quiz-maker" class="" target="_blank" title="'.__("This property available only in pro version",'quiz-maker') .'">';
+                            // $buttons_html .= '<a href="https://quiz-plugin.com/pricing/" class="" target="_blank" title="'.__("This property available only in pro version",'quiz-maker') .'">';
                             //     $buttons_html .= '<button type="button" class="button button-primary ays_default_btn disabled-button">'.__( "Save as default" , 'quiz-maker' );
                             //     $buttons_html .= '</button>';
                             // $buttons_html .= '</a>';
@@ -10840,7 +10840,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                     </div>
                                 </div>
                                 <!-- Add Question Tag Filter End  -->
-                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=insert-question-popup-filters-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=insert-question-popup-filters-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
                                             <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">

@@ -747,7 +747,7 @@
                                             <input type="number" id="ays_keyword_default_max_value" class="ays-text-input">
                                         </div>
                                     </div>
-                                    <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=keyword-default-count-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=keyword-default-count-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
                                                 <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -1147,7 +1147,7 @@
                                         </label>
                                     </div>
                                 </div>
-                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=client-local-server-time-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=client-local-server-time-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
                                             <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -1183,7 +1183,7 @@
                                             <input type="checkbox" class="ays-checkbox-input" value="on" />
                                         </div>
                                     </div>
-                                    <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=general-settings-not-finished-results-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=general-settings-not-finished-results-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
                                                 <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -1238,7 +1238,7 @@
                                             </blockquote>
                                         </div>
                                     </div>
-                                    <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=custom-login-form-link-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=custom-login-form-link-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
                                                 <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -1296,7 +1296,7 @@
                                         <br>
                                         <?php echo esc_html__( "If you want to give a full control to the given user role, please add the role in both fields.", 'quiz-maker' ); ?>
                                     </blockquote>
-                                    <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=general-settings-user-role-permission-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=general-settings-user-role-permission-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
                                                 <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -1429,7 +1429,7 @@
                                         <?php echo esc_html__( "The quiz author's name", 'quiz-maker'); ?>
                                     </span>
                                 </p>
-                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=report-email-section-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=report-email-section-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
                                             <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -2106,7 +2106,7 @@
                                                     <a href="https://quiz-plugin.com/individual-leaderboard" target="_blank"><?php echo esc_attr__("See Demo", 'quiz-maker'); ?></a>
                                                 </div>
                                             </div>
-                                            <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-individual-leaderboard-shortcode-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
+                                            <div class="pro-features-popup-button" data-link="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-individual-leaderboard-shortcode-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
                                                 <?php echo esc_html__("Pricing", 'quiz-maker'); ?>
                                             </div>
                                         </div>
@@ -2289,7 +2289,7 @@
                                            </div>
                                         </div>
                                     </div>
-                                    <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-individual-leaderboard-shortcode-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-individual-leaderboard-shortcode-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
                                                 <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -2314,7 +2314,7 @@
                                             </div>
                                         </div>
                                         <div class="ays-quiz-center-big-upgrade-button-box">
-                                            <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-individual-leaderboard-shortcode-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                            <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-individual-leaderboard-shortcode-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                                 <div class="ays-quiz-center-new-big-upgrade-button">
                                                     <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>" class="ays-quiz-new-button-img-hide">
                                                     <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg' ); ?>" class="ays-quiz-new-upgrade-button-hover">  
@@ -2366,7 +2366,7 @@
                                                     <a href="https://quiz-plugin.com/global-leaderboard-2/" target="_blank"><?php echo esc_html__("See Demo", 'quiz-maker'); ?></a>
                                                 </div>
                                             </div>
-                                            <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-global-leaderboard-shortcode-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
+                                            <div class="pro-features-popup-button" data-link="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-global-leaderboard-shortcode-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
                                                 <?php echo esc_html__("Pricing", 'quiz-maker'); ?>
                                             </div>
                                         </div>
@@ -2529,7 +2529,7 @@
                                            </div>
                                         </div>
                                     </div>
-                                    <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-global-leaderboard-shortcode-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-global-leaderboard-shortcode-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
                                                 <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -2554,7 +2554,7 @@
                                             </div>
                                         </div>
                                         <div class="ays-quiz-center-big-upgrade-button-box">
-                                            <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-global-leaderboard-shortcode-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                            <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-global-leaderboard-shortcode-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                                 <div class="ays-quiz-center-new-big-upgrade-button">
                                                     <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>" class="ays-quiz-new-button-img-hide">
                                                     <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg' ); ?>" class="ays-quiz-new-upgrade-button-hover">  
@@ -2600,7 +2600,7 @@
                                                 <a href="https://quiz-plugin.com/leaderboard-by-quiz-category" target="_blank"><?php echo esc_html__("See Demo", 'quiz-maker'); ?></a>
                                             </div>
                                         </div>
-                                        <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-quiz-category-leaderboard-shortcode-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
+                                        <div class="pro-features-popup-button" data-link="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-quiz-category-leaderboard-shortcode-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
                                             <?php echo esc_html__("Pricing", 'quiz-maker'); ?>
                                         </div>
                                     </div>
@@ -2774,7 +2774,7 @@
                                        </div>
                                     </div>
                                 </div>
-                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-quiz-category-leaderboard-shortcode-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-quiz-category-leaderboard-shortcode-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
                                             <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -2799,7 +2799,7 @@
                                         </div>
                                     </div>
                                     <div class="ays-quiz-center-big-upgrade-button-box">
-                                        <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-quiz-category-leaderboard-shortcode-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                        <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-quiz-category-leaderboard-shortcode-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                             <div class="ays-quiz-center-new-big-upgrade-button">
                                                 <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>" class="ays-quiz-new-button-img-hide">
                                                 <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg' ); ?>" class="ays-quiz-new-upgrade-button-hover">  
@@ -2861,7 +2861,7 @@
                                         <input type="text" id="ays_user_category_leaderboard_position" class="ays-text-input" onclick="this.setSelectionRange(0, this.value.length)" readonly="" value='[ays_user_category_leaderboard_position id="Your_Quiz_Category_ID"]'>
                                     </div>
                                 </div>
-                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=leaderboard-position-shortcode-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=leaderboard-position-shortcode-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
                                             <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -2909,7 +2909,7 @@
                                                     <a href="https://quiz-plugin.com/user-page-2" target="_blank"><?php echo esc_html__("See Demo", 'quiz-maker'); ?></a>
                                                 </div>
                                             </div>
-                                            <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-user-page-shortcode-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
+                                            <div class="pro-features-popup-button" data-link="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-user-page-shortcode-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
                                                 <?php echo esc_html__("Pricing", 'quiz-maker'); ?>
                                             </div>
                                         </div>
@@ -2994,7 +2994,7 @@
                                            </div>
                                         </div>
                                     </div>
-                                    <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-user-page-shortcode-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-user-page-shortcode-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
                                                 <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -3184,7 +3184,7 @@
                                         </ul>
 
                                     </blockquote>
-                                    <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=general-settings-flash-cards-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=general-settings-flash-cards-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
                                                 <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -3212,7 +3212,7 @@
                                             </a>
                                         </div>
                                         <div class="ays-quiz-center-big-upgrade-button-box">
-                                            <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=general-settings-flash-cards-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                            <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=general-settings-flash-cards-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                                 <div class="ays-quiz-center-new-big-upgrade-button">
                                                     <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>" class="ays-quiz-new-button-img-hide">
                                                     <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg' ); ?>" class="ays-quiz-new-upgrade-button-hover">  
@@ -3262,7 +3262,7 @@
                                                     <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo esc_html__("See Documentation", 'quiz-maker'); ?></a>
                                                 </div>
                                             </div>
-                                            <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-sum-quiz-points-shortcode-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
+                                            <div class="pro-features-popup-button" data-link="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-sum-quiz-points-shortcode-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
                                                 <?php echo esc_html__("Pricing", 'quiz-maker'); ?>
                                             </div>
                                         </div>
@@ -3345,7 +3345,7 @@
                                             </li>
                                         </ul>
                                     </blockquote>
-                                    <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-sum-quiz-points-shortcode-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-sum-quiz-points-shortcode-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
                                                 <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -3391,7 +3391,7 @@
                                                     <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo esc_html__("See Documentation", 'quiz-maker'); ?></a>
                                                 </div>
                                             </div>
-                                            <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-quiz-orders-shortcode-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
+                                            <div class="pro-features-popup-button" data-link="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-quiz-orders-shortcode-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
                                                 <?php echo esc_html__("Pricing", 'quiz-maker'); ?>
                                             </div>
                                         </div>
@@ -3453,7 +3453,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-quiz-orders-shortcode-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-quiz-orders-shortcode-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box ays-quiz-new-upgrade-button-box-mobile-style">
                                             <div>
                                                 <img src="<?php echo esc_attr( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -3514,7 +3514,7 @@
                                             </li>
                                         </ul>
                                     </blockquote>
-                                    <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=quiz-multilanguage-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=quiz-multilanguage-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
                                                 <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -3554,7 +3554,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=quiz-intervals-chart-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=quiz-intervals-chart-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
                                                 <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -4259,7 +4259,7 @@
                                         <?php echo esc_html__( "It will display the Question Category title and the description. Moreover, it displays in which percentage you match the particular Question Category Keyword. The message variable is designed to create Myers Personality Test. For instance, %%personality_result_by_question_ids_3,5,16,2%%.", 'quiz-maker'); ?>
                                     </span>
                                 </p>
-                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=message-variable-tab-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=message-variable-tab-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
                                             <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -4270,7 +4270,7 @@
                                 </a>
                                 <div class="ays-quiz-center-big-main-button-box ays-quiz-new-big-button-flex">
                                     <div class="ays-quiz-center-big-upgrade-button-box">
-                                        <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=message-variable-tab-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                        <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=message-variable-tab-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                             <div class="ays-quiz-center-new-big-upgrade-button">
                                                 <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>" class="ays-quiz-new-button-img-hide">
                                                 <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg' ); ?>" class="ays-quiz-new-upgrade-button-hover">  
@@ -4658,7 +4658,7 @@
                                     <input type="text" class="ays-text-input ays-text-input-short">
                                 </div>
                             </div>
-                            <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=email-terms-texts-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                            <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=email-terms-texts-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                 <div class="ays-quiz-new-upgrade-button-box">
                                     <div>
                                         <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -5426,7 +5426,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=individual-quiz-result-export-settings-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=individual-quiz-result-export-settings-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
                                             <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -5515,7 +5515,7 @@
                                         <?php echo esc_html__('Reset to Default', 'quiz-maker');?>
                                     </button>
                                 </div>
-                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=result-page-layout-ordering-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=result-page-layout-ordering-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                     <div class="ays-quiz-new-upgrade-button-box">
                                         <div>
                                             <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
@@ -5619,7 +5619,7 @@
                                             <?php echo esc_html__('Reset to Default', 'quiz-maker');?>
                                         </button>
                                     </div> 
-                                    <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=button-ordering-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=button-ordering-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                                         <div class="ays-quiz-new-upgrade-button-box">
                                             <div>
                                                 <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">

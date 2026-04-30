@@ -8,7 +8,7 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
  * Date: 7/30/18
  * Time: 12:08 PM
  */
-// $url = "https://ays-pro.com/wordpress/quiz-maker";
+// $url = "https://quiz-plugin.com/pricing/";
 // wp_safe_redirect( $url );
 // exit;
 ?>
@@ -65,7 +65,7 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
                             <!-- <div class="price-now"><span style="color: red; font-size: 12px;">Black Friday</span> -->
                             </div>
                             <div class="ays-quiz-pracing-table-td-flex">
-                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pricing-table-business-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" class="price-buy"><?php echo esc_html__('Buy now','quiz-maker')?><span class="hide-mobile"></span></a>
+                                <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pricing-table-business-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" class="price-buy"><?php echo esc_html__('Buy now','quiz-maker')?><span class="hide-mobile"></span></a>
                                 <span><?php echo esc_html__('(One-time payment)', 'quiz-maker'); ?><span>
                             </div>
                         </th>
@@ -77,7 +77,7 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
                             <!-- <div class="price-now"><span style="color: red; font-size: 12px;">Black Friday</span>
                             </div> -->
                             <div class="ays-quiz-pracing-table-td-flex">
-                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pricing-table-developer-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" class="price-buy"><?php echo esc_html__('Buy now','quiz-maker')?><span class="hide-mobile"></span></a>
+                                <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pricing-table-developer-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" class="price-buy"><?php echo esc_html__('Buy now','quiz-maker')?><span class="hide-mobile"></span></a>
                                 <span><?php echo esc_html__('(One-time payment)', 'quiz-maker'); ?><span>
                             </div>
                         </th>
@@ -89,7 +89,7 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
                             <!-- <div class="price-now"><span style="color: red; font-size: 12px;">Black Friday</span>
                             </div> -->
                             <div class="ays-quiz-pracing-table-td-flex">
-                                <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pricing-table-agency-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" class="price-buy"><?php echo esc_html__('Buy now','quiz-maker')?><span class="hide-mobile"></span></a>
+                                <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pricing-table-agency-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" class="price-buy"><?php echo esc_html__('Buy now','quiz-maker')?><span class="hide-mobile"></span></a>
                                 <span><?php echo esc_html__('(One-time payment)', 'quiz-maker'); ?><span>
                             </div>
                         </th>
@@ -748,19 +748,19 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
                     <td></td>
                     <td>
                         <div class="ays-quiz-pracing-table-td-flex">
-                            <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pricing-table-business-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" class="price-buy"><?php echo esc_html__('Buy now','quiz-maker')?><span class="hide-mobile"></span></a>
+                            <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pricing-table-business-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" class="price-buy"><?php echo esc_html__('Buy now','quiz-maker')?><span class="hide-mobile"></span></a>
                             <span><?php echo esc_html__('(One-time payment)', 'quiz-maker'); ?><span>
                         </div>
                     </td>
                     <td>
                         <div class="ays-quiz-pracing-table-td-flex">
-                            <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pricing-table-developer-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" class="price-buy"><?php echo esc_html__('Buy now','quiz-maker')?><span class="hide-mobile"></span></a>
+                            <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pricing-table-developer-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" class="price-buy"><?php echo esc_html__('Buy now','quiz-maker')?><span class="hide-mobile"></span></a>
                             <span><?php echo esc_html__('(One-time payment)', 'quiz-maker'); ?><span>
                         </div>
                     </td>
                     <td>
                         <div class="ays-quiz-pracing-table-td-flex">
-                            <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pricing-table-agency-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" class="price-buy"><?php echo esc_html__('Buy now','quiz-maker')?><span class="hide-mobile"></span></a>
+                            <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pricing-table-agency-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" class="price-buy"><?php echo esc_html__('Buy now','quiz-maker')?><span class="hide-mobile"></span></a>
                             <span><?php echo esc_html__('(One-time payment)', 'quiz-maker'); ?><span>
                         </div>
                     </td>

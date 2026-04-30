@@ -59,13 +59,13 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
                             <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo esc_html__("See Documentation", 'quiz-maker'); ?></a>
                         </div>
                     </div>
-                    <div class="pro-features-popup-button" data-link="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=custom-field-list-table-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
+                    <div class="pro-features-popup-button" data-link="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=custom-field-list-table-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
                         <?php echo esc_html__("Pricing", 'quiz-maker'); ?>
                     </div>
                 </div>
             </div>
             <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/attributes_screen.png'); ?>" alt="Statistics" style="width:100%;" >
-            <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=custom-field-list-table-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank">
+            <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=custom-field-list-table-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank">
                 <div class="ays-quiz-new-upgrade-button-box">
                     <div>
                         <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
@@ -90,7 +90,7 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
                     </div>
                 </div>
                 <div class="ays-quiz-center-big-upgrade-button-box">
-                    <a href="https://ays-pro.com/wordpress/quiz-maker?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=custom-field-list-table-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                    <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=custom-field-list-table-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                         <div class="ays-quiz-center-new-big-upgrade-button">
                             <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>" class="ays-quiz-new-button-img-hide">
                             <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg' ); ?>" class="ays-quiz-new-upgrade-button-hover">  
