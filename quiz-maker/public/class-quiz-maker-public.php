@@ -711,6 +711,7 @@ class Quiz_Maker_Public
 
         $question_report_submitted_text  = (isset($settings_static_texts['question_report_submitted_text']) && $settings_static_texts['question_report_submitted_text'] != '') ? stripslashes( esc_attr( $settings_static_texts['question_report_submitted_text'] ) ) : 'Report has been submitted successfully';
         $empty_report_text  = (isset($settings_static_texts['empty_report_text']) && $settings_static_texts['empty_report_text'] != '') ? stripslashes( esc_attr( $settings_static_texts['empty_report_text'] ) ) : 'You cannot submit an empty report. Please add some details.';
+        $question_report_icon_text  = (isset($settings_static_texts['question_report_icon_text']) && $settings_static_texts['question_report_icon_text'] != '') ? stripslashes( esc_attr( $settings_static_texts['question_report_icon_text'] ) ) : 'Report Question';
 
         if ($wrong_shortcode_text === 'Wrong shortcode initialized') {
             $wrong_shortcode_text = __('Wrong shortcode initialized', 'quiz-maker');
@@ -760,6 +761,10 @@ class Quiz_Maker_Public
             $empty_report_text = __('You cannot submit an empty report. Please add some details.', 'quiz-maker');
         }
 
+        if ($question_report_icon_text === 'Report Question') {
+            $question_report_icon_text = __('Report Question', 'quiz-maker');
+        }
+
         $texts = array(
             'wrongShortcode'                => $wrong_shortcode_text,
             'enterPassword'                 => $enter_password_text,
@@ -773,6 +778,7 @@ class Quiz_Maker_Public
             'whatsWrongReportQuestionText'  => $whats_wrong_report_question_text,
             'questionReportSubmittedText'   => $question_report_submitted_text,
             'emptyReportText'               => $empty_report_text,
+            'questionReportIconText'        => $question_report_icon_text,
         );
 
         return $texts;
@@ -5447,7 +5453,7 @@ class Quiz_Maker_Public
 
                 if (!empty($options['questionsReporting']) && $options['questionsReporting']) {
                     $questions_reporting = ' <div class="ays_question_report">
-                                                <span title="' . esc_html__("Report Question", 'quiz-maker') . '">
+                                                <span title="' . esc_html($this->default_texts['questionReportIconText']) . '">
                                                 <svg class="ays-quiz-open-report-window '. $class_for_keyboard .'" '. $attributes_for_keyboard .' fill="#000000" width="18px" height="18px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3.25 4a.25.25 0 00-.25.25v12.5c0 .138.112.25.25.25h2.5a.75.75 0 01.75.75v3.19l3.427-3.427A1.75 1.75 0 0111.164 17h9.586a.25.25 0 00.25-.25V4.25a.25.25 0 00-.25-.25H3.25zm-1.75.25c0-.966.784-1.75 1.75-1.75h17.5c.966 0 1.75.784 1.75 1.75v12.5a1.75 1.75 0 01-1.75 1.75h-9.586a.25.25 0 00-.177.073l-3.5 3.5A1.457 1.457 0 015 21.043V18.5H3.25a1.75 1.75 0 01-1.75-1.75V4.25zM12 6a.75.75 0 01.75.75v4a.75.75 0 01-1.5 0v-4A.75.75 0 0112 6zm0 9a1 1 0 100-2 1 1 0 000 2z"/></svg>
                                                 </span>
                                             </div>';                
