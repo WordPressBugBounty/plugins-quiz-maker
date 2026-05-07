@@ -1525,6 +1525,7 @@ class Quiz_Maker_Admin
         $quick_quiz_wrong_answer_mobile_text_transform          = "none";
         $quick_quiz_wrong_answers_mobile_text_decoration        = "none";
         $quick_quiz_wrong_answers_mobile_letter_spacing         = 0;
+        $quick_quiz_wrong_answers_mobile_font_weight            = "normal";
 
         if($quiz_enable_options == 'on'){
             $quick_quiz_enable_randomize_questions = (isset( $_REQUEST['ays_quick_quiz_enable_randomize_questions'] ) && $_REQUEST['ays_quick_quiz_enable_randomize_questions'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_randomize_questions'] ) ) : "off";
@@ -1903,6 +1904,9 @@ class Quiz_Maker_Admin
 
             // Letter spacing | Wrong answer | Mobile
             $quick_quiz_wrong_answers_mobile_letter_spacing = (isset($_REQUEST['ays_quick_quiz_wrong_answers_mobile_letter_spacing']) && $_REQUEST['ays_quick_quiz_wrong_answers_mobile_letter_spacing'] != '') ? absint ( stripslashes( $_REQUEST['ays_quick_quiz_wrong_answers_mobile_letter_spacing'] ) ) : 0;
+
+            // Letter spacing | Wrong weight
+            $quick_quiz_wrong_answers_mobile_font_weight = (isset( $_REQUEST['ays_quick_quiz_wrong_answers_mobile_font_weight'] ) && $_REQUEST['ays_quick_quiz_wrong_answers_mobile_font_weight'] != "") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_wrong_answers_mobile_font_weight'] ) ) : "normal";
             
         }
         
@@ -2214,6 +2218,7 @@ class Quiz_Maker_Admin
             'quiz_wrong_answer_mobile_text_transform'           => $quick_quiz_wrong_answer_mobile_text_transform,
             'quiz_wrong_answers_mobile_text_decoration'         => $quick_quiz_wrong_answers_mobile_text_decoration,
             'quiz_wrong_answers_mobile_letter_spacing'          => $quick_quiz_wrong_answers_mobile_letter_spacing,
+            'quiz_wrong_answers_mobile_font_weight'             => $quick_quiz_wrong_answers_mobile_font_weight,
         );
 
 

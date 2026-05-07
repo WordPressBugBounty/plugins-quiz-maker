@@ -4,7 +4,7 @@ Donate link: https://quiz-plugin.com/pricing/
 Tags:  exam, quiz, quizzes, education, quiz maker
 Requires at least: 4.0
 Tested up to: 7.0
-Stable tag: 6.7.1.33
+Stable tag: 6.7.1.34
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -23,7 +23,9 @@ QUIZ MAKER plugin allows you to make an unlimited number of Quizzes, Exams and T
 
 https://www.youtube.com/watch?v=oKPOdbZahK0
 
-[WordPress Quiz Plugin](https://quiz-plugin.com/pricing/?utm_source=wporg&utm_medium=free&utm_campaign=wordpress-quiz-plugin) allows you to create advanced quizzes and exams easily and quickly. Just follow a few simple steps to create online quizzes. What you need to do first is to make questions and then include them in your quiz. You are free to choose the types of questions. There are 7 types of questions available to use:
+[Quiz Maker](https://quiz-plugin.com/pricing/?utm_source=wporg&utm_medium=free&utm_campaign=wordpress-quiz-plugin) is a powerful WordPress quiz plugin that helps you create interactive quizzes, online exams, personality tests, trivia quizzes, knowledge tests, IQ quizzes, true-or-false quizzes, yes-or-no quizzes, BuzzFeed-style quizzes, and more. Create questions, choose question types, customize the design, and publish engaging quizzes on your website in just a few minutes.
+
+There are 7+ types of questions available to use:
 
 **Radio** - a multiple-choice question(MCQ) with one right answer.
 **Checkbox** - a multiple-choice question(MCQ) with more than one right answer.
@@ -44,11 +46,11 @@ This WordPress quiz plugin allows you to create various types of quizzes, includ
 
 **Quiz Demos (Free)**
 
-* [Cartoon Quiz (Classic Light Theme)](https://quiz-plugin.com/cartoon-quiz)
-* [Movie Quiz (Rect Dark Theme)](https://quiz-plugin.com/movie-quiz)
-* [Geography Quiz (Rect Light Theme)](https://quiz-plugin.com/geography-quiz)
-* [Audio Quiz (Elegant Light Theme)](https://quiz-plugin.com/audio-quiz)
-* [Video Quiz (Classic Dark Theme)](https://quiz-plugin.com/video-quiz)
+* [Trivia Quiz](https://quiz-plugin.com/trivia-quiz-2/)
+* [Quiz with Timer](https://quiz-plugin.com/timer-quiz/)
+* [Password Protected Quiz](https://quiz-plugin.com/password-protected-quiz)
+* [Audio Quiz](https://quiz-plugin.com/audio-quiz)
+* [Video Quiz](https://quiz-plugin.com/video-quiz)
 * [Math Quiz](https://quiz-plugin.com/math-quiz)
 * [One Page Quiz](https://quiz-plugin.com/single-page-quizzes/)
 
@@ -61,7 +63,7 @@ This WordPress quiz plugin allows you to create various types of quizzes, includ
 * [Paid Quiz (PayPal)](https://quiz-plugin.com/paid-quiz-demo)
 * [Quiz with Navigation bar](https://quiz-plugin.com/quiz-with-navigation)
 * [Multi-page Quiz](https://quiz-plugin.com/multipage-quiz)
-* [Password Protected Quiz](https://quiz-plugin.com/password-protected-quiz)
+* [IQ Test](https://quiz-plugin.com/iq-test/)
 * [Leaderboards](https://quiz-plugin.com/leaderboard)
 * [Flashcard](https://quiz-plugin.com/quiz-with-flashcards)
 * [Custom Pagination Quiz](https://quiz-plugin.com/custom-pagination-quiz-demo/)
@@ -420,6 +422,9 @@ Do you wonder how to create a Math Quiz with hard mathematical equations in Word
 For example, to add a squared symbol, you need to write down the following sign ^2. (do not forget to insert $ character to mark the beginning and ending).
 
 == Changelog ==
+
+= 6.7.1.34 ( May 07, 2026 ) =
+* Added: Mobile Font weight option for wrong answers in the Quick Quiz popup
 
 = 6.7.1.33 ( May 05, 2026 ) =
 * Added: Default text customization option for the "Question Report icon text"
