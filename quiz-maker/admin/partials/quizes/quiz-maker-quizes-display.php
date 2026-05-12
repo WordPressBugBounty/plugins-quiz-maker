@@ -195,8 +195,8 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
             <h4><?php echo esc_html__( "Create quiz with Quiz Maker plugin in One Minute", 'quiz-maker' ); ?></h4>
         </div>
         <div class="ays-quiz-create-survey-youtube-video">
-            <div class="ays-quiz-youtube-placeholder" data-video-id="AUHZrVcBrMU">
-                <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL .'/images/youtube/create-quiz-on-wordpress.webp'); ?>" loading="lazy" width="560" height="315">
+            <div class="ays-quiz-youtube-placeholder" data-video-id="8404fKMuxVw">
+                <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL .'/images/youtube/create-quiz-on-wordpress-in-one-minute.webp'); ?>" loading="lazy" width="560" height="315">
             </div>
         </div>
         <div class="ays_quiz_small_hint_text_for_message_variables" style="text-align: center;">
@@ -210,7 +210,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
     <div class="ays-quiz-create-survey-video-box ays-quiz-create-survey-video-box-only-link" style="margin: auto;">
         <div class="ays-quiz-create-survey-title">
             <?php echo wp_kses_post($youtube_icon_svg); ?>
-            <a href="https://www.youtube.com/watch?v=AUHZrVcBrMU" target="_blank" title="YouTube video player"><?php echo esc_html__("How to create a quiz in one minute?", 'quiz-maker'); ?></a>
+            <a href="https://www.youtube.com/watch?v=8404fKMuxVw" target="_blank" title="YouTube video player"><?php echo esc_html__("How to create a quiz in one minute?", 'quiz-maker'); ?></a>
         </div>
     </div>
     <?php endif; ?>

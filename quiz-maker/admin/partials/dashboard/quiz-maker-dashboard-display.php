@@ -91,8 +91,8 @@ $new_questions_page_url = sprintf('?page=%s&action=%s', 'quiz-maker-questions', 
                 <div class="quiz-maker-video-container">
                     <div class="quiz-maker-video-wrapper">
                         <div class="quiz-maker-create-course-youtube-video">
-                            <div class="ays-quiz-youtube-placeholder quiz-maker-youtube-placeholder" data-video-id="AUHZrVcBrMU">
-                                <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL .'/images/youtube/create-quiz-on-wordpress-480.webp'); ?>" width="480" height="265">
+                            <div class="ays-quiz-youtube-placeholder quiz-maker-youtube-placeholder" data-video-id="8404fKMuxVw">
+                                <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL .'/images/youtube/create-quiz-on-wordpress-in-one-minute.webp'); ?>" width="480" height="265">
                             </div>
                         </div>
                     </div>
@@ -177,7 +177,7 @@ $new_questions_page_url = sprintf('?page=%s&action=%s', 'quiz-maker-questions', 
                             </div>
                         </div>
                     </a>
-                    <a href="https://youtu.be/AUHZrVcBrMU" target="_blank" class="quiz-maker-video-card">
+                    <a href="https://youtu.be/8404fKMuxVw" target="_blank" class="quiz-maker-video-card">
                         <div class="quiz-maker-video-card-content">
                             <div class="quiz-maker-video-card-icon">
                                 <svg class="quiz-maker-play-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">

@@ -3194,7 +3194,7 @@ label.ays_quiz_loader {
 
 div.checkbox_ays.checkbox_ays_active,
 label.ays_quiz_loader.ays_quiz_loader_active {
-    font-weight: 600;
+    /*font-weight: 600;*/
     border-color: #ababab;
 }
 
