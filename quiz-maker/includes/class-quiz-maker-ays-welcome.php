@@ -192,4 +192,4 @@ class Quiz_Maker_Ays_Welcome {
         ) );
     }
 }
-new Quiz_Maker_Ays_Welcome();
+// new Quiz_Maker_Ays_Welcome();

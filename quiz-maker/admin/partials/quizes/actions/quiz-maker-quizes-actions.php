@@ -769,7 +769,7 @@ $quiz_open_quizzes_list_icon_svg_html = '
 $tab_docs = array(
     'tab1' => array(
         'link' => 'https://quiz-plugin.com/docs/how-to-create-a-quiz/',
-        'text' => __('How to Configure General Settings?', 'quiz-maker'),
+        'text' => __('How to Create a Quiz?', 'quiz-maker'),
     ),
     'tab2' => array(
         'link' => 'https://quiz-plugin.com/docs/styles-settings/',
@@ -842,6 +842,10 @@ $rate_form_title = (isset($options['rate_form_title'])) ? $options['rate_form_ti
 $quiz_loader = (isset($options['quiz_loader']) && $options['quiz_loader'] != '') ? esc_attr( stripslashes($options['quiz_loader'])) : 'default';
 
 $main_quiz_url = (isset($quiz['quiz_url']) && esc_url($quiz['quiz_url']) != '') ? esc_url($quiz['quiz_url']) : '';
+$quiz_custom_post_id = (isset($quiz['custom_post_id']) && absint($quiz['custom_post_id']) > 0) ? absint($quiz['custom_post_id']) : 0;
+$quiz_custom_post_permalink = ($quiz_custom_post_id > 0) ? get_permalink($quiz_custom_post_id) : '';
+$quiz_preview_url = !empty($quiz_custom_post_permalink) ? add_query_arg('preview', 'true', $quiz_custom_post_permalink) : '';
+$quiz_shortcode = (!empty($id)) ? "[ays_quiz id='" . absint($id) . "']" : '';
 
 $quiz_create_date = (isset($options['create_date']) && $options['create_date'] != '') ? esc_attr( stripslashes($options['create_date'])) : "0000-00-00 00:00:00";
 if(isset($options['author']) && $options['author'] != 'null'){
@@ -1610,21 +1614,19 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
 <style id="ays_live_custom_css"></style>
 <div class="wrap ays-quiz-dashboard-main-wrap">
     <div class="container-fluid">
-        <?php if(1 == 0): ?>
-        <div class="ays-quiz-heading-box ays-quiz-heading-box-margin-top">
+        <div id="ays-quiz-tab-doc-link" class="ays-quiz-heading-box" style="margin-bottom: 40px;">
             <div class="ays-quiz-wordpress-user-manual-box">
                 <a href="https://www.youtube.com/watch?v=gKjzOsn_yDo" target="_blank" style="text-decoration: none;font-size: 13px;">
                     <span><img loading="lazy" src='<?php echo esc_url(AYS_QUIZ_ADMIN_URL); ?>/images/icons/youtube-video-icon.svg' ></span>
                     <span style="margin-left: 3px; text-decoration: underline;"><?php echo esc_html__('Getting started', "quiz-maker"); ?></span>
                 </a>
-                <a href="https://quiz-plugin.com/docs/" target="_blank">
+                <a class="ays-quiz-doc-link" href="<?php echo isset($tab_docs[$ays_quiz_tab]['link']) ? esc_url($tab_docs[$ays_quiz_tab]['link']) : 'https://quiz-plugin.com/docs/how-to-create-a-quiz/'; ?>" target="_blank">
                     <i class="ays_fa ays_fa_file_text" ></i> 
-                    <span style="margin-left: 3px;text-decoration: underline;"><?php echo esc_html__("View Documentation", "quiz-maker"); ?></span>
+                    <span style="margin-left: 3px;text-decoration: underline;"><?php echo isset($tab_docs[$ays_quiz_tab]['text']) ? esc_html($tab_docs[$ays_quiz_tab]['text']) : esc_html__('How to Create a Quiz?', 'quiz-maker'); ?></span>
                 </a>
             </div>
         </div>
-        <?php endif; ?>
-        <h1 class="wp-heading-inline">
+        <h1 class="wp-heading-inline" style="margin-top: 0;margin-bottom: 10px;">
             <?php
                 echo esc_html($heading);
             ?>
@@ -1634,6 +1636,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
         <?php if($question_max_id <= 3): ?>
         <div class="ays-quiz-admin-notice notice notice-success is-dismissible">
             <p style="font-size:14px;">
+                <span>⚠️</span>
                 <strong>
                     <?php echo esc_html__( "If you haven't created questions yet, you need to do it first.", 'quiz-maker' ); ?> 
                 </strong>
@@ -1664,15 +1667,9 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                     </p>
                     <?php if(isset($id) && count($get_all_quizzes) > 1):?>
                     <div class="ays-quiz-open-quizzes-list">
-                        <svg width="22" height="23" viewBox="0 0 22 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <mask id="mask0_2411_1023" style="mask-type: alpha;" maskUnits="userSpaceOnUse" x="0" y="0" width="22" height="23">
-                                <rect y="0.5" width="22" height="22" fill="#D9D9D9" />
-                            </mask>
-                            <g mask="url(#mask0_2411_1023)">
-                                <path
-                                    d="M8.25 17.9167V16.0834H19.25V17.9167H8.25ZM8.25 12.4167V10.5834H19.25V12.4167H8.25ZM8.25 6.91669V5.08335H19.25V6.91669H8.25ZM4.58333 18.8334C4.07917 18.8334 3.64757 18.6538 3.28854 18.2948C2.92951 17.9358 2.75 17.5042 2.75 17C2.75 16.4959 2.92951 16.0643 3.28854 15.7052C3.64757 15.3462 4.07917 15.1667 4.58333 15.1667C5.0875 15.1667 5.5191 15.3462 5.87813 15.7052C6.23715 16.0643 6.41667 16.4959 6.41667 17C6.41667 17.5042 6.23715 17.9358 5.87813 18.2948C5.5191 18.6538 5.0875 18.8334 4.58333 18.8334ZM4.58333 13.3334C4.07917 13.3334 3.64757 13.1538 3.28854 12.7948C2.92951 12.4358 2.75 12.0042 2.75 11.5C2.75 10.9959 2.92951 10.5643 3.28854 10.2052C3.64757 9.8462 4.07917 9.66669 4.58333 9.66669C5.0875 9.66669 5.5191 9.8462 5.87813 10.2052C6.23715 10.5643 6.41667 10.9959 6.41667 11.5C6.41667 12.0042 6.23715 12.4358 5.87813 12.7948C5.5191 13.1538 5.0875 13.3334 4.58333 13.3334ZM4.58333 7.83335C4.07917 7.83335 3.64757 7.65384 3.28854 7.29481C2.92951 6.93578 2.75 6.50419 2.75 6.00002C2.75 5.49585 2.92951 5.06426 3.28854 4.70523C3.64757 4.3462 4.07917 4.16669 4.58333 4.16669C5.0875 4.16669 5.5191 4.3462 5.87813 4.70523C6.23715 5.06426 6.41667 5.49585 6.41667 6.00002C6.41667 6.50419 6.23715 6.93578 5.87813 7.29481C5.5191 7.65384 5.0875 7.83335 4.58333 7.83335Z"
-                                    fill="#1C1B1F"
-                                />
+                        <svg class="ays-quiz-accordion-arrow ays-quiz-accordion-arrow-down" version="1.2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" overflow="visible" preserveAspectRatio="none" viewBox="0 0 24 24" width="32" height="32" style="transform: rotate(90deg);">
+                            <g>
+                                <path xmlns:default="http://www.w3.org/2000/svg" d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z" fill="#000" vector-effect="non-scaling-stroke" />
                             </g>
                         </svg>
                         <div class="ays-quiz-quizzes-data">
@@ -1702,27 +1699,14 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                     </div>
                 </div>
                 <?php endif;?>
-                <div id="ays-quiz-tab-doc-link" class="ays-quiz-heading-box" style="margin-bottom: 40px;">
-                    <div class="ays-quiz-wordpress-user-manual-box">
-                        <a href="https://www.youtube.com/watch?v=gKjzOsn_yDo" target="_blank" style="text-decoration: none;font-size: 13px;">
-                            <span><img loading="lazy" src='<?php echo esc_url(AYS_QUIZ_ADMIN_URL); ?>/images/icons/youtube-video-icon.svg' ></span>
-                            <span style="margin-left: 3px; text-decoration: underline;"><?php echo esc_html__('Getting started', "quiz-maker"); ?></span>
-                        </a>
-                        <a class="ays-quiz-doc-link" href="<?php echo isset($tab_docs[$ays_quiz_tab]['link']) ? esc_url($tab_docs[$ays_quiz_tab]['link']) : 'https://quiz-plugin.com/docs/how-to-create-a-quiz/'; ?>" target="_blank">
-                            <i class="ays_fa ays_fa_file_text" ></i> 
-                            <span style="margin-left: 3px;text-decoration: underline;"><?php echo isset($tab_docs[$ays_quiz_tab]['text']) ? esc_html($tab_docs[$ays_quiz_tab]['text']) : esc_html__('How to Configure General Settings?', 'quiz-maker'); ?></span>
-                        </a>
-                    </div>
-                </div>
             </div>
-            <hr/>
             <div class="ays-top-menu-container-wrapper">
                 <div class="ays-top-menu-wrapper">
                     <div class="ays_menu_left" data-scroll="0"><i class="ays_fa ays_fa_angle_left"></i></div>
                     <div class="ays-top-menu">
                         <div class="nav-tab-wrapper ays-top-tab-wrapper">
                             <a href="#tab1" data-tab="tab1" class="nav-tab <?php echo ($ays_quiz_tab == 'tab1') ? 'nav-tab-active' : ''; ?>">
-                                <?php echo esc_html__("General", 'quiz-maker');?>
+                                <?php echo esc_html__("Questions", 'quiz-maker');?>
                             </a>
                             <a href="#tab2" data-tab="tab2" class="nav-tab <?php echo ($ays_quiz_tab == 'tab2') ? 'nav-tab-active' : ''; ?>">
                                 <?php echo esc_html__("Styles", 'quiz-maker');?>
@@ -1745,6 +1729,9 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                             <a href="#tab8" data-tab="tab8" class="nav-tab <?php echo ($ays_quiz_tab == 'tab8') ? 'nav-tab-active' : ''; ?>">
                                 <?php echo esc_html__("Integrations", 'quiz-maker');?>
                             </a>
+                            <a href="#tab9" data-tab="tab9" class="nav-tab <?php echo ($ays_quiz_tab == 'tab9') ? 'nav-tab-active' : ''; ?>">
+                                <?php echo esc_html__("Publish", 'quiz-maker');?>
+                            </a>
                         </div>
                     </div>              
                     <div class="ays_menu_right" data-scroll="-1"><i class="ays_fa ays_fa_angle_right"></i></div>
@@ -1766,249 +1753,275 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                 </div>
             </div>
 
-            <div id="tab1" class="ays-quiz-tab-content <?php echo ($ays_quiz_tab == 'tab1') ? 'ays-quiz-tab-content-active' : ''; ?>">
-                <p class="ays-subtitle"><?php echo esc_html__('General Settings','quiz-maker')?></p>
-                <hr class="ays-quiz-bolder-hr"/>
-                <div class="form-group row">
-                    <div class="col-sm-2">
-                        <label for='ays-quiz-title'>
-                            <?php echo esc_html__('Title', 'quiz-maker'); ?>
-                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_html__('Title of the quiz','quiz-maker')?>">
-                                <i class="ays_fa ays_fa_info_circle"></i>
-                            </a>
-                        </label>
+            <div id="tab1" class="ays-quiz-separate-tab-content ays-quiz-tab-content <?php echo ($ays_quiz_tab == 'tab1') ? 'ays-quiz-tab-content-active' : ''; ?>">
+                <div class="ays-quiz-separate-tab ays-quiz-accordion-options-main-container" data-collapsed="false">
+                    <div class="ays-quiz-accordion-container">
+                        <?php echo wp_kses($quiz_accordion_svg_html, $quiz_allowed_html); ?>
+                        <p class="ays-subtitle"><?php echo esc_html__('Start page detials','quiz-maker'); ?></p>
                     </div>
-                    <div class="col-sm-10">
-                        <input type="text" class="ays-text-input" id='ays-quiz-title' name='ays_quiz_title'
-                               value="<?php echo esc_attr($quiz_title); ?>"/>
-                    </div>
-                </div> <!-- Title of the quiz -->
-                <hr/>
-                <div class="form-group row ays-field">
-                    <div class="col-sm-2">
-                        <label>
-                            <?php echo esc_html__('Quiz image', 'quiz-maker'); ?>
-                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_html__('Add image to the starting page of the quiz','quiz-maker')?>">
-                                <i class="ays_fa ays_fa_info_circle"></i>
-                            </a>
-                        </label>
-                    </div>
-                    <div class="col-sm-10">
-                        <a href="javascript:void(0)" class="add-quiz-image" style="margin: 0;"><?php echo esc_html($image_text); ?></a>
-                        <p class="ays_quiz_small_hint_text_for_message_variables" style="margin-top: 5px;">
-                            <span><?php echo esc_html__( "Please Note" , 'quiz-maker' ); ?></span>
-                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('* Note: The plugin doesn’t make any changes concerning the images. It takes the images in a size, in which you have uploaded them. We are using the default WP Media. If the uploaded image is blurred and has a low quality, make sure to choose the right parameters (Full size) while uploading the images. You can find the Full Size option in the opened Add Media popup (Attachment Display Settings).','quiz-maker') ); ?>">
-                                <i class="ays_fa ays_fa_info_circle"></i>
-                            </a>
-                        </p>
-                        <div class="ays-quiz-image-container" style="<?php echo !empty($style) ? esc_attr($style) : ''; ?>">
-                            <span class="ays-remove-quiz-img"></span>
-                            <img loading="lazy" src="<?php echo esc_url($quiz_image); ?>" id="ays-quiz-img"/>
-                            <input type="hidden" name="ays_quiz_image" id="ays-quiz-image" value="<?php echo esc_url($quiz_image); ?>"/>
-                        </div>
-                    </div>
-                </div><!-- Quiz Image -->
-                <hr/>
-                <div class="form-group row ays-field ays-quiz-result-message-vars-parent">
-                    <div class="col-sm-2">
-                        <label for='ays-quiz-description'>
-                            <?php echo esc_html__('Description', 'quiz-maker'); ?>
-                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Provide more information about the quiz. You can choose whether to show it or not in the front end in the “Settings” tab','quiz-maker') ); ?>">
-                                <i class="ays_fa ays_fa_info_circle"></i>
-                            </a>
-                        </label>
-                    </div>
-                    <div class="col-sm-10">
-                        <?php
-                            echo wp_kses($quiz_message_vars_description_html, $quiz_allowed_html);
-                            $content = $quiz_description;
-                            $editor_id = 'ays-quiz-description';
-                            $settings = array('editor_height' => $quiz_wp_editor_height, 'textarea_name' => 'ays_quiz_description', 'editor_class' => 'ays-textarea', 'media_elements' => false);
-                            wp_editor($content, $editor_id, $settings);
-                        ?>
-                    </div>
-                </div><!-- Quiz Description -->
-                <hr/>
-                <div class='form-group row ays-field ays_items_count_div'>
-                    <div class="col-sm-3" style="display: flex; align-items: center;">
-                        <div style='display: flex;align-items: center;margin-right: 15px;'>
-                            <!-- <a href="javascript:void(0)" class="ays-add-question ays-add-question-top-button">
-                                <i class="ays_fa ays_fa_plus_square" aria-hidden="true"></i>
-                                <?php echo esc_html__('Insert questions', 'quiz-maker'); ?>
-                            </a> -->
-                            <span style="margin-right: 5px;"><?php echo esc_html__('Questions', 'quiz-maker'); ?></span>
-                            <a class="ays_help" style="font-size:15px;" data-placement="bottom" data-toggle="tooltip" data-html="true" title="<?php echo esc_attr("<p style='margin:0;text-indent:7px;'>").esc_attr(__('For inserting questions to the quiz you need to make questions first from the “Questions page” in the left navbar. After popup’s opening, you can filter and select your prepared questions for this quiz.', 'quiz-maker')).esc_attr("</p><p style='margin:0;text-indent:7px;'>").esc_attr(__('The ordering of the questions will be the same as you chose. Also, you can reorder them after selection. There are no limitations for questions quantity.', 'quiz-maker')).esc_attr("</p>"); ?>">
-                                <i class="ays_fa ays_fa_info_circle"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-sm-9">
-                        <div class="form-group row" style="margin-bottom: 0;">
-                            <div class="col-sm-12" style="display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center;">
-                                <p class="ays_questions_action">
-                                    <span class="ays_questions_count">
-                                        <?php
-                                        $ays_questions_count = '<span class="questions_count_number">' . count($question_id_array) . '</span> '. __('items','quiz-maker');
-
-                                        echo wp_kses($ays_questions_count, $quiz_allowed_html);
-                                        ?>
-                                    </span>
-                                </p>
-                                <div class="ays-question-ordering" tabindex="0" data-ordered="false">
-                                    <i class="ays_fa fas ays_fa_exchange"></i>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Reverse the ordering of the questions in the list.','quiz-maker') ); ?>">
+                    <hr class="ays-quiz-bolder-hr"/>
+                    <div class="ays-quiz-accordion-options-box">
+                        <div class="form-group row">
+                            <div class="col-sm-2">
+                                <label for='ays-quiz-title'>
+                                    <?php echo esc_html__('Title', 'quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_html__('Title of the quiz','quiz-maker')?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
+                                </label>
+                            </div>
+                            <div class="col-sm-10">
+                                <input type="text" class="ays-text-input" id='ays-quiz-title' name='ays_quiz_title'
+                                    value="<?php echo esc_attr($quiz_title); ?>"/>
+                            </div>
+                        </div> <!-- Title of the quiz -->
+                        <hr/>
+                        <div class="form-group row ays-field">
+                            <div class="col-sm-2">
+                                <label>
+                                    <?php echo esc_html__('Quiz image', 'quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_html__('Add image to the starting page of the quiz','quiz-maker')?>">
+                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                    </a>
+                                </label>
+                            </div>
+                            <div class="col-sm-10">
+                                <a href="javascript:void(0)" class="add-quiz-image" style="margin: 0;"><?php echo esc_html($image_text); ?></a>
+                                <p class="ays_quiz_small_hint_text_for_message_variables" style="margin-top: 5px;">
+                                    <span><?php echo esc_html__( "Note" , 'quiz-maker' ); ?></span>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('* Note: The plugin doesn’t make any changes concerning the images. It takes the images in a size, in which you have uploaded them. We are using the default WP Media. If the uploaded image is blurred and has a low quality, make sure to choose the right parameters (Full size) while uploading the images. You can find the Full Size option in the opened Add Media popup (Attachment Display Settings).','quiz-maker') ); ?>">
+                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                    </a>
+                                </p>
+                                <div class="ays-quiz-image-container" style="<?php echo !empty($style) ? esc_attr($style) : ''; ?>">
+                                    <span class="ays-remove-quiz-img"></span>
+                                    <img loading="lazy" src="<?php echo esc_url($quiz_image); ?>" id="ays-quiz-img"/>
+                                    <input type="hidden" name="ays_quiz_image" id="ays-quiz-image" value="<?php echo esc_url($quiz_image); ?>"/>
                                 </div>
-                                <div style="display: flex;">
-                                    <button class="ays_bulk_del_questions button" style="margin: 0 10px;" type="button" disabled>
-                                        <?php echo esc_html__( 'Delete', 'quiz-maker'); ?>                            
-                                    </button>
-                                    <button class="ays_select_all button" type="button">
-                                        <?php echo esc_html__( 'Select All', 'quiz-maker'); ?>                            
-                                    </button>
+                            </div>
+                        </div><!-- Quiz Image -->
+                        <hr/>
+                        <div class="form-group row ays-field ays-quiz-result-message-vars-parent">
+                            <div class="col-sm-2">
+                                <label for='ays-quiz-description'>
+                                    <?php echo esc_html__('Description', 'quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Provide more information about the quiz. You can choose whether to show it or not in the front end in the “Settings” tab','quiz-maker') ); ?>">
+                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                    </a>
+                                </label>
+                            </div>
+                            <div class="col-sm-10">
+                                <?php
+                                    echo wp_kses($quiz_message_vars_description_html, $quiz_allowed_html);
+                                    $content = $quiz_description;
+                                    $editor_id = 'ays-quiz-description';
+                                    $settings = array('editor_height' => $quiz_wp_editor_height, 'textarea_name' => 'ays_quiz_description', 'editor_class' => 'ays-textarea', 'media_elements' => false);
+                                    wp_editor($content, $editor_id, $settings);
+                                ?>
+                            </div>
+                        </div><!-- Quiz Description -->
+                    </div>
+                </div>
+                <div class="ays-quiz-separate-tab ays-quiz-second-separate-tab ays-quiz-accordion-options-main-container" data-collapsed="false">
+                    <div class="ays-quiz-heading-box" style="padding-top: 30px; margin: 0;">
+                        <div class="ays-quiz-wordpress-user-manual-box">
+                            <a href="https://quiz-plugin.com/docs/creating-questions/" target="_blank">
+                                <i class="ays_fa ays_fa_file_text" ></i> 
+                                <span style="margin-left: 3px;text-decoration: underline;"><?php echo esc_html__("How to Create a Question?", "quiz-maker"); ?></span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ays-quiz-accordion-container">
+                        <?php echo wp_kses($quiz_accordion_svg_html, $quiz_allowed_html); ?>
+                        <p class="ays-subtitle"><?php echo esc_html__('Questions','quiz-maker'); ?></p>
+                        <a class="ays_help" style="margin-left:5px; font-size:15px;" data-placement="bottom" data-toggle="tooltip" data-html="true" title="<?php echo esc_attr("<p style='margin:0;text-indent:7px;'>").esc_attr(__('For inserting questions to the quiz you need to make questions first from the “Questions page” in the left navbar. After popup’s opening, you can filter and select your prepared questions for this quiz.', 'quiz-maker')).esc_attr("</p><p style='margin:0;text-indent:7px;'>").esc_attr(__('The ordering of the questions will be the same as you chose. Also, you can reorder them after selection. There are no limitations for questions quantity.', 'quiz-maker')).esc_attr("</p>"); ?>">
+                            <i class="ays_fa ays_fa_info_circle"></i>
+                        </a>
+                    </div>
+                    <hr class="ays-quiz-bolder-hr"/>
+                    <div class="ays-quiz-accordion-options-box">
+                        <div class='form-group row ays-field ays_items_count_div'>
+                            <div class="col-sm-3" style="display: flex; align-items: center;">
+                                <div style='display: flex;align-items: center;margin-right: 15px;'>
+                                    <!-- <a href="javascript:void(0)" class="ays-add-question ays-add-question-top-button">
+                                        <i class="ays_fa ays_fa_plus_square" aria-hidden="true"></i>
+                                        <?php echo esc_html__('Insert questions', 'quiz-maker'); ?>
+                                    </a> -->
+                                    <!-- <span style="margin-right: 5px;"><?php echo esc_html__('Questions', 'quiz-maker'); ?></span>
+                                    <a class="ays_help" style="font-size:15px;" data-placement="bottom" data-toggle="tooltip" data-html="true" title="<?php echo esc_attr("<p style='margin:0;text-indent:7px;'>").esc_attr(__('For inserting questions to the quiz you need to make questions first from the “Questions page” in the left navbar. After popup’s opening, you can filter and select your prepared questions for this quiz.', 'quiz-maker')).esc_attr("</p><p style='margin:0;text-indent:7px;'>").esc_attr(__('The ordering of the questions will be the same as you chose. Also, you can reorder them after selection. There are no limitations for questions quantity.', 'quiz-maker')).esc_attr("</p>"); ?>">
+                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                    </a> -->
+                                </div>
+                            </div>
+                            <div class="col-sm-9">
+                                <div class="form-group row" style="margin-bottom: 0;">
+                                    <div class="col-sm-12" style="display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center;">
+                                        <p class="ays_questions_action">
+                                            <span class="ays_questions_count">
+                                                <?php
+                                                $ays_questions_count = '<span class="questions_count_number">' . count($question_id_array) . '</span> '. __('items','quiz-maker');
+
+                                                echo wp_kses($ays_questions_count, $quiz_allowed_html);
+                                                ?>
+                                            </span>
+                                        </p>
+                                        <div class="ays-question-ordering" tabindex="0" data-ordered="false">
+                                            <i class="ays_fa fas ays_fa_exchange"></i>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Reverse the ordering of the questions in the list.','quiz-maker') ); ?>">
+                                                <i class="ays_fa ays_fa_info_circle"></i>
+                                            </a>
+                                        </div>
+                                        <div style="display: flex;">
+                                            <button class="ays_bulk_del_questions button" style="margin: 0 10px;" type="button" disabled>
+                                                <?php echo esc_html__( 'Delete', 'quiz-maker'); ?>                            
+                                            </button>
+                                            <button class="ays_select_all button" type="button">
+                                                <?php echo esc_html__( 'Select All', 'quiz-maker'); ?>                            
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="ays-field ays-table-wrap" style="padding-top: 15px;">
+                            <table class="ays-questions-table" id="ays-questions-table">
+                                <thead>
+                                    <tr class="ui-state-default">
+                                        <th class="ays-quiz-question-ordering-row th-150"><?php echo esc_html__('Ordering', 'quiz-maker'); ?></th>
+                                        <th class="ays-quiz-question-question-row" style="width:500px;"><?php echo esc_html__('Question', 'quiz-maker'); ?></th>
+                                        <th class="ays-quiz-question-type-row th-150"><?php echo esc_html__('Type', 'quiz-maker'); ?></th>
+                                        <th class="ays-quiz-question-category-row th-150"><?php echo esc_html__('Category', 'quiz-maker'); ?></th>
+                                        <th class="ays-quiz-question-id-row th-150"><?php echo esc_html__('ID', 'quiz-maker'); ?></th>
+                                        <th class="ays-quiz-question-action-row th-150" style="min-width:120px;"><?php echo esc_html__('Actions', 'quiz-maker'); ?></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <?php
+                                if( isset($question_id_array) && !(count($question_id_array) === 1 && $question_id_array[0] == '')) {
+                                    foreach ($question_id_array as $key => $question_id) {
+                                        $data = $this->quizes_obj->get_published_questions_by('id', absint(intval($question_id)));
+                                        $className = "";
+                                        if (($key + 1) % 2 == 0) {
+                                            $className = "even";
+                                        }
+
+                                        $data_id = isset( $data['id'] ) && $data['id'] != "" ? esc_attr($data['id']) : null;
+
+                                        $edit_question_url = "?page=".$this->plugin_name."-questions&action=edit&question=".$data_id;
+
+                                        $table_question = "";
+                                        if(isset($data['question_title']) && $data['question_title'] != '' && $quiz_question_title_view == 'question_title'){
+                                            $table_question = htmlspecialchars_decode( $data['question_title'], ENT_COMPAT);
+                                            $table_question = stripslashes( $table_question );
+                                        } elseif(isset($data['question']) && strlen($data['question']) != 0){
+
+                                            $is_exists_ruby = Quiz_Maker_Admin::ays_quiz_is_exists_needle_tag( $data['question'] , '<ruby>' );
+
+                                            if ( $is_exists_ruby ) {
+                                                $table_question = strip_tags( stripslashes($data['question']), '<ruby><rbc><rtc><rb><rt>' );
+                                            } else {
+                                                $table_question = strip_tags(stripslashes($data['question']));
+                                            }
+
+                                        }elseif ((isset($data['question_image']) && $data['question_image'] !='')){
+                                            $table_question = __( 'Image question', 'quiz-maker' );
+                                        }
+                                        $table_question = $this->ays_restriction_string("word",$table_question, 10);
+
+                                        $ays_question_type = "";
+                                        $data_question_type = (isset( $data['type'] ) && $data['type'] != "") ? esc_attr($data['type']) : "";
+
+                                        switch ( $data_question_type ) {
+                                            case 'short_text':
+                                                $ays_question_type = 'short text';
+                                                break;
+                                            case 'true_or_false':
+                                                $ays_question_type = 'true/false';
+                                                break;
+                                            default:
+                                                $ays_question_type = $data_question_type;
+                                                break;
+                                        }
+
+                                        $question_cat_title = "";
+                                        if( isset($data['category_id']) && $data['category_id'] != "" ){
+                                            $question_cat_title = isset( $question_categories_array[$data['category_id']] ) && $question_categories_array[$data['category_id']] != "" ? esc_attr( $question_categories_array[$data['category_id']] ) : "";
+                                        }
+
+                                        ?>
+                                        <tr class="ays-question-row ui-state-default <?php echo esc_attr($className); ?>"
+                                            data-id="<?php echo esc_attr($data_id); ?>">
+                                            <td class="ays-quiz-question-ordering-row ays-sort"><i class="ays_fa ays_fa_arrows" aria-hidden="true"></i></td>
+                                            <td class="ays-quiz-question-question-row">
+                                                <a href="<?php echo esc_url($edit_question_url); ?>" target="_blank" class="ays-edit-question" title="<?php echo esc_attr( __('Edit question', 'quiz-maker') ); ?>">
+                                                    <?php echo esc_html($table_question); ?>
+                                                </a>
+                                            </td>
+                                            <td class="ays-quiz-question-type-row"><?php echo esc_html($ays_question_type); ?></td>
+                                            <td class="ays-quiz-question-category-row"><?php echo esc_html($question_cat_title); ?></td>
+                                            <td class="ays-quiz-question-id-row"><?php echo esc_html($data_id); ?></td>
+                                            <td class="ays-quiz-question-action-row">
+                                                <input type="checkbox" class="ays_del_tr">
+                                                <a href="<?php echo esc_url($edit_question_url); ?>" target="_blank" class="ays-edit-question" title="<?php echo esc_attr(__('Edit question', 'quiz-maker')); ?>">
+                                                    <i class="ays_fa ays_fa_pencil_square" aria-hidden="true"></i>
+                                                </a>
+                                                <a href="javascript:void(0)" class="ays-delete-question" title="<?php echo esc_attr(__('Delete', 'quiz-maker')); ?>"
+                                                data-id="<?php echo esc_attr($data_id); ?>">
+                                                    <i class="ays_fa ays_fa_minus_square" aria-hidden="true"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <?php
+                                    }
+                                }
+                                //if(empty($question_id_array)){                            
+                                    ?>
+                                    <tr class="ays-question-row ays-question-empty-row ui-state-default">
+                                        <td colspan="6" class="empty_quiz_td">
+                                            <div class="ays-quiz-create-question-link-box" style="<?php echo !empty($question_id_array) ? 'display: none;' : ''; ?>">
+                                                <i class="ays_fa ays_fa_info" aria-hidden="true" style="margin-right:10px"></i>
+                                                <span style="font-size: 13px; font-style: italic;">
+                                                <?php
+                                                    echo esc_html__( 'There are no questions yet.', 'quiz-maker' );
+                                                ?>
+                                                </span>
+                                            </div>
+                                            <div class='ays_add_question_from_table'>                                        
+                                                <a href="javascript:void(0)" class="ays-add-question-primary">
+                                                    <i class="ays_fa ays_fa_plus_square" aria-hidden="true"></i>
+                                                    <?php echo esc_html__('Insert questions', 'quiz-maker'); ?>
+                                                </a>
+                                                <a href="<?php echo esc_url($question_add_new_page_url); ?>" class="ays-add-question" target="_blank">
+                                                    <?php echo esc_html__('Create question', 'quiz-maker'); ?>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link-icon lucide-external-link"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <?php
+                                //}
+                                ?>
+                                </tbody>
+                            </table>
+                            <p class="ays_questions_action" style="width:100%;">                
+                                <span class="ays_questions_count">
+                                    <?php
+                                    $ays_questions_count = '<span class="questions_count_number">' . ((isset($question_id_array) && !empty($question_id_array)) ? count($question_id_array) : 0) . '</span> '. esc_html__('items','quiz-maker');
+
+                                    echo wp_kses($ays_questions_count, $quiz_allowed_html);
+                                    ?>
+                                </span>
+                                <button class="ays_bulk_del_questions button" type="button" disabled>
+                                    <?php echo esc_html__( 'Delete', 'quiz-maker'); ?>                            
+                                </button>
+                                <button class="ays_select_all button" type="button">
+                                    <?php echo esc_html__( 'Select All', 'quiz-maker'); ?>                            
+                                </button>
+                            </p>
+                        </div>
+                        <input type="hidden" id="ays_already_added_questions" name="ays_added_questions" value="<?php echo esc_attr($question_ids); ?>"/>
                     </div>
                 </div>
-                <div class="ays-field ays-table-wrap" style="padding-top: 15px;">
-                    <table class="ays-questions-table" id="ays-questions-table">
-                        <thead>
-                            <tr class="ui-state-default">
-                                <th class="ays-quiz-question-ordering-row th-150"><?php echo esc_html__('Ordering', 'quiz-maker'); ?></th>
-                                <th class="ays-quiz-question-question-row" style="width:500px;"><?php echo esc_html__('Question', 'quiz-maker'); ?></th>
-                                <th class="ays-quiz-question-type-row th-150"><?php echo esc_html__('Type', 'quiz-maker'); ?></th>
-                                <th class="ays-quiz-question-category-row th-150"><?php echo esc_html__('Category', 'quiz-maker'); ?></th>
-                                <th class="ays-quiz-question-id-row th-150"><?php echo esc_html__('ID', 'quiz-maker'); ?></th>
-                                <th class="ays-quiz-question-action-row th-150" style="min-width:120px;"><?php echo esc_html__('Actions', 'quiz-maker'); ?></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        <?php
-                        if( isset($question_id_array) && !(count($question_id_array) === 1 && $question_id_array[0] == '')) {
-                            foreach ($question_id_array as $key => $question_id) {
-                                $data = $this->quizes_obj->get_published_questions_by('id', absint(intval($question_id)));
-                                $className = "";
-                                if (($key + 1) % 2 == 0) {
-                                    $className = "even";
-                                }
-
-                                $data_id = isset( $data['id'] ) && $data['id'] != "" ? esc_attr($data['id']) : null;
-
-                                $edit_question_url = "?page=".$this->plugin_name."-questions&action=edit&question=".$data_id;
-
-                                $table_question = "";
-                                if(isset($data['question_title']) && $data['question_title'] != '' && $quiz_question_title_view == 'question_title'){
-                                    $table_question = htmlspecialchars_decode( $data['question_title'], ENT_COMPAT);
-                                    $table_question = stripslashes( $table_question );
-                                } elseif(isset($data['question']) && strlen($data['question']) != 0){
-
-                                    $is_exists_ruby = Quiz_Maker_Admin::ays_quiz_is_exists_needle_tag( $data['question'] , '<ruby>' );
-
-                                    if ( $is_exists_ruby ) {
-                                        $table_question = strip_tags( stripslashes($data['question']), '<ruby><rbc><rtc><rb><rt>' );
-                                    } else {
-                                        $table_question = strip_tags(stripslashes($data['question']));
-                                    }
-
-                                }elseif ((isset($data['question_image']) && $data['question_image'] !='')){
-                                    $table_question = __( 'Image question', 'quiz-maker' );
-                                }
-                                $table_question = $this->ays_restriction_string("word",$table_question, 10);
-
-                                $ays_question_type = "";
-                                $data_question_type = (isset( $data['type'] ) && $data['type'] != "") ? esc_attr($data['type']) : "";
-
-                                switch ( $data_question_type ) {
-                                    case 'short_text':
-                                        $ays_question_type = 'short text';
-                                        break;
-                                    case 'true_or_false':
-                                        $ays_question_type = 'true/false';
-                                        break;
-                                    default:
-                                        $ays_question_type = $data_question_type;
-                                        break;
-                                }
-
-                                $question_cat_title = "";
-                                if( isset($data['category_id']) && $data['category_id'] != "" ){
-                                    $question_cat_title = isset( $question_categories_array[$data['category_id']] ) && $question_categories_array[$data['category_id']] != "" ? esc_attr( $question_categories_array[$data['category_id']] ) : "";
-                                }
-
-                                ?>
-                                <tr class="ays-question-row ui-state-default <?php echo esc_attr($className); ?>"
-                                    data-id="<?php echo esc_attr($data_id); ?>">
-                                    <td class="ays-quiz-question-ordering-row ays-sort"><i class="ays_fa ays_fa_arrows" aria-hidden="true"></i></td>
-                                    <td class="ays-quiz-question-question-row">
-                                        <a href="<?php echo esc_url($edit_question_url); ?>" target="_blank" class="ays-edit-question" title="<?php echo esc_attr( __('Edit question', 'quiz-maker') ); ?>">
-                                            <?php echo esc_html($table_question); ?>
-                                        </a>
-                                    </td>
-                                    <td class="ays-quiz-question-type-row"><?php echo esc_html($ays_question_type); ?></td>
-                                    <td class="ays-quiz-question-category-row"><?php echo esc_html($question_cat_title); ?></td>
-                                    <td class="ays-quiz-question-id-row"><?php echo esc_html($data_id); ?></td>
-                                    <td class="ays-quiz-question-action-row">
-                                        <input type="checkbox" class="ays_del_tr">
-                                        <a href="<?php echo esc_url($edit_question_url); ?>" target="_blank" class="ays-edit-question" title="<?php echo esc_attr(__('Edit question', 'quiz-maker')); ?>">
-                                            <i class="ays_fa ays_fa_pencil_square" aria-hidden="true"></i>
-                                        </a>
-                                        <a href="javascript:void(0)" class="ays-delete-question" title="<?php echo esc_attr(__('Delete', 'quiz-maker')); ?>"
-                                           data-id="<?php echo esc_attr($data_id); ?>">
-                                            <i class="ays_fa ays_fa_minus_square" aria-hidden="true"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <?php
-                            }
-                        }
-                        //if(empty($question_id_array)){                            
-                            ?>
-                            <tr class="ays-question-row ays-question-empty-row ui-state-default">
-                                <td colspan="6" class="empty_quiz_td">
-                                    <div class="ays-quiz-create-question-link-box" style="<?php echo !empty($question_id_array) ? 'display: none;' : ''; ?>">
-                                        <i class="ays_fa ays_fa_info" aria-hidden="true" style="margin-right:10px"></i>
-                                        <span style="font-size: 13px; font-style: italic;">
-                                        <?php
-                                            echo esc_html__( 'There are no questions yet.', 'quiz-maker' );
-                                        ?>
-                                        </span>
-                                    </div>
-                                    <div class='ays_add_question_from_table'>                                        
-                                        <a href="javascript:void(0)" class="ays-add-question-primary">
-                                            <i class="ays_fa ays_fa_plus_square" aria-hidden="true"></i>
-                                            <?php echo esc_html__('Insert questions', 'quiz-maker'); ?>
-                                        </a>
-                                        <a href="<?php echo esc_url($question_add_new_page_url); ?>" class="ays-add-question" target="_blank">
-                                            <?php echo esc_html__('Create question', 'quiz-maker'); ?>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link-icon lucide-external-link"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <?php
-                        //}
-                        ?>
-                        </tbody>
-                    </table>
-                    <p class="ays_questions_action" style="width:100%;">                
-                        <span class="ays_questions_count">
-                            <?php
-                            $ays_questions_count = '<span class="questions_count_number">' . ((isset($question_id_array) && !empty($question_id_array)) ? count($question_id_array) : 0) . '</span> '. esc_html__('items','quiz-maker');
-
-                            echo wp_kses($ays_questions_count, $quiz_allowed_html);
-                            ?>
-                        </span>
-                        <button class="ays_bulk_del_questions button" type="button" disabled>
-                            <?php echo esc_html__( 'Delete', 'quiz-maker'); ?>                            
-                        </button>
-                        <button class="ays_select_all button" type="button">
-                            <?php echo esc_html__( 'Select All', 'quiz-maker'); ?>                            
-                        </button>
-                    </p>
-                </div>
-                <input type="hidden" id="ays_already_added_questions" name="ays_added_questions" value="<?php echo esc_attr($question_ids); ?>"/>
             </div>
 
             <div id="tab2" class="ays-quiz-tab-content <?php echo ($ays_quiz_tab == 'tab2') ? 'ays-quiz-tab-content-active' : ''; ?>">
@@ -2381,7 +2394,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                     <div class="col-sm-7 ays_divider_left">                                
                                         <a href="javascript:void(0)" style="<?php echo $quiz_bg_image == '' ? 'display:inline-block' : 'display:none'; ?>" class="add-quiz-bg-image"><?php echo esc_html($bg_image_text); ?></a>
                                         <p class="ays_quiz_small_hint_text_for_message_variables" style="margin-top: 5px;">
-                                            <span><?php echo esc_html__( "Please Note" , 'quiz-maker' ); ?></span>
+                                            <span><?php echo esc_html__( "Note" , 'quiz-maker' ); ?></span>
                                             <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('* Note: The plugin doesn’t make any changes concerning the images. It takes the images in a size, in which you have uploaded them. We are using the default WP Media. If the uploaded image is blurred and has a low quality, make sure to choose the right parameters (Full size) while uploading the images. You can find the Full Size option in the opened Add Media popup (Attachment Display Settings).','quiz-maker') ); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
@@ -5395,7 +5408,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                 </label>
                                 <?php if( 1 == 0 ): ?>
                                 <p class="ays_quiz_small_hint_text_for_message_variables">
-                                    <span><?php echo esc_html__( "Please Note" , 'quiz-maker' ); ?></span>
+                                    <span><?php echo esc_html__( "Note" , 'quiz-maker' ); ?></span>
                                     <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Note: If you notice, that the ordering is not being changed on the Front-end, then, most presumably, there is a cache problem for you. Please exclude the link, where the given quiz is located from the Cache plugin settings. Also, clear all the cache types (DB, plugin, browser). After clearing all the caches, check the case with either the Incognito mode or another browser/device.','quiz-maker'); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
@@ -6133,7 +6146,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                     <div class="col-sm-4">
                                         <label for="ays_enable_navigation_bar">
                                            <?php echo esc_html__('Enable navigation bar','quiz-maker'); ?>
-                                           <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Activate the quiz navigation box in the upper of the questions․ It helps to move back and forth between questions easily. After answering a question, its box becomes black and indicates that you have answered it already.Please note that it does not work with the Questions count per page and Display all questions on one page options.', 'quiz-maker'); ?>">
+                                           <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Activate the quiz navigation box in the upper of the questions․ It helps to move back and forth between questions easily. After answering a question, its box becomes black and indicates that you have answered it already.Note that it does not work with the Questions count per page and Display all questions on one page options.', 'quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -6649,8 +6662,8 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                     </a>
                                 </label>
                                 <p class="ays_quiz_small_hint_text_for_message_variables">
-                                    <span><?php echo esc_html__( "Please Note" , 'quiz-maker' ); ?></span>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Please note that if the background color and the button text color are the same, the arrows will not be visible.','quiz-maker'); ?>">
+                                    <span><?php echo esc_html__( "Note" , 'quiz-maker' ); ?></span>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Note that if the background color and the button text color are the same, the arrows will not be visible.','quiz-maker'); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </p>
@@ -6938,7 +6951,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                             <div class="col-sm-4">
                                 <label for="ays_quiz_create_author">
                                     <?php echo esc_html__('Change the author of the current quiz','quiz-maker'); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('You can change the author who created the current quiz to your preferred one. You need to write the User ID here. Please note, that in case you write an ID, by which there are no users found, the changes will not be applied and the previous author will remain the same.','quiz-maker'); ?>">
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('You can change the author who created the current quiz to your preferred one. You need to write the User ID here. Note, that in case you write an ID, by which there are no users found, the changes will not be applied and the previous author will remain the same.','quiz-maker'); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -7260,7 +7273,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                             <div class="col-sm-4">
                                 <label class="form-check-label" for="ays-pass-score">
                                     <?php echo esc_html__("Pass Score (%)", 'quiz-maker') ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Set the minimum score to pass the quiz in percentage. Please note to give a value to it above 0, otherwise, the Quiz pass message and Quiz fail message options will not work.','quiz-maker'); ?>">
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Set the minimum score to pass the quiz in percentage. Note to give a value to it above 0, otherwise, the Quiz pass message and Quiz fail message options will not work.','quiz-maker'); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -10645,6 +10658,164 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                     </div>
                 </div>
             </div>
+            
+            <div id="tab9" class="ays-quiz-publish-tab-content ays-quiz-tab-content <?php echo ($ays_quiz_tab == 'tab9') ? 'ays-quiz-tab-content-active' : ''; ?>">
+                <div class="form-group row" style="justify-content: center">
+                    <div class="col-sm-12 ays-quiz-options-tab-content-max-width">
+                        <div class="ays-quiz-publish-container">
+                            
+                            <!-- Header -->
+                            <div class="ays-quiz-publish-header">
+                                <h2 class="ays-quiz-publish-title"><?php echo esc_html__('Publish Your Quiz', 'quiz-maker'); ?></h2>
+                                <p class="ays-quiz-publish-subtitle"><?php echo esc_html__("Learn how to add this quiz to your site, depending on the editor you're using.", 'quiz-maker'); ?></p>
+                            </div>
+                            
+                            <?php if( 1 == 0 ): ?>
+                            <!-- Info Cards -->
+                            <div class="ays-quiz-info-cards">
+                                <div class="ays-quiz-info-card">
+                                    <div>
+                                        <p class="ays-quiz-info-card-text">
+                                            <?php
+                                            echo wp_kses(
+                                                sprintf(
+                                                    /* translators: 1: Opening <strong> tag, 2: Closing </strong> tag */
+                                                    esc_html__( 'View how %1$sthis quiz%2$s appears on the frontend', 'quiz-maker' ),
+                                                    '<strong>',
+                                                    '</strong>'
+                                                ),
+                                                array(
+                                                    'strong' => array(),
+                                                )
+                                            );
+                                            ?>
+                                        </p>
+                                        <?php if(empty($quiz_preview_url)): ?>
+                                            <p class="ays-quiz-info-card-hint">
+                                                <a href="#" class="ays-quiz-save-publish-link">
+                                                    <?php echo esc_html__('Save the quiz first to enable preview', 'quiz-maker'); ?>
+                                                </a>
+                                            </p>
+                                        <?php endif; ?>
+                                    </div>
+                                    <?php if(!empty($quiz_preview_url)): ?>
+                                        <a href="<?php echo esc_url($quiz_preview_url); ?>" target="_blank" class="ays-quiz-info-card-link"><?php echo esc_html__('View Quiz', 'quiz-maker'); ?></a>
+                                    <?php else: ?>
+                                        <span class="ays-quiz-info-card-link ays-quiz-info-card-link-disabled">
+                                            <?php echo esc_html__('View Quiz', 'quiz-maker'); ?>
+                                        </span>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                            <?php endif; ?>
+
+                            <!-- Steps Card -->
+                            <div class="ays-quiz-steps-card">
+                                <h3 class="ays-quiz-steps-card-title"><?php echo esc_html__('Quiz Display', 'quiz-maker'); ?></h3>
+
+                                <div class="ays-quiz-grid-view-summary">
+                                    <p class="ays-quiz-info-card-text">
+                                        <?php
+                                        echo wp_kses(
+                                            sprintf(
+                                                /* translators: 1: Opening <strong> tag, 2: Closing </strong> tag */
+                                                esc_html__( 'Embed this quiz anywhere on your site with a block, widget, or %1$sshortcode%2$s', 'quiz-maker' ),
+                                                '<strong>',
+                                                '</strong>'
+                                            ),
+                                            array(
+                                                'strong' => array(),
+                                            )
+                                        );
+                                        ?>
+                                    </p>
+                                    <?php if(!empty($quiz_shortcode)): ?>
+                                        <code class="ays-quiz-shortcode-text"><?php echo esc_html($quiz_shortcode); ?></code>
+                                    <?php else: ?>
+                                        <a href="#" class="ays-quiz-info-card-link ays-quiz-save-publish-link"><?php echo esc_html__('Save to get shortcode', 'quiz-maker'); ?></a>
+                                    <?php endif; ?>
+                                </div>
+
+                                <h4 class="ays-quiz-steps-card-title ays-quiz-steps-card-title-center"><?php echo esc_html__('How to Add This Quiz to Your Site (3 Options)', 'quiz-maker'); ?></h4>
+                                
+                                <!-- Step 1: Gutenberg -->
+                                <div class="ays-quiz-step-block">
+                                    <div class="ays-quiz-step-header">
+                                        <div class="ays-quiz-step-number-badge"></div>
+                                        <h3 class="ays-quiz-step-title"><?php echo esc_html__('Using Gutenberg Editor', 'quiz-maker'); ?></h3>
+                                    </div>
+                                    <div class="ays-quiz-step-instructions">
+                                        <ol class="ays-quiz-step-list">
+                                            <li class="ays-quiz-step-list-item"><?php echo esc_html__('Click Add Block (+) and select the Quiz Maker block.', 'quiz-maker'); ?></li>
+                                            <li class="ays-quiz-step-list-item"><?php echo esc_html__('Place the block where you want the quiz to appear.', 'quiz-maker'); ?></li>
+                                            <li class="ays-quiz-step-list-item"><?php echo esc_html__('Choose the needed quiz from the block dropdown.', 'quiz-maker'); ?></li>
+                                        </ol>
+                                    </div>
+                                </div>
+
+                                <hr class="ays-quiz-step-divider">
+
+                                <!-- Step 2: Elementor -->
+                                <div class="ays-quiz-step-block">
+                                    <div class="ays-quiz-step-header">
+                                        <div class="ays-quiz-step-number-badge"></div>
+                                        <h3 class="ays-quiz-step-title"><?php echo esc_html__('Using Elementor', 'quiz-maker'); ?></h3>
+                                    </div>
+                                    <div class="ays-quiz-step-instructions">
+                                        <ol class="ays-quiz-step-list">
+                                            <li class="ays-quiz-step-list-item"><?php echo esc_html__('Find the Quiz Maker widget in Elementor widgets.', 'quiz-maker'); ?></li>
+                                            <li class="ays-quiz-step-list-item"><?php echo esc_html__('Drag and drop it where you want the quiz to appear.', 'quiz-maker'); ?></li>
+                                            <li class="ays-quiz-step-list-item"><?php echo esc_html__('Select the quiz from the widget settings.', 'quiz-maker'); ?></li>
+                                        </ol>
+                                    </div>
+                                </div>
+
+                                <hr class="ays-quiz-step-divider">
+
+                                <!-- Step 3: Classic Editor -->
+                                <div class="ays-quiz-step-block">
+                                    <div class="ays-quiz-step-header">
+                                        <div class="ays-quiz-step-number-badge"></div>
+                                        <h3 class="ays-quiz-step-title"><?php echo esc_html__('Using Classic Editor', 'quiz-maker'); ?></h3>
+                                    </div>
+                                    <div class="ays-quiz-step-instructions">
+                                        <p class="ays-quiz-step-note"><?php echo esc_html__("The Classic Editor doesn't support Gutenberg blocks directly. In this case, use the quiz shortcode.", 'quiz-maker'); ?></p>
+                                        <ol class="ays-quiz-step-list">
+                                            <li class="ays-quiz-step-list-item">
+                                                <?php echo esc_html__('Copy this quiz shortcode:', 'quiz-maker'); ?>
+                                            </li>
+
+                                            <li class="ays-quiz-step-list-item ays-quiz-shortcode-container">
+                                                <?php if(!empty($quiz_shortcode)): ?>
+                                                    <code class="ays-quiz-shortcode-text"><?php echo esc_html($quiz_shortcode); ?></code>
+                                                    <div class="ays-quiz-copy-wrapper">
+                                                        <span class="ays-quiz-copy-tooltip"><?php echo esc_html__('Copied!', 'quiz-maker'); ?></span>
+                                                        <button type="button" class="ays-quiz-copy-shortcode-btn" data-shortcode="<?php echo esc_attr($quiz_shortcode); ?>" title="<?php echo esc_attr__('Copy shortcode', 'quiz-maker'); ?>">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                                            </svg>
+                                                        </button>
+                                                    </div>
+                                                <?php else: ?>
+                                                    <a href="#" class="ays-quiz-save-publish-link">
+                                                        <?php echo esc_html__('Save the quiz to generate its shortcode', 'quiz-maker'); ?>
+                                                    </a>
+                                                <?php endif; ?>
+                                            </li>
+                                            <li class="ays-quiz-step-list-item"><?php echo esc_html__('Open the post or page where you want to display the quiz in Classic Editor.', 'quiz-maker'); ?></li>
+                                            <li class="ays-quiz-step-list-item"><?php echo esc_html__('Paste the shortcode in the editor. Make sure to check whether the Code option is selected.', 'quiz-maker'); ?></li>
+                                            <li class="ays-quiz-step-list-item"><?php echo esc_html__('Update the post or page, then open it on the frontend to take the quiz.', 'quiz-maker'); ?></li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
             <!-- <hr>
             <div class="form-group row ays-quiz-general-bundle-container">
                 <div class="col-sm-12 ays-quiz-general-bundle-box">
@@ -10680,7 +10851,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
 
                             $pro_content[] = '<div class="pro-features-popup-content" data-link="https://youtu.be/yuYdJnooygU">';
                                 $pro_content[] = '<p>';
-                                    $pro_content[] = sprintf( __("Do you want to create more than one quiz with the same options or style? The save as Default feature comes to help you, as it %s allows you to change default values while creating a new quiz. %s Just give new values to the option of a single quiz and click on the %s Save as default %s button. Your changes will be saved and you will avoid repeating the same steps for the other quizzes. Please note, that the changes refer to only the newly created quizzes and %s don't refer to the already created ones. %s", 'quiz-maker'),
+                                    $pro_content[] = sprintf( __("Do you want to create more than one quiz with the same options or style? The save as Default feature comes to help you, as it %s allows you to change default values while creating a new quiz. %s Just give new values to the option of a single quiz and click on the %s Save as default %s button. Your changes will be saved and you will avoid repeating the same steps for the other quizzes. Note, that the changes refer to only the newly created quizzes and %s don't refer to the already created ones. %s", 'quiz-maker'),
                                         "<strong>",
                                         "</strong>",
                                         "<strong>",

@@ -105,7 +105,7 @@ class Quiz_Maker_Feedback {
 				// 'input_placeholder' => esc_html__( 'Please share which plugin or theme', 'quiz-maker' ),
 				'input_placeholder' => '',
 				'alert' => sprintf( __("Contact our %s support team %s to find and fix the issue.", 'quiz-maker'),
-                                    "<a href='https://ays-pro.com/contact' target='_blank'>",
+                                    "<a href='https://quiz-plugin.com/contact-us/' target='_blank'>",
                                     "</a>"
                                 ),
 			),

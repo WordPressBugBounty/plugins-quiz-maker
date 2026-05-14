@@ -3206,6 +3206,42 @@
             var $this = $(this);
             submitOnce($this);
         });
+
+        $(document).on('click', '.ays-quiz-save-publish-link', function(e){
+            e.preventDefault();
+            var saveButton = $(document).find('#ays_apply_top.button, #ays_apply.button').first();
+
+            if (saveButton.length) {
+                saveButton.trigger('click');
+            }
+        });
+
+        $(document).on('click', '.ays-quiz-copy-shortcode-btn', function(e){
+            e.preventDefault();
+            var $this = $(this);
+            var shortcode = $this.attr('data-shortcode');
+            var tooltip = $this.parents('.ays-quiz-copy-wrapper').find('.ays-quiz-copy-tooltip');
+
+            if (!shortcode) {
+                return;
+            }
+
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(shortcode);
+            } else {
+                var textField = document.createElement('textarea');
+                textField.value = shortcode;
+                document.body.appendChild(textField);
+                textField.select();
+                document.execCommand('copy');
+                textField.remove();
+            }
+
+            tooltip.addClass('ays-quiz-show');
+            setTimeout(function(){
+                tooltip.removeClass('ays-quiz-show');
+            }, 1200);
+        });
         
         $(document).find('.cat-filter-apply-top, .cat-filter-apply-bottom, .user-filter-apply-top, .user-filter-apply-bottom, .category-filter-apply-top, .category-filter-apply-bottom, .question-type-filter-apply-top, .question-type-filter-apply-bottom, .quiz-review-filter-apply-top, .quiz-review-filter-apply-bottom').on('click', function(e){
             e.preventDefault();

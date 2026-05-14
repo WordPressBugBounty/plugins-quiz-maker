@@ -170,13 +170,13 @@ class Quiz_Maker_Admin
         $version2 = '5.5';
         $versionCompare = $this->versionCompare($version1, $operator, $version2);
 
-        $check_terms_agreement = get_option('ays_quiz_agree_terms');
-        if($check_terms_agreement === 'true' && strpos($hook_suffix, $this->plugin_name) !== false){
-            wp_enqueue_script( $this->plugin_name . '-hotjar', plugin_dir_url(__FILE__) . 'js/extras/quiz-maker-hotjar.js', array(), $this->version, false);
-            wp_localize_script($this->plugin_name . '-hotjar',  'quiz_maker_hotjar', array(
-                'id' => '2c39f44b-7257-418e-8bba-9c78a81e8ee9',
-            ));
-        }
+        // $check_terms_agreement = get_option('ays_quiz_agree_terms');
+        // if($check_terms_agreement === 'true' && strpos($hook_suffix, $this->plugin_name) !== false){
+        //     wp_enqueue_script( $this->plugin_name . '-hotjar', plugin_dir_url(__FILE__) . 'js/extras/quiz-maker-hotjar.js', array(), $this->version, false);
+        //     wp_localize_script($this->plugin_name . '-hotjar',  'quiz_maker_hotjar', array(
+        //         'id' => '2c39f44b-7257-418e-8bba-9c78a81e8ee9',
+        //     ));
+        // }
 
         if ($versionCompare) {
             wp_enqueue_script( $this->plugin_name.'-wp-load-scripts', plugin_dir_url(__FILE__) . 'js/ays-wp-load-scripts.js', array(), $this->version, true);
@@ -309,7 +309,7 @@ class Quiz_Maker_Admin
             "successCopyCoupon"                 => __( "Coupon code copied!", 'quiz-maker' ),
             "failedCopyCoupon"                  => __( "Failed to copy coupon code", 'quiz-maker' ),
 
-            'generalTabDoc'                     => esc_html__( "How to Configure General Settings?", 'quiz-maker' ),
+            'generalTabDoc'                     => esc_html__( "How to Create a Quiz?", 'quiz-maker' ),
             'stylesTabDoc'                      => esc_html__( "How to Configure Styles Tab?", 'quiz-maker' ),
             'settingsTabDoc'                    => esc_html__( "How to Configure Settings Tab?", 'quiz-maker' ),
             'resultsSettingsTabDoc'             => esc_html__( "How to Configure Results Settings Tab?", 'quiz-maker' ),
@@ -8104,7 +8104,7 @@ class Quiz_Maker_Admin
                             ),
             'buttons' => array(
                                 'name' => __('Buttons','quiz-maker'),
-                                'message' => __('Please note, that this refers to the Restart Quiz and Exit buttons. When the Chained Quiz addon is installed and active, the Next Quiz button will appear during the quiz, and the See Result button will be displayed at the end.','quiz-maker'),
+                                'message' => __('Note, that this refers to the Restart Quiz and Exit buttons. When the Chained Quiz addon is installed and active, the Next Quiz button will appear during the quiz, and the See Result button will be displayed at the end.','quiz-maker'),
                             ),
             'rate' => array(
                                 'name' => __('Quiz Rate','quiz-maker'),

@@ -16,7 +16,7 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
                     <li>Add our link to your website (wherever you want) Here is the link: <a href="https://quiz-plugin.com/pricing/" target="_blank">https://quiz-plugin.com/pricing/</a></li>
                     <li>The link should be do-follow</li>
                     <li>Use the <strong>WordPress quiz plugin</strong> anchor text</li>
-                    <li>Send the link of your website to our email. (<a href="mailto:info@ays-pro.com">info@ays-pro.com</a> or <a href="https://ays-pro.com/contact" target="_blank">contact form</a>)</li>
+                    <li>Send the link of your website to our email. (<a href="mailto:info@ays-pro.com">info@ays-pro.com</a> or <a href="https://quiz-plugin.com/contact-us/" target="_blank">contact form</a>)</li>
                     <li>Get the <a href="https://ays-pro.com/export-results-addon-for-quiz-maker" target="_blank">Export Results</a> addon as a gift. Export all the results of any of your quizzes and make your experience more advanced.</li>
                 </ol>
             </div>

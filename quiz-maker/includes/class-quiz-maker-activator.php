@@ -497,14 +497,14 @@ class Quiz_Maker_Activator
                 }
             }
 
-            // $terms_activation = get_option('ays_quiz_show_agree_terms');
-            // $first_activation = get_option('ays_quiz_first_time_activation_page', false);
+            $terms_activation = get_option('ays_quiz_show_agree_terms');
+            $first_activation = get_option('ays_quiz_first_time_activation_page', false);
 
-            // if ( !$terms_activation && $first_activation ) {
-            //     self::ays_quiz_activator_request( 'activator' );
-            //     update_option('ays_quiz_agree_terms', 'true');
-            //     update_option('ays_quiz_show_agree_terms', 'hide');
-            // }
+            if ( !$terms_activation && $first_activation ) {
+                self::ays_quiz_activator_request( 'activator' );
+                update_option('ays_quiz_agree_terms', 'true');
+                update_option('ays_quiz_show_agree_terms', 'hide');
+            }
 
         }
     }

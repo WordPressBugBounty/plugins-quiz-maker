@@ -378,7 +378,7 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                     <div class="ays-top-menu">
                         <div class="nav-tab-wrapper ays-top-tab-wrapper">
                             <a href="#tab1" data-tab="tab1" class="nav-tab <?php echo ($ays_question_tab == 'tab1') ? 'nav-tab-active' : ''; ?>">
-                                <?php echo esc_html__("General", 'quiz-maker');?>
+                                <?php echo esc_html__("Question", 'quiz-maker');?>
                             </a>
                             <a href="#tab2" data-tab="tab2" class="nav-tab <?php echo ($ays_question_tab == 'tab2') ? 'nav-tab-active' : ''; ?>">
                                 <?php echo esc_html__("Settings", 'quiz-maker');?>
@@ -408,7 +408,7 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
             </div>
                 
             <div id="tab1" class="ays-quiz-tab-content <?php echo ($ays_question_tab == 'tab1') ? 'ays-quiz-tab-content-active' : ''; ?>">
-                <p class="ays-subtitle"><?php echo esc_html__('General Settings','quiz-maker')?></p>
+                <p class="ays-subtitle"><?php echo esc_html__('Question and Answers','quiz-maker')?></p>
                 <hr class="ays-quiz-bolder-hr"/>
                 <div class="form-group row ays-field">
                     <div class="col-sm-3">
@@ -421,7 +421,7 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                             <a href="javascript:void(0)" class="add-question-image" style="margin: 0;"><?php echo wp_kses_post($image_text); ?></a>
                         </div>
                         <p class="ays_quiz_small_hint_text_for_message_variables" style="margin-top: 5px;">
-                            <span><?php echo esc_html__( "Please Note" , 'quiz-maker' ); ?></span>
+                            <span><?php echo esc_html__( "Note" , 'quiz-maker' ); ?></span>
                             <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('* Note: The plugin doesn’t make any changes concerning the images. It takes the images in a size, in which you have uploaded them. We are using the default WP Media. If the uploaded image is blurred and has a low quality, make sure to choose the right parameters (Full size) while uploading the images. You can find the Full Size option in the opened Add Media popup (Attachment Display Settings).','quiz-maker') ); ?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
@@ -1087,56 +1087,6 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                     </div>
                 </div>
                 <hr>
-                <!-- Question Tags Start -->
-                <div class="form-group row">
-                    <div class="col-sm-12 only_pro" style="padding:15px;">
-                        <div class="pro_features">                            
-
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-sm-3">
-                                <label for="ays_quiz_question_tags">
-                                    <?php echo esc_html__('Question tags', 'quiz-maker'); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Add tags to your questions. Tags are used for filtering questions to add to your quiz. You can choose as many tags as you want. To create tags, please go to Question categories > Tags > Add New.', 'quiz-maker') ); ?>">
-                                        <i class="ays_fa ays_fa_info_circle"></i>
-                                    </a>
-                                </label>
-                            </div>
-                            <div class="col-sm-9">
-                                <select id="ays_quiz_question_tags" multiple tabindex="-1">
-                                    <option value=""></option>
-                                </select>
-                            </div>
-                        </div>
-                        <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=question-tags-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
-                            <div class="ays-quiz-new-upgrade-button-box">
-                                <div>
-                                    <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
-                                    <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg' ); ?>" class="ays-quiz-new-upgrade-button-hover">
-                                </div>
-                                <div class="ays-quiz-new-upgrade-button"><?php echo esc_html__("Upgrade", "quiz-maker"); ?></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <hr>
-                <!-- Question Tags End -->
-                <div class="form-group row">
-                    <div class="col-sm-3">
-                        <label for="ays_question_title">
-                            <?php echo esc_html__('Question title','quiz-maker'); ?>
-                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Add the title of the question to make it easy for you to find it among the other questions. It will be visible only in the questions list table.','quiz-maker') ); ?>">
-                                <i class="ays_fa ays_fa_info_circle"></i>
-                            </a>
-                        </label>
-                    </div>
-                    <div class="col-sm-9">
-                        <div>
-                            <input type="text" class="ays-text-input" id="ays_question_title" name="ays_question_title" value="<?php echo esc_attr($question_title); ?>">
-                        </div>
-                    </div>
-                </div>
-                <hr>
                 <div class="form-group row">
                     <div class="col-sm-12">
                         <a href="" id="ays_next_tab" class="ays_next_tab"><?php echo esc_html__( 'Advanced settings' , 'quiz-maker' ); ?></a>
@@ -1165,6 +1115,22 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                         <div class="form-check form-check-inline">
                             <input type="radio" id="ays-unpublish" name="ays_publish" value="0" <?php echo ($question_published == '0') ? 'checked' : ''; ?>/>
                             <label class="form-check-label" for="ays-unpublish"> <?php echo esc_html__('Unpublished', 'quiz-maker'); ?> </label>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="form-group row">
+                    <div class="col-sm-3">
+                        <label for="ays_question_title">
+                            <?php echo esc_html__('Question title','quiz-maker'); ?>
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Add the title of the question to make it easy for you to find it among the other questions. It will be visible only in the questions list table.','quiz-maker') ); ?>">
+                                <i class="ays_fa ays_fa_info_circle"></i>
+                            </a>
+                        </label>
+                    </div>
+                    <div class="col-sm-9">
+                        <div>
+                            <input type="text" class="ays-text-input" id="ays_question_title" name="ays_question_title" value="<?php echo esc_attr($question_title); ?>">
                         </div>
                     </div>
                 </div>
@@ -1365,6 +1331,40 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                     </div>
                 </div>
                 <hr>
+                <!-- Question Tags Start -->
+                <div class="form-group row">
+                    <div class="col-sm-12 only_pro" style="padding:15px;">
+                        <div class="pro_features">                            
+
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-3">
+                                <label for="ays_quiz_question_tags">
+                                    <?php echo esc_html__('Question tags', 'quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Add tags to your questions. Tags are used for filtering questions to add to your quiz. You can choose as many tags as you want. To create tags, please go to Question categories > Tags > Add New.', 'quiz-maker') ); ?>">
+                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                    </a>
+                                </label>
+                            </div>
+                            <div class="col-sm-9">
+                                <select id="ays_quiz_question_tags" multiple tabindex="-1">
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                        </div>
+                        <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=question-tags-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                            <div class="ays-quiz-new-upgrade-button-box">
+                                <div>
+                                    <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
+                                    <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg' ); ?>" class="ays-quiz-new-upgrade-button-hover">
+                                </div>
+                                <div class="ays-quiz-new-upgrade-button"><?php echo esc_html__("Upgrade", "quiz-maker"); ?></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <!-- Question Tags End -->
+                <hr>
                 <div class="form-group row">
                     <div class="col-sm-12 only_pro" style="padding:15px;">
                         <div class="pro_features">                            
@@ -1380,7 +1380,7 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                             <div class="col-sm-3">
                                 <a href="javascript:void(0)" class="add-question-image m-0" tabindex="-1" style="border: 1px solid #ededed;"><?php echo esc_html__('Add Image', 'quiz-maker'); ?></a>
                                 <p class="ays_quiz_small_hint_text_for_message_variables" style="margin-top: 5px;">
-                                    <span><?php echo esc_html__( "Please Note" , 'quiz-maker' ); ?></span>
+                                    <span><?php echo esc_html__( "Note" , 'quiz-maker' ); ?></span>
                                     <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('* Note: The plugin doesn’t make any changes concerning the images. It takes the images in a size, in which you have uploaded them. We are using the default WP Media. If the uploaded image is blurred and has a low quality, make sure to choose the right parameters (Full size) while uploading the images. You can find the Full Size option in the opened Add Media popup (Attachment Display Settings).','quiz-maker') ); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
@@ -1442,7 +1442,7 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                 <hr>
                 <div class="form-group row">
                     <div class="col-sm-12">
-                        <a href="" class="ays_prev_tab"><?php echo esc_html__( 'General settings' , 'quiz-maker' ); ?></a>
+                        <a href="" class="ays_prev_tab"><?php echo esc_html__( 'Question settings' , 'quiz-maker' ); ?></a>
                     </div>
                 </div>
             </div>

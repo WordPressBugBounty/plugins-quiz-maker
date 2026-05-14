@@ -2710,6 +2710,11 @@
                 time_limit.call(this, e);
             }
         });
+
+        $(document).off('click.aysQuizPreviewNoticeCopy').on('click.aysQuizPreviewNoticeCopy', '.ays-quiz-preview-copy-shortcode', function(e){
+            e.preventDefault();
+            aysQuizCopyPreviewShortcode( $(this) );
+        });
     });
 
 })( jQuery );

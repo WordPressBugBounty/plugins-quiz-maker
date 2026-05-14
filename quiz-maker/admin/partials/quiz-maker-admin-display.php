@@ -109,14 +109,14 @@ $new_questions_page_url = sprintf('?page=%s&action=%s', 'quiz-maker-questions', 
                 </div>
             </div>
             <div class="ays-quiz-community-item">
-                <a href="https://ays-pro.com/contact" target="_blank" class="ays-quiz-community-item-cover" style="color: #ff0000;">
+                <a href="https://quiz-plugin.com/contact-us/" target="_blank" class="ays-quiz-community-item-cover" style="color: #ff0000;">
                     <!-- <img class="ays-quiz-community-item-img" src="<?php #echo esc_url(AYS_QUIZ_ADMIN_URL); ?>/images/logo_final.png"> -->
                     <i class="ays-quiz-community-item-img ays_fa ays_fa_users" aria-hidden="true"></i>
                 </a>
                 <h3 class="ays-quiz-community-item-title"><?php echo esc_html__( "Premium support", 'quiz-maker' ); ?></h3>
                 <p class="ays-quiz-community-item-desc"><?php echo esc_html__( "Get 12 months updates and support for the Business package and lifetime updates and support for the Developer package.", 'quiz-maker' ); ?></p>
                 <div class="ays-quiz-community-item-footer">
-                    <a href="https://ays-pro.com/contact" target="_blank" class="button"><?php echo esc_html__( "Contact", 'quiz-maker' ); ?></a>
+                    <a href="https://quiz-plugin.com/contact-us/" target="_blank" class="button"><?php echo esc_html__( "Contact", 'quiz-maker' ); ?></a>
                 </div>
             </div>
         </div>

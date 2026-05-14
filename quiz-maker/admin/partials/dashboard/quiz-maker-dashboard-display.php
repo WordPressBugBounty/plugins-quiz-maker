@@ -9,7 +9,7 @@ $lessons_page_url = admin_url( 'edit.php?post_type=flessons' );
 // $general_settings_page_url = sprintf('?page=%s&fox_lms_tab=tab4', 'quiz-maker-settings');
 
 $quiz_page_url = sprintf('?page=%s', 'quiz-maker');
-// $add_new_url = sprintf('?page=%s&action=%s', 'quiz-maker', 'add');
+$add_new_url = sprintf('?page=%s&action=%s', 'quiz-maker', 'add');
 $questions_page_url = sprintf('?page=%s', 'quiz-maker-questions');
 $new_questions_page_url = sprintf('?page=%s&action=%s', 'quiz-maker-questions', 'add');
 
@@ -43,7 +43,7 @@ $new_questions_page_url = sprintf('?page=%s&action=%s', 'quiz-maker-questions', 
                     <?php echo esc_html__("Create Question", 'quiz-maker'); ?>
                 </a>
                 <?php endif; ?>
-                <a class="quiz-maker-btn quiz-maker-btn-primary" href="<?php echo esc_url($quiz_page_url); ?>">
+                <a class="quiz-maker-btn quiz-maker-btn-primary" href="<?php echo esc_url($add_new_url); ?>">
                     <svg width="16" height="20" viewBox="0 0 16 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M13.9495 7.91656V5.66656C13.9495 4.26644 13.9495 3.56636 13.6812 3.03159C13.4452 2.56119 13.0687 2.17874 12.6054 1.93905C12.0789 1.66656 11.3896 1.66656 10.011 1.66656H4.75975C3.38116 1.66656 2.69186 1.66656 2.16531 1.93905C1.70215 2.17874 1.32558 2.56119 1.08958 3.03159C0.821289 3.56636 0.821289 4.26644 0.821289 5.66656V14.3333C0.821289 15.7334 0.821289 16.4334 1.08958 16.9683C1.32558 17.4386 1.70215 17.8211 2.16531 18.0608C2.69186 18.3333 3.38116 18.3333 4.75975 18.3333H9.02642M9.02642 9.16656H4.10334M5.74436 12.4999H4.10334M10.6674 5.83324H4.10334M11.0777 12.5018C11.2223 12.0844 11.5076 11.7324 11.8832 11.5082C12.2588 11.284 12.7004 11.2021 13.1299 11.2769C13.5593 11.3517 13.9487 11.5784 14.2293 11.9169C14.5098 12.2554 14.6634 12.6839 14.6628 13.1263C14.6628 14.3754 12.818 14.9999 12.818 14.9999M12.8417 17.4999H12.85" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
@@ -472,7 +472,7 @@ $new_questions_page_url = sprintf('?page=%s&action=%s', 'quiz-maker-questions', 
                         </div>
                         <div class="quiz-maker-help-card-content">
                             <p class="quiz-maker-help-card-description"><?php echo esc_html__("Get direct help from our support team for technical issues.", 'quiz-maker'); ?></p>
-                            <a href="https://ays-pro.com/contact" class="quiz-maker-help-button" target="_blank">
+                            <a href="https://quiz-plugin.com/contact-us/" class="quiz-maker-help-button" target="_blank">
                                 <?php echo esc_html__("Get Help", 'quiz-maker'); ?>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="quiz-maker-help-button-icon">
                                     <path d="M15 3h6v6"></path>

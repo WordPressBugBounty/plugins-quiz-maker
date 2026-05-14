@@ -16,7 +16,7 @@ ob_start();
  * Plugin Name:       Quiz Maker
  * Plugin URI:        https://quiz-plugin.com/
  * Description:       Create powerful and engaging quizzes, tests, and exams in minutes. Build an unlimited number of quizzes and questions.
- * Version:           6.7.1.35
+ * Version:           6.7.1.36
  * Author:            Quiz Maker team
  * Author URI:        https://ays-pro.com/
  * License:           GPL-2.0+
@@ -36,8 +36,8 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'AYS_QUIZ_NAME_VERSION', '6.7.1.35' );
-define( 'AYS_QUIZ_VERSION', '6.7.1.35' );
+define( 'AYS_QUIZ_NAME_VERSION', '6.7.1.36' );
+define( 'AYS_QUIZ_VERSION', '6.7.1.36' );
 define( 'AYS_QUIZ_NAME', 'quiz-maker' );
 
 if( ! defined( 'AYS_QUIZ_BASENAME' ) )
@@ -148,9 +148,13 @@ function quiz_maker_general_admin_notice(){
                 <div id="navigation-container">
                     <div class="ays-quiz-logo-container-upgrade">
                         <div class="logo-container">
-                            <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=quiz-maker-top-banner-logo-link-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" style="display: inline-block;box-shadow: none;">
+                            <a href="https://quiz-plugin.com/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=quiz-maker-top-banner-logo-link-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" style="display: inline-block;box-shadow: none;">
                                 <img  class="quiz-logo" src="<?php echo esc_url( plugin_dir_url( __FILE__ ) . 'admin/images/icons/quiz-maker-logo.png' ); ?>" alt="<?php echo esc_attr( __( "Quiz Maker", 'quiz-maker' ) ); ?>" title="<?php echo esc_attr( __( "Quiz Maker", 'quiz-maker' ) ); ?>"/>
                             </a>
+                        </div>
+                        <div class="ays-quiz-top-banner-title">
+                            <span><?php echo esc_html__( "Quiz Maker", 'quiz-maker' ); ?></span>
+                            <span><?php echo esc_html__( "Admin", 'quiz-maker' ); ?></span>
                         </div>
                         <div class="ays-quiz-upgrade-container">
                             <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=quiz-top-banner-upgrade-button-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" target="_blank">
@@ -179,7 +183,7 @@ function quiz_maker_general_admin_notice(){
                         <?php if($is_chat_available): ?>
                         <li class="modile-ddmenu-xs"><a class="ays-btn" href="https://ays-pro.com/onlinesupport/" target="_blank"><?php echo esc_html__( "Live Chat", 'quiz-maker' ); ?></a></li>
                         <?php endif; ?>
-                        <li class="modile-ddmenu-lg"><a class="ays-btn" href="https://ays-pro.com/contact" target="_blank"><?php echo esc_html__( "Contact us", 'quiz-maker' ); ?></a></li>
+                        <li class="modile-ddmenu-lg"><a class="ays-btn" href="https://quiz-plugin.com/contact-us/" target="_blank"><?php echo esc_html__( "Contact us", 'quiz-maker' ); ?></a></li>
                         <li class="modile-ddmenu-md">
                             <a class="toggle_ddmenu" href="javascript:void(0);"><i class="ays_fa ays_fa_ellipsis_h"></i></a>
                             <ul class="ddmenu" data-expanded="false">
@@ -188,7 +192,7 @@ function quiz_maker_general_admin_notice(){
                                 <li class="ays_quiz_take_gift"><a class="ays-btn" href="https://quiz-plugin.com/quiz-addon-as-a-gift/" target="_blank"><?php echo esc_html__( "Get 50% discount", 'quiz-maker' ); ?></a></li>
                                 <li><a class="ays-btn" href="https://quiz-plugin.com/wordpress-quiz-plugin-free-demo/" target="_blank"><?php echo esc_html__( "Demo", 'quiz-maker' ); ?></a></li>
                                 <li><a class="ays-btn" href="https://wordpress.org/support/plugin/quiz-maker/" target="_blank"><?php echo esc_html__( "Free Support", 'quiz-maker' ); ?></a></li>
-                                <li><a class="ays-btn" href="https://ays-pro.com/contact" target="_blank"><?php echo esc_html__( "Contact us", 'quiz-maker' ); ?></a></li>
+                                <li><a class="ays-btn" href="https://quiz-plugin.com/contact-us/" target="_blank"><?php echo esc_html__( "Contact us", 'quiz-maker' ); ?></a></li>
                             </ul>
                         </li>
                         <li class="modile-ddmenu-sm">
@@ -202,7 +206,7 @@ function quiz_maker_general_admin_notice(){
                                 <?php if($is_chat_available): ?>
                                 <li><a class="ays-btn" href="https://ays-pro.com/onlinesupport/" target="_blank"><?php echo esc_html__( "Live Chat", 'quiz-maker' ); ?></a></li>
                                 <?php endif; ?>
-                                <li><a class="ays-btn" href="https://ays-pro.com/contact" target="_blank"><?php echo esc_html__( "Contact us", 'quiz-maker' ); ?></a></li>
+                                <li><a class="ays-btn" href="https://quiz-plugin.com/contact-us/" target="_blank"><?php echo esc_html__( "Contact us", 'quiz-maker' ); ?></a></li>
                             </ul>
                         </li>
                     </ul>
@@ -218,7 +222,7 @@ function quiz_maker_general_admin_notice(){
                         </defs>
                         </svg>
                     </div>
-                    <div class="ays-quiz-checklist-popup" style="display:none; position: absolute; top: 80px; right: 0; background: #111; color: #fff; padding: 16px; border-radius: 6px; z-index: 9999; max-width: 250px;">
+                    <div class="ays-quiz-checklist-popup" style="display:none; position: absolute; top: 80px; right: 0; background: #111; color: #fff; padding: 16px; border-radius: 6px; z-index: 9999; max-width: 250px;text-align: center;">
                         <div style="position: absolute; top: -10px; right: 20px; width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-bottom: 10px solid #111;"></div>
                         <strong><?php echo esc_html__( "Looking for your Launchpad Checklist?", 'quiz-maker' ); ?></strong>
                         <p><?php echo esc_html__( "Click the launch icon to continue setting up your quiz.", 'quiz-maker' ); ?></p>

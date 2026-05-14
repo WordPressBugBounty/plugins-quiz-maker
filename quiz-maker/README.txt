@@ -4,7 +4,7 @@ Donate link: https://quiz-plugin.com/pricing/
 Tags:  exam, quiz, quizzes, education, quiz maker
 Requires at least: 4.0
 Tested up to: 7.0
-Stable tag: 6.7.1.35
+Stable tag: 6.7.1.36
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -48,6 +48,9 @@ This WordPress quiz plugin allows you to create various types of quizzes, includ
 
 * [Trivia Quiz](https://quiz-plugin.com/trivia-quiz-2/)
 * [Quiz with Timer](https://quiz-plugin.com/timer-quiz/)
+* [English Test](https://quiz-plugin.com/english-test/)
+* [IQ Test](https://quiz-plugin.com/iq-test-demo/)
+* [Assessment Quiz](https://quiz-plugin.com/assessment-quiz/)
 * [Password Protected Quiz](https://quiz-plugin.com/password-protected-quiz)
 * [Audio Quiz](https://quiz-plugin.com/audio-quiz)
 * [Video Quiz](https://quiz-plugin.com/video-quiz)
@@ -422,6 +425,14 @@ Do you wonder how to create a Math Quiz with hard mathematical equations in Word
 For example, to add a squared symbol, you need to write down the following sign ^2. (do not forget to insert $ character to mark the beginning and ending).
 
 == Changelog ==
+
+= 6.7.1.36 ( May 14, 2026 ) =
+* Added: New Publish page to the Quizzes Edit page
+* Added: Notice for draft preview pages with a copy shortcode button
+* Improved: The Quiz Maker admin top banner and improved its responsive layout
+* Improved: Quiz builder and question edit page UI/UX
+* Improved: Question edit page layout and field positioning
+* Updated: POT file
 
 = 6.7.1.35 ( May 12, 2026 ) =
 * Improved: Some style and content changes on the admin dashboard

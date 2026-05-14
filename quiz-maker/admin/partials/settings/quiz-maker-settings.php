@@ -992,7 +992,7 @@
                                 <div class="col-sm-4">
                                     <label for="ays_quiz_exclude_general_css">
                                         <?php echo esc_html__( "Exclude general CSS file from home page", 'quiz-maker' ); ?>
-                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('If the option is enabled, then the quiz general CSS file will not be applied to the home page. Please note, that if you have inserted the quiz on the home page, then the option must be disabled so that the CSS File can normally work for that quiz..','quiz-maker'); ?>">
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('If the option is enabled, then the quiz general CSS file will not be applied to the home page. Note, that if you have inserted the quiz on the home page, then the option must be disabled so that the CSS File can normally work for that quiz..','quiz-maker'); ?>">
                                             <i class="ays_fa ays_fa_info_circle"></i>
                                         </a>
                                     </label>
@@ -1347,7 +1347,7 @@
                                 </div>
                                 
                                 <blockquote style="margin-bottom: 20px;">
-                                    <?php echo esc_html__('Please note, that these message variables work only for this option.', 'quiz-maker') ?>
+                                    <?php echo esc_html__('Note, that these message variables work only for this option.', 'quiz-maker') ?>
                                 </blockquote>
                                 <p class="vmessage">
                                     <strong>
@@ -3828,7 +3828,7 @@
                                 </strong>
                                 <span> - </span>
                                 <span style="font-size:18px;">
-                                    <?php echo esc_attr( __( "Shows the current user's IP no matter whether they are a logged-in user or a guest. Please note, that this message variable will return empty, if 'Do not store IP addresses' is ticked from General Settings>General>Users IP addresses.", 'quiz-maker') ); ?>
+                                    <?php echo esc_attr( __( "Shows the current user's IP no matter whether they are a logged-in user or a guest. Note, that this message variable will return empty, if 'Do not store IP addresses' is ticked from General Settings>General>Users IP addresses.", 'quiz-maker') ); ?>
                                 </span>
                             </p>
                         </fieldset> <!-- User Message Variables -->
@@ -4473,7 +4473,7 @@
                         <blockquote>
                             <p>
                                 <?php echo esc_html__( "You can change the buttons' texts and write the words you prefer for them.", 'quiz-maker' ); ?>
-                                <span class="ays-quiz-blockquote-span"><?php echo esc_html__( "Please note, that if you change the default texts, these words will not be translated with Translation plugins or the Poedit app.", 'quiz-maker' ); ?></span>
+                                <span class="ays-quiz-blockquote-span"><?php echo esc_html__( "note, that if you change the default texts, these words will not be translated with Translation plugins or the Poedit app.", 'quiz-maker' ); ?></span>
                             </p>
                         </blockquote>
                         <hr class="ays-quiz-bolder-hr">
@@ -4693,7 +4693,7 @@
                         <blockquote>
                             <p>
                                 <?php echo esc_html__( "With the help of this section, you can change the fields' placeholders and labels of the Information form. Find the available fields in the User data tab of your quizzes.", 'quiz-maker' ); ?>
-                                <span class="ays-quiz-blockquote-span"><?php echo esc_html__( "Please note, that if you change the default texts, these words will not be translated with Translation plugins or the Poedit app.", 'quiz-maker' ); ?></span>
+                                <span class="ays-quiz-blockquote-span"><?php echo esc_html__( "Note, that if you change the default texts, these words will not be translated with Translation plugins or the Poedit app.", 'quiz-maker' ); ?></span>
                             </p>
                         </blockquote>
                         <hr class="ays-quiz-bolder-hr">
@@ -5579,7 +5579,7 @@
                                                             </div>
                                                             <?php echo esc_html($buttons_ordering[$key]);?>
                                                             <?php if($key == 'save') { ?>
-                                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_html__('Please note, that this option will be activated only if the Save and Resume addon is installed and activated and the Enable save and resume option is turned on in the Settings Tab of the given Quiz Edit page','quiz-maker')?>">
+                                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_html__('Note, that this option will be activated only if the Save and Resume addon is installed and activated and the Enable save and resume option is turned on in the Settings Tab of the given Quiz Edit page','quiz-maker')?>">
                                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                                 </a>
                                                             <?php } else if($key == 'finish') { ?>
@@ -5611,7 +5611,7 @@
                                                             </div>
                                                             <?php echo esc_html($key);?>
                                                             <?php if($bin == 'save') { ?>
-                                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_html__('Please note, that this option will be activated only if the Save and Resume addon is installed and activated and the Enable save and resume option is turned on in the Settings Tab of the given Quiz Edit page','quiz-maker')?>">
+                                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_html__('Note, that this option will be activated only if the Save and Resume addon is installed and activated and the Enable save and resume option is turned on in the Settings Tab of the given Quiz Edit page','quiz-maker')?>">
                                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                                 </a>
                                                             <?php } else if($bin == 'finish') { ?>

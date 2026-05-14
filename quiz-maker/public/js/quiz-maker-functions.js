@@ -613,3 +613,46 @@ function countdownTimeForShow( parentStep, countDownDate ) {
 
     return timeForShow;
 }
+
+function aysQuizCopyPreviewShortcode( button ) {
+    var shortcode = button.attr('data-shortcode');
+    var label = button.attr('data-label');
+    var copiedLabel = button.attr('data-copied-label');
+    var labelNode = button.find('.ays-quiz-preview-copy-shortcode-label');
+
+    if ( ! shortcode || labelNode.length === 0 ) {
+        return;
+    }
+
+    shortcode = '[' + shortcode + ']';
+
+    var setCopiedLabel = function() {
+        labelNode.text( copiedLabel );
+
+        setTimeout(function() {
+            labelNode.text( label );
+        }, 1800);
+    };
+
+    var copyWithFallback = function() {
+        var input = $('<textarea readonly></textarea>');
+        input.val( shortcode );
+        input.css({
+            position: 'absolute',
+            left: '-9999px'
+        });
+
+        $('body').append( input );
+        input[0].select();
+        document.execCommand('copy');
+        input.remove();
+        setCopiedLabel();
+    };
+
+    if ( navigator.clipboard && navigator.clipboard.writeText ) {
+        navigator.clipboard.writeText( shortcode ).then( setCopiedLabel ).catch( copyWithFallback );
+        return;
+    }
+
+    copyWithFallback();
+}
