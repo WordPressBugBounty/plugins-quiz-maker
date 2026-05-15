@@ -16,7 +16,7 @@ ob_start();
  * Plugin Name:       Quiz Maker
  * Plugin URI:        https://quiz-plugin.com/
  * Description:       Create powerful and engaging quizzes, tests, and exams in minutes. Build an unlimited number of quizzes and questions.
- * Version:           6.7.1.36
+ * Version:           6.7.1.37
  * Author:            Quiz Maker team
  * Author URI:        https://ays-pro.com/
  * License:           GPL-2.0+
@@ -36,8 +36,8 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'AYS_QUIZ_NAME_VERSION', '6.7.1.36' );
-define( 'AYS_QUIZ_VERSION', '6.7.1.36' );
+define( 'AYS_QUIZ_NAME_VERSION', '6.7.1.37' );
+define( 'AYS_QUIZ_VERSION', '6.7.1.37' );
 define( 'AYS_QUIZ_NAME', 'quiz-maker' );
 
 if( ! defined( 'AYS_QUIZ_BASENAME' ) )
@@ -153,8 +153,8 @@ function quiz_maker_general_admin_notice(){
                             </a>
                         </div>
                         <div class="ays-quiz-top-banner-title">
-                            <span><?php echo esc_html__( "Quiz Maker", 'quiz-maker' ); ?></span>
-                            <span><?php echo esc_html__( "Admin", 'quiz-maker' ); ?></span>
+                            <span class="ays-quiz-top-banner-main-title"><?php echo esc_html__( "Quiz Maker by AYS", 'quiz-maker' ); ?></span>
+                            <span class="ays-quiz-top-banner-sub-title"><?php echo esc_html__( "Create engaging quizzes easily", 'quiz-maker' ); ?></span>
                         </div>
                         <div class="ays-quiz-upgrade-container">
                             <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=quiz-top-banner-upgrade-button-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" target="_blank">

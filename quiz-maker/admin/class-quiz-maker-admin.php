@@ -7102,15 +7102,9 @@ class Quiz_Maker_Admin
 
         $content[] = '<div class="ays-quiz-message-vars-box">';
             $content[] = '<div class="ays-quiz-message-vars-icon">';
-                $content[] = '<div>';
-                    $content[] = '<i class="ays_fa ays_fa_link"></i>';
-                $content[] = '</div>';
-                $content[] = '<div>';
-                    $content[] = '<span>'. __("Message Variables" , 'quiz-maker') .'</span>';
-                    $content[] = '<a class="ays_help" data-toggle="tooltip" data-html="true" title="'. __("Insert your preferred message variable into the editor by clicking." , 'quiz-maker') .'">';
-                        $content[] = '<i class="ays_fa ays_fa_info_circle"></i>';
-                    $content[] = '</a>';
-                $content[] = '</div>';
+                $content[] = '<span class="ays-quiz-message-vars-braces" aria-hidden="true">{ }</span>';
+                $content[] = '<span>'. esc_html__( "Message Variables" , 'quiz-maker') .'</span>';
+                $content[] = '<span class="ays-quiz-message-vars-chevron" aria-hidden="true"></span>';
             $content[] = '</div>';
             $content[] = '<div class="ays-quiz-message-vars-data">';
                 foreach($quiz_message_vars as $var => $var_name){
@@ -7118,8 +7112,8 @@ class Quiz_Maker_Admin
                     $content[] = '<label class="ays-quiz-message-vars-each-data-label">';
                         // $content[] = '<input type="radio" class="ays-quiz-message-vars-each-data-checker" hidden id="ays_quiz_message_var_count_'. $var_counter .'" name="ays_quiz_message_var_count">';
                         $content[] = '<div class="ays-quiz-message-vars-each-data">';
-                            $content[] = '<input type="hidden" class="ays-quiz-message-vars-each-var" value="'. $var .'">';
-                            $content[] = '<span>'. $var_name .'</span>';
+                            $content[] = '<input type="hidden" class="ays-quiz-message-vars-each-var" value="'. esc_attr( $var ) .'">';
+                            $content[] = '<span>'. esc_html( $var_name ) .'</span>';
                         $content[] = '</div>';
                     $content[] = '</label>';
                 }

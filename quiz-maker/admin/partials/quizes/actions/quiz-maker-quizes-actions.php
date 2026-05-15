@@ -1746,6 +1746,17 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                         'data-delay'=> '{"show":"1000"}'
                     );
                     echo wp_kses($loader_iamge, $quiz_allowed_html);
+                    if ( ! empty( $quiz_preview_url ) ) :
+                    ?>
+                    <a href="<?php echo esc_url( $quiz_preview_url ); ?>" target="_blank" rel="noopener noreferrer" class="ays-quiz-top-preview-button" aria-label="<?php echo esc_attr__( 'Preview', 'quiz-maker' ); ?>">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                        <?php echo esc_html__( 'Preview', 'quiz-maker' ); ?>
+                    </a>
+                    <?php
+                    endif;
                     submit_button(esc_html__('Save', 'quiz-maker'), 'primary ays-quiz-loader-banner', 'ays_apply_top', false, $other_attributes_only_save);
                     submit_button(esc_html__('Save and close', 'quiz-maker'), 'ays-quiz-loader-banner ays-quiz-submit-button-margin-unset', 'ays_submit_top', false, $other_attributes);
                     submit_button(esc_html__('Cancel', "quiz-maker"), 'ays-quiz-loader-banner', 'ays_quiz_cancel_top', false, array());

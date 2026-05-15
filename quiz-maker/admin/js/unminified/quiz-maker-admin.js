@@ -156,24 +156,23 @@
                 $(document).find('div.ays-top-tab-wrapper').css('transform', 'translate(0px)');
             }
         });
-        let menuItemWidths0 = [];
         let menuItemWidths = [];
         $(document).find('.ays-top-tab-wrapper .nav-tab').each(function(){
             let $this = $(this);
-            menuItemWidths0.push($this.outerWidth());
+            let currentMenuItemWidth = $this.outerWidth();
+            if (!isNaN(currentMenuItemWidth)) {
+                menuItemWidths.push(currentMenuItemWidth);
+            }
         });
-        
-        for(let i = 0; i < menuItemWidths0.length; i+=2){
-            menuItemWidths.push(menuItemWidths0[i]+menuItemWidths0[i+1]);
-        }
         let menuItemWidth = 0;
         for(let i = 0; i < menuItemWidths.length; i++){
             menuItemWidth += menuItemWidths[i];
         }
-        menuItemWidth = menuItemWidth / menuItemWidths.length;
+        menuItemWidth = menuItemWidths.length ? menuItemWidth / menuItemWidths.length : 0;
         
         $(document).on('click', '.ays_menu_left', function(){
             let scroll = parseInt($(this).attr('data-scroll'));
+            scroll = isNaN(scroll) ? 0 : scroll;
             scroll -= menuItemWidth;
             if(scroll < 0){
                 scroll = 0;
@@ -184,6 +183,7 @@
         });
         $(document).on('click', '.ays_menu_right', function(){
             let scroll = parseInt($(this).attr('data-scroll'));
+            scroll = isNaN(scroll) ? 0 : scroll;
             let howTranslate = $(document).find('div.ays-top-tab-wrapper').width() - $(document).find('.ays-top-menu').width();
             howTranslate += 7;
             if(scroll == -1){
@@ -3930,7 +3930,9 @@
 
         // Select message vars quizzes page | Start
         $(document).find('.ays-quiz-message-vars-icon').on('click', function(e){
-            $(this).parents(".ays-quiz-message-vars-box").find(".ays-quiz-message-vars-data").toggle('fast');
+            var messageVarsBox = $(this).parents(".ays-quiz-message-vars-box");
+            messageVarsBox.toggleClass("ays-quiz-message-vars-open");
+            messageVarsBox.find(".ays-quiz-message-vars-data").toggle('fast');
         });
         
         $(document).on( "click" , function(e){
@@ -3938,6 +3940,7 @@
             } 
             else{
                 $(document).find(".ays-quiz-message-vars-box .ays-quiz-message-vars-data").hide('fast');
+                $(document).find(".ays-quiz-message-vars-box").removeClass("ays-quiz-message-vars-open");
             }
         });
 
