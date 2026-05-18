@@ -95,6 +95,7 @@ $question = array(
     'wrong_answer_text'         => '',
     'right_answer_text'         => '',
     'explanation'               => '',
+    'user_explanation'          => 'off',
     'create_date'               => current_time( 'mysql' ),
     'not_influence_to_score'    => 'off',
     'options'                   => json_encode($options),
@@ -348,6 +349,10 @@ if ($quiz_stripslashes_for_answer) {
 // Enable strip slashes for questions
 $options['quiz_enable_question_stripslashes'] = isset($options['quiz_enable_question_stripslashes']) ? sanitize_text_field( $options['quiz_enable_question_stripslashes'] ) : 'off';
 $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_stripslashes']) && $options['quiz_enable_question_stripslashes'] == 'on') ? true : false;
+
+// Enable strip slashes for questions
+$question["user_explanation"] = (isset($question["user_explanation"]) && $question["user_explanation"] != "") ? sanitize_text_field($question["user_explanation"]) : "off";
+$user_explanation = (isset($question["user_explanation"]) && $question["user_explanation"] == 'on') ? $question["user_explanation"] : 'off';
 
 ?>
 
@@ -1135,6 +1140,27 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                     </div>
                 </div>
                 <hr>
+                <div class="form-group row hide_for_custom_type">
+                    <div class="col-sm-3">
+                        <label>
+                            <?php echo __('User answer explanation', 'quiz-maker'); ?>
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('The users can write an explanation for their answers.', 'quiz-maker'); ?>">
+                                <i class="ays_fa ays_fa_info_circle"></i>
+                            </a>
+                        </label>
+                    </div>
+                    <div class="col-sm-9">
+                        <div class="form-check form-check-inline">
+                            <input type="radio" id="ays-user-ex-on" name="ays_user_explanation" value="on" <?php echo ($user_explanation == 'on') ? 'checked' : ''; ?>/>
+                            <label class="form-check-label" for="ays-user-ex-on"> <?php echo __('Enabled', 'quiz-maker'); ?> </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" id="ays-user-ex-off" name="ays_user_explanation" value="off" <?php echo ($user_explanation == 'off') ? 'checked' : ''; ?>/>
+                            <label class="form-check-label" for="ays-user-ex-off"> <?php echo __('Disabled', 'quiz-maker'); ?> </label>
+                        </div>
+                    </div>
+                </div>
+                <hr>
                 <div class="form-group row">
                     <div class="col-sm-3">
                         <label for="ays_question_hint">
@@ -1394,41 +1420,6 @@ $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_strip
                             </div>
                         </div>
                         <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=question-bg-img-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
-                            <div class="ays-quiz-new-upgrade-button-box">
-                                <div>
-                                    <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
-                                    <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg' ); ?>" class="ays-quiz-new-upgrade-button-hover">
-                                </div>
-                                <div class="ays-quiz-new-upgrade-button"><?php echo esc_html__("Upgrade", "quiz-maker"); ?></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <hr>
-                <div class="form-group row">
-                    <div class="col-sm-12 only_pro" style="padding:15px;">
-                        <div class="pro_features">                            
-
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-sm-3">
-                                <label><?php echo esc_html__('User answer explanation', 'quiz-maker'); ?></label>
-                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('The users can write an explanation for their answers.','quiz-maker') ); ?>">
-                                    <i class="ays_fa ays_fa_info_circle"></i>
-                                </a>
-                            </div>
-                            <div class="col-sm-9">
-                                <div class="form-check form-check-inline">
-                                    <input type="radio" id="ays-user-ex-on" value="on" checked tabindex="-1"/>
-                                    <label class="form-check-label" for="ays-user-ex-on"> <?php echo esc_html__('Enabled', 'quiz-maker'); ?> </label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input type="radio" id="ays-user-ex-off" value="off" tabindex="-1"/>
-                                    <label class="form-check-label" for="ays-user-ex-off"> <?php echo esc_html__('Disabled', 'quiz-maker'); ?> </label>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=user-answer-explanation-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
                             <div class="ays-quiz-new-upgrade-button-box">
                                 <div>
                                     <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">

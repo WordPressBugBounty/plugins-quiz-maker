@@ -10741,7 +10741,18 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                         ?>
                                     </p>
                                     <?php if(!empty($quiz_shortcode)): ?>
-                                        <code class="ays-quiz-shortcode-text"><?php echo esc_html($quiz_shortcode); ?></code>
+                                        <div class="ays-quiz-shortcode-container ays-quiz-publish-shortcode-container">
+                                            <code class="ays-quiz-shortcode-text"><?php echo esc_html($quiz_shortcode); ?></code>
+                                            <div class="ays-quiz-copy-wrapper">
+                                                <span class="ays-quiz-copy-tooltip"><?php echo esc_html__('Copied!', 'quiz-maker'); ?></span>
+                                                <button type="button" class="ays-quiz-copy-shortcode-btn" data-shortcode="<?php echo esc_attr($quiz_shortcode); ?>" title="<?php echo esc_attr__('Copy shortcode', 'quiz-maker'); ?>">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </div>
                                     <?php else: ?>
                                         <a href="#" class="ays-quiz-info-card-link ays-quiz-save-publish-link"><?php echo esc_html__('Save to get shortcode', 'quiz-maker'); ?></a>
                                     <?php endif; ?>
@@ -10819,6 +10830,10 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                             <li class="ays-quiz-step-list-item"><?php echo esc_html__('Update the post or page, then open it on the frontend to take the quiz.', 'quiz-maker'); ?></li>
                                         </ol>
                                     </div>
+                                </div>
+
+                                <div class="ays-quiz-step-block ays-quiz-step-block-footer">
+                                    <a href="https://quiz-plugin.com/docs/how-to-publish-quizzes-via-block-elementor/" target="_blank" class="ays-quiz-info-card-link"><?php echo esc_html__('Learn More', 'quiz-maker'); ?></a>
                                 </div>
                             </div>
 

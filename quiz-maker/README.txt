@@ -4,7 +4,7 @@ Donate link: https://quiz-plugin.com/pricing/
 Tags:  exam, quiz, quizzes, education, quiz maker
 Requires at least: 4.0
 Tested up to: 7.0
-Stable tag: 6.7.1.37
+Stable tag: 6.7.1.38
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -426,10 +426,16 @@ For example, to add a squared symbol, you need to write down the following sign 
 
 == Changelog ==
 
+= 6.7.1.38 ( May 18, 2026 ) =
+* Added: User answer explanation option
+* Improved: Preview notice shortcode visibility
+* Improved: Publish tab shortcode copy and help actions
+* Fixed: Checklist popup controls visibility on smaller screens
+
 = 6.7.1.37 ( May 15, 2026 ) =
-* Added։ Preview button to the quiz edit page top action bar
-* Improved։ Improved the Message Variables dropdown design
-* Improved։ Quiz edit page action buttons responsiveness on smaller screens
+* Added: Preview button to the quiz edit page top action bar
+* Improved: Improved the Message Variables dropdown design
+* Improved: Quiz edit page action buttons responsiveness on smaller screens
 * Fixed: Quiz edit page tab navigation arrows generating NaN scroll values
 
 = 6.7.1.36 ( May 14, 2026 ) =

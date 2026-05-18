@@ -517,6 +517,9 @@ class Questions_List_Table extends WP_List_Table{
             $correct_answers    = (isset($_POST['ays-correct-answer']) ) && ! empty($_POST['ays-correct-answer']) ? array_map( 'sanitize_text_field', $_POST['ays-correct-answer'] ) : array();
             // $answer_values      = (isset($_POST['ays-correct-answer-value']) ) && ! empty($_POST['ays-correct-answer-value']) ? array_map( 'wp_kses_post', $_POST['ays-correct-answer-value'] ) : array();
             
+            // User answer explanation
+            $user_explanation   = (isset($_POST['ays_user_explanation']) && $_POST['ays_user_explanation'] != '') ? sanitize_text_field( $_POST['ays_user_explanation'] ) : 'off';
+
             $answer_values = ( isset($_POST['ays-correct-answer-value']) && ! empty($_POST['ays-correct-answer-value']) )
             ? array_map(function($value) use ($quiz_allowed_html) {
                 return wp_kses($value, $quiz_allowed_html);
@@ -637,6 +640,7 @@ class Questions_List_Table extends WP_List_Table{
                         'right_answer_text'         => $right_answer_text,
                         'question_hint'             => $question_hint,
                         'explanation'               => $explanation,
+                        'user_explanation'          => $user_explanation,
                         'create_date'               => $quest_create_date,
                         'not_influence_to_score'    => $not_influence_to_score,
                         'options'                   => json_encode($options),
@@ -653,6 +657,7 @@ class Questions_List_Table extends WP_List_Table{
                         '%s', // right_answer_text
                         '%s', // question_hint
                         '%s', // explanation
+                        '%s', // user_explanation
                         '%s', // create_date
                         '%s', // not_influence_to_score
                         '%s', // options
@@ -724,6 +729,7 @@ class Questions_List_Table extends WP_List_Table{
                         'right_answer_text'         => $right_answer_text,
                         'question_hint'             => $question_hint,
                         'explanation'               => $explanation,
+                        'user_explanation'          => $user_explanation,
                         'create_date'               => $quest_create_date,
                         'not_influence_to_score'    => $not_influence_to_score,
                         'options'                   => json_encode($options),
@@ -742,6 +748,7 @@ class Questions_List_Table extends WP_List_Table{
                         '%s', // right_answer_text
                         '%s', // question_hint
                         '%s', // explanation
+                        '%s', // user_explanation
                         '%s', // create_date
                         '%s', // not_influence_to_score
                         '%s', // options
@@ -999,6 +1006,8 @@ class Questions_List_Table extends WP_List_Table{
         );
 
         $question_title = (isset($questionDup['question_title']) && $questionDup['question_title'] != '') ? sanitize_text_field($questionDup['question_title']) : '';
+        
+        $user_explanation = (isset($questionDup['user_explanation']) && $questionDup['user_explanation'] != '') ? sanitize_text_field($questionDup['user_explanation']) : 'off';
 
         $question_options = (isset($questionDup['options']) && $questionDup['options'] != '') ? json_decode($questionDup['options'] ,true) : array();
 
@@ -1112,6 +1121,7 @@ class Questions_List_Table extends WP_List_Table{
                 'right_answer_text'         => $questionDup['right_answer_text'],
                 'question_hint'             => $questionDup['question_hint'],
                 'explanation'               => $questionDup['explanation'],
+                'user_explanation'          => $user_explanation,
                 'create_date'               => current_time( 'mysql' ),
                 'not_influence_to_score'    => $questionDup['not_influence_to_score'],
                 'options'                   => json_encode($options),
@@ -1128,6 +1138,7 @@ class Questions_List_Table extends WP_List_Table{
                 '%s', // right_answer_text
                 '%s', // question_hint
                 '%s', // explanation
+                '%s', // user_explanation
                 '%s', // create_date
                 '%s', // not_influence_to_score
                 '%s', // options

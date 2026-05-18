@@ -2,7 +2,7 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 global $ays_quiz_db_version;
-$ays_quiz_db_version = '3.9.1';
+$ays_quiz_db_version = '3.9.2';
 /**
  * Fired during plugin activation
  *
@@ -92,6 +92,7 @@ class Quiz_Maker_Activator
                 `right_answer_text` TEXT DEFAULT NULL,
                 `question_hint` TEXT DEFAULT NULL,
                 `explanation` TEXT DEFAULT NULL,
+                `user_explanation` TEXT NULL DEFAULT NULL,
                 `type` VARCHAR(256) NOT NULL,
                 `published` TINYINT UNSIGNED NOT NULL,
                 `create_date` DATETIME DEFAULT NULL,
@@ -139,6 +140,7 @@ class Quiz_Maker_Activator
                 `score` VARCHAR(256) NOT NULL,
                 `corrects_count` VARCHAR(256) NOT NULL,
                 `questions_count` VARCHAR(256) NOT NULL,
+                `user_explanation` TEXT NULL DEFAULT NULL,
                 `options` TEXT NOT NULL,
                 `read` tinyint(3) NOT NULL DEFAULT 0,
                 PRIMARY KEY (`id`)

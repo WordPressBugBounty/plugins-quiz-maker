@@ -5966,6 +5966,21 @@ class Quiz_Maker_Public
                 }
             }
 
+            $user_explanation = array();
+            if ( isset( $_REQUEST['user-answer-explanation'] ) && is_array( $_REQUEST['user-answer-explanation'] ) ) {
+                $raw_user_explanation = wp_unslash( $_REQUEST['user-answer-explanation'] );
+
+                foreach ( $raw_user_explanation as $u_question_id => $u_explanation ) {
+                    $u_question_id = absint( $u_question_id );
+
+                    if ( $u_question_id === 0 ) {
+                        continue;
+                    }
+
+                    $user_explanation[ $u_question_id ] = sanitize_textarea_field( $u_explanation );
+                }
+            }
+
             $questions_count = count($question_ids);
             $correctness = array();
             $user_answered = array();
@@ -6445,6 +6460,7 @@ class Quiz_Maker_Public
                     'end_date'              => esc_sql( $end_date ),
                     'answered'              => $correctness_and_answers,
                     'score'                 => $final_score,
+                    'user_explanation'      => $user_explanation,
                     'user_corrects_count'   => $corrects_count,
                     'questions_count'       => $questions_count,
                     'calc_method'           => $calculate_score,
@@ -7497,6 +7513,8 @@ class Quiz_Maker_Public
         $options['calc_method'] = $calc_method;
         $user_corrects_count = !empty($data['user_corrects_count']) ? intval($data['user_corrects_count']) : 0;
         $questions_count = !empty($data['questions_count']) ? intval($data['questions_count']) : 0;
+
+        $user_explanation = ( !empty($data['user_explanation']) && count($data['user_explanation']) > 0) ?  json_encode($data['user_explanation']) : '';
         
         $quiz_attributes_information = array();
         $quiz_attributes = $this->get_quiz_attributes_by_id($quiz_id);
@@ -7517,6 +7535,7 @@ class Quiz_Maker_Public
                 'score'             => $score,
                 'corrects_count'    => $user_corrects_count,
                 'questions_count'   => $questions_count,
+                'user_explanation'  => $user_explanation,
                 'options'           => json_encode($options)
             ),
             array(
@@ -7532,6 +7551,7 @@ class Quiz_Maker_Public
                 '%d', // score
                 '%s', // user_corrects_count
                 '%s', // questions_count
+                '%s', // user_explanation
                 '%s', // options
             )
         );

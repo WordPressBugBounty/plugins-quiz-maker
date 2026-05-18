@@ -5149,8 +5149,11 @@ div#ays-quiz-dicount-month-main.ays_quiz_dicount_info.ays_quiz_fox_lms_container
     bottom: 40px;
     inset-inline-end: 40px;
     z-index: 99999;
-    max-height: 730px;
+    box-sizing: border-box;
+    max-height: calc(100vh - 120px);
+    max-height: min(730px, calc(100vh - 120px));
     overflow-y: auto;
+    overscroll-behavior: contain;
     transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1);
     border-radius: 4px;
 }
@@ -5454,7 +5457,8 @@ div#ays-quiz-dicount-month-main.ays_quiz_dicount_info.ays_quiz_fox_lms_container
 
 @media (max-width: 1280px) {
     div#ays-quiz-checklist-container.ays-quiz-checklist-panel {
-        max-height: 580px;
+        max-height: calc(100vh - 96px);
+        max-height: min(580px, calc(100vh - 96px));
         width: 300px;
         bottom: 20px;
         inset-inline-end: 20px;
@@ -5462,6 +5466,13 @@ div#ays-quiz-dicount-month-main.ays_quiz_dicount_info.ays_quiz_fox_lms_container
 
     div#ays-quiz-checklist-container .ays-quiz-checklist-step-content img {
         height: 150px;
+    }
+}
+
+@media (max-height: 700px) {
+    div#ays-quiz-checklist-container.ays-quiz-checklist-panel {
+        bottom: 16px;
+        max-height: calc(100vh - 88px);
     }
 }
 
