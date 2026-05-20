@@ -538,6 +538,9 @@ class Questions_List_Table extends WP_List_Table{
             $quest_create_date  = !isset($_POST['ays_question_ctrate_date']) ? '0000-00-00 00:00:00' : sanitize_text_field( $_POST['ays_question_ctrate_date'] );
             $author = isset($_POST['ays_question_author']) ? stripslashes( sanitize_text_field( $_POST['ays_question_author'] ) ) : '';
             $author = json_decode($author, true);
+
+            // Question background image
+            $bg_image = (isset($_POST['ays_question_bg_image']) && $_POST['ays_question_bg_image'] != '') ? sanitize_url($_POST['ays_question_bg_image']) : '';
             
             // Use HTML for answers
             $use_html = (isset($_POST['ays-use-html']) && $_POST['ays-use-html'] == 'on') ? 'on' : 'off';
@@ -602,6 +605,7 @@ class Questions_List_Table extends WP_List_Table{
 
             $options = array(
                 'author'                                => json_encode($author),
+                'bg_image'                              => $bg_image,
                 'use_html'                              => $use_html,
                 'enable_question_text_max_length'       => $enable_question_text_max_length,
                 'question_text_max_length'              => $question_text_max_length,
@@ -1012,6 +1016,9 @@ class Questions_List_Table extends WP_List_Table{
         $question_options = (isset($questionDup['options']) && $questionDup['options'] != '') ? json_decode($questionDup['options'] ,true) : array();
 
         $not_influence_to_score = (isset($questionDup['not_influence_to_score']) && $questionDup['not_influence_to_score'] == 'on') ? 'on' : 'off';
+
+        // Question background image
+        $bg_image = (isset($question_options['bg_image']) && $question_options['bg_image'] != '') ? sanitize_url($question_options['bg_image']) : '';
         
         // Use HTML
         $question_options['use_html'] = isset($question_options['use_html']) ? sanitize_text_field($question_options['use_html']) : 'off';
@@ -1085,6 +1092,7 @@ class Questions_List_Table extends WP_List_Table{
 
         $options = array(
             'author'                                => $author,
+            'bg_image'                              => $bg_image,
             'use_html'                              => $use_html,
             'enable_question_text_max_length'       => $enable_question_text_max_length,
             'question_text_max_length'              => $question_text_max_length,

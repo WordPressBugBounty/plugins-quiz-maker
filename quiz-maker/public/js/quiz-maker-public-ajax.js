@@ -56,6 +56,7 @@
             if(myOptions.autofill_user_data && myOptions.autofill_user_data == "on"){
                 var userData = {};
                 userData.action = 'ays_get_user_information';
+                userData._ajax_nonce = quiz_maker_ajax_public.nonce;
                 $.ajax({
                     url: quiz_maker_ajax_public.ajax_url,
                     method: 'post',

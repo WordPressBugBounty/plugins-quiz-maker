@@ -1975,6 +1975,9 @@
         $(document).on('click', 'a.add-question-image', function (e) {
             openMediaUploader(e, $(this));
         });
+        $(document).on('click', 'a.add-question-bg-image', function (e) {
+            openMediaUploaderQuestionBg(e, $(this));
+        });
         $(document).on('click', 'a.add-quiz-bg-music', function (e) {
             openMusicMediaUploader(e, $(this));
         });
@@ -1983,7 +1986,14 @@
             $(this).parent().find('img#ays-question-img').attr('src', '');
             $(this).parent().find('input#ays-question-image').val('');
             $(this).parent().fadeOut();
-            $(document).find('a.add-question-image').text('Add Image');
+            $(document).find('a.add-question-image').text(quizLangObj.addImage);
+        });
+
+        $(document).on('click', '.ays-remove-question-bg-img', function () {
+            $(this).parent().fadeOut();
+            $(this).parent().find('img#ays-question-bg-img').attr('src', '');
+            $(this).parent().find('input#ays-question-bg-image').val('');
+            $(document).find('a.add-question-bg-image').text(quizLangObj.addImage);
         });
 
         $(document).on('click', 'label.ays-label a.add-answer-image, .ays-answer-image-container .ays-edit-answer-img', function (e) {
@@ -4442,6 +4452,40 @@
             element.parent().parent().find('.ays-question-image-container').fadeIn();
             element.parent().parent().find('img#ays-question-img').attr('src', imgurl);
             element.parent().parent().find('input#ays-question-image').val(imgurl);
+        }).open();
+        return false;
+    }
+
+    function openMediaUploaderQuestionBg(e, element) {
+        e.preventDefault();
+        var aysUploader = wp.media({
+            title: 'Upload Question Background',
+            button: {
+                text: 'Upload'
+            },
+            frame:    'post',    // <-- this is the important part
+            state:    'insert',
+            library: {
+                type: 'image'
+            },
+            multiple: false
+        }).on('insert', function () {
+            // var attachment = aysUploader.state().get('selection').first().toJSON();
+
+            var state = aysUploader.state();
+            var selection = selection || state.get('selection');
+            if (! selection) return;
+            // We set multiple to false so only get one image from the uploader
+            var attachment = selection.first();
+            var display = state.display(attachment).toJSON();  // <-- additional properties
+            attachment = attachment.toJSON();
+            // Do something with attachment.id and/or attachment.url here
+            var imgurl = attachment.sizes[display.size].url;
+
+            element.text('Edit Image');
+            element.parent().parent().find('.ays-question-bg-image-container').fadeIn();
+            element.parent().parent().find('img#ays-question-bg-img').attr('src', imgurl);
+            element.parent().parent().find('input#ays-question-bg-image').val(imgurl);
         }).open();
         return false;
     }

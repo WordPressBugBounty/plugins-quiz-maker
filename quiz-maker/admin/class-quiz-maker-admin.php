@@ -276,6 +276,7 @@ class Quiz_Maker_Admin
             'dropdawn'                          => __( 'Dropdown', 'quiz-maker'),
             'emptyAnswer'                       => __( 'Empty Answer', 'quiz-maker'),
             'addGif'                            => __( 'Add Gif', 'quiz-maker'),
+            'addImage'                          => __( 'Add image', 'quiz-maker'),
             'textType'                          => __( 'Text', 'quiz-maker'),
             'answerText'                        => __( 'Answer text', 'quiz-maker'),
             'copied'                            => __( 'Copied!', 'quiz-maker'),

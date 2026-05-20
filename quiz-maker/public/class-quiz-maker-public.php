@@ -5535,6 +5535,9 @@ class Quiz_Maker_Public
                 $show_questions_numbering = $options['show_questions_numbering'];
                 $question_numering_type = $this->ays_question_numbering( $show_questions_numbering, $total );
 
+                $question_bg_image = (isset($question_options['bg_image']) && $question_options['bg_image'] != "") ? $question_options['bg_image'] : null;
+                $question_bg_class = ($question_bg_image !== null) ? "ays-quiz-question-with-bg" : "";
+
                 $question_title = $question['question'];
 
                 if ( $quiz_enable_question_stripslashes ) {
@@ -5581,6 +5584,13 @@ class Quiz_Maker_Public
                             </div>
                             {$question_image}";
                         $answer_view_class = "ays_".$answer_view_class."_view_container";
+                        if($question_bg_image !== null){
+                            $additional_css = "<style>
+                                #ays-quiz-container-" . $quiz_id . " div.step[data-question-id='". absint($question["id"]) ."'] {
+                                    background-image:url('". esc_url($question_bg_image) ."');
+                                }
+                            </style>";
+                        }
                         break;
                     default:
                         $question_html = "<div class='ays_quiz_question'>
@@ -5588,10 +5598,17 @@ class Quiz_Maker_Public
                             </div>
                             {$question_image}";
                         $answer_view_class = "ays_".$answer_view_class."_view_container";
+                        if($question_bg_image !== null){
+                            $additional_css = "<style>
+                                #ays-quiz-container-" . $quiz_id . " div.step[data-question-id='". absint($question["id"]) ."'] {
+                                    background-image:url('". esc_url($question_bg_image) ."');
+                                }
+                            </style>";
+                        }
                         break;
                 }
                 $not_influence_to_score_class = $not_influence_to_score ? 'not_influence_to_score' : '';
-                $container_first_part = "<div class='step ".$not_influence_to_score_class."' data-question-id='" . $question["id"] . "' data-type='" . $question["type"] . "'>
+                $container_first_part = "<div class='step ".$question_bg_class." ".$not_influence_to_score_class."' data-question-id='" . $question["id"] . "' data-type='" . $question["type"] . "'>
                     {$question_hint}
                     {$quiz_waiting_time_html}
                     {$questions_counter}
@@ -8145,16 +8162,20 @@ class Quiz_Maker_Public
     }
     
     public function ays_get_user_information() {
-        
-        if(is_user_logged_in()) {
-            $output = json_encode(wp_get_current_user());
-        } else {
-            $output = null;
+        if ( ! check_ajax_referer( 'ays_quiz_nonce', '_ajax_nonce', false ) ) {
+            wp_send_json_error( array( 'message' => 'Invalid request' ), 403 );
         }
-        ob_end_clean();
-        $ob_get_clean = ob_get_clean();
-        echo $output;
-        wp_die();
+
+        if ( ! is_user_logged_in() ) {
+            wp_send_json_error( array( 'message' => 'User not logged in' ), 401 );
+        }
+
+        $user = wp_get_current_user();
+
+        wp_send_json_success( array(
+            'display_name' => $user->display_name,
+            'user_email'   => $user->user_email,
+        ) );
     }
 
     public static function ays_quiz_set_cookie($attr){

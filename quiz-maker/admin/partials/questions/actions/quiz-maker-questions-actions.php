@@ -11,6 +11,7 @@ $action = (isset($_GET['action'])) ? sanitize_text_field( $_GET['action'] ) : ''
 $heading = '';
 $loader_iamge = '';
 $image_text = esc_html__('Add Image', 'quiz-maker');
+$bg_image_text = esc_html__('Add Image', 'quiz-maker');
 
 $id = (isset($_GET['question'])) ? absint( intval( $_GET['question'] ) ) : null;
 $user_id = get_current_user_id();
@@ -150,6 +151,7 @@ $question_published = (isset( $question["published"] ) && $question["published"]
 $question_image = (isset( $question['question_image'] ) && $question['question_image']) ? esc_url($question['question_image']) : "";
 
 $style = null;
+$bg_style = null;
 if ($question_image != '') {
     $style = "display: block;";
     $image_text = esc_html__('Edit Image', 'quiz-maker');
@@ -158,6 +160,11 @@ $question_create_date = (isset($question['create_date']) && $question['create_da
 
 if ( isset( $question['options'] ) && $question['options'] != "" ) {
     $options = json_decode($question['options'], true);
+}
+
+if (isset($options['bg_image']) && $options['bg_image'] != '') {
+	$bg_style = "display: block;";
+	$bg_image_text = esc_html__('Edit Image', 'quiz-maker');
 }
 
 if(isset($options['author']) && $options['author'] != 'null'){
@@ -1163,6 +1170,35 @@ $user_explanation = (isset($question["user_explanation"]) && $question["user_exp
                 <hr>
                 <div class="form-group row">
                     <div class="col-sm-3">
+                        <label>
+                            <?php echo __('Question background image', 'quiz-maker'); ?>
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Background image of the container. You can choose different images for different questions.',$this->plugin_name)?>">
+                                <i class="ays_fa ays_fa_info_circle"></i>
+                            </a>
+                        </label>
+                    </div>
+                    <div class="col-sm-2">
+                        <a href="javascript:void(0)" class="add-question-bg-image m-0"><?php echo esc_html($bg_image_text); ?></a>
+                        <p class="ays_quiz_small_hint_text_for_message_variables" style="margin-top: 5px;">
+                            <span><?php echo esc_html__( "Note" , 'quiz-maker' ); ?></span>
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('* Note: The plugin doesn’t make any changes concerning the images. It takes the images in a size, in which you have uploaded them. We are using the default WP Media. If the uploaded image is blurred and has a low quality, make sure to choose the right parameters (Full size) while uploading the images. You can find the Full Size option in the opened Add Media popup (Attachment Display Settings).','quiz-maker') ); ?>">
+                                <i class="ays_fa ays_fa_info_circle"></i>
+                            </a>
+                        </p>
+                    </div>
+                    <div class="col-sm-7">
+                        <div class="ays-question-bg-image-container" style="<?php echo esc_attr($bg_style); ?>">
+                            <span class="ays-remove-question-bg-img"></span>
+                            <img src="<?php echo (isset($options['bg_image']) ? esc_url($options['bg_image']) : ""); ?>"
+                                 id="ays-question-bg-img"/>
+                            <input type="hidden" name="ays_question_bg_image" id="ays-question-bg-image"
+                                   value="<?php echo (isset($options['bg_image']) ? esc_url($options['bg_image']) : ""); ?>"/>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="form-group row">
+                    <div class="col-sm-3">
                         <label for="ays_question_hint">
                             <?php echo esc_html__('Question hint','quiz-maker'); ?>
                             <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Add extra information that can help users about the question.','quiz-maker') ); ?>">
@@ -1390,46 +1426,6 @@ $user_explanation = (isset($question["user_explanation"]) && $question["user_exp
                     </div>
                 </div>
                 <!-- Question Tags End -->
-                <hr>
-                <div class="form-group row">
-                    <div class="col-sm-12 only_pro" style="padding:15px;">
-                        <div class="pro_features">                            
-
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-sm-3">
-                                <label><?php echo esc_html__('Question background image', 'quiz-maker'); ?></label>
-                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Background image of the container. You can choose different images for different questions.','quiz-maker') ); ?>">
-                                    <i class="ays_fa ays_fa_info_circle"></i>
-                                </a>
-                            </div>
-                            <div class="col-sm-3">
-                                <a href="javascript:void(0)" class="add-question-image m-0" tabindex="-1" style="border: 1px solid #ededed;"><?php echo esc_html__('Add Image', 'quiz-maker'); ?></a>
-                                <p class="ays_quiz_small_hint_text_for_message_variables" style="margin-top: 5px;">
-                                    <span><?php echo esc_html__( "Note" , 'quiz-maker' ); ?></span>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('* Note: The plugin doesn’t make any changes concerning the images. It takes the images in a size, in which you have uploaded them. We are using the default WP Media. If the uploaded image is blurred and has a low quality, make sure to choose the right parameters (Full size) while uploading the images. You can find the Full Size option in the opened Add Media popup (Attachment Display Settings).','quiz-maker') ); ?>">
-                                        <i class="ays_fa ays_fa_info_circle"></i>
-                                    </a>
-                                </p>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="ays-question-bg-image-container">
-                                    <span class="ays-remove-question-bg-img"></span>
-                                    <img src="" id="ays-question-bg-img"/>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=question-bg-img-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
-                            <div class="ays-quiz-new-upgrade-button-box">
-                                <div>
-                                    <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
-                                    <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg' ); ?>" class="ays-quiz-new-upgrade-button-hover">
-                                </div>
-                                <div class="ays-quiz-new-upgrade-button"><?php echo esc_html__("Upgrade", "quiz-maker"); ?></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
                 <hr>
                 <div class="form-group row">
                     <div class="col-sm-12">

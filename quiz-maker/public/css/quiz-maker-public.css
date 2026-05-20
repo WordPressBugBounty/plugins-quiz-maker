@@ -2171,7 +2171,13 @@ fieldset.ays_fieldset .ays_quiz_question .wp-video {
     vertical-align: text-top;
 }
 
-
+/*Question background styles*/
+.ays-quiz-question-with-bg {
+    background-repeat: no-repeat;
+    background-position: center center;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
 
 /* Quiz login form */
 

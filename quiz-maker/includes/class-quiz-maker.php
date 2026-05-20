@@ -394,7 +394,6 @@ class Quiz_Maker {
         $this->loader->add_action( 'wp_ajax_nopriv_ays_load_more_reviews', $plugin_public, 'ays_load_more_reviews' );
         
         $this->loader->add_action( 'wp_ajax_ays_get_user_information', $plugin_public, 'ays_get_user_information' );
-        $this->loader->add_action( 'wp_ajax_nopriv_ays_get_user_information', $plugin_public, 'ays_get_user_information' );
 
         $this->loader->add_action( 'wp_ajax_ays_quiz_send_question_report', $plugin_public, 'ays_quiz_send_question_report' );
         $this->loader->add_action( 'wp_ajax_nopriv_ays_quiz_send_question_report', $plugin_public, 'ays_quiz_send_question_report' );
