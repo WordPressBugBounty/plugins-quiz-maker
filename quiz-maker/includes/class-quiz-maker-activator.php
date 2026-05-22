@@ -2,7 +2,7 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 global $ays_quiz_db_version;
-$ays_quiz_db_version = '3.9.2';
+$ays_quiz_db_version = '3.9.3';
 /**
  * Fired during plugin activation
  *
@@ -472,6 +472,7 @@ class Quiz_Maker_Activator
                 "default_texts",
                 "buttons_texts",
                 "fields_placeholders",
+                "quiz_buttons_order",
                 "options"
             );
             

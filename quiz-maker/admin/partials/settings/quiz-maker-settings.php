@@ -455,6 +455,23 @@
     $options['quiz_disable_live_chat_icon'] = isset($options['quiz_disable_live_chat_icon']) ? sanitize_text_field( $options['quiz_disable_live_chat_icon'] ) : 'off';
     $quiz_disable_live_chat_icon = (isset($options['quiz_disable_live_chat_icon']) && sanitize_text_field( $options['quiz_disable_live_chat_icon'] ) == "on") ? true : false;
 
+    $settings_ordering = Quiz_Maker_Data::ays_quiz_get_settings_order_defaults();
+    
+    $buttons_ordering = $settings_ordering['buttons'];
+    $buttons_ordering_mobile = $settings_ordering['buttons'];
+
+    $buttons_default_sort = array_keys($buttons_ordering);
+
+    $quiz_buttons_order_res = ($actions->ays_get_setting('quiz_buttons_order') === false) ? json_encode(array()) : $actions->ays_get_setting('quiz_buttons_order');
+    $quiz_buttons_order = json_decode($quiz_buttons_order_res, true);
+
+    $buttons_sort_desktop = isset($quiz_buttons_order['desktop']) ? $quiz_buttons_order['desktop'] : $buttons_default_sort ;
+    $buttons_sort_mobile = isset($quiz_buttons_order['mobile']) ? $quiz_buttons_order['mobile'] : $buttons_default_sort ;
+
+    if( isset( $_REQUEST['ays_quiz_default_buttons_order'] ) ){
+        $buttons_sort_desktop = $buttons_default_sort;
+        $buttons_sort_mobile = $buttons_default_sort;
+    }
 ?>
 <div class="wrap" style="position:relative;">
     <div class="container-fluid">
@@ -5456,6 +5473,141 @@
                     <div id="tab10" class="ays-quiz-tab-content  <?php echo ($ays_quiz_tab == 'tab10') ? 'ays-quiz-tab-content-active' : ''; ?>">
                         <p class="ays-subtitle"><?php echo esc_html__('Ordering','quiz-maker')?></p>
                         <hr class="ays-quiz-bolder-hr"/>
+                        <div class="ays-quiz-dashboard-main-wrap">
+                            <div class="ays-quiz-tab-ordering nav-sub-tab-wrapper-container">
+                                <h4><?php echo esc_html__('Button Order','quiz-maker')?></h4>
+                                <p><?php echo esc_html__('Arrange the order of navigation buttons that appear on the quiz result page.','quiz-maker')?></p>
+                                <div class="form-group row nav-sub-tab-wrapper " style="margin-bottom: 20px;padding-left:20px">
+                                    <a href="#ays_quiz_buttons_order_view_desktop" data-tab="ays_quiz_buttons_order_view_desktop" class="nav-tab nav-tab-active">
+                                        <?php echo __('On desktop', 'quiz-maker'); ?>
+                                    </a>
+                                    <a href="#ays_quiz_buttons_order_view_mobile" data-tab="ays_quiz_buttons_order_view_mobile" class="nav-tab">
+                                        <?php echo __('On mobile', 'quiz-maker'); ?>
+                                    </a>
+                                </div>
+                                <div id="ays_quiz_buttons_order_view_desktop" class="form-group row ays-quiz-sub-tab-content ays-quiz-sub-tab-content-active">
+                                    <div class="col-sm-12">
+                                        <div class=" ays-quiz-buttons-order ays-quiz-settings-ui-sortable " default-ordered='<?php echo json_encode($buttons_default_sort);?>'>
+                                            <?php foreach($buttons_sort_desktop as $key) { ?>
+                                                <?php if(isset($buttons_ordering[$key])) { ?>
+                                                    <div class="ays-quiz-order-item <?php if($key == 'save') { echo $save_button_bg;}?>" data-value="<?php echo $key;?>">
+                                                        <div class="">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M278.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-64 64c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l9.4-9.4L224 224l-114.7 0 9.4-9.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-64 64c-12.5 12.5-12.5 32.8 0 45.3l64 64c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-9.4-9.4L224 288l0 114.7-9.4-9.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l64 64c12.5 12.5 32.8 12.5 45.3 0l64-64c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-9.4 9.4L288 288l114.7 0-9.4 9.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l64-64c12.5-12.5 12.5-32.8 0-45.3l-64-64c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l9.4 9.4L288 224l0-114.7 9.4 9.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-64-64z"/></svg>
+
+                                                        </div>
+                                                        <?php echo esc_html($buttons_ordering[$key]);?>
+                                                        <?php if($key == 'save') { ?>
+                                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_html__('Please note, that this option will be activated only if the Save and Resume addon is installed and activated and the Enable save and resume option is turned on in the Settings Tab of the given Quiz Edit page','quiz-maker')?>">
+                                                                <i class="ays_fa ays_fa_info_circle"></i>
+                                                            </a>
+                                                        <?php } else if($key == 'finish') { ?>
+                                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_html__('Note: The Finish and the See Result button (displayed at the end of the quiz on the Result page) are the same.','quiz-maker')?>">
+                                                                <i class="ays_fa ays_fa_info_circle"></i>
+                                                            </a>
+                                                        <?php } ?>
+                                                        <input type="hidden" name="ays_quiz_bunttons_order_desktop[]" value="<?php echo esc_attr($key);?>">
+                                                        <?php unset($buttons_ordering[$key]);?>
+                                                    </div>
+                                                <?php } ?>
+                                            <?php } ?>
+                                            <?php if(!empty($buttons_ordering)) { ?>
+                                                <?php foreach ($buttons_ordering as $bin => $key){ ?>
+                                                    <div class="ays-quiz-order-item <?php if($bin == 'save') { echo $save_button_bg;}?>" data-value="<?php echo $bin;?>">
+                                                        <div class="">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M278.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-64 64c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l9.4-9.4L224 224l-114.7 0 9.4-9.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-64 64c-12.5 12.5-12.5 32.8 0 45.3l64 64c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-9.4-9.4L224 288l0 114.7-9.4-9.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l64 64c12.5 12.5 32.8 12.5 45.3 0l64-64c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-9.4 9.4L288 288l114.7 0-9.4 9.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l64-64c12.5-12.5 12.5-32.8 0-45.3l-64-64c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l9.4 9.4L288 224l0-114.7 9.4 9.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-64-64z"/></svg>
+
+                                                        </div>
+                                                        <?php echo esc_html($key);?>
+                                                        <?php if($bin == 'save') { ?>
+                                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_html__('Please note, that this option will be activated only if the Save and Resume addon is installed and activated and the Enable save and resume option is turned on in the Settings Tab of the given Quiz Edit page','quiz-maker')?>">
+                                                                <i class="ays_fa ays_fa_info_circle"></i>
+                                                            </a>
+                                                        <?php } else if($bin == 'finish') { ?>
+                                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_html__('Note: The Finish and the See Result button (displayed at the end of the quiz on the Result page) are the same.','quiz-maker')?>">
+                                                                <i class="ays_fa ays_fa_info_circle"></i>
+                                                            </a>
+                                                        <?php } ?>
+                                                        <input type="hidden" name="ays_quiz_bunttons_order_desktop[]" value="<?php echo esc_attr($bin);?>">
+                                                    </div>
+                                                <?php } ?>
+                                            <?php } ?>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="ays_quiz_buttons_order_view_mobile" class="form-group row ays-quiz-sub-tab-content ">
+                                    <div class="col-sm-12 ">
+                                        <div class=" ays-quiz-buttons-order ays-quiz-settings-ui-sortable-mobile " default-ordered='<?php echo json_encode($buttons_default_sort);?>'>
+                                            <?php foreach($buttons_sort_mobile as $key) { ?>
+                                                <?php if(isset($buttons_ordering_mobile[$key])) { ?>
+                                                    <div class="ays-quiz-order-item ays-quiz-dlg-dragHandle <?php if($key == 'save') { echo $save_button_bg;}?>" data-value="<?php echo $key;?>">
+                                                        <div class="">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M278.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-64 64c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l9.4-9.4L224 224l-114.7 0 9.4-9.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-64 64c-12.5 12.5-12.5 32.8 0 45.3l64 64c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-9.4-9.4L224 288l0 114.7-9.4-9.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l64 64c12.5 12.5 32.8 12.5 45.3 0l64-64c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-9.4 9.4L288 288l114.7 0-9.4 9.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l64-64c12.5-12.5 12.5-32.8 0-45.3l-64-64c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l9.4 9.4L288 224l0-114.7 9.4 9.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-64-64z"/></svg>
+
+                                                        </div>
+                                                        <?php echo esc_html($buttons_ordering_mobile[$key]);?>
+                                                        <?php if($key == 'save') { ?>
+                                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_html__('Please note, that this option will be activated only if the Save and Resume addon is installed and activated and the Enable save and resume option is turned on in the Settings Tab of the given Quiz Edit page','quiz-maker')?>">
+                                                                <i class="ays_fa ays_fa_info_circle"></i>
+                                                            </a>
+                                                        <?php } else if($key == 'finish') { ?>
+                                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_html__('Note: The Finish and the See Result button (displayed at the end of the quiz on the Result page) are the same.','quiz-maker')?>">
+                                                                <i class="ays_fa ays_fa_info_circle"></i>
+                                                            </a>
+                                                        <?php } ?>
+                                                        <?php unset($buttons_ordering_mobile[$key]);?>
+                                                        <input type="hidden" name="ays_quiz_bunttons_order_mobile[]" value="<?php echo esc_attr($key);?>">
+                                                    </div>
+                                                <?php } ?>
+                                            <?php } ?>
+                                            <?php if(!empty($buttons_ordering_mobile)) { ?>
+                                                <?php foreach ($buttons_ordering_mobile as $bin => $key){ ?>
+                                                    <div class="ays-quiz-order-item <?php if($bin == 'save') { echo $save_button_bg;}?>" data-value="<?php echo $bin;?>">
+                                                        <div class="">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M278.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-64 64c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l9.4-9.4L224 224l-114.7 0 9.4-9.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-64 64c-12.5 12.5-12.5 32.8 0 45.3l64 64c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-9.4-9.4L224 288l0 114.7-9.4-9.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l64 64c12.5 12.5 32.8 12.5 45.3 0l64-64c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-9.4 9.4L288 288l114.7 0-9.4 9.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l64-64c12.5-12.5 12.5-32.8 0-45.3l-64-64c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l9.4 9.4L288 224l0-114.7 9.4 9.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-64-64z"/></svg>
+
+                                                        </div>
+                                                        <?php echo esc_html($key);?>
+                                                        <?php if($bin == 'save') { ?>
+                                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_html__('Please note, that this option will be activated only if the Save and Resume addon is installed and activated and the Enable save and resume option is turned on in the Settings Tab of the given Quiz Edit page','quiz-maker')?>">
+                                                                <i class="ays_fa ays_fa_info_circle"></i>
+                                                            </a>
+                                                        <?php } else if($bin == 'finish') { ?>
+                                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_html__('Note: The Finish and the See Result button (displayed at the end of the quiz on the Result page) are the same.','quiz-maker')?>">
+                                                                <i class="ays_fa ays_fa_info_circle"></i>
+                                                            </a>
+                                                        <?php } ?>
+                                                        <input type="hidden" name="ays_quiz_bunttons_order_mobile[]" value="<?php echo esc_attr($bin);?>">
+                                                    </div>
+                                                <?php } ?>
+                                            <?php } ?>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <hr>
+                            
+                                <div class="d-flex ays-quiz-settings-order-buttons">
+
+                                    <button type="button" name="ays_quiz_default_buttons_order" id="ays_quiz_default_buttons_order" class="button button-primary ays_default_sec_btn ays_default_button_class" data-message="<?php echo  __( "Are you sure you want to reset the ordering to the default configuration? Note: The ordering you have applied will be reset to the default one. To finalize and apply changes, click on the Save button.", 'quiz-maker' );?>">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M105.1 202.6c7.7-21.8 20.2-42.3 37.8-59.8c62.5-62.5 163.8-62.5 226.3 0L386.3 160 352 160c-17.7 0-32 14.3-32 32s14.3 32 32 32l111.5 0c0 0 0 0 0 0l.4 0c17.7 0 32-14.3 32-32l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 35.2L414.4 97.6c-87.5-87.5-229.3-87.5-316.8 0C73.2 122 55.6 150.7 44.8 181.4c-5.9 16.7 2.9 34.9 19.5 40.8s34.9-2.9 40.8-19.5zM39 289.3c-5 1.5-9.8 4.2-13.7 8.2c-4 4-6.7 8.8-8.1 14c-.3 1.2-.6 2.5-.8 3.8c-.3 1.7-.4 3.4-.4 5.1L16 432c0 17.7 14.3 32 32 32s32-14.3 32-32l0-35.1 17.6 17.5c0 0 0 0 0 0c87.5 87.4 229.3 87.4 316.7 0c24.4-24.4 42.1-53.1 52.9-83.8c5.9-16.7-2.9-34.9-19.5-40.8s-34.9 2.9-40.8 19.5c-7.7 21.8-20.2 42.3-37.8 59.8c-62.5 62.5-163.8 62.5-226.3 0l-.1-.1L125.6 352l34.4 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L48.4 288c-1.6 0-3.2 .1-4.8 .3s-3.1 .5-4.6 1z"/></svg>
+                                        <?php echo esc_html__('Reset to Default', 'quiz-maker');?>
+                                        
+                                    </button>
+                                    
+                            
+
+                                </div>
+                                
+                            <?php
+                                // $save_as_default_button_other_attributes = array( 'data-message' => __( 'Are you sure that you want to save these parameters as default?', 'quiz-maker' ) . "\n" . __( "Note: All the default values will be replaced with the current quiz settings and will be applied to the newly created quizzes.", 'quiz-maker' ) );
+                                // submit_button('<i class="fa-solid fa-arrows-rotate"></i>'.__('Save as default', 'quiz-maker'), 'primary ays_default_btn ays_default_button_class', 'ays_quiz_default_buttons_order', true, $save_as_default_button_other_attributes);
+                            
+                                ?>  
+                        
+                            </div>
+                        </div>
                         <div class="ays-quiz-tab-ordering ays-quiz-dashboard-main-wrap">
                             <h4><?php echo esc_html__('Result Page Layout','quiz-maker')?></h4>
                             <div class="col-sm-12 only_pro" style="padding:20px;">
@@ -5539,111 +5691,6 @@
                                     </div>
                                 </a>
                             </div> 
-                        </div>
-                        <div class="ays-quiz-dashboard-main-wrap">
-                            <div class="ays-quiz-tab-ordering nav-sub-tab-wrapper-container">
-                                <h4><?php echo esc_html__('Button Order','quiz-maker')?></h4>
-                                <div class="col-sm-12 only_pro" style="padding:20px;">
-                                    <div class="pro_features" style="justify-content:flex-end;">
-
-                                    </div>
-                                    <p><?php echo esc_html__('Arrange the order of navigation buttons that appear on the quiz result page.','quiz-maker')?></p>
-                                    <div class="form-group row nav-sub-tab-wrapper " style="margin-bottom: 20px;padding-left:20px">
-                                        <a href="#ays_quiz_buttons_order_view_desktop" data-tab="ays_quiz_buttons_order_view_desktop" class="nav-tab nav-tab-active">
-                                            <?php echo esc_html__('On desktop', 'quiz-maker'); ?>
-                                        </a>
-                                        <a href="#ays_quiz_buttons_order_view_mobile" data-tab="ays_quiz_buttons_order_view_mobile" class="nav-tab">
-                                            <?php echo esc_html__('On mobile', 'quiz-maker'); ?>
-                                        </a>
-                                    </div>
-                                    <div id="ays_quiz_buttons_order_view_desktop" class="form-group row ays-quiz-sub-tab-content ays-quiz-sub-tab-content-active">
-                                        <div class="col-sm-12">
-                                            <div class=" ays-quiz-buttons-order ays-quiz-settings-ui-sortable">
-                                                <?php foreach($buttons_sort_desktop as $key) { ?>
-                                                    <?php if(isset($buttons_ordering[$key])) { ?>
-                                                        <div class="ays-quiz-order-item <?php if($key == 'save') { echo esc_attr($save_button_bg);}?>" data-value="<?php echo esc_attr($key);?>">
-                                                            <div class="">
-                                                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                    <g clip-path="url(#clip0_141_42)">
-                                                                        <path
-                                                                            d="M9.79463 0.330566C9.35518 -0.108887 8.6415 -0.108887 8.20205 0.330566L5.95205 2.58057C5.5126 3.02002 5.5126 3.73369 5.95205 4.17314C6.3915 4.6126 7.10518 4.6126 7.54463 4.17314L7.8751 3.84268V7.8751H3.84268L4.17314 7.54463C4.6126 7.10518 4.6126 6.3915 4.17314 5.95205C3.73369 5.5126 3.02002 5.5126 2.58057 5.95205L0.330566 8.20205C-0.108887 8.6415 -0.108887 9.35518 0.330566 9.79463L2.58057 12.0446C3.02002 12.4841 3.73369 12.4841 4.17314 12.0446C4.6126 11.6052 4.6126 10.8915 4.17314 10.452L3.84268 10.1216L7.8751 10.1251V14.1575L7.54463 13.827C7.10518 13.3876 6.3915 13.3876 5.95205 13.827C5.5126 14.2665 5.5126 14.9802 5.95205 15.4196L8.20205 17.6696C8.6415 18.1091 9.35518 18.1091 9.79463 17.6696L12.0446 15.4196C12.4841 14.9802 12.4841 14.2665 12.0446 13.827C11.6052 13.3876 10.8915 13.3876 10.452 13.827L10.1216 14.1575L10.1251 10.1251H14.1575L13.827 10.4556C13.3876 10.895 13.3876 11.6087 13.827 12.0481C14.2665 12.4876 14.9802 12.4876 15.4196 12.0481L17.6696 9.79814C18.1091 9.35869 18.1091 8.64502 17.6696 8.20557L15.4196 5.95557C14.9802 5.51611 14.2665 5.51611 13.827 5.95557C13.3876 6.39502 13.3876 7.10869 13.827 7.54814L14.1575 7.87861L10.1251 7.8751V3.84268L10.4556 4.17314C10.895 4.6126 11.6087 4.6126 12.0481 4.17314C12.4876 3.73369 12.4876 3.02002 12.0481 2.58057L9.79814 0.330566H9.79463Z"
-                                                                            fill="black"
-                                                                        />
-                                                                    </g>
-                                                                    <defs>
-                                                                        <clipPath id="clip0_141_42">
-                                                                            <rect width="18" height="18" fill="white" />
-                                                                        </clipPath>
-                                                                    </defs>
-                                                                </svg>
-                                                            </div>
-                                                            <?php echo esc_html($buttons_ordering[$key]);?>
-                                                            <?php if($key == 'save') { ?>
-                                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_html__('Note, that this option will be activated only if the Save and Resume addon is installed and activated and the Enable save and resume option is turned on in the Settings Tab of the given Quiz Edit page','quiz-maker')?>">
-                                                                    <i class="ays_fa ays_fa_info_circle"></i>
-                                                                </a>
-                                                            <?php } else if($key == 'finish') { ?>
-                                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_html__('Note: The Finish and the See Result button (displayed at the end of the quiz on the Result page) are the same.','quiz-maker')?>">
-                                                                    <i class="ays_fa ays_fa_info_circle"></i>
-                                                                </a>
-                                                            <?php } ?>
-                                                            <?php unset($buttons_ordering[$key]);?>
-                                                        </div>
-                                                    <?php } ?>
-                                                <?php } ?>
-                                                <?php if(!empty($buttons_ordering)) { ?>
-                                                    <?php foreach ($buttons_ordering as $bin => $key){ ?>
-                                                        <div class="ays-quiz-order-item <?php if($bin == 'save') { echo esc_attr($save_button_bg);}?>">
-                                                            <div class="">
-                                                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                    <g clip-path="url(#clip0_141_42)">
-                                                                        <path
-                                                                            d="M9.79463 0.330566C9.35518 -0.108887 8.6415 -0.108887 8.20205 0.330566L5.95205 2.58057C5.5126 3.02002 5.5126 3.73369 5.95205 4.17314C6.3915 4.6126 7.10518 4.6126 7.54463 4.17314L7.8751 3.84268V7.8751H3.84268L4.17314 7.54463C4.6126 7.10518 4.6126 6.3915 4.17314 5.95205C3.73369 5.5126 3.02002 5.5126 2.58057 5.95205L0.330566 8.20205C-0.108887 8.6415 -0.108887 9.35518 0.330566 9.79463L2.58057 12.0446C3.02002 12.4841 3.73369 12.4841 4.17314 12.0446C4.6126 11.6052 4.6126 10.8915 4.17314 10.452L3.84268 10.1216L7.8751 10.1251V14.1575L7.54463 13.827C7.10518 13.3876 6.3915 13.3876 5.95205 13.827C5.5126 14.2665 5.5126 14.9802 5.95205 15.4196L8.20205 17.6696C8.6415 18.1091 9.35518 18.1091 9.79463 17.6696L12.0446 15.4196C12.4841 14.9802 12.4841 14.2665 12.0446 13.827C11.6052 13.3876 10.8915 13.3876 10.452 13.827L10.1216 14.1575L10.1251 10.1251H14.1575L13.827 10.4556C13.3876 10.895 13.3876 11.6087 13.827 12.0481C14.2665 12.4876 14.9802 12.4876 15.4196 12.0481L17.6696 9.79814C18.1091 9.35869 18.1091 8.64502 17.6696 8.20557L15.4196 5.95557C14.9802 5.51611 14.2665 5.51611 13.827 5.95557C13.3876 6.39502 13.3876 7.10869 13.827 7.54814L14.1575 7.87861L10.1251 7.8751V3.84268L10.4556 4.17314C10.895 4.6126 11.6087 4.6126 12.0481 4.17314C12.4876 3.73369 12.4876 3.02002 12.0481 2.58057L9.79814 0.330566H9.79463Z"
-                                                                            fill="black"
-                                                                        />
-                                                                    </g>
-                                                                    <defs>
-                                                                        <clipPath id="clip0_141_42">
-                                                                            <rect width="18" height="18" fill="white" />
-                                                                        </clipPath>
-                                                                    </defs>
-                                                                </svg>
-                                                            </div>
-                                                            <?php echo esc_html($key);?>
-                                                            <?php if($bin == 'save') { ?>
-                                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_html__('Note, that this option will be activated only if the Save and Resume addon is installed and activated and the Enable save and resume option is turned on in the Settings Tab of the given Quiz Edit page','quiz-maker')?>">
-                                                                    <i class="ays_fa ays_fa_info_circle"></i>
-                                                                </a>
-                                                            <?php } else if($bin == 'finish') { ?>
-                                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_html__('Note: The Finish and the See Result button (displayed at the end of the quiz on the Result page) are the same.','quiz-maker')?>">
-                                                                    <i class="ays_fa ays_fa_info_circle"></i>
-                                                                </a>
-                                                            <?php } ?>
-                                                        </div>
-                                                    <?php } ?>
-                                                <?php } ?>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <div class="d-flex ays-quiz-settings-order-buttons">
-                                        <button type="button" name="ays_quiz_default_buttons_order" id="ays_quiz_default_buttons_order" class="button button-primary ays_default_sec_btn ays_default_button_class" data-message="<?php echo  esc_attr__( "Are you sure you want to reset the ordering to the default configuration? Note: The ordering you have applied will be reset to the default one. To finalize and apply changes, click on the Save button.", 'quiz-maker' );?>">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M105.1 202.6c7.7-21.8 20.2-42.3 37.8-59.8c62.5-62.5 163.8-62.5 226.3 0L386.3 160 352 160c-17.7 0-32 14.3-32 32s14.3 32 32 32l111.5 0c0 0 0 0 0 0l.4 0c17.7 0 32-14.3 32-32l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 35.2L414.4 97.6c-87.5-87.5-229.3-87.5-316.8 0C73.2 122 55.6 150.7 44.8 181.4c-5.9 16.7 2.9 34.9 19.5 40.8s34.9-2.9 40.8-19.5zM39 289.3c-5 1.5-9.8 4.2-13.7 8.2c-4 4-6.7 8.8-8.1 14c-.3 1.2-.6 2.5-.8 3.8c-.3 1.7-.4 3.4-.4 5.1L16 432c0 17.7 14.3 32 32 32s32-14.3 32-32l0-35.1 17.6 17.5c0 0 0 0 0 0c87.5 87.4 229.3 87.4 316.7 0c24.4-24.4 42.1-53.1 52.9-83.8c5.9-16.7-2.9-34.9-19.5-40.8s-34.9 2.9-40.8 19.5c-7.7 21.8-20.2 42.3-37.8 59.8c-62.5 62.5-163.8 62.5-226.3 0l-.1-.1L125.6 352l34.4 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L48.4 288c-1.6 0-3.2 .1-4.8 .3s-3.1 .5-4.6 1z"/></svg>
-                                            <?php echo esc_html__('Reset to Default', 'quiz-maker');?>
-                                        </button>
-                                    </div> 
-                                    <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=button-ordering-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
-                                        <div class="ays-quiz-new-upgrade-button-box">
-                                            <div>
-                                                <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
-                                                <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg' ); ?>" class="ays-quiz-new-upgrade-button-hover">
-                                            </div>
-                                            <div class="ays-quiz-new-upgrade-button"><?php echo esc_html__("Upgrade", "quiz-maker"); ?></div>
-                                        </div>
-                                    </a>
-                                </div>         
-                            </div>
                         </div>
                         <hr>
                     </div>

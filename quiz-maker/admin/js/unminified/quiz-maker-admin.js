@@ -2310,6 +2310,27 @@
             }
         });
 
+        $(document).find('.nav-sub-tab-wrapper a.nav-tab').on('click', function (e) {
+            if(! $(this).hasClass('no-js')){
+                e.preventDefault();
+                
+                var parent = $(this).parents('.nav-sub-tab-wrapper-container');
+                var elemenetID = $(this).attr('href');
+
+                parent.find('.nav-sub-tab-wrapper a.nav-tab').each(function () {
+                    if ($(this).hasClass('nav-tab-active')) {
+                        $(this).removeClass('nav-tab-active');
+                    }
+                });
+                $(this).addClass('nav-tab-active');
+                parent.find('.ays-quiz-sub-tab-content').each(function () {
+                    $(this).css('display', 'none');
+                });
+                
+                $(document).find('.ays-quiz-sub-tab-content' + elemenetID).css('display', 'block');
+            }
+        });
+
 
         $('.open-lightbox').on('click', function (e) {
             e.preventDefault();
@@ -3452,7 +3473,7 @@
         //     }
         // });
 
-        $(document).find('#ays_buttons_font_size, #ays_buttons_top_bottom_padding, #ays_buttons_left_right_padding, #ays_buttons_border_radius, #ays_buttons_width').on('change', function(e){
+        $(document).find('#ays_buttons_font_size, #ays_buttons_top_bottom_padding, #ays_buttons_left_right_padding, #ays_buttons_border_radius, #ays_buttons_width, #ays_enable_early_finish, #ays_enable_next_button, #ays_enable_previous_button , #ays_enable_clear_answer, #ays_enable_correction').on('change', function(e){
             refreshLivePreview();
         });
         refreshLivePreview();
@@ -3464,10 +3485,41 @@
             var buttonsBorderRadius = $(document).find('#ays_buttons_border_radius').val();
             var buttonsWidth = $(document).find('#ays_buttons_width').val();
 
+            var finish_button = $(document).find('#ays_enable_early_finish').prop('checked');
+            var next_button = $(document).find('#ays_enable_next_button').prop('checked');
+            var prev_button = $(document).find('#ays_enable_previous_button').prop('checked');
+            var clear_button = $(document).find('#ays_enable_clear_answer').prop('checked');
+            var enable_correction = $(document).find('#ays_enable_correction').prop('checked');
+
             $(document).find('.ays_buttons_div input[name="next"]').css('font-size', buttonsFontSize + 'px');
             $(document).find('.ays_buttons_div input[name="next"]').css('padding', buttonsTopBottomPadding+'px '+ buttonsLeftRightPadding+'px');
             $(document).find('.ays_buttons_div input[name="next"]').css('border-radius', buttonsBorderRadius + 'px');
             $(document).find('.ays_buttons_div input[name="next"]').css('min-width', buttonsWidth + 'px');
+
+            if(finish_button){
+                $(document).find('.ays_quiz_page_buttons_div .ays-quiz-live-button-finish').removeClass('bg-secondary');
+            }else{
+                $(document).find('.ays_quiz_page_buttons_div .ays-quiz-live-button-finish').addClass('bg-secondary');
+            }
+
+            if(next_button){
+                $(document).find('.ays_quiz_page_buttons_div .ays-quiz-live-button-next').removeClass('bg-secondary');
+            }else{
+                $(document).find('.ays_quiz_page_buttons_div .ays-quiz-live-button-next').addClass('bg-secondary');
+            }
+
+            if(prev_button){
+                $(document).find('.ays_quiz_page_buttons_div .ays-quiz-live-button-prev').removeClass('bg-secondary');
+            }else{
+                $(document).find('.ays_quiz_page_buttons_div .ays-quiz-live-button-prev').addClass('bg-secondary');
+            }
+
+            if(clear_button && !enable_correction){
+                $(document).find('.ays_quiz_page_buttons_div .ays-quiz-live-button-clear').removeClass('bg-secondary');
+            }else{
+                $(document).find('.ays_quiz_page_buttons_div .ays-quiz-live-button-clear').addClass('bg-secondary');
+            }
+
         }
 
         $(document).find('#ays_buttons_size').on('change', function(e){
@@ -4344,6 +4396,53 @@
             } else {
                 $item.attr('open', 'open');
             }
+        });
+
+        $('.ays-quiz-settings-ui-sortable').sortable({
+            cursor: 'move',
+            opacity: 0.8,
+            // axis: 'x',
+            placeholder: 'clone',
+            tolerance: "pointer",
+            helper: "clone",
+            revert: true,
+            forcePlaceholderSize: true,
+            forceHelperSize: true,
+            update: function( event, ui ){
+                var sortableContainer = $(event.target);
+                
+            }
+        });
+
+        $('.ays-quiz-settings-ui-sortable-mobile').sortable({
+            cursor: 'move',
+            opacity: 0.8,
+            // axis: 'x',
+            placeholder: 'clone',
+            tolerance: "pointer",
+            helper: "clone",
+            revert: true,
+            forcePlaceholderSize: true,
+            forceHelperSize: true,
+            update: function( event, ui ){
+                var sortableContainer = $(event.target);
+                
+            }
+        });
+
+        $(document).on('click','#ays_quiz_default_buttons_order',function(){
+            var sortableList =$(document).find('.ays-quiz-settings-ui-sortable'); 
+            var sortableListMobile =$(document).find('.ays-quiz-settings-ui-sortable-mobile'); 
+            var default_sort = JSON.parse(sortableList.attr('default-ordered'));
+            var default_sort_mobile = JSON.parse(sortableListMobile.attr('default-ordered'));
+            $.each( default_sort, function( key, value ) {
+
+                sortableList.append($(document).find('.ays-quiz-settings-ui-sortable [data-value='+value+']'))
+                sortableListMobile.append($(document).find('.ays-quiz-settings-ui-sortable-mobile [data-value='+value+']'))
+           
+            });
+            sortableList.sortable();
+            sortableListMobile.sortable();
         });
     });
 

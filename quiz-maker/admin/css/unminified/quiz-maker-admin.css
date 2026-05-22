@@ -1481,14 +1481,17 @@ td.ays-sort{
     border-right: 1px solid #B8B8B8;
 }
 
+.ays-quiz-sub-tab-content,
 .ays-quiz-tab-content{
     animation: fadeEffect 1s;
     width: 100%;
     max-width: 100%;
 }
+.ays-quiz-sub-tab-content.ays-quiz-sub-tab-content-active,
 .ays-quiz-tab-content.ays-quiz-tab-content-active{
     display: block;
 }
+.ays-quiz-sub-tab-content,
 .ays-quiz-tab-content{
     display: none;
 }
@@ -8022,6 +8025,7 @@ div .wp-picker-container .wp-color-result.button {
     background-color: #004CBD;
 }
 
+.ays-quiz-general-settings-form .button,
 .ays-quiz-dashboard-main-wrap .button {
     margin-right:10px;
     min-height: 30px;
@@ -8067,6 +8071,8 @@ div .wp-picker-container .wp-color-result.button {
     color:#005AE0;
 }
 
+.ays-quiz-general-settings-form .button-primary,
+.ays-quiz-general-settings-form .button-primary:active,
 .ays-quiz-dashboard-main-wrap .button-primary,
 .ays-quiz-dashboard-main-wrap .button-primary:active {
     border-radius: 4px;
@@ -8610,7 +8616,7 @@ body[class~="toplevel_page_quiz-maker"] .swal2-popup .swal2-actions {
 
 .ays-quiz-item-result-component{
     padding: 15px;
-    /*background: #f3f4f5;*/
+    background: #f3f4f5;
     border-radius: 10px;
 
 }

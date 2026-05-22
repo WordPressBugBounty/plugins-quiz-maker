@@ -88,7 +88,6 @@ class Quiz_Maker_Settings_Actions {
                 'finish_quiz_text'                      => $finish_quiz_text,
                 'select_question_placeholder_text'      => $select_question_placeholder_text,
                 'no_more_reviews_text'                  => $no_more_reviews_text,
-                'no_more_reviews_text'                  => $no_more_reviews_text,
                 'report_question_text'                  => $report_question_text,
                 'whats_wrong_report_question_text'      => $whats_wrong_report_question_text,
                 'question_report_submitted_text'        => $question_report_submitted_text,
@@ -97,7 +96,19 @@ class Quiz_Maker_Settings_Actions {
             );
             // Default texts | End
 
+            $settings_ordering = Quiz_Maker_Data::ays_quiz_get_settings_order_defaults();
+            
+            // Quiz Buttons Order
 
+            $buttons_default_sort = array_keys($settings_ordering['buttons']);
+
+            $quiz_buttons_order_desktop = (isset($_REQUEST['ays_quiz_bunttons_order_desktop']) && !empty($_REQUEST['ays_quiz_bunttons_order_desktop']) ) ?  array_map( 'sanitize_text_field',$_REQUEST['ays_quiz_bunttons_order_desktop']) : $buttons_default_sort;
+            $quiz_buttons_order_mobile = (isset($_REQUEST['ays_quiz_bunttons_order_mobile']) && !empty($_REQUEST['ays_quiz_bunttons_order_mobile']) ) ?  array_map( 'sanitize_text_field',$_REQUEST['ays_quiz_bunttons_order_mobile'])  : $buttons_default_sort;
+
+            $quiz_buttons_order = array(
+                'desktop' => $quiz_buttons_order_desktop,
+                'mobile' => $quiz_buttons_order_mobile,
+            );
 
             // Addon Data Start
 
@@ -414,7 +425,8 @@ class Quiz_Maker_Settings_Actions {
 
             $fields = array();
             $fields['options'] = json_encode( $options, JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES );
-            
+            $fields['quiz_buttons_order'] = json_encode( $quiz_buttons_order, JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES );
+
             $fields = apply_filters( 'ays_qm_settings_page_integrations_saves', $fields, $options );
             foreach ($fields as $key => $value) {
                 $result = $this->ays_update_setting( $key, $value );
@@ -543,7 +555,7 @@ class Quiz_Maker_Settings_Actions {
         $settings_table = $wpdb->prefix . "aysquiz_settings";
         $value = array(
             // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value
-            'meta_value'  => esc_sql( $meta_value ),
+            'meta_value'  => ( $meta_value ),
         );
         $value_s = array( '%s' );
         if($note != null){

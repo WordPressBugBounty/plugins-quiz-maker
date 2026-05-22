@@ -262,4 +262,62 @@ class Quiz_Maker_Data {
             $additionalAllowedTags
         );
     }
+
+    public static function ays_quiz_get_buttons_order(){
+
+        $setting_actions = new Quiz_Maker_Settings_Actions(AYS_QUIZ_NAME);
+        $quiz_buttons_order = $setting_actions->ays_get_setting('quiz_buttons_order');
+        if($quiz_buttons_order){
+            $quiz_buttons_order = json_decode( $quiz_buttons_order, true );
+        }else{
+            $quiz_buttons_order = array();
+        }
+
+        $settings_ordering = self::ays_quiz_get_settings_order_defaults();
+
+        $buttons_ordering = $settings_ordering['buttons'];
+        $buttons_ordering_mobile = $settings_ordering['buttons'];
+    
+        $buttons_default_sort = array_keys($buttons_ordering);
+    
+
+        $quiz_buttons_order_desctop  = (isset($quiz_buttons_order['desktop']) && !empty($quiz_buttons_order['desktop'])) ? $quiz_buttons_order['desktop'] : $buttons_default_sort;
+        $quiz_buttons_order_mobile  = (isset($quiz_buttons_order['mobile']) && !empty($quiz_buttons_order['mobile'])) ? $quiz_buttons_order['mobile'] : $buttons_default_sort;
+
+        $result = array();
+        foreach ($quiz_buttons_order_desctop as $key){
+            $result['desktop'][$key] = isset($buttons_ordering[$key]) ? $buttons_ordering[$key] : '';
+            unset($buttons_ordering[$key]);
+        }
+        foreach($buttons_ordering as $bin=>$key){
+            $result['desktop'][$bin] = $key;
+
+        }
+
+        foreach ($quiz_buttons_order_mobile as $key){
+            $result['mobile'][$key] = isset($buttons_ordering_mobile[$key]) ? $buttons_ordering_mobile[$key] : '';
+            unset($buttons_ordering_mobile[$key]);
+        }
+        foreach($buttons_ordering_mobile as $bin=>$key){
+            $result['mobile'][$bin] = $key;
+
+        }
+
+        return $result;
+
+    }
+
+    public static function ays_quiz_get_settings_order_defaults(){
+        $buttons_ordering = array(
+            'clear' =>  __('Clear','quiz-maker'),
+            'prev' =>  __('Prev','quiz-maker'),
+            'finish' =>  __('Finish','quiz-maker'),
+            'next' =>  __('Next','quiz-maker'),
+            'save' =>  __('Save','quiz-maker'),
+        );
+
+        return array(
+            'buttons' => $buttons_ordering
+        );
+    }
 }

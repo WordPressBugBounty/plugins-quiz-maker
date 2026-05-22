@@ -5497,6 +5497,8 @@ class Quiz_Maker_Public
                         break;
                 }
 
+                $buttons_order = array();
+
                 if ($last) {
                     switch($options['informationForm']){
                         case "disable":
@@ -5512,6 +5514,13 @@ class Quiz_Maker_Public
                             $input = "<i class='" . $buttons['nextArrow'] . " ays_fa ays_fa_flag_checkered ays_finish action-button ays_arrow ays_next_arrow ".$class_for_keyboard."' ". $attributes_for_keyboard ."></i><input type='submit' name='ays_finish_quiz' class=' " . $buttons['nextButton'] . " ays_next ays_finish action-button ".$class_for_keyboard."' value='" . $settings_buttons_texts['seeResultButton'] . "'/>";
                             break;                        
                     }
+                    
+                    $buttons_order['finish'] = $input;
+                    $buttons_order['prev'] ="<i class=\"ays_fa ". $quiz_arrow_type_class_left ." ays_previous action-button ".$class_for_keyboard." ays_arrow " . $buttons['prevArrow'] . "\" ". $attributes_for_keyboard ."></i>
+                            <input type='button' name='next' class='ays_previous action-button ".$class_for_keyboard." " . $buttons['prevButton'] . "'  value='". $settings_buttons_texts['previousButton'] ."' />";
+
+                    $buttons_order['clear'] = $clear_answer;
+
                     $buttons_div = "<div class='ays_buttons_div'>
                             {$clear_answer}
                             <i class=\"ays_fa ". $quiz_arrow_type_class_left ." ays_previous action-button ays_arrow ".$class_for_keyboard." " . $buttons['prevArrow'] . "\" ". $attributes_for_keyboard ."></i>
@@ -5519,6 +5528,14 @@ class Quiz_Maker_Public
                             {$input}
                         </div>";
                 }else{
+                    $buttons_order['finish'] = $early_finish;
+                    $buttons_order['clear'] = $clear_answer;
+                    $buttons_order['prev'] = "<i class=\"ays_fa ". $quiz_arrow_type_class_left ." ays_previous action-button ays_arrow ".$class_for_keyboard." " . $buttons['prevArrow'] . "\" ". $attributes_for_keyboard ."></i>
+                        <input type='button' name='next' class='ays_previous action-button ".$class_for_keyboard." " . $buttons['prevButton'] . "' value='". $settings_buttons_texts['previousButton'] ."' />";
+                    
+                    $buttons_order['next'] = "<i class=\"ays_fa ". $quiz_arrow_type_class_right ." ays_next action-button ays_arrow ays_next_arrow ".$class_for_keyboard." " . $buttons['nextArrow'] . "\" ". $attributes_for_keyboard ."></i>
+                        <input type='button' name='next' class='ays_next action-button ".$class_for_keyboard." " . $buttons['nextButton'] . "' value='" . $settings_buttons_texts['nextButton'] . "' />";
+
                     $buttons_div = "<div class='ays_buttons_div'>
                         {$clear_answer}
                         <i class=\"ays_fa ". $quiz_arrow_type_class_left ." ays_previous action-button ays_arrow ".$class_for_keyboard." " . $buttons['prevArrow'] . "\" ". $attributes_for_keyboard ."></i>
@@ -5527,6 +5544,27 @@ class Quiz_Maker_Public
                         <i class=\"ays_fa ". $quiz_arrow_type_class_right ." ays_next action-button ays_arrow ays_next_arrow ".$class_for_keyboard." " . $buttons['nextArrow'] . "\" ". $attributes_for_keyboard ."></i>
                         <input type='button' class='ays_next action-button ".$class_for_keyboard." " . $buttons['nextButton'] . "' value='" . $settings_buttons_texts['nextButton'] . "' />
                     </div>";
+                }
+
+                $buttons_settings_order = Quiz_Maker_Data::ays_quiz_get_buttons_order();
+
+                $buttons_div = "<div class='ays_buttons_div'>";
+                if(!empty($buttons_settings_order) && isset($buttons_settings_order['desktop']) && !empty($buttons_settings_order['desktop'])) {
+                    foreach($buttons_settings_order['desktop'] as $bin=>$key){
+                        $buttons_div .= isset($buttons_order[$bin]) ? $buttons_order[$bin] : '';
+                    }
+                }
+                $buttons_div .= "</div>";
+
+                if(wp_is_mobile()){
+
+                    $buttons_div = "<div class='ays_buttons_div'>";
+                    if(!empty($buttons_settings_order) && isset($buttons_settings_order['mobile']) && !empty($buttons_settings_order['mobile'])) {
+                        foreach($buttons_settings_order['mobile'] as $bin=>$key){
+                            $buttons_div .= isset($buttons_order[$bin]) ? $buttons_order[$bin] : '';
+                        }
+                    }
+                    $buttons_div .= "</div>";
                 }
                 
                 $additional_css = "";

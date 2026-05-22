@@ -1013,6 +1013,9 @@ $buttons_text_color = (isset($options['buttons_text_color']) && $options['button
 // Buttons position
 $buttons_position = (isset($options['buttons_position']) && $options['buttons_position'] != '') ? $options['buttons_position'] : 'center';
 
+// Buttons Order
+$buttons_order = Quiz_Maker_Data::ays_quiz_get_buttons_order();
+
 // Show questions explanation on
 $show_questions_explanation = (isset($options['show_questions_explanation']) && $options['show_questions_explanation'] != '') ? $options['show_questions_explanation'] : 'on_results_page';
 
@@ -3608,6 +3611,17 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                     <div class="ays_buttons_div" style="justify-content: center; overflow: hidden;">
                                         <input type="button" name="next" class="action-button ays-quiz-live-button" style="padding:0;" value="<?php echo esc_attr__( "Start", 'quiz-maker' ); ?>">
                                     </div>
+                                    <hr>
+                                    <div class="ays_buttons_div ays_quiz_page_buttons_div" style="justify-content: center; overflow:hidden;">
+
+                                    <?php if(!empty($buttons_order) && isset($buttons_order['desktop']) && !empty($buttons_order['desktop'])) { ?>
+                                        <?php foreach($buttons_order['desktop'] as $bin=>$key) { ?>
+                                            <?php if($bin == 'save')  continue;?>
+                                            <input type="button" name="next" class="action-button ays-quiz-live-button ays-quiz-live-button-<?php echo esc_attr($bin);?>" style="padding:0;" value="<?php echo esc_html($key); ?>">
+                                        <?php } ?>
+                                    
+                                    <?php } ?>
+                                    </div> 
                                 </div>
                             </div><!-- Buttons Styles Live -->
                         </div><!-- Buttons Styles End -->
