@@ -7946,11 +7946,53 @@ div .wp-picker-container .wp-color-result.button {
 
 /*Dashboard Redesign | Start*/
 
+.ays-quiz-dashboard-main-wrap .ays-quiz-edit-actions-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 97%;
+    max-width: 100%;
+    margin-bottom: 16px;
+    gap: 20px;
+}
+
+.ays-quiz-dashboard-main-wrap .ays-quiz-edit-live-message {
+    min-width: 0;
+}
+
+.ays-quiz-dashboard-main-wrap .ays-quiz-edit-live-message p {
+    margin: 0;
+    font-size: 14px;
+    font-style: italic;
+}
+
+.ays-quiz-dashboard-main-wrap .ays-quiz-edit-live-message .ays-quiz-shortcode-box {
+    font-size: 16px;
+    font-style: normal;
+}
+
+.ays-quiz-dashboard-main-wrap .ays-quiz-top-loader-slot {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    min-width: 16px;
+    height: 30px;
+}
+
+.ays-quiz-dashboard-main-wrap .ays-quiz-top-loader-slot .ays_quiz_loader_box {
+    margin-right: 0;
+    padding-left: 0 !important;
+}
+
 .ays-quiz-dashboard-main-wrap .top-menu-buttons-container{
     display: flex;
+    align-items: center;
     flex-wrap: nowrap;
     justify-content: flex-end;
     gap: 10px;
+    flex: 0 0 auto;
+    margin-left: auto;
 }
 
 .ays-quiz-dashboard-main-wrap .ays-quiz-top-preview-button {
@@ -8055,6 +8097,19 @@ div .wp-picker-container .wp-color-result.button {
     .ays-quiz-dashboard-main-wrap input#save-post,
     .ays-quiz-dashboard-main-wrap a.preview {
         line-height: 2.71428571;
+    }
+
+    .ays-quiz-dashboard-main-wrap .ays-quiz-edit-actions-row {
+        flex-direction: column;
+    }
+
+    div.ays-quiz-dashboard-main-wrap .top-menu-buttons-container {
+        flex-wrap: wrap;
+    }
+
+    div.ays-quiz-dashboard-main-wrap .ays-quiz-top-preview-button {
+        padding: 1px 10px;
+        margin-bottom: 4px;
     }
 }
 
@@ -8371,8 +8426,8 @@ div .wp-picker-container .wp-color-result.button {
 
 @media screen and (max-width: 1270px) {
     .ays-quiz-dashboard-main-wrap .top-menu-buttons-container{
-        justify-content: flex-start;
-        flex-wrap: wrap;
+        justify-content: flex-end;
+        flex-wrap: nowrap;
     }
 
     .ays-quiz-pro-features-parent-box-display-flex {

@@ -783,11 +783,11 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
             </a>
         </div>
     </div>
-    <?php if( 1 == 0 ): ?>
+    <?php if( 1 == 1 ): ?>
     <div class="ays-quiz-heading-box ays-quiz-unset-float ays-quiz-heading-box-center" style="gap: 20px; margin-top: 30px;">
         <div class="ays-quiz-wordpress-user-manual-box">
             <a href="<?php echo esc_url('https://quiz.ays-plugins.com/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pricing-menu-live-demo-' . AYS_QUIZ_UTM_VERSION); ?>" target="_blank" class="ays-quiz-comparison-secondary-button" style="text-decoration: none;font-size: 20px;">
-                <span style="margin-left: 3px; font-size: 18px;"><?php echo esc_html__('Try Pro Version Live demo', "quiz-maker"); ?></span>
+                <span style="margin-left: 3px; font-size: 18px;"><?php echo esc_html__('Try Pro Version Admin demo', "quiz-maker"); ?></span>
             </a>
         </div>
     </div>

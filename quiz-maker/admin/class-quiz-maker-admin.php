@@ -2081,6 +2081,7 @@ class Quiz_Maker_Admin
             'enable_leave_page'                                 => $quick_quiz_enable_leave_page,
             'enable_see_result_confirm_box'                     => $quick_quiz_enable_see_result_confirm_box,
             'enable_tackers_count'                              => 'off',
+            'enable_pass_score'                                 => 'off',
             'pass_score'                                        => '0',
             'question_font_size'                                => $quick_quiz_question_font_size,
             'quiz_width_by_percentage_px'                       => 'pixels',

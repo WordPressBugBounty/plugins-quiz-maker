@@ -150,6 +150,7 @@ $options = array(
     'buttons_border_radius'                             => '8',
     'enable_leave_page'                                 => 'on',
     'enable_tackers_count'                              => 'off',
+    'enable_pass_score'                                 => 'off',
     'pass_score'                                        => '0',
     'question_font_size'                                => '16',
     'quiz_width_by_percentage_px'                       => 'pixels',
@@ -1055,6 +1056,7 @@ $tackers_count = (isset($options['tackers_count']) && $options['tackers_count'] 
 
 // Pass Score
 $pass_score = (isset($options['pass_score']) && $options['pass_score'] != '') ? absint(intval($options['pass_score'])) : '0';
+$enable_pass_score = (isset($options['enable_pass_score']) && $options['enable_pass_score'] == 'on') || (!isset($options['enable_pass_score']) && intval($pass_score) > 0);
 $pass_score_message = isset($options['pass_score_message']) ? stripslashes($options['pass_score_message']) : '<h4 style="text-align: center;">'. __("Congratulations!", 'quiz-maker') .'</h4><p style="text-align: center;">'. __("You passed the quiz!", 'quiz-maker') .'</p>';
 $fail_score_message = isset($options['fail_score_message']) ? stripslashes($options['fail_score_message']) : '<h4 style="text-align: center;">'. __("Oops!", 'quiz-maker') .'</h4><p style="text-align: center;">'. __("You have not passed the quiz! <br> Try again!", 'quiz-maker') .'</p>';
 
@@ -1691,17 +1693,43 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                     <?php endif; ?>
                 </div>
 
-                <?php if($id !== null): ?>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <p style="font-size:14px; font-style:italic;">
-                            <?php echo esc_html__("To make your quiz live, copy shortcode", 'quiz-maker'); ?>
-                            <strong class="ays-quiz-shortcode-box" onClick="selectElementContents(this)" class="ays_help" data-toggle="tooltip" title="<?php echo esc_html__('Click for copy.','quiz-maker');?>" style="font-size:16px; font-style:normal;"><?php echo esc_html("[ays_quiz id='". intval($id) ."']"); ?></strong>
-                            <?php echo esc_html(" ") . esc_html__( "and paste it into your desired Page or Post.", 'quiz-maker'); ?>
-                        </p>
+                <div class="ays-quiz-edit-actions-row">
+                    <div class="ays-quiz-edit-live-message">
+                        <?php if($id !== null): ?>
+                            <p>
+                                <?php echo esc_html__("To make your quiz live, copy shortcode", 'quiz-maker'); ?>
+                                <strong class="ays-quiz-shortcode-box" onClick="selectElementContents(this)" class="ays_help" data-toggle="tooltip" title="<?php echo esc_html__('Click for copy.','quiz-maker');?>"><?php echo esc_html("[ays_quiz id='". intval($id) ."']"); ?></strong>
+                                <?php echo esc_html(" ") . esc_html__( "and paste it into your desired Page or Post.", 'quiz-maker'); ?>
+                            </p>
+                        <?php endif;?>
+                    </div>
+                    <div class="ays-quiz-add-new-button-box ays-quiz-add-new-button-quiz-edit-box top-menu-buttons-container">
+                    <?php
+                        $other_attributes = array();
+
+                        $other_attributes_only_save = array(
+                            'title' => 'Ctrl + s',
+                            'data-toggle' => 'tooltip',
+                            'data-delay'=> '{"show":"1000"}'
+                        );
+                        echo '<span class="ays-quiz-top-loader-slot">' . wp_kses($loader_iamge, $quiz_allowed_html) . '</span>';
+                        if ( ! empty( $quiz_preview_url ) ) :
+                        ?>
+                        <a href="<?php echo esc_url( $quiz_preview_url ); ?>" target="_blank" rel="noopener noreferrer" class="ays-quiz-top-preview-button" aria-label="<?php echo esc_attr__( 'Preview', 'quiz-maker' ); ?>">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                            <?php echo esc_html__( 'Preview', 'quiz-maker' ); ?>
+                        </a>
+                        <?php
+                        endif;
+                        submit_button(esc_html__('Save', 'quiz-maker'), 'primary ays-quiz-loader-banner', 'ays_apply_top', false, $other_attributes_only_save);
+                        submit_button(esc_html__('Save and close', 'quiz-maker'), 'ays-quiz-loader-banner ays-quiz-submit-button-margin-unset', 'ays_submit_top', false, $other_attributes);
+                        submit_button(esc_html__('Cancel', "quiz-maker"), 'ays-quiz-loader-banner', 'ays_quiz_cancel_top', false, array());
+                    ?>
                     </div>
                 </div>
-                <?php endif;?>
             </div>
             <div class="ays-top-menu-container-wrapper">
                 <div class="ays-top-menu-wrapper">
@@ -1738,32 +1766,6 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                         </div>
                     </div>              
                     <div class="ays_menu_right" data-scroll="-1"><i class="ays_fa ays_fa_angle_right"></i></div>
-                </div>
-                <div class="ays-quiz-add-new-button-box ays-quiz-add-new-button-quiz-edit-box top-menu-buttons-container">
-                <?php
-                    $other_attributes = array();
-
-                    $other_attributes_only_save = array(
-                        'title' => 'Ctrl + s',
-                        'data-toggle' => 'tooltip',
-                        'data-delay'=> '{"show":"1000"}'
-                    );
-                    echo wp_kses($loader_iamge, $quiz_allowed_html);
-                    if ( ! empty( $quiz_preview_url ) ) :
-                    ?>
-                    <a href="<?php echo esc_url( $quiz_preview_url ); ?>" target="_blank" rel="noopener noreferrer" class="ays-quiz-top-preview-button" aria-label="<?php echo esc_attr__( 'Preview', 'quiz-maker' ); ?>">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path>
-                            <circle cx="12" cy="12" r="3"></circle>
-                        </svg>
-                        <?php echo esc_html__( 'Preview', 'quiz-maker' ); ?>
-                    </a>
-                    <?php
-                    endif;
-                    submit_button(esc_html__('Save', 'quiz-maker'), 'primary ays-quiz-loader-banner', 'ays_apply_top', false, $other_attributes_only_save);
-                    submit_button(esc_html__('Save and close', 'quiz-maker'), 'ays-quiz-loader-banner ays-quiz-submit-button-margin-unset', 'ays_submit_top', false, $other_attributes);
-                    submit_button(esc_html__('Cancel', "quiz-maker"), 'ays-quiz-loader-banner', 'ays_quiz_cancel_top', false, array());
-                ?>
                 </div>
             </div>
 
@@ -7294,16 +7296,19 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                             </div>
                         </div><!-- Result message -->
                         <hr/>
-                        <div class="form-group row">
+                        <div class="form-group row ays_toggle_parent">
                             <div class="col-sm-4">
-                                <label class="form-check-label" for="ays-pass-score">
+                                <label class="form-check-label" for="ays_enable_pass_score">
                                     <?php echo esc_html__("Pass Score (%)", 'quiz-maker') ?>
                                     <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Set the minimum score to pass the quiz in percentage. Note to give a value to it above 0, otherwise, the Quiz pass message and Quiz fail message options will not work.','quiz-maker'); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
                             </div>
-                            <div class="col-sm-8">
+                            <div class="col-sm-1">
+                                <input type="checkbox" class="ays-enable-timer1 ays_toggle_checkbox" id="ays_enable_pass_score" name="ays_enable_pass_score" value="on" <?php echo ($enable_pass_score) ? 'checked' : ''; ?>/>
+                            </div>
+                            <div class="col-sm-7 ays_toggle_target ays_divider_left <?php echo ($enable_pass_score) ? '' : 'display_none'; ?>">
                                 <?php if(1 == 0): ?>
                                 <div class="form-group row" style="margin:0px;">
                                     <div class="col-sm-12 only_pro" style="padding:10px 0 0 10px;">
@@ -10744,7 +10749,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                         echo wp_kses(
                                             sprintf(
                                                 /* translators: 1: Opening <strong> tag, 2: Closing </strong> tag */
-                                                esc_html__( 'Embed this quiz anywhere on your site with a block, widget, or %1$sshortcode%2$s', 'quiz-maker' ),
+                                                esc_html__( 'Show this quiz anywhere on your site with a block, widget, or %1$sshortcode%2$s', 'quiz-maker' ),
                                                 '<strong>',
                                                 '</strong>'
                                             ),

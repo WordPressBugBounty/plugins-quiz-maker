@@ -5915,6 +5915,7 @@ class Quiz_Maker_Public
 
             //Pass score count
             $pass_score_count = (isset($options->pass_score) && $options->pass_score != '') ? absint(intval($options->pass_score)) : 0;
+            $enable_pass_score = (isset($options->enable_pass_score) && $options->enable_pass_score == 'on') || (!isset($options->enable_pass_score) && $pass_score_count > 0);
 
             // Information form
             $information_form = (isset($options->information_form) && $options->information_form != '') ? $options->information_form : 'disable';
@@ -6539,7 +6540,7 @@ class Quiz_Maker_Public
                 $message_data['result_id'] = $last_result_id;
 
                 $quiz_show_results_based_pass_score_flag = false;
-                if ($final_score >= $pass_score_count) {
+                if ($enable_pass_score && $pass_score_count > 0 && $final_score >= $pass_score_count) {
                     $score_message = $pass_score_message;
                     $quiz_show_results_based_pass_score_flag = true;
                 }else{
@@ -6547,7 +6548,7 @@ class Quiz_Maker_Public
                 }
 
                 $final_score_message = "";
-                if($pass_score_count > 0){
+                if($enable_pass_score && $pass_score_count > 0){
                     $final_score_message = $this->replace_message_variables($score_message, $message_data);
                 }
 

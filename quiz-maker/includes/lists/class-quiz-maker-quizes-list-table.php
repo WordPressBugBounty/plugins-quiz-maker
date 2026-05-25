@@ -691,7 +691,9 @@ class Quizes_List_Table extends WP_List_Table{
             $tackers_count = (isset($_POST['ays_tackers_count']) && sanitize_text_field( $_POST['ays_tackers_count'] ) != '') ? sanitize_text_field( $_POST['ays_tackers_count'] ) : '';
 
             // Pass Score
+            $enable_pass_score = (isset($_POST['ays_enable_pass_score']) && sanitize_text_field( $_POST['ays_enable_pass_score'] ) == 'on') ? 'on' : 'off';
             $pass_score = (isset($_POST['ays_pass_score']) && $_POST['ays_pass_score'] != '') ? absint(intval($_POST['ays_pass_score'])) : '0';
+            $pass_score = ($enable_pass_score == 'on') ? $pass_score : '0';
             $pass_score_message = isset($_POST['ays_pass_score_message']) ? wp_kses( $_POST['ays_pass_score_message'], $quiz_allowed_html ) : '<h4 style="text-align: center;">'. __("Congratulations!", 'quiz-maker') .'</h4><p style="text-align: center;">'. __("You passed the quiz!", 'quiz-maker') .'</p>';
             $fail_score_message = isset($_POST['ays_fail_score_message']) ? wp_kses( $_POST['ays_fail_score_message'], $quiz_allowed_html ) : '<h4 style="text-align: center;">'. __("Oops!", 'quiz-maker') .'</h4><p style="text-align: center;">'. __("You have not passed the quiz! <br> Try again!", 'quiz-maker') .'</p>';
 
@@ -1293,6 +1295,7 @@ class Quizes_List_Table extends WP_List_Table{
                 'enable_leave_page'                                 => $enable_leave_page,
                 'enable_tackers_count'                              => $enable_tackers_count,
                 'tackers_count'                                     => $tackers_count,
+                'enable_pass_score'                                 => $enable_pass_score,
                 'pass_score'                                        => $pass_score,
                 'pass_score_message'                                => $pass_score_message,
                 'fail_score_message'                                => $fail_score_message,
