@@ -1562,7 +1562,7 @@
                             </div>
                         </fieldset> <!-- All Results Settings -->
                         <hr>
-                        <fieldset>
+                        <fieldset id="ays-quiz-single-quiz-results-settings">
                             <legend>
                                 <strong style="font-size:30px;">[ ]</strong>
                                 <h5><?php echo esc_html__('Single Quiz Results Settings','quiz-maker'); ?></h5>

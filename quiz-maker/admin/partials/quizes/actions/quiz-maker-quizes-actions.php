@@ -800,7 +800,20 @@ $tab_docs = array(
         'link' => 'https://quiz-plugin.com/docs-category/integrations/',
         'text' => __('How to Configure Integration Tab?', 'quiz-maker'),
     ),
+    'tab9' => array(
+        'link' => 'https://quiz-plugin.com/docs/how-to-publish-quizzes-via-block-elementor/',
+        'text' => __('How to Publish a Quiz?', 'quiz-maker'),
+    ),
 );
+
+$default_leadboard_column_names = array(
+    "pos"           => __( 'Pos.', 'quiz-maker' ),
+    "name"          => __( 'Name', 'quiz-maker' ),
+    "score"         => __( 'Score', 'quiz-maker' ),
+    "duration"      => __( 'Duration', 'quiz-maker' ),
+    "points"        => __( 'Points', 'quiz-maker' ),
+);
+
 $style = null;
 $image_text = __('Add Image', 'quiz-maker');
 $bg_image_text = __('Add Image', 'quiz-maker');
@@ -3606,6 +3619,23 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                     </div>
                                 </div><!-- Buttons border radius -->
                                 <hr/>
+                                <div class="ays-quiz-general-tip ays-quiz-general-tip-with-auto">
+                                    <span><?php echo esc_html__('Tip:', 'quiz-maker'); ?></span>
+                                    <?php echo wp_kses(
+                                        sprintf(
+                                            /* translators: 1: Opening <a> tag, 2: Closing </a> tag. */
+                                            __('Configure button order in %1$sGeneral Settings%2$s', "quiz-maker"),
+                                            '<a href="?page=quiz-maker-settings&ays_quiz_tab=tab10" target="_blank">',
+                                            '</a>'
+                                        ),
+                                        array(
+                                            'a' => array(
+                                                'href'   => true,
+                                                'target' => true,
+                                            ),
+                                        )
+                                    ); ?>
+                                </div>
                             </div>
                             <!-- <hr/> -->
                             <div class="col-lg-5 col-sm-12 ays_divider_left" style="position:relative;">
@@ -7113,6 +7143,80 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                 <input type="checkbox" class="ays-enable-timer1 ays_toggle_checkbox" id="ays_enable_questions_reporting" name="ays_enable_questions_reporting" value="on" <?php echo ($enable_question_reporting) ? 'checked' : ''; ?>/>
                             </div>
                         </div> <!-- Enable question reporting -->
+                        <hr>
+                        <div class="form-group row" style="padding:0px;margin:0;">
+                            <div class="col-sm-12">
+                                <div class="ays-quiz-heading-box ays-quiz-unset-float ays-quiz-unset-margin">
+                                    <div class="ays-quiz-wordpress-user-manual-box ays-quiz-wordpress-text-align">
+                                        <a href="https://www.youtube.com/watch?v=uBpzFjXyKC8" target="_blank">
+                                            <?php echo esc_html__("How to create flashcards - video", 'quiz-maker'); ?>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 only_pro ays-quiz-margin-top-20" style="padding:20px;">
+                                <div class="pro_features pro_features_popup_only_hover" style="">
+
+                                </div>
+                                <h5><?php echo esc_html__('Flash Cards Settings','quiz-maker'); ?></h5>
+                                <hr/>
+                                <div class="form-group row" style="padding:0px;margin:0;">
+                                    <div class="col-sm-12" style="padding: 0;">
+                                        <div class="form-group row">
+                                            <div class="col-sm-4">
+                                                <label>
+                                                    <?php echo esc_html__( "Shortcode", 'quiz-maker' ); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Paste the shortcode into any of your posts/pages to create flashcards in a question-and-answer format. Each flashcard shows a question on one side and a correct answer on the other.','quiz-maker'); ?>">
+                                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                                    </a>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="ays-text-input" onclick="this.setSelectionRange(0, this.value.length)" readonly="" value='[ays_quiz_flash_card by="quiz/category" id="ID(s)"]'>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=edit-quiz-flash-cards-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <div class="ays-quiz-new-upgrade-button-box">
+                                        <div>
+                                            <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
+                                            <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg' ); ?>" class="ays-quiz-new-upgrade-button-hover">
+                                        </div>
+                                        <div class="ays-quiz-new-upgrade-button"><?php echo esc_html__("Upgrade", "quiz-maker"); ?></div>
+                                    </div>
+                                </a>
+                                <a href="https://quiz-plugin.com/flash-cards" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <div class="ays-quiz-new-view-demo-button-box">
+                                        <div>
+                                            <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/view-demo.svg' ); ?>">
+                                        </div>
+                                        <div class="ays-quiz-new-view-demo-button"><?php echo esc_html__("View Demo", "quiz-maker"); ?></div>
+                                    </div>
+                                </a>
+                                
+                                <div class="ays-quiz-center-big-main-button-box ays-quiz-new-big-button-flex">
+                                    <div class="ays-quiz-center-big-view-demo-button-box ays-quiz-big-upgrade-margin-right-10">
+                                        <a href="https://quiz-plugin.com/flash-cards" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                            <div class="ays-quiz-center-new-big-view-demo-button">
+                                                <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/view-demo.svg' ); ?>">
+                                                <?php echo esc_html__("View Demo", "quiz-maker"); ?>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="ays-quiz-center-big-upgrade-button-box">
+                                        <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=edit-quiz-flash-cards-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                            <div class="ays-quiz-center-new-big-upgrade-button">
+                                                <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>" class="ays-quiz-new-button-img-hide">
+                                                <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg' ); ?>" class="ays-quiz-new-upgrade-button-hover">  
+                                                <?php echo esc_html__("Upgrade", "quiz-maker"); ?>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div><!-- Flash Cards Settings -->
                         <hr/>
                         <div class="form-group row" style="margin:0px;">
                             <div class="col-sm-12 only_pro" style="padding:10px 0 0 10px;">
@@ -7129,7 +7233,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                         </label>
                                     </div>
                                     <div class="col-sm-2">
-                                        <input type="button" class="button button-primary" value="<?php echo esc_attr__('Copy Code','quiz-maker');?>">
+                                        <input type="button" class="button button-primary" disabled value="<?php echo esc_attr__('Copy Code','quiz-maker');?>">
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="text" class="ays-text-input" tabindex="-1" value="<?php echo esc_attr($embed_code_html); ?>"/>
@@ -8249,6 +8353,24 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                 <input type="checkbox" class="ays-enable-timer1" id="ays_disable_store_data" name="ays_disable_store_data" value="on" <?php echo $disable_store_data ? 'checked' : '' ?>/>
                             </div>
                         </div><!-- Disable data storing in database -->
+                        <hr/>
+                        <div class="ays-quiz-general-tip ays-quiz-general-tip-with-auto">
+                            <span><?php echo esc_html__('Tip:', 'quiz-maker'); ?></span>
+                            <?php echo wp_kses(
+                                sprintf(
+                                    /* translators: 1: Opening <a> tag, 2: Closing </a> tag. */
+                                    __('Configure Single Quiz Results in %1$sGeneral Settings%2$s', "ays-popup-box"),
+                                    '<a href="?page=quiz-maker-settings&ays_quiz_tab=tab3#ays-quiz-single-quiz-results-settings" target="_blank">',
+                                    '</a>'
+                                ),
+                                array(
+                                    'a' => array(
+                                        'href'   => true,
+                                        'target' => true,
+                                    ),
+                                )
+                            ); ?>
+                        </div>
                         <div class="ays-quiz-maker-interval-table-settings-container">
                         <?php
                             if(has_action('quiz_interval_table_settings')){
@@ -8445,6 +8567,94 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                         }
                         ?>
                         <!-- Intervals -->
+                        <hr/>
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <div class="ays-quiz-heading-box ays-quiz-unset-float ays-quiz-unset-margin">
+                                    <div class="ays-quiz-wordpress-user-manual-box ays-quiz-wordpress-text-align">
+                                        <a href="https://www.youtube.com/watch?v=trZEpGWm9GE" target="_blank">
+                                            <?php echo esc_html__("How to add leaderboard - video", 'quiz-maker'); ?>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 only_pro ays-quiz-margin-top-20" style="padding:20px;">
+                                <div class="pro_features pro_features_popup pro_features_background_bolder">
+                                    <div class="pro-features-popup-conteiner">
+                                        <div class="pro-features-popup-title">
+                                            <?php echo esc_html__("How to set Leaderboards with WordPress Quiz Plugin", 'quiz-maker'); ?>
+                                        </div>
+                                        <div class="pro-features-popup-content" data-link="https://youtu.be/I4rfyzf5D3E">
+                                            <p>
+                                                <?php echo sprintf( esc_attr__("The Quiz Maker plugin gives you the opportunity to add %s advanced Leaderboards %s to your WordPress website. Having Leaderboards on the website helps you %s stimulate competition %s and %s motivate quiz takers %s to improve their skills.", 'quiz-maker'),
+                                                    "<strong>",
+                                                    "</strong>",
+                                                    "<strong>",
+                                                    "</strong>",
+                                                    "<strong>",
+                                                    "</strong>"
+                                                ); ?>
+                                            </p>
+                                            <p>
+                                                <?php echo esc_html__("Follow the steps mentioned in this step-by-step video tutorial to create your own Leaderboard. ", 'quiz-maker'); ?>
+                                            </p>
+                                            <div>
+                                                <a href="https://quiz-plugin.com/individual-leaderboard" target="_blank"><?php echo esc_attr__("See Demo", 'quiz-maker'); ?></a>
+                                            </div>
+                                        </div>
+                                        <div class="pro-features-popup-button" data-link="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=edit-quiz-individual-leaderboard-shortcode-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
+                                            <?php echo esc_html__("Pricing", 'quiz-maker'); ?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h5><?php echo esc_html__('Individual Leaderboard Settings','quiz-maker')?></h5>
+                                <hr/>
+                                <div class="form-group row">
+                                    <div class="col-sm-4">
+                                        <label for="ays_invidLead">
+                                            <?php echo esc_html__( "Shortcode", 'quiz-maker' ); ?>
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input type="text" id="ays_invidLead" class="ays-text-input" onclick="this.setSelectionRange(0, this.value.length)" readonly="" value='[ays_quiz_leaderboard id="Your_Quiz_ID" from="Y-m-d H:i:s" to="Y-m-d H:i:s"]'>
+                                    </div>
+                                </div>
+                                <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=edit-quiz-individual-leaderboard-shortcode-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <div class="ays-quiz-new-upgrade-button-box">
+                                        <div>
+                                            <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
+                                            <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg' ); ?>" class="ays-quiz-new-upgrade-button-hover">
+                                        </div>
+                                        <div class="ays-quiz-new-upgrade-button"><?php echo esc_html__("Upgrade", "quiz-maker"); ?></div>
+                                    </div>
+                                </a>
+                                <div class="ays-quiz-new-watch-video-button-box">
+                                    <div>
+                                        <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24.svg' ); ?>">
+                                        <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg' ); ?>" class="ays-quiz-new-watch-video-button-hover">
+                                    </div>
+                                    <div class="ays-quiz-new-watch-video-button"><?php echo esc_html__("Watch Video", "quiz-maker"); ?></div>
+                                </div>
+                                <div class="ays-quiz-center-big-main-button-box ays-quiz-new-big-button-flex">
+                                    <div class="ays-quiz-center-big-watch-video-button-box ays-quiz-big-upgrade-margin-right-10">
+                                        <div class="ays-quiz-center-new-watch-video-demo-button">
+                                            <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24.svg' ); ?>" class="ays-quiz-new-button-img-hide">
+                                            <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg' ); ?>" class="ays-quiz-new-watch-video-button-hover">
+                                            <?php echo esc_html__("Watch Video", "quiz-maker"); ?>
+                                        </div>
+                                    </div>
+                                    <div class="ays-quiz-center-big-upgrade-button-box">
+                                        <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=edit-quiz-individual-leaderboard-shortcode-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                            <div class="ays-quiz-center-new-big-upgrade-button">
+                                                <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>" class="ays-quiz-new-button-img-hide">
+                                                <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg' ); ?>" class="ays-quiz-new-upgrade-button-hover">  
+                                                <?php echo esc_html__("Upgrade", "quiz-maker"); ?>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- Individual Leaderboard Settings -->
                         <hr/>
                         <!-- Top Keywords -->
                         <div class="form-group row">

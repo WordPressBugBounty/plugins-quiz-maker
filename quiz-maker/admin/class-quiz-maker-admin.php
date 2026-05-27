@@ -318,6 +318,7 @@ class Quiz_Maker_Admin
             'userDataTabDoc'                    => esc_html__( "How to Configure User Data Tab?", 'quiz-maker' ),
             'emailTabDoc'                       => esc_html__( "How to Configure E-Mail, Certificate Tab?", 'quiz-maker' ),
             'integrationTabDoc'                 => esc_html__( "How to Configure Integration Tab?", 'quiz-maker' ),
+            'publishTabDoc'                     => esc_html__( "How to Publish a Quiz?", 'quiz-maker' ),
 
             'addAnswer'                         => esc_html__( "Add Answer", 'quiz-maker' ),
             'add'                               => esc_html__( 'Add', 'quiz-maker'),

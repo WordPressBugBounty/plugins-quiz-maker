@@ -482,6 +482,17 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
                     <td><i class="ays_fa ays_fa_check"></i></td>
                     <td><i class="ays_fa ays_fa_check"></i></td>
                 </tr>
+                <tr>
+                    <td></td>
+                    <td colspan="4"><?php echo esc_html__('Conditional Results','quiz-maker')?></td>
+                </tr>
+                <tr>
+                    <td><?php echo esc_html__('Conditional Results','quiz-maker')?></td>
+                    <td><span>–</span></td>
+                    <td><i class="ays_fa ays_fa_check"></i></td>
+                    <td><i class="ays_fa ays_fa_check"></i></td>
+                    <td><i class="ays_fa ays_fa_check"></i></td>
+                </tr>
                 <!-- //////////////// -->
                 <tr>
                     <td></td>
@@ -676,18 +687,6 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
                 </tr>
                 <tr>
                     <td><?php echo esc_html__('Chained Quiz','quiz-maker')?></td>
-                    <td><span>–</span></td>
-                    <td><span>–</span></td>
-                    <td><span>–</span></td>
-                    <td><i class="ays_fa ays_fa_check"></i></td>
-                </tr>
-
-                <tr>
-                    <td></td>
-                    <td colspan="4"><?php echo esc_html__('Conditional Results','quiz-maker')?></td>
-                </tr>
-                <tr>
-                    <td><?php echo esc_html__('Conditional Results','quiz-maker')?></td>
                     <td><span>–</span></td>
                     <td><span>–</span></td>
                     <td><span>–</span></td>

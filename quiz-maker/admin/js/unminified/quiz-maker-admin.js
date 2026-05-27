@@ -2274,6 +2274,10 @@
                 'link': 'https://quiz-plugin.com/docs-category/integrations/',
                 'text': quizLangObj.integrationTabDoc
             },
+            'tab9': {
+                'link': 'https://quiz-plugin.com/docs/how-to-publish-quizzes-via-block-elementor/',
+                'text': quizLangObj.publishTabDoc
+            },
         };
 
         $(document).find('.nav-tab-wrapper a.nav-tab').on('click', function (e) {
