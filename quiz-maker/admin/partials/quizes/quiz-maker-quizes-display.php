@@ -771,6 +771,17 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                             </div>
                                         </div> <!-- Enable custom texts for buttons -->
                                         <hr/>
+                                        <div class="form-group row ays_toggle_parent">
+                                            <div class="col-sm-4" style="padding-right: 0px;">
+                                                <label for="ays_quick_quiz_enable_questions_reporting">
+                                                    <?php echo esc_html__('Enable question reporting', 'quiz-maker'); ?>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <input type="checkbox" class="ays-enable-timer1 ays_toggle_checkbox" id="ays_quick_quiz_enable_questions_reporting" name="ays_quick_quiz_enable_questions_reporting" value="on" />
+                                            </div>
+                                        </div> <!-- Enable question reporting -->
+                                        <hr/>
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_show_quiz_title">
@@ -2951,7 +2962,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                     <input type="text" value="<?php echo esc_html__( 'Question Default Title' , 'quiz-maker'); ?>" class="ays_question_input">
                                 </div>
                                 <div class="col-sm-3" style="text-align: right;">
-                                    <select class="ays_quick_question_type" name="ays_quick_question_type[]" style="width: 120px;">
+                                    <select class="ays_quick_question_type" name="ays_quick_question_type[]" style="width: 150px;">
                                         <option value="radio"><?php echo esc_html__("Radio", 'quiz-maker'); ?></option>
                                         <option value="checkbox"><?php echo esc_html__("Checkbox", 'quiz-maker'); ?></option>
                                         <option value="select"><?php echo esc_html__("Dropdown", 'quiz-maker'); ?></option>
@@ -2966,7 +2977,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                             <!-- <div class="ays_question_overlay"></div> -->
                             <div class="form-group row">
                                 <div class="col-sm-12" style="text-align: right;">
-                                    <select class="ays_quick_question_cat" name="ays_quick_question_cat[]" style="width: 120px;">
+                                    <select class="ays_quick_question_cat" name="ays_quick_question_cat[]" style="width: 150px;">
                                         <?php
                                             $cat = 0;
                                             foreach ($question_categories as $k => $question_category) {
