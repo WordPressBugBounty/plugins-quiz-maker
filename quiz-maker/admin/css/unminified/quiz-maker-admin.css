@@ -8373,6 +8373,15 @@ div .wp-picker-container .wp-color-result.button {
 .ays-quiz-general-settings-form input[type="radio"]:checked::before,
 .ays-quiz-dashboard-main-wrap input[type="radio"]:checked::before {
     background-color: #005AE0;
+    width: 8px;
+    height: 8px;
+}
+
+.ays-quiz-general-settings-form .ays-quiz-display-flex-form-check,
+.ays-quiz-dashboard-main-wrap .ays-quiz-display-flex-form-check {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 .ays-quiz-dashboard-main-wrap .only_pro input[type="radio"]:checked::before {

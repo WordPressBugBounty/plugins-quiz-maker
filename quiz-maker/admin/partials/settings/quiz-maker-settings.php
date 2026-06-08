@@ -142,6 +142,7 @@
     $question_report_submitted_text  = (isset($default_texts['question_report_submitted_text']) && $default_texts['question_report_submitted_text'] != '') ? stripslashes( esc_attr( $default_texts['question_report_submitted_text'] ) ) : 'Report has been submitted successfully';
     $empty_report_text  = (isset($default_texts['empty_report_text']) && $default_texts['empty_report_text'] != '') ? stripslashes( esc_attr( $default_texts['empty_report_text'] ) ) : 'You cannot submit an empty report. Please add some details.';
     $question_report_icon_text  = (isset($default_texts['question_report_icon_text']) && $default_texts['question_report_icon_text'] != '') ? stripslashes( esc_attr( $default_texts['question_report_icon_text'] ) ) : 'Report Question';
+    $start_button_loading_text  = (isset($default_texts['start_button_loading_text']) && $default_texts['start_button_loading_text'] != '') ? stripslashes( esc_attr( $default_texts['start_button_loading_text'] ) ) : 'Loading ...';
     // Default texts | End
 
 
@@ -4480,10 +4481,23 @@
                                 <input type="text" id="ays_quiz_question_report_icon_text" name="ays_quiz_question_report_icon_text" class="ays-text-input"  value='<?php echo esc_attr($question_report_icon_text); ?>'>
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <div class="col-sm-3">
+                                <label for="ays_quiz_start_button_loading_text">
+                                    <?php echo esc_html__( "Start button loading text", 'quiz-maker' ); ?>
+                                    <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php echo esc_attr__( "Specify the text that will be displayed on the Start button while the quiz is loading.", 'quiz-maker' ); ?>">
+                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                    </a>
+                                </label>
+                            </div>
+                            <div class="col-sm-9">
+                                <input type="text" id="ays_quiz_start_button_loading_text" name="ays_quiz_start_button_loading_text" class="ays-text-input"  value='<?php echo esc_attr($start_button_loading_text); ?>'>
+                            </div>
+                        </div>
                         <hr />
                         <p class="ays-subtitle">
                             <?php echo esc_html__('Buttons texts','quiz-maker'); ?>
-                            <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php echo esc_attr__( 'If you make a change here, these words will not be translated either․', 'quiz-maker' ); ?>">
+                            <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php echo esc_attr__( 'If you make a change here, these words will not be translated either.', 'quiz-maker' ); ?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
                         </p>

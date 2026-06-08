@@ -712,6 +712,7 @@ class Quiz_Maker_Public
         $question_report_submitted_text  = (isset($settings_static_texts['question_report_submitted_text']) && $settings_static_texts['question_report_submitted_text'] != '') ? stripslashes( esc_attr( $settings_static_texts['question_report_submitted_text'] ) ) : 'Report has been submitted successfully';
         $empty_report_text  = (isset($settings_static_texts['empty_report_text']) && $settings_static_texts['empty_report_text'] != '') ? stripslashes( esc_attr( $settings_static_texts['empty_report_text'] ) ) : 'You cannot submit an empty report. Please add some details.';
         $question_report_icon_text  = (isset($settings_static_texts['question_report_icon_text']) && $settings_static_texts['question_report_icon_text'] != '') ? stripslashes( esc_attr( $settings_static_texts['question_report_icon_text'] ) ) : 'Report Question';
+        $start_button_loading_text  = (isset($settings_static_texts['start_button_loading_text']) && $settings_static_texts['start_button_loading_text'] != '') ? stripslashes( esc_attr( $settings_static_texts['start_button_loading_text'] ) ) : 'Loading ...';
 
         if ($wrong_shortcode_text === 'Wrong shortcode initialized') {
             $wrong_shortcode_text = __('Wrong shortcode initialized', 'quiz-maker');
@@ -764,6 +765,10 @@ class Quiz_Maker_Public
         if ($question_report_icon_text === 'Report Question') {
             $question_report_icon_text = __('Report Question', 'quiz-maker');
         }
+        
+        if ($start_button_loading_text === 'Loading ...') {
+            $start_button_loading_text = __('Loading ...', 'quiz-maker');
+        }
 
         $texts = array(
             'wrongShortcode'                => $wrong_shortcode_text,
@@ -779,6 +784,7 @@ class Quiz_Maker_Public
             'questionReportSubmittedText'   => $question_report_submitted_text,
             'emptyReportText'               => $empty_report_text,
             'questionReportIconText'        => $question_report_icon_text,
+            'startButtonLoadingText'        => $start_button_loading_text,
         );
 
         return $texts;
@@ -1882,7 +1888,7 @@ class Quiz_Maker_Public
 
         if ( $enable_start_button_loader ) {
             if ($questions_count != 0) {
-                $quiz_start_butto_html = "<input type='button' $empty_questions_button class='ays_next start_button action-button ays_quiz_enable_loader ".$class_for_keyboard."' disabled='disabled' value='". __('Loading ...', 'quiz-maker') ."' ". $enable_leave_page ." />".$empty_questions_notification;
+                $quiz_start_butto_html = "<input type='button' $empty_questions_button class='ays_next start_button action-button ays_quiz_enable_loader ".$class_for_keyboard."' disabled='disabled' value='". esc_html($this->default_texts['startButtonLoadingText']) ."' ". $enable_leave_page ." />".$empty_questions_notification;
 
                 $quiz_start_button = '
                 <div class="ays-quiz-start-button-preloader">

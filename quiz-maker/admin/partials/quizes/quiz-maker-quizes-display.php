@@ -254,7 +254,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                             <div class="col-sm-2">
                                 <label class='ays-label ays_quiz_title' for='ays-quiz-category'><?php echo esc_html__('Status', 'quiz-maker'); ?></label>
                             </div>
-                            <div class="col-sm-10" style="display: flex;">
+                            <div class="col-sm-10 ays-quiz-display-flex-form-check" style="display: flex;">
                                 <div class="form-check form-check-inline">
                                     <input type="radio" id="ays-quick-quiz-publish" name="ays_quick_quiz_publish" value="1" checked />
                                     <label class="form-check-label" for="ays-quick-quiz-publish"> <?php echo esc_html__('Published', 'quiz-maker'); ?> </label>

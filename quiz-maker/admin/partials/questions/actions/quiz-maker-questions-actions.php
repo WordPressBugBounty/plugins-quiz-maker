@@ -830,7 +830,7 @@ $user_explanation = (isset($question["user_explanation"]) && $question["user_exp
                 <hr class="show_for_text_type <?php echo ($is_only_radio_type) ? '' : 'display_none'; ?>"/>
                 <div class="form-group row ays_toggle_parent show_for_text_type <?php echo ($is_only_radio_type) ? '' : 'display_none'; ?>">
                     <div class="col-sm-3">
-                        <label for="ays_enable_question_text_max_length">
+                        <label for="ays-use-html">
                             <?php echo esc_html__( "Use HTML for answers", 'quiz-maker' ); ?>
                             <a class="ays_help" style="margin-right:15px;" data-toggle="tooltip" title="<?php echo esc_attr( __('Allowed tags list','quiz-maker') . ": <br>, <b>, <em>, <span>, <mark>, <del>, <ins>, <sup>, <sub>, <strong>, <code>, <samp>, <kbd>, <var>, <q>" ); ?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
@@ -838,7 +838,7 @@ $user_explanation = (isset($question["user_explanation"]) && $question["user_exp
                         </label>
                     </div>
                     <div class="col-sm-9">
-                        <input type="checkbox" name="ays-use-html" value="on" <?php echo $use_html ? "checked" : ""; ?>>
+                        <input type="checkbox" id="ays-use-html" name="ays-use-html" value="on" <?php echo $use_html ? "checked" : ""; ?>>
                     </div>
                 </div>
                 <hr class="show_for_text_type <?php echo ($is_only_text_type) ? '' : 'display_none'; ?>"/>
@@ -1119,7 +1119,7 @@ $user_explanation = (isset($question["user_explanation"]) && $question["user_exp
                         </label>
                     </div>
 
-                    <div class="col-sm-9">
+                    <div class="col-sm-9 ays-quiz-display-flex-form-check">
                         <div class="form-check form-check-inline">
                             <input type="radio" id="ays-publish" name="ays_publish" value="1" <?php echo ($question_published == '') ? "checked" : ""; ?>  <?php echo ($question_published== '1') ? 'checked' : ''; ?>/>
                             <label class="form-check-label" for="ays-publish"> <?php echo esc_html__('Published', 'quiz-maker'); ?> </label>
@@ -1156,7 +1156,7 @@ $user_explanation = (isset($question["user_explanation"]) && $question["user_exp
                             </a>
                         </label>
                     </div>
-                    <div class="col-sm-9">
+                    <div class="col-sm-9 ays-quiz-display-flex-form-check">
                         <div class="form-check form-check-inline">
                             <input type="radio" id="ays-user-ex-on" name="ays_user_explanation" value="on" <?php echo ($user_explanation == 'on') ? 'checked' : ''; ?>/>
                             <label class="form-check-label" for="ays-user-ex-on"> <?php echo __('Enabled', 'quiz-maker'); ?> </label>
@@ -1455,25 +1455,25 @@ $user_explanation = (isset($question["user_explanation"]) && $question["user_exp
                 </div>
                 <div class="ays-question-button-second-row ays-question-button-second-row-padding-right">
                 <?php
-                    if ( $prev_question_id != "" && !is_null( $prev_question_id ) ) {
+                    // if ( $prev_question_id != "" && !is_null( $prev_question_id ) ) {
 
-                        $other_attributes = array(
-                            'id' => 'ays-question-prev-button',
-                            'data-message' => esc_html__( 'Are you sure you want to go to the previous question page?', 'quiz-maker'),
-                            'href' => sprintf( '?page=%s&action=%s&question=%d', esc_attr( $_REQUEST['page'] ), 'edit', absint( $prev_question_id ) )
-                        );
-                        submit_button(esc_html__('Prev Question', 'quiz-maker'), 'button', 'ays_question_prev_button', false, $other_attributes);
-                    }
+                    //     $other_attributes = array(
+                    //         'id' => 'ays-question-prev-button',
+                    //         'data-message' => esc_html__( 'Are you sure you want to go to the previous question page?', 'quiz-maker'),
+                    //         'href' => sprintf( '?page=%s&action=%s&question=%d', esc_attr( $_REQUEST['page'] ), 'edit', absint( $prev_question_id ) )
+                    //     );
+                    //     submit_button(esc_html__('Prev Question', 'quiz-maker'), 'button', 'ays_question_prev_button', false, $other_attributes);
+                    // }
 
-                    if ( $nex_question_id != "" && !is_null( $nex_question_id ) ) {
+                    // if ( $nex_question_id != "" && !is_null( $nex_question_id ) ) {
 
-                        $other_attributes = array(
-                            'id' => 'ays-question-next-button',
-                            'data-message' => esc_html__( 'Are you sure you want to go to the next question page?', 'quiz-maker'),
-                            'href' => sprintf( '?page=%s&action=%s&question=%d', esc_attr( $_REQUEST['page'] ), 'edit', absint( $nex_question_id ) )
-                        );
-                        submit_button(esc_html__('Next Question', 'quiz-maker'), 'button', 'ays_question_next_button', false, $other_attributes);
-                    }
+                    //     $other_attributes = array(
+                    //         'id' => 'ays-question-next-button',
+                    //         'data-message' => esc_html__( 'Are you sure you want to go to the next question page?', 'quiz-maker'),
+                    //         'href' => sprintf( '?page=%s&action=%s&question=%d', esc_attr( $_REQUEST['page'] ), 'edit', absint( $nex_question_id ) )
+                    //     );
+                    //     submit_button(esc_html__('Next Question', 'quiz-maker'), 'button', 'ays_question_next_button', false, $other_attributes);
+                    // }
                 ?>
                 </div>
             </div>

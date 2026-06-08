@@ -5175,7 +5175,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                     </a>
                                 </label>
                             </div>
-                            <div class="col-sm-8">
+                            <div class="col-sm-8 ays-quiz-display-flex-form-check">
                                 <div class="form-check form-check-inline">
                                     <input type="radio" id="ays-publish" name="ays_publish"
                                            value="1" <?php echo ($quiz_published == '') ? "checked" : ""; ?>  <?php echo ($quiz_published == '1') ? 'checked' : ''; ?>/>
@@ -6446,7 +6446,7 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                     </a>
                                 </label>
                             </div>
-                            <div class="col-sm-8">
+                            <div class="col-sm-8 ays-quiz-display-flex-form-check">
                                 <div class="form-check form-check-inline checkbox_ays">
                                     <input type="checkbox" id="ays_show_quiz_title" name="ays_show_quiz_title"
                                             value="on" <?php echo $show_quiz_title ? 'checked' : ''; ?>/>

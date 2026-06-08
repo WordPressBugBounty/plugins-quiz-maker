@@ -124,7 +124,7 @@ $quiz_wp_editor_height = (isset($gen_options['quiz_wp_editor_height']) && $gen_o
                         </label>
                     </div>
 
-                    <div class="col-sm-10">
+                    <div class="col-sm-10 ays-quiz-display-flex-form-check">
                         <div class="form-check form-check-inline">
                             <input type="radio" id="ays-publish" name="ays_publish" value="1" <?php echo ( $question_category_published == '' ) ? "checked" : ""; ?> <?php echo ( $question_category_published == '1') ? 'checked' : ''; ?> />
                             <label class="form-check-label" for="ays-publish"> <?php echo esc_html__('Published', 'quiz-maker'); ?> </label>

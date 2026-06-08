@@ -2316,7 +2316,7 @@ img.ays-loader-custom-gif-content{
     border-color: #ddd!important;
     box-shadow: none!important;
     text-shadow: none!important;
-    padding: 10px 20px !important;
+    padding: 10px 20px;
     border: none;
     opacity: 0.5;
     cursor: wait;
