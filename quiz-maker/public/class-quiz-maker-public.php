@@ -254,7 +254,7 @@ class Quiz_Maker_Public
 
         $settings_buttons_texts = $this->settings->ays_get_setting('buttons_texts');
         if($settings_buttons_texts){
-            $settings_buttons_texts = json_decode(stripcslashes($settings_buttons_texts), true);
+            $settings_buttons_texts = json_decode($settings_buttons_texts, true);
         }else{
             $settings_buttons_texts = array();
         }
@@ -695,7 +695,7 @@ class Quiz_Maker_Public
         $settings_table = $wpdb->prefix . "aysquiz_settings";
         $sql = "SELECT meta_value FROM " . $settings_table . " WHERE meta_key = 'default_texts'";
         $result = $wpdb->get_var($sql);
-        $settings_static_texts = ($result == "") ? array() : json_decode( stripslashes($result), true);
+        $settings_static_texts = ($result == "") ? array() : json_decode($result, true);
 
         $wrong_shortcode_text = (isset($settings_static_texts['wrong_shortcode_text']) && $settings_static_texts['wrong_shortcode_text'] != '') ? stripslashes(esc_attr($settings_static_texts['wrong_shortcode_text'])) : 'Wrong shortcode initialized';
         $enter_password_text = (isset($settings_static_texts['enter_password_text']) && $settings_static_texts['enter_password_text'] != '') ? stripslashes(esc_attr($settings_static_texts['enter_password_text'])) : 'Please enter password';

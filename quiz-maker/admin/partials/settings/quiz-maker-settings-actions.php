@@ -24,7 +24,7 @@ class Quiz_Maker_Settings_Actions {
             $exit_button            = (isset($_REQUEST['ays_exit_button']) && $_REQUEST['ays_exit_button'] != '') ? stripslashes( sanitize_text_field( $_REQUEST['ays_exit_button'] ) ) : 'Exit' ;
             $check_button           = (isset($_REQUEST['ays_check_button']) && $_REQUEST['ays_check_button'] != '') ? stripslashes( sanitize_text_field( $_REQUEST['ays_check_button'] ) ) : 'Check' ;
             $login_button           = (isset($_REQUEST['ays_login_button']) && $_REQUEST['ays_login_button'] != '') ? stripslashes( sanitize_text_field( $_REQUEST['ays_login_button'] ) ) : 'Log In' ;
-            $report_submit_button           = (isset($_REQUEST['ays_report_submit_button']) && $_REQUEST['ays_report_submit_button'] != '') ? stripslashes( sanitize_text_field( $_REQUEST['ays_report_submit_button'] ) ) : 'Submit' ;
+            $report_submit_button   = (isset($_REQUEST['ays_report_submit_button']) && $_REQUEST['ays_report_submit_button'] != '') ? stripslashes( sanitize_text_field( $_REQUEST['ays_report_submit_button'] ) ) : 'Submit' ;
 
             $buttons_texts = array(
                 'start_button'              => $start_button,

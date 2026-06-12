@@ -106,7 +106,7 @@
      // Aro Buttons Text
 
     $buttons_texts_res      = ($actions->ays_get_setting('buttons_texts') === false) ? json_encode(array()) : $actions->ays_get_setting('buttons_texts');
-    $buttons_texts          = json_decode( stripcslashes( $buttons_texts_res ) , true);
+    $buttons_texts          = json_decode( $buttons_texts_res, true);
 
     $start_button           = (isset($buttons_texts['start_button']) && $buttons_texts['start_button'] != '') ? stripslashes( esc_attr( $buttons_texts['start_button'] ) ) : 'Start' ;
     $next_button            = (isset($buttons_texts['next_button']) && $buttons_texts['next_button'] != '') ? stripslashes( esc_attr( $buttons_texts['next_button'] ) ) : 'Next' ;
@@ -126,7 +126,7 @@
 
     // Default texts | Start
     $default_texts_res = ($actions->ays_get_setting('default_texts') === false) ? json_encode(array()) : $actions->ays_get_setting('default_texts');
-    $default_texts = json_decode( stripcslashes($default_texts_res), true);
+    $default_texts = json_decode( $default_texts_res, true);
 
     $wrong_shortcode_text              = (isset($default_texts['wrong_shortcode_text']) && $default_texts['wrong_shortcode_text'] != '') ? stripslashes( esc_attr( $default_texts['wrong_shortcode_text'] ) ) : 'Wrong shortcode initialized';
     $enter_password_text               = (isset($default_texts['enter_password_text']) && $default_texts['enter_password_text'] != '') ? stripslashes( esc_attr( $default_texts['enter_password_text'] ) ) : 'Please enter password';

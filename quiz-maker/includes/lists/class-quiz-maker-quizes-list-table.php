@@ -418,13 +418,11 @@ class Quizes_List_Table extends WP_List_Table{
             $setting_actions = new Quiz_Maker_Settings_Actions($this->plugin_name);
 
             // Buttons Text
-            $buttons_texts_res      = ($setting_actions->ays_get_setting('buttons_texts') === false) ? json_encode(array()) : $setting_actions->ays_get_setting('buttons_texts');
-            $buttons_texts          = json_decode( stripcslashes( $buttons_texts_res ) , true);
+            $buttons_texts_res          = ($setting_actions->ays_get_setting('buttons_texts') === false) ? json_encode(array()) : $setting_actions->ays_get_setting('buttons_texts');
+            $buttons_texts              = json_decode( $buttons_texts_res, true);
 
-            $gen_start_button       = (isset($buttons_texts['start_button']) && $buttons_texts['start_button'] != '') ? stripslashes( esc_attr( $buttons_texts['start_button'] ) ) : 'Start';
-            ;
-            $gen_next_button        = (isset($buttons_texts['next_button']) && $buttons_texts['next_button'] != '') ? stripslashes( esc_attr( $buttons_texts['next_button'] ) ) : 'Next';
-
+            $gen_start_button           = (isset($buttons_texts['start_button']) && $buttons_texts['start_button'] != '') ? stripslashes( esc_attr( $buttons_texts['start_button'] ) ) : 'Start';
+            $gen_next_button            = (isset($buttons_texts['next_button']) && $buttons_texts['next_button'] != '') ? stripslashes( esc_attr( $buttons_texts['next_button'] ) ) : 'Next';
             $gen_previous_button        = (isset($buttons_texts['previous_button']) && $buttons_texts['previous_button'] != '') ? stripslashes( esc_attr( $buttons_texts['previous_button'] ) ) : 'Prev' ;
             $gen_clear_button           = (isset($buttons_texts['clear_button']) && $buttons_texts['clear_button'] != '') ? stripslashes( esc_attr( $buttons_texts['clear_button'] ) ) : 'Clear' ;
             $gen_finish_button          = (isset($buttons_texts['finish_button']) && $buttons_texts['finish_button'] != '') ? stripslashes( esc_attr( $buttons_texts['finish_button'] ) ) : 'Finish' ;
