@@ -1,6 +1,9 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
+global $ays_quiz_settings;
+$ays_quiz_settings = array();
+
 /**
  * The file that defines the core plugin class
  *
@@ -101,6 +104,7 @@ class Quiz_Maker {
 	 * @access   private
 	 */
 	private function load_dependencies() {
+		global $ays_quiz_settings;
 
         if ( ! class_exists( 'WP_List_Table' ) ) {
             require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
@@ -209,6 +213,11 @@ class Quiz_Maker {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-quiz-maker-public.php';
 
 		$this->loader = new Quiz_Maker_Loader();
+
+		$general_settings_obj = new Quiz_Maker_Settings_Actions($this->plugin_name);
+
+        // General Settings | all options
+        $ays_quiz_settings = $general_settings_obj->get_db_all_data();
 	}
 
 	/**

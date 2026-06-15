@@ -88,19 +88,32 @@ class Quiz_Maker_Admin
      * @since    1.0.0
      */
     public function admin_menu_styles(){
+        $quiz_menu_badge_background = self::get_menu_badge_background( $this->plugin_name );
+
+        $custom_additional_css = "";
+        if( $quiz_menu_badge_background == '#3858e9' ){
+            $custom_additional_css = "
+            #adminmenu li.toplevel_page_quiz-maker a.toplevel_page_quiz-maker.wp-has-current-submenu.wp-menu-open .wp-menu-name .ays_menu_badge,
+            #adminmenu li.toplevel_page_quiz-maker a.toplevel_page_quiz-maker:hover .wp-menu-name .ays_menu_badge {
+                color: #fff;
+                background: rgb(12.15, 12.15, 12.15);
+            }";
+        }
         
         echo "<style>
-            .ays_menu_badge{
+            #adminmenu .ays_menu_badge{
                 color: #fff;
                 display: inline-block;
                 font-size: 10px;
                 line-height: 14px;
                 text-align: center;
-                background: #ca4a1f;
+                background: ". esc_attr( $quiz_menu_badge_background ) .";
                 margin-left: 5px;
                 border-radius: 20px;
                 padding: 2px 5px;
             }
+
+            ". $custom_additional_css ."
 
             #adminmenu a.toplevel_page_quiz-maker div.wp-menu-image img {
                 width: 32px;
@@ -109,6 +122,21 @@ class Quiz_Maker_Admin
             }
         </style>";
 
+    }
+
+    public static function get_menu_badge_background( $plugin_name = 'quiz-maker' ){
+        global $ays_quiz_settings;
+
+        if(!empty($ays_quiz_settings) && !empty($ays_quiz_settings['options'])){
+            $options = $ays_quiz_settings['options'];
+        } else {
+            $setting_actions = new Quiz_Maker_Settings_Actions( $plugin_name );
+            $options = ($setting_actions->ays_get_setting('options') === false) ? array() : json_decode( stripcslashes( $setting_actions->ays_get_setting('options') ), true);
+        }
+        
+        $quiz_menu_badge_style = ( isset( $options['quiz_menu_badge_style'] ) && sanitize_key( $options['quiz_menu_badge_style'] ) === 'wp_default' ) ? 'wp_default' : 'classic';
+
+        return ( $quiz_menu_badge_style === 'wp_default' ) ? '#3858e9' : '#ca4a1f';
     }
 
     /**

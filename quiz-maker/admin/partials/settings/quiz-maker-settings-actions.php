@@ -292,6 +292,9 @@ class Quiz_Maker_Settings_Actions {
             $quiz_disable_live_chat_icon = (isset( $_REQUEST['ays_quiz_disable_live_chat_icon'] ) && sanitize_text_field( $_REQUEST['ays_quiz_disable_live_chat_icon'] ) == 'on') ? 'on' : 'off';
             update_option('ays_quiz_disable_live_chat_icon', $quiz_disable_live_chat_icon);
 
+            $quiz_menu_badge_styles = array( 'classic', 'wp_default' );
+            $quiz_menu_badge_style = ( isset( $_REQUEST['ays_quiz_menu_badge_style'] ) && in_array( sanitize_key( $_REQUEST['ays_quiz_menu_badge_style'] ), $quiz_menu_badge_styles, true ) ) ? sanitize_key( $_REQUEST['ays_quiz_menu_badge_style'] ) : 'classic';
+
             $options = array(
                 "question_default_type"                         => $question_default_type,
                 "ays_answer_default_count"                      => $ays_answer_default_count,
@@ -338,6 +341,7 @@ class Quiz_Maker_Settings_Actions {
                 "quiz_disable_results_menu_notification"            => $quiz_disable_results_menu_notification,
                 "quiz_disable_question_report_menu_notification"    => $quiz_disable_question_report_menu_notification,
                 "quiz_disable_live_chat_icon"                       => $quiz_disable_live_chat_icon,
+                "quiz_menu_badge_style"                             => $quiz_menu_badge_style,
 
                 // Show Result Information
                 'ays_quiz_show_result_info_user_ip'                 => $ays_quiz_show_result_info_user_ip,
@@ -478,7 +482,28 @@ class Quiz_Maker_Settings_Actions {
         }else{
             return array();
         }
-    }    
+    }
+
+    public function get_db_all_data(){
+        global $wpdb;
+        $settings_table = $wpdb->prefix . "aysquiz_settings";
+
+        if($wpdb->get_var($wpdb->prepare("SHOW TABLES LIKE %s", $settings_table)) != $settings_table) {
+            return array();
+        }
+
+        // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQL.NotPrepared, PluginCheck.Security.DirectDB.UnescapedDBParameter -- Table name is built from the WordPress database prefix.
+        $results = $wpdb->get_results("SELECT meta_key, meta_value FROM {$wpdb->prefix}aysquiz_settings", ARRAY_A);
+        if(!empty($results) && count($results) > 0){
+            $res = array();
+            foreach ($results as $key => $value) {
+                $res[$value['meta_key']] = !empty($value['meta_key']) ? json_decode( stripcslashes($value['meta_value']), true) : array();
+            }
+            return $res;
+        }else{
+            return array();
+        }
+    }
     
     public function check_settings_meta($metas){
         global $wpdb;

@@ -353,6 +353,19 @@
     $options['quiz_disable_question_report_menu_notification'] = isset($options['quiz_disable_question_report_menu_notification']) ? sanitize_text_field( $options['quiz_disable_question_report_menu_notification'] ) : 'off';
     $quiz_disable_question_report_menu_notification = (isset($options['quiz_disable_question_report_menu_notification']) && sanitize_text_field( $options['quiz_disable_question_report_menu_notification'] ) == "on") ? true : false;
 
+    $quiz_menu_badge_style_options = array(
+        'classic' => array(
+            'background' => '#ca4a1f',
+            'label'      => __( 'Default', 'quiz-maker' ),
+        ),
+        'wp_default' => array(
+            'background' => '#3858e9',
+            'label'      => __( 'WordPress default', 'quiz-maker' ),
+        ),
+    );
+    $options['quiz_menu_badge_style'] = isset($options['quiz_menu_badge_style']) ? sanitize_key( $options['quiz_menu_badge_style'] ) : 'classic';
+    $quiz_menu_badge_style = array_key_exists( $options['quiz_menu_badge_style'], $quiz_menu_badge_style_options ) ? $options['quiz_menu_badge_style'] : 'classic';
+
     // Show Result Information | Start
 
     $options['ays_quiz_show_result_info_user_ip'] = isset($options['ays_quiz_show_result_info_user_ip']) ? sanitize_text_field( $options['ays_quiz_show_result_info_user_ip'] ) : 'on';
@@ -1099,6 +1112,28 @@
                                 </div>
                                 <div class="col-sm-8">
                                     <input type="checkbox" name="ays_quiz_disable_live_chat_icon" id="ays_quiz_disable_live_chat_icon" value="on" <?php echo esc_attr($quiz_disable_live_chat_icon) ? 'checked' : ''; ?>>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="form-group row">
+                                <div class="col-sm-4">
+                                    <label>
+                                        <?php echo esc_html__( "Menu badge style", 'quiz-maker' ); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Choose the style of the notification badges displayed in the WordPress admin menu.','quiz-maker') ); ?>">
+                                            <i class="ays_fa ays_fa_info_circle"></i>
+                                        </a>
+                                    </label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <div class="ays-quiz-menu-badge-style-options" style="display:flex; gap:10px; flex-wrap:wrap;">
+                                        <?php foreach ( $quiz_menu_badge_style_options as $style_key => $style_data ) : ?>
+                                            <label for="ays_quiz_menu_badge_style_<?php echo esc_attr( $style_key ); ?>" style="display:flex; align-items:center; gap:12px; padding:14px 20px; border:1px solid #c3c4c7; border-radius:4px; background:#f6f7f7; cursor:pointer;">
+                                                <input type="radio" name="ays_quiz_menu_badge_style" id="ays_quiz_menu_badge_style_<?php echo esc_attr( $style_key ); ?>" value="<?php echo esc_attr( $style_key ); ?>" <?php checked( $quiz_menu_badge_style, $style_key ); ?>>
+                                                <span class="ays_menu_badge" style="margin-left:0; background:<?php echo esc_attr( $style_data['background'] ); ?>;">2</span>
+                                                <span class="screen-reader-text"><?php echo esc_html( $style_data['label'] ); ?></span>
+                                            </label>
+                                        <?php endforeach; ?>
+                                    </div>
                                 </div>
                             </div>
                         </fieldset> <!-- Menu notifications -->
