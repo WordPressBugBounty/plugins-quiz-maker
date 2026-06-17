@@ -474,7 +474,7 @@ class Quiz_Maker_Public
 
         $settings_placeholders_texts = $this->settings->ays_get_setting('fields_placeholders');
         if($settings_placeholders_texts){
-            $settings_placeholders_texts = json_decode(stripcslashes($settings_placeholders_texts), true);
+            $settings_placeholders_texts = json_decode($settings_placeholders_texts, true);
         }else{
             $settings_placeholders_texts = array();
         }

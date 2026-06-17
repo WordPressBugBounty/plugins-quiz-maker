@@ -1443,6 +1443,7 @@ class Quiz_Maker_Admin
         $quick_quiz_enable_live_progress_bar                    = 'off';
         $quick_quiz_enable_percent_view_option                  = 'off';
         $quick_quiz_enable_questions_reporting                  = 'off';
+        $quick_quiz_enable_keyboard_navigation                  = 'on';
 
         $quick_quiz_custom_texts_start_button                   = $gen_start_button;
         $quick_quiz_custom_texts_next_button                    = $gen_next_button;
@@ -1942,6 +1943,9 @@ class Quiz_Maker_Admin
             // Enable percent view
             $quick_quiz_enable_questions_reporting = (isset( $_REQUEST['ays_quick_quiz_enable_questions_reporting'] ) && $_REQUEST['ays_quick_quiz_enable_questions_reporting'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_questions_reporting'] ) ) : "off";
             
+            // Enable percent view
+            $quick_quiz_enable_keyboard_navigation = (isset( $_REQUEST['ays_quick_quiz_enable_keyboard_navigation'] ) && $_REQUEST['ays_quick_quiz_enable_keyboard_navigation'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_keyboard_navigation'] ) ) : "off";
+            
         }
         
         foreach ($questions as $question_key => $question) {
@@ -2236,7 +2240,7 @@ class Quiz_Maker_Admin
             'quiz_show_restart_button_on_quiz_fail'             => $quick_quiz_show_restart_button_on_quiz_fail,
             'enable_live_progress_bar'                          => $quick_quiz_enable_live_progress_bar,
             'enable_percent_view'                               => $quick_quiz_enable_percent_view_option,
-            'quiz_enable_keyboard_navigation'                   => 'on',
+            'quiz_enable_keyboard_navigation'                   => $quick_quiz_enable_keyboard_navigation, 
             'quiz_admin_note_mobile_text_transform'             => $quick_quiz_admin_note_mobile_text_transform,
             'quiz_admin_note_mobile_text_decoration'            => $quick_quiz_admin_note_mobile_text_decoration,
             'quiz_admin_note_mobile_letter_spacing'             => $quick_quiz_admin_note_mobile_letter_spacing,
@@ -8094,56 +8098,56 @@ class Quiz_Maker_Admin
 
         $result_page_ordering = array(
             'pass_score' => array(
-                'name' => __('Pass Score','quiz-maker'),
-                'message' => __('If you want to display the pass score on the Quiz Result page, then go to the Quizzes > given quiz > Results Settings Tab and set your desired value for the Pass Score option.','quiz-maker'),
+                'name'      => __('Pass Score','quiz-maker'),
+                'message'   => __('If you want to display the pass score on the Quiz Result page, then go to the Quizzes > given quiz > Results Settings Tab and set your desired value for the Pass Score option.','quiz-maker'),
             ),
             'conditions_message' => array(
-                'name' => __('Conditions Message','quiz-maker'),
-                'message' => __('If you want to display the conditional message on the Quiz Result page, then install the Conditional Results addon first․ Then, head to the Conditional Results addon and specify the conditions.','quiz-maker'),
+                'name'      => __('Conditions Message','quiz-maker'),
+                'message'   => __('If you want to display the conditional message on the Quiz Result page, then install the Conditional Results addon first․ Then, head to the Conditional Results addon and specify the conditions.','quiz-maker'),
             ),
             'interval_message' => array(
-                'name' => __('Interval Message','quiz-maker'),
-                'message' => __('If you want to display the interval message (the most relevant text based on the user’s answers) on the Quiz Result page, then go to the Quizzes > given quiz > Results Settings Tab, tick the Show interval message option and specify your desired texts for each Interval.','quiz-maker'),
+                'name'      => __('Interval Message','quiz-maker'),
+                'message'   => __('If you want to display the interval message (the most relevant text based on the user’s answers) on the Quiz Result page, then go to the Quizzes > given quiz > Results Settings Tab, tick the Show interval message option and specify your desired texts for each Interval.','quiz-maker'),
             ),
             'ays_message' => array(
-                'name' => __('Result Message','quiz-maker'),
-                'message' => __('If you want to display the content you write for the Result Message option on the Quiz Result page, then go to the Quizzes > given quiz > Result Message option and specify the content there.','quiz-maker'),
+                'name'      => __('Result Message','quiz-maker'),
+                'message'   => __('If you want to display the content you write for the Result Message option on the Quiz Result page, then go to the Quizzes > given quiz > Result Message option and specify the content there.','quiz-maker'),
             ),
             'woo_block' => array(
-                'name' => __('WooCommerce Products','quiz-maker'),
-                'message' => __('If you want to display the WooCommerce products on the Quiz Result page, first, install the WooCommerce plugin. Then, go to the Quizzes > given quiz > Results Settings Tab > Intervals option, and specify the WooCommerce products for intervals.','quiz-maker'),
+                'name'      => __('WooCommerce Products','quiz-maker'),
+                'message'   => __('If you want to display the WooCommerce products on the Quiz Result page, first, install the WooCommerce plugin. Then, go to the Quizzes > given quiz > Results Settings Tab > Intervals option, and specify the WooCommerce products for intervals.','quiz-maker'),
             ),
             'score_html' => array(
-                'name' => __('Your Score','quiz-maker'),
-                'message' => __('If you want to display the score on the Quiz Result page, then head to the Quizzes > given quiz > Results Settings Tab and disable the Hide Score option.','quiz-maker'),
+                'name'      => __('Your Score','quiz-maker'),
+                'message'   => __('If you want to display the score on the Quiz Result page, then head to the Quizzes > given quiz > Results Settings Tab and disable the Hide Score option.','quiz-maker'),
             ),
             'average_score' => array(
-                'name' => __('Average Score','quiz-maker'),
-                'message' => __('If you want to display the Average Score on the Quiz Result page, then go to the Quizzes > given quiz > Results Settings Tab and enable the Show the statistical average option.','quiz-maker'),
+                'name'      => __('Average Score','quiz-maker'),
+                'message'   => __('If you want to display the Average Score on the Quiz Result page, then go to the Quizzes > given quiz > Results Settings Tab and enable the Show the statistical average option.','quiz-maker'),
             ),
             'social_buttons' => array(
-                'name' => __('Social Buttons','quiz-maker'),
-                'message' => __('If you want to display the social buttons on the Quiz Result page, then go to the Quizzes > given quiz > Results Settings Tab and enable the Show the Social buttons option.','quiz-maker'),
+                'name'      => __('Social Buttons','quiz-maker'),
+                'message'   => __('If you want to display the social buttons on the Quiz Result page, then go to the Quizzes > given quiz > Results Settings Tab and enable the Show the Social buttons option.','quiz-maker'),
             ),
             'social_links' => array(
-                'name' => __('Social Links','quiz-maker'),
-                'message' => __('If you want to display the social links on the Quiz Result page, then go to the Quizzes > given quiz > Results Settings Tab and tick the Enable Social Media links option.','quiz-maker'),
+                'name'      => __('Social Links','quiz-maker'),
+                'message'   => __('If you want to display the social links on the Quiz Result page, then go to the Quizzes > given quiz > Results Settings Tab and tick the Enable Social Media links option.','quiz-maker'),
             ),
             'progress_bar' => array(
-                'name' => __('Progress Bar','quiz-maker'),
-                'message' => __('If you want to display the progress bar on the Quiz Result page, then go to the Quizzes > given quiz > Results Settings Tab and tick the  Enable progress bar option.','quiz-maker'),
+                'name'      => __('Progress Bar','quiz-maker'),
+                'message'   => __('If you want to display the progress bar on the Quiz Result page, then go to the Quizzes > given quiz > Results Settings Tab and tick the  Enable progress bar option.','quiz-maker'),
             ),
             'buttons' => array(
-                'name' => __('Buttons','quiz-maker'),
-                'message' => __('Note, that this refers to the Restart Quiz and Exit buttons. When the Chained Quiz addon is installed and active, the Next Quiz button will appear during the quiz, and the See Result button will be displayed at the end.','quiz-maker'),
+                'name'      => __('Buttons','quiz-maker'),
+                'message'   => __('Note, that this refers to the Restart Quiz and Exit buttons. When the Chained Quiz addon is installed and active, the Next Quiz button will appear during the quiz, and the See Result button will be displayed at the end.','quiz-maker'),
             ),
             'rate' => array(
-                'name' => __('Quiz Rate','quiz-maker'),
-                'message' => __('If you want to display the quiz rate with stars on the Quiz Result page, then go to the Quizzes > given quiz > Results Settings Tab and tick the Enable quiz assessment option.','quiz-maker'),
+                'name'      => __('Quiz Rate','quiz-maker'),
+                'message'   => __('If you want to display the quiz rate with stars on the Quiz Result page, then go to the Quizzes > given quiz > Results Settings Tab and tick the Enable quiz assessment option.','quiz-maker'),
             ),
             'download_pdf' => array(
-                'name' => __('Download Quiz Result in PDF','quiz-maker'),
-                'message' => __(' If you want the users to download the results from the Quiz Result page in PDF after completing the quiz, then go to the Quizzes > given quiz > Results Settings Tab > Show question results on the results page option and tick the Download Result Page in PDF suboption','quiz-maker'),
+                'name'      => __('Download Quiz Result in PDF','quiz-maker'),
+                'message'   => __(' If you want the users to download the results from the Quiz Result page in PDF after completing the quiz, then go to the Quizzes > given quiz > Results Settings Tab > Show question results on the results page option and tick the Download Result Page in PDF suboption','quiz-maker'),
             ),
         );
 

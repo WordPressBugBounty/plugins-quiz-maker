@@ -291,7 +291,7 @@
     // Fields placeholders | Start
 
     $fields_placeholders_res      = ($actions->ays_get_setting('fields_placeholders') === false) ? json_encode(array()) : $actions->ays_get_setting('fields_placeholders');
-    $fields_placeholders          = json_decode( stripcslashes( $fields_placeholders_res ) , true);
+    $fields_placeholders          = json_decode( $fields_placeholders_res, true);
 
     $quiz_fields_placeholder_name  = (isset($fields_placeholders['quiz_fields_placeholder_name']) && $fields_placeholders['quiz_fields_placeholder_name'] != '') ? stripslashes( esc_attr( $fields_placeholders['quiz_fields_placeholder_name'] ) ) : 'Name';
 

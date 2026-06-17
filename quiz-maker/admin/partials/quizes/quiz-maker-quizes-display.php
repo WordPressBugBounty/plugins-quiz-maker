@@ -781,6 +781,18 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                 <input type="checkbox" class="ays-enable-timer1 ays_toggle_checkbox" id="ays_quick_quiz_enable_questions_reporting" name="ays_quick_quiz_enable_questions_reporting" value="on" />
                                             </div>
                                         </div> <!-- Enable question reporting -->
+                                        <hr>
+                                        <div class="form-group row">
+                                            <div class="col-sm-4">
+                                                <label for="ays_quick_quiz_enable_keyboard_navigation">
+                                                    <?php echo esc_html__('Enable Keyboard Navigation', 'quiz-maker'); ?>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <input type="checkbox" class="ays-enable-timer1" id="ays_quick_quiz_enable_keyboard_navigation"
+                                                    name="ays_quick_quiz_enable_keyboard_navigation" value="on" checked />
+                                            </div>
+                                        </div> <!-- Enable Keyboard navigation -->
                                         <hr/>
                                         <div class="form-group row">
                                             <div class="col-sm-4">

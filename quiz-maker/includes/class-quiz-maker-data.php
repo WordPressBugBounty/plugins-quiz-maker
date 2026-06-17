@@ -309,11 +309,11 @@ class Quiz_Maker_Data {
 
     public static function ays_quiz_get_settings_order_defaults(){
         $buttons_ordering = array(
-            'clear' =>  __('Clear','quiz-maker'),
-            'prev' =>  __('Prev','quiz-maker'),
-            'finish' =>  __('Finish','quiz-maker'),
-            'next' =>  __('Next','quiz-maker'),
-            'save' =>  __('Save','quiz-maker'),
+            'clear'     =>  __('Clear','quiz-maker'),
+            'prev'      =>  __('Prev','quiz-maker'),
+            'finish'    =>  __('Finish','quiz-maker'),
+            'next'      =>  __('Next','quiz-maker'),
+            'save'      =>  __('Save','quiz-maker'),
         );
 
         return array(
