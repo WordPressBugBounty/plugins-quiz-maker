@@ -107,6 +107,9 @@ $question_max_id = $this->get_max_id('questions');
                     <div class="pro-features-popup-button" data-link="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=question-export-import-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
                         <?php echo esc_html__("Pricing", 'quiz-maker'); ?>
                     </div>
+                    <div class="pro-features-popup-admin-demo-button" data-link="https://quiz.ays-plugins.com/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-admin-demo-question-export-import-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
+                        <?php echo esc_html__("Pro Admin Demo", 'quiz-maker'); ?>
+                    </div>
                 </div>
             </div>
             <div> 
@@ -134,6 +137,9 @@ $question_max_id = $this->get_max_id('questions');
                     </div>
                     <div class="pro-features-popup-button" data-link="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=question-export-import-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
                         <?php echo esc_html__("Pricing", 'quiz-maker'); ?>
+                    </div>
+                    <div class="pro-features-popup-admin-demo-button" data-link="https://quiz.ays-plugins.com/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-admin-demo-question-export-import-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
+                        <?php echo esc_html__("Pro Admin Demo", 'quiz-maker'); ?>
                     </div>
                 </div>
             </div>

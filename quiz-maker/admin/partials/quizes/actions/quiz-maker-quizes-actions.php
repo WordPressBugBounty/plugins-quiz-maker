@@ -6197,6 +6197,9 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                         <div class="pro-features-popup-button" data-link="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-navigation-bar-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
                                             <?php echo esc_html__("Pricing", 'quiz-maker'); ?>
                                         </div>
+                                        <div class="pro-features-popup-admin-demo-button" data-link="https://quiz.ays-plugins.com/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-admin-demo-navigation-bar-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
+                                            <?php echo esc_html__("Pro Admin Demo", 'quiz-maker'); ?>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -7366,6 +7369,9 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                                     <div class="pro-features-popup-button" data-link="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-calculate-score-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
                                                         <?php echo esc_html__("Pricing", 'quiz-maker'); ?>
                                                     </div>
+                                                    <div class="pro-features-popup-admin-demo-button" data-link="https://quiz.ays-plugins.com/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-admin-demo-calculate-score-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
+                                                        <?php echo esc_html__("Pro Admin Demo", 'quiz-maker'); ?>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <input type="radio" class="ays-enable-timer1" tabindex="-1" value="by_points" disabled />
@@ -8413,6 +8419,9 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                         <div class="pro-features-popup-button" data-link="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-intervals-table-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
                                             <?php echo esc_html__("Pricing", 'quiz-maker'); ?>
                                         </div>
+                                        <div class="pro-features-popup-admin-demo-button" data-link="https://quiz.ays-plugins.com/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-admin-demo-intervals-table-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
+                                            <?php echo esc_html__("Pro Admin Demo", 'quiz-maker'); ?>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class='form-group row ays-field-dashboard'>
@@ -8605,6 +8614,9 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                         <div class="pro-features-popup-button" data-link="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=edit-quiz-individual-leaderboard-shortcode-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
                                             <?php echo esc_html__("Pricing", 'quiz-maker'); ?>
                                         </div>
+                                        <div class="pro-features-popup-admin-demo-button" data-link="https://quiz.ays-plugins.com/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-admin-demo-edit-quiz-individual-leaderboard-shortcode-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
+                                            <?php echo esc_html__("Pro Admin Demo", 'quiz-maker'); ?>
+                                        </div>
                                     </div>
                                 </div>
                                 <h5><?php echo esc_html__('Individual Leaderboard Settings','quiz-maker')?></h5>
@@ -8696,6 +8708,9 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                         <div class="pro-features-popup-button" data-link="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-top-keywords-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
                                             <?php echo esc_html__("Pricing", 'quiz-maker'); ?>
                                         </div>
+                                        <div class="pro-features-popup-admin-demo-button" data-link="https://quiz.ays-plugins.com/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-admin-demo-top-keywords-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
+                                            <?php echo esc_html__("Pro Admin Demo", 'quiz-maker'); ?>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -8760,6 +8775,9 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                         </div>
                                         <div class="pro-features-popup-button" data-link="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-quiz-coupon-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
                                             <?php echo esc_html__("Pricing", 'quiz-maker'); ?>
+                                        </div>
+                                        <div class="pro-features-popup-admin-demo-button" data-link="https://quiz.ays-plugins.com/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-admin-demo-quiz-coupon-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
+                                            <?php echo esc_html__("Pro Admin Demo", 'quiz-maker'); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -8890,6 +8908,9 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                                 </div>
                                                 <div class="pro-features-popup-button" data-link="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-attempts-count-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
                                                     <?php echo esc_html__("Pricing", 'quiz-maker'); ?>
+                                                </div>
+                                                <div class="pro-features-popup-admin-demo-button" data-link="https://quiz.ays-plugins.com/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-admin-demo-attempts-count-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
+                                                    <?php echo esc_html__("Pro Admin Demo", 'quiz-maker'); ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -9044,6 +9065,9 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                                     </div>
                                                     <div class="pro-features-popup-button" data-link="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-extra-security-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
                                                         <?php echo esc_html__("Pricing", 'quiz-maker'); ?>
+                                                    </div>
+                                                    <div class="pro-features-popup-admin-demo-button" data-link="https://quiz.ays-plugins.com/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-admin-demo-extra-security-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
+                                                        <?php echo esc_html__("Pro Admin Demo", 'quiz-maker'); ?>
                                                     </div>
                                                 </div>
                                             </div>
@@ -9425,6 +9449,9 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                         <div class="pro-features-popup-button" data-link="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-only-selected-users-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
                                             <?php echo esc_html__("Pricing", 'quiz-maker'); ?>
                                         </div>
+                                        <div class="pro-features-popup-admin-demo-button" data-link="https://quiz.ays-plugins.com/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-admin-demo-only-selected-users-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
+                                            <?php echo esc_html__("Pro Admin Demo", 'quiz-maker'); ?>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group row ays_toggle_parent">
@@ -9690,6 +9717,9 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                     <div class="pro-features-popup-button" data-link="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-custom-field-option-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
                                         <?php echo esc_html__("Pricing", 'quiz-maker'); ?>
                                     </div>
+                                    <div class="pro-features-popup-admin-demo-button" data-link="https://quiz.ays-plugins.com/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-admin-demo-custom-field-option-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
+                                        <?php echo esc_html__("Pro Admin Demo", 'quiz-maker'); ?>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-sm-4">
@@ -9779,6 +9809,9 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                         </div>
                                         <div class="pro-features-popup-button" data-link="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-send-mail-to-user-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
                                             <?php echo esc_html__("Pricing", 'quiz-maker'); ?>
+                                        </div>
+                                        <div class="pro-features-popup-admin-demo-button" data-link="https://quiz.ays-plugins.com/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-admin-demo-send-mail-to-user-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
+                                            <?php echo esc_html__("Pro Admin Demo", 'quiz-maker'); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -9910,6 +9943,9 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                         </div>
                                         <div class="pro-features-popup-button" data-link="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-send-certificate-to-user-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
                                             <?php echo esc_html__("Pricing", 'quiz-maker'); ?>
+                                        </div>
+                                        <div class="pro-features-popup-admin-demo-button" data-link="https://quiz.ays-plugins.com/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-admin-demo-send-certificate-to-user-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
+                                            <?php echo esc_html__("Pro Admin Demo", 'quiz-maker'); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -10057,6 +10093,9 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                         </div>
                                         <div class="pro-features-popup-button" data-link="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-send-mail-to-admin-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
                                             <?php echo esc_html__("Pricing", 'quiz-maker'); ?>
+                                        </div>
+                                        <div class="pro-features-popup-admin-demo-button" data-link="https://quiz.ays-plugins.com/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-admin-demo-send-mail-to-admin-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
+                                            <?php echo esc_html__("Pro Admin Demo", 'quiz-maker'); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -11122,6 +11161,9 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
 
                             $pro_content[] = '<div class="pro-features-popup-button" data-link="https://quiz-plugin.com/pricing/">';
                                 $pro_content[] = __("Pricing", 'quiz-maker');
+                            $pro_content[] = '</div>';
+                            $pro_content[] = '<div class="pro-features-popup-admin-demo-button" data-link="https://quiz.ays-plugins.com/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-admin-demo-save-as-default-'. esc_attr( AYS_QUIZ_UTM_VERSION ) .'">';
+                                $pro_content[] = __("Pro Admin Demo", 'quiz-maker');
                             $pro_content[] = '</div>';
                         $pro_content[] = '</div>';
                     $pro_content[] = '</div>';

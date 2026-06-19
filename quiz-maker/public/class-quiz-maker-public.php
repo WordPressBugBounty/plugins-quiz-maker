@@ -6546,7 +6546,7 @@ class Quiz_Maker_Public
                 $message_data['result_id'] = $last_result_id;
 
                 $quiz_show_results_based_pass_score_flag = false;
-                if ($enable_pass_score && $pass_score_count > 0 && $final_score >= $pass_score_count) {
+                if ($final_score >= $pass_score_count) {
                     $score_message = $pass_score_message;
                     $quiz_show_results_based_pass_score_flag = true;
                 }else{

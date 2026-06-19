@@ -2470,6 +2470,9 @@ class Quiz_Maker_Admin
                         $pro_content[] = '<div class="pro-features-popup-button" data-link="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-xlsx-export-'. esc_attr( AYS_QUIZ_UTM_VERSION ) .'">';
                             $pro_content[] = __("Pricing", 'quiz-maker');
                         $pro_content[] = '</div>';
+                        $pro_content[] = '<div class="pro-features-popup-admin-demo-button" data-link="https://quiz.ays-plugins.com/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-admin-demo-xlsx-export-'. esc_attr( AYS_QUIZ_UTM_VERSION ) .'">';
+                            $pro_content[] = __("Pro Admin Demo", 'quiz-maker');
+                        $pro_content[] = '</div>';
                     $pro_content[] = '</div>';
                 $pro_content[] = '</div>';
                 $pro_content[] = '<div>';
@@ -2526,6 +2529,9 @@ class Quiz_Maker_Admin
 
                         $admin_note_content[] = '<div class="pro-features-popup-button" data-link="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-admin-note-'. esc_attr( AYS_QUIZ_UTM_VERSION ) .'">';
                             $admin_note_content[] = __("Pricing", 'quiz-maker');
+                        $admin_note_content[] = '</div>';
+                        $admin_note_content[] = '<div class="pro-features-popup-admin-demo-button" data-link="https://quiz.ays-plugins.com/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-admin-demo-admin-note-'. esc_attr( AYS_QUIZ_UTM_VERSION ) .'">';
+                            $admin_note_content[] = __("Pro Admin Demo", 'quiz-maker');
                         $admin_note_content[] = '</div>';
                     $admin_note_content[] = '</div>';
                 $admin_note_content[] = '</div>';

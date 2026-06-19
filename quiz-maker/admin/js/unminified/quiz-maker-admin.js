@@ -4027,6 +4027,26 @@
         });
         /* Select message vars quizzes page | End */
 
+        function aysQuizSetProPopupButtons(rightSection, pricingText, pricingLink, adminDemoText, adminDemoLink) {
+            rightSection.find('.pro-features-popup-modal-right-box-link').text(pricingText);
+            rightSection.find('.pro-features-popup-modal-right-box-link').attr("href", pricingLink);
+
+            var proAdminDemoLink = rightSection.find('.pro-features-popup-modal-right-box-admin-demo-link');
+
+            if (proAdminDemoLink.length === 0) {
+                rightSection.find('.pro-features-popup-modal-right-box-button').append('<a href="#" class="pro-features-popup-modal-right-box-admin-demo-link" target="_blank">Pro Admin Demo</a>');
+                proAdminDemoLink = rightSection.find('.pro-features-popup-modal-right-box-admin-demo-link');
+            }
+
+            if (typeof adminDemoLink != "undefined" && adminDemoLink != "") {
+                proAdminDemoLink.text(adminDemoText);
+                proAdminDemoLink.attr('href', adminDemoLink);
+                proAdminDemoLink.show();
+            } else {
+                proAdminDemoLink.hide();
+            }
+        }
+
         $(document).on('click', '.pro_features_popup', function(e){
             e.preventDefault();
             var _this      = $(this);
@@ -4042,6 +4062,9 @@
             var popupModal_button_text = popupModal_button.text();
             var popupModal_button_link = popupModal_button.attr("data-link");
 
+            var popupModal_admin_demo_button      = _this.find('.pro-features-popup-admin-demo-button');
+            var popupModal_admin_demo_button_text = popupModal_admin_demo_button.text();
+            var popupModal_admin_demo_button_link = popupModal_admin_demo_button.attr("data-link");
 
             var leftSection  = popupModal.find('.ays-modal-body .pro-features-popup-modal-left-section');
             var rightSection = popupModal.find('.ays-modal-body .pro-features-popup-modal-right-section');
@@ -4050,8 +4073,7 @@
             rightSection.find('.pro-features-popup-modal-right-box-content').html(popupModal_content);
             rightSection.find('.pro-features-popup-modal-right-box-content').html(popupModal_content);
 
-            rightSection.find('.pro-features-popup-modal-right-box-link').text(popupModal_button_text);
-            rightSection.find('.pro-features-popup-modal-right-box-link').attr("href", popupModal_button_link);
+            aysQuizSetProPopupButtons(rightSection, popupModal_button_text, popupModal_button_link, popupModal_admin_demo_button_text, popupModal_admin_demo_button_link);
 
             if ( typeof popupModal_video_link != "undefined" && popupModal_video_link != "") {
                 var videoID = ays_youtube_parser(popupModal_video_link);
@@ -4084,6 +4106,10 @@
             var popupModal_button_text = popupModal_button.text();
             var popupModal_button_link = popupModal_button.attr("data-link");
 
+            var popupModal_admin_demo_button      = _this.find('.pro-features-popup-admin-demo-button');
+            var popupModal_admin_demo_button_text = popupModal_admin_demo_button.text();
+            var popupModal_admin_demo_button_link = popupModal_admin_demo_button.attr("data-link");
+
 
             var leftSection  = popupModal.find('.ays-modal-body .pro-features-popup-modal-left-section');
             var rightSection = popupModal.find('.ays-modal-body .pro-features-popup-modal-right-section');
@@ -4092,8 +4118,7 @@
             rightSection.find('.pro-features-popup-modal-right-box-content').html(popupModal_content);
             rightSection.find('.pro-features-popup-modal-right-box-content').html(popupModal_content);
 
-            rightSection.find('.pro-features-popup-modal-right-box-link').text(popupModal_button_text);
-            rightSection.find('.pro-features-popup-modal-right-box-link').attr("href", popupModal_button_link);
+            aysQuizSetProPopupButtons(rightSection, popupModal_button_text, popupModal_button_link, popupModal_admin_demo_button_text, popupModal_admin_demo_button_link);
 
             if ( typeof popupModal_video_link != "undefined" && popupModal_video_link != "") {
                 var videoID = ays_youtube_parser(popupModal_video_link);

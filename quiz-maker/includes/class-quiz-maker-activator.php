@@ -432,6 +432,8 @@ class Quiz_Maker_Activator
                             'timer_text'                                => '',
                             'quiz_theme'                                => 'classic_light',
                             'enable_social_buttons'                     => 'off',
+                            'enable_pass_score'                         => 'on',
+                            'pass_score'                                => '50',
                         ))
                     )
                 );
