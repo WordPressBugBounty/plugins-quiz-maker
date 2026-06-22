@@ -713,6 +713,7 @@ class Quiz_Maker_Public
         $empty_report_text  = (isset($settings_static_texts['empty_report_text']) && $settings_static_texts['empty_report_text'] != '') ? stripslashes( esc_attr( $settings_static_texts['empty_report_text'] ) ) : 'You cannot submit an empty report. Please add some details.';
         $question_report_icon_text  = (isset($settings_static_texts['question_report_icon_text']) && $settings_static_texts['question_report_icon_text'] != '') ? stripslashes( esc_attr( $settings_static_texts['question_report_icon_text'] ) ) : 'Report Question';
         $start_button_loading_text  = (isset($settings_static_texts['start_button_loading_text']) && $settings_static_texts['start_button_loading_text'] != '') ? stripslashes( esc_attr( $settings_static_texts['start_button_loading_text'] ) ) : 'Loading ...';
+        $created_on_text  = (isset($settings_static_texts['created_on_text']) && $settings_static_texts['created_on_text'] != '') ? stripslashes( esc_attr( $settings_static_texts['created_on_text'] ) ) : 'Created on';
 
         if ($wrong_shortcode_text === 'Wrong shortcode initialized') {
             $wrong_shortcode_text = __('Wrong shortcode initialized', 'quiz-maker');
@@ -769,6 +770,10 @@ class Quiz_Maker_Public
         if ($start_button_loading_text === 'Loading ...') {
             $start_button_loading_text = __('Loading ...', 'quiz-maker');
         }
+        
+        if ($created_on_text === 'Created on') {
+            $created_on_text = __('Created on', 'quiz-maker');
+        }
 
         $texts = array(
             'wrongShortcode'                => $wrong_shortcode_text,
@@ -785,6 +790,7 @@ class Quiz_Maker_Public
             'emptyReportText'               => $empty_report_text,
             'questionReportIconText'        => $question_report_icon_text,
             'startButtonLoadingText'        => $start_button_loading_text,
+            'createdOnText'                 => $created_on_text,
         );
 
         return $texts;
@@ -2013,7 +2019,7 @@ class Quiz_Maker_Public
         if($show_create_date){
             $quiz_create_date = (isset($options['create_date']) && $options['create_date'] != '') ? $options['create_date'] : "0000-00-00 00:00:00";
             if(Quiz_Maker_Admin::validateDate($quiz_create_date)){
-                $show_cd_and_author .= "<span>".__("Created on",'quiz-maker')." </span><strong><time>".date_i18n("F d, Y", strtotime($quiz_create_date))."</time></strong>";
+                $show_cd_and_author .= "<span>". esc_html($this->default_texts['createdOnText']) ." </span><strong><time>".date_i18n("F d, Y", strtotime($quiz_create_date))."</time></strong>";
             }else{
                 $show_cd_and_author .= "";
             }

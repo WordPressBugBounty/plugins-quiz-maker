@@ -27,19 +27,19 @@ class Quiz_Maker_Settings_Actions {
             $report_submit_button   = (isset($_REQUEST['ays_report_submit_button']) && $_REQUEST['ays_report_submit_button'] != '') ? stripslashes( sanitize_text_field( $_REQUEST['ays_report_submit_button'] ) ) : 'Submit' ;
 
             $buttons_texts = array(
-                'start_button'              => $start_button,
-                'next_button'               => $next_button,
-                'previous_button'           => $previous_button,
-                'clear_button'              => $clear_button,
-                'finish_button'             => $finish_button,
-                'see_result_button'         => $see_result_button,
-                'restart_quiz_button'       => $restart_quiz_button,
-                'send_feedback_button'      => $send_feedback_button,
-                'load_more_button'          => $load_more_button,
-                'exit_button'               => $exit_button,
-                'check_button'              => $check_button,
-                'login_button'              => $login_button,
-                'report_submit_button'      => $report_submit_button,
+                'start_button'                  => $start_button,
+                'next_button'                   => $next_button,
+                'previous_button'               => $previous_button,
+                'clear_button'                  => $clear_button,
+                'finish_button'                 => $finish_button,
+                'see_result_button'             => $see_result_button,
+                'restart_quiz_button'           => $restart_quiz_button,
+                'send_feedback_button'          => $send_feedback_button,
+                'load_more_button'              => $load_more_button,
+                'exit_button'                   => $exit_button,
+                'check_button'                  => $check_button,
+                'login_button'                  => $login_button,
+                'report_submit_button'          => $report_submit_button,
             );
 
             $quiz_fields_placeholder_name  = (isset($_REQUEST['ays_quiz_fields_placeholder_name']) && $_REQUEST['ays_quiz_fields_placeholder_name'] != '') ? stripslashes( sanitize_text_field( $_REQUEST['ays_quiz_fields_placeholder_name'] ) ) : 'Name' ;
@@ -79,6 +79,7 @@ class Quiz_Maker_Settings_Actions {
             $empty_report_text   = (isset($_REQUEST['ays_quiz_empty_report_text']) && $_REQUEST['ays_quiz_empty_report_text'] != '') ? sanitize_text_field( stripslashes( $_REQUEST['ays_quiz_empty_report_text'] ) ) : 'You cannot submit an empty report. Please add some details.';
             $question_report_icon_text   = (isset($_REQUEST['ays_quiz_question_report_icon_text']) && $_REQUEST['ays_quiz_question_report_icon_text'] != '') ? sanitize_text_field( stripslashes( $_REQUEST['ays_quiz_question_report_icon_text'] ) ) : 'Report Question';
             $start_button_loading_text   = (isset($_REQUEST['ays_quiz_start_button_loading_text']) && $_REQUEST['ays_quiz_start_button_loading_text'] != '') ? sanitize_text_field( stripslashes( $_REQUEST['ays_quiz_start_button_loading_text'] ) ) : 'Loading ...';
+            $created_on_text   = (isset($_REQUEST['ays_quiz_created_on_text']) && $_REQUEST['ays_quiz_created_on_text'] != '') ? sanitize_text_field( stripslashes( $_REQUEST['ays_quiz_created_on_text'] ) ) : 'Created on';
 
             $default_texts = array(
                 'wrong_shortcode_text'                  => $wrong_shortcode_text,
@@ -95,6 +96,7 @@ class Quiz_Maker_Settings_Actions {
                 'empty_report_text'                     => $empty_report_text,
                 'question_report_icon_text'             => $question_report_icon_text,
                 'start_button_loading_text'             => $start_button_loading_text,
+                'created_on_text'                       => $created_on_text,
             );
             // Default texts | End
 
@@ -296,19 +298,19 @@ class Quiz_Maker_Settings_Actions {
             $quiz_menu_badge_style = ( isset( $_REQUEST['ays_quiz_menu_badge_style'] ) && in_array( sanitize_key( $_REQUEST['ays_quiz_menu_badge_style'] ), $quiz_menu_badge_styles, true ) ) ? sanitize_key( $_REQUEST['ays_quiz_menu_badge_style'] ) : 'classic';
 
             $options = array(
-                "question_default_type"                         => $question_default_type,
-                "ays_answer_default_count"                      => $ays_answer_default_count,
-                "right_answer_sound"                            => $right_answer_sound,
-                "wrong_answer_sound"                            => $wrong_answer_sound,
-                "question_title_length"                         => $question_title_length,
-                "quizzes_title_length"                          => $quizzes_title_length,
-                "results_title_length"                          => $results_title_length,
-                "disable_user_ip"                               => $disable_user_ip,
-                "quiz_animation_top"                            => $quiz_animation_top,
-                "quiz_enable_animation_top"                     => $quiz_enable_animation_top,
-                "question_default_category"                     => $question_default_category,
-                "all_results_show_publicly"                     => $all_results_show_publicly,
-                "quiz_all_results_show_publicly"                => $quiz_all_results_show_publicly,
+                "question_default_type"                             => $question_default_type,
+                "ays_answer_default_count"                          => $ays_answer_default_count,
+                "right_answer_sound"                                => $right_answer_sound,
+                "wrong_answer_sound"                                => $wrong_answer_sound,
+                "question_title_length"                             => $question_title_length,
+                "quizzes_title_length"                              => $quizzes_title_length,
+                "results_title_length"                              => $results_title_length,
+                "disable_user_ip"                                   => $disable_user_ip,
+                "quiz_animation_top"                                => $quiz_animation_top,
+                "quiz_enable_animation_top"                         => $quiz_enable_animation_top,
+                "question_default_category"                         => $question_default_category,
+                "all_results_show_publicly"                         => $all_results_show_publicly,
+                "quiz_all_results_show_publicly"                    => $quiz_all_results_show_publicly,
 
                 // All results
                 "all_results_columns"                               => $all_results_columns,
