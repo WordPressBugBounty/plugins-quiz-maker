@@ -1207,6 +1207,33 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <hr/>
                                         <div class="form-group row">
                                             <div class="col-sm-4">
+                                                <label for='ays_quick_quiz_content_max_width'>
+                                                    <?php echo esc_html__('Quiz content max-width', 'quiz-maker'); ?>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div style="margin-bottom: 10px;">
+                                                            <label for='ays_quick_quiz_content_max_width'>
+                                                                <?php echo esc_html__('On desktop', 'quiz-maker'); ?>
+                                                            </label>
+                                                        </div>
+                                                        <div class="ays_quiz_display_flex_width">
+                                                            <div>
+                                                                <input type="number" class="ays-text-input ays-text-input-short" id='ays_quick_quiz_content_max_width' name='ays_quick_quiz_content_max_width' value="90"/>
+                                                            </div>
+                                                            <div class="ays_quiz_dropdown_max_width">
+                                                                <input type="text" value="%" class='ays-quiz-form-hint-for-size' disabled>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div><!-- Quiz content max-width -->
+                                        <hr/>
+                                        <div class="form-group row">
+                                            <div class="col-sm-4">
                                                 <label for='ays_quick_quiz_height'>
                                                     <?php echo esc_html__('Quiz min-height', "quiz-maker"); ?>
                                                 </label>

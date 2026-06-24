@@ -2021,7 +2021,8 @@ a.action-button.ays_restart_button {
     margin: 0 5px;
 }
 .action-button.ays_restart_button span {
-    margin-left: 7px;
+    /* margin-left: 7px; */
+    word-wrap: normal;
 }
 div.ays_quiz_results_page {
     display: none;
