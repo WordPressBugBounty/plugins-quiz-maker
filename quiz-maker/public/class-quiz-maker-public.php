@@ -1735,10 +1735,13 @@ class Quiz_Maker_Public
         }
 
         // Buttons border radius
-        $buttons_border_radius = '3px';
+        $buttons_border_radius = '8px';
         if(isset($options['buttons_border_radius']) && $options['buttons_border_radius'] != ''){
             $buttons_border_radius = $options['buttons_border_radius'] . 'px';
         }
+
+        // Button font-size (px) | Mobile
+        $buttons_mobile_border_radius = (isset($options['buttons_mobile_border_radius']) && $options['buttons_mobile_border_radius'] != '') ? absint( esc_attr( $options['buttons_mobile_border_radius'] ) ) : intval($buttons_border_radius);
         
     /*******************************************************************************************************/
         
@@ -4698,6 +4701,7 @@ class Quiz_Maker_Public
                 #ays-quiz-container-" . $id . " + .ays-quiz-category-selective-main-container .ays-quiz-category-selective-restart-bttn,
                 #ays-quiz-container-" . $id . " .ays-quiz-category-selective-submit-bttn {
                     font-size: ".$buttons_mobile_font_size."px;
+                    border-radius: " . $buttons_mobile_border_radius . "px;
                 }
 
                 /* Quiz title / mobile font size */

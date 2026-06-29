@@ -677,7 +677,7 @@ class Quizes_List_Table extends WP_List_Table{
             $buttons_top_bottom_padding = (isset($_POST['ays_buttons_top_bottom_padding']) && sanitize_text_field( $_POST['ays_buttons_top_bottom_padding'] ) != "") ? sanitize_text_field( $_POST['ays_buttons_top_bottom_padding'] ) : '10';
 
             // Buttons padding
-            $buttons_border_radius = (isset($_POST['ays_buttons_border_radius']) && sanitize_text_field( $_POST['ays_buttons_border_radius'] ) != "") ? sanitize_text_field( $_POST['ays_buttons_border_radius'] ) : '3';
+            $buttons_border_radius = (isset($_POST['ays_buttons_border_radius']) && sanitize_text_field( $_POST['ays_buttons_border_radius'] ) != "") ? sanitize_text_field( $_POST['ays_buttons_border_radius'] ) : '8';
 
             // =========== Buttons Styles End ===========
 
@@ -1174,6 +1174,9 @@ class Quizes_List_Table extends WP_List_Table{
 
             // Wrong answer font weight | Mobile
             $quiz_wrong_answers_mobile_font_weight = (isset($_REQUEST['ays_quiz_wrong_answers_mobile_font_weight']) && $_REQUEST['ays_quiz_wrong_answers_mobile_font_weight'] != '') ? stripslashes( sanitize_text_field( $_REQUEST['ays_quiz_wrong_answers_mobile_font_weight'] ) ) : 'normal';
+
+            // Buttons padding
+            $buttons_mobile_border_radius = (isset($_POST['ays_buttons_mobile_border_radius']) && sanitize_text_field( $_POST['ays_buttons_mobile_border_radius'] ) != "") ? sanitize_text_field( $_POST['ays_buttons_mobile_border_radius'] ) : '8';
             
 
             $options = array(
@@ -1450,6 +1453,7 @@ class Quizes_List_Table extends WP_List_Table{
                 'quiz_right_answers_mobile_font_weight'             => $quiz_right_answers_mobile_font_weight,
                 'quiz_question_image_border_radius'                 => $quiz_question_image_border_radius,
                 'quiz_wrong_answers_mobile_font_weight'             => $quiz_wrong_answers_mobile_font_weight,
+                'buttons_mobile_border_radius'                      => $buttons_mobile_border_radius,
             );
 
             $options['required_fields'] = !isset($_POST['ays_required_field']) ? null : array_map( 'sanitize_text_field', $_POST['ays_required_field'] );

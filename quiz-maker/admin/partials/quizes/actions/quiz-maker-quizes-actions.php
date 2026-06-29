@@ -148,6 +148,7 @@ $options = array(
     'buttons_left_right_padding'                        => '36',
     'buttons_top_bottom_padding'                        => '14',
     'buttons_border_radius'                             => '8',
+    'buttons_mobile_border_radius'                      => '8',
     'enable_leave_page'                                 => 'on',
     'enable_tackers_count'                              => 'off',
     'enable_pass_score'                                 => 'off',
@@ -1627,6 +1628,10 @@ $quiz_question_image_border_radius = (isset($options[ 'quiz_question_image_borde
 
 // Wrong answer font weight | Mobile
 $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mobile_font_weight' ]) && $options[ 'quiz_wrong_answers_mobile_font_weight' ] != '') ? stripslashes ( esc_attr( $options[ 'quiz_wrong_answers_mobile_font_weight' ] ) ) : $quiz_wrong_answers_font_weight;
+
+// Buttons mobile border radius
+$buttons_mobile_border_radius = (isset($options['buttons_mobile_border_radius']) && $options['buttons_mobile_border_radius'] != "") ? $options['buttons_mobile_border_radius'] : $buttons_border_radius;
+
 
 ?>
 <style id="ays_live_custom_css"></style>
@@ -3609,12 +3614,43 @@ $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mo
                                             </a>
                                         </label>
                                     </div>
-                                    <div class="col-sm-7 ays_divider_left ays_quiz_display_flex_width">
-                                        <div>
-                                            <input type="number" class="ays-text-input ays-text-input-short" id="ays_buttons_border_radius" name="ays_buttons_border_radius" value="<?php echo intval($buttons_border_radius); ?>"/>
+                                    <div class="col-sm-7 ays_divider_left">
+                                        <div class="row">
+                                            <div class="col-sm-5">
+                                                <label for='ays_buttons_border_radius'>
+                                                    <?php echo esc_html__('On desktop', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Define the buttons border-radius for desktop devices.','quiz-maker'); ?>">
+                                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                                    </a>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-7 ays_quiz_display_flex_width">
+                                                <div>
+                                                    <input type="number" class="ays-text-input ays-text-input-short" id="ays_buttons_border_radius" name="ays_buttons_border_radius" value="<?php echo intval($buttons_border_radius); ?>"/>
+                                                </div>
+                                                <div class="ays_quiz_dropdown_max_width ays-display-flex" style="align-items: flex-start;">
+                                                    <input type="text" value="px" class='ays-quiz-form-hint-for-size' disabled>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="ays_quiz_dropdown_max_width ays-display-flex" style="align-items: flex-start;">
-                                            <input type="text" value="px" class='ays-quiz-form-hint-for-size' disabled>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-sm-5">
+                                                <label for='ays_buttons_mobile_border_radius'>
+                                                    <?php echo esc_html__('On mobile', 'quiz-maker'); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Define the buttons border-radius for mobile devices.','quiz-maker'); ?>">
+                                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                                    </a>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-7 ays_quiz_display_flex_width">
+                                                <div>
+                                                    <input type="number" class="ays-text-input" id='ays_buttons_mobile_border_radius' name='ays_buttons_mobile_border_radius' value="<?php echo intval($buttons_mobile_border_radius); ?>"/>
+                                                </div>
+                                                <div class="ays_quiz_dropdown_max_width ays-display-flex" style="align-items: end;">
+                                                    <input type="text" value="px" class='ays-quiz-form-hint-for-size' disabled>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div><!-- Buttons border radius -->
