@@ -144,6 +144,7 @@
     $question_report_icon_text  = (isset($default_texts['question_report_icon_text']) && $default_texts['question_report_icon_text'] != '') ? stripslashes( esc_attr( $default_texts['question_report_icon_text'] ) ) : 'Report Question';
     $start_button_loading_text  = (isset($default_texts['start_button_loading_text']) && $default_texts['start_button_loading_text'] != '') ? stripslashes( esc_attr( $default_texts['start_button_loading_text'] ) ) : 'Loading ...';
     $created_on_text  = (isset($default_texts['created_on_text']) && $default_texts['created_on_text'] != '') ? stripslashes( esc_attr( $default_texts['created_on_text'] ) ) : 'Created on';
+    $logged_in_users_message_text  = (isset($default_texts['logged_in_users_message_text']) && $default_texts['logged_in_users_message_text'] != '') ? stripslashes( esc_attr( $default_texts['logged_in_users_message_text'] ) ) : 'You must log in to pass this quiz.';
     // Default texts | End
 
 
@@ -4559,6 +4560,19 @@
                             </div>
                             <div class="col-sm-9">
                                 <input type="text" id="ays_quiz_created_on_text" name="ays_quiz_created_on_text" class="ays-text-input"  value='<?php echo esc_attr($created_on_text); ?>'>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-3">
+                                <label for="ays_quiz_logged_in_users_message_text">
+                                    <?php echo esc_html__( "Logged in users default message", 'quiz-maker' ); ?>
+                                    <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php echo esc_attr__( "Specify the default message that will be displayed to guests when the quiz is available only for logged-in users and the quiz message is empty.", 'quiz-maker' ); ?>">
+                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                    </a>
+                                </label>
+                            </div>
+                            <div class="col-sm-9">
+                                <input type="text" id="ays_quiz_logged_in_users_message_text" name="ays_quiz_logged_in_users_message_text" class="ays-text-input"  value='<?php echo esc_attr($logged_in_users_message_text); ?>'>
                             </div>
                         </div>
                         <hr />

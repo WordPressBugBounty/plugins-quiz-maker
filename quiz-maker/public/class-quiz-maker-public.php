@@ -714,6 +714,7 @@ class Quiz_Maker_Public
         $question_report_icon_text  = (isset($settings_static_texts['question_report_icon_text']) && $settings_static_texts['question_report_icon_text'] != '') ? stripslashes( esc_attr( $settings_static_texts['question_report_icon_text'] ) ) : 'Report Question';
         $start_button_loading_text  = (isset($settings_static_texts['start_button_loading_text']) && $settings_static_texts['start_button_loading_text'] != '') ? stripslashes( esc_attr( $settings_static_texts['start_button_loading_text'] ) ) : 'Loading ...';
         $created_on_text  = (isset($settings_static_texts['created_on_text']) && $settings_static_texts['created_on_text'] != '') ? stripslashes( esc_attr( $settings_static_texts['created_on_text'] ) ) : 'Created on';
+        $logged_in_users_message_text  = (isset($settings_static_texts['logged_in_users_message_text']) && $settings_static_texts['logged_in_users_message_text'] != '') ? stripslashes( esc_attr( $settings_static_texts['logged_in_users_message_text'] ) ) : 'You must log in to pass this quiz.';
 
         if ($wrong_shortcode_text === 'Wrong shortcode initialized') {
             $wrong_shortcode_text = __('Wrong shortcode initialized', 'quiz-maker');
@@ -775,6 +776,10 @@ class Quiz_Maker_Public
             $created_on_text = __('Created on', 'quiz-maker');
         }
 
+        if ($logged_in_users_message_text === 'You must log in to pass this quiz.') {
+            $logged_in_users_message_text = __('You must log in to pass this quiz.', 'quiz-maker');
+        }
+
         $texts = array(
             'wrongShortcode'                => $wrong_shortcode_text,
             'enterPassword'                 => $enter_password_text,
@@ -791,6 +796,7 @@ class Quiz_Maker_Public
             'questionReportIconText'        => $question_report_icon_text,
             'startButtonLoadingText'        => $start_button_loading_text,
             'createdOnText'                 => $created_on_text,
+            'loggedInUsersMessageText'      => $logged_in_users_message_text,
         );
 
         return $texts;
@@ -3175,7 +3181,9 @@ class Quiz_Maker_Public
                 $logged_users_message = $this->ays_autoembed($options['enable_logged_users_message']);
                 $logged_users_message = $this->replace_message_variables($logged_users_message, $message_variables_data);
             }else{
-                $logged_users_message =  __('You must log in to pass this quiz.', 'quiz-maker');
+                $logged_users_message = $this->default_texts['loggedInUsersMessageText'];
+                $logged_users_message = $this->ays_autoembed($logged_users_message);
+                $logged_users_message = $this->replace_message_variables($logged_users_message, $message_variables_data);
             }
             if($logged_users_message !== null){
                 $user_massage = '<div class="logged_in_message">' . $logged_users_message . '</div>';

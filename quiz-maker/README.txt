@@ -4,7 +4,7 @@ Donate link: https://quiz-plugin.com/pricing/
 Tags:  exam, quiz, quizzes, education, quiz maker
 Requires at least: 4.0
 Tested up to: 7.0
-Stable tag: 6.7.1.51
+Stable tag: 6.7.1.52
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -425,6 +425,9 @@ Do you wonder how to create a Math Quiz with hard mathematical equations in Word
 For example, to add a squared symbol, you need to write down the following sign ^2. (do not forget to insert $ character to mark the beginning and ending).
 
 == Changelog ==
+
+= 6.7.1.52 ( Jul 01, 2026 ) =
+* Added: Default text customization option for the "Logged in users default message" text
 
 = 6.7.1.51 ( Jun 26, 2026 ) =
 * Added: Button border-radius option for mobile devices

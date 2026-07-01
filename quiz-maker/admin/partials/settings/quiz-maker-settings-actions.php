@@ -80,6 +80,7 @@ class Quiz_Maker_Settings_Actions {
             $question_report_icon_text   = (isset($_REQUEST['ays_quiz_question_report_icon_text']) && $_REQUEST['ays_quiz_question_report_icon_text'] != '') ? sanitize_text_field( stripslashes( $_REQUEST['ays_quiz_question_report_icon_text'] ) ) : 'Report Question';
             $start_button_loading_text   = (isset($_REQUEST['ays_quiz_start_button_loading_text']) && $_REQUEST['ays_quiz_start_button_loading_text'] != '') ? sanitize_text_field( stripslashes( $_REQUEST['ays_quiz_start_button_loading_text'] ) ) : 'Loading ...';
             $created_on_text   = (isset($_REQUEST['ays_quiz_created_on_text']) && $_REQUEST['ays_quiz_created_on_text'] != '') ? sanitize_text_field( stripslashes( $_REQUEST['ays_quiz_created_on_text'] ) ) : 'Created on';
+            $logged_in_users_message_text   = (isset($_REQUEST['ays_quiz_logged_in_users_message_text']) && $_REQUEST['ays_quiz_logged_in_users_message_text'] != '') ? sanitize_text_field( stripslashes( $_REQUEST['ays_quiz_logged_in_users_message_text'] ) ) : 'You must log in to pass this quiz.';
 
             $default_texts = array(
                 'wrong_shortcode_text'                  => $wrong_shortcode_text,
@@ -97,6 +98,7 @@ class Quiz_Maker_Settings_Actions {
                 'question_report_icon_text'             => $question_report_icon_text,
                 'start_button_loading_text'             => $start_button_loading_text,
                 'created_on_text'                       => $created_on_text,
+                'logged_in_users_message_text'          => $logged_in_users_message_text,
             );
             // Default texts | End
 
