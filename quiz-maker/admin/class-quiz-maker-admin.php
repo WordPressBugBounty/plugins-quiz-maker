@@ -1949,6 +1949,8 @@ class Quiz_Maker_Admin
 
             // Quiz content max-width
             $quick_quiz_content_max_width = (isset($_REQUEST['ays_quick_quiz_content_max_width']) && $_REQUEST['ays_quick_quiz_content_max_width'] != '') ? stripslashes( absint( $_REQUEST['ays_quick_quiz_content_max_width'] ) ) : 90;
+            
+            $quick_quiz_content_mobile_max_width = (isset($_REQUEST['ays_quick_quiz_content_mobile_max_width']) && $_REQUEST['ays_quick_quiz_content_mobile_max_width'] != '') ? stripslashes( absint( $_REQUEST['ays_quick_quiz_content_mobile_max_width'] ) ) : 90;
 
         }
         
@@ -2238,7 +2240,7 @@ class Quiz_Maker_Admin
             'quiz_wrong_answers_font_weight'                    => $quick_quiz_wrong_answers_font_weight,
             'quiz_show_only_wrong_answers'                      => $quick_quiz_show_only_wrong_answers,
             'quiz_content_max_width'                            => $quick_quiz_content_max_width,
-            'quiz_content_mobile_max_width'                     => 90,
+            'quiz_content_mobile_max_width'                     => $quick_quiz_content_mobile_max_width,
             'quiz_timer_warning_text_color'                     => "#ff0000",
             'quiz_enable_default_hide_results_toggle'           => $quick_quiz_enable_default_hide_results_toggle,
             'quiz_show_restart_button_on_quiz_fail'             => $quick_quiz_show_restart_button_on_quiz_fail,

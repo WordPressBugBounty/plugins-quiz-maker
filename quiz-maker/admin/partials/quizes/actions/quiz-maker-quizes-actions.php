@@ -9415,7 +9415,7 @@ $buttons_mobile_border_radius = (isset($options['buttons_mobile_border_radius'])
                                 <hr>
                                 <div class="form-group row">
                                     <div class="col-sm-2">
-                                        <label for="ays_password_quiz">
+                                        <label for="ays_quiz_password_width">
                                             <?php echo esc_html__('Password input width','quiz-maker')?>
                                             <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Define the password text box width in px. If you leave the box empty the width will automatically be 100%.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
