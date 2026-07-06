@@ -2226,7 +2226,7 @@ $buttons_mobile_border_radius = (isset($options['buttons_mobile_border_radius'])
                                     <div class="col-sm-7 ays_divider_left">
                                         <div class="row">
                                             <div class="col-sm-5">
-                                                <label for='ays_answers_font_size'>
+                                                <label for='ays_quiz_content_max_width'>
                                                     <?php echo esc_html__('On desktop', 'quiz-maker'); ?>
                                                     <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Define the Quiz content max-width for desktop devices.','quiz-maker') ); ?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>

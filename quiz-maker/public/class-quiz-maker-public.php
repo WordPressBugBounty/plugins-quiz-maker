@@ -715,6 +715,7 @@ class Quiz_Maker_Public
         $start_button_loading_text  = (isset($settings_static_texts['start_button_loading_text']) && $settings_static_texts['start_button_loading_text'] != '') ? stripslashes( esc_attr( $settings_static_texts['start_button_loading_text'] ) ) : 'Loading ...';
         $created_on_text  = (isset($settings_static_texts['created_on_text']) && $settings_static_texts['created_on_text'] != '') ? stripslashes( esc_attr( $settings_static_texts['created_on_text'] ) ) : 'Created on';
         $logged_in_users_message_text  = (isset($settings_static_texts['logged_in_users_message_text']) && $settings_static_texts['logged_in_users_message_text'] != '') ? stripslashes( esc_attr( $settings_static_texts['logged_in_users_message_text'] ) ) : 'You must log in to pass this quiz.';
+        $quiz_schedule_start_message_text  = (isset($settings_static_texts['quiz_schedule_start_message_text']) && $settings_static_texts['quiz_schedule_start_message_text'] != '') ? stripslashes( esc_attr( $settings_static_texts['quiz_schedule_start_message_text'] ) ) : 'This Quiz will start on';
 
         if ($wrong_shortcode_text === 'Wrong shortcode initialized') {
             $wrong_shortcode_text = __('Wrong shortcode initialized', 'quiz-maker');
@@ -780,6 +781,10 @@ class Quiz_Maker_Public
             $logged_in_users_message_text = __('You must log in to pass this quiz.', 'quiz-maker');
         }
 
+        if ($quiz_schedule_start_message_text === 'This Quiz will start on') {
+            $quiz_schedule_start_message_text = __('This Quiz will start on', 'quiz-maker');
+        }
+
         $texts = array(
             'wrongShortcode'                => $wrong_shortcode_text,
             'enterPassword'                 => $enter_password_text,
@@ -797,6 +802,7 @@ class Quiz_Maker_Public
             'startButtonLoadingText'        => $start_button_loading_text,
             'createdOnText'                 => $created_on_text,
             'loggedInUsersMessageText'      => $logged_in_users_message_text,
+            'quizScheduleStartMessageText'  => $quiz_schedule_start_message_text,
         );
 
         return $texts;
@@ -3360,7 +3366,7 @@ class Quiz_Maker_Public
                     if ($show_timer_type == 'countdown') {
                         $show_timer .= '<p class="show_timer_countdown" data-timer_countdown="'.$startDate_atr.'"></p>';
                     }else if ($show_timer_type == 'enddate') {
-                        $show_timer .= '<p class="show_timer_countdown">' . __('This Quiz will start on', 'quiz-maker');
+                        $show_timer .= '<p class="show_timer_countdown">' . esc_html($this->default_texts['quizScheduleStartMessageText']);
                         $show_timer .= ' ' . date_i18n('H:i:s F jS, Y', intval($startDate));
                         $show_timer .= '</p>';
                     }

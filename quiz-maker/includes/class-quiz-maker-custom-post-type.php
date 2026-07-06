@@ -38,13 +38,13 @@ class Quiz_Maker_Custom_Post_Type {
 
     public function ays_quiz_register_custom_post_type(){
         $args = array(
-            'public'  => true,
-            'rewrite' => true,
-            'show_in_menu' => false,
-            'exclude_from_search' => false, 
-            'show_ui' => false,
-            'show_in_nav_menus' => false,
-            'show_in_rest' => false
+            'public'                => true,
+            'rewrite'               => true,
+            'show_in_menu'          => false,
+            'exclude_from_search'   => false, 
+            'show_ui'               => false,
+            'show_in_nav_menus'     => false,
+            'show_in_rest'          => false
         );
 
         register_post_type( $this->name_prefix . $this->plugin_name, $args );
@@ -61,12 +61,12 @@ class Quiz_Maker_Custom_Post_Type {
         $post_content = '[ays_quiz id="'.$quiz_id.'"]';
 
         $new_post = array(
-            'post_title'    => $quiz_title,
-            'post_author'   => $author_id,
-            'post_type'     => 'ays-quiz-maker', // Custom post type name is -> ays-quiz-maker
-            'post_content'  => $post_content,
-            'post_status'   => 'draft',
-            'post_date'     => current_time( 'mysql' ),
+            'post_title'        => $quiz_title,
+            'post_author'       => $author_id,
+            'post_type'         => 'ays-quiz-maker', // Custom post type name is -> ays-quiz-maker
+            'post_content'      => $post_content,
+            'post_status'       => 'draft',
+            'post_date'         => current_time( 'mysql' ),
         );
         $post_id = wp_insert_post($new_post);
         if($update){
