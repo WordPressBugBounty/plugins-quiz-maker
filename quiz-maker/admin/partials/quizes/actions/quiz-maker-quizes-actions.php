@@ -693,6 +693,29 @@ $quiz_message_vars_schedule_pre_start_message = array(
     "%%site_description%%"                              => __("Site description", 'quiz-maker'),
 );
 
+$quiz_message_vars_schedule_expiration_message = array(
+    "%%quiz_name%%"                                     => __("Quiz Title", 'quiz-maker'),
+    "%%user_first_name%%"                               => __("User's First Name", 'quiz-maker'),
+    "%%user_last_name%%"                                => __("User's Last Name", 'quiz-maker'),
+    "%%questions_count%%"                               => __("Questions count", 'quiz-maker'),
+    "%%user_nickname%%"                                 => __("User's Nick Name", 'quiz-maker'),
+    "%%user_display_name%%"                             => __("User's Display Name", 'quiz-maker'),
+    "%%user_wordpress_email%%"                          => __("User's WordPress profile email", 'quiz-maker'),
+    "%%user_wordpress_roles%%"                          => __("User's WordPress Roles", 'quiz-maker'),
+    "%%quiz_creation_date%%"                            => __("Quiz creation date", 'quiz-maker'),
+    "%%current_quiz_author%%"                           => __("Quiz Author", 'quiz-maker'),
+    "%%current_user_ip%%"                               => __("User's IP Address", 'quiz-maker'),
+    "%%current_quiz_author_email%%"                     => __("Quiz Author Email", 'quiz-maker'),
+    "%%current_quiz_author_nickname%%"                  => __("Quiz Author Nickname", 'quiz-maker'),
+    "%%current_quiz_author_website_url%%"               => __("Quiz Author Website", 'quiz-maker'),
+    "%%admin_email%%"                                   => __("Admin Email", 'quiz-maker'),
+    "%%home_page_url%%"                                 => __("Home page URL", 'quiz-maker'),
+    "%%quiz_id%%"                                       => __("Quiz ID", 'quiz-maker'),
+    "%%user_id%%"                                       => __("User ID", 'quiz-maker'),
+    "%%site_title%%"                                    => __("Site title", 'quiz-maker'),
+    "%%site_description%%"                              => __("Site description", 'quiz-maker'),
+);
+
 $quiz_message_vars_review_thank_you_message = array(
     "%%quiz_name%%"                                     => __("Quiz Title", 'quiz-maker'),
     "%%user_first_name%%"                               => __("User's First Name", 'quiz-maker'),
@@ -728,6 +751,7 @@ $quiz_message_vars_password_for_passing_quiz_html       = $this->ays_quiz_genera
 $quiz_message_vars_rating_form_title_html               = $this->ays_quiz_generate_message_vars_html( $quiz_message_vars_rating_form_title );
 $quiz_message_vars_schedule_pre_start_message_html      = $this->ays_quiz_generate_message_vars_html( $quiz_message_vars_schedule_pre_start_message );
 $quiz_message_vars_review_thank_you_message_html        = $this->ays_quiz_generate_message_vars_html( $quiz_message_vars_review_thank_you_message );
+$quiz_message_vars_schedule_expiration_message_html     = $this->ays_quiz_generate_message_vars_html( $quiz_message_vars_schedule_expiration_message );
 
 $quiz_allowed_html = Quiz_Maker_Data::ays_quiz_allowed_html();
 
@@ -5897,13 +5921,14 @@ $buttons_mobile_border_radius = (isset($options['buttons_mobile_border_radius'])
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group row">
+                                <div class="form-group row ays-quiz-result-message-vars-parent">
                                     <div class="col-sm-4">
                                         <label class="form-check-label" for="active_date_message"><?php echo esc_html__("Expiration message:", 'quiz-maker') ?></label>
                                     </div>
                                     <div class="col-sm-8">
                                         <div class="editor">
                                             <?php
+                                            echo wp_kses($quiz_message_vars_schedule_expiration_message_html, $quiz_allowed_html);
                                             $content   = isset($options['active_date_message']) ? stripslashes($options['active_date_message']) : __("This quiz has expired!", 'quiz-maker');
                                             $editor_id = 'active_date_message';
                                             $settings  = array(

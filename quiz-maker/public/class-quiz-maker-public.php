@@ -3408,9 +3408,13 @@ class Quiz_Maker_Public
                     }
                 }
                 if(isset($options['active_date_message']) && $options['active_date_message'] != ''){
+                    
+                    $active_date_message_value = isset( $options['active_date_message'] ) && $options['active_date_message'] != "" ? $this->ays_autoembed($options['active_date_message']) : "";
+                    $active_date_message_value = $this->replace_message_variables($active_date_message_value, $message_variables_data);
+
                     $expired_quiz_message = "<div class='step active-step' data-message-exist='true'>
                         <div class='ays-abs-fs'>
-                            " . $this->ays_autoembed( $options['active_date_message'] ) . "
+                            " . $active_date_message_value . "
                         </div>
                     </div>";
                 }else{
