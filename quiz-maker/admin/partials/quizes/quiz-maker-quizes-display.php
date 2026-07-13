@@ -893,6 +893,27 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                     </div>
                                     <hr class="ays-quiz-bolder-hr"/>
                                     <div class="ays-quiz-accordion-options-box">
+                                        <div class="form-group row ays_toggle_parent">
+                                            <div class="col-sm-4">
+                                                <label class="form-check-label" for="ays_quick_quiz_enable_pass_score">
+                                                    <?php echo esc_html__("Pass Score", 'quiz-maker') ?>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-1">
+                                                <input type="checkbox" class="ays-enable-timer1 ays_toggle_checkbox" id="ays_quick_quiz_enable_pass_score" name="ays_quick_quiz_enable_pass_score" value="on" />
+                                            </div>
+                                            <div class="col-sm-7 ays_toggle_target ays_divider_left display_none">
+                                                <div class="ays_quiz_display_flex_width">
+                                                    <div>
+                                                        <input type="number" class="ays-text-input ays-text-input-short" id='ays-pass-score' name='ays_quick_quiz_pass_score' value="0"/>
+                                                    </div>
+                                                    <div class="ays_quiz_dropdown_max_width">
+                                                        <input type="text" value="%" class='ays-quiz-form-hint-for-size' disabled>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div><!-- Pass Score (%) -->
+                                        <hr/>
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_hide_score">

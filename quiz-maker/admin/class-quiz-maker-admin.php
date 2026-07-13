@@ -1481,6 +1481,7 @@ class Quiz_Maker_Admin
         $quick_quiz_review_enable_comment_field                 = 'on';
         $quick_quiz_make_review_required                        = 'off';
         $quick_quiz_review_placeholder_text                     = '';
+        $quick_quiz_enable_pass_score                           = 'off';
 
         // User Data
         $quick_quiz_show_information_form                       = 'on';
@@ -1559,6 +1560,9 @@ class Quiz_Maker_Admin
         $quick_quiz_wrong_answers_mobile_text_decoration        = "none";
         $quick_quiz_wrong_answers_mobile_letter_spacing         = 0;
         $quick_quiz_wrong_answers_mobile_font_weight            = "normal";
+
+        $pass_score_message_default_value = '<h4 style="text-align: center;">'. __("Congratulations!", 'quiz-maker') .'</h4><p style="text-align: center;">'. __("You passed the quiz!", 'quiz-maker') .'</p>';
+        $fail_score_message_default_value = '<h4 style="text-align: center;">'. __("Oops!", 'quiz-maker') .'</h4><p style="text-align: center;">'. __("You have not passed the quiz! <br> Try again!", 'quiz-maker') .'</p>';
 
         if($quiz_enable_options == 'on'){
             $quick_quiz_enable_randomize_questions = (isset( $_REQUEST['ays_quick_quiz_enable_randomize_questions'] ) && $_REQUEST['ays_quick_quiz_enable_randomize_questions'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_randomize_questions'] ) ) : "off";
@@ -1951,7 +1955,12 @@ class Quiz_Maker_Admin
             $quick_quiz_content_max_width = (isset($_REQUEST['ays_quick_quiz_content_max_width']) && $_REQUEST['ays_quick_quiz_content_max_width'] != '') ? stripslashes( absint( $_REQUEST['ays_quick_quiz_content_max_width'] ) ) : 90;
             
             $quick_quiz_content_mobile_max_width = (isset($_REQUEST['ays_quick_quiz_content_mobile_max_width']) && $_REQUEST['ays_quick_quiz_content_mobile_max_width'] != '') ? stripslashes( absint( $_REQUEST['ays_quick_quiz_content_mobile_max_width'] ) ) : 90;
+            
+            // Enable Pass Score
+            $quick_quiz_enable_pass_score = (isset( $_REQUEST['ays_quick_quiz_enable_pass_score'] ) && $_REQUEST['ays_quick_quiz_enable_pass_score'] == "on") ? sanitize_text_field( stripslashes( $_REQUEST['ays_quick_quiz_enable_pass_score'] ) ) : "off";
 
+            // Pass Score
+            $quick_quiz_pass_score = (isset($_REQUEST['ays_quick_quiz_pass_score']) && $_REQUEST['ays_quick_quiz_pass_score'] != '') ? absint( stripslashes( $_REQUEST['ays_quick_quiz_pass_score'] ) ) : '0';
         }
         
         foreach ($questions as $question_key => $question) {
@@ -2124,8 +2133,11 @@ class Quiz_Maker_Admin
             'enable_leave_page'                                 => $quick_quiz_enable_leave_page,
             'enable_see_result_confirm_box'                     => $quick_quiz_enable_see_result_confirm_box,
             'enable_tackers_count'                              => 'off',
-            'enable_pass_score'                                 => 'off',
-            'pass_score'                                        => '0',
+            'enable_pass_score'                                 => $quick_quiz_enable_pass_score,
+            'pass_score'                                        => $quick_quiz_pass_score,
+            'pass_score_message'                                => $pass_score_message_default_value,
+            'fail_score_message'                                => $fail_score_message_default_value,
+
             'question_font_size'                                => $quick_quiz_question_font_size,
             'quiz_width_by_percentage_px'                       => 'pixels',
             'questions_hint_icon_or_text'                       => 'default',
