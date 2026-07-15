@@ -2118,7 +2118,25 @@ class Quizes_List_Table extends WP_List_Table{
     }
 
     function column_shortcode( $item ) {
-        return sprintf('<input type="text" onClick="this.setSelectionRange(0, this.value.length)" readonly value="[ays_quiz id=\'%s\']" style="max-width:100%%;" />', $item["id"]);
+        $shortcode = sprintf( "[ays_quiz id='%d']", absint( $item['id'] ) );
+
+        return sprintf(
+            '<div class="ays-quiz-copy-wrapper">
+                <span class="ays-quiz-copy-tooltip">%2$s</span>
+                <div class="ays-quiz-shortcode-container">
+                    <button type="button" class="ays-quiz-copy-shortcode-btn ays-quiz-copy-image" data-shortcode="%1$s" title="%3$s" aria-label="%3$s">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                    </button>
+                    <input type="text" onClick="this.setSelectionRange(0, this.value.length)" readonly value="%1$s" />
+                </div>
+            </div>',
+            esc_attr( $shortcode ),
+            esc_html__( 'Copied!', 'quiz-maker' ),
+            esc_attr__( 'Copy shortcode', 'quiz-maker' )
+        );
     }
 
     function column_create_date( $item ) {

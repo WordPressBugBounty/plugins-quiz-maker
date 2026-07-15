@@ -9125,6 +9125,61 @@ div.ays-answers-toolbar-bottom-center {
     visibility: visible;
 }
 
+.ays_quizzes_list_table .ays-quiz-shortcode-container {
+    background-color: #f4f5f7;
+    border-radius: 5px;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 1px 2px rgb(0 0 0 / 50%);
+    width: fit-content;
+}
+
+.ays_quizzes_list_table .ays-quiz-copy-image {
+    width: 32px;
+    height: auto;
+    flex: 0 0 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ebecf0;
+    cursor: pointer;
+    border: 0;
+    border-right: 1px solid #dddddf;
+    border-radius: 5px 0 0 5px;
+    padding: 0;
+}
+
+.ays_quizzes_list_table .ays-quiz-copy-image:hover,
+.ays_quizzes_list_table .ays-quiz-copy-image:active,
+.ays_quizzes_list_table .ays-quiz-copy-image:focus {
+    background-color: #ebecf0;
+    border: 0;
+    border-right: 1px solid #dddddf;
+    outline: none;
+    box-shadow: none;
+}
+
+.ays_quizzes_list_table .ays-quiz-copy-image svg {
+    width: 16px;
+    height: 16px;
+}
+
+.ays_quizzes_list_table .ays-quiz-shortcode-container input {
+    min-width: 0;
+    max-width: 100%;
+    border: 0;
+    border-radius: 0 5px 5px 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+.ays_quizzes_list_table .ays-quiz-shortcode-container input:focus {
+    border: 0;
+    box-shadow: none;
+    outline: 1px solid #2271b1;
+}
+
 .ays-quiz-info-card-link-disabled {
     opacity: 0.5;
     cursor: not-allowed;
