@@ -1488,6 +1488,10 @@ class Quiz_Maker_Admin
         $quick_quiz_autofill_user_data                          = 'off';
         $quick_quiz_display_fields_labels                       = 'off';
 
+        // Limitation of Users
+        $quick_quiz_limit_users                                 = 'off';
+        $quick_quiz_limit_users_by                              = 'ip';
+
         // Styles Settings
         $quick_quiz_width                                       = 800;
         $quick_quiz_height                                      = 450;
@@ -1961,6 +1965,12 @@ class Quiz_Maker_Admin
 
             // Pass Score
             $quick_quiz_pass_score = (isset($_REQUEST['ays_quick_quiz_pass_score']) && $_REQUEST['ays_quick_quiz_pass_score'] != '') ? absint( stripslashes( $_REQUEST['ays_quick_quiz_pass_score'] ) ) : '0';
+
+            // Enable Limit Users
+            $quick_quiz_limit_users = (isset( $_REQUEST['ays_quick_quiz_limit_users'] ) && $_REQUEST['ays_quick_quiz_limit_users'] == "on") ? sanitize_text_field( stripslashes( $_REQUEST['ays_quick_quiz_limit_users'] ) ) : "off";
+
+            // Limit users by
+            $quick_quiz_limit_users_by = (isset( $_REQUEST['ays_quick_quiz_limit_users_by'] ) && $_REQUEST['ays_quick_quiz_limit_users_by'] != "") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_limit_users_by'] ) ) : "ip";
         }
         
         foreach ($questions as $question_key => $question) {
@@ -2026,7 +2036,7 @@ class Quiz_Maker_Admin
             'quiz_image_height'                                 => $quick_quiz_image_height,
             'enable_correction'                                 => $quick_quiz_enable_correction,
             'enable_questions_counter'                          => $quick_quiz_enable_questions_counter,
-            'limit_users'                                       => 'off',
+            'limit_users'                                       => $quick_quiz_limit_users,
             'limitation_message'                                => '',
             'redirect_url'                                      => '',
             'redirection_delay'                                 => '',
@@ -2104,7 +2114,7 @@ class Quiz_Maker_Admin
             'show_quiz_desc'                                    => $quick_quiz_show_quiz_desc,
             'show_login_form'                                   => 'off',
             'mobile_max_width'                                  => '',
-            'limit_users_by'                                    => 'ip',
+            'limit_users_by'                                    => $quick_quiz_limit_users_by,
             'activeInterval'                                    => '',
             'deactiveInterval'                                  => '',
             'active_date_check'                                 => 'off',

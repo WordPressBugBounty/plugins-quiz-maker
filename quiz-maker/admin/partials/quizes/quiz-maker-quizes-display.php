@@ -1206,6 +1206,45 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
                                     <div class="ays-quiz-accordion-container">
                                         <?php echo wp_kses($quiz_accordion_svg_html, $svg_sanitize_properties); ?>
+                                        <p class="ays-subtitle"><?php echo esc_html__('Limitation of Users','quiz-maker'); ?></p>
+                                    </div>
+                                    <hr class="ays-quiz-bolder-hr"/>
+                                    <div class="ays-quiz-accordion-options-box">
+                                        <div class="form-group row ays_toggle_parent">
+                                            <div class="col-sm-4">
+                                                <label for="ays_quick_quiz_limit_users">
+                                                    <?php echo esc_html__('Limit Users','quiz-maker'); ?>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-1">
+                                                <input type="checkbox" class="ays-enable-timer1 ays_toggle_checkbox" id="ays_quick_quiz_limit_users" name="ays_quick_quiz_limit_users" value="on" />
+                                            </div>
+                                            <div class="col-sm-7 ays_toggle_target" id="limit-user-options" style="border-left: 1px solid #ccc">
+                                                <div class="ays-limitation-options">
+                                                    <!-- Limitation by -->
+                                                    <div class="form-group row">
+                                                        <div class="col-sm-4">
+                                                            <label for="ays_quick_quiz_limit_users_by">
+                                                                <?php echo esc_html__('Limit users by','quiz-maker'); ?>
+                                                            </label>
+                                                        </div>
+                                                        <div class="col-sm-8">
+                                                            <select id="ays_quick_quiz_limit_users_by" name="ays_quick_quiz_limit_users_by" class="ays-text-input ays-text-input-short">
+                                                                <option selected value="ip"><?php echo esc_html__( 'IP', 'quiz-maker'); ?></option>
+                                                                <option value="user_id"><?php echo esc_html__( 'User ID', 'quiz-maker'); ?></option>
+                                                                <option value="cookie"><?php echo esc_html__( 'Cookie', 'quiz-maker'); ?></option>
+                                                                <option value="ip_cookie"><?php echo esc_html__( 'IP and Cookie', 'quiz-maker'); ?></option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!-- Limitation of Users Tab -->
+                                <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
+                                    <div class="ays-quiz-accordion-container">
+                                        <?php echo wp_kses($quiz_accordion_svg_html, $svg_sanitize_properties); ?>
                                         <p class="ays-subtitle"><?php echo esc_html__('Styles','quiz-maker'); ?></p>
                                     </div>
                                     <hr class="ays-quiz-bolder-hr"/>
