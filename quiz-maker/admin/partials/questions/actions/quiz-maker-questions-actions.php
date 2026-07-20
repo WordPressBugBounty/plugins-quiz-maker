@@ -827,8 +827,8 @@ $user_explanation = (isset($question["user_explanation"]) && $question["user_exp
                     <?php endif; ?>
                     </label>
                 </div>
-                <hr class="show_for_text_type <?php echo ($is_only_radio_type) ? '' : 'display_none'; ?>"/>
-                <div class="form-group row ays_toggle_parent show_for_text_type <?php echo ($is_only_radio_type) ? '' : 'display_none'; ?>">
+                <hr class="show_for_html_answer_type <?php echo ($is_only_radio_type) ? '' : 'display_none'; ?>"/>
+                <div class="form-group row ays_toggle_parent show_for_html_answer_type <?php echo ($is_only_radio_type) ? '' : 'display_none'; ?>">
                     <div class="col-sm-3">
                         <label for="ays-use-html">
                             <?php echo esc_html__( "Use HTML for answers", 'quiz-maker' ); ?>

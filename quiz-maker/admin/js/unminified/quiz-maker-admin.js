@@ -1548,6 +1548,8 @@
                 isNumberType = false,
                 checkboxTypes = [ 'checkbox' ],
                 isCheckboxType = false,
+                htmlAnswerTypes = [ 'radio', 'checkbox', 'true_or_false' ],
+                isHtmlAnswerType = false,
                 cloned;
             cloned = ((row_count % 2) === 0) ? answer_row.eq(0).clone() : answer_row.eq(1).clone();
             $(document).find('.ays-answers-toolbar-bottom').hide();
@@ -1570,6 +1572,13 @@
             for (var i = 0; i < checkboxTypes.length; i++) {
                 if($(this).val() == checkboxTypes[i]){
                     isCheckboxType = true;
+                    break;
+                }
+            }
+
+            for (var i = 0; i < htmlAnswerTypes.length; i++) {
+                if($(this).val() == htmlAnswerTypes[i]){
+                    isHtmlAnswerType = true;
                     break;
                 }
             }
@@ -1607,8 +1616,15 @@
                 }
             }
 
-            if($(this).val() != 'radio' && $(this).val() != 'checkbox'){
-                $(document).find('.ays-answers-toolbar-bottom input[name="ays-use-html"]').removeAttr('checked');
+            var showForHtmlAnswerType = $(document).find('.show_for_html_answer_type');
+            if(isHtmlAnswerType){
+                showForHtmlAnswerType.removeClass('display_none');
+            }else{
+                showForHtmlAnswerType.addClass('display_none');
+            }
+
+            if(!isHtmlAnswerType){
+                $(document).find('input[name="ays-use-html"]').prop('checked', false);
             }
             
             if($(this).val() == 'date'){
