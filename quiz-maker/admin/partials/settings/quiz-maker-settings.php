@@ -415,6 +415,10 @@
     $options['quiz_case_sensitive_text'] = isset($options['quiz_case_sensitive_text']) ? sanitize_text_field( $options['quiz_case_sensitive_text'] ) : 'off';
     $quiz_case_sensitive_text = (isset($options['quiz_case_sensitive_text']) && sanitize_text_field( $options['quiz_case_sensitive_text'] ) == "on") ? true : false;
 
+    // Enable strip slashes for a new question
+    $options['quiz_enable_question_stripslashes_for_new_question'] = isset($options['quiz_enable_question_stripslashes_for_new_question']) ? sanitize_text_field( $options['quiz_enable_question_stripslashes_for_new_question'] ) : 'off';
+    $quiz_enable_question_stripslashes_for_new_question = (isset($options['quiz_enable_question_stripslashes_for_new_question']) && sanitize_text_field( $options['quiz_enable_question_stripslashes_for_new_question'] ) == "on") ? true : false;
+
     $settings_ordering = Quiz_Maker_Admin::ays_quiz_get_settings_order_defaults();
     
     $result_page_ordering_htmls = $settings_ordering['result_page'];
@@ -746,6 +750,20 @@
                                 </div>
                                 <div class="col-sm-8">
                                     <input type="checkbox" class="ays-checkbox-input" id="ays_quiz_case_sensitive_text" name="ays_quiz_case_sensitive_text" value="on" <?php echo $quiz_case_sensitive_text ? 'checked' : ''; ?> />
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="form-group row">
+                                <div class="col-sm-4">
+                                    <label for="ays_quiz_enable_question_stripslashes_for_new_question">
+                                        <?php echo esc_html__( "Enable strip slashes for a new question", 'quiz-maker' ); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Enable this option and the Enable strip slashes for question option will be ticked for a new question by default.','quiz-maker'); ?>">
+                                            <i class="ays_fa ays_fa_info_circle"></i>
+                                        </a>
+                                    </label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <input type="checkbox" class="ays-checkbox-input" id="ays_quiz_enable_question_stripslashes_for_new_question" name="ays_quiz_enable_question_stripslashes_for_new_question" value="on" <?php echo $quiz_enable_question_stripslashes_for_new_question ? 'checked' : ''; ?> />
                                 </div>
                             </div>
                             <hr />

@@ -73,6 +73,10 @@ $quiz_stripslashes_for_answer = (isset($gen_options['quiz_stripslashes_for_answe
 $gen_options['quiz_case_sensitive_text'] = isset($gen_options['quiz_case_sensitive_text']) ? sanitize_text_field( $gen_options['quiz_case_sensitive_text'] ) : 'off';
 $quiz_case_sensitive_text = (isset($gen_options['quiz_case_sensitive_text']) && sanitize_text_field( $gen_options['quiz_case_sensitive_text'] ) == "on") ? true : false;
 
+// Enable strip slashes for a new question
+$gen_options['quiz_enable_question_stripslashes_for_new_question'] = isset($gen_options['quiz_enable_question_stripslashes_for_new_question']) ? sanitize_text_field( $gen_options['quiz_enable_question_stripslashes_for_new_question'] ) : 'off';
+$quiz_enable_question_stripslashes_for_new_question = (isset($gen_options['quiz_enable_question_stripslashes_for_new_question']) && sanitize_text_field( $gen_options['quiz_enable_question_stripslashes_for_new_question'] ) == "on") ? true : false;
+
 // WP Editor height
 $quiz_wp_editor_height = (isset($gen_options['quiz_wp_editor_height']) && $gen_options['quiz_wp_editor_height'] != '') ? absint( sanitize_text_field($gen_options['quiz_wp_editor_height']) ) : 100 ;
 
@@ -356,6 +360,12 @@ if ($quiz_stripslashes_for_answer) {
 // Enable strip slashes for questions
 $options['quiz_enable_question_stripslashes'] = isset($options['quiz_enable_question_stripslashes']) ? sanitize_text_field( $options['quiz_enable_question_stripslashes'] ) : 'off';
 $quiz_enable_question_stripslashes = (isset($options['quiz_enable_question_stripslashes']) && $options['quiz_enable_question_stripslashes'] == 'on') ? true : false;
+
+if ($quiz_enable_question_stripslashes_for_new_question) {
+    if ($action == 'add') {
+        $quiz_enable_question_stripslashes = true;
+    }
+}
 
 // Enable strip slashes for questions
 $question["user_explanation"] = (isset($question["user_explanation"]) && $question["user_explanation"] != "") ? sanitize_text_field($question["user_explanation"]) : "off";

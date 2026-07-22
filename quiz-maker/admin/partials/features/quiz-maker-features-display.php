@@ -493,6 +493,17 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
                     <td><i class="ays_fa ays_fa_check"></i></td>
                     <td><i class="ays_fa ays_fa_check"></i></td>
                 </tr>
+                <tr>
+                    <td></td>
+                    <td colspan="4"><?php echo esc_html__('Manual grading by teacher','quiz-maker')?></td>
+                </tr>
+                <tr>
+                    <td><?php echo esc_html__('Manual grading by teacher','quiz-maker')?></td>
+                    <td><span>–</span></td>
+                    <td><i class="ays_fa ays_fa_check"></i></td>
+                    <td><i class="ays_fa ays_fa_check"></i></td>
+                    <td><i class="ays_fa ays_fa_check"></i></td>
+                </tr>
                 <!-- //////////////// -->
                 <tr>
                     <td></td>

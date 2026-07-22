@@ -288,6 +288,9 @@ class Quiz_Maker_Settings_Actions {
             // Enable case sensitive text for a new question
             $quiz_case_sensitive_text = (isset( $_REQUEST['ays_quiz_case_sensitive_text'] ) && sanitize_text_field( $_REQUEST['ays_quiz_case_sensitive_text'] ) == 'on') ? 'on' : 'off';
 
+            // Enable strip slashes for a new question
+            $quiz_enable_question_stripslashes_for_new_question = (isset( $_REQUEST['ays_quiz_enable_question_stripslashes_for_new_question'] ) && sanitize_text_field( $_REQUEST['ays_quiz_enable_question_stripslashes_for_new_question'] ) == 'on') ? 'on' : 'off';
+
             // Question title view
             $quiz_question_title_view = (isset( $_REQUEST['ays_quiz_question_title_view'] ) && sanitize_text_field( $_REQUEST['ays_quiz_question_title_view'] ) != '') ? stripslashes( sanitize_text_field( $_REQUEST['ays_quiz_question_title_view'] ) ) : 'question_title';
 
@@ -329,6 +332,7 @@ class Quiz_Maker_Settings_Actions {
                 "quiz_enable_question_hide_question_text"           => $quiz_enable_question_hide_question_text,
                 "quiz_stripslashes_for_answer"                      => $quiz_stripslashes_for_answer,
                 "quiz_case_sensitive_text"                          => $quiz_case_sensitive_text,
+                "quiz_enable_question_stripslashes_for_new_question" => $quiz_enable_question_stripslashes_for_new_question,
                 "enable_start_button_loader"                        => $enable_start_button_loader,
                 "quiz_wp_editor_height"                             => $quiz_wp_editor_height,
                 "quiz_textarea_height"                              => $quiz_textarea_height,
