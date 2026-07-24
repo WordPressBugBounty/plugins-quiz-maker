@@ -1491,6 +1491,7 @@ class Quiz_Maker_Admin
         // Limitation of Users
         $quick_quiz_limit_users                                 = 'off';
         $quick_quiz_limit_users_by                              = 'ip';
+        $quick_quiz_enable_logged_users                         = 'off';
 
         // Styles Settings
         $quick_quiz_width                                       = 800;
@@ -1971,6 +1972,9 @@ class Quiz_Maker_Admin
 
             // Limit users by
             $quick_quiz_limit_users_by = (isset( $_REQUEST['ays_quick_quiz_limit_users_by'] ) && $_REQUEST['ays_quick_quiz_limit_users_by'] != "") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_limit_users_by'] ) ) : "ip";
+
+            // Only for logged in users
+            $quick_quiz_enable_logged_users = (isset( $_REQUEST['ays_quick_quiz_enable_logged_users'] ) && $_REQUEST['ays_quick_quiz_enable_logged_users'] == "on") ? sanitize_text_field( stripslashes( $_REQUEST['ays_quick_quiz_enable_logged_users'] ) ) : "off";
         }
         
         foreach ($questions as $question_key => $question) {
@@ -2028,7 +2032,7 @@ class Quiz_Maker_Admin
             'form_name'                                         => '',
             'form_email'                                        => '',
             'form_phone'                                        => '',
-            'enable_logged_users'                               => 'off',
+            'enable_logged_users'                               => $quick_quiz_enable_logged_users,
             'answers_view'                                      => $quick_quiz_answers_view,
             'image_width'                                       => $quick_quiz_image_width,
             'image_height'                                      => $quick_quiz_image_height,

@@ -6542,19 +6542,19 @@ class Quiz_Maker_Public
                 );
 
                 $data = array(
-                    'user_ip'               => $user_ip,
-                    'user_name'             => $ays_user_name,
-                    'user_email'            => $ays_user_email,
-                    'user_phone'            => $ays_user_phone,
-                    'start_date'            => esc_sql( $start_date ),
-                    'end_date'              => esc_sql( $end_date ),
-                    'answered'              => $correctness_and_answers,
-                    'score'                 => $final_score,
-                    'user_explanation'      => $user_explanation,
-                    'user_corrects_count'   => $corrects_count,
-                    'questions_count'       => $questions_count,
-                    'calc_method'           => $calculate_score,
-                    'quiz_id'               => $quiz_id
+                    'user_ip'                                       => $user_ip,
+                    'user_name'                                     => $ays_user_name,
+                    'user_email'                                    => $ays_user_email,
+                    'user_phone'                                    => $ays_user_phone,
+                    'start_date'                                    => esc_sql( $start_date ),
+                    'end_date'                                      => esc_sql( $end_date ),
+                    'answered'                                      => $correctness_and_answers,
+                    'score'                                         => $final_score,
+                    'user_explanation'                              => $user_explanation,
+                    'user_corrects_count'                           => $corrects_count,
+                    'questions_count'                               => $questions_count,
+                    'calc_method'                                   => $calculate_score,
+                    'quiz_id'                                       => $quiz_id
                 );
 
                 if( $is_training === true ){

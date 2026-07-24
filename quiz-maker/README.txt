@@ -4,7 +4,7 @@ Donate link: https://quiz-plugin.com/pricing/
 Tags:  exam, quiz, quizzes, education, quiz maker
 Requires at least: 4.0
 Tested up to: 7.0
-Stable tag: 6.7.1.60
+Stable tag: 6.7.1.61
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -223,6 +223,7 @@ The privacy policy can be found at this URL https://ipinfo.io/privacy-policy
 *   Result text according to result (according to percent)
 *   Results with charts
 *   Quiz with a certificate
+*   Manual Grading
 *   Custom Attributes 
 *   Quiz Widget
 *   Copy content protection
@@ -244,6 +245,7 @@ The privacy policy can be found at this URL https://ipinfo.io/privacy-policy
 *   Chained Quiz
 *   Conditional Results
 *   ChatGPT Question Builder 
+*   15+ Integrations
 *   More on the way ...
 
 **Connect with your Favorite Tools and Plugins** ([Pro feature](https://quiz-plugin.com/pricing/?utm_source=wporg&utm_medium=free&utm_campaign=favorite-tools-and-plugins))
@@ -425,6 +427,9 @@ Do you wonder how to create a Math Quiz with hard mathematical equations in Word
 For example, to add a squared symbol, you need to write down the following sign ^2. (do not forget to insert $ character to mark the beginning and ending).
 
 == Changelog ==
+
+= 6.7.1.61 ( Jul 24, 2026 ) =
+* Added: Only for logged in users option to the Quick Quiz popup
 
 = 6.7.1.60 ( Jul 22, 2026 ) =
 * Added: Enable strip slashes for new questions option to the General Settings page
