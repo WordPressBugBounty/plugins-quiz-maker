@@ -1250,7 +1250,17 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                             <div class="col-sm-1">
                                                 <input type="checkbox" class="ays-enable-timer1 ays_toggle_checkbox" id="ays_quick_quiz_enable_logged_users" name="ays_quick_quiz_enable_logged_users" value="on" />
                                             </div>
-                                            <div class="col-sm-7 ays_toggle_target" id="limit-user-options">
+                                            <div class="col-sm-7 ays_toggle_target ays_divider_left display_none" id="limit-user-options">
+                                                <div class="form-group row">
+                                                    <div class="col-sm-3">
+                                                        <label for="ays_quick_quiz_show_login_form">
+                                                            <?php echo esc_html__('Show Login form','quiz-maker'); ?>
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-sm-9">
+                                                        <input type="checkbox" class="ays-enable-timer1" id="ays_quick_quiz_show_login_form" name="ays_quick_quiz_show_login_form" value="on" />
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
