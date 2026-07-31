@@ -82,6 +82,7 @@ class Quiz_Maker_Settings_Actions {
             $created_on_text   = (isset($_REQUEST['ays_quiz_created_on_text']) && $_REQUEST['ays_quiz_created_on_text'] != '') ? sanitize_text_field( stripslashes( $_REQUEST['ays_quiz_created_on_text'] ) ) : 'Created on';
             $logged_in_users_message_text   = (isset($_REQUEST['ays_quiz_logged_in_users_message_text']) && $_REQUEST['ays_quiz_logged_in_users_message_text'] != '') ? sanitize_text_field( stripslashes( $_REQUEST['ays_quiz_logged_in_users_message_text'] ) ) : 'You must log in to pass this quiz.';
             $quiz_schedule_start_message_text   = (isset($_REQUEST['ays_quiz_schedule_start_message_text']) && $_REQUEST['ays_quiz_schedule_start_message_text'] != '') ? sanitize_text_field( stripslashes( $_REQUEST['ays_quiz_schedule_start_message_text'] ) ) : 'This Quiz will start on';
+            $created_by_text   = (isset($_REQUEST['ays_quiz_created_by_text']) && $_REQUEST['ays_quiz_created_by_text'] != '') ? sanitize_text_field( stripslashes( $_REQUEST['ays_quiz_created_by_text'] ) ) : 'Created by';
 
             $default_texts = array(
                 'wrong_shortcode_text'                  => $wrong_shortcode_text,
@@ -101,6 +102,7 @@ class Quiz_Maker_Settings_Actions {
                 'created_on_text'                       => $created_on_text,
                 'logged_in_users_message_text'          => $logged_in_users_message_text,
                 'quiz_schedule_start_message_text'      => $quiz_schedule_start_message_text,
+                'created_by_text'                       => $created_by_text,
             );
             // Default texts | End
 

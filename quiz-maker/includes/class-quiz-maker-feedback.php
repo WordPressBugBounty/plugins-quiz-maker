@@ -74,11 +74,11 @@ class Quiz_Maker_Feedback {
 	public function print_deactivate_feedback_dialog() {
 		$deactivate_reasons = array(
 			'no_longer_needed' => array(
-				'title' => esc_html__( 'I no longer need the plugin', 'quiz-maker' ),
+				'title' 			=> esc_html__( 'I no longer need the plugin', 'quiz-maker' ),
 				'input_placeholder' => '',
 			),
 			'found_a_better_plugin' => array(
-				'title' => esc_html__( 'I found a better alternative', 'quiz-maker' ),
+				'title' 			=> esc_html__( 'I found a better alternative', 'quiz-maker' ),
 				'input_placeholder' => esc_html__( 'Other', 'quiz-maker' ),
 				'sub_reason' => array(
 					'qsm' 				=> esc_html__( 'QSM', 'quiz-maker' ),
@@ -89,33 +89,33 @@ class Quiz_Maker_Feedback {
 				),
 			),
 			'couldnt_get_the_plugin_to_work' => array(
-				'title' => esc_html__( "The plugin didn’t work as expected", 'quiz-maker' ),
+				'title' 			=> esc_html__( "The plugin didn’t work as expected", 'quiz-maker' ),
 				'input_placeholder' => '',
 			),
 			'missing_features' => array(
-				'title' => esc_html__( 'Missing essential features', 'quiz-maker' ),
+				'title' 			=> esc_html__( 'Missing essential features', 'quiz-maker' ),
 				'input_placeholder' => esc_html__( 'Please share which features', 'quiz-maker' ),
 			),
 			'temporary_deactivation' => array(
-				'title' => esc_html__( "I only needed it temporarily", 'quiz-maker' ),
+				'title' 			=> esc_html__( "I only needed it temporarily", 'quiz-maker' ),
 				'input_placeholder' => '',
 			),
 			'plugin_or_theme_conflict' => array(
-				'title' => esc_html__( "Conflicts with other plugins or themes", 'quiz-maker' ),
+				'title' 			=> esc_html__( "Conflicts with other plugins or themes", 'quiz-maker' ),
 				// 'input_placeholder' => esc_html__( 'Please share which plugin or theme', 'quiz-maker' ),
 				'input_placeholder' => '',
-				'alert' => sprintf( __("Contact our %s support team %s to find and fix the issue.", 'quiz-maker'),
-                                    "<a href='https://quiz-plugin.com/contact-us/' target='_blank'>",
-                                    "</a>"
-                                ),
+				'alert' 			=> sprintf( __("Contact our %s support team %s to find and fix the issue.", 'quiz-maker'),
+											"<a href='https://quiz-plugin.com/contact-us/' target='_blank'>",
+											"</a>"
+										),
 			),
 			'quiz_pro' => array(
-				'title' => esc_html__( 'I’m using the premium version now', 'quiz-maker' ),
+				'title' 			=> esc_html__( 'I’m using the premium version now', 'quiz-maker' ),
 				'input_placeholder' => '',
 				// 'alert' => esc_html__( "Wait! Don't deactivate Quiz Maker. You have to activate both Quiz Maker and Quiz Maker Pro in order for the plugin to work.", 'quiz-maker' ),
 			),
 			'other' => array(
-				'title' => esc_html__( 'Other', 'quiz-maker' ),
+				'title' 			=> esc_html__( 'Other', 'quiz-maker' ),
 				'input_placeholder' => esc_html__( 'Please share the reason', 'quiz-maker' ),
 			),
 		);
@@ -204,10 +204,10 @@ class Quiz_Maker_Feedback {
 			wp_send_json_error( 'Action error' );
 		}
 
-		$reason_key = !empty($_REQUEST['ays_quiz_reason_key']) ? sanitize_text_field($_REQUEST['ays_quiz_reason_key']) : "";
+		$reason_key 	= !empty($_REQUEST['ays_quiz_reason_key']) ? sanitize_text_field($_REQUEST['ays_quiz_reason_key']) : "";
 		$sub_reason_key = !empty($_REQUEST['ays_quiz_sub_reason_key']) ? sanitize_text_field($_REQUEST['ays_quiz_sub_reason_key']) : "";
-		$reason_text = !empty($_REQUEST["ays_quiz_reason_{$reason_key}"]) ? sanitize_text_field($_REQUEST["ays_quiz_reason_{$reason_key}"]) : "";
-		$type = !empty($_REQUEST["type"]) ? sanitize_text_field($_REQUEST["type"]) : "";
+		$reason_text 	= !empty($_REQUEST["ays_quiz_reason_{$reason_key}"]) ? sanitize_text_field($_REQUEST["ays_quiz_reason_{$reason_key}"]) : "";
+		$type 			= !empty($_REQUEST["type"]) ? sanitize_text_field($_REQUEST["type"]) : "";
 
 		self::send_feedback( $reason_key, $sub_reason_key, $reason_text, $type );
 
@@ -240,14 +240,14 @@ class Quiz_Maker_Feedback {
 		return wp_remote_post( self::$api_feedback_url, array(
 			'timeout' => 30,
 			'body' => wp_json_encode(array(
-				'type' 				=> 'quiz-maker',
-				'version' 			=> AYS_QUIZ_VERSION,
-				'first_version' 	=> get_option( 'ays_quiz_first_time_activation_verson' ),
-				'site_lang' 		=> get_bloginfo( 'language' ),
-				'button' 			=> $type,
-				'feedback_key' 		=> $feedback_key,
-				'sub_feedback_key' 	=> $sub_feedback_key,
-				'feedback' 			=> $feedback_text,
+				'type' 					=> 'quiz-maker',
+				'version' 				=> AYS_QUIZ_VERSION,
+				'first_version' 		=> get_option( 'ays_quiz_first_time_activation_verson' ),
+				'site_lang' 			=> get_bloginfo( 'language' ),
+				'button' 				=> $type,
+				'feedback_key' 			=> $feedback_key,
+				'sub_feedback_key' 		=> $sub_feedback_key,
+				'feedback' 				=> $feedback_text,
 			)),
 		) );
 	}

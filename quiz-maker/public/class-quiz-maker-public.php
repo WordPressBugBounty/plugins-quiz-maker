@@ -716,6 +716,7 @@ class Quiz_Maker_Public
         $created_on_text  = (isset($settings_static_texts['created_on_text']) && $settings_static_texts['created_on_text'] != '') ? stripslashes( esc_attr( $settings_static_texts['created_on_text'] ) ) : 'Created on';
         $logged_in_users_message_text  = (isset($settings_static_texts['logged_in_users_message_text']) && $settings_static_texts['logged_in_users_message_text'] != '') ? stripslashes( esc_attr( $settings_static_texts['logged_in_users_message_text'] ) ) : 'You must log in to pass this quiz.';
         $quiz_schedule_start_message_text  = (isset($settings_static_texts['quiz_schedule_start_message_text']) && $settings_static_texts['quiz_schedule_start_message_text'] != '') ? stripslashes( esc_attr( $settings_static_texts['quiz_schedule_start_message_text'] ) ) : 'This Quiz will start on';
+        $created_by_text  = (isset($settings_static_texts['created_by_text']) && $settings_static_texts['created_by_text'] != '') ? stripslashes( esc_attr( $settings_static_texts['created_by_text'] ) ) : 'Created by';
 
         if ($wrong_shortcode_text === 'Wrong shortcode initialized') {
             $wrong_shortcode_text = __('Wrong shortcode initialized', 'quiz-maker');
@@ -785,6 +786,10 @@ class Quiz_Maker_Public
             $quiz_schedule_start_message_text = __('This Quiz will start on', 'quiz-maker');
         }
 
+        if ($created_by_text === 'Created by') {
+            $created_by_text = __('Created by', 'quiz-maker');
+        }
+
         $texts = array(
             'wrongShortcode'                => $wrong_shortcode_text,
             'enterPassword'                 => $enter_password_text,
@@ -803,6 +808,7 @@ class Quiz_Maker_Public
             'createdOnText'                 => $created_on_text,
             'loggedInUsersMessageText'      => $logged_in_users_message_text,
             'quizScheduleStartMessageText'  => $quiz_schedule_start_message_text,
+            'createdByText'                 => $created_by_text,
         );
 
         return $texts;
@@ -2058,7 +2064,7 @@ class Quiz_Maker_Public
                 if($show_create_date){
                     $text = __("By", 'quiz-maker');
                 }else{
-                    $text = __("Created by", 'quiz-maker');
+                    $text = $this->default_texts['createdByText'];
                 }
                 $show_cd_and_author .= "<span>   ".$text." </span>".$image."<strong>".$author['name']."</strong>";
             }else{
