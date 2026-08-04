@@ -1493,6 +1493,8 @@ class Quiz_Maker_Admin
         $quick_quiz_limit_users_by                              = 'ip';
         $quick_quiz_enable_logged_users                         = 'off';
         $quick_quiz_show_login_form                             = 'off';
+        $quick_quiz_enable_tackers_count                        = 'off';
+        $quick_quiz_tackers_count                               = '';
 
         // Styles Settings
         $quick_quiz_width                                       = 800;
@@ -1979,6 +1981,12 @@ class Quiz_Maker_Admin
             
             // Show Login form
             $quick_quiz_show_login_form = (isset( $_REQUEST['ays_quick_quiz_show_login_form'] ) && $_REQUEST['ays_quick_quiz_show_login_form'] == "on") ? sanitize_text_field( stripslashes( $_REQUEST['ays_quick_quiz_show_login_form'] ) ) : "off";
+            
+            // Limitation count of takers
+            $quick_quiz_enable_tackers_count = (isset( $_REQUEST['ays_quick_quiz_enable_tackers_count'] ) && $_REQUEST['ays_quick_quiz_enable_tackers_count'] == "on") ? sanitize_text_field( stripslashes( $_REQUEST['ays_quick_quiz_enable_tackers_count'] ) ) : "off";
+            
+            // Limitation count of takers | Count
+            $quick_quiz_tackers_count = (isset($_REQUEST['ays_quick_quiz_tackers_count']) && $_REQUEST['ays_quick_quiz_tackers_count'] != '') ? absint( stripslashes( $_REQUEST['ays_quick_quiz_tackers_count'] ) ) : '';
         }
         
         foreach ($questions as $question_key => $question) {
@@ -2150,7 +2158,8 @@ class Quiz_Maker_Admin
             'buttons_border_radius'                             => $quick_quiz_buttons_border_radius,
             'enable_leave_page'                                 => $quick_quiz_enable_leave_page,
             'enable_see_result_confirm_box'                     => $quick_quiz_enable_see_result_confirm_box,
-            'enable_tackers_count'                              => 'off',
+            'enable_tackers_count'                              => $quick_quiz_enable_tackers_count,
+            'tackers_count'                                     => $quick_quiz_tackers_count,
             'enable_pass_score'                                 => $quick_quiz_enable_pass_score,
             'pass_score'                                        => $quick_quiz_pass_score,
             'pass_score_message'                                => $pass_score_message_default_value,

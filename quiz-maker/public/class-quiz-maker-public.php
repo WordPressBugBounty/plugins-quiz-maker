@@ -153,34 +153,34 @@ class Quiz_Maker_Public
             wp_enqueue_script( $this->plugin_name . '-datatable-min', plugin_dir_url(__FILE__) . 'js/quiz-maker-datatable.min.js', array('jquery'), $this->version, true);
 
             wp_localize_script( $this->plugin_name . '-datatable-min', 'quizLangDataTableObj', array(
-                "sEmptyTable"               => __( "No data available in table", 'quiz-maker' ),
-                "sInfo"                     => __( "Showing _START_ to _END_ of _TOTAL_ entries", 'quiz-maker' ),
-                "sInfoEmpty"                => __( "Showing 0 to 0 of 0 entries", 'quiz-maker' ),
-                "sInfoFiltered"             => __( "(filtered from _MAX_ total entries)", 'quiz-maker' ),
+                "sEmptyTable"                   => __( "No data available in table", 'quiz-maker' ),
+                "sInfo"                         => __( "Showing _START_ to _END_ of _TOTAL_ entries", 'quiz-maker' ),
+                "sInfoEmpty"                    => __( "Showing 0 to 0 of 0 entries", 'quiz-maker' ),
+                "sInfoFiltered"                 => __( "(filtered from _MAX_ total entries)", 'quiz-maker' ),
                 // "sInfoPostFix":              => __( "", 'quiz-maker' ),
                 // "sInfoThousands":            => __( ",", 'quiz-maker' ),
-                "sLengthMenu"               => __( "Show _MENU_ entries", 'quiz-maker' ),
-                "sLoadingRecords"           => __( "Loading...", 'quiz-maker' ),
-                "sProcessing"               => __( "Processing...", 'quiz-maker' ),
-                "sSearch"                   => __( "Search:", 'quiz-maker' ),
+                "sLengthMenu"                   => __( "Show _MENU_ entries", 'quiz-maker' ),
+                "sLoadingRecords"               => __( "Loading...", 'quiz-maker' ),
+                "sProcessing"                   => __( "Processing...", 'quiz-maker' ),
+                "sSearch"                       => __( "Search:", 'quiz-maker' ),
                 // "sUrl":                      => __( "", 'quiz-maker' ),
-                "sZeroRecords"              => __( "No matching records found", 'quiz-maker' ),
-                "sFirst"                    => __( "First", 'quiz-maker' ),
-                "sLast"                     => __( "Last", 'quiz-maker' ),
-                "sNext"                     => __( "Next", 'quiz-maker' ),
-                "sPrevious"                 => __( "Previous", 'quiz-maker' ),
-                "sSortAscending"            => __( ": activate to sort column ascending", 'quiz-maker' ),
-                "sSortDescending"           => __( ": activate to sort column descending", 'quiz-maker' ),
+                "sZeroRecords"                  => __( "No matching records found", 'quiz-maker' ),
+                "sFirst"                        => __( "First", 'quiz-maker' ),
+                "sLast"                         => __( "Last", 'quiz-maker' ),
+                "sNext"                         => __( "Next", 'quiz-maker' ),
+                "sPrevious"                     => __( "Previous", 'quiz-maker' ),
+                "sSortAscending"                => __( ": activate to sort column ascending", 'quiz-maker' ),
+                "sSortDescending"               => __( ": activate to sort column descending", 'quiz-maker' ),
             ) );
 
             wp_enqueue_script($this->plugin_name .'-functions.js', plugin_dir_url(__FILE__) . 'js/quiz-maker-functions.js', array('jquery'), $this->version, true);
             wp_enqueue_script($this->plugin_name .'-ajax-public', plugin_dir_url(__FILE__) . 'js/quiz-maker-public-ajax.js', array('jquery'), time(), true);
             wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/quiz-maker-public.js', array('jquery'), time(), true);
             wp_localize_script($this->plugin_name . '-ajax-public', 'quiz_maker_ajax_public', array(
-                'nonce'         => wp_create_nonce('ays_quiz_nonce'),
-                'ajax_url'      => admin_url('admin-ajax.php'),
-                'warningIcon'   => plugin_dir_url(__FILE__) . "images/warning.svg",
-                'checkingError' => __( 'Error checking answer', 'quiz-maker' ),
+                'nonce'                         => wp_create_nonce('ays_quiz_nonce'),
+                'ajax_url'                      => admin_url('admin-ajax.php'),
+                'warningIcon'                   => plugin_dir_url(__FILE__) . "images/warning.svg",
+                'checkingError'                 => __( 'Error checking answer', 'quiz-maker' ),
             ));
             wp_localize_script($this->plugin_name, 'quizLangObj', array(
                 'notAnsweredText'               => $this->default_texts['notAnsweredQuestionText'],

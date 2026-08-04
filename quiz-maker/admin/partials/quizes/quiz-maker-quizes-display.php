@@ -1263,6 +1263,33 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                 </div>
                                             </div>
                                         </div>
+                                        <hr/>
+                                        <div class="form-group row ays_toggle_parent ays-quiz-result-message-vars-parent">
+                                            <div class="col-sm-4">
+                                                <label for="ays_quick_quiz_enable_tackers_count">
+                                                    <?php echo esc_html__('Limitation count of takers', 'quiz-maker'); ?>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-1">
+                                                <input type="checkbox" class="ays-enable-timer1 ays_toggle_checkbox" id="ays_quick_quiz_enable_tackers_count"
+                                                    name="ays_quick_quiz_enable_tackers_count" value="on" />
+                                            </div>
+                                            <div class="col-sm-7 ays_toggle_target ays_divider_left display_none">
+                                                <div class="form-group row">
+                                                    <div class="col-sm-2">
+                                                        <label for="ays_quick_quiz_tackers_count">
+                                                            <?php echo esc_html__('Count','quiz-maker'); ?>
+                                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('The number of users who can pass the quiz.','quiz-maker'); ?>">
+                                                                <i class="ays_fa ays_fa_info_circle"></i>
+                                                            </a>
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-sm-10">
+                                                        <input type="number" name="ays_quick_quiz_tackers_count" id="ays_quick_quiz_tackers_count" class="ays-enable-timerl ays-text-input" value="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div><!-- Limitation of Users Tab -->
                                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
