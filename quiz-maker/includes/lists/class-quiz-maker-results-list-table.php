@@ -916,21 +916,21 @@ class Results_List_Table extends WP_List_Table{
      */
     function get_columns() {
         $columns = array(
-            'cb'                => '<input type="checkbox" />',
-            'quiz_id'           => __( 'Quiz', 'quiz-maker' ),
-            'quiz_category_id'  => __( 'Category', 'quiz-maker' ),
-            'user_id'           => __( 'WP User', 'quiz-maker' ),
-            'user_ip'           => __( 'User IP', 'quiz-maker' ),
-            'user_name'         => __( 'Name', 'quiz-maker' ),
-            'user_email'        => __( 'Email', 'quiz-maker' ),
-            'user_phone'        => __( 'Phone', 'quiz-maker' ),
-            'quiz_rate'         => __( 'Rate', 'quiz-maker' ),
-            'start_date'        => __( 'Start', 'quiz-maker' ),
-            'end_date'          => __( 'End', 'quiz-maker' ),
-            'duration'          => __( 'Duration', 'quiz-maker' ),
-            'score'             => __( 'Score', 'quiz-maker' ),
-            'status'            => __( 'Status', 'quiz-maker' ),
-            'id'                => __( 'ID', 'quiz-maker' ),
+            'cb'                    => '<input type="checkbox" />',
+            'quiz_id'               => __( 'Quiz', 'quiz-maker' ),
+            'quiz_category_id'      => __( 'Category', 'quiz-maker' ),
+            'user_id'               => __( 'WP User', 'quiz-maker' ),
+            'user_ip'               => __( 'User IP', 'quiz-maker' ),
+            'user_name'             => __( 'Name', 'quiz-maker' ),
+            'user_email'            => __( 'Email', 'quiz-maker' ),
+            'user_phone'            => __( 'Phone', 'quiz-maker' ),
+            'quiz_rate'             => __( 'Rate', 'quiz-maker' ),
+            'start_date'            => __( 'Start', 'quiz-maker' ),
+            'end_date'              => __( 'End', 'quiz-maker' ),
+            'duration'              => __( 'Duration', 'quiz-maker' ),
+            'score'                 => __( 'Score', 'quiz-maker' ),
+            'status'                => __( 'Status', 'quiz-maker' ),
+            'id'                    => __( 'ID', 'quiz-maker' ),
         );
 
         return $columns;
@@ -944,16 +944,16 @@ class Results_List_Table extends WP_List_Table{
      */
     public function get_sortable_columns() {
         $sortable_columns = array(
-            'quiz_id'       => array( 'quiz_id', true ),
-            'user_id'       => array( 'user_id', true ),
-            'user_ip'       => array( 'user_ip', true ),
-            'start_date'    => array( 'start_date', true ),
-            'score'         => array( 'score', true ),
-            'user_name'     => array( 'user_name', true ),
-            'user_email'    => array( 'user_email', true ),
-            'user_phone'    => array( 'user_phone', true ),
-            'end_date'      => array( 'end_date', true ),
-            'id'            => array( 'id', true ),
+            'quiz_id'           => array( 'quiz_id', true ),
+            'user_id'           => array( 'user_id', true ),
+            'user_ip'           => array( 'user_ip', true ),
+            'start_date'        => array( 'start_date', true ),
+            'score'             => array( 'score', true ),
+            'user_name'         => array( 'user_name', true ),
+            'user_email'        => array( 'user_email', true ),
+            'user_phone'        => array( 'user_phone', true ),
+            'end_date'          => array( 'end_date', true ),
+            'id'                => array( 'id', true ),
         );
 
         return $sortable_columns;
@@ -982,9 +982,9 @@ class Results_List_Table extends WP_List_Table{
      */
     public function get_bulk_actions() {
         $actions = array(
-            'bulk-mark-as-read' => __( 'Mark as read', 'quiz-maker'),
-            'mark-as-unread'    => __( 'Mark as unread', 'quiz-maker'),
-            'bulk-delete'       => __( 'Delete', 'quiz-maker'),
+            'bulk-mark-as-read'     => __( 'Mark as read', 'quiz-maker'),
+            'mark-as-unread'        => __( 'Mark as unread', 'quiz-maker'),
+            'bulk-delete'           => __( 'Delete', 'quiz-maker'),
         );
 
         return $actions;
