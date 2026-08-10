@@ -188,7 +188,7 @@ class Quiz_Maker_Public
                 'selectPlaceholder'             => $this->default_texts['selectAnswerText'],
                 'correctAnswerVariants'         => __( 'Variants of the correct answer', 'quiz-maker' ),
                 'shareDialog'                   => __( 'Share Dialog', 'quiz-maker' ),
-                'expiredMessage'                => __( 'The quiz has expired!', 'quiz-maker' ),
+                'expiredMessage'                => $this->default_texts['quizExpiredMessageText'],
                 'day'                           => __( 'day', 'quiz-maker' ),
                 'days'                          => __( 'days', 'quiz-maker' ),
                 'hour'                          => __( 'hour', 'quiz-maker' ),
@@ -717,6 +717,7 @@ class Quiz_Maker_Public
         $logged_in_users_message_text  = (isset($settings_static_texts['logged_in_users_message_text']) && $settings_static_texts['logged_in_users_message_text'] != '') ? stripslashes( esc_attr( $settings_static_texts['logged_in_users_message_text'] ) ) : 'You must log in to pass this quiz.';
         $quiz_schedule_start_message_text  = (isset($settings_static_texts['quiz_schedule_start_message_text']) && $settings_static_texts['quiz_schedule_start_message_text'] != '') ? stripslashes( esc_attr( $settings_static_texts['quiz_schedule_start_message_text'] ) ) : 'This Quiz will start on';
         $created_by_text  = (isset($settings_static_texts['created_by_text']) && $settings_static_texts['created_by_text'] != '') ? stripslashes( esc_attr( $settings_static_texts['created_by_text'] ) ) : 'Created by';
+        $quiz_expired_message_text  = (isset($settings_static_texts['quiz_expired_message_text']) && $settings_static_texts['quiz_expired_message_text'] != '') ? stripslashes( esc_attr( $settings_static_texts['quiz_expired_message_text'] ) ) : 'The quiz has expired.';
 
         if ($wrong_shortcode_text === 'Wrong shortcode initialized') {
             $wrong_shortcode_text = __('Wrong shortcode initialized', 'quiz-maker');
@@ -790,6 +791,10 @@ class Quiz_Maker_Public
             $created_by_text = __('Created by', 'quiz-maker');
         }
 
+        if ($quiz_expired_message_text === 'The quiz has expired.') {
+            $quiz_expired_message_text = __('The quiz has expired.', 'quiz-maker');
+        }
+
         $texts = array(
             'wrongShortcode'                => $wrong_shortcode_text,
             'enterPassword'                 => $enter_password_text,
@@ -809,6 +814,7 @@ class Quiz_Maker_Public
             'loggedInUsersMessageText'      => $logged_in_users_message_text,
             'quizScheduleStartMessageText'  => $quiz_schedule_start_message_text,
             'createdByText'                 => $created_by_text,
+            'quizExpiredMessageText'        => $quiz_expired_message_text,
         );
 
         return $texts;
@@ -3345,7 +3351,7 @@ class Quiz_Maker_Public
             }
         }
 
-        $expired_quiz_message = "<p class='ays-fs-subtitle'>" . __('The quiz has expired.', 'quiz-maker') . "</p>";
+        $expired_quiz_message = "<p class='ays-fs-subtitle'>" . esc_html($this->default_texts['quizExpiredMessageText']) . "</p>";
 
         if (isset($options['active_date_check']) && $options['active_date_check'] == "on") {
             $active_date_check = true;
@@ -3426,7 +3432,7 @@ class Quiz_Maker_Public
                 }else{
                     $expired_quiz_message = "<div class='step active-step'>
                         <div class='ays-abs-fs'>
-                            <p class='ays-fs-subtitle'>" . __('The quiz has expired.', 'quiz-maker') . "</p>
+                            <p class='ays-fs-subtitle'>" . esc_html($this->default_texts['quizExpiredMessageText']) . "</p>
                         </div>
                     </div>";
                 }
