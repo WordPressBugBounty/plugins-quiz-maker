@@ -1359,6 +1359,9 @@ class Quiz_Maker_Public
         // Question Image border radius
         $quiz_question_image_border_radius = (isset($options[ 'quiz_question_image_border_radius' ]) && $options[ 'quiz_question_image_border_radius' ] != '') ? absint ( stripslashes( $options[ 'quiz_question_image_border_radius' ] ) ) : 0;
 
+        // Question Image border radius | Mobile
+        $quiz_question_image_mobile_border_radius = (isset($options[ 'quiz_question_image_mobile_border_radius' ]) && $options[ 'quiz_question_image_mobile_border_radius' ] != '') ? absint ( stripslashes( $options[ 'quiz_question_image_mobile_border_radius' ] ) ) : $quiz_question_image_border_radius;
+
 
         /*
         ==========================================
@@ -4718,6 +4721,10 @@ class Quiz_Maker_Public
 
                 #ays-quiz-container-" . $id . " .ays_quiz_question p {
                     font-size: ".$question_mobile_font_size."px;
+                }
+
+                #ays-quiz-container-" . $id . " .ays-image-question-img > img {
+                    border-radius: " . $quiz_question_image_mobile_border_radius . "px !important;
                 }
 
                 #ays-quiz-container-" . $id . " .select2-container,

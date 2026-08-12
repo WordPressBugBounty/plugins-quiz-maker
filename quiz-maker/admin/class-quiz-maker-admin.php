@@ -2293,6 +2293,7 @@ class Quiz_Maker_Admin
             'quiz_quest_explanation_mobile_font_weight'         => $quick_quiz_quest_explanation_mobile_font_weight,
             'quiz_right_answers_mobile_font_weight'             => $quick_quiz_right_answers_mobile_font_weight,
             'quiz_question_image_border_radius'                 => 0,
+            'quiz_question_image_mobile_border_radius'          => 0,
             'quiz_quest_explanation_mobile_text_transform'      => $quick_quiz_quest_explanation_mobile_text_transform,
             'quiz_quest_explanation_mobile_text_decoration'     => $quick_quiz_quest_explanation_mobile_text_decoration,
             'quiz_quest_explanation_mobile_letter_spacing'      => $quick_quiz_quest_explanation_mobile_letter_spacing,

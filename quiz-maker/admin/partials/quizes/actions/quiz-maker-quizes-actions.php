@@ -287,6 +287,7 @@ $options = array(
     'quiz_quest_explanation_mobile_font_weight'         => "normal",
     'quiz_right_answers_mobile_font_weight'             => "normal",
     'quiz_question_image_border_radius'                 => 0,
+    'quiz_question_image_mobile_border_radius'          => 0,
 
 );
 
@@ -1649,6 +1650,9 @@ $quiz_right_answers_mobile_font_weight = (isset($options[ 'quiz_right_answers_mo
 
 // Question Image border radius
 $quiz_question_image_border_radius = (isset($options[ 'quiz_question_image_border_radius' ]) && $options[ 'quiz_question_image_border_radius' ] != '') ? absint ( stripslashes( $options[ 'quiz_question_image_border_radius' ] ) ) : 0;
+
+// Question Image border radius | Mobile
+$quiz_question_image_mobile_border_radius = (isset($options[ 'quiz_question_image_mobile_border_radius' ]) && $options[ 'quiz_question_image_mobile_border_radius' ] != '') ? absint ( stripslashes( $options[ 'quiz_question_image_mobile_border_radius' ] ) ) : $quiz_question_image_border_radius;
 
 // Wrong answer font weight | Mobile
 $quiz_wrong_answers_mobile_font_weight = (isset($options[ 'quiz_wrong_answers_mobile_font_weight' ]) && $options[ 'quiz_wrong_answers_mobile_font_weight' ] != '') ? stripslashes ( esc_attr( $options[ 'quiz_wrong_answers_mobile_font_weight' ] ) ) : $quiz_wrong_answers_font_weight;
@@ -3099,18 +3103,45 @@ $buttons_mobile_border_radius = (isset($options['buttons_mobile_border_radius'])
                                                 </div>
                                                 <hr/>
                                                 <div class="form-group row">
-                                                    <div class="col-sm-12 ays_quiz_display_flex_width">
-                                                        <div>
-                                                            <label for="ays_quiz_question_image_border_radius">
-                                                                <?php echo esc_html__('Image border radius','quiz-maker'); ?>
-                                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Set the border radius of the question image in pixels. It accepts only number values.','quiz-maker'); ?>">
-                                                                    <i class="ays_fa ays_fa_info_circle"></i>
-                                                                </a>
-                                                            </label>
-                                                            <input type="number" class="ays-text-input ays-text-input-short" id="ays_quiz_question_image_border_radius" name="ays_quiz_question_image_border_radius" value="<?php echo intval($quiz_question_image_border_radius); ?>"/>
+                                                    <div class="col-sm-12" style="margin-bottom: 10px;">
+                                                        <label for="ays_quiz_question_image_border_radius">
+                                                            <?php echo esc_html__('Image border radius','quiz-maker'); ?>
+                                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Set the border radius of the question image in pixels. It accepts only number values.','quiz-maker'); ?>">
+                                                                <i class="ays_fa ays_fa_info_circle"></i>
+                                                            </a>
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-sm-12">
+                                                        <div class="row">
+                                                            <div class="col-sm-5">
+                                                                <label for="ays_quiz_question_image_border_radius">
+                                                                    <?php echo esc_html__('On desktop', 'quiz-maker'); ?>
+                                                                </label>
+                                                            </div>
+                                                            <div class="col-sm-7 ays_quiz_display_flex_width">
+                                                                <div>
+                                                                    <input type="number" class="ays-text-input" id="ays_quiz_question_image_border_radius" name="ays_quiz_question_image_border_radius" value="<?php echo intval($quiz_question_image_border_radius); ?>"/>
+                                                                </div>
+                                                                <div class="ays_quiz_dropdown_max_width ays-display-flex" style="align-items: flex-start;">
+                                                                    <input type="text" value="px" class='ays-quiz-form-hint-for-size' disabled>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                        <div class="ays_quiz_dropdown_max_width ays-display-flex" style="align-items: end;">
-                                                            <input type="text" value="px" class='ays-quiz-form-hint-for-size' disabled>
+                                                        <hr>
+                                                        <div class="row">
+                                                            <div class="col-sm-5">
+                                                                <label for="ays_quiz_question_image_mobile_border_radius">
+                                                                    <?php echo esc_html__('On mobile', 'quiz-maker'); ?>
+                                                                </label>
+                                                            </div>
+                                                            <div class="col-sm-7 ays_quiz_display_flex_width">
+                                                                <div>
+                                                                    <input type="number" class="ays-text-input" id="ays_quiz_question_image_mobile_border_radius" name="ays_quiz_question_image_mobile_border_radius" value="<?php echo intval($quiz_question_image_mobile_border_radius); ?>"/>
+                                                                </div>
+                                                                <div class="ays_quiz_dropdown_max_width ays-display-flex" style="align-items: flex-start;">
+                                                                    <input type="text" value="px" class='ays-quiz-form-hint-for-size' disabled>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>

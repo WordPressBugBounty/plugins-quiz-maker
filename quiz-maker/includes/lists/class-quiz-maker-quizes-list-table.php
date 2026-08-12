@@ -1172,6 +1172,9 @@ class Quizes_List_Table extends WP_List_Table{
             // Question Image border radius
             $quiz_question_image_border_radius = (isset($_REQUEST['ays_quiz_question_image_border_radius']) && $_REQUEST['ays_quiz_question_image_border_radius'] != '') ? absint( stripslashes( $_REQUEST['ays_quiz_question_image_border_radius'] ) ) : 0;
 
+            // Question Image border radius | Mobile
+            $quiz_question_image_mobile_border_radius = (isset($_REQUEST['ays_quiz_question_image_mobile_border_radius']) && $_REQUEST['ays_quiz_question_image_mobile_border_radius'] != '') ? absint( stripslashes( $_REQUEST['ays_quiz_question_image_mobile_border_radius'] ) ) : $quiz_question_image_border_radius;
+
             // Wrong answer font weight | Mobile
             $quiz_wrong_answers_mobile_font_weight = (isset($_REQUEST['ays_quiz_wrong_answers_mobile_font_weight']) && $_REQUEST['ays_quiz_wrong_answers_mobile_font_weight'] != '') ? stripslashes( sanitize_text_field( $_REQUEST['ays_quiz_wrong_answers_mobile_font_weight'] ) ) : 'normal';
 
@@ -1452,6 +1455,7 @@ class Quizes_List_Table extends WP_List_Table{
                 'quiz_quest_explanation_mobile_font_weight'         => $quiz_quest_explanation_mobile_font_weight,
                 'quiz_right_answers_mobile_font_weight'             => $quiz_right_answers_mobile_font_weight,
                 'quiz_question_image_border_radius'                 => $quiz_question_image_border_radius,
+                'quiz_question_image_mobile_border_radius'          => $quiz_question_image_mobile_border_radius,
                 'quiz_wrong_answers_mobile_font_weight'             => $quiz_wrong_answers_mobile_font_weight,
                 'buttons_mobile_border_radius'                      => $buttons_mobile_border_radius,
             );
