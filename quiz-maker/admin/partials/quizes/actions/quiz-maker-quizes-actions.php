@@ -423,8 +423,8 @@ if ( isset( $id ) && !is_null( $id ) ) {
     $prev_quiz_id = (isset( $prev_quiz['id'] ) && $prev_quiz['id'] != "") ? absint( $prev_quiz['id'] ) : null;
 }
 
-$wp_general_settings_url = admin_url( 'options-general.php' );
-$quiz_category_page_url  = admin_url( 'admin.php?page=quiz-maker-quiz-categories' );
+$wp_general_settings_url    = admin_url( 'options-general.php' );
+$quiz_category_page_url     = admin_url( 'admin.php?page=quiz-maker-quiz-categories' );
 $question_add_new_page_url  = admin_url( 'admin.php?page=quiz-maker-questions&action=add' );
 
 $quiz_message_vars = array(

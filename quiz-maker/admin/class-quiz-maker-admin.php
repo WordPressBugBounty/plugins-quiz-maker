@@ -1495,6 +1495,8 @@ class Quiz_Maker_Admin
         $quick_quiz_show_login_form                             = 'off';
         $quick_quiz_enable_tackers_count                        = 'off';
         $quick_quiz_tackers_count                               = '';
+        $quick_quiz_enable_password                             = 'off';
+        $quick_quiz_password                                    = '';
 
         // Styles Settings
         $quick_quiz_width                                       = 800;
@@ -1987,6 +1989,12 @@ class Quiz_Maker_Admin
             
             // Limitation count of takers | Count
             $quick_quiz_tackers_count = (isset($_REQUEST['ays_quick_quiz_tackers_count']) && $_REQUEST['ays_quick_quiz_tackers_count'] != '') ? absint( stripslashes( $_REQUEST['ays_quick_quiz_tackers_count'] ) ) : '';
+
+            // Password for passing quiz
+            $quick_quiz_enable_password = (isset( $_REQUEST['ays_quick_quiz_enable_password'] ) && $_REQUEST['ays_quick_quiz_enable_password'] == "on") ? sanitize_text_field( stripslashes( $_REQUEST['ays_quick_quiz_enable_password'] ) ) : "off";
+
+            // Password for passing quiz | Password
+            $quick_quiz_password = (isset($_REQUEST['ays_quick_quiz_password']) && $_REQUEST['ays_quick_quiz_password'] != '') ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_password'] ) ) : '';
         }
         
         foreach ($questions as $question_key => $question) {
@@ -2160,6 +2168,8 @@ class Quiz_Maker_Admin
             'enable_see_result_confirm_box'                     => $quick_quiz_enable_see_result_confirm_box,
             'enable_tackers_count'                              => $quick_quiz_enable_tackers_count,
             'tackers_count'                                     => $quick_quiz_tackers_count,
+            'enable_password'                                   => $quick_quiz_enable_password,
+            'password_quiz'                                     => $quick_quiz_password,
             'enable_pass_score'                                 => $quick_quiz_enable_pass_score,
             'pass_score'                                        => $quick_quiz_pass_score,
             'pass_score_message'                                => $pass_score_message_default_value,

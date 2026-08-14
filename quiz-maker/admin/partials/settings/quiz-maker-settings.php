@@ -84,11 +84,11 @@
     $question_reports_title_length = (isset($options['question_reports_title_length']) && intval($options['question_reports_title_length']) != 0) ? absint(intval($options['question_reports_title_length'])) : 5;
             
     $default_leadboard_column_names = array(
-        "pos"           => __( 'Pos.', 'quiz-maker' ),
-        "name"          => __( 'Name', 'quiz-maker' ),
-        "score"         => __( 'Score', 'quiz-maker' ),
-        "duration"      => __( 'Duration', 'quiz-maker' ),
-        "points"        => __( 'Points', 'quiz-maker' ),
+        "pos"                   => __( 'Pos.', 'quiz-maker' ),
+        "name"                  => __( 'Name', 'quiz-maker' ),
+        "score"                 => __( 'Score', 'quiz-maker' ),
+        "duration"              => __( 'Duration', 'quiz-maker' ),
+        "points"                => __( 'Points', 'quiz-maker' ),
     );
 
     $default_user_page_column_names = array(
@@ -120,7 +120,7 @@
     $exit_button            = (isset($buttons_texts['exit_button']) && $buttons_texts['exit_button'] != '') ? stripslashes( esc_attr( $buttons_texts['exit_button'] ) ) : 'Exit' ;
     $check_button           = (isset($buttons_texts['check_button']) && $buttons_texts['check_button'] != '') ? stripslashes( esc_attr( $buttons_texts['check_button'] ) ) : 'Check' ;
     $login_button           = (isset($buttons_texts['login_button']) && $buttons_texts['login_button'] != '') ? stripslashes( esc_attr( $buttons_texts['login_button'] ) ) : 'Log In' ;
-    $report_submit_button = (isset($buttons_texts['report_submit_button']) && $buttons_texts['report_submit_button'] != '') ? stripslashes( esc_attr( $buttons_texts['report_submit_button'] ) ) : 'Submit' ;
+    $report_submit_button   = (isset($buttons_texts['report_submit_button']) && $buttons_texts['report_submit_button'] != '') ? stripslashes( esc_attr( $buttons_texts['report_submit_button'] ) ) : 'Submit' ;
     
     //Aro end
 
@@ -139,9 +139,9 @@
 
     $report_question_text              = (isset($default_texts['report_question_text']) && $default_texts['report_question_text'] != '') ? stripslashes( esc_attr( $default_texts['report_question_text'] ) ) : 'Report a question';
     $whats_wrong_report_question_text  = (isset($default_texts['whats_wrong_report_question_text']) && $default_texts['whats_wrong_report_question_text'] != '') ? stripslashes( esc_attr( $default_texts['whats_wrong_report_question_text'] ) ) : 'What’s wrong with this question?';
-    $question_report_submitted_text  = (isset($default_texts['question_report_submitted_text']) && $default_texts['question_report_submitted_text'] != '') ? stripslashes( esc_attr( $default_texts['question_report_submitted_text'] ) ) : 'Report has been submitted successfully';
-    $empty_report_text  = (isset($default_texts['empty_report_text']) && $default_texts['empty_report_text'] != '') ? stripslashes( esc_attr( $default_texts['empty_report_text'] ) ) : 'You cannot submit an empty report. Please add some details.';
-    $question_report_icon_text  = (isset($default_texts['question_report_icon_text']) && $default_texts['question_report_icon_text'] != '') ? stripslashes( esc_attr( $default_texts['question_report_icon_text'] ) ) : 'Report Question';
+    $question_report_submitted_text    = (isset($default_texts['question_report_submitted_text']) && $default_texts['question_report_submitted_text'] != '') ? stripslashes( esc_attr( $default_texts['question_report_submitted_text'] ) ) : 'Report has been submitted successfully';
+    $empty_report_text                 = (isset($default_texts['empty_report_text']) && $default_texts['empty_report_text'] != '') ? stripslashes( esc_attr( $default_texts['empty_report_text'] ) ) : 'You cannot submit an empty report. Please add some details.';
+    $question_report_icon_text         = (isset($default_texts['question_report_icon_text']) && $default_texts['question_report_icon_text'] != '') ? stripslashes( esc_attr( $default_texts['question_report_icon_text'] ) ) : 'Report Question';
     $start_button_loading_text  = (isset($default_texts['start_button_loading_text']) && $default_texts['start_button_loading_text'] != '') ? stripslashes( esc_attr( $default_texts['start_button_loading_text'] ) ) : 'Loading ...';
     $created_on_text  = (isset($default_texts['created_on_text']) && $default_texts['created_on_text'] != '') ? stripslashes( esc_attr( $default_texts['created_on_text'] ) ) : 'Created on';
     $logged_in_users_message_text  = (isset($default_texts['logged_in_users_message_text']) && $default_texts['logged_in_users_message_text'] != '') ? stripslashes( esc_attr( $default_texts['logged_in_users_message_text'] ) ) : 'You must log in to pass this quiz.';

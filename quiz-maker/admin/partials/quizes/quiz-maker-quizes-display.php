@@ -1290,6 +1290,29 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                 </div>
                                             </div>
                                         </div>
+                                        <hr/>
+                                        <div class="form-group row ays_toggle_parent">
+                                            <div class="col-sm-4">
+                                                <label for="ays_quick_quiz_enable_password">
+                                                    <?php echo esc_html__('Password for passing quiz', 'quiz-maker'); ?>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-1">
+                                                <input type="checkbox" class="ays-enable-timer1 ays_toggle_checkbox" id="ays_quick_quiz_enable_password" name="ays_quick_quiz_enable_password" value="on" />
+                                            </div>
+                                            <div class="col-sm-7 ays_toggle_target ays_divider_left display_none">
+                                                <div class="form-group row">
+                                                    <div class="col-sm-3">
+                                                        <label for="ays_quick_quiz_password">
+                                                            <?php echo esc_html__('Password','quiz-maker'); ?>
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" name="ays_quick_quiz_password" id="ays_quick_quiz_password" class="ays-enable-timer ays-text-input" value="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div><!-- Limitation of Users Tab -->
                                 <div class="ays-quiz-accordion-options-main-container" data-collapsed="false">
