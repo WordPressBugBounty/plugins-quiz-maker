@@ -195,7 +195,9 @@ $question_types = array(
     "true_or_false"         => esc_html__("True/False", 'quiz-maker'),
     "custom"                => esc_html__("Info Banner (PRO)", 'quiz-maker'),
     "fill_in_blank"         => esc_html__("Fill in the blanks (PRO)", 'quiz-maker'),
+    "dropdown_fill_in_blank" => __("Dropdown Fill in the Blanks (PRO)", 'quiz-maker'),
     "matching"              => esc_html__("Matching (PRO)", 'quiz-maker'),
+    "ranking"               => __("Ranking (PRO)", 'quiz-maker'),
     "upload_file"           => esc_html__("Upload File (PRO)", 'quiz-maker'),
 );
 
@@ -210,7 +212,9 @@ $question_types_icon_url = array(
     "true_or_false"         => AYS_QUIZ_ADMIN_URL ."/images/QuestionTypes/quiz-maker-true-or-false-type.svg",
     "custom"                => AYS_QUIZ_ADMIN_URL ."/images/QuestionTypes/quiz-maker-custom-type.svg",
     "fill_in_blank"         => AYS_QUIZ_ADMIN_URL ."/images/QuestionTypes/quiz-maker-fill-in-blank-type.svg",
+    "dropdown_fill_in_blank" => AYS_QUIZ_ADMIN_URL ."/images/QuestionTypes/quiz-maker-dropdown-fill-in-blank-type.svg",
     "matching"              => AYS_QUIZ_ADMIN_URL ."/images/QuestionTypes/quiz-maker-matching-type.svg",
+    "ranking"               => AYS_QUIZ_ADMIN_URL ."/images/QuestionTypes/quiz-maker-ranking-type.svg",
     "upload_file"           => AYS_QUIZ_ADMIN_URL ."/images/QuestionTypes/quiz-maker-upload-file-type.svg",
 );
 $true_or_false_arr = array(
@@ -505,7 +509,7 @@ $user_explanation = (isset($question["user_explanation"]) && $question["user_exp
                                 foreach($question_types as $type => $label):
                                 $selected = $question["type"] == $type ? "selected" : "";
                                 $ays_question_disabled = "";
-                                if ( $type == "custom" || $type == "fill_in_blank" || $type == "matching" || $type == "upload_file" ) {
+                                if ( $type == "custom" || $type == "fill_in_blank" || $type == "matching" || $type == "upload_file" || $type == "dropdown_fill_in_blank" || $type == "ranking" ) {
                                     $ays_question_disabled = "disabled title='". esc_attr(__( "This feature is available only in PRO version", 'quiz-maker' ) ) ."' ";
                                 }
                             ?>

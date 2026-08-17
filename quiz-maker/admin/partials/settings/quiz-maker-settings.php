@@ -29,7 +29,9 @@
         "true_or_false"     => __("True/False", 'quiz-maker'),
         "custom"            => __("Info Banner (PRO)", 'quiz-maker'),
         "fill_in_blank"     => __("Fill in the blanks (PRO)", 'quiz-maker'),
+        "dropdown_fill_in_blank" => __("Dropdown Fill in the Blanks (PRO)", 'quiz-maker'),
         "matching"          => __("Matching (PRO)", 'quiz-maker'),
+        "ranking"           => __("Ranking (PRO)", 'quiz-maker'),
         "upload_file"       => __("Upload File (PRO)", 'quiz-maker'),
     );
 
@@ -44,7 +46,9 @@
         "true_or_false"     => AYS_QUIZ_ADMIN_URL ."/images/QuestionTypes/quiz-maker-true-or-false-type.svg",
         "custom"            => AYS_QUIZ_ADMIN_URL ."/images/QuestionTypes/quiz-maker-custom-type.svg",
         "fill_in_blank"     => AYS_QUIZ_ADMIN_URL ."/images/QuestionTypes/quiz-maker-fill-in-blank-type.svg",
+        "dropdown_fill_in_blank" => AYS_QUIZ_ADMIN_URL ."/images/QuestionTypes/quiz-maker-dropdown-fill-in-blank-type.svg",
         "matching"          => AYS_QUIZ_ADMIN_URL ."/images/QuestionTypes/quiz-maker-matching-type.svg",
+        "ranking"           => AYS_QUIZ_ADMIN_URL ."/images/QuestionTypes/quiz-maker-ranking-type.svg",
         "upload_file"       => AYS_QUIZ_ADMIN_URL ."/images/QuestionTypes/quiz-maker-upload-file-type.svg",
     );
 
@@ -575,7 +579,7 @@
                                             foreach($question_types as $type => $label):
                                             $selected = $question_default_type == $type ? "selected" : "";
                                             $ays_question_disabled = "";
-                                            if ( $type == "custom" || $type == "fill_in_blank" || $type == "matching" || $type == "upload_file" ) {
+                                            if ( $type == "custom" || $type == "fill_in_blank" || $type == "matching" || $type == "upload_file" || $type == "dropdown_fill_in_blank" || $type == "ranking" ) {
                                                 $ays_question_disabled = "disabled title='". __( "This feature is available only in PRO version", 'quiz-maker' ) ."' ";
                                             }
                                         ?>

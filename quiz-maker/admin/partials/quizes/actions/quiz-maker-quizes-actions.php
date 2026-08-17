@@ -6267,6 +6267,34 @@ $buttons_mobile_border_radius = (isset($options['buttons_mobile_border_radius'])
                         <hr/>
                         <div class="form-group row" style="margin:0px;">
                             <div class="col-sm-12 only_pro" style="padding:10px 0 0 10px;">
+                                <div class="pro_features" style="justify-content:flex-end;">
+
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-4">
+                                        <label for="ays_enable_manual_grading">
+                                            <?php echo __('Enable manual grading', 'quiz-maker'); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Hold results for a teacher or administrator to grade before publishing the score.', 'quiz-maker'); ?>"><i class="ays_fa ays_fa_info_circle"></i></a>
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input type="checkbox" class="ays-enable-timer1">
+                                    </div>
+                                </div>
+                                <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-enable-manual-grading-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
+                                    <div class="ays-quiz-new-upgrade-button-box">
+                                        <div>
+                                            <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
+                                            <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg' ); ?>" class="ays-quiz-new-upgrade-button-hover">
+                                        </div>
+                                        <div class="ays-quiz-new-upgrade-button"><?php echo esc_html__("Upgrade", "quiz-maker"); ?></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div> <!-- Navigation Bar -->
+                        <hr/>
+                        <div class="form-group row" style="margin:0px;">
+                            <div class="col-sm-12 only_pro" style="padding:10px 0 0 10px;">
                                 <div class="pro_features pro_features_popup">
                                     <div class="pro-features-popup-conteiner">
                                         <div class="pro-features-popup-title">
@@ -6307,6 +6335,56 @@ $buttons_mobile_border_radius = (isset($options['buttons_mobile_border_radius'])
                                         <input type="checkbox" class="ays-enable-timerl" value="on" tabindex="-1"/>
                                     </div>
                                     <div class="col-sm-7 ays_toggle_target ays_divider_left">
+                                        <div class="form-group row">
+                                            <div class="col-sm-4">
+                                                <label>
+                                                    <?php echo esc_html__( 'Navigation placement', 'quiz-maker' ); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__( 'Choose whether to display the navigation bar inside or outside the quiz container. In fullscreen mode, the navigation bar is always displayed inside the quiz.', 'quiz-maker' ); ?>">
+                                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                                    </a>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <select class="ays-text-input ays-text-input-short">
+                                                    <option value="outside"><?php echo esc_html__( 'Outside quiz', 'quiz-maker' ); ?></option>
+                                                    <option value="inside"><?php echo esc_html__( 'Inside quiz', 'quiz-maker' ); ?></option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="form-group row">
+                                            <div class="col-sm-4">
+                                                <label>
+                                                    <?php echo esc_html__( 'Navigation position', 'quiz-maker' ); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__( 'Choose where the navigation bar will be displayed in the quiz: top, left, right, or bottom. On mobile devices, the navigation bar is always displayed at the top.', 'quiz-maker' ); ?>">
+                                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                                    </a>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <select class="ays-text-input ays-text-input-short">
+                                                    <option><?php echo esc_html__( 'Right', 'quiz-maker' ); ?></option>
+                                                    <option><?php echo esc_html__( 'Left', 'quiz-maker' ); ?></option>
+                                                    <option><?php echo esc_html__( 'Top', 'quiz-maker' ); ?></option>
+                                                    <option><?php echo esc_html__( 'Bottom', 'quiz-maker' ); ?></option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="form-group row">
+                                            <div class="col-sm-4">
+                                                <label>
+                                                    <?php echo esc_html__( 'Enable navigation bar scroll', 'quiz-maker' ); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__( 'Display the navigation bar as a single scrollable row or column based on the selected position.', 'quiz-maker' ); ?>">
+                                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                                    </a>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <input type="checkbox" />
+                                            </div>
+                                        </div>
+                                        <hr>
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label for="ays_enable_navigation_bar_marked_questions">
