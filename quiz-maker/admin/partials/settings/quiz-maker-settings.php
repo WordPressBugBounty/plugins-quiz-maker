@@ -19,37 +19,37 @@
     $ays_users_roles = $wp_roles->role_names;
 
     $question_types = array(
-        "radio"             => __("Radio", 'quiz-maker'),
-        "checkbox"          => __("Checkbox( Multiple )", 'quiz-maker'),
-        "select"            => __("Dropdown", 'quiz-maker'),
-        "text"              => __("Text", 'quiz-maker'),
-        "short_text"        => __("Short Text", 'quiz-maker'),
-        "number"            => __("Number", 'quiz-maker'),
-        "date"              => __("Date", 'quiz-maker'),
-        "true_or_false"     => __("True/False", 'quiz-maker'),
-        "custom"            => __("Info Banner (PRO)", 'quiz-maker'),
-        "fill_in_blank"     => __("Fill in the blanks (PRO)", 'quiz-maker'),
-        "dropdown_fill_in_blank" => __("Dropdown Fill in the Blanks (PRO)", 'quiz-maker'),
-        "matching"          => __("Matching (PRO)", 'quiz-maker'),
-        "ranking"           => __("Ranking (PRO)", 'quiz-maker'),
-        "upload_file"       => __("Upload File (PRO)", 'quiz-maker'),
+        "radio"                     => __("Radio", 'quiz-maker'),
+        "checkbox"                  => __("Checkbox( Multiple )", 'quiz-maker'),
+        "select"                    => __("Dropdown", 'quiz-maker'),
+        "text"                      => __("Text", 'quiz-maker'),
+        "short_text"                => __("Short Text", 'quiz-maker'),
+        "number"                    => __("Number", 'quiz-maker'),
+        "date"                      => __("Date", 'quiz-maker'),
+        "true_or_false"             => __("True/False", 'quiz-maker'),
+        "custom"                    => __("Info Banner (PRO)", 'quiz-maker'),
+        "fill_in_blank"             => __("Fill in the blanks (PRO)", 'quiz-maker'),
+        "dropdown_fill_in_blank"    => __("Dropdown Fill in the Blanks (PRO)", 'quiz-maker'),
+        "matching"                  => __("Matching (PRO)", 'quiz-maker'),
+        "ranking"                   => __("Ranking (PRO)", 'quiz-maker'),
+        "upload_file"               => __("Upload File (PRO)", 'quiz-maker'),
     );
 
     $question_types_icon_url = array(
-        "radio"             => AYS_QUIZ_ADMIN_URL ."/images/QuestionTypes/quiz-maker-radio-type.svg",
-        "checkbox"          => AYS_QUIZ_ADMIN_URL ."/images/QuestionTypes/quiz-maker-checkbox-type.svg",
-        "select"            => AYS_QUIZ_ADMIN_URL ."/images/QuestionTypes/quiz-maker-dropdown-type.svg",
-        "text"              => AYS_QUIZ_ADMIN_URL ."/images/QuestionTypes/quiz-maker-text-type.svg",
-        "short_text"        => AYS_QUIZ_ADMIN_URL ."/images/QuestionTypes/quiz-maker-short-text-type.svg",
-        "number"            => AYS_QUIZ_ADMIN_URL ."/images/QuestionTypes/quiz-maker-number-type.svg",
-        "date"              => AYS_QUIZ_ADMIN_URL ."/images/QuestionTypes/quiz-maker-date-type.svg",
-        "true_or_false"     => AYS_QUIZ_ADMIN_URL ."/images/QuestionTypes/quiz-maker-true-or-false-type.svg",
-        "custom"            => AYS_QUIZ_ADMIN_URL ."/images/QuestionTypes/quiz-maker-custom-type.svg",
-        "fill_in_blank"     => AYS_QUIZ_ADMIN_URL ."/images/QuestionTypes/quiz-maker-fill-in-blank-type.svg",
-        "dropdown_fill_in_blank" => AYS_QUIZ_ADMIN_URL ."/images/QuestionTypes/quiz-maker-dropdown-fill-in-blank-type.svg",
-        "matching"          => AYS_QUIZ_ADMIN_URL ."/images/QuestionTypes/quiz-maker-matching-type.svg",
-        "ranking"           => AYS_QUIZ_ADMIN_URL ."/images/QuestionTypes/quiz-maker-ranking-type.svg",
-        "upload_file"       => AYS_QUIZ_ADMIN_URL ."/images/QuestionTypes/quiz-maker-upload-file-type.svg",
+        "radio"                     => AYS_QUIZ_ADMIN_URL ."/images/QuestionTypes/quiz-maker-radio-type.svg",
+        "checkbox"                  => AYS_QUIZ_ADMIN_URL ."/images/QuestionTypes/quiz-maker-checkbox-type.svg",
+        "select"                    => AYS_QUIZ_ADMIN_URL ."/images/QuestionTypes/quiz-maker-dropdown-type.svg",
+        "text"                      => AYS_QUIZ_ADMIN_URL ."/images/QuestionTypes/quiz-maker-text-type.svg",
+        "short_text"                => AYS_QUIZ_ADMIN_URL ."/images/QuestionTypes/quiz-maker-short-text-type.svg",
+        "number"                    => AYS_QUIZ_ADMIN_URL ."/images/QuestionTypes/quiz-maker-number-type.svg",
+        "date"                      => AYS_QUIZ_ADMIN_URL ."/images/QuestionTypes/quiz-maker-date-type.svg",
+        "true_or_false"             => AYS_QUIZ_ADMIN_URL ."/images/QuestionTypes/quiz-maker-true-or-false-type.svg",
+        "custom"                    => AYS_QUIZ_ADMIN_URL ."/images/QuestionTypes/quiz-maker-custom-type.svg",
+        "fill_in_blank"             => AYS_QUIZ_ADMIN_URL ."/images/QuestionTypes/quiz-maker-fill-in-blank-type.svg",
+        "dropdown_fill_in_blank"    => AYS_QUIZ_ADMIN_URL ."/images/QuestionTypes/quiz-maker-dropdown-fill-in-blank-type.svg",
+        "matching"                  => AYS_QUIZ_ADMIN_URL ."/images/QuestionTypes/quiz-maker-matching-type.svg",
+        "ranking"                   => AYS_QUIZ_ADMIN_URL ."/images/QuestionTypes/quiz-maker-ranking-type.svg",
+        "upload_file"               => AYS_QUIZ_ADMIN_URL ."/images/QuestionTypes/quiz-maker-upload-file-type.svg",
     );
 
     $quiz_allowed_html = Quiz_Maker_Data::ays_quiz_allowed_html();
@@ -152,6 +152,7 @@
     $quiz_schedule_start_message_text  = (isset($default_texts['quiz_schedule_start_message_text']) && $default_texts['quiz_schedule_start_message_text'] != '') ? stripslashes( esc_attr( $default_texts['quiz_schedule_start_message_text'] ) ) : 'This Quiz will start on';
     $created_by_text  = (isset($default_texts['created_by_text']) && $default_texts['created_by_text'] != '') ? stripslashes( esc_attr( $default_texts['created_by_text'] ) ) : 'Created by';
     $quiz_expired_message_text  = (isset($default_texts['quiz_expired_message_text']) && $default_texts['quiz_expired_message_text'] != '') ? stripslashes( esc_attr( $default_texts['quiz_expired_message_text'] ) ) : 'The quiz has expired.';
+    $already_passed_quiz_message_text  = (isset($default_texts['already_passed_quiz_message_text']) && $default_texts['already_passed_quiz_message_text'] != '') ? stripslashes( esc_attr( $default_texts['already_passed_quiz_message_text'] ) ) : 'You have already passed this quiz.';
     // Default texts | End
 
 
@@ -4637,6 +4638,19 @@
                             </div>
                             <div class="col-sm-9">
                                 <input type="text" id="ays_quiz_expired_message_text" name="ays_quiz_expired_message_text" class="ays-text-input" value='<?php echo esc_attr($quiz_expired_message_text); ?>'>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-3">
+                                <label for="ays_already_passed_quiz_message_text">
+                                    <?php echo esc_html__( "Already passed quiz message text", 'quiz-maker' ); ?>
+                                    <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php echo esc_attr__( "Specify the text displayed when a user has already passed the quiz.", 'quiz-maker' ); ?>">
+                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                    </a>
+                                </label>
+                            </div>
+                            <div class="col-sm-9">
+                                <input type="text" id="ays_already_passed_quiz_message_text" name="ays_already_passed_quiz_message_text" class="ays-text-input" value='<?php echo esc_attr($already_passed_quiz_message_text); ?>'>
                             </div>
                         </div>
                         <hr />

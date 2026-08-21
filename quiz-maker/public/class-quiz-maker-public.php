@@ -718,6 +718,7 @@ class Quiz_Maker_Public
         $quiz_schedule_start_message_text  = (isset($settings_static_texts['quiz_schedule_start_message_text']) && $settings_static_texts['quiz_schedule_start_message_text'] != '') ? stripslashes( esc_attr( $settings_static_texts['quiz_schedule_start_message_text'] ) ) : 'This Quiz will start on';
         $created_by_text  = (isset($settings_static_texts['created_by_text']) && $settings_static_texts['created_by_text'] != '') ? stripslashes( esc_attr( $settings_static_texts['created_by_text'] ) ) : 'Created by';
         $quiz_expired_message_text  = (isset($settings_static_texts['quiz_expired_message_text']) && $settings_static_texts['quiz_expired_message_text'] != '') ? stripslashes( esc_attr( $settings_static_texts['quiz_expired_message_text'] ) ) : 'The quiz has expired.';
+        $already_passed_quiz_message_text  = (isset($settings_static_texts['already_passed_quiz_message_text']) && $settings_static_texts['already_passed_quiz_message_text'] != '') ? stripslashes( esc_attr( $settings_static_texts['already_passed_quiz_message_text'] ) ) : 'You have already passed this quiz.';
 
         if ($wrong_shortcode_text === 'Wrong shortcode initialized') {
             $wrong_shortcode_text = __('Wrong shortcode initialized', 'quiz-maker');
@@ -795,6 +796,10 @@ class Quiz_Maker_Public
             $quiz_expired_message_text = __('The quiz has expired.', 'quiz-maker');
         }
 
+        if ($already_passed_quiz_message_text === 'You have already passed this quiz.') {
+            $already_passed_quiz_message_text = __('You have already passed this quiz.', 'quiz-maker');
+        }
+
         $texts = array(
             'wrongShortcode'                => $wrong_shortcode_text,
             'enterPassword'                 => $enter_password_text,
@@ -815,6 +820,7 @@ class Quiz_Maker_Public
             'quizScheduleStartMessageText'  => $quiz_schedule_start_message_text,
             'createdByText'                 => $created_by_text,
             'quizExpiredMessageText'        => $quiz_expired_message_text,
+            'alreadyPassedQuizMessageText'  => $already_passed_quiz_message_text,
         );
 
         return $texts;
@@ -3157,7 +3163,7 @@ class Quiz_Maker_Public
                     }
                 }
 
-                $limitation_message = (isset($options['limitation_message']) && $options['limitation_message'] != '') ? $this->ays_autoembed($options['limitation_message']) : __( 'You have already passed this quiz.', 'quiz-maker' );
+                $limitation_message = (isset($options['limitation_message']) && $options['limitation_message'] != '') ? $this->ays_autoembed($options['limitation_message']) : $this->default_texts['alreadyPassedQuizMessageText'];
                 $limitation_message = $this->replace_message_variables($limitation_message, $message_variables_data);
                 
                 $limit_users_html = $timer_row . "<div style='color:" . $text_color . "' class='ays_block_content'>" .  $limitation_message . "</div><style>form{min-height:0 !important;}</style>";
@@ -6038,10 +6044,15 @@ class Quiz_Maker_Public
                 'title'  => $quiz_title,
             );
             $check_cookie = $this->ays_quiz_check_cookie( $limit_users_attr );
+            $already_passed_quiz_message_text = __( 'You have already passed this quiz.', 'quiz-maker' );
+            if ( $check_cookie ) {
+                $default_texts = self::ays_set_quiz_default_texts( $this->plugin_name, array() );
+                $already_passed_quiz_message_text = $default_texts['alreadyPassedQuizMessageText'];
+            }
             $return_false_status_arr = array(
                 "status" => false,
                 "flag"   => false,
-                "text"   => __( 'You have already passed this quiz.', 'quiz-maker' ),
+                "text"   => $already_passed_quiz_message_text,
             );
 
             if ( $check_cookie ) {

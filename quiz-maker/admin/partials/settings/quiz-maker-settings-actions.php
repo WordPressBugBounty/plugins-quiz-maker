@@ -84,6 +84,7 @@ class Quiz_Maker_Settings_Actions {
             $quiz_schedule_start_message_text   = (isset($_REQUEST['ays_quiz_schedule_start_message_text']) && $_REQUEST['ays_quiz_schedule_start_message_text'] != '') ? sanitize_text_field( stripslashes( $_REQUEST['ays_quiz_schedule_start_message_text'] ) ) : 'This Quiz will start on';
             $created_by_text   = (isset($_REQUEST['ays_quiz_created_by_text']) && $_REQUEST['ays_quiz_created_by_text'] != '') ? sanitize_text_field( stripslashes( $_REQUEST['ays_quiz_created_by_text'] ) ) : 'Created by';
             $quiz_expired_message_text   = (isset($_REQUEST['ays_quiz_expired_message_text']) && $_REQUEST['ays_quiz_expired_message_text'] != '') ? sanitize_text_field( stripslashes( $_REQUEST['ays_quiz_expired_message_text'] ) ) : 'The quiz has expired.';
+            $already_passed_quiz_message_text   = (isset($_REQUEST['ays_already_passed_quiz_message_text']) && $_REQUEST['ays_already_passed_quiz_message_text'] != '') ? sanitize_text_field( stripslashes( $_REQUEST['ays_already_passed_quiz_message_text'] ) ) : 'You have already passed this quiz.';
 
             $default_texts = array(
                 'wrong_shortcode_text'                  => $wrong_shortcode_text,
@@ -105,6 +106,7 @@ class Quiz_Maker_Settings_Actions {
                 'quiz_schedule_start_message_text'      => $quiz_schedule_start_message_text,
                 'created_by_text'                       => $created_by_text,
                 'quiz_expired_message_text'             => $quiz_expired_message_text,
+                'already_passed_quiz_message_text'      => $already_passed_quiz_message_text,
             );
             // Default texts | End
 
