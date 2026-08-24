@@ -1302,13 +1302,24 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                             </div>
                                             <div class="col-sm-7 ays_toggle_target ays_divider_left display_none">
                                                 <div class="form-group row">
-                                                    <div class="col-sm-3">
+                                                    <div class="col-sm-4">
                                                         <label for="ays_quick_quiz_password">
                                                             <?php echo esc_html__('Password','quiz-maker'); ?>
                                                         </label>
                                                     </div>
-                                                    <div class="col-sm-9">
+                                                    <div class="col-sm-8">
                                                         <input type="text" name="ays_quick_quiz_password" id="ays_quick_quiz_password" class="ays-enable-timer ays-text-input" value="">
+                                                    </div>
+                                                </div>
+                                                <hr/>
+                                                <div class="form-group row">
+                                                    <div class="col-sm-4">
+                                                        <label for="ays_quick_quiz_enable_password_visibility">
+                                                            <?php echo esc_html__('Enable toggle password visibility', 'quiz-maker'); ?>
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-sm-8">
+                                                        <input type="checkbox" class="ays-enable-timer1" id="ays_quick_quiz_enable_password_visibility" name="ays_quick_quiz_enable_password_visibility" value="on" />
                                                     </div>
                                                 </div>
                                             </div>
