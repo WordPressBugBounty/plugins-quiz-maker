@@ -211,6 +211,31 @@ class Question_Reports_List_Table extends WP_List_Table{
             }
         }
 
+        $search = isset( $_REQUEST['s'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['s'] ) ) : '';
+        if ( $search !== '' ) {
+            $search_like = '%' . $wpdb->esc_like( $search ) . '%';
+            $search_conditions = array(
+                $wpdb->prepare( ' `id` LIKE %s ', $search_like ),
+                $wpdb->prepare( ' `question_id` LIKE %s ', $search_like ),
+                $wpdb->prepare( ' `report_text` LIKE %s ', $search_like ),
+                $wpdb->prepare( ' `user_id` LIKE %s ', $search_like ),
+                $wpdb->prepare( ' `user_name` LIKE %s ', $search_like ),
+                $wpdb->prepare( ' `user_email` LIKE %s ', $search_like ),
+                $wpdb->prepare(
+                    " EXISTS (
+                        SELECT 1
+                        FROM {$wpdb->prefix}aysquiz_questions AS questions
+                        WHERE questions.id = `question_id`
+                        AND (questions.question LIKE %s OR questions.question_title LIKE %s)
+                    ) ",
+                    $search_like,
+                    $search_like
+                ),
+            );
+
+            $where[] = ' ( ' . implode( ' OR ', $search_conditions ) . ' ) ';
+        }
+
         if( ! empty($where) ){
             $sql = " WHERE " . implode( " AND ", $where );
         }

@@ -36,6 +36,8 @@ $quiz_menu_badge_background = Quiz_Maker_Admin::get_menu_badge_background( $this
                         <form method="post">
                             <?php
                             $this->question_reports_obj->prepare_items();
+                            $search = esc_html__( 'Search', 'quiz-maker' );
+                            $this->question_reports_obj->search_box( $search, 'quiz-maker' );
                             $this->question_reports_obj->display();
                             ?>
                         </form>

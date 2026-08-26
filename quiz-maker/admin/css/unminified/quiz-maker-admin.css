@@ -2758,6 +2758,7 @@ input[name=ays_quiz_theme]{
 .ays-quiz-theme-item {
     text-align: center;
     width: 100%;
+    cursor: pointer;
 }
 .ays_active_theme_image {
 }
@@ -9625,4 +9626,8 @@ div.ays-notice-banner {
 .ays-quiz-general-tip strong {
     color: #1d2327;
     font-weight: 600;
+}
+
+body[class*="page_quiz-maker"] .wrap table.wp-list-table th {
+    font-size: 14px;
 }

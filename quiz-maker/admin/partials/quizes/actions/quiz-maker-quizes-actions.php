@@ -5605,40 +5605,37 @@ $buttons_mobile_border_radius = (isset($options['buttons_mobile_border_radius'])
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <div class="col-sm-12 only_pro" style="padding:10px 0 0 10px;">
-                                        <div class="pro_features" style="justify-content:flex-end;">
-           
+                                    <div class="col-sm-12" style="padding:10px 0 0 10px;">
+                                        <div style="display: flex; align-items: center;">
+                                            <label class="ays_quiz_loader">
+                                                <input type="radio" class="ays-enable-timer1" value="general" checked tabindex="-1" />
+                                                <span><?php echo esc_html__( "General", 'quiz-maker' ); ?></span>
+                                            </label>
+                                            <div class="only_pro custom_pro_features ays-pro-features-v2-main-box ays-pro-features-v2-main-box-themes ays-pro-features-v2-main-box-small" style="background: unset;">
+                                                <div class="ays-pro-features-v2-small-buttons-box" style="right: -20px; top: -20px;">
+                                                    <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=question-bank-by-category-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-pro-features-v2-upgrade-button">
+                                                        <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(AYS_QUIZ_ADMIN_URL); ?>/images/icons/locked_24x24.svg');" data-img-src="<?php echo esc_attr(AYS_QUIZ_ADMIN_URL); ?>/images/icons/locked_24x24.svg"></div>
+                                                    </a>
+                                                </div>
+                                                <label class="ays_quiz_loader" style="background: rgba(53 113 196 / 10%);">
+                                                    <input type="radio" class="ays-enable-timer1" value="by_category" disabled />
+                                                    <span><?php echo esc_html__( "By Category", 'quiz-maker' ); ?></span>
+                                                </label>
+                                            </div>
+                                            <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php echo esc_attr( "<p style='text-indent:10px;margin:0;'>" .
+                                                esc_html__('There are two ways of making question bank system.', 'quiz-maker' ) . "</p><p style='text-indent:10px;margin:0;'><strong>" .
+                                                esc_html__('General', 'quiz-maker' ) . ": </strong>" .
+                                                esc_html__('It will take the specified amount of questions from all the questions you include in this quiz.', 'quiz-maker' ) . "</p><p style='text-indent:10px;margin:0;'><strong>" .
+                                                esc_html__('By Category', 'quiz-maker' ) . ": </strong>" .
+                                                esc_html__('Here you can see all the categories of questions you have included in the general tab. You can provide different numbers for different categories. Also, you can reorder them as you want by drag and dropping. The category order will be kept in the front end, but questions will be printed randomly.', 'quiz-maker' ) . "</p>" ); ?>">
+                                                <i class="ays_fa ays_fa_info_circle"></i>
+                                            </a>
                                         </div>
-                                        <label class="ays_quiz_loader">
-                                            <input type="radio" class="ays-enable-timer1" value="general" checked tabindex="-1" />
-                                            <span><?php echo esc_html__( "General", 'quiz-maker' ); ?></span>
-                                        </label>
-                                        <label class="ays_quiz_loader">
-                                            <input type="radio" class="ays-enable-timer1" value="by_category" tabindex="-1"/>
-                                            <span><?php echo esc_html__( "By Category", 'quiz-maker' ); ?></span>
-                                        </label>
-                                        <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php echo esc_attr( "<p style='text-indent:10px;margin:0;'>" .
-                                            esc_html__('There are two ways of making question bank system.', 'quiz-maker' ) . "</p><p style='text-indent:10px;margin:0;'><strong>" .
-                                            esc_html__('General', 'quiz-maker' ) . ": </strong>" .
-                                            esc_html__('It will take the specified amount of questions from all the questions you include in this quiz.', 'quiz-maker' ) . "</p><p style='text-indent:10px;margin:0;'><strong>" .
-                                            esc_html__('By Category', 'quiz-maker' ) . ": </strong>" .
-                                            esc_html__('Here you can see all the categories of questions you have included in the general tab. You can provide different numbers for different categories. Also, you can reorder them as you want by drag and dropping. The category order will be kept in the front end, but questions will be printed randomly.', 'quiz-maker' ) . "</p>" ); ?>">
-                                            <i class="ays_fa ays_fa_info_circle"></i>
-                                        </a>
                                         <div class="ays_refresh_qbank_categories display_none float-right">
                                             <p>
                                                 <button type="button" class="button ays_refresh_qbank_cats_button"><?php echo esc_html__( "Refresh Categories", 'quiz-maker' ); ?></button>
                                             </p>
                                         </div>
-                                        <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=question-bank-by-category-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
-                                            <div class="ays-quiz-new-upgrade-button-box">
-                                                <div>
-                                                    <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
-                                                    <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg' ); ?>" class="ays-quiz-new-upgrade-button-hover">
-                                                </div>
-                                                <div class="ays-quiz-new-upgrade-button"><?php echo esc_html__("Upgrade", "quiz-maker"); ?></div>
-                                            </div>
-                                        </a>
                                     </div>
                                 </div>
                                 <hr/>
