@@ -1497,6 +1497,7 @@ class Quiz_Maker_Admin
         $quick_quiz_tackers_count                               = '';
         $quick_quiz_enable_password                             = 'off';
         $quick_quiz_password                                    = '';
+        $quick_quiz_password_width                              = '';
         $quick_quiz_enable_password_visibility                  = 'off';
 
         // Styles Settings
@@ -1997,6 +1998,9 @@ class Quiz_Maker_Admin
             // Password for passing quiz | Password
             $quick_quiz_password = (isset($_REQUEST['ays_quick_quiz_password']) && $_REQUEST['ays_quick_quiz_password'] != '') ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_password'] ) ) : '';
 
+            // Password input width
+            $quick_quiz_password_width = (isset($_REQUEST['ays_quick_quiz_password_width']) && sanitize_text_field( $_REQUEST['ays_quick_quiz_password_width'] ) != '' && sanitize_text_field( $_REQUEST['ays_quick_quiz_password_width'] ) != 0) ? absint( sanitize_text_field( $_REQUEST['ays_quick_quiz_password_width'] ) ) : '';
+
             // Enable toggle password visibility
             $quick_quiz_enable_password_visibility = (isset( $_REQUEST['ays_quick_quiz_enable_password_visibility'] ) && $_REQUEST['ays_quick_quiz_enable_password_visibility'] == "on") ? sanitize_text_field( stripslashes( $_REQUEST['ays_quick_quiz_enable_password_visibility'] ) ) : "off";
         }
@@ -2244,7 +2248,7 @@ class Quiz_Maker_Admin
             'quiz_title_text_shadow_z_offset'                   => 2,
             'quiz_title_font_size'                              => $quick_quiz_title_font_size,
             'quiz_title_mobile_font_size'                       => $quick_quiz_title_mobile_font_size,
-            'quiz_password_width'                               => "",
+            'quiz_password_width'                               => $quick_quiz_password_width,
             'quiz_review_placeholder_text'                      => $quick_quiz_review_placeholder_text,
             'quiz_enable_results_toggle'                        => $quick_quiz_enable_results_toggle,
             'quiz_review_thank_you_message'                     => "",

@@ -4,7 +4,7 @@ Donate link: https://quiz-plugin.com/pricing/
 Tags:  exam, quiz, quizzes, education, quiz maker
 Requires at least: 4.0
 Tested up to: 7.1
-Stable tag: 6.7.1.72
+Stable tag: 6.7.1.73
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -36,7 +36,9 @@ There are 7+ types of questions available to use:
 **Date** - a question that needs to be answered by picking a date.
 **Banner (HTML)** - show an informational message that doesn't need a response.
 **Fill in the Blank** - ask to complete sentences by adding missing words.
+**Fill in the blanks (Dropdown)** - ask users to complete sentences by selecting missing words from dropdown lists.
 **Matching** - ask to connect items from two lists.
+**Ranking** - ask users to arrange the options in the correct order.
 
 [Example quiz with question types](https://quiz-plugin.com/quiz-with-different-question-types)
 
@@ -427,6 +429,9 @@ Do you wonder how to create a Math Quiz with hard mathematical equations in Word
 For example, to add a squared symbol, you need to write down the following sign ^2. (do not forget to insert $ character to mark the beginning and ending).
 
 == Changelog ==
+
+= 6.7.1.73 ( Aug 28, 2026 ) =
+* Added: Password input width option to the Quick Quiz popup
 
 = 6.7.1.72 ( Aug 26, 2026 ) =
 * Added: Search functionality to the Question Reports list table

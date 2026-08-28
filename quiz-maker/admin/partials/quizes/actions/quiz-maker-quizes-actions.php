@@ -9431,7 +9431,7 @@ $buttons_mobile_border_radius = (isset($options['buttons_mobile_border_radius'])
                             </div>
                             <div class="col-sm-8 ays_toggle_target ays_divider_left <?php echo $enable_tackers_count ? '' : 'display_none'; ?>">
                                 <div class="form-group row">
-                                    <div class="col-sm-2">
+                                    <div class="col-sm-3">
                                         <label for="ays_tackers_count">
                                             <?php echo esc_html__('Count','quiz-maker')?>
                                             <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('The number of users who can pass the quiz.','quiz-maker')?>">
@@ -9439,14 +9439,14 @@ $buttons_mobile_border_radius = (isset($options['buttons_mobile_border_radius'])
                                             </a>
                                         </label>
                                     </div>
-                                    <div class="col-sm-10">
+                                    <div class="col-sm-9">
                                         <input type="number" name="ays_tackers_count" id="ays_tackers_count" class="ays-enable-timerl ays-text-input"
                                                value="<?php echo intval($tackers_count); ?>">
                                     </div>
                                 </div>
                                 <hr>
                                 <div class="form-group row">
-                                    <div class="col-sm-2">
+                                    <div class="col-sm-3">
                                         <label for="ays_quiz_tackers_message">
                                             <?php echo esc_html__('Message','quiz-maker'); ?>
                                             <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Show the message when the quiz is already taken by the required count of takers.','quiz-maker'); ?>">
@@ -9454,7 +9454,7 @@ $buttons_mobile_border_radius = (isset($options['buttons_mobile_border_radius'])
                                             </a>
                                         </label>
                                     </div>
-                                    <div class="col-sm-10">
+                                    <div class="col-sm-9">
                                         <?php
                                         echo wp_kses($quiz_message_vars_limitation_count_of_takers_html, $quiz_allowed_html);
                                         $editor_id = 'ays_quiz_tackers_message';

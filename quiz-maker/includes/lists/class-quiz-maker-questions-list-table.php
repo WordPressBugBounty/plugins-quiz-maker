@@ -1686,15 +1686,15 @@ class Questions_List_Table extends WP_List_Table{
         }
 
         $columns = array(
-            'cb'                => '<input type="checkbox" />',
-            'question'          => __( 'Question', 'quiz-maker' ),
-            'question_image'    => __( 'Image', 'quiz-maker' ),
-            'category_id'       => __( 'Category', 'quiz-maker' ),
-            'type'              => __( 'Type', 'quiz-maker' ),
-            'items_count'       => __( 'Answers Count', 'quiz-maker' ),
-            'create_date'       => __( 'Created', 'quiz-maker' ),
-            'published'         => __( 'Status', 'quiz-maker' ),
-            'id'                => __( 'ID', 'quiz-maker' ),
+            'cb'                    => '<input type="checkbox" />',
+            'question'              => __( 'Question', 'quiz-maker' ),
+            'question_image'        => __( 'Image', 'quiz-maker' ),
+            'category_id'           => __( 'Category', 'quiz-maker' ),
+            'type'                  => __( 'Type', 'quiz-maker' ),
+            'items_count'           => __( 'Answers Count', 'quiz-maker' ),
+            'create_date'           => __( 'Created', 'quiz-maker' ),
+            'published'             => __( 'Status', 'quiz-maker' ),
+            'id'                    => __( 'ID', 'quiz-maker' ),
         );
 
         if( isset( $_GET['action'] ) && ( $_GET['action'] == 'add' || $_GET['action'] == 'edit' ) ){
@@ -1711,10 +1711,10 @@ class Questions_List_Table extends WP_List_Table{
      */
     public function get_sortable_columns() {
         $sortable_columns = array(
-            'question'      => array( 'question', true ),
-            'category_id'   => array( 'category_id', true ),
-            'type'          => array( 'type', true ),
-            'id'            => array( 'id', true ),
+            'question'          => array( 'question', true ),
+            'category_id'       => array( 'category_id', true ),
+            'type'              => array( 'type', true ),
+            'id'                => array( 'id', true ),
         );
 
         return $sortable_columns;

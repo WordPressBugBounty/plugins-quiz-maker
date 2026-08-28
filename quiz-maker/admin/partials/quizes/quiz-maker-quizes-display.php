@@ -1308,7 +1308,24 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                                         </label>
                                                     </div>
                                                     <div class="col-sm-8">
-                                                        <input type="text" name="ays_quick_quiz_password" id="ays_quick_quiz_password" class="ays-enable-timer ays-text-input" value="">
+                                                        <input type="text" name="ays_quick_quiz_password" id="ays_quick_quiz_password" class="ays-enable-timer ays-text-input ays-text-input-short" value="">
+                                                    </div>
+                                                </div>
+                                                <hr/>
+                                                <div class="form-group row">
+                                                    <div class="col-sm-4">
+                                                        <label for="ays_quick_quiz_password_width">
+                                                            <?php echo esc_html__('Password input width','quiz-maker'); ?>
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-sm-8 ays_quiz_display_flex_width">
+                                                        <div>
+                                                            <input type="number" name="ays_quick_quiz_password_width" id="ays_quick_quiz_password_width" class="ays-enable-timer ays-text-input ays-text-input-short" min="0" step="1" value="">
+                                                            <span style="display:block;" class="ays_quiz_small_hint_text"><?php echo esc_html__("For 100% leave blank", 'quiz-maker'); ?></span>
+                                                        </div>
+                                                        <div class="ays_quiz_dropdown_max_width">
+                                                            <input type="text" value="px" class="ays-quiz-form-hint-for-size" disabled>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <hr/>

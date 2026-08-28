@@ -561,17 +561,17 @@ class Question_Reports_List_Table extends WP_List_Table{
      */
     function get_columns() {
         $columns = array(
-            'cb'             => '<input type="checkbox" />',
-            'question'       => __( 'Question', 'quiz-maker' ),
-            'report_text'    => __( 'Report', 'quiz-maker' ),
-            'create_date'    => __( 'Created', 'quiz-maker' ),
-            'resolve_date'   => __( 'Resolve date', 'quiz-maker' ),
-            'resolved'       => __( 'Resolved', 'quiz-maker' ),
-            'question_id'    => __( 'Question ID', 'quiz-maker' ),
-            'user_id'        => __( 'User ID', 'quiz-maker' ),
-            'user_name'      => __( 'User Name', 'quiz-maker' ),
-            'user_email'     => __( 'User Email', 'quiz-maker' ),
-            'report_id'      => __( 'ID', 'quiz-maker' ),
+            'cb'                => '<input type="checkbox" />',
+            'question'          => __( 'Question', 'quiz-maker' ),
+            'report_text'       => __( 'Report', 'quiz-maker' ),
+            'create_date'       => __( 'Created', 'quiz-maker' ),
+            'resolve_date'      => __( 'Resolve date', 'quiz-maker' ),
+            'resolved'          => __( 'Resolved', 'quiz-maker' ),
+            'question_id'       => __( 'Question ID', 'quiz-maker' ),
+            'user_id'           => __( 'User ID', 'quiz-maker' ),
+            'user_name'         => __( 'User Name', 'quiz-maker' ),
+            'user_email'        => __( 'User Email', 'quiz-maker' ),
+            'report_id'         => __( 'ID', 'quiz-maker' ),
         );
 
         return $columns;
@@ -690,9 +690,9 @@ class Question_Reports_List_Table extends WP_List_Table{
      */
     public function get_bulk_actions() {
         $actions = array(
-            'mark-as-resolved' => __( 'Mark as resolved', 'quiz-maker'),
-            'mark-as-reviewed' => __( 'Mark as reviewed', 'quiz-maker'),
-            'bulk-delete' => __( 'Delete', 'quiz-maker'),
+            'mark-as-resolved'  => __( 'Mark as resolved', 'quiz-maker'),
+            'mark-as-reviewed'  => __( 'Mark as reviewed', 'quiz-maker'),
+            'bulk-delete'       => __( 'Delete', 'quiz-maker'),
         );
 
         return $actions;
