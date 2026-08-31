@@ -1553,6 +1553,9 @@ class Quiz_Maker_Public
             $ans_img_height = absint($options['ans_img_height']) . "px";
         }
 
+        // Answer image height | Mobile
+        $ans_img_mobile_height = (isset($options['ans_img_mobile_height']) && $options['ans_img_mobile_height'] != '') ? absint($options['ans_img_mobile_height']) . "px" : $ans_img_height;
+
         $ans_img_caption_position = 'bottom';
         if(isset($options['ans_img_caption_position']) && $options['ans_img_caption_position'] != ''){
             $ans_img_caption_position = sanitize_text_field($options['ans_img_caption_position']);
@@ -4733,6 +4736,10 @@ class Quiz_Maker_Public
                     border-radius: " . $quiz_question_image_mobile_border_radius . "px !important;
                 }
 
+                #ays-quiz-container-" . $id . " .ays-answer-image {
+                    height: " . $ans_img_mobile_height . ";
+                }
+
                 #ays-quiz-container-" . $id . " .select2-container,
                 #ays-quiz-container-" . $id . " .ays-field * {
                     font-size: ".$answers_mobile_font_size."px !important;
@@ -7643,20 +7650,20 @@ class Quiz_Maker_Public
         $results = $wpdb->insert(
             $results_table,
             array(
-                'quiz_id'           => absint(intval($quiz_id)),
-                'user_id'           => get_current_user_id(),
-                'user_name'         => $user_name,
-                'user_email'        => $user_email,
-                'user_phone'        => $user_phone,
-                'user_ip'           => $user_ip,
-                'start_date'        => $start_date,
-                'end_date'          => $end_date,
-                'duration'          => $duration,
-                'score'             => $score,
-                'corrects_count'    => $user_corrects_count,
-                'questions_count'   => $questions_count,
-                'user_explanation'  => $user_explanation,
-                'options'           => json_encode($options)
+                'quiz_id'               => absint(intval($quiz_id)),
+                'user_id'               => get_current_user_id(),
+                'user_name'             => $user_name,
+                'user_email'            => $user_email,
+                'user_phone'            => $user_phone,
+                'user_ip'               => $user_ip,
+                'start_date'            => $start_date,
+                'end_date'              => $end_date,
+                'duration'              => $duration,
+                'score'                 => $score,
+                'corrects_count'        => $user_corrects_count,
+                'questions_count'       => $questions_count,
+                'user_explanation'      => $user_explanation,
+                'options'               => json_encode($options)
             ),
             array(
                 '%d', // quiz_id
@@ -8119,16 +8126,16 @@ class Quiz_Maker_Public
         $results = $wpdb->insert(
             $rates_table,
             array(
-                'quiz_id'     => $quiz_id,
-                'user_id'     => $user_id,
-                'user_ip'     => $user_ip,
-                'user_name'   => $user_name,
-                'user_email'  => $user_email,
-                'user_phone'  => $user_phone,
-                'score'       => $score,
-                'review'      => $rate_reason,
-                'options'     => '',
-                'rate_date'   => $rate_date,
+                'quiz_id'       => $quiz_id,
+                'user_id'       => $user_id,
+                'user_ip'       => $user_ip,
+                'user_name'     => $user_name,
+                'user_email'    => $user_email,
+                'user_phone'    => $user_phone,
+                'score'         => $score,
+                'review'        => $rate_reason,
+                'options'       => '',
+                'rate_date'     => $rate_date,
             ),
             array(
                 '%d', //quiz_id
@@ -8149,13 +8156,13 @@ class Quiz_Maker_Public
             ob_end_clean();
             $ob_get_clean = ob_get_clean();
             echo json_encode(array(
-                //'rate_id'     => $rate_id,
-                //'result'      => $this->ays_set_rate_id_of_result($rate_id),
-                'quiz_id'       => $quiz_id,
-                'status'        => true,
-                'avg_score'     => round($avg_score, 1),
-                'score'         => intval(round($score)),
-                'rates_count'   => $this->ays_get_count_of_rates($quiz_id),
+                //'rate_id'         => $rate_id,
+                //'result'          => $this->ays_set_rate_id_of_result($rate_id),
+                'quiz_id'           => $quiz_id,
+                'status'            => true,
+                'avg_score'         => round($avg_score, 1),
+                'score'             => intval(round($score)),
+                'rates_count'       => $this->ays_get_count_of_rates($quiz_id),
             ));
             wp_die();
         }

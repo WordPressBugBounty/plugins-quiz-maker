@@ -199,6 +199,7 @@ $options = array(
     'answers_border_style'                              => 'solid',
     'answers_border_color'                              => '#dddddd',
     'ans_img_height'                                    => 150,
+    'ans_img_mobile_height'                             => 150,
     'show_answers_caption'                              => 'on',
     'ans_img_caption_position'                          => 'bottom',
     'social_links_heading'                              => '',
@@ -1617,6 +1618,9 @@ $quiz_right_answers_mobile_text_decoration = (isset($options[ 'quiz_right_answer
 
 // Answers image height
 $ans_img_height = (isset($options['ans_img_height']) && $options['ans_img_height'] != '') ? stripslashes (absint($options['ans_img_height']) ) : 150;
+
+// Answers image height | Mobile
+$ans_img_mobile_height = (isset($options['ans_img_mobile_height']) && $options['ans_img_mobile_height'] != '') ? stripslashes (absint($options['ans_img_mobile_height']) ) : $ans_img_height;
 
 // Show answers caption
 $options['show_answers_caption'] = isset($options['show_answers_caption']) ? stripslashes ( esc_attr($options['show_answers_caption']) ) : 'on';
@@ -3418,12 +3422,37 @@ $buttons_mobile_border_radius = (isset($options['buttons_mobile_border_radius'])
                                                     </a>
                                                 </label>
                                             </div>
-                                            <div class="col-sm-7 ays_divider_left ays_quiz_display_flex_width">
-                                                <div>
-                                                    <input type="number" class="ays-text-input ays-text-input-short" id='ays_ans_img_height' name='ays_ans_img_height' value="<?php echo esc_attr($ans_img_height); ?>"/>
+                                            <div class="col-sm-7 ays_divider_left">
+                                                <div class="row">
+                                                    <div class="col-sm-5">
+                                                        <label for="ays_ans_img_height">
+                                                            <?php echo esc_html__('On desktop', 'quiz-maker'); ?>
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-sm-7 ays_quiz_display_flex_width">
+                                                        <div>
+                                                            <input type="number" class="ays-text-input" id='ays_ans_img_height' name='ays_ans_img_height' value="<?php echo esc_attr($ans_img_height); ?>"/>
+                                                        </div>
+                                                        <div class="ays_quiz_dropdown_max_width ays-display-flex" style="align-items: end;">
+                                                            <input type="text" value="px" class='ays-quiz-form-hint-for-size' disabled>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="ays_quiz_dropdown_max_width ays-display-flex" style="align-items: end;">
-                                                    <input type="text" value="px" class='ays-quiz-form-hint-for-size' disabled>
+                                                <hr>
+                                                <div class="row">
+                                                    <div class="col-sm-5">
+                                                        <label for="ays_ans_img_mobile_height">
+                                                            <?php echo esc_html__('On mobile', 'quiz-maker'); ?>
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-sm-7 ays_quiz_display_flex_width">
+                                                        <div>
+                                                            <input type="number" class="ays-text-input" id='ays_ans_img_mobile_height' name='ays_ans_img_mobile_height' value="<?php echo esc_attr($ans_img_mobile_height); ?>"/>
+                                                        </div>
+                                                        <div class="ays_quiz_dropdown_max_width ays-display-flex" style="align-items: end;">
+                                                            <input type="text" value="px" class='ays-quiz-form-hint-for-size' disabled>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div> <!-- Answers image height -->

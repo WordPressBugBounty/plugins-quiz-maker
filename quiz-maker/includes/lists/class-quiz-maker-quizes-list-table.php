@@ -1137,6 +1137,9 @@ class Quizes_List_Table extends WP_List_Table{
             // Show answers caption
             $ans_img_height = (isset($_REQUEST['ays_ans_img_height']) && $_REQUEST['ays_ans_img_height'] != '') ? stripslashes( absint( $_REQUEST['ays_ans_img_height'] ) ) : 150;
 
+            // Answers image height | Mobile
+            $ans_img_mobile_height = (isset($_REQUEST['ays_ans_img_mobile_height']) && $_REQUEST['ays_ans_img_mobile_height'] != '') ? stripslashes( absint( $_REQUEST['ays_ans_img_mobile_height'] ) ) : $ans_img_height;
+
              // Show answers caption
             $show_answers_caption = (isset($_REQUEST['ays_show_answers_caption']) && $_REQUEST['ays_show_answers_caption'] == 'on') ? 'on' : 'off';
 
@@ -1358,6 +1361,7 @@ class Quizes_List_Table extends WP_List_Table{
                 'answers_border_style'                              => $answers_border_style,
                 'answers_border_color'                              => $answers_border_color,
                 'ans_img_height'                                    => $ans_img_height,
+                'ans_img_mobile_height'                             => $ans_img_mobile_height,
                 'show_answers_caption'                              => $show_answers_caption,
                 'ans_img_caption_position'                          => $ans_img_caption_position,
                 'social_links_heading'                              => $social_links_heading,
