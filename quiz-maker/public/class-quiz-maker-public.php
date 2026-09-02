@@ -1229,9 +1229,12 @@ class Quiz_Maker_Public
         if(isset($options['quiz_border_radius']) && $options['quiz_border_radius'] != ''){
             $quiz_border_radius = $options['quiz_border_radius'];
         }else{
-            $quiz_border_radius = '3px';
+            $quiz_border_radius = '3';
         }
-        
+
+        // Quiz container border radius | Mobile
+        $quiz_mobile_border_radius = (isset($options['quiz_mobile_border_radius']) && $options['quiz_mobile_border_radius'] != '') ? absint($options['quiz_mobile_border_radius']) : absint($quiz_border_radius);
+
         // Quiz container shadow enabled/disabled
         
         if(isset($options['enable_box_shadow']) && $options['enable_box_shadow'] == 'on'){
@@ -2013,6 +2016,8 @@ class Quiz_Maker_Public
         }else{
             $ays_quiz_reports = $quiz_rate_reports.$quiz_result_reports;
         }
+
+        $quiz_mobile_border_radius_css = $quiz_mobile_border_radius . "px";
         
         /* 
          * Generate HTML code when passed users count and average rate both are enabled
@@ -4722,6 +4727,7 @@ class Quiz_Maker_Public
             @media screen and (max-width: 768px){
                 #ays-quiz-container-" . $id . "{
                     max-width: $mobile_max_width;
+                    border-radius: " . $quiz_mobile_border_radius_css . " !important;
                 }
 
                 div#ays-quiz-container-" . $id . " [id^='ays_finish_quiz_'] div.step div.ays-abs-fs {

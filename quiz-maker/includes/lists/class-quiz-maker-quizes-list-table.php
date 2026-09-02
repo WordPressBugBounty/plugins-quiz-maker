@@ -475,7 +475,8 @@ class Quizes_List_Table extends WP_List_Table{
             $hide_score                 = !isset($_POST['ays_hide_score']) ? "off" : sanitize_text_field( $_POST['ays_hide_score'] );
             $rate_form_title            = !isset($_POST['ays_rate_form_title']) ? '' : wp_kses( $_POST['ays_rate_form_title'], $quiz_allowed_html );
             $quiz_box_shadow_color      = !isset($_POST['ays_quiz_box_shadow_color']) ? '' : sanitize_text_field( $_POST['ays_quiz_box_shadow_color'] );
-            $quiz_border_radius         = !isset($_POST['ays_quiz_border_radius']) ? '' : sanitize_text_field( $_POST['ays_quiz_border_radius'] );
+            $quiz_border_radius         = (isset($_POST['ays_quiz_border_radius']) && sanitize_text_field( $_POST['ays_quiz_border_radius'] ) != '') ? absint( sanitize_text_field( $_POST['ays_quiz_border_radius'] ) ) : 8;
+            $quiz_mobile_border_radius  = (isset($_POST['ays_quiz_mobile_border_radius']) && sanitize_text_field( $_POST['ays_quiz_mobile_border_radius'] ) != '') ? absint( sanitize_text_field( $_POST['ays_quiz_mobile_border_radius'] ) ) : absint( $quiz_border_radius );
             $quiz_bg_image              = !isset($_POST['ays_quiz_bg_image']) ? '' : sanitize_url( $_POST['ays_quiz_bg_image'] );
 
             // if( $quiz_bg_image != "" ){
@@ -1235,6 +1236,7 @@ class Quizes_List_Table extends WP_List_Table{
                 'rate_form_title'                                   => $rate_form_title,
                 'box_shadow_color'                                  => $quiz_box_shadow_color,
                 'quiz_border_radius'                                => $quiz_border_radius,
+                'quiz_mobile_border_radius'                         => $quiz_mobile_border_radius,
                 'quiz_bg_image'                                     => $quiz_bg_image,
                 'quiz_border_width'                                 => $quiz_border_width,
                 'quiz_border_style'                                 => $quiz_border_style,
