@@ -430,6 +430,9 @@ For example, to add a squared symbol, you need to write down the following sign 
 
 == Changelog ==
 
+= 6.7.1.76 ( Sep 04, 2026 ) =
+* Improved: Made some changes to the admin dashboard
+
 = 6.7.1.75 ( Sep 02, 2026 ) =
 * Added: Quiz border radius option for mobile devices
 * Updated: POT file
