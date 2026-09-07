@@ -1906,14 +1906,14 @@ class Questions_List_Table extends WP_List_Table{
             /* translators: Message shown after a question is successfully created */
             $updated_message  = esc_html__( 'Question created.', 'quiz-maker' );
 
-            /* Link to quiz page */
+            /* Link to quizzes page */
             $link_url  = sprintf('?page=%s', 'quiz-maker');
-            $link_text = '<a href="' . esc_url( $link_url ) . '" target="_blank">' . esc_html__( 'quiz', 'quiz-maker' ) . '</a>';
+            $link_text = '<a href="' . esc_url( $link_url ) . '" target="_blank">' . esc_html__( 'Quizzes page', 'quiz-maker' ) . '</a>';
 
-            /* translators: %s is the link to quiz page */
+            /* translators: %s is the link to the Quizzes page */
             $updated_message .= ' ' . sprintf(
                 wp_kses(
-                    __( 'The question can be inserted into any %s.', 'quiz-maker' ),
+                    __( 'To display it on your website, open a quiz from the %s, add the question to it, then place the quiz shortcode on a page or post.', 'quiz-maker' ),
                     array( 'a' => array( 'href' => array(), 'target' => array() ) )
                 ),
                 $link_text

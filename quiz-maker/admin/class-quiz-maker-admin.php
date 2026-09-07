@@ -642,7 +642,7 @@ class Quiz_Maker_Admin
             $this->plugin_name, 
             array($this, 'display_plugin_quiz_page'), 
             AYS_QUIZ_ADMIN_URL . '/images/icons/icon-quiz-maker-128x128.svg', 
-            '6.20'
+            '25.20'
         );
     }
     
@@ -1504,6 +1504,7 @@ class Quiz_Maker_Admin
         $quick_quiz_width                                       = 800;
         $quick_quiz_height                                      = 450;
         $quick_quiz_border_radius                               = 8;
+        $quick_quiz_mobile_border_radius                        = 8;
         $quick_quiz_image_height                                = "";
         $quick_quiz_progress_bar_style                          = "third";
         $quick_quiz_progress_live_bar_style                     = "default";
@@ -1658,8 +1659,11 @@ class Quiz_Maker_Admin
             // Quiz min-height
             $quick_quiz_height = (isset($_REQUEST['ays_quick_quiz_height']) && $_REQUEST['ays_quick_quiz_height'] != '') ? stripslashes( absint( $_REQUEST['ays_quick_quiz_height'] ) ) : 450;
 
-            // Quiz min-height
+            // Quiz border radius
             $quick_quiz_border_radius = (isset($_REQUEST['ays_quick_quiz_border_radius']) && $_REQUEST['ays_quick_quiz_border_radius'] != '') ? stripslashes( absint( $_REQUEST['ays_quick_quiz_border_radius'] ) ) : 8;
+
+            // Quiz border radius | Mobile
+            $quick_quiz_mobile_border_radius = (isset($_REQUEST['ays_quick_quiz_mobile_border_radius']) && $_REQUEST['ays_quick_quiz_mobile_border_radius'] != '') ? stripslashes( absint( $_REQUEST['ays_quick_quiz_mobile_border_radius'] ) ) : $quick_quiz_border_radius;
 
             // Quiz image height
             $quick_quiz_image_height = (isset($_REQUEST['ays_quick_quiz_image_height']) && $_REQUEST['ays_quick_quiz_image_height'] != '') ? stripslashes( absint( $_REQUEST['ays_quick_quiz_image_height'] ) ) : '';
@@ -2095,6 +2099,7 @@ class Quiz_Maker_Admin
             'enable_box_shadow'                                 => 'on',
             'box_shadow_color'                                  => '#c9c9c9',
             'quiz_border_radius'                                => $quick_quiz_border_radius,
+            'quiz_mobile_border_radius'                         => $quick_quiz_mobile_border_radius,
             'quiz_bg_image'                                     => '',
             'enable_border'                                     => 'off',
             'quiz_border_width'                                 => '1',
@@ -7297,14 +7302,14 @@ class Quiz_Maker_Admin
                         continue;
                     }else{
                         $content_text['results'][] = array(
-                            'id' => $value->ID,
-                            'text' => $value->data->display_name,
+                            'id'    => $value->ID,
+                            'text'  => $value->data->display_name,
                         );
                     }
                 }else{
                     $content_text['results'][] = array(
-                        'id' => $value->ID,
-                        'text' => $value->data->display_name,
+                        'id'    => $value->ID,
+                        'text'  => $value->data->display_name,
                     );
                 }
             }
