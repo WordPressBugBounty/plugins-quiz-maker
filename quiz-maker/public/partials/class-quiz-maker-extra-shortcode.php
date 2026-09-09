@@ -90,6 +90,7 @@ class Ays_Quiz_Maker_Extra_Shortcodes_Public
         add_shortcode('ays_quiz_question_categories_count', array($this, 'ays_generate_quiz_question_categories_count_method'));
         add_shortcode('ays_quiz_avg_rate', array($this, 'ays_generate_quiz_avg_rate_method'));
         add_shortcode('ays_quiz_all_questions_count', array($this, 'ays_generate_all_questions_count_method'));
+        add_shortcode('ays_quiz_title', array($this, 'ays_generate_quiz_title_method'));
     }
 
     /*
@@ -1987,6 +1988,58 @@ class Ays_Quiz_Maker_Extra_Shortcodes_Public
     /*
     ==========================================
         Questions count count | End
+    ==========================================
+    */
+
+    /*
+    ==========================================
+        Show quiz title | Start
+    ==========================================
+    */
+
+    public function ays_generate_quiz_title_method( $attr ) {
+
+        $id = (isset($attr['id']) && $attr['id'] != '') ? absint( sanitize_text_field($attr['id']) ) : null;
+
+        if (is_null($id) || $id == 0 ) {
+            return "";
+        }
+
+        $unique_id = uniqid();
+        $this->unique_id = $unique_id;
+        $this->unique_id_in_class = $id . "-" . $unique_id;
+
+        $quiz_title = $this->ays_generate_quiz_title_html( $id );
+
+        return str_replace(array("\r\n", "\n", "\r"), "\n", $quiz_title);
+    }
+
+    public function ays_generate_quiz_title_html( $id ) {
+
+        $quiz_data = self::get_quiz_by_id( $id );
+
+        if( is_null( $quiz_data ) || empty( $quiz_data ) ){
+            return "";
+        }
+
+        $quiz_title = (isset($quiz_data['title']) && $quiz_data['title'] != '') ? sanitize_text_field($quiz_data['title']) : "";
+
+        if ( $quiz_title == "" ) {
+            return "";
+        }
+
+        $content_html = array();
+
+        $content_html[] = "<span class='". $this->html_name_prefix ."quiz-title' id='". $this->html_name_prefix ."quiz-title-". $this->unique_id_in_class ."' data-id='". $this->unique_id ."'>";
+            $content_html[] = esc_html( $quiz_title );
+        $content_html[] = "</span>";
+
+        return implode( '' , $content_html);
+    }
+
+    /*
+    ==========================================
+        Show quiz title | End
     ==========================================
     */
 }
