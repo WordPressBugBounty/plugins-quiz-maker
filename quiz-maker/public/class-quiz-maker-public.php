@@ -659,8 +659,17 @@ class Quiz_Maker_Public
         $get_site_title = get_bloginfo('name');
         $get_site_description = get_bloginfo('description');
 
+        // Quiz category title
+        $quiz_category_title = "";
+        $quiz_category_id = (isset( $quiz['quiz_category_id'] ) && $quiz['quiz_category_id'] != "") ? absint( $quiz['quiz_category_id'] ) : 0;
+        if ( $quiz_category_id > 0 ) {
+            $quiz_category = self::get_quiz_category_by_id( $quiz_category_id );
+            $quiz_category_title = (isset( $quiz_category['title'] ) && $quiz_category['title'] != "") ? stripslashes( sanitize_text_field( $quiz_category['title'] ) ) : "";
+        }
+
         $message_data = array(
             'quiz_name'                             => $quiz_title,
+            'quiz_category_title'                   => $quiz_category_title,
             'time'                                  => $this->secondsToWords($quiz_timer),
             'user_first_name'                       => $user_first_name,
             'user_last_name'                        => $user_last_name,
@@ -6541,6 +6550,13 @@ class Quiz_Maker_Public
 
                 $get_site_title = get_bloginfo('name');
                 $get_site_description = get_bloginfo('description');
+
+                $quiz_category_title = "";
+                $quiz_category_id = (isset( $quiz['quiz_category_id'] ) && $quiz['quiz_category_id'] != "") ? absint( $quiz['quiz_category_id'] ) : 0;
+                if ( $quiz_category_id > 0 ) {
+                    $quiz_category = self::get_quiz_category_by_id( $quiz_category_id );
+                    $quiz_category_title = (isset( $quiz_category['title'] ) && $quiz_category['title'] != "") ? stripslashes( sanitize_text_field( $quiz_category['title'] ) ) : "";
+                }
                 
                 $message_data = array(
                     'quiz_name'                                     => stripslashes($quiz['title']),
@@ -6582,6 +6598,7 @@ class Quiz_Maker_Public
                     'site_title'                                    => $get_site_title,
                     'current_quiz_author_website_url'               => $current_quiz_author_website_url,
                     'site_description'                              => $get_site_description,
+                    'quiz_category_title'                           => $quiz_category_title,
                 );
 
                 $data = array(

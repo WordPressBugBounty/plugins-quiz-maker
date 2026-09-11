@@ -4000,6 +4000,15 @@
                             </p>
                             <p class="vmessage">
                                 <strong>
+                                    <input type="text" onClick="this.setSelectionRange(0, this.value.length)" readonly value="%%quiz_category_title%%" />
+                                </strong>
+                                <span> - </span>
+                                <span style="font-size:18px;">
+                                    <?php echo esc_html__( "The title of the quiz category", 'quiz-maker'); ?>
+                                </span>
+                            </p>
+                            <p class="vmessage">
+                                <strong>
                                     <input type="text" onClick="this.setSelectionRange(0, this.value.length)" readonly value="%%quiz_id%%" />
                                 </strong>
                                 <span> - </span>

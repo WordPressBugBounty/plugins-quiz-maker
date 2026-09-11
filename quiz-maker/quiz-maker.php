@@ -16,7 +16,7 @@ ob_start();
  * Plugin Name:       Quiz Maker
  * Plugin URI:        https://quiz-plugin.com/
  * Description:       Create powerful and engaging quizzes, tests, and exams in minutes. Build an unlimited number of quizzes and questions.
- * Version:           6.7.1.78
+ * Version:           6.7.1.79
  * Author:            Quiz Maker team
  * Author URI:        https://ays-pro.com/
  * License:           GPL-2.0+
@@ -36,8 +36,8 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'AYS_QUIZ_NAME_VERSION', '6.7.1.78' );
-define( 'AYS_QUIZ_VERSION', '6.7.1.78' );
+define( 'AYS_QUIZ_NAME_VERSION', '6.7.1.79' );
+define( 'AYS_QUIZ_VERSION', '6.7.1.79' );
 define( 'AYS_QUIZ_NAME', 'quiz-maker' );
 
 if( ! defined( 'AYS_QUIZ_BASENAME' ) )
@@ -135,7 +135,7 @@ function quiz_maker_activation_redirect_method( $plugin ) {
 function quiz_maker_general_admin_notice(){
     global $wpdb;
     if ( isset( $_GET['page'] ) && strpos( sanitize_text_field( $_GET['page'] ), AYS_QUIZ_NAME ) !== false ) {
-        $is_chat_available = ays_quiz_maker_is_chat_available();
+        $is_chat_available = false; //ays_quiz_maker_is_chat_available();
         $is_chat_icon_disabled = get_option('ays_quiz_disable_live_chat_icon');
 
         $chat_icon_flag = true;
@@ -234,20 +234,20 @@ function quiz_maker_general_admin_notice(){
 
         <!-- Ask a question box start -->
         <?php if($chat_icon_flag): ?>
-            <?php if($is_chat_available): ?>
+            <?php if($is_chat_available && 1 == 0): ?>
                 <?php
                 if(get_option('ays_quiz_agree_terms') === 'true' && 1 == 0): ?>
                 <div class="ays-quiz-crisp-chat-online-status">
                 </div>
                 <?php else: ?>
-                <div class="ays_live_chat_ask_question_content ays_ask_question_content">
+                <!-- <div class="ays_live_chat_ask_question_content ays_ask_question_content">
                     <div class="ays_ask_question_content_inner">
                         <a href="https://ays-pro.com/onlinesupport/" class="ays_quiz_question_link" target="_blank">
                             <span class="ays-ask-question-content-inner-question-mark-text"></span>
                             <span class="ays-ask-question-content-inner-hidden-text"><?php echo esc_html__( "Live Chat", 'quiz-maker' ); ?></span>
                         </a>
                     </div>
-                </div>
+                </div> -->
                 <?php endif; ?>
             <?php else: ?>
             <div class="ays_ask_question_content">

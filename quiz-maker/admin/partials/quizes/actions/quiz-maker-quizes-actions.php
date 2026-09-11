@@ -434,6 +434,7 @@ $quiz_message_vars = array(
     "%%user_email%%"                                    => __("User Email", 'quiz-maker'),
     "%%user_phone%%"                                    => __("User Phone", 'quiz-maker'),
     "%%quiz_name%%"                                     => __("Quiz Title", 'quiz-maker'),
+    "%%quiz_category_title%%"                           => __("Quiz category title", 'quiz-maker'),
     "%%score%%"                                         => __("Score", 'quiz-maker'),
     "%%current_date%%"                                  => __("Current Date", 'quiz-maker'),
     "%%results_by_cats%%"                               => __("Results by question categories", 'quiz-maker'),
