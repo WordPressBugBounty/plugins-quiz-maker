@@ -1444,6 +1444,7 @@ class Quiz_Maker_Admin
         $quick_quiz_enable_percent_view_option                  = 'off';
         $quick_quiz_enable_questions_reporting                  = 'off';
         $quick_quiz_enable_keyboard_navigation                  = 'on';
+        $quick_quiz_enable_full_screen_mode                     = 'off';
 
         $quick_quiz_custom_texts_start_button                   = $gen_start_button;
         $quick_quiz_custom_texts_next_button                    = $gen_next_button;
@@ -2007,6 +2008,9 @@ class Quiz_Maker_Admin
 
             // Enable toggle password visibility
             $quick_quiz_enable_password_visibility = (isset( $_REQUEST['ays_quick_quiz_enable_password_visibility'] ) && $_REQUEST['ays_quick_quiz_enable_password_visibility'] == "on") ? sanitize_text_field( stripslashes( $_REQUEST['ays_quick_quiz_enable_password_visibility'] ) ) : "off";
+
+            // Enable full-screen mode
+            $quick_quiz_enable_full_screen_mode = (isset( $_REQUEST['ays_quick_quiz_enable_full_screen_mode'] ) && $_REQUEST['ays_quick_quiz_enable_full_screen_mode'] == "on") ? "on" : "off";
         }
         
         foreach ($questions as $question_key => $question) {
@@ -2225,7 +2229,7 @@ class Quiz_Maker_Admin
             'quiz_make_all_review_link'                         => $quick_quiz_make_all_review_link,
             'show_questions_numbering'                          => $quick_quiz_show_questions_numbering,
             'quiz_message_before_timer'                         => '',
-            'enable_full_screen_mode'                           => 'off',
+            'enable_full_screen_mode'                           => $quick_quiz_enable_full_screen_mode,
             'quiz_enable_password_visibility'                   => $quick_quiz_enable_password_visibility,
             'question_mobile_font_size'                         => $quick_quiz_question_mobile_font_size,
             'answers_mobile_font_size'                          => $quick_quiz_answers_mobile_font_size,
