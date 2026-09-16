@@ -655,7 +655,7 @@ $user_explanation = (isset($question["user_explanation"]) && $question["user_exp
                             ?>
 
                             <tr class="ays-answer-row ui-state-default <?php echo esc_attr($ays_even_or_not); ?>">
-                                <td class="ays-quiz-question-answer-ordering-row"><i class="ays_fa ays_fa_arrows" aria-hidden="true"></i></td>
+                                <td class="ays-quiz-question-answer-ordering-row"><svg class="ays-table-icon ays-table-icon-move" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v20M15 5l-3-3-3 3M15 19l-3 3-3-3M2 12h20M5 9l-3 3 3 3M19 9l3 3-3 3"></path></svg></td>
                                 <td class="ays-quiz-question-answer-correct-row">
                                     <span>
                                         <input type="<?php echo esc_attr($question_type); ?>" id="ays-correct-answer-<?php echo esc_attr($ays_i+1); ?>" class="ays-correct-answer" name="ays-correct-answer[]" value="<?php echo esc_attr($ays_i+1); ?>"/>
@@ -675,7 +675,7 @@ $user_explanation = (isset($question["user_explanation"]) && $question["user_exp
                                     </select>
                                 </td>
                                 <td class="ays-quiz-question-answer-image-row">
-                                    <label class='ays-label' for='ays-answer'><a href="javascript:void(0)" class="add-answer-image" style="display:block;"><?php echo esc_html__('Add', 'quiz-maker'); ?></a></label>
+                                    <label class='ays-label' for='ays-answer'><a href="javascript:void(0)" class="add-answer-image" style="display:flex;"><svg class="ays-answer-image-icon" viewBox="0 0 24 24" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect><circle cx="9" cy="9" r="2"></circle><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"></path></svg></a></label>
                                     <div class="ays-answer-image-container ays-answer-image-container-div" style="display:none;">
                                         <span class="ays-edit-answer-img" title="<?php echo esc_html__('Edit Image', 'quiz-maker'); ?>"></span>
                                         <span class="ays-remove-answer-img" title="<?php echo esc_html__('Delete Image', 'quiz-maker'); ?>"></span>
@@ -686,7 +686,7 @@ $user_explanation = (isset($question["user_explanation"]) && $question["user_exp
 
                                 <td class="ays-quiz-question-answer-delete-row">
                                     <a href="javascript:void(0)" class="ays-delete-answer">
-                                        <i class="ays_fa ays_fa_minus_square" aria-hidden="true"></i>
+                                        <svg class="ays-table-icon ays-table-icon-delete" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 11v6M14 11v6M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
                                     </a>
                                 </td>
                             </tr>
@@ -777,7 +777,7 @@ $user_explanation = (isset($question["user_explanation"]) && $question["user_exp
                                     <?php
                                         else:
                                     ?>
-                                    <td class="ays-quiz-question-answer-ordering-row"><i class="ays_fa ays_fa_arrows" aria-hidden="true"></i></td>
+                                    <td class="ays-quiz-question-answer-ordering-row"><svg class="ays-table-icon ays-table-icon-move" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v20M15 5l-3-3-3 3M15 19l-3 3-3-3M2 12h20M5 9l-3 3 3 3M19 9l3 3-3 3"></path></svg></td>
                                     <td class="ays-quiz-question-answer-correct-row">
                                         <span>
                                             <input type="<?php echo esc_attr($question_type); ?>" id="ays-correct-answer-<?php echo esc_attr($index + 1); ?>" class="ays-correct-answer" name="ays-correct-answer[]" value="<?php echo esc_attr($index + 1); ?>" <?php echo ($answer["correct"] == 1) ? "checked" : ""; ?>/>
@@ -798,7 +798,7 @@ $user_explanation = (isset($question["user_explanation"]) && $question["user_exp
                                         </select>
                                     </td>
                                     <td class="ays-quiz-question-answer-image-row">
-                                        <label class='ays-label' for='ays-answer'><a href="javascript:void(0)" class="add-answer-image" <?php echo (is_null($answer['image'])||$answer['image']=='') ? "style=display:block;":"style=display:none"?>><?php echo esc_html( $answer_text ); ?></a></label>
+                                        <label class='ays-label' for='ays-answer'><a href="javascript:void(0)" class="add-answer-image" <?php echo (is_null($answer['image'])||$answer['image']=='') ? "style=display:flex;":"style=display:none"?>><svg class="ays-answer-image-icon" viewBox="0 0 24 24" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect><circle cx="9" cy="9" r="2"></circle><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"></path></svg></a></label>
                                         <div class="ays-answer-image-container ays-answer-image-container-div" <?php echo (is_null($answer['image'])||$answer['image']=='') ? "style=display:none; ":"style=display:block"?>>
                                             <span class="ays-edit-answer-img" title="<?php echo esc_html__('Edit Image', 'quiz-maker'); ?>"></span>
                                             <span class="ays-remove-answer-img" title="<?php echo esc_html__('Delete Image', 'quiz-maker'); ?>"></span>
@@ -808,7 +808,7 @@ $user_explanation = (isset($question["user_explanation"]) && $question["user_exp
                                     </td>
                                     <td>
                                         <a href="javascript:void(0)" class="ays-delete-answer">
-                                            <i class="ays_fa ays_fa_minus_square" aria-hidden="true"></i>
+                                            <svg class="ays-table-icon ays-table-icon-delete" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 11v6M14 11v6M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
                                         </a>
                                     </td>
                                     <?php
@@ -834,8 +834,8 @@ $user_explanation = (isset($question["user_explanation"]) && $question["user_exp
                     <?php echo esc_html__('Answer', 'quiz-maker'); ?>
                     <?php else: ?>
                     <div class="ays-answers-footer-toolbar <?php echo ($is_text_type) ? 'display_none' : ''; ?>" style="padding:5px;padding-top:10px;">
-                        <a href="javascript:void(0)" class="ays-add-answer ays-add-question-answer">
-                            <i class="ays_fa ays_fa_plus_square" aria-hidden="true"></i><?php echo esc_html__('Add Answer', 'quiz-maker'); ?>
+                        <a href="javascript:void(0)" class="ays-add-answer ays-add-question-answer ays-add-answer-button">
+                            <svg class="ays-add-answer-button-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5v14"></path></svg><?php echo esc_html__('Add Answer', 'quiz-maker'); ?>
                         </a>
                     </div>
                     <?php endif; ?>

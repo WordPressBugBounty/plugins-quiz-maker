@@ -1270,23 +1270,25 @@ class Quiz_Maker_Admin
                     $table_question = $this->ays_restriction_string("word", $table_question, 8);
                     $edit_question_url = "?page=".$this->plugin_name."-questions&action=edit&question=".$data['id'];
                     $rows[] = '<tr class="ays-question-row ui-state-default" data-id="' . $data['id'] . '">
-                        <td class="ays-sort"><i class="ays_fa ays_fa_arrows" aria-hidden="true"></i></td>
-                        <td>                        
+                        <td class="ays-quiz-question-ordering-row ays-sort"><svg class="ays-table-icon ays-table-icon-move" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v20M15 5l-3-3-3 3M15 19l-3 3-3-3M2 12h20M5 9l-3 3 3 3M19 9l3 3-3 3"></path></svg></td>
+                        <td class="ays-quiz-question-question-row">
                             <a href="'. $edit_question_url .'" target="_blank" class="ays-edit-question" title="'. __('Edit question', 'quiz-maker') .'">
                                 ' . esc_html($table_question) . '
                             </a> 
                         </td>
-                        <td>' . $ays_question_type . '</td>
-                        <td>' . $question_categories_array[$data['category_id']] . '</td>
-                        <td>' . stripslashes($data['id']) . '</td>
-                        <td>
+                        <td class="ays-quiz-question-type-row">' . $ays_question_type . '</td>
+                        <td class="ays-quiz-question-category-row">' . $question_categories_array[$data['category_id']] . '</td>
+                        <td class="ays-quiz-question-id-row">' . stripslashes($data['id']) . '</td>
+                        <td class="ays-quiz-question-action-row">
+                            <div class="ays-question-row-actions">
                             <input type="checkbox" class="ays_del_tr">
                             <a href="'. esc_url($edit_question_url) .'" target="_blank" class="ays-edit-question" title="'. __('Edit question', 'quiz-maker') .'">
-                                <i class="ays_fa ays_fa_pencil_square" aria-hidden="true"></i>
+                                <svg class="ays-table-icon ays-table-icon-edit" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.17 6.81a1 1 0 0 0-3.98-3.98L3.84 16.17a2 2 0 0 0-.5.83l-1.32 4.35a.5.5 0 0 0 .62.63L7 20.66a2 2 0 0 0 .83-.5zM15 5l4 4"></path></svg>
                             </a>
                             <a href="javascript:void(0)" class="ays-delete-question" data-id="' . esc_attr($data['id']) . '">
-                                <i class="ays_fa ays_fa_minus_square" aria-hidden="true"></i>
+                                <svg class="ays-table-icon ays-table-icon-delete" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 11v6M14 11v6M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
                             </a>
+                            </div>
                         </td>
                    </tr>';
                     $ids[] = $data['id'];

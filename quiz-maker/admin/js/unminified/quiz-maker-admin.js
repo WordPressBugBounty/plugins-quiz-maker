@@ -1469,7 +1469,7 @@
             cloned.find('input.ays-correct-answer').val(row_id);
             cloned.find('input.ays-correct-answer').prop('checked', false);
             cloned.find('input.ays-correct-answer-value').val('');
-            cloned.find('.ays-answer-image-container').parent().html(' <label class=\'ays-label\' for=\'ays-answer\'><a href="javascript:void(0)" class="add-answer-image" style=display:block;>'+ quizLangObj.add +'</a></label>\n' +
+            cloned.find('.ays-answer-image-container').parent().html(' <label class=\'ays-label\' for=\'ays-answer\'><a href="javascript:void(0)" class="add-answer-image" style=display:flex;><svg class="ays-answer-image-icon" viewBox="0 0 24 24" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect><circle cx="9" cy="9" r="2"></circle><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"></path></svg></a></label>\n' +
                 '<div class="ays-answer-image-container ays-answer-image-container-div" style=display:none; >\n' +
                 '<span class="ays-edit-answer-img" title="'+ quizLangObj.editImage +'"></span>\n' +
                 '<span class="ays-remove-answer-img" title="'+ quizLangObj.deleteImage +'"></span>\n' +
@@ -1774,11 +1774,11 @@
                         pro_features_new_design_html += '</div>';
                     pro_features_new_design_html += '</a>';
 
-                    var keyworHtml = '<th class="only_pro th-150 removable" style="width:120px;padding:0;">Keyword<br>'+ pro_features_new_design_html +'</th>';
+                    var keyworHtml = '<th class="only_pro th-150 removable ays-quiz-question-answer-keyword-row" style="width:120px;padding:0;">Keyword<br>'+ pro_features_new_design_html +'</th>';
 
                     var addAnswer = $('<div class="ays-answers-footer-toolbar" style="padding:5px;padding-top:10px;">'+
-                        '<a href="javascript:void(0)" class="ays-add-answer ays-add-question-answer">'+
-                            '<i class="ays_fa ays_fa_plus_square" aria-hidden="true"></i>'+
+                        '<a href="javascript:void(0)" class="ays-add-answer ays-add-question-answer ays-add-answer-button">'+
+                            '<svg class="ays-add-answer-button-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5v14"></path></svg>'+
                             quizLangObj.addAnswer +
                         '</a></div>'),
                         answerHeadRow = $('<th class="th-150 removable">Ordering</th>'+
@@ -1819,7 +1819,7 @@
                         }
 
                         var answerRow = '<tr class="ays-answer-row ui-state-default">'+
-                                    '<td class="ays-quiz-question-answer-ordering-row"><i class="ays_fa ays_fa_arrows" aria-hidden="true"></i></td>'+
+                                    '<td class="ays-quiz-question-answer-ordering-row"><svg class="ays-table-icon ays-table-icon-move" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v20M15 5l-3-3-3 3M15 19l-3 3-3-3M2 12h20M5 9l-3 3 3 3M19 9l3 3-3 3"></path></svg></td>'+
                                     '<td class="ays-quiz-question-answer-correct-row">'+
                                         '<span>'+
                                             '<input type="radio" id="ays-correct-answer-' + row_id + '" class="ays-correct-answer" name="ays-correct-answer[]" value="' + row_id + '"/>'+
@@ -1840,7 +1840,7 @@
                                         '</select>'+
                                     '</td>'+
                                     '<td class="ays-quiz-question-answer-image-row">'+
-                                        '<label class="ays-label" for="ays-answer"><a href="javascript:void(0)" class="add-answer-image" style="display:block;">'+ quizLangObj.add +'</a></label>'+
+                                        '<label class="ays-label" for="ays-answer"><a href="javascript:void(0)" class="add-answer-image" style="display:flex;"><svg class="ays-answer-image-icon" viewBox="0 0 24 24" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect><circle cx="9" cy="9" r="2"></circle><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"></path></svg></a></label>'+
                                         '<div class="ays-answer-image-container ays-answer-image-container-div" style="display:none;">'+
                                             '<span class="ays-edit-answer-img" title="'+ quizLangObj.editImage +'"></span>'+
                                             '<span class="ays-remove-answer-img" title="'+ quizLangObj.deleteImage +'"></span>'+
@@ -1850,7 +1850,7 @@
                                     '</td>'+
                                     '<td class="ays-quiz-question-answer-delete-row">'+
                                         '<a href="javascript:void(0)" class="ays-delete-answer">'+
-                                           ' <i class="ays_fa ays_fa_minus_square" aria-hidden="true"></i>'+
+                                           '<svg class="ays-table-icon ays-table-icon-delete" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 11v6M14 11v6M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>'+
                                         '</a>'+
                                     '</td>'+
                                 '</tr>';
@@ -1893,7 +1893,7 @@
             $(document).find('input[type="checkbox"]#ays_select_' + $(this).data('id')).prop('checked', false);
             
             setTimeout(function(){            
-                q.parent('td').parent('tr.ays-question-row').remove();
+                q.closest('tr.ays-question-row').remove();
                 let accordion = $(document).find('table.ays-questions-table tbody');
                 let questions_count = accordion.find('tr.ays-question-row').length;
                 $(document).find('.questions_count_number').text(questions_count);
@@ -1910,7 +1910,7 @@
                     '        </div>'+
                     '        <div class="ays_add_question_from_table">'+
                     '            <a href="javascript:void(0)" class="ays-add-question-primary">'+
-                    '                <i class="ays_fa ays_fa_plus_square" aria-hidden="true"></i>'+
+                    '                <svg class="ays-question-button-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5v14"></path></svg>'+
                     '                '+ quizLangObj.insertQuestion +
                     '            </a>'+
                     '            <a href="admin.php?page=quiz-maker-questions&action=add" class="ays-add-question" target="_blank">'+

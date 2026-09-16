@@ -2020,7 +2020,7 @@ $buttons_mobile_border_radius = (isset($options['buttons_mobile_border_radius'])
                                         ?>
                                         <tr class="ays-question-row ui-state-default <?php echo esc_attr($className); ?>"
                                             data-id="<?php echo esc_attr($data_id); ?>">
-                                            <td class="ays-quiz-question-ordering-row ays-sort"><i class="ays_fa ays_fa_arrows" aria-hidden="true"></i></td>
+                                            <td class="ays-quiz-question-ordering-row ays-sort"><svg class="ays-table-icon ays-table-icon-move" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v20M15 5l-3-3-3 3M15 19l-3 3-3-3M2 12h20M5 9l-3 3 3 3M19 9l3 3-3 3"></path></svg></td>
                                             <td class="ays-quiz-question-question-row">
                                                 <a href="<?php echo esc_url($edit_question_url); ?>" target="_blank" class="ays-edit-question" title="<?php echo esc_attr( __('Edit question', 'quiz-maker') ); ?>">
                                                     <?php echo esc_html($table_question); ?>
@@ -2030,14 +2030,16 @@ $buttons_mobile_border_radius = (isset($options['buttons_mobile_border_radius'])
                                             <td class="ays-quiz-question-category-row"><?php echo esc_html($question_cat_title); ?></td>
                                             <td class="ays-quiz-question-id-row"><?php echo esc_html($data_id); ?></td>
                                             <td class="ays-quiz-question-action-row">
+                                                <div class="ays-question-row-actions">
                                                 <input type="checkbox" class="ays_del_tr">
                                                 <a href="<?php echo esc_url($edit_question_url); ?>" target="_blank" class="ays-edit-question" title="<?php echo esc_attr(__('Edit question', 'quiz-maker')); ?>">
-                                                    <i class="ays_fa ays_fa_pencil_square" aria-hidden="true"></i>
+                                                    <svg class="ays-table-icon ays-table-icon-edit" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.17 6.81a1 1 0 0 0-3.98-3.98L3.84 16.17a2 2 0 0 0-.5.83l-1.32 4.35a.5.5 0 0 0 .62.63L7 20.66a2 2 0 0 0 .83-.5zM15 5l4 4"></path></svg>
                                                 </a>
                                                 <a href="javascript:void(0)" class="ays-delete-question" title="<?php echo esc_attr(__('Delete', 'quiz-maker')); ?>"
                                                 data-id="<?php echo esc_attr($data_id); ?>">
-                                                    <i class="ays_fa ays_fa_minus_square" aria-hidden="true"></i>
+                                                    <svg class="ays-table-icon ays-table-icon-delete" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 11v6M14 11v6M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
                                                 </a>
+                                                </div>
                                             </td>
                                         </tr>
                                         <?php
@@ -2057,7 +2059,7 @@ $buttons_mobile_border_radius = (isset($options['buttons_mobile_border_radius'])
                                             </div>
                                             <div class='ays_add_question_from_table'>                                        
                                                 <a href="javascript:void(0)" class="ays-add-question-primary">
-                                                    <i class="ays_fa ays_fa_plus_square" aria-hidden="true"></i>
+                                                    <svg class="ays-question-button-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5v14"></path></svg>
                                                     <?php echo esc_html__('Insert questions', 'quiz-maker'); ?>
                                                 </a>
                                                 <a href="<?php echo esc_url($question_add_new_page_url); ?>" class="ays-add-question" target="_blank">
@@ -8661,7 +8663,7 @@ $buttons_mobile_border_radius = (isset($options['buttons_mobile_border_radius'])
                                     <div class="col-sm-4">
                                         <label for="ays-answers-table"><?php echo esc_html__('Intervals', 'quiz-maker'); ?>
                                             <a href="javascript:void(0)" class="ays-add-interval" tabindex="-1">
-                                                <i class="ays_fa ays_fa_plus_square" aria-hidden="true"></i>
+                                                <svg class="ays-interval-add-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5v14"></path></svg>
                                             </a>
                                             <a class="ays_help" style="font-size:15px;" data-toggle="tooltip" title="<?php echo esc_attr__('Set different messages based on the user\'s score. The message will be displayed on the result page of the quiz.','quiz-maker'); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
@@ -8720,7 +8722,7 @@ $buttons_mobile_border_radius = (isset($options['buttons_mobile_border_radius'])
                                                 ?>
                                                 <tr class="ays-interval-row ui-state-default <?php echo esc_attr($className); ?>">
                                                     <td class="ays-sort">
-                                                        <i class="ays_fa ays_fa_arrows" aria-hidden="true"></i>
+                                                        <svg class="ays-table-icon ays-table-icon-move" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v20M15 5l-3-3-3 3M15 19l-3 3-3-3M2 12h20M5 9l-3 3 3 3M19 9l3 3-3 3"></path></svg>
                                                     </td>
                                                     <td class="ays_interval_min_row">
                                                         <input type="number" tabindex="-1" value="<?php echo intval($quiz_interval['interval_min']); ?>" class="interval_min">
@@ -8734,13 +8736,13 @@ $buttons_mobile_border_radius = (isset($options['buttons_mobile_border_radius'])
                                                     <td class="ays-interval-image-td">
                                                         <label class='ays-label' for='ays-answer'>
                                                             <a href="javascript:void(0)" class="add-answer-image add-interval-image" style="display:block;" tabindex="-1">
-                                                                <?php echo esc_html($quiz_interval_text); ?>
+                                                                <svg class="ays-interval-image-icon" viewBox="0 0 24 24" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect><circle cx="9" cy="9" r="2"></circle><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"></path></svg>
                                                             </a>
                                                         </label>
                                                     </td>
                                                     <td>
                                                         <a href="javascript:void(0)" class="ays-delete-interval" tabindex="-1" data-id="<?php echo esc_attr($key); ?>">
-                                                            <i class="ays_fa ays_fa_minus_square" aria-hidden="true"></i>
+                                                            <svg class="ays-table-icon ays-table-icon-delete" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 11v6M14 11v6M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
                                                         </a>
                                                     </td>
                                                 </tr>
