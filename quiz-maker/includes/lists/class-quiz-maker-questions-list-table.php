@@ -173,9 +173,8 @@ class Questions_List_Table extends WP_List_Table{
             </select>
 
             <input type="button" id="doaction-<?php echo esc_attr( $which ); ?>" class="ays-quiz-question-tab-all-filter-button-<?php echo esc_attr( $which ); ?> button" value="<?php echo esc_attr( __( "Filter", 'quiz-maker' ) ); ?>">
+            <a href="?page=<?php echo esc_attr( $_REQUEST['page'] ); ?>" class="button ays-quiz-list-table-clear-button"><?php echo esc_html__( "Clear filters", 'quiz-maker' ); ?></a>
         </div>
-        
-        <a style="" href="?page=<?php echo esc_attr( $_REQUEST['page'] ); ?>" class="button"><?php echo esc_html__( "Clear filters", 'quiz-maker' ); ?></a>
         <?php
     }
     

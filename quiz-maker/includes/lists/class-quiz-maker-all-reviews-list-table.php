@@ -165,7 +165,7 @@ class All_Reviews_List_Table extends WP_List_Table{
             <input type="button" id="doaction-quiz-<?php echo esc_attr( $which ); ?>" class="ays-quiz-question-tab-all-filter-button-<?php echo esc_attr( $which ); ?> button" value="<?php echo esc_html__( "Filter", 'quiz-maker' ); ?>">
         </div>
 
-        <a style="" href="?page=<?php echo !empty($_REQUEST['page']) ? esc_attr( $_REQUEST['page'] ) : ''; ?>" class="button"><?php echo esc_html__( "Clear filters", 'quiz-maker' ); ?></a>
+        <a href="?page=<?php echo !empty($_REQUEST['page']) ? esc_attr( $_REQUEST['page'] ) : ''; ?>" class="button ays-quiz-list-table-clear-button"><?php echo esc_html__( "Clear filters", 'quiz-maker' ); ?></a>
         <?php
     }
 

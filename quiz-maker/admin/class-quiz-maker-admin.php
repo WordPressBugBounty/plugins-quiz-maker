@@ -1485,6 +1485,7 @@ class Quiz_Maker_Admin
         $quick_quiz_make_review_required                        = 'off';
         $quick_quiz_review_placeholder_text                     = '';
         $quick_quiz_enable_pass_score                           = 'off';
+        $quick_quiz_pass_score                                  = '0';
 
         // User Data
         $quick_quiz_show_information_form                       = 'on';
@@ -1517,6 +1518,7 @@ class Quiz_Maker_Admin
         $quick_quiz_title_mobile_font_size                      = 20;
         $quick_quiz_custom_class                                = "";
         $quick_quiz_content_max_width                           = 90;
+        $quick_quiz_content_mobile_max_width                    = 90;
 
         $quick_quiz_quest_animation                             = "none";
         $quick_quiz_question_font_size                          = 16;
@@ -1570,6 +1572,7 @@ class Quiz_Maker_Admin
         $quick_quiz_quest_explanation_mobile_letter_spacing     = 0;
         $quick_quiz_quest_explanation_mobile_font_weight        = "normal";
         $quick_quiz_right_answer_mobile_text_transform          = "none";
+        $quick_quiz_right_answers_mobile_text_decoration        = "none";
         $quick_quiz_right_answers_mobile_letter_spacing         = 0;
         $quick_quiz_right_answers_mobile_font_weight            = "normal";
         $quick_quiz_wrong_answer_mobile_text_transform          = "none";

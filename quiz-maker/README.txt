@@ -4,7 +4,7 @@ Donate link: https://quiz-plugin.com/pricing/
 Tags:  exam, quiz, quizzes, education, quiz maker
 Requires at least: 4.0
 Tested up to: 7.1
-Stable tag: 6.7.1.81
+Stable tag: 6.7.1.82
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -429,6 +429,14 @@ Do you wonder how to create a Math Quiz with hard mathematical equations in Word
 For example, to add a squared symbol, you need to write down the following sign ^2. (do not forget to insert $ character to mark the beginning and ending).
 
 == Changelog ==
+
+= 6.7.1.82 ( Sep 18, 2026 ) =
+* Improved: Redesigned Quiz Maker admin list tables
+* Improved: List table filters, bulk actions, pagination, column alignment, and responsive layouts
+* Improved: Shortcode copy buttons in the Quizzes and Quiz Categories list tables
+* Improved: Questions list table column proportions and mobile data alignment
+* Tested: Compatible up to WordPress 7.1.1
+* Fixed: Pagination layout and visibility on mobile devices
 
 = 6.7.1.81 ( Sep 16, 2026 ) =
 * Improved: Answers and Questions table designs

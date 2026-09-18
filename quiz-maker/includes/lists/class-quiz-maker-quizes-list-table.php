@@ -130,7 +130,7 @@ class Quizes_List_Table extends WP_List_Table{
             <input type="button" id="doaction-<?php echo esc_attr( $which ); ?>" class="cat-filter-apply-<?php echo esc_attr( $which ); ?> button" value="Filter">
         </div>
         
-        <a style="" href="?page=<?php echo esc_attr( $_REQUEST['page'] ); ?>" class="button"><?php echo esc_html__( "Clear filters", 'quiz-maker' ); ?></a>
+        <a href="?page=<?php echo esc_attr( $_REQUEST['page'] ); ?>" class="button ays-quiz-list-table-clear-button"><?php echo esc_html__( "Clear filters", 'quiz-maker' ); ?></a>
         <?php
     }
     
@@ -2129,24 +2129,15 @@ class Quizes_List_Table extends WP_List_Table{
 
     function column_shortcode( $item ) {
         $shortcode = sprintf( "[ays_quiz id='%d']", absint( $item['id'] ) );
+        $copy_label = esc_attr__( 'Copy shortcode', 'quiz-maker' );
 
-        return sprintf(
-            '<div class="ays-quiz-copy-wrapper">
-                <span class="ays-quiz-copy-tooltip">%2$s</span>
-                <div class="ays-quiz-shortcode-container">
-                    <button type="button" class="ays-quiz-copy-shortcode-btn ays-quiz-copy-image" data-shortcode="%1$s" title="%3$s" aria-label="%3$s">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                        </svg>
-                    </button>
-                    <input type="text" onClick="this.setSelectionRange(0, this.value.length)" readonly value="%1$s" />
-                </div>
-            </div>',
-            esc_attr( $shortcode ),
-            esc_html__( 'Copied!', 'quiz-maker' ),
-            esc_attr__( 'Copy shortcode', 'quiz-maker' )
-        );
+        return '<div class="ays-quiz-list-table-shortcode">'
+            . '<input type="text" onClick="this.setSelectionRange(0, this.value.length)" readonly value="'.esc_attr( $shortcode ).'" />'
+            . '<button type="button" class="ays-quiz-list-table-shortcode-copy" aria-label="'.$copy_label.'" title="'.$copy_label.'">'
+                . '<svg class="ays-quiz-shortcode-copy-icon" viewBox="0 0 24 24" aria-hidden="true"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>'
+                . '<svg class="ays-quiz-shortcode-check-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6"></path></svg>'
+            . '</button>'
+        . '</div>';
     }
 
     function column_create_date( $item ) {

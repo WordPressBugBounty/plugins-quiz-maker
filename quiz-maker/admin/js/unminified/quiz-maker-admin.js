@@ -3293,6 +3293,54 @@
                 tooltip.removeClass('ays-quiz-show');
             }, 1200);
         });
+
+        $(document).on('click', '.ays-quiz-list-table-shortcode-copy', function () {
+            var button = $(this);
+            var shortcode = button.siblings('input[readonly]').val();
+
+            function showCopiedState() {
+                var copiedLabel = quizLangObj.copied || 'Copied!';
+                var copyLabel = quizLangObj.clickForCopy || 'Copy shortcode';
+
+                window.clearTimeout(button.data('copy-state-timeout'));
+                button.addClass('is-copied').attr({
+                    'aria-label': copiedLabel,
+                    'title': copiedLabel
+                });
+
+                button.data('copy-state-timeout', window.setTimeout(function () {
+                    button.removeClass('is-copied').attr({
+                        'aria-label': copyLabel,
+                        'title': copyLabel
+                    });
+                }, 1800));
+            }
+
+            function fallbackCopy() {
+                var textarea = $('<textarea>');
+
+                textarea.val(shortcode).attr('readonly', true).css({
+                    position: 'fixed',
+                    opacity: 0,
+                    pointerEvents: 'none'
+                }).appendTo('body');
+                textarea[0].select();
+
+                try {
+                    if (document.execCommand('copy')) {
+                        showCopiedState();
+                    }
+                } finally {
+                    textarea.remove();
+                }
+            }
+
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(shortcode).then(showCopiedState).catch(fallbackCopy);
+            } else {
+                fallbackCopy();
+            }
+        });
         
         $(document).find('.cat-filter-apply-top, .cat-filter-apply-bottom, .user-filter-apply-top, .user-filter-apply-bottom, .category-filter-apply-top, .category-filter-apply-bottom, .question-type-filter-apply-top, .question-type-filter-apply-bottom, .quiz-review-filter-apply-top, .quiz-review-filter-apply-bottom').on('click', function(e){
             e.preventDefault();

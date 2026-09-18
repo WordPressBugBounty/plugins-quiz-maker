@@ -8735,7 +8735,7 @@ $buttons_mobile_border_radius = (isset($options['buttons_mobile_border_radius'])
                                                     </td>
                                                     <td class="ays-interval-image-td">
                                                         <label class='ays-label' for='ays-answer'>
-                                                            <a href="javascript:void(0)" class="add-answer-image add-interval-image" style="display:block;" tabindex="-1">
+                                                            <a href="javascript:void(0)" class="add-answer-image add-interval-image" style="display:flex;" tabindex="-1">
                                                                 <svg class="ays-interval-image-icon" viewBox="0 0 24 24" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect><circle cx="9" cy="9" r="2"></circle><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"></path></svg>
                                                             </a>
                                                         </label>

@@ -129,7 +129,7 @@ class Question_Categories_List_Table extends WP_List_Table{
             <input type="button" id="doaction-quiz-<?php echo esc_attr( $which ); ?>" class="ays-quiz-question-tab-all-filter-button-<?php echo esc_attr( $which ); ?> button" value="<?php echo esc_attr( __( "Filter", 'quiz-maker' ) ); ?>">
         </div>
 
-        <a style="" href="?page=<?php echo esc_attr( sanitize_text_field( $_REQUEST['page'] ) ); ?>" class="button"><?php echo esc_html__( "Clear filters", 'quiz-maker' ); ?></a>
+        <a href="?page=<?php echo esc_attr( sanitize_text_field( $_REQUEST['page'] ) ); ?>" class="button ays-quiz-list-table-clear-button"><?php echo esc_html__( "Clear filters", 'quiz-maker' ); ?></a>
         <?php
     }
     
@@ -781,7 +781,7 @@ class Question_Categories_List_Table extends WP_List_Table{
         
         $restitle = Quiz_Maker_Admin::ays_restriction_string("word", $column_t, $category_title_length);
 
-        $title = sprintf( '<a href="?page=%s&action=%s&question_category=%d" title="%s"><strong>%s</strong></a>', esc_attr( $_REQUEST['page'] ), 'edit', absint( $item['id'] ), $t, $restitle );
+        $title = sprintf( '<a href="?page=%s&action=%s&question_category=%d" title="%s">%s</a>', esc_attr( $_REQUEST['page'] ), 'edit', absint( $item['id'] ), $t, $restitle );
 
         $actions = array(
             'edit' => sprintf( '<a href="?page=%s&action=%s&question_category=%d">'. __('Edit', 'quiz-maker') .'</a>', esc_attr( $_REQUEST['page'] ), 'edit', absint( $item['id'] ) ),
