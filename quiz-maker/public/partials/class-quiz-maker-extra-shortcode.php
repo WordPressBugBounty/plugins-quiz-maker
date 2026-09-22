@@ -91,6 +91,7 @@ class Ays_Quiz_Maker_Extra_Shortcodes_Public
         add_shortcode('ays_quiz_avg_rate', array($this, 'ays_generate_quiz_avg_rate_method'));
         add_shortcode('ays_quiz_all_questions_count', array($this, 'ays_generate_all_questions_count_method'));
         add_shortcode('ays_quiz_title', array($this, 'ays_generate_quiz_title_method'));
+        add_shortcode('ays_quiz_description', array($this, 'ays_generate_quiz_description_method'));
     }
 
     /*
@@ -2040,6 +2041,58 @@ class Ays_Quiz_Maker_Extra_Shortcodes_Public
     /*
     ==========================================
         Show quiz title | End
+    ==========================================
+    */
+
+    /*
+    ==========================================
+        Show quiz description | Start
+    ==========================================
+    */
+
+    public function ays_generate_quiz_description_method( $attr ) {
+
+        $id = (isset($attr['id']) && $attr['id'] != '') ? absint( sanitize_text_field($attr['id']) ) : null;
+
+        if (is_null($id) || $id == 0 ) {
+            return "";
+        }
+
+        $unique_id = uniqid();
+        $this->unique_id = $unique_id;
+        $this->unique_id_in_class = $id . "-" . $unique_id;
+
+        $quiz_description = $this->ays_generate_quiz_description_html( $id );
+
+        return str_replace(array("\r\n", "\n", "\r"), "\n", $quiz_description);
+    }
+
+    public function ays_generate_quiz_description_html( $id ) {
+
+        $quiz_data = self::get_quiz_by_id( $id );
+
+        if( is_null( $quiz_data ) || empty( $quiz_data ) ){
+            return "";
+        }
+
+        $quiz_description = (isset($quiz_data['description']) && $quiz_data['description'] != '') ? Quiz_Maker_Public::ays_autoembed($quiz_data['description']) : "";
+
+        if ( $quiz_description == "" ) {
+            return "";
+        }
+
+        $content_html = array();
+
+        $content_html[] = "<div class='". $this->html_name_prefix ."quiz-description' id='". $this->html_name_prefix ."quiz-description-". $this->unique_id_in_class ."' data-id='". $this->unique_id ."'>";
+            $content_html[] = $quiz_description;
+        $content_html[] = "</div>";
+
+        return implode( '' , $content_html);
+    }
+
+    /*
+    ==========================================
+        Show quiz description | End
     ==========================================
     */
 }

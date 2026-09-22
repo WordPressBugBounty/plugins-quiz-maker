@@ -5280,6 +5280,23 @@
                                 <div class="col-sm-12" style="padding:20px;">
                                     <div class="form-group row">
                                         <div class="col-sm-4">
+                                            <label for="ays_quiz_description">
+                                                <?php echo esc_html__( "Show quiz description", 'quiz-maker' ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__( "Enter the Quiz ID to display the description of the selected quiz.", 'quiz-maker' ); ?>">
+                                                    <i class="ays_fa ays_fa_info_circle"></i>
+                                                </a>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <input type="text" id="ays_quiz_description" class="ays-text-input" onclick="this.setSelectionRange(0, this.value.length)" readonly="" value='[ays_quiz_description id="Your_Quiz_ID"]'>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row" style="padding:0px;margin:0;">
+                                <div class="col-sm-12" style="padding:20px;">
+                                    <div class="form-group row">
+                                        <div class="col-sm-4">
                                             <label for="ays_quiz_questions_count">
                                                 <?php echo esc_html__( "Show quiz questions count", 'quiz-maker' ); ?>
                                                 <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("You need to insert Your Quiz ID in the shortcode. It will show the questions count of the particular quiz. If there is no quiz available/found with that particular Quiz ID, the shortcode will be empty.",'quiz-maker') ); ?>">
