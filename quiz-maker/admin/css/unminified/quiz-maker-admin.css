@@ -10480,17 +10480,8 @@ table.ays-top-keywords-table a.ays-delete-top-keyword:focus {
     --ays-list-header: #f5f7fb;
     --ays-list-hover: #f8fafc;
     --ays-list-surface: #ffffff;
-    box-sizing: border-box;
-    color: var(--ays-list-text);
-    font-size: 14px;
     max-width: none;
     padding: 0 20px 28px 0;
-}
-
-.wrap.ays-quiz-list-table *,
-.wrap.ays-quiz-list-table *::before,
-.wrap.ays-quiz-list-table *::after {
-    box-sizing: border-box;
 }
 
 .wrap.ays-quiz-list-table > h1.wp-heading-inline {

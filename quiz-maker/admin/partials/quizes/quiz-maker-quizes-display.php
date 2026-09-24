@@ -864,6 +864,25 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <hr/>
                                         <div class="form-group row">
                                             <div class="col-sm-4">
+                                                <label for="ays_quick_quiz_show_answers_numbering">
+                                                    <?php echo esc_html__('Answers numbering','quiz-maker'); ?>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <select name="ays_quick_quiz_show_answers_numbering" class="ays-text-input ays-text-input-short" id="ays_quick_quiz_show_answers_numbering">
+                                                    <option value="none" selected><?php echo esc_html__( "None", 'quiz-maker' ); ?></option>
+                                                    <option value="1."><?php echo esc_html__( "1.", 'quiz-maker' ); ?></option>
+                                                    <option value="1)"><?php echo esc_html__( "1)", 'quiz-maker' ); ?></option>
+                                                    <option value="A."><?php echo esc_html__( "A.", 'quiz-maker' ); ?></option>
+                                                    <option value="A)"><?php echo esc_html__( "A)", 'quiz-maker' ); ?></option>
+                                                    <option value="a."><?php echo esc_html__( "a.", 'quiz-maker' ); ?></option>
+                                                    <option value="a)"><?php echo esc_html__( "a)", 'quiz-maker' ); ?></option>
+                                                </select>
+                                            </div>
+                                        </div> <!-- Show answers numbering -->
+                                        <hr/>
+                                        <div class="form-group row">
+                                            <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_answers_view">
                                                     <?php echo esc_html__('Answers view','quiz-maker'); ?>
                                                 </label>

@@ -1436,6 +1436,7 @@ class Quiz_Maker_Admin
         $quick_quiz_show_quiz_desc                              = 'on';
         $quick_quiz_show_questions_explanation                  = 'on_results_page';
         $quick_quiz_show_questions_numbering                    = 'none';
+        $quick_quiz_show_answers_numbering                      = 'none';
         $quick_quiz_answers_view                                = 'list';
         $quick_quiz_answers_rw_texts                            = 'on_passing';
         $quick_quiz_enable_questions_ordering_by_cat            = 'off';
@@ -1838,6 +1839,9 @@ class Quiz_Maker_Admin
             // Questions numbering
             $quick_quiz_show_questions_numbering = (isset( $_REQUEST['ays_quick_quiz_show_questions_numbering'] ) && $_REQUEST['ays_quick_quiz_show_questions_numbering'] != "") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_show_questions_numbering'] ) ) : "none";
 
+            // Answers numbering
+            $quick_quiz_show_answers_numbering = (isset( $_REQUEST['ays_quick_quiz_show_answers_numbering'] ) && $_REQUEST['ays_quick_quiz_show_answers_numbering'] != "") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_show_answers_numbering'] ) ) : "none";
+
             // Answers view
             $quick_quiz_answers_view = (isset( $_REQUEST['ays_quick_quiz_answers_view'] ) && $_REQUEST['ays_quick_quiz_answers_view'] != "") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_answers_view'] ) ) : "list";
 
@@ -2210,7 +2214,7 @@ class Quiz_Maker_Admin
             'quiz_loader_custom_gif'                            => '',
             'disable_hover_effect'                              => $quick_quiz_disable_hover_effect,
             'quiz_loader_custom_gif_width'                      => 100,
-            'show_answers_numbering'                            => 'none',
+            'show_answers_numbering'                            => $quick_quiz_show_answers_numbering,
             'quiz_title_transformation'                         => $quick_quiz_title_transformation,
             'quiz_box_shadow_x_offset'                          => 0,
             'quiz_box_shadow_y_offset'                          => 0,
