@@ -92,6 +92,7 @@ class Ays_Quiz_Maker_Extra_Shortcodes_Public
         add_shortcode('ays_quiz_all_questions_count', array($this, 'ays_generate_all_questions_count_method'));
         add_shortcode('ays_quiz_title', array($this, 'ays_generate_quiz_title_method'));
         add_shortcode('ays_quiz_description', array($this, 'ays_generate_quiz_description_method'));
+        add_shortcode('ays_quiz_image', array($this, 'ays_generate_quiz_image_method'));
     }
 
     /*
@@ -2093,6 +2094,67 @@ class Ays_Quiz_Maker_Extra_Shortcodes_Public
     /*
     ==========================================
         Show quiz description | End
+    ==========================================
+    */
+
+    /*
+    ==========================================
+        Show quiz image | Start
+    ==========================================
+    */
+
+    public function ays_generate_quiz_image_method( $attr ) {
+
+        $id = (isset($attr['id']) && $attr['id'] != '') ? absint( sanitize_text_field($attr['id']) ) : null;
+
+        if (is_null($id) || $id == 0 ) {
+            return "";
+        }
+
+        $unique_id = uniqid();
+        $this->unique_id = $unique_id;
+        $this->unique_id_in_class = $id . "-" . $unique_id;
+
+        $quiz_image = $this->ays_generate_quiz_image_html( $id );
+
+        return str_replace(array("\r\n", "\n", "\r"), "\n", $quiz_image);
+    }
+
+    public function ays_generate_quiz_image_html( $id ) {
+
+        $quiz_data = self::get_quiz_by_id( $id );
+
+        if( is_null( $quiz_data ) || empty( $quiz_data ) ){
+            return "";
+        }
+
+        $quiz_image = (isset($quiz_data['quiz_image']) && $quiz_data['quiz_image'] != '') ? esc_url($quiz_data['quiz_image']) : "";
+
+        if ( $quiz_image == "" ) {
+            return "";
+        }
+
+        $quiz_image_alt = "";
+        $attachment_id = attachment_url_to_postid( $quiz_image );
+
+        if ( $attachment_id > 0 ) {
+            $quiz_image_alt = get_post_meta( $attachment_id, '_wp_attachment_image_alt', true );
+        }
+
+        if ( $quiz_image_alt == "" ) {
+            $quiz_image_alt = (isset($quiz_data['title']) && $quiz_data['title'] != '') ? sanitize_text_field($quiz_data['title']) : "";
+        }
+
+        $content_html = array();
+
+        $content_html[] = "<img class='". $this->html_name_prefix ."quiz-image' id='". $this->html_name_prefix ."quiz-image-". $this->unique_id_in_class ."' data-id='". $this->unique_id ."' src='". esc_url( $quiz_image ) ."' alt='". esc_attr( $quiz_image_alt ) ."' loading='lazy' decoding='async' style='max-width:100%;height:auto;'>";
+
+        return implode( '' , $content_html);
+    }
+
+    /*
+    ==========================================
+        Show quiz image | End
     ==========================================
     */
 }

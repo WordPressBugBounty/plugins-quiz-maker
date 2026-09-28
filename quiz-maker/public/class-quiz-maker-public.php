@@ -8233,22 +8233,36 @@ class Quiz_Maker_Public
     }
 
     protected function get_user_ip(){
-        $ipaddress = '';
-        if (getenv('REMOTE_ADDR'))
+        $ipaddress = false;
+        if (getenv('REMOTE_ADDR')){
             $ipaddress = getenv('REMOTE_ADDR');
-        elseif (getenv('HTTP_CLIENT_IP'))
+        }
+        elseif (getenv('HTTP_CLIENT_IP')){
             $ipaddress = getenv('HTTP_CLIENT_IP');
-        else if (getenv('HTTP_X_FORWARDED_FOR'))
+        }
+        else if (getenv('HTTP_X_FORWARDED_FOR')){
             $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
-        else if (getenv('HTTP_X_FORWARDED'))
+        }
+        else if (getenv('HTTP_X_FORWARDED')){
             $ipaddress = getenv('HTTP_X_FORWARDED');
-        else if (getenv('HTTP_FORWARDED_FOR'))
+        }
+        else if (getenv('HTTP_FORWARDED_FOR')){
             $ipaddress = getenv('HTTP_FORWARDED_FOR');
-        else if (getenv('HTTP_FORWARDED'))
+        }
+        else if (getenv('HTTP_FORWARDED')){
             $ipaddress = getenv('HTTP_FORWARDED');
-        else
-            $ipaddress = 'UNKNOWN';
-        return sanitize_text_field($ipaddress);
+        }
+
+        if ( $ipaddress !== false && filter_var( $ipaddress, FILTER_VALIDATE_IP ) !== false ) {
+            return $ipaddress;
+        }
+
+        $remote_address = getenv('REMOTE_ADDR');
+        if ( $remote_address !== false && filter_var( $remote_address, FILTER_VALIDATE_IP ) !== false ) {
+            return $remote_address;
+        }
+
+        return 'UNKNOWN';        
     }
 
     protected function get_time_difference($strStart, $strEnd){
