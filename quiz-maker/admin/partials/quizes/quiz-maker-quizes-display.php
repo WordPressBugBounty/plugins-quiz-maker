@@ -989,6 +989,24 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                             </div>
                                         </div><!-- Enable progress bar -->
                                         <hr/>
+                                        <div class="form-group row">
+                                            <div class="col-sm-4">
+                                                <label for="ays_quick_quiz_loader">
+                                                    <?php echo esc_html__('Quiz loader icon','quiz-maker'); ?>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <select name="ays_quick_quiz_loader" class="ays-text-input ays-text-input-short" id="ays_quick_quiz_loader">
+                                                    <option value="default" selected><?php echo esc_html__( "Default", 'quiz-maker' ); ?></option>
+                                                    <option value="circle"><?php echo esc_html__( "Circle", 'quiz-maker' ); ?></option>
+                                                    <option value="dual_ring"><?php echo esc_html__( "Dual ring", 'quiz-maker' ); ?></option>
+                                                    <option value="facebook"><?php echo esc_html__( "Facebook", 'quiz-maker' ); ?></option>
+                                                    <option value="hourglass"><?php echo esc_html__( "Hourglass", 'quiz-maker' ); ?></option>
+                                                    <option value="ripple"><?php echo esc_html__( "Ripple", 'quiz-maker' ); ?></option>
+                                                </select>
+                                            </div>
+                                        </div><!-- Quiz loader icon -->
+                                        <hr/>
                                         <div class="form-group row ays_toggle_parent">
                                             <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_enable_quiz_rate">

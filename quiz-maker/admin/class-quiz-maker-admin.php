@@ -1466,6 +1466,7 @@ class Quiz_Maker_Admin
         $quick_quiz_hide_score                                  = 'off';
         $quick_quiz_enable_restart_button                       = 'on';
         $quick_quiz_enable_progress_bar                         = 'on';
+        $quick_quiz_loader                                      = 'default';
         $quick_quiz_enable_average_statistical                  = 'on';
         $quick_quiz_disable_store_data                          = 'off';
         $quick_quiz_display_score                               = 'by_percantage';
@@ -2020,6 +2021,11 @@ class Quiz_Maker_Admin
 
             // Enable full-screen mode
             $quick_quiz_enable_full_screen_mode = (isset( $_REQUEST['ays_quick_quiz_enable_full_screen_mode'] ) && $_REQUEST['ays_quick_quiz_enable_full_screen_mode'] == "on") ? "on" : "off";
+
+            // Quiz loader icon
+            $quick_quiz_loader = (isset( $_REQUEST['ays_quick_quiz_loader'] ) && $_REQUEST['ays_quick_quiz_loader'] != "") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_loader'] ) ) : "default";
+            $quick_quiz_loader_types = array( 'default', 'circle', 'dual_ring', 'facebook', 'hourglass', 'ripple' );
+            $quick_quiz_loader = in_array( $quick_quiz_loader, $quick_quiz_loader_types, true ) ? $quick_quiz_loader : 'default';
         }
         
         foreach ($questions as $question_key => $question) {
@@ -2120,7 +2126,7 @@ class Quiz_Maker_Admin
             'quiz_border_color'                                 => '#000',
             'quiz_timer_in_title'                               => 'off',
             'enable_restart_button'                             => $quick_quiz_enable_restart_button,
-            'quiz_loader'                                       => 'default',
+            'quiz_loader'                                       => $quick_quiz_loader,
             'create_date'                                       => $create_date,
             'author'                                            => $author,
             'autofill_user_data'                                => $quick_quiz_autofill_user_data,

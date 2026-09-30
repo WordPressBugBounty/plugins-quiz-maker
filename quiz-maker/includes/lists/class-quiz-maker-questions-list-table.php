@@ -690,12 +690,12 @@ class Questions_List_Table extends WP_List_Table{
                     $answers_results[] = $wpdb->insert(
                         $answers_table,
                         array(
-                            'question_id'   => $question_id,
-                            'answer'        => (trim($answer_value)),
-                            'image'         => !empty( $answer_image[$index] ) ? sanitize_url($answer_image[$index]) : '',
-                            'correct'       => $correct,
-                            'ordering'      => ($index + 1),
-                            'placeholder'   => $placeholder
+                            'question_id'       => $question_id,
+                            'answer'            => (trim($answer_value)),
+                            'image'             => !empty( $answer_image[$index] ) ? sanitize_url($answer_image[$index]) : '',
+                            'correct'           => $correct,
+                            'ordering'          => ($index + 1),
+                            'placeholder'       => $placeholder
                         ),
                         array(
                             '%d', // question_id
@@ -721,21 +721,21 @@ class Questions_List_Table extends WP_List_Table{
                 $question_result = $wpdb->update(
                     $questions_table,
                     array(
-                        'category_id'               => $category_id,
-                        'author_id'                 => $author_id,
-                        'question'                  => $question,
-                        'question_title'            => $question_title,
-                        'question_image'            => $question_image,
-                        'type'                      => $type,
-                        'published'                 => $published,
-                        'wrong_answer_text'         => $wrong_answer_text,
-                        'right_answer_text'         => $right_answer_text,
-                        'question_hint'             => $question_hint,
-                        'explanation'               => $explanation,
-                        'user_explanation'          => $user_explanation,
-                        'create_date'               => $quest_create_date,
-                        'not_influence_to_score'    => $not_influence_to_score,
-                        'options'                   => json_encode($options),
+                        'category_id'                   => $category_id,
+                        'author_id'                     => $author_id,
+                        'question'                      => $question,
+                        'question_title'                => $question_title,
+                        'question_image'                => $question_image,
+                        'type'                          => $type,
+                        'published'                     => $published,
+                        'wrong_answer_text'             => $wrong_answer_text,
+                        'right_answer_text'             => $right_answer_text,
+                        'question_hint'                 => $question_hint,
+                        'explanation'                   => $explanation,
+                        'user_explanation'              => $user_explanation,
+                        'create_date'                   => $quest_create_date,
+                        'not_influence_to_score'        => $not_influence_to_score,
+                        'options'                       => json_encode($options),
 
                     ),
                     array( 'id' => $id ),
@@ -828,12 +828,12 @@ class Questions_List_Table extends WP_List_Table{
                             $answers_results[] = $wpdb->insert(
                                 $answers_table,
                                 array(
-                                    'question_id'   => $id,
-                                    'answer'        => (trim($answer_value)),
-                                    'image'         => !empty( $answer_image[$index] ) ? sanitize_url($answer_image[$index]) : '',
-                                    'correct'       => $correct,
-                                    'ordering'      => ($index + 1),
-                                    'placeholder'   => $placeholder
+                                    'question_id'       => $id,
+                                    'answer'            => (trim($answer_value)),
+                                    'image'             => !empty( $answer_image[$index] ) ? sanitize_url($answer_image[$index]) : '',
+                                    'correct'           => $correct,
+                                    'ordering'          => ($index + 1),
+                                    'placeholder'       => $placeholder
                                 ),
                                 array(
                                     '%d', // question_id
@@ -848,12 +848,12 @@ class Questions_List_Table extends WP_List_Table{
                             $answers_results[] = $wpdb->update(
                                 $answers_table,
                                 array(
-                                    'question_id'   => $id,
-                                    'answer'        => (trim($answer_value)),
-                                    'image'         => !empty( $answer_image[$index] ) ? sanitize_url($answer_image[$index]) : '',
-                                    'correct'       => $correct,
-                                    'ordering'      => ($index + 1),
-                                    'placeholder'   => $placeholder
+                                    'question_id'       => $id,
+                                    'answer'            => (trim($answer_value)),
+                                    'image'             => !empty( $answer_image[$index] ) ? sanitize_url($answer_image[$index]) : '',
+                                    'correct'           => $correct,
+                                    'ordering'          => ($index + 1),
+                                    'placeholder'       => $placeholder
                                 ),
                                 array('id' => $old_answers[$index]["id"]),
                                 array(
