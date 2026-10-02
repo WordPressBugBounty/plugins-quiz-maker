@@ -1541,6 +1541,7 @@ class Quiz_Maker_Admin
         $quick_quiz_buttons_left_right_padding                  = 36;
         $quick_quiz_buttons_top_bottom_padding                  = 14;
         $quick_quiz_buttons_border_radius                       = 8;
+        $quick_quiz_buttons_mobile_border_radius                = 8;
         $quick_quiz_note_text_font_size                         = 14;
         $quick_quiz_note_text_mobile_font_size                  = 14;
         $quick_quiz_admin_note_text_transform                   = "none";
@@ -1757,6 +1758,9 @@ class Quiz_Maker_Admin
 
             // Buttons border radius
             $quick_quiz_buttons_border_radius = (isset($_REQUEST['ays_quick_quiz_buttons_border_radius']) && $_REQUEST['ays_quick_quiz_buttons_border_radius'] != '') ? absint( stripslashes( $_REQUEST['ays_quick_quiz_buttons_border_radius'] ) ) : 8;
+
+            // Buttons border radius | Mobile
+            $quick_quiz_buttons_mobile_border_radius = (isset($_REQUEST['ays_quick_quiz_buttons_mobile_border_radius']) && $_REQUEST['ays_quick_quiz_buttons_mobile_border_radius'] != '') ? absint( stripslashes( $_REQUEST['ays_quick_quiz_buttons_mobile_border_radius'] ) ) : $quick_quiz_buttons_border_radius;
 
             /**
              * Admin Note Styles Settings
@@ -2196,6 +2200,7 @@ class Quiz_Maker_Admin
             'buttons_left_right_padding'                        => $quick_quiz_buttons_left_right_padding,
             'buttons_top_bottom_padding'                        => $quick_quiz_buttons_top_bottom_padding,
             'buttons_border_radius'                             => $quick_quiz_buttons_border_radius,
+            'buttons_mobile_border_radius'                      => $quick_quiz_buttons_mobile_border_radius,
             'enable_leave_page'                                 => $quick_quiz_enable_leave_page,
             'enable_see_result_confirm_box'                     => $quick_quiz_enable_see_result_confirm_box,
             'enable_tackers_count'                              => $quick_quiz_enable_tackers_count,

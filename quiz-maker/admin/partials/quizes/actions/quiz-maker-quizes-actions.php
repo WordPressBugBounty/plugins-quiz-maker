@@ -3749,7 +3749,7 @@ $buttons_mobile_border_radius = (isset($options['buttons_mobile_border_radius'])
                                             </div>
                                             <div class="col-sm-7 ays_quiz_display_flex_width">
                                                 <div>
-                                                    <input type="number" class="ays-text-input ays-text-input-short" id="ays_buttons_border_radius" name="ays_buttons_border_radius" value="<?php echo intval($buttons_border_radius); ?>"/>
+                                                    <input type="number" class="ays-text-input" id="ays_buttons_border_radius" name="ays_buttons_border_radius" value="<?php echo intval($buttons_border_radius); ?>"/>
                                                 </div>
                                                 <div class="ays_quiz_dropdown_max_width ays-display-flex" style="align-items: flex-start;">
                                                     <input type="text" value="px" class='ays-quiz-form-hint-for-size' disabled>
