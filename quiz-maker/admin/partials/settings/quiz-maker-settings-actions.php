@@ -71,6 +71,7 @@ class Quiz_Maker_Settings_Actions {
             $not_answered_question_text         = (isset($_REQUEST['ays_quiz_not_answered_question_text']) && $_REQUEST['ays_quiz_not_answered_question_text'] != '') ? stripslashes( sanitize_text_field( $_REQUEST['ays_quiz_not_answered_question_text'] ) ) : 'You have not answered this question';
             $finish_quiz_text                   = (isset($_REQUEST['ays_quiz_finish_quiz_text']) && $_REQUEST['ays_quiz_finish_quiz_text'] != '') ? stripslashes( sanitize_text_field( $_REQUEST['ays_quiz_finish_quiz_text'] ) ) : 'Do you want to finish the quiz? Are you sure?';
             $select_question_placeholder_text   = (isset($_REQUEST['ays_quiz_select_question_placeholder_text']) && $_REQUEST['ays_quiz_select_question_placeholder_text'] != '') ? stripslashes( sanitize_text_field( $_REQUEST['ays_quiz_select_question_placeholder_text'] ) ) : 'Select an answer';
+            $answer_explanation_placeholder_text = (isset($_REQUEST['ays_quiz_answer_explanation_placeholder_text']) && $_REQUEST['ays_quiz_answer_explanation_placeholder_text'] != '') ? stripslashes( sanitize_text_field( $_REQUEST['ays_quiz_answer_explanation_placeholder_text'] ) ) : 'You can enter your answer explanation';
             $no_more_reviews_text   = (isset($_REQUEST['ays_quiz_no_more_reviews_text']) && $_REQUEST['ays_quiz_no_more_reviews_text'] != '') ? stripslashes( sanitize_text_field( $_REQUEST['ays_quiz_no_more_reviews_text'] ) ) : 'No more reviews';
             $report_question_text   = (isset($_REQUEST['ays_quiz_report_question_text']) && $_REQUEST['ays_quiz_report_question_text'] != '') ? sanitize_text_field( stripslashes( $_REQUEST['ays_quiz_report_question_text'] ) ) : 'Report a question';
             $whats_wrong_report_question_text   = (isset($_REQUEST['ays_quiz_whats_wrong_report_question_text']) && $_REQUEST['ays_quiz_whats_wrong_report_question_text'] != '') ? sanitize_text_field( stripslashes( $_REQUEST['ays_quiz_whats_wrong_report_question_text'] ) ) : 'What’s wrong with this question?';
@@ -94,6 +95,7 @@ class Quiz_Maker_Settings_Actions {
                 'not_answered_question_text'            => $not_answered_question_text,
                 'finish_quiz_text'                      => $finish_quiz_text,
                 'select_question_placeholder_text'      => $select_question_placeholder_text,
+                'answer_explanation_placeholder_text'   => $answer_explanation_placeholder_text,
                 'no_more_reviews_text'                  => $no_more_reviews_text,
                 'report_question_text'                  => $report_question_text,
                 'whats_wrong_report_question_text'      => $whats_wrong_report_question_text,

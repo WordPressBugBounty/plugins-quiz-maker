@@ -713,6 +713,7 @@ class Quiz_Maker_Public
         $not_answered_question_text = (isset($settings_static_texts['not_answered_question_text']) && $settings_static_texts['not_answered_question_text'] != '') ? stripslashes( esc_attr( $settings_static_texts['not_answered_question_text'] ) ) : 'You have not answered this question';
         $finish_quiz_text = (isset($settings_static_texts['finish_quiz_text']) && $settings_static_texts['finish_quiz_text'] != '') ? stripslashes( esc_attr( $settings_static_texts['finish_quiz_text'] ) ) : 'Do you want to finish the quiz? Are you sure?';
         $select_question_placeholder_text  = (isset($settings_static_texts['select_question_placeholder_text']) && $settings_static_texts['select_question_placeholder_text'] != '') ? stripslashes( esc_attr( $settings_static_texts['select_question_placeholder_text'] ) ) : 'Select an answer';
+        $answer_explanation_placeholder_text  = (isset($settings_static_texts['answer_explanation_placeholder_text']) && $settings_static_texts['answer_explanation_placeholder_text'] != '') ? stripslashes( esc_attr( $settings_static_texts['answer_explanation_placeholder_text'] ) ) : 'You can enter your answer explanation';
         $no_more_reviews_text  = (isset($settings_static_texts['no_more_reviews_text']) && $settings_static_texts['no_more_reviews_text'] != '') ? stripslashes( esc_attr( $settings_static_texts['no_more_reviews_text'] ) ) : 'No more reviews';
 
         $report_question_text  = (isset($settings_static_texts['report_question_text']) && $settings_static_texts['report_question_text'] != '') ? stripslashes( esc_attr( $settings_static_texts['report_question_text'] ) ) : 'Report a question';
@@ -755,6 +756,10 @@ class Quiz_Maker_Public
 
         if ($select_question_placeholder_text === 'Select an answer') {
             $select_question_placeholder_text = __('Select an answer', 'quiz-maker');
+        }
+
+        if ($answer_explanation_placeholder_text === 'You can enter your answer explanation') {
+            $answer_explanation_placeholder_text = __('You can enter your answer explanation', 'quiz-maker');
         }
 
         if ($no_more_reviews_text === 'No more reviews') {
@@ -817,6 +822,7 @@ class Quiz_Maker_Public
             'notAnsweredQuestionText'       => $not_answered_question_text,
             'finishQuizText'                => $finish_quiz_text,
             'selectAnswerText'              => $select_question_placeholder_text,
+            'answerExplanationPlaceholderText' => $answer_explanation_placeholder_text,
             'noMoreReviewsText'             => $no_more_reviews_text,
             'reportQuestionText'            => $report_question_text,
             'whatsWrongReportQuestionText'  => $whats_wrong_report_question_text,
@@ -5494,7 +5500,7 @@ class Quiz_Maker_Public
                 }
                 if(isset($question['user_explanation']) && $question['user_explanation'] == 'on'){
                     $user_explanation = "<div class='ays_user_explanation'>
-                        <textarea placeholder='".__('You can enter your answer explanation','quiz-maker')."' class='ays_user_explanation_text' name='user-answer-explanation[{$id}]'></textarea>
+                        <textarea placeholder='".esc_attr( $this->default_texts['answerExplanationPlaceholderText'] )."' class='ays_user_explanation_text' name='user-answer-explanation[{$id}]'></textarea>
                     </div>";
                 }
 
@@ -7498,7 +7504,7 @@ class Quiz_Maker_Public
         $answer_container_script_html = "";
         $answer_container = "<div class='ays-field ays-select-field'>            
             <select class='ays-select'>                
-                <option value=''>".__('Select an answer', 'quiz-maker')."</option>";
+                <option value=''>".esc_html( $this->default_texts['selectAnswerText'] )."</option>";
             foreach ($answers as $key => $answer) {
                 if ( ! empty($numbering_type_arr) ) {
                     $numbering_type = (isset($numbering_type_arr[$key]) && $numbering_type_arr[$key] != '') ? $numbering_type_arr[$key] :'';
