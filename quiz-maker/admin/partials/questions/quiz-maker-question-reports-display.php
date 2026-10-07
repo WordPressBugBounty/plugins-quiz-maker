@@ -35,6 +35,7 @@ $quiz_menu_badge_background = Quiz_Maker_Admin::get_menu_badge_background( $this
                         ?>
                         <form method="post">
                             <?php
+                            wp_nonce_field( 'ays_quiz_question_reports_bulk_actions', 'ays_quiz_question_reports_bulk_actions_nonce' );
                             $this->question_reports_obj->prepare_items();
                             $search = esc_html__( 'Search', 'quiz-maker' );
                             $this->question_reports_obj->search_box( $search, 'quiz-maker' );

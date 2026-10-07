@@ -111,6 +111,7 @@ $quiz_results_plugin_nonce = wp_create_nonce( 'quiz-maker-ajax-results-nonce' );
                         ?>
                         <form method="post">
                             <?php
+                            wp_nonce_field( 'ays_quiz_results_bulk_actions', 'ays_quiz_results_bulk_actions_nonce' );
                             $this->results_obj->prepare_items();
                             $this->results_obj->search_box('Search', 'quiz-maker');
                             $this->results_obj->display();

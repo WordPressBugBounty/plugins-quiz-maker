@@ -171,6 +171,7 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                     ?>
                     <form method="post">
                         <?php
+                        wp_nonce_field( 'ays_quiz_bulk_actions', 'ays_quiz_bulk_actions_nonce' );
                         $this->quizes_obj->prepare_items();
                         $search = esc_html__( "Search", 'quiz-maker' );
                         $this->quizes_obj->search_box($search, 'quiz-maker');

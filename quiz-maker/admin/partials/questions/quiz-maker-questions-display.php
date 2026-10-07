@@ -190,6 +190,7 @@ $question_max_id = $this->get_max_id('questions');
                         ?>
                         <form method="post">
                             <?php
+                                wp_nonce_field( 'ays_quiz_questions_bulk_actions', 'ays_quiz_questions_bulk_actions_nonce' );
                                 $this->questions_obj->prepare_items();
                                 $search = esc_html__( "Search", 'quiz-maker' );
                                 $this->questions_obj->search_box($search, 'quiz-maker');

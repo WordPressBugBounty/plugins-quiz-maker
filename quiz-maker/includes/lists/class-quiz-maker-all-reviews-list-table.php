@@ -735,6 +735,17 @@ class All_Reviews_List_Table extends WP_List_Table{
             return;
         }
 
+        $bulk_actions = array( 'bulk-delete', 'bulk-delete-review' );
+        if ( in_array( $action, $bulk_actions, true ) ) {
+            $bulk_action_nonce = isset( $_POST['ays_quiz_all_reviews_bulk_actions_nonce'] )
+                ? sanitize_text_field( wp_unslash( $_POST['ays_quiz_all_reviews_bulk_actions_nonce'] ) )
+                : '';
+
+            if ( empty( $bulk_action_nonce ) || ! wp_verify_nonce( $bulk_action_nonce, 'ays_quiz_all_reviews_bulk_actions' ) ) {
+                wp_die( 'Nonce verification failed!' );
+            }
+        }
+
         if( current_user_can( $this->current_user_can_edit ) && is_user_logged_in() ){
 
             //Detect when a bulk action is being triggered...

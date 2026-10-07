@@ -58,6 +58,7 @@ $plus_icon_svg = "<span class=''><img src='". AYS_QUIZ_ADMIN_URL ."/images/icons
                     ?>
                     <form method="post">
                         <?php
+                            wp_nonce_field( 'ays_quiz_question_categories_bulk_actions', 'ays_quiz_question_categories_bulk_actions_nonce' );
                             $this->question_categories_obj->prepare_items();
                             $search = esc_html__( "Search", 'quiz-maker' );
                             $this->question_categories_obj->search_box($search, 'quiz-maker');

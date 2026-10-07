@@ -100,6 +100,7 @@ $tab_url = "?page=".$this->plugin_name."-results&ays_result_tab=";
                         ?>
                         <form method="post">
                             <?php
+                            wp_nonce_field( 'ays_quiz_all_reviews_bulk_actions', 'ays_quiz_all_reviews_bulk_actions_nonce' );
                             $this->all_reviews_obj->prepare_items();
                             $this->all_reviews_obj->search_box( 'Search', 'quiz-maker' );
                             $this->all_reviews_obj->display();
