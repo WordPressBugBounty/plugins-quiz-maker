@@ -1574,6 +1574,9 @@ class Quiz_Maker_Public
         // Answer image height | Mobile
         $ans_img_mobile_height = (isset($options['ans_img_mobile_height']) && $options['ans_img_mobile_height'] != '') ? absint($options['ans_img_mobile_height']) . "px" : $ans_img_height;
 
+        // Answer image border radius
+        $ans_img_border_radius = (isset($options['ans_img_border_radius']) && $options['ans_img_border_radius'] != '') ? absint($options['ans_img_border_radius']) . "px" : "0px";
+
         $ans_img_caption_position = 'bottom';
         if(isset($options['ans_img_caption_position']) && $options['ans_img_caption_position'] != ''){
             $ans_img_caption_position = sanitize_text_field($options['ans_img_caption_position']);
@@ -4337,6 +4340,7 @@ class Quiz_Maker_Public
                 width:" . ($answer_view_class == "grid" ? "100%" : "15em") . ";
                 height:" . $ans_img_height . ";
                 object-fit: " . $answers_object_fit . ";
+                border-radius: " . $ans_img_border_radius . ";
             }
             ";
 

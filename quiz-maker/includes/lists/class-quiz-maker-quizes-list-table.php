@@ -1185,6 +1185,8 @@ class Quizes_List_Table extends WP_List_Table{
             // Buttons padding
             $buttons_mobile_border_radius = (isset($_POST['ays_buttons_mobile_border_radius']) && sanitize_text_field( $_POST['ays_buttons_mobile_border_radius'] ) != "") ? sanitize_text_field( $_POST['ays_buttons_mobile_border_radius'] ) : '8';
             
+            // Answer image border radius
+            $ans_img_border_radius = (isset($_REQUEST['ays_ans_img_border_radius']) && $_REQUEST['ays_ans_img_border_radius'] != '') ? absint( stripslashes( $_REQUEST['ays_ans_img_border_radius'] ) ) : 0;
 
             $options = array(
                 'quiz_version'                                      => AYS_QUIZ_VERSION,
@@ -1364,6 +1366,7 @@ class Quizes_List_Table extends WP_List_Table{
                 'answers_border_color'                              => $answers_border_color,
                 'ans_img_height'                                    => $ans_img_height,
                 'ans_img_mobile_height'                             => $ans_img_mobile_height,
+                'ans_img_border_radius'                             => $ans_img_border_radius,
                 'show_answers_caption'                              => $show_answers_caption,
                 'ans_img_caption_position'                          => $ans_img_caption_position,
                 'social_links_heading'                              => $social_links_heading,
