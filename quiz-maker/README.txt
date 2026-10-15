@@ -4,7 +4,7 @@ Donate link: https://quiz-plugin.com/pricing/
 Tags:  exam, quiz, quizzes, education, quiz maker
 Requires at least: 4.0
 Tested up to: 7.1
-Stable tag: 6.7.1.91
+Stable tag: 6.7.1.92
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -429,6 +429,18 @@ Do you wonder how to create a Math Quiz with hard mathematical equations in Word
 For example, to add a squared symbol, you need to write down the following sign ^2. (do not forget to insert $ character to mark the beginning and ending).
 
 == Changelog ==
+
+= 6.7.1.92 ( Oct 14, 2026 ) =
+* Added: Weight/Points calculation method for quizzes
+* Added: Answer points and question weight options to the Question editor
+* Added: Weight/Points display score option
+* Added: Percentage and points types for the quiz pass score
+* Added: User points and maximum points message variables
+* Added: Points column to the Results list table
+* Improved: Detailed result reports for quizzes calculated by points
+* Updated: POT file
+* Fixed: Social share button URL handling on the quiz results page
+* Fixed: Answer image overflow on the front end
 
 = 6.7.1.91 ( Oct 12, 2026 ) =
 * Added: Answer image border-radius option for mobile devices

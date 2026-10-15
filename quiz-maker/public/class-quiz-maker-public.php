@@ -2257,12 +2257,9 @@ class Quiz_Maker_Public
          * Generate HTML class for answers view
          */
         
-        $actual_link = "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-        if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on'){
-            $actual_link = "https" . $actual_link;
-        }else{
-            $actual_link = "http" . $actual_link;
-        }        
+        $request_uri = isset( $_SERVER['REQUEST_URI'] ) ? wp_unslash( $_SERVER['REQUEST_URI'] ) : '/';
+        $actual_link = esc_url_raw( home_url( $request_uri ) );
+        $encoded_actual_link = rawurlencode( $actual_link );
         
         /*
          * Show correct answers
@@ -2859,7 +2856,7 @@ class Quiz_Maker_Public
                 $ays_social_buttons .= "
                     <!-- Branded LinkedIn button -->
                     <a class='ays-share-btn ays-to-share ays-share-btn-branded ays-share-btn-linkedin'
-                       href='https://www.linkedin.com/shareArticle?mini=true&url=" . $actual_link . "'
+                       href='" . esc_url( 'https://www.linkedin.com/shareArticle?mini=true&url=' . $encoded_actual_link ) . "'
                        title='". esc_attr__('Share on LinkedIn', 'quiz-maker') ."'>
                         <span class='ays-quiz-share-btn-icon'></span>
                         <span class='ays-share-btn-text'>LinkedIn</span>
@@ -2870,7 +2867,7 @@ class Quiz_Maker_Public
                 $ays_social_buttons .= "
                     <!-- Branded Facebook button -->
                     <a class='ays-share-btn ays-to-share ays-share-btn-branded ays-share-btn-facebook'
-                       href='https://www.facebook.com/sharer/sharer.php?u=" . $actual_link . "'
+                       href='" . esc_url( 'https://www.facebook.com/sharer/sharer.php?u=' . $encoded_actual_link ) . "'
                        title='". esc_attr__('Share on Facebook', 'quiz-maker') ."'>
                         <span class='ays-quiz-share-btn-icon'></span>
                         <span class='ays-share-btn-text'>Facebook</span>
@@ -2881,7 +2878,7 @@ class Quiz_Maker_Public
                 $ays_social_buttons .= "
                 <!-- Branded X button -->
                 <a class='ays-share-btn ays-to-share ays-share-btn-branded ays-share-btn-twitter'
-                   href='https://x.com/share?url=" . $actual_link . "'
+                   href='" . esc_url( 'https://x.com/share?url=' . $encoded_actual_link ) . "'
                    title='". esc_attr__('Share on X', 'quiz-maker') ."'>
                     <span class='ays-quiz-share-btn-icon'>". $ays_social_twitter_x_icon ."</span>
                     <!-- <span class='ays-share-btn-text'></span> -->
@@ -2892,7 +2889,7 @@ class Quiz_Maker_Public
                 $ays_social_buttons .= "
                 <!-- Branded Whatsapp button -->
                 <a class='ays-share-btn ays-to-share ays-share-btn-branded ays-share-btn-whatsapp'
-                   href='https://api.whatsapp.com/send?text=" . rawurlencode( $actual_link ) . "'
+                   href='" . esc_url( 'https://api.whatsapp.com/send?text=' . $encoded_actual_link ) . "'
                    title='". esc_attr__('Share on Whatsapp', 'quiz-maker') ."'>
                     <span class='ays-quiz-share-btn-icon'></span>
                     <span class='ays-share-btn-text'>Whatsapp</span>
@@ -2903,7 +2900,7 @@ class Quiz_Maker_Public
                 $ays_social_buttons .= "
                 <!-- Branded VK button -->
                 <a class='ays-share-btn ays-to-share ays-share-btn-branded ays-share-btn-vkontakte'
-                   href='https://vk.com/share.php?url=" . $actual_link . "'
+                   href='" . esc_url( 'https://vk.com/share.php?url=' . $encoded_actual_link ) . "'
                    title='". esc_attr__('Share on VKontakte', 'quiz-maker') ."'>
                     <span class='ays-quiz-share-btn-icon'></span>
                     <span class='ays-share-btn-text'>VKontakte</span>
@@ -4344,6 +4341,7 @@ class Quiz_Maker_Public
                 height:" . $ans_img_height . ";
                 object-fit: " . $answers_object_fit . ";
                 border-radius: " . $ans_img_border_radius . ";
+                max-width: 100%;
             }
             ";
 
@@ -6011,6 +6009,7 @@ class Quiz_Maker_Public
             //Pass score count
             $pass_score_count = (isset($options->pass_score) && $options->pass_score != '') ? absint(intval($options->pass_score)) : 0;
             $enable_pass_score = (isset($options->enable_pass_score) && $options->enable_pass_score == 'on') || (!isset($options->enable_pass_score) && $pass_score_count > 0);
+            $quiz_pass_score_type = (isset($options->quiz_pass_score_type) && $options->quiz_pass_score_type != '') ? sanitize_text_field($options->quiz_pass_score_type) : 'percentage';
 
             // Information form
             $information_form = (isset($options->information_form) && $options->information_form != '') ? $options->information_form : 'disable';
@@ -6183,7 +6182,11 @@ class Quiz_Maker_Public
                     }
                     $multiple_correctness = array();
                     $has_multiple = $this->has_multiple_correct_answers($question_id);
-                    $answer_max_weights[] = $this->get_answers_max_weight($question_id, $has_multiple);
+                    $is_checkbox = isset($quests[$question_id]['type']) && $quests[$question_id]['type'] === 'checkbox';
+                    $answer_max_weights[$question_id] = $calculate_score == 'by_points' ? $this->get_answers_max_weight($question_id, $is_checkbox) : 0;
+                    if($is_checkbox){
+                        $has_multiple = true;
+                    }
                     
                     $user_answered["question_id_" . $question_id] = $questions_answer_for_db;
                     if ($has_multiple) {                        
@@ -6269,9 +6272,9 @@ class Quiz_Maker_Public
                 }
 
                 $new_correctness = array();
-                $quiz_weight = array();
                 $corrects_count = 0;
                 $quiz_weight_correctness = array();
+                $quiz_weight_points = array();
                 $corrects_count_by_cats = array();
                 foreach($questions_cats as $cat_id => &$q_ids){
                     $corrects_count_by_cats[$cat_id] = 0;
@@ -6280,6 +6283,11 @@ class Quiz_Maker_Public
                             switch($calculate_score){
                                 case "by_correctness":
                                     if($item){
+                                        $corrects_count_by_cats[$cat_id]++;
+                                    }
+                                break;
+                                case "by_points":
+                                    if($item == floatval($answer_max_weights[$question_id])){
                                         $corrects_count_by_cats[$cat_id]++;
                                     }
                                 break;
@@ -6297,11 +6305,16 @@ class Quiz_Maker_Public
                 foreach($correctness as $question_id => $item){
                     $question_weight = $this->get_question_weight($question_id);
                     $new_correctness[strval($question_id)] = $question_weight * floatval($item);
-                    $quiz_weight[] = $question_weight;
+                    $quiz_weight_points[strval($question_id)] = $question_weight * floatval($answer_max_weights[$question_id]);
                     $quiz_weight_correctness[strval($question_id)] = $question_weight;
                     switch($calculate_score){
                         case "by_correctness":
                             if($item){
+                                $corrects_count++;
+                            }
+                        break;
+                        case "by_points":
+                            if($item == floatval($answer_max_weights[$question_id])){
                                 $corrects_count++;
                             }
                         break;
@@ -6316,6 +6329,7 @@ class Quiz_Maker_Public
 
                 $quiz_weight_new_correctness_by_cats = array();
                 $quiz_weight_correctness_by_cats = array();
+                $quiz_weight_points_by_cats = array();
 
                 $questions_count_by_cats = array();
                 foreach($questions_cats as $cat_id => &$q_ids){
@@ -6328,6 +6342,9 @@ class Quiz_Maker_Public
 
                         if ( isset( $quiz_weight_correctness[$q_id] ) && sanitize_text_field( $quiz_weight_correctness[$q_id] ) != '' ) {
                             $quiz_weight_correctness_by_cats[$cat_id][$q_id] = $quiz_weight_correctness[$q_id];
+                        }
+                        if ( isset( $quiz_weight_points[$q_id] ) && sanitize_text_field( $quiz_weight_points[$q_id] ) != '' ) {
+                            $quiz_weight_points_by_cats[$cat_id][$q_id] = $quiz_weight_points[$q_id];
                         }
                     }
                     $questions_count_by_cats[$cat_id] = count($q_ids);
@@ -6348,6 +6365,10 @@ class Quiz_Maker_Public
                             $quiz_weight_cat = array_sum($quiz_weight_correctness_by_cats[$cat_id]);
                             $quiz_weight_cats[$cat_id] = array_sum($quiz_weight_correctness_by_cats[$cat_id]);
                         break;
+                        case "by_points":
+                            $quiz_weight_cat = isset($quiz_weight_points_by_cats[$cat_id]) ? array_sum($quiz_weight_points_by_cats[$cat_id]) : 0;
+                            $quiz_weight_cats[$cat_id] = $quiz_weight_cat;
+                        break;
                         default:
                             $quiz_weight_cat = array_sum($quiz_weight_correctness_by_cats[$cat_id]);
                             $quiz_weight_cats[$cat_id] = array_sum($quiz_weight_correctness_by_cats[$cat_id]);
@@ -6355,6 +6376,7 @@ class Quiz_Maker_Public
                     }
 
                     $correct_answered_count_cat = array_sum($q_ids);
+                    $correct_answered_count_cats[$cat_id] = $correct_answered_count_cat;
 
                     if($quiz_weight_cat == 0){
                         $final_score_by_cats[$cat_id] = floatval(0);
@@ -6366,19 +6388,23 @@ class Quiz_Maker_Public
                 
                 switch($calculate_score){
                     case "by_correctness":
-                        $quiz_weight = array_sum($quiz_weight);
+                        $quiz_weight = array_sum($quiz_weight_correctness);
                     break;
                     case "by_points":
-                        $quiz_weight = array_sum($answer_max_weights);
+                        $quiz_weight = array_sum($quiz_weight_points);
                     break;
                     default:
-                        $quiz_weight = array_sum($quiz_weight);
+                        $quiz_weight = array_sum($quiz_weight_correctness);
                     break;
                 }
                 $correct_answered_count = array_sum($new_correctness);
                 
                 if( $quiz_weight > 0 ){
-                    $final_score = intval(floor(($correct_answered_count / $quiz_weight) * 100));
+                    if($calculate_score == 'by_points'){
+                        $final_score = round(($correct_answered_count / $quiz_weight) * 100, 2);
+                    }else{
+                        $final_score = intval(floor(($correct_answered_count / $quiz_weight) * 100));
+                    }
                 }else{
                     $final_score = 0;
                 }
@@ -6397,6 +6423,12 @@ class Quiz_Maker_Public
                         case "by_correctness":
                             $score_by_cats[$cat_id] = array(
                                 'score' => $corrects_count_by_cats[$cat_id] . " / " . $questions_count_by_cats[$cat_id],
+                                'categoryName' => $questions_categorie_title,
+                            );
+                        break;
+                        case "by_points":
+                            $score_by_cats[$cat_id] = array(
+                                'score' => $correct_answered_count_cats[$cat_id] . " / " . $quiz_weight_cats[$cat_id],
                                 'categoryName' => $questions_categorie_title,
                             );
                         break;
@@ -6432,6 +6464,9 @@ class Quiz_Maker_Public
                 switch($display_score){
                     case "by_correctness":
                         $score = $corrects_count . " / " . $questions_count;
+                    break;
+                    case "by_points":
+                        $score = $correct_answered_count . " / " . $quiz_weight;
                     break;
                     case "by_percentage":
                         $score = $final_score . "%";
@@ -6578,6 +6613,8 @@ class Quiz_Maker_Public
                     'user_email'                                    => $ays_user_email,
                     'user_phone'                                    => $ays_user_phone,
                     'score'                                         => $final_score . "%",
+                    'user_points'                                   => $correct_answered_count,
+                    'max_points'                                    => $quiz_weight,
                     'current_date'                                  => date_i18n( get_option( 'date_format' ), strtotime( $end_date ) ),
                     'results_by_cats'                               => $result_score_by_categories,
                     'avg_score'                                     => $this->ays_get_average_of_scores($quiz_id) . "%",
@@ -6628,6 +6665,8 @@ class Quiz_Maker_Public
                     'user_corrects_count'                           => $corrects_count,
                     'questions_count'                               => $questions_count,
                     'calc_method'                                   => $calculate_score,
+                    'user_points'                                   => $correct_answered_count,
+                    'max_points'                                    => $quiz_weight,
                     'quiz_id'                                       => $quiz_id
                 );
 
@@ -6648,11 +6687,24 @@ class Quiz_Maker_Public
                 $message_data['result_id'] = $last_result_id;
 
                 $quiz_show_results_based_pass_score_flag = false;
-                if ($final_score >= $pass_score_count) {
-                    $score_message = $pass_score_message;
-                    $quiz_show_results_based_pass_score_flag = true;
-                }else{
-                    $score_message = $fail_score_message;
+                switch ($quiz_pass_score_type) {
+                    case 'point':
+                        if ($correct_answered_count >= $pass_score_count) {
+                            $score_message = $pass_score_message;
+                            $quiz_show_results_based_pass_score_flag = true;
+                        } else {
+                            $score_message = $fail_score_message;
+                        }
+                    break;
+                    case 'percentage':
+                    default:
+                        if ($final_score >= $pass_score_count) {
+                            $score_message = $pass_score_message;
+                            $quiz_show_results_based_pass_score_flag = true;
+                        } else {
+                            $score_message = $fail_score_message;
+                        }
+                    break;
                 }
 
                 $final_score_message = "";
@@ -6767,17 +6819,15 @@ class Quiz_Maker_Public
     
     public function get_answers_max_weight($question_id, $has_multiple){
         global $wpdb;
-        //$answers_table = $wpdb->prefix . "aysquiz_answers";
-        //$question_id = absint(intval($question_id));
-        //$query_part = "MAX(weight)";
-        //if($has_multiple){
-        //    $query_part = "SUM(weight)";
-        //}
-        //$sql = "SELECT {$query_part} FROM {$answers_table} WHERE question_id={$question_id}";
-        //$checks = $wpdb->get_var($sql);
-        //$answer_weight = floatval($checks);
-        
-        return 0;
+        $answers_table = $wpdb->prefix . "aysquiz_answers";
+        $question_id = absint(intval($question_id));
+        $sql = "SELECT MAX(weight) FROM {$answers_table} WHERE question_id={$question_id}";
+        if($has_multiple){
+            $sql = "SELECT SUM(weight) FROM {$answers_table} WHERE question_id={$question_id} AND weight > 0";
+        }
+        $checks = $wpdb->get_var($sql);
+
+        return floatval($checks);
     }
 
     public function check_answer_correctness($question_id, $answer_id, $calc_method){
@@ -6981,7 +7031,7 @@ class Quiz_Maker_Public
         }
         return false;
     }
-    
+
     public function is_question_not_influence($question_id){
         global $wpdb;
         $questions_table = $wpdb->prefix . "aysquiz_questions";
@@ -7579,11 +7629,12 @@ class Quiz_Maker_Public
     }
     
     protected function get_question_weight($id){
-        //global $wpdb;
-        //$sql = "SELECT weight FROM {$wpdb->prefix}aysquiz_questions WHERE id = $id";
-        //$result = $wpdb->get_var($sql);
-        //return intval($result);
-        return 1;
+        global $wpdb;
+        $id = absint(intval($id));
+        $sql = "SELECT weight FROM {$wpdb->prefix}aysquiz_questions WHERE id = {$id}";
+        $result = $wpdb->get_var($sql);
+
+        return floatval($result);
     }
 
     protected function hex2rgba($color, $opacity = false){
@@ -7675,6 +7726,10 @@ class Quiz_Maker_Public
         $calc_method = $data['calc_method'];
         $options['passed_time'] = $this->get_time_difference($start_date, $end_date);
         $options['calc_method'] = $calc_method;
+        $user_points = isset($data['user_points']) ? floatval($data['user_points']) : 0;
+        $max_points = isset($data['max_points']) ? floatval($data['max_points']) : 0;
+        $options['user_points'] = $user_points;
+        $options['max_points'] = $max_points;
         $user_corrects_count = !empty($data['user_corrects_count']) ? intval($data['user_corrects_count']) : 0;
         $questions_count = !empty($data['questions_count']) ? intval($data['questions_count']) : 0;
 
@@ -7697,6 +7752,8 @@ class Quiz_Maker_Public
                 'end_date'              => $end_date,
                 'duration'              => $duration,
                 'score'                 => $score,
+                'points'                => $user_points,
+                'max_points'            => $max_points,
                 'corrects_count'        => $user_corrects_count,
                 'questions_count'       => $questions_count,
                 'user_explanation'      => $user_explanation,
@@ -7713,6 +7770,8 @@ class Quiz_Maker_Public
                 '%s', // end_date
                 '%s', // duration
                 '%d', // score
+                '%s', // user_points
+                '%s', // max_points
                 '%s', // user_corrects_count
                 '%s', // questions_count
                 '%s', // user_explanation

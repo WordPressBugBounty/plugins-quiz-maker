@@ -1642,12 +1642,11 @@
                 var d = date.yyyymmdd();
                 let answerRow = $('<tr class="ays-answer-row ui-state-default">'+
                     '<td>'+
+                        '<input type="text" name="ays-answer-weight[]" class="ays-answer-weight w-100" value="0"/>'+
+                    '</td>'+
+                    '<td class="ays-quiz-question-answer-answer-row">'+
                         '<input style="display:none;" class="ays-correct-answer" type="checkbox" name="ays-correct-answer[]" value="1" checked/>'+
                         '<input type="date" name="ays-correct-answer-value[]" class="ays-date-input ays-correct-answer-value" value="" placeholder="e. g. '+d+'"/>'+
-                    '</td>'+
-                    '<td title="This property available only in pro version" class="only_pro">'+
-                        '<div class="pro_features"></div>'+
-                        '<input class="w-100" type="number" value="1" tabindex="-1"/>'+
                     '</td>'+
                 '</tr>');
                 $(document).find('table#ays-answers-table tbody').addClass('text_answer');
@@ -1672,12 +1671,11 @@
             }else if($(this).val() == 'number'){
                 let answerRow = $('<tr class="ays-answer-row ui-state-default">'+
                     '<td>'+
+                        '<input type="text" name="ays-answer-weight[]" class="ays-answer-weight w-100" value="0"/>'+
+                    '</td>'+
+                    '<td class="ays-quiz-question-answer-answer-row">'+
                         '<input style="display:none;" class="ays-correct-answer" type="checkbox" name="ays-correct-answer[]" value="1" checked/>'+
                         '<input type="number" step="any" name="ays-correct-answer-value[]" class="ays-correct-answer-value" value=""/>'+
-                    '</td>'+
-                    '<td title="This property available only in pro version" class="only_pro">'+
-                        '<div class="pro_features"></div>'+
-                        '<input class="w-100" type="number" value="1" tabindex="-1"/>'+
                     '</td>'+
                     '<td>'+
                         '<input type="text" name="ays-answer-placeholder[]" class="ays-correct-answer-value" value=""/>'+
@@ -1696,13 +1694,11 @@
                 $(document).find('.ays-text-answers-desc').show();
                 let answerRow = $('<tr class="ays-answer-row ui-state-default">'+
                                 '<td>'+
+                                    '<input type="text" name="ays-answer-weight[]" class="ays-answer-weight w-100" value="0"/>'+
+                                '</td>'+
+                                '<td class="ays-quiz-question-answer-answer-row">'+
                                     '<input style="display:none;" class="ays-correct-answer" type="checkbox" name="ays-correct-answer[]" value="1" checked/>'+
                                     '<input type="text" name="ays-correct-answer-value[]" class="ays-correct-answer-value" value=""/>'+
-                                '</td>'+
-                                '<td title="This property available only in pro version" class="only_pro">'+
-                                    '<div class="pro_features"></div>'+
-                                    '</div>'+
-                                    '<input class="w-100" type="number" value="1" tabindex="-1"/>'+
                                 '</td>'+
                                 '<td>'+
                                     '<input type="text" name="ays-answer-placeholder[]" class="ays-correct-answer-value" value=""/>'+
@@ -1721,13 +1717,11 @@
                 $(document).find('.ays-text-answers-desc').show();
                 let answerRow = $('<tr class="ays-answer-row ui-state-default">'+
                     '<td>'+
+                        '<input type="text" name="ays-answer-weight[]" class="ays-answer-weight w-100" value="0"/>'+
+                    '</td>'+
+                    '<td class="ays-quiz-question-answer-answer-row">'+
                         '<input style="display:none;" class="ays-correct-answer" type="checkbox" name="ays-correct-answer[]" value="1" checked/>'+
                         '<textarea type="text" name="ays-correct-answer-value[]" class="ays-correct-answer-value"></textarea>'+
-                    '</td>'+
-                    '<td title="This property available only in pro version" class="only_pro">'+
-                        '<div class="pro_features"></div>'+
-                        '</div>'+
-                        '<input class="w-100" type="number" value="1" tabindex="-1"/>'+
                     '</td>'+
                     '<td>'+
                         '<input type="text" name="ays-answer-placeholder[]" class="ays-correct-answer-value" value=""/>'+
@@ -1792,7 +1786,7 @@
                     $(document).find('.ays-answers-toolbar-bottom-center label[for="ays-answers-table"]').html('');
                     $(document).find('.ays-answers-toolbar-bottom-center label[for="ays-answers-table"]').append(addAnswer);
                     $(document).find('table#ays-answers-table thead tr').prepend(answerHeadRow);
-                    answerHeadKeywordRow.insertAfter('table#ays-answers-table thead .ays-weight-row');
+                    answerHeadKeywordRow.insertAfter('table#ays-answers-table thead th.ays-quiz-question-answer-answer-row');
                     $(document).find('table#ays-answers-table thead tr').append(answerHeadRowLast);
                     $(document).find('table#ays-answers-table tbody').html('');
                     var default_answer_count = $(document).find('table#ays-answers-table').attr('ays_default_count');
@@ -1826,12 +1820,11 @@
                                             '<label for="ays-correct-answer-' + row_id + '"></label>'+
                                         '</span>'+
                                     '</td>'+
+                                    '<td class="ays-quiz-question-answer-weight-point-row">'+
+                                        '<input type="text" name="ays-answer-weight[]" class="ays-answer-weight" value="0"/>'+
+                                    '</td>'+
                                     '<td class="ays-quiz-question-answer-answer-row">'+
                                         '<input type="text" name="ays-correct-answer-value[]" class="ays-correct-answer-value" value="'+ true_or_false_val +'"/>'+
-                                    '</td>'+
-                                    '<td title="This property available only in pro version" class="only_pro ays-quiz-question-answer-weight-point-row">'+
-                                        '<div class="pro_features"></div>'+
-                                        '<input class="w-100" type="number" value="1" tabindex="-1"/>'+
                                     '</td>'+
                                     '<td title="This property available only in pro version" class="only_pro ays-quiz-question-answer-keyword-row">'+
                                         '<div class="pro_features"></div>'+

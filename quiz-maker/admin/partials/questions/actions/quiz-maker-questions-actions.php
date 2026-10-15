@@ -103,6 +103,7 @@ $question = array(
     'user_explanation'          => 'off',
     'create_date'               => current_time( 'mysql' ),
     'not_influence_to_score'    => 'off',
+    'weight'                    => floatval(1),
     'options'                   => json_encode($options),
 );
 
@@ -265,6 +266,9 @@ if ($quiz_enable_question_not_influence_to_score) {
         $not_influence_to_score = true;
     }
 }
+
+$question['weight'] = ! isset($question['weight']) ? floatval(1) : floatval($question['weight']);
+$question_weight = isset($question['weight']) && $question['weight'] != '' ? floatval($question['weight']) : floatval(1);
 
 // Use HTML for answers
 $options['use_html'] = ! isset($options['use_html']) ? 'off' : $options['use_html'];
@@ -544,17 +548,8 @@ $user_explanation = (isset($question["user_explanation"]) && $question["user_exp
                                 <th class="th-150 removable ays-quiz-question-answer-ordering-row"><?php echo esc_html__('Ordering', 'quiz-maker'); ?></th>
                                 <th class="th-150 removable ays-quiz-question-answer-correct-row"><?php echo esc_html__('Correct', 'quiz-maker'); ?></th>
                             <?php endif; ?>
-                                <th <?php echo ($is_text_type) ? 'class="th-650"' : 'class="ays-quiz-question-answer-answer-row" style="width:500px;"'; ?>><?php echo esc_html__('Answer', 'quiz-maker'); ?></th>
-                                <th class="only_pro ays-weight-row ays-quiz-question-answer-weight-point-row" style="width:120px;padding:0;"><?php echo esc_html__('Point', 'quiz-maker'); ?><br>
-                                    <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=answer-points-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" tabindex="-1" target="_blank" class="ays-quiz-new-upgrade-button-link ays-quiz-new-upgrade-button-without-text-link">
-                                        <div class="ays-quiz-new-upgrade-button-box">
-                                            <div>
-                                                <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg'); ?>">
-                                                <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'); ?>" class="ays-quiz-new-upgrade-button-hover">
-                                            </div>
-                                        </div>
-                                    </a>
-                                </th>
+                                <th class="th-150 ays-weight-row ays-quiz-question-answer-weight-point-row"><?php echo esc_html__('Point','quiz-maker'); ?></th>
+                                <th <?php echo ($is_text_type) ? 'class="th-650 ays-quiz-question-answer-answer-row"' : 'class="ays-quiz-question-answer-answer-row" style="width:500px;"'; ?>><?php echo esc_html__('Answer', 'quiz-maker'); ?></th>
                             <?php if( $question["type"] == 'checkbox' || $question["type"] == 'radio' || $question["type"] == 'select' || $question["type"] == 'true_or_false' ): ?>
                                 <th class="only_pro th-150 removable ays-quiz-question-answer-keyword-row" style="width:120px;padding:0;">
                                     <?php echo esc_html__('Keyword', 'quiz-maker'); ?><br>
@@ -584,12 +579,11 @@ $user_explanation = (isset($question["user_explanation"]) && $question["user_exp
                             ?>
                             <tr class="ays-answer-row ui-state-default">
                                 <td>
+                                    <input type="text" name="ays-answer-weight[]" class="ays-answer-weight w-100" value="0"/>
+                                </td>
+                                <td>
                                     <input style="display:none;" class="ays-correct-answer" type="checkbox" name="ays-correct-answer[]" value="1" checked/>
                                     <input type="number" step="any" name="ays-correct-answer-value[]" class="ays-correct-answer-value" value=""/>
-                                </td>
-                                <td title="This property available only in pro version" class="only_pro">
-                                    <div class="pro_features"></div>
-                                    <input class="w-100" type="number" value="1" tabindex="-1"/>
                                 </td>
                                 <td>
                                     <input type="text" name="ays-answer-placeholder[]" class="ays-correct-answer-value" value=""/>
@@ -600,12 +594,11 @@ $user_explanation = (isset($question["user_explanation"]) && $question["user_exp
                             ?>
                             <tr class="ays-answer-row ui-state-default">
                                 <td>
+                                    <input type="text" name="ays-answer-weight[]" class="ays-answer-weight w-100" value="0"/>
+                                </td>
+                                <td>
                                     <input style="display:none;" class="ays-correct-answer" type="checkbox" name="ays-correct-answer[]" value="1" checked/>
                                     <input type="text" name="ays-correct-answer-value[]" class="ays-correct-answer-value" value=""/>
-                                </td>
-                                <td title="This property available only in pro version" class="only_pro">
-                                    <div class="pro_features"></div>
-                                    <input class="w-100" type="number" value="1" tabindex="-1"/>
                                 </td>
                                 <td>
                                     <input type="text" name="ays-answer-placeholder[]" class="ays-correct-answer-value" value=""/>
@@ -616,12 +609,11 @@ $user_explanation = (isset($question["user_explanation"]) && $question["user_exp
                             ?>
                             <tr class="ays-answer-row ui-state-default">
                                 <td>
+                                    <input type="text" name="ays-answer-weight[]" class="ays-answer-weight w-100" value="0"/>
+                                </td>
+                                <td>
                                     <input style="display:none;" class="ays-correct-answer" type="checkbox" name="ays-correct-answer[]" value="1" checked/>
                                     <textarea type="text" name="ays-correct-answer-value[]" class="ays-correct-answer-value"></textarea>
-                                </td>
-                                <td title="This property available only in pro version" class="only_pro">
-                                    <div class="pro_features"></div>
-                                    <input class="w-100" type="number" value="1" tabindex="-1"/>
                                 </td>
                                 <td>
                                     <input type="text" name="ays-answer-placeholder[]" class="ays-correct-answer-value" value=""/>
@@ -632,12 +624,11 @@ $user_explanation = (isset($question["user_explanation"]) && $question["user_exp
                             ?>
                             <tr class="ays-answer-row ui-state-default">
                                 <td>
+                                    <input type="text" name="ays-answer-weight[]" class="ays-answer-weight w-100" value="0"/>
+                                </td>
+                                <td>
                                     <input style="display:none;" class="ays-correct-answer" type="checkbox" name="ays-correct-answer[]" value="1" checked/>
                                     <input type="date" name="ays-correct-answer-value[]" class="ays-date-input ays-correct-answer-value" placeholder="<?php echo esc_attr("e. g. " . current_time( 'Y-m-d' )); ?>">
-                                </td>
-                                <td title="This property available only in pro version" class="only_pro">
-                                    <div class="pro_features"></div>
-                                    <input class="w-100" type="number" value="1" tabindex="-1"/>
                                 </td>
                             </tr>
                             <?php
@@ -662,12 +653,10 @@ $user_explanation = (isset($question["user_explanation"]) && $question["user_exp
                                         <label for="ays-correct-answer-<?php echo esc_attr($ays_i+1); ?>"></label>
                                     </span>
                                 </td>
-                                <td class="ays-quiz-question-answer-answer-row"><input type="text" name="ays-correct-answer-value[]" class="ays-correct-answer-value"/ value="<?php echo esc_attr($true_or_false_val); ?>"></td>
-                                
-                                <td title="This property available only in pro version" class="only_pro ays-quiz-question-answer-weight-point-row">
-                                    <div class="pro_features"></div>
-                                    <input class="w-100" type="number" value="1" tabindex="-1"/>
+                                <td class="ays-quiz-question-answer-weight-point-row">
+                                    <input type="text" name="ays-answer-weight[]" class="ays-answer-weight" value="0"/>
                                 </td>
+                                <td class="ays-quiz-question-answer-answer-row"><input type="text" name="ays-correct-answer-value[]" class="ays-correct-answer-value" value="<?php echo esc_attr($true_or_false_val); ?>"/></td>
                                 <td title="This property available only in pro version" class="only_pro ays-quiz-question-answer-keyword-row">
                                     <div class="pro_features"></div>
                                     <select class="ays_quiz_keywords" tabindex="-1">
@@ -700,6 +689,7 @@ $user_explanation = (isset($question["user_explanation"]) && $question["user_exp
                             foreach ($answers as $index => $answer) {
                                 $class = (($index + 1) % 2 == 0) ? "even" : "";
                                 $answer_text =  __('Add', 'quiz-maker');
+                                $answer_weight = isset($answer['weight']) && $answer['weight'] != "" ? floatval($answer['weight']) : 0;
                                 
                                 switch ($question["type"]) {
                                     case "number":
@@ -725,12 +715,11 @@ $user_explanation = (isset($question["user_explanation"]) && $question["user_exp
                                         if($question["type"] == 'number'):
                                     ?>
                                     <td>
+                                        <input type="text" name="ays-answer-weight[]" class="ays-answer-weight w-100" value="<?php echo $answer_weight; ?>"/>
+                                    </td>
+                                    <td>
                                         <input style="display:none;" class="ays-correct-answer" type="checkbox" name="ays-correct-answer[]" value="1" checked/>
                                         <input type="<?php echo esc_attr($question_type); ?>" step="any" name="ays-correct-answer-value[]" class="ays-correct-answer-value" value="<?php echo esc_attr(stripslashes($answer["answer"])); ?>"/>
-                                    </td>
-                                    <td title="This property available only in pro version" class="only_pro">
-                                        <div class="pro_features"></div>
-                                        <input class="w-100" type="number" value="1" tabindex="-1"/>
                                     </td>
                                     <td>
                                         <input type="text" name="ays-answer-placeholder[]" class="ays-correct-answer-value" value="<?php echo esc_attr(stripslashes($answer["placeholder"])); ?>"/>
@@ -739,12 +728,11 @@ $user_explanation = (isset($question["user_explanation"]) && $question["user_exp
                                         elseif($question["type"] == 'short_text'):
                                     ?>
                                     <td>
+                                        <input type="text" name="ays-answer-weight[]" class="ays-answer-weight w-100" value="<?php echo $answer_weight; ?>"/>
+                                    </td>
+                                    <td>
                                         <input style="display:none;" class="ays-correct-answer" type="checkbox" name="ays-correct-answer[]" value="1" checked/>
                                         <input type="<?php echo esc_attr($question_type); ?>" name="ays-correct-answer-value[]" class="ays-correct-answer-value" value="<?php echo esc_attr(stripslashes($answer["answer"])); ?>"/>
-                                    </td>
-                                    <td title="This property available only in pro version" class="only_pro">
-                                        <div class="pro_features"></div>
-                                        <input class="w-100" type="number" value="1" tabindex="-1"/>
                                     </td>
                                     <td>
                                         <input type="text" name="ays-answer-placeholder[]" class="ays-correct-answer-value" value="<?php echo esc_attr(stripslashes($answer["placeholder"])); ?>"/>
@@ -753,12 +741,11 @@ $user_explanation = (isset($question["user_explanation"]) && $question["user_exp
                                         elseif($question["type"] == 'text'):
                                     ?>
                                     <td>
+                                        <input type="text" name="ays-answer-weight[]" class="ays-answer-weight w-100" value="<?php echo $answer_weight; ?>"/>
+                                    </td>
+                                    <td>
                                         <input style="display:none;" class="ays-correct-answer" type="checkbox" name="ays-correct-answer[]" value="1" checked/>
                                         <textarea type="text" name="ays-correct-answer-value[]" class="ays-correct-answer-value"><?php echo esc_attr(stripslashes($answer["answer"])); ?></textarea>
-                                    </td>
-                                    <td title="This property available only in pro version" class="only_pro">
-                                        <div class="pro_features"></div>
-                                        <input class="w-100" type="number" value="1" tabindex="-1"/>
                                     </td>
                                     <td>
                                         <input type="text" name="ays-answer-placeholder[]" class="ays-correct-answer-value" value="<?php echo esc_attr(stripslashes($answer["placeholder"])); ?>"/>
@@ -767,12 +754,11 @@ $user_explanation = (isset($question["user_explanation"]) && $question["user_exp
                                     elseif($question["type"] == 'date'):
                                     ?>
                                     <td>
+                                        <input type="text" name="ays-answer-weight[]" class="ays-answer-weight w-100" value="<?php echo $answer_weight; ?>"/>
+                                    </td>
+                                    <td>
                                         <input style="display:none;" class="ays-correct-answer" type="checkbox" name="ays-correct-answer[]" value="1" checked/>
                                         <input type="date" name="ays-correct-answer-value[]" class="ays-date-input ays-correct-answer-value" placeholder="<?php echo esc_attr("e. g. " . current_time( 'Y-m-d' )); ?>" value="<?php echo esc_attr(stripslashes($answer["answer"])); ?>">
-                                    </td>
-                                    <td title="This property available only in pro version" class="only_pro">
-                                        <div class="pro_features"></div>
-                                        <input class="w-100" type="number" value="1" tabindex="-1"/>
                                     </td>
                                     <?php
                                         else:
@@ -784,12 +770,10 @@ $user_explanation = (isset($question["user_explanation"]) && $question["user_exp
                                             <label for="ays-correct-answer-<?php echo esc_attr($index + 1); ?>"></label>
                                         </span>
                                     </td>
-                                    <td class="ays-quiz-question-answer-answer-row"><input type="text" name="ays-correct-answer-value[]" class="ays-correct-answer-value" value="<?php echo esc_attr(stripslashes($answer["answer"])); ?>"/></td>
-
-                                    <td title="This property available only in pro version" class="only_pro ays-quiz-question-answer-weight-point-row">
-                                        <div class="pro_features"></div>
-                                        <input class="w-100" type="number" value="1" tabindex="-1"/>
+                                    <td class="ays-quiz-question-answer-weight-point-row">
+                                        <input type="text" name="ays-answer-weight[]" class="ays-answer-weight" value="<?php echo $answer_weight; ?>"/>
                                     </td>
+                                    <td class="ays-quiz-question-answer-answer-row"><input type="text" name="ays-correct-answer-value[]" class="ays-correct-answer-value" value="<?php echo esc_attr(stripslashes($answer["answer"])); ?>"/></td>
 
                                     <td title="This property available only in pro version" class="only_pro ays-quiz-question-answer-keyword-row">
                                         <div class="pro_features"></div>
@@ -853,6 +837,20 @@ $user_explanation = (isset($question["user_explanation"]) && $question["user_exp
                     </div>
                     <div class="col-sm-9">
                         <input type="checkbox" id="ays-use-html" name="ays-use-html" value="on" <?php echo $use_html ? "checked" : ""; ?>>
+                    </div>
+                </div>
+                <hr />
+                <div class="form-group row hide_for_custom_type">
+                    <div class="col-sm-3">
+                        <label for="ays_question_weight">
+                            <?php echo esc_html__('Question weight', 'quiz-maker'); ?>
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Specify the weight of the question. It’s not connected with answers points. It will be multiplied with chosen answer weight (if you choose quiz calculation by points). The default value is 1.', 'quiz-maker')?>">
+                                <i class="ays_fa ays_fa_info_circle"></i>
+                            </a>
+                        </label>
+                    </div>
+                    <div class="col-sm-9">
+                        <input type="text" id="ays_question_weight" class="ays-text-input ays-text-input-short" name="ays_question_weight" value="<?php echo floatval($question_weight); ?>">
                     </div>
                 </div>
                 <hr class="show_for_text_type <?php echo ($is_only_text_type) ? '' : 'display_none'; ?>"/>
@@ -1376,34 +1374,6 @@ $user_explanation = (isset($question["user_explanation"]) && $question["user_exp
                         <div class="form-check form-check-inline">
                             <input type="checkbox" id="ays_not_influence_to_score" name="ays_not_influence_to_score" value="on" <?php echo ($not_influence_to_score) ? "checked" : ""; ?> />
                         </div>
-                    </div>
-                </div>
-                <hr/>
-                <div class="form-group row">
-                    <div class="col-sm-12 only_pro" style="padding:15px;">
-                        <div class="pro_features">                            
-
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-sm-3">
-                                <label for="ays_question_weight"><?php echo esc_html__('Question weight', 'quiz-maker'); ?></label>
-                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Specify the weight of the question. It\'s not connected with answers points. It will be multiplied with chosen answer weight (if you choose quiz calculation by points). The default value is 1.','quiz-maker') ); ?>">
-                                    <i class="ays_fa ays_fa_info_circle"></i>
-                                </a>
-                            </div>
-                            <div class="col-sm-9">
-                                <input type="text" id="ays_question_weight" class="ays-text-input ays-text-input-short" value="1" tabindex="-1">
-                            </div>
-                        </div>
-                        <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=question-weight-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
-                            <div class="ays-quiz-new-upgrade-button-box">
-                                <div>
-                                    <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
-                                    <img src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg'); ?>" class="ays-quiz-new-upgrade-button-hover">
-                                </div>
-                                <div class="ays-quiz-new-upgrade-button"><?php echo esc_html__("Upgrade", "quiz-maker"); ?></div>
-                            </div>
-                        </a>
                     </div>
                 </div>
                 <hr>

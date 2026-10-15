@@ -693,6 +693,7 @@ class Quizes_List_Table extends WP_List_Table{
             $enable_pass_score = (isset($_POST['ays_enable_pass_score']) && sanitize_text_field( $_POST['ays_enable_pass_score'] ) == 'on') ? 'on' : 'off';
             $pass_score = (isset($_POST['ays_pass_score']) && $_POST['ays_pass_score'] != '') ? absint(intval($_POST['ays_pass_score'])) : '0';
             $pass_score = ($enable_pass_score == 'on') ? $pass_score : '0';
+            $quiz_pass_score_type = (isset($_POST['ays_quiz_pass_score_type']) && $_POST['ays_quiz_pass_score_type'] != '') ? sanitize_text_field($_POST['ays_quiz_pass_score_type']) : 'percentage';
             $pass_score_message = isset($_POST['ays_pass_score_message']) ? wp_kses( $_POST['ays_pass_score_message'], $quiz_allowed_html ) : '<h4 style="text-align: center;">'. __("Congratulations!", 'quiz-maker') .'</h4><p style="text-align: center;">'. __("You passed the quiz!", 'quiz-maker') .'</p>';
             $fail_score_message = isset($_POST['ays_fail_score_message']) ? wp_kses( $_POST['ays_fail_score_message'], $quiz_allowed_html ) : '<h4 style="text-align: center;">'. __("Oops!", 'quiz-maker') .'</h4><p style="text-align: center;">'. __("You have not passed the quiz! <br> Try again!", 'quiz-maker') .'</p>';
 
@@ -1191,6 +1192,9 @@ class Quizes_List_Table extends WP_List_Table{
             // Answer image border radius | Mobile
             $ans_img_mobile_border_radius = (isset($_REQUEST['ays_ans_img_mobile_border_radius']) && $_REQUEST['ays_ans_img_mobile_border_radius'] != '') ? absint( stripslashes( $_REQUEST['ays_ans_img_mobile_border_radius'] ) ) : $ans_img_border_radius;
 
+            // Calculate the score
+            $calculate_score = (isset($_REQUEST['ays_calculate_score']) && $_REQUEST['ays_calculate_score'] != '') ? sanitize_text_field( stripslashes($_REQUEST['ays_calculate_score']) ) : 'by_correctness';
+
             $options = array(
                 'quiz_version'                                      => AYS_QUIZ_VERSION,
                 'core_version'                                      => get_bloginfo( 'version' ),
@@ -1285,6 +1289,7 @@ class Quizes_List_Table extends WP_List_Table{
 				'deactiveInterval'                                  => $deactiveInterval,
 				'active_date_pre_start_message'                     => $active_date_pre_start_message,
                 'active_date_message'                               => $active_date_message,
+                'calculate_score'                                   => $calculate_score,
 				'explanation_time'                                  => $explanation_time,
 				'enable_clear_answer'                               => $enable_clear_answer,
 				'show_category'                                     => $show_category,
@@ -1311,6 +1316,7 @@ class Quizes_List_Table extends WP_List_Table{
                 'tackers_count'                                     => $tackers_count,
                 'enable_pass_score'                                 => $enable_pass_score,
                 'pass_score'                                        => $pass_score,
+                'quiz_pass_score_type'                              => $quiz_pass_score_type,
                 'pass_score_message'                                => $pass_score_message,
                 'fail_score_message'                                => $fail_score_message,
                 'question_font_size'                                => $question_font_size,

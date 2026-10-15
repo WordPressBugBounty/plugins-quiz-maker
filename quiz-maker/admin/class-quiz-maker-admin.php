@@ -2499,6 +2499,9 @@ class Quiz_Maker_Admin
             $rate_id = isset($options->rate_id) ? intval($options->rate_id) : null;
             $rate = $this->ays_quiz_rate($rate_id);
             $calc_method = isset($options->calc_method) ? sanitize_text_field($options->calc_method) : 'by_correctness';
+            $user_points = isset($results['points']) ? floatval($results['points']) : null;
+            $max_points = isset($results['max_points']) ? floatval($results['max_points']) : null;
+            $score_display = ($calc_method == 'by_points' && $user_points !== null && $max_points !== null) ? $user_points . ' / ' . $max_points : $score . '%';
             
             $from = self::get_user_country_by_ip( $user_ip );
 
@@ -2755,7 +2758,7 @@ class Quiz_Maker_Admin
                 $row .= '
                     <tr class="ays_result_element">
                         <td>'.__('Score','quiz-maker').'</td>
-                        <td colspan="3">' . esc_html($score) . '%</td>
+                        <td colspan="3">' . esc_html($score_display) . '</td>
                     </tr>';
             }
 
@@ -2938,7 +2941,7 @@ class Quiz_Maker_Admin
                             }
                         }elseif($calc_method == 'by_points'){
                             $row .= '<tr class="'.$tr_class.'">
-                                        <td>'.__('Question','quiz-maker').' ' . $index . ' :<br/>';
+                                        <td colspan="2">'.__('Question','quiz-maker').' ' . $index . ' :<br/>';
                             if( $question_image != '' ){
                                 $row .= '<img class="ays-quiz-question-image-in-report" src="' . $question_image . '"><br/>';
                             }

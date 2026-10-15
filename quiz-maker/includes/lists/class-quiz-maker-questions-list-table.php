@@ -515,6 +515,9 @@ class Questions_List_Table extends WP_List_Table{
             $type               = (isset($_POST['ays_question_type']) && $_POST['ays_question_type'] != '') ? sanitize_text_field( $_POST['ays_question_type'] ) : 'radio';
             $correct_answers    = (isset($_POST['ays-correct-answer']) ) && ! empty($_POST['ays-correct-answer']) ? array_map( 'sanitize_text_field', $_POST['ays-correct-answer'] ) : array();
             // $answer_values      = (isset($_POST['ays-correct-answer-value']) ) && ! empty($_POST['ays-correct-answer-value']) ? array_map( 'wp_kses_post', $_POST['ays-correct-answer-value'] ) : array();
+
+            // Answers weight Array
+            $answers_weight     = (isset($_POST['ays-answer-weight']) ) && ! empty($_POST['ays-answer-weight']) ? array_map( 'floatval', $_POST['ays-answer-weight'] ) : array();
             
             // User answer explanation
             $user_explanation   = (isset($_POST['ays_user_explanation']) && $_POST['ays_user_explanation'] != '') ? sanitize_text_field( $_POST['ays_user_explanation'] ) : 'off';
@@ -530,6 +533,9 @@ class Questions_List_Table extends WP_List_Table{
             $right_answer_text  = (isset($_POST['right_answer_text']) && $_POST['right_answer_text'] != '') ? wp_kses( $_POST['right_answer_text'], $quiz_allowed_html ) : '';
             $explanation        = (isset($_POST['explanation']) && $_POST['explanation'] != '') ? wp_kses( $_POST['explanation'], $quiz_allowed_html ) : '';
             $not_influence_to_score = (isset($_POST['ays_not_influence_to_score']) && $_POST['ays_not_influence_to_score'] == 'on') ? 'on' : 'off';
+
+            // Question weight
+            $question_weight = (isset($_POST['ays_question_weight']) && $_POST['ays_question_weight'] != '') ? floatval($_POST['ays_question_weight']) : floatval(1);
 
             // Answers image Array
             $answer_image       = (isset($_POST['ays_answer_image']) && ! empty($_POST['ays_answer_image']) ) ? array_map( 'sanitize_url', $_POST['ays_answer_image'] ) : array();
@@ -646,6 +652,7 @@ class Questions_List_Table extends WP_List_Table{
                         'user_explanation'          => $user_explanation,
                         'create_date'               => $quest_create_date,
                         'not_influence_to_score'    => $not_influence_to_score,
+                        'weight'                    => $question_weight,
                         'options'                   => json_encode($options),
                     ),
                     array(
@@ -663,6 +670,7 @@ class Questions_List_Table extends WP_List_Table{
                         '%s', // user_explanation
                         '%s', // create_date
                         '%s', // not_influence_to_score
+                        '%f', // weight
                         '%s', // options
                     )
                 );
@@ -683,6 +691,7 @@ class Questions_List_Table extends WP_List_Table{
                     if (!in_array( $type, $text_types ) && trim($answer_value) == '') {
                         continue;
                     }
+                    $weight = isset($answers_weight[$index]) ? floatval($answers_weight[$index]) : 0;
                     $placeholder = '';
                     if(isset($answer_placeholders[$index])){
                         $placeholder = $answer_placeholders[$index];
@@ -695,6 +704,7 @@ class Questions_List_Table extends WP_List_Table{
                             'image'             => !empty( $answer_image[$index] ) ? sanitize_url($answer_image[$index]) : '',
                             'correct'           => $correct,
                             'ordering'          => ($index + 1),
+                            'weight'            => $weight,
                             'placeholder'       => $placeholder
                         ),
                         array(
@@ -703,6 +713,7 @@ class Questions_List_Table extends WP_List_Table{
                             '%s', // image
                             '%d', // correct
                             '%d', // ordering
+                            '%f', // weight
                             '%s'  // placeholder
                         )
                     );
@@ -735,6 +746,7 @@ class Questions_List_Table extends WP_List_Table{
                         'user_explanation'              => $user_explanation,
                         'create_date'                   => $quest_create_date,
                         'not_influence_to_score'        => $not_influence_to_score,
+                        'weight'                        => $question_weight,
                         'options'                       => json_encode($options),
 
                     ),
@@ -754,6 +766,7 @@ class Questions_List_Table extends WP_List_Table{
                         '%s', // user_explanation
                         '%s', // create_date
                         '%s', // not_influence_to_score
+                        '%f', // weight
                         '%s', // options
                     ),
                     array( '%d' )
@@ -778,6 +791,9 @@ class Questions_List_Table extends WP_List_Table{
                         if (!in_array( $type, $text_types ) && trim($answer_value) == '') {
                             continue;
                         }
+
+                        $weight = isset($answers_weight[$index]) ? floatval($answers_weight[$index]) : 0;
+
                         $placeholder = '';
                         if(isset($answer_placeholders[$index])){
                             $placeholder = $answer_placeholders[$index];
@@ -790,6 +806,7 @@ class Questions_List_Table extends WP_List_Table{
                                 'image'         => !empty( $answer_image[$index] ) ? sanitize_url($answer_image[$index]) : '',
                                 'correct'       => $correct,
                                 'ordering'      => ($index + 1),
+                                'weight'        => $weight,
                                 'placeholder'   => $placeholder
                             ),
                             array('id' => $old_answers[$index]["id"]),
@@ -799,6 +816,7 @@ class Questions_List_Table extends WP_List_Table{
                                 '%s', // image
                                 '%d', // correct
                                 '%d', // ordering
+                                '%f', // weight
                                 '%s'  // placeholder
                             ),
                             array('%d')
@@ -820,6 +838,9 @@ class Questions_List_Table extends WP_List_Table{
                         if (!in_array( $type, $text_types ) && trim($answer_value) == '') {
                             continue;
                         }
+
+                        $weight = isset($answers_weight[$index]) ? floatval($answers_weight[$index]) : 0;
+
                         $placeholder = '';
                         if(isset($answer_placeholders[$index])){
                             $placeholder = $answer_placeholders[$index];
@@ -833,6 +854,7 @@ class Questions_List_Table extends WP_List_Table{
                                     'image'             => !empty( $answer_image[$index] ) ? sanitize_url($answer_image[$index]) : '',
                                     'correct'           => $correct,
                                     'ordering'          => ($index + 1),
+                                    'weight'            => $weight,
                                     'placeholder'       => $placeholder
                                 ),
                                 array(
@@ -841,6 +863,7 @@ class Questions_List_Table extends WP_List_Table{
                                     '%s', // image
                                     '%d', // correct
                                     '%d', // ordering
+                                    '%f', // weight
                                     '%s'  // placeholder
                                 )
                             );
@@ -853,6 +876,7 @@ class Questions_List_Table extends WP_List_Table{
                                     'image'             => !empty( $answer_image[$index] ) ? sanitize_url($answer_image[$index]) : '',
                                     'correct'           => $correct,
                                     'ordering'          => ($index + 1),
+                                    'weight'            => $weight,
                                     'placeholder'       => $placeholder
                                 ),
                                 array('id' => $old_answers[$index]["id"]),
@@ -862,6 +886,7 @@ class Questions_List_Table extends WP_List_Table{
                                     '%s', // image
                                     '%d', // correct
                                     '%d', // ordering
+                                    '%f', // weight
                                     '%s'  // placeholder
                                 ),
                                 array('%d')
@@ -892,6 +917,9 @@ class Questions_List_Table extends WP_List_Table{
                         if (!in_array( $type, $text_types ) && trim($answer_value) == '') {
                             continue;
                         }
+
+                        $weight = isset($answers_weight[$index]) ? floatval($answers_weight[$index]) : 0;
+
                         $placeholder = '';
                         if(isset($answer_placeholders[$index])){
                             $placeholder = $answer_placeholders[$index];
@@ -904,6 +932,7 @@ class Questions_List_Table extends WP_List_Table{
                                 'image'         => !empty( $answer_image[$index] ) ? sanitize_url($answer_image[$index]) : '',
                                 'correct'       => $correct,
                                 'ordering'      => ($index + 1),
+                                'weight'        => $weight,
                                 'placeholder'   => $placeholder
                             ),
                             array('id' => $old_answers[$index]["id"]),
@@ -913,6 +942,7 @@ class Questions_List_Table extends WP_List_Table{
                                 '%s', // image
                                 '%d', // correct
                                 '%d', // ordering
+                                '%f', // weight
                                 '%s'  // placeholder
                             ),
                             array('%d')
@@ -1131,6 +1161,7 @@ class Questions_List_Table extends WP_List_Table{
                 'user_explanation'          => $user_explanation,
                 'create_date'               => current_time( 'mysql' ),
                 'not_influence_to_score'    => $questionDup['not_influence_to_score'],
+                'weight'                    => isset($questionDup['weight']) ? floatval($questionDup['weight']) : floatval(1),
                 'options'                   => json_encode($options),
             ),
             array(
@@ -1148,6 +1179,7 @@ class Questions_List_Table extends WP_List_Table{
                 '%s', // user_explanation
                 '%s', // create_date
                 '%s', // not_influence_to_score
+                '%f', // weight
                 '%s', // options
             )
         );
@@ -1163,6 +1195,7 @@ class Questions_List_Table extends WP_List_Table{
                     'answer'        => $answer['answer'],
                     'correct'       => intval( $answer['correct'] ),
                     'ordering'      => ($key + 1),
+                    'weight'        => isset($answer['weight']) ? floatval($answer['weight']) : 0,
                     'placeholder'   => $answer['placeholder']
                 ),
                 array(
@@ -1170,6 +1203,7 @@ class Questions_List_Table extends WP_List_Table{
                     '%s', // answer
                     '%d', // correct
                     '%d', // ordering
+                    '%f', // weight
                     '%s'  // placeholder
                 )
             );

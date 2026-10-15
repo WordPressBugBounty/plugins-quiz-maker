@@ -862,7 +862,18 @@ class Results_List_Table extends WP_List_Table{
         $quiz_options = $wpdb->get_var( $sql );
         $quiz_options = $quiz_options != '' ? json_decode( $quiz_options, true ) : array();
         $pass_score = isset( $quiz_options['pass_score'] ) && $quiz_options['pass_score'] != '' ? absint( $quiz_options['pass_score'] ) : 0;
-        $score = absint( $item['score'] );
+        $quiz_pass_score_type = isset( $quiz_options['quiz_pass_score_type'] ) && $quiz_options['quiz_pass_score_type'] != '' ? sanitize_text_field( $quiz_options['quiz_pass_score_type'] ) : 'percentage';
+
+        switch ( $quiz_pass_score_type ) {
+            case 'point':
+                $score = isset( $item['points'] ) ? absint( $item['points'] ) : 0;
+                break;
+
+            case 'percentage':
+            default:
+                $score = absint( $item['score'] );
+                break;
+        }
 
         $status = '';
         if( $pass_score != 0 ){
@@ -874,6 +885,26 @@ class Results_List_Table extends WP_List_Table{
         }
 
         return $status;
+    }
+
+    public function column_points( $item ) {
+        $score = '-';
+        if ( isset( $item['points'] ) && isset( $item['max_points'] ) ) {
+            if ( ! empty( $item['points'] ) && ! empty( $item['max_points'] ) ) {
+                $score = '<p>' . round( $item['points'], 2 ) . '/' . round( $item['max_points'], 2 ) . '</p>';
+            }
+        } else {
+            $options = json_decode( $item['options'], true );
+            $points = isset( $options['user_points'] ) ? $options['user_points'] : false;
+            $max_points = isset( $options['max_points'] ) ? $options['max_points'] : false;
+            if ( $points !== false && $max_points !== false ) {
+                if ( ! empty( $points ) && ! empty( $max_points ) ) {
+                    $score = '<p>' . round( $points, 2 ) . '/' . round( $max_points, 2 ) . '</p>';
+                }
+            }
+        }
+
+        return $score;
     }
 
     function column_quiz_category_id( $item ) {
@@ -929,6 +960,7 @@ class Results_List_Table extends WP_List_Table{
             'end_date'              => __( 'End', 'quiz-maker' ),
             'duration'              => __( 'Duration', 'quiz-maker' ),
             'score'                 => __( 'Score', 'quiz-maker' ),
+            'points'                => __( 'Points', 'quiz-maker' ),
             'status'                => __( 'Status', 'quiz-maker' ),
             'id'                    => __( 'ID', 'quiz-maker' ),
         );

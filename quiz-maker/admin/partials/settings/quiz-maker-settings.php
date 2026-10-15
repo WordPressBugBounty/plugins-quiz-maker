@@ -4117,6 +4117,24 @@
                                     <?php echo esc_html__( "It will display the number of question categories displayed in the front end.", 'quiz-maker'); ?>
                                 </span>
                             </p>
+                            <p class="vmessage">
+                                <strong>
+                                    <input type="text" onClick="this.setSelectionRange(0, this.value.length)" readonly value="%%user_points%%" />
+                                </strong>
+                                <span> - </span>
+                                <span style="font-size:18px;">
+                                    <?php echo esc_html__( "The points of quiz which got the user", 'quiz-maker'); ?>
+                                </span>
+                            </p>
+                            <p class="vmessage">
+                                <strong>
+                                    <input type="text" onClick="this.setSelectionRange(0, this.value.length)" readonly value="%%max_points%%" />
+                                </strong>
+                                <span> - </span>
+                                <span style="font-size:18px;">
+                                    <?php echo esc_html__( "Maximum points which can get the user", 'quiz-maker'); ?>
+                                </span>
+                            </p>
                         </fieldset> <!-- Quiz Message Variables -->
                         <hr />
                         <div class="form-group row">
@@ -4125,24 +4143,6 @@
 
                                 </div>
                             
-                                <p class="vmessage">
-                                    <strong>
-                                        <input type="text" onClick="this.setSelectionRange(0, this.value.length)" readonly value="%%user_points%%" />
-                                    </strong>
-                                    <span> - </span>
-                                    <span style="font-size:18px;">
-                                        <?php echo esc_html__( "The points of quiz which got the user", 'quiz-maker'); ?>
-                                    </span>
-                                </p>
-                                <p class="vmessage">
-                                    <strong>
-                                        <input type="text" onClick="this.setSelectionRange(0, this.value.length)" readonly value="%%max_points%%" />
-                                    </strong>
-                                    <span> - </span>
-                                    <span style="font-size:18px;">
-                                        <?php echo esc_html__( "Maximum points which can get the user", 'quiz-maker'); ?>
-                                    </span>
-                                </p>
                                 <p class="vmessage">
                                     <strong>
                                         <input type="text" onClick="this.setSelectionRange(0, this.value.length)" readonly value="%%quiz_logo%%" />

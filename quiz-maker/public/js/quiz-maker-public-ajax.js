@@ -1770,6 +1770,12 @@
             case 'by_correctness':
                 quizScore = response.score.split('/');
             break;
+            case 'by_points':
+                quizScore = response.score.split('/');
+            break;
+            default:
+                quizScore = parseInt(response.score);
+            break;
         }
 
         if ( form.parents('.ays-quiz-container').hasClass('ays_quiz_hide_bg_during_quiz') ) {
@@ -1898,20 +1904,21 @@
             }else{
                 var total = quizScore[1];
                 var count = quizScore[0];
-                total = parseInt(total.trim());
-                count = parseInt(count.trim());
+                total = parseFloat(total.trim());
+                count = parseFloat(count.trim());
                 form.find('.ays-progress-value').text(numberOfPercent + " / " + total);
-                if(numberOfPercent == count){
+                if(numberOfPercent >= count){
+                    form.find('.ays-progress-value').text(count + " / " + total);
                     clearInterval(percentAnimate);
                 }
                 numberOfPercent++;
             }
         }, 20);
         var score = quizScore;
-        if(response.displayScore == 'by_correctness'){
-            var total = parseInt(quizScore[1].trim());
-            var count = parseInt(quizScore[0].trim());
-            score = (count / total) * 100;
+        if(response.displayScore == 'by_correctness' || response.displayScore == 'by_points'){
+            var total = parseFloat(quizScore[1].trim());
+            var count = parseFloat(quizScore[0].trim());
+            score = total > 0 ? (count / total) * 100 : 0;
         }
         if(response.scoreMessage){
             form.find('div.ays_score_message').html(response.scoreMessage);

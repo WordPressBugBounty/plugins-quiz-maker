@@ -129,6 +129,8 @@ $options = array(
 	'active_date_check'                                 => 'off',
 	'active_date_pre_start_message'                     => __("The quiz will be available soon!", 'quiz-maker'),
     'active_date_message'                               => __("The quiz has expired!", 'quiz-maker'),
+    'calculate_score'                                   => 'by_correctness',
+	'quiz_pass_score_type'                              => 'percentage',
 	'explanation_time'                                  => '4',
 	'enable_clear_answer'                               => 'off',
 	'show_category'                                     => 'off',
@@ -438,6 +440,8 @@ $quiz_message_vars = array(
     "%%quiz_name%%"                                     => __("Quiz Title", 'quiz-maker'),
     "%%quiz_category_title%%"                           => __("Quiz category title", 'quiz-maker'),
     "%%score%%"                                         => __("Score", 'quiz-maker'),
+    "%%user_points%%"                                   => __("User Point", 'quiz-maker'),
+    "%%max_points%%"                                    => __("Max point", 'quiz-maker'),
     "%%current_date%%"                                  => __("Current Date", 'quiz-maker'),
     "%%results_by_cats%%"                               => __("Results by question categories", 'quiz-maker'),
     "%%avg_score%%"                                     => __("Average score", 'quiz-maker'),
@@ -1102,6 +1106,7 @@ $tackers_count = (isset($options['tackers_count']) && $options['tackers_count'] 
 // Pass Score
 $pass_score = (isset($options['pass_score']) && $options['pass_score'] != '') ? absint(intval($options['pass_score'])) : '0';
 $enable_pass_score = (isset($options['enable_pass_score']) && $options['enable_pass_score'] == 'on') || (!isset($options['enable_pass_score']) && intval($pass_score) > 0);
+$quiz_pass_score_type = (isset($options['quiz_pass_score_type']) && $options['quiz_pass_score_type'] != '') ? sanitize_text_field($options['quiz_pass_score_type']) : 'percentage';
 $pass_score_message = isset($options['pass_score_message']) ? stripslashes($options['pass_score_message']) : '<h4 style="text-align: center;">'. __("Congratulations!", 'quiz-maker') .'</h4><p style="text-align: center;">'. __("You passed the quiz!", 'quiz-maker') .'</p>';
 $fail_score_message = isset($options['fail_score_message']) ? stripslashes($options['fail_score_message']) : '<h4 style="text-align: center;">'. __("Oops!", 'quiz-maker') .'</h4><p style="text-align: center;">'. __("You have not passed the quiz! <br> Try again!", 'quiz-maker') .'</p>';
 
@@ -1674,6 +1679,10 @@ $ans_img_border_radius = (isset($options['ans_img_border_radius']) && $options['
 
 // Answer image border radius | Mobile
 $ans_img_mobile_border_radius = (isset($options['ans_img_mobile_border_radius']) && $options['ans_img_mobile_border_radius'] != '') ? absint( stripslashes( $options['ans_img_mobile_border_radius'] ) ) : $ans_img_border_radius;
+
+// Calculate the score option
+$options['calculate_score'] = (!isset($options['calculate_score'])) ? 'by_correctness' : esc_attr( stripslashes($options['calculate_score']) );
+$calculate_score = (isset($options['calculate_score']) && $options['calculate_score'] != '') ? esc_attr( stripslashes($options['calculate_score']) ) : 'by_correctness';
 
 ?>
 <style id="ays_live_custom_css"></style>
@@ -7610,61 +7619,29 @@ $ans_img_mobile_border_radius = (isset($options['ans_img_mobile_border_radius'])
                                 <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="ays_calculate_score">
-                                            <?php echo esc_html__('Calculate the score','quiz-maker')?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Calculate the score of results by the selected method.','quiz-maker')?>">
+                                            <?php echo esc_html__('Calculate the score', 'quiz-maker')?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Calculate the score of results by the selected method. You can only choose one of these two options.', 'quiz-maker')?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
                                     </div>
-                                    <div class="col-sm-8 pro_features_parent ays-quiz-pro-features-parent-box-display-flex">
+                                    <div class="col-sm-8">
                                         <label class="ays_quiz_loader">
-                                            <input type="radio" class="ays-enable-timer1" value="by_correctness" tabindex="-1" checked/>
-                                            <span><?php echo esc_html__( "By correctness", 'quiz-maker' ); ?></span>
+                                            <input type="radio" class="ays-enable-timer1" name="ays_calculate_score" value="by_correctness" <?php echo ($calculate_score == 'by_correctness') ? 'checked' : '' ?>/>
+                                            <span style="margin-right:5px;"><?php echo esc_html__( "By correctness", 'quiz-maker' ); ?></span>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('It will calculate the score based on correct answers of the question. It will store the score by percentage. You can use Variables (General Settings) to show the quantity of the questions answered right.','quiz-maker')?>">
+                                                <i class="ays_fa ays_fa_info_circle"></i>
+                                            </a>
                                         </label>
-                                        <label class="ays_quiz_loader only_pro ays-pro-features-v2-main-box">
-                                            <div class="ays-pro-features-v2-small-buttons-box" style="right: -20px; top: -30px;">
-                                                <div class="ays-pro-features-v2-video-button ays-quiz-small-new-watch-video-button-box">
-                                                    <div>
-                                                        <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24.svg' ); ?>">
-                                                        <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/video_24x24_hover.svg' ); ?>" class="ays-quiz-new-watch-video-button-hover">
-                                                    </div>
-                                                </div>
-                                                <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=calculate-the-score-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-pro-features-v2-upgrade-button">
-                                                    <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(AYS_QUIZ_ADMIN_URL); ?>/images/icons/locked_24x24.svg');" data-img-src="<?php echo esc_attr(AYS_QUIZ_ADMIN_URL); ?>/images/icons/locked_24x24.svg"></div>
-                                                </a>
-                                            </div>
-                                            <div class="pro_features pro_features_popup" style="align-items: flex-end;justify-content: flex-end;">
-                                                <div class="pro-features-popup-conteiner">
-                                                    <div class="pro-features-popup-title">
-                                                        <?php echo esc_html__("Calculate the score option", 'quiz-maker'); ?>
-                                                    </div>
-                                                    <div class="pro-features-popup-content" data-link="https://youtu.be/2OYoqJtsjoc">
-                                                        <p>
-                                                            <?php echo wp_kses_post( sprintf( __("The option gives you the possibility to choose the most appropriate calculation system for your quiz. You can set the calculation method either %s by Correctness or by Weight/Points. %s", 'quiz-maker'),
-                                                                '<strong>',
-                                                                '</strong>'
-                                                            ) ); ?>
-                                                        </p>
-                                                        <p>
-                                                            <?php echo esc_html__("You just need to configure the calculation system depending on the type of quiz you want to create.", 'quiz-maker'); ?>
-                                                        </p>
-                                                        <div>
-                                                            <a href="https://quiz-plugin.com/docs/" target="_blank"><?php echo esc_html__("See Documentation", 'quiz-maker'); ?></a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="pro-features-popup-button" data-link="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-popup-calculate-score-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
-                                                        <?php echo esc_html__("Pricing", 'quiz-maker'); ?>
-                                                    </div>
-                                                    <div class="pro-features-popup-admin-demo-button" data-link="https://quiz.ays-plugins.com/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pro-admin-demo-calculate-score-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>">
-                                                        <?php echo esc_html__("Pro Admin Demo", 'quiz-maker'); ?>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <input type="radio" class="ays-enable-timer1" tabindex="-1" value="by_points" disabled />
-                                            <span><?php echo esc_html__( "By weight / points", 'quiz-maker' ); ?></span>
+                                        <label class="ays_quiz_loader">
+                                            <input type="radio" class="ays-enable-timer1" name="ays_calculate_score" value="by_points" <?php echo ($calculate_score == 'by_points') ? 'checked' : '' ?>/>
+                                            <span style="margin-right:5px;"><?php echo esc_html__( "By weight / points", 'quiz-maker' ); ?></span>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('It will calculate the score based on Answers points and Questions points. Again you can use Variables to show the user’s score at the end of the quiz. If you choose this option the features connected with correctness will be disabled.','quiz-maker')?>">
+                                                <i class="ays_fa ays_fa_info_circle"></i>
+                                            </a>
                                         </label>
                                     </div>
-                                </div>
+                                </div> <!-- Calculate the score -->
                             </div>
                         </div><!-- Calculate the score option -->
                         <hr/>
@@ -7696,7 +7673,7 @@ $ans_img_mobile_border_radius = (isset($options['ans_img_mobile_border_radius'])
                             <div class="col-sm-4">
                                 <label class="form-check-label" for="ays_enable_pass_score">
                                     <?php echo esc_html__("Pass Score (%)", 'quiz-maker') ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Set the minimum score to pass the quiz in percentage. Note to give a value to it above 0, otherwise, the Quiz pass message and Quiz fail message options will not work.','quiz-maker'); ?>">
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Set the minimum score to pass the quiz. Note to give a value to it above 0, otherwise, the Quiz pass message and Quiz fail message options will not work.','quiz-maker'); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -7705,37 +7682,23 @@ $ans_img_mobile_border_radius = (isset($options['ans_img_mobile_border_radius'])
                                 <input type="checkbox" class="ays-enable-timer1 ays_toggle_checkbox" id="ays_enable_pass_score" name="ays_enable_pass_score" value="on" <?php echo ($enable_pass_score) ? 'checked' : ''; ?>/>
                             </div>
                             <div class="col-sm-7 ays_toggle_target ays_divider_left <?php echo ($enable_pass_score) ? '' : 'display_none'; ?>">
-                                <?php if(1 == 0): ?>
                                 <div class="form-group row" style="margin:0px;">
-                                    <div class="col-sm-12 only_pro" style="padding:10px 0 0 10px;">
-                                        <div class="pro_features" style="justify-content:flex-end;">
-
-                                        </div>
+                                    <div class="col-sm-12">
                                         <div class="form-group row">
                                             <div class="col-sm-12">
                                                 <label class="ays_quiz_loader">
-                                                    <input type="radio" class="ays-enable-timer1" checked/>
+                                                    <input type="radio" class="ays-enable-timer1" name="ays_quiz_pass_score_type" value="percentage" <?php echo ($quiz_pass_score_type == 'percentage') ? 'checked' : ''; ?>/>
                                                     <span><?php echo esc_html__( "Percentage", 'quiz-maker' ); ?></span>
                                                 </label>
                                                 <label class="ays_quiz_loader">
-                                                    <input type="radio" class="ays-enable-timer1" />
+                                                    <input type="radio" class="ays-enable-timer1" name="ays_quiz_pass_score_type" value="point" <?php echo ($quiz_pass_score_type == 'point') ? 'checked' : ''; ?>/>
                                                     <span><?php echo esc_html__( "Points", 'quiz-maker' ); ?></span>
                                                 </label>
                                             </div>
                                         </div>
-                                        <a href="https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=pass-score-<?php echo esc_attr( AYS_QUIZ_UTM_VERSION ); ?>" target="_blank" class="ays-quiz-new-upgrade-button-link">
-                                            <div class="ays-quiz-new-upgrade-button-box">
-                                                <div>
-                                                    <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/locked_24x24.svg' ); ?>">
-                                                    <img loading="lazy" src="<?php echo esc_url( AYS_QUIZ_ADMIN_URL.'/images/icons/unlocked_24x24.svg' ); ?>" class="ays-quiz-new-upgrade-button-hover">
-                                                </div>
-                                                <div class="ays-quiz-new-upgrade-button"><?php echo esc_html__("Upgrade", "quiz-maker"); ?></div>
-                                            </div>
-                                        </a>
                                     </div>
                                 </div>
                                 <hr>
-                                <?php endif; ?>
                                 <div class="form-group row">
                                     <div class="col-sm-12">
                                          <input type="number" class="ays-text-input" id='ays-pass-score' name='ays_pass_score' value="<?php echo intval($pass_score); ?>"/>
@@ -7822,6 +7785,10 @@ $ans_img_mobile_border_radius = (isset($options['ans_img_mobile_border_radius'])
                                 <label class="ays_quiz_loader">
                                     <input type="radio" class="ays-enable-timer1" name="ays_display_score" value="by_correctness" <?php echo ($display_score == 'by_correctness') ? 'checked' : '' ?>/>
                                     <span><?php echo esc_html__( "By correct answers count", 'quiz-maker' ); ?></span>
+                                </label>
+                                <label class="ays_quiz_loader">
+                                    <input type="radio" class="ays-enable-timer1" name="ays_display_score" value="by_points" <?php echo ($display_score == 'by_points') ? 'checked' : '' ?>/>
+                                    <span><?php echo esc_html__( "By weight/points", 'quiz-maker' ); ?></span>
                                 </label>
                             </div>
                         </div><!-- Display score -->

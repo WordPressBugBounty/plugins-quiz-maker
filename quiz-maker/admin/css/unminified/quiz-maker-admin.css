@@ -968,6 +968,11 @@ table.ays-top-keywords-table td:not(:first-child) {
 
 /*User Page Settings Table End*/
 
+/* Answers weight */
+input.ays-answer-weight {
+    width: 100px;
+}
+
 a.ays-add-interval,
 a.ays-add-answer {
     color: #666;
