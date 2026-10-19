@@ -206,6 +206,8 @@ $options = array(
     'ans_img_border_radius'                             => 0,
     'ans_img_mobile_border_radius'                      => 0,
     'show_answers_caption'                              => 'on',
+    'show_interval_message'                             => 'on',
+    'display_score_by'                                  => 'by_percentage',
     'ans_img_caption_position'                          => 'bottom',
     'social_links_heading'                              => '',
     'quiz_enable_question_category_description'         => 'off',
@@ -299,38 +301,42 @@ $options = array(
 
 $quiz_intervals_default = array(
     array(
-        'interval_min'      => '0',
-        'interval_max'      => '25',
-        'interval_text'     => '',
-        'interval_image'    => '',
-        'interval_keyword'  => 'A',
+        'interval_min'            => '0',
+        'interval_max'            => '25',
+        'interval_text'           => '',
+        'interval_image'          => '',
+        'interval_redirect_url'   => '',
+        'interval_redirect_delay' => '',
     ),
     array(
-        'interval_min'      => '26',
-        'interval_max'      => '50',
-        'interval_text'     => '',
-        'interval_image'    => '',
-        'interval_keyword'  => 'B',
+        'interval_min'            => '26',
+        'interval_max'            => '50',
+        'interval_text'           => '',
+        'interval_image'          => '',
+        'interval_redirect_url'   => '',
+        'interval_redirect_delay' => '',
     ),
     array(
-        'interval_min'      => '51',
-        'interval_max'      => '75',
-        'interval_text'     => '',
-        'interval_image'    => '',
-        'interval_keyword'  => 'C',
+        'interval_min'            => '51',
+        'interval_max'            => '75',
+        'interval_text'           => '',
+        'interval_image'          => '',
+        'interval_redirect_url'   => '',
+        'interval_redirect_delay' => '',
     ),
     array(
-        'interval_min'      => '76',
-        'interval_max'      => '100',
-        'interval_text'     => '',
-        'interval_image'    => '',
-        'interval_keyword'  => 'D',
+        'interval_min'            => '76',
+        'interval_max'            => '100',
+        'interval_text'           => '',
+        'interval_image'          => '',
+        'interval_redirect_url'   => '',
+        'interval_redirect_delay' => '',
     ),
 );
 
 $question_ids = '';
 $question_id_array = array();
-$quiz_intervals = 3;
+$quiz_intervals = $quiz_intervals_default;
 switch ($action) {
     case 'add':
         $heading = __('Add new quiz', 'quiz-maker');
@@ -344,6 +350,12 @@ switch ($action) {
         $question_ids = (isset( $quiz['question_ids'] ) && $quiz['question_ids'] != "") ? $quiz['question_ids'] : "";
         $question_id_array = explode(',', $question_ids);
         $question_id_array = ($question_id_array[0] == '' && count($question_id_array) == 1) ? array() : $question_id_array;
+        if ( isset( $quiz['intervals'] ) && $quiz['intervals'] != '' ) {
+            $saved_quiz_intervals = json_decode( $quiz['intervals'], true );
+            if ( is_array( $saved_quiz_intervals ) && ! empty( $saved_quiz_intervals ) ) {
+                $quiz_intervals = $saved_quiz_intervals;
+            }
+        }
         break;
 }
 
@@ -442,6 +454,7 @@ $quiz_message_vars = array(
     "%%score%%"                                         => __("Score", 'quiz-maker'),
     "%%user_points%%"                                   => __("User Point", 'quiz-maker'),
     "%%max_points%%"                                    => __("Max point", 'quiz-maker'),
+    "%%interval_message%%"                              => __("Interval message", 'quiz-maker'),
     "%%current_date%%"                                  => __("Current Date", 'quiz-maker'),
     "%%results_by_cats%%"                               => __("Results by question categories", 'quiz-maker'),
     "%%avg_score%%"                                     => __("Average score", 'quiz-maker'),
@@ -1031,6 +1044,13 @@ $show_question_category = (isset($options['show_question_category']) && $options
 
 // Display score option
 $display_score = (isset($options['display_score']) && $options['display_score'] != "") ? esc_attr( stripslashes($options['display_score'])) : 'by_percantage';
+
+// Show interval message
+$options['show_interval_message'] = isset($options['show_interval_message']) ? $options['show_interval_message'] : 'on';
+$show_interval_message = (isset($options['show_interval_message']) && $options['show_interval_message'] == 'on');
+
+// Display intervals by
+$display_score_by = (isset($options['display_score_by']) && in_array($options['display_score_by'], array('by_percentage', 'by_points'), true)) ? $options['display_score_by'] : 'by_percentage';
 
 // Right / Wrong answers sound option
 $options['enable_rw_asnwers_sounds'] = isset($options['enable_rw_asnwers_sounds']) ? $options['enable_rw_asnwers_sounds'] : 'off';
@@ -8638,6 +8658,20 @@ $calculate_score = (isset($options['calculate_score']) && $options['calculate_sc
                         ?>
                         </div><!-- quiz_interval_table_settings -->
                         <hr/>
+                        <div class="form-group row">
+                            <div class="col-sm-4">
+                                <label for="ays_show_interval_message">
+                                    <?php echo esc_html__('Show interval message', 'quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Show an interval message after quiz completion on the result page.', 'quiz-maker'); ?>">
+                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                    </a>
+                                </label>
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="checkbox" class="ays-enable-timer1" id="ays_show_interval_message" name="ays_show_interval_message" value="on" <?php echo $show_interval_message ? 'checked' : ''; ?>/>
+                            </div>
+                        </div><!-- Show interval message -->
+                        <hr/>
                         <div class="ays-quiz-heading-box ays-quiz-unset-float">
                             <div class="ays-quiz-wordpress-user-manual-box ays-quiz-wordpress-text-align">
                                 <a href="https://www.youtube.com/watch?v=PQSOjFUG1Fg" target="_blank">
@@ -8645,8 +8679,121 @@ $calculate_score = (isset($options['calculate_score']) && $options['calculate_sc
                                 </a>
                             </div>
                         </div>
+                        <div class='form-group row ays-field-dashboard'>
+                            <div class="col-sm-4">
+                                <label for="ays-intervals-table"><?php echo esc_html__('Intervals', 'quiz-maker'); ?>
+                                    <a class="ays_help" style="font-size:15px;" data-toggle="tooltip" title="<?php echo esc_attr__('Set different messages based on the user\'s score. The message will be displayed on the result page of the quiz.', 'quiz-maker'); ?>">
+                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                    </a>
+                                </label>
+                                <div><?php echo esc_html__('Conditional result messages', 'quiz-maker'); ?></div>
+                            </div>
+                            <div class="col-sm-8">
+                                <label class="ays_quiz_loader">
+                                    <input type="radio" class="ays-enable-timer1 ays_table_by ays_intervals_display_by" name="ays_display_score_by" value="by_percentage" <?php echo ($display_score_by == 'by_percentage') ? 'checked' : ''; ?>>
+                                    <span><?php echo esc_html__('By percentage', 'quiz-maker'); ?></span>
+                                </label>
+                                <label class="ays_quiz_loader">
+                                    <input type="radio" class="ays-enable-timer1 ays_table_by ays_intervals_display_by" name="ays_display_score_by" value="by_points" <?php echo ($display_score_by == 'by_points') ? 'checked' : ''; ?>>
+                                    <span><?php echo esc_html__('By points', 'quiz-maker'); ?></span>
+                                </label>
+                                <a class="ays_help" style="font-size:15px;" data-toggle="tooltip" data-html="true"
+                                    title="<?php
+                                        echo esc_attr__('Choose your preferred method of calculation.', 'quiz-maker') .
+                                        "<ul style='list-style-type: circle;padding-left: 20px;'>".
+                                            "<li>". esc_attr__('By percentage - If this option is enabled, you need to assign values to Min and Max fields by percentage and write a correspondent message and attach an image for each interval separately. You need to cover the 0-100 range with as many intervals as you want.', 'quiz-maker') ."</li>".
+                                            "<li>". esc_attr__('By points - If this option is enabled, you need to assign values to Min and Max fields by points and write a correspondent message and attach an image for each interval separately. There is no limitation to that.', 'quiz-maker') ."</li>".
+                                        "</ul>";
+                                    ?>">
+                                    <i class="ays_fa ays_fa_info_circle"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class='ays-field-dashboard ays-table-wrap'>
+                            <table class="ays-intervals-table" id="ays-intervals-table">
+                                <thead>
+                                    <tr class="ui-state-default">
+                                        <th><?php echo esc_html__('Ordering', 'quiz-maker'); ?></th>
+                                        <th class="ays_interval_min_row"><?php echo esc_html__('Min', 'quiz-maker'); ?></th>
+                                        <th class="ays_interval_max_row"><?php echo esc_html__('Max', 'quiz-maker'); ?></th>
+                                        <th><?php echo esc_html__('Text', 'quiz-maker'); ?></th>
+                                        <th><?php echo esc_html__('Image', 'quiz-maker'); ?></th>
+                                        <th class="ays_actions_row"><?php echo esc_html__('Actions', 'quiz-maker'); ?></th>
+                                    </tr>
+                                </thead>
+                                <?php foreach ($quiz_intervals as $key => $quiz_interval):
+                                    $quiz_interval = (array) $quiz_interval;
+                                    $class_name = (($key + 1) % 2 === 0) ? 'even' : '';
+                                    $interval_image = isset($quiz_interval['interval_image']) ? $quiz_interval['interval_image'] : '';
+                                    $interval_index = $key + 1;
+                                ?>
+                                    <tbody>
+                                        <tr class="ays-interval-row ui-state-default <?php echo esc_attr($class_name); ?>">
+                                            <td class="ays-sort">
+                                                <svg class="ays-table-icon ays-table-icon-move" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v20M15 5l-3-3-3 3M15 19l-3 3-3-3M2 12h20M5 9l-3 3 3 3M19 9l3 3-3 3"></path></svg>
+                                            </td>
+                                            <td class="ays_interval_min_row">
+                                                <input type="number" step="any" name="interval_min[]" value="<?php echo esc_attr(isset($quiz_interval['interval_min']) ? $quiz_interval['interval_min'] : ''); ?>" class="interval_min">
+                                            </td>
+                                            <td class="ays_interval_max_row">
+                                                <input type="number" step="any" name="interval_max[]" value="<?php echo esc_attr(isset($quiz_interval['interval_max']) ? $quiz_interval['interval_max'] : ''); ?>" class="interval_max">
+                                            </td>
+                                            <td>
+                                                <div class="intervall-text-section-container">
+                                                    <textarea name="interval_text[]" class="interval_text"><?php echo esc_textarea(isset($quiz_interval['interval_text']) ? stripslashes($quiz_interval['interval_text']) : ''); ?></textarea>
+                                                    <button type="button" class="ays-quiz-open-intervals-editor" title="<?php echo esc_attr__('Open editor', 'quiz-maker'); ?>">
+                                                        <img src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL . '/images/icons/edit-content.svg'); ?>" alt="">
+                                                    </button>
+                                                </div>
+                                            </td>
+                                            <td class="ays-interval-image-td">
+                                                <label class="ays-label">
+                                                    <a href="javascript:void(0)" class="add-answer-image add-interval-image" <?php echo $interval_image == '' ? '' : 'style="display:none !important;"'; ?>>
+                                                        <svg class="ays-interval-image-icon" viewBox="0 0 24 24" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect><circle cx="9" cy="9" r="2"></circle><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"></path></svg>
+                                                    </a>
+                                                </label>
+                                                <div class="ays-answer-image-container ays-interval-image-container" style="display:<?php echo $interval_image == '' ? 'none' : 'block'; ?>;">
+                                                    <span class="ays-edit-answer-img"></span>
+                                                    <span class="ays-remove-answer-img"></span>
+                                                    <img src="<?php echo esc_url($interval_image); ?>" class="ays-answer-img" alt="">
+                                                    <input type="hidden" name="interval_image[]" class="ays-answer-image" value="<?php echo esc_url($interval_image); ?>">
+                                                </div>
+                                            </td>
+                                            <td class="ays_actions_row">
+                                                <a href="javascript:void(0)" class="ays-more-interval" title="<?php echo esc_attr__('More', 'quiz-maker'); ?>">
+                                                    <svg class="ays-interval-chevron ays-interval-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>
+                                                    <svg class="ays-interval-chevron ays-interval-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path d="m18 15-6-6-6 6"></path></svg>
+                                                </a>
+                                                <a href="javascript:void(0)" class="ays-delete-interval" title="<?php echo esc_attr__('Delete', 'quiz-maker'); ?>">
+                                                    <svg class="ays-table-icon ays-table-icon-delete" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 11v6M14 11v6M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr class="ays-interval-hidden-row <?php echo esc_attr($class_name); ?>" data-expanded="false">
+                                            <td colspan="6" class="hiddenRow ays_interval_redirect_td">
+                                                <div class="form-group row ays_interval_redirect_url_container">
+                                                    <div class="col-sm-3"><label for="ays_interval_redirect_url_<?php echo esc_attr($interval_index); ?>"><?php echo esc_html__('Redirect URL', 'quiz-maker'); ?></label></div>
+                                                    <div class="col-sm-9"><input type="text" class="ays-text-input" id="ays_interval_redirect_url_<?php echo esc_attr($interval_index); ?>" name="interval_redirect_url[]" value="<?php echo esc_attr(isset($quiz_interval['interval_redirect_url']) ? $quiz_interval['interval_redirect_url'] : ''); ?>"></div>
+                                                </div>
+                                                <hr>
+                                                <div class="form-group row ays_interval_redirect_delay_container">
+                                                    <div class="col-sm-3"><label for="ays_interval_redirect_delay_<?php echo esc_attr($interval_index); ?>"><?php echo esc_html__('Redirect delay (sec)', 'quiz-maker'); ?></label></div>
+                                                    <div class="col-sm-9"><input type="number" min="0" class="ays-text-input" id="ays_interval_redirect_delay_<?php echo esc_attr($interval_index); ?>" name="interval_redirect_delay[]" value="<?php echo esc_attr(isset($quiz_interval['interval_redirect_delay']) ? $quiz_interval['interval_redirect_delay'] : ''); ?>"></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                <?php endforeach; ?>
+                            </table>
+                        </div><!-- Intervals -->
+                        <div class="ays-intervals-toolbar-bottom">
+                            <button type="button" class="ays-add-interval ays-add-interval-button">
+                                <svg class="ays-interval-add-button-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5v14"></path></svg>
+                                <span><?php echo esc_html__('Add Interval', 'quiz-maker'); ?></span>
+                            </button>
+                        </div>
                         <div class="form-group row" style="margin-bottom: 0;">
-                            <div class="col-sm-12 only_pro ays-quiz-margin-top-20" style="padding:15px;">
+                            <div class="col-sm-12 only_pro ays-quiz-margin-top-20 display_none" style="padding:15px;">
                                 <div class="pro_features pro_features_popup">
                                     <div class="pro-features-popup-conteiner">
                                         <div class="pro-features-popup-title">
@@ -8717,7 +8864,7 @@ $calculate_score = (isset($options['calculate_score']) && $options['calculate_sc
                                 </div>
 
                                 <div class='ays-field-dashboard ays-table-wrap'>
-                                    <table class="ays-intervals-table">
+                                    <table class="ays-intervals-table-preview">
                                         <thead>
                                         <tr class="ui-state-default">
                                             <th><?php echo esc_html__('Ordering', 'quiz-maker'); ?></th>
@@ -11675,6 +11822,33 @@ $calculate_score = (isset($options['calculate_score']) && $options['calculate_sc
                         <input type="hidden" id="ays_quiz_ajax_add_question_nonce" name="ays_quiz_ajax_add_question_nonce" value="<?php echo esc_attr($quiz_ajax_add_question_nonce); ?>">
                     </div>
                 </form>
+            </div>
+        </div>
+
+        <div class="ays-modal" id="ays-open-intervals-editor">
+            <div class="ays-modal-content">
+                <div class="ays-quiz-preloader">
+                    <img class="loader" src="<?php echo esc_url(AYS_QUIZ_ADMIN_URL . '/images/loaders/3-1.svg'); ?>" alt="">
+                </div>
+                <div class="ays-modal-header">
+                    <span class="ays-close ays-close-editor">&times;</span>
+                    <h2><?php echo esc_html__('Edit interval message', 'quiz-maker'); ?></h2>
+                </div>
+                <div class="ays-modal-body">
+                    <div style="padding: 15px 10px;">
+                        <?php
+                            wp_editor('', 'ays_quiz_interval_text_editor', array(
+                                'editor_height'  => $quiz_wp_editor_height,
+                                'textarea_name'  => 'ays_quiz_interval_text_editor',
+                                'editor_class'   => 'ays-textarea',
+                                'media_elements' => false,
+                            ));
+                        ?>
+                    </div>
+                </div>
+                <div class="ays-modal-footer ays-modal-footer-textarea-editor">
+                    <button type="button" class="button button-primary ays-quiz-apply-interval-changes"><?php echo esc_html__('Apply changes', 'quiz-maker'); ?></button>
+                </div>
             </div>
         </div>
 

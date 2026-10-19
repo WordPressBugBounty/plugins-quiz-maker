@@ -1195,6 +1195,32 @@ class Quizes_List_Table extends WP_List_Table{
             // Calculate the score
             $calculate_score = (isset($_REQUEST['ays_calculate_score']) && $_REQUEST['ays_calculate_score'] != '') ? sanitize_text_field( stripslashes($_REQUEST['ays_calculate_score']) ) : 'by_correctness';
 
+            // Show interval message
+            $show_interval_message = (isset($_POST['ays_show_interval_message']) && sanitize_text_field($_POST['ays_show_interval_message']) == 'on') ? 'on' : 'off';
+
+            // Display intervals by
+            $display_score_by = (isset($_POST['ays_display_score_by']) && in_array(sanitize_text_field($_POST['ays_display_score_by']), array('by_percentage', 'by_points'), true)) ? sanitize_text_field($_POST['ays_display_score_by']) : 'by_percentage';
+
+            $intervals = array();
+            $intervals_min = isset($_POST['interval_min']) && is_array($_POST['interval_min']) ? wp_unslash($_POST['interval_min']) : array();
+            $intervals_max = isset($_POST['interval_max']) && is_array($_POST['interval_max']) ? wp_unslash($_POST['interval_max']) : array();
+            $intervals_text = isset($_POST['interval_text']) && is_array($_POST['interval_text']) ? wp_unslash($_POST['interval_text']) : array();
+            $intervals_image = isset($_POST['interval_image']) && is_array($_POST['interval_image']) ? wp_unslash($_POST['interval_image']) : array();
+            $intervals_redirect_url = isset($_POST['interval_redirect_url']) && is_array($_POST['interval_redirect_url']) ? wp_unslash($_POST['interval_redirect_url']) : array();
+            $intervals_redirect_delay = isset($_POST['interval_redirect_delay']) && is_array($_POST['interval_redirect_delay']) ? wp_unslash($_POST['interval_redirect_delay']) : array();
+
+            foreach ($intervals_max as $interval_index => $interval_max) {
+                $intervals[] = array(
+                    'interval_min'            => isset($intervals_min[$interval_index]) && is_numeric($intervals_min[$interval_index]) ? sanitize_text_field($intervals_min[$interval_index]) : '0',
+                    'interval_max'            => is_numeric($interval_max) ? sanitize_text_field($interval_max) : '0',
+                    'interval_text'           => isset($intervals_text[$interval_index]) ? wp_kses($intervals_text[$interval_index], $quiz_allowed_html) : '',
+                    'interval_image'          => isset($intervals_image[$interval_index]) ? sanitize_url($intervals_image[$interval_index]) : '',
+                    'interval_redirect_url'   => isset($intervals_redirect_url[$interval_index]) ? sanitize_url($intervals_redirect_url[$interval_index]) : '',
+                    'interval_redirect_delay' => isset($intervals_redirect_delay[$interval_index]) && $intervals_redirect_delay[$interval_index] !== '' ? absint($intervals_redirect_delay[$interval_index]) : '',
+                );
+            }
+            $intervals_json = wp_json_encode($intervals);
+
             $options = array(
                 'quiz_version'                                      => AYS_QUIZ_VERSION,
                 'core_version'                                      => get_bloginfo( 'version' ),
@@ -1295,6 +1321,8 @@ class Quizes_List_Table extends WP_List_Table{
 				'show_category'                                     => $show_category,
 				'show_question_category'                            => $show_question_category,
 				'display_score'                                     => $display_score,
+				'display_score_by'                                  => $display_score_by,
+				'show_interval_message'                             => $show_interval_message,
 				'enable_rw_asnwers_sounds'                          => $enable_rw_asnwers_sounds,
                 'ans_right_wrong_icon'                              => $ans_right_wrong_icon,
                 'quiz_bg_img_in_finish_page'                        => $quiz_bg_img_in_finish_page,
@@ -1521,6 +1549,7 @@ class Quizes_List_Table extends WP_List_Table{
                         'author_id'             => $quiz_create_author,
                         'ordering'              => $ordering,
                         'quiz_url'              => $main_quiz_url,
+                        'intervals'             => $intervals_json,
                         'options'               => json_encode($options)
                     ),
                     array(
@@ -1533,6 +1562,7 @@ class Quizes_List_Table extends WP_List_Table{
                         '%d', // author_id
                         '%d', // ordering
                         '%s', // quiz_url
+                        '%s', // intervals
                         '%s'  // options
                     )
                 );
@@ -1559,6 +1589,7 @@ class Quizes_List_Table extends WP_List_Table{
                         'published'             => $published,
                         'author_id'             => $quiz_create_author,
                         'quiz_url'              => $main_quiz_url,
+                        'intervals'             => $intervals_json,
                         'options'               => json_encode($options)
                     ),
                     array( 'id' => $id ),
@@ -1571,6 +1602,7 @@ class Quizes_List_Table extends WP_List_Table{
                         '%d', // published
                         '%d', // author_id
                         '%s', // quiz_url
+                        '%s', // intervals
                         '%s'  // options
                     ),
                     array( '%d' )

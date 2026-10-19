@@ -961,6 +961,102 @@
             }
         });
 
+        function aysQuizRefreshIntervalRows() {
+            $(document).find('table.ays-intervals-table > tbody').each(function (index) {
+                var evenClass = ((index + 1) % 2 === 0) ? 'even' : '';
+                $(this).find('tr').removeClass('even').addClass(evenClass);
+            });
+        }
+
+        $(document).find('table.ays-intervals-table').sortable({
+            items: '> tbody',
+            handle: 'td.ays-sort',
+            cursor: 'move',
+            opacity: 0.8,
+            axis: 'y',
+            placeholder: 'clone',
+            tolerance: 'pointer',
+            update: function () {
+                aysQuizRefreshIntervalRows();
+            }
+        });
+
+        $(document).on('click', '.ays-add-interval', function (e) {
+            e.preventDefault();
+            var intervalsTable = $(document).find('table.ays-intervals-table').first();
+            var firstInterval = intervalsTable.children('tbody').first();
+            if (!firstInterval.length) {
+                return;
+            }
+
+            var newInterval = firstInterval.clone(false, false);
+            newInterval.find('input[name="interval_min[]"], input[name="interval_max[]"], input[name="interval_redirect_url[]"], input[name="interval_redirect_delay[]"], textarea[name="interval_text[]"]').val('');
+            newInterval.find('input[name="interval_image[]"]').val('');
+            newInterval.find('.ays-answer-img').attr('src', '');
+            newInterval.find('.ays-interval-image-container').hide();
+            newInterval.find('.add-interval-image').attr('style', '').css('display', 'inline-flex');
+            newInterval.find('.ays-interval-hidden-row').hide().attr('data-expanded', 'false');
+            newInterval.find('.ays-interval-chevron-up').hide();
+            newInterval.find('.ays-interval-chevron-down').show();
+
+            var intervalIndex = intervalsTable.children('tbody').length + 1;
+            newInterval.find('input[name="interval_redirect_url[]"]').attr('id', 'ays_interval_redirect_url_' + intervalIndex);
+            newInterval.find('input[name="interval_redirect_delay[]"]').attr('id', 'ays_interval_redirect_delay_' + intervalIndex);
+            newInterval.find('label[for^="ays_interval_redirect_url_"]').attr('for', 'ays_interval_redirect_url_' + intervalIndex);
+            newInterval.find('label[for^="ays_interval_redirect_delay_"]').attr('for', 'ays_interval_redirect_delay_' + intervalIndex);
+
+            intervalsTable.append(newInterval);
+            aysQuizRefreshIntervalRows();
+        });
+
+        $(document).on('click', '.ays-delete-interval', function (e) {
+            e.preventDefault();
+            var intervalsTable = $(this).closest('table.ays-intervals-table');
+            if (window.confirm(quizLangObj.deleteElementFromListTable)) {
+                $(this).closest('tbody').remove();
+                aysQuizRefreshIntervalRows();
+            }
+        });
+
+        $(document).on('click', '.ays-more-interval', function (e) {
+            e.preventDefault();
+            var hiddenRow = $(this).closest('.ays-interval-row').next('.ays-interval-hidden-row');
+            var isExpanded = hiddenRow.attr('data-expanded') === 'true';
+            hiddenRow.toggle(!isExpanded).attr('data-expanded', isExpanded ? 'false' : 'true');
+            $(this).find('.ays-interval-chevron-down').toggle(isExpanded);
+            $(this).find('.ays-interval-chevron-up').toggle(!isExpanded);
+        });
+
+        $(document).on('click', '.ays-quiz-open-intervals-editor', function (e) {
+            e.preventDefault();
+            var textarea = $(this).closest('td').find('textarea.interval_text');
+            var intervalContent = textarea.val();
+            textarea.attr('data-interval-editor-open', 'true');
+
+            if ($(document).find('#wp-ays_quiz_interval_text_editor-wrap').hasClass('tmce-active') && window.tinyMCE && window.tinyMCE.get('ays_quiz_interval_text_editor')) {
+                window.tinyMCE.get('ays_quiz_interval_text_editor').setContent(intervalContent);
+            } else {
+                $(document).find('#ays_quiz_interval_text_editor').val(intervalContent);
+            }
+            $(document).find('#ays-open-intervals-editor').aysModal('open');
+        });
+
+        $(document).on('click', '.ays-quiz-apply-interval-changes', function () {
+            var textarea = $(document).find('textarea.interval_text[data-interval-editor-open="true"]');
+            var intervalContent = '';
+            if ($(document).find('#wp-ays_quiz_interval_text_editor-wrap').hasClass('tmce-active') && window.tinyMCE && window.tinyMCE.get('ays_quiz_interval_text_editor')) {
+                intervalContent = window.tinyMCE.get('ays_quiz_interval_text_editor').getContent();
+            } else {
+                intervalContent = $(document).find('#ays_quiz_interval_text_editor').val();
+            }
+            textarea.val(intervalContent).removeAttr('data-interval-editor-open');
+            $(document).find('#ays-open-intervals-editor').aysModal('hide');
+        });
+
+        $(document).on('click', '#ays-open-intervals-editor .ays-close-editor', function () {
+            $(document).find('textarea.interval_text[data-interval-editor-open="true"]').removeAttr('data-interval-editor-open');
+        });
+
         //Aro User page settings table
         $(document).find('.ays-show-user-page-table').sortable({
             cursor: 'move',
@@ -2009,12 +2105,19 @@
             openAnswerMediaUploader(e, $(this));
         });
         $(document).on('click', '.ays-remove-answer-img', function () {
-            $(this).parent().fadeOut();
-            var ays_remove_answer_img = $(this);
+            var imageContainer = $(this).closest('.ays-answer-image-container');
+            var imageCell = imageContainer.closest('td');
+
+            imageContainer.fadeOut();
             setTimeout(function(){
-                ays_remove_answer_img.parents().eq(1).find('.add-answer-image').fadeIn();
-                ays_remove_answer_img.parent().find('img.ays-answer-img').attr('src', '');
-                ays_remove_answer_img.parent().find('input.ays-answer-image-path').eq(0).val('');
+                imageContainer.find('img.ays-answer-img').attr('src', '');
+                if (imageContainer.hasClass('ays-interval-image-container')) {
+                    imageCell.find('.add-interval-image').removeAttr('style');
+                    imageContainer.find('input.ays-answer-image').val('');
+                } else {
+                    imageCell.find('.add-answer-image').fadeIn();
+                    imageContainer.find('input.ays-answer-image-path').eq(0).val('');
+                }
             },300);
         });
 
@@ -4720,13 +4823,17 @@
             // Do something with attachment.id and/or attachment.url here
             var imgurl = attachment.sizes[display.size].url;
             
-            element.parents().eq(1).find('.add-answer-image').css({'display': 'none'})
-            element.parent().parent().find('.ays-answer-image-container').fadeIn();
-            element.parent().parent().find('img.ays-answer-img').attr('src', imgurl);
-            element.parents('tr').find('input.ays-answer-image-path').val(imgurl);
-            if(element.hasClass('add-interval-image')){
-                element.parent().parent().find('img').attr('src', imgurl);
-                element.parents('tr').find('input.ays-answer-image').val(imgurl);
+            var imageCell = element.closest('td');
+            var imageContainer = imageCell.find('.ays-answer-image-container').first();
+
+            imageContainer.stop(true, true).fadeIn();
+            imageContainer.find('img.ays-answer-img').attr('src', imgurl);
+            if (imageContainer.hasClass('ays-interval-image-container')) {
+                imageCell.find('.add-interval-image').attr('style', 'display: none !important;');
+                imageContainer.find('input.ays-answer-image').val(imgurl);
+            } else {
+                imageCell.find('.add-answer-image').hide();
+                imageContainer.find('input.ays-answer-image-path').val(imgurl);
             }
         }).open();
         return false;

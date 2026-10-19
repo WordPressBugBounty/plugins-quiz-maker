@@ -3540,6 +3540,7 @@ class Quiz_Maker_Public
             $quiz_loader_html .
             "<div class='ays_quiz_results_page'>".
                 $pass_score_html .
+                "<div class='ays_interval_message'></div>" .
                 "<div class='ays_message'></div>" .
                 $show_score_html .
                 $show_average .
@@ -6006,6 +6007,13 @@ class Quiz_Maker_Public
             // Display score option
             $display_score = (isset($options->display_score) && $options->display_score != "") ? $options->display_score : 'by_percantage';
 
+            // Display intervals by
+            $display_score_by = (isset($options->display_score_by) && in_array($options->display_score_by, array('by_percentage', 'by_points'), true)) ? $options->display_score_by : 'by_percentage';
+
+            // Show interval message
+            $options->show_interval_message = isset($options->show_interval_message) ? $options->show_interval_message : 'on';
+            $show_interval_message = ($options->show_interval_message == 'on');
+
             //Pass score count
             $pass_score_count = (isset($options->pass_score) && $options->pass_score != '') ? absint(intval($options->pass_score)) : 0;
             $enable_pass_score = (isset($options->enable_pass_score) && $options->enable_pass_score == 'on') || (!isset($options->enable_pass_score) && $pass_score_count > 0);
@@ -6476,6 +6484,43 @@ class Quiz_Maker_Public
                     break;
                 }
 
+                $interval_message = '';
+                $interval_redirect_url = '';
+                $interval_redirect_delay = 0;
+                $interval_redirect_after = '';
+                $interval_score = ($display_score_by == 'by_points') ? floatval($correct_answered_count) : floatval($final_score);
+
+                foreach ($quiz_intervals as $quiz_interval) {
+                    $quiz_interval = (array) $quiz_interval;
+                    if (!isset($quiz_interval['interval_min'], $quiz_interval['interval_max'])) {
+                        continue;
+                    }
+
+                    if (floatval($quiz_interval['interval_min']) <= $interval_score && $interval_score <= floatval($quiz_interval['interval_max'])) {
+                        $interval_text = isset($quiz_interval['interval_text']) ? $this->ays_autoembed($quiz_interval['interval_text']) : '';
+                        $interval_image = isset($quiz_interval['interval_image']) ? $quiz_interval['interval_image'] : '';
+                        $interval_redirect_url = isset($quiz_interval['interval_redirect_url']) ? sanitize_url($quiz_interval['interval_redirect_url']) : '';
+                        $interval_redirect_delay = isset($quiz_interval['interval_redirect_delay']) && $quiz_interval['interval_redirect_delay'] !== '' ? absint($quiz_interval['interval_redirect_delay']) : 0;
+
+                        $interval_content = '';
+                        if ($interval_image != '') {
+                            $interval_content .= "<div class='ays-quiz-interval-message-image-box' style='width:100%;max-width:400px;margin:10px auto;'>";
+                            $interval_content .= "<img style='max-width:100%;' src='" . esc_url($interval_image) . "' alt=''>";
+                            $interval_content .= '</div>';
+                        }
+                        if ($interval_text != '') {
+                            $interval_content .= "<div class='ays-quiz-interval-message-box'>" . $interval_text . '</div>';
+                        }
+                        if ($interval_content != '') {
+                            $interval_message = "<div class='ays-quiz-interval-message-box'>" . $interval_content . '</div>';
+                        }
+                        if ($interval_redirect_url != '') {
+                            $interval_redirect_after = $this->secondsToWords($interval_redirect_delay);
+                        }
+                        break;
+                    }
+                }
+
                 $wrong_answered_count = $questions_count - $corrects_count;
 
                 $skipped_questions_count = 0;
@@ -6685,6 +6730,8 @@ class Quiz_Maker_Public
 
                 $message_data['avg_score_by_category'] = $this->ays_get_average_score_by_category($quiz_id);
                 $message_data['result_id'] = $last_result_id;
+                $interval_message = $this->replace_message_variables($interval_message, $message_data);
+                $message_data['interval_message'] = $interval_message;
 
                 $quiz_show_results_based_pass_score_flag = false;
                 switch ($quiz_pass_score_type) {
@@ -6776,6 +6823,11 @@ class Quiz_Maker_Public
                         "scoreMessage"          => $final_score_message,
                         "displayScore"          => $display_score,
                         "text"                  => $result_text,
+                        "showIntervalMessage"   => $show_interval_message,
+                        "intervalMessage"       => $interval_message,
+                        "interval_redirect_url" => $interval_redirect_url,
+                        "interval_redirect_delay" => $interval_redirect_delay,
+                        "interval_redirect_after" => $interval_redirect_after,
                         "result_id"             => $last_result_id,
                         // "result_id"             => $last_result_id,
                         "socialHeading"         => $heading_for_share_buttons,

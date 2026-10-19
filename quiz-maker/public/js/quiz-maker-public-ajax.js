@@ -1782,18 +1782,20 @@
             form.parents('.ays-quiz-container').removeClass('ays_quiz_hide_bg_during_quiz');
         }
 
-        if (myOptions.redirect_after_submit && myOptions.redirect_after_submit == 'on') {            
+        var intervalRedirectUrl = response.interval_redirect_url ? response.interval_redirect_url : '';
+        var hasIntervalRedirect = intervalRedirectUrl !== '';
+        if (hasIntervalRedirect || (myOptions.redirect_after_submit && myOptions.redirect_after_submit == 'on')) {
             var ays_block_element = form.parents('.ays-quiz-container');
             var quizId = form.parents('.ays-quiz-container').find('input[name="ays_quiz_id"]').val();
-            var redirectUrl = myOptions.submit_redirect_after ? myOptions.submit_redirect_after : '';
-            var submitRedirectUrl = myOptions.submit_redirect_url ? myOptions.submit_redirect_url : '';
+            var redirectUrl = hasIntervalRedirect ? (response.interval_redirect_after || '') : (myOptions.submit_redirect_after || '');
+            var submitRedirectUrl = hasIntervalRedirect ? intervalRedirectUrl : (myOptions.submit_redirect_url || '');
 
             var redirect_url_flag = true;
             if(redirectUrl == '' && submitRedirectUrl == ''){
                 redirect_url_flag = false;
             }
-            var timer = parseInt(myOptions.submit_redirect_delay);
-            if(timer === NaN){
+            var timer = parseInt(hasIntervalRedirect ? response.interval_redirect_delay : myOptions.submit_redirect_delay);
+            if(isNaN(timer)){
                 timer = 0;
             }
 
@@ -1817,14 +1819,14 @@
                     height: 'auto'
                 });
                 setTimeout(function(){
-                    if (timer !== NaN) {
+                    if (!isNaN(timer)) {
                         timer += 2;
                         if (timer !== undefined) {
                             var countDownDate = new Date().getTime() + (timer * 1000);
                             ays_block_element.find('div.ays-quiz-redirection-timer').slideUp(500);
 
                             // Message before redirect timer
-                            var quiz_message_before_redirect_timer = (myOptions.quiz_message_before_redirect_timer && myOptions.quiz_message_before_redirect_timer != "") ? ( myOptions.quiz_message_before_redirect_timer ) : '';
+                            var quiz_message_before_redirect_timer = (!hasIntervalRedirect && myOptions.quiz_message_before_redirect_timer && myOptions.quiz_message_before_redirect_timer != "") ? myOptions.quiz_message_before_redirect_timer : '';
 
                             if ( quiz_message_before_redirect_timer != '' ) {
                                 quiz_message_before_redirect_timer = quiz_message_before_redirect_timer.replace(/(["'])/g, "\\$1") + " ";
@@ -1860,7 +1862,7 @@
                                     document.title = timeForShow + " - " + tabTitle;
                                 }
                                 ays_block_element.find('div.ays-quiz-redirection-timer').slideDown(500);
-                                var ays_block_element_redirect_url = myOptions.submit_redirect_url;
+                                var ays_block_element_redirect_url = submitRedirectUrl;
                                 if (distance <= 1000) {
                                     clearInterval(x);
                                     window.location = ays_block_element_redirect_url;
@@ -1872,6 +1874,11 @@
             }
         }
         
+        form.find('div.ays_interval_message').empty().hide();
+        if (response.showIntervalMessage && response.intervalMessage) {
+            form.find('div.ays_interval_message').html(response.intervalMessage).fadeIn(500);
+        }
+
         if (response.hide_result) {
             form.find('div.ays_message').html(response.text);
         }

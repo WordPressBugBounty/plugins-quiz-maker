@@ -2824,6 +2824,73 @@ table.ays-intervals-table .add-answer-image.add-interval-image:focus {
     color: #704dcf !important;
 }
 
+table.ays-intervals-table .ays-interval-image-container {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+}
+
+table.ays-intervals-table .ays-interval-image-container img.ays-answer-img {
+    display: block;
+    width: 100px;
+    height: 100px;
+}
+
+table.ays-intervals-table .ays-interval-image-container .ays-edit-answer-img,
+table.ays-intervals-table .ays-interval-image-container .ays-remove-answer-img {
+    z-index: 2;
+}
+
+.ays-intervals-toolbar-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 5px 10px;
+}
+
+.ays-intervals-toolbar-bottom .ays-add-interval-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    min-height: 38px;
+    margin: 0;
+    padding: 9px 16px;
+    border: 0;
+    border-radius: 8px;
+    background: #6a51e3;
+    box-shadow: 0 2px 6px rgba(106, 81, 227, .18);
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    transition: background-color .15s ease, box-shadow .15s ease, transform .15s ease;
+}
+
+.ays-intervals-toolbar-bottom .ays-add-interval-button:hover,
+.ays-intervals-toolbar-bottom .ays-add-interval-button:focus {
+    background: #5c3ecf;
+    box-shadow: 0 4px 12px -2px rgba(106, 81, 227, .32);
+    color: #fff;
+    outline: none;
+}
+
+.ays-intervals-toolbar-bottom .ays-add-interval-button:active {
+    transform: translateY(1px);
+}
+
+.ays-interval-add-button-icon {
+    width: 17px;
+    height: 17px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.25;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
 table.ays-answers-table .ays-quiz-question-answer-image-row .add-answer-image {
     width: auto;
     margin: 0;
@@ -3020,6 +3087,49 @@ table.ays-intervals-table td.ays_actions_row > a {
 
 .ays-interval-row .ays-more-interval-up {
     display: none;
+}
+
+.ays-interval-row .ays-interval-chevron-up,
+table.ays-intervals-table .ays-interval-hidden-row {
+    display: none;
+}
+
+table.ays-intervals-table .ays-interval-hidden-row td:first-child {
+    cursor: default;
+}
+
+.ays-interval-hidden-row .ays_interval_redirect_td {
+    padding: 18px 22px;
+    border-bottom: 1px solid #dfe4ee;
+    text-align: left;
+}
+
+.ays-interval-hidden-row .ays_interval_redirect_td .ays_interval_redirect_url_container,
+.ays-interval-hidden-row .ays_interval_redirect_td .ays_interval_redirect_delay_container {
+    margin: 0;
+}
+
+.ays-interval-hidden-row .ays_interval_redirect_td input {
+    width: 100%;
+}
+
+table.ays-intervals-table .intervall-text-section-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 4px;
+}
+
+table.ays-intervals-table .ays-quiz-open-intervals-editor {
+    flex: 0 0 24px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+}
+
+table.ays-intervals-table .ays-quiz-open-intervals-editor img {
+    width: 18px;
+    height: 18px;
 }
 
 .ays-quiz-open-intervals-editor:hover {

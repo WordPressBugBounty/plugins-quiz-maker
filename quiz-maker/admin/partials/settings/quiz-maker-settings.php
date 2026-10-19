@@ -4135,6 +4135,15 @@
                                     <?php echo esc_html__( "Maximum points which can get the user", 'quiz-maker'); ?>
                                 </span>
                             </p>
+                            <p class="vmessage">
+                                <strong>
+                                    <input type="text" onClick="this.setSelectionRange(0, this.value.length)" readonly value="%%interval_message%%" />
+                                </strong>
+                                <span> - </span>
+                                <span style="font-size:18px;">
+                                    <?php echo esc_html__( "The message which must display on the result page depending from score", 'quiz-maker'); ?>
+                                </span>
+                            </p>
                         </fieldset> <!-- Quiz Message Variables -->
                         <hr />
                         <div class="form-group row">
@@ -4150,15 +4159,6 @@
                                     <span> - </span>
                                     <span style="font-size:18px;">
                                         <?php echo esc_html__( "The quiz image which used for quiz start page", 'quiz-maker'); ?>
-                                    </span>
-                                </p>
-                                <p class="vmessage">
-                                    <strong>
-                                        <input type="text" onClick="this.setSelectionRange(0, this.value.length)" readonly value="%%interval_message%%" />
-                                    </strong>
-                                    <span> - </span>
-                                    <span style="font-size:18px;">
-                                        <?php echo esc_html__( "The message which must display on the result page depending from score", 'quiz-maker'); ?>
                                     </span>
                                 </p>
                                 <!-- ///// -->

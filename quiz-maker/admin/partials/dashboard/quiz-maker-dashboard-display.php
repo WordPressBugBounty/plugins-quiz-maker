@@ -224,6 +224,8 @@ $new_questions_page_url = sprintf('?page=%s&action=%s', 'quiz-maker-questions', 
                 <div class="quiz-maker-what-is-new-version-badge"><?php echo esc_html__('New', 'quiz-maker'); ?></div>
                 
                 <ul class="quiz-maker-what-is-new-features-list">
+                    <li class="quiz-maker-what-is-new-feature-item"><?php echo esc_html__('Conditional result messages with score intervals', 'quiz-maker'); ?></li>
+                    <li class="quiz-maker-what-is-new-feature-item"><?php echo esc_html__('Percentage- and point-based intervals with custom redirects', 'quiz-maker'); ?></li>
                     <li class="quiz-maker-what-is-new-feature-item"><?php echo esc_html__('Flexible quiz scoring by weight and points', 'quiz-maker'); ?></li>
                     <li class="quiz-maker-what-is-new-feature-item"><?php echo esc_html__('Custom points for answers and weights for questions', 'quiz-maker'); ?></li>
                     <li class="quiz-maker-what-is-new-feature-item"><?php echo esc_html__('Point-based pass scores and detailed result reporting', 'quiz-maker'); ?></li>
