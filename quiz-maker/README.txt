@@ -4,7 +4,7 @@ Donate link: https://quiz-plugin.com/pricing/
 Tags:  exam, quiz, quizzes, education, quiz maker
 Requires at least: 4.0
 Tested up to: 7.1
-Stable tag: 6.7.1.93
+Stable tag: 6.7.1.94
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -110,7 +110,7 @@ Here are presented some of those settings:
 * Show answers and explanation - Write an explanation for each question separately and display them when the user answers it.
 * Redirect users - Redirect your quiz takers to another page after quiz completion.
 * Pass score - Specify the passing score of your exam and show different result messages to passed and failed users.
-* Intervals [Quiz PRO](https://quiz-plugin.com/pricing/?utm_source=wporg&utm_medium=free&utm_campaign=intervals)  - show different messages according to the user's score. This functionality allows you to create a **Personality quiz**. 
+* Intervals  - show different messages according to the user's score. This functionality allows you to create a **Personality quiz**. 
 
 
 = Quiz with timer =
@@ -196,6 +196,9 @@ The privacy policy can be found at this URL https://ipinfo.io/privacy-policy
 
 *   Unlimited Quizzes
 *   Unlimited Questions
+*   Question weight/points
+*   Answer weight/points
+*   Intervals (Conditional result messages)
 *   Results sheet
 *   Question Image
 *   Quiz styles(width, height, color, background etc.)
@@ -232,8 +235,6 @@ The privacy policy can be found at this URL https://ipinfo.io/privacy-policy
 *   Schedule quiz
 *   User page shortcode
 *   Email configuration
-*   Question weight/points
-*   Answer weight/points
 *   Flash Card shortcode
 *   [Personality quiz](https://ays-pro.com/blog/how-to-create-a-personality-test-in-wordpress)
 *   Leaderboards
@@ -430,7 +431,10 @@ For example, to add a squared symbol, you need to write down the following sign 
 
 == Changelog ==
 
-= 6.7.1.93 ( Oct 16, 2026 ) =
+= 6.7.1.94 ( Oct 21, 2026 ) =
+* Improved: Made some changes to the admin dashboard
+
+= 6.7.1.93 ( Oct 19, 2026 ) =
 * Added: Intervals functionality
 * Added: Conditional result messages based on percentage or points
 * Added: Interval message images and rich-text editing

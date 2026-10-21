@@ -3833,7 +3833,8 @@ class Quiz_Maker_Admin
                     $this->ays_quiz_fox_lms_integration_message($ays_quiz_ishmar);
                 } else {
                     // if( $this->get_max_id('quizes') > 1 ){
-                        $this->ays_quiz_back_to_school_banner_2026($ays_quiz_ishmar);
+                        // $this->ays_quiz_back_to_school_banner_2026($ays_quiz_ishmar);
+                        $this->ays_quiz_halloween_sale_banner_2026($ays_quiz_ishmar);
                         // $this->ays_quiz_footer_sale_banner_2026($ays_quiz_ishmar);
                         // $this->ays_quiz_black_friday_message($ays_quiz_ishmar);
                         // $this->ays_quiz_new_halloween_bundle_message_2025($ays_quiz_ishmar);
@@ -6590,6 +6591,118 @@ class Quiz_Maker_Admin
             $content = implode( '', $content );
 
             // echo $content;
+        }
+    }
+
+    // Halloween Sale top banner
+    public function ays_quiz_halloween_sale_banner_2026($ishmar){
+        if($ishmar == 0 ){
+            $content = array();
+            $quiz_cta_button_link = esc_url('https://quiz-plugin.com/pricing/?utm_source=dashboard&utm_medium=quiz-free&utm_campaign=halloween-sale-banner-' . AYS_QUIZ_UTM_VERSION);
+
+            $content[] = '<div id="ays-quiz-halloween-sale-banner-2026" class="ays-quiz-halloween-sale-banner-2026 ays-quiz-admin-notice notice notice-success is-dismissible ays_quiz_dicount_info" aria-label="'. esc_attr__('Halloween Sale', 'quiz-maker') .'">';
+                for ($spark_index = 1; $spark_index <= 12; $spark_index++) {
+                    $content[] = '<span class="ays-quiz-halloween-sale-spark ays-quiz-halloween-sale-spark-'. intval($spark_index) .'" aria-hidden="true"></span>';
+                }
+                $content[] = '<div class="ays-quiz-halloween-sale-content">';
+                    $content[] = '<img class="ays-quiz-halloween-sale-art" src="'. esc_url(AYS_QUIZ_ADMIN_URL . '/images/halloween-banner-background-image.webp') .'" alt="" width="555" height="196">';
+                    $content[] = '<div class="ays-quiz-halloween-sale-text">';
+                        $content[] = '<p class="ays-quiz-halloween-sale-headline"><a href="'. esc_url($quiz_cta_button_link) .'" class="ays-quiz-halloween-sale-headline-link" target="_blank" rel="noopener noreferrer">'. esc_html__('Halloween Sale', 'quiz-maker') .'</a> <span class="ays-quiz-halloween-sale-dash" aria-hidden="true">—</span> <strong>'. esc_html__('30% OFF', 'quiz-maker') .'</strong></p>';
+                        $content[] = '<p class="ays-quiz-halloween-sale-subtitle">'. esc_html__('Unlock more with Pro.', 'quiz-maker') .'</p>';
+                    $content[] = '</div>';
+                    $content[] = '<div class="ays-quiz-halloween-sale-actions">';
+                        $content[] = '<div class="ays-quiz-halloween-sale-coupon-group">';
+                            $content[] = '<button type="button" class="ays-quiz-halloween-sale-coupon" data-coupon="HALLOWEEN30" aria-label="'. esc_attr__('Copy coupon code HALLOWEEN30', 'quiz-maker') .'"><span class="ays-quiz-halloween-sale-coupon-code">HALLOWEEN30</span><svg class="ays-quiz-halloween-sale-copy-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button>';
+                            $content[] = '<span class="ays-quiz-halloween-sale-coupon-label">'. esc_html__('Use code', 'quiz-maker') .'</span>';
+                        $content[] = '</div>';
+                        $content[] = '<a href="'. esc_url($quiz_cta_button_link) .'" class="ays-quiz-halloween-sale-cta" target="_blank" rel="noopener noreferrer">'. esc_html__('Upgrade Now', 'quiz-maker') .'</a>';
+                    $content[] = '</div>';
+                $content[] = '</div>';
+                $content[] = '<div class="ays-quiz-halloween-sale-dismiss"><form action="" method="POST"><div id="ays-quiz-dismiss-buttons-content">';
+                    if( current_user_can( 'manage_options' ) ){
+                        $content[] = '<button class="btn btn-link ays-button" name="ays_quiz_sale_btn">'. esc_html__('Dismiss ad', 'quiz-maker') .'</button>';
+                        $content[] = wp_nonce_field( AYS_QUIZ_NAME . '-sale-banner', AYS_QUIZ_NAME . '-sale-banner', true, false );
+                    }
+                $content[] = '</div></form></div>';
+            $content[] = '</div>';
+
+            $content[] = '<style id="ays-quiz-halloween-sale-banner-2026-inline-css">';
+            $content[] = '#ays-quiz-halloween-sale-banner-2026{box-sizing:border-box;position:relative;isolation:isolate;width:calc(100% - 20px);max-width:none;height:114px;margin:20px 20px 16px 0;padding:0 38px 0 20px;overflow:hidden;border:1px solid rgba(211,99,197,0.55);border-left-width:1px;border-radius:12px;background:radial-gradient(120px 90px at 140px 50%,rgba(196,57,177,0.45),transparent 70%),radial-gradient(420px 160px at 55% 120%,rgba(173,32,151,0.55),transparent 70%),radial-gradient(300px 140px at 100% -20%,rgba(150,43,181,0.6),transparent 70%),linear-gradient(100deg,#682779 0%,#2b073f 38%,#39084f 70%,#682779 100%);box-shadow:inset 0 1px rgba(255,255,255,0.12),inset 0 -10px 24px rgba(28,2,44,0.5);color:#fff5d9;font-family:Georgia,"Times New Roman",serif}.ays-quiz-halloween-sale-content{position:relative;z-index:2;display:flex;width:100%;height:112px;align-items:center;gap:28px}.ays-quiz-halloween-sale-art{position:relative;z-index:1;width:280px;height:auto;flex:0 0 auto;filter:drop-shadow(0 4px 8px rgba(25,2,38,0.6))}.ays-quiz-halloween-sale-text{position:relative;z-index:1;display:flex;min-width:0;flex:1 1 auto;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-align:center}.ays-quiz-halloween-sale-text p{margin:0}.ays-quiz-halloween-sale-headline{color:#fff5d9!important;font-family:cursive,Georgia,"Times New Roman",serif;font-size:34px!important;font-weight:700;line-height:36px;letter-spacing:1px;text-shadow:0 2px rgba(25,2,38,0.65);white-space:nowrap}.ays-quiz-halloween-sale-dash{color:#d9a6d7}.ays-quiz-halloween-sale-headline strong{color:#f8bb35!important;font-size:42px!important;text-shadow:0 2px #85431a,0 0 18px rgba(248,187,53,0.35)}.ays-quiz-halloween-sale-subtitle{margin:0!important;color:#efdced!important;font-size:17px!important;line-height:20px;white-space:nowrap}.ays-quiz-halloween-sale-actions{position:relative;z-index:1;display:flex;flex:0 0 auto;align-items:center;gap:16px}.ays-quiz-halloween-sale-coupon-label{margin-right:-6px;color:#ead4e9;font-size:12px;line-height:14px;letter-spacing:1.5px;text-transform:uppercase;white-space:nowrap}.ays-quiz-halloween-sale-coupon{box-sizing:border-box;display:inline-flex;height:44px;align-items:center;gap:10px;padding:0 16px 0 18px;border:1px solid rgba(248,187,53,0.6);border-radius:12px;background:linear-gradient(#5a1c70,#300a46);color:#f8bb35;cursor:pointer;box-shadow:inset 0 1px rgba(255,255,255,0.18),inset 0 -2px rgba(25,2,38,0.6),0 3px #260635,0 8px 16px rgba(18,1,29,0.45);transition:transform 120ms,box-shadow 120ms,border-color 150ms}.ays-quiz-halloween-sale-coupon:hover,.ays-quiz-halloween-sale-coupon:focus{border-color:rgba(248,187,53,0.9);background:linear-gradient(#64217b,#380c50);color:#f8bb35}.ays-quiz-halloween-sale-coupon:active{transform:translateY(2px);box-shadow:inset 0 1px rgba(255,255,255,0.12),0 1px #260635,0 4px 8px rgba(18,1,29,0.4)}.ays-quiz-halloween-sale-coupon-code{color:#f8bb35;font-family:monospace;font-size:16px;font-weight:700;letter-spacing:1.2px;text-shadow:0 1px #250632}.ays-quiz-halloween-sale-copy-icon{width:16px;height:16px;flex:0 0 auto;opacity:0.85}.ays-quiz-halloween-sale-cta{display:inline-flex;height:46px;align-items:center;justify-content:center;padding:0 26px;border:1px solid #c16a1f;border-radius:12px;background:linear-gradient(180deg,#ffe080 0%,#f8bb35 40%,#ef8b20 100%);box-shadow:inset 0 1px rgba(255,255,255,0.55),inset 0 -2px rgba(167,73,15,0.7),0 4px #a95312,0 10px 20px rgba(18,1,29,0.55);color:#3b170e!important;font-family:Georgia,"Times New Roman",serif;font-size:16px;font-weight:700;text-decoration:none!important;white-space:nowrap;transition:transform 120ms,box-shadow 120ms,filter 150ms}.ays-quiz-halloween-sale-cta:hover,.ays-quiz-halloween-sale-cta:focus{color:#3b170e!important;filter:brightness(1.05)}.ays-quiz-halloween-sale-cta:active{transform:translateY(3px);box-shadow:inset 0 1px rgba(255,255,255,0.4),inset 0 -1px rgba(167,73,15,0.7),0 1px #a95312,0 4px 10px rgba(18,1,29,0.5)}.ays-quiz-halloween-sale-coupon:focus-visible,.ays-quiz-halloween-sale-cta:focus-visible{outline:3px solid #fff5d9;outline-offset:3px}#ays-quiz-halloween-sale-banner-2026 .notice-dismiss{top:1px;right:1px;color:#fff5d9}#ays-quiz-halloween-sale-banner-2026 .notice-dismiss:before{font-size:18px}.ays-quiz-halloween-sale-dismiss{position:absolute;right:39px;bottom:0;z-index:3}.ays-quiz-halloween-sale-dismiss form{margin:0}.ays-quiz-halloween-sale-dismiss #ays-quiz-dismiss-buttons-content .ays-button{height:22px!important;min-height:0!important;margin:0!important;padding:0!important;border:0!important;background:transparent!important;color:rgba(255,255,255,0.65)!important;font-size:10px!important;line-height:22px!important;text-decoration:underline;box-shadow:none!important}.ays-quiz-halloween-sale-spark{position:absolute;z-index:0;width:8px;height:8px;background:#fff5d9;clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%);opacity:0.55;pointer-events:none}.ays-quiz-halloween-sale-spark-1{top:10px;left:8px;width:12px;height:12px;opacity:0.85}.ays-quiz-halloween-sale-spark-2{bottom:14px;left:12px;width:7px;height:7px}.ays-quiz-halloween-sale-spark-3{top:7px;left:19%;width:6px;height:6px;opacity:0.45}.ays-quiz-halloween-sale-spark-4{bottom:7px;left:27%;width:9px;height:9px;opacity:0.65}.ays-quiz-halloween-sale-spark-5{top:9px;left:36%;width:7px;height:7px}.ays-quiz-halloween-sale-spark-6{bottom:10px;left:44%;width:5px;height:5px;opacity:0.4}.ays-quiz-halloween-sale-spark-7{top:10px;left:52%;width:6px;height:6px;opacity:0.35}.ays-quiz-halloween-sale-spark-8{bottom:8px;left:60%;width:5px;height:5px;opacity:0.3}.ays-quiz-halloween-sale-spark-9{top:9px;left:68%;width:7px;height:7px;opacity:0.4}.ays-quiz-halloween-sale-spark-10{top:9px;right:8px;width:9px;height:9px;opacity:0.8}.ays-quiz-halloween-sale-spark-11{right:14px;bottom:9px;width:6px;height:6px}.ays-quiz-halloween-sale-spark-12{bottom:12px;left:76%;width:4px;height:4px;opacity:0.35}.ays-quiz-halloween-sale-copy-notification{position:fixed;top:50%;left:50%;z-index:10000;padding:12px 24px;border-radius:8px;background:rgba(0,0,0,0.82);color:#fff;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:14px;opacity:0;transform:translate(-50%,-50%);transition:opacity 250ms}.ays-quiz-halloween-sale-copy-notification.ays-quiz-halloween-sale-show{opacity:1}@media screen and (max-width:1400px){.ays-quiz-halloween-sale-content{gap:18px}.ays-quiz-halloween-sale-art{width:240px}.ays-quiz-halloween-sale-headline{font-size:29px!important;line-height:32px}.ays-quiz-halloween-sale-headline strong{font-size:36px!important}.ays-quiz-halloween-sale-actions{gap:10px}.ays-quiz-halloween-sale-cta{padding:0 18px}}@media screen and (max-width:1200px){#ays-quiz-halloween-sale-banner-2026{padding-left:14px}.ays-quiz-halloween-sale-content{gap:12px}.ays-quiz-halloween-sale-art{width:205px}.ays-quiz-halloween-sale-headline{font-size:25px!important;line-height:28px}.ays-quiz-halloween-sale-headline strong{font-size:31px!important}.ays-quiz-halloween-sale-subtitle,.ays-quiz-halloween-sale-coupon-label{display:none}.ays-quiz-halloween-sale-actions{gap:8px}.ays-quiz-halloween-sale-coupon{padding:0 12px}.ays-quiz-halloween-sale-coupon-code{font-size:14px}.ays-quiz-halloween-sale-cta{padding:0 14px;font-size:14px}}@media screen and (max-width:960px){.ays-quiz-halloween-sale-art{width:170px}.ays-quiz-halloween-sale-headline{font-size:21px!important;line-height:24px}.ays-quiz-halloween-sale-headline strong{font-size:26px!important}.ays-quiz-halloween-sale-coupon{height:40px;padding:0 9px;gap:6px}.ays-quiz-halloween-sale-cta{height:42px;padding:0 11px;font-size:13px}}@media screen and (max-width:768px){#ays-quiz-halloween-sale-banner-2026{display:none!important}}';
+            $content[] = '#ays-quiz-halloween-sale-banner-2026{width:100%}.ays-quiz-halloween-sale-headline-link{color:inherit!important;font-family:inherit;font-size:inherit;font-weight:inherit;line-height:inherit;letter-spacing:inherit;text-shadow:inherit;text-decoration:none!important}.ays-quiz-halloween-sale-headline-link:hover{text-decoration:underline!important}.ays-quiz-halloween-sale-coupon-group{position:relative;display:flex;flex:0 0 auto;align-items:center}.ays-quiz-halloween-sale-coupon-group .ays-quiz-halloween-sale-coupon-label{position:absolute;top:47px;left:50%;display:block;margin:0;font-size:9px;line-height:10px;letter-spacing:1px;white-space:nowrap;transform:translateX(-50%)}.ays-quiz-halloween-sale-cta,.ays-quiz-halloween-sale-cta:active{box-shadow:inset 0 1px rgba(255,255,255,0.55),inset 0 -2px rgba(167,73,15,0.7)}.ays-quiz-halloween-sale-cta:hover,.ays-quiz-halloween-sale-cta:focus,.ays-quiz-halloween-sale-cta:active{border-radius:12px!important}#ays-quiz-halloween-sale-banner-2026 .notice-dismiss:before{color:#fff5d9!important}@media screen and (max-width:900px){.ays-quiz-halloween-sale-art{display:none}}';
+            $content[] = '</style>';
+
+            $content[] = '<script>
+                (function() {
+                    "use strict";
+
+                    function initHalloweenSaleBanner() {
+                        var banner = document.getElementById("ays-quiz-halloween-sale-banner-2026");
+
+                        if (!banner) {
+                            return;
+                        }
+
+                        var couponButton = banner.querySelector(".ays-quiz-halloween-sale-coupon");
+
+                        if (!couponButton) {
+                            return;
+                        }
+
+                        couponButton.addEventListener("click", function() {
+                            var couponCode = couponButton.getAttribute("data-coupon");
+                            var textarea = document.createElement("textarea");
+
+                            textarea.value = couponCode;
+                            textarea.style.position = "fixed";
+                            textarea.style.opacity = "0";
+                            document.body.appendChild(textarea);
+                            textarea.focus();
+                            textarea.select();
+
+                            try {
+                                document.execCommand("copy");
+                                showCopyNotification();
+                            } catch (error) {
+                                // Keep the banner usable when clipboard access is unavailable.
+                            }
+
+                            document.body.removeChild(textarea);
+                        });
+                    }
+
+                    function showCopyNotification() {
+                        var notification = document.createElement("div");
+
+                        notification.className = "ays-quiz-halloween-sale-copy-notification";
+                        notification.setAttribute("role", "status");
+                        notification.setAttribute("aria-live", "polite");
+                        notification.textContent = "'. esc_js(__('Coupon code copied', 'quiz-maker')) .'";
+                        document.body.appendChild(notification);
+
+                        setTimeout(function() {
+                            notification.classList.add("ays-quiz-halloween-sale-show");
+                        }, 10);
+
+                        setTimeout(function() {
+                            notification.classList.remove("ays-quiz-halloween-sale-show");
+
+                            setTimeout(function() {
+                                if (notification.parentNode) {
+                                    notification.parentNode.removeChild(notification);
+                                }
+                            }, 250);
+                        }, 2000);
+                    }
+
+                    if (document.readyState === "loading") {
+                        document.addEventListener("DOMContentLoaded", initHalloweenSaleBanner);
+                    } else {
+                        initHalloweenSaleBanner();
+                    }
+                })();
+            </script>';
+
+            echo implode('', $content); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Static banner markup; dynamic values are escaped above.
         }
     }
 
