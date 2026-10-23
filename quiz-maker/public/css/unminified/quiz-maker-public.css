@@ -2515,12 +2515,14 @@ div.ays-quiz-container[id^="ays-quiz-container-"] .ays-quiz-category-description
 }
 
 
-.ays-quiz-container .ays-quiz-question-image-zoom {
+.ays-quiz-container .ays-quiz-question-image-zoom,
+.ays-quiz-container .ays-quiz-answer-image-zoom {
     cursor: zoom-in;
     transition: 0.3s;
 }
 
-.ays-quiz-container .ays-quiz-question-image-zoom:hover {
+.ays-quiz-container .ays-quiz-question-image-zoom:hover,
+.ays-quiz-container .ays-quiz-answer-image-zoom:hover {
     opacity: 0.9;
 }
 

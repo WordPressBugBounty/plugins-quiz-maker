@@ -4885,6 +4885,10 @@ class Quiz_Maker_Public
         $options['quiz_enable_question_image_zoom'] = isset($options['quiz_enable_question_image_zoom']) ? $options['quiz_enable_question_image_zoom'] : 'off';
         $quiz_enable_question_image_zoom = (isset($options['quiz_enable_question_image_zoom']) && $options['quiz_enable_question_image_zoom'] == "on") ? true : false;
 
+        // Answer Image Zoom
+        $options['quiz_enable_answer_image_zoom'] = isset($options['quiz_enable_answer_image_zoom']) ? $options['quiz_enable_answer_image_zoom'] : 'off';
+        $quiz_enable_answer_image_zoom = (isset($options['quiz_enable_answer_image_zoom']) && $options['quiz_enable_answer_image_zoom'] == "on") ? true : false;
+
         // Display Messages before the buttons
         $options['quiz_display_messages_before_buttons'] = isset($options['quiz_display_messages_before_buttons']) ? esc_attr($options['quiz_display_messages_before_buttons']) : 'off';
         $quiz_display_messages_before_buttons = (isset($options['quiz_display_messages_before_buttons']) && $options['quiz_display_messages_before_buttons'] == 'on') ? true : false;
@@ -5048,6 +5052,7 @@ class Quiz_Maker_Public
             'quiz_waiting_time'                     => $quiz_waiting_time,
             'quiz_enable_lazy_loading'              => $quiz_enable_lazy_loading,
             'quiz_enable_question_image_zoom'       => $quiz_enable_question_image_zoom,
+            'quiz_enable_answer_image_zoom'         => $quiz_enable_answer_image_zoom,
             'quiz_display_messages_before_buttons'  => $quiz_display_messages_before_buttons,
             'enable_questions_ordering_by_cat'      => $enable_questions_ordering_by_cat,
             'quiz_questions_numbering_by_category'  => $quiz_questions_numbering_by_category,
@@ -5275,6 +5280,7 @@ class Quiz_Maker_Public
                         'enable_min_selection_number'       => $question['enable_min_selection_number'],
                         'min_selection_number'              => $question['min_selection_number'],
                         'quiz_enable_lazy_loading'          => $options['quiz_enable_lazy_loading'],
+                        'quiz_enable_answer_image_zoom'     => $options['quiz_enable_answer_image_zoom'],
                         'ans_right_wrong_icon'              => $options['ans_right_wrong_icon'],
                         'key_number'                        => $key,
                     );
@@ -7146,6 +7152,7 @@ class Quiz_Maker_Public
 
         $quiz_enable_keyboard_navigation = (isset($options['quiz_enable_keyboard_navigation']) && $options['quiz_enable_keyboard_navigation'] == 'on') ? true : false;
         $quiz_enable_lazy_loading = (isset($options['quiz_enable_lazy_loading']) && $options['quiz_enable_lazy_loading'] === true) ? true : false;
+        $quiz_enable_answer_image_zoom = (isset($options['quiz_enable_answer_image_zoom']) && $options['quiz_enable_answer_image_zoom'] === true) ? true : false;
         $question_key_number = intval($options['key_number']);
         $attributes_for_keyboard = "";
         $class_for_keyboard = "";
@@ -7175,7 +7182,20 @@ class Quiz_Maker_Public
                     }
                 }
 
-                $answer_image = "<img src='". esc_url($ans_img) ."' alt='". esc_attr($answer_image_alt_text) ."' ". esc_attr($question_image_lazy_loading_attr) ." class='ays-answer-image'>";
+                $answer_image_zoom_class = "";
+                $answer_image_full_size_url_attr = "";
+                if ( $quiz_enable_answer_image_zoom ) {
+                    $answer_image_zoom_class = "ays-quiz-answer-image-zoom";
+                    $answer_image_full_size_url = $this->ays_quiz_get_image_full_size_url_by_url($answer['image']);
+
+                    if ( $answer_image_full_size_url && $answer_image_full_size_url != "" ) {
+                        $answer_image_full_size_url_attr = ' data-ays-src="'. esc_url( $answer_image_full_size_url ) .'" ';
+                    } elseif ( $answer_image_full_size_url == "" ) {
+                        $answer_image_full_size_url_attr = ' data-ays-src="'. esc_url( $answer['image'] ) .'" ';
+                    }
+                }
+
+                $answer_image = "<img src='". esc_url($ans_img) ."' alt='". esc_attr($answer_image_alt_text) ."' ". $answer_image_full_size_url_attr ." ". esc_attr($question_image_lazy_loading_attr) ." class='ays-answer-image ". $answer_image_zoom_class ."'>";
             }
 
             $ays_field_style = "";

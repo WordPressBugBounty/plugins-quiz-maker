@@ -971,6 +971,9 @@ class Quizes_List_Table extends WP_List_Table{
             // Question Image Zoom
             $quiz_enable_question_image_zoom = ( isset($_POST['ays_quiz_enable_question_image_zoom']) && sanitize_text_field( $_POST['ays_quiz_enable_question_image_zoom'] ) == 'on' ) ? 'on' : 'off';
 
+            // Answer Image Zoom
+            $quiz_enable_answer_image_zoom = ( isset($_POST['ays_quiz_enable_answer_image_zoom']) && sanitize_text_field( $_POST['ays_quiz_enable_answer_image_zoom'] ) == 'on' ) ? 'on' : 'off';
+
             // Font size for the right answer | PC
             $right_answers_font_size = (isset($_POST['ays_right_answers_font_size']) && $_POST['ays_right_answers_font_size'] != '') ? absint(sanitize_text_field($_POST['ays_right_answers_font_size'])) : '16';
 
@@ -1438,6 +1441,7 @@ class Quizes_List_Table extends WP_List_Table{
                 'wrong_answers_font_size'                           => $wrong_answers_font_size,
                 'wrong_answers_mobile_font_size'                    => $wrong_answers_mobile_font_size,
                 'quiz_enable_question_image_zoom'                   => $quiz_enable_question_image_zoom,
+                'quiz_enable_answer_image_zoom'                     => $quiz_enable_answer_image_zoom,
                 'right_answers_font_size'                           => $right_answers_font_size,
                 'right_answers_mobile_font_size'                    => $right_answers_mobile_font_size,
                 'quiz_display_messages_before_buttons'              => $quiz_display_messages_before_buttons,

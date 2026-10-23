@@ -2612,7 +2612,10 @@
             }
         });
 
-        $(document).on('click', '.ays-image-question-img .ays-quiz-question-image-zoom', function() {
+        $(document).on('click', '.ays-image-question-img .ays-quiz-question-image-zoom, .ays-answer-image.ays-quiz-answer-image-zoom', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+
             var _this = $(this);
 
             var dataSrc = _this.attr('data-ays-src');

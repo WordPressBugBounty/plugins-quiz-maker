@@ -193,6 +193,7 @@ $options = array(
     'display_fields_labels'                             => 'off',
     'enable_full_screen_mode'                           => 'off',
     'quiz_enable_password_visibility'                   => 'off',
+    'quiz_enable_answer_image_zoom'                     => 'off',
     'question_mobile_font_size'                         => 16,
     'answers_mobile_font_size'                          => 15,
     'social_buttons_heading'                            => '',
@@ -1473,6 +1474,10 @@ $wrong_answers_mobile_font_size = (isset($options['wrong_answers_mobile_font_siz
 // Question Image Zoom
 $options['quiz_enable_question_image_zoom'] = isset($options['quiz_enable_question_image_zoom']) ? esc_attr($options['quiz_enable_question_image_zoom']) : 'off';
 $quiz_enable_question_image_zoom = (isset($options['quiz_enable_question_image_zoom']) && $options['quiz_enable_question_image_zoom'] == 'on') ? true : false;
+
+// Answer Image Zoom
+$options['quiz_enable_answer_image_zoom'] = isset($options['quiz_enable_answer_image_zoom']) ? esc_attr($options['quiz_enable_answer_image_zoom']) : 'off';
+$quiz_enable_answer_image_zoom = (isset($options['quiz_enable_answer_image_zoom']) && $options['quiz_enable_answer_image_zoom'] == 'on') ? true : false;
 
 // Font size for the right answer | PC
 $right_answers_font_size = (isset($options['right_answers_font_size']) && $options['right_answers_font_size'] != '') ? absint(esc_attr($options['right_answers_font_size'])) : '16';
@@ -7371,6 +7376,21 @@ $calculate_score = (isset($options['calculate_score']) && $options['calculate_sc
                                        name="ays_quiz_enable_question_image_zoom" value="on" <?php echo $quiz_enable_question_image_zoom ? 'checked' : '' ?>/>
                             </div>
                         </div> <!-- Question Image Zoom -->
+                        <hr>
+                        <div class="form-group row">
+                            <div class="col-sm-4">
+                                <label for="ays_quiz_enable_answer_image_zoom">
+                                    <?php echo esc_html__('Answer Image Zoom','quiz-maker'); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('By enabling this option, the users can zoom the answer images and open them in the large size on the Front-end.','quiz-maker')?>">
+                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                    </a>
+                                </label>
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="checkbox" class="ays-enable-timer1" id="ays_quiz_enable_answer_image_zoom"
+                                       name="ays_quiz_enable_answer_image_zoom" value="on" <?php echo $quiz_enable_answer_image_zoom ? 'checked' : '' ?>/>
+                            </div>
+                        </div> <!-- Answer Image Zoom -->
                         <hr>
                         <div class="form-group row">
                             <div class="col-sm-4">
