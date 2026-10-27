@@ -597,6 +597,17 @@ $quiz_custom_texts_login_button = (isset($options['quiz_custom_texts_login_butto
                                         <hr>
                                         <div class="form-group row">
                                             <div class="col-sm-4">
+                                                <label for="ays_quick_quiz_enable_answer_image_zoom">
+                                                    <?php echo esc_html__('Answer Image Zoom','quiz-maker'); ?>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <input type="checkbox" class="ays-enable-timer1" id="ays_quick_quiz_enable_answer_image_zoom" name="ays_quick_quiz_enable_answer_image_zoom" value="on" />
+                                            </div>
+                                        </div> <!-- Answer Image Zoom -->
+                                        <hr>
+                                        <div class="form-group row">
+                                            <div class="col-sm-4">
                                                 <label for="ays_quick_quiz_enable_leave_page">
                                                     <?php echo esc_html__('Enable confirmation box for leaving the page','quiz-maker'); ?>
                                                 </label>

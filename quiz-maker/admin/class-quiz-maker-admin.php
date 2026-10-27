@@ -245,12 +245,12 @@ class Quiz_Maker_Admin
 
         wp_enqueue_script( $this->plugin_name . '-color-picker-alpha', plugin_dir_url(__FILE__) . 'js/wp-color-picker-alpha.min.js', array( 'wp-color-picker' ), $this->version, true );
         $color_picker_strings = array(
-            'clear'            => __( 'Clear', 'quiz-maker' ),
-            'clearAriaLabel'   => __( 'Clear color', 'quiz-maker' ),
-            'defaultString'    => __( 'Default', 'quiz-maker' ),
-            'defaultAriaLabel' => __( 'Select default color', 'quiz-maker' ),
-            'pick'             => __( 'Select Color', 'quiz-maker' ),
-            'defaultLabel'     => __( 'Color value', 'quiz-maker' ),
+            'clear'             => __( 'Clear', 'quiz-maker' ),
+            'clearAriaLabel'    => __( 'Clear color', 'quiz-maker' ),
+            'defaultString'     => __( 'Default', 'quiz-maker' ),
+            'defaultAriaLabel'  => __( 'Select default color', 'quiz-maker' ),
+            'pick'              => __( 'Select Color', 'quiz-maker' ),
+            'defaultLabel'      => __( 'Color value', 'quiz-maker' ),
         );
         wp_localize_script( $this->plugin_name . '-color-picker-alpha', 'wpColorPickerL10n', $color_picker_strings );
 
@@ -1428,6 +1428,7 @@ class Quiz_Maker_Admin
         $quick_quiz_enable_rtl_direction                        = 'off';
         $quick_quiz_enable_questions_counter                    = 'on';
         $quick_quiz_enable_question_image_zoom                  = 'off';
+        $quick_quiz_enable_answer_image_zoom                    = 'off';
         $quick_quiz_enable_leave_page                           = 'on';
         $quick_quiz_enable_see_result_confirm_box               = 'off';
         $quick_quiz_enable_rw_asnwers_sounds                    = 'off';
@@ -1607,6 +1608,7 @@ class Quiz_Maker_Admin
             $quick_quiz_enable_rtl_direction = (isset( $_REQUEST['ays_quick_quiz_enable_rtl_direction'] ) && $_REQUEST['ays_quick_quiz_enable_rtl_direction'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_rtl_direction'] ) ) : "off";
             $quick_quiz_enable_questions_counter = (isset( $_REQUEST['ays_quick_quiz_enable_questions_counter'] ) && $_REQUEST['ays_quick_quiz_enable_questions_counter'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_questions_counter'] ) ) : "off";
             $quick_quiz_enable_question_image_zoom = (isset( $_REQUEST['ays_quick_quiz_enable_question_image_zoom'] ) && $_REQUEST['ays_quick_quiz_enable_question_image_zoom'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_question_image_zoom'] ) ) : "off";
+            $quick_quiz_enable_answer_image_zoom = (isset( $_REQUEST['ays_quick_quiz_enable_answer_image_zoom'] ) && $_REQUEST['ays_quick_quiz_enable_answer_image_zoom'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_answer_image_zoom'] ) ) : "off";
             $quick_quiz_enable_leave_page = (isset( $_REQUEST['ays_quick_quiz_enable_leave_page'] ) && $_REQUEST['ays_quick_quiz_enable_leave_page'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_leave_page'] ) ) : "off";
             $quick_quiz_enable_see_result_confirm_box = (isset( $_REQUEST['ays_quick_quiz_enable_see_result_confirm_box'] ) && $_REQUEST['ays_quick_quiz_enable_see_result_confirm_box'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_see_result_confirm_box'] ) ) : "off";
             $quick_quiz_enable_rw_asnwers_sounds = (isset( $_REQUEST['ays_quick_quiz_enable_rw_asnwers_sounds'] ) && $_REQUEST['ays_quick_quiz_enable_rw_asnwers_sounds'] == "on") ? stripslashes( sanitize_text_field( $_REQUEST['ays_quick_quiz_enable_rw_asnwers_sounds'] ) ) : "off";
@@ -2236,6 +2238,7 @@ class Quiz_Maker_Admin
             'quiz_display_all_questions'                        => $quick_quiz_display_all_questions,
             'enable_rtl_direction'                              => $quick_quiz_enable_rtl_direction,
             'quiz_enable_question_image_zoom'                   => $quick_quiz_enable_question_image_zoom,
+            'quiz_enable_answer_image_zoom'                     => $quick_quiz_enable_answer_image_zoom,
             'quiz_timer_red_warning'                            => 'off',
             'quiz_schedule_timezone'                            => get_option( 'timezone_string' ),
             'questions_hint_button_value'                       => '',
