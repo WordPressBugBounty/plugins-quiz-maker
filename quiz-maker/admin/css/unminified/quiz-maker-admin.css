@@ -1723,6 +1723,93 @@ td.ays-sort{
     margin-top: 5px;
 }
 
+.ays-quiz-features-wrap .ays-quiz-features-toggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.ays-quiz-features-wrap .ays-quiz-features-toggle label {
+    font-size: 18px;
+    font-weight: 500;
+    color: #363636;
+    cursor: pointer;
+}
+
+.ays-quiz-features-toggle-mobile {
+    display: none !important;
+}
+
+.ays-quiz-features-wrap .comparison thead tr:first-child th {
+    width: 17.5%;
+}
+
+.ays-quiz-features-wrap .comparison thead tr:first-child th:first-child {
+    width: 30%;
+}
+
+.comparison .ays-quiz-features-see-all {
+    font-size: 14px;
+    text-decoration: underline;
+}
+
+.ays-quiz-toggle-switch-container {
+    display: flex;
+    align-items: center;
+}
+
+.ays-quiz-features-wrap .ays-quiz-features-toggle label.ays-quiz-toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 42px;
+    height: 20px;
+}
+
+.ays-quiz-toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.ays-quiz-toggle-switch .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .3s;
+}
+
+.ays-quiz-toggle-switch .slider:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 3px;
+    bottom: 3px;
+    background-color: #fff;
+    transition: .3s;
+}
+
+.ays-quiz-toggle-switch input:checked + .slider {
+    background-color: #69C7F1;
+}
+
+.ays-quiz-toggle-switch input:checked + .slider:before {
+    transform: translateX(22px);
+}
+
+.ays-quiz-toggle-switch .slider.round {
+    border-radius: 24px;
+}
+
+.ays-quiz-toggle-switch .slider.round:before {
+    border-radius: 50%;
+}
+
 .ays-quiz-heading-box.ays-quiz-unset-float .ays-quiz-wordpress-user-manual-box a.ays-quiz-comparison-secondary-button,
 .comparison .ays-quiz-comparison-secondary-button {
     background: transparent;
@@ -8333,6 +8420,15 @@ div .wp-picker-container .wp-color-result.button {
 
     div.wrap.ays-quiz-features-wrap-box {
         margin: 0;
+    }
+
+    .ays-quiz-features-wrap div.ays-quiz-features-toggle-mobile {
+        display: flex !important;
+        margin-bottom: 15px;
+    }
+
+    .ays-quiz-features-wrap div.ays-quiz-features-toggle-pc {
+        display: none !important;
     }
 
     div.comparison {

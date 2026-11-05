@@ -4633,6 +4633,21 @@
             sortableList.sortable();
             sortableListMobile.sortable();
         });
+
+        $(document).on('change', '#ays_quiz_pricing_period, #ays_quiz_pricing_period_mobile', function(){
+            var isLifetime = $(this).is(':checked');
+
+            // Keep desktop and mobile toggles in sync
+            $(document).find('#ays_quiz_pricing_period, #ays_quiz_pricing_period_mobile').prop('checked', isLifetime);
+
+            if( isLifetime ){
+                $(document).find('.ays-quiz-features-lifetime').removeClass('display_none');
+                $(document).find('.ays-quiz-features-annual').addClass('display_none');
+            } else {
+                $(document).find('.ays-quiz-features-lifetime').addClass('display_none');
+                $(document).find('.ays-quiz-features-annual').removeClass('display_none');
+            }
+        });
     });
 
     function showConfirmationIfDelete(e) {
