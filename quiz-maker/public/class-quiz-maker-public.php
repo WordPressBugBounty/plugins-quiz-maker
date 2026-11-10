@@ -5954,6 +5954,97 @@ class Quiz_Maker_Public
         return $ordered + $array;
     }
 
+    /**
+     * Returns the question ids a submission of the quiz has to be graded over.
+     * Follows the same selection as the quiz rendering in ays_quiz_parts().
+     *
+     * @param array    $quiz              Quiz row.
+     * @param object   $options           Decoded quiz options.
+     * @param array    $questions_answers Submitted answers, keyed by ays-question-{id}.
+     * @param array    $displayed_ids     Value of the submitted ays_quiz_questions field.
+     * @param bool     $is_training       Whether the quiz is finished in training mode.
+     * @return array
+     */
+    protected function get_quiz_required_question_ids( $quiz, $options, $questions_answers, $displayed_ids, $is_training ) {
+        $quiz_id = absint( $quiz['id'] );
+
+        if ( ! isset( $quiz['question_ids'] ) || $quiz['question_ids'] == '' ) {
+            return array();
+        }
+
+        $allowed_ids = self::get_published_questions_id_arr( $quiz['question_ids'] );
+
+        if ( $is_training ) {
+            $allowed_ids = array_diff( $allowed_ids, apply_filters( 'ays_qm_front_end_training_passed_questions', array(), $quiz_id ) );
+        }
+
+        if ( isset( $_COOKIE[ 'ays_quiz_selected_categories-' . $quiz_id ] ) ) {
+            $allowed_ids = array_intersect( $allowed_ids, apply_filters( 'ays_qm_front_end_category_selective_get_questions', array(), $quiz_id ) );
+        }
+
+        $allowed_ids = array_values( array_unique( array_map( 'absint', $allowed_ids ) ) );
+
+        $bank_size = isset( $options->questions_count ) ? intval( $options->questions_count ) : 0;
+        $is_bank   = isset( $options->enable_question_bank ) && $options->enable_question_bank == 'on' && $bank_size > 0 && $bank_size <= count( $allowed_ids );
+
+        if ( ! $is_bank ) {
+            return $allowed_ids;
+        }
+
+        // The rendered subset is random and isn't stored, so take it from the request
+        // and keep it at the configured size.
+        $selected_ids = array();
+        foreach ( array_keys( (array) $questions_answers ) as $key ) {
+            $selected_ids[] = $this->get_question_id_from_answer_key( $key );
+        }
+        $selected_ids = array_merge( $selected_ids, array_map( 'absint', (array) $displayed_ids ) );
+        $selected_ids = array_values( array_unique( array_intersect( $selected_ids, $allowed_ids ) ) );
+        $selected_ids = array_merge( $selected_ids, array_diff( $allowed_ids, $selected_ids ) );
+
+        return array_slice( $selected_ids, 0, $bank_size );
+    }
+
+    /**
+     * Drops the answers of questions that aren't required and marks the omitted
+     * required questions as unanswered, the same way the quiz form submits them.
+     * Returns an empty array if no required question was submitted.
+     *
+     * @param array $questions_answers Submitted answers, keyed by ays-question-{id}.
+     * @param array $required_ids      Result of get_quiz_required_question_ids().
+     * @return array
+     */
+    protected function normalize_quiz_submitted_answers( $questions_answers, $required_ids ) {
+        $normalized = array();
+
+        foreach ( (array) $questions_answers as $key => $answer ) {
+            if ( in_array( $this->get_question_id_from_answer_key( $key ), $required_ids, true ) ) {
+                $normalized[ $key ] = $answer;
+            }
+        }
+
+        if ( empty( $normalized ) ) {
+            return array();
+        }
+
+        foreach ( $required_ids as $question_id ) {
+            if ( ! array_key_exists( 'ays-question-' . $question_id, $normalized ) ) {
+                $normalized[ 'ays-question-' . $question_id ] = '';
+            }
+        }
+
+        return $normalized;
+    }
+
+    /**
+     * Returns the question id of an ays-question-{id} key, or 0 for any other key.
+     *
+     * @param string $key Submitted answer key.
+     * @return int
+     */
+    protected function get_question_id_from_answer_key( $key ) {
+        return preg_match( '/^ays-question-([1-9][0-9]*)$/', (string) $key, $matches ) ? absint( $matches[1] ) : 0;
+    }
+
     public function ays_finish_quiz(){
         ob_start();
         $quiz_id = isset($_REQUEST['ays_quiz_id']) ? absint( sanitize_text_field( $_REQUEST['ays_quiz_id'] ) ) : 0;
@@ -5985,19 +6076,34 @@ class Quiz_Maker_Public
             $questions_answers = $this->sort_array_keys_by_array($questions_answers, $questions_ids);
 
             $quiz = $this->get_quiz_by_id($quiz_id);
+
+            if ( empty( $quiz ) ) {
+                echo json_encode( array(
+                    'status'  => false,
+                    'message' => __( 'Invalid request', 'quiz-maker' ),
+                ) );
+                wp_die();
+            }
+
             $quiz_intervals_data = (isset( $quiz['intervals'] ) && $quiz['intervals'] != "") ? $quiz['intervals'] : "";
             $quiz_intervals = array();
             if ( $quiz_intervals_data != "" ) {
                 $quiz_intervals = json_decode($quiz_intervals_data);
             }
             $options = json_decode($quiz['options']);
-            $quiz_questions_count = $this->get_quiz_questions_count($quiz_id);
 
-            if (isset($options->enable_question_bank) && $options->enable_question_bank == 'on' && isset($options->questions_count) && intval($options->questions_count) > 0 && count($quiz_questions_count) > intval($options->questions_count) || $is_training) {
-                $question_ids = preg_split('/,/', sanitize_text_field( $_REQUEST['ays_quiz_questions'] ) );
-            } else {
-                $question_ids = $this->get_quiz_questions_count($quiz_id);
+            // Grade only this quiz's questions, and always over the whole set.
+            $question_ids = $this->get_quiz_required_question_ids( $quiz, $options, $questions_answers, $questions_ids, $is_training );
+            $questions_answers = $this->normalize_quiz_submitted_answers( $questions_answers, $question_ids );
+
+            if ( empty( $questions_answers ) ) {
+                echo json_encode( array(
+                    'status'  => false,
+                    'message' => __( 'Invalid request', 'quiz-maker' ),
+                ) );
+                wp_die();
             }
+
             // Strong calculation of checkbox answers
             $options->checkbox_score_by = ! isset($options->checkbox_score_by) ? 'on' : $options->checkbox_score_by;
             $strong_count_checkbox = (isset($options->checkbox_score_by) && $options->checkbox_score_by == "on") ? true : false;
@@ -6280,8 +6386,11 @@ class Quiz_Maker_Public
                     }
                 }
 
+                // The answers are needed only to render the questions on the results page.
+                $enable_questions_result = isset( $options->enable_questions_result ) && $options->enable_questions_result == 'on';
+
                 $question_answer_data = array();
-                if( !empty($quiz_questions_ids) ){
+                if( $enable_questions_result && !empty($quiz_questions_ids) ){
                     $question_answer_data = $this->get_answers_with_question_ids( $quiz_questions_ids );
                 }
 
