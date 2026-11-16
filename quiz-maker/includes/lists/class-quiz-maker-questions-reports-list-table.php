@@ -476,7 +476,7 @@ class Question_Reports_List_Table extends WP_List_Table{
 
         $question_title = Quiz_Maker_Admin::ays_restriction_string("word",$question_title, $question_title_length);
         
-        $url = remove_query_arg( array('status') );
+        $url = admin_url( 'admin.php' );
         $url_args = array(
             "page"    => esc_attr( 'quiz-maker-questions' ),
             "question"    => absint( $question_data['id'] ),
@@ -489,7 +489,7 @@ class Question_Reports_List_Table extends WP_List_Table{
 
         $url = add_query_arg( $url_args, $url );
 
-        $title = sprintf( '<a href="%s" title="%s">%s</a>', $url, $q, $question_title );
+        $title = sprintf( '<a href="%s" title="%s">%s</a>', esc_url( $url ), $q, $question_title );
 
         if ($report_status) {
             $change_report_status = sprintf( '<a data-message="this review" href="?page=%s&action=%s&report=%s&_wpnonce=%s">%s</a>', esc_attr( $_REQUEST['page'] ), 'review', absint( $item['id'] ), $in_review_nonce, __( "Not Resolved", 'quiz-maker' ) );

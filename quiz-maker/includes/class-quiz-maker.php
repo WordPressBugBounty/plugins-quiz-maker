@@ -276,37 +276,26 @@ class Quiz_Maker {
         $this->loader->add_filter('mce_buttons', $plugin_admin, 'ays_quiz_add_tinymce_button');
 
         $this->loader->add_action( 'wp_ajax_add_question_rows', $plugin_admin, 'add_question_rows' );
-		$this->loader->add_action( 'wp_ajax_nopriv_add_question_rows', $plugin_admin, 'add_question_rows' );
 		
         $this->loader->add_action( 'wp_ajax_ays_show_results', $plugin_admin, 'ays_show_results' );
-        $this->loader->add_action( 'wp_ajax_nopriv_ays_show_results', $plugin_admin, 'ays_show_results' );
 
         $this->loader->add_action( 'wp_ajax_deactivate_plugin_option_qm', $plugin_admin, 'deactivate_plugin_option');
-        $this->loader->add_action( 'wp_ajax_nopriv_deactivate_plugin_option_qm', $plugin_admin, 'deactivate_plugin_option');
 
         $this->loader->add_action( 'wp_ajax_ays_quick_start', $plugin_admin, 'ays_quick_start' );
-        $this->loader->add_action( 'wp_ajax_nopriv_ays_quick_start', $plugin_admin, 'ays_quick_start' );
 
         $this->loader->add_action( 'wp_ajax_ays_quiz_subscribe_email', $plugin_admin, 'ays_quiz_subscribe_email' );
-        $this->loader->add_action( 'wp_ajax_nopriv_ays_quiz_subscribe_email', $plugin_admin, 'ays_quiz_subscribe_email' );
 
         $this->loader->add_action( 'wp_ajax_ays_quiz_author_user_search', $plugin_admin, 'ays_quiz_author_user_search' );
-        $this->loader->add_action( 'wp_ajax_nopriv_ays_quiz_author_user_search', $plugin_admin, 'ays_quiz_author_user_search' );
 
         $this->loader->add_action( 'wp_ajax_ays_quiz_install_plugin', $plugin_admin, 'ays_quiz_install_plugin' );
-        $this->loader->add_action( 'wp_ajax_nopriv_ays_quiz_install_plugin', $plugin_admin, 'ays_quiz_install_plugin' );
 
         $this->loader->add_action( 'wp_ajax_ays_quiz_activate_plugin', $plugin_admin, 'ays_quiz_activate_plugin' );
-        $this->loader->add_action( 'wp_ajax_nopriv_ays_quiz_activate_plugin', $plugin_admin, 'ays_quiz_activate_plugin' );
 
         $this->loader->add_action( 'wp_ajax_ays_quiz_save_checklist_progress', $plugin_admin, 'ays_quiz_save_checklist_progress' );
-        $this->loader->add_action( 'wp_ajax_nopriv_ays_quiz_save_checklist_progress', $plugin_admin, 'ays_quiz_save_checklist_progress' );
 
         $this->loader->add_action( 'wp_ajax_ays_quiz_checklist_close_popup', $plugin_admin, 'ays_quiz_checklist_close_popup' );
-        $this->loader->add_action( 'wp_ajax_nopriv_ays_quiz_checklist_close_popup', $plugin_admin, 'ays_quiz_checklist_close_popup' );
 
         $this->loader->add_action( 'wp_ajax_ays_quiz_checklist_reopen_callback', $plugin_admin, 'ays_quiz_checklist_reopen_callback' );
-        $this->loader->add_action( 'wp_ajax_nopriv_ays_quiz_checklist_reopen_callback', $plugin_admin, 'ays_quiz_checklist_reopen_callback' );
 
 		$this->loader->add_action( 'plugins_loaded', $plugin_admin, 'ays_change_db_questions' );
         // Add Settings link to the plugin
@@ -342,7 +331,6 @@ class Quiz_Maker {
         $this->loader->add_action( 'ays_quiz_sale_banner', $plugin_admin, 'ays_quiz_sale_baner', 1 );
         
         $this->loader->add_action( 'wp_ajax_ays_quiz_dismiss_button', $plugin_admin, 'ays_quiz_dismiss_button' );
-        $this->loader->add_action( 'wp_ajax_nopriv_ays_quiz_dismiss_button', $plugin_admin, 'ays_quiz_dismiss_button' );
 
         if( isset($_GET["page"]) && sanitize_key($_GET["page"]) != ""){
         	$if_plugin_screen_page = strpos( sanitize_key( $_GET["page"] ) , $this->plugin_name);

@@ -259,37 +259,37 @@ class Quiz_Maker_Public
             $settings_buttons_texts = array();
         }
 
-        $ays_start_button           = (isset($settings_buttons_texts['start_button']) && $settings_buttons_texts['start_button'] != '') ? stripslashes( esc_attr( $settings_buttons_texts['start_button'] ) ) : 'Start';
-        $ays_next_button            = (isset($settings_buttons_texts['next_button']) && $settings_buttons_texts['next_button'] != '') ? stripslashes( esc_attr( $settings_buttons_texts['next_button'] ) ) : 'Next';
-        $ays_previous_button        = (isset($settings_buttons_texts['previous_button']) && $settings_buttons_texts['previous_button'] != '') ? stripslashes( esc_attr( $settings_buttons_texts['previous_button'] ) ) : 'Prev';
-        $ays_clear_button           = (isset($settings_buttons_texts['clear_button']) && $settings_buttons_texts['clear_button'] != '') ? stripslashes( esc_attr( $settings_buttons_texts['clear_button'] ) ) : 'Clear';
-        $ays_finish_button          = (isset($settings_buttons_texts['finish_button']) && $settings_buttons_texts['finish_button'] != '') ? stripslashes( esc_attr( $settings_buttons_texts['finish_button'] ) ) : 'Finish';
-        $ays_see_result_button      = (isset($settings_buttons_texts['see_result_button']) && $settings_buttons_texts['see_result_button'] != '') ? stripslashes( esc_attr( $settings_buttons_texts['see_result_button'] ) ) : 'See Result';
-        $ays_restart_quiz_button    = (isset($settings_buttons_texts['restart_quiz_button']) && $settings_buttons_texts['restart_quiz_button'] != '') ? stripslashes( esc_attr( $settings_buttons_texts['restart_quiz_button'] ) ) : 'Restart quiz';
-        $ays_send_feedback_button   = (isset($settings_buttons_texts['send_feedback_button']) && $settings_buttons_texts['send_feedback_button'] != '') ? stripslashes( esc_attr( $settings_buttons_texts['send_feedback_button'] ) ) : 'Send feedback';
-        $ays_load_more_button       = (isset($settings_buttons_texts['load_more_button']) && $settings_buttons_texts['load_more_button'] != '') ? stripslashes( esc_attr( $settings_buttons_texts['load_more_button'] ) ) : 'Load more';
-        $ays_exit_button            = (isset($settings_buttons_texts['exit_button']) && $settings_buttons_texts['exit_button'] != '') ? stripslashes( esc_attr( $settings_buttons_texts['exit_button'] ) ) : 'Exit';
-        $ays_check_button           = (isset($settings_buttons_texts['check_button']) && $settings_buttons_texts['check_button'] != '') ? stripslashes( esc_attr( $settings_buttons_texts['check_button'] ) ) : 'Check';
-        $ays_login_button           = (isset($settings_buttons_texts['login_button']) && $settings_buttons_texts['login_button'] != '') ? stripslashes( esc_attr( $settings_buttons_texts['login_button'] ) ) : 'Log In';
-        $ays_report_submit_button = (isset($settings_buttons_texts['report_submit_button']) && $settings_buttons_texts['report_submit_button'] != '') ? stripslashes( esc_attr( $settings_buttons_texts['report_submit_button'] ) ) : 'Submit';
+        $ays_start_button                           = (isset($settings_buttons_texts['start_button']) && $settings_buttons_texts['start_button'] != '') ? stripslashes( esc_attr( $settings_buttons_texts['start_button'] ) ) : 'Start';
+        $ays_next_button                            = (isset($settings_buttons_texts['next_button']) && $settings_buttons_texts['next_button'] != '') ? stripslashes( esc_attr( $settings_buttons_texts['next_button'] ) ) : 'Next';
+        $ays_previous_button                        = (isset($settings_buttons_texts['previous_button']) && $settings_buttons_texts['previous_button'] != '') ? stripslashes( esc_attr( $settings_buttons_texts['previous_button'] ) ) : 'Prev';
+        $ays_clear_button                           = (isset($settings_buttons_texts['clear_button']) && $settings_buttons_texts['clear_button'] != '') ? stripslashes( esc_attr( $settings_buttons_texts['clear_button'] ) ) : 'Clear';
+        $ays_finish_button                          = (isset($settings_buttons_texts['finish_button']) && $settings_buttons_texts['finish_button'] != '') ? stripslashes( esc_attr( $settings_buttons_texts['finish_button'] ) ) : 'Finish';
+        $ays_see_result_button                      = (isset($settings_buttons_texts['see_result_button']) && $settings_buttons_texts['see_result_button'] != '') ? stripslashes( esc_attr( $settings_buttons_texts['see_result_button'] ) ) : 'See Result';
+        $ays_restart_quiz_button                    = (isset($settings_buttons_texts['restart_quiz_button']) && $settings_buttons_texts['restart_quiz_button'] != '') ? stripslashes( esc_attr( $settings_buttons_texts['restart_quiz_button'] ) ) : 'Restart quiz';
+        $ays_send_feedback_button                   = (isset($settings_buttons_texts['send_feedback_button']) && $settings_buttons_texts['send_feedback_button'] != '') ? stripslashes( esc_attr( $settings_buttons_texts['send_feedback_button'] ) ) : 'Send feedback';
+        $ays_load_more_button                       = (isset($settings_buttons_texts['load_more_button']) && $settings_buttons_texts['load_more_button'] != '') ? stripslashes( esc_attr( $settings_buttons_texts['load_more_button'] ) ) : 'Load more';
+        $ays_exit_button                            = (isset($settings_buttons_texts['exit_button']) && $settings_buttons_texts['exit_button'] != '') ? stripslashes( esc_attr( $settings_buttons_texts['exit_button'] ) ) : 'Exit';
+        $ays_check_button                           = (isset($settings_buttons_texts['check_button']) && $settings_buttons_texts['check_button'] != '') ? stripslashes( esc_attr( $settings_buttons_texts['check_button'] ) ) : 'Check';
+        $ays_login_button                           = (isset($settings_buttons_texts['login_button']) && $settings_buttons_texts['login_button'] != '') ? stripslashes( esc_attr( $settings_buttons_texts['login_button'] ) ) : 'Log In';
+        $ays_report_submit_button                   = (isset($settings_buttons_texts['report_submit_button']) && $settings_buttons_texts['report_submit_button'] != '') ? stripslashes( esc_attr( $settings_buttons_texts['report_submit_button'] ) ) : 'Submit';
 
         //////////////////////////
         //////////////////////////
         //////////////////////////
 
         // New Start button
-        $quiz_custom_texts_start_button         = (isset($options['quiz_custom_texts_start_button']) && $options['quiz_custom_texts_start_button'] != '') ? stripslashes( esc_attr( $options['quiz_custom_texts_start_button'] ) ) : $ays_start_button;
-        $quiz_custom_texts_next_button          = (isset($options['quiz_custom_texts_next_button']) && $options['quiz_custom_texts_next_button'] != '') ? stripslashes( esc_attr( $options['quiz_custom_texts_next_button'] ) ) : $ays_next_button;
-        $quiz_custom_texts_prev_button          = (isset($options['quiz_custom_texts_prev_button']) && $options['quiz_custom_texts_prev_button'] != '') ? stripslashes( esc_attr( $options['quiz_custom_texts_prev_button'] ) ) : $ays_previous_button;
-        $quiz_custom_texts_clear_button         = (isset($options['quiz_custom_texts_clear_button']) && $options['quiz_custom_texts_clear_button'] != '') ? stripslashes( esc_attr( $options['quiz_custom_texts_clear_button'] ) ) : $ays_clear_button;
-        $quiz_custom_texts_finish_button        = (isset($options['quiz_custom_texts_finish_button']) && $options['quiz_custom_texts_finish_button'] != '') ? stripslashes( esc_attr( $options['quiz_custom_texts_finish_button'] ) ) : $ays_finish_button;
-        $quiz_custom_texts_see_results_button   = (isset($options['quiz_custom_texts_see_results_button']) && $options['quiz_custom_texts_see_results_button'] != '') ? stripslashes( esc_attr( $options['quiz_custom_texts_see_results_button'] ) ) : $ays_see_result_button;
-        $quiz_custom_texts_restart_quiz_button  = (isset($options['quiz_custom_texts_restart_quiz_button']) && $options['quiz_custom_texts_restart_quiz_button'] != '') ? stripslashes( esc_attr( $options['quiz_custom_texts_restart_quiz_button'] ) ) : $ays_restart_quiz_button;
-        $quiz_custom_texts_send_feedback_button = (isset($options['quiz_custom_texts_send_feedback_button']) && $options['quiz_custom_texts_send_feedback_button'] != '') ? stripslashes( esc_attr( $options['quiz_custom_texts_send_feedback_button'] ) ) : $ays_send_feedback_button;
-        $quiz_custom_texts_load_more_button     = (isset($options['quiz_custom_texts_load_more_button']) && $options['quiz_custom_texts_load_more_button'] != '') ? stripslashes( esc_attr( $options['quiz_custom_texts_load_more_button'] ) ) : $ays_load_more_button;
-        $quiz_custom_texts_exit_button          = (isset($options['quiz_custom_texts_exit_button']) && $options['quiz_custom_texts_exit_button'] != '') ? stripslashes( esc_attr( $options['quiz_custom_texts_exit_button'] ) ) : $ays_exit_button;
-        $quiz_custom_texts_check_button         = (isset($options['quiz_custom_texts_check_button']) && $options['quiz_custom_texts_check_button'] != '') ? stripslashes( esc_attr( $options['quiz_custom_texts_check_button'] ) ) : $ays_check_button;
-        $quiz_custom_texts_login_button         = (isset($options['quiz_custom_texts_login_button']) && $options['quiz_custom_texts_login_button'] != '') ? stripslashes( esc_attr( $options['quiz_custom_texts_login_button'] ) ) : $ays_login_button;
+        $quiz_custom_texts_start_button             = (isset($options['quiz_custom_texts_start_button']) && $options['quiz_custom_texts_start_button'] != '') ? stripslashes( esc_attr( $options['quiz_custom_texts_start_button'] ) ) : $ays_start_button;
+        $quiz_custom_texts_next_button              = (isset($options['quiz_custom_texts_next_button']) && $options['quiz_custom_texts_next_button'] != '') ? stripslashes( esc_attr( $options['quiz_custom_texts_next_button'] ) ) : $ays_next_button;
+        $quiz_custom_texts_prev_button              = (isset($options['quiz_custom_texts_prev_button']) && $options['quiz_custom_texts_prev_button'] != '') ? stripslashes( esc_attr( $options['quiz_custom_texts_prev_button'] ) ) : $ays_previous_button;
+        $quiz_custom_texts_clear_button             = (isset($options['quiz_custom_texts_clear_button']) && $options['quiz_custom_texts_clear_button'] != '') ? stripslashes( esc_attr( $options['quiz_custom_texts_clear_button'] ) ) : $ays_clear_button;
+        $quiz_custom_texts_finish_button            = (isset($options['quiz_custom_texts_finish_button']) && $options['quiz_custom_texts_finish_button'] != '') ? stripslashes( esc_attr( $options['quiz_custom_texts_finish_button'] ) ) : $ays_finish_button;
+        $quiz_custom_texts_see_results_button       = (isset($options['quiz_custom_texts_see_results_button']) && $options['quiz_custom_texts_see_results_button'] != '') ? stripslashes( esc_attr( $options['quiz_custom_texts_see_results_button'] ) ) : $ays_see_result_button;
+        $quiz_custom_texts_restart_quiz_button      = (isset($options['quiz_custom_texts_restart_quiz_button']) && $options['quiz_custom_texts_restart_quiz_button'] != '') ? stripslashes( esc_attr( $options['quiz_custom_texts_restart_quiz_button'] ) ) : $ays_restart_quiz_button;
+        $quiz_custom_texts_send_feedback_button     = (isset($options['quiz_custom_texts_send_feedback_button']) && $options['quiz_custom_texts_send_feedback_button'] != '') ? stripslashes( esc_attr( $options['quiz_custom_texts_send_feedback_button'] ) ) : $ays_send_feedback_button;
+        $quiz_custom_texts_load_more_button         = (isset($options['quiz_custom_texts_load_more_button']) && $options['quiz_custom_texts_load_more_button'] != '') ? stripslashes( esc_attr( $options['quiz_custom_texts_load_more_button'] ) ) : $ays_load_more_button;
+        $quiz_custom_texts_exit_button              = (isset($options['quiz_custom_texts_exit_button']) && $options['quiz_custom_texts_exit_button'] != '') ? stripslashes( esc_attr( $options['quiz_custom_texts_exit_button'] ) ) : $ays_exit_button;
+        $quiz_custom_texts_check_button             = (isset($options['quiz_custom_texts_check_button']) && $options['quiz_custom_texts_check_button'] != '') ? stripslashes( esc_attr( $options['quiz_custom_texts_check_button'] ) ) : $ays_check_button;
+        $quiz_custom_texts_login_button             = (isset($options['quiz_custom_texts_login_button']) && $options['quiz_custom_texts_login_button'] != '') ? stripslashes( esc_attr( $options['quiz_custom_texts_login_button'] ) ) : $ays_login_button;
 
         if ($ays_start_button === 'Start') {
             $ays_start_button_text = __('Start', 'quiz-maker');
@@ -815,27 +815,27 @@ class Quiz_Maker_Public
         }
 
         $texts = array(
-            'wrongShortcode'                => $wrong_shortcode_text,
-            'enterPassword'                 => $enter_password_text,
-            'wrongPassword'                 => $wrong_password_text,
-            'emptyResultsText'              => $empty_results_text,
-            'notAnsweredQuestionText'       => $not_answered_question_text,
-            'finishQuizText'                => $finish_quiz_text,
-            'selectAnswerText'              => $select_question_placeholder_text,
-            'answerExplanationPlaceholderText' => $answer_explanation_placeholder_text,
-            'noMoreReviewsText'             => $no_more_reviews_text,
-            'reportQuestionText'            => $report_question_text,
-            'whatsWrongReportQuestionText'  => $whats_wrong_report_question_text,
-            'questionReportSubmittedText'   => $question_report_submitted_text,
-            'emptyReportText'               => $empty_report_text,
-            'questionReportIconText'        => $question_report_icon_text,
-            'startButtonLoadingText'        => $start_button_loading_text,
-            'createdOnText'                 => $created_on_text,
-            'loggedInUsersMessageText'      => $logged_in_users_message_text,
-            'quizScheduleStartMessageText'  => $quiz_schedule_start_message_text,
-            'createdByText'                 => $created_by_text,
-            'quizExpiredMessageText'        => $quiz_expired_message_text,
-            'alreadyPassedQuizMessageText'  => $already_passed_quiz_message_text,
+            'wrongShortcode'                    => $wrong_shortcode_text,
+            'enterPassword'                     => $enter_password_text,
+            'wrongPassword'                     => $wrong_password_text,
+            'emptyResultsText'                  => $empty_results_text,
+            'notAnsweredQuestionText'           => $not_answered_question_text,
+            'finishQuizText'                    => $finish_quiz_text,
+            'selectAnswerText'                  => $select_question_placeholder_text,
+            'answerExplanationPlaceholderText'  => $answer_explanation_placeholder_text,
+            'noMoreReviewsText'                 => $no_more_reviews_text,
+            'reportQuestionText'                => $report_question_text,
+            'whatsWrongReportQuestionText'      => $whats_wrong_report_question_text,
+            'questionReportSubmittedText'       => $question_report_submitted_text,
+            'emptyReportText'                   => $empty_report_text,
+            'questionReportIconText'            => $question_report_icon_text,
+            'startButtonLoadingText'            => $start_button_loading_text,
+            'createdOnText'                     => $created_on_text,
+            'loggedInUsersMessageText'          => $logged_in_users_message_text,
+            'quizScheduleStartMessageText'      => $quiz_schedule_start_message_text,
+            'createdByText'                     => $created_by_text,
+            'quizExpiredMessageText'            => $quiz_expired_message_text,
+            'alreadyPassedQuizMessageText'      => $already_passed_quiz_message_text,
         );
 
         return $texts;
